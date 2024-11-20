@@ -1,0 +1,18 @@
+<Project>
+
+	<Import Project="$(MSBuildThisFileDirectory)/../../Directory.Build.props"
+			Condition="Exists('$(MSBuildThisFileDirectory)/../../Directory.Build.props')"/>
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<NoWarn>701;1702;CA1845</NoWarn>
+	</PropertyGroup>
+
+</Project>

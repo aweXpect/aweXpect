@@ -1,5 +1,5 @@
 ﻿namespace aweXpect.Discovery;
 
-public class Class1
+public class Class3
 {
 }

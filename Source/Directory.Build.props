@@ -23,7 +23,6 @@
 		<NoWarn>1701;1702</NoWarn>
 		<WarningsNotAsErrors>CS1591</WarningsNotAsErrors>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<OutputPath>..\..\Artifacts\Binaries</OutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' != 'Debug' ">
