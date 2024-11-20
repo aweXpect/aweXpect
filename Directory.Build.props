@@ -1,0 +1,10 @@
+<Project>
+
+	<PropertyGroup>
+		<Authors>aweXpect</Authors>
+		<Copyright>Copyright (c) 2024 Valentin Breuß</Copyright>
+		<RepositoryUrl>https://github.com/aweXpect/aweXpect.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+</Project>

@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\aweXpect.Core\aweXpect.Core.csproj" />
+    <ProjectReference Include="..\aweXpect.Discovery\aweXpect.Discovery.csproj" />
+  </ItemGroup>
+</Project>
