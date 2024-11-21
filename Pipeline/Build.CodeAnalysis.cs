@@ -58,6 +58,7 @@ partial class Build
 		.Unlisted()
 		.DependsOn(Cover)
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => IsServerBuild)
 		.Executes(() =>
 		{
 			SonarScannerTasks.SonarScannerEnd(s => s
