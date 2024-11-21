@@ -52,7 +52,7 @@ partial class Build
 				                      		"target-framework": "net8.0",
 				                      		"since": {
 				                      			"target": "main",
-				                      			"enabled": {{(GitVersion.BranchName != "main").ToString().ToLowerInvariant()}},
+				                      			"enabled": false,
 				                      			"ignore-changes-in": [
 				                      				"**/.github/**/*.*"
 				                      			]
