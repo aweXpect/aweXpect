@@ -2,11 +2,11 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
-using Nuke.Common.Tools.Coverlet;
+using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.Xunit;
 using System.Linq;
 using static Nuke.Common.Tools.Xunit.XunitTasks;
-using static Nuke.Common.Tools.Coverlet.CoverletTasks;
+using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 // ReSharper disable AllUnderscoreLocalParameterName
 
@@ -50,41 +50,24 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			var coverageDirectory = TestResultsDirectory / "Coverage";
-			coverageDirectory.CreateOrCleanDirectory();
-			
-			const string net48 = "net48";
-			foreach (Project project in UnitTestProjects)
-			{
-				foreach (string framework in project.GetTargetFrameworks()?.Except([net48]) ?? [])
-				{
-					AbsolutePath binPath = project.Path.Parent / "bin" / (IsLocalBuild ? "Debug" : "Release") / framework / project.Name + ".dll";
-					Coverlet(s => s
-						.SetTarget("dotnet")
-						.SetProcessWorkingDirectory(EnvironmentInfo.IsWin ? project.Path.Parent : binPath.Parent)
-						.SetTargetArgs("test --no-build --no-restore")
-						.SetAssembly(binPath)
-						.SetOutput(coverageDirectory / (project.Name + "_" + framework + "_opencover.xml"))
-						.SetFormat(CoverletOutputFormat.opencover));
-				}
-			}
-			//DotNetTest(s => s
-			//		.SetConfiguration(Configuration)
-			//		.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
-			//		.EnableNoBuild()
-			//		.SetDataCollector("XPlat Code Coverage")
-			//		.SetResultsDirectory(TestResultsDirectory)
-			//		.CombineWith(
-			//			UnitTestProjects,
-			//			(settings, project) => settings
-			//				.SetProjectFile(project)
-			//				.CombineWith(
-			//					project.GetTargetFrameworks()?.Except([net48]),
-			//					(frameworkSettings, framework) => frameworkSettings
-			//						.SetFramework(framework)
-			//						.AddLoggers($"trx;LogFileName={project.Name}_{framework}.trx")
-			//				)
-			//		), completeOnFailure: true
-			//);
+			var net48 = "net48";
+			DotNetTest(s => s
+					.SetConfiguration(Configuration)
+					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
+					.EnableNoBuild()
+					.SetDataCollector("XPlat Code Coverage")
+					.SetResultsDirectory(TestResultsDirectory)
+					.CombineWith(
+						UnitTestProjects,
+						(settings, project) => settings
+							.SetProjectFile(project)
+							.CombineWith(
+								project.GetTargetFrameworks()?.Except([net48]),
+								(frameworkSettings, framework) => frameworkSettings
+									.SetFramework(framework)
+									.AddLoggers($"trx;LogFileName={project.Name}_{framework}.trx")
+							)
+					), completeOnFailure: true
+			);
 		});
 }

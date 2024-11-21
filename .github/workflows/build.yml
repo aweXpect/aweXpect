@@ -24,6 +24,10 @@ jobs:
         dotnet-version: |
           8.0.x
     - name: Run unit tests
+      if: matrix.os == 'windows-latest'
+      run: ./build.ps1 CodeCoverage
+    - name: Run unit tests
+      if: matrix.os != 'windows-latest'
       run: ./build.sh CodeCoverage
     - name: Upload artifacts
       if: always()
@@ -96,7 +100,7 @@ jobs:
 
   static-code-analysis:
       name: "Static code analysis"
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           DOTNET_NOLOGO: true
@@ -110,7 +114,7 @@ jobs:
                 dotnet-version: |
                     8.0.x
           - name: Run Sonar Cloud analysis
-            run: ./build.sh CodeAnalysis
+            run: ./build.ps1 CodeAnalysis
 
   publish-test-results:
     name: "Publish Tests Results"
