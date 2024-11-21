@@ -51,7 +51,7 @@ partial class Build
 				                      		"target-framework": "net8.0",
 				                      		"since": {
 				                      			"target": "main",
-				                      			"enabled": false,
+				                      			"enabled": {{(GitVersion.BranchName != "main").ToString().ToLowerInvariant()}},
 				                      			"ignore-changes-in": [
 				                      				"**/.github/**/*.*"
 				                      			]
@@ -69,8 +69,8 @@ partial class Build
 				Log.Debug($"Created '{configFile}':{Environment.NewLine}{configText}");
 
 				string arguments = IsServerBuild
-					? $"-f \"{configFile}\" -r \"Dashboard\" -r \"cleartext\""
-					: $"-f \"{configFile}\" -r \"cleartext\"";
+					? $"-f \"{configFile}\" -v \"{GitVersion.BranchName}\" -r \"Dashboard\" -r \"cleartext\""
+					: $"-f \"{configFile}\" -v \"{GitVersion.BranchName}\" -r \"cleartext\"";
 
 				string executable = EnvironmentInfo.IsWin ? "dotnet-stryker.exe" : "dotnet-stryker";
 				IProcess process = ProcessTasks.StartProcess(
