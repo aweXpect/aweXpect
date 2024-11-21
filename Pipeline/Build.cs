@@ -19,5 +19,5 @@ partial class Build : NukeBuild
 	AbsolutePath TestResultsDirectory => RootDirectory / "TestResults";
 	GitHubActions GitHubActions => GitHubActions.Instance;
 
-	public static int Main() => Execute<Build>(x => x.MutationTests);
+	public static int Main() => Execute<Build>(x => x.CodeCoverage);
 }

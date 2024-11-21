@@ -94,6 +94,24 @@ jobs:
         - name: Run benchmarks
           run: ./build.sh Benchmarks
 
+  static-code-analysis:
+      name: "Static code analysis"
+      runs-on: ubuntu-latest
+      env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          DOTNET_NOLOGO: true
+      steps:
+          - uses: actions/checkout@v4
+            with:
+                fetch-depth: 0
+          - name: Setup .NET SDKs
+            uses: actions/setup-dotnet@v4
+            with:
+                dotnet-version: |
+                    8.0.x
+          - name: Run Sonar Cloud analysis
+            run: ./build.sh CodeAnalysis
+
   publish-test-results:
     name: "Publish Tests Results"
     needs: [ unit-tests ]
@@ -116,7 +134,7 @@ jobs:
   deploy:
       name: "Deploy"
       runs-on: ubuntu-latest
-      needs: [ publish-test-results, api-tests, mutation-tests, benchmarks ]
+      needs: [ publish-test-results, api-tests, mutation-tests, benchmarks, static-code-analysis ]
       env:
         DOTNET_NOLOGO: true
       steps:

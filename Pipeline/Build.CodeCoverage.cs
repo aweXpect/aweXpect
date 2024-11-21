@@ -21,10 +21,9 @@ partial class Build
 				.SetTargetDirectory(TestResultsDirectory / "reports")
 				.AddReports(TestResultsDirectory / "**/coverage.cobertura.xml")
 				.AddReportTypes(
-					ReportTypes.lcov,
 					ReportTypes.HtmlInline_AzurePipelines_Dark)
 				.AddFileFilters("-*.g.cs")
-				.SetAssemblyFilters("+aweXpect"));
+				.SetAssemblyFilters("+aweXpect*"));
 
 			string link = TestResultsDirectory / "reports" / "index.html";
 			Information($"Code coverage report: \x1b]8;;file://{link.Replace('\\', '/')}\x1b\\{link}\x1b]8;;\x1b\\");
