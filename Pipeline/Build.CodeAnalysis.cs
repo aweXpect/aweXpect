@@ -42,13 +42,11 @@ partial class Build
 			{
 				foreach (string framework in project.GetTargetFrameworks()?.Except([net48]) ?? [])
 				{
-					AbsolutePath binPath = (project.Path.Parent / "bin" / (IsLocalBuild ? "Debug" : "Release") /
-					                        framework / project.Name) + ".dll";
 					Coverlet(s => s
 						.SetTarget("dotnet")
-						.SetProcessWorkingDirectory(EnvironmentInfo.IsWin ? project.Path.Parent : binPath.Parent)
+						.SetProcessWorkingDirectory(project.Path.Parent)
 						.SetTargetArgs("test")
-						.SetAssembly(binPath)
+						.SetAssembly(project.Path)
 						.SetOutput(coverageDirectory / (project.Name + "_" + framework + "_opencover.xml"))
 						.SetFormat(CoverletOutputFormat.opencover));
 				}
