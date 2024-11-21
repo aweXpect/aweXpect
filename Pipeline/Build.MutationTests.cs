@@ -42,7 +42,8 @@ partial class Build
 				                      	"stryker-config": {
 				                      		"project-info": {
 				                      			"name": "github.com/aweXpect/aweXpect",
-				                      			"module": "{{project.Key.Name}}"
+				                      			"module": "{{project.Key.Name}}",
+				                      			"version": "{{GitVersion.BranchName}}"
 				                      		},
 				                      		"test-projects": [
 				                      			{{string.Join(",\n\t\t\t", project.Value.Select(PathForJson))}}
