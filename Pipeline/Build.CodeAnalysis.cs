@@ -17,6 +17,7 @@ partial class Build
 
 	Target CodeAnalysisBegin => _ => _
 		.Unlisted()
+		.Before(Compile)
 		.Before(Cover)
 		.Executes(() =>
 		{
@@ -56,6 +57,7 @@ partial class Build
 	Target CodeAnalysisEnd => _ => _
 		.Unlisted()
 		.DependsOn(Cover)
+		.DependsOn(Compile)
 		.Executes(() =>
 		{
 			SonarScannerTasks.SonarScannerEnd(s => s
