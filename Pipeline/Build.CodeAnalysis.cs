@@ -13,7 +13,9 @@ namespace Build;
 
 partial class Build
 {
-	[Parameter("The key to push to sonarcloud")] [Secret] readonly string SonarToken;
+	[Parameter("The key to push to sonarcloud")]
+	[Secret]
+	readonly string SonarToken;
 
 	Target CodeAnalysisBegin => _ => _
 		.Unlisted()
@@ -33,6 +35,7 @@ partial class Build
 
 	Target Cover => _ => _
 		.Unlisted()
+		.DependsOn(Compile)
 		.Executes(() =>
 		{
 			AbsolutePath coverageDirectory = TestResultsDirectory / "Coverage";
@@ -43,11 +46,13 @@ partial class Build
 			{
 				foreach (string framework in project.GetTargetFrameworks()?.Except([net48]) ?? [])
 				{
+					AbsolutePath binPath = project.Path.Parent / "bin" / Configuration / framework /
+					                       (project.Name + ".dll");
 					Coverlet(s => s
 						.SetTarget("dotnet")
 						.SetProcessWorkingDirectory(project.Path.Parent)
-						.SetTargetArgs("test")
-						.SetAssembly(project.Path)
+						.SetTargetArgs("test --no-restore --no-build")
+						.SetAssembly(binPath)
 						.SetOutput(coverageDirectory / (project.Name + "_" + framework + "_opencover.xml"))
 						.SetFormat(CoverletOutputFormat.opencover));
 				}
@@ -58,7 +63,7 @@ partial class Build
 		.Unlisted()
 		.DependsOn(Cover)
 		.DependsOn(Compile)
-		.OnlyWhenDynamic(() => IsServerBuild)
+		//.OnlyWhenDynamic(() => IsServerBuild)
 		.Executes(() =>
 		{
 			SonarScannerTasks.SonarScannerEnd(s => s
