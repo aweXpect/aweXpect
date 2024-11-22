@@ -5,6 +5,9 @@ namespace aweXpect;
 
 public static partial class ThatNumberShould
 {
+	private const string ExpectBeInfinite = "be infinite";
+	private const string ExpectNotBeInfinite = "not be infinite";
+	
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
 	/// </summary>
@@ -13,7 +16,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "be infinite",
+					_ => ExpectBeInfinite,
 					(a, _) => float.IsInfinity(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -27,7 +30,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "be infinite",
+					_ => ExpectBeInfinite,
 					(a, _) => double.IsInfinity(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -40,7 +43,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "be infinite",
+					_ => ExpectBeInfinite,
 					(a, _) => a != null && float.IsInfinity(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -54,7 +57,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "be infinite",
+					_ => ExpectBeInfinite,
 					(a, _) => a != null && double.IsInfinity(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -68,7 +71,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "not be infinite",
+					_ => ExpectNotBeInfinite,
 					(a, _) => !float.IsInfinity(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -82,7 +85,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "not be infinite",
+					_ => ExpectNotBeInfinite,
 					(a, _) => !double.IsInfinity(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -96,7 +99,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "not be infinite",
+					_ => ExpectNotBeInfinite,
 					(a, _) => a == null || !float.IsInfinity(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -111,7 +114,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "not be infinite",
+					_ => ExpectNotBeInfinite,
 					(a, _) => a == null || !double.IsInfinity(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);

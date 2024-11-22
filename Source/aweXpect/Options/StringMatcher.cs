@@ -231,7 +231,7 @@ public class StringMatcher(string? pattern)
 
 		#endregion
 
-		private int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
+		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
 			IEqualityComparer<string> comparer)
 		{
 			for (int i = 0; i <= stringWithLeadingWhitespace.Length - value.Length; i++)
