@@ -170,6 +170,7 @@ jobs:
     needs: [ publish-test-results, mutation-tests, benchmarks, static-code-analysis ]
     env:
       DOTNET_NOLOGO: true
+      NugetApiKey: ${{ secrets.NUGET_API_KEY }}
     steps:
       - uses: actions/checkout@v4
         with:

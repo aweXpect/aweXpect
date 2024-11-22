@@ -14,7 +14,7 @@ partial class Build
 {
 	[Parameter("The key to push to Nuget")]
 	[Secret]
-	readonly string NuGetApiKey;
+	readonly string NugetApiKey;
 
 	Target Push => _ => _
 		.DependsOn(Pack)
@@ -28,7 +28,7 @@ partial class Build
 			Assert.NotEmpty(packages);
 
 			DotNetNuGetPush(s => s
-				.SetApiKey(NuGetApiKey)
+				.SetApiKey(NugetApiKey)
 				.EnableSkipDuplicate()
 				.SetSource("https://api.nuget.org/v3/index.json")
 				.CombineWith(packages, (v, path) => v.SetTargetPath(path)));
