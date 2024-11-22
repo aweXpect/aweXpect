@@ -100,7 +100,7 @@ jobs:
 
   static-code-analysis:
       name: "Static code analysis"
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       env:
           REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -115,7 +115,7 @@ jobs:
                 dotnet-version: |
                     8.0.x
           - name: Run Sonar Cloud analysis
-            run: ./build.ps1 CodeAnalysis
+            run: ./build.sh CodeAnalysis
 
   publish-test-results:
     name: "Publish Tests Results"
