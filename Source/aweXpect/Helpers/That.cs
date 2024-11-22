@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace aweXpect;
+namespace aweXpect.Helpers;
 
 internal class That
 {

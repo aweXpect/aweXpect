@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
