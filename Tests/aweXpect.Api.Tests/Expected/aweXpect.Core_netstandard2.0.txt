@@ -1,5 +1,16 @@
 [assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/aweXpect/aweXpect.git")]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName=".NET Standard 2.0")]
+namespace aweXpect.Core.Adapters
+{
+    public interface ITestFrameworkAdapter
+    {
+        bool IsAvailable { get; }
+        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        void Skip(string message);
+        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        void Throw(string message);
+    }
+}
 namespace aweXpect.Core.Constraints
 {
     public abstract class ConstraintResult

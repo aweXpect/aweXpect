@@ -1,1 +1,0 @@
-[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/aweXpect/aweXpect.git")]

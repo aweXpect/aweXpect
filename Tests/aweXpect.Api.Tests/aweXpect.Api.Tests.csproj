@@ -7,7 +7,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 		<ProjectReference Include="..\..\Source\aweXpect.Core\aweXpect.Core.csproj"/>
-		<ProjectReference Include="..\..\Source\aweXpect.Discovery\aweXpect.Discovery.csproj"/>
 	</ItemGroup>
 
 	<ItemGroup>
