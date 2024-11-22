@@ -82,7 +82,7 @@ internal class AndNode : Node
 		return Current.ToString();
 	}
 
-	private ConstraintResult CombineResults(
+	private static ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
 		ConstraintResult result,
 		string separator,

@@ -25,7 +25,7 @@ internal static class Initialization
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
 		foreach (Type frameworkType in AppDomain.CurrentDomain.GetAssemblies()
-			         .Where(a => ExcludedAssemblyNamespaces.All(x => a.FullName!.StartsWith(x) == false))
+			         .Where(a => ExcludedAssemblyNamespaces.All(x => !a.FullName!.StartsWith(x)))
 			         .SelectMany(a => a.GetTypes())
 			         .Where(x => x.IsClass)
 			         .Where(frameworkInterface.IsAssignableFrom))

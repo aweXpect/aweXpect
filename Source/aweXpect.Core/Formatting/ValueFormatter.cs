@@ -1,8 +1,8 @@
-﻿using System;
+﻿using aweXpect.Core.Helpers;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using aweXpect.Core.Helpers;
 using MemberVisibilities = aweXpect.Core.Helpers.MemberVisibilities;
 
 namespace aweXpect.Formatting;
@@ -45,10 +45,7 @@ public class ValueFormatter
 	/// <param name="type">The <see cref="Type" /> of the object being formatted.</param>
 	/// <returns>The members of <paramref name="type" /> that will be included when formatting this object.</returns>
 	/// <remarks>The default is all non-private members.</remarks>
-	private MemberInfo[] GetMembers(Type type)
-	{
-		return type.GetMembers(MemberVisibilities.Public);
-	}
+	private static MemberInfo[] GetMembers(Type type) => type.GetMembers(MemberVisibilities.Public);
 
 	private static bool HasCompilerGeneratedToStringImplementation(object value)
 	{
@@ -70,7 +67,7 @@ public class ValueFormatter
 	/// <param name="type">The <see cref="Type" /> of the object being formatted.</param>
 	/// <returns>The name to be displayed for <paramref name="type" />.</returns>
 	/// <remarks>The default is <see cref="Type.FullName" />.</remarks>
-	private string TypeDisplayName(Type type) => type.Name;
+	private static string TypeDisplayName(Type type) => type.Name;
 
 	private static void WriteMemberValues(object obj, MemberInfo[] members,
 		StringBuilder stringBuilder, int indentation, FormattingOptions options)
@@ -126,7 +123,7 @@ public class ValueFormatter
 		stringBuilder.Append(formattedValue);
 	}
 
-	private void WriteTypeAndMemberValues(object obj, StringBuilder stringBuilder,
+	private static void WriteTypeAndMemberValues(object obj, StringBuilder stringBuilder,
 		FormattingOptions options)
 	{
 		Type type = obj.GetType();
@@ -134,13 +131,13 @@ public class ValueFormatter
 		WriteTypeValue(obj, stringBuilder, type, options);
 	}
 
-	private void WriteTypeName(StringBuilder stringBuilder, Type type)
+	private static void WriteTypeName(StringBuilder stringBuilder, Type type)
 	{
 		string typeName = type.HasFriendlyName() ? TypeDisplayName(type) : string.Empty;
 		stringBuilder.Append(typeName);
 	}
 
-	private void WriteTypeValue(object obj, StringBuilder stringBuilder, Type type,
+	private static void WriteTypeValue(object obj, StringBuilder stringBuilder, Type type,
 		FormattingOptions options)
 	{
 		MemberInfo[] members = GetMembers(type);

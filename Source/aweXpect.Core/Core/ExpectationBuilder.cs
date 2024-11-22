@@ -199,7 +199,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
-	internal string FromFailure(string subject, ConstraintResult.Failure failure)
+	internal static string FromFailure(string subject, ConstraintResult.Failure failure)
 		=> $"""
 		    Expected {subject} to
 		    {failure.ExpectationText},
