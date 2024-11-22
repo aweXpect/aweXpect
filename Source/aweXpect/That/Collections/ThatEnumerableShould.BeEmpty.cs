@@ -3,6 +3,7 @@ using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;

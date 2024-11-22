@@ -20,21 +20,11 @@ public sealed class ApiApprovalTests
 
 		Assert.That(publicApi, Is.EqualTo(expectedApi));
 	}
-	
+
 	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
 	public void VerifyPublicApiForAweXpectCore(string framework)
 	{
 		const string assemblyName = "aweXpect.Core";
-
-		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
-		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
-
-		Assert.That(publicApi, Is.EqualTo(expectedApi));
-	}
-	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
-	public void VerifyPublicApiForAweXpectDiscovery(string framework)
-	{
-		const string assemblyName = "aweXpect.Discovery";
 
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
@@ -50,10 +40,7 @@ public sealed class ApiApprovalTests
 		{
 			foreach (string targetFramework in Helper.GetTargetFrameworks())
 			{
-				yield return new object[]
-				{
-					targetFramework
-				};
+				yield return new object[] { targetFramework };
 			}
 		}
 

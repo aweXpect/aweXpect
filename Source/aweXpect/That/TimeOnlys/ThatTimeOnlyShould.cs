@@ -2,6 +2,7 @@
 using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect;
@@ -15,7 +16,7 @@ public static partial class ThatTimeOnlyShould
 	///     Start expectations for current <see cref="TimeOnly" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<TimeOnly> Should(this IExpectSubject<TimeOnly> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private readonly struct ConditionConstraint(
 		string it,

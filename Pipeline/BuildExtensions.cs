@@ -11,7 +11,7 @@ public static class BuildExtensions
 		GitHubActions gitHubActions,
 		GitVersion gitVersion)
 	{
-		if (gitHubActions.IsPullRequest)
+		if (gitHubActions?.IsPullRequest == true)
 		{
 			return settings
 				.SetPullRequestKey(gitHubActions.PullRequestNumber.ToString())

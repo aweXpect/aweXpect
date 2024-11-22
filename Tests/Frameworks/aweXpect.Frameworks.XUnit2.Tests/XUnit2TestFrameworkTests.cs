@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
-using aweXpect;
 using Xunit;
 using Xunit.Sdk;
-using SkipException = aweXpect.SkipException;
 
-namespace TestFramework.XUnit2.Tests;
+namespace aweXpect.Frameworks.XUnit2.Tests;
 
 public sealed class XUnit2TestFrameworkTests
 {

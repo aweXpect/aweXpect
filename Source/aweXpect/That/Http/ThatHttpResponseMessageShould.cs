@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
+using aweXpect.Helpers;
 
 namespace aweXpect;
 
@@ -23,7 +24,7 @@ public static partial class ThatHttpResponseMessageShould
 	/// </summary>
 	public static IThat<HttpResponseMessage?> Should(
 		this IExpectSubject<HttpResponseMessage?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private readonly struct HasStatusCodeRangeConstraint(
 		string it,

@@ -36,7 +36,7 @@ partial class Build
 
 			foreach (Project project in new[]
 			         {
-				         Solution.aweXpect, Solution.aweXpect_Core, Solution.aweXpect_Discovery
+				         Solution.aweXpect, Solution.aweXpect_Core
 			         })
 			{
 				foreach (string package in

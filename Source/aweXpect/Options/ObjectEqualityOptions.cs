@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using aweXpect.Equivalency;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using aweXpect.Core.Equivalency;
 using aweXpect.Formatting;
 
 namespace aweXpect.Options;

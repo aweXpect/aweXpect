@@ -2,6 +2,7 @@
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
+using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect;

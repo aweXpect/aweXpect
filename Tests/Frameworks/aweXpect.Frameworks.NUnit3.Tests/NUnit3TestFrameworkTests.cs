@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Threading.Tasks;
-using aweXpect;
 
-namespace TestFramework.NUnit3.Tests;
+namespace aweXpect.Frameworks.NUnit3.Tests;
 
 public sealed class NUnit3TestFrameworkTests
 {

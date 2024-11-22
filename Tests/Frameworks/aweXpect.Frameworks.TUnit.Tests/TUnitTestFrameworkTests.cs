@@ -1,11 +1,8 @@
 ﻿using System.Threading.Tasks;
-using aweXpect;
 using TUnit.Assertions.Exceptions;
 using TUnit.Core.Exceptions;
-using Fail = aweXpect.Fail;
-using Skip = aweXpect.Skip;
 
-namespace TestFramework.TUnit.Tests;
+namespace aweXpect.Frameworks.TUnit.Tests;
 
 public sealed class TUnitTestFrameworkTests
 {

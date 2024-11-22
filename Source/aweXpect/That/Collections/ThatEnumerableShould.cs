@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Helpers;
 
 namespace aweXpect;
 
@@ -13,5 +14,5 @@ public static partial class ThatEnumerableShould
 	/// </summary>
 	public static IThat<IEnumerable<TItem>> Should<TItem>(
 		this IExpectSubject<IEnumerable<TItem>> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 }
