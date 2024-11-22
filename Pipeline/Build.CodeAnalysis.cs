@@ -1,13 +1,5 @@
 using Nuke.Common;
-using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
-using Nuke.Common.Tools.Coverlet;
-using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.SonarScanner;
-using System.Linq;
-using static Nuke.Common.Tools.Coverlet.CoverletTasks;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 // ReSharper disable AllUnderscoreLocalParameterName
 
@@ -15,9 +7,7 @@ namespace Build;
 
 partial class Build
 {
-	[Parameter("The key to push to sonarcloud")]
-	[Secret]
-	readonly string SonarToken;
+	[Parameter("The key to push to sonarcloud")] [Secret] readonly string SonarToken;
 
 	Target CodeAnalysisBegin => _ => _
 		.Unlisted()

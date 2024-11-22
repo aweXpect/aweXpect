@@ -28,6 +28,7 @@ partial class Build
 	Target DotNetFrameworkUnitTests => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => EnvironmentInfo.IsWin)
 		.Executes(() =>
 		{
 			string[] testAssemblies = UnitTestProjects
@@ -50,7 +51,7 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			var net48 = "net48";
+			string net48 = "net48";
 			DotNetTest(s => s
 					.SetConfiguration(Configuration)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")

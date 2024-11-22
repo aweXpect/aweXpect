@@ -12,11 +12,13 @@ namespace Build;
 
 partial class Build
 {
-	[Parameter("The key to push to Nuget")] [Secret] readonly string NuGetApiKey;
+	[Parameter("The key to push to Nuget")]
+	[Secret]
+	readonly string NuGetApiKey;
 
 	Target Push => _ => _
 		.DependsOn(Pack)
-		.OnlyWhenDynamic(() => IsTag)
+		.OnlyWhenDynamic(() => IsTag && IsServerBuild)
 		.ProceedAfterFailure()
 		.Executes(() =>
 		{
