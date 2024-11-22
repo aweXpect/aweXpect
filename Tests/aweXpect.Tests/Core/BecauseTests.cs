@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Tests.TestHelpers;
+﻿using aweXpect.Tests.TestHelpers;
 
-namespace Testably.Expectations.Tests.Core;
+namespace aweXpect.Tests.Core;
 
 public class BecauseTests
 {

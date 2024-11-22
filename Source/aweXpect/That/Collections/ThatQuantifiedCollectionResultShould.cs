@@ -1,6 +1,6 @@
 ﻿// ReSharper disable once CheckNamespace
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Expectations on quantifiable result.

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Net;
 using System.Text;
 
-namespace Testably.Expectations.Formatting;
+namespace aweXpect.Formatting;
 
 /// <summary>
 ///     Extension formatting options.

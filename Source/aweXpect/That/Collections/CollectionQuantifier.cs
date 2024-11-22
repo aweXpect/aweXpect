@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.EvaluationContext;
+using aweXpect.Core.EvaluationContext;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Quantifier for collections.

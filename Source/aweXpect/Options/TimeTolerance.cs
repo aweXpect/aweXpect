@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Testably.Expectations.Options;
+namespace aweXpect.Options;
 
 /// <summary>
 ///     Tolerance for time comparisons.

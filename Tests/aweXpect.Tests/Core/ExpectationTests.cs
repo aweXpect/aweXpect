@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.Core;
+﻿namespace aweXpect.Tests.Core;
 
 public sealed class ExpectationTests
 {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Testably.Expectations.Tests.ThatTests.Delegates;
+namespace aweXpect.Tests.ThatTests.Delegates;
 
 public sealed partial class DelegateThrows
 {

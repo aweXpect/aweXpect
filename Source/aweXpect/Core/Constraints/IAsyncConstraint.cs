@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Testably.Expectations.Core.Constraints;
+namespace aweXpect.Core.Constraints;
 
 /// <summary>
 ///     An async constraint on type <typeparamref name="TValue" />.

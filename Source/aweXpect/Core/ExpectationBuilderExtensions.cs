@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Testably.Expectations.Core;
+namespace aweXpect.Core;
 
 /// <summary>
 ///     Extension methods to simplify usage of the <see cref="ExpectationBuilder" />.

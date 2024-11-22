@@ -1,7 +1,7 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Net.Http;
 
-namespace Testably.Expectations.Tests.ThatTests.Http;
+namespace aweXpect.Tests.ThatTests.Http;
 
 public sealed partial class HttpResponseMessageShould
 {

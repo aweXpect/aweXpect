@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 
-namespace Testably.Expectations.Tests.Core;
+namespace aweXpect.Tests.Core;
 
 public sealed class ConstraintResultTests
 {

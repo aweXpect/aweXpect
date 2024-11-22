@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Testably.Expectations.Tests.ThatTests.Numbers;
+namespace aweXpect.Tests.ThatTests.Numbers;
 
 public sealed partial class NumberShould
 {

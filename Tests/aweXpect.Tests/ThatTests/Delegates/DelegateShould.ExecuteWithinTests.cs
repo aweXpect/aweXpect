@@ -1,7 +1,7 @@
-﻿using Testably.Expectations.Extensions;
-using Testably.Expectations.Tests.TestHelpers;
+﻿using aweXpect.Extensions;
+using aweXpect.Tests.TestHelpers;
 
-namespace Testably.Expectations.Tests.ThatTests.Delegates;
+namespace aweXpect.Tests.ThatTests.Delegates;
 
 public sealed partial class DelegateShould
 {

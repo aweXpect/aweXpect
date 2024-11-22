@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Testably.Expectations.Tests.Core.Ambient;
+namespace aweXpect.Tests.Core.Ambient;
 
 public sealed class InitializationTests
 {

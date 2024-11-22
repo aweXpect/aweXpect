@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Testably.Expectations.Core.Equivalency;
-using Testably.Expectations.Formatting;
+using aweXpect.Core.Equivalency;
+using aweXpect.Formatting;
 
-namespace Testably.Expectations.Options;
+namespace aweXpect.Options;
 
 /// <summary>
 ///     Checks equality of objects.

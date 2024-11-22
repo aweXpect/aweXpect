@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Enums;
+﻿namespace aweXpect.Tests.ThatTests.Enums;
 
 public sealed partial class NullableEnumShould
 {

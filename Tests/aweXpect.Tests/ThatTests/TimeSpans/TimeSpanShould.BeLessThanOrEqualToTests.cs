@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.TimeSpans;
+﻿namespace aweXpect.Tests.ThatTests.TimeSpans;
 
 public sealed partial class TimeSpanShould
 {

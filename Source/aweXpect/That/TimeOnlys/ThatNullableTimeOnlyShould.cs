@@ -1,10 +1,10 @@
 ﻿#if NET6_0_OR_GREATER
 using System;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Options;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Options;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Expectations on <see cref="TimeOnly" /> values.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Testably.Expectations.Core;
+namespace aweXpect.Core;
 
 /// <summary>
 ///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.

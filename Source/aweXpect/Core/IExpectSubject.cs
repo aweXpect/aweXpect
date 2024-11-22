@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Testably.Expectations.Core;
+namespace aweXpect.Core;
 
 /// <summary>
 ///     Starting point for an expectation.

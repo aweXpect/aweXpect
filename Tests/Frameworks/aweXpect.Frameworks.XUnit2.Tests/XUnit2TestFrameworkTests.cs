@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Testably.Expectations;
+using aweXpect;
 using Xunit;
 using Xunit.Sdk;
-using SkipException = Testably.Expectations.SkipException;
+using SkipException = aweXpect.SkipException;
 
 namespace TestFramework.XUnit2.Tests;
 

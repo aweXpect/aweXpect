@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Core.TimeSystem;
+﻿namespace aweXpect.Core.TimeSystem;
 
 internal interface IStopwatchFactory
 {

@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.EvaluationContext;
+using aweXpect.Core.EvaluationContext;
 
-namespace Testably.Expectations.Core.Constraints;
+namespace aweXpect.Core.Constraints;
 
 /// <summary>
 ///     An async constraint on type <typeparamref name="TValue" /> that uses the <see cref="IEvaluationContext" />.

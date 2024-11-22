@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Testably.Expectations.Core.Ambient;
+using aweXpect.Core.Ambient;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Methods for explicitly failing the running test.

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Testably.Expectations.Core.Adapters;
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Represents an adapter to a particular test framework such as xUnit, nUnit, etc.

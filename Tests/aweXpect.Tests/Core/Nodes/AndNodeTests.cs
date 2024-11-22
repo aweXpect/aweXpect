@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Core;
+﻿using aweXpect.Core;
 
-namespace Testably.Expectations.Tests.Core.Nodes;
+namespace aweXpect.Tests.Core.Nodes;
 
 public sealed class AndNodeTests
 {

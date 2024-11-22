@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Testably.Expectations;
+using aweXpect;
 using TUnit.Assertions.Exceptions;
 using TUnit.Core.Exceptions;
-using Fail = Testably.Expectations.Fail;
-using Skip = Testably.Expectations.Skip;
+using Fail = aweXpect.Fail;
+using Skip = aweXpect.Skip;
 
 namespace TestFramework.TUnit.Tests;
 

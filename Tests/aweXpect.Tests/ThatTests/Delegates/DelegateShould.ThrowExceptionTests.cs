@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Delegates;
+﻿namespace aweXpect.Tests.ThatTests.Delegates;
 
 public sealed partial class DelegateShould
 {

@@ -1,11 +1,11 @@
-﻿using Testably.Expectations.Tests.TestHelpers;
+﻿using aweXpect.Tests.TestHelpers;
 #if NET6_0_OR_GREATER
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 #endif
 
-namespace Testably.Expectations.Tests;
+namespace aweXpect.Tests;
 
 public class ExpectTests
 {

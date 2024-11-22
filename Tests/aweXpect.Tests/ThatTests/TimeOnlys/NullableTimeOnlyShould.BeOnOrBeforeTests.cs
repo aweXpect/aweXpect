@@ -1,5 +1,5 @@
 ﻿#if NET6_0_OR_GREATER
-namespace Testably.Expectations.Tests.ThatTests.TimeOnlys;
+namespace aweXpect.Tests.ThatTests.TimeOnlys;
 
 public sealed partial class NullableTimeOnlyShould
 {

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     The evaluator of a <see cref="CollectionQuantifier" />.

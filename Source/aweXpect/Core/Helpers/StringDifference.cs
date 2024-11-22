@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Testably.Expectations.Core.Helpers;
+namespace aweXpect.Core.Helpers;
 
 internal class StringDifference(
 	string actualValue,

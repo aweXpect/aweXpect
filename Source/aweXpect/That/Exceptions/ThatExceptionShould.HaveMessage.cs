@@ -1,8 +1,8 @@
 ﻿using System;
-using Testably.Expectations.Options;
-using Testably.Expectations.Results;
+using aweXpect.Options;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Expectations on <see cref="Exception" /> values.

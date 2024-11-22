@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Text;
 
-namespace Testably.Expectations.Core.Helpers;
+namespace aweXpect.Core.Helpers;
 
 internal static class ExpressionHelpers
 {

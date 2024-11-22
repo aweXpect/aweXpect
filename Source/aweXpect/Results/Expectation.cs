@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.Helpers;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 
-namespace Testably.Expectations.Results;
+namespace aweXpect.Results;
 
 /// <summary>
 ///     Base class for expectation results.

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Testably.Expectations.Tests.TestHelpers;
+namespace aweXpect.Tests.TestHelpers;
 
 public class MyException(
 	[CallerMemberName] string message = "",

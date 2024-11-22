@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Testably.Expectations.Core;
-using Testably.Expectations.Options;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Options;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatNumberShould
 {

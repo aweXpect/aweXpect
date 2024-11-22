@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Tests.TestHelpers;
+﻿using aweXpect.Tests.TestHelpers;
 
-namespace Testably.Expectations.Tests.Options;
+namespace aweXpect.Tests.Options;
 
 public class StringMatcherTests
 {

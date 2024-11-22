@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Testably.Expectations.Tests.ThatTests.Collections;
+namespace aweXpect.Tests.ThatTests.Collections;
 
 public partial class CollectionShould
 {

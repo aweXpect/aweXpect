@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Testably.Expectations.Extensions;
+namespace aweXpect.Extensions;
 
 /// <summary>
 ///     Extension methods for chronology methods.

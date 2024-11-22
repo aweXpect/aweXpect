@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2024 by Tom Longhurst
 // https://github.com/thomhurst/TUnit
 
-namespace Testably.Expectations.Core.Equivalency;
+namespace aweXpect.Core.Equivalency;
 
 internal enum MemberType
 {

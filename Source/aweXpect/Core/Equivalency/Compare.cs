@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Testably.Expectations.Core.Equivalency;
+namespace aweXpect.Core.Equivalency;
 
 internal static class Compare
 {

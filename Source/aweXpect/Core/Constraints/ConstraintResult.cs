@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Testably.Expectations.Core.Constraints;
+namespace aweXpect.Core.Constraints;
 
 /// <summary>
 ///     The result of the check if an expectation is met.

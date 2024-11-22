@@ -1,10 +1,10 @@
 ﻿using System;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.Helpers;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatStringShould
 {

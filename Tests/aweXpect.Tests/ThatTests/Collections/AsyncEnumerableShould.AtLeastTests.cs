@@ -1,10 +1,10 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Collections.Generic;
 using System.Threading;
-using Testably.Expectations.Tests.TestHelpers;
+using aweXpect.Tests.TestHelpers;
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace Testably.Expectations.Tests.ThatTests.Collections;
+namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class AsyncEnumerableShould
 {

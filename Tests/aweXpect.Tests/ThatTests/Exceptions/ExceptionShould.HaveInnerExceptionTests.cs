@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Exceptions;
+﻿namespace aweXpect.Tests.ThatTests.Exceptions;
 
 public sealed partial class ExceptionShould
 {

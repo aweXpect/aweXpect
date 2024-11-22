@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Testably.Expectations.Core.Helpers;
+namespace aweXpect.Core.Helpers;
 
 internal static class ExceptionHelpers
 {

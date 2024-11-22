@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Guids;
+﻿namespace aweXpect.Tests.ThatTests.Guids;
 
 public sealed partial class NullableGuidShould
 {

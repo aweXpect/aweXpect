@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Http;
 
-namespace Testably.Expectations.Tests.ThatTests.Http;
+namespace aweXpect.Tests.ThatTests.Http;
 
 public sealed partial class HttpResponseMessageShould
 {

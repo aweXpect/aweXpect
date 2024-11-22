@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
-using Testably.Expectations;
+using aweXpect;
 
 namespace aweXpect.Benchmarks;
 

@@ -1,5 +1,5 @@
 ﻿#if NET6_0_OR_GREATER
-namespace Testably.Expectations.Tests.ThatTests.DateOnlys;
+namespace aweXpect.Tests.ThatTests.DateOnlys;
 
 public sealed partial class DateOnlyShould
 {

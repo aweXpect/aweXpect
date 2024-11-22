@@ -4,11 +4,11 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatHttpResponseMessageShould
 {

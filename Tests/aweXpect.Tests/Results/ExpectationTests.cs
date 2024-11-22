@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Results;
+﻿using aweXpect.Results;
 
-namespace Testably.Expectations.Tests.Results;
+namespace aweXpect.Tests.Results;
 
 public class ExpectationTests
 {

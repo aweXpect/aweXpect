@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
-using Testably.Expectations.Core.Helpers;
+using aweXpect.Core.Helpers;
 
-namespace Testably.Expectations.Core;
+namespace aweXpect.Core;
 
 /// <summary>
 ///     The property accessor.

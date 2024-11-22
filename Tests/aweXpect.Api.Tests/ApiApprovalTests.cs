@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Collections;
 
-namespace Testably.Expectations.Api.Tests;
+namespace aweXpect.Api.Tests;
 
 /// <summary>
 ///     Whenever a test fails, this means that the public API surface changed.

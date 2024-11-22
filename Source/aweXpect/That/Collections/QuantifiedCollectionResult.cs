@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Core;
+﻿using aweXpect.Core;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     A quantifiable result matching items against the expected <see cref="Quantity" />.

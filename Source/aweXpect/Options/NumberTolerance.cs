@@ -1,7 +1,7 @@
 ﻿using System;
-using Testably.Expectations.Formatting;
+using aweXpect.Formatting;
 
-namespace Testably.Expectations.Options;
+namespace aweXpect.Options;
 
 /// <summary>
 ///     Tolerance for number comparisons.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Testably.Expectations.Core.TimeSystem;
+namespace aweXpect.Core.TimeSystem;
 
 internal interface IStopwatch
 {

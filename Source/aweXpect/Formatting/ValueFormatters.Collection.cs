@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Testably.Expectations.Formatting;
+namespace aweXpect.Formatting;
 
 /// <summary>
 ///     Extension formatting options.

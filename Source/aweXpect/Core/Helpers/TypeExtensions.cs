@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Testably.Expectations.Core.Helpers;
+namespace aweXpect.Core.Helpers;
 
 internal static class TypeExtensions
 {

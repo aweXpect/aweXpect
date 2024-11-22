@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Testably.Expectations.Core.Helpers;
-using MemberVisibilities = Testably.Expectations.Core.Helpers.MemberVisibilities;
+using aweXpect.Core.Helpers;
+using MemberVisibilities = aweXpect.Core.Helpers.MemberVisibilities;
 
-namespace Testably.Expectations.Formatting;
+namespace aweXpect.Formatting;
 
 /// <summary>
 ///     Formatter for arbitrary objects in exception messages.

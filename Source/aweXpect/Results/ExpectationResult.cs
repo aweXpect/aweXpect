@@ -2,11 +2,11 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.TimeSystem;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.TimeSystem;
 
-namespace Testably.Expectations.Results;
+namespace aweXpect.Results;
 
 /// <summary>
 ///     The result of an expectation without an underlying value.

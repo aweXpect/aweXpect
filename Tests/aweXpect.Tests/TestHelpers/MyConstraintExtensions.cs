@@ -1,8 +1,8 @@
-﻿using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Results;
+﻿using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Results;
 
-namespace Testably.Expectations.Tests.TestHelpers;
+namespace aweXpect.Tests.TestHelpers;
 
 public static class MyConstraintExtensions
 {

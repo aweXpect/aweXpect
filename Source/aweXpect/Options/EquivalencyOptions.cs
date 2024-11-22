@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Testably.Expectations.Options;
+namespace aweXpect.Options;
 
 /// <summary>
 ///     Options for equivalency.

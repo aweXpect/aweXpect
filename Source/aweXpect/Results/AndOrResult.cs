@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Core;
+﻿using aweXpect.Core;
 
-namespace Testably.Expectations.Results;
+namespace aweXpect.Results;
 
 /// <summary>
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.

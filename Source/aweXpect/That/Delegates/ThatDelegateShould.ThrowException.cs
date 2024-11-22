@@ -1,7 +1,7 @@
 ﻿using System;
-using Testably.Expectations.Core.Sources;
+using aweXpect.Core.Sources;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatDelegateShould
 {

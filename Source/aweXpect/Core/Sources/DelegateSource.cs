@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.TimeSystem;
+using aweXpect.Core.TimeSystem;
 
-namespace Testably.Expectations.Core.Sources;
+namespace aweXpect.Core.Sources;
 
 internal class DelegateSource(Action<CancellationToken> action) : IValueSource<DelegateValue>
 {

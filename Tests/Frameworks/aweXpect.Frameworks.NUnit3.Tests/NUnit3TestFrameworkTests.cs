@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Threading.Tasks;
-using Testably.Expectations;
+using aweXpect;
 
 namespace TestFramework.NUnit3.Tests;
 

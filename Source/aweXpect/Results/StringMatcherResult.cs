@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Testably.Expectations.Core;
-using Testably.Expectations.Options;
+using aweXpect.Core;
+using aweXpect.Options;
 
-namespace Testably.Expectations.Results;
+namespace aweXpect.Results;
 
 /// <summary>
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.

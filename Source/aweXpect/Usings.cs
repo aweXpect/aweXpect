@@ -1,7 +1,7 @@
 ﻿#if NETSTANDARD2_0 || NETSTANDARD2_1
-global using Testably.Expectations.Polyfills;
+global using aweXpect.Polyfills;
 #endif
 
 global using System.Numerics;
-global using Testably.Expectations.Formatting;
-global using static Testably.Expectations.Formatting.Format;
+global using aweXpect.Formatting;
+global using static aweXpect.Formatting.Format;

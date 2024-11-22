@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Testably.Expectations.Core.Constraints;
+using aweXpect.Core.Constraints;
 
-namespace Testably.Expectations.Core.EvaluationContext;
+namespace aweXpect.Core.EvaluationContext;
 
 /// <summary>
 ///     The evaluation context.

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public abstract partial class CollectionQuantifier
 {

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 
-namespace Testably.Expectations.Api.Tests;
+namespace aweXpect.Api.Tests;
 
 public sealed class ApiAcceptance
 {

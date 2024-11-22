@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace Testably.Expectations.Tests.ThatTests.Collections;
+namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class AsyncEnumerableShould
 {

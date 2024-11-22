@@ -2,10 +2,10 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Testably.Expectations.Core.Adapters;
-using Testably.Expectations.Formatting;
+using aweXpect.Core.Adapters;
+using aweXpect.Formatting;
 
-namespace Testably.Expectations.Core.Ambient;
+namespace aweXpect.Core.Ambient;
 
 internal static class Initialization
 {

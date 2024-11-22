@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.Formatting;
+﻿namespace aweXpect.Tests.Formatting;
 
 public sealed class DefaultFormatterTests
 {

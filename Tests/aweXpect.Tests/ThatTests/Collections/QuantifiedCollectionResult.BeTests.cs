@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Collections;
+﻿namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class QuantifiedCollectionResult
 {

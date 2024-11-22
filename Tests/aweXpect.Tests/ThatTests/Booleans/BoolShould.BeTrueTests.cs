@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Booleans;
+﻿namespace aweXpect.Tests.ThatTests.Booleans;
 
 public sealed partial class BoolShould
 {

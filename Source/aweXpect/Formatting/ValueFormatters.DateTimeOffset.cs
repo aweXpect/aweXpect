@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace Testably.Expectations.Formatting;
+namespace aweXpect.Formatting;
 
 public static partial class ValueFormatters
 {

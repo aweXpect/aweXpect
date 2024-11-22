@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Testably.Expectations.Tests.Formatting.Formatters;
+namespace aweXpect.Tests.Formatting.Formatters;
 
 public sealed class TypeFormatterTests
 {

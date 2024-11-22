@@ -1,7 +1,7 @@
 ﻿using System;
 using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
-namespace Testably.Expectations.Options;
+namespace aweXpect.Options;
 
 /// <summary>
 ///     Quantifier an occurrence.

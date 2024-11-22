@@ -1,10 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Formatting;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Formatting;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatGeneric
 {

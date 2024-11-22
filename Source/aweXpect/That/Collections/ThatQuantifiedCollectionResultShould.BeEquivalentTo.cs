@@ -4,14 +4,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.Equivalency;
-using Testably.Expectations.Core.EvaluationContext;
-using Testably.Expectations.Options;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Equivalency;
+using aweXpect.Core.EvaluationContext;
+using aweXpect.Options;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatQuantifiedCollectionResultShouldSync
 {

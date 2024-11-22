@@ -1,8 +1,8 @@
 ﻿using System;
-using Testably.Expectations.Core;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     An <see cref="ExpectationResult" /> when an exception was thrown.

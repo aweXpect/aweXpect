@@ -1,9 +1,9 @@
 ﻿#if NET6_0_OR_GREATER
 using System;
 using System.IO;
-using Testably.Expectations.Core.Constraints;
+using aweXpect.Core.Constraints;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Expectations on <see cref="BufferedStream" /> values.

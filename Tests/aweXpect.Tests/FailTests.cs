@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests;
+﻿namespace aweXpect.Tests;
 
 public class FailTests
 {

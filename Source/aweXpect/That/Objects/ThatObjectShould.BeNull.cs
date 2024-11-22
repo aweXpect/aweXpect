@@ -1,8 +1,8 @@
-﻿using Testably.Expectations.Core;
-using Testably.Expectations.Formatting;
-using Testably.Expectations.Results;
+﻿using aweXpect.Core;
+using aweXpect.Formatting;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatObjectShould
 {

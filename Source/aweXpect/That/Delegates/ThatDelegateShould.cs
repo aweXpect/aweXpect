@@ -1,9 +1,9 @@
 ﻿using System;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.Helpers;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Expectations on delegate values.

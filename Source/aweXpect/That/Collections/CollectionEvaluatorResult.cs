@@ -1,6 +1,6 @@
 ﻿// ReSharper disable once CheckNamespace
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     The result when checking the condition in an <see cref="ICollectionEvaluator{TItem}" />.

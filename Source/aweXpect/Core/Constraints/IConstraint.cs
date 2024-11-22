@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Core.Constraints;
+﻿namespace aweXpect.Core.Constraints;
 
 /// <summary>
 ///     Marker interface for a constraint.

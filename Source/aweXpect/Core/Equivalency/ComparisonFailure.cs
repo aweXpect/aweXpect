@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Testably.Expectations.Core.Equivalency;
+namespace aweXpect.Core.Equivalency;
 
 internal record ComparisonFailure
 {

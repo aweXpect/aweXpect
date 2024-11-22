@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Testably.Expectations.Core.EvaluationContext;
+namespace aweXpect.Core.EvaluationContext;
 
 /// <summary>
 ///     Extension methods for the <see cref="IEvaluationContext" />.

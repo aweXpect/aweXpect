@@ -1,7 +1,7 @@
 ﻿using System;
 
 // ReSharper disable once CheckNamespace
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Represents the default failure exception in case no test framework is configured.

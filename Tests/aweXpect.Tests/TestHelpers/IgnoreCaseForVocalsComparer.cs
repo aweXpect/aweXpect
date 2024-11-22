@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Testably.Expectations.Tests.TestHelpers;
+namespace aweXpect.Tests.TestHelpers;
 
 /// <summary>
 ///     A test <see cref="IEqualityComparer{T}" /> for <see langword="string" />s that

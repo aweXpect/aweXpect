@@ -1,7 +1,7 @@
 ﻿using System;
-using Testably.Expectations.Core.Constraints;
+using aweXpect.Core.Constraints;
 
-namespace Testably.Expectations.Core.Helpers;
+namespace aweXpect.Core.Helpers;
 
 internal struct BecauseReason(string reason)
 {

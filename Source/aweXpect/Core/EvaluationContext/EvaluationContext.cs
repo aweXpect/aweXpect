@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Testably.Expectations.Core.EvaluationContext;
+namespace aweXpect.Core.EvaluationContext;
 
 internal class EvaluationContext : IEvaluationContext
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Testably.Expectations.Core.Sources;
+namespace aweXpect.Core.Sources;
 
 /// <summary>
 ///     An expectation source from a delegate can contain a <see cref="Value" /> or a thrown <see cref="Exception" />.

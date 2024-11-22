@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Testably.Expectations.Core.Helpers;
+using aweXpect.Core.Helpers;
 
-namespace Testably.Expectations.Options;
+namespace aweXpect.Options;
 
 /// <summary>
 ///     Matches a <see langword="string" /> against a pattern.

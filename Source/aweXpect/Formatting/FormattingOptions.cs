@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Formatting;
+﻿namespace aweXpect.Formatting;
 
 /// <summary>
 ///     Formatting options used in the <see cref="ValueFormatter" />.

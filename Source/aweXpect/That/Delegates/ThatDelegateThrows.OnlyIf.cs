@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations;
+﻿namespace aweXpect;
 
 public partial class ThatDelegateThrows<TException>
 {

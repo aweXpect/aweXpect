@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Testably.Expectations.Tests.ThatTests.Objects;
+namespace aweXpect.Tests.ThatTests.Objects;
 
 public sealed partial class ObjectShould
 {

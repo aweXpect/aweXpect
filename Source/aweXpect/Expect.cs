@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core;
-using Testably.Expectations.Core.Sources;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Core.Sources;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     The starting point for checking expectations.

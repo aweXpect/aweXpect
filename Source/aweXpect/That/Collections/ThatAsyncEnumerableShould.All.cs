@@ -1,8 +1,8 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Collections.Generic;
-using Testably.Expectations.Core;
+using aweXpect.Core;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatAsyncEnumerableShould
 {

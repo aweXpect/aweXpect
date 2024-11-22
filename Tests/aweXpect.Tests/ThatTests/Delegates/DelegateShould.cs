@@ -1,8 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading;
-using Testably.Expectations.Tests.TestHelpers;
+using aweXpect.Tests.TestHelpers;
 
-namespace Testably.Expectations.Tests.ThatTests.Delegates;
+namespace aweXpect.Tests.ThatTests.Delegates;
 
 public sealed partial class DelegateShould
 {

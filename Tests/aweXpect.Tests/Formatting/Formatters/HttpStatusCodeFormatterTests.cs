@@ -1,8 +1,8 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Net;
-using Testably.Expectations.Formatting;
+using aweXpect.Formatting;
 
-namespace Testably.Expectations.Tests.Formatting.Formatters;
+namespace aweXpect.Tests.Formatting.Formatters;
 
 public sealed class HttpStatusCodeFormatterTests
 {

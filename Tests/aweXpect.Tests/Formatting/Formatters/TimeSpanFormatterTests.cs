@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Extensions;
+﻿using aweXpect.Extensions;
 
-namespace Testably.Expectations.Tests.Formatting.Formatters;
+namespace aweXpect.Tests.Formatting.Formatters;
 
 public sealed class TimeSpanFormatterTests
 {

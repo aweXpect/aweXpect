@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Testably.Expectations.Api.Tests;
+namespace aweXpect.Api.Tests;
 
 public static class Helper
 {

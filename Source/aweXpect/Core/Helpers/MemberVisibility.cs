@@ -1,7 +1,7 @@
 ﻿#nullable disable
 using System;
 
-namespace Testably.Expectations.Core.Helpers;
+namespace aweXpect.Core.Helpers;
 
 /// <summary>
 ///     Determines which members are included in the equivalency constraint

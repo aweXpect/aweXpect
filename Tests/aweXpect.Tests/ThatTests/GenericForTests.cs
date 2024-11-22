@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests;
+﻿namespace aweXpect.Tests.ThatTests;
 
 public sealed class GenericForTests
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Testably.Expectations.Tests.TestHelpers;
+using aweXpect.Tests.TestHelpers;
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace Testably.Expectations.Tests.ThatTests.Collections;
+namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class EnumerableShould
 {

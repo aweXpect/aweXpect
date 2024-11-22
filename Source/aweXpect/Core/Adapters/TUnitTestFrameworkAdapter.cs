@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace Testably.Expectations.Core.Adapters;
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Implements the TUnit test framework adapter.

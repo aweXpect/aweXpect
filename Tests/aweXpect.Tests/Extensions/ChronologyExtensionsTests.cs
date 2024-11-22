@@ -1,6 +1,6 @@
-﻿using Testably.Expectations.Extensions;
+﻿using aweXpect.Extensions;
 
-namespace Testably.Expectations.Tests.Extensions;
+namespace aweXpect.Tests.Extensions;
 
 public class ChronologyExtensionsTests
 {

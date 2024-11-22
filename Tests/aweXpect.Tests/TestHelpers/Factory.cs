@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 #endif
 
-namespace Testably.Expectations.Tests.TestHelpers;
+namespace aweXpect.Tests.TestHelpers;
 
 internal static class Factory
 {

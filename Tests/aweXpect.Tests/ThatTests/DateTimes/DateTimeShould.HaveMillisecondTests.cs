@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.DateTimes;
+﻿namespace aweXpect.Tests.ThatTests.DateTimes;
 
 public sealed partial class DateTimeShould
 {

@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.Core.Exceptions;
+﻿namespace aweXpect.Tests.Core.Exceptions;
 
 public sealed class SkipExceptionTests
 {

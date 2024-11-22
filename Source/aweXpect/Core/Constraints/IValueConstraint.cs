@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Core.Constraints;
+﻿namespace aweXpect.Core.Constraints;
 
 /// <summary>
 ///     A simple constraint on type <typeparamref name="TValue" />.

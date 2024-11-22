@@ -1,7 +1,7 @@
-﻿using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
+﻿using aweXpect.Core;
+using aweXpect.Core.Constraints;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     Expectations on <see cref="bool" />? values.

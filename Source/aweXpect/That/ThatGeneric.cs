@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations;
+﻿namespace aweXpect;
 
 /// <summary>
 ///     Expectations on generic values.

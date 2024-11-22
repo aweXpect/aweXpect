@@ -1,9 +1,9 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Net.Http;
-using Testably.Expectations.Core;
-using Testably.Expectations.Results;
+using aweXpect.Core;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public static partial class ThatHttpResponseMessageShould
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 /// <summary>
 ///     An intermediate type to collect the maximum of the range.

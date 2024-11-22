@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.EvaluationContext;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
 
-namespace Testably.Expectations.Core.Nodes;
+namespace aweXpect.Core.Nodes;
 
 internal class MappingNode<TSource, TTarget> : ExpectationNode
 {

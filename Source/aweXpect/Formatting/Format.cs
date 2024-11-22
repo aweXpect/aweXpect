@@ -1,6 +1,6 @@
-using Testably.Expectations.Core.Ambient;
+using aweXpect.Core.Ambient;
 
-namespace Testably.Expectations.Formatting;
+namespace aweXpect.Formatting;
 
 /// <summary>
 ///     Static class to provide the <see cref="ValueFormatter" />.

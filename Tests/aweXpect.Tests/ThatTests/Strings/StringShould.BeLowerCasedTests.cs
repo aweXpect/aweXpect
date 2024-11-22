@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.Strings;
+﻿namespace aweXpect.Tests.ThatTests.Strings;
 
 public sealed partial class StringShould
 {

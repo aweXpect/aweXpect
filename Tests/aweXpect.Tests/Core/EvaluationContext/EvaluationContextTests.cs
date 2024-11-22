@@ -1,9 +1,9 @@
-﻿using Testably.Expectations.Core;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.EvaluationContext;
-using Testably.Expectations.Results;
+﻿using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
+using aweXpect.Results;
 
-namespace Testably.Expectations.Tests.Core.EvaluationContext;
+namespace aweXpect.Tests.Core.EvaluationContext;
 
 public class EvaluationContextTests
 {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.EvaluationContext;
-using Testably.Expectations.Core.Helpers;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.EvaluationContext;
+using aweXpect.Core.Helpers;
 
-namespace Testably.Expectations.Core.Nodes;
+namespace aweXpect.Core.Nodes;
 
 internal class AndNode : Node
 {

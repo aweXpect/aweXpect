@@ -1,4 +1,4 @@
-﻿namespace Testably.Expectations.Tests.ThatTests.DateTimeOffsets;
+﻿namespace aweXpect.Tests.ThatTests.DateTimeOffsets;
 
 public sealed partial class NullableDateTimeOffsetShould
 {

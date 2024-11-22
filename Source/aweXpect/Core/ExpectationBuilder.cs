@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Testably.Expectations.Core.Constraints;
-using Testably.Expectations.Core.Helpers;
-using Testably.Expectations.Core.Nodes;
-using Testably.Expectations.Core.Sources;
-using Testably.Expectations.Core.TimeSystem;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
+using aweXpect.Core.Nodes;
+using aweXpect.Core.Sources;
+using aweXpect.Core.TimeSystem;
 
-namespace Testably.Expectations.Core;
+namespace aweXpect.Core;
 
 /// <summary>
 ///     The builder for collecting all expectations.

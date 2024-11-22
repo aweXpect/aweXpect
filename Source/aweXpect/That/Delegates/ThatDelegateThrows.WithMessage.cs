@@ -1,7 +1,7 @@
-﻿using Testably.Expectations.Options;
-using Testably.Expectations.Results;
+﻿using aweXpect.Options;
+using aweXpect.Results;
 
-namespace Testably.Expectations;
+namespace aweXpect;
 
 public partial class ThatDelegateThrows<TException>
 {

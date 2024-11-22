@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
-namespace Testably.Expectations.Core.Adapters;
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Implements the NUnit test framework adapter.
