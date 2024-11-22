@@ -6,4 +6,9 @@ public class Class2
 	{
 		return value * 2;
 	}
+	
+	public int Quadrupel(int value)
+	{
+		return value * 4;
+	}
 }

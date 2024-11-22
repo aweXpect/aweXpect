@@ -5,8 +5,8 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.Xunit;
 using System.Linq;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.Xunit.XunitTasks;
+using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 // ReSharper disable AllUnderscoreLocalParameterName
 
@@ -28,6 +28,7 @@ partial class Build
 	Target DotNetFrameworkUnitTests => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => EnvironmentInfo.IsWin)
 		.Executes(() =>
 		{
 			string[] testAssemblies = UnitTestProjects
@@ -50,8 +51,7 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			const string net48 = "net48";
-
+			string net48 = "net48";
 			DotNetTest(s => s
 					.SetConfiguration(Configuration)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")

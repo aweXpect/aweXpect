@@ -1,5 +1,6 @@
-# Artifact directory
+# Artifact and test results directories
 /Artifacts
+/TestResults
 
 ## Common IntelliJ Platform excludes
 ##
