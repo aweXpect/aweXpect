@@ -25,7 +25,7 @@ partial class Build
 	Target Pack => _ => _
 		.DependsOn(UpdateReadme)
 		.DependsOn(Compile)
-		.Produces(ArtifactsDirectory / "packages" / "*")
+		.Produces(ArtifactsDirectory / "**" / "*.nupkg")
 		.Executes(() =>
 		{
 			ReportSummary(s => s
