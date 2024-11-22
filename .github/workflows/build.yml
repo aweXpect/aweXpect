@@ -119,7 +119,7 @@ jobs:
 
   publish-test-results:
     name: "Publish Tests Results"
-    needs: [ unit-tests, api-tests ]
+    needs: [ api-tests, unit-tests ]
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -136,7 +136,7 @@ jobs:
         comment_mode: always
         files: "artifacts/**/**/*.trx"
 
-  deploy:
+  pack:
       name: "Pack"
       runs-on: ubuntu-latest
       environment: production
@@ -167,7 +167,7 @@ jobs:
     name: Finalize release
     if: startsWith(github.ref, 'refs/heads/release/')
     runs-on: ubuntu-latest
-    needs: [deploy]
+    needs: [ pack ]
     steps:
       - name: Comment relevant issues and pull requests
         uses: apexskier/github-release-commenter@v1.3.6
