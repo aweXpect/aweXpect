@@ -5,7 +5,7 @@
 
 	<PropertyGroup>
 		<Authors>aweXpect</Authors>
-		<Description>Assert unit tests in natural language by specifying expectations.</Description>
+		<Description>Assert unit tests in natural language using awesome expectations.</Description>
 		<Copyright>Copyright (c) 2024 Valentin Breuß</Copyright>
 		<RepositoryUrl>https://github.com/aweXpect/aweXpect.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
