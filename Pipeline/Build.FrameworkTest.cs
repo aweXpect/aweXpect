@@ -80,6 +80,7 @@ partial class Build
 						.SetProcessArgumentConfigurator(args => args
 							.Add("--")
 							.Add("--coverage")
+							.Add("--coverage-output-format \"cobertura\"")
 							.Add("--report-trx")
 							.Add($"--report-trx-filename {v.project.Name}_{v.framework}.trx")
 							.Add($"--results-directory {TestResultsDirectory}")
