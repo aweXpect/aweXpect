@@ -5,7 +5,7 @@ namespace aweXpect.Core.Sources;
 /// <summary>
 ///     An expectation source from a delegate can contain a <see cref="Value" /> or a thrown <see cref="Exception" />.
 /// </summary>
-internal class DelegateValue<TValue>(in TValue? value, Exception? exception, TimeSpan duration)
+public class DelegateValue<TValue>(in TValue? value, Exception? exception, TimeSpan duration)
 	: DelegateValue(exception, duration)
 {
 	/// <summary>
@@ -18,7 +18,7 @@ internal class DelegateValue<TValue>(in TValue? value, Exception? exception, Tim
 ///     An expectation source from a delegate without value can represent <see langword="void" /> or a thrown
 ///     <see cref="Exception" />.
 /// </summary>
-internal class DelegateValue(Exception? exception, TimeSpan duration)
+public class DelegateValue(Exception? exception, TimeSpan duration)
 {
 	/// <summary>
 	///     The duration it took the delegate to complete.

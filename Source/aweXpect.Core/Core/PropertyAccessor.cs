@@ -54,7 +54,7 @@ public class PropertyAccessor<TSource, TTarget> : PropertyAccessor
 	/// <summary>
 	///     Creates a property accessor from the given <paramref name="func" />.
 	/// </summary>
-	internal static PropertyAccessor<TSource, TTarget?> FromFunc(
+	public static PropertyAccessor<TSource, TTarget?> FromFunc(
 		Func<TSource, TTarget> func, string name)
 		=> new(func, name);
 

@@ -25,6 +25,6 @@ public partial class ThatDelegateThrows<TException>
 						e => e.GetInnerExpectations(), "recursive inner exceptions "),
 					(property, expectation) => $"with {property}which {expectation}")
 				.AddExpectations(e
-					=> expectations(new Expect.ThatSubject<IEnumerable<Exception>>(e))),
+					=> expectations(new That.Subject<IEnumerable<Exception>>(e))),
 			this);
 }

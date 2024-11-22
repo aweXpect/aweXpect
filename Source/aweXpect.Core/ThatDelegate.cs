@@ -15,22 +15,12 @@ public abstract class ThatDelegate(ExpectationBuilder expectationBuilder)
 	/// <summary>
 	///     A delegate without value.
 	/// </summary>
-	public sealed class WithoutValue : ThatDelegate
-	{
-		internal WithoutValue(ExpectationBuilder expectationBuilder)
-			: base(expectationBuilder)
-		{
-		}
-	}
+	public sealed class WithoutValue(ExpectationBuilder expectationBuilder)
+		: ThatDelegate(expectationBuilder);
 
 	/// <summary>
 	///     A delegate with value of type <typeparamref name="TValue" />.
 	/// </summary>
-	public sealed class WithValue<TValue> : ThatDelegate
-	{
-		internal WithValue(ExpectationBuilder expectationBuilder)
-			: base(expectationBuilder)
-		{
-		}
-	}
+	public sealed class WithValue<TValue>(ExpectationBuilder expectationBuilder)
+		: ThatDelegate(expectationBuilder);
 }

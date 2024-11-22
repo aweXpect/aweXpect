@@ -29,6 +29,6 @@ public partial class ThatExceptionShould<TException>
 					(property, expectation) => $"have {property}which {expectation}",
 					replaceIt: false)
 				.AddExpectations(e => expectations(
-					new Expect.ThatSubject<IEnumerable<Exception>>(e))),
+					new That.Subject<IEnumerable<Exception>>(e))),
 			this);
 }

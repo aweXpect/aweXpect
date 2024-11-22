@@ -14,7 +14,7 @@ public static partial class ThatNullableEnumShould
 	/// </summary>
 	public static IThat<TEnum?> Should<TEnum>(this IExpectSubject<TEnum?> subject)
 		where TEnum : struct, Enum
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private readonly struct ValueConstraint<TEnum>(
 		string it,

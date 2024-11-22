@@ -7,7 +7,7 @@ namespace aweXpect.Core.Helpers;
 ///     Determines which members are included in the equivalency constraint
 /// </summary>
 [Flags]
-internal enum MemberVisibilities
+public enum MemberVisibilities
 {
 	None = 0,
 	Internal = 1,

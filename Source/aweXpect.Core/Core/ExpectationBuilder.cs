@@ -15,8 +15,6 @@ namespace aweXpect.Core;
 public abstract class ExpectationBuilder
 {
 	private const string DefaultCurrentSubject = "it";
-
-	internal static Action<ExpectationBuilder> NoAction { get; } = _ => { };
 	internal string Subject { get; }
 
 	private CancellationToken? _cancellationToken;
@@ -163,7 +161,7 @@ public abstract class ExpectationBuilder
 		_node.SetReason(becauseReason);
 	}
 
-	internal ExpectationBuilder And(string textSeparator = " and ")
+	public ExpectationBuilder And(string textSeparator = " and ")
 	{
 		if (_node is AndNode andNode)
 		{
@@ -191,7 +189,7 @@ public abstract class ExpectationBuilder
 	/// <remarks>
 	///     Intended for mapping the <see cref="DelegateValue{TValue}" /> to an exception.
 	/// </remarks>
-	internal ExpectationBuilder ForWhich<TSource, TTarget>(
+	public ExpectationBuilder ForWhich<TSource, TTarget>(
 		Func<TSource, TTarget?> whichAccessor)
 	{
 		_whichNode = new WhichNode<TSource, TTarget>(whichAccessor);

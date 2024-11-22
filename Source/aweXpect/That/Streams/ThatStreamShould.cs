@@ -15,7 +15,7 @@ public static partial class ThatStreamShould
 	/// </summary>
 	public static IThat<TStream?> Should<TStream>(this IExpectSubject<TStream?> subject)
 		where TStream : Stream
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private readonly struct ValueConstraint(
 		string expectation,

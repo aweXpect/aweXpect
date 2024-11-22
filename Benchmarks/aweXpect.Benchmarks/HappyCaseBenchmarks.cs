@@ -1,7 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
-using aweXpect;
 
 namespace aweXpect.Benchmarks;
 

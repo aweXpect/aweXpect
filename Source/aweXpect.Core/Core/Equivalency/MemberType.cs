@@ -3,7 +3,7 @@
 
 namespace aweXpect.Core.Equivalency;
 
-internal enum MemberType
+public enum MemberType
 {
 	Property,
 	Field,

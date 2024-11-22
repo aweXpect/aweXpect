@@ -15,7 +15,7 @@ public static partial class ThatTimeOnlyShould
 	///     Start expectations for current <see cref="TimeOnly" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<TimeOnly> Should(this IExpectSubject<TimeOnly> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private readonly struct ConditionConstraint(
 		string it,

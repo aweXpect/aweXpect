@@ -5,7 +5,7 @@ using System;
 
 namespace aweXpect.Core.Equivalency;
 
-internal record ComparisonFailure
+public record ComparisonFailure
 {
 	public object? Actual { get; set; }
 	public object? Expected { get; set; }

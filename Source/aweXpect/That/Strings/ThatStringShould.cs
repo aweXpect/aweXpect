@@ -11,5 +11,5 @@ public static partial class ThatStringShould
 	///     Start expectations for the current <see cref="string" />? <paramref name="subject" />.
 	/// </summary>
 	public static IThat<string?> Should(this IExpectSubject<string?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 }

@@ -14,7 +14,7 @@ public static partial class ThatDateTimeShould
 	///     Start expectations for current <see cref="DateTime" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<DateTime> Should(this IExpectSubject<DateTime> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan difference)
 	{

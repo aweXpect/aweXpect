@@ -13,133 +13,133 @@ public static partial class ThatNumberShould
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<int> Should(this IExpectSubject<int> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<int?> Should(this IExpectSubject<int?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="uint" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<uint> Should(this IExpectSubject<uint> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="uint" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<uint?> Should(this IExpectSubject<uint?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<byte> Should(this IExpectSubject<byte> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<byte?> Should(this IExpectSubject<byte?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<sbyte> Should(this IExpectSubject<sbyte> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<sbyte?> Should(this IExpectSubject<sbyte?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<short> Should(this IExpectSubject<short> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<short?> Should(this IExpectSubject<short?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<ushort> Should(this IExpectSubject<ushort> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<ushort?> Should(this IExpectSubject<ushort?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<long> Should(this IExpectSubject<long> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<long?> Should(this IExpectSubject<long?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<ulong> Should(this IExpectSubject<ulong> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<ulong?> Should(this IExpectSubject<ulong?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<float> Should(this IExpectSubject<float> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<float?> Should(this IExpectSubject<float?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<double> Should(this IExpectSubject<double> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<double?> Should(this IExpectSubject<double?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<decimal> Should(this IExpectSubject<decimal> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	/// <summary>
 	///     Start expectations for the current <see cref="int" /> <paramref name="subject" />.
 	/// </summary>
 	public static IThat<decimal?> Should(this IExpectSubject<decimal?> subject)
-		=> subject.Should(ExpectationBuilder.NoAction);
+		=> subject.Should(That.WithoutAction);
 
 	private readonly struct GenericConstraint<T>(
 		string it,

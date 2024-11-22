@@ -19,7 +19,7 @@ public static partial class ThatGeneric
 			.ForProperty(
 				PropertyAccessor<T, TProperty?>.FromExpression(selector),
 				(property, expectation) => $"for {property}{expectation}")
-			.AddExpectations(e => expectations(new Expect.ThatSubject<TProperty?>(e))));
+			.AddExpectations(e => expectations(new That.Subject<TProperty?>(e))));
 		return new AndOrResult<T, IExpectSubject<T>>(should.ExpectationBuilder, source);
 	}
 }

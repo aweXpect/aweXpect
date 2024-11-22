@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if NETSTANDARD2_0
+using aweXpect.Polyfills;
+#endif
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;

@@ -3,7 +3,7 @@
 
 namespace aweXpect.Core.Equivalency;
 
-internal record CompareOptions
+public record CompareOptions
 {
 	public string[] MembersToIgnore { get; set; } = [];
 }

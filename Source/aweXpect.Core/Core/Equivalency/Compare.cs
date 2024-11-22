@@ -9,9 +9,9 @@ using System.Reflection;
 
 namespace aweXpect.Core.Equivalency;
 
-internal static class Compare
+public static class Compare
 {
-	internal static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
+	public static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
 		CompareOptions options)
 	{
 		return CheckEquivalent(actual, expected, options, [], MemberType.Value);
