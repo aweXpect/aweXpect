@@ -50,7 +50,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$([MSBuild]::GetPathOfFileAbove('logo_256x256.png', '$(MSBuildThisFileDirectory)../Docs/Images/'))"
+		<None Include="$([MSBuild]::GetPathOfFileAbove('logo_256x256.png', '$(MSBuildThisFileDirectory)../Docs/pages/static/img/'))"
 		      Pack="true"
 			  PackagePath="/Docs/"
 		      Link="\Docs\logo_256x256.png" />
