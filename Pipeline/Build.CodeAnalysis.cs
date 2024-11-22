@@ -21,6 +21,9 @@ partial class Build
 				.AddVSTestReports(TestResultsDirectory / "*.trx")
 				.AddOpenCoverPaths(TestResultsDirectory / "reports" / "OpenCover.xml")
 				.SetBranchName(GitVersion.BranchName)
+				.SetPullRequestKey(GitHubActions.PullRequestNumber.ToString())
+				.SetPullRequestBranch(GitHubActions.Ref)
+				.SetPullRequestBase(GitHubActions.BaseRef)
 				.SetVersion(GitVersion.SemVer)
 				.SetToken(SonarToken));
 		});
