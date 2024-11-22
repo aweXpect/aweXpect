@@ -23,7 +23,11 @@ jobs:
       with:
         dotnet-version: |
           8.0.x
-    - name: Run unit tests
+    - name: Run unit tests (windows)
+      if: matrix.os == 'windows-latest'
+      run: ./build.ps1 CodeCoverage
+    - name: Run unit tests (ubuntu|macos)
+      if: matrix.os != 'windows-latest'
       run: ./build.sh CodeCoverage
       shell: bash
     - name: Upload artifacts
