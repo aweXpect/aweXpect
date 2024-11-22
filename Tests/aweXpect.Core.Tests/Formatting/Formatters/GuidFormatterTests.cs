@@ -1,7 +1,5 @@
 ﻿#if NET6_0_OR_GREATER
-using aweXpect.Formatting;
-
-namespace aweXpect.Tests.Formatting.Formatters;
+namespace aweXpect.Core.Tests.Formatting.Formatters;
 
 public sealed class GuidFormatterTests
 {

@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.Results;
+﻿namespace aweXpect.Core.Tests.Results;
 
 public class AndOrWhichResultTests
 {

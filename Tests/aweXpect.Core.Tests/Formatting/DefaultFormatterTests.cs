@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.Formatting;
+﻿namespace aweXpect.Core.Tests.Formatting;
 
 public sealed class DefaultFormatterTests
 {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace aweXpect.Tests.TestHelpers;
+namespace aweXpect.Core.Tests.TestHelpers;
 
 public class MyException(
 	[CallerMemberName] string message = "",

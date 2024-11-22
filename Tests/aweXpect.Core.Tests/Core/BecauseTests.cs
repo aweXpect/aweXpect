@@ -1,6 +1,6 @@
-﻿using aweXpect.Tests.TestHelpers;
+﻿using aweXpect.Core.Tests.TestHelpers;
 
-namespace aweXpect.Tests.Core;
+namespace aweXpect.Core.Tests.Core;
 
 public class BecauseTests
 {

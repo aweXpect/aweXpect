@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.Core.Exceptions;
+﻿namespace aweXpect.Core.Tests.Core.Exceptions;
 
 public sealed class SkipExceptionTests
 {

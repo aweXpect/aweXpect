@@ -1,8 +1,7 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Net;
-using aweXpect.Formatting;
 
-namespace aweXpect.Tests.Formatting.Formatters;
+namespace aweXpect.Core.Tests.Formatting.Formatters;
 
 public sealed class HttpStatusCodeFormatterTests
 {

@@ -1,9 +1,8 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Results;
 
-namespace aweXpect.Tests.Core.EvaluationContext;
+namespace aweXpect.Core.Tests.Core.EvaluationContext;
 
 public class EvaluationContextTests
 {

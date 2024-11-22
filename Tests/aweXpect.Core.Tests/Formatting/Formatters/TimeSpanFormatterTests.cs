@@ -1,6 +1,6 @@
 ﻿using aweXpect.Extensions;
 
-namespace aweXpect.Tests.Formatting.Formatters;
+namespace aweXpect.Core.Tests.Formatting.Formatters;
 
 public sealed class TimeSpanFormatterTests
 {

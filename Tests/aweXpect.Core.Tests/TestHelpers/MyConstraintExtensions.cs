@@ -1,8 +1,7 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 using aweXpect.Results;
 
-namespace aweXpect.Tests.TestHelpers;
+namespace aweXpect.Core.Tests.TestHelpers;
 
 public static class MyConstraintExtensions
 {

@@ -1,6 +1,6 @@
 ﻿using aweXpect.Results;
 
-namespace aweXpect.Tests.Results;
+namespace aweXpect.Core.Tests.Results;
 
 public class ExpectationTests
 {

@@ -1,6 +1,6 @@
 ﻿using aweXpect.Core.Constraints;
 
-namespace aweXpect.Tests.Core;
+namespace aweXpect.Core.Tests.Core;
 
 public sealed class ConstraintResultTests
 {

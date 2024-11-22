@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.Core;
+﻿namespace aweXpect.Core.Tests.Core;
 
 public sealed class ExpectationTests
 {

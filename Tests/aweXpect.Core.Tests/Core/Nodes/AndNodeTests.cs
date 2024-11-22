@@ -1,6 +1,4 @@
-﻿using aweXpect.Core;
-
-namespace aweXpect.Tests.Core.Nodes;
+﻿namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class AndNodeTests
 {
