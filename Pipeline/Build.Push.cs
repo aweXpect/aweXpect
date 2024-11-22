@@ -22,7 +22,8 @@ partial class Build
 		.ProceedAfterFailure()
 		.Executes(() =>
 		{
-			IReadOnlyCollection<AbsolutePath> packages = ArtifactsDirectory.GlobFiles("*.nupkg");
+			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
+			IReadOnlyCollection<AbsolutePath> packages = packagesDirectory.GlobFiles("*.nupkg");
 
 			Assert.NotEmpty(packages);
 

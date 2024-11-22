@@ -18,7 +18,7 @@ partial class Build
 		.Executes(() =>
 		{
 			string content = File.ReadAllText(Solution.Directory / "README.md");
-			content += "- UPDATED";
+			content += "\n\n*This project is work in progress!*";
 			File.WriteAllText(ArtifactsDirectory / "README.md", content);
 		});
 
