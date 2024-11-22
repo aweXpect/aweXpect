@@ -31,8 +31,7 @@ partial class Build
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{ Solution.aweXpect, UnitTestProjects },
-				{ Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests] },
-				{ Solution.aweXpect_Discovery, [Solution.Tests.aweXpect_Discovery_Tests] }
+				{ Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests] }
 			};
 
 			foreach (KeyValuePair<Project, Project[]> project in projects)

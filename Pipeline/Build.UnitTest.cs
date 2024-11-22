@@ -21,7 +21,6 @@ partial class Build
 	Project[] UnitTestProjects =>
 	[
 		Solution.Tests.aweXpect_Core_Tests,
-		Solution.Tests.aweXpect_Discovery_Tests,
 		Solution.Tests.aweXpect_Tests
 	];
 
