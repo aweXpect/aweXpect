@@ -15,4 +15,8 @@
 		<PackageReference Include="TUnit.Assertions" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj" />
+	</ItemGroup>
+
 </Project>

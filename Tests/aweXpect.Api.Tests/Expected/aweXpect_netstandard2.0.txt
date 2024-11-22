@@ -1,0 +1,1272 @@
+[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/aweXpect/aweXpect.git")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName=".NET Standard 2.0")]
+namespace Testably.Expectations
+{
+    public class BetweenResult<TTarget>
+    {
+        public BetweenResult(System.Func<int, TTarget> callback) { }
+        public TTarget And(int maximum) { }
+    }
+    public struct CollectionEvaluatorResult : System.IEquatable<Testably.Expectations.CollectionEvaluatorResult>
+    {
+        public CollectionEvaluatorResult(bool? IsSuccess, string Error) { }
+        public string Error { get; set; }
+        public bool? IsSuccess { get; set; }
+    }
+    public abstract class CollectionQuantifier
+    {
+        protected CollectionQuantifier() { }
+        public static Testably.Expectations.CollectionQuantifier All { get; }
+        public static Testably.Expectations.CollectionQuantifier None { get; }
+        protected abstract bool ContinueEvaluation(int matchingCount, int notMatchingCount, int? totalCount, [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out Testably.Expectations.CollectionEvaluatorResult? result);
+        public Testably.Expectations.ICollectionEvaluator<TItem> GetEvaluator<TItem, TCollection>(TCollection enumerable, Testably.Expectations.Core.EvaluationContext.IEvaluationContext context)
+            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
+        public override string ToString() { }
+        public abstract string ToString(bool includeItems);
+        public static Testably.Expectations.CollectionQuantifier AtLeast(int minimum) { }
+        public static Testably.Expectations.CollectionQuantifier AtMost(int maximum) { }
+        public static Testably.Expectations.CollectionQuantifier Between(int minimum, int maximum) { }
+    }
+    public static class Expect
+    {
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithoutValue> That(System.Action @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithoutValue> That(System.Action<System.Threading.CancellationToken> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithoutValue> That(System.Func<System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithoutValue> That(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithoutValue> That(System.Threading.Tasks.Task @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.CancellationToken, TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithValue<TValue>> That<TValue>(System.Threading.Tasks.Task<TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Core.IExpectSubject<T> That<T>(T? subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Results.Expectation.Combination.All ThatAll(params Testably.Expectations.Results.Expectation[] expectations) { }
+        public static Testably.Expectations.Results.Expectation.Combination.Any ThatAny(params Testably.Expectations.Results.Expectation[] expectations) { }
+    }
+    [System.Diagnostics.StackTraceHidden]
+    public static class Fail
+    {
+        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        public static void Test(string reason) { }
+        public static void Unless([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(false)] bool condition, string reason) { }
+        public static void When([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(true)] bool condition, string reason) { }
+    }
+    public class FailException : System.Exception
+    {
+        public FailException(string message) { }
+    }
+    public interface ICollectionEvaluator<out TItem>
+    {
+        System.Threading.Tasks.Task<Testably.Expectations.CollectionEvaluatorResult> CheckCondition<TExpected>(TExpected expected, System.Func<TItem, TExpected, bool> predicate, System.Threading.CancellationToken cancellationToken);
+    }
+    public class QuantifiedCollectionResult
+    {
+        public QuantifiedCollectionResult() { }
+        public class Sync<TResult, TItem, TCollection> : Testably.Expectations.QuantifiedCollectionResult<TResult>
+            where TResult : Testably.Expectations.Core.IThat<TCollection>
+            where TCollection : System.Collections.Generic.IEnumerable<TItem>
+        {
+            public Sync(TResult result, Testably.Expectations.Core.ExpectationBuilder expectationBuilder, Testably.Expectations.CollectionQuantifier quantity) { }
+            public Testably.Expectations.Results.AndOrResult<TCollection, Testably.Expectations.Core.IThat<TCollection>> Be<TExpected>() { }
+        }
+    }
+    public class QuantifiedCollectionResult<TResult>
+    {
+        public QuantifiedCollectionResult(TResult result, Testably.Expectations.Core.ExpectationBuilder expectationBuilder, Testably.Expectations.CollectionQuantifier quantity) { }
+        public Testably.Expectations.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public Testably.Expectations.CollectionQuantifier Quantity { get; }
+        public TResult Result { get; }
+    }
+    [System.Diagnostics.StackTraceHidden]
+    public static class Skip
+    {
+        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        public static void Test(string reason) { }
+        public static void Unless([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(false)] bool condition, string reason) { }
+        public static void When([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(true)] bool condition, string reason) { }
+    }
+    public class SkipException : System.Exception
+    {
+        public SkipException(string message) { }
+    }
+    public static class ThatBoolShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<bool, Testably.Expectations.Core.IThat<bool>> Be(this Testably.Expectations.Core.IThat<bool> source, bool expected) { }
+        public static Testably.Expectations.Results.AndOrResult<bool, Testably.Expectations.Core.IThat<bool>> BeFalse(this Testably.Expectations.Core.IThat<bool> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool, Testably.Expectations.Core.IThat<bool>> BeTrue(this Testably.Expectations.Core.IThat<bool> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool, Testably.Expectations.Core.IThat<bool>> Imply(this Testably.Expectations.Core.IThat<bool> source, bool consequent) { }
+        public static Testably.Expectations.Results.AndOrResult<bool, Testably.Expectations.Core.IThat<bool>> NotBe(this Testably.Expectations.Core.IThat<bool> source, bool unexpected) { }
+        public static Testably.Expectations.Core.IThat<bool> Should(this Testably.Expectations.Core.IExpectSubject<bool> subject) { }
+    }
+    public static class ThatDateTimeOffsetShould
+    {
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> Be(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> BeAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> BeBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> BeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> BeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveDay(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveHour(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveMinute(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveMonth(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveOffset(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.TimeSpan expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveSecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> HaveYear(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotBe(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotBeAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotBeBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotBeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotBeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveDay(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveHour(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveMinute(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveMonth(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveOffset(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, System.TimeSpan unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveSecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset, Testably.Expectations.Core.IThat<System.DateTimeOffset>> NotHaveYear(this Testably.Expectations.Core.IThat<System.DateTimeOffset> source, int? unexpected) { }
+        public static Testably.Expectations.Core.IThat<System.DateTimeOffset> Should(this Testably.Expectations.Core.IExpectSubject<System.DateTimeOffset> subject) { }
+    }
+    public static class ThatDateTimeShould
+    {
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> Be(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> BeAfter(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> BeBefore(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> BeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> BeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveDay(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveHour(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveKind(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTimeKind expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveMinute(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveMonth(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveSecond(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> HaveYear(this Testably.Expectations.Core.IThat<System.DateTime> source, int? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotBe(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotBeAfter(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotBeBefore(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotBeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotBeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveDay(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveHour(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveKind(this Testably.Expectations.Core.IThat<System.DateTime> source, System.DateTimeKind unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveMinute(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveMonth(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveSecond(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime, Testably.Expectations.Core.IThat<System.DateTime>> NotHaveYear(this Testably.Expectations.Core.IThat<System.DateTime> source, int? unexpected) { }
+        public static Testably.Expectations.Core.IThat<System.DateTime> Should(this Testably.Expectations.Core.IExpectSubject<System.DateTime> subject) { }
+    }
+    public abstract class ThatDelegate
+    {
+        protected ThatDelegate(Testably.Expectations.Core.ExpectationBuilder expectationBuilder) { }
+        public Testably.Expectations.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public sealed class WithValue<TValue> : Testably.Expectations.ThatDelegate { }
+        public sealed class WithoutValue : Testably.Expectations.ThatDelegate { }
+    }
+    public static class ThatDelegateShould
+    {
+        public static Testably.Expectations.Results.ExpectationResult ExecuteWithin(this Testably.Expectations.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
+        public static Testably.Expectations.Results.ExpectationResult<TValue> ExecuteWithin<TValue>(this Testably.Expectations.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
+        public static Testably.Expectations.Results.ExpectationResult NotExecuteWithin(this Testably.Expectations.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
+        public static Testably.Expectations.Results.ExpectationResult<TValue> NotExecuteWithin<TValue>(this Testably.Expectations.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
+        public static Testably.Expectations.Results.ExpectationResult NotThrow(this Testably.Expectations.ThatDelegate.WithoutValue source) { }
+        public static Testably.Expectations.Results.ExpectationResult<TValue> NotThrow<TValue>(this Testably.Expectations.ThatDelegate.WithValue<TValue> source) { }
+        public static Testably.Expectations.ThatDelegate.WithoutValue Should(this Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithoutValue> subject) { }
+        public static Testably.Expectations.ThatDelegate.WithValue<TValue> Should<TValue>(this Testably.Expectations.Core.IExpectSubject<Testably.Expectations.ThatDelegate.WithValue<TValue>> subject) { }
+        public static Testably.Expectations.ThatDelegateThrows<System.Exception> Throw(this Testably.Expectations.ThatDelegate source, System.Type exceptionType) { }
+        public static Testably.Expectations.ThatDelegateThrows<TException> Throw<TException>(this Testably.Expectations.ThatDelegate source)
+            where TException : System.Exception { }
+        public static Testably.Expectations.ThatDelegateThrows<System.Exception> ThrowExactly(this Testably.Expectations.ThatDelegate source, System.Type exceptionType) { }
+        public static Testably.Expectations.ThatDelegateThrows<TException> ThrowExactly<TException>(this Testably.Expectations.ThatDelegate source)
+            where TException : System.Exception { }
+        public static Testably.Expectations.ThatDelegateThrows<System.Exception> ThrowException(this Testably.Expectations.ThatDelegate source) { }
+    }
+    public class ThatDelegateThrows<TException> : Testably.Expectations.Results.ExpectationResult<TException, Testably.Expectations.ThatDelegateThrows<TException>>
+        where TException : System.Exception?
+    {
+        public Testably.Expectations.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public Testably.Expectations.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType, System.Action<Testably.Expectations.ThatExceptionShould<System.Exception?>> expectations) { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithInner<TInnerException>()
+            where TInnerException : System.Exception? { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithInner<TInnerException>(System.Action<Testably.Expectations.ThatExceptionShould<TInnerException?>> expectations)
+            where TInnerException : System.Exception { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithInnerException() { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithInnerException(System.Action<Testably.Expectations.ThatExceptionShould<System.Exception?>> expectations) { }
+        public Testably.Expectations.Results.StringMatcherResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithMessage(Testably.Expectations.Options.StringMatcher expected) { }
+        public Testably.Expectations.Results.AndOrResult<TException?, Testably.Expectations.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
+    }
+    public static class ThatEnumShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> Be<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source, TEnum? expected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> BeDefined<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> HaveFlag<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source, TEnum? expectedFlag)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> HaveValue<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source, long? expected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> NotBe<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source, TEnum? unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> NotBeDefined<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> NotHaveFlag<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source, TEnum? unexpectedFlag)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum, Testably.Expectations.Core.IThat<TEnum>> NotHaveValue<TEnum>(this Testably.Expectations.Core.IThat<TEnum> source, long? unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Core.IThat<TEnum> Should<TEnum>(this Testably.Expectations.Core.IExpectSubject<TEnum> subject)
+            where TEnum :  struct, System.Enum { }
+    }
+    public static class ThatEnumerableShould
+    {
+        public static Testably.Expectations.QuantifiedCollectionResult.Sync<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> All<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static Testably.Expectations.QuantifiedCollectionResult.Sync<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> AtLeast<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
+        public static Testably.Expectations.QuantifiedCollectionResult.Sync<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> AtMost<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int maximum) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static Testably.Expectations.BetweenResult<Testably.Expectations.QuantifiedCollectionResult.Sync<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>>> Between<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
+        public static Testably.Expectations.QuantifiedCollectionResult.Sync<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> None<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotBeEmpty<TItem>(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> Should<TItem>(this Testably.Expectations.Core.IExpectSubject<System.Collections.Generic.IEnumerable<TItem>> subject) { }
+    }
+    public static class ThatExceptionShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatExceptionShould<TException>> HaveParamName<TException>(this Testably.Expectations.ThatExceptionShould<TException> source, string expected)
+            where TException : System.ArgumentException? { }
+        public static Testably.Expectations.ThatExceptionShould<TException> Should<TException>(this Testably.Expectations.Core.IExpectSubject<TException> subject)
+            where TException : System.Exception? { }
+        public static Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatDelegateThrows<TException>> WithParamName<TException>(this Testably.Expectations.ThatDelegateThrows<TException> source, string expected)
+            where TException : System.ArgumentException? { }
+    }
+    public class ThatExceptionShould<TException> : Testably.Expectations.Core.IThat<TException>
+        where TException : System.Exception?
+    {
+        public ThatExceptionShould(Testably.Expectations.Core.ExpectationBuilder expectationBuilder) { }
+        public Testably.Expectations.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatExceptionShould<TException>> HaveInner(System.Type innerExceptionType) { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatExceptionShould<TException>> HaveInner(System.Type innerExceptionType, System.Action<Testably.Expectations.ThatExceptionShould<System.Exception?>> expectations) { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatExceptionShould<TException>> HaveInner<TInnerException>()
+            where TInnerException : System.Exception? { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatExceptionShould<TException>> HaveInner<TInnerException>(System.Action<Testably.Expectations.ThatExceptionShould<TInnerException?>> expectations)
+            where TInnerException : System.Exception? { }
+        public Testably.Expectations.Results.AndOrResult<TException, Testably.Expectations.ThatExceptionShould<TException>> HaveInnerException() { }
+        public Testably.Expectations.Results.AndOrResult<TException?, Testably.Expectations.ThatExceptionShould<TException>> HaveInnerException(System.Action<Testably.Expectations.ThatExceptionShould<System.Exception?>> expectations) { }
+        public Testably.Expectations.Results.StringMatcherResult<TException?, Testably.Expectations.ThatExceptionShould<TException>> HaveMessage(Testably.Expectations.Options.StringMatcher expected) { }
+        public Testably.Expectations.Results.AndOrResult<TException?, Testably.Expectations.ThatExceptionShould<TException>> HaveRecursiveInnerExceptions(System.Action<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
+    }
+    public static class ThatGeneric
+    {
+        public static Testably.Expectations.Results.AndOrResult<T, Testably.Expectations.Core.IThat<T>> BeSameAs<T>(this Testably.Expectations.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Results.AndOrResult<T, Testably.Expectations.Core.IExpectSubject<T>> For<T, TProperty>(this Testably.Expectations.Core.IExpectSubject<T> source, System.Linq.Expressions.Expression<System.Func<T, TProperty?>> selector, System.Action<Testably.Expectations.Core.IExpectSubject<TProperty?>> expectations) { }
+        public static Testably.Expectations.Results.AndOrResult<T, Testably.Expectations.Core.IThat<T>> NotBeSameAs<T>(this Testably.Expectations.Core.IThat<T> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
+    }
+    public static class ThatGuidShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<System.Guid, Testably.Expectations.Core.IThat<System.Guid>> Be(this Testably.Expectations.Core.IThat<System.Guid> source, System.Guid? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid, Testably.Expectations.Core.IThat<System.Guid>> BeEmpty(this Testably.Expectations.Core.IThat<System.Guid> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid, Testably.Expectations.Core.IThat<System.Guid>> NotBe(this Testably.Expectations.Core.IThat<System.Guid> source, System.Guid? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid, Testably.Expectations.Core.IThat<System.Guid>> NotBeEmpty(this Testably.Expectations.Core.IThat<System.Guid> source) { }
+        public static Testably.Expectations.Core.IThat<System.Guid> Should(this Testably.Expectations.Core.IExpectSubject<System.Guid> subject) { }
+    }
+    public static class ThatNullableBoolShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> Be(this Testably.Expectations.Core.IThat<bool?> source, bool? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> BeFalse(this Testably.Expectations.Core.IThat<bool?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> BeNull(this Testably.Expectations.Core.IThat<bool?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> BeTrue(this Testably.Expectations.Core.IThat<bool?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> NotBe(this Testably.Expectations.Core.IThat<bool?> source, bool? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> NotBeFalse(this Testably.Expectations.Core.IThat<bool?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> NotBeNull(this Testably.Expectations.Core.IThat<bool?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<bool?, Testably.Expectations.Core.IThat<bool?>> NotBeTrue(this Testably.Expectations.Core.IThat<bool?> source) { }
+        public static Testably.Expectations.Core.IThat<bool?> Should(this Testably.Expectations.Core.IExpectSubject<bool?> subject) { }
+    }
+    public static class ThatNullableDateTimeOffsetShould
+    {
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> Be(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> BeAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> BeBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> BeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> BeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveDay(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveHour(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveMinute(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveMonth(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveOffset(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.TimeSpan expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveSecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> HaveYear(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotBe(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotBeAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotBeBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotBeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotBeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveDay(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveHour(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveMinute(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveMonth(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveOffset(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, System.TimeSpan unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveSecond(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTimeOffset?, Testably.Expectations.Core.IThat<System.DateTimeOffset?>> NotHaveYear(this Testably.Expectations.Core.IThat<System.DateTimeOffset?> source, int? unexpected) { }
+        public static Testably.Expectations.Core.IThat<System.DateTimeOffset?> Should(this Testably.Expectations.Core.IExpectSubject<System.DateTimeOffset?> subject) { }
+    }
+    public static class ThatNullableDateTimeShould
+    {
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> Be(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> BeAfter(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> BeBefore(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> BeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> BeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveDay(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveHour(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveKind(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTimeKind expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveMinute(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveMonth(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveSecond(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> HaveYear(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotBe(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotBeAfter(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotBeBefore(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotBeOnOrAfter(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotBeOnOrBefore(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveDay(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveHour(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveKind(this Testably.Expectations.Core.IThat<System.DateTime?> source, System.DateTimeKind unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveMillisecond(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveMinute(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveMonth(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveSecond(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.DateTime?, Testably.Expectations.Core.IThat<System.DateTime?>> NotHaveYear(this Testably.Expectations.Core.IThat<System.DateTime?> source, int? unexpected) { }
+        public static Testably.Expectations.Core.IThat<System.DateTime?> Should(this Testably.Expectations.Core.IExpectSubject<System.DateTime?> subject) { }
+    }
+    public static class ThatNullableEnumShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> Be<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source, TEnum? expected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> BeDefined<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> BeNull<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> HaveFlag<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source, TEnum? expectedFlag)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> HaveValue<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source, long? expected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> NotBe<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source, TEnum? unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> NotBeDefined<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> NotBeNull<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> NotHaveFlag<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source, TEnum? unexpectedFlag)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Results.AndOrResult<TEnum?, Testably.Expectations.Core.IThat<TEnum?>> NotHaveValue<TEnum>(this Testably.Expectations.Core.IThat<TEnum?> source, long? unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static Testably.Expectations.Core.IThat<TEnum?> Should<TEnum>(this Testably.Expectations.Core.IExpectSubject<TEnum?> subject)
+            where TEnum :  struct, System.Enum { }
+    }
+    public static class ThatNullableGuidShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<System.Guid?, Testably.Expectations.Core.IThat<System.Guid?>> Be(this Testably.Expectations.Core.IThat<System.Guid?> source, System.Guid? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid?, Testably.Expectations.Core.IThat<System.Guid?>> BeEmpty(this Testably.Expectations.Core.IThat<System.Guid?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid?, Testably.Expectations.Core.IThat<System.Guid?>> BeNull(this Testably.Expectations.Core.IThat<System.Guid?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid?, Testably.Expectations.Core.IThat<System.Guid?>> NotBe(this Testably.Expectations.Core.IThat<System.Guid?> source, System.Guid? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid?, Testably.Expectations.Core.IThat<System.Guid?>> NotBeEmpty(this Testably.Expectations.Core.IThat<System.Guid?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.Guid?, Testably.Expectations.Core.IThat<System.Guid?>> NotBeNull(this Testably.Expectations.Core.IThat<System.Guid?> source) { }
+        public static Testably.Expectations.Core.IThat<System.Guid?> Should(this Testably.Expectations.Core.IExpectSubject<System.Guid?> subject) { }
+    }
+    public static class ThatNullableTimeSpanShould
+    {
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> Be(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> BeGreaterThan(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> BeLessThan(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> BeNegative(this Testably.Expectations.Core.IThat<System.TimeSpan?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> BePositive(this Testably.Expectations.Core.IThat<System.TimeSpan?> source) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBe(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBeGreaterThan(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBeLessThan(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBeNegative(this Testably.Expectations.Core.IThat<System.TimeSpan?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan?, Testably.Expectations.Core.IThat<System.TimeSpan?>> NotBePositive(this Testably.Expectations.Core.IThat<System.TimeSpan?> source) { }
+        public static Testably.Expectations.Core.IThat<System.TimeSpan?> Should(this Testably.Expectations.Core.IExpectSubject<System.TimeSpan?> subject) { }
+    }
+    public static class ThatNumberShould
+    {
+        public static Testably.Expectations.Results.NumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte>> Be(this Testably.Expectations.Core.IThat<byte> source, byte? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal>> Be(this Testably.Expectations.Core.IThat<decimal> source, decimal? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<double, Testably.Expectations.Core.IThat<double>> Be(this Testably.Expectations.Core.IThat<double> source, double? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<short, Testably.Expectations.Core.IThat<short>> Be(this Testably.Expectations.Core.IThat<short> source, short? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<int, Testably.Expectations.Core.IThat<int>> Be(this Testably.Expectations.Core.IThat<int> source, int? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<long, Testably.Expectations.Core.IThat<long>> Be(this Testably.Expectations.Core.IThat<long> source, long? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> Be(this Testably.Expectations.Core.IThat<sbyte> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<float, Testably.Expectations.Core.IThat<float>> Be(this Testably.Expectations.Core.IThat<float> source, float? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort>> Be(this Testably.Expectations.Core.IThat<ushort> source, ushort? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint>> Be(this Testably.Expectations.Core.IThat<uint> source, uint? expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong>> Be(this Testably.Expectations.Core.IThat<ulong> source, ulong? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte?>> Be(this Testably.Expectations.Core.IThat<byte?> source, byte? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal?>> Be(this Testably.Expectations.Core.IThat<decimal?> source, decimal? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<double, Testably.Expectations.Core.IThat<double?>> Be(this Testably.Expectations.Core.IThat<double?> source, double? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<float, Testably.Expectations.Core.IThat<float?>> Be(this Testably.Expectations.Core.IThat<float?> source, float? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<int, Testably.Expectations.Core.IThat<int?>> Be(this Testably.Expectations.Core.IThat<int?> source, int? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<long, Testably.Expectations.Core.IThat<long?>> Be(this Testably.Expectations.Core.IThat<long?> source, long? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte?>> Be(this Testably.Expectations.Core.IThat<sbyte?> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<short, Testably.Expectations.Core.IThat<short?>> Be(this Testably.Expectations.Core.IThat<short?> source, short? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint?>> Be(this Testably.Expectations.Core.IThat<uint?> source, uint? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong?>> Be(this Testably.Expectations.Core.IThat<ulong?> source, ulong? expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort?>> Be(this Testably.Expectations.Core.IThat<ushort?> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeFinite(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeFinite(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double?>> BeFinite(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float?>> BeFinite(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<byte, Testably.Expectations.Core.IThat<byte>> BeGreaterThan(this Testably.Expectations.Core.IThat<byte> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeGreaterThan(this Testably.Expectations.Core.IThat<decimal> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeGreaterThan(this Testably.Expectations.Core.IThat<double> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short, Testably.Expectations.Core.IThat<short>> BeGreaterThan(this Testably.Expectations.Core.IThat<short> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int, Testably.Expectations.Core.IThat<int>> BeGreaterThan(this Testably.Expectations.Core.IThat<int> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long, Testably.Expectations.Core.IThat<long>> BeGreaterThan(this Testably.Expectations.Core.IThat<long> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeGreaterThan(this Testably.Expectations.Core.IThat<sbyte> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeGreaterThan(this Testably.Expectations.Core.IThat<float> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort, Testably.Expectations.Core.IThat<ushort>> BeGreaterThan(this Testably.Expectations.Core.IThat<ushort> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint, Testably.Expectations.Core.IThat<uint>> BeGreaterThan(this Testably.Expectations.Core.IThat<uint> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong, Testably.Expectations.Core.IThat<ulong>> BeGreaterThan(this Testably.Expectations.Core.IThat<ulong> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<byte?, Testably.Expectations.Core.IThat<byte?>> BeGreaterThan(this Testably.Expectations.Core.IThat<byte?> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal?, Testably.Expectations.Core.IThat<decimal?>> BeGreaterThan(this Testably.Expectations.Core.IThat<decimal?> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeGreaterThan(this Testably.Expectations.Core.IThat<double?> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeGreaterThan(this Testably.Expectations.Core.IThat<float?> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int?, Testably.Expectations.Core.IThat<int?>> BeGreaterThan(this Testably.Expectations.Core.IThat<int?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long?, Testably.Expectations.Core.IThat<long?>> BeGreaterThan(this Testably.Expectations.Core.IThat<long?> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte?, Testably.Expectations.Core.IThat<sbyte?>> BeGreaterThan(this Testably.Expectations.Core.IThat<sbyte?> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short?, Testably.Expectations.Core.IThat<short?>> BeGreaterThan(this Testably.Expectations.Core.IThat<short?> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint?, Testably.Expectations.Core.IThat<uint?>> BeGreaterThan(this Testably.Expectations.Core.IThat<uint?> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong?, Testably.Expectations.Core.IThat<ulong?>> BeGreaterThan(this Testably.Expectations.Core.IThat<ulong?> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort?, Testably.Expectations.Core.IThat<ushort?>> BeGreaterThan(this Testably.Expectations.Core.IThat<ushort?> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<byte, Testably.Expectations.Core.IThat<byte>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<byte> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<decimal> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<double> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short, Testably.Expectations.Core.IThat<short>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<short> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int, Testably.Expectations.Core.IThat<int>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<int> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long, Testably.Expectations.Core.IThat<long>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<long> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<sbyte> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<float> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort, Testably.Expectations.Core.IThat<ushort>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<ushort> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint, Testably.Expectations.Core.IThat<uint>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<uint> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong, Testably.Expectations.Core.IThat<ulong>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<ulong> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<byte?, Testably.Expectations.Core.IThat<byte?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<byte?> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal?, Testably.Expectations.Core.IThat<decimal?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<decimal?> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<double?> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<float?> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int?, Testably.Expectations.Core.IThat<int?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<int?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long?, Testably.Expectations.Core.IThat<long?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<long?> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte?, Testably.Expectations.Core.IThat<sbyte?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<sbyte?> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short?, Testably.Expectations.Core.IThat<short?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<short?> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint?, Testably.Expectations.Core.IThat<uint?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<uint?> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong?, Testably.Expectations.Core.IThat<ulong?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<ulong?> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort?, Testably.Expectations.Core.IThat<ushort?>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<ushort?> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeInfinite(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeInfinite(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeInfinite(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeInfinite(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<byte, Testably.Expectations.Core.IThat<byte>> BeLessThan(this Testably.Expectations.Core.IThat<byte> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeLessThan(this Testably.Expectations.Core.IThat<decimal> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeLessThan(this Testably.Expectations.Core.IThat<double> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short, Testably.Expectations.Core.IThat<short>> BeLessThan(this Testably.Expectations.Core.IThat<short> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int, Testably.Expectations.Core.IThat<int>> BeLessThan(this Testably.Expectations.Core.IThat<int> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long, Testably.Expectations.Core.IThat<long>> BeLessThan(this Testably.Expectations.Core.IThat<long> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeLessThan(this Testably.Expectations.Core.IThat<sbyte> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeLessThan(this Testably.Expectations.Core.IThat<float> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort, Testably.Expectations.Core.IThat<ushort>> BeLessThan(this Testably.Expectations.Core.IThat<ushort> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint, Testably.Expectations.Core.IThat<uint>> BeLessThan(this Testably.Expectations.Core.IThat<uint> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong, Testably.Expectations.Core.IThat<ulong>> BeLessThan(this Testably.Expectations.Core.IThat<ulong> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<byte?, Testably.Expectations.Core.IThat<byte?>> BeLessThan(this Testably.Expectations.Core.IThat<byte?> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal?, Testably.Expectations.Core.IThat<decimal?>> BeLessThan(this Testably.Expectations.Core.IThat<decimal?> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeLessThan(this Testably.Expectations.Core.IThat<double?> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeLessThan(this Testably.Expectations.Core.IThat<float?> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int?, Testably.Expectations.Core.IThat<int?>> BeLessThan(this Testably.Expectations.Core.IThat<int?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long?, Testably.Expectations.Core.IThat<long?>> BeLessThan(this Testably.Expectations.Core.IThat<long?> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte?, Testably.Expectations.Core.IThat<sbyte?>> BeLessThan(this Testably.Expectations.Core.IThat<sbyte?> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short?, Testably.Expectations.Core.IThat<short?>> BeLessThan(this Testably.Expectations.Core.IThat<short?> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint?, Testably.Expectations.Core.IThat<uint?>> BeLessThan(this Testably.Expectations.Core.IThat<uint?> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong?, Testably.Expectations.Core.IThat<ulong?>> BeLessThan(this Testably.Expectations.Core.IThat<ulong?> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort?, Testably.Expectations.Core.IThat<ushort?>> BeLessThan(this Testably.Expectations.Core.IThat<ushort?> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<byte, Testably.Expectations.Core.IThat<byte>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<byte> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<decimal> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<double> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short, Testably.Expectations.Core.IThat<short>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<short> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int, Testably.Expectations.Core.IThat<int>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<int> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long, Testably.Expectations.Core.IThat<long>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<long> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<sbyte> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<float> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort, Testably.Expectations.Core.IThat<ushort>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<ushort> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint, Testably.Expectations.Core.IThat<uint>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<uint> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong, Testably.Expectations.Core.IThat<ulong>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<ulong> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<byte?, Testably.Expectations.Core.IThat<byte?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<byte?> source, byte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal?, Testably.Expectations.Core.IThat<decimal?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<decimal?> source, decimal? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<double?> source, double? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<float?> source, float? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<int?, Testably.Expectations.Core.IThat<int?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<int?> source, int? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<long?, Testably.Expectations.Core.IThat<long?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<long?> source, long? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte?, Testably.Expectations.Core.IThat<sbyte?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<sbyte?> source, sbyte? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<short?, Testably.Expectations.Core.IThat<short?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<short?> source, short? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<uint?, Testably.Expectations.Core.IThat<uint?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<uint?> source, uint? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ulong?, Testably.Expectations.Core.IThat<ulong?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<ulong?> source, ulong? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<ushort?, Testably.Expectations.Core.IThat<ushort?>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<ushort?> source, ushort? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeNaN(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeNaN(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeNaN(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeNaN(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeNegative(this Testably.Expectations.Core.IThat<decimal> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BeNegative(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<short, Testably.Expectations.Core.IThat<short>> BeNegative(this Testably.Expectations.Core.IThat<short> source) { }
+        public static Testably.Expectations.Results.AndOrResult<int, Testably.Expectations.Core.IThat<int>> BeNegative(this Testably.Expectations.Core.IThat<int> source) { }
+        public static Testably.Expectations.Results.AndOrResult<long, Testably.Expectations.Core.IThat<long>> BeNegative(this Testably.Expectations.Core.IThat<long> source) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeNegative(this Testably.Expectations.Core.IThat<sbyte> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BeNegative(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal?, Testably.Expectations.Core.IThat<decimal?>> BeNegative(this Testably.Expectations.Core.IThat<decimal?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BeNegative(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BeNegative(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<int?, Testably.Expectations.Core.IThat<int?>> BeNegative(this Testably.Expectations.Core.IThat<int?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<long?, Testably.Expectations.Core.IThat<long?>> BeNegative(this Testably.Expectations.Core.IThat<long?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte?, Testably.Expectations.Core.IThat<sbyte?>> BeNegative(this Testably.Expectations.Core.IThat<sbyte?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<short?, Testably.Expectations.Core.IThat<short?>> BeNegative(this Testably.Expectations.Core.IThat<short?> source) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte>> BeOneOf(this Testably.Expectations.Core.IThat<byte> source, params byte[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte>> BeOneOf(this Testably.Expectations.Core.IThat<byte> source, params System.Nullable<byte>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeOneOf(this Testably.Expectations.Core.IThat<decimal> source, params decimal[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal>> BeOneOf(this Testably.Expectations.Core.IThat<decimal> source, params System.Nullable<decimal>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<double, Testably.Expectations.Core.IThat<double>> BeOneOf(this Testably.Expectations.Core.IThat<double> source, params double[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<double, Testably.Expectations.Core.IThat<double>> BeOneOf(this Testably.Expectations.Core.IThat<double> source, params System.Nullable<double>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<short, Testably.Expectations.Core.IThat<short>> BeOneOf(this Testably.Expectations.Core.IThat<short> source, params short[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<short, Testably.Expectations.Core.IThat<short>> BeOneOf(this Testably.Expectations.Core.IThat<short> source, params System.Nullable<short>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<int, Testably.Expectations.Core.IThat<int>> BeOneOf(this Testably.Expectations.Core.IThat<int> source, params int[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<int, Testably.Expectations.Core.IThat<int>> BeOneOf(this Testably.Expectations.Core.IThat<int> source, params System.Nullable<int>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<long, Testably.Expectations.Core.IThat<long>> BeOneOf(this Testably.Expectations.Core.IThat<long> source, params long[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<long, Testably.Expectations.Core.IThat<long>> BeOneOf(this Testably.Expectations.Core.IThat<long> source, params System.Nullable<long>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeOneOf(this Testably.Expectations.Core.IThat<sbyte> source, params System.Nullable<sbyte>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BeOneOf(this Testably.Expectations.Core.IThat<sbyte> source, params sbyte[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<float, Testably.Expectations.Core.IThat<float>> BeOneOf(this Testably.Expectations.Core.IThat<float> source, params System.Nullable<float>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<float, Testably.Expectations.Core.IThat<float>> BeOneOf(this Testably.Expectations.Core.IThat<float> source, params float[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort>> BeOneOf(this Testably.Expectations.Core.IThat<ushort> source, params System.Nullable<ushort>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort>> BeOneOf(this Testably.Expectations.Core.IThat<ushort> source, params ushort[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint>> BeOneOf(this Testably.Expectations.Core.IThat<uint> source, params System.Nullable<uint>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint>> BeOneOf(this Testably.Expectations.Core.IThat<uint> source, params uint[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong>> BeOneOf(this Testably.Expectations.Core.IThat<ulong> source, params System.Nullable<ulong>[] expected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong>> BeOneOf(this Testably.Expectations.Core.IThat<ulong> source, params ulong[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte?>> BeOneOf(this Testably.Expectations.Core.IThat<byte?> source, params byte[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte?>> BeOneOf(this Testably.Expectations.Core.IThat<byte?> source, params System.Nullable<byte>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal?>> BeOneOf(this Testably.Expectations.Core.IThat<decimal?> source, params decimal[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal?>> BeOneOf(this Testably.Expectations.Core.IThat<decimal?> source, params System.Nullable<decimal>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<double, Testably.Expectations.Core.IThat<double?>> BeOneOf(this Testably.Expectations.Core.IThat<double?> source, params double[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<double, Testably.Expectations.Core.IThat<double?>> BeOneOf(this Testably.Expectations.Core.IThat<double?> source, params System.Nullable<double>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<float, Testably.Expectations.Core.IThat<float?>> BeOneOf(this Testably.Expectations.Core.IThat<float?> source, params System.Nullable<float>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<float, Testably.Expectations.Core.IThat<float?>> BeOneOf(this Testably.Expectations.Core.IThat<float?> source, params float[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<int, Testably.Expectations.Core.IThat<int?>> BeOneOf(this Testably.Expectations.Core.IThat<int?> source, params int[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<int, Testably.Expectations.Core.IThat<int?>> BeOneOf(this Testably.Expectations.Core.IThat<int?> source, params System.Nullable<int>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<long, Testably.Expectations.Core.IThat<long?>> BeOneOf(this Testably.Expectations.Core.IThat<long?> source, params long[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<long, Testably.Expectations.Core.IThat<long?>> BeOneOf(this Testably.Expectations.Core.IThat<long?> source, params System.Nullable<long>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte?>> BeOneOf(this Testably.Expectations.Core.IThat<sbyte?> source, params System.Nullable<sbyte>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte?>> BeOneOf(this Testably.Expectations.Core.IThat<sbyte?> source, params sbyte[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<short, Testably.Expectations.Core.IThat<short?>> BeOneOf(this Testably.Expectations.Core.IThat<short?> source, params short[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<short, Testably.Expectations.Core.IThat<short?>> BeOneOf(this Testably.Expectations.Core.IThat<short?> source, params System.Nullable<short>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint?>> BeOneOf(this Testably.Expectations.Core.IThat<uint?> source, params System.Nullable<uint>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint?>> BeOneOf(this Testably.Expectations.Core.IThat<uint?> source, params uint[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong?>> BeOneOf(this Testably.Expectations.Core.IThat<ulong?> source, params System.Nullable<ulong>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong?>> BeOneOf(this Testably.Expectations.Core.IThat<ulong?> source, params ulong[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort?>> BeOneOf(this Testably.Expectations.Core.IThat<ushort?> source, params System.Nullable<ushort>[] expected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort?>> BeOneOf(this Testably.Expectations.Core.IThat<ushort?> source, params ushort[] expected) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal, Testably.Expectations.Core.IThat<decimal>> BePositive(this Testably.Expectations.Core.IThat<decimal> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> BePositive(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<short, Testably.Expectations.Core.IThat<short>> BePositive(this Testably.Expectations.Core.IThat<short> source) { }
+        public static Testably.Expectations.Results.AndOrResult<int, Testably.Expectations.Core.IThat<int>> BePositive(this Testably.Expectations.Core.IThat<int> source) { }
+        public static Testably.Expectations.Results.AndOrResult<long, Testably.Expectations.Core.IThat<long>> BePositive(this Testably.Expectations.Core.IThat<long> source) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> BePositive(this Testably.Expectations.Core.IThat<sbyte> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> BePositive(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<decimal?, Testably.Expectations.Core.IThat<decimal?>> BePositive(this Testably.Expectations.Core.IThat<decimal?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> BePositive(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> BePositive(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<int?, Testably.Expectations.Core.IThat<int?>> BePositive(this Testably.Expectations.Core.IThat<int?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<long?, Testably.Expectations.Core.IThat<long?>> BePositive(this Testably.Expectations.Core.IThat<long?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<sbyte?, Testably.Expectations.Core.IThat<sbyte?>> BePositive(this Testably.Expectations.Core.IThat<sbyte?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<short?, Testably.Expectations.Core.IThat<short?>> BePositive(this Testably.Expectations.Core.IThat<short?> source) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte>> NotBe(this Testably.Expectations.Core.IThat<byte> source, byte? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal>> NotBe(this Testably.Expectations.Core.IThat<decimal> source, decimal? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<double, Testably.Expectations.Core.IThat<double>> NotBe(this Testably.Expectations.Core.IThat<double> source, double? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<short, Testably.Expectations.Core.IThat<short>> NotBe(this Testably.Expectations.Core.IThat<short> source, short? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<int, Testably.Expectations.Core.IThat<int>> NotBe(this Testably.Expectations.Core.IThat<int> source, int? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<long, Testably.Expectations.Core.IThat<long>> NotBe(this Testably.Expectations.Core.IThat<long> source, long? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> NotBe(this Testably.Expectations.Core.IThat<sbyte> source, sbyte? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<float, Testably.Expectations.Core.IThat<float>> NotBe(this Testably.Expectations.Core.IThat<float> source, float? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort>> NotBe(this Testably.Expectations.Core.IThat<ushort> source, ushort? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint>> NotBe(this Testably.Expectations.Core.IThat<uint> source, uint? unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong>> NotBe(this Testably.Expectations.Core.IThat<ulong> source, ulong? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte?>> NotBe(this Testably.Expectations.Core.IThat<byte?> source, byte? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal?>> NotBe(this Testably.Expectations.Core.IThat<decimal?> source, decimal? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<double, Testably.Expectations.Core.IThat<double?>> NotBe(this Testably.Expectations.Core.IThat<double?> source, double? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<float, Testably.Expectations.Core.IThat<float?>> NotBe(this Testably.Expectations.Core.IThat<float?> source, float? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<int, Testably.Expectations.Core.IThat<int?>> NotBe(this Testably.Expectations.Core.IThat<int?> source, int? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<long, Testably.Expectations.Core.IThat<long?>> NotBe(this Testably.Expectations.Core.IThat<long?> source, long? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte?>> NotBe(this Testably.Expectations.Core.IThat<sbyte?> source, sbyte? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<short, Testably.Expectations.Core.IThat<short?>> NotBe(this Testably.Expectations.Core.IThat<short?> source, short? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint?>> NotBe(this Testably.Expectations.Core.IThat<uint?> source, uint? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong?>> NotBe(this Testably.Expectations.Core.IThat<ulong?> source, ulong? unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort?>> NotBe(this Testably.Expectations.Core.IThat<ushort?> source, ushort? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> NotBeFinite(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> NotBeFinite(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> NotBeFinite(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> NotBeFinite(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> NotBeInfinite(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> NotBeInfinite(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> NotBeInfinite(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> NotBeInfinite(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double, Testably.Expectations.Core.IThat<double>> NotBeNaN(this Testably.Expectations.Core.IThat<double> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float, Testably.Expectations.Core.IThat<float>> NotBeNaN(this Testably.Expectations.Core.IThat<float> source) { }
+        public static Testably.Expectations.Results.AndOrResult<double?, Testably.Expectations.Core.IThat<double?>> NotBeNaN(this Testably.Expectations.Core.IThat<double?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<float?, Testably.Expectations.Core.IThat<float?>> NotBeNaN(this Testably.Expectations.Core.IThat<float?> source) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte>> NotBeOneOf(this Testably.Expectations.Core.IThat<byte> source, params byte[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte>> NotBeOneOf(this Testably.Expectations.Core.IThat<byte> source, params System.Nullable<byte>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal>> NotBeOneOf(this Testably.Expectations.Core.IThat<decimal> source, params decimal[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal>> NotBeOneOf(this Testably.Expectations.Core.IThat<decimal> source, params System.Nullable<decimal>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<double, Testably.Expectations.Core.IThat<double>> NotBeOneOf(this Testably.Expectations.Core.IThat<double> source, params double[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<double, Testably.Expectations.Core.IThat<double>> NotBeOneOf(this Testably.Expectations.Core.IThat<double> source, params System.Nullable<double>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<short, Testably.Expectations.Core.IThat<short>> NotBeOneOf(this Testably.Expectations.Core.IThat<short> source, params short[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<short, Testably.Expectations.Core.IThat<short>> NotBeOneOf(this Testably.Expectations.Core.IThat<short> source, params System.Nullable<short>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<int, Testably.Expectations.Core.IThat<int>> NotBeOneOf(this Testably.Expectations.Core.IThat<int> source, params int[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<int, Testably.Expectations.Core.IThat<int>> NotBeOneOf(this Testably.Expectations.Core.IThat<int> source, params System.Nullable<int>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<long, Testably.Expectations.Core.IThat<long>> NotBeOneOf(this Testably.Expectations.Core.IThat<long> source, params long[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<long, Testably.Expectations.Core.IThat<long>> NotBeOneOf(this Testably.Expectations.Core.IThat<long> source, params System.Nullable<long>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> NotBeOneOf(this Testably.Expectations.Core.IThat<sbyte> source, params System.Nullable<sbyte>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte>> NotBeOneOf(this Testably.Expectations.Core.IThat<sbyte> source, params sbyte[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<float, Testably.Expectations.Core.IThat<float>> NotBeOneOf(this Testably.Expectations.Core.IThat<float> source, params System.Nullable<float>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<float, Testably.Expectations.Core.IThat<float>> NotBeOneOf(this Testably.Expectations.Core.IThat<float> source, params float[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort>> NotBeOneOf(this Testably.Expectations.Core.IThat<ushort> source, params System.Nullable<ushort>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort>> NotBeOneOf(this Testably.Expectations.Core.IThat<ushort> source, params ushort[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint>> NotBeOneOf(this Testably.Expectations.Core.IThat<uint> source, params System.Nullable<uint>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint>> NotBeOneOf(this Testably.Expectations.Core.IThat<uint> source, params uint[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong>> NotBeOneOf(this Testably.Expectations.Core.IThat<ulong> source, params System.Nullable<ulong>[] unexpected) { }
+        public static Testably.Expectations.Results.NumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong>> NotBeOneOf(this Testably.Expectations.Core.IThat<ulong> source, params ulong[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte?>> NotBeOneOf(this Testably.Expectations.Core.IThat<byte?> source, params byte[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<byte, Testably.Expectations.Core.IThat<byte?>> NotBeOneOf(this Testably.Expectations.Core.IThat<byte?> source, params System.Nullable<byte>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal?>> NotBeOneOf(this Testably.Expectations.Core.IThat<decimal?> source, params decimal[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<decimal, Testably.Expectations.Core.IThat<decimal?>> NotBeOneOf(this Testably.Expectations.Core.IThat<decimal?> source, params System.Nullable<decimal>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<double, Testably.Expectations.Core.IThat<double?>> NotBeOneOf(this Testably.Expectations.Core.IThat<double?> source, params double[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<double, Testably.Expectations.Core.IThat<double?>> NotBeOneOf(this Testably.Expectations.Core.IThat<double?> source, params System.Nullable<double>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<float, Testably.Expectations.Core.IThat<float?>> NotBeOneOf(this Testably.Expectations.Core.IThat<float?> source, params System.Nullable<float>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<float, Testably.Expectations.Core.IThat<float?>> NotBeOneOf(this Testably.Expectations.Core.IThat<float?> source, params float[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<int, Testably.Expectations.Core.IThat<int?>> NotBeOneOf(this Testably.Expectations.Core.IThat<int?> source, params int[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<int, Testably.Expectations.Core.IThat<int?>> NotBeOneOf(this Testably.Expectations.Core.IThat<int?> source, params System.Nullable<int>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<long, Testably.Expectations.Core.IThat<long?>> NotBeOneOf(this Testably.Expectations.Core.IThat<long?> source, params long[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<long, Testably.Expectations.Core.IThat<long?>> NotBeOneOf(this Testably.Expectations.Core.IThat<long?> source, params System.Nullable<long>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte?>> NotBeOneOf(this Testably.Expectations.Core.IThat<sbyte?> source, params System.Nullable<sbyte>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<sbyte, Testably.Expectations.Core.IThat<sbyte?>> NotBeOneOf(this Testably.Expectations.Core.IThat<sbyte?> source, params sbyte[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<short, Testably.Expectations.Core.IThat<short?>> NotBeOneOf(this Testably.Expectations.Core.IThat<short?> source, params short[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<short, Testably.Expectations.Core.IThat<short?>> NotBeOneOf(this Testably.Expectations.Core.IThat<short?> source, params System.Nullable<short>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint?>> NotBeOneOf(this Testably.Expectations.Core.IThat<uint?> source, params System.Nullable<uint>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<uint, Testably.Expectations.Core.IThat<uint?>> NotBeOneOf(this Testably.Expectations.Core.IThat<uint?> source, params uint[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong?>> NotBeOneOf(this Testably.Expectations.Core.IThat<ulong?> source, params System.Nullable<ulong>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ulong, Testably.Expectations.Core.IThat<ulong?>> NotBeOneOf(this Testably.Expectations.Core.IThat<ulong?> source, params ulong[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort?>> NotBeOneOf(this Testably.Expectations.Core.IThat<ushort?> source, params System.Nullable<ushort>[] unexpected) { }
+        public static Testably.Expectations.Results.NullableNumberToleranceResult<ushort, Testably.Expectations.Core.IThat<ushort?>> NotBeOneOf(this Testably.Expectations.Core.IThat<ushort?> source, params ushort[] unexpected) { }
+        public static Testably.Expectations.Core.IThat<byte> Should(this Testably.Expectations.Core.IExpectSubject<byte> subject) { }
+        public static Testably.Expectations.Core.IThat<decimal> Should(this Testably.Expectations.Core.IExpectSubject<decimal> subject) { }
+        public static Testably.Expectations.Core.IThat<double> Should(this Testably.Expectations.Core.IExpectSubject<double> subject) { }
+        public static Testably.Expectations.Core.IThat<short> Should(this Testably.Expectations.Core.IExpectSubject<short> subject) { }
+        public static Testably.Expectations.Core.IThat<int> Should(this Testably.Expectations.Core.IExpectSubject<int> subject) { }
+        public static Testably.Expectations.Core.IThat<long> Should(this Testably.Expectations.Core.IExpectSubject<long> subject) { }
+        public static Testably.Expectations.Core.IThat<sbyte> Should(this Testably.Expectations.Core.IExpectSubject<sbyte> subject) { }
+        public static Testably.Expectations.Core.IThat<float> Should(this Testably.Expectations.Core.IExpectSubject<float> subject) { }
+        public static Testably.Expectations.Core.IThat<ushort> Should(this Testably.Expectations.Core.IExpectSubject<ushort> subject) { }
+        public static Testably.Expectations.Core.IThat<uint> Should(this Testably.Expectations.Core.IExpectSubject<uint> subject) { }
+        public static Testably.Expectations.Core.IThat<ulong> Should(this Testably.Expectations.Core.IExpectSubject<ulong> subject) { }
+        public static Testably.Expectations.Core.IThat<byte?> Should(this Testably.Expectations.Core.IExpectSubject<byte?> subject) { }
+        public static Testably.Expectations.Core.IThat<decimal?> Should(this Testably.Expectations.Core.IExpectSubject<decimal?> subject) { }
+        public static Testably.Expectations.Core.IThat<double?> Should(this Testably.Expectations.Core.IExpectSubject<double?> subject) { }
+        public static Testably.Expectations.Core.IThat<float?> Should(this Testably.Expectations.Core.IExpectSubject<float?> subject) { }
+        public static Testably.Expectations.Core.IThat<int?> Should(this Testably.Expectations.Core.IExpectSubject<int?> subject) { }
+        public static Testably.Expectations.Core.IThat<long?> Should(this Testably.Expectations.Core.IExpectSubject<long?> subject) { }
+        public static Testably.Expectations.Core.IThat<sbyte?> Should(this Testably.Expectations.Core.IExpectSubject<sbyte?> subject) { }
+        public static Testably.Expectations.Core.IThat<short?> Should(this Testably.Expectations.Core.IExpectSubject<short?> subject) { }
+        public static Testably.Expectations.Core.IThat<uint?> Should(this Testably.Expectations.Core.IExpectSubject<uint?> subject) { }
+        public static Testably.Expectations.Core.IThat<ulong?> Should(this Testably.Expectations.Core.IExpectSubject<ulong?> subject) { }
+        public static Testably.Expectations.Core.IThat<ushort?> Should(this Testably.Expectations.Core.IExpectSubject<ushort?> subject) { }
+    }
+    public static class ThatObjectShould
+    {
+        public static Testably.Expectations.Results.AndOrWhichResult<object?, Testably.Expectations.Core.IThat<object?>> Be(this Testably.Expectations.Core.IThat<object?> source, System.Type type) { }
+        public static Testably.Expectations.Results.ObjectEqualityResult<object?, Testably.Expectations.Core.IThat<object?>> Be(this Testably.Expectations.Core.IThat<object?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Results.AndOrWhichResult<TType, Testably.Expectations.Core.IThat<object?>> Be<TType>(this Testably.Expectations.Core.IThat<object?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<object?, Testably.Expectations.Core.IThat<object?>> BeNull(this Testably.Expectations.Core.IThat<object?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<object, Testably.Expectations.Core.IThat<object?>> NotBeNull(this Testably.Expectations.Core.IThat<object?> source) { }
+        public static Testably.Expectations.Core.IThat<object?> Should(this Testably.Expectations.Core.IExpectSubject<object?> subject) { }
+    }
+    public static class ThatQuantifiedCollectionResultShould { }
+    public static class ThatQuantifiedCollectionResultShouldAsync { }
+    public static class ThatQuantifiedCollectionResultShouldSync
+    {
+        public static Testably.Expectations.Results.AndOrResult<TCollection, Testably.Expectations.Core.IThat<TCollection>> Be<TItem, TCollection>(this Testably.Expectations.QuantifiedCollectionResult<Testably.Expectations.Core.IThat<TCollection>> source, TItem expected)
+            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
+        public static Testably.Expectations.Results.AndOrResult<TCollection, Testably.Expectations.Core.IThat<TCollection>> BeEquivalentTo<TItem, TCollection>(this Testably.Expectations.QuantifiedCollectionResult<Testably.Expectations.Core.IThat<TCollection>> source, TItem expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
+        public static Testably.Expectations.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Satisfy<TItem>(this Testably.Expectations.QuantifiedCollectionResult<Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static Testably.Expectations.Results.AndOrResult<TCollection, Testably.Expectations.Core.IThat<TCollection>> Satisfy<TItem, TCollection>(this Testably.Expectations.QuantifiedCollectionResult<Testably.Expectations.Core.IThat<TCollection>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "")
+            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
+    }
+    public static class ThatStreamShould
+    {
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> BeReadOnly(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> BeReadable(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> BeSeekable(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> BeWritable(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> BeWriteOnly(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> HaveLength(this Testably.Expectations.Core.IThat<System.IO.Stream?> source, long expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> HavePosition(this Testably.Expectations.Core.IThat<System.IO.Stream?> source, long expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotBeReadOnly(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotBeReadable(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotBeSeekable(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotBeWritable(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotBeWriteOnly(this Testably.Expectations.Core.IThat<System.IO.Stream?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotHaveLength(this Testably.Expectations.Core.IThat<System.IO.Stream?> source, long expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.IO.Stream?, Testably.Expectations.Core.IThat<System.IO.Stream?>> NotHavePosition(this Testably.Expectations.Core.IThat<System.IO.Stream?> source, long expected) { }
+        public static Testably.Expectations.Core.IThat<TStream?> Should<TStream>(this Testably.Expectations.Core.IExpectSubject<TStream?> subject)
+            where TStream : System.IO.Stream { }
+    }
+    public static class ThatStringEnumerableShould
+    {
+        public static Testably.Expectations.Results.StringCountResult<System.Collections.Generic.IEnumerable<string>, Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<string>>> Contain(this Testably.Expectations.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, string expected) { }
+    }
+    public static class ThatStringShould
+    {
+        public static Testably.Expectations.Results.StringMatcherResult<string?, Testably.Expectations.Core.IThat<string?>> Be(this Testably.Expectations.Core.IThat<string?> source, Testably.Expectations.Options.StringMatcher expected) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> BeEmpty(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> BeLowerCased(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> BeNull(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> BeNullOrEmpty(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> BeNullOrWhiteSpace(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> BeOneOf(this Testably.Expectations.Core.IThat<string?> source, params string?[] expected) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> BeUpperCased(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.StringCountResult<string?, Testably.Expectations.Core.IThat<string?>> Contain(this Testably.Expectations.Core.IThat<string?> source, string expected) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> EndWith(this Testably.Expectations.Core.IThat<string?> source, string expected) { }
+        public static Testably.Expectations.Results.AndOrResult<string?, Testably.Expectations.Core.IThat<string?>> HaveLength(this Testably.Expectations.Core.IThat<string?> source, int expected) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotBeEmpty(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotBeLowerCased(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotBeNull(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotBeNullOrEmpty(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotBeNullOrWhiteSpace(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> NotBeOneOf(this Testably.Expectations.Core.IThat<string?> source, params string?[] unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotBeUpperCased(this Testably.Expectations.Core.IThat<string?> source) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> NotContain(this Testably.Expectations.Core.IThat<string?> source, string unexpected) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> NotEndWith(this Testably.Expectations.Core.IThat<string?> source, string unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<string, Testably.Expectations.Core.IThat<string?>> NotHaveLength(this Testably.Expectations.Core.IThat<string?> source, int unexpected) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> NotStartWith(this Testably.Expectations.Core.IThat<string?> source, string unexpected) { }
+        public static Testably.Expectations.Core.IThat<string?> Should(this Testably.Expectations.Core.IExpectSubject<string?> subject) { }
+        public static Testably.Expectations.Results.StringEqualityResult<string?, Testably.Expectations.Core.IThat<string?>> StartWith(this Testably.Expectations.Core.IThat<string?> source, string expected) { }
+    }
+    public static class ThatTimeSpanShould
+    {
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> Be(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> BeGreaterThan(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> BeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> BeLessThan(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> BeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? expected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> BeNegative(this Testably.Expectations.Core.IThat<System.TimeSpan> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> BePositive(this Testably.Expectations.Core.IThat<System.TimeSpan> source) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBe(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBeGreaterThan(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBeGreaterThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBeLessThan(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.TimeToleranceResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBeLessThanOrEqualTo(this Testably.Expectations.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBeNegative(this Testably.Expectations.Core.IThat<System.TimeSpan> source) { }
+        public static Testably.Expectations.Results.AndOrResult<System.TimeSpan, Testably.Expectations.Core.IThat<System.TimeSpan>> NotBePositive(this Testably.Expectations.Core.IThat<System.TimeSpan> source) { }
+        public static Testably.Expectations.Core.IThat<System.TimeSpan> Should(this Testably.Expectations.Core.IExpectSubject<System.TimeSpan> subject) { }
+    }
+}
+namespace Testably.Expectations.Core.Constraints
+{
+    public abstract class ConstraintResult
+    {
+        protected ConstraintResult(string expectationText, Testably.Expectations.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy) { }
+        public string ExpectationText { get; }
+        public Testably.Expectations.Core.Constraints.ConstraintResult.FurtherProcessing FurtherProcessingStrategy { get; }
+        public abstract Testably.Expectations.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText);
+        public class Failure : Testably.Expectations.Core.Constraints.ConstraintResult
+        {
+            public Failure(string expectationText, string resultText, Testably.Expectations.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
+            public string ResultText { get; }
+            public override Testably.Expectations.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
+            public override string ToString() { }
+        }
+        public class Failure<T> : Testably.Expectations.Core.Constraints.ConstraintResult.Failure
+        {
+            public Failure(T value, string expectationText, string resultText, Testably.Expectations.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
+            public T Value { get; }
+            public override Testably.Expectations.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
+        }
+        public enum FurtherProcessing
+        {
+            Continue = 0,
+            IgnoreCompletely = 1,
+            IgnoreResult = 2,
+        }
+        public class Success : Testably.Expectations.Core.Constraints.ConstraintResult
+        {
+            public Success(string expectationText, Testably.Expectations.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
+            public override Testably.Expectations.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
+            public override string ToString() { }
+        }
+        public class Success<T> : Testably.Expectations.Core.Constraints.ConstraintResult.Success
+        {
+            public Success(T value, string expectationText, Testably.Expectations.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
+            public T Value { get; }
+            public override Testably.Expectations.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
+        }
+    }
+    public interface IAsyncConstraint<in TValue> : Testably.Expectations.Core.Constraints.IConstraint
+    {
+        System.Threading.Tasks.Task<Testably.Expectations.Core.Constraints.ConstraintResult> IsMetBy(TValue actual, System.Threading.CancellationToken cancellationToken);
+    }
+    public interface IAsyncContextConstraint<in TValue> : Testably.Expectations.Core.Constraints.IConstraint
+    {
+        System.Threading.Tasks.Task<Testably.Expectations.Core.Constraints.ConstraintResult> IsMetBy(TValue actual, Testably.Expectations.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken);
+    }
+    public interface IConstraint { }
+    public interface IContextConstraint<in TValue> : Testably.Expectations.Core.Constraints.IConstraint
+    {
+        Testably.Expectations.Core.Constraints.ConstraintResult IsMetBy(TValue actual, Testably.Expectations.Core.EvaluationContext.IEvaluationContext context);
+    }
+    public interface IValueConstraint<in TValue> : Testably.Expectations.Core.Constraints.IConstraint
+    {
+        Testably.Expectations.Core.Constraints.ConstraintResult IsMetBy(TValue actual);
+    }
+}
+namespace Testably.Expectations.Core.EvaluationContext
+{
+    public interface IEvaluationContext
+    {
+        void Store<T>(string key, T value);
+        bool TryReceive<T>(string key, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out T? value);
+    }
+}
+namespace Testably.Expectations.Core
+{
+    public abstract class ExpectationBuilder
+    {
+        protected ExpectationBuilder(string subjectExpression) { }
+        public Testably.Expectations.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, Testably.Expectations.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
+        public Testably.Expectations.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, Testably.Expectations.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
+        public Testably.Expectations.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, Testably.Expectations.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
+        public Testably.Expectations.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, Testably.Expectations.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
+        public Testably.Expectations.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(Testably.Expectations.Core.PropertyAccessor<TSource, TTarget?> propertyAccessor, System.Func<Testably.Expectations.Core.PropertyAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
+        public override string? ToString() { }
+        public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
+        public class PropertyExpectationBuilder<TSource, TProperty>
+        {
+            public Testably.Expectations.Core.ExpectationBuilder AddExpectations(System.Action<Testably.Expectations.Core.ExpectationBuilder> expectation) { }
+            public Testably.Expectations.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TProperty> Validate(System.Func<string, Testably.Expectations.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
+        }
+    }
+    public static class ExpectationBuilderExtensions
+    {
+        public static Testably.Expectations.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(this Testably.Expectations.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> propertySelector, string displayName, bool replaceIt = true) { }
+    }
+    public interface IExpectSubject<out T>
+    {
+        bool Equals(object? obj);
+        int GetHashCode();
+        System.Type GetType();
+        Testably.Expectations.Core.IThat<T> Should(System.Action<Testably.Expectations.Core.ExpectationBuilder> builderOptions);
+        string? ToString();
+    }
+    public interface IThat<out T>
+    {
+        Testably.Expectations.Core.ExpectationBuilder ExpectationBuilder { get; }
+        bool Equals(object? obj);
+        int GetHashCode();
+        System.Type GetType();
+        string? ToString();
+    }
+    public abstract class PropertyAccessor
+    {
+        protected PropertyAccessor(string name) { }
+        public override string ToString() { }
+    }
+    public class PropertyAccessor<TSource, TTarget> : Testably.Expectations.Core.PropertyAccessor
+    {
+        public static Testably.Expectations.Core.PropertyAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
+    }
+}
+namespace Testably.Expectations.Extensions
+{
+    public static class ChronologyExtensions
+    {
+        public static System.TimeSpan Days(this double days) { }
+        public static System.TimeSpan Days(this int days) { }
+        public static System.TimeSpan Days(this double days, System.TimeSpan offset) { }
+        public static System.TimeSpan Days(this int days, System.TimeSpan offset) { }
+        public static System.TimeSpan Hours(this double hours) { }
+        public static System.TimeSpan Hours(this int hours) { }
+        public static System.TimeSpan Hours(this double hours, System.TimeSpan offset) { }
+        public static System.TimeSpan Hours(this int hours, System.TimeSpan offset) { }
+        public static System.TimeSpan Milliseconds(this double milliseconds) { }
+        public static System.TimeSpan Milliseconds(this int milliseconds) { }
+        public static System.TimeSpan Milliseconds(this double milliseconds, System.TimeSpan offset) { }
+        public static System.TimeSpan Milliseconds(this int milliseconds, System.TimeSpan offset) { }
+        public static System.TimeSpan Minutes(this double minutes) { }
+        public static System.TimeSpan Minutes(this int minutes) { }
+        public static System.TimeSpan Minutes(this double minutes, System.TimeSpan offset) { }
+        public static System.TimeSpan Minutes(this int minutes, System.TimeSpan offset) { }
+        public static System.TimeSpan Seconds(this double seconds) { }
+        public static System.TimeSpan Seconds(this int seconds) { }
+        public static System.TimeSpan Seconds(this double seconds, System.TimeSpan offset) { }
+        public static System.TimeSpan Seconds(this int seconds, System.TimeSpan offset) { }
+    }
+}
+namespace Testably.Expectations.Formatting
+{
+    public static class Format
+    {
+        public static Testably.Expectations.Formatting.ValueFormatter Formatter { get; }
+    }
+    public class FormattingOptions
+    {
+        public static Testably.Expectations.Formatting.FormattingOptions MultipleLines { get; }
+        public static Testably.Expectations.Formatting.FormattingOptions SingleLine { get; }
+    }
+    public class ValueFormatter
+    {
+        public static readonly string NullString;
+    }
+    public static class ValueFormatters
+    {
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, bool value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, byte value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, System.DateTime value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, System.DateTimeOffset value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, decimal value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, double value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, System.Guid value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, short value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, int value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, long value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, System.IntPtr value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, System.Net.HttpStatusCode? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, sbyte value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, float value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, ushort value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, uint value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, ulong value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, System.UIntPtr value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter _, string? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Collections.IEnumerable value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.DateTime? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.DateTimeOffset? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Enum? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Guid? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.IntPtr? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.TimeSpan value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.TimeSpan? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Type? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.UIntPtr? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, bool? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, byte? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, decimal? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, double? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, float? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, int? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, long? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, object? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, sbyte? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, short? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, uint? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, ulong? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this Testably.Expectations.Formatting.ValueFormatter formatter, ushort? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, bool value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, byte value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Collections.IEnumerable value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTime value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTime? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTimeOffset value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTimeOffset? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, decimal value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, double value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Enum? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Guid value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Guid? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, short value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, int value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, long value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.IntPtr value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.IntPtr? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Net.HttpStatusCode? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, sbyte value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, float value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.TimeSpan value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.TimeSpan? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Type? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ushort value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, uint value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ulong value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.UIntPtr value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.UIntPtr? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, bool? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, byte? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, decimal? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, double? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, float? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, int? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, long? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, object? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, sbyte? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, short? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, string? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, uint? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ulong? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ushort? value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static string Format<T>(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Collections.Generic.IEnumerable<T> value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+        public static void Format<T>(this Testably.Expectations.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Collections.Generic.IEnumerable<T> value, Testably.Expectations.Formatting.FormattingOptions? options = null) { }
+    }
+}
+namespace Testably.Expectations.Options
+{
+    public class EquivalencyOptions
+    {
+        public EquivalencyOptions() { }
+        public Testably.Expectations.Options.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
+        public override string ToString() { }
+    }
+    public class NumberTolerance<TNumber>
+        where TNumber :  struct, System.IComparable<TNumber>
+    {
+        public NumberTolerance(System.Func<TNumber, TNumber, TNumber?, bool> isWithinTolerance) { }
+        public TNumber? Tolerance { get; }
+        public void SetTolerance(TNumber tolerance) { }
+        public override string ToString() { }
+    }
+    public class ObjectEqualityOptions
+    {
+        public ObjectEqualityOptions() { }
+        public Testably.Expectations.Options.ObjectEqualityOptions Equals() { }
+        public Testably.Expectations.Options.ObjectEqualityOptions Equivalent(Testably.Expectations.Options.EquivalencyOptions equivalencyOptions) { }
+        public Testably.Expectations.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+        public readonly struct Result
+        {
+            public Result(bool areConsideredEqual, string failure = "") { }
+            public bool AreConsideredEqual { get; }
+            public string Failure { get; }
+        }
+    }
+    public class Quantifier
+    {
+        public Quantifier() { }
+        public void AtLeast(int minimum) { }
+        public void AtMost(int maximum) { }
+        public void Between(int minimum, int maximum) { }
+        public bool? Check(int amount) { }
+        public void Exactly(int expected) { }
+        public override string ToString() { }
+    }
+    public class StringEqualityOptions
+    {
+        public StringEqualityOptions() { }
+        public System.Collections.Generic.IEqualityComparer<string> Comparer { get; }
+        public bool IgnoreCase { get; }
+        public Testably.Expectations.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
+        public override string ToString() { }
+        public Testably.Expectations.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
+    }
+    public class StringMatcher
+    {
+        public StringMatcher(string? pattern) { }
+        public Testably.Expectations.Options.StringMatcher AsRegex() { }
+        public Testably.Expectations.Options.StringMatcher AsWildcard() { }
+        public Testably.Expectations.Options.StringMatcher Exactly() { }
+        public Testably.Expectations.Options.StringMatcher IgnoringCase(bool ignoreCase = true) { }
+        public Testably.Expectations.Options.StringMatcher UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
+        public static Testably.Expectations.Options.StringMatcher op_Implicit(string? pattern) { }
+    }
+    public class TimeTolerance
+    {
+        public TimeTolerance() { }
+        public System.TimeSpan? Tolerance { get; }
+        public void SetTolerance(System.TimeSpan tolerance) { }
+        public string ToDayString() { }
+        public override string ToString() { }
+    }
+}
+namespace Testably.Expectations.Results
+{
+    public class AndOrResult<TType, TThat> : Testably.Expectations.Results.AndOrResult<TType, TThat, Testably.Expectations.Results.AndOrResult<TType, TThat>>
+    {
+        public AndOrResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+    }
+    public class AndOrResult<TType, TThat, TSelf> : Testably.Expectations.Results.ExpectationResult<TType, TSelf>
+        where TSelf : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+    {
+        public AndOrResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+        public TThat And { get; }
+        public TThat Or { get; }
+    }
+    public class AndOrWhichResult<TType, TThat> : Testably.Expectations.Results.AndOrWhichResult<TType, TThat, Testably.Expectations.Results.AndOrWhichResult<TType, TThat>>
+    {
+        public AndOrWhichResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+    }
+    public class AndOrWhichResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        where TSelf : Testably.Expectations.Results.AndOrWhichResult<TType, TThat, TSelf>
+    {
+        public AndOrWhichResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+        public Testably.Expectations.Results.AndOrWhichResult<TType, TThat, TSelf>.WhichResult<TProperty, Testably.Expectations.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult> Which<TProperty>(System.Linq.Expressions.Expression<System.Func<TType, TProperty?>> selector) { }
+        public class AdditionalAndOrWhichResult : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        {
+            public AdditionalAndOrWhichResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+            public Testably.Expectations.Results.AndOrWhichResult<TType, TThat, TSelf>.WhichResult<TProperty, Testably.Expectations.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult> AndWhich<TProperty>(System.Linq.Expressions.Expression<System.Func<TType, TProperty?>> selector) { }
+        }
+        public class WhichResult<TProperty, TReturn>
+        {
+            public WhichResult(System.Func<System.Action<Testably.Expectations.Core.IThat<TProperty?>>, TReturn> resultCallback) { }
+            public TReturn Should(System.Action<Testably.Expectations.Core.IThat<TProperty?>> expectations) { }
+        }
+    }
+    public class CountResult<TType, TThat> : Testably.Expectations.Results.CountResult<TType, TThat, Testably.Expectations.Results.CountResult<TType, TThat>>
+    {
+        public CountResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.Quantifier quantifier) { }
+    }
+    public class CountResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        where TSelf : Testably.Expectations.Results.CountResult<TType, TThat, TSelf>
+    {
+        public CountResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.Quantifier quantifier) { }
+        public TSelf AtLeast(int minimum) { }
+        public TSelf AtMost(int maximum) { }
+        public Testably.Expectations.BetweenResult<TSelf> Between(int minimum) { }
+        public TSelf Exactly(int expected) { }
+        public TSelf Never() { }
+        public TSelf Once() { }
+    }
+    [System.Diagnostics.StackTraceHidden]
+    public abstract class Expectation
+    {
+        protected Expectation() { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        public new System.Type GetType() { }
+        public override string? ToString() { }
+        public abstract class Combination : Testably.Expectations.Results.Expectation
+        {
+            protected Combination(Testably.Expectations.Results.Expectation[] expectations) { }
+            public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
+            protected abstract string GetSubjectLine();
+            protected abstract bool IsSuccess(int failureCount, int totalCount);
+            public class All : Testably.Expectations.Results.Expectation.Combination
+            {
+                public All(Testably.Expectations.Results.Expectation[] expectations) { }
+                protected override string GetSubjectLine() { }
+                protected override bool IsSuccess(int failureCount, int totalCount) { }
+            }
+            public class Any : Testably.Expectations.Results.Expectation.Combination
+            {
+                public Any(Testably.Expectations.Results.Expectation[] expectations) { }
+                protected override string GetSubjectLine() { }
+                protected override bool IsSuccess(int failureCount, int totalCount) { }
+            }
+        }
+    }
+    [System.Diagnostics.StackTraceHidden]
+    public class ExpectationResult : Testably.Expectations.Results.Expectation
+    {
+        public ExpectationResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder) { }
+        public Testably.Expectations.Results.ExpectationResult Because(string reason) { }
+        public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
+    }
+    public class ExpectationResult<TType> : Testably.Expectations.Results.ExpectationResult<TType, Testably.Expectations.Results.ExpectationResult<TType>>
+    {
+        public ExpectationResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder) { }
+    }
+    [System.Diagnostics.StackTraceHidden]
+    public class ExpectationResult<TType, TSelf> : Testably.Expectations.Results.Expectation
+        where TSelf : Testably.Expectations.Results.ExpectationResult<TType, TSelf>
+    {
+        public ExpectationResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder) { }
+        public TSelf Because(string reason) { }
+        [System.Diagnostics.StackTraceHidden]
+        public System.Runtime.CompilerServices.TaskAwaiter<TType> GetAwaiter() { }
+        public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
+    }
+    public class NullableNumberToleranceResult<TType, TThat> : Testably.Expectations.Results.NullableNumberToleranceResult<TType, TThat, Testably.Expectations.Results.NullableNumberToleranceResult<TType, TThat>>
+        where TType :  struct, System.IComparable<TType>
+    {
+        public NullableNumberToleranceResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.NumberTolerance<TType> options) { }
+    }
+    public class NullableNumberToleranceResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType?, TThat, TSelf>
+        where TType :  struct, System.IComparable<TType>
+        where TSelf : Testably.Expectations.Results.NullableNumberToleranceResult<TType, TThat, TSelf>
+    {
+        public NullableNumberToleranceResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.NumberTolerance<TType> options) { }
+        public Testably.Expectations.Results.NullableNumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+    }
+    public class NumberToleranceResult<TType, TThat> : Testably.Expectations.Results.NumberToleranceResult<TType, TThat, Testably.Expectations.Results.NumberToleranceResult<TType, TThat>>
+        where TType :  struct, System.IComparable<TType>
+    {
+        public NumberToleranceResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.NumberTolerance<TType> options) { }
+    }
+    public class NumberToleranceResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        where TType :  struct, System.IComparable<TType>
+        where TSelf : Testably.Expectations.Results.NumberToleranceResult<TType, TThat, TSelf>
+    {
+        public NumberToleranceResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.NumberTolerance<TType> options) { }
+        public Testably.Expectations.Results.NumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+    }
+    public class ObjectEqualityResult<TType, TThat> : Testably.Expectations.Results.ObjectEqualityResult<TType, TThat, Testably.Expectations.Results.ObjectEqualityResult<TType, TThat>>
+    {
+        public ObjectEqualityResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.ObjectEqualityOptions options) { }
+    }
+    public class ObjectEqualityResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        where TSelf : Testably.Expectations.Results.ObjectEqualityResult<TType, TThat, TSelf>
+    {
+        public ObjectEqualityResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.ObjectEqualityOptions options) { }
+        public Testably.Expectations.Results.ObjectEqualityResult<TType, TThat, TSelf> Equivalent(System.Func<Testably.Expectations.Options.EquivalencyOptions, Testably.Expectations.Options.EquivalencyOptions>? optionsCallback = null) { }
+        public Testably.Expectations.Results.ObjectEqualityResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+    }
+    public class StringCountResult<TType, TThat> : Testably.Expectations.Results.StringCountResult<TType, TThat, Testably.Expectations.Results.StringCountResult<TType, TThat>>
+    {
+        public StringCountResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.Quantifier quantifier, Testably.Expectations.Options.StringEqualityOptions options) { }
+    }
+    public class StringCountResult<TType, TThat, TSelf> : Testably.Expectations.Results.CountResult<TType, TThat, TSelf>
+        where TSelf : Testably.Expectations.Results.StringCountResult<TType, TThat, TSelf>
+    {
+        public StringCountResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.Quantifier quantifier, Testably.Expectations.Options.StringEqualityOptions options) { }
+        public Testably.Expectations.Results.StringCountResult<TType, TThat, TSelf> IgnoringCase() { }
+        public Testably.Expectations.Results.StringCountResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+    }
+    public class StringEqualityResult<TType, TThat> : Testably.Expectations.Results.StringEqualityResult<TType, TThat, Testably.Expectations.Results.StringEqualityResult<TType, TThat>>
+    {
+        public StringEqualityResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.StringEqualityOptions options) { }
+    }
+    public class StringEqualityResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        where TSelf : Testably.Expectations.Results.StringEqualityResult<TType, TThat, TSelf>
+    {
+        public StringEqualityResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.StringEqualityOptions options) { }
+        public Testably.Expectations.Results.StringEqualityResult<TType, TThat, TSelf> IgnoringCase() { }
+        public Testably.Expectations.Results.StringEqualityResult<TType, TThat, TSelf> IgnoringCase(bool ignoreCase) { }
+        public Testably.Expectations.Results.StringEqualityResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+    }
+    public class StringMatcherResult<TType, TThat> : Testably.Expectations.Results.AndOrResult<TType, TThat>
+    {
+        public StringMatcherResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.StringMatcher expected) { }
+        public Testably.Expectations.Results.StringMatcherResult<TType, TThat> AsRegex() { }
+        public Testably.Expectations.Results.StringMatcherResult<TType, TThat> AsWildcard() { }
+        public Testably.Expectations.Results.StringMatcherResult<TType, TThat> Exactly() { }
+        public Testably.Expectations.Results.StringMatcherResult<TType, TThat> IgnoringCase() { }
+        public Testably.Expectations.Results.StringMatcherResult<TType, TThat> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+    }
+    public class TimeToleranceResult<TType, TThat> : Testably.Expectations.Results.TimeToleranceResult<TType, TThat, Testably.Expectations.Results.TimeToleranceResult<TType, TThat>>
+    {
+        public TimeToleranceResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.TimeTolerance options) { }
+    }
+    public class TimeToleranceResult<TType, TThat, TSelf> : Testably.Expectations.Results.AndOrResult<TType, TThat, TSelf>
+        where TSelf : Testably.Expectations.Results.TimeToleranceResult<TType, TThat, TSelf>
+    {
+        public TimeToleranceResult(Testably.Expectations.Core.ExpectationBuilder expectationBuilder, TThat returnValue, Testably.Expectations.Options.TimeTolerance options) { }
+        public Testably.Expectations.Results.TimeToleranceResult<TType, TThat, TSelf> Within(System.TimeSpan tolerance) { }
+    }
+}
