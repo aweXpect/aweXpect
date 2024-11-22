@@ -1,9 +1,11 @@
-﻿using System;
+﻿#if NET8_0_OR_GREATER
+using aweXpect.Core.Adapters;
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace aweXpect.Core.Adapters;
+namespace aweXpect.Adapters;
 
 /// <summary>
 ///     Implements the TUnit test framework adapter.
@@ -68,3 +70,4 @@ internal class TUnitTestFrameworkAdapter : ITestFrameworkAdapter
 
 	#endregion
 }
+#endif

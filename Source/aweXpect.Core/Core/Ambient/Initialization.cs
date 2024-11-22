@@ -1,9 +1,9 @@
-﻿using System;
+﻿using aweXpect.Core.Adapters;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using aweXpect.Core.Adapters;
-using aweXpect.Formatting;
 
 namespace aweXpect.Core.Ambient;
 
@@ -11,14 +11,30 @@ internal static class Initialization
 {
 	public static Lazy<InitializationState> State { get; } = new(Initialize);
 
+	private static List<string> ExcludedAssemblyNamespaces { get; } =
+	[
+		"mscorlib",
+		"System",
+		"Microsoft",
+		"xunit",
+		"Castle",
+		"DynamicProxyGenAssembly2"
+	];
+
 	private static ITestFrameworkAdapter DetectFramework()
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
-		foreach (Type frameworkType in frameworkInterface.Assembly
-			.GetTypes()
-			.Where(x => x.IsClass)
-			.Where(frameworkInterface.IsAssignableFrom))
+		foreach (Type frameworkType in AppDomain.CurrentDomain.GetAssemblies()
+			         .Where(a => ExcludedAssemblyNamespaces.All(x => a.FullName!.StartsWith(x) == false))
+			         .SelectMany(a => a.GetTypes())
+			         .Where(x => x.IsClass)
+			         .Where(frameworkInterface.IsAssignableFrom))
 		{
+			if (frameworkType == typeof(FallbackTestFramework))
+			{
+				continue;
+			}
+
 			try
 			{
 				ITestFrameworkAdapter? testFramework =
@@ -46,7 +62,6 @@ internal static class Initialization
 
 	internal class InitializationState
 	{
-		public ValueFormatter Formatter { get; }
 		private readonly ITestFrameworkAdapter _testFramework;
 
 		public InitializationState(ITestFrameworkAdapter testFramework)
@@ -54,6 +69,8 @@ internal static class Initialization
 			_testFramework = testFramework;
 			Formatter = new ValueFormatter();
 		}
+
+		public ValueFormatter Formatter { get; }
 
 		[DoesNotReturn]
 		[StackTraceHidden]

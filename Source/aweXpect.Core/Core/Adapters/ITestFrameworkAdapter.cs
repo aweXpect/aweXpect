@@ -5,7 +5,7 @@ namespace aweXpect.Core.Adapters;
 /// <summary>
 ///     Represents an adapter to a particular test framework such as xUnit, nUnit, etc.
 /// </summary>
-internal interface ITestFrameworkAdapter
+public interface ITestFrameworkAdapter
 {
 	/// <summary>
 	///     Gets a value indicating whether the corresponding test framework is currently available.

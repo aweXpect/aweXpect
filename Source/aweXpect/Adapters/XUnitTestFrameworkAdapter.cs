@@ -1,9 +1,10 @@
-﻿using System;
+﻿using aweXpect.Core.Adapters;
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace aweXpect.Core.Adapters;
+namespace aweXpect.Adapters;
 
 /// <summary>
 ///     Implements the XUnit test framework adapter.
