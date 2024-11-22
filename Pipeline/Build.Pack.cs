@@ -31,7 +31,8 @@ partial class Build
 				.WhenNotNull(SemVer, (c, semVer) => c
 					.AddPair("Packed version", semVer)));
 
-			(ArtifactsDirectory / "packages").CreateOrCleanDirectory();
+			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
+			packagesDirectory.CreateOrCleanDirectory();
 
 			foreach (Project project in new[]
 			         {
@@ -41,14 +42,14 @@ partial class Build
 				foreach (string package in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.nupkg", SearchOption.AllDirectories))
 				{
-					File.Move(package, ArtifactsDirectory / "packages" / Path.GetFileName(package));
+					File.Move(package, packagesDirectory / Path.GetFileName(package));
 					Debug("Found nuget package: {PackagePath}", package);
 				}
 
 				foreach (string symbolPackage in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.snupkg", SearchOption.AllDirectories))
 				{
-					File.Move(symbolPackage, ArtifactsDirectory / "packages" / Path.GetFileName(symbolPackage));
+					File.Move(symbolPackage, packagesDirectory / Path.GetFileName(symbolPackage));
 					Debug("Found symbol package: {PackagePath}", symbolPackage);
 				}
 			}
