@@ -20,7 +20,7 @@ partial class Build
 				.SetProjectKey("aweXpect_aweXpect")
 				.AddVSTestReports(TestResultsDirectory / "*.trx")
 				.AddOpenCoverPaths(TestResultsDirectory / "reports" / "OpenCover.xml")
-				.SetBranchName(GitVersion.BranchName)
+				.SetPullRequestOrBranchName(GitHubActions, GitVersion)
 				.SetVersion(GitVersion.SemVer)
 				.SetToken(SonarToken));
 		});

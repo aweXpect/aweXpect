@@ -22,7 +22,8 @@ partial class Build
 		.ProceedAfterFailure()
 		.Executes(() =>
 		{
-			IReadOnlyCollection<AbsolutePath> packages = ArtifactsDirectory.GlobFiles("*.nupkg");
+			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
+			IReadOnlyCollection<AbsolutePath> packages = packagesDirectory.GlobFiles("*.nupkg");
 
 			Assert.NotEmpty(packages);
 
@@ -30,9 +31,7 @@ partial class Build
 				.SetApiKey(NuGetApiKey)
 				.EnableSkipDuplicate()
 				.SetSource("https://api.nuget.org/v3/index.json")
-				.EnableNoSymbols()
-				.CombineWith(packages,
-					(v, path) => v.SetTargetPath(path)));
+				.CombineWith(packages, (v, path) => v.SetTargetPath(path)));
 		});
 
 	string BranchSpec => GitHubActions?.Ref;

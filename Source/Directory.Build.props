@@ -5,11 +5,13 @@
 
 	<PropertyGroup>
 		<Authors>aweXpect</Authors>
+		<Description>Assert unit tests in natural language using awesome expectations.</Description>
 		<Copyright>Copyright (c) 2024 Valentin Breuß</Copyright>
 		<RepositoryUrl>https://github.com/aweXpect/aweXpect.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>Docs/logo_256x256.png</PackageIcon>
+		<PackageReadmeFile>Docs/README.md</PackageReadmeFile>
 		<MinVerTagPrefix>v</MinVerTagPrefix>
 	</PropertyGroup>
 
@@ -25,7 +27,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)' != 'Debug' ">
+	<PropertyGroup>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -49,8 +51,19 @@
 
 	<ItemGroup>
 		<None Include="$([MSBuild]::GetPathOfFileAbove('logo_256x256.png', '$(MSBuildThisFileDirectory)../Docs/Images/'))"
-		      Pack="true" PackagePath="/Docs/"
+		      Pack="true"
+			  PackagePath="/Docs/"
 		      Link="\Docs\logo_256x256.png" />
+		<None Include="$(SolutionDir)/Artifacts/README.md"
+			  Condition="Exists('$(SolutionDir)/Artifacts/README.md')"
+			  Pack="true"
+			  PackagePath="/Docs/"
+			  Link="Docs\README.md"/>
+		<None Include="$(SolutionDir)/README.md"
+			  Condition="!Exists('$(SolutionDir)/Artifacts/README.md')"
+			  Pack="true"
+			  PackagePath="/Docs/"
+			  Link="Docs\README.md"/>
 	</ItemGroup>
 
 </Project>
