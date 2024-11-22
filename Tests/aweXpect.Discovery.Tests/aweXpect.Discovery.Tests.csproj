@@ -4,4 +4,8 @@
 		<ProjectReference Include="..\..\Source\aweXpect.Discovery\aweXpect.Discovery.csproj"/>
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
+	</ItemGroup>
+
 </Project>

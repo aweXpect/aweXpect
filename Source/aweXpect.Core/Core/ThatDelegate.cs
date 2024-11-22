@@ -1,6 +1,4 @@
-﻿using aweXpect.Core;
-
-namespace aweXpect;
+﻿namespace aweXpect.Core;
 
 /// <summary>
 ///     Expectations on delegate values.
