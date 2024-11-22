@@ -36,5 +36,5 @@ partial class Build
 
 	string BranchSpec => GitHubActions?.Ref;
 
-	bool IsTag => BranchSpec != null && BranchSpec.Contains("refs/tags", StringComparison.OrdinalIgnoreCase);
+	bool IsTag => BranchSpec != null && BranchSpec.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase);
 }
