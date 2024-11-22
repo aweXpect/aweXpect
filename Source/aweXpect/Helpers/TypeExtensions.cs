@@ -1,13 +1,11 @@
-﻿#if NETSTANDARD2_0
-using aweXpect.Polyfills;
-#endif
+﻿using aweXpect.Core.Helpers;
 using System;
 using System.Collections.Concurrent;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace aweXpect.Core.Helpers;
+namespace aweXpect.Helpers;
 
 internal static class TypeExtensions
 {
@@ -122,7 +120,7 @@ internal static class TypeExtensions
 			return false;
 		}
 
-#if !(NET47 || NETSTANDARD2_0)
+#if !(NET48 || NETSTANDARD2_0)
 		return typeof(ITuple).IsAssignableFrom(type);
 #else
 		Type openType = type.GetGenericTypeDefinition();

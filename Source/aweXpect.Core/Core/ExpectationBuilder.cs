@@ -146,7 +146,8 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Adds a <paramref name="cancellationToken" /> to be used by the constraints.
 	/// </summary>
-	public void WithCancellation(CancellationToken cancellationToken) => _cancellationToken = cancellationToken;
+	public void WithCancellation(CancellationToken cancellationToken)
+		=> _cancellationToken = cancellationToken;
 
 	/// <summary>
 	///     Adds a <paramref name="reason" /> to the current expectation constraint.
@@ -240,7 +241,8 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Specifies a <see cref="ITimeSystem" /> to use for the expectation.
 	/// </summary>
-	internal void UseTimeSystem(ITimeSystem timeSystem) => _timeSystem = timeSystem;
+	internal void UseTimeSystem(ITimeSystem timeSystem)
+		=> _timeSystem = timeSystem;
 
 	/// <summary>
 	///     Helper class to specify constraints on the selected <typeparamref name="TProperty" />.
@@ -269,8 +271,8 @@ public abstract class ExpectationBuilder
 		/// <summary>
 		///     Add expectations for the current <typeparamref name="TProperty" />.
 		/// </summary>
-		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation) =>
-			_callback(expectation, _sourceConstraintBuilder, _constraint);
+		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation)
+			=> _callback(expectation, _sourceConstraintBuilder, _constraint);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.

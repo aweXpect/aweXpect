@@ -11,7 +11,7 @@ namespace aweXpect.Equivalency;
 
 internal static class Compare
 {
-	public static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
+	internal static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
 		CompareOptions options)
 	{
 		return CheckEquivalent(actual, expected, options, [], MemberType.Value);

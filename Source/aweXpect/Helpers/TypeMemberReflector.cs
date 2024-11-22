@@ -1,12 +1,10 @@
-﻿#if NETSTANDARD2_0
-using aweXpect.Polyfills;
-#endif
+﻿using aweXpect.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace aweXpect.Core.Helpers;
+namespace aweXpect.Helpers;
 
 /// <summary>
 ///     Helper class to get all the public and internal fields and properties from a type.

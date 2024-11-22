@@ -3,6 +3,7 @@ using System;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
 using aweXpect.Core.Sources;
+using aweXpect.Helpers;
 
 namespace aweXpect;
 

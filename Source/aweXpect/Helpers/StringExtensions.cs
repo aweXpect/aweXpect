@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace aweXpect.Core.Helpers;
+namespace aweXpect.Helpers;
 
 internal static class StringExtensions
 {

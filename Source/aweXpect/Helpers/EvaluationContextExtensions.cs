@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using aweXpect.Core.EvaluationContext;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace aweXpect.Core.EvaluationContext;
+namespace aweXpect.Helpers;
 
 /// <summary>
 ///     Extension methods for the <see cref="IEvaluationContext" />.

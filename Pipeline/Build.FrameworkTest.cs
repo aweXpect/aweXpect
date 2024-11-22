@@ -22,15 +22,16 @@ partial class Build
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_Fallback_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests
 			];
 
 			var testCombinations =
 				from project in projects
 				let frameworks = project.GetTargetFrameworks()
-				let supportedFrameworks = EnvironmentInfo.IsWin ? frameworks : frameworks.Except(["net47"])
+				let supportedFrameworks = EnvironmentInfo.IsWin ? frameworks : frameworks.Except(["net48"])
 				from framework in supportedFrameworks
 				select new { project, framework };
 

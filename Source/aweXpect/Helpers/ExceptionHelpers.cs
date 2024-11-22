@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace aweXpect.Core.Helpers;
+namespace aweXpect.Helpers;
 
 internal static class ExceptionHelpers
 {
