@@ -20,8 +20,7 @@ partial class Build
 					framework: "net8.0"))
 				.SetTargetDirectory(TestResultsDirectory / "reports")
 				.AddReports(TestResultsDirectory / "**/coverage.cobertura.xml")
-				.AddReportTypes(
-					ReportTypes.HtmlInline_AzurePipelines_Dark)
+				.AddReportTypes(ReportTypes.OpenCover)
 				.AddFileFilters("-*.g.cs")
 				.SetAssemblyFilters("+aweXpect*"));
 

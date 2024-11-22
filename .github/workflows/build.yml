@@ -102,6 +102,7 @@ jobs:
       name: "Static code analysis"
       runs-on: windows-latest
       env:
+          REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           DOTNET_NOLOGO: true
       steps:
