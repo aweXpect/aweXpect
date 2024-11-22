@@ -19,7 +19,7 @@ public class ValueFormatter
 
 	internal ValueFormatter() { }
 
-	internal void FormatObject(StringBuilder stringBuilder, object value, FormattingOptions options)
+	internal static void FormatObject(StringBuilder stringBuilder, object value, FormattingOptions options)
 	{
 		if (value.GetType() == typeof(object))
 		{

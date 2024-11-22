@@ -145,7 +145,7 @@ public static partial class ValueFormatters
 		}
 		else
 		{
-			formatter.FormatObject(stringBuilder, value,
+			ValueFormatter.FormatObject(stringBuilder, value,
 				options ?? FormattingOptions.MultipleLines);
 		}
 	}
