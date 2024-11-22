@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2024 by Tom Longhurst
 // https://github.com/thomhurst/TUnit
 
-namespace aweXpect.Core.Equivalency;
+namespace aweXpect.Equivalency;
 
-public record CompareOptions
+internal record CompareOptions
 {
 	public string[] MembersToIgnore { get; set; } = [];
 }

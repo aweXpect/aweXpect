@@ -69,33 +69,6 @@ namespace aweXpect.Core.Constraints
         aweXpect.Core.Constraints.ConstraintResult IsMetBy(TValue actual);
     }
 }
-namespace aweXpect.Core.Equivalency
-{
-    public static class Compare
-    {
-        public static System.Collections.Generic.IEnumerable<aweXpect.Core.Equivalency.ComparisonFailure> CheckEquivalent<T>(T actual, T expected, aweXpect.Core.Equivalency.CompareOptions options) { }
-    }
-    public class CompareOptions : System.IEquatable<aweXpect.Core.Equivalency.CompareOptions>
-    {
-        public CompareOptions() { }
-        public string[] MembersToIgnore { get; set; }
-    }
-    public class ComparisonFailure : System.IEquatable<aweXpect.Core.Equivalency.ComparisonFailure>
-    {
-        public ComparisonFailure() { }
-        public object? Actual { get; set; }
-        public object? Expected { get; set; }
-        public string[] NestedMemberNames { get; set; }
-        public aweXpect.Core.Equivalency.MemberType Type { get; set; }
-    }
-    public enum MemberType
-    {
-        Property = 0,
-        Field = 1,
-        Value = 2,
-        EnumerableItem = 3,
-    }
-}
 namespace aweXpect.Core.EvaluationContext
 {
     public interface IEvaluationContext

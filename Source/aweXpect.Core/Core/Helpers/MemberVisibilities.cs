@@ -9,8 +9,23 @@ namespace aweXpect.Core.Helpers;
 [Flags]
 public enum MemberVisibilities
 {
+	/// <summary>
+	///     No visibilities.
+	/// </summary>
 	None = 0,
+
+	/// <summary>
+	///     Internal.
+	/// </summary>
 	Internal = 1,
+
+	/// <summary>
+	///     Public.
+	/// </summary>
 	Public = 2,
+
+	/// <summary>
+	///     Explicitely implemented.
+	/// </summary>
 	ExplicitlyImplemented = 4
 }

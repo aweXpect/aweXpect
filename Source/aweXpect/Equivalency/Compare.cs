@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace aweXpect.Core.Equivalency;
+namespace aweXpect.Equivalency;
 
-public static class Compare
+internal static class Compare
 {
 	public static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
 		CompareOptions options)

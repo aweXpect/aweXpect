@@ -6,8 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.Equivalency;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Equivalency;
 using aweXpect.Options;
 using aweXpect.Results;
 

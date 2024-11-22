@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Sources;
 using aweXpect.Core.TimeSystem;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace aweXpect.Core;
 
@@ -15,7 +15,6 @@ namespace aweXpect.Core;
 public abstract class ExpectationBuilder
 {
 	private const string DefaultCurrentSubject = "it";
-	internal string Subject { get; }
 
 	private CancellationToken? _cancellationToken;
 
@@ -38,6 +37,8 @@ public abstract class ExpectationBuilder
 	{
 		Subject = subjectExpression;
 	}
+
+	internal string Subject { get; }
 
 	/// <summary>
 	///     Adds the <see cref="IValueConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which verifies the
@@ -106,9 +107,8 @@ public abstract class ExpectationBuilder
 	public PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(
 		PropertyAccessor<TSource, TTarget?> propertyAccessor,
 		Func<PropertyAccessor, string, string>? expectationTextGenerator = null,
-		bool replaceIt = true)
-	{
-		return new PropertyExpectationBuilder<TSource, TTarget>((a, s, c) =>
+		bool replaceIt = true) =>
+		new((a, s, c) =>
 		{
 			if (s is not null)
 			{
@@ -138,7 +138,6 @@ public abstract class ExpectationBuilder
 
 			return this;
 		});
-	}
 
 	/// <inheritdoc />
 	public override string? ToString()
@@ -147,10 +146,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Adds a <paramref name="cancellationToken" /> to be used by the constraints.
 	/// </summary>
-	public void WithCancellation(CancellationToken cancellationToken)
-	{
-		_cancellationToken = cancellationToken;
-	}
+	public void WithCancellation(CancellationToken cancellationToken) => _cancellationToken = cancellationToken;
 
 	/// <summary>
 	///     Adds a <paramref name="reason" /> to the current expectation constraint.
@@ -161,6 +157,9 @@ public abstract class ExpectationBuilder
 		_node.SetReason(becauseReason);
 	}
 
+	/// <summary>
+	///     Supports chaining for subsequent expectation constraints with the <paramref name="textSeparator" />.
+	/// </summary>
 	public ExpectationBuilder And(string textSeparator = " and ")
 	{
 		if (_node is AndNode andNode)
@@ -241,10 +240,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Specifies a <see cref="ITimeSystem" /> to use for the expectation.
 	/// </summary>
-	internal void UseTimeSystem(ITimeSystem timeSystem)
-	{
-		_timeSystem = timeSystem;
-	}
+	internal void UseTimeSystem(ITimeSystem timeSystem) => _timeSystem = timeSystem;
 
 	/// <summary>
 	///     Helper class to specify constraints on the selected <typeparamref name="TProperty" />.
@@ -273,10 +269,8 @@ public abstract class ExpectationBuilder
 		/// <summary>
 		///     Add expectations for the current <typeparamref name="TProperty" />.
 		/// </summary>
-		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation)
-		{
-			return _callback(expectation, _sourceConstraintBuilder, _constraint);
-		}
+		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation) =>
+			_callback(expectation, _sourceConstraintBuilder, _constraint);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.

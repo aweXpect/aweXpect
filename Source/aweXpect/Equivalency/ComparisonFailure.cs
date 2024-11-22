@@ -3,9 +3,9 @@
 
 using System;
 
-namespace aweXpect.Core.Equivalency;
+namespace aweXpect.Equivalency;
 
-public record ComparisonFailure
+internal record ComparisonFailure
 {
 	public object? Actual { get; set; }
 	public object? Expected { get; set; }
