@@ -5,6 +5,8 @@ namespace aweXpect;
 
 public static partial class ThatNumberShould
 {
+	private const string ExpectBePositive = "be positive";
+
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
@@ -14,7 +16,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<sbyte>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -28,7 +30,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<short>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -42,7 +44,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<int>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -56,7 +58,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<long>(
 					it,
 					0L,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -70,7 +72,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					0.0F,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -84,7 +86,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					0.0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -98,7 +100,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<decimal>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -112,7 +114,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<sbyte>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -126,7 +128,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<short>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -140,7 +142,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<int>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -154,7 +156,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<long>(
 					it,
 					0L,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -168,7 +170,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					0.0F,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -182,7 +184,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					0.0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -196,7 +198,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<decimal>(
 					it,
 					0,
-					_ => "be positive",
+					_ => ExpectBePositive,
 					(a, e) => a > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);

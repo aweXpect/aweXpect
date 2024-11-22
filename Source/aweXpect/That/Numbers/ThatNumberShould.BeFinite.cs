@@ -5,6 +5,9 @@ namespace aweXpect;
 
 public static partial class ThatNumberShould
 {
+	private const string ExpectBeFinite = "be finite";
+	private const string ExpectNotBeFinite = "not be finite";
+	
 	/// <summary>
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor <see cref="float.IsNaN" />
 	///     ).
@@ -15,7 +18,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "be finite",
+					_ => ExpectBeFinite,
 					(a, _) => !float.IsInfinity(a) && !float.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -30,7 +33,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "be finite",
+					_ => ExpectBeFinite,
 					(a, _) => !double.IsInfinity(a) && !double.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -45,7 +48,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "be finite",
+					_ => ExpectBeFinite,
 					(a, _) => a != null && !float.IsInfinity(a.Value) && !float.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -60,7 +63,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "be finite",
+					_ => ExpectBeFinite,
 					(a, _) => a != null && !double.IsInfinity(a.Value) && !double.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -75,7 +78,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "not be finite",
+					_ => ExpectNotBeFinite,
 					(a, _) => float.IsInfinity(a) || float.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -90,7 +93,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "not be finite",
+					_ => ExpectNotBeFinite,
 					(a, _) => double.IsInfinity(a) || double.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -105,7 +108,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
-					_ => "not be finite",
+					_ => ExpectNotBeFinite,
 					(a, _) => a == null || float.IsInfinity(a.Value) || float.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -120,7 +123,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
-					_ => "not be finite",
+					_ => ExpectNotBeFinite,
 					(a, _) => a == null || double.IsInfinity(a.Value) || double.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);

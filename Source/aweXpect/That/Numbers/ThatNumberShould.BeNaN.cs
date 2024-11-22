@@ -5,6 +5,9 @@ namespace aweXpect;
 
 public static partial class ThatNumberShould
 {
+	private const string ExpectBeNaN = "be NaN";
+	private const string ExpectNotBeNaN = "not be NaN";
+
 	/// <summary>
 	///     Verifies that the subject is seen as not a number (<see cref="float.NaN" />).
 	/// </summary>
@@ -13,7 +16,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					float.NaN,
-					_ => "be NaN",
+					_ => ExpectBeNaN,
 					(a, _) => float.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -26,7 +29,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					double.NaN,
-					_ => "be NaN",
+					_ => ExpectBeNaN,
 					(a, _) => double.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -39,7 +42,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					float.NaN,
-					_ => "be NaN",
+					_ => ExpectBeNaN,
 					(a, _) => a != null && float.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -52,7 +55,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					double.NaN,
-					_ => "be NaN",
+					_ => ExpectBeNaN,
 					(a, _) => a != null && double.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -65,7 +68,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<float>(
 					it,
 					float.NaN,
-					_ => "not be NaN",
+					_ => ExpectNotBeNaN,
 					(a, _) => !float.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -78,7 +81,7 @@ public static partial class ThatNumberShould
 				=> new GenericConstraint<double>(
 					it,
 					double.NaN,
-					_ => "not be NaN",
+					_ => ExpectNotBeNaN,
 					(a, _) => !double.IsNaN(a),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -92,7 +95,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<float>(
 					it,
 					float.NaN,
-					_ => "not be NaN",
+					_ => ExpectNotBeNaN,
 					(a, _) => a == null || !float.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -105,7 +108,7 @@ public static partial class ThatNumberShould
 				=> new NullableGenericConstraint<double>(
 					it,
 					double.NaN,
-					_ => "not be NaN",
+					_ => ExpectNotBeNaN,
 					(a, _) => a == null || !double.IsNaN(a.Value),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);

@@ -33,8 +33,6 @@ public class TimeToleranceResult<TType, TThat, TSelf>(
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
 	where TSelf : TimeToleranceResult<TType, TThat, TSelf>
 {
-	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
-
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply on the time comparison.
 	/// </summary>
