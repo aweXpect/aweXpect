@@ -137,8 +137,7 @@ jobs:
         files: "artifacts/**/**/*.trx"
 
   deploy:
-      name: "Deploy"
-      if: startsWith(github.ref, 'refs/heads/release/')
+      name: "Pack"
       runs-on: ubuntu-latest
       environment: production
       needs: [ publish-test-results, mutation-tests, benchmarks, static-code-analysis ]
@@ -156,6 +155,7 @@ jobs:
         - name: Pack and push nuget packages
           run: ./build.sh Push
         - name: Create GitHub release
+          if: startsWith(github.ref, 'refs/heads/release/')
           uses: softprops/action-gh-release@v2
           with:
             name: ${{ steps.tag.outputs.release_version }}

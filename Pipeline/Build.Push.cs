@@ -30,9 +30,7 @@ partial class Build
 				.SetApiKey(NuGetApiKey)
 				.EnableSkipDuplicate()
 				.SetSource("https://api.nuget.org/v3/index.json")
-				.EnableNoSymbols()
-				.CombineWith(packages,
-					(v, path) => v.SetTargetPath(path)));
+				.CombineWith(packages, (v, path) => v.SetTargetPath(path)));
 		});
 
 	string BranchSpec => GitHubActions?.Ref;

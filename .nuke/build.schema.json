@@ -42,6 +42,7 @@
         "TestFrameworks",
         "TestingPlatformFrameworks",
         "UnitTests",
+        "UpdateReadme",
         "VsTestFrameworks"
       ]
     },
