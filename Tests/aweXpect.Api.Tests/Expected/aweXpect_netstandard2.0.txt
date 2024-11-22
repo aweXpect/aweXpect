@@ -27,34 +27,6 @@ namespace aweXpect
         public static aweXpect.CollectionQuantifier AtMost(int maximum) { }
         public static aweXpect.CollectionQuantifier Between(int minimum, int maximum) { }
     }
-    public static class Expect
-    {
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithoutValue> That(System.Action @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithoutValue> That(System.Action<System.Threading.CancellationToken> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithoutValue> That(System.Func<System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithoutValue> That(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithoutValue> That(System.Threading.Tasks.Task @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.CancellationToken, TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithValue<TValue>> That<TValue>(System.Threading.Tasks.Task<TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IExpectSubject<T> That<T>(T? subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.Expectation.Combination.All ThatAll(params aweXpect.Results.Expectation[] expectations) { }
-        public static aweXpect.Results.Expectation.Combination.Any ThatAny(params aweXpect.Results.Expectation[] expectations) { }
-    }
-    [System.Diagnostics.StackTraceHidden]
-    public static class Fail
-    {
-        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
-        public static void Test(string reason) { }
-        public static void Unless([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(false)] bool condition, string reason) { }
-        public static void When([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(true)] bool condition, string reason) { }
-    }
-    public class FailException : System.Exception
-    {
-        public FailException(string message) { }
-    }
     public interface ICollectionEvaluator<out TItem>
     {
         System.Threading.Tasks.Task<aweXpect.CollectionEvaluatorResult> CheckCondition<TExpected>(TExpected expected, System.Func<TItem, TExpected, bool> predicate, System.Threading.CancellationToken cancellationToken);
@@ -76,18 +48,6 @@ namespace aweXpect
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
         public aweXpect.CollectionQuantifier Quantity { get; }
         public TResult Result { get; }
-    }
-    [System.Diagnostics.StackTraceHidden]
-    public static class Skip
-    {
-        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
-        public static void Test(string reason) { }
-        public static void Unless([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(false)] bool condition, string reason) { }
-        public static void When([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(true)] bool condition, string reason) { }
-    }
-    public class SkipException : System.Exception
-    {
-        public SkipException(string message) { }
     }
     public static class ThatBoolShould
     {
@@ -158,30 +118,23 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> NotHaveYear(this aweXpect.Core.IThat<System.DateTime> source, int? unexpected) { }
         public static aweXpect.Core.IThat<System.DateTime> Should(this aweXpect.Core.IExpectSubject<System.DateTime> subject) { }
     }
-    public abstract class ThatDelegate
-    {
-        protected ThatDelegate(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        public sealed class WithValue<TValue> : aweXpect.ThatDelegate { }
-        public sealed class WithoutValue : aweXpect.ThatDelegate { }
-    }
     public static class ThatDelegateShould
     {
-        public static aweXpect.Results.ExpectationResult ExecuteWithin(this aweXpect.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult<TValue> ExecuteWithin<TValue>(this aweXpect.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult NotExecuteWithin(this aweXpect.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult<TValue> NotExecuteWithin<TValue>(this aweXpect.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult NotThrow(this aweXpect.ThatDelegate.WithoutValue source) { }
-        public static aweXpect.Results.ExpectationResult<TValue> NotThrow<TValue>(this aweXpect.ThatDelegate.WithValue<TValue> source) { }
-        public static aweXpect.ThatDelegate.WithoutValue Should(this aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithoutValue> subject) { }
-        public static aweXpect.ThatDelegate.WithValue<TValue> Should<TValue>(this aweXpect.Core.IExpectSubject<aweXpect.ThatDelegate.WithValue<TValue>> subject) { }
-        public static aweXpect.ThatDelegateThrows<System.Exception> Throw(this aweXpect.ThatDelegate source, System.Type exceptionType) { }
-        public static aweXpect.ThatDelegateThrows<TException> Throw<TException>(this aweXpect.ThatDelegate source)
+        public static aweXpect.Results.ExpectationResult ExecuteWithin(this aweXpect.Core.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult<TValue> ExecuteWithin<TValue>(this aweXpect.Core.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult NotExecuteWithin(this aweXpect.Core.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult<TValue> NotExecuteWithin<TValue>(this aweXpect.Core.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult NotThrow(this aweXpect.Core.ThatDelegate.WithoutValue source) { }
+        public static aweXpect.Results.ExpectationResult<TValue> NotThrow<TValue>(this aweXpect.Core.ThatDelegate.WithValue<TValue> source) { }
+        public static aweXpect.Core.ThatDelegate.WithoutValue Should(this aweXpect.Core.IExpectSubject<aweXpect.Core.ThatDelegate.WithoutValue> subject) { }
+        public static aweXpect.Core.ThatDelegate.WithValue<TValue> Should<TValue>(this aweXpect.Core.IExpectSubject<aweXpect.Core.ThatDelegate.WithValue<TValue>> subject) { }
+        public static aweXpect.ThatDelegateThrows<System.Exception> Throw(this aweXpect.Core.ThatDelegate source, System.Type exceptionType) { }
+        public static aweXpect.ThatDelegateThrows<TException> Throw<TException>(this aweXpect.Core.ThatDelegate source)
             where TException : System.Exception { }
-        public static aweXpect.ThatDelegateThrows<System.Exception> ThrowExactly(this aweXpect.ThatDelegate source, System.Type exceptionType) { }
-        public static aweXpect.ThatDelegateThrows<TException> ThrowExactly<TException>(this aweXpect.ThatDelegate source)
+        public static aweXpect.ThatDelegateThrows<System.Exception> ThrowExactly(this aweXpect.Core.ThatDelegate source, System.Type exceptionType) { }
+        public static aweXpect.ThatDelegateThrows<TException> ThrowExactly<TException>(this aweXpect.Core.ThatDelegate source)
             where TException : System.Exception { }
-        public static aweXpect.ThatDelegateThrows<System.Exception> ThrowException(this aweXpect.ThatDelegate source) { }
+        public static aweXpect.ThatDelegateThrows<System.Exception> ThrowException(this aweXpect.Core.ThatDelegate source) { }
     }
     public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.ThatDelegateThrows<TException>>
         where TException : System.Exception?
@@ -783,120 +736,6 @@ namespace aweXpect
         public static aweXpect.Core.IThat<System.TimeSpan> Should(this aweXpect.Core.IExpectSubject<System.TimeSpan> subject) { }
     }
 }
-namespace aweXpect.Core.Constraints
-{
-    public abstract class ConstraintResult
-    {
-        protected ConstraintResult(string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy) { }
-        public string ExpectationText { get; }
-        public aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing FurtherProcessingStrategy { get; }
-        public abstract aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText);
-        public class Failure : aweXpect.Core.Constraints.ConstraintResult
-        {
-            public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
-            public string ResultText { get; }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-            public override string ToString() { }
-        }
-        public class Failure<T> : aweXpect.Core.Constraints.ConstraintResult.Failure
-        {
-            public Failure(T value, string expectationText, string resultText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
-            public T Value { get; }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-        }
-        public enum FurtherProcessing
-        {
-            Continue = 0,
-            IgnoreCompletely = 1,
-            IgnoreResult = 2,
-        }
-        public class Success : aweXpect.Core.Constraints.ConstraintResult
-        {
-            public Success(string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-            public override string ToString() { }
-        }
-        public class Success<T> : aweXpect.Core.Constraints.ConstraintResult.Success
-        {
-            public Success(T value, string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
-            public T Value { get; }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-        }
-    }
-    public interface IAsyncConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
-    {
-        System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue actual, System.Threading.CancellationToken cancellationToken);
-    }
-    public interface IAsyncContextConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
-    {
-        System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue actual, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken);
-    }
-    public interface IConstraint { }
-    public interface IContextConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
-    {
-        aweXpect.Core.Constraints.ConstraintResult IsMetBy(TValue actual, aweXpect.Core.EvaluationContext.IEvaluationContext context);
-    }
-    public interface IValueConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
-    {
-        aweXpect.Core.Constraints.ConstraintResult IsMetBy(TValue actual);
-    }
-}
-namespace aweXpect.Core.EvaluationContext
-{
-    public interface IEvaluationContext
-    {
-        void Store<T>(string key, T value);
-        bool TryReceive<T>(string key, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out T? value);
-    }
-}
-namespace aweXpect.Core
-{
-    public abstract class ExpectationBuilder
-    {
-        protected ExpectationBuilder(string subjectExpression) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(aweXpect.Core.PropertyAccessor<TSource, TTarget?> propertyAccessor, System.Func<aweXpect.Core.PropertyAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
-        public override string? ToString() { }
-        public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
-        public class PropertyExpectationBuilder<TSource, TProperty>
-        {
-            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation) { }
-            public aweXpect.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TProperty> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
-        }
-    }
-    public static class ExpectationBuilderExtensions
-    {
-        public static aweXpect.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> propertySelector, string displayName, bool replaceIt = true) { }
-    }
-    public interface IExpectSubject<out T>
-    {
-        bool Equals(object? obj);
-        int GetHashCode();
-        System.Type GetType();
-        aweXpect.Core.IThat<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
-        string? ToString();
-    }
-    public interface IThat<out T>
-    {
-        aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        bool Equals(object? obj);
-        int GetHashCode();
-        System.Type GetType();
-        string? ToString();
-    }
-    public abstract class PropertyAccessor
-    {
-        protected PropertyAccessor(string name) { }
-        public override string ToString() { }
-    }
-    public class PropertyAccessor<TSource, TTarget> : aweXpect.Core.PropertyAccessor
-    {
-        public static aweXpect.Core.PropertyAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
-    }
-}
 namespace aweXpect.Extensions
 {
     public static class ChronologyExtensions
@@ -921,111 +760,6 @@ namespace aweXpect.Extensions
         public static System.TimeSpan Seconds(this int seconds) { }
         public static System.TimeSpan Seconds(this double seconds, System.TimeSpan offset) { }
         public static System.TimeSpan Seconds(this int seconds, System.TimeSpan offset) { }
-    }
-}
-namespace aweXpect.Formatting
-{
-    public static class Format
-    {
-        public static aweXpect.Formatting.ValueFormatter Formatter { get; }
-    }
-    public class FormattingOptions
-    {
-        public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
-        public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
-    }
-    public class ValueFormatter
-    {
-        public static readonly string NullString;
-    }
-    public static class ValueFormatters
-    {
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, bool value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, byte value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, System.DateTime value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, System.DateTimeOffset value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, decimal value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, double value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, System.Guid value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, short value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, int value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, long value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, System.IntPtr value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, System.Net.HttpStatusCode? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, sbyte value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, float value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, ushort value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, uint value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, ulong value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, System.UIntPtr value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, string? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.Collections.IEnumerable value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.DateTime? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.DateTimeOffset? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.Enum? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.Guid? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.IntPtr? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.TimeSpan value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.TimeSpan? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.Type? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.UIntPtr? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, bool? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, byte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, decimal? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, double? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, float? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, int? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, long? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, object? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, sbyte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, short? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, uint? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, ulong? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, ushort? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, bool value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, byte value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Collections.IEnumerable value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTime value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTime? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTimeOffset value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.DateTimeOffset? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, decimal value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, double value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Enum? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Guid value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Guid? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, short value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, int value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, long value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.IntPtr value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.IntPtr? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Net.HttpStatusCode? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, sbyte value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, float value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.TimeSpan value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.TimeSpan? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Type? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ushort value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, uint value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ulong value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.UIntPtr value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.UIntPtr? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, bool? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, byte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, decimal? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, double? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, float? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, int? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, long? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, object? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, sbyte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, short? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, string? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, uint? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ulong? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ushort? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format<T>(this aweXpect.Formatting.ValueFormatter formatter, System.Collections.Generic.IEnumerable<T> value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format<T>(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Collections.Generic.IEnumerable<T> value, aweXpect.Formatting.FormattingOptions? options = null) { }
     }
 }
 namespace aweXpect.Options
@@ -1097,37 +831,6 @@ namespace aweXpect.Options
 }
 namespace aweXpect.Results
 {
-    public class AndOrResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat, aweXpect.Results.AndOrResult<TType, TThat>>
-    {
-        public AndOrResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-    }
-    public class AndOrResult<TType, TThat, TSelf> : aweXpect.Results.ExpectationResult<TType, TSelf>
-        where TSelf : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
-    {
-        public AndOrResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-        public TThat And { get; }
-        public TThat Or { get; }
-    }
-    public class AndOrWhichResult<TType, TThat> : aweXpect.Results.AndOrWhichResult<TType, TThat, aweXpect.Results.AndOrWhichResult<TType, TThat>>
-    {
-        public AndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-    }
-    public class AndOrWhichResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
-        where TSelf : aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>
-    {
-        public AndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-        public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.WhichResult<TProperty, aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult> Which<TProperty>(System.Linq.Expressions.Expression<System.Func<TType, TProperty?>> selector) { }
-        public class AdditionalAndOrWhichResult : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
-        {
-            public AdditionalAndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-            public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.WhichResult<TProperty, aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult> AndWhich<TProperty>(System.Linq.Expressions.Expression<System.Func<TType, TProperty?>> selector) { }
-        }
-        public class WhichResult<TProperty, TReturn>
-        {
-            public WhichResult(System.Func<System.Action<aweXpect.Core.IThat<TProperty?>>, TReturn> resultCallback) { }
-            public TReturn Should(System.Action<aweXpect.Core.IThat<TProperty?>> expectations) { }
-        }
-    }
     public class CountResult<TType, TThat> : aweXpect.Results.CountResult<TType, TThat, aweXpect.Results.CountResult<TType, TThat>>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
@@ -1142,55 +845,6 @@ namespace aweXpect.Results
         public TSelf Exactly(int expected) { }
         public TSelf Never() { }
         public TSelf Once() { }
-    }
-    [System.Diagnostics.StackTraceHidden]
-    public abstract class Expectation
-    {
-        protected Expectation() { }
-        public override bool Equals(object? obj) { }
-        public override int GetHashCode() { }
-        public new System.Type GetType() { }
-        public override string? ToString() { }
-        public abstract class Combination : aweXpect.Results.Expectation
-        {
-            protected Combination(aweXpect.Results.Expectation[] expectations) { }
-            public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
-            protected abstract string GetSubjectLine();
-            protected abstract bool IsSuccess(int failureCount, int totalCount);
-            public class All : aweXpect.Results.Expectation.Combination
-            {
-                public All(aweXpect.Results.Expectation[] expectations) { }
-                protected override string GetSubjectLine() { }
-                protected override bool IsSuccess(int failureCount, int totalCount) { }
-            }
-            public class Any : aweXpect.Results.Expectation.Combination
-            {
-                public Any(aweXpect.Results.Expectation[] expectations) { }
-                protected override string GetSubjectLine() { }
-                protected override bool IsSuccess(int failureCount, int totalCount) { }
-            }
-        }
-    }
-    [System.Diagnostics.StackTraceHidden]
-    public class ExpectationResult : aweXpect.Results.Expectation
-    {
-        public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-        public aweXpect.Results.ExpectationResult Because(string reason) { }
-        public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
-    }
-    public class ExpectationResult<TType> : aweXpect.Results.ExpectationResult<TType, aweXpect.Results.ExpectationResult<TType>>
-    {
-        public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-    }
-    [System.Diagnostics.StackTraceHidden]
-    public class ExpectationResult<TType, TSelf> : aweXpect.Results.Expectation
-        where TSelf : aweXpect.Results.ExpectationResult<TType, TSelf>
-    {
-        public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-        public TSelf Because(string reason) { }
-        [System.Diagnostics.StackTraceHidden]
-        public System.Runtime.CompilerServices.TaskAwaiter<TType> GetAwaiter() { }
-        public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>
         where TType :  struct, System.IComparable<TType>
