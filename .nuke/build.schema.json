@@ -37,7 +37,6 @@
         "DotNetUnitTests",
         "MutationTests",
         "Pack",
-        "Push",
         "Restore",
         "TestFrameworks",
         "TestingPlatformFrameworks",
@@ -124,11 +123,6 @@
             "Debug",
             "Release"
           ]
-        },
-        "NuGetApiKey": {
-          "type": "string",
-          "description": "The key to push to Nuget",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "Solution": {
           "type": "string",
