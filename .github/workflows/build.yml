@@ -191,7 +191,6 @@ jobs:
     permissions:
         issues: write
         pull-requests: write
-        contents: write
     steps:
       - name: Comment relevant issues and pull requests
         continue-on-error: true
@@ -204,11 +203,3 @@ jobs:
             state: released
           skip-label: |
             state: released
-      - name: Checkout sources
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Delete release branch
-        continue-on-error: true
-        shell: bash
-        run: git push origin -d "${GITHUB_REF}"
