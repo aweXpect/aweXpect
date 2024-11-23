@@ -191,7 +191,6 @@ jobs:
     permissions:
         issues: write
         pull-requests: write
-        contents: write
     steps:
       - name: Comment relevant issues and pull requests
         continue-on-error: true
