@@ -207,6 +207,9 @@ jobs:
   build-pages:
     name: Build Pages
     runs-on: ubuntu-latest
+    defaults:
+        run:
+            working-directory: ./Docs/pages
     steps:
       - uses: actions/checkout@v4
         with:
@@ -217,14 +220,12 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-        working-directory: ./Docs/pages
       - name: Build website
         run: npm run build
-        working-directory: ./Docs/pages
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./Docs/pages/build
+          path: build
 
   deploy-pages:
     name: Deploy Pages
