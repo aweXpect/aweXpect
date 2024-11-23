@@ -203,3 +203,40 @@ jobs:
             state: released
           skip-label: |
             state: released
+
+  build-pages:
+    name: Build Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./Docs/pages
+      - name: Build website
+        run: npm run build
+        working-directory: ./Docs/pages
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./Docs/pages/build
+
+  deploy-pages:
+    name: Deploy Pages
+    needs: build-pages
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -133,3 +133,21 @@ jobs:
       with:
         comment_mode: always
         files: "artifacts/**/**/*.trx"
+
+  build-pages:
+    name: Build Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./Docs/pages
+      - name: Test build website
+        run: npm run build
+        working-directory: ./Docs/pages
