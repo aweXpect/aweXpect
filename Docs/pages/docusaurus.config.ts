@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'aweXpect',
+  tagline: 'Awesome expectations',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -69,10 +69,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'aweXpect',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'aweXpect logo',
+        src: 'img/logo_256x256.png',
       },
       items: [
         {
@@ -83,7 +83,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/aweXpect/aweXpect',
           label: 'GitHub',
           position: 'right',
         },
@@ -99,6 +99,10 @@ const config: Config = {
               label: 'Tutorial',
               to: '/docs/intro',
             },
+			  {
+				  "label": "Blog",
+				  "to": "/blog"
+			  },
           ],
         },
         {
@@ -109,30 +113,26 @@ const config: Config = {
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+              "label": "GitHub Issues",
+              "href": "https://github.com/aweXpect/aweXpect/issues"
+            }
           ],
         },
         {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
             },
+			  {
+				  label: 'NuGet',
+				  href: 'https://www.nuget.org/packages/aweXpect',
+			  },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Valentin Breuß`,
     },
     prism: {
       theme: prismThemes.github,

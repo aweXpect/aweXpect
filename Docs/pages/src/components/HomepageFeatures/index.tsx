@@ -9,6 +9,7 @@ type FeatureItem = {
 };
 
 const FeatureList: FeatureItem[] = [
+	/*
   {
     title: 'Easy to Use',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
@@ -39,6 +40,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
   },
+  */
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {
