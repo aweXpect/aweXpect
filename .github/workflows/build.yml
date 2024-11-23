@@ -175,6 +175,7 @@ jobs:
       - name: Publish
         run: nuget push Artifacts/Packages/*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
       - name: Create GitHub release
+        continue-on-error: true
         uses: softprops/action-gh-release@v2
         with:
           name: ${{ steps.tag.outputs.release_version }}
@@ -188,10 +189,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ push ]
     permissions:
-        contents: write
+        issues: write
         pull-requests: write
+        contents: write
     steps:
       - name: Comment relevant issues and pull requests
+        continue-on-error: true
         uses: apexskier/github-release-commenter@v1.3.6
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -206,5 +209,6 @@ jobs:
         with:
           fetch-depth: 0
       - name: Delete release branch
+        continue-on-error: true
         shell: bash
         run: git push origin -d "${GITHUB_REF}"
