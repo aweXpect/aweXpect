@@ -207,9 +207,8 @@ jobs:
   build-pages:
     name: Build Pages
     runs-on: ubuntu-latest
-    defaults:
-        run:
-            working-directory: ./Docs/pages
+    permissions:
+        contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -220,25 +219,13 @@ jobs:
           cache: npm
           cache-dependency-path: ./Docs/pages/package-lock.json
       - name: Install dependencies
+        working-directory: ./Docs/pages
         run: npm ci
       - name: Build website
+        working-directory: ./Docs/pages
         run: npm run build
-      - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
-
-  deploy-pages:
-    name: Deploy Pages
-    needs: build-pages
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Docs/pages/build

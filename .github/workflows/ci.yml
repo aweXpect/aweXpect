@@ -137,9 +137,8 @@ jobs:
   build-pages:
     name: Build Pages
     runs-on: ubuntu-latest
-    defaults:
-        run:
-            working-directory: ./Docs/pages
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -150,6 +149,13 @@ jobs:
           cache: npm
           cache-dependency-path: ./Docs/pages/package-lock.json
       - name: Install dependencies
+        working-directory: ./Docs/pages
         run: npm ci
       - name: Test build website
+        working-directory: ./Docs/pages
         run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Docs/pages/build
