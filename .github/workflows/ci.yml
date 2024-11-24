@@ -95,6 +95,16 @@ jobs:
               8.0.x
         - name: Run benchmarks
           run: ./build.sh Benchmarks
+        - name: Store benchmark result
+          uses: rhysd/github-action-benchmark@v1
+          with:
+            name: Benchmark.Net Benchmark
+            tool: 'benchmarkdotnet'
+            output-file-path: Artifacts/Benchmarks/results/aweXpect.Benchmarks.HappyCaseBenchmarks-report-full-compressed.json
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            gh-pages-branch: 'benchmarks'
+            benchmark-data-dir-path: 'Docs/pages/static/js'
+            auto-push: true
 
   static-code-analysis:
       name: "Static code analysis"

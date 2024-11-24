@@ -20,8 +20,8 @@ partial class Build : NukeBuild
 	GitHubActions GitHubActions => GitHubActions.Instance;
 
 	public static int Main() => Execute<Build>([
-		x => x.ApiChecks,
+		//x => x.ApiChecks,
 		x => x.Benchmarks,
-		x => x.CodeAnalysis,
+		//x => x.CodeAnalysis,
 		]);
 }
