@@ -82,6 +82,8 @@ jobs:
   benchmarks:
       name: "Benchmarks"
       runs-on: ubuntu-latest
+      permissions:
+        contents: write
       env:
         DOTNET_NOLOGO: true
       steps:
