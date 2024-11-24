@@ -113,7 +113,6 @@ jobs:
             git config --global user.name "Benchmark User"
             git fetch
             git checkout benchmarks
-            git branch --show-current
             git add Docs/pages/static/js/data.js
             git commit -m "Update benchmarks"
             git push --set-upstream origin benchmarks
