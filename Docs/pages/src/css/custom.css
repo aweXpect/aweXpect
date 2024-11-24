@@ -28,6 +28,7 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
 .benchmark-chart {
 	max-width: 900px;
 	min-height: 300px;
@@ -48,4 +49,7 @@
 		margin: 10px;
 		width: auto;
 	}
+}
+.hero{
+	background-color: #63A2AC;
 }

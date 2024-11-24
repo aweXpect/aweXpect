@@ -34,84 +34,84 @@
 
 	function renderAllCharts(dataSets) {
 
-	function renderGraph(parent, name, dataset) {
-	const canvas = document.createElement('canvas');
-	canvas.className = 'benchmark-chart';
-	parent.appendChild(canvas);
+		function renderGraph(parent, name, dataset) {
+			const canvas = document.createElement('canvas');
+			canvas.className = 'benchmark-chart';
+			parent.appendChild(canvas);
 
-	const color = toolColors[dataset.length > 0 ? dataset[0].tool : '_'];
-	const data = {
-	labels: dataset.map(d => d.commit.id.slice(0, 7)),
-	datasets: [
-{
-	label: name,
-	data: dataset.map(d => d.bench.value),
-	borderColor: color,
-	backgroundColor: color + '60', // Add alpha for #rrggbbaa
-}
-	],
-};
-	const options = {
-	scales: {
-	xAxes: [
-{
-	scaleLabel: {
-	display: true,
-	labelString: 'commit',
-},
-}
-	],
-	yAxes: [
-{
-	scaleLabel: {
-	display: true,
-	labelString: dataset.length > 0 ? dataset[0].bench.unit : '',
-},
-	ticks: {
-	beginAtZero: true,
-}
-}
-	],
-},
-	tooltips: {
-	callbacks: {
-	afterTitle: items => {
-	const {index} = items[0];
-	const data = dataset[index];
-	return '\n' + data.commit.message.slice(0, data.commit.message.indexOf("\n")) + '\n\n' + data.commit.timestamp + ' committed by @' + data.commit.author.username + '\n';
-},
-	label: item => {
-	let label = item.value;
-	const {range, unit} = dataset[item.index].bench;
-	label += ' ' + unit;
-	if (range) {
-	label += ' (' + range + ')';
-}
-	return label;
-},
-	afterLabel: item => {
-	const {extra} = dataset[item.index].bench;
-	return extra ? '\n' + extra : '';
-}
-}
-},
-	onClick: (_mouseEvent, activeElems) => {
-	if (activeElems.length === 0) {
-	return;
-}
-	// XXX: Undocumented. How can we know the index?
-	const index = activeElems[0]._index;
-	const url = dataset[index].commit.url;
-	window.open(url, '_blank');
-},
-};
+			const color = toolColors[dataset.length > 0 ? dataset[0].tool : '_'];
+			const data = {
+				labels: dataset.map(d => d.commit.id.slice(0, 7)),
+				datasets: [
+					{
+						label: name,
+						data: dataset.map(d => d.bench.value),
+						borderColor: color,
+						backgroundColor: color + '60', // Add alpha for #rrggbbaa
+					}
+				],
+			};
+			const options = {
+				scales: {
+					xAxes: [
+						{
+							scaleLabel: {
+								display: true,
+								labelString: 'commit',
+							},
+						}
+					],
+					yAxes: [
+						{
+							scaleLabel: {
+								display: true,
+								labelString: dataset.length > 0 ? dataset[0].bench.unit : '',
+							},
+							ticks: {
+								beginAtZero: true,
+							}
+						}
+					],
+				},
+				tooltips: {
+					callbacks: {
+						afterTitle: items => {
+							const {index} = items[0];
+							const data = dataset[index];
+							return '\n' + data.commit.message.slice(0, data.commit.message.indexOf("\n")) + '\n\n' + data.commit.timestamp + ' committed by @' + data.commit.author.username + '\n';
+						},
+						label: item => {
+							let label = item.value;
+							const {range, unit} = dataset[item.index].bench;
+							label += ' ' + unit;
+							if (range) {
+								label += ' (' + range + ')';
+							}
+							return label;
+						},
+						afterLabel: item => {
+							const {extra} = dataset[item.index].bench;
+							return extra ? '\n' + extra : '';
+						}
+					}
+				},
+				onClick: (_mouseEvent, activeElems) => {
+					if (activeElems.length === 0) {
+						return;
+					}
+					// XXX: Undocumented. How can we know the index?
+					const index = activeElems[0]._index;
+					const url = dataset[index].commit.url;
+					window.open(url, '_blank');
+				},
+			};
 
-	return new Chart(canvas, {
-	type: 'line',
-	data,
-	options,
-});
-}
+			return new Chart(canvas, {
+				type: 'line',
+				data,
+				options,
+			});
+		}
 
 		function renderGraphs(parent, name, datasets) {
 			const div = document.createElement("div");
@@ -226,5 +226,12 @@
 		}
 	}
 
-	renderAllCharts(init());
+	function waitForScripts(){
+		if (typeof Chart !== 'undefined' && window.BENCHMARK_DATA !== 'undefined') {
+			renderAllCharts(init());
+		} else {
+			setTimeout(waitForScripts, 100);
+		}
+	}
+	waitForScripts();
 })();

@@ -9,38 +9,33 @@ type FeatureItem = {
 };
 
 const FeatureList: FeatureItem[] = [
-    /*
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Async everything',
+    Svg: require('@site/static/img/async.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        By using async assertions per default, we have a consistent API and other perks.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Extensible',
+    Svg: require('@site/static/img/extensibility.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        We added lots of extensibility points to allow you to build custom extensions.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Performant',
+    Svg: require('@site/static/img/speed.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        A focus on performance allows you to execute your tests as fast as possible.
       </>
     ),
   },
-  */
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {

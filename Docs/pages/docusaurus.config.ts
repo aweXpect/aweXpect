@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'aweXpect',
-  tagline: 'Awesome expectations',
+  tagline: 'Assert unit tests in natural language using awesome expectations.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -89,12 +89,7 @@ const config: Config = {
         {
           to: '/blog',
           label: 'Blog',
-          position: 'left'
-        },
-        {
-          href: 'https://github.com/aweXpect/aweXpect',
-          label: 'GitHub',
-          position: 'right',
+          position: 'right'
         },
       ],
     },
@@ -118,13 +113,13 @@ const config: Config = {
           title: 'Community',
           items: [
             {
+              label: "GitHub Issues",
+              href: "https://github.com/aweXpect/aweXpect/issues"
+            },
+            {
               label: 'Stack Overflow',
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
-            {
-              "label": "GitHub Issues",
-              "href": "https://github.com/aweXpect/aweXpect/issues"
-            }
           ],
         },
         {
@@ -134,10 +129,10 @@ const config: Config = {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
             },
-			  {
-				  label: 'NuGet',
-				  href: 'https://www.nuget.org/packages/aweXpect',
-			  },
+            {
+              label: 'NuGet',
+              href: 'https://www.nuget.org/packages/aweXpect',
+            },
           ],
         },
       ],
