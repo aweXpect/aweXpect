@@ -82,6 +82,8 @@ jobs:
   benchmarks:
       name: "Benchmarks"
       runs-on: ubuntu-latest
+      permissions:
+        contents: write
       env:
         DOTNET_NOLOGO: true
       steps:
@@ -95,6 +97,25 @@ jobs:
               8.0.x
         - name: Run benchmarks
           run: ./build.sh Benchmarks
+        - name: Store benchmark result
+          uses: rhysd/github-action-benchmark@v1
+          with:
+            name: Benchmark.Net Benchmark
+            tool: 'benchmarkdotnet'
+            output-file-path: Artifacts/Benchmarks/results/aweXpect.Benchmarks.HappyCaseBenchmarks-report-full-compressed.json
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            gh-pages-branch: 'benchmarks'
+            benchmark-data-dir-path: 'Docs/pages/static/js'
+            auto-push: false
+        - name: Push benchmark result
+          run: |
+            git config --global user.email "benchmarks@testably.org"
+            git config --global user.name "Benchmark User"
+            git fetch
+            git checkout benchmarks
+            git rm Docs/pages/static/js/index.html
+            git commit --amend
+            git push --set-upstream origin benchmarks
 
   static-code-analysis:
       name: "Static code analysis"
