@@ -106,7 +106,13 @@ jobs:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             gh-pages-branch: 'benchmarks'
             benchmark-data-dir-path: 'Docs/pages/static/js'
-            auto-push: true
+            auto-push: false
+        - name: Push benchmark result
+          run: |
+            git branch --show-current
+            git add Docs/pages/static/js/data.js
+            git commit -m "Update benchmarks"
+            git push --set-upstream origin benchmarks
 
   static-code-analysis:
       name: "Static code analysis"
