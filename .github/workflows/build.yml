@@ -109,6 +109,9 @@ jobs:
             auto-push: false
         - name: Push benchmark result
           run: |
+            git config --global user.email "benchmarks@testably.org"
+            git config --global user.name "Benchmark User"
+            git checkout benchmarks
             git branch --show-current
             git add Docs/pages/static/js/data.js
             git commit -m "Update benchmarks"
