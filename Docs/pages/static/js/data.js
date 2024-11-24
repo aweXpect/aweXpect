@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732460915194,
+  "lastUpdate": 1732469749392,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -116,6 +116,66 @@ window.BENCHMARK_DATA = {
             "value": 836.1589536031087,
             "unit": "ns",
             "range": "± 2.790730139831681"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a1983143bc3e071fff853bf31380d3c67c65e4ed",
+          "message": "fix: push created benchmarks branch (#25)\n\n* Push created benchmarks branch\r\n* Rename \"Tutorial\" to \"Documentation\"",
+          "timestamp": "2024-11-24T17:31:56Z",
+          "tree_id": "9b816f1f2771f66e8ff7c48bd97ef6dea4511b97",
+          "url": "https://github.com/aweXpect/aweXpect/commit/a1983143bc3e071fff853bf31380d3c67c65e4ed"
+        },
+        "date": 1732469749027,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 213.6469726392201,
+            "unit": "ns",
+            "range": "± 0.9295504907126708"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 165.61433986255102,
+            "unit": "ns",
+            "range": "± 1.3220577808425418"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 578.4845448176067,
+            "unit": "ns",
+            "range": "± 3.190269230315376"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 384.4197207768758,
+            "unit": "ns",
+            "range": "± 1.7554609275201174"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 312.1436559132167,
+            "unit": "ns",
+            "range": "± 1.2036998548245315"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 782.8100941340128,
+            "unit": "ns",
+            "range": "± 2.17704789645261"
           }
         ]
       }
