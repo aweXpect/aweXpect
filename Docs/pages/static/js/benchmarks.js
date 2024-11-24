@@ -116,7 +116,7 @@
 		function renderGraphs(parent, name, datasets) {
 			var div = document.createElement("div");
 			var h = document.createElement("h3");
-			var t = document.createTextNode(name.substring(33));
+			var t = document.createTextNode(name.substring(20));
 			h.appendChild(t);
 			div.appendChild(h);
 			const canvas = document.createElement('canvas');

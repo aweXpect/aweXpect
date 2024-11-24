@@ -82,8 +82,6 @@ jobs:
   benchmarks:
       name: "Benchmarks"
       runs-on: ubuntu-latest
-      permissions:
-        contents: write
       env:
         DOTNET_NOLOGO: true
       steps:
@@ -97,16 +95,6 @@ jobs:
               8.0.x
         - name: Run benchmarks
           run: ./build.sh Benchmarks
-        - name: Store benchmark result
-          uses: rhysd/github-action-benchmark@v1
-          with:
-            name: Benchmark.Net Benchmark
-            tool: 'benchmarkdotnet'
-            output-file-path: Artifacts/Benchmarks/results/aweXpect.Benchmarks.HappyCaseBenchmarks-report-full-compressed.json
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            gh-pages-branch: 'benchmarks'
-            benchmark-data-dir-path: 'Docs/pages/static/js'
-            auto-push: true
 
   static-code-analysis:
       name: "Static code analysis"
@@ -149,8 +137,6 @@ jobs:
   build-pages:
     name: Build Pages
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
