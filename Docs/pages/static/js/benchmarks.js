@@ -106,7 +106,7 @@
 },
 };
 
-	new Chart(canvas, {
+	return new Chart(canvas, {
 	type: 'line',
 	data,
 	options,
@@ -114,9 +114,9 @@
 }
 
 		function renderGraphs(parent, name, datasets) {
-			var div = document.createElement("div");
-			var h = document.createElement("h3");
-			var t = document.createTextNode(name.substring(20));
+			const div = document.createElement("div");
+			const h = document.createElement("h3");
+			const t = document.createTextNode(name.substring(20));
 			h.appendChild(t);
 			div.appendChild(h);
 			const canvas = document.createElement('canvas');
@@ -192,17 +192,17 @@
 				},
 			};
 
-			new Chart(canvas, {
+			return new Chart(canvas, {
 				type: 'line',
 				data,
 				options,
 			});
 		}
 
-		function renderBenchSet(name, benchSet, main) {
-			var chartGroups = new Map();
+		function renderBenchSet(benchSet, main) {
+			const chartGroups = new Map();
 			for (const [benchName, benches] of benchSet.entries()) {
-				var title = benchName.split("_");
+				const title = benchName.split("_");
 				if (title.length == 2) {
 					const arr = chartGroups.get(title[0]);
 					const result = [title[1], benches];
@@ -222,7 +222,7 @@
 
 		const main = document.getElementById('benchmarks-container');
 		for (const {name, dataSet} of dataSets) {
-			renderBenchSet(name, dataSet, main);
+			renderBenchSet(dataSet, main);
 		}
 	}
 
