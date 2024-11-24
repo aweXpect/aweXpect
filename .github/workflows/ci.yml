@@ -114,7 +114,7 @@ jobs:
             git fetch
             git checkout benchmarks
             git rm Docs/pages/static/js/index.html
-            git commit --amend
+            git commit --amend --no-edit
             git push --set-upstream origin benchmarks
 
   static-code-analysis:
