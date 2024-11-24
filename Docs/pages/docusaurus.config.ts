@@ -81,7 +81,16 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          to: '/benchmarks',
+          label: 'Benchmarks',
+          position: 'left'
+        },
+        {
+          to: '/blog',
+          label: 'Blog',
+          position: 'left'
+        },
         {
           href: 'https://github.com/aweXpect/aweXpect',
           label: 'GitHub',
@@ -99,10 +108,10 @@ const config: Config = {
               label: 'Tutorial',
               to: '/docs/intro',
             },
-			  {
-				  "label": "Blog",
-				  "to": "/blog"
-			  },
+            {
+              label: "Blog",
+              to: "/blog"
+            },
           ],
         },
         {
