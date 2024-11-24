@@ -95,11 +95,14 @@ jobs:
           with:
             dotnet-version: |
               8.0.x
-        - name: Run benchmarks
-          run: ./build.sh Benchmarks
         - name: Create benchmarks branch
           run: |
-            git switch benchmarks 2>/dev/null || git switch -c benchmarks;
+              git config --global user.email "benchmarks@testably.org"
+              git config --global user.name "Benchmark User"
+              git switch benchmarks 2>/dev/null || git switch -c benchmarks;
+              git push --set-upstream origin benchmarks
+        - name: Run benchmarks
+          run: ./build.sh Benchmarks
         - name: Store benchmark result
           uses: rhysd/github-action-benchmark@v1
           with:
