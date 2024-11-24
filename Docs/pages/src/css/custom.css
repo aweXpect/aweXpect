@@ -30,8 +30,22 @@
 }
 .benchmark-chart {
 	max-width: 900px;
+	min-height: 300px;
 	max-height: 700px;
+}
+#benchmarks-container {
+	margin: auto;
+	margin-top: 20px;
+	width: 60%;
 }
 #benchmarks-container h3 {
 	margin-top: 20px;
+	margin-left: 40px;
+}
+
+@media screen and (max-width: 996px) {
+	#benchmarks-container {
+		margin: 10px;
+		width: auto;
+	}
 }

@@ -15,12 +15,7 @@ export default function Benchmarks() {
 	}, []);
 	return (
 		<Layout title="Benchmarks" description="Benchmarks Page">
-			<div id="benchmarks-container"
-				style={{
-					margin: 'auto',
-					'margin-top': '20px',
-					width: '60%',
-				}}>
+			<div id="benchmarks-container">
 			</div>
 		</Layout>
 	);
