@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://aweXpect.github.io/blog</id>
+    <title>aweXpect Blog</title>
+    <updated>2024-11-23T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://aweXpect.github.io/blog"/>
+    <subtitle>aweXpect Blog</subtitle>
+    <icon>https://aweXpect.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[First Blog Post]]></title>
+        <id>https://aweXpect.github.io/blog/first-blog-post</id>
+        <link href="https://aweXpect.github.io/blog/first-blog-post"/>
+        <updated>2024-11-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is my first blog post]]></summary>
+        <content type="html"><![CDATA[<p>This is my first blog post</p>
+<p>...to test the functionality of Docusaurus.</p>]]></content>
+        <author>
+            <name>Valentin Breuß</name>
+            <uri>https://github.com/vbreuss</uri>
+        </author>
+    </entry>
+</feed>
