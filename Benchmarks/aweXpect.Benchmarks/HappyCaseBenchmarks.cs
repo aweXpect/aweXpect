@@ -16,7 +16,7 @@ public class HappyCaseBenchmarks
 		=> _boolSubject.Should().BeTrue();
 
 	[Benchmark]
-	public async Task<bool> Bool_aweXpectExpectations()
+	public async Task<bool> Bool_aweXpect()
 		=> await Expect.That(_boolSubject).Should().BeTrue();
 
 	[Benchmark]
@@ -28,7 +28,7 @@ public class HappyCaseBenchmarks
 		=> _stringSubject.Should().Be(_stringExpectation);
 
 	[Benchmark]
-	public async Task<string?> String_aweXpectExpectations()
+	public async Task<string?> String_aweXpect()
 		=> await Expect.That(_stringSubject).Should().Be(_stringExpectation);
 
 	[Benchmark]
