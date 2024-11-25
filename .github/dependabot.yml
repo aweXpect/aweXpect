@@ -7,6 +7,8 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "Europe/Vienna"
+      labels:
+      - "dependencies"
 
   - package-ecosystem: "nuget"
     directory: "/"
@@ -15,3 +17,5 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "Europe/Vienna"
+      labels:
+      - "dependencies"
