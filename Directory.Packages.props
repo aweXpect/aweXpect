@@ -21,15 +21,15 @@
 		<PackageVersion Include="NUnit" Version="4.2.2"/>
 		<PackageVersion Include="NUnit3TestAdapter" Version="4.6.0" />
 		<PackageVersion Include="NUnit.Analyzers" Version="4.4.0" />
-		<PackageVersion Include="TUnit" Version="0.3.34"/>
-		<PackageVersion Include="TUnit.Assertions" Version="0.3.34" />
+		<PackageVersion Include="TUnit" Version="0.4.1"/>
+		<PackageVersion Include="TUnit.Assertions" Version="0.4.1" />
 		<PackageVersion Include="xunit" Version="2.9.2" />
 		<PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
 		<PackageVersion Include="AutoFixture.Xunit2" Version="4.18.1" />
 		<PackageVersion Include="coverlet.collector" Version="6.0.2" />
 		<PackageVersion Include="FluentAssertions" Version="6.12.2" />
-		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.4.1" />
-		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.4" />
+		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.4.3" />
+		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.6" />
 		<PackageVersion Include="PublicApiGenerator" Version="11.1.0" />
 	</ItemGroup>
 </Project>
