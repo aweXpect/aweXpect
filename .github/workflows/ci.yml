@@ -63,6 +63,7 @@ jobs:
 
   mutation-tests:
       name: "Mutation tests"
+      if: ${{ github.actor != 'dependabot[bot]' }}
       runs-on: ubuntu-latest
       env:
         STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
@@ -81,6 +82,7 @@ jobs:
 
   benchmarks:
       name: "Benchmarks"
+      if: ${{ github.actor != 'dependabot[bot]' }}
       runs-on: ubuntu-latest
       env:
         DOTNET_NOLOGO: true
@@ -98,6 +100,7 @@ jobs:
 
   static-code-analysis:
       name: "Static code analysis"
+      if: ${{ github.actor != 'dependabot[bot]' }}
       runs-on: ubuntu-latest
       env:
           REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
@@ -136,6 +139,7 @@ jobs:
 
   build-pages:
     name: Build Pages
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
