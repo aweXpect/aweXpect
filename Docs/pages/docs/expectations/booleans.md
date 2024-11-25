@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Booleans
 
-Boolean values support the following expectations.
+Describes the possible expectations for boolean values.
 
 ```csharp
 bool subject = false;

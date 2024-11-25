@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Numbers
 
-Numbers support the following expectations.
+Describes the possible expectations for numbers.
 
 ## Equality
 
@@ -41,7 +41,7 @@ double subject = 42.0;
 await Expect.That(subject).Should().BeLessThan(42).Within(0.1);
 ```
 
-### Positive / negative
+## Positive / negative
 
 As a special case, to verify, if a number is positive or negative, you can use the following expectations.
 
