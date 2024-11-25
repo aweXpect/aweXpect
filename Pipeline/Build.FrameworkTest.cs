@@ -77,14 +77,14 @@ partial class Build
 					(settings, v) => settings
 						.SetProjectFile(v.project)
 						.SetFramework(v.framework)
-						.SetProcessArgumentConfigurator(args => args
-							.Add("--")
-							.Add("--coverage")
-							.Add("--disable-logo")
-							.Add("--coverage-output-format \"cobertura\"")
-							.Add("--report-trx")
-							.Add($"--report-trx-filename {v.project.Name}_{v.framework}.trx")
-							.Add($"--results-directory {TestResultsDirectory}")
+						.SetProcessAdditionalArguments(
+							"--",
+							"--coverage",
+							"--disable-logo",
+							"--coverage-output-format \"cobertura\"",
+							"--report-trx",
+							$"--report-trx-filename {v.project.Name}_{v.framework}.trx",
+							$"--results-directory {TestResultsDirectory}"
 						)
 				)
 			);
