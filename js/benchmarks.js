@@ -134,7 +134,7 @@
 						borderColor: color,
 						backgroundColor: color + '60', // Add alpha for #rrggbbaa
 					};
-				}),
+				}).sort((a, b) => a.label.localeCompare(b.label)),
 
 			};
 			const options = {
