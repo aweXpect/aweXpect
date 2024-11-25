@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732518827267,
+  "lastUpdate": 1732525177824,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -236,6 +236,66 @@ window.BENCHMARK_DATA = {
             "value": 804.0389312108358,
             "unit": "ns",
             "range": "± 7.259211297417814"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7757917bcdf48603164b537f0f5a0109e1255a64",
+          "message": "refactor: disable some jobs for dependabot pull requests (#35)\n\nDisable some jobs for dependabot, because of\r\nhttps://github.com/dependabot/dependabot-core/issues/3253",
+          "timestamp": "2024-11-25T08:56:25Z",
+          "tree_id": "c28269a0b07d63286d1fe612f26002fcb33c624c",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7757917bcdf48603164b537f0f5a0109e1255a64"
+        },
+        "date": 1732525177181,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 224.24265851424292,
+            "unit": "ns",
+            "range": "± 0.8798749923249037"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 175.00747151374816,
+            "unit": "ns",
+            "range": "± 1.0865913667505251"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 629.3752957661947,
+            "unit": "ns",
+            "range": "± 2.9298772431204245"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 419.8269890638498,
+            "unit": "ns",
+            "range": "± 1.752325068608801"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 334.6943126678467,
+            "unit": "ns",
+            "range": "± 2.015542282302121"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 810.94676392419,
+            "unit": "ns",
+            "range": "± 7.474848757723167"
           }
         ]
       }
