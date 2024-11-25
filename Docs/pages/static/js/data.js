@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732526611349,
+  "lastUpdate": 1732527102109,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -416,6 +416,66 @@ window.BENCHMARK_DATA = {
             "value": 807.4594235787025,
             "unit": "ns",
             "range": "± 2.076231477134238"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "00f58b60401f52b94259735510f6c88f10d4b5d6",
+          "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.4.1 to 1.4.3 (#32)\n\nbuild(deps): bump Microsoft.Testing.Extensions.TrxReport\r\n\r\nBumps [Microsoft.Testing.Extensions.TrxReport](https://github.com/microsoft/testfx) from 1.4.1 to 1.4.3.\r\n- [Release notes](https://github.com/microsoft/testfx/releases)\r\n- [Changelog](https://github.com/microsoft/testfx/blob/main/docs/Changelog-Platform.md)\r\n- [Commits](https://github.com/microsoft/testfx/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: Microsoft.Testing.Extensions.TrxReport\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-11-25T10:28:37+01:00",
+          "tree_id": "f62d2d2bed8df69f2ff8fcd0149d8f7d1eb36eae",
+          "url": "https://github.com/aweXpect/aweXpect/commit/00f58b60401f52b94259735510f6c88f10d4b5d6"
+        },
+        "date": 1732527101510,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.41507858435313,
+            "unit": "ns",
+            "range": "± 1.0840968246655964"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.91630367132333,
+            "unit": "ns",
+            "range": "± 0.680654803793345"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 603.7741659709385,
+            "unit": "ns",
+            "range": "± 4.838823105341517"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 408.6883493423462,
+            "unit": "ns",
+            "range": "± 3.2666011382219837"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 327.3907864570618,
+            "unit": "ns",
+            "range": "± 2.923380537155745"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 864.404640452067,
+            "unit": "ns",
+            "range": "± 4.24399434827037"
           }
         ]
       }
