@@ -1,8 +1,8 @@
 (function () {
 	const toolColors = {
-		aweXpect: '#c2185b',
-		TUnit: '#00add8',
-		FluentAssertions: '#178600'
+		aweXpect: '#63A2AC',
+		FluentAssertions: '#ACA263',
+		TUnit: '#AC6262',
 	};
 
 	function init() {
