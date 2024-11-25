@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732527102109,
+  "lastUpdate": 1732529396984,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -476,6 +476,66 @@ window.BENCHMARK_DATA = {
             "value": 864.404640452067,
             "unit": "ns",
             "range": "± 4.24399434827037"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ea4c5986b91a1a1144d9b5e22c3ba50ebb7c153f",
+          "message": "docs: add benchmark result (#26)\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for a1983143bc3e071fff853bf31380d3c67c65e4ed\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 9faaf90b0f28d1e38a374d8867a54563fd849506\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 7757917bcdf48603164b537f0f5a0109e1255a64\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 6e766e0bf8b7cf105b8d027796bd44c7cc222bbf\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for b345f7b91cafa033d92d3f02ed56b001deb8f970\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 00f58b60401f52b94259735510f6c88f10d4b5d6\r\n\r\n---------\r\n\r\nCo-authored-by: github-action-benchmark <github@users.noreply.github.com>",
+          "timestamp": "2024-11-25T11:06:52+01:00",
+          "tree_id": "b0d320b3d1464dcfb1f909badacf50d5f4e5f30d",
+          "url": "https://github.com/aweXpect/aweXpect/commit/ea4c5986b91a1a1144d9b5e22c3ba50ebb7c153f"
+        },
+        "date": 1732529396784,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.83607293764751,
+            "unit": "ns",
+            "range": "± 1.0944668167181546"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 166.12025347122778,
+            "unit": "ns",
+            "range": "± 0.6621361078241912"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 589.0038883209229,
+            "unit": "ns",
+            "range": "± 4.481457543944474"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 396.32487909610455,
+            "unit": "ns",
+            "range": "± 1.9113538773382792"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 315.7268955890949,
+            "unit": "ns",
+            "range": "± 1.1972566087271"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 787.1557965596517,
+            "unit": "ns",
+            "range": "± 3.588038854387687"
           }
         ]
       }
