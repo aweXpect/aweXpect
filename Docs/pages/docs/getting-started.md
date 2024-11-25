@@ -24,10 +24,10 @@ sidebar_position: 1
    your test project.
    This allows writing a more concise syntax:
    ```csharp
-   // Normal behaviour
+   //    ↓ Default behaviour
    await Expect.That(subject).Should().BeTrue();
-   // With global static
-   await That(subject).Should().BeTrue()
+   await That(subject).Should().BeTrue();
+   //    ↑ With global static
    ```
 
 ## Write your first expectation

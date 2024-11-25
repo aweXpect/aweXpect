@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Strings
 
-String values support the following expectations:
+String values support the following expectations.
 
 ## Null, empty or white-space
 
