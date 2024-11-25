@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732529396984,
+  "lastUpdate": 1732529904674,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -536,6 +536,66 @@ window.BENCHMARK_DATA = {
             "value": 787.1557965596517,
             "unit": "ns",
             "range": "± 3.588038854387687"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e8246110a4d4de383ef06059be384655e7bda274",
+          "message": "feat: add logo to documentation (#37)\n\n* Add logo to index page\r\n\r\n* Add link to Stryker and SonarQube",
+          "timestamp": "2024-11-25T11:14:54+01:00",
+          "tree_id": "f0eb43c4ac723544c33bb489d0f1ef1c9ca0a9b8",
+          "url": "https://github.com/aweXpect/aweXpect/commit/e8246110a4d4de383ef06059be384655e7bda274"
+        },
+        "date": 1732529904040,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 218.49197169939677,
+            "unit": "ns",
+            "range": "± 1.1746405979549777"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.2773211956024,
+            "unit": "ns",
+            "range": "± 0.988345536630065"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 612.3092056910197,
+            "unit": "ns",
+            "range": "± 3.417915092020387"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.887020333608,
+            "unit": "ns",
+            "range": "± 1.944880432458748"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 317.6818276473454,
+            "unit": "ns",
+            "range": "± 2.639109133136573"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 807.0133925120036,
+            "unit": "ns",
+            "range": "± 4.268567141501653"
           }
         ]
       }
