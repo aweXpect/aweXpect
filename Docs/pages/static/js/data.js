@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732531097791,
+  "lastUpdate": 1732549921609,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -656,6 +656,66 @@ window.BENCHMARK_DATA = {
             "value": 813.6892242431641,
             "unit": "ns",
             "range": "± 2.7134448641704223"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "125349ff4a7a1d0361a43065110268442e421696",
+          "message": "docs: improve documentation (#39)\n\nAdd the following pages to the documentation:\r\n- booleans.md\r\n- strings.md\r\n- numbers.md\r\n- dates-times.md\r\n\r\nAlso\r\n* Adjust benchmark colors\r\n* Update getting-started.md\r\n* Fix edit links",
+          "timestamp": "2024-11-25T15:48:46Z",
+          "tree_id": "23d0d3006623252237516ffac0002aab114e6f59",
+          "url": "https://github.com/aweXpect/aweXpect/commit/125349ff4a7a1d0361a43065110268442e421696"
+        },
+        "date": 1732549921404,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 220.63657353605544,
+            "unit": "ns",
+            "range": "± 1.1310508517111533"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.9794772352491,
+            "unit": "ns",
+            "range": "± 0.5282831656436286"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 588.139475277492,
+            "unit": "ns",
+            "range": "± 4.4002072812566455"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 406.22880233128865,
+            "unit": "ns",
+            "range": "± 1.7600205511998719"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 344.0058630193983,
+            "unit": "ns",
+            "range": "± 1.4113839277731297"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 880.0492286682129,
+            "unit": "ns",
+            "range": "± 0.8085623479541731"
           }
         ]
       }
