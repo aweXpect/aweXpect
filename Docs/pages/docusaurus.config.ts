@@ -104,21 +104,25 @@ const config: Config = {
               to: '/docs/getting-started',
             },
             {
+              label: 'Benchmarks',
+              to: '/benchmarks',
+            },
+            {
               label: "Blog",
               to: "/blog"
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Code Quality',
           items: [
             {
-              label: "GitHub Issues",
-              href: "https://github.com/aweXpect/aweXpect/issues"
+              label: 'SonarQube',
+              href: "https://sonarcloud.io/project/overview?id=aweXpect_aweXpect"
             },
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Stryker Mutator',
+              href: 'https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main#mutant',
             },
           ],
         },
