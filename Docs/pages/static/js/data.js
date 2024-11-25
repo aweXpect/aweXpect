@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732526074163,
+  "lastUpdate": 1732526611349,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -356,6 +356,66 @@ window.BENCHMARK_DATA = {
             "value": 872.9029039655413,
             "unit": "ns",
             "range": "± 2.719606059155758"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b345f7b91cafa033d92d3f02ed56b001deb8f970",
+          "message": "build(deps): bump Microsoft.Testing.Extensions.CodeCoverage from 17.12.4 to 17.12.6 (#29)\n\nbuild(deps): bump Microsoft.Testing.Extensions.CodeCoverage\r\n\r\nBumps [Microsoft.Testing.Extensions.CodeCoverage](https://github.com/microsoft/codecoverage) from 17.12.4 to 17.12.6.\r\n- [Commits](https://github.com/microsoft/codecoverage/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: Microsoft.Testing.Extensions.CodeCoverage\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-11-25T10:20:23+01:00",
+          "tree_id": "33071e5d9effa4ebc7b68ad39bc61618196925ed",
+          "url": "https://github.com/aweXpect/aweXpect/commit/b345f7b91cafa033d92d3f02ed56b001deb8f970"
+        },
+        "date": 1732526610986,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 218.3828762429101,
+            "unit": "ns",
+            "range": "± 0.8676523572006164"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.42119640963418,
+            "unit": "ns",
+            "range": "± 1.1002572718911776"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 616.6607441902161,
+            "unit": "ns",
+            "range": "± 2.0421279874845535"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 406.7946391105652,
+            "unit": "ns",
+            "range": "± 1.7039585905613563"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 322.47511231104534,
+            "unit": "ns",
+            "range": "± 1.1901343811866958"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 807.4594235787025,
+            "unit": "ns",
+            "range": "± 2.076231477134238"
           }
         ]
       }
