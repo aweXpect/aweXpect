@@ -21,7 +21,7 @@ public sealed partial class TimeOnlyShould
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
-		
+
 		[Fact]
 		public async Task WhenSubjectIsDifferent_ShouldFail()
 		{
@@ -50,7 +50,7 @@ public sealed partial class TimeOnlyShould
 
 			await That(Act).Should().NotThrow();
 		}
-		
+
 		[Theory]
 		[InlineData(3, 2, true)]
 		[InlineData(5, 3, true)]
@@ -81,18 +81,6 @@ public sealed partial class TimeOnlyShould
 	public sealed class NotBeTests
 	{
 		[Fact]
-		public async Task WhenExpectedIsNull_ShouldSucceed()
-		{
-			TimeOnly subject = CurrentTime();
-			TimeOnly? expected = null;
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
 		public async Task WhenSubjectIsDifferent_ShouldSucceed()
 		{
 			TimeOnly subject = CurrentTime();
@@ -120,7 +108,19 @@ public sealed partial class TimeOnlyShould
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
-		
+
+		[Fact]
+		public async Task WhenUnexpectedIsNull_ShouldSucceed()
+		{
+			TimeOnly subject = CurrentTime();
+			TimeOnly? unexpected = null;
+
+			async Task Act()
+				=> await That(subject).Should().NotBe(unexpected);
+
+			await That(Act).Should().NotThrow();
+		}
+
 		[Theory]
 		[InlineData(3, 2, false)]
 		[InlineData(5, 3, false)]
@@ -131,10 +131,10 @@ public sealed partial class TimeOnlyShould
 		{
 			TimeSpan tolerance = TimeSpan.FromSeconds(toleranceSeconds);
 			TimeOnly subject = EarlierTime(actualDifference);
-			TimeOnly expected = CurrentTime();
+			TimeOnly unexpected = CurrentTime();
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected)
+				=> await That(subject).Should().NotBe(unexpected)
 					.Within(tolerance)
 					.Because("we want to test the failure");
 
@@ -142,7 +142,7 @@ public sealed partial class TimeOnlyShould
 				.OnlyIf(expectToThrow)
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(expected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
+				              not be {Formatter.Format(unexpected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}

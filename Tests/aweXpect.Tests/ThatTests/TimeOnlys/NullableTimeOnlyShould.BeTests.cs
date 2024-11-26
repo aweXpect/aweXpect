@@ -110,37 +110,37 @@ public sealed partial class NullableTimeOnlyShould
 	public sealed class NotBeTests
 	{
 		[Fact]
-		public async Task WhenOnlyExpectedIsNull_ShouldSucceed()
-		{
-			TimeOnly? subject = CurrentTime();
-			TimeOnly? expected = null;
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
 		public async Task WhenOnlySubjectIsNull_ShouldSucceed()
 		{
 			TimeOnly? subject = null;
-			TimeOnly? expected = CurrentTime();
+			TimeOnly? unexpected = CurrentTime();
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
+				=> await That(subject).Should().NotBe(unexpected);
 
 			await That(Act).Should().NotThrow();
 		}
 
 		[Fact]
-		public async Task WhenSubjectAndExpectedIsNull_ShouldFail()
+		public async Task WhenOnlyUnexpectedIsNull_ShouldSucceed()
 		{
-			TimeOnly? subject = null;
-			TimeOnly? expected = null;
+			TimeOnly? subject = CurrentTime();
+			TimeOnly? unexpected = null;
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
+				=> await That(subject).Should().NotBe(unexpected);
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task WhenSubjectAndUnexpectedIsNull_ShouldFail()
+		{
+			TimeOnly? subject = null;
+			TimeOnly? unexpected = null;
+
+			async Task Act()
+				=> await That(subject).Should().NotBe(unexpected);
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -178,7 +178,7 @@ public sealed partial class NullableTimeOnlyShould
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
-		
+
 		[Theory]
 		[InlineData(3, 2, false)]
 		[InlineData(5, 3, false)]
@@ -189,10 +189,10 @@ public sealed partial class NullableTimeOnlyShould
 		{
 			TimeSpan tolerance = TimeSpan.FromSeconds(toleranceSeconds);
 			TimeOnly? subject = EarlierTime(actualDifference);
-			TimeOnly? expected = CurrentTime();
+			TimeOnly? unexpected = CurrentTime();
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected)
+				=> await That(subject).Should().NotBe(unexpected)
 					.Within(tolerance)
 					.Because("we want to test the failure");
 
@@ -200,7 +200,7 @@ public sealed partial class NullableTimeOnlyShould
 				.OnlyIf(expectToThrow)
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(expected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
+				              not be {Formatter.Format(unexpected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}

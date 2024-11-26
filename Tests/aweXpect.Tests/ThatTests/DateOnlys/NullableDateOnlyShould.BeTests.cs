@@ -50,7 +50,7 @@ public sealed partial class NullableDateOnlyShould
 
 			await That(Act).Should().NotThrow();
 		}
-		
+
 		[Fact]
 		public async Task WhenSubjectIsDifferent_ShouldFail()
 		{
@@ -67,7 +67,7 @@ public sealed partial class NullableDateOnlyShould
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
-		
+
 		[Fact]
 		public async Task WhenSubjectIsTheSame_ShouldSucceed()
 		{
@@ -109,37 +109,37 @@ public sealed partial class NullableDateOnlyShould
 	public sealed class NotBeTests
 	{
 		[Fact]
-		public async Task WhenOnlyExpectedIsNull_ShouldSucceed()
-		{
-			DateOnly? subject = CurrentTime();
-			DateOnly? expected = null;
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
 		public async Task WhenOnlySubjectIsNull_ShouldSucceed()
 		{
 			DateOnly? subject = null;
-			DateOnly? expected = CurrentTime();
+			DateOnly? unexpected = CurrentTime();
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
+				=> await That(subject).Should().NotBe(unexpected);
 
 			await That(Act).Should().NotThrow();
 		}
 
 		[Fact]
-		public async Task WhenSubjectAndExpectedIsNull_ShouldFail()
+		public async Task WhenOnlyUnexpectedIsNull_ShouldSucceed()
 		{
-			DateOnly? subject = null;
-			DateOnly? expected = null;
+			DateOnly? subject = CurrentTime();
+			DateOnly? unexpected = null;
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected);
+				=> await That(subject).Should().NotBe(unexpected);
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task WhenSubjectAndUnexpectedIsNull_ShouldFail()
+		{
+			DateOnly? subject = null;
+			DateOnly? unexpected = null;
+
+			async Task Act()
+				=> await That(subject).Should().NotBe(unexpected);
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -148,7 +148,7 @@ public sealed partial class NullableDateOnlyShould
 				             but it was <null>
 				             """);
 		}
-		
+
 		[Fact]
 		public async Task WhenSubjectIsDifferent_ShouldSucceed()
 		{
@@ -177,7 +177,7 @@ public sealed partial class NullableDateOnlyShould
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
-		
+
 		[Theory]
 		[InlineData(3, 2, false)]
 		[InlineData(5, 3, false)]
@@ -187,10 +187,10 @@ public sealed partial class NullableDateOnlyShould
 			int actualDifference, int tolerance, bool expectToThrow)
 		{
 			DateOnly? subject = EarlierTime(actualDifference);
-			DateOnly? expected = CurrentTime();
+			DateOnly? unexpected = CurrentTime();
 
 			async Task Act()
-				=> await That(subject).Should().NotBe(expected)
+				=> await That(subject).Should().NotBe(unexpected)
 					.Within(TimeSpan.FromDays(tolerance))
 					.Because("we want to test the failure");
 
@@ -198,7 +198,7 @@ public sealed partial class NullableDateOnlyShould
 				.OnlyIf(expectToThrow)
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(expected)} ± {tolerance} days, because we want to test the failure,
+				              not be {Formatter.Format(unexpected)} ± {tolerance} days, because we want to test the failure,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
