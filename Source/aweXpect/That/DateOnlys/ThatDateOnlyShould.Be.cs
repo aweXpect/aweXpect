@@ -1,8 +1,8 @@
 ﻿#if NET6_0_OR_GREATER
-using System;
 using aweXpect.Core;
 using aweXpect.Options;
 using aweXpect.Results;
+using System;
 
 namespace aweXpect;
 
@@ -15,8 +15,7 @@ public static partial class ThatDateOnlyShould
 		DateOnly? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
-			source.ExpectationBuilder.AddConstraint(it
+		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(source.ExpectationBuilder.AddConstraint(it
 				=> new ConditionConstraintWithTolerance(
 					it,
 					expected,
@@ -43,8 +42,8 @@ public static partial class ThatDateOnlyShould
 					it,
 					unexpected,
 					(e, t) => $"not be {Formatter.Format(e)}{t.ToDayString()}",
-					(a, e, t) => e == null ||
-					             Math.Abs(a.DayNumber - e.Value.DayNumber) > (int)t.TotalDays,
+					(a, u, t) => u == null ||
+					             Math.Abs(a.DayNumber - u.Value.DayNumber) > (int)t.TotalDays,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
 			source,

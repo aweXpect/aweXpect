@@ -234,6 +234,14 @@ TimeOnly subject = new TimeOnly(14, 15, 16);
 await Expect.That(subject).Should().Be(new TimeOnly(14, 15, 16));
 ```
 
+You can also specify a tolerance:
+
+```csharp
+TimeOnly subject = new TimeOnly(14, 15, 16);
+await Expect.That(subject).Should().Be(new TimeOnly(14, 15, 17));
+  .Within(TimeSpan.FromSeconds(1));
+```
+
 ### After / before
 
 You can also verify that a `TimeOnly` is after or before another value
