@@ -18,26 +18,6 @@ public static partial class ThatTimeOnlyShould
 	public static IThat<TimeOnly> Should(this IExpectSubject<TimeOnly> subject)
 		=> subject.Should(That.WithoutAction);
 
-	private readonly struct ConditionConstraint(
-		string it,
-		TimeOnly expected,
-		Func<TimeOnly, TimeOnly, bool> condition,
-		string expectation) : IValueConstraint<TimeOnly>
-	{
-		public ConstraintResult IsMetBy(TimeOnly actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<TimeOnly>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-		}
-
-		public override string ToString()
-			=> expectation;
-	}
-
 	private readonly struct PropertyConstraint<T>(
 		string it,
 		T expected,
@@ -69,19 +49,13 @@ public static partial class ThatTimeOnlyShould
 	{
 		public ConstraintResult IsMetBy(TimeOnly actual)
 		{
-			if (expected is null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					failureMessageFactory(actual, expected, it));
-			}
-
-			if (condition(actual, expected.Value, tolerance.Tolerance ?? TimeSpan.Zero))
+			if (condition(actual, expected, tolerance.Tolerance ?? TimeSpan.Zero))
 			{
 				return new ConstraintResult.Success<TimeOnly>(actual, ToString());
 			}
 
 			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected.Value, it));
+				failureMessageFactory(actual, expected, it));
 		}
 
 		public override string ToString()

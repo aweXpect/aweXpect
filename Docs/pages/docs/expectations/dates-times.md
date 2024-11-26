@@ -183,6 +183,14 @@ DateOnly subject = new DateOnly(2024, 12, 24);
 await Expect.That(subject).Should().Be(new DateOnly(2024, 12, 24));
 ```
 
+You can also specify a tolerance:
+
+```csharp
+DateOnly subject = new DateOnly(2024, 12, 24);
+await Expect.That(subject).Should().Be(new DateOnly(2024, 12, 23))
+  .Within(TimeSpan.FromDays(1));
+```
+
 ### After / before
 
 You can also verify that a `DateOnly` is after or before another value
@@ -224,6 +232,14 @@ For asserting whether a `TimeOnly` is equal to another one, use:
 ```csharp
 TimeOnly subject = new TimeOnly(14, 15, 16);
 await Expect.That(subject).Should().Be(new TimeOnly(14, 15, 16));
+```
+
+You can also specify a tolerance:
+
+```csharp
+TimeOnly subject = new TimeOnly(14, 15, 16);
+await Expect.That(subject).Should().Be(new TimeOnly(14, 15, 17));
+  .Within(TimeSpan.FromSeconds(1));
 ```
 
 ### After / before
