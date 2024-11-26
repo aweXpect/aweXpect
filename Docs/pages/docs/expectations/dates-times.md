@@ -183,6 +183,14 @@ DateOnly subject = new DateOnly(2024, 12, 24);
 await Expect.That(subject).Should().Be(new DateOnly(2024, 12, 24));
 ```
 
+You can also specify a tolerance:
+
+```csharp
+DateOnly subject = new DateOnly(2024, 12, 24);
+await Expect.That(subject).Should().Be(new DateOnly(2024, 12, 23))
+  .Within(TimeSpan.FromDays(1));
+```
+
 ### After / before
 
 You can also verify that a `DateOnly` is after or before another value
