@@ -76,7 +76,8 @@ This will result in
 ## Detecting test frameworks
 
 We support a lot of different unit testing frameworks:
-- [xUnit](https://xunit.net/) (v2)
+- [Microsoft Test Framework](https://github.com/microsoft/testfx/)
+- [xUnit](https://xunit.net/) (v2 & v3)
 - [NUnit](https://nunit.org/) (v3 & v4)
 - [TUnit](https://thomhurst.github.io/TUnit/)
 

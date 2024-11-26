@@ -27,7 +27,7 @@ internal static class Initialization
 		foreach (Type frameworkType in AppDomain.CurrentDomain.GetAssemblies()
 			         .Where(a => ExcludedAssemblyNamespaces.All(x => !a.FullName!.StartsWith(x)))
 			         .SelectMany(a => a.GetTypes())
-			         .Where(x => x.IsClass)
+			         .Where(x => x is { IsClass: true, IsAbstract: false })
 			         .Where(frameworkInterface.IsAssignableFrom))
 		{
 			if (frameworkType == typeof(FallbackTestFramework))

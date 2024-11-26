@@ -13,7 +13,8 @@ partial class Build
 {
 	Target TestFrameworks => _ => _
 		.DependsOn(VsTestFrameworks)
-		.DependsOn(TestingPlatformFrameworks);
+		.DependsOn(TunitTestingPlatformFrameworks)
+		.DependsOn(XunitTestingPlatformFrameworks);
 
 	Target VsTestFrameworks => _ => _
 		.Unlisted()
@@ -23,9 +24,11 @@ partial class Build
 			Project[] projects =
 			[
 				Solution.Tests.Frameworks.aweXpect_Frameworks_Fallback_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests,
 			];
 
 			var testCombinations =
@@ -52,14 +55,14 @@ partial class Build
 						.AddLoggers($"trx;LogFileName={v.project.Name}_{v.framework}.trx")), completeOnFailure: true);
 		});
 
-	Target TestingPlatformFrameworks => _ => _
+	Target TunitTestingPlatformFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests,
 			];
 
 			var testCombinations =
@@ -84,6 +87,41 @@ partial class Build
 							.Add("--coverage-output-format \"cobertura\"")
 							.Add("--report-trx")
 							.Add($"--report-trx-filename {v.project.Name}_{v.framework}.trx")
+							.Add($"--results-directory {TestResultsDirectory}")
+						)
+				)
+			);
+		});
+
+	Target XunitTestingPlatformFrameworks => _ => _
+		.Unlisted()
+		.DependsOn(Compile)
+		.Executes(() =>
+		{
+			Project[] projects =
+			[
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests,
+			];
+
+			var testCombinations =
+				from project in projects
+				let frameworks = project.GetTargetFrameworks()
+				from framework in frameworks
+				select new { project, framework };
+
+			DotNetTest(s => s
+				.SetConfiguration(Configuration)
+				.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
+				.EnableNoBuild()
+				.CombineWith(
+					testCombinations,
+					(settings, v) => settings
+						.SetProjectFile(v.project)
+						.SetFramework(v.framework)
+						.SetProcessArgumentConfigurator(args => args
+							.Add("--")
+							.Add("--report-xunit-trx")
+							.Add($"--report-xunit-trx-filename {v.project.Name}_{v.framework}.trx")
 							.Add($"--results-directory {TestResultsDirectory}")
 						)
 				)
