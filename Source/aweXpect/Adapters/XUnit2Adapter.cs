@@ -7,13 +7,13 @@ using System.Reflection;
 namespace aweXpect.Adapters;
 
 /// <summary>
-///     Implements the XUnit test framework adapter.
+///     Implements the XUnit v2 test framework adapter.
 /// </summary>
 /// <remarks>
 ///     <see href="https://github.com/xunit/xunit" />
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-internal class XUnitTestFrameworkAdapter : ITestFrameworkAdapter
+internal class XUnit2Adapter : ITestFrameworkAdapter
 {
 	private Assembly? _assembly;
 

@@ -7,7 +7,7 @@ namespace aweXpect.Frameworks.MsTest.Tests;
 public sealed class MsTestFrameworkTests
 {
 	[TestMethod]
-	public async Task OnFail_WhenUsingXunit2AsTestFramework_ShouldThrowXunitException()
+	public async Task OnFail_WhenUsingMsTestAsTestFramework_ShouldThrowXunitException()
 	{
 		void Act()
 			=> Fail.Test("my message");
@@ -16,7 +16,7 @@ public sealed class MsTestFrameworkTests
 	}
 
 	[TestMethod]
-	public async Task OnSkip_WhenUsingXunit2AsTestFramework_ShouldThrowSkipException()
+	public async Task OnSkip_WhenUsingMsTestAsTestFramework_ShouldThrowSkipException()
 	{
 		void Act()
 			=> Skip.Test("my message");

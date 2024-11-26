@@ -23,9 +23,11 @@ partial class Build
 			Project[] projects =
 			[
 				Solution.Tests.Frameworks.aweXpect_Frameworks_Fallback_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests,
 			];
 
 			var testCombinations =
@@ -59,7 +61,8 @@ partial class Build
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests,
 			];
 
 			var testCombinations =
