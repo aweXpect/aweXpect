@@ -14,7 +14,7 @@ namespace aweXpect.Adapters;
 ///     <see href="https://github.com/nunit/nunit" />
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-internal class NUnitTestFrameworkAdapter : ITestFrameworkAdapter
+internal class NUnitAdapter : ITestFrameworkAdapter
 {
 	private Assembly? _assembly;
 
