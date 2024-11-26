@@ -15,11 +15,4 @@
 		<ProjectReference Include="..\..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="coverlet.collector">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-	</ItemGroup>
-
 </Project>
