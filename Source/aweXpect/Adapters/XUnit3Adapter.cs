@@ -1,8 +1,4 @@
-﻿using aweXpect.Core.Adapters;
-using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
+﻿using System;
 
 namespace aweXpect.Adapters;
 
@@ -13,87 +9,22 @@ namespace aweXpect.Adapters;
 ///     <see href="https://github.com/xunit/xunit" />
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-internal class XUnit3Adapter : ITestFrameworkAdapter
+internal class XUnit3Adapter() : TestFrameworkAdapter(
+	"xunit.v3.assert",
+	(a, m) => FromType("Xunit.Sdk.XunitException", a, m),
+	(_, m) => new SkipException($"$XunitDynamicSkip${m}"))
 {
-	private Assembly? _assembly;
-
-	internal class XUnit3CoreAdapter : ITestFrameworkAdapter
+	internal class XUnit3CoreAdapter() : TestFrameworkAdapter(
+		"xunit.v3.core",
+		(_, m) => new XunitException(m),
+		(_, m) => new SkipException($"$XunitDynamicSkip${m}"))
 	{
-		private Assembly? _assembly;
+		/// <summary>
+		///     Interface is required by xunit v3 to identify an assertion exception.
+		/// </summary>
+		private interface IAssertionException;
 
-		#region ITestFrameworkAdapter Members
-
-		public bool IsAvailable
-		{
-			get
-			{
-				try
-				{
-					// For netfx the assembly is not in AppDomain by default, so we can't just scan AppDomain.CurrentDomain
-					_assembly = Assembly.Load(new AssemblyName("xunit.v3.core"));
-
-					return _assembly is not null;
-				}
-				catch
-				{
-					return false;
-				}
-			}
-		}
-
-		[DoesNotReturn]
-		[StackTraceHidden]
-		public void Skip(string message) => throw new SkipException($"$XunitDynamicSkip${message}");
-
-		[DoesNotReturn]
-		[StackTraceHidden]
-		public void Throw(string message) => throw new XunitException(message);
-
-		private interface IAssertionException
-		{
-		}
-
-		private class XunitException(string message) : Exception(message), IAssertionException
-		{
-		}
-
-		#endregion
+		private sealed class XunitException(string message)
+			: Exception(message), IAssertionException;
 	}
-
-	#region ITestFrameworkAdapter Members
-
-	public bool IsAvailable
-	{
-		get
-		{
-			try
-			{
-				// For netfx the assembly is not in AppDomain by default, so we can't just scan AppDomain.CurrentDomain
-				_assembly = Assembly.Load(new AssemblyName("xunit.v3.assert"));
-
-				return _assembly is not null;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-	}
-
-	[DoesNotReturn]
-	[StackTraceHidden]
-	public void Skip(string message) => throw new SkipException($"$XunitDynamicSkip${message}");
-
-	[DoesNotReturn]
-	[StackTraceHidden]
-	public void Throw(string message)
-	{
-		Type exceptionType = _assembly?.GetType("Xunit.Sdk.XunitException")
-		                     ?? throw new NotSupportedException(
-			                     "Failed to create the xunit fail assertion type");
-
-		throw (Exception)Activator.CreateInstance(exceptionType, message)!;
-	}
-
-	#endregion
 }
