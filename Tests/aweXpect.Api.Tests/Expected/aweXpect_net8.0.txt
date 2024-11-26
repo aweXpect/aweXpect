@@ -85,7 +85,7 @@ namespace aweXpect
     }
     public static class ThatDateOnlyShould
     {
-        public static aweXpect.Results.AndOrResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> Be(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> Be(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> BeAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> BeBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> BeOnOrAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
@@ -93,7 +93,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> HaveDay(this aweXpect.Core.IThat<System.DateOnly> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> HaveMonth(this aweXpect.Core.IThat<System.DateOnly> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> HaveYear(this aweXpect.Core.IThat<System.DateOnly> source, int? expected) { }
-        public static aweXpect.Results.AndOrResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> NotBe(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> NotBe(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> NotBeAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> NotBeBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> NotBeOnOrAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
@@ -295,7 +295,7 @@ namespace aweXpect
     }
     public static class ThatNullableDateOnlyShould
     {
-        public static aweXpect.Results.AndOrResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> Be(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> Be(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> BeAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> BeBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> BeOnOrAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
@@ -303,7 +303,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> HaveDay(this aweXpect.Core.IThat<System.DateOnly?> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> HaveMonth(this aweXpect.Core.IThat<System.DateOnly?> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> HaveYear(this aweXpect.Core.IThat<System.DateOnly?> source, int? expected) { }
-        public static aweXpect.Results.AndOrResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> NotBe(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> NotBe(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> NotBeAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> NotBeBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> NotBeOnOrAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
@@ -410,7 +410,7 @@ namespace aweXpect
     }
     public static class ThatNullableTimeOnlyShould
     {
-        public static aweXpect.Results.AndOrResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> Be(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> Be(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> BeAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> BeBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> BeOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
@@ -419,7 +419,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> HaveMillisecond(this aweXpect.Core.IThat<System.TimeOnly?> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> HaveMinute(this aweXpect.Core.IThat<System.TimeOnly?> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> HaveSecond(this aweXpect.Core.IThat<System.TimeOnly?> source, int? expected) { }
-        public static aweXpect.Results.AndOrResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> NotBe(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> NotBe(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> NotBeAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> NotBeBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> NotBeOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
@@ -827,7 +827,7 @@ namespace aweXpect
     }
     public static class ThatTimeOnlyShould
     {
-        public static aweXpect.Results.AndOrResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> Be(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> Be(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> BeAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> BeBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> BeOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
@@ -836,7 +836,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> HaveMillisecond(this aweXpect.Core.IThat<System.TimeOnly> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> HaveMinute(this aweXpect.Core.IThat<System.TimeOnly> source, int? expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> HaveSecond(this aweXpect.Core.IThat<System.TimeOnly> source, int? expected) { }
-        public static aweXpect.Results.AndOrResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> NotBe(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> NotBe(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> NotBeAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> NotBeBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> NotBeOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
