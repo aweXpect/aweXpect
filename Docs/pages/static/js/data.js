@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732549921609,
+  "lastUpdate": 1732622434644,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -716,6 +716,66 @@ window.BENCHMARK_DATA = {
             "value": 880.0492286682129,
             "unit": "ns",
             "range": "± 0.8085623479541731"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cf2b85e428826c75e914d1c2a1a03463c24f6457",
+          "message": "feat: add `.Within` overload for `DateOnly.Be` and `TimeOnly.Be` (#42)\n\n* Implement for DateOnly\r\n* Implement for TimeOnly",
+          "timestamp": "2024-11-26T11:57:09Z",
+          "tree_id": "a4aa1b440c7d0ae21dbc114333dd82471b2d30f8",
+          "url": "https://github.com/aweXpect/aweXpect/commit/cf2b85e428826c75e914d1c2a1a03463c24f6457"
+        },
+        "date": 1732622434270,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.75982847580542,
+            "unit": "ns",
+            "range": "± 0.7835488359698968"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 172.39431227956499,
+            "unit": "ns",
+            "range": "± 0.7618022277310074"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 603.3002320017133,
+            "unit": "ns",
+            "range": "± 3.4698970001596456"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 405.48811197280884,
+            "unit": "ns",
+            "range": "± 1.5407808915597145"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 324.33144830067954,
+            "unit": "ns",
+            "range": "± 2.807557734997923"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 832.3611395517985,
+            "unit": "ns",
+            "range": "± 3.4874213485300456"
           }
         ]
       }
