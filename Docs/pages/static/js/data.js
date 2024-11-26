@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732622434644,
+  "lastUpdate": 1732655534588,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -776,6 +776,66 @@ window.BENCHMARK_DATA = {
             "value": 832.3611395517985,
             "unit": "ns",
             "range": "± 3.4874213485300456"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f166b16096b33255bff8e571c0344298e6d01f43",
+          "message": "feat: support MSTest and xunit v3 (#43)\n\n* Add support for MsTest\r\n\r\n* Support xunit.v3\r\n\r\n* Update documentation\r\n\r\n* Disable coverage for xunit3 tests\r\n\r\n* Refactor to reduce duplications",
+          "timestamp": "2024-11-26T22:08:51+01:00",
+          "tree_id": "254218282fe36994bd89cf49535d5a0afb29adbf",
+          "url": "https://github.com/aweXpect/aweXpect/commit/f166b16096b33255bff8e571c0344298e6d01f43"
+        },
+        "date": 1732655533983,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.46524285475414,
+            "unit": "ns",
+            "range": "± 0.9872939361738655"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 174.8245648344358,
+            "unit": "ns",
+            "range": "± 0.5059070821513519"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 599.3973400933402,
+            "unit": "ns",
+            "range": "± 2.8350294685500086"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 398.09674911499025,
+            "unit": "ns",
+            "range": "± 3.033513443051533"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 330.65323550360546,
+            "unit": "ns",
+            "range": "± 2.4510580842104326"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 799.6658583420974,
+            "unit": "ns",
+            "range": "± 2.7172514007565574"
           }
         ]
       }
