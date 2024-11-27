@@ -7,7 +7,7 @@ public static partial class ThatNumberShould
 {
 	private const string ExpectBeInfinite = "be infinite";
 	private const string ExpectNotBeInfinite = "not be infinite";
-	
+
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
 	/// </summary>

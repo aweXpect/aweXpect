@@ -12,8 +12,7 @@ public static partial class ThatDateTimeOffsetShould
 	public static AndOrResult<DateTimeOffset, IThat<DateTimeOffset>> HaveMillisecond(
 		this IThat<DateTimeOffset> source,
 		int? expected)
-	{
-		return new AndOrResult<DateTimeOffset, IThat<DateTimeOffset>>(
+		=> new(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
 					it,
@@ -21,7 +20,6 @@ public static partial class ThatDateTimeOffsetShould
 					(a, e) => a.Millisecond == e,
 					$"have millisecond of {Formatter.Format(expected)}")),
 			source);
-	}
 
 	/// <summary>
 	///     Verifies that the millisecond of the subject is not equal to the <paramref name="unexpected" /> value.

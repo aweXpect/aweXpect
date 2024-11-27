@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.Helpers;
 using aweXpect.Helpers;
 
 namespace aweXpect;
@@ -121,7 +120,7 @@ public static partial class ThatHttpResponseMessageShould
 			string indentation)
 		{
 			foreach (KeyValuePair<string, IEnumerable<string>> header in headers
-				.OrderBy(x => x.Key == "Content-Length"))
+				         .OrderBy(x => x.Key == "Content-Length"))
 			{
 				foreach (string headerValue in header.Value)
 				{

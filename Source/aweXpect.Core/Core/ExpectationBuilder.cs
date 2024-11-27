@@ -1,11 +1,11 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Sources;
 using aweXpect.Core.TimeSystem;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace aweXpect.Core;
 

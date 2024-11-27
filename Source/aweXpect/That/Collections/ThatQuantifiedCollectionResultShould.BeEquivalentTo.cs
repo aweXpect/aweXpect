@@ -88,10 +88,7 @@ public static partial class ThatQuantifiedCollectionResultShould
 				.CheckCondition(
 					expected,
 					(a, e) => !Compare.CheckEquivalent(a, e,
-						new CompareOptions
-						{
-							MembersToIgnore = memberToIgnore,
-						}).Any(),
+						new CompareOptions { MembersToIgnore = memberToIgnore }).Any(),
 					cancellationToken)
 				.ConfigureAwait(false);
 

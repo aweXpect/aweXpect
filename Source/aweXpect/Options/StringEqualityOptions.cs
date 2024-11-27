@@ -8,6 +8,8 @@ namespace aweXpect.Options;
 /// </summary>
 public class StringEqualityOptions
 {
+	private IEqualityComparer<string>? _comparer;
+
 	/// <summary>
 	///     The <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
 	/// </summary>
@@ -18,8 +20,6 @@ public class StringEqualityOptions
 	///     Flag indicating, if casing is ignored when comparing the <see langword="string" />s.
 	/// </summary>
 	public bool IgnoreCase { get; private set; }
-
-	private IEqualityComparer<string>? _comparer;
 
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.

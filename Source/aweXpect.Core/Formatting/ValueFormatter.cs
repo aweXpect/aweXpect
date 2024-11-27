@@ -1,8 +1,8 @@
-﻿using aweXpect.Core.Helpers;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using aweXpect.Core.Helpers;
 using MemberVisibilities = aweXpect.Core.Helpers.MemberVisibilities;
 
 namespace aweXpect.Formatting;

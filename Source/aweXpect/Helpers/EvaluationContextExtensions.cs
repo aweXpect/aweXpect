@@ -1,7 +1,7 @@
-﻿using aweXpect.Core.EvaluationContext;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using aweXpect.Core.EvaluationContext;
 
 namespace aweXpect.Helpers;
 
@@ -21,7 +21,7 @@ internal static class EvaluationContextExtensions
 		where TCollection : IEnumerable<TItem>
 	{
 		if (evaluationContext.TryReceive(MaterializedEnumerableKey,
-			out IEnumerable<TItem>? existingValue))
+			    out IEnumerable<TItem>? existingValue))
 		{
 			return existingValue;
 		}
@@ -41,6 +41,16 @@ internal static class EvaluationContextExtensions
 		private MaterializingEnumerable(IEnumerable<T> enumerable)
 		{
 			_enumerator = enumerable.GetEnumerator();
+		}
+
+		public static IEnumerable<T> Wrap(IEnumerable<T> enumerable)
+		{
+			if (enumerable is ICollection<T> or MaterializingEnumerable<T>)
+			{
+				return enumerable;
+			}
+
+			return new MaterializingEnumerable<T>(enumerable);
 		}
 
 		#region IEnumerable<T> Members
@@ -66,16 +76,6 @@ internal static class EvaluationContextExtensions
 		}
 
 		#endregion
-
-		public static IEnumerable<T> Wrap(IEnumerable<T> enumerable)
-		{
-			if (enumerable is ICollection<T> or MaterializingEnumerable<T>)
-			{
-				return enumerable;
-			}
-
-			return new MaterializingEnumerable<T>(enumerable);
-		}
 	}
 #if NET6_0_OR_GREATER
 	private const string MaterializedAsyncEnumerableKey = nameof(MaterializedAsyncEnumerableKey);
@@ -89,7 +89,7 @@ internal static class EvaluationContextExtensions
 		where TCollection : IAsyncEnumerable<TItem>
 	{
 		if (evaluationContext.TryReceive(MaterializedAsyncEnumerableKey,
-			out IAsyncEnumerable<TItem>? existingValue))
+			    out IAsyncEnumerable<TItem>? existingValue))
 		{
 			return existingValue;
 		}

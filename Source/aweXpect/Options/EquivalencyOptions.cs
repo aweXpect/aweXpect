@@ -8,8 +8,8 @@ namespace aweXpect.Options;
 /// </summary>
 public class EquivalencyOptions
 {
-	internal IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
 	private readonly List<string> _membersToIgnore = new();
+	internal IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
 
 	/// <summary>
 	///     Ignores the <paramref name="memberToIgnore" /> when checking for equivalency.
@@ -21,10 +21,7 @@ public class EquivalencyOptions
 	}
 
 	/// <inheritdoc />
-	public override string ToString()
-	{
-		return _membersToIgnore.Count > 0
-			? $" ignoring [{string.Join(", ", _membersToIgnore.Select<string, string>(m => Formatter.Format(m)))}]"
-			: "";
-	}
+	public override string ToString() => _membersToIgnore.Count > 0
+		? $" ignoring [{string.Join(", ", _membersToIgnore.Select<string, string>(m => Formatter.Format(m)))}]"
+		: "";
 }

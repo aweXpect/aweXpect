@@ -9,8 +9,8 @@ namespace aweXpect.Core.Nodes;
 
 internal class WhichNode<TSource, TProperty> : Node
 {
-	private Node? _inner;
 	private readonly Func<TSource, TProperty?> _propertyAccessor;
+	private Node? _inner;
 
 	public WhichNode(
 		Func<TSource, TProperty?> propertyAccessor)
@@ -30,10 +30,7 @@ internal class WhichNode<TSource, TProperty> : Node
 		=> _inner?.AddMapping(propertyAccessor, expectationTextGenerator);
 
 	/// <inheritdoc />
-	public override void AddNode(Node node, string? separator = null)
-	{
-		_inner = node;
-	}
+	public override void AddNode(Node node, string? separator = null) => _inner = node;
 
 	/// <inheritdoc />
 	public override Task<ConstraintResult> IsMetBy<TValue>(

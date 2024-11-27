@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Core.Helpers;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -28,7 +27,7 @@ public partial class ThatExceptionShould<TException>
 						e => e.GetInnerExpectations(),
 						"recursive inner exceptions "),
 					(property, expectation) => $"have {property}which {expectation}",
-					replaceIt: false)
+					false)
 				.AddExpectations(e => expectations(
 					new That.Subject<IEnumerable<Exception>>(e))),
 			this);

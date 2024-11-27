@@ -3,7 +3,6 @@ using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
-using aweXpect.Formatting;
 using aweXpect.Helpers;
 using aweXpect.Results;
 

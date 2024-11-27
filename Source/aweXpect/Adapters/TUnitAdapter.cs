@@ -1,9 +1,9 @@
 ﻿#if NET8_0_OR_GREATER
-using aweXpect.Core.Adapters;
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using aweXpect.Core.Adapters;
 
 namespace aweXpect.Adapters;
 

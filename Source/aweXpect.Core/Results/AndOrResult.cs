@@ -26,6 +26,8 @@ public class AndOrResult<TType, TThat, TSelf>(
 	: ExpectationResult<TType, TSelf>(expectationBuilder)
 	where TSelf : AndOrResult<TType, TThat, TSelf>
 {
+	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
+
 	/// <summary>
 	///     Combine multiple expectations with AND
 	/// </summary>
@@ -49,6 +51,4 @@ public class AndOrResult<TType, TThat, TSelf>(
 			return returnValue;
 		}
 	}
-
-	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 }

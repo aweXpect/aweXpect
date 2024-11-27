@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using aweXpect.Core.Helpers;
 using aweXpect.Helpers;
 
 namespace aweXpect.Options;
@@ -113,6 +112,14 @@ public class StringMatcher(string? pattern)
 
 	private sealed class WildcardMatchType : IMatchType
 	{
+		private static string WildcardToRegularExpression(string value)
+		{
+			string regex = Regex.Escape(value)
+				.Replace("\\?", ".")
+				.Replace("\\*", "(.|\\n)*");
+			return $"^{regex}$";
+		}
+
 		#region IMatchType Members
 
 		/// <inheritdoc />
@@ -140,18 +147,25 @@ public class StringMatcher(string? pattern)
 		}
 
 		#endregion
-
-		private static string WildcardToRegularExpression(string value)
-		{
-			string regex = Regex.Escape(value)
-				.Replace("\\?", ".")
-				.Replace("\\*", "(.|\\n)*");
-			return $"^{regex}$";
-		}
 	}
 
 	private sealed class ExactMatchType : IMatchType
 	{
+		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
+			IEqualityComparer<string> comparer)
+		{
+			for (int i = 0; i <= stringWithLeadingWhitespace.Length - value.Length; i++)
+			{
+				if (comparer.Equals(
+					    stringWithLeadingWhitespace.Substring(i, value.Length), value))
+				{
+					return i;
+				}
+			}
+
+			return 0;
+		}
+
 		#region IMatchType Members
 
 		/// <inheritdoc />
@@ -230,21 +244,6 @@ public class StringMatcher(string? pattern)
 		}
 
 		#endregion
-
-		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
-			IEqualityComparer<string> comparer)
-		{
-			for (int i = 0; i <= stringWithLeadingWhitespace.Length - value.Length; i++)
-			{
-				if (comparer.Equals(
-					stringWithLeadingWhitespace.Substring(i, value.Length), value))
-				{
-					return i;
-				}
-			}
-
-			return 0;
-		}
 	}
 
 	private sealed class RegexMatchType : IMatchType

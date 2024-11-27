@@ -119,7 +119,7 @@ public static partial class ThatQuantifiedCollectionResultShould
 			{
 				true => new ConstraintResult.Success<TCollection>(actual, ToString()),
 				false => new ConstraintResult.Failure(ToString(), $"{result.Error} did"),
-				_ => new ConstraintResult.Failure(ToString(), result.Error),
+				_ => new ConstraintResult.Failure(ToString(), result.Error)
 			};
 		}
 

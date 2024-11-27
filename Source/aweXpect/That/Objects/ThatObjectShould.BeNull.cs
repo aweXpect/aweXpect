@@ -1,5 +1,4 @@
 ﻿using aweXpect.Core;
-using aweXpect.Formatting;
 using aweXpect.Results;
 
 namespace aweXpect;

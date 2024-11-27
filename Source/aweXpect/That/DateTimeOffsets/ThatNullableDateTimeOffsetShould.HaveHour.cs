@@ -12,8 +12,7 @@ public static partial class ThatNullableDateTimeOffsetShould
 	public static AndOrResult<DateTimeOffset?, IThat<DateTimeOffset?>> HaveHour(
 		this IThat<DateTimeOffset?> source,
 		int? expected)
-	{
-		return new AndOrResult<DateTimeOffset?, IThat<DateTimeOffset?>>(
+		=> new(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
 					it,
@@ -21,7 +20,6 @@ public static partial class ThatNullableDateTimeOffsetShould
 					(a, e) => a.HasValue && a.Value.Hour == e,
 					$"have hour of {Formatter.Format(expected)}")),
 			source);
-	}
 
 	/// <summary>
 	///     Verifies that the hour of the subject is not equal to the <paramref name="unexpected" /> value.

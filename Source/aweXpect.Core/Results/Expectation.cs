@@ -86,7 +86,7 @@ public abstract class Expectation
 			if (expectations.Length == 0)
 			{
 				throw new ArgumentException("You must provide at least one expectation.",
-					paramName: nameof(expectations));
+					nameof(expectations));
 			}
 
 			_expectations = expectations;
@@ -133,7 +133,7 @@ public abstract class Expectation
 				{
 					expectationTexts.Add(
 						$"{result.SubjectLine} {result.ConstraintResult.ExpectationText
-							.Indent("      ", indentFirstLine: false)}");
+							.Indent("      ", false)}");
 				}
 
 				if (result.ConstraintResult is ConstraintResult.Failure failure)
@@ -147,7 +147,7 @@ public abstract class Expectation
 					else
 					{
 						failureText =
-							$" [{index:00}] {failure.ResultText.Indent("      ", indentFirstLine: false)}";
+							$" [{index:00}] {failure.ResultText.Indent("      ", false)}";
 					}
 
 					failureTexts.Add(failureText);
@@ -168,15 +168,12 @@ public abstract class Expectation
 				new ConstraintResult.Success(expectationText));
 		}
 
-		private string CreateFailureMessage(ConstraintResult.Failure failure)
-		{
-			return $"""
-			        {GetSubjectLine()}
-			        {failure.ExpectationText}
-			        but
-			        {failure.ResultText}
-			        """;
-		}
+		private string CreateFailureMessage(ConstraintResult.Failure failure) => $"""
+			 {GetSubjectLine()}
+			 {failure.ExpectationText}
+			 but
+			 {failure.ResultText}
+			 """;
 
 		private async Task GetResultOrThrow()
 		{

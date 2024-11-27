@@ -1,9 +1,8 @@
-﻿using aweXpect.Equivalency;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using aweXpect.Formatting;
+using aweXpect.Equivalency;
 
 namespace aweXpect.Options;
 
@@ -73,47 +72,6 @@ public class ObjectEqualityOptions
 	private sealed class EquivalencyEquality(EquivalencyOptions equivalencyOptions)
 		: IEquality
 	{
-		#region IEquality Members
-
-		/// <inheritdoc />
-		public Result AreConsideredEqual(object? a, object? b, string it)
-		{
-			if (HandleSpecialCases(a, b, out bool? specialCaseResult))
-			{
-				return new Result(specialCaseResult.Value,
-					$"{it} was {Formatter.Format(a, FormattingOptions.MultipleLines)}");
-			}
-
-			List<ComparisonFailure> failures = Compare.CheckEquivalent(a, b,
-				new CompareOptions
-				{
-					MembersToIgnore = [.. equivalencyOptions.MembersToIgnore],
-				}).ToList();
-
-			if (failures.FirstOrDefault() is { } firstFailure)
-			{
-				if (firstFailure.Type == MemberType.Value)
-				{
-					return new Result(false,
-						$"{it} was {Formatter.Format(firstFailure.Actual, FormattingOptions.SingleLine)}");
-				}
-
-				return new Result(false, $"""
-				                          {firstFailure.Type} {string.Join(".", firstFailure.NestedMemberNames)} did not match:
-				                            Expected: {Formatter.Format(firstFailure.Expected)}
-				                            Received: {Formatter.Format(firstFailure.Actual)}
-				                          """);
-			}
-
-			return new Result(true);
-		}
-
-		/// <inheritdoc />
-		public string GetExpectation(string expectedExpression)
-			=> $"be equivalent to {expectedExpression}";
-
-		#endregion
-
 		private static bool HandleSpecialCases(object? a, object? b,
 			[NotNullWhen(true)] out bool? isConsideredEqual)
 		{
@@ -139,6 +97,44 @@ public class ObjectEqualityOptions
 			isConsideredEqual = null;
 			return false;
 		}
+
+		#region IEquality Members
+
+		/// <inheritdoc />
+		public Result AreConsideredEqual(object? a, object? b, string it)
+		{
+			if (HandleSpecialCases(a, b, out bool? specialCaseResult))
+			{
+				return new Result(specialCaseResult.Value,
+					$"{it} was {Formatter.Format(a, FormattingOptions.MultipleLines)}");
+			}
+
+			List<ComparisonFailure> failures = Compare.CheckEquivalent(a, b,
+				new CompareOptions { MembersToIgnore = [.. equivalencyOptions.MembersToIgnore] }).ToList();
+
+			if (failures.FirstOrDefault() is { } firstFailure)
+			{
+				if (firstFailure.Type == MemberType.Value)
+				{
+					return new Result(false,
+						$"{it} was {Formatter.Format(firstFailure.Actual, FormattingOptions.SingleLine)}");
+				}
+
+				return new Result(false, $"""
+				                          {firstFailure.Type} {string.Join(".", firstFailure.NestedMemberNames)} did not match:
+				                            Expected: {Formatter.Format(firstFailure.Expected)}
+				                            Received: {Formatter.Format(firstFailure.Actual)}
+				                          """);
+			}
+
+			return new Result(true);
+		}
+
+		/// <inheritdoc />
+		public string GetExpectation(string expectedExpression)
+			=> $"be equivalent to {expectedExpression}";
+
+		#endregion
 	}
 
 	private sealed class EqualsEquality : IEquality

@@ -14,13 +14,10 @@ public static partial class ThatAsyncEnumerableShould
 		Between<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			int minimum)
-	{
-		return new BetweenResult<QuantifiedCollectionResult.Async
-			<IThat<IAsyncEnumerable<TItem>>, TItem, IAsyncEnumerable<TItem>>>(
+		=> new(
 			maximum => new QuantifiedCollectionResult.Async
 				<IThat<IAsyncEnumerable<TItem>>, TItem, IAsyncEnumerable<TItem>>(source,
 					source.ExpectationBuilder,
 					CollectionQuantifier.Between(minimum, maximum)));
-	}
 }
 #endif

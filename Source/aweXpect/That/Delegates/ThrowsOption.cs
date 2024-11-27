@@ -6,8 +6,5 @@ internal class ThrowsOption
 {
 	public bool DoCheckThrow { get; private set; } = true;
 
-	public void CheckThrow(bool doCheckThrow)
-	{
-		DoCheckThrow = doCheckThrow;
-	}
+	public void CheckThrow(bool doCheckThrow) => DoCheckThrow = doCheckThrow;
 }

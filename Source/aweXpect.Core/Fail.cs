@@ -15,10 +15,7 @@ public static class Fail
 	/// </summary>
 	/// <param name="reason">The reason why the test failed</param>
 	[DoesNotReturn]
-	public static void Test(string reason)
-	{
-		Initialization.State.Value.Throw(reason);
-	}
+	public static void Test(string reason) => Initialization.State.Value.Throw(reason);
 
 	/// <summary>
 	///     Explicitly fails the current test when the <paramref name="condition" /> is <c>false</c>.

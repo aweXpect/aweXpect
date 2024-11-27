@@ -26,7 +26,7 @@ public static partial class ValueFormatters
 		{ typeof(string), "string" },
 		{ typeof(void), "void" },
 		{ typeof(nint), "nint" },
-		{ typeof(nuint), "nuint" },
+		{ typeof(nuint), "nuint" }
 	};
 
 	/// <summary>

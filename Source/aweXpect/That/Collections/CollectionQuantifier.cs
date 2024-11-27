@@ -90,7 +90,7 @@ public abstract partial class CollectionQuantifier
 				}
 
 				if (!quantifier.ContinueEvaluation(matchingCount, notMatchingCount, totalCount,
-					out CollectionEvaluatorResult? result))
+					    out CollectionEvaluatorResult? result))
 				{
 					return Task.FromResult(result.Value);
 				}
@@ -144,7 +144,7 @@ public abstract partial class CollectionQuantifier
 				}
 
 				if (!quantifier.ContinueEvaluation(matchingCount, notMatchingCount, totalCount,
-					out CollectionEvaluatorResult? result))
+					    out CollectionEvaluatorResult? result))
 				{
 					return result.Value;
 				}

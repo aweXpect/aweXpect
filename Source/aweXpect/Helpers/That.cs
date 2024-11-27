@@ -1,6 +1,6 @@
-﻿using aweXpect.Core;
-using System;
+﻿using System;
 using System.Diagnostics;
+using aweXpect.Core;
 
 namespace aweXpect.Helpers;
 

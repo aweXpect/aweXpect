@@ -82,8 +82,8 @@ public static partial class ThatStringShould
 			while (index < actual.Length)
 			{
 				if (comparer.Equals(
-					actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
-					expected))
+					    actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
+					    expected))
 				{
 					count++;
 					index += expected.Length;

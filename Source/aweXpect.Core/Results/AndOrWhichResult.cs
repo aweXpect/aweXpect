@@ -38,8 +38,7 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	/// </summary>
 	public WhichResult<TProperty, AdditionalAndOrWhichResult>
 		Which<TProperty>(Expression<Func<TType, TProperty?>> selector)
-	{
-		return new WhichResult<TProperty, AdditionalAndOrWhichResult>(
+		=> new(
 			expectations =>
 			{
 				return new AdditionalAndOrWhichResult(
@@ -49,7 +48,6 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 						.AddExpectations(e => expectations(new Expect.ThatSubject<TProperty?>(e))),
 					_returnValue);
 			});
-	}
 
 	/// <summary>
 	///     The result of an additional expectation for the underlying type.

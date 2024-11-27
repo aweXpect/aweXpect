@@ -13,13 +13,10 @@ public static partial class ThatEnumerableShould
 		Between<TItem>(
 			this IThat<IEnumerable<TItem>> source,
 			int minimum)
-	{
-		return new BetweenResult<QuantifiedCollectionResult.Sync<IThat<IEnumerable<TItem>>, TItem,
-			IEnumerable<TItem>>>(
+		=> new(
 			maximum => new QuantifiedCollectionResult.Sync<IThat<IEnumerable<TItem>>, TItem,
 				IEnumerable<TItem>>(
 				source,
 				source.ExpectationBuilder,
 				CollectionQuantifier.Between(minimum, maximum)));
-	}
 }

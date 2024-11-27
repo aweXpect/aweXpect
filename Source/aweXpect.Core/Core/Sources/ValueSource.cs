@@ -16,9 +16,7 @@ internal class ValueSource<TValue> : IValueSource<TValue>
 	#region IValueSource<TValue> Members
 
 	public Task<TValue?> GetValue(ITimeSystem timeSystem, CancellationToken cancellationToken)
-	{
-		return Task.FromResult(_value);
-	}
+		=> Task.FromResult(_value);
 
 	#endregion
 }
