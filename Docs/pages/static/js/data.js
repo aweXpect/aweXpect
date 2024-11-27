@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732723968938,
+  "lastUpdate": 1732725187578,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1016,6 +1016,66 @@ window.BENCHMARK_DATA = {
             "value": 796.4086789403643,
             "unit": "ns",
             "range": "± 4.32349152952156"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "778c22dd8e2bd59394edaf8d12e846147651d814",
+          "message": "fix: avoid conflicting Stryker Dashboard configuration (#47)\n\nCurrently the [`project-info.version`](https://stryker-mutator.io/docs/stryker-net/configuration/#project-infoversion-committish) is specified twice (and differently), once in the config file and once via command line parameters.\n\nThis PR changes that only one configuration (config file) is used.",
+          "timestamp": "2024-11-27T16:29:56Z",
+          "tree_id": "1aa491b4085d5cdcbbf52deac4f04029dc51d186",
+          "url": "https://github.com/aweXpect/aweXpect/commit/778c22dd8e2bd59394edaf8d12e846147651d814"
+        },
+        "date": 1732725187192,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.29765934603554,
+            "unit": "ns",
+            "range": "± 1.3691218122742108"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.2300463089576,
+            "unit": "ns",
+            "range": "± 0.8002116368014408"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 597.7268897465298,
+            "unit": "ns",
+            "range": "± 3.6296933256715747"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 397.7231025377909,
+            "unit": "ns",
+            "range": "± 2.4979079549555965"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 321.38850196202594,
+            "unit": "ns",
+            "range": "± 1.9447734915402888"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 792.0546727547279,
+            "unit": "ns",
+            "range": "± 2.806631992736053"
           }
         ]
       }
