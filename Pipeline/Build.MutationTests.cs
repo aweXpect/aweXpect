@@ -36,13 +36,21 @@ partial class Build
 
 			foreach (KeyValuePair<Project, Project[]> project in projects)
 			{
+				string branchName = GitVersion.BranchName;
+				if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
+				{
+					string version = GitHubActions.Ref.Substring("refs/tags/".Length);
+					branchName = "release/" + version;
+					Log.Information("Use release branch analysis for '{BranchName}'", branchName);
+				}
+				
 				string configText = $$"""
 				                      {
 				                      	"stryker-config": {
 				                      		"project-info": {
 				                      			"name": "github.com/aweXpect/aweXpect",
 				                      			"module": "{{project.Key.Name}}",
-				                      			"version": "{{GitVersion.BranchName}}"
+				                      			"version": "{{branchName}}"
 				                      		},
 				                      		"test-projects": [
 				                      			{{string.Join(",\n\t\t\t", project.Value.Select(PathForJson))}}
@@ -68,17 +76,9 @@ partial class Build
 				File.WriteAllText(configFile, configText);
 				Log.Debug($"Created '{configFile}':{Environment.NewLine}{configText}");
 
-				string branchName = GitVersion.BranchName;
-				if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
-				{
-					string version = GitHubActions.Ref.Substring("refs/tags/".Length);
-					branchName = "release/" + version;
-					Log.Information("Use release branch analysis for '{BranchName}'", branchName);
-				}
-
 				string arguments = IsServerBuild
-					? $"-f \"{configFile}\" -v \"{branchName}\" -r \"Dashboard\" -r \"cleartext\""
-					: $"-f \"{configFile}\" -v \"{branchName}\" -r \"cleartext\"";
+					? $"-f \"{configFile}\" -r \"Dashboard\" -r \"cleartext\""
+					: $"-f \"{configFile}\" -r \"cleartext\"";
 
 				string executable = EnvironmentInfo.IsWin ? "dotnet-stryker.exe" : "dotnet-stryker";
 				IProcess process = ProcessTasks.StartProcess(
