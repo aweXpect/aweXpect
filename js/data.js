@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732527102109,
+  "lastUpdate": 1732723151796,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -476,6 +476,486 @@ window.BENCHMARK_DATA = {
             "value": 864.404640452067,
             "unit": "ns",
             "range": "± 4.24399434827037"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ea4c5986b91a1a1144d9b5e22c3ba50ebb7c153f",
+          "message": "docs: add benchmark result (#26)\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for a1983143bc3e071fff853bf31380d3c67c65e4ed\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 9faaf90b0f28d1e38a374d8867a54563fd849506\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 7757917bcdf48603164b537f0f5a0109e1255a64\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 6e766e0bf8b7cf105b8d027796bd44c7cc222bbf\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for b345f7b91cafa033d92d3f02ed56b001deb8f970\r\n\r\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 00f58b60401f52b94259735510f6c88f10d4b5d6\r\n\r\n---------\r\n\r\nCo-authored-by: github-action-benchmark <github@users.noreply.github.com>",
+          "timestamp": "2024-11-25T11:06:52+01:00",
+          "tree_id": "b0d320b3d1464dcfb1f909badacf50d5f4e5f30d",
+          "url": "https://github.com/aweXpect/aweXpect/commit/ea4c5986b91a1a1144d9b5e22c3ba50ebb7c153f"
+        },
+        "date": 1732529396784,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.83607293764751,
+            "unit": "ns",
+            "range": "± 1.0944668167181546"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 166.12025347122778,
+            "unit": "ns",
+            "range": "± 0.6621361078241912"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 589.0038883209229,
+            "unit": "ns",
+            "range": "± 4.481457543944474"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 396.32487909610455,
+            "unit": "ns",
+            "range": "± 1.9113538773382792"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 315.7268955890949,
+            "unit": "ns",
+            "range": "± 1.1972566087271"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 787.1557965596517,
+            "unit": "ns",
+            "range": "± 3.588038854387687"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e8246110a4d4de383ef06059be384655e7bda274",
+          "message": "feat: add logo to documentation (#37)\n\n* Add logo to index page\r\n\r\n* Add link to Stryker and SonarQube",
+          "timestamp": "2024-11-25T11:14:54+01:00",
+          "tree_id": "f0eb43c4ac723544c33bb489d0f1ef1c9ca0a9b8",
+          "url": "https://github.com/aweXpect/aweXpect/commit/e8246110a4d4de383ef06059be384655e7bda274"
+        },
+        "date": 1732529904040,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 218.49197169939677,
+            "unit": "ns",
+            "range": "± 1.1746405979549777"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.2773211956024,
+            "unit": "ns",
+            "range": "± 0.988345536630065"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 612.3092056910197,
+            "unit": "ns",
+            "range": "± 3.417915092020387"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.887020333608,
+            "unit": "ns",
+            "range": "± 1.944880432458748"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 317.6818276473454,
+            "unit": "ns",
+            "range": "± 2.639109133136573"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 807.0133925120036,
+            "unit": "ns",
+            "range": "± 4.268567141501653"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2fc8fd59a4aa028f81e09593ba19cd10e4900893",
+          "message": "docs: sort datasets alphabetically (#38)\n\nSort datasets alphabetically",
+          "timestamp": "2024-11-25T10:35:00Z",
+          "tree_id": "6a1a315e2d81f234438a1aa72c4441e7ae174598",
+          "url": "https://github.com/aweXpect/aweXpect/commit/2fc8fd59a4aa028f81e09593ba19cd10e4900893"
+        },
+        "date": 1732531097382,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.03029738267261,
+            "unit": "ns",
+            "range": "± 1.2582140770990131"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.7222334345182,
+            "unit": "ns",
+            "range": "± 0.8483596270744492"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 579.5024166788373,
+            "unit": "ns",
+            "range": "± 2.599415099665092"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 391.4108358791896,
+            "unit": "ns",
+            "range": "± 2.009167848025073"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 319.9448813370296,
+            "unit": "ns",
+            "range": "± 1.2391468170690039"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 813.6892242431641,
+            "unit": "ns",
+            "range": "± 2.7134448641704223"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "125349ff4a7a1d0361a43065110268442e421696",
+          "message": "docs: improve documentation (#39)\n\nAdd the following pages to the documentation:\r\n- booleans.md\r\n- strings.md\r\n- numbers.md\r\n- dates-times.md\r\n\r\nAlso\r\n* Adjust benchmark colors\r\n* Update getting-started.md\r\n* Fix edit links",
+          "timestamp": "2024-11-25T15:48:46Z",
+          "tree_id": "23d0d3006623252237516ffac0002aab114e6f59",
+          "url": "https://github.com/aweXpect/aweXpect/commit/125349ff4a7a1d0361a43065110268442e421696"
+        },
+        "date": 1732549921404,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 220.63657353605544,
+            "unit": "ns",
+            "range": "± 1.1310508517111533"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.9794772352491,
+            "unit": "ns",
+            "range": "± 0.5282831656436286"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 588.139475277492,
+            "unit": "ns",
+            "range": "± 4.4002072812566455"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 406.22880233128865,
+            "unit": "ns",
+            "range": "± 1.7600205511998719"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 344.0058630193983,
+            "unit": "ns",
+            "range": "± 1.4113839277731297"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 880.0492286682129,
+            "unit": "ns",
+            "range": "± 0.8085623479541731"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cf2b85e428826c75e914d1c2a1a03463c24f6457",
+          "message": "feat: add `.Within` overload for `DateOnly.Be` and `TimeOnly.Be` (#42)\n\n* Implement for DateOnly\r\n* Implement for TimeOnly",
+          "timestamp": "2024-11-26T11:57:09Z",
+          "tree_id": "a4aa1b440c7d0ae21dbc114333dd82471b2d30f8",
+          "url": "https://github.com/aweXpect/aweXpect/commit/cf2b85e428826c75e914d1c2a1a03463c24f6457"
+        },
+        "date": 1732622434270,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.75982847580542,
+            "unit": "ns",
+            "range": "± 0.7835488359698968"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 172.39431227956499,
+            "unit": "ns",
+            "range": "± 0.7618022277310074"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 603.3002320017133,
+            "unit": "ns",
+            "range": "± 3.4698970001596456"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 405.48811197280884,
+            "unit": "ns",
+            "range": "± 1.5407808915597145"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 324.33144830067954,
+            "unit": "ns",
+            "range": "± 2.807557734997923"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 832.3611395517985,
+            "unit": "ns",
+            "range": "± 3.4874213485300456"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f166b16096b33255bff8e571c0344298e6d01f43",
+          "message": "feat: support MSTest and xunit v3 (#43)\n\n* Add support for MsTest\r\n\r\n* Support xunit.v3\r\n\r\n* Update documentation\r\n\r\n* Disable coverage for xunit3 tests\r\n\r\n* Refactor to reduce duplications",
+          "timestamp": "2024-11-26T22:08:51+01:00",
+          "tree_id": "254218282fe36994bd89cf49535d5a0afb29adbf",
+          "url": "https://github.com/aweXpect/aweXpect/commit/f166b16096b33255bff8e571c0344298e6d01f43"
+        },
+        "date": 1732655533983,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.46524285475414,
+            "unit": "ns",
+            "range": "± 0.9872939361738655"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 174.8245648344358,
+            "unit": "ns",
+            "range": "± 0.5059070821513519"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 599.3973400933402,
+            "unit": "ns",
+            "range": "± 2.8350294685500086"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 398.09674911499025,
+            "unit": "ns",
+            "range": "± 3.033513443051533"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 330.65323550360546,
+            "unit": "ns",
+            "range": "± 2.4510580842104326"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 799.6658583420974,
+            "unit": "ns",
+            "range": "± 2.7172514007565574"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "478597e0fcba14172bf7e563b3305ea4730202a6",
+          "message": "docs: improve readme (#44)\n\n* Improve README.md\n\n* Add release-branch for stryker mutation",
+          "timestamp": "2024-11-27T14:54:01Z",
+          "tree_id": "d2d2d7da0e3acc66fc727cf90ea087fe1905ca88",
+          "url": "https://github.com/aweXpect/aweXpect/commit/478597e0fcba14172bf7e563b3305ea4730202a6"
+        },
+        "date": 1732719435262,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 222.02207606179374,
+            "unit": "ns",
+            "range": "± 0.7989860178323958"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 181.15884324709575,
+            "unit": "ns",
+            "range": "± 1.5260808795160024"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 611.1257036209106,
+            "unit": "ns",
+            "range": "± 4.1245540212270955"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 391.60160579681394,
+            "unit": "ns",
+            "range": "± 1.8939074734475976"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 312.1537386258443,
+            "unit": "ns",
+            "range": "± 3.2330635613286867"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 785.2965275219509,
+            "unit": "ns",
+            "range": "± 3.15700288110018"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7f40cccc29803754b15cb89dc85c65d94a886ad9",
+          "message": "fix: only update benchmarks on main branch (#45)\n\nThe release build [fails](https://github.com/aweXpect/aweXpect/actions/runs/12052836995/job/33607077568) because the benchmarks cannot be updated (and should not) on the tag build",
+          "timestamp": "2024-11-27T15:55:50Z",
+          "tree_id": "3ef252dd58ae3abc8754a5646d9f592bf7843a80",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7f40cccc29803754b15cb89dc85c65d94a886ad9"
+        },
+        "date": 1732723151553,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 226.41338318983713,
+            "unit": "ns",
+            "range": "± 1.3742148064408009"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.76854588190716,
+            "unit": "ns",
+            "range": "± 0.8638580360488802"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 604.7934288978577,
+            "unit": "ns",
+            "range": "± 2.0786653687873713"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 405.8794426600138,
+            "unit": "ns",
+            "range": "± 3.8655693107761917"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 330.06236928304037,
+            "unit": "ns",
+            "range": "± 1.7626673839031628"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 846.7972290856497,
+            "unit": "ns",
+            "range": "± 4.283015073343864"
           }
         ]
       }
