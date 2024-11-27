@@ -41,7 +41,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/aweXpect/aweXpect/tree/main/Docs/pages/',
         },
         blog: {
           showReadingTime: true,
@@ -52,7 +52,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/aweXpect/aweXpect/tree/main/Docs/pages/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -104,21 +104,25 @@ const config: Config = {
               to: '/docs/getting-started',
             },
             {
+              label: 'Benchmarks',
+              to: '/benchmarks',
+            },
+            {
               label: "Blog",
               to: "/blog"
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Code Quality',
           items: [
             {
-              label: "GitHub Issues",
-              href: "https://github.com/aweXpect/aweXpect/issues"
+              label: 'SonarQube',
+              href: "https://sonarcloud.io/project/overview?id=aweXpect_aweXpect"
             },
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Stryker Mutator',
+              href: 'https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main#mutant',
             },
           ],
         },
@@ -127,7 +131,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/aweXpect/aweXpect',
             },
             {
               label: 'NuGet',

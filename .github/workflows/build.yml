@@ -104,6 +104,7 @@ jobs:
         - name: Run benchmarks
           run: ./build.sh Benchmarks
         - name: Store benchmark result
+          if: github.ref == 'refs/heads/main'
           uses: rhysd/github-action-benchmark@v1
           with:
             name: Benchmark.Net Benchmark
@@ -114,6 +115,7 @@ jobs:
             benchmark-data-dir-path: 'Docs/pages/static/js'
             auto-push: false
         - name: Push benchmark result
+          if: github.ref == 'refs/heads/main'
           run: |
             git config --global user.email "benchmarks@testably.org"
             git config --global user.name "Benchmark User"
