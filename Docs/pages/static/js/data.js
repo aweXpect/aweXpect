@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732723151796,
+  "lastUpdate": 1732723968938,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -956,6 +956,66 @@ window.BENCHMARK_DATA = {
             "value": 846.7972290856497,
             "unit": "ns",
             "range": "± 4.283015073343864"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4bfe353a20be497183ac980e89eb2ecc9982dbc0",
+          "message": "docs: update benchmarks for v0.3.0 release (#46)\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for ea4c5986b91a1a1144d9b5e22c3ba50ebb7c153f\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for e8246110a4d4de383ef06059be384655e7bda274\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 2fc8fd59a4aa028f81e09593ba19cd10e4900893\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 125349ff4a7a1d0361a43065110268442e421696\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for cf2b85e428826c75e914d1c2a1a03463c24f6457\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for f166b16096b33255bff8e571c0344298e6d01f43\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 478597e0fcba14172bf7e563b3305ea4730202a6\n\n* add Benchmark.Net Benchmark (benchmarkdotnet) benchmark result for 7f40cccc29803754b15cb89dc85c65d94a886ad9\n\n---------\n\nCo-authored-by: github-action-benchmark <github@users.noreply.github.com>",
+          "timestamp": "2024-11-27T16:09:15Z",
+          "tree_id": "97759e15ff271e44236f718a109d38f1d032fb8e",
+          "url": "https://github.com/aweXpect/aweXpect/commit/4bfe353a20be497183ac980e89eb2ecc9982dbc0"
+        },
+        "date": 1732723968726,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 222.29820816857475,
+            "unit": "ns",
+            "range": "± 1.6340116231279018"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.99405425389608,
+            "unit": "ns",
+            "range": "± 1.5238887729305384"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 608.371527331216,
+            "unit": "ns",
+            "range": "± 2.412121797595524"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.0010807991028,
+            "unit": "ns",
+            "range": "± 3.5790233113359387"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 316.52006950378416,
+            "unit": "ns",
+            "range": "± 1.2454559543689485"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 796.4086789403643,
+            "unit": "ns",
+            "range": "± 4.32349152952156"
           }
         ]
       }
