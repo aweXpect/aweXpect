@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732655534588,
+  "lastUpdate": 1732719435903,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -836,6 +836,66 @@ window.BENCHMARK_DATA = {
             "value": 799.6658583420974,
             "unit": "ns",
             "range": "± 2.7172514007565574"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "478597e0fcba14172bf7e563b3305ea4730202a6",
+          "message": "docs: improve readme (#44)\n\n* Improve README.md\n\n* Add release-branch for stryker mutation",
+          "timestamp": "2024-11-27T14:54:01Z",
+          "tree_id": "d2d2d7da0e3acc66fc727cf90ea087fe1905ca88",
+          "url": "https://github.com/aweXpect/aweXpect/commit/478597e0fcba14172bf7e563b3305ea4730202a6"
+        },
+        "date": 1732719435262,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 222.02207606179374,
+            "unit": "ns",
+            "range": "± 0.7989860178323958"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 181.15884324709575,
+            "unit": "ns",
+            "range": "± 1.5260808795160024"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 611.1257036209106,
+            "unit": "ns",
+            "range": "± 4.1245540212270955"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 391.60160579681394,
+            "unit": "ns",
+            "range": "± 1.8939074734475976"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 312.1537386258443,
+            "unit": "ns",
+            "range": "± 3.2330635613286867"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 785.2965275219509,
+            "unit": "ns",
+            "range": "± 3.15700288110018"
           }
         ]
       }
