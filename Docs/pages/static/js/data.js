@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732725187578,
+  "lastUpdate": 1732725620314,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1076,6 +1076,66 @@ window.BENCHMARK_DATA = {
             "value": 792.0546727547279,
             "unit": "ns",
             "range": "± 2.806631992736053"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "08e0ca177515f7a30c73f127eba02a1fe300d915",
+          "message": "docs: improve the visibility of gray in icons in dark mode (#48)\n\nImprove the visibility of gray in dark mode (change #333333 to #666666)",
+          "timestamp": "2024-11-27T16:37:01Z",
+          "tree_id": "492e66b5b5321a4360759a7400575a681f52f8f3",
+          "url": "https://github.com/aweXpect/aweXpect/commit/08e0ca177515f7a30c73f127eba02a1fe300d915"
+        },
+        "date": 1732725619647,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 221.0019521542958,
+            "unit": "ns",
+            "range": "± 1.3191329080804806"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.6880437850952,
+            "unit": "ns",
+            "range": "± 1.1146334260095485"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 611.0531899770101,
+            "unit": "ns",
+            "range": "± 4.43385923271026"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 407.5536480585734,
+            "unit": "ns",
+            "range": "± 2.6410897869498"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 312.74021502335864,
+            "unit": "ns",
+            "range": "± 0.5748622782794885"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 852.8092786788941,
+            "unit": "ns",
+            "range": "± 6.957504826020491"
           }
         ]
       }
