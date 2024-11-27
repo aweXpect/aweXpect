@@ -6,35 +6,44 @@
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/main)
 
 Assert unit tests in natural language using awesome expectations.  
-It tries to take the best from [fluentassertions](https://github.com/fluentassertions/fluentassertions) and [TUnit](https://github.com/thomhurst/TUnit) and combine them to a new assertions library.
 
-## Architecture
+
+## Getting started
+
+1. Install the [`aweXpect`](https://www.nuget.org/packages/aweXpect) nuget package
+   ```ps
+   dotnet add package aweXpect
+   ```
+
+2. Add the following `using` statement:
+   ```csharp
+   using aweXpect;
+   ```
+   This brings the static `Expect` class and lots of extension methods into scope.
+  
+
+3. See the [documentation](https://awexpect.github.io/aweXpect/docs/getting-started#write-your-first-expectation) for usage scenarios.
+
+
+## Features
 
 ### Async everything
-All expectations are completely async. This allows complete support of `IAsyncEnumerable` as well es `HttpResponseMessage` or similar async types.
-No need to distinguish between `action.Should().Throw()` and `await asyncAction.Should().ThrowAsync()`!
+By using async assertions per default, we have a consistent API and other perks:
+- Complete async support, e.g. `IAsyncEnumerable` `HttpResponseMessage` or similar async types
+- No need to distinguish between `action.Should().Throw()` and `await asyncAction.Should().ThrowAsync()`
+- The evaluation is only triggered after the complete fluent chain is loaded, which has some nice benefits:
+  - `Because` can be registered once as a general method that can be applied at the end of the expectation instead of cluttering all methods with the `because` and `becauseArgs` parameters
+  - `WithCancellation` can also be registered at the end an applies a `CancellationToken` to all async methods which allows cancellation of `IAsyncEnumerable` evaluations
+  - Expectations can be combined directly (via `Expect.ThatAll`) instead of relying on global state (e.g. [assertion scopes](https://fluentassertions.com/introduction#assertion-scopes))
 
-### Delayed evaluation
-By using `await`, the evaluation is only triggered after the complete fluent chain is loaded, which has some nice benefits:
-- `Because` can be registered once as a general method that can be applied at the end of the expectation instead of cluttering all methods with the `because` and `becauseArgs` parameters
-- `WithCancellation` can also be registered at the end an applies a `CancellationToken` to all async methods which allows cancellation of `IAsyncEnumerable` evaluations
-- Expectations can be combined directly (via `Expect.ThatAll`) instead of relying on global state (e.g. assertion scopes)
+### Extensible
+We added lots of extensibility points to allow you to build custom extensions.  
+Similar to [fluentassertions](https://fluentassertions.com/extensibility/) extensibility is achieved via extension methods on `.Should()`:
+- for new types  
+  write a new `.Should()` extension method on `IExpectSubject<TType>`
+- for existing types  
+  writing an extension method on `IThat<TType>`
 
-### Extensibility
-Fluentassertions have a proven way of extensibility via extension methods on `.Should()`. A similar approach is used here:
-- Extensions can be written for new types (by writing a `.Should()` extension methods for `IExpectSubjectThat<TType>`)...
-- and also for existing types (by writing an extension method on `IThat<TType>`)
-
-## Usage
-
-By adding `global using static aweXpect.Expect;` anywhere in the test project, that `await` can be part of the sentence of the expectation.
-
-  ```csharp
-  [Fact]
-  public async Task SomeMethod_ShouldThrowArgumentNullException()
-  {
-    await That(SomeMethod).Should().Throw<ArgumentNullException>()
-      .WithMessage("Value cannot be null")
-	  .Because("we tested the null edge case");
-  }
-  ```
+### Performant
+A focus on performance allows you to execute your tests as fast as possible.  
+Special care is taken for the happy case (succeeding tests) to be as performant as possible. See the [benchmarks](https://awexpect.github.io/aweXpect/benchmarks) for more details.
