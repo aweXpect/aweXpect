@@ -1,8 +1,8 @@
-﻿using aweXpect.Core.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Helpers;
 
@@ -14,18 +14,18 @@ internal sealed class TypeMemberReflector
 	private const BindingFlags AllInstanceMembersFlag =
 		BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 
-	public FieldInfo[] Fields { get; }
-
-	public MemberInfo[] Members { get; }
-
-	public PropertyInfo[] Properties { get; }
-
 	public TypeMemberReflector(Type typeToReflect, MemberVisibilities visibility)
 	{
 		Properties = LoadProperties(typeToReflect, visibility);
 		Fields = LoadFields(typeToReflect, visibility);
 		Members = [.. Properties, .. Fields];
 	}
+
+	public FieldInfo[] Fields { get; }
+
+	public MemberInfo[] Members { get; }
+
+	public PropertyInfo[] Properties { get; }
 
 	private static List<TMemberInfo> GetClassMembers<TMemberInfo>(Type? typeToReflect,
 		Func<Type, IEnumerable<TMemberInfo>> getMembers)
@@ -129,12 +129,10 @@ internal sealed class TypeMemberReflector
 		});
 	}
 
-	private static bool IsExplicitImplementation(PropertyInfo property)
-	{
-		return property.GetMethod!.IsPrivate &&
-		       property.SetMethod?.IsPrivate != false &&
-		       property.Name.Contains('.', StringComparison.Ordinal);
-	}
+	private static bool IsExplicitImplementation(PropertyInfo property) => property.GetMethod!.IsPrivate &&
+	                                                                       property.SetMethod?.IsPrivate != false &&
+	                                                                       property.Name.Contains('.',
+		                                                                       StringComparison.Ordinal);
 
 	private static bool IsExplicitlyImplemented(MethodBase getMethod) =>
 		getMethod.IsPrivate && getMethod.IsFinal;
@@ -142,10 +140,7 @@ internal sealed class TypeMemberReflector
 	private static bool IsInternal(MethodBase getMethod) =>
 		getMethod.IsAssembly || getMethod.IsFamilyOrAssembly;
 
-	private static bool IsInternal(FieldInfo field)
-	{
-		return field.IsAssembly || field.IsFamilyOrAssembly;
-	}
+	private static bool IsInternal(FieldInfo field) => field.IsAssembly || field.IsFamilyOrAssembly;
 
 	private static bool IsPublic(MethodBase getMethod) =>
 		!getMethod.IsPrivate && !getMethod.IsFamily && !getMethod.IsFamilyAndAssembly;

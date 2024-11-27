@@ -1,5 +1,5 @@
-﻿using aweXpect.Core;
-using System;
+﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Sources;
 
 namespace aweXpect;

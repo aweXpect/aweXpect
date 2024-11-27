@@ -1,9 +1,9 @@
-using aweXpect.Core.Adapters;
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
+using aweXpect.Core.Adapters;
 
 namespace aweXpect.Adapters;
 

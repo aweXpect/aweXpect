@@ -56,10 +56,7 @@ internal class ExpectationNode : Node
 	/// <summary>
 	///     Indicates, if the node is empty.
 	/// </summary>
-	public bool IsEmpty()
-	{
-		return _constraint is null && _inner is null;
-	}
+	public bool IsEmpty() => _constraint is null && _inner is null;
 
 	/// <inheritdoc />
 	public override async Task<ConstraintResult> IsMetBy<TValue>(TValue? value,
@@ -105,10 +102,7 @@ internal class ExpectationNode : Node
 	}
 
 	/// <inheritdoc />
-	public override void SetReason(BecauseReason becauseReason)
-	{
-		_reason = becauseReason;
-	}
+	public override void SetReason(BecauseReason becauseReason) => _reason = becauseReason;
 
 	/// <inheritdoc />
 	public override string? ToString()

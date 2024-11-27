@@ -11,15 +11,13 @@ public static partial class ThatDateTimeShould
 	/// </summary>
 	public static AndOrResult<DateTime, IThat<DateTime>> HaveYear(this IThat<DateTime> source,
 		int? expected)
-	{
-		return new AndOrResult<DateTime, IThat<DateTime>>(source.ExpectationBuilder.AddConstraint(it
+		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
 					it,
 					expected,
 					(a, e) => a.Year == e,
 					$"have year of {Formatter.Format(expected)}")),
 			source);
-	}
 
 	/// <summary>
 	///     Verifies that the year of the subject is not equal to the <paramref name="unexpected" /> value.

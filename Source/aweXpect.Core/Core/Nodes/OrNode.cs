@@ -12,14 +12,15 @@ namespace aweXpect.Core.Nodes;
 internal class OrNode : Node
 {
 	private const string DefaultSeparator = " or ";
-	internal Node Current { get; set; }
-	private string? _currentSeparator;
 	private readonly List<(string, Node)> _nodes = new();
+	private string? _currentSeparator;
 
 	public OrNode(Node node)
 	{
 		Current = node;
 	}
+
+	internal Node Current { get; set; }
 
 	/// <inheritdoc />
 	public override void AddConstraint(IConstraint constraint)

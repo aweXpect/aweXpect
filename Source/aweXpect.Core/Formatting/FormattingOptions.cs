@@ -5,6 +5,11 @@
 /// </summary>
 public class FormattingOptions
 {
+	private FormattingOptions(bool useLineBreaks)
+	{
+		UseLineBreaks = useLineBreaks;
+	}
+
 	/// <summary>
 	///     Format the objects on multiple lines.
 	/// </summary>
@@ -16,9 +21,4 @@ public class FormattingOptions
 	public static FormattingOptions SingleLine { get; } = new(false);
 
 	internal bool UseLineBreaks { get; }
-
-	private FormattingOptions(bool useLineBreaks)
-	{
-		UseLineBreaks = useLineBreaks;
-	}
 }

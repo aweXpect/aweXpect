@@ -12,8 +12,7 @@ public static partial class ThatNullableTimeOnlyShould
 	/// </summary>
 	public static AndOrResult<TimeOnly?, IThat<TimeOnly?>> HaveHour(this IThat<TimeOnly?> source,
 		int? expected)
-	{
-		return new AndOrResult<TimeOnly?, IThat<TimeOnly?>>(source.ExpectationBuilder.AddConstraint(
+		=> new(source.ExpectationBuilder.AddConstraint(
 				it
 					=> new PropertyConstraint<int?>(
 						it,
@@ -21,7 +20,6 @@ public static partial class ThatNullableTimeOnlyShould
 						(a, e) => a.HasValue && a.Value.Hour == e,
 						$"have hour of {Formatter.Format(expected)}")),
 			source);
-	}
 
 	/// <summary>
 	///     Verifies that the hour of the subject is not equal to the <paramref name="unexpected" /> value.

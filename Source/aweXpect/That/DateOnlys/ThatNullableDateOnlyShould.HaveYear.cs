@@ -12,8 +12,7 @@ public static partial class ThatNullableDateOnlyShould
 	/// </summary>
 	public static AndOrResult<DateOnly?, IThat<DateOnly?>> HaveYear(this IThat<DateOnly?> source,
 		int? expected)
-	{
-		return new AndOrResult<DateOnly?, IThat<DateOnly?>>(source.ExpectationBuilder.AddConstraint(
+		=> new(source.ExpectationBuilder.AddConstraint(
 				it
 					=> new PropertyConstraint<int?>(
 						it,
@@ -21,7 +20,6 @@ public static partial class ThatNullableDateOnlyShould
 						(a, e) => a.HasValue && a.Value.Year == e,
 						$"have year of {Formatter.Format(expected)}")),
 			source);
-	}
 
 	/// <summary>
 	///     Verifies that the year of the subject is not equal to the <paramref name="unexpected" /> value.
