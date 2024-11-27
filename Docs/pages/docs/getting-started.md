@@ -13,7 +13,7 @@ sidebar_position: 1
 
 
 2. Add the following `using` statement:
-   ```ps
+   ```csharp
    using aweXpect;
    ```
    This brings the static `Expect` class and lots of extension methods into scope.
