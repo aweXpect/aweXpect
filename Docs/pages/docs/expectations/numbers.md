@@ -22,6 +22,22 @@ double subject = 42.1;
 await Expect.That(subject).Should().Be(42).Within(0.2);
 ```
 
+## One of
+
+You can also verify if the number is one of many alternatives:
+
+```csharp
+int subject = 42;
+await Expect.That(subject).Should().BeOneOf(40, 42, 44);
+```
+
+This method can also be configured to apply a tolerance:
+
+```csharp
+double subject = 42.1;
+await Expect.That(subject).Should().BeOneOf(40, 42, 44).Within(0.2);
+```
+
 ## Greater than / less than
 
 You can also verify that a number is greater than or less than another value

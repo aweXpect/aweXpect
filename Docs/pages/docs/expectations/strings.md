@@ -21,20 +21,25 @@ await Expect.That(subject).Should().BeNullOrWhiteSpace();
 await Expect.That(subject).Should().NotBeNullOrWhiteSpace();
 ```
 
+
 ## Equality
 
-Equality comparison can be configured to ignore case, use wildcard or regex expressions or even use a custom `IEqualityComparer<string>`:
+Equality comparison can be configured to ignore case, or use a custom `IEqualityComparer<string>`:
 
 ```csharp
 string subject = "some text";
 await Expect.That(subject).Should().Be("some text");
 await Expect.That(subject).Should().Be("SOME TEXT").IgnoringCase();
-await Expect.That(subject).Should().Be("*me tex?").AsWildcard();
-await Expect.That(subject).Should().Be("(.*)xt").AsRegex();
 await Expect.That(subject).Should().Be("SOME TEXT").Using(StringComparer.OrdinalIgnoreCase);
 ```
 
 ### Wildcards
+
+You can also compare strings using wildcards:
+```csharp
+string subject = "some text";
+await Expect.That(subject).Should().Be("*me tex?").AsWildcard();
+```
 
 When using `AsWildcard`, the following wildcard specifiers are supported:
 
@@ -42,6 +47,32 @@ When using `AsWildcard`, the following wildcard specifiers are supported:
 |---------------------|-------------------------------------------|
 | * (asterisk)        | Zero or more characters in that position. |
 | ? (question mark)   | Exactly one character in that position.   |
+
+### Regular expressions
+
+You can also compare strings using [regular expressions](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions):
+```csharp
+string subject = "some text";
+await Expect.That(subject).Should().Be("(.*)xt").AsRegex();
+```
+
+The regex comparison uses the following [`options`](https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regexoptions?view=net-8.0#fields):
+- `Multiline` (always)
+- `IgnoreCase` (if the `IgnoringCase` method is called)
+
+
+## One of
+
+You can also verify if the string is one of many alternatives.
+This method can also be configured to ignore case, or use a custom `IEqualityComparer<string>`:
+
+```csharp
+string subject = "some";
+await Expect.That(subject).Should().BeOneOf("none", "some", "many");
+await Expect.That(subject).Should().BeOneOf("NONE", "SOME", "MANY").IgnoringCase();
+await Expect.That(subject).Should().BeOneOf("NONE", "SOME", "MANY").Using(StringComparer.OrdinalIgnoreCase);
+```
+
 
 ## String start and end
 
@@ -57,6 +88,7 @@ await Expect.That(subject).Should().EndWith("text");
 await Expect.That(subject).Should().EndWith("TEXT").IgnoringCase();
 await Expect.That(subject).Should().EndWith("TEXT").Using(StringComparer.OrdinalIgnoreCase);
 ```
+
 
 ## Contains
 
@@ -77,6 +109,7 @@ await Expect.That(subject).Should().Contain("in").Exactly(3);
 await Expect.That(subject).Should().Contain("in").AtMost(4);
 await Expect.That(subject).Should().Contain("in").Between(1).And(5);
 ```
+
 
 ## Character casing
 To ensure the characters in a string are all upper or lower cased, you can use the following expectations:
