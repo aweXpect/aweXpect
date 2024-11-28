@@ -34,21 +34,19 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	private readonly TThat _returnValue = returnValue;
 
 	/// <summary>
-	///     Allows specifying expectations on a property of the current value.
+	///     Allows specifying <paramref name="expectations"/> on a member of the current value.
 	/// </summary>
-	public WhichResult<TProperty, AdditionalAndOrWhichResult>
-		Which<TProperty>(Expression<Func<TType, TProperty?>> selector)
+	public AdditionalAndOrWhichResult
+		Which<TProperty>(
+			Expression<Func<TType, TProperty?>> memberSelector,
+			Action<IExpectSubject<TProperty?>> expectations)
 	{
-		return new WhichResult<TProperty, AdditionalAndOrWhichResult>(
-			expectations =>
-			{
-				return new AdditionalAndOrWhichResult(
-					_expectationBuilder
-						.ForProperty(PropertyAccessor<TType, TProperty?>.FromExpression(selector),
-							(property, expectation) => $" which {property}should {expectation}")
-						.AddExpectations(e => expectations(new Expect.ThatSubject<TProperty?>(e))),
-					_returnValue);
-			});
+		return new AdditionalAndOrWhichResult(
+			_expectationBuilder
+				.ForProperty(PropertyAccessor<TType, TProperty?>.FromExpression(memberSelector),
+					(property, expectation) => $" which {property}should {expectation}")
+				.AddExpectations(e => expectations(new Expect.ThatSubject<TProperty?>(e))),
+			_returnValue);
 	}
 
 	/// <summary>
@@ -66,38 +64,22 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 		private readonly TThat _returnValue = returnValue;
 
 		/// <summary>
-		///     Allows specifying expectations on a property of the current value.
+		///     Allows specifying <paramref name="expectations"/> on a member of the current value.
 		/// </summary>
-		public WhichResult<TProperty, AdditionalAndOrWhichResult>
-			AndWhich<TProperty>(Expression<Func<TType, TProperty?>> selector)
+		public AdditionalAndOrWhichResult
+			AndWhich<TProperty>(
+				Expression<Func<TType, TProperty?>> memberSelector,
+				Action<IExpectSubject<TProperty?>> expectations)
 		{
 			_expectationBuilder.And(" and");
-			return new WhichResult<TProperty, AdditionalAndOrWhichResult>(
-				expectations =>
-				{
-					return new AdditionalAndOrWhichResult(
-						_expectationBuilder
-							.ForProperty(
-								PropertyAccessor<TType, TProperty?>.FromExpression(selector),
-								(property, expectation) => $" which {property}should {expectation}")
-							.AddExpectations(e
-								=> expectations(new Expect.ThatSubject<TProperty?>(e))),
-						_returnValue);
-				});
+			return new AdditionalAndOrWhichResult(
+				_expectationBuilder
+					.ForProperty(
+						PropertyAccessor<TType, TProperty?>.FromExpression(memberSelector),
+						(property, expectation) => $" which {property}should {expectation}")
+					.AddExpectations(e
+						=> expectations(new Expect.ThatSubject<TProperty?>(e))),
+				_returnValue);
 		}
-	}
-
-	/// <summary>
-	///     Intermediate result for chaining Which and Should methods.
-	/// </summary>
-	public class WhichResult<TProperty, TReturn>(
-		Func<Action<IThat<TProperty?>>, TReturn> resultCallback)
-	{
-		/// <summary>
-		///     Specifies the expectations on the selected property.
-		/// </summary>
-		public TReturn Should(
-			Action<IThat<TProperty?>> expectations)
-			=> resultCallback(expectations);
 	}
 }
