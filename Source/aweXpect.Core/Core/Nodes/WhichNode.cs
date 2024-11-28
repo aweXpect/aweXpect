@@ -7,15 +7,15 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Nodes;
 
-internal class WhichNode<TSource, TProperty> : Node
+internal class WhichNode<TSource, TMember> : Node
 {
 	private Node? _inner;
-	private readonly Func<TSource, TProperty?> _propertyAccessor;
+	private readonly Func<TSource, TMember?> _memberAccessor;
 
 	public WhichNode(
-		Func<TSource, TProperty?> propertyAccessor)
+		Func<TSource, TMember?> memberAccessor)
 	{
-		_propertyAccessor = propertyAccessor;
+		_memberAccessor = memberAccessor;
 	}
 
 	/// <inheritdoc />
@@ -24,10 +24,10 @@ internal class WhichNode<TSource, TProperty> : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
-		PropertyAccessor<TValue, TTarget?> propertyAccessor,
-		Func<PropertyAccessor, string, string>? expectationTextGenerator = null)
+		MemberAccessor<TValue, TTarget?> memberAccessor,
+		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
 		where TTarget : default
-		=> _inner?.AddMapping(propertyAccessor, expectationTextGenerator);
+		=> _inner?.AddMapping(memberAccessor, expectationTextGenerator);
 
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)
@@ -44,7 +44,7 @@ internal class WhichNode<TSource, TProperty> : Node
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
-				$"The property type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TValue).Name},{Environment.NewLine}but found {value?.GetType().Name}");
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TValue).Name},{Environment.NewLine}but found {value?.GetType().Name}");
 		}
 
 		if (_inner == null)
@@ -52,7 +52,7 @@ internal class WhichNode<TSource, TProperty> : Node
 			throw new InvalidOperationException("No inner node specified for the which node.");
 		}
 
-		TProperty? matchingValue = _propertyAccessor(typedValue);
+		TMember? matchingValue = _memberAccessor(typedValue);
 		return _inner.IsMetBy(matchingValue, context, cancellationToken);
 	}
 
@@ -62,5 +62,5 @@ internal class WhichNode<TSource, TProperty> : Node
 
 	/// <inheritdoc />
 	public override string ToString()
-		=> _propertyAccessor + base.ToString();
+		=> _memberAccessor + base.ToString();
 }

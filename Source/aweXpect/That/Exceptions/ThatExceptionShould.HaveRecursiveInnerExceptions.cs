@@ -24,7 +24,7 @@ public partial class ThatExceptionShould<TException>
 		HaveRecursiveInnerExceptions(
 			Action<IThat<IEnumerable<Exception>>> expectations)
 		=> new(ExpectationBuilder
-				.ForProperty(PropertyAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
+				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
 						e => e.GetInnerExpectations(),
 						"recursive inner exceptions "),
 					(property, expectation) => $"have {property}which {expectation}",

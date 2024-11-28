@@ -27,10 +27,10 @@ internal class AndNode : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
-		PropertyAccessor<TValue, TTarget?> propertyAccessor,
-		Func<PropertyAccessor, string, string>? expectationTextGenerator = null)
+		MemberAccessor<TValue, TTarget?> memberAccessor,
+		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
 		where TTarget : default
-		=> Current.AddMapping(propertyAccessor, expectationTextGenerator);
+		=> Current.AddMapping(memberAccessor, expectationTextGenerator);
 
 	public override void AddNode(Node node, string? separator = null)
 	{

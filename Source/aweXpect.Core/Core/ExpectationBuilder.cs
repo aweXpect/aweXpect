@@ -101,12 +101,12 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
-	///     Specifies a constraint that applies to the property selected
-	///     by the <paramref name="propertyAccessor" />.
+	///     Specifies a constraint that applies to the member selected
+	///     by the <paramref name="memberAccessor" />.
 	/// </summary>
-	public PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(
-		PropertyAccessor<TSource, TTarget?> propertyAccessor,
-		Func<PropertyAccessor, string, string>? expectationTextGenerator = null,
+	public MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(
+		MemberAccessor<TSource, TTarget?> memberAccessor,
+		Func<MemberAccessor, string, string>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
 		new((a, s, c) =>
 		{
@@ -118,10 +118,10 @@ public abstract class ExpectationBuilder
 			}
 
 			Node root = _node;
-			_node = _node.AddMapping(propertyAccessor, expectationTextGenerator) ?? _node;
+			_node = _node.AddMapping(memberAccessor, expectationTextGenerator) ?? _node;
 			if (replaceIt)
 			{
-				_it = propertyAccessor.ToString().Trim();
+				_it = memberAccessor.ToString().Trim();
 			}
 
 			if (c is not null)
@@ -245,23 +245,23 @@ public abstract class ExpectationBuilder
 		=> _timeSystem = timeSystem;
 
 	/// <summary>
-	///     Helper class to specify constraints on the selected <typeparamref name="TProperty" />.
+	///     Helper class to specify constraints on the selected <typeparamref name="TMember" />.
 	/// </summary>
-	public class PropertyExpectationBuilder<TSource, TProperty>
+	public class MemberExpectationBuilder<TSource, TMember>
 	{
 		private readonly Func<Action<ExpectationBuilder>,
 				Func<string, IValueConstraint<TSource>>?,
-				IValueConstraint<TProperty>?,
+				IValueConstraint<TMember>?,
 				ExpectationBuilder>
 			_callback;
 
-		private readonly IValueConstraint<TProperty>? _constraint = null;
+		private readonly IValueConstraint<TMember>? _constraint = null;
 
 		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
 
-		internal PropertyExpectationBuilder(Func<Action<ExpectationBuilder>,
+		internal MemberExpectationBuilder(Func<Action<ExpectationBuilder>,
 				Func<string, IValueConstraint<TSource>>?,
-				IValueConstraint<TProperty>?,
+				IValueConstraint<TMember>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -269,7 +269,7 @@ public abstract class ExpectationBuilder
 		}
 
 		/// <summary>
-		///     Add expectations for the current <typeparamref name="TProperty" />.
+		///     Add expectations for the current <typeparamref name="TMember" />.
 		/// </summary>
 		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation)
 			=> _callback(expectation, _sourceConstraintBuilder, _constraint);
@@ -281,7 +281,7 @@ public abstract class ExpectationBuilder
 		///     The parameter passed to the <paramref name="constraintBuilder" /> is the current name for the subject (mostly
 		///     "it").
 		/// </remarks>
-		public PropertyExpectationBuilder<TSource, TProperty> Validate(
+		public MemberExpectationBuilder<TSource, TMember> Validate(
 			Func<string, IValueConstraint<TSource>> constraintBuilder)
 		{
 			_sourceConstraintBuilder = constraintBuilder;

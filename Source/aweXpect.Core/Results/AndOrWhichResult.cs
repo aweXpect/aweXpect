@@ -9,7 +9,7 @@ namespace aweXpect.Results;
 ///     <para />
 ///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows accessing
 ///     underlying
-///     properties with <see cref="AndOrWhichResult{TResult,TValue,TSelf}.Which{TProperty}" />.
+///     properties with <see cref="AndOrWhichResult{TResult,TValue,TSelf}.Which{TMember}" />.
 /// </summary>
 public class AndOrWhichResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
@@ -21,8 +21,7 @@ public class AndOrWhichResult<TType, TThat>(
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
 ///     <para />
 ///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows accessing
-///     underlying
-///     properties with <see cref="Which{TProperty}" />.
+///     underlying members with <see cref="Which{TMember}" />.
 /// </summary>
 public class AndOrWhichResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
@@ -34,18 +33,18 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	private readonly TThat _returnValue = returnValue;
 
 	/// <summary>
-	///     Allows specifying <paramref name="expectations"/> on a member of the current value.
+	///     Allows specifying <paramref name="expectations"/> on the member selected by the <paramref name="memberSelector" />.
 	/// </summary>
 	public AdditionalAndOrWhichResult
-		Which<TProperty>(
-			Expression<Func<TType, TProperty?>> memberSelector,
-			Action<IExpectSubject<TProperty?>> expectations)
+		Which<TMember>(
+			Expression<Func<TType, TMember?>> memberSelector,
+			Action<IExpectSubject<TMember?>> expectations)
 	{
 		return new AdditionalAndOrWhichResult(
 			_expectationBuilder
-				.ForProperty(PropertyAccessor<TType, TProperty?>.FromExpression(memberSelector),
-					(property, expectation) => $" which {property}should {expectation}")
-				.AddExpectations(e => expectations(new Expect.ThatSubject<TProperty?>(e))),
+				.ForMember(MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
+					(member, expectation) => $" which {member}should {expectation}")
+				.AddExpectations(e => expectations(new Expect.ThatSubject<TMember?>(e))),
 			_returnValue);
 	}
 
@@ -53,7 +52,7 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	///     The result of an additional expectation for the underlying type.
 	///     <para />
 	///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows accessing
-	///     underlying properties with <see cref="AndWhich{TProperty}" />.
+	///     underlying members with <see cref="AndWhich{TMember}" />.
 	/// </summary>
 	public class AdditionalAndOrWhichResult(
 		ExpectationBuilder expectationBuilder,
@@ -64,21 +63,21 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 		private readonly TThat _returnValue = returnValue;
 
 		/// <summary>
-		///     Allows specifying <paramref name="expectations"/> on a member of the current value.
+		///     Allows specifying <paramref name="expectations"/> on the member selected by the <paramref name="memberSelector" />.
 		/// </summary>
 		public AdditionalAndOrWhichResult
-			AndWhich<TProperty>(
-				Expression<Func<TType, TProperty?>> memberSelector,
-				Action<IExpectSubject<TProperty?>> expectations)
+			AndWhich<TMember>(
+				Expression<Func<TType, TMember?>> memberSelector,
+				Action<IExpectSubject<TMember?>> expectations)
 		{
 			_expectationBuilder.And(" and");
 			return new AdditionalAndOrWhichResult(
 				_expectationBuilder
-					.ForProperty(
-						PropertyAccessor<TType, TProperty?>.FromExpression(memberSelector),
-						(property, expectation) => $" which {property}should {expectation}")
+					.ForMember(
+						MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
+						(member, expectation) => $" which {member}should {expectation}")
 					.AddExpectations(e
-						=> expectations(new Expect.ThatSubject<TProperty?>(e))),
+						=> expectations(new Expect.ThatSubject<TMember?>(e))),
 				_returnValue);
 		}
 	}
