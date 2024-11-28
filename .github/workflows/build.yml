@@ -218,6 +218,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ push ]
     permissions:
+        contents: read
         issues: write
         pull-requests: write
     steps:
