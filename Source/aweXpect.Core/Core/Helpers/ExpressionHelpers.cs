@@ -18,7 +18,7 @@ internal static class ExpressionHelpers
 			_ => null
 		};
 
-	public static string GetPropertyPath(Expression expression)
+	public static string GetMemberPath(Expression expression)
 	{
 		MemberExpression? memberExpression = GetMemberExpression(expression);
 		StringBuilder path = new();

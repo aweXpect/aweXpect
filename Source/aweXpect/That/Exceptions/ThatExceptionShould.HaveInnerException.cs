@@ -25,7 +25,7 @@ public partial class ThatExceptionShould<TException>
 	public AndOrResult<TException?, ThatExceptionShould<TException>> HaveInnerException(
 		Action<ThatExceptionShould<Exception?>> expectations)
 		=> new(ExpectationBuilder
-				.ForProperty<Exception, Exception?>(e => e.InnerException,
+				.ForMember<Exception, Exception?>(e => e.InnerException,
 					"have an inner exception which should ",
 					replaceIt: false)
 				.Validate(it

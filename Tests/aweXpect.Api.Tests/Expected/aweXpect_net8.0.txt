@@ -258,7 +258,7 @@ namespace aweXpect
     public static class ThatGeneric
     {
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> BeSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> For<T, TProperty>(this aweXpect.Core.IExpectSubject<T> source, System.Linq.Expressions.Expression<System.Func<T, TProperty?>> selector, System.Action<aweXpect.Core.IExpectSubject<TProperty?>> expectations) { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> For<T, TMember>(this aweXpect.Core.IExpectSubject<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IExpectSubject<TMember?>> expectations) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> NotBeSameAs<T>(this aweXpect.Core.IThat<T> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuidShould

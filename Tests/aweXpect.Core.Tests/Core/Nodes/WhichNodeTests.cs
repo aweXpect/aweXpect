@@ -13,7 +13,7 @@ public sealed class WhichNodeTests
 
 		async Task Act()
 			=> await That(subject).Should().Be<Dummy>()
-				.Which(p => p.Value).Should(e => e.Be("bar"));
+				.Which(p => p.Value, e => e.Should().Be("bar"));
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
