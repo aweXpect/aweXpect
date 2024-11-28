@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732754324420,
+  "lastUpdate": 1732756650202,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1196,6 +1196,66 @@ window.BENCHMARK_DATA = {
             "value": 808.2319465637207,
             "unit": "ns",
             "range": "± 5.656055916780991"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "97c48d174cf9a8b014c106c610b6cdbbe4be8c3b",
+          "message": "feat: simplify `.Which` (#50)\n\nAvoid using an intermediate class for the `.Which` syntax.\nRename \"Property\" to \"Member\" to clarify, that also e.g. methods or fields could be accessed.",
+          "timestamp": "2024-11-28T01:14:16Z",
+          "tree_id": "90975bbf05cd5d9fc0539d4ff31a20df4d5bc396",
+          "url": "https://github.com/aweXpect/aweXpect/commit/97c48d174cf9a8b014c106c610b6cdbbe4be8c3b"
+        },
+        "date": 1732756649841,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 212.46019252446982,
+            "unit": "ns",
+            "range": "± 0.7848204152679185"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 166.8180857726506,
+            "unit": "ns",
+            "range": "± 0.6207500159460672"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 572.7062314987182,
+            "unit": "ns",
+            "range": "± 3.6418678552332175"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 390.05157470703125,
+            "unit": "ns",
+            "range": "± 2.459780428562955"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 309.6158609390259,
+            "unit": "ns",
+            "range": "± 0.9422441848815334"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 818.4772718869723,
+            "unit": "ns",
+            "range": "± 1.9803097209995761"
           }
         ]
       }
