@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732725620314,
+  "lastUpdate": 1732754324420,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1136,6 +1136,66 @@ window.BENCHMARK_DATA = {
             "value": 852.8092786788941,
             "unit": "ns",
             "range": "± 6.957504826020491"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7834202c50aefadfdd00c9120dae0726d7eafe96",
+          "message": "fix: permissions of release commenter (#49)\n\n* Add missing `contents: read` permission for the [GitHub Release Commenter](https://github.com/apexskier/github-release-commenter).\n\n* Cleanup indentation of yml files",
+          "timestamp": "2024-11-28T00:35:19Z",
+          "tree_id": "ae41cd127f1cfc4db8b3ad5c6e86abf20366b0cc",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7834202c50aefadfdd00c9120dae0726d7eafe96"
+        },
+        "date": 1732754323796,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.98807202974956,
+            "unit": "ns",
+            "range": "± 2.0460480605391314"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 166.82008565266926,
+            "unit": "ns",
+            "range": "± 1.025484685268623"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 593.7604104677836,
+            "unit": "ns",
+            "range": "± 1.8172198985644543"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 396.65674961530243,
+            "unit": "ns",
+            "range": "± 1.4740098076903534"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 309.0935670045706,
+            "unit": "ns",
+            "range": "± 0.8380373118644141"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 808.2319465637207,
+            "unit": "ns",
+            "range": "± 5.656055916780991"
           }
         ]
       }
