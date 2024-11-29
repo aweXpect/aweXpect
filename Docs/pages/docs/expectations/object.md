@@ -8,12 +8,13 @@ Describes the possible expectations for objects.
 
 ## Equality
 
-You can verify, that the `object` is equal to another one:
+You can verify, that the `object` is equal to another one or not:
 ```csharp
 record MyClass(int Value);
 MyClass subject = new(1);
 
 await Expect.That(subject).Should().Be(new MyClass(1));
+await Expect.That(subject).Should().NotBe(new MyClass(2));
 ```
 *Note: this uses the underlying `object.Equals(object?, object?)` method*
 
@@ -48,7 +49,7 @@ await Expect.That(subject).Should().Be(new MyClass(2)).Using(new MyClassComparer
 
 ## Equivalence
 
-You can verify, that the `object` is equivalent to another one:
+You can verify, that the `object` is equivalent to another one or not:
 ```csharp
 class MyClass(int value)
 {
@@ -57,18 +58,21 @@ class MyClass(int value)
 MyClass subject = new(1);
 
 await Expect.That(subject).Should().Be(new MyClass(1)).Equivalent();
+await Expect.That(subject).Should().NotBe(new MyClass(2)).Equivalent();
 ```
 *Note: this compares recursively all properties on the two objects for equivalence.*
 
 
 ## Type check
 
-You can verify, that the `object` is of a given type:
+You can verify, that the `object` is of a given type or not:
 ```csharp
 object subject = new MyClass(1);
 
 await Expect.That(subject).Should().Be<MyClass>();
 await Expect.That(subject).Should().Be(typeof(MyClass));
+await Expect.That(subject).Should().NotBe<OtherClass>();
+await Expect.That(subject).Should().NotBe(typeof(OtherClass));
 ```
 This verifies, if the subject is of the given type or a derived type.
 
