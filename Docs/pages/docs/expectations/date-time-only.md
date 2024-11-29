@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # DateOnly / TimeOnly
@@ -88,7 +88,7 @@ await Expect.That(subjectB).Should().BeBefore(TimeOnly.FromDateTime(DateTime.Now
 
 ## Properties
 
-You can verify, the properties the `DateTime`:
+You can verify, the properties of the `DateTime`:
 ```csharp
 DateOnly subject = new DateOnly(2024, 12, 31);
 
@@ -97,7 +97,7 @@ await Expect.That(subject).Should().HaveMonth(12);
 await Expect.That(subject).Should().HaveDay(31);
 ```
 
-You can verify, the properties the `TimeOnly`:
+You can verify, the properties of the `TimeOnly`:
 
 ```csharp
 TimeOnly subject = new TimeOnly(15, 16, 17, 189);
