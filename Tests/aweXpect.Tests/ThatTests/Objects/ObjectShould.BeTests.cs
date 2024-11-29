@@ -4,6 +4,37 @@ public sealed partial class ObjectShould
 {
 	public sealed class BeTests
 	{
+		[Fact]
+		public async Task Be_SubjectToItself_ShouldSucceed()
+		{
+			object subject = new MyClass();
+
+			async Task Act()
+				=> await That(subject).Should().Be(subject);
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Be_SubjectToSomeOtherValue_ShouldFail()
+		{
+			object subject = new MyClass();
+			object expected = new MyClass();
+
+			async Task Act() 
+				=> await That(subject).Should().Be(expected)
+					.Because("we want to test the failure");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             be equal to expected, because we want to test the failure,
+				             but it was MyClass {
+				               Value = 0
+				             }
+				             """);
+		}
+
 		[Theory]
 		[AutoData]
 		public async Task ForGeneric_WhenAwaited_ShouldReturnTypedResult(int value)
@@ -297,6 +328,37 @@ public sealed partial class ObjectShould
 
 			async Task Act()
 				=> await That(subject).Should().NotBe(typeof(MyClass));
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task NotBe_SubjectToItself_ShouldFail()
+		{
+			object subject = new MyClass();
+
+			async Task Act()
+				=> await That(subject).Should().NotBe(subject)
+					.Because("we want to test the failure");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not be equal to subject, because we want to test the failure,
+				             but it was MyClass {
+				               Value = 0
+				             }
+				             """);
+		}
+		
+		[Fact]
+		public async Task NotBe_SubjectToSomeOtherValue_ShouldSucceed()
+		{
+			object subject = new MyClass();
+			object unexpected = new MyClass();
+
+			async Task Act()
+				=> await That(subject).Should().NotBe(unexpected);
 
 			await That(Act).Should().NotThrow();
 		}
