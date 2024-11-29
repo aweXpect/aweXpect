@@ -176,9 +176,7 @@ public sealed partial class ObjectShould
 			object subject = new MyClass();
 
 			async Task Act()
-			{
-				await That(subject).Should().Be(typeof(MyClass));
-			}
+				=> await That(subject).Should().Be(typeof(MyClass));
 
 			await That(Act).Should().NotThrow();
 		}
