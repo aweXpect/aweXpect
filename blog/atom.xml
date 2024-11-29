@@ -2,19 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aweXpect.github.io/aweXpect/blog</id>
     <title>aweXpect Blog</title>
-    <updated>2024-11-23T00:00:00.000Z</updated>
+    <updated>2024-11-29T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aweXpect.github.io/aweXpect/blog"/>
     <subtitle>aweXpect Blog</subtitle>
     <icon>https://aweXpect.github.io/aweXpect/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[First Blog Post]]></title>
-        <id>https://aweXpect.github.io/aweXpect/blog/first-blog-post</id>
-        <link href="https://aweXpect.github.io/aweXpect/blog/first-blog-post"/>
-        <updated>2024-11-23T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is my first blog post]]></summary>
-        <content type="html"><![CDATA[<p>This is my first blog post</p>
-<p>...to test the functionality of Docusaurus.</p>]]></content>
+        <title type="html"><![CDATA[Why another assertion library]]></title>
+        <id>https://aweXpect.github.io/aweXpect/blog/why-another-assertion-library</id>
+        <link href="https://aweXpect.github.io/aweXpect/blog/why-another-assertion-library"/>
+        <updated>2024-11-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I am an active contributor to fluentassertions and am well aware of the great improvements it has on the readability of unit tests.]]></summary>
+        <content type="html"><![CDATA[<p>I am an active contributor to <a href="https://github.com/fluentassertions/fluentassertions" target="_blank" rel="noopener noreferrer">fluentassertions</a> and am well aware of the great improvements it has on the readability of unit tests.
+But I am also aware of its shortcomings.</p>
+<ol>
+<li>
+<p><strong>Limited async support</strong><br>
+<!-- -->It's async support is very limited, e.g.</p>
+<ul>
+<li>The <a href="https://github.com/fluentassertions/fluentassertions/issues/1213" target="_blank" rel="noopener noreferrer">issue</a> to add support for <code>IAsyncEnumerable&lt;T&gt;</code> is open since 2019</li>
+<li>It is not possible to access the <code>Content</code> of an <code>HttpResponseMessage</code> without blocking</li>
+</ul>
+</li>
+<li>
+<p><strong>No <code>params</code></strong><br>
+<!-- -->Because the <code>because</code> parameter is part of each call, you cannot use a <code>params</code> parameter.
+As a workaround the <code>because</code> parameter was omitted in <a href="https://github.com/fluentassertions/fluentassertions/blob/6.12.2/Src/FluentAssertions/Primitives/StringAssertions.cs#L70" target="_blank" rel="noopener noreferrer"><code>BeOneOf(params string[] validValues)</code></a>, but this leads to an inconsistent API.</p>
+</li>
+</ol>
+<p>That was the reason why I tried myself on a new concept which was also inspired by the approach from <a href="https://github.com/thomhurst/TUnit" target="_blank" rel="noopener noreferrer">TUnit</a> to make every assertion asynchronous.</p>
+<p>This allows to delay the evaluation of the assertion until the call is awaited, which in turn allows to move specifying a because reason to a separate call.<br>
+<!-- -->An additional benefit is, that the constraints themselves can decide if they need to be asynchronous, which allows mixing of sync and async constraints.</p>]]></content>
         <author>
             <name>Valentin Breuß</name>
             <uri>https://github.com/vbreuss</uri>

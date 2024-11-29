@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpages=self.webpackChunkpages||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"First Blog Post","permalink":"/aweXpect/blog/first-blog-post","unlisted":false,"date":"2024-11-23T00:00:00.000Z"}]}')}}]);
