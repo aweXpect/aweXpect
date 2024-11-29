@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{99D141BC-CCD6-4E
 		LICENSE = LICENSE
 		nuget.config = nuget.config
 		README.md = README.md
+		aweXpect.sln.DotSettings = aweXpect.sln.DotSettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1308040E-AFD3-4404-81E0-CC3746984A6F}"
