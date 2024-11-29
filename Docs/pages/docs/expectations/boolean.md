@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Boolean
@@ -18,7 +18,7 @@ await Expect.That(subject).Should().NotBe(true);
 
 ## True / False
 
-You can verify, that the `bool` is `true` or `false`
+You can verify, that the `bool` is `true` or `false`:
 ```csharp
 await Expect.That(false).Should().BeFalse();
 await Expect.That(true).Should().BeTrue();
