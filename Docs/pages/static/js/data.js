@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732812561210,
+  "lastUpdate": 1732888184583,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1316,6 +1316,66 @@ window.BENCHMARK_DATA = {
             "value": 808.8646607716878,
             "unit": "ns",
             "range": "± 8.285438410702094"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ff96a5c29d2052d0e8aba8721577b6012e1fd00d",
+          "message": "docs: improve documentation (#56)\n\n- Add documentation for `Stream`, `object`,  HTTP, collection and delegates\n- Add documentation for extensibility\n- Add first real blog post",
+          "timestamp": "2024-11-29T13:46:28Z",
+          "tree_id": "c68c0907d3a90d8be1110227a043b184c7fc1f87",
+          "url": "https://github.com/aweXpect/aweXpect/commit/ff96a5c29d2052d0e8aba8721577b6012e1fd00d"
+        },
+        "date": 1732888184339,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.20658843857902,
+            "unit": "ns",
+            "range": "± 1.6228941651335786"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.10405240058898,
+            "unit": "ns",
+            "range": "± 0.8950275551161454"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 607.6988663673401,
+            "unit": "ns",
+            "range": "± 3.253915131620536"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 398.3177063624064,
+            "unit": "ns",
+            "range": "± 2.393144186374386"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 309.4912047068278,
+            "unit": "ns",
+            "range": "± 1.9669326328061432"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 811.2113456726074,
+            "unit": "ns",
+            "range": "± 4.1203239363674395"
           }
         ]
       }
