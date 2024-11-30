@@ -17,7 +17,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -34,7 +34,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -62,7 +62,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -82,7 +82,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -124,7 +124,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -151,7 +151,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -168,7 +168,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -196,7 +196,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -223,7 +223,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -240,7 +240,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -269,7 +269,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -286,7 +286,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -325,7 +325,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -342,7 +342,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -370,7 +370,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -399,7 +399,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -416,7 +416,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -436,7 +436,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -467,7 +467,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -484,7 +484,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -512,7 +512,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -529,7 +529,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -557,7 +557,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -586,7 +586,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -603,7 +603,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -632,7 +632,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -649,7 +649,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -678,7 +678,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -695,7 +695,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -724,7 +724,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -741,7 +741,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -770,7 +770,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -787,7 +787,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -816,7 +816,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -833,7 +833,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -862,7 +862,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was <null>
 				              """);
 		}
@@ -880,7 +880,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -897,7 +897,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -926,7 +926,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -943,7 +943,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -972,7 +972,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -989,7 +989,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1018,7 +1018,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1035,7 +1035,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1064,7 +1064,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be <null>,
+				              be equal to <null>,
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1081,7 +1081,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1136,7 +1136,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1182,7 +1182,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1198,7 +1198,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             not be NaN,
+				             not be equal to NaN,
 				             but it was NaN
 				             """);
 		}
@@ -1225,7 +1225,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1265,7 +1265,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1281,7 +1281,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             not be NaN,
+				             not be equal to NaN,
 				             but it was NaN
 				             """);
 		}
@@ -1332,7 +1332,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1373,7 +1373,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1389,7 +1389,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1430,7 +1430,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1458,7 +1458,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1519,7 +1519,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1559,7 +1559,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1599,7 +1599,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1627,7 +1627,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1668,7 +1668,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1709,7 +1709,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1750,7 +1750,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1791,7 +1791,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1832,7 +1832,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1873,7 +1873,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1927,7 +1927,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -1968,7 +1968,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -2009,7 +2009,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -2050,7 +2050,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -2091,7 +2091,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              not be {Formatter.Format(unexpected)},
+				              not be equal to {Formatter.Format(unexpected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
