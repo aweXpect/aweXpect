@@ -91,12 +91,12 @@ public static partial class ThatAsyncEnumerableShould
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 
-			List<TItem> items = new(11);
+			List<TItem> items = new(CollectionFormatCount + 1);
 			int count = 0;
 			bool isFailed = false;
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
-				if (items.Count < 11)
+				if (items.Count <= CollectionFormatCount)
 				{
 					items.Add(item);
 				}
@@ -115,7 +115,7 @@ public static partial class ThatAsyncEnumerableShould
 							ToString());
 					}
 				}
-				if (items.Count >= 10 && isFailed)
+				if (items.Count > CollectionFormatCount && isFailed)
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray())}");
@@ -147,12 +147,12 @@ public static partial class ThatAsyncEnumerableShould
 		{
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			List<TItem> items = new(11);
+			List<TItem> items = new(CollectionFormatCount + 1);
 			int count = 0;
 			bool isFailed = false;
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
-				if (items.Count < 11)
+				if (items.Count <= CollectionFormatCount)
 				{
 					items.Add(item);
 				}
@@ -171,7 +171,7 @@ public static partial class ThatAsyncEnumerableShould
 							ToString());
 					}
 				}
-				if (items.Count >= 10 && isFailed)
+				if (items.Count > CollectionFormatCount && isFailed)
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray())}");
