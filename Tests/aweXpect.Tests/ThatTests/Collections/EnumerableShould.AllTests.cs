@@ -14,15 +14,15 @@ public sealed partial class EnumerableShould
 		{
 			using CancellationTokenSource cts = new();
 			CancellationToken token = cts.Token;
-			IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
+			IEnumerable<int> subject = GetCancellingEnumerable(5, cts);
 
 			async Task Act()
-				=> await That(subject).Should().All().Satisfy(x => x < 6).WithCancellation(token);
+				=> await That(subject).Should().All(x => x.Satisfy(y => y < 6)).WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             all satisfy "x => x < 6",
+				             have all items satisfy y => y < 6,
 				             but could not verify, because it was cancelled early
 				             """);
 		}
@@ -33,8 +33,8 @@ public sealed partial class EnumerableShould
 			ThrowWhenIteratingTwiceEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().All().Satisfy(_ => true)
-					.And.All().Satisfy(_ => true);
+				=> await That(subject).Should().All(x => x.Satisfy(_ => true))
+					.And.All(x => x.Satisfy(_ => true));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -45,13 +45,13 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(1);
+				=> await That(subject).Should().All(x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have all items equal to 1,
-				             but not all items were equal
+				             have all items be equal to 1,
+				             but not all were
 				             """);
 		}
 
@@ -61,13 +61,13 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(1);
+				=> await That(subject).Should().All(x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have all items equal to 1,
-				             but not all items were equal
+				             have all items be equal to 1,
+				             but not all were
 				             """);
 		}
 
@@ -77,7 +77,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([]);
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(0);
+				=> await That(subject).Should().All(x => x.Be(0));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -88,7 +88,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1]);
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(1);
+				=> await That(subject).Should().All(x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}

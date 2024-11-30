@@ -1,7 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Formatting;
 using aweXpect.Results;
 
 namespace aweXpect;

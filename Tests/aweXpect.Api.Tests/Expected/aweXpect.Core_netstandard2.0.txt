@@ -117,6 +117,11 @@ namespace aweXpect.Core
         System.Type GetType();
         string? ToString();
     }
+    public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder
+    {
+        public ManualExpectationBuilder() { }
+        public System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
+    }
     public abstract class MemberAccessor
     {
         protected MemberAccessor(string name) { }

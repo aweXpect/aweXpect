@@ -7,47 +7,22 @@ namespace aweXpect
         public BetweenResult(System.Func<int, TTarget> callback) { }
         public TTarget And(int maximum) { }
     }
-    public struct CollectionEvaluatorResult : System.IEquatable<aweXpect.CollectionEvaluatorResult>
+    public class BetweenResult<TTarget, TExpectation>
     {
-        public CollectionEvaluatorResult(bool? IsSuccess, string Error) { }
-        public string Error { get; set; }
-        public bool? IsSuccess { get; set; }
+        public BetweenResult(System.Func<int, System.Action<TExpectation>, TTarget> callback) { }
+        public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
     }
-    public abstract class CollectionQuantifier
+    public abstract class EnumerableQuantifier
     {
-        protected CollectionQuantifier() { }
-        public static aweXpect.CollectionQuantifier All { get; }
-        public static aweXpect.CollectionQuantifier None { get; }
-        protected abstract bool ContinueEvaluation(int matchingCount, int notMatchingCount, int? totalCount, [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out aweXpect.CollectionEvaluatorResult? result);
-        public aweXpect.ICollectionEvaluator<TItem> GetEvaluator<TItem, TCollection>(TCollection enumerable, aweXpect.Core.EvaluationContext.IEvaluationContext context)
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
-        public override string ToString() { }
-        public abstract string ToString(bool includeItems);
-        public static aweXpect.CollectionQuantifier AtLeast(int minimum) { }
-        public static aweXpect.CollectionQuantifier AtMost(int maximum) { }
-        public static aweXpect.CollectionQuantifier Between(int minimum, int maximum) { }
-    }
-    public interface ICollectionEvaluator<out TItem>
-    {
-        System.Threading.Tasks.Task<aweXpect.CollectionEvaluatorResult> CheckCondition<TExpected>(TExpected expected, System.Func<TItem, TExpected, bool> predicate, System.Threading.CancellationToken cancellationToken);
-    }
-    public class QuantifiedCollectionResult
-    {
-        public QuantifiedCollectionResult() { }
-        public class Sync<TResult, TItem, TCollection> : aweXpect.QuantifiedCollectionResult<TResult>
-            where TResult : aweXpect.Core.IThat<TCollection>
-            where TCollection : System.Collections.Generic.IEnumerable<TItem>
-        {
-            public Sync(TResult result, aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.CollectionQuantifier quantity) { }
-            public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> Be<TExpected>() { }
-        }
-    }
-    public class QuantifiedCollectionResult<TResult>
-    {
-        public QuantifiedCollectionResult(TResult result, aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.CollectionQuantifier quantity) { }
-        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        public aweXpect.CollectionQuantifier Quantity { get; }
-        public TResult Result { get; }
+        protected EnumerableQuantifier() { }
+        public static aweXpect.EnumerableQuantifier All { get; }
+        public static aweXpect.EnumerableQuantifier None { get; }
+        public abstract string GetExpectation(string it, aweXpect.Core.ExpectationBuilder expectationBuilder);
+        public abstract aweXpect.Core.Constraints.ConstraintResult GetResult<TEnumerable>(TEnumerable actual, string it, aweXpect.Core.ExpectationBuilder expectationBuilder, int matchingCount, int notMatchingCount, int? totalCount);
+        public abstract bool IsDeterminable(int matchingCount, int notMatchingCount);
+        public static aweXpect.EnumerableQuantifier AtLeast(int minimum) { }
+        public static aweXpect.EnumerableQuantifier AtMost(int maximum) { }
+        public static aweXpect.EnumerableQuantifier Between(int minimum, int maximum) { }
     }
     public static class ThatBoolShould
     {
@@ -175,13 +150,13 @@ namespace aweXpect
     }
     public static class ThatEnumerableShould
     {
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int maximum) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
-        public static aweXpect.BetweenResult<aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
+        public static aweXpect.BetweenResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>>, aweXpect.Core.IThat<TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> None<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> None<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotBeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
         public static aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> Should<TItem>(this aweXpect.Core.IExpectSubject<System.Collections.Generic.IEnumerable<TItem>> subject) { }
     }
@@ -215,6 +190,8 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> BeSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> For<T, TMember>(this aweXpect.Core.IExpectSubject<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IExpectSubject<TMember?>> expectations) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> NotBeSameAs<T>(this aweXpect.Core.IThat<T> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> NotSatisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> Satisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuidShould
     {
@@ -657,18 +634,6 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> NotBeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Core.IThat<object?> Should(this aweXpect.Core.IExpectSubject<object?> subject) { }
-    }
-    public static class ThatQuantifiedCollectionResultShould { }
-    public static class ThatQuantifiedCollectionResultShouldAsync { }
-    public static class ThatQuantifiedCollectionResultShouldSync
-    {
-        public static aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> Be<TItem, TCollection>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<TCollection>> source, TItem expected)
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
-        public static aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> BeEquivalentTo<TItem, TCollection>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<TCollection>> source, TItem expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Satisfy<TItem>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> Satisfy<TItem, TCollection>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<TCollection>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "")
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
     }
     public static class ThatStreamShould
     {

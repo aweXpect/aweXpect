@@ -10,13 +10,13 @@ public sealed partial class CollectionShould
 			int[] subject = [1, 1, 1, 1, 2, 2, 3];
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(1);
+				=> await That(subject).Should().All(x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have all items equal to 1,
-				             but not all of 7 items were equal
+				             have all items be equal to 1,
+				             but not all were
 				             """);
 		}
 
@@ -26,7 +26,7 @@ public sealed partial class CollectionShould
 			bool[] subject = [];
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(true);
+				=> await That(subject).Should().All(x => x.Be(true));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -37,7 +37,7 @@ public sealed partial class CollectionShould
 			int[] subject = [1, 1, 1, 1];
 
 			async Task Act()
-				=> await That(subject).Should().All().Be(1);
+				=> await That(subject).Should().All(x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}

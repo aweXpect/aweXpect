@@ -17,7 +17,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(6).Satisfy(x => x < 6)
+				=> await That(subject).Should().AtLeast(6, x => x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().NotThrow();
@@ -29,8 +29,8 @@ public sealed partial class EnumerableShould
 			ThrowWhenIteratingTwiceEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(0).Be(1)
-					.And.AtLeast(0).Be(1);
+				=> await That(subject).Should().AtLeast(0, x => x.Be(1))
+					.And.AtLeast(0, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -41,7 +41,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(2).Be(1);
+				=> await That(subject).Should().AtLeast(2, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -52,7 +52,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(3).Be(1);
+				=> await That(subject).Should().AtLeast(3, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -63,13 +63,13 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(5).Be(1);
+				=> await That(subject).Should().AtLeast(5, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have at least 5 items equal to 1,
-				             but only 4 of 7 items were equal
+				             have at least 5 items be equal to 1,
+				             but only 4 of 7 were
 				             """);
 		}
 	}

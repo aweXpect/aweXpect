@@ -405,16 +405,15 @@ public class ExpectTests
 	{
 		using CancellationTokenSource cts = new();
 		CancellationToken token = cts.Token;
-		IAsyncEnumerable<int>
-			subject = GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
+		IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 		async Task Act()
-			=> await That(subject).Should(b => b.WithCancellation(token)).All().Satisfy(x => x < 6);
+			=> await That(subject).Should(b => b.WithCancellation(token)).All(x => x.Satisfy(y => y < 6));
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected subject to
-			             all satisfy "x => x < 6",
+			             have all items satisfy y => y < 6,
 			             but could not verify, because it was cancelled early
 			             """);
 	}

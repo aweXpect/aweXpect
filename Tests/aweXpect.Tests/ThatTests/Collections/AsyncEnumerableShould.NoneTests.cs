@@ -19,13 +19,13 @@ public sealed partial class AsyncEnumerableShould
  GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 			async Task Act()
-				=> await That(subject).Should().None().Satisfy(x => x < 0)
+				=> await That(subject).Should().None(x => x.Satisfy(y => y < 0))
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             none satisfy "x => x < 0",
+				             have no items satisfy y => y < 0,
 				             but could not verify, because it was cancelled early
 				             """);
 		}
@@ -36,8 +36,8 @@ public sealed partial class AsyncEnumerableShould
 			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().None().Be(15)
-					.And.None().Be(81);
+				=> await That(subject).Should().None(x => x.Be(15))
+					.And.None(x => x.Be(81));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -48,13 +48,13 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().None().Be(5);
+				=> await That(subject).Should().None(x => x.Be(5));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have no items equal to 5,
-				             but at least one items were equal
+				             have no items be equal to 5,
+				             but at least one was
 				             """);
 		}
 
@@ -64,13 +64,13 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().None().Be(1);
+				=> await That(subject).Should().None(x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have no items equal to 1,
-				             but at least one items were equal
+				             have no items be equal to 1,
+				             but at least one was
 				             """);
 		}
 
@@ -80,7 +80,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().None().Be(42);
+				=> await That(subject).Should().None(x => x.Be(42));
 
 			await That(Act).Should().NotThrow();
 		}

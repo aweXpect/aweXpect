@@ -14,7 +14,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -29,7 +29,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -44,7 +44,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -59,7 +59,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -74,7 +74,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -89,7 +89,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -104,7 +104,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -119,7 +119,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -134,7 +134,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -149,7 +149,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
@@ -164,7 +164,7 @@ public sealed partial class NumberShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              be {Formatter.Format(expected)},
+				              be equal to {Formatter.Format(expected)},
 				              but it was {Formatter.Format(subject)}
 				              """);
 		}
