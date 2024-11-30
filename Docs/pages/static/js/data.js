@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732995386860,
+  "lastUpdate": 1733003478685,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1676,6 +1676,66 @@ window.BENCHMARK_DATA = {
             "value": 804.1090859731038,
             "unit": "ns",
             "range": "± 4.447147181905262"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b54663d7fe40368f568794ee18010f5f0df44003",
+          "message": "feat: add configuration options for `Contain` (#62)\n\nAdd configuration options for enumerables `Contain` / `NotContain` methods.",
+          "timestamp": "2024-11-30T21:48:16Z",
+          "tree_id": "b97b4abe561e77ac1eefd6398067bad6d1f2877e",
+          "url": "https://github.com/aweXpect/aweXpect/commit/b54663d7fe40368f568794ee18010f5f0df44003"
+        },
+        "date": 1733003478332,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 212.9091387135642,
+            "unit": "ns",
+            "range": "± 1.2478395503519966"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 165.69343892165594,
+            "unit": "ns",
+            "range": "± 0.6266070756753672"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 561.2074103037517,
+            "unit": "ns",
+            "range": "± 3.6373694812162376"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 389.42543630599977,
+            "unit": "ns",
+            "range": "± 2.5603230424478443"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 307.0976143564497,
+            "unit": "ns",
+            "range": "± 1.607242726632854"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 810.2991181691488,
+            "unit": "ns",
+            "range": "± 2.253747181598895"
           }
         ]
       }
