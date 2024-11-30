@@ -1,7 +1,6 @@
 ﻿#if NET6_0_OR_GREATER
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +8,9 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
+using aweXpect.Options;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
@@ -18,26 +19,37 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the actual enumerable contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Contain<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			TItem expected)
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it => new ContainConstraint<TItem>(it, expected)),
-			source);
+	{
+		Quantifier quantifier = new();
+		ObjectEqualityOptions options = new();
+		return new(source.ExpectationBuilder
+				.AddConstraint(it => new ContainConstraint<TItem>(it, expected, quantifier, options)),
+			source,
+			quantifier,
+			options);
+	}
 
 	/// <summary>
 	///     Verifies that the actual enumerable contains an item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Contain<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it => new ContainPredicateConstraint<TItem>(it, predicate, doNotPopulateThisValue)),
-			source);
+	{
+		Quantifier quantifier = new();
+		return new(source.ExpectationBuilder
+				.AddConstraint(it
+					=> new ContainPredicateConstraint<TItem>(it, predicate, doNotPopulateThisValue, quantifier)),
+			source,
+			quantifier);
+	}
 
 	/// <summary>
 	///     Verifies that the actual enumerable does not contain the <paramref name="unexpected" /> value.
@@ -63,47 +75,77 @@ public static partial class ThatAsyncEnumerableShould
 				.AddConstraint(it => new NotContainPredicateConstraint<TItem>(it, predicate, doNotPopulateThisValue)),
 			source);
 
-	private readonly struct ContainConstraint<TItem>(string it, TItem expected)
+	private readonly struct ContainConstraint<TItem>(
+		string it,
+		TItem expected,
+		Quantifier quantifier,
+		ObjectEqualityOptions options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IAsyncEnumerable<TItem>? materializedEnumerable =
+			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 
 			List<TItem> items = new(11);
+			int count = 0;
+			bool isFailed = false;
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				if (items.Count < 11)
 				{
 					items.Add(item);
 				}
-				if (item?.Equals(expected) == true)
+				if (options.AreConsideredEqual(item, expected, it).AreConsideredEqual)
 				{
-					return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
-						ToString());
+					count++;
+					bool? check = quantifier.Check(count, false);
+					if (check == false)
+					{
+						isFailed = true;
+					}
+
+					if (check == true)
+					{
+						return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
+							ToString());
+					}
+				}
+				if (items.Count >= 10 && isFailed)
+				{
+					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
+						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray())}");
 				}
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(items.Take(10).ToArray())}");
+			if (quantifier.Check(count, true) == true)
+			{
+				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
+					ToString());
+			}
+
+			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
+				$"{it} contained it {count} times in {Formatter.Format(items.ToArray())}");
 		}
 
 		public override string ToString()
-			=> $"contain {Formatter.Format(expected)}";
+			=> $"contain {Formatter.Format(expected)} {quantifier}";
 	}
 
 	private readonly struct ContainPredicateConstraint<TItem>(
 		string it,
 		Func<TItem, bool> predicate,
-		string predicateExpression)
+		string predicateExpression,
+		Quantifier quantifier)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IAsyncEnumerable<TItem>? materializedEnumerable =
+			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> items = new(11);
+			int count = 0;
+			bool isFailed = false;
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				if (items.Count < 11)
@@ -112,17 +154,38 @@ public static partial class ThatAsyncEnumerableShould
 				}
 				if (predicate(item))
 				{
-					return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
-						ToString());
+					count++;
+					bool? check = quantifier.Check(count, false);
+					if (check == false)
+					{
+						isFailed = true;
+					}
+
+					if (check == true)
+					{
+						return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
+							ToString());
+					}
+				}
+				if (items.Count >= 10 && isFailed)
+				{
+					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
+						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray())}");
 				}
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(items.Take(10).ToArray())}");
+			if (quantifier.Check(count, true) == true)
+			{
+				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
+					ToString());
+			}
+
+			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
+				$"{it} contained it {count} times in {Formatter.Format(items.ToArray())}");
 		}
 
 		public override string ToString()
-			=> $"contain item matching {predicateExpression}";
+			=> $"contain item matching {predicateExpression} {quantifier}";
 	}
 
 	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected)
@@ -130,7 +193,7 @@ public static partial class ThatAsyncEnumerableShould
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IAsyncEnumerable<TItem>? materializedEnumerable =
+			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
@@ -157,7 +220,7 @@ public static partial class ThatAsyncEnumerableShould
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IAsyncEnumerable<TItem>? materializedEnumerable =
+			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace aweXpect.Options;
@@ -76,19 +77,20 @@ public class Quantifier
 	///     and <see langword="null" /> when the condition could still be satisfied
 	///     with a larger <paramref name="amount" />.
 	/// </remarks>
-	public bool? Check(int amount)
+	public bool? Check(int amount, bool isLast)
 	{
-		if (_minimum != null && amount < _minimum)
-		{
-			return null;
-		}
-
 		if (_maximum != null && amount > _maximum)
 		{
 			return false;
 		}
 
-		return true;
+		if ((isLast || _maximum == null) &&
+		    (_minimum == null || amount >= _minimum))
+		{
+			return true;
+		}
+
+		return null;
 	}
 
 	/// <summary>

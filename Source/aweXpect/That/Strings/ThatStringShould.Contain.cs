@@ -60,7 +60,7 @@ public static partial class ThatStringShould
 			}
 
 			int actualCount = CountOccurrences(actual, expected, options.Comparer);
-			if (quantifier.Check(actualCount) == true)
+			if (quantifier.Check(actualCount, false) == true)
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}

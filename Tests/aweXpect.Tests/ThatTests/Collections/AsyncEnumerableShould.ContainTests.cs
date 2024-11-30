@@ -35,6 +35,94 @@ public sealed partial class AsyncEnumerableShould
 		}
 
 		[Theory]
+		[InlineData(1, true)]
+		[InlineData(2, true)]
+		[InlineData(3, false)]
+		public async Task Item_ShouldSupportAtLeast(int minimum, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(1).AtLeast(minimum.Times());
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage($"""
+				              Expected subject to
+				              contain 1 at least {minimum} times,
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              """);
+		}
+
+		[Theory]
+		[InlineData(1, false)]
+		[InlineData(2, true)]
+		[InlineData(3, true)]
+		public async Task Item_ShouldSupportAtMost(int maximum, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(1).AtMost(maximum.Times());
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage("""
+				             Expected subject to
+				             contain 1 at most once,
+				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				             """);
+		}
+
+		[Theory]
+		[InlineData(1, 2, true)]
+		[InlineData(2, 3, true)]
+		[InlineData(3, 4, false)]
+		public async Task Item_ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(1).Between(minimum).And(maximum.Times());
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage($"""
+				              Expected subject to
+				              contain 1 between {minimum} and {maximum} times,
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              """);
+		}
+
+		[Fact]
+		public async Task Item_ShouldSupportEquivalent()
+		{
+			IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass { Value = x }, 20);
+			MyClass expected = new() { Value = 1 };
+
+			async Task Act()
+				=> await That(subject).Should().Contain(expected).AtLeast(1).Equivalent();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Theory]
+		[InlineData(1, false)]
+		[InlineData(2, true)]
+		[InlineData(3, false)]
+		public async Task Item_ShouldSupportExactly(int times, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(1).Exactly(times);
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage($"""
+				              Expected subject to
+				              contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
+				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55{(times == 1 ? "" : ", …")}]
+				              """);
+		}
+
+		[Theory]
 		[AutoData]
 		public async Task Item_WhenEnumerableContainsExpectedValue_ShouldSucceed(
 			List<int> values, int expected)
@@ -65,8 +153,8 @@ public sealed partial class AsyncEnumerableShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              contain {Formatter.Format(expected)},
-				              but it was [{string.Join(", ", values.Select(s => Formatter.Format(s)))}]
+				              contain {Formatter.Format(expected)} at least once,
+				              but it contained it 0 times in [{string.Join(", ", values.Select(s => Formatter.Format(s)))}]
 				              """);
 		}
 
@@ -91,6 +179,82 @@ public sealed partial class AsyncEnumerableShould
 				=> await That(subject).Should().Contain(x => x == 5);
 
 			await That(Act).Should().NotThrow();
+		}
+
+		[Theory]
+		[InlineData(1, true)]
+		[InlineData(2, true)]
+		[InlineData(3, false)]
+		public async Task Predicate_ShouldSupportAtLeast(int minimum, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(x => x == 1).AtLeast(minimum.Times());
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage($"""
+				              Expected subject to
+				              contain item matching x => x == 1 at least {minimum} times,
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              """);
+		}
+
+		[Theory]
+		[InlineData(1, false)]
+		[InlineData(2, true)]
+		[InlineData(3, true)]
+		public async Task Predicate_ShouldSupportAtMost(int maximum, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(x => x == 1).AtMost(maximum.Times());
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage("""
+				             Expected subject to
+				             contain item matching x => x == 1 at most once,
+				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				             """);
+		}
+
+		[Theory]
+		[InlineData(1, 2, true)]
+		[InlineData(2, 3, true)]
+		[InlineData(3, 4, false)]
+		public async Task Predicate_ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(x => x == 1).Between(minimum).And(maximum.Times());
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage($"""
+				              Expected subject to
+				              contain item matching x => x == 1 between {minimum} and {maximum} times,
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              """);
+		}
+
+		[Theory]
+		[InlineData(1, false)]
+		[InlineData(2, true)]
+		[InlineData(3, false)]
+		public async Task Predicate_ShouldSupportExactly(int times, bool expectSuccess)
+		{
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+			async Task Act()
+				=> await That(subject).Should().Contain(x => x == 1).Exactly(times);
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				.WithMessage($"""
+				              Expected subject to
+				              contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
+				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55{(times == 1 ? "" : ", …")}]
+				              """);
 		}
 
 		[Theory]
@@ -124,8 +288,8 @@ public sealed partial class AsyncEnumerableShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              contain item matching x => x == expected,
-				              but it was [{string.Join(", ", values.Select(s => Formatter.Format(s)))}]
+				              contain item matching x => x == expected at least once,
+				              but it contained it 0 times in [{string.Join(", ", values.Select(s => Formatter.Format(s)))}]
 				              """);
 		}
 	}
