@@ -53,13 +53,17 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the actual enumerable does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		NotContain<TItem>(
 			this IThat<IEnumerable<TItem>> source,
 			TItem unexpected)
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected)),
-			source);
+	{
+		ObjectEqualityOptions options = new();
+		return new(source.ExpectationBuilder
+				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected, options)),
+			source,
+			options);
+	}
 
 	/// <summary>
 	///     Verifies that the actual enumerable contains no item that satisfies the <paramref name="predicate" />.
@@ -166,7 +170,7 @@ public static partial class ThatEnumerableShould
 			=> $"contain item matching {predicateExpression} {quantifier}";
 	}
 
-	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected)
+	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected, ObjectEqualityOptions options)
 		: IContextConstraint<IEnumerable<TItem>>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
@@ -175,7 +179,7 @@ public static partial class ThatEnumerableShould
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (item?.Equals(unexpected) == true)
+				if (options.AreConsideredEqual(item, unexpected, it).AreConsideredEqual)
 				{
 					return new ConstraintResult.Failure(ToString(),
 						$"{it} did");

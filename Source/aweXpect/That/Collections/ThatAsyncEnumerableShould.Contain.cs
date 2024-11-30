@@ -54,13 +54,17 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the actual enumerable does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		NotContain<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			TItem unexpected)
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected)),
-			source);
+	{
+		ObjectEqualityOptions options = new();
+		return new(source.ExpectationBuilder
+				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected, options)),
+			source,
+			options);
+	}
 
 	/// <summary>
 	///     Verifies that the actual enumerable contains no item that satisfies the <paramref name="predicate" />.
@@ -188,7 +192,7 @@ public static partial class ThatAsyncEnumerableShould
 			=> $"contain item matching {predicateExpression} {quantifier}";
 	}
 
-	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected)
+	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected, ObjectEqualityOptions options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
@@ -197,7 +201,7 @@ public static partial class ThatAsyncEnumerableShould
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
-				if (item?.Equals(unexpected) == true)
+				if (options.AreConsideredEqual(item, unexpected, it).AreConsideredEqual)
 				{
 					return new ConstraintResult.Failure(ToString(),
 						$"{it} did");

@@ -319,6 +319,26 @@ public sealed partial class EnumerableShould
 				             """);
 		}
 
+		[Fact]
+		public async Task Item_ShouldSupportEquivalent()
+		{
+			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass { Value = x });
+			MyClass unexpected = new() { Value = 5 };
+
+			async Task Act()
+				=> await That(subject).Should().NotContain(unexpected).Equivalent();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain MyClass {
+				               Inner = <null>,
+				               Value = 5
+				             },
+				             but it did
+				             """);
+		}
+
 		[Theory]
 		[AutoData]
 		public async Task Item_WhenEnumerableContainsUnexpectedValue_ShouldFail(
