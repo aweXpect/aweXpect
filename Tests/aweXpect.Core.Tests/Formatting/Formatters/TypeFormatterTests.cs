@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text;
 
 namespace aweXpect.Core.Tests.Formatting.Formatters;
 
@@ -42,7 +43,7 @@ public sealed class TypeFormatterTests
 			{ typeof(bool?), "bool?" },
 			{ typeof(char), "char" },
 			{ typeof(char?), "char?" },
-			{ typeof(void), "void" },
+			{ typeof(void), "void" }
 		};
 
 	#endregion
@@ -51,54 +52,82 @@ public sealed class TypeFormatterTests
 	public async Task ShouldSupportArraySyntax()
 	{
 		Type value = typeof(int[]);
-		string result = Formatter.Format(value);
+		string expectedResult = "int[]";
+		StringBuilder sb = new();
 
-		await That(result).Should().Be("int[]");
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task ShouldSupportArraySyntaxWithComplexObjects()
 	{
 		Type value = typeof(TypeFormatterTests[]);
-		string result = Formatter.Format(value);
+		string expectedResult = $"{nameof(TypeFormatterTests)}[]";
+		StringBuilder sb = new();
 
-		await That(result).Should().Be($"{nameof(TypeFormatterTests)}[]");
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task ShouldSupportGenericTypeDefinitions()
 	{
 		Type value = typeof(IEnumerable<int>);
-		string result = Formatter.Format(value);
+		string expectedResult = "IEnumerable<int>";
+		StringBuilder sb = new();
 
-		await That(result).Should().Be("IEnumerable<int>");
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task ShouldSupportNestedGenericTypeDefinitions()
 	{
 		Type value = typeof(Expression<Func<TypeFormatterTests[], bool>>);
-		string result = Formatter.Format(value);
+		string expectedResult = $"Expression<Func<{nameof(TypeFormatterTests)}[], bool>>";
+		StringBuilder sb = new();
 
-		await That(result).Should()
-			.Be($"Expression<Func<{nameof(TypeFormatterTests)}[], bool>>");
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Theory]
 	[MemberData(nameof(SimpleTypes))]
 	public async Task SimpleTypes_ShouldUseSimpleNames(Type value, string expectedResult)
 	{
+		StringBuilder sb = new();
+
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task Types_ShouldOnlyIncludeTheName()
 	{
 		Type value = typeof(TypeFormatterTests);
-		string result = Formatter.Format(value);
+		string expectedResult = nameof(TypeFormatterTests);
+		StringBuilder sb = new();
 
-		await That(result).Should().Be(nameof(TypeFormatterTests));
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 }
