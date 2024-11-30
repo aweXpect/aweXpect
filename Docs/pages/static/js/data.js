@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732984414483,
+  "lastUpdate": 1732986016320,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1556,6 +1556,66 @@ window.BENCHMARK_DATA = {
             "value": 871.6799235026042,
             "unit": "ns",
             "range": "± 2.894088239015604"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b15ecc2239ec5869091bc5e67b4b7675d8d8c976",
+          "message": "coverage: add missing formatter tests (#60)\n\n* Extend Formatter tests to also include the overload with a `StringBuilder`\n* Add nullable tests",
+          "timestamp": "2024-11-30T16:57:03Z",
+          "tree_id": "6871980c25805f8fa1f2422e202cf32ca4ea7ec8",
+          "url": "https://github.com/aweXpect/aweXpect/commit/b15ecc2239ec5869091bc5e67b4b7675d8d8c976"
+        },
+        "date": 1732986016096,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 218.56742772034235,
+            "unit": "ns",
+            "range": "± 1.251659481153077"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.9291756470998,
+            "unit": "ns",
+            "range": "± 0.9978953927725561"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 588.1842887242635,
+            "unit": "ns",
+            "range": "± 3.1717034744623445"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 400.34414563860213,
+            "unit": "ns",
+            "range": "± 1.323424906008453"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 318.8366186618805,
+            "unit": "ns",
+            "range": "± 3.5632758843611056"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 828.5176456996372,
+            "unit": "ns",
+            "range": "± 3.7310153234567367"
           }
         ]
       }
