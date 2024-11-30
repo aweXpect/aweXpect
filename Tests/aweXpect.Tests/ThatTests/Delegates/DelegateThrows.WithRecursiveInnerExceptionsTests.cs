@@ -19,7 +19,7 @@ public sealed partial class DelegateThrows
 
 			async Task Act()
 				=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.AtLeast(minimum).Be<CustomException>());
+					e => e.AtLeast(minimum, x => x.Be<CustomException>()));
 
 			await That(Act).Should().Throw<XunitException>().OnlyIf(shouldThrow)
 				.WithMessage($"""
@@ -36,7 +36,7 @@ public sealed partial class DelegateThrows
 
 			Exception? result = await That(() => throw exception)
 				.Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.None().Satisfy(_ => false));
+					e => e.None(x => x.Satisfy(_ => false)));
 
 			await That(result).Should().BeSameAs(exception);
 		}
@@ -48,7 +48,7 @@ public sealed partial class DelegateThrows
 
 			async Task Act()
 				=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.All().Satisfy(_ => false));
+					e => e.All(x => x.Satisfy(_ => false)));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -65,7 +65,7 @@ public sealed partial class DelegateThrows
 
 			async Task Act()
 				=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.All().Satisfy(_ => false));
+					e => e.All(x => x.Satisfy(_ => false)));
 
 			await That(Act).Should().NotThrow();
 		}

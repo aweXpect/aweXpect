@@ -19,7 +19,7 @@ public sealed partial class AsyncEnumerableShould
  GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(6).Satisfy(x => x < 6)
+				=> await That(subject).Should().AtLeast(6, x => x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().NotThrow();
@@ -31,8 +31,8 @@ public sealed partial class AsyncEnumerableShould
 			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(0).Be(1)
-					.And.AtLeast(0).Be(1);
+				=> await That(subject).Should().AtLeast(0, x => x.Be(1))
+					.And.AtLeast(0, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -43,7 +43,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(2).Be(1);
+				=> await That(subject).Should().AtLeast(2, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -54,7 +54,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(3).Be(1);
+				=> await That(subject).Should().AtLeast(3, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -65,13 +65,13 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(5).Be(1);
+				=> await That(subject).Should().AtLeast(5, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have at least 5 items equal to 1,
-				             but only 4 of 7 items were equal
+				             have at least 5 items be equal to 1,
+				             but only 4 of 7 were
 				             """);
 		}
 
@@ -81,13 +81,13 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(5).BeEquivalentTo(1);
+				=> await That(subject).Should().AtLeast(5, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
-				             have at least 5 items equivalent to 1,
-				             but only 4 of 7 items were equivalent
+				             have at least 5 items be equal to 1,
+				             but only 4 of 7 were
 				             """);
 		}
 	}

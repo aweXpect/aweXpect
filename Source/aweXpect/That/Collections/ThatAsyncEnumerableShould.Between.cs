@@ -1,6 +1,7 @@
 ﻿#if NET6_0_OR_GREATER
 using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Results;
 
 namespace aweXpect;
 
@@ -9,18 +10,12 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that between <paramref name="minimum" />...
 	/// </summary>
-	public static BetweenResult<QuantifiedCollectionResult.Async
-			<IThat<IAsyncEnumerable<TItem>>, TItem, IAsyncEnumerable<TItem>>>
-		Between<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
-			int minimum)
-	{
-		return new BetweenResult<QuantifiedCollectionResult.Async
-			<IThat<IAsyncEnumerable<TItem>>, TItem, IAsyncEnumerable<TItem>>>(
-			maximum => new QuantifiedCollectionResult.Async
-				<IThat<IAsyncEnumerable<TItem>>, TItem, IAsyncEnumerable<TItem>>(source,
-					source.ExpectationBuilder,
-					CollectionQuantifier.Between(minimum, maximum)));
-	}
+	public static BetweenResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>, IThat<TItem>>
+		Between<TItem>(this IThat<IAsyncEnumerable<TItem>> source, int minimum)
+		=> new((maximum, expectations) => new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum),
+					expectations)),
+			source));
 }
 #endif

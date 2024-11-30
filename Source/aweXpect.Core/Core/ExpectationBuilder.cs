@@ -1,11 +1,11 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Sources;
 using aweXpect.Core.TimeSystem;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace aweXpect.Core;
 
@@ -209,14 +209,20 @@ public abstract class ExpectationBuilder
 	internal Task<ConstraintResult> IsMet()
 	{
 		EvaluationContext.EvaluationContext context = new();
+		return IsMet(GetRootNode(), context, _timeSystem ?? RealTimeSystem.Instance,
+			_cancellationToken ?? CancellationToken.None);
+	}
+
+	internal Node GetRootNode()
+	{
 		if (_whichNode != null)
 		{
 			_whichNode.AddNode(_node);
 			_node = _whichNode;
+			_whichNode = null;
 		}
 
-		return IsMet(_node, context, _timeSystem ?? RealTimeSystem.Instance,
-			_cancellationToken ?? CancellationToken.None);
+		return _node;
 	}
 
 	internal abstract Task<ConstraintResult> IsMet(
