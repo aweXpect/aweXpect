@@ -10,7 +10,35 @@ public sealed class GuidFormatterTests
 		Guid value = Guid.Empty;
 		string expectedResult = "00000000-0000-0000-0000-000000000000";
 		StringBuilder sb = new();
-		
+
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
+	}
+
+	[Fact]
+	public async Task NullableEmpty_ShouldUseDefaultFormat()
+	{
+		Guid? value = Guid.Empty;
+		string expectedResult = "00000000-0000-0000-0000-000000000000";
+		StringBuilder sb = new();
+
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
+	}
+
+	[Fact]
+	public async Task NullableShouldUseRoundtripFormat()
+	{
+		Guid? value = Guid.NewGuid();
+		string? expectedResult = value.ToString();
+		StringBuilder sb = new();
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -24,7 +52,7 @@ public sealed class GuidFormatterTests
 		Guid value = Guid.NewGuid();
 		string expectedResult = value.ToString();
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
