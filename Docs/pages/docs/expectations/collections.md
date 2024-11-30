@@ -59,3 +59,23 @@ await Expect.That(values).Should().None(x => x.Satisfy(i => i > 20));
 ```
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
+
+## Contain
+
+You can verify, that the collection contains a specific item or not:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).Should().Contain(13);
+await Expect.That(values).Should().NotContain(42);
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+You can also verify, that the collection contains an item that satisfies a condition:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).Should().Contain(x => x > 12 && x < 14);
+await Expect.That(values).Should().NotContain(x => x >= 42);
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
