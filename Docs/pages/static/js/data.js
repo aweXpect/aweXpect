@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732965378759,
+  "lastUpdate": 1732984414483,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1496,6 +1496,66 @@ window.BENCHMARK_DATA = {
             "value": 863.9561757307786,
             "unit": "ns",
             "range": "± 3.283144114338925"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "98b08d1815cad8dd652a60dd0f053c2b2df3652d",
+          "message": "feat: add `Contain` with predicate (#59)\n\n* Add `Contain`/`NotContain` for item or predicate both for `IEnumerable` and `IAsyncEnumerable`\n\n* Accept API changes",
+          "timestamp": "2024-11-30T17:30:21+01:00",
+          "tree_id": "54ca41ada8860f0d25fd0e3738c6b2533c297b88",
+          "url": "https://github.com/aweXpect/aweXpect/commit/98b08d1815cad8dd652a60dd0f053c2b2df3652d"
+        },
+        "date": 1732984413846,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 218.29903721809387,
+            "unit": "ns",
+            "range": "± 0.8511468713588743"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 175.3131261422084,
+            "unit": "ns",
+            "range": "± 0.5342186175993141"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 616.3492806752523,
+            "unit": "ns",
+            "range": "± 1.4220953222078345"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 405.10078511919295,
+            "unit": "ns",
+            "range": "± 1.9850029093811699"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 317.67334822246005,
+            "unit": "ns",
+            "range": "± 1.4540177500847262"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 871.6799235026042,
+            "unit": "ns",
+            "range": "± 2.894088239015604"
           }
         ]
       }
