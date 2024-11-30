@@ -215,6 +215,16 @@ namespace aweXpect
     {
         public SkipException(string message) { }
     }
+    public readonly struct Times
+    {
+        public Times(int value) { }
+        public int Value { get; }
+        public static aweXpect.Times op_Implicit(int value) { }
+    }
+    public static class TimesExtensions
+    {
+        public static aweXpect.Times Times(this int value) { }
+    }
 }
 namespace aweXpect.Formatting
 {

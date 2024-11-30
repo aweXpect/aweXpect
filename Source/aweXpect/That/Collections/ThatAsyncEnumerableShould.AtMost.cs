@@ -13,9 +13,9 @@ public static partial class ThatAsyncEnumerableShould
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AtMost<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,
-		int maximum,
+		Times maximum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum), expectations)), source);
+			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum.Value), expectations)), source);
 }
 #endif

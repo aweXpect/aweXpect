@@ -64,7 +64,7 @@ public partial class StringEnumerableShould
 			string[] sut = ["green", "green", "blue", "yellow"];
 
 			async Task Act()
-				=> await That(sut).Should().Contain("green").AtLeast(3);
+				=> await That(sut).Should().Contain("green").AtLeast(3.Times());
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -80,7 +80,7 @@ public partial class StringEnumerableShould
 			string[] sut = ["green", "green", "green", "green", "blue", "yellow"];
 
 			async Task Act()
-				=> await That(sut).Should().Contain("green").AtMost(2);
+				=> await That(sut).Should().Contain("green").AtMost(2.Times());
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
