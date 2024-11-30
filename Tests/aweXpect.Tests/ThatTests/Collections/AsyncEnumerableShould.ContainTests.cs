@@ -1,18 +1,20 @@
-﻿using System.Collections.Generic;
+﻿#if NET6_0_OR_GREATER
+using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Tests.TestHelpers;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
 
-public sealed partial class EnumerableShould
+public sealed partial class AsyncEnumerableShould
 {
 	public sealed class ContainTests
 	{
 		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
 				=> await That(subject).Should().Contain(1)
@@ -24,7 +26,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Item_DoesNotMaterializeEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
 				=> await That(subject).Should().Contain(5);
@@ -35,9 +37,10 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Item_WhenEnumerableContainsExpectedValue_ShouldSucceed(
-			List<int> subject, int expected)
+			List<int> values, int expected)
 		{
-			subject.Add(expected);
+			values.Add(expected);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values.ToArray());
 
 			async Task Act()
 				=> await That(subject).Should().Contain(expected);
@@ -48,12 +51,13 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Item_WhenEnumerableDoesNotContainsExpectedValue_ShouldFail(
-			int[] subject, int expected)
+			int[] values, int expected)
 		{
-			while (subject.Contains(expected))
+			while (values.Contains(expected))
 			{
 				expected++;
 			}
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values);
 
 			async Task Act()
 				=> await That(subject).Should().Contain(expected);
@@ -62,14 +66,14 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain {Formatter.Format(expected)},
-				              but it was [{string.Join(", ", subject.Select(s => Formatter.Format(s)))}]
+				              but it was [{string.Join(", ", values.Select(s => Formatter.Format(s)))}]
 				              """);
 		}
 
 		[Fact]
 		public async Task Predicate_DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
 				=> await That(subject).Should().Contain(_ => true)
@@ -81,7 +85,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Predicate_DoesNotMaterializeEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
 				=> await That(subject).Should().Contain(x => x == 5);
@@ -92,9 +96,10 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Predicate_WhenEnumerableContainsExpectedValue_ShouldSucceed(
-			List<int> subject, int expected)
+			List<int> values, int expected)
 		{
-			subject.Add(expected);
+			values.Add(expected);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values.ToArray());
 
 			async Task Act()
 				=> await That(subject).Should().Contain(x => x == expected);
@@ -105,12 +110,13 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Predicate_WhenEnumerableDoesNotContainsExpectedValue_ShouldFail(
-			int[] subject, int expected)
+			int[] values, int expected)
 		{
-			while (subject.Contains(expected))
+			while (values.Contains(expected))
 			{
 				expected++;
 			}
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values.ToArray());
 
 			async Task Act()
 				=> await That(subject).Should().Contain(x => x == expected);
@@ -119,7 +125,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == expected,
-				              but it was [{string.Join(", ", subject.Select(s => Formatter.Format(s)))}]
+				              but it was [{string.Join(", ", values.Select(s => Formatter.Format(s)))}]
 				              """);
 		}
 	}
@@ -129,7 +135,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(0)
@@ -141,7 +147,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Item_DoesNotMaterializeEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(5);
@@ -157,9 +163,10 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Item_WhenEnumerableContainsUnexpectedValue_ShouldFail(
-			List<int> subject, int unexpected)
+			List<int> values, int unexpected)
 		{
-			subject.Add(unexpected);
+			values.Add(unexpected);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values.ToArray());
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(unexpected);
@@ -175,12 +182,13 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Item_WhenEnumerableDoesNotContainsUnexpectedValue_ShouldSucceed(
-			int[] subject, int unexpected)
+			int[] values, int unexpected)
 		{
-			while (subject.Contains(unexpected))
+			while (values.Contains(unexpected))
 			{
 				unexpected++;
 			}
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values);
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(unexpected);
@@ -191,7 +199,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Predicate_DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(x => x == 0)
@@ -203,7 +211,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Predicate_DoesNotMaterializeEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(x => x == 5);
@@ -219,9 +227,10 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Predicate_WhenEnumerableContainsUnexpectedValue_ShouldFail(
-			List<int> subject, int unexpected)
+			List<int> values, int unexpected)
 		{
-			subject.Add(unexpected);
+			values.Add(unexpected);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values.ToArray());
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(x => x == unexpected);
@@ -237,12 +246,13 @@ public sealed partial class EnumerableShould
 		[Theory]
 		[AutoData]
 		public async Task Predicate_WhenEnumerableDoesNotContainsUnexpectedValue_ShouldSucceed(
-			int[] subject, int unexpected)
+			int[] values, int unexpected)
 		{
-			while (subject.Contains(unexpected))
+			while (values.Contains(unexpected))
 			{
 				unexpected++;
 			}
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values);
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(x => x == unexpected);
@@ -251,3 +261,4 @@ public sealed partial class EnumerableShould
 		}
 	}
 }
+#endif
