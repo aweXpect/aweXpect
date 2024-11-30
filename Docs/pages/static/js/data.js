@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732986016320,
+  "lastUpdate": 1732995386860,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1616,6 +1616,66 @@ window.BENCHMARK_DATA = {
             "value": 828.5176456996372,
             "unit": "ns",
             "range": "± 3.7310153234567367"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "48ed5afab32f9f135645218cf03d816abb81ddcc",
+          "message": "feat: add `Times` to disambiguate parameters (#61)\n\nAdd a `Times` struct and replace the parameters that specify the occurrence with the `Times` parameter.\nAdd an implicit operator from `int`, so that the usage of the `.Times()` extension method is optional.",
+          "timestamp": "2024-11-30T19:33:28Z",
+          "tree_id": "bb91fe2b5435c01d94e127f9a058fd3f9e4189f1",
+          "url": "https://github.com/aweXpect/aweXpect/commit/48ed5afab32f9f135645218cf03d816abb81ddcc"
+        },
+        "date": 1732995386508,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.71359757014685,
+            "unit": "ns",
+            "range": "± 1.2248681144905063"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.25379317998886,
+            "unit": "ns",
+            "range": "± 0.2278405042422175"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 581.7239402770996,
+            "unit": "ns",
+            "range": "± 3.9562496570897134"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 388.414121559688,
+            "unit": "ns",
+            "range": "± 1.808106571327792"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 308.7861057795011,
+            "unit": "ns",
+            "range": "± 0.7442717686252527"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 804.1090859731038,
+            "unit": "ns",
+            "range": "± 4.447147181905262"
           }
         ]
       }
