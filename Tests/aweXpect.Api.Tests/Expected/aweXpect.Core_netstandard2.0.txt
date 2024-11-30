@@ -228,6 +228,7 @@ namespace aweXpect.Formatting
 {
     public static class Format
     {
+        public static int CollectionFormatCount { get; }
         public static aweXpect.Formatting.ValueFormatter Formatter { get; }
     }
     public class FormattingOptions

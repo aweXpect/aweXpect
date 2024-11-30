@@ -45,7 +45,7 @@ public static partial class ValueFormatters
 		IEnumerable value,
 		FormattingOptions? options = null)
 	{
-		int maxCount = 10;
+		int maxCount = CollectionFormatCount;
 		int count = maxCount;
 		stringBuilder.Append('[');
 		bool hasMoreValues = false;

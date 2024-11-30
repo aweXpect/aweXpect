@@ -16,8 +16,8 @@ public static partial class ThatStringShould
 		this IThat<string?> source,
 		string expected)
 	{
-		Quantifier? quantifier = new();
-		StringEqualityOptions? options = new();
+		Quantifier quantifier = new();
+		StringEqualityOptions options = new();
 		return new StringCountResult<string?, IThat<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ContainConstraint(it, expected, quantifier, options)),
@@ -33,9 +33,9 @@ public static partial class ThatStringShould
 		this IThat<string?> source,
 		string unexpected)
 	{
-		Quantifier? quantifier = new();
+		Quantifier quantifier = new();
 		quantifier.Exactly(0);
-		StringEqualityOptions? options = new();
+		StringEqualityOptions options = new();
 		return new StringEqualityResult<string?, IThat<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ContainConstraint(it, unexpected, quantifier, options)),
@@ -60,7 +60,7 @@ public static partial class ThatStringShould
 			}
 
 			int actualCount = CountOccurrences(actual, expected, options.Comparer);
-			if (quantifier.Check(actualCount) == true)
+			if (quantifier.Check(actualCount, true) == true)
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}

@@ -75,5 +75,10 @@ public partial class AsyncEnumerableShould
 
 		#endregion
 	}
+
+	public class MyClass
+	{
+		public int Value { get; set; }
+	}
 }
 #endif

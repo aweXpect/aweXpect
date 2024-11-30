@@ -22,8 +22,8 @@ public sealed partial class CollectionShould
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected subject to
-				              contain {Formatter.Format(expected)},
-				              but it was [{string.Join(", ", subject.Select(s => Formatter.Format(s)))}]
+				              contain {Formatter.Format(expected)} at least once,
+				              but it contained it 0 times in [{string.Join(", ", subject.Select(s => Formatter.Format(s)))}]
 				              """);
 		}
 
