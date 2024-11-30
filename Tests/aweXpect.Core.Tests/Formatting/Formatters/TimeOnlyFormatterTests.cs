@@ -1,4 +1,6 @@
-﻿#if NET6_0_OR_GREATER
+﻿using System.Text;
+
+#if NET6_0_OR_GREATER
 namespace aweXpect.Core.Tests.Formatting.Formatters;
 
 public sealed class TimeOnlyFormatterTests
@@ -7,9 +9,14 @@ public sealed class TimeOnlyFormatterTests
 	public async Task ShouldUseRoundtripFormat()
 	{
 		TimeOnly value = new(15, 42, 15, 234);
+		string expectedResult = "15:42:15.2340000";
+		StringBuilder sb = new();
+		
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
-		await That(result).Should().Be("15:42:15.2340000");
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 }
 #endif

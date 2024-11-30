@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Core.Tests.Formatting;
+﻿using System.Text;
+
+namespace aweXpect.Core.Tests.Formatting;
 
 public sealed class DefaultFormatterTests
 {
@@ -10,12 +12,16 @@ public sealed class DefaultFormatterTests
 			Inner = new InnerDummy { InnerValue = "foo" },
 			Value = 2
 		};
+		string expectedResult = """
+		                        Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
+		                        """;
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value, FormattingOptions.SingleLine);
+		Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-		await That(result).Should().Be("""
-		                               Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
-		                               """);
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
@@ -26,17 +32,21 @@ public sealed class DefaultFormatterTests
 			Inner = new InnerDummy { InnerValue = "foo" },
 			Value = 2
 		};
+		string expectedResult = """
+		                        Dummy {
+		                          Inner = InnerDummy {
+		                            InnerValue = "foo"
+		                          },
+		                          Value = 2
+		                        }
+		                        """;
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value, FormattingOptions.MultipleLines);
+		Formatter.Format(sb, value, FormattingOptions.MultipleLines);
 
-		await That(result).Should().Be("""
-		                               Dummy {
-		                                 Inner = InnerDummy {
-		                                   InnerValue = "foo"
-		                                 },
-		                                 Value = 2
-		                               }
-		                               """);
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Theory]
@@ -44,12 +54,15 @@ public sealed class DefaultFormatterTests
 	public async Task ShouldUseToStringWhenImplemented_Default(string[] values)
 	{
 		string value = string.Join(Environment.NewLine, values);
-		string expected = string.Join($"{Environment.NewLine}  ", values) + Environment.NewLine;
+		string expectedResult = string.Join($"{Environment.NewLine}  ", values) + Environment.NewLine;
 		ClassWithToString subject = new(value);
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(subject, FormattingOptions.MultipleLines);
+		Formatter.Format(sb, subject, FormattingOptions.MultipleLines);
 
-		await That(result).Should().Be(expected);
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Theory]
@@ -57,30 +70,42 @@ public sealed class DefaultFormatterTests
 	public async Task ShouldUseToStringWhenImplemented_WithSingleLine(string value)
 	{
 		ClassWithToString subject = new(value);
+		string expectedResult = value;
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(subject, FormattingOptions.SingleLine);
+		Formatter.Format(sb, subject, FormattingOptions.SingleLine);
 
-		await That(result).Should().Be(value);
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task WhenClassContainsField_ShouldDisplayFieldValue()
 	{
 		object value = new ClassWithField { Value = 42 };
+		string expectedResult = "ClassWithField { Value = 42 }";
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value, FormattingOptions.SingleLine);
+		Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-		await That(result).Should().Be("ClassWithField { Value = 42 }");
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task WhenClassIsEmpty_ShouldDisplayClassName()
 	{
 		object value = new EmptyClass();
+		string expectedResult = "EmptyClass { }";
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value, FormattingOptions.SingleLine);
+		Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-		await That(result).Should().Be("EmptyClass { }");
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
@@ -88,22 +113,28 @@ public sealed class DefaultFormatterTests
 	{
 		Exception exception = new("foo");
 		object value = new ClassWithExceptionProperty(exception);
+		string expectedResult = "ClassWithExceptionProperty { Value = [Member 'Value' threw an exception: 'foo'] }";
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value, FormattingOptions.SingleLine);
+		Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-		await That(result).Should()
-			.Be(
-				"ClassWithExceptionProperty { Value = [Member 'Value' threw an exception: 'foo'] }");
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
 	public async Task WhenObject_ShouldDisplayHashCode()
 	{
 		object value = new();
+		string expectedResult = "System.Object (HashCode=*)";
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value, FormattingOptions.SingleLine);
+		Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-		await That(result).Should().Be("System.Object (HashCode=*)").AsWildcard();
+		await That(result).Should().Be(expectedResult).AsWildcard();
+		await That(sb.ToString()).Should().Be(expectedResult).AsWildcard();
 	}
 
 	private sealed class ClassWithExceptionProperty(Exception exception)

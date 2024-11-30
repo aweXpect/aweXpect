@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Core.Tests.Formatting.Formatters;
+﻿using System.Text;
+
+namespace aweXpect.Core.Tests.Formatting.Formatters;
 
 public sealed class NumberFormatterTests
 {
@@ -7,9 +9,13 @@ public sealed class NumberFormatterTests
 	{
 		decimal value = new(11.3);
 		string expectedResult = "11.3";
+		StringBuilder sb = new();
+		
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
@@ -17,9 +23,13 @@ public sealed class NumberFormatterTests
 	{
 		nint value = -123;
 		string expectedResult = "-123";
+		StringBuilder sb = new();
+		
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
@@ -27,9 +37,13 @@ public sealed class NumberFormatterTests
 	{
 		nuint value = 123;
 		string expectedResult = "123";
+		StringBuilder sb = new();
+		
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Theory]
@@ -45,8 +59,12 @@ public sealed class NumberFormatterTests
 	[InlineData(10.2, "10.2")]
 	public async Task Numbers_ShouldReturnExpectedValue(object value, string expectedResult)
 	{
+		StringBuilder sb = new();
+		
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 }
