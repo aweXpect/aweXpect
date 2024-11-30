@@ -7,11 +7,7 @@ public sealed class DefaultFormatterTests
 	[Fact]
 	public async Task ShouldDisplayNestedObjects()
 	{
-		Dummy value = new()
-		{
-			Inner = new InnerDummy { InnerValue = "foo" },
-			Value = 2
-		};
+		Dummy value = new() { Inner = new InnerDummy { InnerValue = "foo" }, Value = 2 };
 		string expectedResult = """
 		                        Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
 		                        """;
@@ -27,11 +23,7 @@ public sealed class DefaultFormatterTests
 	[Fact]
 	public async Task ShouldUseMultipleLinesPerDefault()
 	{
-		Dummy value = new()
-		{
-			Inner = new InnerDummy { InnerValue = "foo" },
-			Value = 2
-		};
+		Dummy value = new() { Inner = new InnerDummy { InnerValue = "foo" }, Value = 2 };
 		string expectedResult = """
 		                        Dummy {
 		                          Inner = InnerDummy {

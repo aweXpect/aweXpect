@@ -10,7 +10,7 @@ public sealed class NumberFormatterTests
 		decimal value = new(11.3);
 		string expectedResult = "11.3";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -24,7 +24,7 @@ public sealed class NumberFormatterTests
 		nint value = -123;
 		string expectedResult = "-123";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -38,7 +38,7 @@ public sealed class NumberFormatterTests
 		nuint value = 123;
 		string expectedResult = "123";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -60,7 +60,7 @@ public sealed class NumberFormatterTests
 	public async Task Numbers_ShouldReturnExpectedValue(object value, string expectedResult)
 	{
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 

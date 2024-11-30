@@ -1,6 +1,5 @@
 ﻿using System.Text;
 
-#if NET6_0_OR_GREATER
 namespace aweXpect.Core.Tests.Formatting.Formatters;
 
 public sealed class GuidFormatterTests
@@ -33,4 +32,3 @@ public sealed class GuidFormatterTests
 		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 }
-#endif

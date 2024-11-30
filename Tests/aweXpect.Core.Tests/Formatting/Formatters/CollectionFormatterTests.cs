@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Core.Tests.Formatting.Formatters;

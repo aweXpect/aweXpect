@@ -43,7 +43,7 @@ public sealed class TypeFormatterTests
 			{ typeof(bool?), "bool?" },
 			{ typeof(char), "char" },
 			{ typeof(char?), "char?" },
-			{ typeof(void), "void" },
+			{ typeof(void), "void" }
 		};
 
 	#endregion
@@ -54,7 +54,7 @@ public sealed class TypeFormatterTests
 		Type value = typeof(int[]);
 		string expectedResult = "int[]";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -68,7 +68,7 @@ public sealed class TypeFormatterTests
 		Type value = typeof(TypeFormatterTests[]);
 		string expectedResult = $"{nameof(TypeFormatterTests)}[]";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -82,7 +82,7 @@ public sealed class TypeFormatterTests
 		Type value = typeof(IEnumerable<int>);
 		string expectedResult = "IEnumerable<int>";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -96,7 +96,7 @@ public sealed class TypeFormatterTests
 		Type value = typeof(Expression<Func<TypeFormatterTests[], bool>>);
 		string expectedResult = $"Expression<Func<{nameof(TypeFormatterTests)}[], bool>>";
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -109,7 +109,7 @@ public sealed class TypeFormatterTests
 	public async Task SimpleTypes_ShouldUseSimpleNames(Type value, string expectedResult)
 	{
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -123,7 +123,7 @@ public sealed class TypeFormatterTests
 		Type value = typeof(TypeFormatterTests);
 		string expectedResult = nameof(TypeFormatterTests);
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 

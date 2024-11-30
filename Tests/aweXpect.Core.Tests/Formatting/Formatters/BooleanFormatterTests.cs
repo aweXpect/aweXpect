@@ -10,7 +10,7 @@ public sealed class BooleanFormatterTests
 	public async Task Booleans_ShouldHaveCapitalizedFirstLetter(bool value, string expectedResult)
 	{
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
@@ -25,7 +25,7 @@ public sealed class BooleanFormatterTests
 	public async Task NullableBooleans_ShouldHaveCapitalizedFirstLetter(bool? value, string expectedResult)
 	{
 		StringBuilder sb = new();
-		
+
 		string result = Formatter.Format(value);
 		Formatter.Format(sb, value);
 
