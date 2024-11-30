@@ -48,7 +48,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain 1 at least {minimum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				              """);
 		}
 
@@ -67,7 +67,7 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             contain 1 at most once,
-				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				             """);
 		}
 
@@ -86,7 +86,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain 1 between {minimum} and {maximum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				              """);
 		}
 
@@ -117,7 +117,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
-				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				              """);
 		}
 
@@ -193,7 +193,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == 1 at least {minimum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				              """);
 		}
 
@@ -212,7 +212,7 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             contain item matching x => x == 1 at most once,
-				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				             """);
 		}
 
@@ -231,7 +231,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == 1 between {minimum} and {maximum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				              """);
 		}
 
@@ -250,7 +250,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
-				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
 				              """);
 		}
 
