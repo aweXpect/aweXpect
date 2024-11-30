@@ -26,7 +26,11 @@ public static partial class ThatEnumerableShould
 		Quantifier quantifier = new();
 		ObjectEqualityOptions options = new();
 		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
-				.AddConstraint(it => new ContainConstraint<TItem>(it, expected, quantifier, options)),
+				.AddConstraint(it => new ContainConstraint<TItem>(
+					it,
+					q => $"contain {Formatter.Format(expected)} {q}",
+					a => options.AreConsideredEqual(a, expected, it).AreConsideredEqual,
+					quantifier)),
 			source,
 			quantifier,
 			options);
@@ -45,7 +49,11 @@ public static partial class ThatEnumerableShould
 		Quantifier quantifier = new();
 		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it
-					=> new ContainPredicateConstraint<TItem>(it, predicate, doNotPopulateThisValue, quantifier)),
+					=> new ContainConstraint<TItem>(
+						it,
+						q => $"contain item matching {doNotPopulateThisValue} {q}",
+						predicate,
+						quantifier)),
 			source,
 			quantifier);
 	}
@@ -59,7 +67,7 @@ public static partial class ThatEnumerableShould
 			TItem unexpected)
 	{
 		ObjectEqualityOptions options = new();
-		return new(source.ExpectationBuilder
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected, options)),
 			source,
 			options);
@@ -80,54 +88,8 @@ public static partial class ThatEnumerableShould
 
 	private readonly struct ContainConstraint<TItem>(
 		string it,
-		TItem expected,
-		Quantifier quantifier,
-		ObjectEqualityOptions options)
-		: IContextConstraint<IEnumerable<TItem>>
-	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
-		{
-			IEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			int count = 0;
-			foreach (TItem item in materializedEnumerable)
-			{
-				if (options.AreConsideredEqual(item, expected, it).AreConsideredEqual)
-				{
-					count++;
-					bool? check = quantifier.Check(count, false);
-					if (check == false)
-					{
-						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-							$"{it} contained it at least {count} times in {Formatter.Format(materializedEnumerable.Take(CollectionFormatCount + 1).ToArray())}");
-					}
-
-					if (check == true)
-					{
-						return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
-							ToString());
-					}
-				}
-			}
-
-			if (quantifier.Check(count, true) == true)
-			{
-				return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
-					ToString());
-			}
-
-			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable.Take(CollectionFormatCount + 1).ToArray())}");
-		}
-
-		public override string ToString()
-			=> $"contain {Formatter.Format(expected)} {quantifier}";
-	}
-
-	private readonly struct ContainPredicateConstraint<TItem>(
-		string it,
+		Func<Quantifier, string> expectationText,
 		Func<TItem, bool> predicate,
-		string predicateExpression,
 		Quantifier quantifier)
 		: IContextConstraint<IEnumerable<TItem>>
 	{
@@ -167,7 +129,7 @@ public static partial class ThatEnumerableShould
 		}
 
 		public override string ToString()
-			=> $"contain item matching {predicateExpression} {quantifier}";
+			=> expectationText(quantifier);
 	}
 
 	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected, ObjectEqualityOptions options)

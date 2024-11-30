@@ -10,6 +10,7 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
@@ -26,8 +27,12 @@ public static partial class ThatAsyncEnumerableShould
 	{
 		Quantifier quantifier = new();
 		ObjectEqualityOptions options = new();
-		return new(source.ExpectationBuilder
-				.AddConstraint(it => new ContainConstraint<TItem>(it, expected, quantifier, options)),
+		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source.ExpectationBuilder
+				.AddConstraint(it => new ContainConstraint<TItem>(
+					it,
+					q => $"contain {Formatter.Format(expected)} {q}",
+					a => options.AreConsideredEqual(a, expected, it).AreConsideredEqual,
+					quantifier)),
 			source,
 			quantifier,
 			options);
@@ -44,9 +49,13 @@ public static partial class ThatAsyncEnumerableShould
 			string doNotPopulateThisValue = "")
 	{
 		Quantifier quantifier = new();
-		return new(source.ExpectationBuilder
+		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it
-					=> new ContainPredicateConstraint<TItem>(it, predicate, doNotPopulateThisValue, quantifier)),
+					=> new ContainConstraint<TItem>(
+						it,
+						q => $"contain item matching {doNotPopulateThisValue} {q}",
+						predicate,
+						quantifier)),
 			source,
 			quantifier);
 	}
@@ -60,7 +69,8 @@ public static partial class ThatAsyncEnumerableShould
 			TItem unexpected)
 	{
 		ObjectEqualityOptions options = new();
-		return new(source.ExpectationBuilder
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+				.ExpectationBuilder
 				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected, options)),
 			source,
 			options);
@@ -81,69 +91,13 @@ public static partial class ThatAsyncEnumerableShould
 
 	private readonly struct ContainConstraint<TItem>(
 		string it,
-		TItem expected,
-		Quantifier quantifier,
-		ObjectEqualityOptions options)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
-	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
-		{
-			IAsyncEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-
-			List<TItem> items = new(CollectionFormatCount + 1);
-			int count = 0;
-			bool isFailed = false;
-			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
-			{
-				if (items.Count <= CollectionFormatCount)
-				{
-					items.Add(item);
-				}
-				if (options.AreConsideredEqual(item, expected, it).AreConsideredEqual)
-				{
-					count++;
-					bool? check = quantifier.Check(count, false);
-					if (check == false)
-					{
-						isFailed = true;
-					}
-
-					if (check == true)
-					{
-						return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
-							ToString());
-					}
-				}
-				if (items.Count > CollectionFormatCount && isFailed)
-				{
-					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray())}");
-				}
-			}
-
-			if (quantifier.Check(count, true) == true)
-			{
-				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
-					ToString());
-			}
-
-			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained it {count} times in {Formatter.Format(items.ToArray())}");
-		}
-
-		public override string ToString()
-			=> $"contain {Formatter.Format(expected)} {quantifier}";
-	}
-
-	private readonly struct ContainPredicateConstraint<TItem>(
-		string it,
+		Func<Quantifier, string> expectationText,
 		Func<TItem, bool> predicate,
-		string predicateExpression,
 		Quantifier quantifier)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
@@ -156,6 +110,7 @@ public static partial class ThatAsyncEnumerableShould
 				{
 					items.Add(item);
 				}
+
 				if (predicate(item))
 				{
 					count++;
@@ -171,6 +126,7 @@ public static partial class ThatAsyncEnumerableShould
 							ToString());
 					}
 				}
+
 				if (items.Count > CollectionFormatCount && isFailed)
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
@@ -189,13 +145,14 @@ public static partial class ThatAsyncEnumerableShould
 		}
 
 		public override string ToString()
-			=> $"contain item matching {predicateExpression} {quantifier}";
+			=> expectationText(quantifier);
 	}
 
 	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected, ObjectEqualityOptions options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
@@ -222,7 +179,8 @@ public static partial class ThatAsyncEnumerableShould
 		string predicateExpression)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
