@@ -206,13 +206,6 @@ public abstract class ExpectationBuilder
 		    but {failure.ResultText}
 		    """;
 
-	internal Task<ConstraintResult> IsMet()
-	{
-		EvaluationContext.EvaluationContext context = new();
-		return IsMet(GetRootNode(), context, _timeSystem ?? RealTimeSystem.Instance,
-			_cancellationToken ?? CancellationToken.None);
-	}
-
 	internal Node GetRootNode()
 	{
 		if (_whichNode != null)
@@ -223,6 +216,13 @@ public abstract class ExpectationBuilder
 		}
 
 		return _node;
+	}
+
+	internal Task<ConstraintResult> IsMet()
+	{
+		EvaluationContext.EvaluationContext context = new();
+		return IsMet(GetRootNode(), context, _timeSystem ?? RealTimeSystem.Instance,
+			_cancellationToken ?? CancellationToken.None);
 	}
 
 	internal abstract Task<ConstraintResult> IsMet(
