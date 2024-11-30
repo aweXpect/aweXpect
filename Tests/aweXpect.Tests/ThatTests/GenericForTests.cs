@@ -68,7 +68,7 @@ public sealed class GenericForTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
-			              for .Value be {Formatter.Format(expectedValue)},
+			              for .Value be equal to {Formatter.Format(expectedValue)},
 			              but .Value was {Formatter.Format(value)}
 			              """);
 	}

@@ -413,7 +413,7 @@ public class ExpectTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected subject to
-			             all satisfy "x => x < 6",
+			             have all items satisfy y => y < 6,
 			             but could not verify, because it was cancelled early
 			             """);
 	}
