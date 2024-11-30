@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1732899159390,
+  "lastUpdate": 1732965378759,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1436,6 +1436,66 @@ window.BENCHMARK_DATA = {
             "value": 799.7287152608236,
             "unit": "ns",
             "range": "± 4.25535126188225"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "efb9c4e454abd6bf1d30fcc983dd705932dbbfba",
+          "message": "feat: change collection behavior (#58)\n\n* Replace \"be\" with \"be equal to\" in failure text for numbers\n* Add Satisfy extensions\n* Adapt enumeration expectations\n* Accept API changes\n* Update Documentation",
+          "timestamp": "2024-11-30T11:13:14Z",
+          "tree_id": "b239c169e27baa8a1f4022f099deb7a202f2b551",
+          "url": "https://github.com/aweXpect/aweXpect/commit/efb9c4e454abd6bf1d30fcc983dd705932dbbfba"
+        },
+        "date": 1732965378530,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 216.69487299237932,
+            "unit": "ns",
+            "range": "± 0.8642003775705953"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.68770674069722,
+            "unit": "ns",
+            "range": "± 0.6664612339655452"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 628.5478015263875,
+            "unit": "ns",
+            "range": "± 2.510750725785665"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 402.1389026323954,
+            "unit": "ns",
+            "range": "± 3.2612679628723926"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 322.2375431741987,
+            "unit": "ns",
+            "range": "± 1.3682998855742106"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 863.9561757307786,
+            "unit": "ns",
+            "range": "± 3.283144114338925"
           }
         ]
       }
