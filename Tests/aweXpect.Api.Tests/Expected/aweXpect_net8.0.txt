@@ -31,11 +31,11 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, aweXpect.Times maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source) { }
         public static aweXpect.BetweenResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>>, aweXpect.Core.IThat<TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, int minimum) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, TItem expected) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectCountResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, TItem expected) { }
+        public static aweXpect.Results.CountResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> None<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> NotBeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, TItem unexpected) { }
+        public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, TItem unexpected) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> Should<TItem>(this aweXpect.Core.IExpectSubject<System.Collections.Generic.IAsyncEnumerable<TItem>> subject) { }
     }
@@ -195,11 +195,11 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, aweXpect.Times maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
         public static aweXpect.BetweenResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>>, aweXpect.Core.IThat<TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectCountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
+        public static aweXpect.Results.CountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> None<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotBeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem unexpected) { }
+        public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem unexpected) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> Should<TItem>(this aweXpect.Core.IExpectSubject<System.Collections.Generic.IEnumerable<TItem>> subject) { }
     }
@@ -884,7 +884,7 @@ namespace aweXpect.Options
         public void AtLeast(int minimum) { }
         public void AtMost(int maximum) { }
         public void Between(int minimum, int maximum) { }
-        public bool? Check(int amount) { }
+        public bool? Check(int amount, bool isLast) { }
         public void Exactly(int expected) { }
         public override string ToString() { }
     }
@@ -956,6 +956,17 @@ namespace aweXpect.Results
     {
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
         public aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+    }
+    public class ObjectCountResult<TType, TThat> : aweXpect.Results.ObjectCountResult<TType, TThat, aweXpect.Results.ObjectCountResult<TType, TThat>>
+    {
+        public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions options) { }
+    }
+    public class ObjectCountResult<TType, TThat, TSelf> : aweXpect.Results.CountResult<TType, TThat, TSelf>
+        where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TSelf>
+    {
+        public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions options) { }
+        public aweXpect.Results.ObjectCountResult<TType, TThat, TSelf> Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
+        public aweXpect.Results.ObjectCountResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class ObjectEqualityResult<TType, TThat> : aweXpect.Results.ObjectEqualityResult<TType, TThat, aweXpect.Results.ObjectEqualityResult<TType, TThat>>
     {

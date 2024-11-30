@@ -42,7 +42,7 @@ public static partial class ThatStringEnumerableShould
 				{
 					count++;
 
-					if (quantifier.Check(count) == false)
+					if (quantifier.Check(count, false) == false)
 					{
 						return new ConstraintResult.Failure<IEnumerable<string>>(actual, ToString(),
 							$"{it} contained it at least {count} times in {Formatter.Format(actual)}");
@@ -50,7 +50,7 @@ public static partial class ThatStringEnumerableShould
 				}
 			}
 
-			if (quantifier.Check(count) == true)
+			if (quantifier.Check(count, true) == true)
 			{
 				return new ConstraintResult.Success<IEnumerable<string>>(actual,
 					ToString());
