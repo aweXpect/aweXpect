@@ -26,8 +26,11 @@ internal static class Factory
 			(a, b) = (b, a + b);
 		} while (++iterations < maxIterations && !cancellationToken.IsCancellationRequested);
 	}
+#endif
+
+#if NET6_0_OR_GREATER
 	/// <summary>
-	///     Returns an infinite <see cref="IAsyncEnumerable{T}" /> of fibonacci numbers.
+	///     Returns an infinite <see cref="IAsyncEnumerable{T}" /> of mapped fibonacci numbers.
 	/// </summary>
 	public static async IAsyncEnumerable<T> GetAsyncFibonacciNumbers<T>(
 		Func<int, T> mapper,
@@ -45,6 +48,7 @@ internal static class Factory
 		} while (++iterations < maxIterations && !cancellationToken.IsCancellationRequested);
 	}
 #endif
+
 	/// <summary>
 	///     Returns an infinite <see cref="IEnumerable{T}" /> of fibonacci numbers.
 	/// </summary>
