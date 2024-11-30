@@ -12,8 +12,8 @@ public static partial class ThatEnumerableShould
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AtLeast<TItem>(
 		this IThat<IEnumerable<TItem>> source,
-		int minimum,
+		Times minimum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-			=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)), source);
+			=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum.Value), expectations)), source);
 }

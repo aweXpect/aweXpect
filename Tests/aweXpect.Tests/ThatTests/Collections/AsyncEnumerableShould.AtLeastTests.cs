@@ -19,7 +19,7 @@ public sealed partial class AsyncEnumerableShould
  GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(6, x => x.Satisfy(y => y < 6))
+				=> await That(subject).Should().AtLeast(6.Times(), x => x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().NotThrow();
@@ -31,7 +31,7 @@ public sealed partial class AsyncEnumerableShould
 			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(0, x => x.Be(1))
+				=> await That(subject).Should().AtLeast(0.Times(), x => x.Be(1))
 					.And.AtLeast(0, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
@@ -43,7 +43,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(2, x => x.Be(1));
+				=> await That(subject).Should().AtLeast(2.Times(), x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -54,7 +54,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(3, x => x.Be(1));
+				=> await That(subject).Should().AtLeast(3.Times(), x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -65,7 +65,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(5, x => x.Be(1));
+				=> await That(subject).Should().AtLeast(5.Times(), x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -81,7 +81,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(5, x => x.Be(1));
+				=> await That(subject).Should().AtLeast(5.Times(), x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""

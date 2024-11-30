@@ -39,18 +39,18 @@ public class CountResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Verifies, that it occurs at least <paramref name="minimum" /> times.
 	/// </summary>
-	public TSelf AtLeast(int minimum)
+	public TSelf AtLeast(Times minimum)
 	{
-		quantifier.AtLeast(minimum);
+		quantifier.AtLeast(minimum.Value);
 		return (TSelf)this;
 	}
 
 	/// <summary>
 	///     Verifies, that it occurs at most <paramref name="maximum" /> times.
 	/// </summary>
-	public TSelf AtMost(int maximum)
+	public TSelf AtMost(Times maximum)
 	{
-		quantifier.AtMost(maximum);
+		quantifier.AtMost(maximum.Value);
 		return (TSelf)this;
 	}
 
@@ -67,9 +67,9 @@ public class CountResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Verifies, that it occurs exactly <paramref name="expected" /> times.
 	/// </summary>
-	public TSelf Exactly(int expected)
+	public TSelf Exactly(Times expected)
 	{
-		quantifier.Exactly(expected);
+		quantifier.Exactly(expected.Value);
 		return (TSelf)this;
 	}
 

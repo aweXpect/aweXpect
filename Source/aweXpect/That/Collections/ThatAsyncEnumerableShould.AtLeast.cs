@@ -13,9 +13,9 @@ public static partial class ThatAsyncEnumerableShould
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AtLeast<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,
-		int minimum,
+		Times minimum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)), source);
+			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum.Value), expectations)), source);
 }
 #endif

@@ -17,7 +17,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
 
 			async Task Act()
-				=> await That(subject).Should().Between(6).And(8, x => x.Satisfy(y => y < 6))
+				=> await That(subject).Should().Between(6).And(8.Times(), x => x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
@@ -34,7 +34,7 @@ public sealed partial class EnumerableShould
 			ThrowWhenIteratingTwiceEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().Between(0).And(2, x => x.Be(1))
+				=> await That(subject).Should().Between(0).And(2.Times(), x => x.Be(1))
 					.And.Between(0).And(1, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
@@ -46,7 +46,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().Between(0).And(1, x => x.Be(1));
+				=> await That(subject).Should().Between(0).And(1.Times(), x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -62,7 +62,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().Between(3).And(4, x => x.Be(1));
+				=> await That(subject).Should().Between(3).And(4.Times(), x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -73,7 +73,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().Between(3).And(4, x => x.Be(2));
+				=> await That(subject).Should().Between(3).And(4.Times(), x => x.Be(2));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -89,7 +89,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().Between(1).And(3, x => x.Be(1));
+				=> await That(subject).Should().Between(1).And(3.Times(), x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""

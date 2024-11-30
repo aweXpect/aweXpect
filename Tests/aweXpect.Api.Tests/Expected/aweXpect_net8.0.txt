@@ -5,12 +5,12 @@ namespace aweXpect
     public class BetweenResult<TTarget>
     {
         public BetweenResult(System.Func<int, TTarget> callback) { }
-        public TTarget And(int maximum) { }
+        public TTarget And(aweXpect.Times maximum) { }
     }
     public class BetweenResult<TTarget, TExpectation>
     {
         public BetweenResult(System.Func<int, System.Action<TExpectation>, TTarget> callback) { }
-        public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
+        public TTarget And(aweXpect.Times maximum, System.Action<TExpectation> expectations) { }
     }
     public abstract class EnumerableQuantifier
     {
@@ -27,8 +27,8 @@ namespace aweXpect
     public static class ThatAsyncEnumerableShould
     {
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, int minimum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, int maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, aweXpect.Times minimum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, aweXpect.Times maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source) { }
         public static aweXpect.BetweenResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>>, aweXpect.Core.IThat<TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, int minimum) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>> source, TItem expected) { }
@@ -191,8 +191,8 @@ namespace aweXpect
     public static class ThatEnumerableShould
     {
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, aweXpect.Times minimum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, aweXpect.Times maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
         public static aweXpect.BetweenResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>>, aweXpect.Core.IThat<TItem>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
@@ -926,10 +926,10 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.CountResult<TType, TThat, TSelf>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
-        public TSelf AtLeast(int minimum) { }
-        public TSelf AtMost(int maximum) { }
+        public TSelf AtLeast(aweXpect.Times minimum) { }
+        public TSelf AtMost(aweXpect.Times maximum) { }
         public aweXpect.BetweenResult<TSelf> Between(int minimum) { }
-        public TSelf Exactly(int expected) { }
+        public TSelf Exactly(aweXpect.Times expected) { }
         public TSelf Never() { }
         public TSelf Once() { }
     }

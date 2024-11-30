@@ -10,7 +10,7 @@ public sealed partial class CollectionShould
 			int[] subject = [1, 1, 1, 1, 2, 2, 3];
 
 			async Task Act()
-				=> await That(subject).Should().Between(3).And(4, x => x.Be(1));
+				=> await That(subject).Should().Between(3).And(4.Times(), x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -21,7 +21,7 @@ public sealed partial class CollectionShould
 			int[] subject = [1, 1, 1, 1, 2, 2, 3];
 
 			async Task Act()
-				=> await That(subject).Should().Between(3).And(4, x => x.Be(2));
+				=> await That(subject).Should().Between(3).And(4.Times(), x => x.Be(2));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -37,7 +37,7 @@ public sealed partial class CollectionShould
 			int[] subject = [1, 1, 1, 1, 2, 2, 3];
 
 			async Task Act()
-				=> await That(subject).Should().Between(1).And(3, x => x.Be(1));
+				=> await That(subject).Should().Between(1).And(3.Times(), x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""

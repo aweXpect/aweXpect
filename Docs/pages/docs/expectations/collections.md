@@ -23,7 +23,7 @@ You can verify, that at least a fixed number of items in the collection, satisfy
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
 
-await Expect.That(values).Should().AtLeast(9, x => x.Satisfy(i => i < 10));
+await Expect.That(values).Should().AtLeast(9.Times(), x => x.Satisfy(i => i < 10));
 ```
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
@@ -34,7 +34,7 @@ You can verify, that at most a fixed number of items in the collection, satisfy 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
 
-await Expect.That(values).Should().AtMost(1, x => x.Satisfy(i => i < 2));
+await Expect.That(values).Should().AtMost(1.Times(), x => x.Satisfy(i => i < 2));
 ```
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
@@ -44,7 +44,7 @@ await Expect.That(values).Should().AtMost(1, x => x.Satisfy(i => i < 2));
 You can verify, that between `minimum` and `maximum` items in the collection, satisfy an expectation:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
-await Expect.That(values).Should().Between(1).And(2, x => x.Satisfy(i => i < 2));
+await Expect.That(values).Should().Between(1).And(2.Times(), x => x.Satisfy(i => i < 2));
 ```
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
