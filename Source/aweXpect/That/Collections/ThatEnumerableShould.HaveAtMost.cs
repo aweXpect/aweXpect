@@ -10,7 +10,7 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that at most <paramref name="maximum" /> items in the synchronous enumerable satisfy the <paramref name="expectations"/>.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AtMost<TItem>(
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtMost<TItem>(
 		this IThat<IEnumerable<TItem>> source,
 		Times maximum,
 		Action<IThat<TItem>> expectations)

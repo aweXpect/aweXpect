@@ -1,25 +1,23 @@
-﻿#if NET6_0_OR_GREATER
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using aweXpect.Tests.TestHelpers;
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
 
-public sealed partial class AsyncEnumerableShould
+public sealed partial class EnumerableShould
 {
-	public sealed class BetweenTests
+	public sealed class HaveBetweenTests
 	{
 		[Fact]
 		public async Task ConsidersCancellationToken()
 		{
 			using CancellationTokenSource cts = new();
 			CancellationToken token = cts.Token;
-			IAsyncEnumerable<int> subject =
- GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
+			IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
 
 			async Task Act()
-				=> await That(subject).Should().Between(6).And(8.Times(), x => x.Satisfy(y => y < 6))
+				=> await That(subject).Should().HaveBetween(6).And(8, x => x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
@@ -33,11 +31,11 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
+			ThrowWhenIteratingTwiceEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().Between(0).And(2.Times(), x => x.Be(1))
-					.And.Between(0).And(1, x => x.Be(1));
+				=> await That(subject).Should().HaveBetween(0).And(2, x => x.Be(1))
+					.And.HaveBetween(0).And(1, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -45,10 +43,10 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task DoesNotMaterializeEnumerable()
 		{
-			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
+			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().Between(0).And(1.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveBetween(0).And(1, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -61,10 +59,10 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task WhenEnumerableContainsSufficientlyEqualItems_ShouldSucceed()
 		{
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().Between(3).And(4.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveBetween(3).And(4, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -72,10 +70,10 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 		{
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().Between(3).And(4.Times(), x => x.Be(2));
+				=> await That(subject).Should().HaveBetween(3).And(4, x => x.Be(2));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -88,10 +86,10 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 		{
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().Between(1).And(3.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveBetween(1).And(3, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -102,4 +100,3 @@ public sealed partial class AsyncEnumerableShould
 		}
 	}
 }
-#endif

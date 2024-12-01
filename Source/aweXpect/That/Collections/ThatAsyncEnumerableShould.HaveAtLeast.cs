@@ -11,11 +11,11 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that at least <paramref name="minimum" /> items in the asynchronous enumerable satisfy the <paramref name="expectations"/>.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AtLeast<TItem>(
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveAtLeast<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,
-		Times minimum,
+		int minimum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum.Value), expectations)), source);
+			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)), source);
 }
 #endif

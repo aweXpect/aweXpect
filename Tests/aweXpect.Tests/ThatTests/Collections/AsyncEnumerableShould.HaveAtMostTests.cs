@@ -1,23 +1,25 @@
-﻿using System.Collections.Generic;
+﻿#if NET6_0_OR_GREATER
+using System.Collections.Generic;
 using System.Threading;
 using aweXpect.Tests.TestHelpers;
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
 
-public sealed partial class EnumerableShould
+public sealed partial class AsyncEnumerableShould
 {
-	public sealed class AtMostTests
+	public sealed class HaveAtMostTests
 	{
 		[Fact]
 		public async Task ConsidersCancellationToken()
 		{
 			using CancellationTokenSource cts = new();
 			CancellationToken token = cts.Token;
-			IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
+			IAsyncEnumerable<int> subject =
+ GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 			async Task Act()
-				=> await That(subject).Should().AtMost(8.Times(), x => x.Satisfy(y => y < 6))
+				=> await That(subject).Should().HaveAtMost(8, x=> x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
@@ -31,11 +33,11 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().AtMost(3.Times(), x => x.Be(1))
-					.And.AtMost(3, x => x.Be(1));
+				=> await That(subject).Should().HaveAtMost(3, x => x.Be(1))
+					.And.HaveAtMost(3, x=> x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -43,10 +45,10 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task DoesNotMaterializeEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().AtMost(1.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveAtMost(1, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -59,10 +61,10 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenEnumerableContainsSufficientlyFewEqualItems_ShouldSucceed()
 		{
-			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtMost(3.Times(), x => x.Be(2));
+				=> await That(subject).Should().HaveAtMost(3, x => x.Be(2));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -70,10 +72,10 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 		{
-			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtMost(3.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveAtMost(3, x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -84,3 +86,4 @@ public sealed partial class EnumerableShould
 		}
 	}
 }
+#endif

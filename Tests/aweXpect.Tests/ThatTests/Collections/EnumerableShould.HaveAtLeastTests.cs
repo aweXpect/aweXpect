@@ -7,7 +7,7 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class EnumerableShould
 {
-	public sealed class AtLeastTests
+	public sealed class HaveAtLeastTests
 	{
 		[Fact]
 		public async Task ConsidersCancellationToken()
@@ -17,7 +17,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(6.Times(), x => x.Satisfy(y => y < 6))
+				=> await That(subject).Should().HaveAtLeast(6.Times(), x => x.Satisfy(y => y < 6))
 					.WithCancellation(token);
 
 			await That(Act).Should().NotThrow();
@@ -29,8 +29,8 @@ public sealed partial class EnumerableShould
 			ThrowWhenIteratingTwiceEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(0.Times(), x => x.Be(1))
-					.And.AtLeast(0, x => x.Be(1));
+				=> await That(subject).Should().HaveAtLeast(0.Times(), x => x.Be(1))
+					.And.HaveAtLeast(0, x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -41,7 +41,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(2.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveAtLeast(2.Times(), x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -52,7 +52,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(3.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveAtLeast(3.Times(), x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -63,7 +63,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().AtLeast(5.Times(), x => x.Be(1));
+				=> await That(subject).Should().HaveAtLeast(5.Times(), x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""

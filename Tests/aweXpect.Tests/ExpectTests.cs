@@ -408,7 +408,7 @@ public class ExpectTests
 		IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 		async Task Act()
-			=> await That(subject).Should(b => b.WithCancellation(token)).All(x => x.Satisfy(y => y < 6));
+			=> await That(subject).Should(b => b.WithCancellation(token)).HaveAll(x => x.Satisfy(y => y < 6));
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""

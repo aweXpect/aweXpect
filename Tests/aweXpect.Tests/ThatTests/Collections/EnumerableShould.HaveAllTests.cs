@@ -7,7 +7,7 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class EnumerableShould
 {
-	public sealed class AllTests
+	public sealed class HaveAllTests
 	{
 		[Fact]
 		public async Task ConsidersCancellationToken()
@@ -17,7 +17,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = GetCancellingEnumerable(5, cts);
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Satisfy(y => y < 6)).WithCancellation(token);
+				=> await That(subject).Should().HaveAll(x => x.Satisfy(y => y < 6)).WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -33,8 +33,8 @@ public sealed partial class EnumerableShould
 			ThrowWhenIteratingTwiceEnumerable subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Satisfy(_ => true))
-					.And.All(x => x.Satisfy(_ => true));
+				=> await That(subject).Should().HaveAll(x => x.Satisfy(_ => true))
+					.And.HaveAll(x => x.Satisfy(_ => true));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -45,7 +45,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Be(1));
+				=> await That(subject).Should().HaveAll(x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -61,7 +61,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Be(1));
+				=> await That(subject).Should().HaveAll(x => x.Be(1));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -77,7 +77,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([]);
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Be(0));
+				=> await That(subject).Should().HaveAll(x => x.Be(0));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -88,7 +88,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1]);
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Be(1));
+				=> await That(subject).Should().HaveAll(x => x.Be(1));
 
 			await That(Act).Should().NotThrow();
 		}
