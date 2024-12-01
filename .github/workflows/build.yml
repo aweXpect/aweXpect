@@ -250,7 +250,7 @@ jobs:
                     cache-dependency-path: ./Docs/pages/package-lock.json
             -   name: Download benchmark data
                 run: |
-                    curl -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js
+                    curl -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js?ref=benchmarks
                 working-directory: ./Docs/pages/static/js
             -   name: Install dependencies
                 working-directory: ./Docs/pages
