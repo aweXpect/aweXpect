@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733042420865,
+  "lastUpdate": 1733050027056,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1916,6 +1916,66 @@ window.BENCHMARK_DATA = {
             "value": 796.6298372268677,
             "unit": "ns",
             "range": "± 4.7220886521418235"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "56d92755ed21f35b6289b9ff36504540c09a1712",
+          "message": "feat: rename collection methods (#68)\n\nRename the collection methods that work on a given amount of occurrences:\n- `AtLeast` -> `HaveAtLeast`\n- `AtMost` -> `HaveAtMost`\n- `Between` -> `HaveBetween`\n- `All` -> `HaveAll`\n- `None` ->  `HaveNone`",
+          "timestamp": "2024-12-01T10:44:00Z",
+          "tree_id": "02662dc99a5cca60d7d68d42990e80b0a4f44916",
+          "url": "https://github.com/aweXpect/aweXpect/commit/56d92755ed21f35b6289b9ff36504540c09a1712"
+        },
+        "date": 1733050026482,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 210.6541657447815,
+            "unit": "ns",
+            "range": "± 1.0111186461970696"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 165.45272714751107,
+            "unit": "ns",
+            "range": "± 0.5779828161865965"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 564.0824738282424,
+            "unit": "ns",
+            "range": "± 1.3690829507386184"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.28727534839084,
+            "unit": "ns",
+            "range": "± 1.8684645065260903"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 310.2152324063437,
+            "unit": "ns",
+            "range": "± 1.4649499945608526"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 782.3127005894979,
+            "unit": "ns",
+            "range": "± 4.073771414081509"
           }
         ]
       }
