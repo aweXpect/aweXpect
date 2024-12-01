@@ -10,7 +10,7 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that at least <paramref name="minimum" /> items in the synchronous enumerable satisfy the <paramref name="expectations"/>.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AtLeast<TItem>(
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtLeast<TItem>(
 		this IThat<IEnumerable<TItem>> source,
 		Times minimum,
 		Action<IThat<TItem>> expectations)

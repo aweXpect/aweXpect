@@ -15,7 +15,7 @@ public sealed partial class QuantifiedCollectionResult
 			];
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Be<MyClass>());
+				=> await That(subject).Should().HaveAll(x => x.Be<MyClass>());
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -35,7 +35,7 @@ public sealed partial class QuantifiedCollectionResult
 			];
 
 			async Task Act()
-				=> await That(subject).Should().All(x => x.Be<MyClass>());
+				=> await That(subject).Should().HaveAll(x => x.Be<MyClass>());
 
 			await That(Act).Should().NotThrow();
 		}

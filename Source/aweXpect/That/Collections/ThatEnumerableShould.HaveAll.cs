@@ -10,7 +10,7 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the synchronous enumerable satisfy the <paramref name="expectations" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> All<TItem>(
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAll<TItem>(
 		this IThat<IEnumerable<TItem>> source,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it

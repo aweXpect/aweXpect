@@ -11,9 +11,9 @@ public class BetweenResult<TTarget, TExpectation>(
 	/// <summary>
 	///     ... and <paramref name="maximum" /> items satisfy the <paramref name="expectations" />.
 	/// </summary>
-	public TTarget And(Times maximum,
+	public TTarget And(int maximum,
 		Action<TExpectation> expectations)
-			=> callback(maximum.Value, expectations);
+			=> callback(maximum, expectations);
 }
 
 /// <summary>

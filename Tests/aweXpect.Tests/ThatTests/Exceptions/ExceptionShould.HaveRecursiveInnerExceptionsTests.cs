@@ -15,7 +15,7 @@ public sealed partial class ExceptionShould
 
 			async Task Act()
 				=> await That(subject).Should().HaveRecursiveInnerExceptions(c
-					=> c.All(x => x.Satisfy(e => e.Message.StartsWith("inner"))));
+					=> c.HaveAll(x => x.Satisfy(e => e.Message.StartsWith("inner"))));
 
 			await That(Act).Should().NotThrow();
 		}
@@ -31,7 +31,7 @@ public sealed partial class ExceptionShould
 
 			async Task Act()
 				=> await That(subject).Should().HaveRecursiveInnerExceptions(
-					c => c.All(x => x.Satisfy(e => e.Message != "inner3A")));
+					c => c.HaveAll(x => x.Satisfy(e => e.Message != "inner3A")));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -52,7 +52,7 @@ public sealed partial class ExceptionShould
 
 			async Task Act()
 				=> await That(subject).Should().HaveRecursiveInnerExceptions(
-					c => c.None(x => x.Satisfy(e => e.Message != "inner3A")));
+					c => c.HaveNone(x => x.Satisfy(e => e.Message != "inner3A")));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""

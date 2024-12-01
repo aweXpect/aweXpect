@@ -11,7 +11,7 @@ public static partial class ThatAsyncEnumerableShould
 	///     Verifies that between <paramref name="minimum" />...
 	/// </summary>
 	public static BetweenResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>, IThat<TItem>>
-		Between<TItem>(this IThat<IAsyncEnumerable<TItem>> source, int minimum)
+		HaveBetween<TItem>(this IThat<IAsyncEnumerable<TItem>> source, int minimum)
 		=> new((maximum, expectations) => new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum),

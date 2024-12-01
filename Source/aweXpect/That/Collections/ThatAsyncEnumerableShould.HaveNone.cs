@@ -9,12 +9,12 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that all items in the asynchronous enumerable satisfy the <paramref name="expectations"/>.
+	///     Verifies that no items in the asynchronous enumerable satisfy the <paramref name="expectations"/>.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> All<TItem>(
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveNone<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.All, expectations)), source);
+			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.None, expectations)), source);
 }
 #endif

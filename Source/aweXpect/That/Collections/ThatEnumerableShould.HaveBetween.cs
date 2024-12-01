@@ -10,7 +10,7 @@ public static partial class ThatEnumerableShould
 	///     Verifies that between <paramref name="minimum" />...
 	/// </summary>
 	public static BetweenResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>, IThat<TItem>>
-		Between<TItem>(this IThat<IEnumerable<TItem>> source, int minimum)
+		HaveBetween<TItem>(this IThat<IEnumerable<TItem>> source, int minimum)
 		=> new((maximum, expectations) => new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum),

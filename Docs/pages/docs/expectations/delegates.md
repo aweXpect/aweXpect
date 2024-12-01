@@ -103,7 +103,7 @@ You can recursively verify the collection of inner exceptions of the thrown exce
 ```csharp
 void Act() => throw new AggregateException("outer", new CustomException("inner"));
 
-await Expect.That(Act).Should().ThrowException().WithRecursiveInnerExceptions(a => a.AtLeast(1).Be<CustomException>());
+await Expect.That(Act).Should().ThrowException().WithRecursiveInnerExceptions(a => a.HaveAtLeast(1).Be<CustomException>());
 ```
 
 
