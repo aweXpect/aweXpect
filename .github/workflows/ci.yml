@@ -141,8 +141,6 @@ jobs:
         name: Build Pages
         if: ${{ github.actor != 'dependabot[bot]' }}
         runs-on: ubuntu-latest
-        permissions:
-            contents: write
         steps:
             -   uses: actions/checkout@v4
                 with:
@@ -163,8 +161,3 @@ jobs:
             -   name: Build website
                 working-directory: ./Docs/pages
                 run: npm run build
-            -   name: Deploy to GitHub Pages
-                uses: peaceiris/actions-gh-pages@v4
-                with:
-                    github_token: ${{ secrets.GITHUB_TOKEN }}
-                    publish_dir: ./Docs/pages/build
