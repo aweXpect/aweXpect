@@ -64,7 +64,7 @@ public static class DirectoryInfoExtensions
 }
 ```
 
-Then you can add the [extension method on `IThat<DirectoryInfo>`](#additional-methods-for-existing-types):
+Then you can add the [extension method on `IThat<DirectoryInfo>`](#for-existing-types):
 ```csharp
 /// <summary>
 ///     Verifies that the <paramref name="directory"/> is empty.
