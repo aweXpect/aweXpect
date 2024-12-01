@@ -149,6 +149,8 @@ jobs:
                     fetch-depth: 0
             -   name: Merge benchmarks branch
                 run: |
+                    git config --global user.email "benchmarks@testably.org"
+                    git config --global user.name "Benchmark User"
                     git merge origin/benchmarks --no-edit
             -   uses: actions/setup-node@v4
                 with:
