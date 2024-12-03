@@ -150,6 +150,7 @@ namespace aweXpect
     }
     public static class ThatEnumerableShould
     {
+        public static aweXpect.Results.ObjectCollectionMatchResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Be<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
         public static aweXpect.Results.ObjectCountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
         public static aweXpect.Results.CountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
@@ -735,6 +736,15 @@ namespace aweXpect.Extensions
 }
 namespace aweXpect.Options
 {
+    public class CollectionMatchOptions
+    {
+        public CollectionMatchOptions() { }
+        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<T> expected)
+            where T : T2 { }
+        public void IgnoringDuplicates() { }
+        public void InAnyOrder() { }
+        public override string ToString() { }
+    }
     public class EquivalencyOptions
     {
         public EquivalencyOptions() { }
@@ -749,9 +759,10 @@ namespace aweXpect.Options
         public void SetTolerance(TNumber tolerance) { }
         public override string ToString() { }
     }
-    public class ObjectEqualityOptions
+    public class ObjectEqualityOptions : aweXpect.Core.IOptionsEquality<object?>
     {
         public ObjectEqualityOptions() { }
+        public bool AreConsideredEqual(object? a, object? b) { }
         public aweXpect.Options.ObjectEqualityOptions Equals() { }
         public aweXpect.Options.ObjectEqualityOptions Equivalent(aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
         public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
@@ -827,7 +838,7 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, TSelf>
     {
         public NullableNumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
-        public aweXpect.Results.NullableNumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+        public TSelf Within(TType tolerance) { }
     }
     public class NumberToleranceResult<TType, TThat> : aweXpect.Results.NumberToleranceResult<TType, TThat, aweXpect.Results.NumberToleranceResult<TType, TThat>>
         where TType :  struct, System.IComparable<TType>
@@ -839,7 +850,18 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf>
     {
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
-        public aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+        public TSelf Within(TType tolerance) { }
+    }
+    public class ObjectCollectionMatchResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>>
+    {
+        public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+    }
+    public class ObjectCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
+        where TSelf : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TSelf>
+    {
+        public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public TSelf IgnoringDuplicates() { }
+        public TSelf InAnyOrder() { }
     }
     public class ObjectCountResult<TType, TThat> : aweXpect.Results.ObjectCountResult<TType, TThat, aweXpect.Results.ObjectCountResult<TType, TThat>>
     {
@@ -849,8 +871,8 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TSelf>
     {
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions options) { }
-        public aweXpect.Results.ObjectCountResult<TType, TThat, TSelf> Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
-        public aweXpect.Results.ObjectCountResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+        public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class ObjectEqualityResult<TType, TThat> : aweXpect.Results.ObjectEqualityResult<TType, TThat, aweXpect.Results.ObjectEqualityResult<TType, TThat>>
     {
@@ -860,8 +882,8 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
     {
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
-        public aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
-        public aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+        public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class StringCountResult<TType, TThat> : aweXpect.Results.StringCountResult<TType, TThat, aweXpect.Results.StringCountResult<TType, TThat>>
     {
@@ -871,8 +893,8 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringCountResult<TType, TThat, TSelf>
     {
         public StringCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
-        public aweXpect.Results.StringCountResult<TType, TThat, TSelf> IgnoringCase() { }
-        public aweXpect.Results.StringCountResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+        public TSelf IgnoringCase() { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class StringEqualityResult<TType, TThat> : aweXpect.Results.StringEqualityResult<TType, TThat, aweXpect.Results.StringEqualityResult<TType, TThat>>
     {
@@ -882,9 +904,9 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf>
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
-        public aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> IgnoringCase() { }
-        public aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> IgnoringCase(bool ignoreCase) { }
-        public aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+        public TSelf IgnoringCase() { }
+        public TSelf IgnoringCase(bool ignoreCase) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class StringMatcherResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
     {
@@ -903,6 +925,6 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.TimeToleranceResult<TType, TThat, TSelf>
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
-        public aweXpect.Results.TimeToleranceResult<TType, TThat, TSelf> Within(System.TimeSpan tolerance) { }
+        public TSelf Within(System.TimeSpan tolerance) { }
     }
 }
