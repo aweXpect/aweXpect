@@ -62,7 +62,11 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order,
-				             but it lacked 3 of 3 expected items: [1, 2, 3]
+				             but it lacked 3 of 3 expected items: [
+				               1,
+				               2,
+				               3
+				             ]
 				             """);
 		}
 
@@ -167,7 +171,11 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order ignoring duplicates,
-				             but it lacked 3 of 3 expected items: [1, 2, 3]
+				             but it lacked 3 of 3 expected items: [
+				               1,
+				               2,
+				               3
+				             ]
 				             """);
 		}
 
@@ -184,7 +192,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order ignoring duplicates,
-				             but it lacked 2 of 2 expected items: [1, 2]
+				             but it lacked 2 of 2 expected items: [
+				               1,
+				               2
+				             ]
 				             """);
 		}
 
@@ -283,7 +294,11 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it lacked 3 of 3 expected items: [1, 2, 3]
+				             but it lacked 3 of 3 expected items: [
+				               1,
+				               2,
+				               3
+				             ]
 				             """);
 		}
 
@@ -393,7 +408,11 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected ignoring duplicates,
-				             but it lacked 3 of 3 expected items: [1, 2, 3]
+				             but it lacked 3 of 3 expected items: [
+				               1,
+				               2,
+				               3
+				             ]
 				             """);
 		}
 
@@ -410,7 +429,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected ignoring duplicates,
-				             but it lacked 2 of 2 expected items: [1, 2]
+				             but it lacked 2 of 2 expected items: [
+				               1,
+				               2
+				             ]
 				             """);
 		}
 

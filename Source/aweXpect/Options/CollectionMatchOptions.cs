@@ -70,7 +70,8 @@ public class CollectionMatchOptions
 			if (expectedList.Any())
 			{
 				return
-					$"{it} lacked {expectedList.Count} of {expectedList.Count + _index} expected items: {Formatter.Format(expectedList)}";
+					$"{it} lacked {expectedList.Count} of {expectedList.Count + _index} expected items: {Formatter.Format(expectedList,
+						expectedList.Count > 1 ? FormattingOptions.MultipleLines : FormattingOptions.SingleLine)}";
 			}
 
 			return null;
@@ -111,7 +112,8 @@ public class CollectionMatchOptions
 			if (missingItems.Any())
 			{
 				return
-					$"{it} lacked {missingItems.Count} of {missingItems.Count + _index} expected items: {Formatter.Format(missingItems)}";
+					$"{it} lacked {missingItems.Count} of {missingItems.Count + _index} expected items: {Formatter.Format(missingItems,
+						expectedList.Count > 1 ? FormattingOptions.MultipleLines : FormattingOptions.SingleLine)}";
 			}
 
 			return null;
@@ -157,7 +159,8 @@ public class CollectionMatchOptions
 				}
 
 				return
-					$"{it} lacked {missingItems.Count} of {missingItems.Count + _index} expected items: {Formatter.Format(missingItems)}";
+					$"{it} lacked {missingItems.Count} of {missingItems.Count + _index} expected items: {Formatter.Format(missingItems,
+						missingItems.Count > 1 ? FormattingOptions.MultipleLines : FormattingOptions.SingleLine)}";
 			}
 
 			return null;
@@ -220,7 +223,8 @@ public class CollectionMatchOptions
 			if (missingItems.Any())
 			{
 				return
-					$"{it} lacked {missingItems.Count} of {missingItems.Count + _index} expected items: {Formatter.Format(missingItems)}";
+					$"{it} lacked {missingItems.Count} of {missingItems.Count + _index} expected items: {Formatter.Format(missingItems,
+						missingItems.Count > 1 ? FormattingOptions.MultipleLines : FormattingOptions.SingleLine)}";
 			}
 
 			return null;
