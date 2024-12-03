@@ -46,7 +46,7 @@ public class CollectionMatchOptions
 			(false, false) => ""
 		};
 
-	private class AnyOrderCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
+	private sealed class AnyOrderCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly List<T> expectedList = expected.ToList();
@@ -80,7 +80,7 @@ public class CollectionMatchOptions
 		public void Dispose() => _index = -1;
 	}
 
-	private class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
+	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly HashSet<T> _uniqueItems = new();
@@ -122,7 +122,7 @@ public class CollectionMatchOptions
 		public void Dispose() => _index = -1;
 	}
 
-	private class SameOrderCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
+	private sealed class SameOrderCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly IEnumerator<T> _expectedEnumerator = MaterializingEnumerable<T>.Wrap(expected).GetEnumerator();
@@ -173,7 +173,7 @@ public class CollectionMatchOptions
 		}
 	}
 
-	private class SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(IEnumerable<T> expected)
+	private sealed class SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(IEnumerable<T> expected)
 		: ICollectionMatcher<T, T2>
 		where T : T2
 	{
