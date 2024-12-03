@@ -101,6 +101,12 @@ namespace aweXpect.Core
     {
         public static aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> memberSelector, string displayName, bool replaceIt = true) { }
     }
+    public interface ICollectionMatcher<in T, out T2> : System.IDisposable
+        where in T : T2
+    {
+        string? Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options);
+        string? VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options);
+    }
     public interface IExpectSubject<out T>
     {
         bool Equals(object? obj);
@@ -108,6 +114,10 @@ namespace aweXpect.Core
         System.Type GetType();
         aweXpect.Core.IThat<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
         string? ToString();
+    }
+    public interface IOptionsEquality<in T>
+    {
+        bool AreConsideredEqual(T a, T b);
     }
     public interface IThat<out T>
     {

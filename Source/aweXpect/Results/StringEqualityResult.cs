@@ -36,30 +36,30 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
 	/// </summary>
-	public StringEqualityResult<TType, TThat, TSelf> IgnoringCase()
+	public TSelf IgnoringCase()
 	{
 		options.IgnoringCase();
-		return this;
+		return (TSelf)this;
 	}
 
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s, according to the <paramref name="ignoreCase" />
 	///     parameter.
 	/// </summary>
-	public StringEqualityResult<TType, TThat, TSelf> IgnoringCase(
+	public TSelf IgnoringCase(
 		bool ignoreCase)
 	{
 		options.IgnoringCase(ignoreCase);
-		return this;
+		return (TSelf)this;
 	}
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="string" />s.
 	/// </summary>
-	public StringEqualityResult<TType, TThat, TSelf> Using(
+	public TSelf Using(
 		IEqualityComparer<string> comparer)
 	{
 		options.UsingComparer(comparer);
-		return this;
+		return (TSelf)this;
 	}
 }
