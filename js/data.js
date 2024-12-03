@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733259427845,
+  "lastUpdate": 1733259958452,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2156,6 +2156,66 @@ window.BENCHMARK_DATA = {
             "value": 808.4989802042643,
             "unit": "ns",
             "range": "± 5.006199276842942"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9f7b8344a918b21e722eae6bbab506c26a67a025",
+          "message": "build(deps): bump FluentAssertions from 6.12.2 to 7.0.0 (#71)\n\nBumps [FluentAssertions](https://github.com/fluentassertions/fluentassertions) from 6.12.2 to 7.0.0.\n- [Release notes](https://github.com/fluentassertions/fluentassertions/releases)\n- [Changelog](https://github.com/fluentassertions/fluentassertions/blob/develop/AcceptApiChanges.ps1)\n- [Commits](https://github.com/fluentassertions/fluentassertions/compare/6.12.2...7.0.0)\n\n---\nupdated-dependencies:\n- dependency-name: FluentAssertions\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-03T21:02:30Z",
+          "tree_id": "9c3f5d1a058129c9e2ba808a4186ed1dfab0797b",
+          "url": "https://github.com/aweXpect/aweXpect/commit/9f7b8344a918b21e722eae6bbab506c26a67a025"
+        },
+        "date": 1733259957799,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.75356113910675,
+            "unit": "ns",
+            "range": "± 1.034704975662487"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.24064476149422,
+            "unit": "ns",
+            "range": "± 0.6893710987823511"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 613.4825939031748,
+            "unit": "ns",
+            "range": "± 1.8821928206643226"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.6410127639771,
+            "unit": "ns",
+            "range": "± 1.7274284307460999"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 314.9947001457214,
+            "unit": "ns",
+            "range": "± 1.4861926843454702"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 799.5334226901715,
+            "unit": "ns",
+            "range": "± 3.816160458316441"
           }
         ]
       }
