@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733259958452,
+  "lastUpdate": 1733260496145,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2216,6 +2216,66 @@ window.BENCHMARK_DATA = {
             "value": 799.5334226901715,
             "unit": "ns",
             "range": "± 3.816160458316441"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2e841bece59a877a60732d5d28b4ef64c7fe3746",
+          "message": "build(deps): bump Microsoft.NET.Test.Sdk from 17.11.1 to 17.12.0 (#72)\n\nBumps [Microsoft.NET.Test.Sdk](https://github.com/microsoft/vstest) from 17.11.1 to 17.12.0.\n- [Release notes](https://github.com/microsoft/vstest/releases)\n- [Changelog](https://github.com/microsoft/vstest/blob/main/docs/releases.md)\n- [Commits](https://github.com/microsoft/vstest/compare/v17.11.1...v17.12.0)\n\n---\nupdated-dependencies:\n- dependency-name: Microsoft.NET.Test.Sdk\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-03T21:11:42Z",
+          "tree_id": "7d2a087cba0a894799ba9ebcef9fcf817585b86f",
+          "url": "https://github.com/aweXpect/aweXpect/commit/2e841bece59a877a60732d5d28b4ef64c7fe3746"
+        },
+        "date": 1733260495763,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 221.82621790568035,
+            "unit": "ns",
+            "range": "± 1.2474924780682701"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.4189727136067,
+            "unit": "ns",
+            "range": "± 0.7836856792606991"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 589.1086493900845,
+            "unit": "ns",
+            "range": "± 2.0311297092894094"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 405.7110129424504,
+            "unit": "ns",
+            "range": "± 2.117859193360026"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 316.9162840048472,
+            "unit": "ns",
+            "range": "± 0.600628940907286"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 818.5813244410923,
+            "unit": "ns",
+            "range": "± 3.422649710408521"
           }
         ]
       }
