@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733258825252,
+  "lastUpdate": 1733259427845,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2096,6 +2096,66 @@ window.BENCHMARK_DATA = {
             "value": 855.5920168069692,
             "unit": "ns",
             "range": "± 2.414049397004243"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0ca2a0b2f75a36970dcde2c7682695543d1cc25c",
+          "message": "build(deps): bump TUnit.Assertions from 0.4.1 to 0.4.63 in the tunit group (#77)\n\nbuild(deps): bump TUnit.Assertions in the tunit group\n\nBumps the tunit group with 1 update: [TUnit.Assertions](https://github.com/thomhurst/TUnit).\n\n\nUpdates `TUnit.Assertions` from 0.4.1 to 0.4.63\n- [Commits](https://github.com/thomhurst/TUnit/commits)\n\n---\nupdated-dependencies:\n- dependency-name: TUnit.Assertions\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: tunit\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-03T20:53:42Z",
+          "tree_id": "2684b5e5d8602ee8a729c27fdf6a4fc457c6ba95",
+          "url": "https://github.com/aweXpect/aweXpect/commit/0ca2a0b2f75a36970dcde2c7682695543d1cc25c"
+        },
+        "date": 1733259427648,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 216.58439212578995,
+            "unit": "ns",
+            "range": "± 1.2046477253928136"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.29982096354166,
+            "unit": "ns",
+            "range": "± 1.2749314085200656"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 597.3840636525836,
+            "unit": "ns",
+            "range": "± 2.7536531897136376"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.5898463884989,
+            "unit": "ns",
+            "range": "± 2.0578469816047815"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 323.9741439819336,
+            "unit": "ns",
+            "range": "± 2.937474314852168"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 808.4989802042643,
+            "unit": "ns",
+            "range": "± 5.006199276842942"
           }
         ]
       }
