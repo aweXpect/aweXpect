@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733258103173,
+  "lastUpdate": 1733258825252,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2036,6 +2036,66 @@ window.BENCHMARK_DATA = {
             "value": 808.6387929916382,
             "unit": "ns",
             "range": "± 1.7257583941035248"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "39fce3a3ed9537e5a15a573473451af13c55c54a",
+          "message": "feat: group dependabots updates (#75)\n\nGroup dependabot updates for\r\n- Nuke\r\n- MSTest\r\n- NUnit\r\n- TUnit\r\n- xunit",
+          "timestamp": "2024-12-03T20:43:36Z",
+          "tree_id": "155f27da0789c114d83065dcfda4390278b64f12",
+          "url": "https://github.com/aweXpect/aweXpect/commit/39fce3a3ed9537e5a15a573473451af13c55c54a"
+        },
+        "date": 1733258824905,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 222.36755787531536,
+            "unit": "ns",
+            "range": "± 1.8902936493585012"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 174.40495891230447,
+            "unit": "ns",
+            "range": "± 1.029578794776857"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 610.1325388590495,
+            "unit": "ns",
+            "range": "± 3.095175352842546"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 400.88742586771644,
+            "unit": "ns",
+            "range": "± 2.7358171987684607"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 317.94169966379803,
+            "unit": "ns",
+            "range": "± 1.8143693991080947"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 855.5920168069692,
+            "unit": "ns",
+            "range": "± 2.414049397004243"
           }
         ]
       }
