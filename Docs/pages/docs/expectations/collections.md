@@ -6,6 +6,20 @@ sidebar_position: 13
 
 Describes the possible expectations for collections.
 
+## Be
+
+You can verify, that a collection matches another collection:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().Be([1, 2, 3]);
+await Expect.That(values).Should().Be([3, 2, 1]).InAnyOrder();
+await Expect.That(values).Should().Be([1, 1, 2, 2, 3, 3]).IgnoringDuplicates();
+await Expect.That(values).Should().Be([3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringDuplicates();
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
 ## Have
 Specifications that match the items on a given number of occurrences.
 
