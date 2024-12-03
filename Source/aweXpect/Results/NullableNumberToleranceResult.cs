@@ -38,9 +38,9 @@ public class NullableNumberToleranceResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply on the number comparison.
 	/// </summary>
-	public NullableNumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance)
+	public TSelf Within(TType tolerance)
 	{
 		options.SetTolerance(tolerance);
-		return this;
+		return (TSelf)this;
 	}
 }

@@ -40,22 +40,22 @@ public class ObjectCountResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public ObjectCountResult<TType, TThat, TSelf> Equivalent(
+	public TSelf Equivalent(
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
 	{
 		EquivalencyOptions? equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
 		options.Equivalent(equivalencyOptions);
-		return this;
+		return (TSelf)this;
 	}
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.
 	/// </summary>
-	public ObjectCountResult<TType, TThat, TSelf> Using(
+	public TSelf Using(
 		IEqualityComparer<object> comparer)
 	{
 		options.Using(comparer);
-		return this;
+		return (TSelf)this;
 	}
 }

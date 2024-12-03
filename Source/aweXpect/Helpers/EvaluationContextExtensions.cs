@@ -1,7 +1,5 @@
 ﻿using aweXpect.Core.EvaluationContext;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace aweXpect.Helpers;
 
@@ -33,50 +31,6 @@ internal static class EvaluationContextExtensions
 		return materializedEnumerable;
 	}
 
-	private sealed class MaterializingEnumerable<T> : IEnumerable<T>
-	{
-		private readonly IEnumerator<T> _enumerator;
-		private readonly List<T> _materializedItems = new();
-
-		private MaterializingEnumerable(IEnumerable<T> enumerable)
-		{
-			_enumerator = enumerable.GetEnumerator();
-		}
-
-		#region IEnumerable<T> Members
-
-		/// <inheritdoc />
-		IEnumerator IEnumerable.GetEnumerator()
-			=> GetEnumerator();
-
-		/// <inheritdoc />
-		public IEnumerator<T> GetEnumerator()
-		{
-			foreach (T materializedItem in _materializedItems)
-			{
-				yield return materializedItem;
-			}
-
-			while (_enumerator.MoveNext())
-			{
-				T item = _enumerator.Current;
-				_materializedItems.Add(item);
-				yield return item;
-			}
-		}
-
-		#endregion
-
-		public static IEnumerable<T> Wrap(IEnumerable<T> enumerable)
-		{
-			if (enumerable is ICollection<T> or MaterializingEnumerable<T>)
-			{
-				return enumerable;
-			}
-
-			return new MaterializingEnumerable<T>(enumerable);
-		}
-	}
 #if NET6_0_OR_GREATER
 	private const string MaterializedAsyncEnumerableKey = nameof(MaterializedAsyncEnumerableKey);
 
@@ -101,51 +55,6 @@ internal static class EvaluationContextExtensions
 		// ReSharper disable once PossibleMultipleEnumeration
 		return materializedEnumerable;
 	}
-
-	private sealed class MaterializingAsyncEnumerable<T> : IAsyncEnumerable<T>
-	{
-		private readonly IAsyncEnumerator<T> _enumerator;
-		private readonly List<T> _materializedItems = new();
-
-		private MaterializingAsyncEnumerable(IAsyncEnumerable<T> enumerable)
-		{
-			_enumerator = enumerable.GetAsyncEnumerator();
-		}
-
-		#region IAsyncEnumerable<T> Members
-
-		public async IAsyncEnumerator<T> GetAsyncEnumerator(
-			CancellationToken cancellationToken = default)
-		{
-			foreach (T materializedItem in _materializedItems)
-			{
-				yield return materializedItem;
-			}
-
-			while (await _enumerator.MoveNextAsync())
-			{
-				if (cancellationToken.IsCancellationRequested)
-				{
-					break;
-				}
-
-				T item = _enumerator.Current;
-				_materializedItems.Add(item);
-				yield return item;
-			}
-		}
-
-		#endregion
-
-		public static IAsyncEnumerable<T> Wrap(IAsyncEnumerable<T> enumerable)
-		{
-			if (enumerable is MaterializingAsyncEnumerable<T>)
-			{
-				return enumerable;
-			}
-
-			return new MaterializingAsyncEnumerable<T>(enumerable);
-		}
-	}
 #endif
+
 }

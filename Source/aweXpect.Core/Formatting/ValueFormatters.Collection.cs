@@ -45,6 +45,7 @@ public static partial class ValueFormatters
 		IEnumerable value,
 		FormattingOptions? options = null)
 	{
+		options ??= FormattingOptions.SingleLine;
 		int maxCount = CollectionFormatCount;
 		int count = maxCount;
 		stringBuilder.Append('[');
@@ -53,7 +54,20 @@ public static partial class ValueFormatters
 		{
 			if (count < maxCount)
 			{
-				stringBuilder.Append(", ");
+				if (options.UseLineBreaks)
+				{
+					stringBuilder.AppendLine(",");
+					stringBuilder.Append("  ");
+				}
+				else
+				{
+					stringBuilder.Append(", ");
+				}
+			}
+			else if (options.UseLineBreaks)
+			{
+				stringBuilder.AppendLine();
+				stringBuilder.Append("  ");
 			}
 
 			if (count-- <= 0)
@@ -69,6 +83,11 @@ public static partial class ValueFormatters
 		{
 			const char ellipsis = '\u2026';
 			stringBuilder.Append(ellipsis);
+		}
+
+		if (options.UseLineBreaks)
+		{
+			stringBuilder.AppendLine();
 		}
 
 		stringBuilder.Append(']');

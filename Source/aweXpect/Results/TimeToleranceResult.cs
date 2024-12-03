@@ -36,9 +36,9 @@ public class TimeToleranceResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply on the time comparison.
 	/// </summary>
-	public TimeToleranceResult<TType, TThat, TSelf> Within(TimeSpan tolerance)
+	public TSelf Within(TimeSpan tolerance)
 	{
 		options.SetTolerance(tolerance);
-		return this;
+		return (TSelf)this;
 	}
 }
