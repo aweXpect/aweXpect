@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733050027056,
+  "lastUpdate": 1733258103173,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -1976,6 +1976,66 @@ window.BENCHMARK_DATA = {
             "value": 782.3127005894979,
             "unit": "ns",
             "range": "± 4.073771414081509"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7182e0ba432b7e04c155375d45f5da318d88f001",
+          "message": "feat: add `Be` collection expectations (#74)\n\n* Add an expectation for collection `Be` that takes another collection and verifies, that they have the same values:\n\n```csharp\nint[] subject = [1, 1, 2, 3];\n\nawait That(subject).Should().Be([1, 1, 2, 3]);\nawait That(subject).Should().Be([3, 1, 2, 1]).InAnyOrder();\nawait That(subject).Should().Be([1, 1, 1, 2, 3, 3]).IgnoringDuplicates();\nawait That(subject).Should().Be([3, 3, 2, 1, 1, 1]).IgnoringDuplicates().InAnyOrder();.InAnyOrder();\n```\n\n* Accept API changes\n\n* Support multiline formatting of collections\n\n* Update documentation\n\n* Fix sonar issues",
+          "timestamp": "2024-12-03T20:31:33Z",
+          "tree_id": "0604fbb68443d525dd0de95de7e968d8466b8ea4",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7182e0ba432b7e04c155375d45f5da318d88f001"
+        },
+        "date": 1733258102954,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.1195601775096,
+            "unit": "ns",
+            "range": "± 1.0926488879802327"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 173.18174937793188,
+            "unit": "ns",
+            "range": "± 0.7336825188943256"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 601.4793396631877,
+            "unit": "ns",
+            "range": "± 3.2044268673211387"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 401.4734320004781,
+            "unit": "ns",
+            "range": "± 3.7398624971448506"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 315.30474325815834,
+            "unit": "ns",
+            "range": "± 1.9350356547196275"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 808.6387929916382,
+            "unit": "ns",
+            "range": "± 1.7257583941035248"
           }
         ]
       }
