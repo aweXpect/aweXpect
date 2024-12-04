@@ -10,8 +10,46 @@ namespace aweXpect.Options;
 /// </summary>
 public class CollectionMatchOptions
 {
+	/// <summary>
+	///     Specifies the equivalence relation between subject and expected.
+	/// </summary>
+	public enum EquivalenceRelation
+	{
+		/// <summary>
+		///     The subject and expected collection must be equivalent (have the same items)
+		/// </summary>
+		Equivalent,
+
+		/// <summary>
+		///     The expected collection contains at least one additional item.
+		/// </summary>
+		ProperSubset,
+
+		/// <summary>
+		///     The subject collection contains at least one additional item.
+		/// </summary>
+		ProperSuperset,
+
+		/// <summary>
+		///     The expected collection can contain additional items.
+		/// </summary>
+		Subset,
+
+		/// <summary>
+		///     The subject collection can contain additional items.
+		/// </summary>
+		Superset
+	}
+
+	private EquivalenceRelation _equivalenceRelation = EquivalenceRelation.Equivalent;
 	private bool _ignoringDuplicates;
 	private bool _inAnyOrder;
+
+	/// <summary>
+	///     Specifies the equivalence relation between subject and expected.
+	/// </summary>
+	public void SetEquivalenceRelation(EquivalenceRelation equivalenceRelation)
+		=> _equivalenceRelation = equivalenceRelation;
 
 	/// <summary>
 	///     Ignores the order in the subject and expected values.
@@ -30,10 +68,10 @@ public class CollectionMatchOptions
 		where T : T2
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => new AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(expected),
-			(true, false) => new AnyOrderCollectionMatcher<T, T2>(expected),
-			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(expected),
-			(false, false) => new SameOrderCollectionMatcher<T, T2>(expected)
+			(true, true) => new AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelation, expected),
+			(true, false) => new AnyOrderCollectionMatcher<T, T2>(_equivalenceRelation, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelation, expected),
+			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelation, expected)
 		};
 
 	/// <inheritdoc />
@@ -46,7 +84,10 @@ public class CollectionMatchOptions
 			(false, false) => ""
 		};
 
-	private sealed class AnyOrderCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
+	private sealed class AnyOrderCollectionMatcher<T, T2>(
+		EquivalenceRelation equivalenceRelation,
+		IEnumerable<T> expected)
+		: ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly List<T> expectedList = expected.ToList();
@@ -54,6 +95,7 @@ public class CollectionMatchOptions
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
+			_ = equivalenceRelation;
 			if (expectedList.All(e => !options.AreConsideredEqual(value, e)))
 			{
 				return
@@ -80,7 +122,9 @@ public class CollectionMatchOptions
 		public void Dispose() => _index = -1;
 	}
 
-	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
+	private sealed class AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
+		EquivalenceRelation equivalenceRelation,
+		IEnumerable<T> expected) : ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly HashSet<T> _uniqueItems = new();
@@ -89,6 +133,7 @@ public class CollectionMatchOptions
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
+			_ = equivalenceRelation;
 			if (_uniqueItems.Contains(value))
 			{
 				return null;
@@ -122,7 +167,10 @@ public class CollectionMatchOptions
 		public void Dispose() => _index = -1;
 	}
 
-	private sealed class SameOrderCollectionMatcher<T, T2>(IEnumerable<T> expected) : ICollectionMatcher<T, T2>
+	private sealed class SameOrderCollectionMatcher<T, T2>(
+		EquivalenceRelation equivalenceRelation,
+		IEnumerable<T> expected)
+		: ICollectionMatcher<T, T2>
 		where T : T2
 	{
 		private readonly IEnumerator<T> _expectedEnumerator = MaterializingEnumerable<T>.Wrap(expected).GetEnumerator();
@@ -130,6 +178,7 @@ public class CollectionMatchOptions
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
+			_ = equivalenceRelation;
 			if (!_expectedEnumerator.MoveNext())
 			{
 				return $"{it} contained item {Formatter.Format(value)} at index {_index++} that was not expected";
@@ -173,7 +222,9 @@ public class CollectionMatchOptions
 		}
 	}
 
-	private sealed class SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(IEnumerable<T> expected)
+	private sealed class SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(
+		EquivalenceRelation equivalenceRelation,
+		IEnumerable<T> expected)
 		: ICollectionMatcher<T, T2>
 		where T : T2
 	{
@@ -183,6 +234,7 @@ public class CollectionMatchOptions
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
+			_ = equivalenceRelation;
 			if (_uniqueItems.Contains(value))
 			{
 				return null;

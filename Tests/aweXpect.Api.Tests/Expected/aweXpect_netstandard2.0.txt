@@ -150,7 +150,7 @@ namespace aweXpect
     }
     public static class ThatEnumerableShould
     {
-        public static aweXpect.Results.ObjectCollectionMatchResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Be<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.CollectionBeResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Be<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
         public static aweXpect.Results.ObjectCountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
         public static aweXpect.Results.CountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
@@ -743,7 +743,16 @@ namespace aweXpect.Options
             where T : T2 { }
         public void IgnoringDuplicates() { }
         public void InAnyOrder() { }
+        public void SetEquivalenceRelation(aweXpect.Options.CollectionMatchOptions.EquivalenceRelation equivalenceRelation) { }
         public override string ToString() { }
+        public enum EquivalenceRelation
+        {
+            Equivalent = 0,
+            ProperSubset = 1,
+            ProperSuperset = 2,
+            Subset = 3,
+            Superset = 4,
+        }
     }
     public class EquivalencyOptions
     {
@@ -813,6 +822,14 @@ namespace aweXpect.Options
 }
 namespace aweXpect.Results
 {
+    public class CollectionBeResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>
+    {
+        public CollectionBeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> AndLess() { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> AndMore() { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> OrLess() { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> OrMore() { }
+    }
     public class CountResult<TType, TThat> : aweXpect.Results.CountResult<TType, TThat, aweXpect.Results.CountResult<TType, TThat>>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }

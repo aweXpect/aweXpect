@@ -19,7 +19,7 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the actual enumerable matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static CollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Be<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
@@ -27,7 +27,7 @@ public static partial class ThatAsyncEnumerableShould
 	{
 		ObjectEqualityOptions options = new ObjectEqualityOptions();
 		CollectionMatchOptions matchOptions = new CollectionMatchOptions();
-		return new ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new CollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
