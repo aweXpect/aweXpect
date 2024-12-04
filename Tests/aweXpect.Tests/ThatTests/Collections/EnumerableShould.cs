@@ -13,6 +13,13 @@ public partial class EnumerableShould
 			yield return item;
 		}
 	}
+	public static IEnumerable<string> ToEnumerable(string[] items)
+	{
+		foreach (string item in items)
+		{
+			yield return item;
+		}
+	}
 
 	/// <summary>
 	///     Returns an <see cref="IEnumerable{T}" /> with incrementing numbers, starting with 0, which cancels the

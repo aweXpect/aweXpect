@@ -43,7 +43,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 		{
-			IEnumerable<int> subject = ToEnumerable([]);
+			IEnumerable<int> subject = ToEnumerable((int[])[]);
 
 			async Task Act()
 				=> await That(subject).Should().BeEmpty();
@@ -91,7 +91,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldFail()
 		{
-			IEnumerable<int> subject = ToEnumerable([]);
+			IEnumerable<int> subject = ToEnumerable((int[])[]);
 
 			async Task Act()
 				=> await That(subject).Should().NotBeEmpty();
