@@ -117,7 +117,6 @@ jobs:
                     fail-on-alert: true
                     alert-threshold: '150%'
                     comment-on-alert: true
-                    alert-comment-cc-users: '@vbreuss'
                     auto-push: false
     
     static-code-analysis:
