@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733260496145,
+  "lastUpdate": 1733501987581,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2276,6 +2276,66 @@ window.BENCHMARK_DATA = {
             "value": 818.5813244410923,
             "unit": "ns",
             "range": "± 3.422649710408521"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "99a16b62ae772d049e48e0c75146e884762ffc08",
+          "message": "feat: support `AndMore`/`AndLess`/`OrMore`/`OrLess` for collections (#78)\n\nImplements #69 with a different syntax:\nYou can now specify e.g. `OrMore()` to indicate that the subject could have more items than expected (it is a superset of the expected)\n\n```csharp\nint[] subject = [1, 1, 2, 3];\n\nawait That(subject).Should().Be([1, 2]).OrMore();\nawait That(subject).Should().Be([2, 1]).OrMore().InAnyOrder();\nawait That(subject).Should().Be([0, 1, 1, 2, 3, 4]).OrLess();\nawait That(subject).Should().Be([2, 1, 3, 1, 4]).OrLess().InAnyOrder();\n```\n\n* Add benchmarks\n* Update documentation\n* Accept API changes",
+          "timestamp": "2024-12-06T17:16:26+01:00",
+          "tree_id": "a49a0f62fb1412601a667f40799e084905a3e3e2",
+          "url": "https://github.com/aweXpect/aweXpect/commit/99a16b62ae772d049e48e0c75146e884762ffc08"
+        },
+        "date": 1733501987212,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.8565366608756,
+            "unit": "ns",
+            "range": "± 1.8927240702858086"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 175.62156052248818,
+            "unit": "ns",
+            "range": "± 1.0588917152787667"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 612.2995441876925,
+            "unit": "ns",
+            "range": "± 3.9009523761366838"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 407.7681656201681,
+            "unit": "ns",
+            "range": "± 1.2375293000980225"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 321.59520309312,
+            "unit": "ns",
+            "range": "± 1.6093398446856908"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 832.856679280599,
+            "unit": "ns",
+            "range": "± 6.5679063443531565"
           }
         ]
       }
