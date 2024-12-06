@@ -77,6 +77,27 @@ public sealed partial class AsyncEnumerableShould
 			}
 
 			[Fact]
+			public async Task AnyOrder_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldFail()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndMore().InAnyOrder();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             match collection expected and at least one more item in any order,
+					             but it
+					               did not contain any additional items and
+					               lacked 2 of 6 expected items:
+					                 "a",
+					                 "e"
+					             """);
+			}
+
+			[Fact]
 			public async Task AnyOrder_WithAdditionalItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
@@ -332,6 +353,27 @@ public sealed partial class AsyncEnumerableShould
 					               "x",
 					               "y",
 					               "z"
+					             """);
+			}
+
+			[Fact]
+			public async Task AnyOrderIgnoringDuplicates_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldFail()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndMore().InAnyOrder().IgnoringDuplicates();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             match collection expected and at least one more item in any order ignoring duplicates,
+					             but it
+					               did not contain any additional items and
+					               lacked 2 of 5 expected items:
+					                 "a",
+					                 "e"
 					             """);
 			}
 
@@ -650,6 +692,25 @@ public sealed partial class AsyncEnumerableShould
 			}
 
 			[Fact]
+			public async Task SameOrder_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldFail()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndMore();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             match collection expected and at least one more item,
+					             but it lacked 2 of 6 expected items:
+					               "a",
+					               "e"
+					             """);
+			}
+
+			[Fact]
 			public async Task SameOrder_WithAdditionalItem_ShouldSucceed()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
@@ -931,6 +992,25 @@ public sealed partial class AsyncEnumerableShould
 					               "x",
 					               "y",
 					               "z"
+					             """);
+			}
+
+			[Fact]
+			public async Task SameOrderIgnoringDuplicates_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldFail()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndMore().IgnoringDuplicates();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             match collection expected and at least one more item ignoring duplicates,
+					             but it lacked 2 of 5 expected items:
+					               "a",
+					               "e"
 					             """);
 			}
 

@@ -13,6 +13,7 @@ public partial class CollectionMatchOptions
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelation _equivalenceRelation;
 		private readonly T[] _expectedDistinctItems;
+		private readonly List<T> _foundItems = new();
 		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
 		private readonly List<T> _matchingItems = new();
 		private readonly List<T> _missingItems = new();
@@ -32,6 +33,11 @@ public partial class CollectionMatchOptions
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
+			if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			{
+				_foundItems.Add(value);
+			}
+
 			if (_matchIndex >= _expectedDistinctItems.Length)
 			{
 				if (!_uniqueItems.Add(value))
@@ -120,6 +126,30 @@ public partial class CollectionMatchOptions
 				if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
 				{
 					return $"{it} was very different (> 20 deviations)";
+				}
+			}
+
+			if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset) &&
+			    !_incorrectItems.Any())
+			{
+				T[] foundItems = _foundItems.Distinct().ToArray();
+				for (int i = 0; i < _expectedDistinctItems.Length - foundItems.Length; i++)
+				{
+					bool isMatch = true;
+					for (int j = 0; j < foundItems.Length; j++)
+					{
+						if (!options.AreConsideredEqual(foundItems[j], _expectedDistinctItems[i + j]))
+						{
+							isMatch = false;
+							break;
+						}
+					}
+
+					if (isMatch)
+					{
+						_additionalItems.Clear();
+						break;
+					}
 				}
 			}
 

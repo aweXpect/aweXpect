@@ -76,6 +76,18 @@ public sealed partial class AsyncEnumerableShould
 			}
 
 			[Fact]
+			public async Task AnyOrder_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndLess().InAnyOrder();
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
 			public async Task AnyOrder_WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
@@ -327,6 +339,18 @@ public sealed partial class AsyncEnumerableShould
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
 					             """);
+			}
+
+			[Fact]
+			public async Task AnyOrderIgnoringDuplicates_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndLess().InAnyOrder().IgnoringDuplicates();
+
+				await That(Act).Should().NotThrow();
 			}
 
 			[Fact]
@@ -611,6 +635,18 @@ public sealed partial class AsyncEnumerableShould
 			}
 
 			[Fact]
+			public async Task SameOrder_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndLess();
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
 			public async Task SameOrder_WithAdditionalItem_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
@@ -877,6 +913,18 @@ public sealed partial class AsyncEnumerableShould
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
 					             """);
+			}
+
+			[Fact]
+			public async Task SameOrderIgnoringDuplicates_WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
+				string[] expected = ["a", "b", "b", "c", "d", "e"];
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AndLess().IgnoringDuplicates();
+
+				await That(Act).Should().NotThrow();
 			}
 
 			[Fact]

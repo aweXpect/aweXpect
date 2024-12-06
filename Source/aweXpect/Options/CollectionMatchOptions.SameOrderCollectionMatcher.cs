@@ -13,6 +13,7 @@ public partial class CollectionMatchOptions
 		private readonly Dictionary<int, T> _additionalItems = new();
 		private readonly EquivalenceRelation _equivalenceRelation;
 		private readonly T[] _expectedItems;
+		private readonly List<T> _foundItems = new();
 		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
 		private readonly List<T> _matchingItems = new();
 		private readonly List<T> _missingItems = new();
@@ -31,6 +32,11 @@ public partial class CollectionMatchOptions
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
+			if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			{
+				_foundItems.Add(value);
+			}
+
 			if (_matchIndex >= _expectedItems.Length)
 			{
 				// All expected items were found -> additional items
@@ -65,17 +71,18 @@ public partial class CollectionMatchOptions
 							{
 								movedMatch = true;
 								_matchIndex += i;
-								
+
 								for (int j = 0; j < i; j++)
 								{
 									_missingItems.Add(_matchingItems[j]);
 								}
+
 								break;
 							}
 						}
 					}
 				}
-				
+
 				if (!movedMatch)
 				{
 					if (_expectationIndex >= 0)
@@ -140,7 +147,30 @@ public partial class CollectionMatchOptions
 					}
 				}
 			}
-			
+
+			if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset) &&
+			    !_incorrectItems.Any())
+			{
+				for (int i = 0; i < _expectedItems.Length - _foundItems.Count; i++)
+				{
+					bool isMatch = true;
+					for (int j = 0; j < _foundItems.Count; j++)
+					{
+						if (!options.AreConsideredEqual(_foundItems[j], _expectedItems[i + j]))
+						{
+							isMatch = false;
+							break;
+						}
+					}
+
+					if (isMatch)
+					{
+						_additionalItems.Clear();
+						break;
+					}
+				}
+			}
+
 			List<string> errors = new();
 			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedItems, _equivalenceRelation));
 			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Superset))
