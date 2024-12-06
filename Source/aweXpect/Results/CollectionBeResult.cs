@@ -19,9 +19,11 @@ public class CollectionBeResult<TType, TThat>(
 	private readonly CollectionMatchOptions _collectionMatchOptions = collectionMatchOptions;
 
 	/// <summary>
-	///     Verifies that all items in the subject are expected, but expected contains at least one more item. This means, that
-	///     subject is a proper subset of the expected collection.
+	///     Verifies that all items in the subject are expected, but expected contains at least one more item.
 	/// </summary>
+	/// <remarks>
+	///     This means, that the subject is a proper subset of the expected collection.
+	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> AndLess()
 	{
 		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelation.ProperSubset);
@@ -29,9 +31,11 @@ public class CollectionBeResult<TType, TThat>(
 	}
 
 	/// <summary>
-	///     Verifies that the subject contain all expected items and at least one additional item. This means, that subject is
-	///     a proper superset of the expected collection.
+	///     Verifies that the subject contain all expected items and at least one additional item.
 	/// </summary>
+	/// <remarks>
+	///     This means, that the subject is a proper superset of the expected collection.
+	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> AndMore()
 	{
 		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelation.ProperSuperset);
@@ -39,9 +43,11 @@ public class CollectionBeResult<TType, TThat>(
 	}
 
 	/// <summary>
-	///     Verifies that all items in the subject are expected, but expected could contain more items. This means, that
-	///     subject is a subset of the expected collection.
+	///     Verifies that all items in the subject are expected, but expected could contain more items.
 	/// </summary>
+	/// <remarks>
+	///     This means, that the subject is a subset of the expected collection.
+	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> OrLess()
 	{
 		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelation.Subset);
@@ -49,9 +55,11 @@ public class CollectionBeResult<TType, TThat>(
 	}
 
 	/// <summary>
-	///     Verifies that the subject contain all expected items, but can also contain more items. This means, that subject is
-	///     a superset of the expected collection.
+	///     Verifies that the subject contain all expected items, but can also contain more items.
 	/// </summary>
+	/// <remarks>
+	///     This means, that the subject is a superset of the expected collection.
+	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> OrMore()
 	{
 		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelation.Superset);
