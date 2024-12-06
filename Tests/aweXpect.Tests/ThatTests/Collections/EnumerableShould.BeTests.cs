@@ -39,18 +39,18 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order,
-				             but it contained
-				               item 1 at index 0 that was not expected and
-				               item 2 at index 1 that was not expected and
-				               item 3 at index 2 that was not expected and
-				               item 4 at index 3 that was not expected and
-				               item 5 at index 4 that was not expected and
-				               item 6 at index 5 that was not expected and
-				               item 7 at index 6 that was not expected and
-				               item 8 at index 7 that was not expected and
-				               item 9 at index 8 that was not expected and
-				               item 10 at index 9 that was not expected and
-				               it lacked 10 of 10 expected items:
+				             but it
+				               contained item 1 at index 0 that was not expected and
+				               contained item 2 at index 1 that was not expected and
+				               contained item 3 at index 2 that was not expected and
+				               contained item 4 at index 3 that was not expected and
+				               contained item 5 at index 4 that was not expected and
+				               contained item 6 at index 5 that was not expected and
+				               contained item 7 at index 6 that was not expected and
+				               contained item 8 at index 7 that was not expected and
+				               contained item 9 at index 8 that was not expected and
+				               contained item 10 at index 9 that was not expected and
+				               lacked 10 of 10 expected items:
 				                 101,
 				                 102,
 				                 103,
@@ -77,10 +77,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order,
-				             but it contained
-				               item "d" at index 3 that was not expected and
-				               item "e" at index 4 that was not expected and
-				               it lacked 3 of 6 expected items:
+				             but it
+				               contained item "d" at index 3 that was not expected and
+				               contained item "e" at index 4 that was not expected and
+				               lacked 3 of 6 expected items:
 				                 "x",
 				                 "y",
 				                 "z"
@@ -117,9 +117,9 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order,
-				             but it contained
-				               item "d" at index 3 that was not expected and
-				               item "e" at index 4 that was not expected
+				             but it
+				               contained item "d" at index 3 that was not expected and
+				               contained item "e" at index 4 that was not expected
 				             """);
 		}
 
@@ -302,18 +302,18 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order ignoring duplicates,
-				             but it contained
-				               item 1 at index 0 that was not expected and
-				               item 2 at index 1 that was not expected and
-				               item 3 at index 2 that was not expected and
-				               item 4 at index 3 that was not expected and
-				               item 5 at index 4 that was not expected and
-				               item 6 at index 5 that was not expected and
-				               item 7 at index 6 that was not expected and
-				               item 8 at index 7 that was not expected and
-				               item 9 at index 8 that was not expected and
-				               item 10 at index 9 that was not expected and
-				               it lacked 10 of 10 expected items:
+				             but it
+				               contained item 1 at index 0 that was not expected and
+				               contained item 2 at index 1 that was not expected and
+				               contained item 3 at index 2 that was not expected and
+				               contained item 4 at index 3 that was not expected and
+				               contained item 5 at index 4 that was not expected and
+				               contained item 6 at index 5 that was not expected and
+				               contained item 7 at index 6 that was not expected and
+				               contained item 8 at index 7 that was not expected and
+				               contained item 9 at index 8 that was not expected and
+				               contained item 10 at index 9 that was not expected and
+				               lacked 10 of 10 expected items:
 				                 101,
 				                 102,
 				                 103,
@@ -340,10 +340,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order ignoring duplicates,
-				             but it contained
-				               item "d" at index 3 that was not expected and
-				               item "e" at index 4 that was not expected and
-				               it lacked 3 of 6 expected items:
+				             but it
+				               contained item "d" at index 3 that was not expected and
+				               contained item "e" at index 4 that was not expected and
+				               lacked 3 of 6 expected items:
 				                 "x",
 				                 "y",
 				                 "z"
@@ -380,9 +380,9 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected in any order ignoring duplicates,
-				             but it contained
-				               item "d" at index 3 that was not expected and
-				               item "e" at index 4 that was not expected
+				             but it
+				               contained item "d" at index 3 that was not expected and
+				               contained item "e" at index 4 that was not expected
 				             """);
 		}
 
@@ -583,18 +583,18 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it contained
-				               item 1 at index 0 instead of 101 and
-				               item 2 at index 1 instead of 102 and
-				               item 3 at index 2 instead of 103 and
-				               item 4 at index 3 instead of 104 and
-				               item 5 at index 4 instead of 105 and
-				               item 6 at index 5 instead of 106 and
-				               item 7 at index 6 instead of 107 and
-				               item 8 at index 7 instead of 108 and
-				               item 9 at index 8 instead of 109 and
-				               item 10 at index 9 instead of 110 and
-				               it lacked 10 of 10 expected items:
+				             but it
+				               contained item 1 at index 0 that was not expected and
+				               contained item 2 at index 1 that was not expected and
+				               contained item 3 at index 2 that was not expected and
+				               contained item 4 at index 3 that was not expected and
+				               contained item 5 at index 4 that was not expected and
+				               contained item 6 at index 5 that was not expected and
+				               contained item 7 at index 6 that was not expected and
+				               contained item 8 at index 7 that was not expected and
+				               contained item 9 at index 8 that was not expected and
+				               contained item 10 at index 9 that was not expected and
+				               lacked 10 of 10 expected items:
 				                 101,
 				                 102,
 				                 103,
@@ -621,10 +621,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it contained
-				               item "d" at index 3 instead of "x" and
-				               item "e" at index 4 instead of "y" and
-				               it lacked 3 of 6 expected items:
+				             but it
+				               contained item "d" at index 3 instead of "x" and
+				               contained item "e" at index 4 instead of "y" and
+				               lacked 3 of 6 expected items:
 				                 "x",
 				                 "y",
 				                 "z"
@@ -661,9 +661,9 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it contained
-				               item "d" at index 3 that was not expected and
-				               item "e" at index 4 that was not expected
+				             but it
+				               contained item "d" at index 3 that was not expected and
+				               contained item "e" at index 4 that was not expected
 				             """);
 		}
 
@@ -680,9 +680,9 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it contained
-				               item "c" at index 1 instead of "b" and
-				               item "b" at index 2 instead of "c"
+				             but it
+				               contained item "c" at index 1 instead of "b" and
+				               contained item "b" at index 2 instead of "c"
 				             """);
 		}
 
@@ -733,10 +733,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it contained
-				               item "b" at index 1 instead of "a" and
-				               item "c" at index 2 instead of "b" and
-				               it lacked 1 of 4 expected items: "a"
+				             but it
+				               contained item "b" at index 1 instead of "a" and
+				               contained item "c" at index 2 instead of "b" and
+				               lacked 1 of 4 expected items: "a"
 				             """);
 		}
 
@@ -753,10 +753,7 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected,
-				             but it contained
-				               item "a" at index 1 instead of "b" and
-				               item "b" at index 2 instead of "c" and
-				               item "c" at index 3 that was not expected
+				             but it contained item "a" at index 0 that was not expected
 				             """);
 		}
 
@@ -878,18 +875,18 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected ignoring duplicates,
-				             but it contained
-				               item 1 at index 0 instead of 101 and
-				               item 2 at index 1 instead of 102 and
-				               item 3 at index 2 instead of 103 and
-				               item 4 at index 3 instead of 104 and
-				               item 5 at index 4 instead of 105 and
-				               item 6 at index 5 instead of 106 and
-				               item 7 at index 6 instead of 107 and
-				               item 8 at index 7 instead of 108 and
-				               item 9 at index 8 instead of 109 and
-				               item 10 at index 9 instead of 110 and
-				               it lacked 10 of 10 expected items:
+				             but it
+				               contained item 1 at index 0 that was not expected and
+				               contained item 2 at index 1 that was not expected and
+				               contained item 3 at index 2 that was not expected and
+				               contained item 4 at index 3 that was not expected and
+				               contained item 5 at index 4 that was not expected and
+				               contained item 6 at index 5 that was not expected and
+				               contained item 7 at index 6 that was not expected and
+				               contained item 8 at index 7 that was not expected and
+				               contained item 9 at index 8 that was not expected and
+				               contained item 10 at index 9 that was not expected and
+				               lacked 10 of 10 expected items:
 				                 101,
 				                 102,
 				                 103,
@@ -916,10 +913,10 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected ignoring duplicates,
-				             but it contained
-				               item "d" at index 3 instead of "x" and
-				               item "e" at index 4 instead of "y" and
-				               it lacked 3 of 6 expected items:
+				             but it
+				               contained item "d" at index 3 instead of "x" and
+				               contained item "e" at index 4 instead of "y" and
+				               lacked 3 of 6 expected items:
 				                 "x",
 				                 "y",
 				                 "z"
@@ -956,9 +953,9 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected ignoring duplicates,
-				             but it contained
-				               item "d" at index 3 that was not expected and
-				               item "e" at index 4 that was not expected
+				             but it
+				               contained item "d" at index 3 that was not expected and
+				               contained item "e" at index 4 that was not expected
 				             """);
 		}
 
@@ -975,9 +972,9 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             match collection expected ignoring duplicates,
-				             but it contained
-				               item "c" at index 1 instead of "b" and
-				               item "b" at index 2 instead of "c"
+				             but it
+				               contained item "c" at index 1 instead of "b" and
+				               contained item "b" at index 2 instead of "c"
 				             """);
 		}
 

@@ -101,7 +101,7 @@ namespace aweXpect.Core
     {
         public static aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> memberSelector, string displayName, bool replaceIt = true) { }
     }
-    public interface ICollectionMatcher<in T, out T2> : System.IDisposable
+    public interface ICollectionMatcher<in T, out T2>
         where in T : T2
     {
         string? Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options);

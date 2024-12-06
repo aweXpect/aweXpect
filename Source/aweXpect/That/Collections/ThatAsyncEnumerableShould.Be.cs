@@ -49,8 +49,7 @@ public static partial class ThatAsyncEnumerableShould
 		{
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			using ICollectionMatcher<TItem, object?> matcher =
-				matchOptions.GetCollectionMatcher<TItem, object?>(expected);
+			ICollectionMatcher<TItem, object?> matcher = matchOptions.GetCollectionMatcher<TItem, object?>(expected);
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				string? failure = matcher.Verify(it, item, options);

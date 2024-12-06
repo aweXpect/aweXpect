@@ -44,8 +44,7 @@ public static partial class ThatEnumerableShould
 		{
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			using ICollectionMatcher<TItem, object?> matcher =
-				matchOptions.GetCollectionMatcher<TItem, object?>(expected);
+			ICollectionMatcher<TItem, object?> matcher = matchOptions.GetCollectionMatcher<TItem, object?>(expected);
 			foreach (TItem item in materializedEnumerable)
 			{
 				string? failure = matcher.Verify(it, item, options);

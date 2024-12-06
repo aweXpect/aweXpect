@@ -745,13 +745,14 @@ namespace aweXpect.Options
         public void InAnyOrder() { }
         public void SetEquivalenceRelation(aweXpect.Options.CollectionMatchOptions.EquivalenceRelation equivalenceRelation) { }
         public override string ToString() { }
+        [System.Flags]
         public enum EquivalenceRelation
         {
-            Equivalent = 0,
-            ProperSubset = 1,
-            ProperSuperset = 2,
-            Subset = 3,
-            Superset = 4,
+            Equivalent = 1,
+            ProperSubset = 6,
+            ProperSuperset = 10,
+            Subset = 4,
+            Superset = 8,
         }
     }
     public class EquivalencyOptions

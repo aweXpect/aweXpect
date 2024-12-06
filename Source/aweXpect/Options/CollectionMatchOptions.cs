@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using aweXpect.Core;
+using aweXpect.Helpers;
 
 namespace aweXpect.Options;
 
@@ -93,4 +96,95 @@ public partial class CollectionMatchOptions
 			EquivalenceRelation.ProperSubset => " and at least one item less",
 			_ => ""
 		};
+
+	private static string? ReturnErrorString(string it, List<string> errors)
+	{
+		if (errors.Count > 0)
+		{
+			if (errors.Count > 1)
+			{
+				StringBuilder sb = new();
+				sb.Append(it);
+				foreach (string error in errors)
+				{
+					sb.AppendLine().Append(error.Indent()).Append(" and");
+				}
+
+				sb.Length -= 4;
+				return sb.ToString();
+			}
+
+			return $"{it} {errors.Single()}";
+		}
+
+		return null;
+	}
+
+		private static IEnumerable<string> AdditionalItemsError<T>(Dictionary<int, T> additionalItems,
+			EquivalenceRelation equivalenceRelation)
+		{
+			bool hasAdditionalItems = additionalItems.Any();
+			if (hasAdditionalItems)
+			{
+				foreach (KeyValuePair<int, T> additionalItem in additionalItems)
+				{
+					yield return
+						$"contained item {Formatter.Format(additionalItem.Value)} at index {additionalItem.Key} that was not expected";
+				}
+			}
+		}
+
+		private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems,
+			T[] expectedItems,
+			EquivalenceRelation equivalenceRelation)
+		{
+			bool hasIncorrectItems = incorrectItems.Any();
+			if (hasIncorrectItems)
+			{
+				foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
+				{
+					if (equivalenceRelation.HasFlag(EquivalenceRelation.Superset) &&
+					    !expectedItems.Contains(incorrectItem.Value.Item))
+					{
+						continue;
+					}
+
+					yield return
+						$"contained item {Formatter.Format(incorrectItem.Value.Item)} at index {incorrectItem.Key} instead of {Formatter.Format(incorrectItem.Value.Expected)}";
+				}
+			}
+		}
+
+		private static IEnumerable<string> MissingItemsError<T>(int total, List<T> missingItems,
+			EquivalenceRelation equivalenceRelation)
+		{
+			bool hasMissingItems = missingItems.Any();
+			if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			{
+				if (missingItems.Count == 1)
+				{
+					yield return
+						$"lacked {missingItems.Count} of {total} expected items: {Formatter.Format(missingItems.Single())}";
+					yield break;
+				}
+
+				StringBuilder sb = new();
+				sb.Append("lacked ").Append(missingItems.Count).Append(" of ")
+					.Append(total).Append(" expected items:");
+				foreach (T? missingItem in missingItems)
+				{
+					sb.AppendLine().Append("  ");
+					Formatter.Format(sb, missingItem);
+					sb.Append(",");
+				}
+
+				sb.Length--;
+				yield return sb.ToString();
+			}
+
+			if (!hasMissingItems && equivalenceRelation.HasFlag(EquivalenceRelation.ProperSubset))
+			{
+				yield return "did contain all expected items";
+			}
+		}
 }

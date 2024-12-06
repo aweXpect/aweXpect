@@ -15,7 +15,7 @@ public sealed partial class AsyncEnumerableShould
 			using CancellationTokenSource cts = new();
 			cts.Cancel();
 			CancellationToken token = cts.Token;
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([]);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 			async Task Act()
 				=> await That(subject).Should().BeEmpty().WithCancellation(token);
@@ -84,7 +84,7 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 		{
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([]);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 			async Task Act()
 				=> await That(subject).Should().BeEmpty();
@@ -109,7 +109,7 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldFail()
 		{
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([]);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 			async Task Act()
 				=> await That(subject).Should().NotBeEmpty();

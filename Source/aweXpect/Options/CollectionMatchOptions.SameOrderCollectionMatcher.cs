@@ -1,144 +1,167 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using aweXpect.Core;
-using aweXpect.Helpers;
 
 namespace aweXpect.Options;
 
 public partial class CollectionMatchOptions
 {
-	private sealed class SameOrderCollectionMatcher<T, T2>(
-		EquivalenceRelation equivalenceRelation,
-		IEnumerable<T> expected)
-		: ICollectionMatcher<T, T2>
+	private sealed class SameOrderCollectionMatcher<T, T2> : ICollectionMatcher<T, T2>
 		where T : T2
 	{
-		private readonly Dictionary<int, (T Item, T? Expected)> _additionalItems = new();
-		private readonly IEnumerator<T> _expectedEnumerator = MaterializingEnumerable<T>.Wrap(expected).GetEnumerator();
+		private readonly Dictionary<int, T> _additionalItems = new();
+		private readonly EquivalenceRelation _equivalenceRelation;
+		private readonly T[] _expectedItems;
+		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
+		private readonly List<T> _matchingItems = new();
 		private readonly List<T> _missingItems = new();
+		private readonly int _totalExpectedItems;
+		private int _expectationIndex = -1;
 		private int _index;
+		private int _matchIndex;
+
+		public SameOrderCollectionMatcher(EquivalenceRelation equivalenceRelation,
+			IEnumerable<T> expected)
+		{
+			_equivalenceRelation = equivalenceRelation;
+			_expectedItems = expected.ToArray();
+			_totalExpectedItems = _expectedItems.Length;
+		}
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
-			if (!_expectedEnumerator.MoveNext())
+			if (_matchIndex >= _expectedItems.Length)
 			{
-				_additionalItems.Add(_index, (value, default));
+				// All expected items were found -> additional items
+				_additionalItems.Add(_index, value);
 			}
-			else if (!options.AreConsideredEqual(value, _expectedEnumerator.Current))
+			else if (options.AreConsideredEqual(value, _expectedItems[_matchIndex]))
 			{
-				if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value.Item, _expectedEnumerator.Current)))
+				// The current value is equal to the expected value
+				_matchIndex++;
+				_expectationIndex++;
+				_matchingItems.Add(value);
+			}
+			else
+			{
+				bool movedMatch = false;
+				if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset) && _matchIndex > 0)
 				{
-					_missingItems.Add(_expectedEnumerator.Current);
+					for (int i = 1; i < _expectedItems.Length - _matchingItems.Count; i++)
+					{
+						if (options.AreConsideredEqual(value, _expectedItems[_matchIndex + i]))
+						{
+							bool couldBeMatch = true;
+							for (int j = 0; j < _matchingItems.Count; j++)
+							{
+								if (!options.AreConsideredEqual(_matchingItems[j], _expectedItems[j + i]))
+								{
+									couldBeMatch = false;
+								}
+							}
+
+							if (couldBeMatch)
+							{
+								movedMatch = true;
+								_matchIndex += i;
+								
+								for (int j = 0; j < i; j++)
+								{
+									_missingItems.Add(_matchingItems[j]);
+								}
+								break;
+							}
+						}
+					}
+				}
+				
+				if (!movedMatch)
+				{
+					if (_expectationIndex >= 0)
+					{
+						_expectationIndex++;
+					}
+
+					_matchIndex = 0;
 				}
 
-				_additionalItems.Add(_index, (value, _expectedEnumerator.Current));
+				if (options.AreConsideredEqual(value, _expectedItems[_matchIndex]))
+				{
+					if (!movedMatch)
+					{
+						for (int i = _index - _matchingItems.Count; i < _index; i++)
+						{
+							_additionalItems.Add(i, _matchingItems[i]);
+						}
+					}
+
+					_matchingItems.Clear();
+					_matchIndex++;
+					_expectationIndex = 0;
+					_matchingItems.Add(value);
+				}
+				else if (movedMatch || _expectationIndex < 0 || _expectationIndex >= _expectedItems.Length)
+				{
+					_additionalItems.Add(_index, value);
+				}
+				else
+				{
+					_incorrectItems.Add(_index, (value, _expectedItems[_expectationIndex]));
+				}
 			}
 
-			if (_additionalItems.Count + _missingItems.Count > 20)
+			if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
 			{
 				return $"{it} was very different (> 20 deviations)";
 			}
 
 			_index++;
-			_missingItems.Remove(value);
 			return null;
 		}
 
 		public string? VerifyComplete(string it, IOptionsEquality<T2> options)
 		{
-			int total = _index;
-			while (_expectedEnumerator.MoveNext())
+			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _matchIndex);
+			if (_expectedItems.Length > consideredExpectedItems)
 			{
-				total++;
-				if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value.Item, _expectedEnumerator.Current)))
+				for (int i = consideredExpectedItems; i < _expectedItems.Length; i++)
 				{
-					_missingItems.Add(_expectedEnumerator.Current);
+					T item = _expectedItems[i];
+					if (_additionalItems.All(x => !options.AreConsideredEqual(x.Value, item)) &&
+					    _incorrectItems.All(x => !options.AreConsideredEqual(x.Value.Item, item)))
+					{
+						_missingItems.Add(item);
+					}
+
+					if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
+					{
+						return $"{it} was very different (> 20 deviations)";
+					}
 				}
-
-				if (_additionalItems.Count + _missingItems.Count > 20)
-				{
-					return $"{it} was very different (> 20 deviations)";
-				}
 			}
-
-			string? missingItemsError = MissingItemsError(it, total, _missingItems, equivalenceRelation);
-			bool hasAdditionalItems = _additionalItems.Any();
-			if (hasAdditionalItems && !equivalenceRelation.HasFlag(EquivalenceRelation.Superset))
+			
+			List<string> errors = new();
+			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedItems, _equivalenceRelation));
+			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Superset))
 			{
-				if (_additionalItems.Count == 1)
-				{
-					KeyValuePair<int, (T Item, T? Expected)> firstAdditionalItem = _additionalItems.Single();
-					return AppendIfNotNull(firstAdditionalItem.Value.Expected is null
-							? $"{it} contained item {Formatter.Format(firstAdditionalItem.Value.Item)} at index {firstAdditionalItem.Key} that was not expected"
-							: $"{it} contained item {Formatter.Format(firstAdditionalItem.Value.Item)} at index {firstAdditionalItem.Key} instead of {Formatter.Format(firstAdditionalItem.Value.Expected)}",
-						missingItemsError, "  ");
-				}
-
-				return AppendIfNotNull($"{it} contained{Environment.NewLine}" + string.Join(
-						$" and{Environment.NewLine}", _additionalItems.Select(x => x.Value.Expected is null
-							? $"  item {Formatter.Format(x.Value.Item)} at index {x.Key} that was not expected"
-							: $"  item {Formatter.Format(x.Value.Item)} at index {x.Key} instead of {Formatter.Format(x.Value.Expected)}")),
-					missingItemsError, "  ");
+				errors.AddRange(AdditionalItemsError(_additionalItems, _equivalenceRelation));
 			}
-
-			if (!hasAdditionalItems && equivalenceRelation.HasFlag(EquivalenceRelation.ProperSuperset))
+			else if (_equivalenceRelation.HasFlag(EquivalenceRelation.ProperSuperset) && !_additionalItems.Any())
 			{
-				return AppendIfNotNull($"{it} did not contain any additional items", missingItemsError);
+				errors.Add("did not contain any additional items");
 			}
 
-			return missingItemsError;
-		}
-
-		public void Dispose()
-		{
-			_index = -1;
-			_expectedEnumerator.Dispose();
-		}
-
-		private static string AppendIfNotNull(string prefix, string? suffix, string indentation = "")
-		{
-			if (suffix == null)
+			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
 			{
-				return prefix;
+				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelation));
 			}
-
-			return $"{prefix} and{Environment.NewLine}{(indentation == "" ? suffix : suffix.Indent(indentation))}";
-		}
-
-		private static string? MissingItemsError(string it, int total, List<T> missingItems,
-			EquivalenceRelation equivalenceRelation)
-		{
-			bool hasMissingItems = missingItems.Any();
-			if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			else if (_equivalenceRelation.HasFlag(EquivalenceRelation.ProperSubset) && !_missingItems.Any())
 			{
-				if (missingItems.Count == 1)
-				{
-					return
-						$"{it} lacked {missingItems.Count} of {total} expected items: {Formatter.Format(missingItems.Single())}";
-				}
-
-				StringBuilder sb = new();
-				sb.Append(it).Append(" lacked ").Append(missingItems.Count).Append(" of ")
-					.Append(total).Append(" expected items:");
-				foreach (T? missingItem in missingItems)
-				{
-					sb.AppendLine().Append("  ");
-					Formatter.Format(sb, missingItem);
-					sb.Append(",");
-				}
-
-				sb.Length--;
-				return sb.ToString();
+				errors.Add("contained all expected items");
 			}
 
-			if (!hasMissingItems && equivalenceRelation.HasFlag(EquivalenceRelation.ProperSubset))
-			{
-				return $"{it} did contain all expected items";
-			}
-
-			return null;
+			return ReturnErrorString(it, errors);
 		}
 	}
 }
