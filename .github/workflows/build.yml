@@ -101,6 +101,7 @@ jobs:
                     git config --global user.name "Benchmark User"
                     git switch benchmarks 2>/dev/null || git switch -c benchmarks;
                     git push --set-upstream origin benchmarks
+                    git merge origin/main --no-edit
             -   name: Run benchmarks
                 run: ./build.sh Benchmarks
             -   name: Store benchmark result
