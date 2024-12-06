@@ -107,6 +107,28 @@ jobs:
                     git merge origin/main --no-edit
             -   name: Run benchmarks
                 run: ./build.sh Benchmarks
+            - name: Add comment to pull request
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              shell: bash
+              run: |
+                  prNumber="${{ github.event.number }}"
+                  commentsUrl="https://api.github.com/repos/aweXpect/aweXpect/issues/$prNumber/comments"
+                  identifierToken="BenchmarkDotNet v"
+                  fileContent=$(<Artifacts/Benchmarks/results/aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md)
+                  echo "$fileContent"
+                  echo "Search for comment in PR#$prNumber containing $identifierToken..."
+                  result=$(curl -X GET $commentsUrl \
+                    -H "Content-Type: application/json" \
+                    -H "Authorization: token $GITHUB_TOKEN")
+                  if [[ $result != *"$identifierToken"* ]]
+                  then
+                    body="{\"body\":\"$fileContent\"}"
+                    curl -X POST $commentsUrl \
+                      -H "Accept: application/vnd.github+json" \
+                      -H "Authorization: token $GITHUB_TOKEN" \
+                  	  -d "$body"
+                  fi
             -   name: Store benchmark result
                 uses: rhysd/github-action-benchmark@v1
                 with:

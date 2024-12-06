@@ -3,6 +3,7 @@ using BenchmarkDotNet.Engines;
 
 namespace aweXpect.Benchmarks;
 
+[MarkdownExporterAttribute.GitHub]
 [MemoryDiagnoser]
 public partial class HappyCaseBenchmarks
 {
