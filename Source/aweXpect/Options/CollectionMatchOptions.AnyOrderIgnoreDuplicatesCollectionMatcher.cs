@@ -10,16 +10,16 @@ public partial class CollectionMatchOptions
 		where T : T2
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
-		private readonly EquivalenceRelation _equivalenceRelation;
+		private readonly EquivalenceRelations _equivalenceRelations;
 		private readonly List<T> _missingItems;
 		private readonly int _totalExpectedCount;
 		private readonly HashSet<T> _uniqueItems = new();
 		private int _index;
 
-		public AnyOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelation equivalenceRelation,
+		public AnyOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelations equivalenceRelation,
 			IEnumerable<T> expected)
 		{
-			_equivalenceRelation = equivalenceRelation;
+			_equivalenceRelations = equivalenceRelation;
 			_missingItems = expected.Distinct().ToList();
 			_totalExpectedCount = _missingItems.Count;
 		}
@@ -56,20 +56,20 @@ public partial class CollectionMatchOptions
 			}
 
 			List<string> errors = new();
-			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Superset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Superset))
 			{
-				errors.AddRange(AdditionalItemsError(_additionalItems, _equivalenceRelation));
+				errors.AddRange(AdditionalItemsError(_additionalItems));
 			}
-			else if (_equivalenceRelation.HasFlag(EquivalenceRelation.ProperSuperset) && !_additionalItems.Any())
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSuperset) && !_additionalItems.Any())
 			{
 				errors.Add("did not contain any additional items");
 			}
 
-			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
 			{
-				errors.AddRange(MissingItemsError(_totalExpectedCount, _missingItems, _equivalenceRelation));
+				errors.AddRange(MissingItemsError(_totalExpectedCount, _missingItems, _equivalenceRelations));
 			}
-			else if (_equivalenceRelation.HasFlag(EquivalenceRelation.ProperSubset) && !_missingItems.Any())
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSubset) && !_missingItems.Any())
 			{
 				errors.Add("contained all expected items");
 			}

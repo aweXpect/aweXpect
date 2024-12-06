@@ -11,7 +11,7 @@ public partial class CollectionMatchOptions
 		where T : T2
 	{
 		private readonly Dictionary<int, T> _additionalItems = new();
-		private readonly EquivalenceRelation _equivalenceRelation;
+		private readonly EquivalenceRelations _equivalenceRelations;
 		private readonly T[] _expectedDistinctItems;
 		private readonly List<T> _foundItems = new();
 		private readonly Dictionary<int, (T Item, T Expected)> _incorrectItems = new();
@@ -23,17 +23,17 @@ public partial class CollectionMatchOptions
 		private int _index;
 		private int _matchIndex;
 
-		public SameOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelation equivalenceRelation,
+		public SameOrderIgnoreDuplicatesCollectionMatcher(EquivalenceRelations equivalenceRelation,
 			IEnumerable<T> expected)
 		{
-			_equivalenceRelation = equivalenceRelation;
+			_equivalenceRelations = equivalenceRelation;
 			_expectedDistinctItems = expected.Distinct().ToArray();
 			_totalExpectedItems = _expectedDistinctItems.Length;
 		}
 
 		public string? Verify(string it, T value, IOptionsEquality<T2> options)
 		{
-			if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
 			{
 				_foundItems.Add(value);
 			}
@@ -50,18 +50,7 @@ public partial class CollectionMatchOptions
 			}
 			else if (options.AreConsideredEqual(value, _expectedDistinctItems[_matchIndex]))
 			{
-				// The current value is equal to the expected value
-				_matchIndex++;
-				_expectationIndex++;
-				_matchingItems.Add(value);
-				_uniqueItems.Add(value);
-				foreach (int key in _additionalItems
-					         .Where(item => options.AreConsideredEqual(item.Value, value))
-					         .Select(x => x.Key)
-					         .ToList())
-				{
-					_additionalItems.Remove(key);
-				}
+				VerifyTheCurrentValueIsEqualToTheExpectedValue(value, options);
 			}
 			else
 			{
@@ -70,33 +59,7 @@ public partial class CollectionMatchOptions
 					return null;
 				}
 
-				if (_expectationIndex >= 0)
-				{
-					_expectationIndex++;
-				}
-
-				_matchIndex = 0;
-
-				if (options.AreConsideredEqual(value, _expectedDistinctItems[_matchIndex]))
-				{
-					for (int i = _index - _matchingItems.Count; i < _index; i++)
-					{
-						_additionalItems.Add(i, _matchingItems[i]);
-					}
-
-					_matchingItems.Clear();
-					_matchIndex++;
-					_expectationIndex = 0;
-					_matchingItems.Add(value);
-				}
-				else if (_expectationIndex < 0 || _expectationIndex >= _expectedDistinctItems.Length)
-				{
-					_additionalItems.Add(_index, value);
-				}
-				else
-				{
-					_incorrectItems.Add(_index, (value, _expectedDistinctItems[_expectationIndex]));
-				}
+				VerifyTheCurrentValueIsDifferentFromTheExpectedValue(value, options);
 			}
 
 			if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
@@ -129,37 +92,19 @@ public partial class CollectionMatchOptions
 				}
 			}
 
-			if (_equivalenceRelation.HasFlag(EquivalenceRelation.Subset) &&
+			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset) &&
 			    !_incorrectItems.Any())
 			{
-				T[] foundItems = _foundItems.Distinct().ToArray();
-				for (int i = 0; i < _expectedDistinctItems.Length - foundItems.Length; i++)
-				{
-					bool isMatch = true;
-					for (int j = 0; j < foundItems.Length; j++)
-					{
-						if (!options.AreConsideredEqual(foundItems[j], _expectedDistinctItems[i + j]))
-						{
-							isMatch = false;
-							break;
-						}
-					}
-
-					if (isMatch)
-					{
-						_additionalItems.Clear();
-						break;
-					}
-				}
+				VerifyCompleteForSubsetMatch(options);
 			}
 
 			List<string> errors = new();
-			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedDistinctItems, _equivalenceRelation));
-			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Superset))
+			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedDistinctItems, _equivalenceRelations));
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Superset))
 			{
-				errors.AddRange(AdditionalItemsError(_additionalItems, _equivalenceRelation));
+				errors.AddRange(AdditionalItemsError(_additionalItems));
 			}
-			else if (_equivalenceRelation.HasFlag(EquivalenceRelation.ProperSuperset) &&
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSuperset) &&
 			         !_additionalItems.Any() &&
 			         !_incorrectItems.Any(i
 				         => _expectedDistinctItems.All(e => !options.AreConsideredEqual(e, i.Value.Item))))
@@ -167,16 +112,85 @@ public partial class CollectionMatchOptions
 				errors.Add("did not contain any additional items");
 			}
 
-			if (!_equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
 			{
-				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelation));
+				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations));
 			}
-			else if (_equivalenceRelation.HasFlag(EquivalenceRelation.ProperSubset) && !_missingItems.Any())
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSubset) && !_missingItems.Any())
 			{
 				errors.Add("contained all expected items");
 			}
 
 			return ReturnErrorString(it, errors);
+		}
+
+		private void VerifyCompleteForSubsetMatch(IOptionsEquality<T2> options)
+		{
+			T[] foundItems = _foundItems.Distinct().ToArray();
+			for (int i = 0; i < _expectedDistinctItems.Length - foundItems.Length; i++)
+			{
+				bool isMatch = true;
+				for (int j = 0; j < foundItems.Length; j++)
+				{
+					if (!options.AreConsideredEqual(foundItems[j], _expectedDistinctItems[i + j]))
+					{
+						isMatch = false;
+						break;
+					}
+				}
+
+				if (isMatch)
+				{
+					_additionalItems.Clear();
+					break;
+				}
+			}
+		}
+
+		private void VerifyTheCurrentValueIsDifferentFromTheExpectedValue(T value, IOptionsEquality<T2> options)
+		{
+			if (_expectationIndex >= 0)
+			{
+				_expectationIndex++;
+			}
+
+			_matchIndex = 0;
+
+			if (options.AreConsideredEqual(value, _expectedDistinctItems[_matchIndex]))
+			{
+				for (int i = _index - _matchingItems.Count; i < _index; i++)
+				{
+					_additionalItems.Add(i, _matchingItems[i]);
+				}
+
+				_matchingItems.Clear();
+				_matchIndex++;
+				_expectationIndex = 0;
+				_matchingItems.Add(value);
+			}
+			else if (_expectationIndex < 0 || _expectationIndex >= _expectedDistinctItems.Length)
+			{
+				_additionalItems.Add(_index, value);
+			}
+			else
+			{
+				_incorrectItems.Add(_index, (value, _expectedDistinctItems[_expectationIndex]));
+			}
+		}
+
+		private void VerifyTheCurrentValueIsEqualToTheExpectedValue(T value, IOptionsEquality<T2> options)
+		{
+			_matchIndex++;
+			_expectationIndex++;
+			_matchingItems.Add(value);
+			_uniqueItems.Add(value);
+			foreach (int key in _additionalItems
+				         .Where(item => options.AreConsideredEqual(item.Value, value))
+				         .Select(x => x.Key)
+				         .ToList())
+			{
+				_additionalItems.Remove(key);
+			}
 		}
 	}
 }

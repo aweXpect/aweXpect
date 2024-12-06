@@ -16,7 +16,7 @@ public partial class CollectionMatchOptions
 	///     Specifies the equivalence relation between subject and expected.
 	/// </summary>
 	[Flags]
-	public enum EquivalenceRelation
+	public enum EquivalenceRelations
 	{
 		/// <summary>
 		///     The subject and expected collection must be equivalent (have the same items)
@@ -44,15 +44,15 @@ public partial class CollectionMatchOptions
 		Superset = 8
 	}
 
-	private EquivalenceRelation _equivalenceRelation = EquivalenceRelation.Equivalent;
+	private EquivalenceRelations _equivalenceRelations = EquivalenceRelations.Equivalent;
 	private bool _ignoringDuplicates;
 	private bool _inAnyOrder;
 
 	/// <summary>
 	///     Specifies the equivalence relation between subject and expected.
 	/// </summary>
-	public void SetEquivalenceRelation(EquivalenceRelation equivalenceRelation)
-		=> _equivalenceRelation = equivalenceRelation;
+	public void SetEquivalenceRelation(EquivalenceRelations equivalenceRelation)
+		=> _equivalenceRelations = equivalenceRelation;
 
 	/// <summary>
 	///     Ignores the order in the subject and expected values.
@@ -71,29 +71,29 @@ public partial class CollectionMatchOptions
 		where T : T2
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => new AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelation, expected),
-			(true, false) => new AnyOrderCollectionMatcher<T, T2>(_equivalenceRelation, expected),
-			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelation, expected),
-			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelation, expected)
+			(true, true) => new AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(true, false) => new AnyOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected),
+			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected)
 		};
 
 	/// <inheritdoc />
 	public override string ToString()
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => ToString(_equivalenceRelation) + " in any order ignoring duplicates",
-			(true, false) => ToString(_equivalenceRelation) + " in any order",
-			(false, true) => ToString(_equivalenceRelation) + " ignoring duplicates",
-			(false, false) => ToString(_equivalenceRelation)
+			(true, true) => ToString(_equivalenceRelations) + " in any order ignoring duplicates",
+			(true, false) => ToString(_equivalenceRelations) + " in any order",
+			(false, true) => ToString(_equivalenceRelations) + " ignoring duplicates",
+			(false, false) => ToString(_equivalenceRelations)
 		};
 
-	private static string ToString(EquivalenceRelation equivalenceRelation)
+	private static string ToString(EquivalenceRelations equivalenceRelation)
 		=> equivalenceRelation switch
 		{
-			EquivalenceRelation.Superset => " or more items",
-			EquivalenceRelation.ProperSuperset => " and at least one more item",
-			EquivalenceRelation.Subset => " or less items",
-			EquivalenceRelation.ProperSubset => " and at least one item less",
+			EquivalenceRelations.Superset => " or more items",
+			EquivalenceRelations.ProperSuperset => " and at least one more item",
+			EquivalenceRelations.Subset => " or less items",
+			EquivalenceRelations.ProperSubset => " and at least one item less",
 			_ => ""
 		};
 
@@ -120,8 +120,7 @@ public partial class CollectionMatchOptions
 		return null;
 	}
 
-		private static IEnumerable<string> AdditionalItemsError<T>(Dictionary<int, T> additionalItems,
-			EquivalenceRelation equivalenceRelation)
+		private static IEnumerable<string> AdditionalItemsError<T>(Dictionary<int, T> additionalItems)
 		{
 			bool hasAdditionalItems = additionalItems.Any();
 			if (hasAdditionalItems)
@@ -136,14 +135,14 @@ public partial class CollectionMatchOptions
 
 		private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems,
 			T[] expectedItems,
-			EquivalenceRelation equivalenceRelation)
+			EquivalenceRelations equivalenceRelation)
 		{
 			bool hasIncorrectItems = incorrectItems.Any();
 			if (hasIncorrectItems)
 			{
 				foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
 				{
-					if (equivalenceRelation.HasFlag(EquivalenceRelation.Superset) &&
+					if (equivalenceRelation.HasFlag(EquivalenceRelations.Superset) &&
 					    !expectedItems.Contains(incorrectItem.Value.Item))
 					{
 						continue;
@@ -156,10 +155,10 @@ public partial class CollectionMatchOptions
 		}
 
 		private static IEnumerable<string> MissingItemsError<T>(int total, List<T> missingItems,
-			EquivalenceRelation equivalenceRelation)
+			EquivalenceRelations equivalenceRelation)
 		{
 			bool hasMissingItems = missingItems.Any();
-			if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelation.Subset))
+			if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelations.Subset))
 			{
 				if (missingItems.Count == 1)
 				{
@@ -182,7 +181,7 @@ public partial class CollectionMatchOptions
 				yield return sb.ToString();
 			}
 
-			if (!hasMissingItems && equivalenceRelation.HasFlag(EquivalenceRelation.ProperSubset))
+			if (!hasMissingItems && equivalenceRelation.HasFlag(EquivalenceRelations.ProperSubset))
 			{
 				yield return "did contain all expected items";
 			}
