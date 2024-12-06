@@ -743,10 +743,10 @@ namespace aweXpect.Options
             where T : T2 { }
         public void IgnoringDuplicates() { }
         public void InAnyOrder() { }
-        public void SetEquivalenceRelation(aweXpect.Options.CollectionMatchOptions.EquivalenceRelation equivalenceRelation) { }
+        public void SetEquivalenceRelation(aweXpect.Options.CollectionMatchOptions.EquivalenceRelations equivalenceRelation) { }
         public override string ToString() { }
         [System.Flags]
-        public enum EquivalenceRelation
+        public enum EquivalenceRelations
         {
             Equivalent = 1,
             ProperSubset = 6,
