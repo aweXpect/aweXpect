@@ -16,7 +16,7 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the actual enumerable matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static CollectionBeResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		Be<TItem>(
 			this IThat<IEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
@@ -24,7 +24,7 @@ public static partial class ThatEnumerableShould
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
+		return new CollectionBeResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
@@ -44,8 +44,7 @@ public static partial class ThatEnumerableShould
 		{
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			using ICollectionMatcher<TItem, object?> matcher =
-				matchOptions.GetCollectionMatcher<TItem, object?>(expected);
+			ICollectionMatcher<TItem, object?> matcher = matchOptions.GetCollectionMatcher<TItem, object?>(expected);
 			foreach (TItem item in materializedEnumerable)
 			{
 				string? failure = matcher.Verify(it, item, options);

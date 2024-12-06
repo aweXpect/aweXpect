@@ -7,9 +7,18 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public partial class AsyncEnumerableShould
 {
-	public static async IAsyncEnumerable<int> ToAsyncEnumerable(int[] items)
+	public static async IAsyncEnumerable<int> ToAsyncEnumerable(IEnumerable<int> items)
 	{
 		foreach (int item in items)
+		{
+			await Task.Yield();
+			yield return item;
+		}
+	}
+
+	public static async IAsyncEnumerable<string> ToAsyncEnumerable(string[] items)
+	{
+		foreach (string item in items)
 		{
 			await Task.Yield();
 			yield return item;

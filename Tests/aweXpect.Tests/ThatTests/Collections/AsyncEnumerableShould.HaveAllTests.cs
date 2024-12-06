@@ -76,7 +76,7 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 		{
-			IAsyncEnumerable<int> subject = ToAsyncEnumerable([]);
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 			async Task Act()
 				=> await That(subject).Should().HaveAll(x => x.Be(0));

@@ -5,8 +5,7 @@ namespace aweXpect.Core;
 /// <summary>
 ///     The matcher for collections.
 /// </summary>
-public interface ICollectionMatcher<in T, out T2> : IDisposable
-	where T : T2
+public interface ICollectionMatcher<in T, out T2> where T : T2
 {
 	/// <summary>
 	///     Verifies for each <paramref name="value" /> in the subject, if it results in a failure.

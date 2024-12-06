@@ -70,6 +70,7 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 
 	private interface IEquality
 	{
+		bool AreConsideredEqual(object? a, object? b);
 		Result AreConsideredEqual(object? a, object? b, string it);
 		string GetExpectation(string expectedExpression);
 	}
@@ -104,6 +105,30 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		}
 
 		#region IEquality Members
+
+		/// <inheritdoc />
+		public bool AreConsideredEqual(object? a, object? b)
+		{
+			if (HandleSpecialCases(a, b, out bool? specialCaseResult))
+			{
+				return specialCaseResult.Value;
+			}
+
+			List<ComparisonFailure> failures = Compare.CheckEquivalent(a, b,
+				new CompareOptions { MembersToIgnore = [.. equivalencyOptions.MembersToIgnore] }).ToList();
+
+			if (failures.FirstOrDefault() is { } firstFailure)
+			{
+				if (firstFailure.Type == MemberType.Value)
+				{
+					return false;
+				}
+
+				return false;
+			}
+
+			return true;
+		}
 
 		/// <inheritdoc />
 		public Result AreConsideredEqual(object? a, object? b, string it)
@@ -147,6 +172,9 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		#region IEquality Members
 
 		/// <inheritdoc />
+		public bool AreConsideredEqual(object? a, object? b) => Equals(a, b);
+
+		/// <inheritdoc />
 		public Result AreConsideredEqual(object? a, object? b, string it)
 			=> new(Equals(a, b),
 				$"{it} was {Formatter.Format(a, FormattingOptions.MultipleLines)}");
@@ -161,6 +189,9 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 	private sealed class ComparerEquality(IEqualityComparer<object> comparer) : IEquality
 	{
 		#region IEquality Members
+
+		/// <inheritdoc />
+		public bool AreConsideredEqual(object? a, object? b) => comparer.Equals(a, b);
 
 		/// <inheritdoc />
 		public Result AreConsideredEqual(object? a, object? b, string it)
