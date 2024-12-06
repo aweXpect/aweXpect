@@ -22,8 +22,8 @@ partial class Build
 {
 	[Parameter("Github Token")] readonly string GithubToken;
 
-	Target Benchmarks => _ => _
-		.Executes(async () =>
+	Target BenchmarkDotNet => _ => _
+		.Executes(() =>
 		{
 			AbsolutePath benchmarkDirectory = ArtifactsDirectory / "Benchmarks";
 			benchmarkDirectory.CreateOrCleanDirectory();
@@ -36,19 +36,26 @@ partial class Build
 			DotNet(
 				$"{Solution.Benchmarks.aweXpect_Benchmarks.Name}.dll --exporters json --filter * --artifacts \"{benchmarkDirectory}\"",
 				Solution.Benchmarks.aweXpect_Benchmarks.Directory / "bin" / "Release");
+		});
 
+	Target BenchmarkComment => _ => _
+		.After(BenchmarkDotNet)
+		.Executes(async () =>
+		{
+			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
+			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
+			Log.Information("Report:\n {FileContent}", fileContent);
 			int? prId = GitHubActions.PullRequestNumber;
+			Log.Information("Pull request number: {PullRequestId}", prId);
 			if (prId != null)
 			{
-				string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
-				                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
-
 				GitHubClient gitHubClient = new GitHubClient(new ProductHeaderValue("Nuke"));
 				Credentials tokenAuth = new Credentials(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
 					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId.Value);
 				long? commentId = null;
+				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
 				{
 					if (comment.Body.Contains("BenchmarkDotNet v"))
@@ -70,4 +77,8 @@ partial class Build
 				}
 			}
 		});
+
+	Target Benchmarks => _ => _
+		.DependsOn(BenchmarkDotNet)
+		.DependsOn(BenchmarkComment);
 }
