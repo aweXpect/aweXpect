@@ -10,12 +10,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is equal to <paramref name="expected" />.
 	/// </summary>
-	public static StringEqualityResult<string?, IThat<string?>> Be(
+	public static StringEqualityTypeResult<string?, IThat<string?>> Be(
 		this IThat<string?> source,
 		string? expected)
 	{
 		var options = new StringEqualityOptions();
-		return new StringEqualityResult<string?, IThat<string?>>(source.ExpectationBuilder.AddConstraint(it
+		return new StringEqualityTypeResult<string?, IThat<string?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new BeConstraint(it, expected, options)),
 			source,
 			options);

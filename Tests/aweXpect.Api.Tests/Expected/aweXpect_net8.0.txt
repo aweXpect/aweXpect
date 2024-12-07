@@ -165,7 +165,7 @@ namespace aweXpect
             where TInnerException : System.Exception { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException() { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
-        public aweXpect.Results.StringEqualityResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(string expected) { }
+        public aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(string expected) { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatEnumShould
@@ -227,7 +227,7 @@ namespace aweXpect
             where TInnerException : System.Exception? { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatExceptionShould<TException>> HaveInnerException() { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveInnerException(System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
-        public aweXpect.Results.StringEqualityResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveMessage(string expected) { }
+        public aweXpect.Results.StringEqualityTypeResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveMessage(string expected) { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatGeneric
@@ -251,7 +251,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> BeRedirection(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> BeSuccess(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HaveClientError(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
-        public static aweXpect.Results.StringEqualityResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HaveContent(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, string expected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HaveContent(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, string expected) { }
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HaveError(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HaveServerError(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HaveStatusCode(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, System.Net.HttpStatusCode expected) { }
@@ -755,34 +755,35 @@ namespace aweXpect
     }
     public static class ThatStringEnumerableShould
     {
+        public static aweXpect.Results.StringCollectionBeTypeResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> Be(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, System.Collections.Generic.IEnumerable<string> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.StringCountResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> Contain(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, string expected) { }
     }
     public static class ThatStringShould
     {
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> Be(this aweXpect.Core.IThat<string?> source, string? expected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> Be(this aweXpect.Core.IThat<string?> source, string? expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeLowerCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeNull(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeNullOrEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeNullOrWhiteSpace(this aweXpect.Core.IThat<string?> source) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> BeOneOf(this aweXpect.Core.IThat<string?> source, params string?[] expected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> BeOneOf(this aweXpect.Core.IThat<string?> source, params string?[] expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeUpperCased(this aweXpect.Core.IThat<string?> source) { }
-        public static aweXpect.Results.StringCountResult<string?, aweXpect.Core.IThat<string?>> Contain(this aweXpect.Core.IThat<string?> source, string expected) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> EndWith(this aweXpect.Core.IThat<string?> source, string expected) { }
+        public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> Contain(this aweXpect.Core.IThat<string?> source, string expected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> EndWith(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> HaveLength(this aweXpect.Core.IThat<string?> source, int expected) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotBeEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotBeLowerCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotBeNull(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotBeNullOrEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotBeNullOrWhiteSpace(this aweXpect.Core.IThat<string?> source) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> NotBeOneOf(this aweXpect.Core.IThat<string?> source, params string?[] unexpected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> NotBeOneOf(this aweXpect.Core.IThat<string?> source, params string?[] unexpected) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotBeUpperCased(this aweXpect.Core.IThat<string?> source) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> NotContain(this aweXpect.Core.IThat<string?> source, string unexpected) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> NotEndWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> NotContain(this aweXpect.Core.IThat<string?> source, string unexpected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> NotEndWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> NotHaveLength(this aweXpect.Core.IThat<string?> source, int unexpected) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> NotStartWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> NotStartWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Core.IThat<string?> Should(this aweXpect.Core.IExpectSubject<string?> subject) { }
-        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> StartWith(this aweXpect.Core.IThat<string?> source, string expected) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> StartWith(this aweXpect.Core.IThat<string?> source, string expected) { }
     }
     public static class ThatTimeOnlyShould
     {
@@ -917,7 +918,9 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
+        public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
+        public aweXpect.Options.StringEqualityOptions IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
     }
@@ -1012,6 +1015,32 @@ namespace aweXpect.Results
         public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
+    public class StringCollectionBeResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat>
+    {
+        public StringCollectionBeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> AndLess() { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> AndMore() { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> OrLess() { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> OrMore() { }
+    }
+    public class StringCollectionBeTypeResult<TType, TThat> : aweXpect.Results.StringCollectionBeResult<TType, TThat>
+    {
+        public StringCollectionBeTypeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public aweXpect.Results.StringCollectionBeResult<TType, TThat> AsRegex() { }
+        public aweXpect.Results.StringCollectionBeResult<TType, TThat> AsWildcard() { }
+        public aweXpect.Results.StringCollectionBeResult<TType, TThat> Exactly() { }
+    }
+    public class StringCollectionMatchResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat, aweXpect.Results.StringCollectionMatchResult<TType, TThat>>
+    {
+        public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+    }
+    public class StringCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.StringEqualityResult<TType, TThat>
+        where TSelf : aweXpect.Results.StringCollectionMatchResult<TType, TThat, TSelf>
+    {
+        public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public TSelf IgnoringDuplicates() { }
+        public TSelf InAnyOrder() { }
+    }
     public class StringCountResult<TType, TThat> : aweXpect.Results.StringCountResult<TType, TThat, aweXpect.Results.StringCountResult<TType, TThat>>
     {
         public StringCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
@@ -1032,12 +1061,25 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf>
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
-        public TSelf AsRegex() { }
-        public TSelf AsWildcard() { }
-        public TSelf Exactly() { }
         public TSelf IgnoringCase(bool ignoreCase = true) { }
+        public TSelf IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
+        public TSelf IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+    }
+    public class StringEqualityTypeCountResult<TType, TThat> : aweXpect.Results.StringCountResult<TType, TThat>
+    {
+        public StringEqualityTypeCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
+        public aweXpect.Results.StringCountResult<TType, TThat> AsRegex() { }
+        public aweXpect.Results.StringCountResult<TType, TThat> AsWildcard() { }
+        public aweXpect.Results.StringCountResult<TType, TThat> Exactly() { }
+    }
+    public class StringEqualityTypeResult<TType, TThat> : aweXpect.Results.StringEqualityResult<TType, TThat>
+    {
+        public StringEqualityTypeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
+        public aweXpect.Results.StringEqualityResult<TType, TThat> AsRegex() { }
+        public aweXpect.Results.StringEqualityResult<TType, TThat> AsWildcard() { }
+        public aweXpect.Results.StringEqualityResult<TType, TThat> Exactly() { }
     }
     public class TimeToleranceResult<TType, TThat> : aweXpect.Results.TimeToleranceResult<TType, TThat, aweXpect.Results.TimeToleranceResult<TType, TThat>>
     {
