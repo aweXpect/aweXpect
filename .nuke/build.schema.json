@@ -25,6 +25,9 @@
       "type": "string",
       "enum": [
         "ApiChecks",
+        "BenchmarkComment",
+        "BenchmarkDotNet",
+        "BenchmarkResult",
         "Benchmarks",
         "CalculateNugetVersion",
         "Clean",
@@ -124,6 +127,10 @@
             "Debug",
             "Release"
           ]
+        },
+        "GithubToken": {
+          "type": "string",
+          "description": "Github Token"
         },
         "Solution": {
           "type": "string",

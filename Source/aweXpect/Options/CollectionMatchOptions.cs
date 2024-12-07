@@ -174,7 +174,7 @@ public partial class CollectionMatchOptions
 			{
 				sb.AppendLine().Append("  ");
 				Formatter.Format(sb, missingItem);
-				sb.Append(",");
+				sb.Append(',');
 			}
 
 			sb.Length--;

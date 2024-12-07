@@ -70,7 +70,7 @@ public static partial class ThatStringShould
 		}
 
 		private static int CountOccurrences(string actual, string expected,
-			IOptionsEquality<string?> comparer)
+			StringEqualityOptions comparer)
 		{
 			if (expected.Length > actual.Length)
 			{

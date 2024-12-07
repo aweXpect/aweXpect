@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -111,10 +112,29 @@ partial class Build
 				continue;
 			}
 
+			if (line.StartsWith('|') && line.Contains("_aweXpect") && line.EndsWith('|'))
+			{
+				MakeLineBold(sb, line);
+				continue;
+			}
 			sb.AppendLine(line);
 		}
 
 		string body = sb.ToString();
 		return body;
+	}
+
+	static void MakeLineBold(StringBuilder sb, string line)
+	{
+		var tokens = line.Split("|", StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+		sb.Append('|');
+		foreach (var token in tokens)
+		{
+			sb.Append(" **");
+			sb.Append(token);
+			sb.Append("** |");
+		}
+		
+		sb.AppendLine();
 	}
 }
