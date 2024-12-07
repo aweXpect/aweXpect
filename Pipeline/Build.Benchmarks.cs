@@ -103,15 +103,23 @@ partial class Build
 		int count = 0;
 		foreach (string line in fileContent)
 		{
-			sb.AppendLine(line);
 			if (line.StartsWith("```"))
 			{
-				if (++count == 2)
+				count++;
+				if (count == 1)
 				{
+					sb.AppendLine("<pre>");
+				}
+				else if (count == 2)
+				{
+					sb.AppendLine("</pre>");
 					sb.AppendLine("</details>");
 					sb.AppendLine();
 				}
+
+				continue;
 			}
+			sb.AppendLine(line);
 		}
 
 		string body = sb.ToString();
