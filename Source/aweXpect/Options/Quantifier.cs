@@ -20,7 +20,7 @@ public class Quantifier
 		if (minimum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(minimum),
-				"The parameter 'minimum' must be greater than zero");
+				"The parameter 'minimum' must be non-negative");
 		}
 
 		_minimum = minimum;
@@ -35,7 +35,7 @@ public class Quantifier
 		if (maximum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(maximum),
-				"The parameter 'maximum' must be greater than zero");
+				"The parameter 'maximum' must be non-negative");
 		}
 
 		_minimum = null;
@@ -50,18 +50,18 @@ public class Quantifier
 		if (minimum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(minimum),
-				"The parameter 'minimum' must be greater than zero");
+				"The parameter 'minimum' must be non-negative");
 		}
 
 		if (maximum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(maximum),
-				"The parameter 'maximum' must be greater than zero");
+				"The parameter 'maximum' must be non-negative");
 		}
 
 		if (minimum > maximum)
 		{
-			throw new ArgumentException("The parameter 'maximum' must be greater than 'minimum'");
+			throw new ArgumentException("The parameter 'maximum' must be greater than or equal to 'minimum'");
 		}
 
 		_minimum = minimum;
@@ -101,7 +101,7 @@ public class Quantifier
 		if (expected < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(expected),
-				"The parameter 'expected' must be greater than zero");
+				"The parameter 'expected' must be non-negative");
 		}
 
 		_minimum = expected;

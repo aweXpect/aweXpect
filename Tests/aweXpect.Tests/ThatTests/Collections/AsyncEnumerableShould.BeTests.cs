@@ -11,6 +11,34 @@ public sealed partial class AsyncEnumerableShould
 	public sealed class BeTests
 	{
 		[Fact]
+		public async Task AnyOrder_CollectionWithMoreThan20Deviations_ShouldFail()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
+
+			async Task Act()
+				=> await That(subject).Should().Be([]).InAnyOrder();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             match collection [] in any order,
+				             but it was completely different: [
+				               1,
+				               2,
+				               3,
+				               4,
+				               5,
+				               6,
+				               7,
+				               8,
+				               9,
+				               10,
+				               …
+				             ] had more than 20 deviations compared to []
+				             """);
+		}
+
+		[Fact]
 		public async Task AnyOrder_CompletelyDifferentCollections_ShouldFail()
 		{
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
@@ -315,6 +343,34 @@ public sealed partial class AsyncEnumerableShould
 		}
 
 		[Fact]
+		public async Task AnyOrderIgnoringDuplicates_CollectionWithMoreThan20Deviations_ShouldFail()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
+
+			async Task Act()
+				=> await That(subject).Should().Be([]).InAnyOrder().IgnoringDuplicates();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             match collection [] in any order ignoring duplicates,
+				             but it was completely different: [
+				               1,
+				               2,
+				               3,
+				               4,
+				               5,
+				               6,
+				               7,
+				               8,
+				               9,
+				               10,
+				               …
+				             ] had more than 20 deviations compared to []
+				             """);
+		}
+
+		[Fact]
 		public async Task AnyOrderIgnoringDuplicates_CompletelyDifferentCollections_ShouldFail()
 		{
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
@@ -612,6 +668,34 @@ public sealed partial class AsyncEnumerableShould
 		}
 
 		[Fact]
+		public async Task SameOrder_CollectionWithMoreThan20Deviations_ShouldFail()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
+
+			async Task Act()
+				=> await That(subject).Should().Be([]);
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             match collection [],
+				             but it was completely different: [
+				               1,
+				               2,
+				               3,
+				               4,
+				               5,
+				               6,
+				               7,
+				               8,
+				               9,
+				               10,
+				               …
+				             ] had more than 20 deviations compared to []
+				             """);
+		}
+
+		[Fact]
 		public async Task SameOrder_CompletelyDifferentCollections_ShouldFail()
 		{
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
@@ -906,6 +990,34 @@ public sealed partial class AsyncEnumerableShould
 				=> await That(subject).Should().Be(expected);
 
 			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task SameOrderIgnoringDuplicates_CollectionWithMoreThan20Deviations_ShouldFail()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
+
+			async Task Act()
+				=> await That(subject).Should().Be([]).IgnoringDuplicates();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             match collection [] ignoring duplicates,
+				             but it was completely different: [
+				               1,
+				               2,
+				               3,
+				               4,
+				               5,
+				               6,
+				               7,
+				               8,
+				               9,
+				               10,
+				               …
+				             ] had more than 20 deviations compared to []
+				             """);
 		}
 
 		[Fact]
