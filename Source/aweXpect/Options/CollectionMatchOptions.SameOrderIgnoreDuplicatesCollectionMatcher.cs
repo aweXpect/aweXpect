@@ -31,8 +31,9 @@ public partial class CollectionMatchOptions
 			_totalExpectedItems = _expectedDistinctItems.Length;
 		}
 
-		public string? Verify(string it, T value, IOptionsEquality<T2> options)
+		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
 		{
+			error = null;
 			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
 			{
 				_foundItems.Add(value);
@@ -42,7 +43,7 @@ public partial class CollectionMatchOptions
 			{
 				if (!_uniqueItems.Add(value))
 				{
-					return null;
+					return false;
 				}
 
 				// All expected items were found -> additional items
@@ -56,22 +57,17 @@ public partial class CollectionMatchOptions
 			{
 				if (!_uniqueItems.Add(value))
 				{
-					return null;
+					return false;
 				}
 
 				VerifyTheCurrentValueIsDifferentFromTheExpectedValue(value, options);
 			}
 
-			if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
-			{
-				return $"{it} was very different (> 20 deviations)";
-			}
-
 			_index++;
-			return null;
+			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * CollectionFormatCount;
 		}
 
-		public string? VerifyComplete(string it, IOptionsEquality<T2> options)
+		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
 		{
 			foreach (T item in _expectedDistinctItems.Skip(Math.Max(_expectationIndex - 1, _matchIndex)))
 			{
@@ -86,9 +82,10 @@ public partial class CollectionMatchOptions
 					_missingItems.Add(item);
 				}
 
-				if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
+				if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * CollectionFormatCount)
 				{
-					return $"{it} was very different (> 20 deviations)";
+					error = null;
+					return true;
 				}
 			}
 
@@ -121,7 +118,8 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			return ReturnErrorString(it, errors);
+			error = ReturnErrorString(it, errors);
+			return error != null;
 		}
 
 		private void VerifyCompleteForSubsetMatch(IOptionsEquality<T2> options)

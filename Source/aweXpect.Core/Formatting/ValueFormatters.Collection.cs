@@ -50,8 +50,10 @@ public static partial class ValueFormatters
 		int count = maxCount;
 		stringBuilder.Append('[');
 		bool hasMoreValues = false;
+		bool isNotEmpty = false;
 		foreach (object? v in value)
 		{
+			isNotEmpty = true;
 			if (count < maxCount)
 			{
 				if (options.UseLineBreaks)
@@ -85,7 +87,7 @@ public static partial class ValueFormatters
 			stringBuilder.Append(ellipsis);
 		}
 
-		if (options.UseLineBreaks)
+		if (options.UseLineBreaks && isNotEmpty)
 		{
 			stringBuilder.AppendLine();
 		}

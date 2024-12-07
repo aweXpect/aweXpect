@@ -24,7 +24,31 @@ public sealed partial class EnumerableShould
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected or more items in any order,
-					             but it was very different (> 20 deviations)
+					             but it was completely different: [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
+					               …
+					             ] had more than 20 deviations compared to [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               …
+					             ]
 					             """);
 			}
 
@@ -282,7 +306,31 @@ public sealed partial class EnumerableShould
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected or more items in any order ignoring duplicates,
-					             but it was very different (> 20 deviations)
+					             but it was completely different: [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
+					               …
+					             ] had more than 20 deviations compared to [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               …
+					             ]
 					             """);
 			}
 
@@ -548,7 +596,31 @@ public sealed partial class EnumerableShould
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected or more items,
-					             but it was very different (> 20 deviations)
+					             but it was completely different: [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
+					               …
+					             ] had more than 20 deviations compared to [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               …
+					             ]
 					             """);
 			}
 
@@ -816,7 +888,31 @@ public sealed partial class EnumerableShould
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected or more items ignoring duplicates,
-					             but it was very different (> 20 deviations)
+					             but it was completely different: [
+					               1,
+					               2,
+					               3,
+					               4,
+					               5,
+					               6,
+					               7,
+					               8,
+					               9,
+					               10,
+					               …
+					             ] had more than 20 deviations compared to [
+					               100,
+					               101,
+					               102,
+					               103,
+					               104,
+					               105,
+					               106,
+					               107,
+					               108,
+					               109,
+					               …
+					             ]
 					             """);
 			}
 

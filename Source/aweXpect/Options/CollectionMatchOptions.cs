@@ -114,76 +114,71 @@ public partial class CollectionMatchOptions
 				return sb.ToString();
 			}
 
-			return $"{it} {errors.Single()}";
+			return $"{it} {errors[0]}";
 		}
 
 		return null;
 	}
 
-		private static IEnumerable<string> AdditionalItemsError<T>(Dictionary<int, T> additionalItems)
+	private static IEnumerable<string> AdditionalItemsError<T>(Dictionary<int, T> additionalItems)
+	{
+		bool hasAdditionalItems = additionalItems.Any();
+		if (hasAdditionalItems)
 		{
-			bool hasAdditionalItems = additionalItems.Any();
-			if (hasAdditionalItems)
+			foreach (KeyValuePair<int, T> additionalItem in additionalItems)
 			{
-				foreach (KeyValuePair<int, T> additionalItem in additionalItems)
-				{
-					yield return
-						$"contained item {Formatter.Format(additionalItem.Value)} at index {additionalItem.Key} that was not expected";
-				}
+				yield return
+					$"contained item {Formatter.Format(additionalItem.Value)} at index {additionalItem.Key} that was not expected";
 			}
 		}
+	}
 
-		private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems,
-			T[] expectedItems,
-			EquivalenceRelations equivalenceRelation)
+	private static IEnumerable<string> IncorrectItemsError<T>(Dictionary<int, (T Item, T Expected)> incorrectItems,
+		T[] expectedItems,
+		EquivalenceRelations equivalenceRelation)
+	{
+		bool hasIncorrectItems = incorrectItems.Any();
+		if (hasIncorrectItems)
 		{
-			bool hasIncorrectItems = incorrectItems.Any();
-			if (hasIncorrectItems)
+			foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
 			{
-				foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
+				if (equivalenceRelation.HasFlag(EquivalenceRelations.Superset) &&
+				    !expectedItems.Contains(incorrectItem.Value.Item))
 				{
-					if (equivalenceRelation.HasFlag(EquivalenceRelations.Superset) &&
-					    !expectedItems.Contains(incorrectItem.Value.Item))
-					{
-						continue;
-					}
-
-					yield return
-						$"contained item {Formatter.Format(incorrectItem.Value.Item)} at index {incorrectItem.Key} instead of {Formatter.Format(incorrectItem.Value.Expected)}";
+					continue;
 				}
+
+				yield return
+					$"contained item {Formatter.Format(incorrectItem.Value.Item)} at index {incorrectItem.Key} instead of {Formatter.Format(incorrectItem.Value.Expected)}";
 			}
 		}
+	}
 
-		private static IEnumerable<string> MissingItemsError<T>(int total, List<T> missingItems,
-			EquivalenceRelations equivalenceRelation)
+	private static IEnumerable<string> MissingItemsError<T>(int total, List<T> missingItems,
+		EquivalenceRelations equivalenceRelation)
+	{
+		bool hasMissingItems = missingItems.Any();
+		if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelations.Subset))
 		{
-			bool hasMissingItems = missingItems.Any();
-			if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelations.Subset))
+			if (missingItems.Count == 1)
 			{
-				if (missingItems.Count == 1)
-				{
-					yield return
-						$"lacked {missingItems.Count} of {total} expected items: {Formatter.Format(missingItems.Single())}";
-					yield break;
-				}
-
-				StringBuilder sb = new();
-				sb.Append("lacked ").Append(missingItems.Count).Append(" of ")
-					.Append(total).Append(" expected items:");
-				foreach (T? missingItem in missingItems)
-				{
-					sb.AppendLine().Append("  ");
-					Formatter.Format(sb, missingItem);
-					sb.Append(",");
-				}
-
-				sb.Length--;
-				yield return sb.ToString();
+				yield return
+					$"lacked {missingItems.Count} of {total} expected items: {Formatter.Format(missingItems[0])}";
+				yield break;
 			}
 
-			if (!hasMissingItems && equivalenceRelation.HasFlag(EquivalenceRelations.ProperSubset))
+			StringBuilder sb = new();
+			sb.Append("lacked ").Append(missingItems.Count).Append(" of ")
+				.Append(total).Append(" expected items:");
+			foreach (T? missingItem in missingItems)
 			{
-				yield return "did contain all expected items";
+				sb.AppendLine().Append("  ");
+				Formatter.Format(sb, missingItem);
+				sb.Append(",");
 			}
+
+			sb.Length--;
+			yield return sb.ToString();
 		}
+	}
 }

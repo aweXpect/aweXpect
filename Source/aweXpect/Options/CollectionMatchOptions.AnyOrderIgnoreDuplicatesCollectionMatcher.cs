@@ -24,11 +24,12 @@ public partial class CollectionMatchOptions
 			_totalExpectedCount = _missingItems.Count;
 		}
 
-		public string? Verify(string it, T value, IOptionsEquality<T2> options)
+		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
 		{
+			error = null;
 			if (_uniqueItems.Contains(value))
 			{
-				return null;
+				return false;
 			}
 
 			if (_missingItems.All(e => !options.AreConsideredEqual(value, e)))
@@ -40,19 +41,15 @@ public partial class CollectionMatchOptions
 			_uniqueItems.Add(value);
 			_index++;
 
-			if (_additionalItems.Count > 20)
-			{
-				return $"{it} was very different (> 20 deviations)";
-			}
-
-			return null;
+			return _additionalItems.Count > 2 * CollectionFormatCount;
 		}
 
-		public string? VerifyComplete(string it, IOptionsEquality<T2> options)
+		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
 		{
-			if (_missingItems.Count + _additionalItems.Count > 20)
+			if (_missingItems.Count + _additionalItems.Count > 2 * CollectionFormatCount)
 			{
-				return $"{it} was very different (> 20 deviations)";
+				error = null;
+				return true;
 			}
 
 			List<string> errors = new();
@@ -74,7 +71,8 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			return ReturnErrorString(it, errors);
+			error = ReturnErrorString(it, errors);
+			return error != null;
 		}
 	}
 }

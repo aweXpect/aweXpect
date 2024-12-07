@@ -19,12 +19,4 @@ public class EquivalencyOptions
 		_membersToIgnore.Add(memberToIgnore);
 		return this;
 	}
-
-	/// <inheritdoc />
-	public override string ToString()
-	{
-		return _membersToIgnore.Count > 0
-			? $" ignoring [{string.Join(", ", _membersToIgnore.Select<string, string>(m => Formatter.Format(m)))}]"
-			: "";
-	}
 }

@@ -17,7 +17,7 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 
 	/// <inheritdoc />
 	public bool AreConsideredEqual(object? a, object? b)
-		=> AreConsideredEqual(a, b, "").AreConsideredEqual;
+		=> _type.AreConsideredEqual(a, b);
 
 	/// <summary>
 	///     Compares the objects via <see cref="object.Equals(object, object)" />.
