@@ -117,7 +117,7 @@ namespace aweXpect.Core
     }
     public interface IOptionsEquality<in T>
     {
-        bool AreConsideredEqual(T a, T b);
+        bool AreConsideredEqual(T actual, T expected);
     }
     public interface IThat<out T>
     {

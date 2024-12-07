@@ -124,7 +124,7 @@ namespace aweXpect
             where TInnerException : System.Exception { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException() { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
-        public aweXpect.Results.StringMatcherResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(aweXpect.Options.StringMatcher expected) { }
+        public aweXpect.Results.StringEqualityResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(string expected) { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatEnumShould
@@ -186,7 +186,7 @@ namespace aweXpect
             where TInnerException : System.Exception? { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatExceptionShould<TException>> HaveInnerException() { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveInnerException(System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
-        public aweXpect.Results.StringMatcherResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveMessage(aweXpect.Options.StringMatcher expected) { }
+        public aweXpect.Results.StringEqualityResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveMessage(string expected) { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatGeneric
@@ -664,7 +664,7 @@ namespace aweXpect
     }
     public static class ThatStringShould
     {
-        public static aweXpect.Results.StringMatcherResult<string?, aweXpect.Core.IThat<string?>> Be(this aweXpect.Core.IThat<string?> source, aweXpect.Options.StringMatcher expected) { }
+        public static aweXpect.Results.StringEqualityResult<string?, aweXpect.Core.IThat<string?>> Be(this aweXpect.Core.IThat<string?> source, string? expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeLowerCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeNull(this aweXpect.Core.IThat<string?> source) { }
@@ -771,7 +771,7 @@ namespace aweXpect.Options
     public class ObjectEqualityOptions : aweXpect.Core.IOptionsEquality<object?>
     {
         public ObjectEqualityOptions() { }
-        public bool AreConsideredEqual(object? a, object? b) { }
+        public bool AreConsideredEqual(object? actual, object? expected) { }
         public aweXpect.Options.ObjectEqualityOptions Equals() { }
         public aweXpect.Options.ObjectEqualityOptions Equivalent(aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
         public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
@@ -795,22 +795,14 @@ namespace aweXpect.Options
     public class StringEqualityOptions : aweXpect.Core.IOptionsEquality<string?>
     {
         public StringEqualityOptions() { }
-        public System.Collections.Generic.IEqualityComparer<string> Comparer { get; }
-        public bool IgnoreCase { get; }
-        public bool AreConsideredEqual(string? a, string? b) { }
+        public bool AreConsideredEqual(string? actual, string? expected) { }
+        public aweXpect.Options.StringEqualityOptions AsRegex() { }
+        public aweXpect.Options.StringEqualityOptions AsWildcard() { }
+        public aweXpect.Options.StringEqualityOptions Exactly() { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
+        public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
-    }
-    public class StringMatcher
-    {
-        public StringMatcher(string? pattern) { }
-        public aweXpect.Options.StringMatcher AsRegex() { }
-        public aweXpect.Options.StringMatcher AsWildcard() { }
-        public aweXpect.Options.StringMatcher Exactly() { }
-        public aweXpect.Options.StringMatcher IgnoringCase(bool ignoreCase = true) { }
-        public aweXpect.Options.StringMatcher UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
-        public static aweXpect.Options.StringMatcher op_Implicit(string? pattern) { }
     }
     public class TimeTolerance
     {
@@ -911,7 +903,8 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringCountResult<TType, TThat, TSelf>
     {
         public StringCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
-        public TSelf IgnoringCase() { }
+        public TSelf IgnoringCase(bool ignoreCase = true) { }
+        public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class StringEqualityResult<TType, TThat> : aweXpect.Results.StringEqualityResult<TType, TThat, aweXpect.Results.StringEqualityResult<TType, TThat>>
@@ -922,18 +915,12 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf>
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
-        public TSelf IgnoringCase() { }
-        public TSelf IgnoringCase(bool ignoreCase) { }
+        public TSelf AsRegex() { }
+        public TSelf AsWildcard() { }
+        public TSelf Exactly() { }
+        public TSelf IgnoringCase(bool ignoreCase = true) { }
+        public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
-    }
-    public class StringMatcherResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
-    {
-        public StringMatcherResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringMatcher expected) { }
-        public aweXpect.Results.StringMatcherResult<TType, TThat> AsRegex() { }
-        public aweXpect.Results.StringMatcherResult<TType, TThat> AsWildcard() { }
-        public aweXpect.Results.StringMatcherResult<TType, TThat> Exactly() { }
-        public aweXpect.Results.StringMatcherResult<TType, TThat> IgnoringCase() { }
-        public aweXpect.Results.StringMatcherResult<TType, TThat> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class TimeToleranceResult<TType, TThat> : aweXpect.Results.TimeToleranceResult<TType, TThat, aweXpect.Results.TimeToleranceResult<TType, TThat>>
     {
