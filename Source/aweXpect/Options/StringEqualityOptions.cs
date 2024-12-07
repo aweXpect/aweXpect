@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Helpers;
 
 namespace aweXpect.Options;
 
@@ -22,9 +23,22 @@ public class StringEqualityOptions : IOptionsEquality<string?>
 	/// </summary>
 	public bool IgnoreCase { get; private set; }
 
+	/// <summary>
+	///     Flag indicating, if the newline style is ignored when comparing the <see langword="string" />s.
+	/// </summary>
+	public bool IgnoreNewlineStyle { get; private set; }
+
 	/// <inheritdoc />
 	public bool AreConsideredEqual(string? a, string? b)
-		=> Comparer.Equals(a, b);
+	{
+		if (IgnoreNewlineStyle)
+		{
+			a = a.RemoveNewlineStyle();
+			b = b.RemoveNewlineStyle();
+		}
+
+		return Comparer.Equals(a, b);
+	}
 
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
@@ -32,6 +46,19 @@ public class StringEqualityOptions : IOptionsEquality<string?>
 	public StringEqualityOptions IgnoringCase(bool ignoreCase = true)
 	{
 		IgnoreCase = ignoreCase;
+		return this;
+	}
+
+	/// <summary>
+	///     Ignores the newline style when comparing <see langword="string" />s.
+	/// </summary>
+	/// <remarks>
+	///     Enabling this option will replace all occurrences of <c>\r\n</c> and <c>\r</c> with <c>\n</c> in the strings before
+	///     comparing them.
+	/// </remarks>
+	public StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle)
+	{
+		IgnoreNewlineStyle = ignoreNewlineStyle;
 		return this;
 	}
 

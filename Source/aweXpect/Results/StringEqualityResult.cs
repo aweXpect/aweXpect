@@ -43,13 +43,26 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 	}
 
 	/// <summary>
-	///     Ignores casing when comparing the <see langword="string" />s, according to the <paramref name="ignoreCase" />
-	///     parameter.
+	///     Ignores casing when comparing the <see langword="string" />s,
+	///     according to the <paramref name="ignoreCase" /> parameter.
 	/// </summary>
-	public TSelf IgnoringCase(
-		bool ignoreCase)
+	public TSelf IgnoringCase(bool ignoreCase = true)
 	{
 		options.IgnoringCase(ignoreCase);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Ignores the newline style when comparing <see langword="string" />s,
+	///     according to the <paramref name="ignoreNewlineStyle" /> parameter.
+	/// </summary>
+	/// <remarks>
+	///     Enabling this option will replace all occurrences of <c>\r\n</c> and <c>\r</c> with <c>\n</c> in the strings before
+	///     comparing them.
+	/// </remarks>
+	public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true)
+	{
+		options.IgnoringNewlineStyle(ignoreNewlineStyle);
 		return (TSelf)this;
 	}
 

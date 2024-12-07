@@ -39,9 +39,22 @@ public class StringCountResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
 	/// </summary>
-	public TSelf IgnoringCase()
+	public TSelf IgnoringCase(bool ignoreCase = true)
 	{
-		options.IgnoringCase();
+		options.IgnoringCase(ignoreCase);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Ignores the newline style when comparing <see langword="string" />s.
+	/// </summary>
+	/// <remarks>
+	///     Enabling this option will replace all occurrences of <c>\r\n</c> and <c>\r</c> with <c>\n</c> in the strings before
+	///     comparing them.
+	/// </remarks>
+	public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true)
+	{
+		options.IgnoringNewlineStyle(ignoreNewlineStyle);
 		return (TSelf)this;
 	}
 
