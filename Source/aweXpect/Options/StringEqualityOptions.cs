@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using aweXpect.Core;
 
 namespace aweXpect.Options;
 
 /// <summary>
 ///     Quantifier an occurrence.
 /// </summary>
-public class StringEqualityOptions
+public class StringEqualityOptions : IOptionsEquality<string?>
 {
+	private IEqualityComparer<string>? _comparer;
+
 	/// <summary>
 	///     The <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
 	/// </summary>
@@ -19,7 +22,9 @@ public class StringEqualityOptions
 	/// </summary>
 	public bool IgnoreCase { get; private set; }
 
-	private IEqualityComparer<string>? _comparer;
+	/// <inheritdoc />
+	public bool AreConsideredEqual(string? a, string? b)
+		=> Comparer.Equals(a, b);
 
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.

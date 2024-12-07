@@ -34,11 +34,10 @@ public static partial class ThatStringEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<string> actual)
 		{
-			IEqualityComparer<string> comparer = options.Comparer;
 			int count = 0;
 			foreach (string item in actual)
 			{
-				if (comparer.Equals(item, expected))
+				if (options.AreConsideredEqual(item, expected))
 				{
 					count++;
 

@@ -909,11 +909,12 @@ namespace aweXpect.Options
         public void Exactly(int expected) { }
         public override string ToString() { }
     }
-    public class StringEqualityOptions
+    public class StringEqualityOptions : aweXpect.Core.IOptionsEquality<string?>
     {
         public StringEqualityOptions() { }
         public System.Collections.Generic.IEqualityComparer<string> Comparer { get; }
         public bool IgnoreCase { get; }
+        public bool AreConsideredEqual(string? a, string? b) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
