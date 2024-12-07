@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
@@ -52,10 +53,7 @@ partial class Build
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
-			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
-			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
-				
-			string body = "## Benchmark Results\n" + fileContent;
+			string body = CreateCommentBody();
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
 			if (prId != null)
@@ -93,4 +91,29 @@ partial class Build
 		.DependsOn(BenchmarkDotNet)
 		.DependsOn(BenchmarkResult)
 		.DependsOn(BenchmarkComment);
+
+	string CreateCommentBody()
+	{
+		string[] fileContent = File.ReadAllLines(ArtifactsDirectory / "Benchmarks" / "results" /
+		                                         "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
+		StringBuilder sb = new();
+		sb.AppendLine("## Benchmark Results");
+		sb.AppendLine("<details>");
+		sb.AppendLine("<summary>Details</summary>");
+		int count = 0;
+		foreach (string line in fileContent)
+		{
+			sb.AppendLine(line);
+			if (line.StartsWith("```"))
+			{
+				if (++count == 2)
+				{
+					sb.AppendLine("</details>");
+				}
+			}
+		}
+
+		string body = sb.ToString();
+		return body;
+	}
 }
