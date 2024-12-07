@@ -8,16 +8,16 @@ namespace aweXpect.Core.Nodes;
 
 internal class MappingNode<TSource, TTarget> : ExpectationNode
 {
-	private readonly Func<PropertyAccessor<TSource, TTarget?>, string, string>
+	private readonly Func<MemberAccessor<TSource, TTarget?>, string, string>
 		_expectationTextGenerator;
 
-	private readonly PropertyAccessor<TSource, TTarget?> _propertyAccessor;
+	private readonly MemberAccessor<TSource, TTarget?> _memberAccessor;
 
 	public MappingNode(
-		PropertyAccessor<TSource, TTarget?> propertyAccessor,
-		Func<PropertyAccessor, string, string>? expectationTextGenerator = null)
+		MemberAccessor<TSource, TTarget?> memberAccessor,
+		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
 	{
-		_propertyAccessor = propertyAccessor;
+		_memberAccessor = memberAccessor;
 		if (expectationTextGenerator == null)
 		{
 			_expectationTextGenerator = DefaultExpectationTextGenerator;
@@ -37,10 +37,10 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
-				$"The property type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TSource).Name},{Environment.NewLine}but found {value?.GetType().Name}");
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TSource).Name},{Environment.NewLine}but found {value?.GetType().Name}");
 		}
 
-		if (_propertyAccessor.TryAccessProperty(
+		if (_memberAccessor.TryAccessMember(
 			typedValue,
 			out TTarget? matchingValue))
 		{
@@ -49,12 +49,12 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		}
 
 		throw new InvalidOperationException(
-			$"The property type for the which node did not match.{Environment.NewLine}Expected {typeof(TTarget).Name},{Environment.NewLine}but found {matchingValue?.GetType().Name}");
+			$"The member type for the which node did not match.{Environment.NewLine}Expected {typeof(TTarget).Name},{Environment.NewLine}but found {matchingValue?.GetType().Name}");
 	}
 
 	/// <inheritdoc />
 	public override string ToString()
-		=> _propertyAccessor + base.ToString();
+		=> _memberAccessor + base.ToString();
 
 	internal ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
@@ -63,11 +63,11 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		if (combinedResult == null)
 		{
 			return result.UpdateExpectationText(
-				e => _expectationTextGenerator(_propertyAccessor, e.ExpectationText));
+				e => _expectationTextGenerator(_memberAccessor, e.ExpectationText));
 		}
 
 		string combinedExpectation =
-			$"{combinedResult.ExpectationText}{_expectationTextGenerator(_propertyAccessor, result.ExpectationText)}";
+			$"{combinedResult.ExpectationText}{_expectationTextGenerator(_memberAccessor, result.ExpectationText)}";
 
 		if (combinedResult is ConstraintResult.Failure leftFailure &&
 		    result is ConstraintResult.Failure rightFailure)
@@ -105,9 +105,9 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 	}
 
 	private static string DefaultExpectationTextGenerator(
-		PropertyAccessor<TSource, TTarget?> propertyAccessor,
+		MemberAccessor<TSource, TTarget?> memberAccessor,
 		string expectationText)
 	{
-		return propertyAccessor + expectationText;
+		return memberAccessor + expectationText;
 	}
 }

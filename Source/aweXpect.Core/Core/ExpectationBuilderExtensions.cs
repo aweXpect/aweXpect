@@ -8,16 +8,16 @@ namespace aweXpect.Core;
 public static class ExpectationBuilderExtensions
 {
 	/// <summary>
-	///     Specifies a constraint that applies to the property selected
-	///     by the <paramref name="propertySelector" /> displayed as <paramref name="displayName" />.
+	///     Specifies a constraint that applies to the member selected
+	///     by the <paramref name="memberSelector" /> displayed as <paramref name="displayName" />.
 	/// </summary>
-	public static ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget>
-		ForProperty<TSource, TTarget>(
+	public static ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget>
+		ForMember<TSource, TTarget>(
 			this ExpectationBuilder expectationBuilder,
-			Func<TSource, TTarget> propertySelector,
+			Func<TSource, TTarget> memberSelector,
 			string displayName,
 			bool replaceIt = true)
-		=> expectationBuilder.ForProperty(
-			PropertyAccessor<TSource, TTarget>.FromFunc(propertySelector, displayName),
+		=> expectationBuilder.ForMember(
+			MemberAccessor<TSource, TTarget>.FromFunc(memberSelector, displayName),
 			replaceIt: replaceIt);
 }

@@ -36,12 +36,12 @@ internal class ExpectationNode : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
-		PropertyAccessor<TValue, TTarget?> propertyAccessor,
-		Func<PropertyAccessor, string, string>? expectationTextGenerator = null)
+		MemberAccessor<TValue, TTarget?> memberAccessor,
+		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
 		where TTarget : default
 	{
 		MappingNode<TValue, TTarget> mappingNode =
-			new(propertyAccessor,
+			new(memberAccessor,
 				expectationTextGenerator);
 		_inner = mappingNode;
 		_combineResults = mappingNode.CombineResults;

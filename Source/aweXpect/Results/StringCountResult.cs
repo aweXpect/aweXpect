@@ -39,19 +39,19 @@ public class StringCountResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
 	/// </summary>
-	public StringCountResult<TType, TThat, TSelf> IgnoringCase()
+	public TSelf IgnoringCase()
 	{
 		options.IgnoringCase();
-		return this;
+		return (TSelf)this;
 	}
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="string" />s.
 	/// </summary>
-	public StringCountResult<TType, TThat, TSelf> Using(
+	public TSelf Using(
 		IEqualityComparer<string> comparer)
 	{
 		options.UsingComparer(comparer);
-		return this;
+		return (TSelf)this;
 	}
 }

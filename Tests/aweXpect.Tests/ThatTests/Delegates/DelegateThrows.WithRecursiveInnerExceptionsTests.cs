@@ -19,13 +19,13 @@ public sealed partial class DelegateThrows
 
 			async Task Act()
 				=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.AtLeast(minimum).Be<CustomException>());
+					e => e.HaveAtLeast(minimum, x => x.Be<CustomException>()));
 
 			await That(Act).Should().Throw<XunitException>().OnlyIf(shouldThrow)
 				.WithMessage($"""
 				              Expected action to
-				              throw an Exception with recursive inner exceptions which have at least {minimum} items of type CustomException,
-				              but only 1 of 5 items were
+				              throw an Exception with recursive inner exceptions which have at least {minimum} items be type CustomException,
+				              but only 1 of 5 were
 				              """);
 		}
 
@@ -36,7 +36,7 @@ public sealed partial class DelegateThrows
 
 			Exception? result = await That(() => throw exception)
 				.Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.None().Satisfy(_ => false));
+					e => e.HaveNone(x => x.Satisfy(_ => false)));
 
 			await That(result).Should().BeSameAs(exception);
 		}
@@ -48,13 +48,13 @@ public sealed partial class DelegateThrows
 
 			async Task Act()
 				=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.All().Satisfy(_ => false));
+					e => e.HaveAll(x => x.Satisfy(_ => false)));
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected action to
-				             throw an Exception with recursive inner exceptions which all satisfy "_ => false",
-				             but not all did
+				             throw an Exception with recursive inner exceptions which have all items satisfy _ => false,
+				             but not all were
 				             """);
 		}
 
@@ -65,7 +65,7 @@ public sealed partial class DelegateThrows
 
 			async Task Act()
 				=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
-					e => e.All().Satisfy(_ => false));
+					e => e.HaveAll(x => x.Satisfy(_ => false)));
 
 			await That(Act).Should().NotThrow();
 		}

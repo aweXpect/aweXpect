@@ -87,19 +87,25 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder And(string textSeparator = " and ") { }
-        public aweXpect.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(aweXpect.Core.PropertyAccessor<TSource, TTarget?> propertyAccessor, System.Func<aweXpect.Core.PropertyAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
+        public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget?> memberAccessor, System.Func<aweXpect.Core.MemberAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> whichAccessor) { }
         public override string? ToString() { }
         public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
-        public class PropertyExpectationBuilder<TSource, TProperty>
+        public class MemberExpectationBuilder<TSource, TMember>
         {
             public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation) { }
-            public aweXpect.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TProperty> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
+            public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
         }
     }
     public static class ExpectationBuilderExtensions
     {
-        public static aweXpect.Core.ExpectationBuilder.PropertyExpectationBuilder<TSource, TTarget> ForProperty<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> propertySelector, string displayName, bool replaceIt = true) { }
+        public static aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> memberSelector, string displayName, bool replaceIt = true) { }
+    }
+    public interface ICollectionMatcher<in T, out T2>
+        where in T : T2
+    {
+        string? Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options);
+        string? VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options);
     }
     public interface IExpectSubject<out T>
     {
@@ -109,6 +115,10 @@ namespace aweXpect.Core
         aweXpect.Core.IThat<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
         string? ToString();
     }
+    public interface IOptionsEquality<in T>
+    {
+        bool AreConsideredEqual(T a, T b);
+    }
     public interface IThat<out T>
     {
         aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
@@ -117,15 +127,20 @@ namespace aweXpect.Core
         System.Type GetType();
         string? ToString();
     }
-    public abstract class PropertyAccessor
+    public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder
     {
-        protected PropertyAccessor(string name) { }
+        public ManualExpectationBuilder() { }
+        public System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
+    }
+    public abstract class MemberAccessor
+    {
+        protected MemberAccessor(string name) { }
         public override string ToString() { }
     }
-    public class PropertyAccessor<TSource, TTarget> : aweXpect.Core.PropertyAccessor
+    public class MemberAccessor<TSource, TTarget> : aweXpect.Core.MemberAccessor
     {
-        public static aweXpect.Core.PropertyAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
-        public static aweXpect.Core.PropertyAccessor<TSource, TTarget?> FromFunc(System.Func<TSource, TTarget> func, string name) { }
+        public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
+        public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromFunc(System.Func<TSource, TTarget> func, string name) { }
     }
     public abstract class ThatDelegate
     {
@@ -208,11 +223,22 @@ namespace aweXpect
     {
         public SkipException(string message) { }
     }
+    public readonly struct Times
+    {
+        public Times(int value) { }
+        public int Value { get; }
+        public static aweXpect.Times op_Implicit(int value) { }
+    }
+    public static class TimesExtensions
+    {
+        public static aweXpect.Times Times(this int value) { }
+    }
 }
 namespace aweXpect.Formatting
 {
     public static class Format
     {
+        public static int CollectionFormatCount { get; }
         public static aweXpect.Formatting.ValueFormatter Formatter { get; }
     }
     public class FormattingOptions
@@ -335,16 +361,11 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>
     {
         public AndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-        public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.WhichResult<TProperty, aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult> Which<TProperty>(System.Linq.Expressions.Expression<System.Func<TType, TProperty?>> selector) { }
+        public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult Which<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IExpectSubject<TMember?>> expectations) { }
         public class AdditionalAndOrWhichResult : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
         {
             public AdditionalAndOrWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
-            public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.WhichResult<TProperty, aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult> AndWhich<TProperty>(System.Linq.Expressions.Expression<System.Func<TType, TProperty?>> selector) { }
-        }
-        public class WhichResult<TProperty, TReturn>
-        {
-            public WhichResult(System.Func<System.Action<aweXpect.Core.IThat<TProperty?>>, TReturn> resultCallback) { }
-            public TReturn Should(System.Action<aweXpect.Core.IThat<TProperty?>> expectations) { }
+            public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult AndWhich<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IExpectSubject<TMember?>> expectations) { }
         }
     }
     [System.Diagnostics.StackTraceHidden]

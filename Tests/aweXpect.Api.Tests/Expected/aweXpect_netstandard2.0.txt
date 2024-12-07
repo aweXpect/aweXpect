@@ -5,49 +5,24 @@ namespace aweXpect
     public class BetweenResult<TTarget>
     {
         public BetweenResult(System.Func<int, TTarget> callback) { }
-        public TTarget And(int maximum) { }
+        public TTarget And(aweXpect.Times maximum) { }
     }
-    public struct CollectionEvaluatorResult : System.IEquatable<aweXpect.CollectionEvaluatorResult>
+    public class BetweenResult<TTarget, TExpectation>
     {
-        public CollectionEvaluatorResult(bool? IsSuccess, string Error) { }
-        public string Error { get; set; }
-        public bool? IsSuccess { get; set; }
+        public BetweenResult(System.Func<int, System.Action<TExpectation>, TTarget> callback) { }
+        public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
     }
-    public abstract class CollectionQuantifier
+    public abstract class EnumerableQuantifier
     {
-        protected CollectionQuantifier() { }
-        public static aweXpect.CollectionQuantifier All { get; }
-        public static aweXpect.CollectionQuantifier None { get; }
-        protected abstract bool ContinueEvaluation(int matchingCount, int notMatchingCount, int? totalCount, [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out aweXpect.CollectionEvaluatorResult? result);
-        public aweXpect.ICollectionEvaluator<TItem> GetEvaluator<TItem, TCollection>(TCollection enumerable, aweXpect.Core.EvaluationContext.IEvaluationContext context)
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
-        public override string ToString() { }
-        public abstract string ToString(bool includeItems);
-        public static aweXpect.CollectionQuantifier AtLeast(int minimum) { }
-        public static aweXpect.CollectionQuantifier AtMost(int maximum) { }
-        public static aweXpect.CollectionQuantifier Between(int minimum, int maximum) { }
-    }
-    public interface ICollectionEvaluator<out TItem>
-    {
-        System.Threading.Tasks.Task<aweXpect.CollectionEvaluatorResult> CheckCondition<TExpected>(TExpected expected, System.Func<TItem, TExpected, bool> predicate, System.Threading.CancellationToken cancellationToken);
-    }
-    public class QuantifiedCollectionResult
-    {
-        public QuantifiedCollectionResult() { }
-        public class Sync<TResult, TItem, TCollection> : aweXpect.QuantifiedCollectionResult<TResult>
-            where TResult : aweXpect.Core.IThat<TCollection>
-            where TCollection : System.Collections.Generic.IEnumerable<TItem>
-        {
-            public Sync(TResult result, aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.CollectionQuantifier quantity) { }
-            public aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> Be<TExpected>() { }
-        }
-    }
-    public class QuantifiedCollectionResult<TResult>
-    {
-        public QuantifiedCollectionResult(TResult result, aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.CollectionQuantifier quantity) { }
-        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        public aweXpect.CollectionQuantifier Quantity { get; }
-        public TResult Result { get; }
+        protected EnumerableQuantifier() { }
+        public static aweXpect.EnumerableQuantifier All { get; }
+        public static aweXpect.EnumerableQuantifier None { get; }
+        public abstract string GetExpectation(string it, aweXpect.Core.ExpectationBuilder expectationBuilder);
+        public abstract aweXpect.Core.Constraints.ConstraintResult GetResult<TEnumerable>(TEnumerable actual, string it, aweXpect.Core.ExpectationBuilder expectationBuilder, int matchingCount, int notMatchingCount, int? totalCount);
+        public abstract bool IsDeterminable(int matchingCount, int notMatchingCount);
+        public static aweXpect.EnumerableQuantifier AtLeast(int minimum) { }
+        public static aweXpect.EnumerableQuantifier AtMost(int maximum) { }
+        public static aweXpect.EnumerableQuantifier Between(int minimum, int maximum) { }
     }
     public static class ThatBoolShould
     {
@@ -175,14 +150,18 @@ namespace aweXpect
     }
     public static class ThatEnumerableShould
     {
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> All<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> AtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> AtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int maximum) { }
+        public static aweXpect.Results.CollectionBeResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Be<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> BeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
-        public static aweXpect.BetweenResult<aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>>> Between<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
-        public static aweXpect.QuantifiedCollectionResult.Sync<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>, TItem, System.Collections.Generic.IEnumerable<TItem>> None<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static aweXpect.Results.ObjectCountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
+        public static aweXpect.Results.CountResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Contain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> HaveAll<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> HaveAtLeast<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, aweXpect.Times minimum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> HaveAtMost<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, aweXpect.Times maximum, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
+        public static aweXpect.BetweenResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>>, aweXpect.Core.IThat<TItem>> HaveBetween<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, int minimum) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> HaveNone<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotBeEmpty<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }
+        public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem unexpected) { }
+        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> NotContain<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> Should<TItem>(this aweXpect.Core.IExpectSubject<System.Collections.Generic.IEnumerable<TItem>> subject) { }
     }
     public static class ThatExceptionShould
@@ -213,8 +192,10 @@ namespace aweXpect
     public static class ThatGeneric
     {
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> BeSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> For<T, TProperty>(this aweXpect.Core.IExpectSubject<T> source, System.Linq.Expressions.Expression<System.Func<T, TProperty?>> selector, System.Action<aweXpect.Core.IExpectSubject<TProperty?>> expectations) { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> For<T, TMember>(this aweXpect.Core.IExpectSubject<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IExpectSubject<TMember?>> expectations) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> NotBeSameAs<T>(this aweXpect.Core.IThat<T> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> NotSatisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> Satisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuidShould
     {
@@ -652,20 +633,11 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> Be(this aweXpect.Core.IThat<object?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> Be<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeNull(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, System.Type type) { }
+        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> NotBeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Core.IThat<object?> Should(this aweXpect.Core.IExpectSubject<object?> subject) { }
-    }
-    public static class ThatQuantifiedCollectionResultShould { }
-    public static class ThatQuantifiedCollectionResultShouldAsync { }
-    public static class ThatQuantifiedCollectionResultShouldSync
-    {
-        public static aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> Be<TItem, TCollection>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<TCollection>> source, TItem expected)
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
-        public static aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> BeEquivalentTo<TItem, TCollection>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<TCollection>> source, TItem expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> Satisfy<TItem>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<TCollection, aweXpect.Core.IThat<TCollection>> Satisfy<TItem, TCollection>(this aweXpect.QuantifiedCollectionResult<aweXpect.Core.IThat<TCollection>> source, System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "")
-            where TCollection : System.Collections.Generic.IEnumerable<TItem> { }
     }
     public static class ThatStreamShould
     {
@@ -764,6 +736,25 @@ namespace aweXpect.Extensions
 }
 namespace aweXpect.Options
 {
+    public class CollectionMatchOptions
+    {
+        public CollectionMatchOptions() { }
+        public aweXpect.Core.ICollectionMatcher<T, T2> GetCollectionMatcher<T, T2>(System.Collections.Generic.IEnumerable<T> expected)
+            where T : T2 { }
+        public void IgnoringDuplicates() { }
+        public void InAnyOrder() { }
+        public void SetEquivalenceRelation(aweXpect.Options.CollectionMatchOptions.EquivalenceRelations equivalenceRelation) { }
+        public override string ToString() { }
+        [System.Flags]
+        public enum EquivalenceRelations
+        {
+            Equivalent = 1,
+            ProperSubset = 6,
+            ProperSuperset = 10,
+            Subset = 4,
+            Superset = 8,
+        }
+    }
     public class EquivalencyOptions
     {
         public EquivalencyOptions() { }
@@ -778,9 +769,10 @@ namespace aweXpect.Options
         public void SetTolerance(TNumber tolerance) { }
         public override string ToString() { }
     }
-    public class ObjectEqualityOptions
+    public class ObjectEqualityOptions : aweXpect.Core.IOptionsEquality<object?>
     {
         public ObjectEqualityOptions() { }
+        public bool AreConsideredEqual(object? a, object? b) { }
         public aweXpect.Options.ObjectEqualityOptions Equals() { }
         public aweXpect.Options.ObjectEqualityOptions Equivalent(aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
         public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
@@ -797,7 +789,7 @@ namespace aweXpect.Options
         public void AtLeast(int minimum) { }
         public void AtMost(int maximum) { }
         public void Between(int minimum, int maximum) { }
-        public bool? Check(int amount) { }
+        public bool? Check(int amount, bool isLast) { }
         public void Exactly(int expected) { }
         public override string ToString() { }
     }
@@ -831,6 +823,14 @@ namespace aweXpect.Options
 }
 namespace aweXpect.Results
 {
+    public class CollectionBeResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>
+    {
+        public CollectionBeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> AndLess() { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> AndMore() { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> OrLess() { }
+        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> OrMore() { }
+    }
     public class CountResult<TType, TThat> : aweXpect.Results.CountResult<TType, TThat, aweXpect.Results.CountResult<TType, TThat>>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
@@ -839,10 +839,10 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.CountResult<TType, TThat, TSelf>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
-        public TSelf AtLeast(int minimum) { }
-        public TSelf AtMost(int maximum) { }
+        public TSelf AtLeast(aweXpect.Times minimum) { }
+        public TSelf AtMost(aweXpect.Times maximum) { }
         public aweXpect.BetweenResult<TSelf> Between(int minimum) { }
-        public TSelf Exactly(int expected) { }
+        public TSelf Exactly(aweXpect.Times expected) { }
         public TSelf Never() { }
         public TSelf Once() { }
     }
@@ -856,7 +856,7 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, TSelf>
     {
         public NullableNumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
-        public aweXpect.Results.NullableNumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+        public TSelf Within(TType tolerance) { }
     }
     public class NumberToleranceResult<TType, TThat> : aweXpect.Results.NumberToleranceResult<TType, TThat, aweXpect.Results.NumberToleranceResult<TType, TThat>>
         where TType :  struct, System.IComparable<TType>
@@ -868,7 +868,29 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf>
     {
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
-        public aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf> Within(TType tolerance) { }
+        public TSelf Within(TType tolerance) { }
+    }
+    public class ObjectCollectionMatchResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>>
+    {
+        public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+    }
+    public class ObjectCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
+        where TSelf : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TSelf>
+    {
+        public ObjectCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public TSelf IgnoringDuplicates() { }
+        public TSelf InAnyOrder() { }
+    }
+    public class ObjectCountResult<TType, TThat> : aweXpect.Results.ObjectCountResult<TType, TThat, aweXpect.Results.ObjectCountResult<TType, TThat>>
+    {
+        public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions options) { }
+    }
+    public class ObjectCountResult<TType, TThat, TSelf> : aweXpect.Results.CountResult<TType, TThat, TSelf>
+        where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TSelf>
+    {
+        public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions options) { }
+        public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class ObjectEqualityResult<TType, TThat> : aweXpect.Results.ObjectEqualityResult<TType, TThat, aweXpect.Results.ObjectEqualityResult<TType, TThat>>
     {
@@ -878,8 +900,8 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
     {
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
-        public aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
-        public aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+        public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class StringCountResult<TType, TThat> : aweXpect.Results.StringCountResult<TType, TThat, aweXpect.Results.StringCountResult<TType, TThat>>
     {
@@ -889,8 +911,8 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringCountResult<TType, TThat, TSelf>
     {
         public StringCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.StringEqualityOptions options) { }
-        public aweXpect.Results.StringCountResult<TType, TThat, TSelf> IgnoringCase() { }
-        public aweXpect.Results.StringCountResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+        public TSelf IgnoringCase() { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class StringEqualityResult<TType, TThat> : aweXpect.Results.StringEqualityResult<TType, TThat, aweXpect.Results.StringEqualityResult<TType, TThat>>
     {
@@ -900,9 +922,9 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf>
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
-        public aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> IgnoringCase() { }
-        public aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> IgnoringCase(bool ignoreCase) { }
-        public aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
+        public TSelf IgnoringCase() { }
+        public TSelf IgnoringCase(bool ignoreCase) { }
+        public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class StringMatcherResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
     {
@@ -921,6 +943,6 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.TimeToleranceResult<TType, TThat, TSelf>
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
-        public aweXpect.Results.TimeToleranceResult<TType, TThat, TSelf> Within(System.TimeSpan tolerance) { }
+        public TSelf Within(System.TimeSpan tolerance) { }
     }
 }

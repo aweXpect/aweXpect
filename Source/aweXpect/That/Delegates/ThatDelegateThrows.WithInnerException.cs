@@ -13,7 +13,7 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException(
 		Action<ThatExceptionShould<Exception?>> expectations)
 		=> new(ExpectationBuilder
-				.ForProperty<Exception, Exception?>(e => e.InnerException,
+				.ForMember<Exception, Exception?>(e => e.InnerException,
 					"with an inner exception which should ")
 				.AddExpectations(e => expectations(new ThatExceptionShould<Exception?>(e))),
 			this);

@@ -15,12 +15,12 @@ internal abstract class Node
 	public abstract void AddConstraint(IConstraint constraint);
 
 	/// <summary>
-	///     Add a mapping constraint which maps the value according to the <paramref name="propertyAccessor" /> to a property
+	///     Add a mapping constraint which maps the value according to the <paramref name="memberAccessor" /> to a member
 	///     and applies this value to the inner expectations.
 	/// </summary>
 	public abstract Node? AddMapping<TValue, TTarget>(
-		PropertyAccessor<TValue, TTarget?> propertyAccessor,
-		Func<PropertyAccessor, string, string>? expectationTextGenerator = null);
+		MemberAccessor<TValue, TTarget?> memberAccessor,
+		Func<MemberAccessor, string, string>? expectationTextGenerator = null);
 
 	/// <summary>
 	///     Add a node as inner node.

@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Core.Tests.Formatting.Formatters;
 
@@ -10,10 +13,13 @@ public sealed class CollectionFormatterTests
 	{
 		string expectedResult = "[\"1\", \"2\", \"3\", \"4\"]";
 		IEnumerable<string> value = Enumerable.Range(1, 4).Select(x => x.ToString());
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 
 	[Fact]
@@ -21,9 +27,12 @@ public sealed class CollectionFormatterTests
 	{
 		string expectedResult = "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, …]";
 		IEnumerable<int> value = Enumerable.Range(1, 20);
+		StringBuilder sb = new();
 
 		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
 
 		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
 	}
 }
