@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Nuke.Common;
-using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DotNet;
 using Octokit;
@@ -15,7 +14,6 @@ namespace Build;
 
 partial class Build
 {
-
 	Target BenchmarkDotNet => _ => _
 		.Executes(() =>
 		{
@@ -112,6 +110,7 @@ partial class Build
 
 				continue;
 			}
+
 			sb.AppendLine(line);
 		}
 
