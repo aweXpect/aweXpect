@@ -13,15 +13,8 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Build;
 
-[GitHubActions(
-	"Benchmarks",
-	GitHubActionsImage.UbuntuLatest,
-	AutoGenerate = false,
-	ImportSecrets = new[] { nameof(GithubToken) }
-)]
 partial class Build
 {
-	[Parameter("Github Token")] readonly string GithubToken;
 
 	Target BenchmarkDotNet => _ => _
 		.Executes(() =>
