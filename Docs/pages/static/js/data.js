@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733595641599,
+  "lastUpdate": 1733602405812,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2912,6 +2912,102 @@ window.BENCHMARK_DATA = {
             "value": 1859.1081521352132,
             "unit": "ns",
             "range": "± 6.674422609367973"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9052760bc49b6e8de28ff2936011cae3cb6a8c3d",
+          "message": "feat: additional configuration for string equality (#87)\n\n- **IgnoringLeadingWhitespace**\n  Instructs the comparison to ignore leading whitespace when comparing strings.\n- **IgnoringTrailingWhitespace**\n  Instructs the comparison to ignore trailing whitespace when comparing strings.\n\nRefactor to always specify the equality type first and add `Be` for string enumerable.",
+          "timestamp": "2024-12-07T20:08:33Z",
+          "tree_id": "71095b5a55abc5c36c2589c65fa6f13144643e05",
+          "url": "https://github.com/aweXpect/aweXpect/commit/9052760bc49b6e8de28ff2936011cae3cb6a8c3d"
+        },
+        "date": 1733602405138,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.76199281215668,
+            "unit": "ns",
+            "range": "± 0.8038917905955474"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 220.81161148207528,
+            "unit": "ns",
+            "range": "± 0.6908049128395309"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 587.4238805089678,
+            "unit": "ns",
+            "range": "± 2.6482933556220223"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 333.2095211982727,
+            "unit": "ns",
+            "range": "± 1.9535315389014412"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 465.86735083262124,
+            "unit": "ns",
+            "range": "± 1.7411263648137862"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 799.6450578144619,
+            "unit": "ns",
+            "range": "± 3.4881678780318093"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 964.7757191975911,
+            "unit": "ns",
+            "range": "± 8.281750260859841"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1213.1141775676183,
+            "unit": "ns",
+            "range": "± 9.34526145695104"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1114.9484316018911,
+            "unit": "ns",
+            "range": "± 3.1653946646976747"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 990.9107957567487,
+            "unit": "ns",
+            "range": "± 3.807787582179956"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 228379.18663611778,
+            "unit": "ns",
+            "range": "± 930.1238671031996"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1981.6355707986015,
+            "unit": "ns",
+            "range": "± 8.551570537158764"
           }
         ]
       }
