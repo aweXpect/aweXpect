@@ -67,7 +67,7 @@ partial class Build
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
 				{
-					if (comment.Body.Contains("## Benchmark Results"))
+					if (comment.Body.Contains("## :rocket: Benchmark Results"))
 					{
 						Log.Information($"Found comment: {comment.Body}");
 						commentId = comment.Id;
@@ -97,7 +97,7 @@ partial class Build
 		string[] fileContent = File.ReadAllLines(ArtifactsDirectory / "Benchmarks" / "results" /
 		                                         "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
 		StringBuilder sb = new();
-		sb.AppendLine("## Benchmark Results");
+		sb.AppendLine("## :rocket: Benchmark Results");
 		sb.AppendLine("<details>");
 		sb.AppendLine("<summary>Details</summary>");
 		int count = 0;
@@ -109,6 +109,7 @@ partial class Build
 				if (++count == 2)
 				{
 					sb.AppendLine("</details>");
+					sb.AppendLine();
 				}
 			}
 		}
