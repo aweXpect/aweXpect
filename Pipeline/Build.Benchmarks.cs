@@ -55,7 +55,7 @@ partial class Build
 			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
 			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
 				
-			string body = "# Benchmark Result:\n" + fileContent;
+			string body = "## Benchmark Results\n" + fileContent;
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
 			if (prId != null)
@@ -69,7 +69,7 @@ partial class Build
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
 				{
-					if (comment.Body.Contains("# Benchmark Result"))
+					if (comment.Body.Contains("## Benchmark Results"))
 					{
 						Log.Information($"Found comment: {comment.Body}");
 						commentId = comment.Id;
