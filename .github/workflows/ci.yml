@@ -98,26 +98,10 @@ jobs:
                 with:
                     dotnet-version: |
                         8.0.x
-            -   name: Create benchmarks branch
-                run: |
-                    git config --global user.email "benchmarks@testably.org"
-                    git config --global user.name "Benchmark User"
-                    git switch benchmarks 2>/dev/null || git switch -c benchmarks;
-                    git push --set-upstream origin benchmarks
-                    git merge origin/main --no-edit
             -   name: Run benchmarks
                 run: ./build.sh Benchmarks
-            -   name: Store benchmark result
-                uses: rhysd/github-action-benchmark@v1
-                with:
-                    name: Benchmark.Net Benchmark
-                    tool: 'benchmarkdotnet'
-                    output-file-path: Artifacts/Benchmarks/results/aweXpect.Benchmarks.HappyCaseBenchmarks-report-full-compressed.json
-                    github-token: ${{ secrets.GITHUB_TOKEN }}
-                    fail-on-alert: true
-                    alert-threshold: '150%'
-                    comment-on-alert: true
-                    auto-push: false
+                env:
+                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
     
     static-code-analysis:
         name: "Static code analysis"
