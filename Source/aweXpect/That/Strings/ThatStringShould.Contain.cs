@@ -59,7 +59,7 @@ public static partial class ThatStringShould
 					$"{it} was <null>");
 			}
 
-			int actualCount = CountOccurrences(actual, expected, options.Comparer);
+			int actualCount = CountOccurrences(actual, expected, options);
 			if (quantifier.Check(actualCount, true) == true)
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
@@ -70,7 +70,7 @@ public static partial class ThatStringShould
 		}
 
 		private static int CountOccurrences(string actual, string expected,
-			IEqualityComparer<string> comparer)
+			IOptionsEquality<string?> comparer)
 		{
 			if (expected.Length > actual.Length)
 			{
@@ -81,7 +81,7 @@ public static partial class ThatStringShould
 			int index = 0;
 			while (index < actual.Length)
 			{
-				if (comparer.Equals(
+				if (comparer.AreConsideredEqual(
 					actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
 					expected))
 				{

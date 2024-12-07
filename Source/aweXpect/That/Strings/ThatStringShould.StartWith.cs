@@ -53,7 +53,7 @@ public static partial class ThatStringShould
 			}
 
 			if (unexpected.Length <= actual.Length &&
-			    options.Comparer.Equals(actual[..unexpected.Length], unexpected))
+			    options.AreConsideredEqual(actual[..unexpected.Length], unexpected))
 			{
 				return new ConstraintResult.Failure<string?>(actual, ToString(),
 					$"{it} was {Formatter.Format(actual)}");
@@ -88,7 +88,7 @@ public static partial class ThatStringShould
 					$"{it} had only length {actual.Length} which is shorter than the expected length of {expected.Length}");
 			}
 
-			if (options.Comparer.Equals(actual[..expected.Length], expected))
+			if (options.AreConsideredEqual(actual[..expected.Length], expected))
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}

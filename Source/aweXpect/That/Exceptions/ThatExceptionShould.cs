@@ -23,23 +23,24 @@ public static partial class ThatExceptionShould
 	internal readonly struct HasMessageValueConstraint<TException>(
 		string it,
 		string verb,
-		StringMatcher expected)
+		string expected,
+		StringEqualityOptions options)
 		: IValueConstraint<Exception?>
 		where TException : Exception?
 	{
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
-			if (expected.Matches(actual?.Message))
+			if (options.AreConsideredEqual(actual?.Message, expected))
 			{
 				return new ConstraintResult.Success<TException?>(actual as TException, ToString());
 			}
 
 			return new ConstraintResult.Failure(ToString(),
-				expected.GetExtendedFailure(it, actual?.Message));
+				options.GetExtendedFailure(it, expected, actual?.Message));
 		}
 
 		public override string ToString()
-			=> $"{verb} Message {expected.GetExpectation(StringMatcher.GrammaticVoice.PassiveVoice)}";
+			=> $"{verb} Message {options.GetExpectation(expected, false)}";
 	}
 
 	internal readonly struct HasParamNameValueConstraint<TArgumentException>(

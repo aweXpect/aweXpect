@@ -16,8 +16,8 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 	private IEquality _type = EqualsType;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual(object? a, object? b)
-		=> _type.AreConsideredEqual(a, b);
+	public bool AreConsideredEqual(object? actual, object? expected)
+		=> _type.AreConsideredEqual(actual, expected);
 
 	/// <summary>
 	///     Compares the objects via <see cref="object.Equals(object, object)" />.
@@ -46,8 +46,8 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		return this;
 	}
 
-	internal Result AreConsideredEqual(object? a, object? b, string it)
-		=> _type.AreConsideredEqual(a, b, it);
+	internal Result AreConsideredEqual(object? actual, object? expected, string it)
+		=> _type.AreConsideredEqual(actual, expected, it);
 
 	internal string GetExpectation(string expectedExpression)
 		=> _type.GetExpectation(expectedExpression);
@@ -70,8 +70,8 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 
 	private interface IEquality
 	{
-		bool AreConsideredEqual(object? a, object? b);
-		Result AreConsideredEqual(object? a, object? b, string it);
+		bool AreConsideredEqual(object? actual, object? expected);
+		Result AreConsideredEqual(object? actual, object? expected, string it);
 		string GetExpectation(string expectedExpression);
 	}
 
@@ -107,14 +107,14 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		#region IEquality Members
 
 		/// <inheritdoc />
-		public bool AreConsideredEqual(object? a, object? b)
+		public bool AreConsideredEqual(object? actual, object? expected)
 		{
-			if (HandleSpecialCases(a, b, out bool? specialCaseResult))
+			if (HandleSpecialCases(actual, expected, out bool? specialCaseResult))
 			{
 				return specialCaseResult.Value;
 			}
 
-			List<ComparisonFailure> failures = Compare.CheckEquivalent(a, b,
+			List<ComparisonFailure> failures = Compare.CheckEquivalent(actual, expected,
 				new CompareOptions { MembersToIgnore = [.. equivalencyOptions.MembersToIgnore] }).ToList();
 
 			if (failures.FirstOrDefault() is { } firstFailure)
@@ -131,15 +131,15 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		}
 
 		/// <inheritdoc />
-		public Result AreConsideredEqual(object? a, object? b, string it)
+		public Result AreConsideredEqual(object? actual, object? expected, string it)
 		{
-			if (HandleSpecialCases(a, b, out bool? specialCaseResult))
+			if (HandleSpecialCases(actual, expected, out bool? specialCaseResult))
 			{
 				return new Result(specialCaseResult.Value,
-					$"{it} was {Formatter.Format(a, FormattingOptions.MultipleLines)}");
+					$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
 			}
 
-			List<ComparisonFailure> failures = Compare.CheckEquivalent(a, b,
+			List<ComparisonFailure> failures = Compare.CheckEquivalent(actual, expected,
 				new CompareOptions { MembersToIgnore = [.. equivalencyOptions.MembersToIgnore] }).ToList();
 
 			if (failures.FirstOrDefault() is { } firstFailure)
@@ -172,12 +172,12 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		#region IEquality Members
 
 		/// <inheritdoc />
-		public bool AreConsideredEqual(object? a, object? b) => Equals(a, b);
+		public bool AreConsideredEqual(object? actual, object? expected) => Equals(actual, expected);
 
 		/// <inheritdoc />
-		public Result AreConsideredEqual(object? a, object? b, string it)
-			=> new(Equals(a, b),
-				$"{it} was {Formatter.Format(a, FormattingOptions.MultipleLines)}");
+		public Result AreConsideredEqual(object? actual, object? expected, string it)
+			=> new(Equals(actual, expected),
+				$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
 
 		/// <inheritdoc />
 		public string GetExpectation(string expectedExpression)
@@ -191,12 +191,12 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 		#region IEquality Members
 
 		/// <inheritdoc />
-		public bool AreConsideredEqual(object? a, object? b) => comparer.Equals(a, b);
+		public bool AreConsideredEqual(object? actual, object? expected) => comparer.Equals(actual, expected);
 
 		/// <inheritdoc />
-		public Result AreConsideredEqual(object? a, object? b, string it)
-			=> new(comparer.Equals(a, b),
-				$"{it} was {Formatter.Format(a, FormattingOptions.MultipleLines)}");
+		public Result AreConsideredEqual(object? actual, object? expected, string it)
+			=> new(comparer.Equals(actual, expected),
+				$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
 
 		/// <inheritdoc />
 		public string GetExpectation(string expectedExpression)

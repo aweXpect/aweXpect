@@ -7,9 +7,7 @@ namespace aweXpect.Results;
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
 ///     <para />
 ///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows specifying
-///     options
-///     on
-///     the <see cref="StringMatcher" />.
+///     options on the <paramref name="quantifier" />.
 /// </summary>
 public class CountResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
@@ -25,9 +23,7 @@ public class CountResult<TType, TThat>(
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
 ///     <para />
 ///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows specifying
-///     options
-///     on
-///     the <see cref="StringMatcher" />.
+///     options on the <paramref name="quantifier" />.
 /// </summary>
 public class CountResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,

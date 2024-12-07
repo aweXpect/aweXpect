@@ -52,5 +52,45 @@ public sealed partial class StringShould
 				                ↑ (expected)
 				             """);
 		}
+
+		[Theory]
+		[InlineData("a\rb", "a\r\nb", 2)]
+		[InlineData("a\nb", "a\r\nb", 1)]
+		[InlineData("a\r\nb", "a\rb", 2)]
+		[InlineData("a\r\nb", "a\nb", 1)]
+		[InlineData("a\rb", "a\nb", 1)]
+		[InlineData("a\nb", "a\rb", 1)]
+		public async Task WhenStringsDifferInNewlineStyle_ShouldFail(string subject, string expected,
+			int indexOfFirstMismatch)
+		{
+			async Task Act()
+				=> await That(subject).Should().Be(expected);
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage($"""
+				              Expected subject to
+				              be equal to {Formatter.Format(expected)},
+				              but it was {Formatter.Format(subject)} which differs at index {indexOfFirstMismatch}:
+				                {new string(' ', 2 * indexOfFirstMismatch)}↓ (actual)
+				                {Formatter.Format(subject)}
+				                {Formatter.Format(expected)}
+				                {new string(' ', 2 * indexOfFirstMismatch)}↑ (expected)
+				              """);
+		}
+
+		[Theory]
+		[InlineData("a\rb", "a\r\nb")]
+		[InlineData("a\nb", "a\r\nb")]
+		[InlineData("a\r\nb", "a\rb")]
+		[InlineData("a\r\nb", "a\nb")]
+		[InlineData("a\rb", "a\nb")]
+		[InlineData("a\nb", "a\rb")]
+		public async Task WhenStringsDifferInNewlineStyle_WithIgnoringNewlineStyle_ShouldSucceed(string subject, string expected)
+		{
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringNewlineStyle();
+
+			await That(Act).Should().NotThrow();
+		}
 	}
 }

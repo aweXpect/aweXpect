@@ -54,8 +54,7 @@ public static partial class ThatStringShould
 			}
 
 			StringEqualityOptions stringEqualityOptions = options;
-			if (expectedValues.Any(expectedValue => stringEqualityOptions.Comparer
-				.Equals(actual, expectedValue)))
+			if (expectedValues.Any(expectedValue => stringEqualityOptions.AreConsideredEqual(actual, expectedValue)))
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}
@@ -85,8 +84,7 @@ public static partial class ThatStringShould
 			}
 
 			StringEqualityOptions stringEqualityOptions = options;
-			if (unexpectedValues.Any(unexpectedValue => stringEqualityOptions.Comparer
-				.Equals(actual, unexpectedValue)))
+			if (unexpectedValues.Any(unexpectedValue => stringEqualityOptions.AreConsideredEqual(actual, unexpectedValue)))
 			{
 				return new ConstraintResult.Failure<string?>(actual, ToString(),
 					$"{it} was {Formatter.Format(actual)}");

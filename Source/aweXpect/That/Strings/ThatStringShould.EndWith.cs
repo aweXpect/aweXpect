@@ -58,7 +58,7 @@ public static partial class ThatStringShould
 					$"{it} had only length {actual.Length} which is shorter than the expected length of {expected.Length}");
 			}
 
-			if (options.Comparer.Equals(
+			if (options.AreConsideredEqual(
 				actual.Substring(actual.Length - expected.Length, expected.Length), expected))
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
@@ -89,7 +89,7 @@ public static partial class ThatStringShould
 			}
 
 			if (unexpected.Length <= actual.Length &&
-			    options.Comparer.Equals(
+			    options.AreConsideredEqual(
 				    actual.Substring(actual.Length - unexpected.Length, unexpected.Length),
 				    unexpected))
 			{
