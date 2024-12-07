@@ -38,19 +38,30 @@ partial class Build
 				Solution.Benchmarks.aweXpect_Benchmarks.Directory / "bin" / "Release");
 		});
 
-	Target BenchmarkComment => _ => _
+	Target BenchmarkResult => _ => _
 		.After(BenchmarkDotNet)
 		.Executes(async () =>
 		{
 			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
 			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
 			Log.Information("Report:\n {FileContent}", fileContent);
+		});
+
+	Target BenchmarkComment => _ => _
+		.After(BenchmarkDotNet)
+		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
+		.Executes(async () =>
+		{
+			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
+			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
+				
+			string body = "# Benchmark Result:\n" + fileContent;
 			int? prId = GitHubActions.PullRequestNumber;
-			Log.Information("Pull request number: {PullRequestId}", prId);
+			Log.Debug("Pull request number: {PullRequestId}", prId);
 			if (prId != null)
 			{
-				GitHubClient gitHubClient = new GitHubClient(new ProductHeaderValue("Nuke"));
-				Credentials tokenAuth = new Credentials(GithubToken);
+				GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
+				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
 					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId.Value);
@@ -58,7 +69,7 @@ partial class Build
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
 				{
-					if (comment.Body.Contains("BenchmarkDotNet v"))
+					if (comment.Body.Contains("# Benchmark Result"))
 					{
 						Log.Information($"Found comment: {comment.Body}");
 						commentId = comment.Id;
@@ -67,18 +78,19 @@ partial class Build
 
 				if (commentId == null)
 				{
-					Log.Information($"Create comment {fileContent}");
-					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId.Value, fileContent);
+					Log.Information($"Create comment:\n{body}");
+					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId.Value, body);
 				}
 				else
 				{
-					Log.Information($"Update comment {fileContent}");
-					await gitHubClient.Issue.Comment.Update("aweXpect", "aweXpect", commentId.Value, fileContent);
+					Log.Information($"Update comment:\n{body}");
+					await gitHubClient.Issue.Comment.Update("aweXpect", "aweXpect", commentId.Value, body);
 				}
 			}
 		});
 
 	Target Benchmarks => _ => _
 		.DependsOn(BenchmarkDotNet)
+		.DependsOn(BenchmarkResult)
 		.DependsOn(BenchmarkComment);
 }
