@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Options;
@@ -12,13 +11,13 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject contains the <paramref name="expected" /> <see langword="string" />.
 	/// </summary>
-	public static StringCountResult<string?, IThat<string?>> Contain(
+	public static StringEqualityTypeCountResult<string?, IThat<string?>> Contain(
 		this IThat<string?> source,
 		string expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringCountResult<string?, IThat<string?>>(
+		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ContainConstraint(it, expected, quantifier, options)),
 			source,
@@ -29,14 +28,14 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject contains the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityResult<string?, IThat<string?>> NotContain(
+	public static StringEqualityTypeResult<string?, IThat<string?>> NotContain(
 		this IThat<string?> source,
 		string unexpected)
 	{
 		Quantifier quantifier = new();
 		quantifier.Exactly(0);
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ContainConstraint(it, unexpected, quantifier, options)),
 			source,
@@ -82,8 +81,8 @@ public static partial class ThatStringShould
 			while (index < actual.Length)
 			{
 				if (comparer.AreConsideredEqual(
-					actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
-					expected))
+					    actual.Substring(index, Math.Min(expected.Length, actual.Length - index)),
+					    expected))
 				{
 					count++;
 					index += expected.Length;

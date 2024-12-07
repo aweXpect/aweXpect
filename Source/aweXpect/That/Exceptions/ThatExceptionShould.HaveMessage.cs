@@ -12,7 +12,7 @@ public partial class ThatExceptionShould<TException>
 	/// <summary>
 	///     Verifies that the actual exception has a message equal to <paramref name="expected" />
 	/// </summary>
-	public StringEqualityResult<TException?, ThatExceptionShould<TException>>
+	public StringEqualityTypeResult<TException?, ThatExceptionShould<TException>>
 		HaveMessage(string expected)
 	{
 		var options = new StringEqualityOptions();

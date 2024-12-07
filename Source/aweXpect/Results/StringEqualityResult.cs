@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using aweXpect.Core;
 using aweXpect.Options;
 
@@ -89,34 +88,6 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 		IEqualityComparer<string> comparer)
 	{
 		options.UsingComparer(comparer);
-		return (TSelf)this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> as <see cref="Regex" /> pattern.
-	/// </summary>
-	public TSelf AsRegex()
-	{
-		options.AsRegex();
-		return (TSelf)this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> as wildcard pattern.<br />
-	///     Supports * to match zero or more characters and ? to match exactly one character.
-	/// </summary>
-	public TSelf AsWildcard()
-	{
-		options.AsWildcard();
-		return (TSelf)this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> to be exactly equal.
-	/// </summary>
-	public TSelf Exactly()
-	{
-		options.Exactly();
 		return (TSelf)this;
 	}
 }
