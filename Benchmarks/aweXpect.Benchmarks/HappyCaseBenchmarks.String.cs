@@ -10,12 +10,12 @@ public partial class HappyCaseBenchmarks
 	private readonly string _stringSubject = "foo";
 
 	[Benchmark]
-	public AndConstraint<StringAssertions> String_FluentAssertions()
-		=> _stringSubject.Should().Be(_stringExpectation);
-
-	[Benchmark]
 	public async Task<string?> String_aweXpect()
 		=> await Expect.That(_stringSubject).Should().Be(_stringExpectation);
+
+	[Benchmark]
+	public AndConstraint<StringAssertions> String_FluentAssertions()
+		=> _stringSubject.Should().Be(_stringExpectation);
 
 	[Benchmark]
 	public async Task<string?> String_TUnit()
