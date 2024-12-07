@@ -59,6 +59,30 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 	}
 
 	/// <summary>
+	///     Ignores leading white-space when comparing <see langword="string" />s,
+	///     according to the <paramref name="ignoreLeadingWhiteSpace" /> parameter.
+	/// </summary>
+	/// <remarks>
+	///     Note:<br />
+	///     This affects the index of first mismatch, as the removed whitespace is also ignored for the index calculation!
+	/// </remarks>
+	public TSelf IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true)
+	{
+		options.IgnoringLeadingWhiteSpace(ignoreLeadingWhiteSpace);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Ignores trailing white-space when comparing <see langword="string" />s,
+	///     according to the <paramref name="ignoreTrailingWhiteSpace" /> parameter.
+	/// </summary>
+	public TSelf IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true)
+	{
+		options.IgnoringTrailingWhiteSpace(ignoreTrailingWhiteSpace);
+		return (TSelf)this;
+	}
+
+	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="string" />s.
 	/// </summary>
 	public TSelf Using(
@@ -67,6 +91,7 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 		options.UsingComparer(comparer);
 		return (TSelf)this;
 	}
+
 	/// <summary>
 	///     Interprets the expected <see langword="string" /> as <see cref="Regex" /> pattern.
 	/// </summary>

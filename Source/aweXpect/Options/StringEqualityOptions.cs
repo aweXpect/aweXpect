@@ -7,9 +7,9 @@ using aweXpect.Helpers;
 namespace aweXpect.Options;
 
 /// <summary>
-///     Quantifier an occurrence.
+///     Equality options for <see langword="string" />s.
 /// </summary>
-public class StringEqualityOptions : IOptionsEquality<string?>
+public partial class StringEqualityOptions : IOptionsEquality<string?>
 {
 	private const int DefaultMaxLength = 30;
 	private const int LongMaxLength = 300;
@@ -20,7 +20,9 @@ public class StringEqualityOptions : IOptionsEquality<string?>
 	private static readonly IMatchType WildcardMatch = new WildcardMatchType();
 	private IEqualityComparer<string>? _comparer;
 	private bool _ignoreCase;
+	private bool _ignoreLeadingWhiteSpace;
 	private bool _ignoreNewlineStyle;
+	private bool _ignoreTrailingWhiteSpace;
 	private IMatchType _type = ExactMatch;
 
 	/// <inheritdoc />
@@ -30,6 +32,18 @@ public class StringEqualityOptions : IOptionsEquality<string?>
 		{
 			actual = actual.RemoveNewlineStyle();
 			expected = expected.RemoveNewlineStyle();
+		}
+
+		if (_ignoreLeadingWhiteSpace)
+		{
+			actual = actual?.TrimStart();
+			expected = expected?.TrimStart();
+		}
+
+		if (_ignoreTrailingWhiteSpace)
+		{
+			actual = actual?.TrimEnd();
+			expected = expected?.TrimEnd();
 		}
 
 		return _type.Matches(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
@@ -67,6 +81,30 @@ public class StringEqualityOptions : IOptionsEquality<string?>
 	public StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true)
 	{
 		_ignoreNewlineStyle = ignoreNewlineStyle;
+		return this;
+	}
+
+	/// <summary>
+	///     Ignores leading white-space when comparing <see langword="string" />s,
+	///     according to the <paramref name="ignoreLeadingWhiteSpace" /> parameter.
+	/// </summary>
+	/// <remarks>
+	///     Note:<br />
+	///     This affects the index of first mismatch, as the removed whitespace is also ignored for the index calculation!
+	/// </remarks>
+	public StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true)
+	{
+		_ignoreLeadingWhiteSpace = ignoreLeadingWhiteSpace;
+		return this;
+	}
+
+	/// <summary>
+	///     Ignores trailing white-space when comparing <see langword="string" />s,
+	///     according to the <paramref name="ignoreTrailingWhiteSpace" /> parameter.
+	/// </summary>
+	public StringEqualityOptions IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true)
+	{
+		_ignoreTrailingWhiteSpace = ignoreTrailingWhiteSpace;
 		return this;
 	}
 
@@ -137,171 +175,5 @@ public class StringEqualityOptions : IOptionsEquality<string?>
 
 		bool Matches(string? value, string? pattern, bool ignoreCase,
 			IEqualityComparer<string> comparer);
-	}
-
-	private sealed class WildcardMatchType : IMatchType
-	{
-		private static string WildcardToRegularExpression(string value)
-		{
-			string regex = Regex.Escape(value)
-				.Replace("\\?", ".")
-				.Replace("\\*", "(.|\\n)*");
-			return $"^{regex}$";
-		}
-
-		#region IMatchType Members
-
-		/// <inheritdoc />
-		public string GetExtendedFailure(string it, string? actual, string? pattern,
-			bool ignoreCase,
-			IEqualityComparer<string> comparer)
-			=> $"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(LongMaxLength).Indent(indentFirstLine: false))}";
-
-		public bool Matches(string? value, string? pattern, bool ignoreCase,
-			IEqualityComparer<string> comparer)
-		{
-			if (value is null || pattern is null)
-			{
-				return false;
-			}
-
-			RegexOptions options = RegexOptions.Multiline;
-			if (ignoreCase)
-			{
-				options |= RegexOptions.IgnoreCase;
-			}
-
-			return Regex.IsMatch(value, WildcardToRegularExpression(pattern), options,
-				RegexTimeout);
-		}
-
-		#endregion
-	}
-
-	private sealed class ExactMatchType : IMatchType
-	{
-		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
-			IEqualityComparer<string> comparer)
-		{
-			for (int i = 0; i <= stringWithLeadingWhitespace.Length - value.Length; i++)
-			{
-				if (comparer.Equals(
-					    stringWithLeadingWhitespace.Substring(i, value.Length), value))
-				{
-					return i;
-				}
-			}
-
-			return 0;
-		}
-
-		#region IMatchType Members
-
-		/// <inheritdoc />
-		public string GetExtendedFailure(string it, string? actual, string? pattern,
-			bool ignoreCase,
-			IEqualityComparer<string> comparer)
-		{
-			if (actual == null || pattern == null)
-			{
-				return $"{it} was <null>";
-			}
-
-			string prefix =
-				$"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}";
-			int minCommonLength = Math.Min(actual.Length, pattern.Length);
-			StringDifference stringDifference = new(actual, pattern, comparer);
-			if (stringDifference.IndexOfFirstMismatch == 0 &&
-			    comparer.Equals(actual.TrimStart(), pattern))
-			{
-				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, pattern, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
-			}
-
-			if (stringDifference.IndexOfFirstMismatch == 0 &&
-			    comparer.Equals(actual, pattern.TrimStart()))
-			{
-				return
-					$"{prefix} which misses some whitespace (\"{pattern.Substring(0, GetIndexOfFirstMatch(pattern, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
-			}
-
-			if (stringDifference.IndexOfFirstMismatch == minCommonLength &&
-			    comparer.Equals(actual.TrimEnd(), pattern))
-			{
-				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
-			}
-
-			if (stringDifference.IndexOfFirstMismatch == minCommonLength &&
-			    comparer.Equals(actual, pattern.TrimEnd()))
-			{
-				return
-					$"{prefix} which misses some whitespace (\"{pattern.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
-			}
-
-			if (actual.Length < pattern.Length &&
-			    stringDifference.IndexOfFirstMismatch == actual.Length)
-			{
-				return
-					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {pattern.Length} and misses:{Environment.NewLine}  \"{pattern.Substring(actual.Length).TruncateWithEllipsis(100)}\"";
-			}
-
-			if (actual.Length > pattern.Length &&
-			    stringDifference.IndexOfFirstMismatch == pattern.Length)
-			{
-				return
-					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {pattern.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(pattern.Length).TruncateWithEllipsis(100)}\"";
-			}
-
-			return $"{prefix} which {new StringDifference(actual, pattern, comparer)}";
-		}
-
-		public bool Matches(string? value, string? pattern, bool ignoreCase,
-			IEqualityComparer<string> comparer)
-		{
-			if (value is null && pattern is null)
-			{
-				return true;
-			}
-
-			if (value is null || pattern is null)
-			{
-				return false;
-			}
-
-			return comparer.Equals(value, pattern);
-		}
-
-		#endregion
-	}
-
-	private sealed class RegexMatchType : IMatchType
-	{
-		#region IMatchType Members
-
-		/// <inheritdoc />
-		public string GetExtendedFailure(string it, string? actual, string? pattern,
-			bool ignoreCase,
-			IEqualityComparer<string> comparer)
-			=> $"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(LongMaxLength).Indent(indentFirstLine: false))}";
-
-		public bool Matches(string? value, string? pattern, bool ignoreCase,
-			IEqualityComparer<string> comparer)
-		{
-			if (value is null || pattern is null)
-			{
-				return false;
-			}
-
-			RegexOptions options = RegexOptions.Multiline;
-			if (ignoreCase)
-			{
-				options |= RegexOptions.IgnoreCase;
-			}
-
-			return Regex.IsMatch(value, pattern, options, RegexTimeout);
-		}
-
-		#endregion
 	}
 }

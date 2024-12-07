@@ -54,19 +54,41 @@ public sealed partial class StringShould
 		}
 
 		[Theory]
-		[InlineData("a\rb", "a\r\nb", 2)]
-		[InlineData("a\nb", "a\r\nb", 1)]
-		[InlineData("a\r\nb", "a\rb", 2)]
-		[InlineData("a\r\nb", "a\nb", 1)]
-		[InlineData("a\rb", "a\nb", 1)]
-		[InlineData("a\nb", "a\rb", 1)]
-		public async Task WhenStringsDifferInNewlineStyle_ShouldFail(string subject, string expected,
-			int indexOfFirstMismatch)
+		[InlineAutoData(" foo", "foo", true)]
+		[InlineAutoData(" foo", "foo", false)]
+		[InlineAutoData("foo", " foo", true)]
+		[InlineAutoData("\tfoo", "\nfoo", false)]
+		[InlineAutoData("\r\nfoo", "foo", true)]
+		[InlineAutoData("foo", "\tfoo", false)]
+		public async Task WhenStringsDifferInLeadingWhiteSpace_ShouldFailIfNotIgnoringLeadingWhiteSpace(
+			string subject, string expected, bool ignoreLeadingWhiteSpace)
 		{
 			async Task Act()
-				=> await That(subject).Should().Be(expected);
+				=> await That(subject).Should().Be(expected).IgnoringLeadingWhiteSpace(ignoreLeadingWhiteSpace);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreLeadingWhiteSpace)
+				.WithMessage($"""
+				              Expected subject to
+				              be equal to {Formatter.Format(expected)},
+				              but it was {Formatter.Format(subject)} which has unexpected whitespace ("*" at the beginning)
+				              """).AsWildcard();
+		}
+
+		[Theory]
+		[InlineAutoData("a\rb", "a\r\nb", 2, true)]
+		[InlineAutoData("a\rb", "a\r\nb", 2, false)]
+		[InlineAutoData("a\nb", "a\r\nb", 1)]
+		[InlineAutoData("a\r\nb", "a\rb", 2)]
+		[InlineAutoData("a\r\nb", "a\nb", 1)]
+		[InlineAutoData("a\rb", "a\nb", 1)]
+		[InlineAutoData("a\nb", "a\rb", 1)]
+		public async Task WhenStringsDifferInNewlineStyle_ShouldFailIfNotIgnoringNewlineStyle(
+			string subject, string expected, int indexOfFirstMismatch, bool ignoreNewlineStyle)
+		{
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringNewlineStyle(ignoreNewlineStyle);
+
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreNewlineStyle)
 				.WithMessage($"""
 				              Expected subject to
 				              be equal to {Formatter.Format(expected)},
@@ -79,18 +101,24 @@ public sealed partial class StringShould
 		}
 
 		[Theory]
-		[InlineData("a\rb", "a\r\nb")]
-		[InlineData("a\nb", "a\r\nb")]
-		[InlineData("a\r\nb", "a\rb")]
-		[InlineData("a\r\nb", "a\nb")]
-		[InlineData("a\rb", "a\nb")]
-		[InlineData("a\nb", "a\rb")]
-		public async Task WhenStringsDifferInNewlineStyle_WithIgnoringNewlineStyle_ShouldSucceed(string subject, string expected)
+		[InlineAutoData("foo ", "foo", true)]
+		[InlineAutoData("foo ", "foo", false)]
+		[InlineAutoData("foo", "foo ", true)]
+		[InlineAutoData("foo\t", "foo\n", false)]
+		[InlineAutoData("foo\r\n", "foo", true)]
+		[InlineAutoData("foo", "foo\t", false)]
+		public async Task WhenStringsDifferInTrailingWhiteSpace_ShouldFailIfNotIgnoringTrailingWhiteSpace(
+			string subject, string expected, bool ignoreTrailingWhiteSpace)
 		{
 			async Task Act()
-				=> await That(subject).Should().Be(expected).IgnoringNewlineStyle();
+				=> await That(subject).Should().Be(expected).IgnoringTrailingWhiteSpace(ignoreTrailingWhiteSpace);
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreTrailingWhiteSpace)
+				.WithMessage($"""
+				              Expected subject to
+				              be equal to {Formatter.Format(expected)},
+				              but it was {Formatter.Format(subject)} which has unexpected whitespace ("*" at the end)
+				              """).AsWildcard();
 		}
 	}
 }

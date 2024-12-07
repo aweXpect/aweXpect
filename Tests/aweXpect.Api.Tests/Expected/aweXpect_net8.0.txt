@@ -917,7 +917,9 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
+        public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
+        public aweXpect.Options.StringEqualityOptions IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
     }
@@ -1036,7 +1038,9 @@ namespace aweXpect.Results
         public TSelf AsWildcard() { }
         public TSelf Exactly() { }
         public TSelf IgnoringCase(bool ignoreCase = true) { }
+        public TSelf IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public TSelf IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
+        public TSelf IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<string> comparer) { }
     }
     public class TimeToleranceResult<TType, TThat> : aweXpect.Results.TimeToleranceResult<TType, TThat, aweXpect.Results.TimeToleranceResult<TType, TThat>>
