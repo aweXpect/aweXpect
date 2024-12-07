@@ -12,28 +12,28 @@ public partial class HappyCaseBenchmarks
 	private readonly string[] _stringArrayOtherOrderExpectation = ["foo", "baz", "bar"];
 	private readonly string[] _stringArraySubject = ["foo", "bar", "baz"];
 
-	//[Benchmark]
+	[Benchmark]
 	public AndConstraint<StringCollectionAssertions<IEnumerable<string>>> StringArray_FluentAssertions()
 		=> _stringArraySubject.Should().Equal(_stringArrayExpectation);
 
-	//[Benchmark]
+	[Benchmark]
 	public async Task StringArray_aweXpect()
 		=> (await Expect.That(_stringArraySubject).Should().Be(_stringArrayExpectation)).Consume(_consumer);
 
-	//[Benchmark]
+	[Benchmark]
 	public async Task StringArray_TUnit()
 		=> (await Assert.That(_stringArraySubject).IsEquivalentTo(_stringArrayExpectation))?.Consume(_consumer);
 
-	//[Benchmark]
+	[Benchmark]
 	public AndConstraint<StringCollectionAssertions<IEnumerable<string>>> StringArrayInAnyOrder_FluentAssertions()
 		=> _stringArraySubject.Should().BeEquivalentTo(_stringArrayOtherOrderExpectation);
 
-	//[Benchmark]
+	[Benchmark]
 	public async Task StringArrayInAnyOrder_aweXpect()
 		=> (await Expect.That(_stringArraySubject).Should().Be(_stringArrayOtherOrderExpectation).InAnyOrder())
 			.Consume(_consumer);
 
-	//[Benchmark]
+	[Benchmark]
 	public async Task StringArrayInAnyOrder_TUnit()
 		=> (await Assert.That(_stringArraySubject)
 			.IsEquivalentTo(_stringArrayOtherOrderExpectation, CollectionOrdering.Any))?.Consume(_consumer);
