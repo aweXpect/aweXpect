@@ -30,12 +30,9 @@ public partial class CollectionMatchOptions
 			_totalExpectedItems = _expectedItems.Length;
 		}
 
-		public string? Verify(string it, T value, IOptionsEquality<T2> options)
+		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
 		{
-			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
-			{
-				_foundItems.Add(value);
-			}
+			_foundItems.Add(value);
 
 			if (_matchIndex >= _expectedItems.Length)
 			{
@@ -51,16 +48,12 @@ public partial class CollectionMatchOptions
 				VerifyTheCurrentValueIsDifferentFromTheExpectedValue(value, options);
 			}
 
-			if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
-			{
-				return $"{it} was very different (> 20 deviations)";
-			}
-
 			_index++;
-			return null;
+			error = null;
+			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * CollectionFormatCount;
 		}
 
-		public string? VerifyComplete(string it, IOptionsEquality<T2> options)
+		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
 		{
 			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _matchIndex);
 			if (_expectedItems.Length > consideredExpectedItems)
@@ -74,9 +67,11 @@ public partial class CollectionMatchOptions
 						_missingItems.Add(item);
 					}
 
-					if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 20)
+					if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count >
+					    2 * CollectionFormatCount)
 					{
-						return $"{it} was very different (> 20 deviations)";
+						error = null;
+						return true;
 					}
 				}
 			}
@@ -107,7 +102,8 @@ public partial class CollectionMatchOptions
 				errors.Add("contained all expected items");
 			}
 
-			return ReturnErrorString(it, errors);
+			error = ReturnErrorString(it, errors);
+			return error != null;
 		}
 
 		private void VerifyTheCurrentValueIsDifferentFromTheExpectedValue(T value, IOptionsEquality<T2> options)

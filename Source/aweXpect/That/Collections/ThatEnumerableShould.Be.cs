@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -47,22 +48,25 @@ public static partial class ThatEnumerableShould
 			ICollectionMatcher<TItem, object?> matcher = matchOptions.GetCollectionMatcher<TItem, object?>(expected);
 			foreach (TItem item in materializedEnumerable)
 			{
-				string? failure = matcher.Verify(it, item, options);
-				if (failure != null)
+				if (matcher.Verify(it, item, options, out string? failure))
 				{
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), failure);
+					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+						failure ?? TooManyDeviationsError(materializedEnumerable));
 				}
 			}
 
-			string? lastFailure = matcher.VerifyComplete(it, options);
-			if (lastFailure != null)
+			if (matcher.VerifyComplete(it, options, out string? lastFailure))
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), lastFailure);
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+					lastFailure ?? TooManyDeviationsError(materializedEnumerable));
 			}
 
 			return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
 				ToString());
 		}
+
+		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
+			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * CollectionFormatCount} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
 		public override string ToString()
 			=> $"match collection {expectedExpression}{matchOptions}";
