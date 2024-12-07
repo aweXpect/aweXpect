@@ -106,7 +106,7 @@ internal class StringDifference(
 		}
 
 		stringBuilder.Append(text
-			.Substring(indexOfStartingPhrase, subjectLength).ToSingleLine());
+			.Substring(indexOfStartingPhrase, subjectLength).DisplayWhitespace().ToSingleLine());
 
 		if (text.Length > indexOfStartingPhrase + subjectLength)
 		{

@@ -755,6 +755,7 @@ namespace aweXpect
     }
     public static class ThatStringEnumerableShould
     {
+        public static aweXpect.Results.StringCollectionBeTypeResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> Be(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, System.Collections.Generic.IEnumerable<string> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.StringCountResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> Contain(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, string expected) { }
     }
     public static class ThatStringShould
@@ -1013,6 +1014,32 @@ namespace aweXpect.Results
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
         public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+    }
+    public class StringCollectionBeResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat>
+    {
+        public StringCollectionBeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> AndLess() { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> AndMore() { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> OrLess() { }
+        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> OrMore() { }
+    }
+    public class StringCollectionBeTypeResult<TType, TThat> : aweXpect.Results.StringCollectionBeResult<TType, TThat>
+    {
+        public StringCollectionBeTypeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public aweXpect.Results.StringCollectionBeResult<TType, TThat> AsRegex() { }
+        public aweXpect.Results.StringCollectionBeResult<TType, TThat> AsWildcard() { }
+        public aweXpect.Results.StringCollectionBeResult<TType, TThat> Exactly() { }
+    }
+    public class StringCollectionMatchResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat, aweXpect.Results.StringCollectionMatchResult<TType, TThat>>
+    {
+        public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+    }
+    public class StringCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.StringEqualityResult<TType, TThat>
+        where TSelf : aweXpect.Results.StringCollectionMatchResult<TType, TThat, TSelf>
+    {
+        public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
+        public TSelf IgnoringDuplicates() { }
+        public TSelf InAnyOrder() { }
     }
     public class StringCountResult<TType, TThat> : aweXpect.Results.StringCountResult<TType, TThat, aweXpect.Results.StringCountResult<TType, TThat>>
     {
