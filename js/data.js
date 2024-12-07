@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733546023429,
+  "lastUpdate": 1733578377273,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -2624,6 +2624,102 @@ window.BENCHMARK_DATA = {
             "value": 1910.920177968343,
             "unit": "ns",
             "range": "± 11.383728137119201"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4eb7334dfbd37a35e4e8e8a73f026d73add109fc",
+          "message": "feat: improve error message for completely different collections (#84)\n\nInclude subject and expected in error message for completely different collections, improve test coverage and refactor the `ICollectionMatcher` interface.",
+          "timestamp": "2024-12-07T13:28:04Z",
+          "tree_id": "25f0e87eec2e6ff677b17cb4bd140227e5f7f312",
+          "url": "https://github.com/aweXpect/aweXpect/commit/4eb7334dfbd37a35e4e8e8a73f026d73add109fc"
+        },
+        "date": 1733578377019,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.9132888683906,
+            "unit": "ns",
+            "range": "± 0.7428978513962948"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 226.26600128014883,
+            "unit": "ns",
+            "range": "± 1.6118990899841767"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 598.5163340568542,
+            "unit": "ns",
+            "range": "± 1.5878208842427681"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 317.3267791112264,
+            "unit": "ns",
+            "range": "± 1.4987077973905114"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 394.8424128850301,
+            "unit": "ns",
+            "range": "± 2.4878011864229084"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 772.0801174163819,
+            "unit": "ns",
+            "range": "± 3.5992371964390846"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1101.4819652557374,
+            "unit": "ns",
+            "range": "± 4.32329442053069"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1180.7092456817627,
+            "unit": "ns",
+            "range": "± 5.766698791145904"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1117.6272941316877,
+            "unit": "ns",
+            "range": "± 6.680566333398195"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1066.1273444039482,
+            "unit": "ns",
+            "range": "± 2.7755360519469434"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 225864.9889948918,
+            "unit": "ns",
+            "range": "± 719.8747885037315"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1815.1688777378627,
+            "unit": "ns",
+            "range": "± 4.420670818023813"
           }
         ]
       }
