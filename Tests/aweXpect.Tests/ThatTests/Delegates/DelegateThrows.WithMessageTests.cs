@@ -9,7 +9,7 @@ public sealed partial class DelegateThrows
 		{
 			string message = "FOO";
 			Exception exception =
-				new OuterException(message, innerException: new CustomException());
+				new OuterException(message, new CustomException());
 
 			async Task Act()
 				=> await That(() => throw exception).Should().ThrowException()
@@ -23,7 +23,7 @@ public sealed partial class DelegateThrows
 		{
 			string message = "foo-bar";
 			Exception exception =
-				new OuterException(message, innerException: new CustomException());
+				new OuterException(message, new CustomException());
 
 			async Task Act()
 				=> await That(() => throw exception).Should().ThrowException()
@@ -37,7 +37,7 @@ public sealed partial class DelegateThrows
 		{
 			string message = "FOO";
 			Exception exception =
-				new OuterException(message, innerException: new CustomException());
+				new OuterException(message, new CustomException());
 
 			async Task Act()
 				=> await That(() => throw exception).Should().ThrowException()
@@ -82,7 +82,7 @@ public sealed partial class DelegateThrows
 		public async Task WhenAwaited_ShouldReturnThrownException(string message)
 		{
 			Exception exception =
-				new OuterException(message, innerException: new CustomException());
+				new OuterException(message, new CustomException());
 
 			Exception result = await That(() => throw exception)
 				.Should().ThrowException().WithMessage(message);

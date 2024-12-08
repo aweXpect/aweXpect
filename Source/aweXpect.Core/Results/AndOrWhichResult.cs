@@ -33,20 +33,19 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	private readonly TThat _returnValue = returnValue;
 
 	/// <summary>
-	///     Allows specifying <paramref name="expectations"/> on the member selected by the <paramref name="memberSelector" />.
+	///     Allows specifying <paramref name="expectations" /> on the member selected by the
+	///     <paramref name="memberSelector" />.
 	/// </summary>
 	public AdditionalAndOrWhichResult
 		Which<TMember>(
 			Expression<Func<TType, TMember?>> memberSelector,
 			Action<IExpectSubject<TMember?>> expectations)
-	{
-		return new AdditionalAndOrWhichResult(
+		=> new(
 			_expectationBuilder
 				.ForMember(MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
 					(member, expectation) => $" which {member}should {expectation}")
 				.AddExpectations(e => expectations(new Expect.ThatSubject<TMember?>(e))),
 			_returnValue);
-	}
 
 	/// <summary>
 	///     The result of an additional expectation for the underlying type.
@@ -63,7 +62,8 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 		private readonly TThat _returnValue = returnValue;
 
 		/// <summary>
-		///     Allows specifying <paramref name="expectations"/> on the member selected by the <paramref name="memberSelector" />.
+		///     Allows specifying <paramref name="expectations" /> on the member selected by the
+		///     <paramref name="memberSelector" />.
 		/// </summary>
 		public AdditionalAndOrWhichResult
 			AndWhich<TMember>(

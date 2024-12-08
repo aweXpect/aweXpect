@@ -13,6 +13,7 @@ public partial class EnumerableShould
 			yield return item;
 		}
 	}
+
 	public static IEnumerable<string> ToEnumerable(string[] items)
 	{
 		foreach (string item in items)

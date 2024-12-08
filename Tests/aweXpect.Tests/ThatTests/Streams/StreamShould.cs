@@ -13,6 +13,8 @@ public sealed partial class StreamShould
 		long length = 0)
 		: Stream
 	{
+		private readonly byte[] _buffer = buffer ?? Array.Empty<byte>();
+
 		/// <inheritdoc />
 		public override bool CanRead { get; } = canRead;
 
@@ -27,8 +29,6 @@ public sealed partial class StreamShould
 
 		/// <inheritdoc />
 		public override long Position { get; set; } = position;
-
-		private readonly byte[] _buffer = buffer ?? Array.Empty<byte>();
 
 		/// <inheritdoc />
 		public override void Flush()

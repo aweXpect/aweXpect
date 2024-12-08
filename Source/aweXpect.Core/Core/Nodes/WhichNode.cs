@@ -9,8 +9,8 @@ namespace aweXpect.Core.Nodes;
 
 internal class WhichNode<TSource, TMember> : Node
 {
-	private Node? _inner;
 	private readonly Func<TSource, TMember?> _memberAccessor;
+	private Node? _inner;
 
 	public WhichNode(
 		Func<TSource, TMember?> memberAccessor)
@@ -31,9 +31,7 @@ internal class WhichNode<TSource, TMember> : Node
 
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)
-	{
-		_inner = node;
-	}
+		=> _inner = node;
 
 	/// <inheritdoc />
 	public override Task<ConstraintResult> IsMetBy<TValue>(

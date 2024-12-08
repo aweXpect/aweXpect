@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Tests.TestHelpers;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
@@ -43,7 +44,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 		{
-			IEnumerable<int> subject = ToEnumerable((int[])[]);
+			IEnumerable<int> subject = ToEnumerable((int[]) []);
 
 			async Task Act()
 				=> await That(subject).Should().BeEmpty();
@@ -91,7 +92,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenEnumerableIsEmpty_ShouldFail()
 		{
-			IEnumerable<int> subject = ToEnumerable((int[])[]);
+			IEnumerable<int> subject = ToEnumerable((int[]) []);
 
 			async Task Act()
 				=> await That(subject).Should().NotBeEmpty();
