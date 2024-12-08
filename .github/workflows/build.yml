@@ -167,7 +167,6 @@ jobs:
     pack:
         name: "Pack"
         runs-on: ubuntu-latest
-        needs: [ publish-test-results, mutation-tests, benchmarks, static-code-analysis ]
         env:
             DOTNET_NOLOGO: true
         steps:
