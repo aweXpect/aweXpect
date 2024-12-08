@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733643874218,
+  "lastUpdate": 1733651907759,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3296,6 +3296,102 @@ window.BENCHMARK_DATA = {
             "value": 1876.7979458400182,
             "unit": "ns",
             "range": "± 3.15014181256312"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "04d74f2adf1de488e208d1ec9cd1bf462a0410ce",
+          "message": "feat: add `.Which` for delegates (#92)\n\nAdd `.Which` extension for delegates, that allow adding expectations for arbitrary members:\n\n```csharp\nvar exception = // Some exception...\n\nawait Expect.That(() => throw exception).Should().ThrowException()\n  .Which(e => e.HResult, h => h.Should().BeGreaterThan(12340))\n  .Because(\"you can verify arbitrary additional members\");\n```",
+          "timestamp": "2024-12-08T09:53:46Z",
+          "tree_id": "9e850591ba6fe1386b4fbd96b3c76b7c3ce40d2a",
+          "url": "https://github.com/aweXpect/aweXpect/commit/04d74f2adf1de488e208d1ec9cd1bf462a0410ce"
+        },
+        "date": 1733651907412,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.40966828664145,
+            "unit": "ns",
+            "range": "± 1.597328941162552"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 216.17821351687112,
+            "unit": "ns",
+            "range": "± 0.6978763787759896"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 588.0714889526367,
+            "unit": "ns",
+            "range": "± 4.52457985275251"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 314.161217553275,
+            "unit": "ns",
+            "range": "± 2.130423608075458"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 396.9547934214274,
+            "unit": "ns",
+            "range": "± 2.1431413446856005"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 783.5556430180867,
+            "unit": "ns",
+            "range": "± 4.232419859059013"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 999.8328194936116,
+            "unit": "ns",
+            "range": "± 6.2162858231157205"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1198.5126411437989,
+            "unit": "ns",
+            "range": "± 7.164134034268904"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1104.274353844779,
+            "unit": "ns",
+            "range": "± 5.810983737825103"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 975.1938592274984,
+            "unit": "ns",
+            "range": "± 5.841340878688563"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 226708.18910435267,
+            "unit": "ns",
+            "range": "± 1482.2068460310304"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1852.7851463045392,
+            "unit": "ns",
+            "range": "± 4.22323376145076"
           }
         ]
       }
