@@ -207,9 +207,13 @@ namespace aweXpect
     }
     public static class ThatExceptionShould
     {
+        public static aweXpect.Results.AndOrResult<TException, aweXpect.ThatExceptionShould<TException>> HaveHResult<TException>(this aweXpect.ThatExceptionShould<TException> source, int expected)
+            where TException : System.Exception? { }
         public static aweXpect.Results.AndOrResult<TException, aweXpect.ThatExceptionShould<TException>> HaveParamName<TException>(this aweXpect.ThatExceptionShould<TException> source, string expected)
             where TException : System.ArgumentException? { }
         public static aweXpect.ThatExceptionShould<TException> Should<TException>(this aweXpect.Core.IExpectSubject<TException> subject)
+            where TException : System.Exception? { }
+        public static aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithHResult<TException>(this aweXpect.ThatDelegateThrows<TException> source, int expected)
             where TException : System.Exception? { }
         public static aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.ThatDelegateThrows<TException> source, string expected)
             where TException : System.ArgumentException? { }
