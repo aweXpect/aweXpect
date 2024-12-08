@@ -9,7 +9,8 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that at least <paramref name="minimum" /> items in the asynchronous enumerable satisfy the <paramref name="expectations"/>.
+	///     Verifies that at least <paramref name="minimum" /> items in the asynchronous enumerable satisfy the
+	///     <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveAtLeast<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,

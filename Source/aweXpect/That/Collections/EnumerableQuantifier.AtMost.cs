@@ -38,7 +38,7 @@ public abstract partial class EnumerableQuantifier
 						? $"{matchingCount} of {totalCount} were"
 						: $"at least {matchingCount} were");
 			}
-			
+
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,

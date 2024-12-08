@@ -27,7 +27,10 @@ internal static class Compare
 		{
 			yield return new ComparisonFailure
 			{
-				Type = memberType, Actual = actual, Expected = expected, NestedMemberNames = memberNames
+				Type = memberType,
+				Actual = actual,
+				Expected = expected,
+				NestedMemberNames = memberNames
 			};
 
 			yield break;
@@ -67,7 +70,10 @@ internal static class Compare
 			{
 				yield return new ComparisonFailure
 				{
-					Type = MemberType.Value, Actual = actual, Expected = expected, NestedMemberNames = memberNames
+					Type = MemberType.Value,
+					Actual = actual,
+					Expected = expected,
+					NestedMemberNames = memberNames
 				};
 			}
 
@@ -99,7 +105,10 @@ internal static class Compare
 			{
 				yield return new ComparisonFailure
 				{
-					Type = MemberType.Value, Actual = actual, Expected = expected, NestedMemberNames = memberNames
+					Type = MemberType.Value,
+					Actual = actual,
+					Expected = expected,
+					NestedMemberNames = memberNames
 				};
 
 				yield break;
@@ -139,7 +148,10 @@ internal static class Compare
 			{
 				yield return new ComparisonFailure
 				{
-					Type = MemberType.Value, Actual = actual, Expected = expected, NestedMemberNames = memberNames
+					Type = MemberType.Value,
+					Actual = actual,
+					Expected = expected,
+					NestedMemberNames = memberNames
 				};
 
 				yield break;

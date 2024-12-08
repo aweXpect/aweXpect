@@ -8,12 +8,14 @@ namespace aweXpect;
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that at most <paramref name="maximum" /> items in the synchronous enumerable satisfy the <paramref name="expectations"/>.
+	///     Verifies that at most <paramref name="maximum" /> items in the synchronous enumerable satisfy the
+	///     <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtMost<TItem>(
 		this IThat<IEnumerable<TItem>> source,
 		Times maximum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-			=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum.Value), expectations)), source);
+				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum.Value), expectations)),
+			source);
 }

@@ -23,8 +23,8 @@ public static partial class ThatStringEnumerableShould
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionBeTypeResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
-				.AddConstraint(it
+		return new StringCollectionBeTypeResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source
+				.ExpectationBuilder.AddConstraint(it
 					=> new BeConstraint(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,

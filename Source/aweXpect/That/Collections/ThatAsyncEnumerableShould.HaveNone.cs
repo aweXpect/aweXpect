@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that no items in the asynchronous enumerable satisfy the <paramref name="expectations"/>.
+	///     Verifies that no items in the asynchronous enumerable satisfy the <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveNone<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,
