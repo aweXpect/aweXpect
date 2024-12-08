@@ -9,8 +9,14 @@ public sealed partial class ObjectShould
 			[Fact]
 			public async Task BasicObjects_ShouldBeEquivalent()
 			{
-				OuterClass subject = new() { Value = "Foo" };
-				OuterClass expected = new() { Value = "Foo" };
+				OuterClass subject = new()
+				{
+					Value = "Foo"
+				};
+				OuterClass expected = new()
+				{
+					Value = "Foo"
+				};
 
 				async Task Act()
 					=> await That(subject).Should().Be(expected).Equivalent();
@@ -22,7 +28,10 @@ public sealed partial class ObjectShould
 			public async Task MismatchedObjects_ShouldNotBeEquivalent()
 			{
 				OuterClass subject = new();
-				OuterClass expected = new() { Value = "Foo" };
+				OuterClass expected = new()
+				{
+					Value = "Foo"
+				};
 
 				async Task Act()
 					=> await That(subject).Should().Be(expected).Equivalent();
@@ -209,7 +218,10 @@ public sealed partial class ObjectShould
 					Inner = new InnerClass
 					{
 						Value = "Bar",
-						Inner = new InnerClass { Value = "Baz" }
+						Inner = new InnerClass
+						{
+							Value = "Baz"
+						}
 					}
 				};
 				OuterClass expected = new()
@@ -218,7 +230,10 @@ public sealed partial class ObjectShould
 					Inner = new InnerClass
 					{
 						Value = "Bar",
-						Inner = new InnerClass { Value = "Baz" }
+						Inner = new InnerClass
+						{
+							Value = "Baz"
+						}
 					}
 				};
 
@@ -246,7 +261,10 @@ public sealed partial class ObjectShould
 					Inner = new InnerClass
 					{
 						Value = "Bar",
-						Inner = new InnerClass { Value = "Baz" }
+						Inner = new InnerClass
+						{
+							Value = "Baz"
+						}
 					}
 				};
 
