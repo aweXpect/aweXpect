@@ -116,6 +116,7 @@ namespace aweXpect
     {
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
         public aweXpect.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> Which<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IExpectSubject<TMember?>> expectations) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType, System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner<TInnerException>()
