@@ -106,6 +106,22 @@ void Act() => throw new AggregateException("outer", new CustomException("inner")
 await Expect.That(Act).Should().ThrowException().WithRecursiveInnerExceptions(a => a.HaveAtLeast(1).Be<CustomException>());
 ```
 
+### Other members
+
+You can recursively verify additional members of the exception:
+```csharp
+void Act() => throw new MyException("outer", paramName: "paramName", hResult: 12345);
+
+await Expect.That(Act).Should().ThrowException().WithParamName("paramName")
+  .Because("you can verify the `paramName`");
+await Expect.That(Act).Should().ThrowException().WithHResult(12345)
+  .Because("you can verify the `HResult`");
+await Expect.That(Act).Should().ThrowException()
+  .Which(e => e.HResult, h => h.Should().BeGreaterThan(12340))
+  .Because("you can verify arbitrary additional members");
+
+```
+
 
 ## Execute within
 
