@@ -206,13 +206,13 @@ jobs:
                 run: |
                     echo "Found the following packages to push:"
                     search_dir=Artifacts/Packages
-                    for entry in Artifacts/Packages/*nupkg
+                    for entry in Artifacts/Packages/*.nupkg
                     do
                       echo "- $entry"
                     done
-                    for entry in Artifacts/Packages/*nupkg
+                    for entry in Artifacts/Packages/*.nupkg
                     do
-                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
                     done
             -   name: Create GitHub release
                 continue-on-error: true
