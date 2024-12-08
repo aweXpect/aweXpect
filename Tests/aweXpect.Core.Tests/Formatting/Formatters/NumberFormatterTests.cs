@@ -32,6 +32,34 @@ public sealed class NumberFormatterTests
 		};
 
 	[Fact]
+	public async Task NullableNumbers_Nint_ShouldReturnExpectedValue()
+	{
+		nint? value = -123;
+		string expectedResult = "-123";
+		StringBuilder sb = new();
+
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
+	}
+
+	[Fact]
+	public async Task NullableNumbers_Nuint_ShouldReturnExpectedValue()
+	{
+		nuint? value = 123;
+		string expectedResult = "123";
+		StringBuilder sb = new();
+
+		string result = Formatter.Format(value);
+		Formatter.Format(sb, value);
+
+		await That(result).Should().Be(expectedResult);
+		await That(sb.ToString()).Should().Be(expectedResult);
+	}
+
+	[Fact]
 	public async Task Numbers_Nint_ShouldReturnExpectedValue()
 	{
 		nint value = -123;
@@ -63,34 +91,6 @@ public sealed class NumberFormatterTests
 	[MemberData(nameof(GetValues))]
 	public async Task Numbers_ShouldReturnExpectedValue(object? value, string expectedResult)
 	{
-		StringBuilder sb = new();
-
-		string result = Formatter.Format(value);
-		Formatter.Format(sb, value);
-
-		await That(result).Should().Be(expectedResult);
-		await That(sb.ToString()).Should().Be(expectedResult);
-	}
-
-	[Fact]
-	public async Task NullableNumbers_Nint_ShouldReturnExpectedValue()
-	{
-		nint? value = -123;
-		string expectedResult = "-123";
-		StringBuilder sb = new();
-
-		string result = Formatter.Format(value);
-		Formatter.Format(sb, value);
-
-		await That(result).Should().Be(expectedResult);
-		await That(sb.ToString()).Should().Be(expectedResult);
-	}
-
-	[Fact]
-	public async Task NullableNumbers_Nuint_ShouldReturnExpectedValue()
-	{
-		nuint? value = 123;
-		string expectedResult = "123";
 		StringBuilder sb = new();
 
 		string result = Formatter.Format(value);
