@@ -207,8 +207,10 @@ jobs:
                     path: Artifacts/Packages
             -   name: Publish
                 run: |
+                    echo "Found the following packages to push:"
                     search_dir=Artifacts/Packages
                     for entry in "$search_dir"/*
                     do
-                      echo "$entry"
+                      echo "- $entry"
                     done
+                    nuget push **/*.nupkg -Source 'https://api.nuget.org/v3/index.json'
