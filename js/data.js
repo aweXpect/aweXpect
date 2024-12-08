@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733638520673,
+  "lastUpdate": 1733643307484,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3104,6 +3104,102 @@ window.BENCHMARK_DATA = {
             "value": 1847.540360042027,
             "unit": "ns",
             "range": "± 5.43666810704918"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "136fdd69714b6a4ebd56978bd93794d2b9cc24ea",
+          "message": "feat: support verification for `HResult` of exceptions (#90)\n\nIt is now possible to verify the `HResult` of expectations:\n\n```csharp\nException exception = // Exception with HResult set to 12389021\n\nawait Expect.That(exception).Should()\n    .HaveHResult(12389021);\n// or\nawait Expect.That(() => throw exception).Should().ThrowException()\n    .WithHResult(12389021);\n```",
+          "timestamp": "2024-12-08T07:30:04Z",
+          "tree_id": "1408a1285c0b273dca67be7aa363b8e22d18e870",
+          "url": "https://github.com/aweXpect/aweXpect/commit/136fdd69714b6a4ebd56978bd93794d2b9cc24ea"
+        },
+        "date": 1733643306887,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.91287218729656,
+            "unit": "ns",
+            "range": "± 1.5988900738194212"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 216.94624098936717,
+            "unit": "ns",
+            "range": "± 0.7979456843392098"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 588.3177711780255,
+            "unit": "ns",
+            "range": "± 2.199933211819629"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 321.03754026549205,
+            "unit": "ns",
+            "range": "± 2.4383924950588214"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 419.0010606447856,
+            "unit": "ns",
+            "range": "± 1.4019449209916954"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 789.8082087198893,
+            "unit": "ns",
+            "range": "± 2.972982282720224"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 936.8281750996907,
+            "unit": "ns",
+            "range": "± 4.39754004892876"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1193.5436641148158,
+            "unit": "ns",
+            "range": "± 4.925049271056439"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1145.7792847497124,
+            "unit": "ns",
+            "range": "± 6.164814809075679"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1002.5334433237712,
+            "unit": "ns",
+            "range": "± 7.464901140277758"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 226789.13577706474,
+            "unit": "ns",
+            "range": "± 687.6958631620572"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1898.1449455261231,
+            "unit": "ns",
+            "range": "± 6.717083286813081"
           }
         ]
       }
