@@ -10,6 +10,9 @@ internal class StringDifference(
 	string expectedValue,
 	IEqualityComparer<string>? comparer = null)
 {
+	private readonly IEqualityComparer<string> _comparer = comparer ?? StringComparer.Ordinal;
+	private int? _indexOfFirstMismatch;
+
 	/// <summary>
 	///     Returns the first index at which the two values do not match.
 	/// </summary>
@@ -23,13 +26,7 @@ internal class StringDifference(
 		}
 	}
 
-	private readonly IEqualityComparer<string> _comparer = comparer ?? StringComparer.Ordinal;
-	private int? _indexOfFirstMismatch;
-
-	public override string ToString()
-	{
-		return ToString("differs");
-	}
+	public override string ToString() => ToString("differs");
 
 	/// <summary>
 	///     Writes a string representation of the difference, starting with the <paramref name="prefix" />.

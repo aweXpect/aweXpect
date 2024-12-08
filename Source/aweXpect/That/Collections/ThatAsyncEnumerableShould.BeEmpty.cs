@@ -46,7 +46,10 @@ public static partial class ThatAsyncEnumerableShould
 				materializedEnumerable.GetAsyncEnumerator(cancellationToken);
 			if (await enumerator.MoveNextAsync())
 			{
-				List<TItem> items = new(11) { enumerator.Current };
+				List<TItem> items = new(11)
+				{
+					enumerator.Current
+				};
 				while (await enumerator.MoveNextAsync())
 				{
 					items.Add(enumerator.Current);

@@ -14,7 +14,7 @@ public static partial class ThatStringShould
 		this IThat<string?> source,
 		string? expected)
 	{
-		var options = new StringEqualityOptions();
+		StringEqualityOptions options = new StringEqualityOptions();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new BeConstraint(it, expected, options)),
 			source,

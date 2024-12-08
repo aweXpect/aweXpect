@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq.Expressions;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -13,11 +11,6 @@ public partial class ThatDelegateThrows<TException>
 	: ExpectationResult<TException, ThatDelegateThrows<TException>>
 	where TException : Exception?
 {
-	/// <summary>
-	///     The expectation builder.
-	/// </summary>
-	public ExpectationBuilder ExpectationBuilder { get; }
-
 	private readonly ThrowsOption _throwOptions;
 
 	internal ThatDelegateThrows(ExpectationBuilder expectationBuilder,
@@ -27,4 +20,9 @@ public partial class ThatDelegateThrows<TException>
 		ExpectationBuilder = expectationBuilder;
 		_throwOptions = throwOptions;
 	}
+
+	/// <summary>
+	///     The expectation builder.
+	/// </summary>
+	public ExpectationBuilder ExpectationBuilder { get; }
 }

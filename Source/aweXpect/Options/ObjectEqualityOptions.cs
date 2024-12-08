@@ -115,7 +115,10 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 			}
 
 			List<ComparisonFailure> failures = Compare.CheckEquivalent(actual, expected,
-				new CompareOptions { MembersToIgnore = [.. equivalencyOptions.MembersToIgnore] }).ToList();
+				new CompareOptions
+				{
+					MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
+				}).ToList();
 
 			if (failures.FirstOrDefault() is { } firstFailure)
 			{
@@ -140,7 +143,10 @@ public class ObjectEqualityOptions : IOptionsEquality<object?>
 			}
 
 			List<ComparisonFailure> failures = Compare.CheckEquivalent(actual, expected,
-				new CompareOptions { MembersToIgnore = [.. equivalencyOptions.MembersToIgnore] }).ToList();
+				new CompareOptions
+				{
+					MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
+				}).ToList();
 
 			if (failures.FirstOrDefault() is { } firstFailure)
 			{

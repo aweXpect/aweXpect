@@ -21,7 +21,7 @@ public static partial class ThatAsyncEnumerableShould
 	public static IThat<IAsyncEnumerable<TItem>> Should<TItem>(
 		this IExpectSubject<IAsyncEnumerable<TItem>> subject)
 		=> subject.Should(That.WithoutAction);
-	
+
 	private readonly struct AsyncCollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
 		private readonly string _it;
@@ -43,14 +43,15 @@ public static partial class ThatAsyncEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			var materialized = context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
+			IAsyncEnumerable<TItem> materialized =
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			int matchingCount = 0;
 			int notMatchingCount = 0;
 			int? totalCount = null;
 
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
-				var isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
+				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
 				if (isMatch is ConstraintResult.Success)
 				{
 					matchingCount++;
@@ -62,17 +63,20 @@ public static partial class ThatAsyncEnumerableShould
 
 				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount, totalCount);
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
+						totalCount);
 				}
 			}
 
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder), "could not verify, because it was cancelled early");
+					actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					"could not verify, because it was cancelled early");
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount, matchingCount + notMatchingCount);
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount);
 		}
 	}
 }

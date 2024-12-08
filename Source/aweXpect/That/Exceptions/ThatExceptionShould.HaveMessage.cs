@@ -15,8 +15,9 @@ public partial class ThatExceptionShould<TException>
 	public StringEqualityTypeResult<TException?, ThatExceptionShould<TException>>
 		HaveMessage(string expected)
 	{
-		var options = new StringEqualityOptions();
-		return new(ExpectationBuilder.AddConstraint(it
+		StringEqualityOptions options = new StringEqualityOptions();
+		return new StringEqualityTypeResult<TException?, ThatExceptionShould<TException>>(
+			ExpectationBuilder.AddConstraint(it
 				=> new ThatExceptionShould.HasMessageValueConstraint<TException>(
 					it, "have", expected, options)),
 			this,

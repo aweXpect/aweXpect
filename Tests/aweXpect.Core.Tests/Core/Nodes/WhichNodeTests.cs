@@ -5,11 +5,7 @@ public sealed class WhichNodeTests
 	[Fact]
 	public async Task WhichCreatesGoodMessage()
 	{
-		Dummy subject = new()
-		{
-			Inner = new Dummy.Nested { Id = 1 },
-			Value = "foo"
-		};
+		Dummy subject = new() { Inner = new Dummy.Nested { Id = 1 }, Value = "foo" };
 
 		async Task Act()
 			=> await That(subject).Should().Be<Dummy>()
@@ -34,10 +30,10 @@ public sealed class WhichNodeTests
 
 		public class Nested
 		{
-			public int Id { get; set; }
-			#pragma warning disable CS0649
+#pragma warning disable CS0649
 			public int Field;
-			#pragma warning restore CS0649
+#pragma warning restore CS0649
+			public int Id { get; set; }
 
 			public int Method() => Id + 1;
 		}

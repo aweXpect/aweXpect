@@ -1,7 +1,6 @@
-﻿using aweXpect.Core;
-using System;
+﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.Helpers;
 using aweXpect.Core.Sources;
 using aweXpect.Helpers;
 

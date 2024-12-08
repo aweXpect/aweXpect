@@ -38,13 +38,13 @@ public static partial class ThatNullableTimeOnlyShould
 		TimeOnly? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new(
+		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ConditionConstraintWithTolerance(
 					it,
 					unexpected,
 					(e, t) => $"not be {Formatter.Format(e)}{t}",
-					(a, u, t) => ((a == null) != (u == null)) ||
+					(a, u, t) => a == null != (u == null) ||
 					             (a != null && u != null &&
 					              Math.Abs(a.Value.Ticks - u.Value.Ticks) > t.Ticks),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",

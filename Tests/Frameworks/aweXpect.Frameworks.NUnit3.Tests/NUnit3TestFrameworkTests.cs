@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace aweXpect.Frameworks.NUnit3.Tests;
 

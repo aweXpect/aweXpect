@@ -9,11 +9,7 @@ public sealed class GenericForTests
 	[InlineData(false, false, false)]
 	public async Task AndCombination_ShouldVerifyAllExpectations(bool a, bool b, bool expectSuccess)
 	{
-		MyCombinationClass subject = new()
-		{
-			A = a,
-			B = b
-		};
+		MyCombinationClass subject = new() { A = a, B = b };
 
 		async Task Act()
 			=> await That(subject)
@@ -35,11 +31,7 @@ public sealed class GenericForTests
 	[InlineData(false, false, false)]
 	public async Task OrCombination_ShouldVerifyAnyExpectations(bool a, bool b, bool expectSuccess)
 	{
-		MyCombinationClass subject = new()
-		{
-			A = a,
-			B = b
-		};
+		MyCombinationClass subject = new() { A = a, B = b };
 
 		async Task Act()
 			=> await That(subject)

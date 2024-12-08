@@ -1,8 +1,8 @@
 ﻿#if NET6_0_OR_GREATER
+using System;
 using aweXpect.Core;
 using aweXpect.Options;
 using aweXpect.Results;
-using System;
 
 namespace aweXpect;
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace aweXpect.Options;

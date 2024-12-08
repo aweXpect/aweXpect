@@ -74,16 +74,17 @@ public static partial class ThatAsyncEnumerableShould
 
 		private async Task<string> TooManyDeviationsError(IAsyncEnumerable<TItem> materializedEnumerable)
 		{
-			var sb = new StringBuilder();
+			StringBuilder sb = new();
 			sb.Append(it);
 			sb.Append(" was completely different: [");
 			int count = 0;
-			await foreach (var item in materializedEnumerable)
+			await foreach (TItem item in materializedEnumerable)
 			{
 				if (count++ >= CollectionFormatCount)
 				{
 					break;
 				}
+
 				sb.AppendLine();
 				sb.Append("  ");
 				Formatter.Format(sb, item);
@@ -101,7 +102,7 @@ public static partial class ThatAsyncEnumerableShould
 			sb.Append("] had more than ");
 			sb.Append(2 * CollectionFormatCount);
 			sb.Append(" deviations compared to ");
-			Formatter.Format(sb, expected.Take(CollectionFormatCount+1), FormattingOptions.MultipleLines);
+			Formatter.Format(sb, expected.Take(CollectionFormatCount + 1), FormattingOptions.MultipleLines);
 			return sb.ToString();
 		}
 

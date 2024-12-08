@@ -84,7 +84,8 @@ public static partial class ThatStringShould
 			}
 
 			StringEqualityOptions stringEqualityOptions = options;
-			if (unexpectedValues.Any(unexpectedValue => stringEqualityOptions.AreConsideredEqual(actual, unexpectedValue)))
+			if (unexpectedValues.Any(unexpectedValue
+				    => stringEqualityOptions.AreConsideredEqual(actual, unexpectedValue)))
 			{
 				return new ConstraintResult.Failure<string?>(actual, ToString(),
 					$"{it} was {Formatter.Format(actual)}");

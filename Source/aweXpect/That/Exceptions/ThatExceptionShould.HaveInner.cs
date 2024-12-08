@@ -20,7 +20,7 @@ public partial class ThatExceptionShould<TException>
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					$"have an inner {typeof(TInnerException).Name} which should ",
-					replaceIt: false)
+					false)
 				.Validate(it
 					=> new ThatExceptionShould.InnerExceptionIsTypeConstraint<TInnerException>(it))
 				.AddExpectations(e => expectations(new ThatExceptionShould<TInnerException?>(e))),

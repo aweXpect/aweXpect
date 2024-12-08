@@ -11,7 +11,8 @@ public partial class ThatDelegateThrows<TException>
 	public StringEqualityTypeResult<TException, ThatDelegateThrows<TException>> WithMessage(string expected)
 	{
 		StringEqualityOptions? options = new();
-		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(ExpectationBuilder.AddConstraint(it
+		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(
+			ExpectationBuilder.AddConstraint(it
 				=> new ThatExceptionShould.HasMessageValueConstraint<TException>(
 					it, "with", expected, options)),
 			this,

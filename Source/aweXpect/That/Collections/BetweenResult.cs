@@ -13,7 +13,7 @@ public class BetweenResult<TTarget, TExpectation>(
 	/// </summary>
 	public TTarget And(int maximum,
 		Action<TExpectation> expectations)
-			=> callback(maximum, expectations);
+		=> callback(maximum, expectations);
 }
 
 /// <summary>

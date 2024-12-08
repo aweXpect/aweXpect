@@ -7,7 +7,7 @@ public static partial class ThatNumberShould
 {
 	private const string ExpectBeFinite = "be finite";
 	private const string ExpectNotBeFinite = "not be finite";
-	
+
 	/// <summary>
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor <see cref="float.IsNaN" />
 	///     ).

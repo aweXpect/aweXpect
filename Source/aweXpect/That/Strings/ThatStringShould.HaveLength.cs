@@ -1,7 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.Helpers;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -60,7 +59,7 @@ public static partial class ThatStringShould
 			if (actual.Length != expected)
 			{
 				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} did have a length of {actual.Length}:{Environment.NewLine}{StringExtensions.Indent(Formatter.Format(actual))}");
+					$"{it} did have a length of {actual.Length}:{Environment.NewLine}{Formatter.Format(actual).Indent()}");
 			}
 
 			return new ConstraintResult.Success<string?>(actual, ToString());
@@ -80,7 +79,7 @@ public static partial class ThatStringShould
 			if (actual?.Length == unexpected)
 			{
 				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} did:{Environment.NewLine}{StringExtensions.Indent(Formatter.Format(actual))}");
+					$"{it} did:{Environment.NewLine}{Formatter.Format(actual).Indent()}");
 			}
 
 			return new ConstraintResult.Success<string?>(actual, ToString());

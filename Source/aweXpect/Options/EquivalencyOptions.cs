@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace aweXpect.Options;
 
@@ -8,8 +7,8 @@ namespace aweXpect.Options;
 /// </summary>
 public class EquivalencyOptions
 {
-	internal IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
 	private readonly List<string> _membersToIgnore = new();
+	internal IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
 
 	/// <summary>
 	///     Ignores the <paramref name="memberToIgnore" /> when checking for equivalency.

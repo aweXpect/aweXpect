@@ -46,6 +46,7 @@ public static partial class ThatExceptionShould
 				return new ConstraintResult.Failure(ToString(),
 					$"{it} was <null>");
 			}
+
 			if (actual.HResult == expected)
 			{
 				return new ConstraintResult.Success<Exception?>(actual,

@@ -1,5 +1,4 @@
 ﻿using System;
-using aweXpect.Formatting;
 
 namespace aweXpect.Options;
 

@@ -19,7 +19,7 @@ public static partial class ThatHttpResponseMessageShould
 			this IThat<HttpResponseMessage?> source,
 			string expected)
 	{
-		StringEqualityOptions options = new StringEqualityOptions();
+		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<HttpResponseMessage, IThat<HttpResponseMessage?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new HasContentConstraint(it, expected, options)),

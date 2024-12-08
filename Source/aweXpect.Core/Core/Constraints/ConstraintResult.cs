@@ -9,40 +9,6 @@ namespace aweXpect.Core.Constraints;
 public abstract class ConstraintResult
 {
 	/// <summary>
-	///     A human-readable representation of the expectation.
-	/// </summary>
-	public string ExpectationText { get; }
-
-	/// <summary>
-	///     Specifies if further processing of chained constraints should be ignored.
-	/// </summary>
-	public FurtherProcessing FurtherProcessingStrategy { get; }
-
-	/// <summary>
-	///     Initializes a new instance of <see cref="ConstraintResult" />.
-	/// </summary>
-	protected ConstraintResult(
-		string expectationText,
-		FurtherProcessing furtherProcessingStrategy)
-	{
-		ExpectationText = expectationText;
-		FurtherProcessingStrategy = furtherProcessingStrategy;
-	}
-
-	/// <summary>
-	///     Combines the result with the provided <paramref name="expectationText" /> and <paramref name="resultText" />.
-	/// </summary>
-	public abstract ConstraintResult CombineWith(string expectationText, string resultText);
-
-	/// <summary>
-	///     Updates the expectation text of the current <see cref="ConstraintResult" />.
-	/// </summary>
-	internal abstract ConstraintResult UpdateExpectationText(
-		Func<ConstraintResult, string> expectationText);
-
-	internal abstract ConstraintResult UseValue<T>(T value);
-
-	/// <summary>
 	///     The strategy how to continue processing after the current result.
 	/// </summary>
 	public enum FurtherProcessing
@@ -63,8 +29,42 @@ public abstract class ConstraintResult
 		/// <summary>
 		///     Ignore the result of future constraints, but include their expectations.
 		/// </summary>
-		IgnoreResult,
+		IgnoreResult
 	}
+
+	/// <summary>
+	///     Initializes a new instance of <see cref="ConstraintResult" />.
+	/// </summary>
+	protected ConstraintResult(
+		string expectationText,
+		FurtherProcessing furtherProcessingStrategy)
+	{
+		ExpectationText = expectationText;
+		FurtherProcessingStrategy = furtherProcessingStrategy;
+	}
+
+	/// <summary>
+	///     A human-readable representation of the expectation.
+	/// </summary>
+	public string ExpectationText { get; }
+
+	/// <summary>
+	///     Specifies if further processing of chained constraints should be ignored.
+	/// </summary>
+	public FurtherProcessing FurtherProcessingStrategy { get; }
+
+	/// <summary>
+	///     Combines the result with the provided <paramref name="expectationText" /> and <paramref name="resultText" />.
+	/// </summary>
+	public abstract ConstraintResult CombineWith(string expectationText, string resultText);
+
+	/// <summary>
+	///     Updates the expectation text of the current <see cref="ConstraintResult" />.
+	/// </summary>
+	internal abstract ConstraintResult UpdateExpectationText(
+		Func<ConstraintResult, string> expectationText);
+
+	internal abstract ConstraintResult UseValue<T>(T value);
 
 	/// <summary>
 	///     The actual value met the expectation.
@@ -85,9 +85,7 @@ public abstract class ConstraintResult
 
 		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
 		public override ConstraintResult CombineWith(string expectationText, string resultText)
-		{
-			return new Success(expectationText);
-		}
+			=> new Success(expectationText);
 
 		/// <inheritdoc />
 		public override string ToString()
@@ -106,9 +104,7 @@ public abstract class ConstraintResult
 
 		/// <inheritdoc />
 		internal override ConstraintResult UseValue<T>(T value)
-		{
-			return new Success<T>(value, ExpectationText, FurtherProcessingStrategy);
-		}
+			=> new Success<T>(value, ExpectationText, FurtherProcessingStrategy);
 	}
 
 	/// <summary>
@@ -116,11 +112,6 @@ public abstract class ConstraintResult
 	/// </summary>
 	public class Success<T> : Success
 	{
-		/// <summary>
-		///     A value for further processing.
-		/// </summary>
-		public T Value { get; }
-
 		/// <summary>
 		///     Initializes a new instance of <see cref="ConstraintResult.Success{T}" />.
 		/// </summary>
@@ -135,11 +126,14 @@ public abstract class ConstraintResult
 			Value = value;
 		}
 
+		/// <summary>
+		///     A value for further processing.
+		/// </summary>
+		public T Value { get; }
+
 		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
 		public override ConstraintResult CombineWith(string expectationText, string resultText)
-		{
-			return new Success<T>(Value, expectationText);
-		}
+			=> new Success<T>(Value, expectationText);
 
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
@@ -166,11 +160,6 @@ public abstract class ConstraintResult
 	public class Failure : ConstraintResult
 	{
 		/// <summary>
-		///     A human-readable representation of the reason for the failure.
-		/// </summary>
-		public string ResultText { get; }
-
-		/// <summary>
 		///     Initializes a new instance of <see cref="ConstraintResult.Failure" />.
 		/// </summary>
 		public Failure(
@@ -184,11 +173,14 @@ public abstract class ConstraintResult
 			ResultText = resultText;
 		}
 
+		/// <summary>
+		///     A human-readable representation of the reason for the failure.
+		/// </summary>
+		public string ResultText { get; }
+
 		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
 		public override ConstraintResult CombineWith(string expectationText, string resultText)
-		{
-			return new Failure(expectationText, resultText);
-		}
+			=> new Failure(expectationText, resultText);
 
 		/// <inheritdoc />
 		public override string ToString()
@@ -201,9 +193,7 @@ public abstract class ConstraintResult
 
 		/// <inheritdoc />
 		internal override ConstraintResult UseValue<T>(T value)
-		{
-			return new Failure<T>(value, ExpectationText, ResultText, FurtherProcessingStrategy);
-		}
+			=> new Failure<T>(value, ExpectationText, ResultText, FurtherProcessingStrategy);
 	}
 
 	/// <summary>
@@ -211,11 +201,6 @@ public abstract class ConstraintResult
 	/// </summary>
 	public class Failure<T> : Failure
 	{
-		/// <summary>
-		///     A value for further processing.
-		/// </summary>
-		public T Value { get; }
-
 		/// <summary>
 		///     Initializes a new instance of <see cref="ConstraintResult.Failure{T}" />.
 		/// </summary>
@@ -232,11 +217,14 @@ public abstract class ConstraintResult
 			Value = value;
 		}
 
+		/// <summary>
+		///     A value for further processing.
+		/// </summary>
+		public T Value { get; }
+
 		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
 		public override ConstraintResult CombineWith(string expectationText, string resultText)
-		{
-			return new Failure<T>(Value, expectationText, resultText);
-		}
+			=> new Failure<T>(Value, expectationText, resultText);
 
 		/// <inheritdoc />
 		internal override ConstraintResult UpdateExpectationText(

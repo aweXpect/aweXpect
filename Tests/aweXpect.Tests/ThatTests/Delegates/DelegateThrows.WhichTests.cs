@@ -8,19 +8,6 @@ public sealed partial class DelegateThrows
 	{
 		[Theory]
 		[AutoData]
-		public async Task WhenMemberMatchesExpected_ShouldSucceed(int hResult)
-		{
-			Exception exception = new HResultException(hResult);
-
-			async Task Act()
-				=> await That(() => throw exception).Should().ThrowException()
-					.Which(e => e.HResult, h => h.Should().Be(hResult));
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Theory]
-		[AutoData]
 		public async Task WhenMemberIsDifferent_ShouldFail(int hResult)
 		{
 			int expectedHResult = hResult + 1;
@@ -36,6 +23,19 @@ public sealed partial class DelegateThrows
 				              throw an Exception which .HResult should be equal to {expectedHResult},
 				              but .HResult was {hResult}
 				              """);
+		}
+
+		[Theory]
+		[AutoData]
+		public async Task WhenMemberMatchesExpected_ShouldSucceed(int hResult)
+		{
+			Exception exception = new HResultException(hResult);
+
+			async Task Act()
+				=> await That(() => throw exception).Should().ThrowException()
+					.Which(e => e.HResult, h => h.Should().Be(hResult));
+
+			await That(Act).Should().NotThrow();
 		}
 	}
 }

@@ -59,7 +59,7 @@ public static partial class ThatStringShould
 			}
 
 			if (options.AreConsideredEqual(
-				actual.Substring(actual.Length - expected.Length, expected.Length), expected))
+				    actual.Substring(actual.Length - expected.Length, expected.Length), expected))
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}
