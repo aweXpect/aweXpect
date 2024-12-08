@@ -206,11 +206,14 @@ jobs:
                 run: |
                     echo "Found the following packages to push:"
                     search_dir=Artifacts/Packages
-                    for entry in "$search_dir"/*
+                    for entry in Artifacts/Packages/*nupkg
                     do
                       echo "- $entry"
                     done
-                    nuget push **/*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+                    for entry in Artifacts/Packages/*nupkg
+                    do
+                      nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+                    done
             -   name: Create GitHub release
                 continue-on-error: true
                 uses: softprops/action-gh-release@v2
