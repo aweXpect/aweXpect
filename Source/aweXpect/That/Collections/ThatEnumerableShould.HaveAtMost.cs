@@ -13,9 +13,9 @@ public static partial class ThatEnumerableShould
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtMost<TItem>(
 		this IThat<IEnumerable<TItem>> source,
-		Times maximum,
+		int maximum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum.Value), expectations)),
+				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum), expectations)),
 			source);
 }

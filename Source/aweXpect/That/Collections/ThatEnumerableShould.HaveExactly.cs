@@ -8,14 +8,14 @@ namespace aweXpect;
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that at least <paramref name="minimum" /> items in the synchronous enumerable satisfy the
+	///     Verifies that exactly <paramref name="expected" /> items in the synchronous enumerable satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtLeast<TItem>(
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveExactly<TItem>(
 		this IThat<IEnumerable<TItem>> source,
-		int minimum,
+		int expected,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)),
+				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected), expectations)),
 			source);
 }

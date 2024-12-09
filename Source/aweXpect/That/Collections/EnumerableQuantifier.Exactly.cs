@@ -6,21 +6,21 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches none items.
+	///     Matches exactly <paramref name="expected"/> items.
 	/// </summary>
-	public static EnumerableQuantifier None => new NoneQuantifier();
+	public static EnumerableQuantifier Exactly(int expected) => new ExactlyQuantifier(expected);
 
-	private sealed class NoneQuantifier : EnumerableQuantifier
+	private sealed class ExactlyQuantifier(int expected) : EnumerableQuantifier
 	{
-		public override string ToString() => "none";
+		public override string ToString() => $"exactly {expected}";
 
 		/// <inheritdoc />
 		public override bool IsDeterminable(int matchingCount, int notMatchingCount)
-			=> matchingCount > 0;
+			=> matchingCount > expected;
 
 		/// <inheritdoc />
 		public override string GetExpectation(string it, ExpectationBuilder expectationBuilder)
-			=> $"have no items {expectationBuilder}";
+			=> $"have exactly {expected} items {expectationBuilder}";
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
@@ -30,19 +30,25 @@ public abstract partial class EnumerableQuantifier
 			int notMatchingCount,
 			int? totalCount)
 		{
-			if (matchingCount > 0)
+			if (matchingCount > expected)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
 					GetExpectation(it, expectationBuilder),
-					totalCount.HasValue
-						? $"{matchingCount} of {totalCount} were"
-						: "at least one was");
+					$"at least {matchingCount} were");
 			}
 
 			if (totalCount.HasValue)
 			{
-				return new ConstraintResult.Success<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder));
+				if (matchingCount == expected)
+				{
+					
+					return new ConstraintResult.Success<TEnumerable>(actual,
+						GetExpectation(it, expectationBuilder));
+				}
+				
+				return new ConstraintResult.Failure<TEnumerable>(actual,
+					GetExpectation(it, expectationBuilder),
+					$"only {matchingCount} of {totalCount} were");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
