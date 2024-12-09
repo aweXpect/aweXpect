@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733663162341,
+  "lastUpdate": 1733712450016,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3488,6 +3488,102 @@ window.BENCHMARK_DATA = {
             "value": 1906.2551854451497,
             "unit": "ns",
             "range": "± 11.269079807561587"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "87e475abaf924a0296f23efdc3e48b8a09cbd840",
+          "message": "build(deps): bump the nuke group across 1 directory with 2 updates (#79)\n\n* build(deps): bump the nuke group across 1 directory with 2 updates\n\nBumps the nuke group with 2 updates in the / directory: [Nuke.Common](https://github.com/nuke-build/nuke) and [Nuke.Components](https://github.com/nuke-build/nuke).\n\n\nUpdates `Nuke.Common` from 8.1.4 to 9.0.3\n- [Release notes](https://github.com/nuke-build/nuke/releases)\n- [Changelog](https://github.com/nuke-build/nuke/blob/develop/CHANGELOG.md)\n- [Commits](https://github.com/nuke-build/nuke/compare/8.1.4...9.0.3)\n\n---\nupdated-dependencies:\n- dependency-name: Nuke.Common\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n  dependency-group: nuke\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\n\n* Fix breaking changes\n\n---------\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Valentin <valentin.breuss@baur.eu>",
+          "timestamp": "2024-12-09T02:41:20Z",
+          "tree_id": "096f5c2bdab42b5ecb5ff4b6321e43bc8b43c9a1",
+          "url": "https://github.com/aweXpect/aweXpect/commit/87e475abaf924a0296f23efdc3e48b8a09cbd840"
+        },
+        "date": 1733712449363,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.6897361278534,
+            "unit": "ns",
+            "range": "± 1.5423650733963277"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 224.41367330551148,
+            "unit": "ns",
+            "range": "± 0.9714894229409201"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 600.0807311875479,
+            "unit": "ns",
+            "range": "± 2.6474177719816305"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 321.4397438489474,
+            "unit": "ns",
+            "range": "± 1.2857567233792422"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 401.66912304560344,
+            "unit": "ns",
+            "range": "± 2.9085262194144277"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 797.0831477483114,
+            "unit": "ns",
+            "range": "± 3.9146918478309396"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 965.8753976186116,
+            "unit": "ns",
+            "range": "± 4.23038541081359"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1200.990053313119,
+            "unit": "ns",
+            "range": "± 9.375491573233909"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1116.7571268081665,
+            "unit": "ns",
+            "range": "± 7.093344049329289"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 994.0544108072917,
+            "unit": "ns",
+            "range": "± 3.1914635561192135"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 229902.3765299479,
+            "unit": "ns",
+            "range": "± 1835.6785056374488"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1890.3747678903433,
+            "unit": "ns",
+            "range": "± 12.673035733600878"
           }
         ]
       }
