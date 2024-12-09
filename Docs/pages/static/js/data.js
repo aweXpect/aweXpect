@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733753586605,
+  "lastUpdate": 1733756900856,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3680,6 +3680,102 @@ window.BENCHMARK_DATA = {
             "value": 1877.6727693997896,
             "unit": "ns",
             "range": "± 14.446078884847164"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a975b4d1c9313d98b9480d2f74df93a7865bc678",
+          "message": "feat: add `HaveExactly` for collection expectations (#106)\n\nAdd `HaveExactly` for collection expectations that verify that exactly the expected number of items match the expectations.",
+          "timestamp": "2024-12-09T15:03:22Z",
+          "tree_id": "e3499d3a4965b6d16d68199c6375efe1a300135c",
+          "url": "https://github.com/aweXpect/aweXpect/commit/a975b4d1c9313d98b9480d2f74df93a7865bc678"
+        },
+        "date": 1733756900194,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.42227586678095,
+            "unit": "ns",
+            "range": "± 2.0688799300677565"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 220.00719077587127,
+            "unit": "ns",
+            "range": "± 1.6200257584745796"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 596.717477457864,
+            "unit": "ns",
+            "range": "± 2.3103580375883426"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 327.86509437561034,
+            "unit": "ns",
+            "range": "± 2.9440596950285953"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 419.2551161766052,
+            "unit": "ns",
+            "range": "± 4.2690231199055795"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 791.4740288598197,
+            "unit": "ns",
+            "range": "± 4.315381892283877"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 988.2366466522217,
+            "unit": "ns",
+            "range": "± 6.331703599308949"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1206.1181132452828,
+            "unit": "ns",
+            "range": "± 6.075428009255986"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1120.3157307942708,
+            "unit": "ns",
+            "range": "± 4.449538363563205"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 991.6567956484281,
+            "unit": "ns",
+            "range": "± 3.783267965564045"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 230962.97930438703,
+            "unit": "ns",
+            "range": "± 1155.064826846977"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1840.6616379664495,
+            "unit": "ns",
+            "range": "± 4.411804457961186"
           }
         ]
       }
