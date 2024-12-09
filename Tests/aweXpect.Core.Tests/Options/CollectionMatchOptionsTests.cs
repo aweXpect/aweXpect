@@ -1,6 +1,6 @@
 ﻿using aweXpect.Options;
 
-namespace aweXpect.Tests.Options;
+namespace aweXpect.Core.Tests.Options;
 
 public class CollectionMatchOptionsTests
 {

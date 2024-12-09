@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using aweXpect.Core;
-using aweXpect.Helpers;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
@@ -49,7 +49,10 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 		return _type.Matches(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
 	}
 
-	internal string GetExpectation(string? expected, bool useActiveGrammaticVoice)
+	/// <summary>
+	///     Get the expectations text.
+	/// </summary>
+	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
 		=> useActiveGrammaticVoice switch
 		{
 			true =>
@@ -58,7 +61,10 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 				$"{(_type is ExactMatchType ? "equal to" : "matching")} {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 		};
 
-	internal string GetExtendedFailure(string it, string? expected, string? actual)
+	/// <summary>
+	///     Get an extended failure text.
+	/// </summary>
+	public string GetExtendedFailure(string it, string? expected, string? actual)
 		=> _type.GetExtendedFailure(it, actual, expected, _ignoreCase,
 			_comparer ?? UseDefaultComparer(_ignoreCase));
 

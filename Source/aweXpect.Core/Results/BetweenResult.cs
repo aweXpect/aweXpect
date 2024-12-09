@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aweXpect;
+namespace aweXpect.Results;
 
 /// <summary>
 ///     An intermediate type to collect the maximum of the range.
