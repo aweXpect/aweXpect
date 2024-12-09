@@ -40,7 +40,11 @@ public class NumberTolerance<TNumber>(
 		return $" {plusMinus} {Formatter.Format(Tolerance)}";
 	}
 
-	internal bool IsWithinTolerance(TNumber? actual, TNumber? expected)
+	/// <summary>
+	///     Verifies if the <paramref name="actual" /> number is within the tolerance to the
+	///     <paramref name="expected" /> number.
+	/// </summary>
+	public bool IsWithinTolerance(TNumber? actual, TNumber? expected)
 		=> (expected == null && actual == null) ||
 		   (expected != null && actual != null &&
 		    isWithinTolerance(actual.Value, expected.Value, Tolerance));
