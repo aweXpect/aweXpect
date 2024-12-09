@@ -6,6 +6,7 @@ using Nuke.Components;
 using Serilog;
 using System;
 using System.Linq;
+using Nuke.Common.Utilities;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 // ReSharper disable AllUnderscoreLocalParameterName

@@ -1,8 +1,8 @@
+using System.Linq;
 using Nuke.Common;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
-using System.Linq;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 // ReSharper disable AllUnderscoreLocalParameterName
@@ -28,7 +28,7 @@ partial class Build
 				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
 				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests
 			];
 
 			var testCombinations =
@@ -36,7 +36,11 @@ partial class Build
 				let frameworks = project.GetTargetFrameworks()
 				let supportedFrameworks = EnvironmentInfo.IsWin ? frameworks : frameworks.Except(["net48"])
 				from framework in supportedFrameworks
-				select new { project, framework };
+				select new
+				{
+					project,
+					framework
+				};
 
 			DotNetTest(s => s
 				.SetConfiguration(Configuration)
@@ -62,14 +66,18 @@ partial class Build
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests
 			];
 
 			var testCombinations =
 				from project in projects
 				let frameworks = project.GetTargetFrameworks()
 				from framework in frameworks
-				select new { project, framework };
+				select new
+				{
+					project,
+					framework
+				};
 
 			DotNetTest(s => s
 				.SetConfiguration(Configuration)
@@ -80,14 +88,14 @@ partial class Build
 					(settings, v) => settings
 						.SetProjectFile(v.project)
 						.SetFramework(v.framework)
-						.SetProcessArgumentConfigurator(args => args
-							.Add("--")
-							.Add("--coverage")
-							.Add("--disable-logo")
-							.Add("--coverage-output-format \"cobertura\"")
-							.Add("--report-trx")
-							.Add($"--report-trx-filename {v.project.Name}_{v.framework}.trx")
-							.Add($"--results-directory {TestResultsDirectory}")
+						.SetProcessAdditionalArguments(
+							"--",
+							"--coverage",
+							"--disable-logo",
+							"--coverage-output-format \"cobertura\"",
+							"--report-trx",
+							$"--report-trx-filename {v.project.Name}_{v.framework}.trx",
+							$"--results-directory {TestResultsDirectory}"
 						)
 				)
 			);
@@ -100,14 +108,18 @@ partial class Build
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests,
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests
 			];
 
 			var testCombinations =
 				from project in projects
 				let frameworks = project.GetTargetFrameworks()
 				from framework in frameworks
-				select new { project, framework };
+				select new
+				{
+					project,
+					framework
+				};
 
 			DotNetTest(s => s
 				.SetConfiguration(Configuration)
@@ -118,11 +130,11 @@ partial class Build
 					(settings, v) => settings
 						.SetProjectFile(v.project)
 						.SetFramework(v.framework)
-						.SetProcessArgumentConfigurator(args => args
-							.Add("--")
-							.Add("--report-xunit-trx")
-							.Add($"--report-xunit-trx-filename {v.project.Name}_{v.framework}.trx")
-							.Add($"--results-directory {TestResultsDirectory}")
+						.SetProcessAdditionalArguments(
+							"--",
+							"--report-xunit-trx",
+							$"--report-xunit-trx-filename {v.project.Name}_{v.framework}.trx",
+							$"--results-directory {TestResultsDirectory}"
 						)
 				)
 			);
