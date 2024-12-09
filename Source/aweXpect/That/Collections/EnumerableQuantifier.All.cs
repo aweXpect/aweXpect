@@ -6,7 +6,7 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches all items in the enumerable.
+	///     Matches all items.
 	/// </summary>
 	public static EnumerableQuantifier All => new AllQuantifier();
 

@@ -6,7 +6,7 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches all items in the enumerable.
+	///     Matches at least <paramref name="minimum"/> items.
 	/// </summary>
 	public static EnumerableQuantifier AtLeast(int minimum) => new AtLeastQuantifier(minimum);
 

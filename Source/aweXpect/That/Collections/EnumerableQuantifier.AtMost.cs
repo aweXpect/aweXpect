@@ -6,7 +6,7 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches all items in the enumerable.
+	///     Matches at most <paramref name="maximum"/> items.
 	/// </summary>
 	public static EnumerableQuantifier AtMost(int maximum) => new AtMostQuantifier(maximum);
 

@@ -6,7 +6,7 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches all items in the enumerable.
+	///     Matches between <paramref name="minimum"/> and <paramref name="maximum"/> items.
 	/// </summary>
 	public static EnumerableQuantifier Between(int minimum, int maximum) => new BetweenQuantifier(minimum, maximum);
 

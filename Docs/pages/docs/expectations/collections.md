@@ -98,6 +98,17 @@ await Expect.That(values).Should().HaveBetween(1).And(2, x => x.Satisfy(i => i <
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
+### Exactly
+
+You can verify, that exactly a fixed number of items in the collection, satisfy an expectation:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).Should().HaveExactly(9, x => x.Satisfy(i => i < 10));
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
 ### None
 
 You can verify, that not item in the collection, satisfies an expectation:
@@ -141,7 +152,7 @@ await Expect.That(values).Should().Contain(expected).Using(new MyClassComparer()
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
-## Predicate
+### Predicate
 You can verify, that the collection contains an item that satisfies a condition:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
