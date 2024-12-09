@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733712450016,
+  "lastUpdate": 1733753586605,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3584,6 +3584,102 @@ window.BENCHMARK_DATA = {
             "value": 1890.3747678903433,
             "unit": "ns",
             "range": "± 12.673035733600878"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7a350b55d9c652c4f86fe22d3676acc6f4d8976a",
+          "message": "refactor: move Options and Results to the Core project (#105)\n\nMove the Options and (most of the) Results to the aweXpect.Core project, so that it can be used by extensions.\n\nRefactor Equivalency to implement an IEqualityComparer, so that it can still reside in the main project.",
+          "timestamp": "2024-12-09T14:07:51Z",
+          "tree_id": "00da76b7bb7320c6fab15ab347d2fc4651b4d508",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7a350b55d9c652c4f86fe22d3676acc6f4d8976a"
+        },
+        "date": 1733753586123,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 175.73022680812412,
+            "unit": "ns",
+            "range": "± 4.850958929218885"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 235.52907048331366,
+            "unit": "ns",
+            "range": "± 6.734924218075795"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 629.1211829185486,
+            "unit": "ns",
+            "range": "± 16.608130652365137"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 346.2529056072235,
+            "unit": "ns",
+            "range": "± 2.1598255554944408"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 424.0553894042969,
+            "unit": "ns",
+            "range": "± 9.232447373338502"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 839.1202475229899,
+            "unit": "ns",
+            "range": "± 15.227227806350708"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1006.893878203172,
+            "unit": "ns",
+            "range": "± 3.1522209837739714"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1276.247930765152,
+            "unit": "ns",
+            "range": "± 24.55988567763859"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1154.5628187997002,
+            "unit": "ns",
+            "range": "± 6.052445946752722"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1082.5113019943237,
+            "unit": "ns",
+            "range": "± 13.862430781806028"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 235932.94479166667,
+            "unit": "ns",
+            "range": "± 3089.0607622239463"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1877.6727693997896,
+            "unit": "ns",
+            "range": "± 14.446078884847164"
           }
         ]
       }
