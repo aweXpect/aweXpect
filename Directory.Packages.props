@@ -21,8 +21,8 @@
 		<PackageVersion Include="NUnit" Version="4.2.2"/>
 		<PackageVersion Include="NUnit3TestAdapter" Version="4.6.0"/>
 		<PackageVersion Include="NUnit.Analyzers" Version="4.4.0"/>
-		<PackageVersion Include="TUnit" Version="0.4.74"/>
-		<PackageVersion Include="TUnit.Assertions" Version="0.4.74"/>
+		<PackageVersion Include="TUnit" Version="0.4.83"/>
+		<PackageVersion Include="TUnit.Assertions" Version="0.4.86"/>
 		<PackageVersion Include="xunit" Version="2.9.2"/>
 		<PackageVersion Include="xunit.v3" Version="0.6.0-pre.7"/>
 		<PackageVersion Include="xunit.v3.core" Version="0.6.0-pre.7"/>
