@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
@@ -17,8 +16,8 @@ public partial class ObjectEqualityOptions
 
 	private sealed class ComparerEquality : IEquality
 	{
-		private IComparerOptions? _options;
 		private readonly IEqualityComparer<object> _comparer;
+		private readonly IComparerOptions? _options;
 
 		public ComparerEquality(IEqualityComparer<object> comparer)
 		{
