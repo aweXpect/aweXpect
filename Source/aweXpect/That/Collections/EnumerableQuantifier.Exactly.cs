@@ -6,27 +6,23 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches at most <paramref name="maximum" /> items.
+	///     Matches exactly <paramref name="expected" /> items.
 	/// </summary>
-	public static EnumerableQuantifier AtMost(int maximum) => new AtMostQuantifier(maximum);
+	public static EnumerableQuantifier Exactly(int expected) => new ExactlyQuantifier(expected);
 
-	private sealed class AtMostQuantifier(int maximum) : EnumerableQuantifier
+	private sealed class ExactlyQuantifier(int expected) : EnumerableQuantifier
 	{
-		public override string ToString() => $"at most {maximum}";
+		public override string ToString() => $"exactly {expected}";
 
 		/// <inheritdoc />
 		public override bool IsDeterminable(int matchingCount, int notMatchingCount)
-			=> matchingCount > maximum;
+			=> matchingCount > expected;
 
 		/// <inheritdoc />
 		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> (maximum, expectationBuilder is null) switch
-			{
-				(1, true) => "have at most one item",
-				(1, false) => $"have at most one item {expectationBuilder}",
-				(_, true) => $"have at most {maximum} items",
-				(_, false) => $"have at most {maximum} items {expectationBuilder}"
-			};
+			=> expectationBuilder is null
+				? $"have exactly {expected} items"
+				: $"have exactly {expected} items {expectationBuilder}";
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
@@ -36,7 +32,7 @@ public abstract partial class EnumerableQuantifier
 			int notMatchingCount,
 			int? totalCount)
 		{
-			if (matchingCount > maximum)
+			if (matchingCount > expected)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
 					GetExpectation(it, expectationBuilder),
@@ -51,8 +47,17 @@ public abstract partial class EnumerableQuantifier
 
 			if (totalCount.HasValue)
 			{
-				return new ConstraintResult.Success<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder));
+				if (matchingCount == expected)
+				{
+					return new ConstraintResult.Success<TEnumerable>(actual,
+						GetExpectation(it, expectationBuilder));
+				}
+
+				return new ConstraintResult.Failure<TEnumerable>(actual,
+					GetExpectation(it, expectationBuilder),
+					expectationBuilder is null
+						? $"found only {matchingCount}"
+						: $"only {matchingCount} of {totalCount} were");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,

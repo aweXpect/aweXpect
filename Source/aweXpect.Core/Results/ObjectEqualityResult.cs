@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
 using aweXpect.Options;
 
@@ -35,22 +34,12 @@ public class ObjectEqualityResult<TType, TThat, TSelf>(
 	where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
 {
 	/// <summary>
-	///     Use equivalency to compare objects.
-	/// </summary>
-	public TSelf Equivalent(
-		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
-	{
-		EquivalencyOptions? equivalencyOptions =
-			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		options.Equivalent(equivalencyOptions);
-		return (TSelf)this;
-	}
-
-	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.
 	/// </summary>
-	public TSelf Using(
-		IEqualityComparer<object> comparer)
+	/// <remarks>
+	///     For more customization, the comparer can additionally implement the <see cref="IComparerOptions" /> interface.
+	/// </remarks>
+	public TSelf Using(IEqualityComparer<object> comparer)
 	{
 		options.Using(comparer);
 		return (TSelf)this;
