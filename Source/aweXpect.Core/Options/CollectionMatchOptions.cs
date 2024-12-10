@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using aweXpect.Core;
-using aweXpect.Helpers;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 

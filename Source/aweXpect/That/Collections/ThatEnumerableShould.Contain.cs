@@ -29,7 +29,7 @@ public static partial class ThatEnumerableShould
 				.AddConstraint(it => new ContainConstraint<TItem>(
 					it,
 					q => $"contain {Formatter.Format(expected)} {q}",
-					a => options.AreConsideredEqual(a, expected, it).AreConsideredEqual,
+					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
 			quantifier,
@@ -141,7 +141,7 @@ public static partial class ThatEnumerableShould
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (options.AreConsideredEqual(item, unexpected, it).AreConsideredEqual)
+				if (options.AreConsideredEqual(item, unexpected))
 				{
 					return new ConstraintResult.Failure(ToString(),
 						$"{it} did");

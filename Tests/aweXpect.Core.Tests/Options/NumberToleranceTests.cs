@@ -1,15 +1,15 @@
 ﻿using aweXpect.Options;
 
-namespace aweXpect.Tests.Options;
+namespace aweXpect.Core.Tests.Options;
 
-public class TimeToleranceTests
+public class NumberToleranceTests
 {
 	[Fact]
 	public async Task WhenToleranceIsNegative_ShouldThrowArgumentOutOfRangeException()
 	{
-		TimeTolerance sut = new();
+		NumberTolerance<int> sut = new((_, _, _) => false);
 
-		void Act() => sut.SetTolerance(TimeSpan.FromSeconds(-1));
+		void Act() => sut.SetTolerance(-1);
 
 		await That(Act).Should().Throw<ArgumentOutOfRangeException>()
 			.WithMessage("*Tolerance must be non-negative*").AsWildcard();
@@ -18,11 +18,11 @@ public class TimeToleranceTests
 	[Fact]
 	public async Task WhenToleranceIsZero_ShouldNotThrow()
 	{
-		TimeTolerance sut = new();
+		NumberTolerance<int> sut = new((_, _, _) => false);
 
-		void Act() => sut.SetTolerance(TimeSpan.Zero);
+		void Act() => sut.SetTolerance(0);
 
 		await That(Act).Should().NotThrow();
-		await That(sut.Tolerance).Should().Be(TimeSpan.Zero);
+		await That(sut.Tolerance).Should().Be(0);
 	}
 }

@@ -8,7 +8,11 @@ namespace aweXpect.Options;
 public class EquivalencyOptions
 {
 	private readonly List<string> _membersToIgnore = new();
-	internal IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
+
+	/// <summary>
+	///     The members that should be ignored when checking for equivalency.
+	/// </summary>
+	public IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
 
 	/// <summary>
 	///     Ignores the <paramref name="memberToIgnore" /> when checking for equivalency.

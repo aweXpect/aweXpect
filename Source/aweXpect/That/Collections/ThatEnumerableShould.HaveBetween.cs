@@ -15,5 +15,9 @@ public static partial class ThatEnumerableShould
 			source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum),
 					expectations)),
-			source));
+			source),
+			maximum => new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+				source.ExpectationBuilder.AddConstraint(it
+					=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum))),
+				source));
 }
