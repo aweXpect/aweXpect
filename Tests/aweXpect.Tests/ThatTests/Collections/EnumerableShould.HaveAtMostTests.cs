@@ -58,6 +58,63 @@ public sealed partial class EnumerableShould
 		}
 
 		[Fact]
+		public async Task Items_ConsidersCancellationToken()
+		{
+			using CancellationTokenSource cts = new();
+			CancellationToken token = cts.Token;
+			IEnumerable<int> subject = GetCancellingEnumerable(4, cts);
+
+			async Task Act()
+				=> await That(subject).Should().HaveAtMost(6).Items
+					.WithCancellation(token);
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have at most 6 items,
+				             but could not verify, because it was cancelled early
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsMatchingItems_ShouldSucceed()
+		{
+			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveAtMost(3).Items;
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsTooFewItems_ShouldSucceed()
+		{
+			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveAtMost(4).Items;
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsTooManyItems_ShouldFail()
+		{
+			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveAtMost(2).Items;
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have at most 2 items,
+				             but found at least 3
+				             """);
+		}
+
+		[Fact]
 		public async Task WhenEnumerableContainsSufficientlyFewEqualItems_ShouldSucceed()
 		{
 			IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
