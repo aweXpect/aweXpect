@@ -8,5 +8,5 @@ public class ItemsResult<TReturn>(TReturn value)
 	/// <summary>
 	///     The number of items in a collection.
 	/// </summary>
-	public TReturn Items => value;
+	public TReturn Items() => value;
 }

@@ -79,7 +79,7 @@ You can also verify, that the collection has at least `minimum` items:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 10);
 
-await Expect.That(values).Should().HaveAtLeast(9).Items;
+await Expect.That(values).Should().HaveAtLeast(9).Items();
 ```
 
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
@@ -97,7 +97,7 @@ You can also verify, that the collection has at most `maximum` items:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 10);
 
-await Expect.That(values).Should().HaveAtMost(11).Items;
+await Expect.That(values).Should().HaveAtMost(11).Items();
 ```
 
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
@@ -115,7 +115,7 @@ You can also verify, that the collection has between `minimum` and `maximum` ite
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 10);
 
-await Expect.That(values).Should().HaveBetween(9).And(11).Items;
+await Expect.That(values).Should().HaveBetween(9).And(11).Items();
 ```
 
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
@@ -134,7 +134,7 @@ You can also verify, that the collection has exactly `expected` items:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 10);
 
-await Expect.That(values).Should().HaveExactly(10).Items;
+await Expect.That(values).Should().HaveExactly(10).Items();
 ```
 
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*

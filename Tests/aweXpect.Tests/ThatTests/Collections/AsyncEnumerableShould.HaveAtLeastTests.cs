@@ -57,7 +57,7 @@ public sealed partial class AsyncEnumerableShould
 				GetCancellingAsyncEnumerable(4, cts, CancellationToken.None);
 
 			async Task Act()
-				=> await That(subject).Should().HaveAtLeast(6).Items
+				=> await That(subject).Should().HaveAtLeast(6).Items()
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
@@ -74,7 +74,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveAtLeast(3).Items;
+				=> await That(subject).Should().HaveAtLeast(3).Items();
 
 			await That(Act).Should().NotThrow();
 		}
@@ -85,7 +85,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveAtLeast(4).Items;
+				=> await That(subject).Should().HaveAtLeast(4).Items();
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -101,7 +101,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveAtLeast(2).Items;
+				=> await That(subject).Should().HaveAtLeast(2).Items();
 
 			await That(Act).Should().NotThrow();
 		}
