@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733818392697,
+  "lastUpdate": 1733818469243,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -4160,6 +4160,102 @@ window.BENCHMARK_DATA = {
             "value": 1856.1222761789957,
             "unit": "ns",
             "range": "± 8.871258813700603"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7aff4a444cebe5f55610b9937d7889748e29d9fe",
+          "message": "build(deps): bump LibGit2Sharp from 0.30.0 to 0.31.0 (#104)\n\nBumps [LibGit2Sharp](https://github.com/libgit2/libgit2sharp) from 0.30.0 to 0.31.0.\n- [Release notes](https://github.com/libgit2/libgit2sharp/releases)\n- [Changelog](https://github.com/libgit2/libgit2sharp/blob/master/CHANGES.md)\n- [Commits](https://github.com/libgit2/libgit2sharp/compare/0.30.0...0.31.0)\n\n---\nupdated-dependencies:\n- dependency-name: LibGit2Sharp\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-10T08:09:46Z",
+          "tree_id": "07265d317fef4209553f8d8ecbbd3e9251c67463",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7aff4a444cebe5f55610b9937d7889748e29d9fe"
+        },
+        "date": 1733818468928,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.25734068666185,
+            "unit": "ns",
+            "range": "± 0.5232580740246876"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 221.13615090506417,
+            "unit": "ns",
+            "range": "± 1.227147455664988"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 590.1447399457296,
+            "unit": "ns",
+            "range": "± 2.334558905654919"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 312.9041163126628,
+            "unit": "ns",
+            "range": "± 2.0403672200226666"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 397.04761832101,
+            "unit": "ns",
+            "range": "± 1.4897053944053609"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 810.9767018831693,
+            "unit": "ns",
+            "range": "± 1.7039073489176089"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1027.2930845113901,
+            "unit": "ns",
+            "range": "± 1.7618921850849034"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1223.0170288085938,
+            "unit": "ns",
+            "range": "± 4.201788270592686"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1130.6246678278997,
+            "unit": "ns",
+            "range": "± 4.103053865867071"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 977.8259274164835,
+            "unit": "ns",
+            "range": "± 3.297445945173021"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 227023.17121233259,
+            "unit": "ns",
+            "range": "± 858.6154919315703"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1919.0678380330403,
+            "unit": "ns",
+            "range": "± 3.5391921583899446"
           }
         ]
       }
