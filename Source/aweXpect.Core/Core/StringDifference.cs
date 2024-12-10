@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using aweXpect.Core.Helpers;
 
-namespace aweXpect.Helpers;
+namespace aweXpect.Core;
 
-internal class StringDifference(
-	string actualValue,
-	string expectedValue,
+/// <summary>
+///     Highlights the string difference between the <paramref name="actual" /> and
+///     <paramref name="expected" /> values.
+/// </summary>
+/// <remarks>
+///     If no <paramref name="comparer" /> is specified, uses the <see cref="StringComparer.Ordinal" /> string comparer.
+/// </remarks>
+public class StringDifference(
+	string actual,
+	string expected,
 	IEqualityComparer<string>? comparer = null)
 {
 	private readonly IEqualityComparer<string> _comparer = comparer ?? StringComparer.Ordinal;
@@ -21,24 +29,24 @@ internal class StringDifference(
 		get
 		{
 			_indexOfFirstMismatch ??=
-				GetIndexOfFirstMismatch(actualValue, expectedValue, _comparer);
+				GetIndexOfFirstMismatch(actual, expected, _comparer);
 			return _indexOfFirstMismatch.Value;
 		}
 	}
 
+	/// <inheritdoc />
 	public override string ToString() => ToString("differs");
 
 	/// <summary>
 	///     Writes a string representation of the difference, starting with the <paramref name="prefix" />.
 	/// </summary>
 	/// <param name="prefix">The prefix, e.g. <c>differs at index</c></param>
-	/// <returns></returns>
-	public string ToString(string prefix)
+	private string ToString(string prefix)
 	{
 		int firstIndexOfMismatch = IndexOfFirstMismatch;
 
 		int trimStart =
-			GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actualValue, firstIndexOfMismatch);
+			GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actual, firstIndexOfMismatch);
 		const string linePrefix = "  \"";
 		const string suffix = "\"";
 		const char arrowDown = '\u2193';
@@ -51,11 +59,11 @@ internal class StringDifference(
 			whiteSpaceCountBeforeArrow++;
 		}
 
-		string? visibleText = actualValue[trimStart..firstIndexOfMismatch];
+		string? visibleText = actual[trimStart..firstIndexOfMismatch];
 		whiteSpaceCountBeforeArrow += visibleText.Count(c => c is '\r' or '\n');
 
 		StringBuilder? sb = new();
-		string? matchingString = actualValue[..IndexOfFirstMismatch];
+		string? matchingString = actual[..IndexOfFirstMismatch];
 		int lineNumber = matchingString.Count(c => c == '\n');
 
 		if (lineNumber > 0)
@@ -71,9 +79,9 @@ internal class StringDifference(
 		}
 
 		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(" (actual)");
-		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actualValue,
+		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual,
 			trimStart, suffix);
-		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expectedValue,
+		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected,
 			trimStart, suffix);
 		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(" (expected)");
 

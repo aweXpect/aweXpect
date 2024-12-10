@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
@@ -81,7 +82,7 @@ public partial class StringEqualityOptions
 					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {pattern.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(pattern.Length).TruncateWithEllipsis(100)}\"";
 			}
 
-			return $"{prefix} which {new StringDifference(actual, pattern, comparer)}";
+			return $"{prefix} which {stringDifference}";
 		}
 
 		public bool Matches(string? value, string? pattern, bool ignoreCase,

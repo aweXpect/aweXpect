@@ -147,6 +147,12 @@ namespace aweXpect.Core
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromFunc(System.Func<TSource, TTarget> func, string name) { }
     }
+    public class StringDifference
+    {
+        public StringDifference(string actual, string expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null) { }
+        public int IndexOfFirstMismatch { get; }
+        public override string ToString() { }
+    }
     public abstract class ThatDelegate
     {
         protected ThatDelegate(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
