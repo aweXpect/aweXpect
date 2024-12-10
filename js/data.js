@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733835334168,
+  "lastUpdate": 1733835370974,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -4352,6 +4352,102 @@ window.BENCHMARK_DATA = {
             "value": 1904.3519376118977,
             "unit": "ns",
             "range": "± 29.015557463959365"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0ccbde89c28696aa387fa048eed48041190256e3",
+          "message": "fix: use `Environment.NewLine` when creating error messages. (#109)\n\nReplace creation of multi-line failure messages with string builder to use a correct newline.",
+          "timestamp": "2024-12-10T12:51:18Z",
+          "tree_id": "5c1eb9def4ad8f632affcd8eba47b4959a8cfb5e",
+          "url": "https://github.com/aweXpect/aweXpect/commit/0ccbde89c28696aa387fa048eed48041190256e3"
+        },
+        "date": 1733835370675,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.32670594964708,
+            "unit": "ns",
+            "range": "± 1.2660037742862291"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 225.39456097284952,
+            "unit": "ns",
+            "range": "± 0.8465851979595802"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 568.9143877665202,
+            "unit": "ns",
+            "range": "± 4.358066496981947"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 312.7861472879137,
+            "unit": "ns",
+            "range": "± 2.4573412524633844"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 402.4390777074374,
+            "unit": "ns",
+            "range": "± 1.9670539718807936"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 798.6722608293805,
+            "unit": "ns",
+            "range": "± 2.2289645934641547"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 995.3794725963047,
+            "unit": "ns",
+            "range": "± 4.50725168224596"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1190.6326792580742,
+            "unit": "ns",
+            "range": "± 4.609933140137857"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1272.3823540551323,
+            "unit": "ns",
+            "range": "± 8.183690841228676"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 963.0893043790545,
+            "unit": "ns",
+            "range": "± 7.278081404486918"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 230837.34155273438,
+            "unit": "ns",
+            "range": "± 860.4840838499914"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1830.1802012125652,
+            "unit": "ns",
+            "range": "± 6.567858326603138"
           }
         ]
       }
