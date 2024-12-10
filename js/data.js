@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733756900856,
+  "lastUpdate": 1733817393766,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3776,6 +3776,102 @@ window.BENCHMARK_DATA = {
             "value": 1840.6616379664495,
             "unit": "ns",
             "range": "± 4.411804457961186"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cf74b5ae570cca94a516ba320299c154be7228bf",
+          "message": "feat: support counting items in a collection (#107)\n\nAdd expectations to count the items in a collection.\n\nUse the [Have-Syntax](https://awexpect.github.io/aweXpect/docs/expectations/collections#have) without the expectations:\n```csharp\nawait That(Enumerable.Range(1,10)).Should().HaveAtLeast(9).Items;\nawait That(Enumerable.Range(1,10)).Should().HaveExactly(10).Items;\n```",
+          "timestamp": "2024-12-10T07:51:30Z",
+          "tree_id": "f649d3016d0b14ed227ae2ff08716ca233c4a201",
+          "url": "https://github.com/aweXpect/aweXpect/commit/cf74b5ae570cca94a516ba320299c154be7228bf"
+        },
+        "date": 1733817393141,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 166.85314299379075,
+            "unit": "ns",
+            "range": "± 0.8137741785463979"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 224.42103849138533,
+            "unit": "ns",
+            "range": "± 1.127691648264436"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 589.015457089742,
+            "unit": "ns",
+            "range": "± 5.289208762108499"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 326.938129234314,
+            "unit": "ns",
+            "range": "± 2.993660428116158"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 397.27391986846925,
+            "unit": "ns",
+            "range": "± 3.608732447017667"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 800.3487618991306,
+            "unit": "ns",
+            "range": "± 5.484895355020445"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 982.7020540971023,
+            "unit": "ns",
+            "range": "± 2.551636598357861"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1318.4456952412922,
+            "unit": "ns",
+            "range": "± 9.045235805832577"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1145.6463607788087,
+            "unit": "ns",
+            "range": "± 9.055308378199593"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 988.5637211432824,
+            "unit": "ns",
+            "range": "± 4.726481488466113"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 227814.78714192708,
+            "unit": "ns",
+            "range": "± 1691.0253853707104"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1886.0881001790365,
+            "unit": "ns",
+            "range": "± 7.920267904514585"
           }
         ]
       }
