@@ -19,13 +19,15 @@ public abstract partial class EnumerableQuantifier
 			=> notMatchingCount > 0;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, ExpectationBuilder expectationBuilder)
-			=> $"have all items {expectationBuilder}";
+		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
+			=> expectationBuilder == null
+				? "have all items"
+				: $"have all items {expectationBuilder}";
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
 			string it,
-			ExpectationBuilder expectationBuilder,
+			ExpectationBuilder? expectationBuilder,
 			int matchingCount,
 			int notMatchingCount,
 			int? totalCount)

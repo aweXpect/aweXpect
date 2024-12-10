@@ -53,7 +53,7 @@ To check for a proper superset, use `AndMore` instead (which would fail for equa
 
 
 ## Have
-Specifications that match the items on a given number of occurrences.
+Specifications that count the elements in a collection.
 
 ### All
 
@@ -68,24 +68,39 @@ await Expect.That(values).Should().HaveAll(x => x.Satisfy(i => i <= 20));
 
 ### At least
 
-You can verify, that at least a fixed number of items in the collection, satisfy an expectation:
+You can verify, that at least `minimum` items in the collection, satisfy an expectation:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
 
 await Expect.That(values).Should().HaveAtLeast(9, x => x.Satisfy(i => i < 10));
 ```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
+You can also verify, that the collection has at least `minimum` items:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 10);
+
+await Expect.That(values).Should().HaveAtLeast(9).Items;
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 ### At most
 
-You can verify, that at most a fixed number of items in the collection, satisfy an expectation:
+You can verify, that at most `maximum` items in the collection, satisfy an expectation:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
 
 await Expect.That(values).Should().HaveAtMost(1, x => x.Satisfy(i => i < 2));
 ```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+You can also verify, that the collection has at most `maximum` items:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 10);
+
+await Expect.That(values).Should().HaveAtMost(11).Items;
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 
 ### Between
@@ -95,18 +110,34 @@ You can verify, that between `minimum` and `maximum` items in the collection, sa
 IEnumerable<int> values = Enumerable.Range(1, 20);
 await Expect.That(values).Should().HaveBetween(1).And(2, x => x.Satisfy(i => i < 2));
 ```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+You can also verify, that the collection has between `minimum` and `maximum` items:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 10);
+
+await Expect.That(values).Should().HaveBetween(9).And(11).Items;
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 
 ### Exactly
 
-You can verify, that exactly a fixed number of items in the collection, satisfy an expectation:
+You can verify, that exactly `expected` items in the collection, satisfy an expectation:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
 
 await Expect.That(values).Should().HaveExactly(9, x => x.Satisfy(i => i < 10));
 ```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+You can also verify, that the collection has exactly `expected` items:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 10);
+
+await Expect.That(values).Should().HaveExactly(10).Items;
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 
 ### None
@@ -117,7 +148,15 @@ IEnumerable<int> values = Enumerable.Range(1, 20);
 
 await Expect.That(values).Should().HaveNone(x => x.Satisfy(i => i > 20));
 ```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+You can also verify, that the collection is empty.
+```csharp
+IEnumerable<int> values = Array.Empty<int>();
+
+await Expect.That(values).Should().BeEmpty();
+```
+
+*Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 
 ## Contain

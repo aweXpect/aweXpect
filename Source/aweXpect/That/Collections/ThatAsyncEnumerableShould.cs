@@ -7,6 +7,7 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
@@ -76,6 +77,44 @@ public static partial class ThatAsyncEnumerableShould
 			}
 
 			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount);
+		}
+	}
+
+	private readonly struct AsyncCollectionCountConstraint<TItem>(
+		string it,
+		EnumerableQuantifier quantifier) : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	{
+		public async Task<ConstraintResult> IsMetBy(
+			IAsyncEnumerable<TItem> actual,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			IAsyncEnumerable<TItem> materialized =
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
+			int matchingCount = 0;
+			int notMatchingCount = 0;
+			int? totalCount = null;
+
+			await foreach (TItem _ in materialized.WithCancellation(cancellationToken))
+			{
+				matchingCount++;
+
+				if (quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				{
+					return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
+						totalCount);
+				}
+			}
+
+			if (cancellationToken.IsCancellationRequested)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
+					actual, quantifier.GetExpectation(it, null),
+					"could not verify, because it was cancelled early");
+			}
+
+			return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
 				matchingCount + notMatchingCount);
 		}
 	}

@@ -6,7 +6,7 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches at most <paramref name="maximum"/> items.
+	///     Matches at most <paramref name="maximum" /> items.
 	/// </summary>
 	public static EnumerableQuantifier AtMost(int maximum) => new AtMostQuantifier(maximum);
 
@@ -19,13 +19,19 @@ public abstract partial class EnumerableQuantifier
 			=> matchingCount > maximum;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, ExpectationBuilder expectationBuilder)
-			=> $"have at most {(maximum == 1 ? "one item" : $"{maximum} items")} {expectationBuilder}";
+		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
+			=> (maximum, expectationBuilder is null) switch
+			{
+				(1, true) => "have at most one item",
+				(1, false) => $"have at most one item {expectationBuilder}",
+				(_, true) => $"have at most {maximum} items",
+				(_, false) => $"have at most {maximum} items {expectationBuilder}"
+			};
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
 			string it,
-			ExpectationBuilder expectationBuilder,
+			ExpectationBuilder? expectationBuilder,
 			int matchingCount,
 			int notMatchingCount,
 			int? totalCount)
@@ -34,9 +40,13 @@ public abstract partial class EnumerableQuantifier
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
 					GetExpectation(it, expectationBuilder),
-					totalCount.HasValue
-						? $"{matchingCount} of {totalCount} were"
-						: $"at least {matchingCount} were");
+					(totalCount.HasValue, expectationBuilder is null) switch
+					{
+						(true, true) => $"found {matchingCount}",
+						(true, false) => $"{matchingCount} of {totalCount} were",
+						(false, true) => $"found at least {matchingCount}",
+						(false, false) => $"at least {matchingCount} were"
+					});
 			}
 
 			if (totalCount.HasValue)
