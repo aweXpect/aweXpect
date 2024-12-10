@@ -881,7 +881,7 @@ namespace aweXpect.Results
     public class ItemsResult<TReturn>
     {
         public ItemsResult(TReturn value) { }
-        public TReturn Items { get; }
+        public TReturn Items() { }
     }
     public class ObjectCollectionMatchResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>>
     {

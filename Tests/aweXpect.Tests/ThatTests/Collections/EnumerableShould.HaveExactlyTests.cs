@@ -65,7 +65,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = GetCancellingEnumerable(4, cts);
 
 			async Task Act()
-				=> await That(subject).Should().HaveExactly(6).Items
+				=> await That(subject).Should().HaveExactly(6).Items()
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
@@ -82,7 +82,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveExactly(3).Items;
+				=> await That(subject).Should().HaveExactly(3).Items();
 
 			await That(Act).Should().NotThrow();
 		}
@@ -93,7 +93,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveExactly(4).Items;
+				=> await That(subject).Should().HaveExactly(4).Items();
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -109,7 +109,7 @@ public sealed partial class EnumerableShould
 			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveExactly(2).Items;
+				=> await That(subject).Should().HaveExactly(2).Items();
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""

@@ -66,7 +66,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, token);
 
 			async Task Act()
-				=> await That(subject).Should().HaveBetween(3).And(6).Items
+				=> await That(subject).Should().HaveBetween(3).And(6).Items()
 					.WithCancellation(token);
 
 			await That(Act).Should().Throw<XunitException>()
@@ -83,7 +83,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveBetween(3).And(6).Items;
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
 
 			await That(Act).Should().NotThrow();
 		}
@@ -94,7 +94,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveBetween(3).And(6).Items;
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
@@ -110,7 +110,7 @@ public sealed partial class AsyncEnumerableShould
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 4, 5, 6, 7]);
 
 			async Task Act()
-				=> await That(subject).Should().HaveBetween(3).And(6).Items;
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
