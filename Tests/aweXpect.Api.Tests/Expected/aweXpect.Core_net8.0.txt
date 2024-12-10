@@ -474,11 +474,6 @@ namespace aweXpect.Results
         public BetweenResult(System.Func<int, TTarget> callback) { }
         public TTarget And(aweXpect.Times maximum) { }
     }
-    public class BetweenResult<TTarget, TExpectation>
-    {
-        public BetweenResult(System.Func<int, System.Action<TExpectation>, TTarget> callback) { }
-        public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
-    }
     public class CountResult<TType, TThat> : aweXpect.Results.CountResult<TType, TThat, aweXpect.Results.CountResult<TType, TThat>>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }

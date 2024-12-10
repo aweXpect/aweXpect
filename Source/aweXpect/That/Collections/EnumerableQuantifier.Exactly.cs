@@ -6,7 +6,7 @@ namespace aweXpect;
 public abstract partial class EnumerableQuantifier
 {
 	/// <summary>
-	///     Matches exactly <paramref name="expected"/> items.
+	///     Matches exactly <paramref name="expected" /> items.
 	/// </summary>
 	public static EnumerableQuantifier Exactly(int expected) => new ExactlyQuantifier(expected);
 
@@ -19,13 +19,15 @@ public abstract partial class EnumerableQuantifier
 			=> matchingCount > expected;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, ExpectationBuilder expectationBuilder)
-			=> $"have exactly {expected} items {expectationBuilder}";
+		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
+			=> expectationBuilder is null
+				? $"have exactly {expected} items"
+				: $"have exactly {expected} items {expectationBuilder}";
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
 			string it,
-			ExpectationBuilder expectationBuilder,
+			ExpectationBuilder? expectationBuilder,
 			int matchingCount,
 			int notMatchingCount,
 			int? totalCount)
@@ -34,21 +36,28 @@ public abstract partial class EnumerableQuantifier
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
 					GetExpectation(it, expectationBuilder),
-					$"at least {matchingCount} were");
+					(totalCount.HasValue, expectationBuilder is null) switch
+					{
+						(true, true) => $"found {matchingCount}",
+						(true, false) => $"{matchingCount} of {totalCount} were",
+						(false, true) => $"found at least {matchingCount}",
+						(false, false) => $"at least {matchingCount} were"
+					});
 			}
 
 			if (totalCount.HasValue)
 			{
 				if (matchingCount == expected)
 				{
-					
 					return new ConstraintResult.Success<TEnumerable>(actual,
 						GetExpectation(it, expectationBuilder));
 				}
-				
+
 				return new ConstraintResult.Failure<TEnumerable>(actual,
 					GetExpectation(it, expectationBuilder),
-					$"only {matchingCount} of {totalCount} were");
+					expectationBuilder is null
+						? $"found only {matchingCount}"
+						: $"only {matchingCount} of {totalCount} were");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,

@@ -16,6 +16,10 @@ public static partial class ThatAsyncEnumerableShould
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum),
 					expectations)),
-			source));
+			source),
+			maximum => new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+				source.ExpectationBuilder.AddConstraint(it
+					=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum))),
+				source));
 }
 #endif

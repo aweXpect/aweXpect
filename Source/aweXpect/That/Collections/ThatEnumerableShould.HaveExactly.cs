@@ -18,4 +18,15 @@ public static partial class ThatEnumerableShould
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected), expectations)),
 			source);
+
+	/// <summary>
+	///     Verifies that the synchronous enumerable has exactly <paramref name="expected" /> items.
+	/// </summary>
+	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> HaveExactly<TItem>(
+		this IThat<IEnumerable<TItem>> source,
+		int expected)
+		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
+			source));
 }

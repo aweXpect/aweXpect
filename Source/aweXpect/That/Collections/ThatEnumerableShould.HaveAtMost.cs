@@ -18,4 +18,15 @@ public static partial class ThatEnumerableShould
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum), expectations)),
 			source);
+
+	/// <summary>
+	///     Verifies that the synchronous enumerable has at most <paramref name="maximum" /> items.
+	/// </summary>
+	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> HaveAtMost<TItem>(
+		this IThat<IEnumerable<TItem>> source,
+		int maximum)
+		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum))),
+			source));
 }

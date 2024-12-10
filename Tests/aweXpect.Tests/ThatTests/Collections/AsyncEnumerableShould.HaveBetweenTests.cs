@@ -59,6 +59,68 @@ public sealed partial class AsyncEnumerableShould
 		}
 
 		[Fact]
+		public async Task Items_ConsidersCancellationToken()
+		{
+			using CancellationTokenSource cts = new();
+			CancellationToken token = cts.Token;
+			IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, token);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items
+					.WithCancellation(token);
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but could not verify, because it was cancelled early
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsMatchingItems_ShouldSucceed()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items;
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsTooFewItems_ShouldFail()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items;
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found only 2
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsTooManyItems_ShouldSucceed()
+		{
+			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 4, 5, 6, 7]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items;
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found at least 7
+				             """);
+		}
+
+		[Fact]
 		public async Task WhenEnumerableContainsSufficientlyEqualItems_ShouldSucceed()
 		{
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
