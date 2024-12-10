@@ -20,9 +20,13 @@ public abstract partial class EnumerableQuantifier
 
 		/// <inheritdoc />
 		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> expectationBuilder is null
-				? $"have at most {(maximum == 1 ? "one item" : $"{maximum} items")}"
-				: $"have at most {(maximum == 1 ? "one item" : $"{maximum} items")} {expectationBuilder}";
+			=> (maximum, expectationBuilder is null) switch
+			{
+				(1, true) => "have at most one item",
+				(1, false) => $"have at most one item {expectationBuilder}",
+				(_, true) => $"have at most {maximum} items",
+				(_, false) => $"have at most {maximum} items {expectationBuilder}"
+			};
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
