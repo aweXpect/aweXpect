@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733817393766,
+  "lastUpdate": 1733818246469,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -3872,6 +3872,102 @@ window.BENCHMARK_DATA = {
             "value": 1886.0881001790365,
             "unit": "ns",
             "range": "± 7.920267904514585"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4f69745367f1f520ffc69d82b3094f2f8ba79f16",
+          "message": "build(deps): bump the mstest group with 2 updates (#101)\n\nBumps the mstest group with 2 updates: [MSTest.TestAdapter](https://github.com/microsoft/testfx) and [MSTest.TestFramework](https://github.com/microsoft/testfx).\n\n\nUpdates `MSTest.TestAdapter` from 3.6.3 to 3.6.4\n- [Release notes](https://github.com/microsoft/testfx/releases)\n- [Changelog](https://github.com/microsoft/testfx/blob/main/docs/Changelog.md)\n- [Commits](https://github.com/microsoft/testfx/compare/v3.6.3...v3.6.4)\n\nUpdates `MSTest.TestFramework` from 3.6.3 to 3.6.4\n- [Release notes](https://github.com/microsoft/testfx/releases)\n- [Changelog](https://github.com/microsoft/testfx/blob/main/docs/Changelog.md)\n- [Commits](https://github.com/microsoft/testfx/compare/v3.6.3...v3.6.4)\n\n---\nupdated-dependencies:\n- dependency-name: MSTest.TestAdapter\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: mstest\n- dependency-name: MSTest.TestFramework\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: mstest\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-10T08:05:43Z",
+          "tree_id": "d179fb3b7b5ea5116a329e303b0b11add3d488d7",
+          "url": "https://github.com/aweXpect/aweXpect/commit/4f69745367f1f520ffc69d82b3094f2f8ba79f16"
+        },
+        "date": 1733818246211,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 166.61513833999635,
+            "unit": "ns",
+            "range": "± 1.2407438581671202"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.12126309076945,
+            "unit": "ns",
+            "range": "± 1.8141633217817275"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 574.5660158793131,
+            "unit": "ns",
+            "range": "± 3.9105423289569483"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 318.2554860455649,
+            "unit": "ns",
+            "range": "± 2.3080101043554753"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 384.7051705632891,
+            "unit": "ns",
+            "range": "± 1.464191741342651"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 788.4036545435588,
+            "unit": "ns",
+            "range": "± 4.6943713529298305"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 951.8388766447703,
+            "unit": "ns",
+            "range": "± 1.6837164988270077"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1166.3846405574254,
+            "unit": "ns",
+            "range": "± 5.752357799020317"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1102.0430267333984,
+            "unit": "ns",
+            "range": "± 8.731982742787197"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 978.5316944122314,
+            "unit": "ns",
+            "range": "± 8.072252986224804"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 223698.9736328125,
+            "unit": "ns",
+            "range": "± 791.8264707173834"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1881.9134763081868,
+            "unit": "ns",
+            "range": "± 6.8606728568564055"
           }
         ]
       }
