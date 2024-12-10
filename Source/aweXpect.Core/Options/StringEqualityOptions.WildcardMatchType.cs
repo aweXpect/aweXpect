@@ -1,13 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using aweXpect.Helpers;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
-	private sealed class RegexMatchType : IMatchType
+	private sealed class WildcardMatchType : IMatchType
 	{
+		private static string WildcardToRegularExpression(string value)
+		{
+			string regex = Regex.Escape(value)
+				.Replace("\\?", ".")
+				.Replace("\\*", "(.|\\n)*");
+			return $"^{regex}$";
+		}
+
 		#region IMatchType Members
 
 		/// <inheritdoc />
@@ -30,7 +38,8 @@ public partial class StringEqualityOptions
 				options |= RegexOptions.IgnoreCase;
 			}
 
-			return Regex.IsMatch(value, pattern, options, RegexTimeout);
+			return Regex.IsMatch(value, WildcardToRegularExpression(pattern), options,
+				RegexTimeout);
 		}
 
 		#endregion

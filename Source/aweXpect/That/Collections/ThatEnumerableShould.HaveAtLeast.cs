@@ -13,9 +13,20 @@ public static partial class ThatEnumerableShould
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtLeast<TItem>(
 		this IThat<IEnumerable<TItem>> source,
-		Times minimum,
+		int minimum,
 		Action<IThat<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum.Value), expectations)),
+				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)),
 			source);
+
+	/// <summary>
+	///     Verifies that the synchronous enumerable has at least <paramref name="minimum" /> items.
+	/// </summary>
+	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> HaveAtLeast<TItem>(
+		this IThat<IEnumerable<TItem>> source,
+		int minimum)
+		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),
+			source));
 }
