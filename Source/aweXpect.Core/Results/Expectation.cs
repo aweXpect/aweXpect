@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
@@ -168,12 +169,15 @@ public abstract class Expectation
 				new ConstraintResult.Success(expectationText));
 		}
 
-		private string CreateFailureMessage(ConstraintResult.Failure failure) => $"""
-			 {GetSubjectLine()}
-			 {failure.ExpectationText}
-			 but
-			 {failure.ResultText}
-			 """;
+		private string CreateFailureMessage(ConstraintResult.Failure failure)
+		{
+			StringBuilder sb = new();
+			sb.AppendLine(GetSubjectLine());
+			sb.AppendLine(failure.ExpectationText);
+			sb.AppendLine("but");
+			sb.Append(failure.ResultText);
+			return sb.ToString();
+		}
 
 		private async Task GetResultOrThrow()
 		{

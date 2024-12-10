@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
@@ -200,11 +201,13 @@ public abstract class ExpectationBuilder
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
 	internal static string FromFailure(string subject, ConstraintResult.Failure failure)
-		=> $"""
-		    Expected {subject} to
-		    {failure.ExpectationText},
-		    but {failure.ResultText}
-		    """;
+	{
+		StringBuilder sb = new();
+		sb.Append("Expected ").Append(subject).AppendLine(" to");
+		sb.Append(failure.ExpectationText).AppendLine(",");
+		sb.Append("but ").Append(failure.ResultText);
+		return sb.ToString();
+	}
 
 	internal Node GetRootNode()
 	{

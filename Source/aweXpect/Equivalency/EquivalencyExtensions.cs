@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using aweXpect.Core;
 using aweXpect.Equivalency;
 using aweXpect.Options;
@@ -58,11 +59,18 @@ public static class EquivalencyExtensions
 				return $"{it} was {Formatter.Format(_firstFailure.Actual, FormattingOptions.SingleLine)}";
 			}
 
-			return $"""
-			        {_firstFailure.Type} {string.Join(".", _firstFailure.NestedMemberNames)} did not match:
-			          Expected: {Formatter.Format(_firstFailure.Expected)}
-			          Received: {Formatter.Format(_firstFailure.Actual)}
-			        """;
+			StringBuilder sb = new();
+			sb.Append(_firstFailure.Type).Append(' ')
+				.Append(string.Join(".", _firstFailure.NestedMemberNames))
+				.AppendLine(" did not match:");
+
+			sb.Append("  Expected: ");
+			Formatter.Format(sb, _firstFailure.Expected);
+			sb.AppendLine();
+
+			sb.Append("  Received: ");
+			Formatter.Format(sb, _firstFailure.Actual);
+			return sb.ToString();
 		}
 
 		bool IEqualityComparer<object>.Equals(object? x, object? y)
