@@ -4,6 +4,22 @@ public sealed partial class DateTimeShould
 {
 	public sealed class BeTests
 	{
+		[Theory]
+		[InlineData(DateTimeKind.Local)]
+		[InlineData(DateTimeKind.Utc)]
+		[InlineData(DateTimeKind.Unspecified)]
+		public async Task WhenExpectedKindIsUnspecified_ShouldSucceed(DateTimeKind subjectKind)
+		{
+			DateTime subject = new(2024, 11, 1, 14, 15, 0, subjectKind);
+			DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected)
+					.Because("the subject has Unspecified kind");
+
+			await That(Act).Should().NotThrow();
+		}
+
 		[Fact]
 		public async Task WhenSubjectAndExpectedAreMaxValue_ShouldSucceed()
 		{
@@ -53,6 +69,22 @@ public sealed partial class DateTimeShould
 
 			async Task Act()
 				=> await That(subject).Should().Be(expected);
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Theory]
+		[InlineData(DateTimeKind.Local)]
+		[InlineData(DateTimeKind.Utc)]
+		[InlineData(DateTimeKind.Unspecified)]
+		public async Task WhenSubjectKindIsUnspecified_ShouldSucceed(DateTimeKind expectedKind)
+		{
+			DateTime subject = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
+			DateTime? expected = new(2024, 11, 1, 14, 15, 0, expectedKind);
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected)
+					.Because("the subject has Unspecified kind");
 
 			await That(Act).Should().NotThrow();
 		}
