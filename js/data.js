@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1733845413257,
+  "lastUpdate": 1733906230688,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -4544,6 +4544,102 @@ window.BENCHMARK_DATA = {
             "value": 1865.1677041734968,
             "unit": "ns",
             "range": "± 11.013780241710569"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "65044c75a1a1e4c3de4a83474bc29467bb0191e0",
+          "message": "fix: allow `DateTime` with \"Unspecified\" kind to be equal to \"Local\" and \"Universal\" `DateTime` (#112)\n\n[`DateTimeKind.Unspecified`](https://learn.microsoft.com/en-us/dotnet/api/system.datetimekind?view=net-8.0#fields), does indicate that it could be both a local and universal `DateTime` and should be considered accordingly in `.Be(DateTime)`:\n\n> The time represented is not specified as either local time or Coordinated Universal Time (UTC).",
+          "timestamp": "2024-12-11T08:32:17Z",
+          "tree_id": "769419014a24c7d7f0afeb45576a675b0c9a8357",
+          "url": "https://github.com/aweXpect/aweXpect/commit/65044c75a1a1e4c3de4a83474bc29467bb0191e0"
+        },
+        "date": 1733906230279,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.84727937834603,
+            "unit": "ns",
+            "range": "± 0.9345503674146538"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 227.05734441961562,
+            "unit": "ns",
+            "range": "± 0.9812467935200763"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 656.3812437057495,
+            "unit": "ns",
+            "range": "± 2.9954534870098626"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 322.45026512145995,
+            "unit": "ns",
+            "range": "± 1.8130695626220996"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 404.23332909175326,
+            "unit": "ns",
+            "range": "± 4.052781567847805"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 785.2812144939716,
+            "unit": "ns",
+            "range": "± 3.903416269270859"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 966.7399044036865,
+            "unit": "ns",
+            "range": "± 1.507797805890975"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1210.3168581553869,
+            "unit": "ns",
+            "range": "± 7.758260873862634"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1125.8086359841484,
+            "unit": "ns",
+            "range": "± 6.869161747175825"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 986.2596945444743,
+            "unit": "ns",
+            "range": "± 4.235243891506712"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 231180.0478515625,
+            "unit": "ns",
+            "range": "± 1190.9977279342768"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1931.156923021589,
+            "unit": "ns",
+            "range": "± 4.998333124302653"
           }
         ]
       }
