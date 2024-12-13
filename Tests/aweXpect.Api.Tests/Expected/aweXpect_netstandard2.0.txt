@@ -639,10 +639,14 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> Be(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> Be(this aweXpect.Core.IThat<object?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> Be<TType>(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> BeExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
+        public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> BeExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe<TType>(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBeExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
+        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBeExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> NotBeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Core.IThat<object?> Should(this aweXpect.Core.IExpectSubject<object?> subject) { }
     }

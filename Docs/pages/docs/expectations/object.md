@@ -76,6 +76,16 @@ await Expect.That(subject).Should().NotBe(typeof(OtherClass));
 ```
 This verifies, if the subject is of the given type or a derived type.
 
+You can also verify, that the `object` is only of the given type and not of a derived type:
+```csharp
+object subject = new MyClass(1);
+
+await Expect.That(subject).Should().BeExactly<MyClass>();
+await Expect.That(subject).Should().BeExactly(typeof(MyClass));
+await Expect.That(subject).Should().NotBeExactly<OtherClass>();
+await Expect.That(subject).Should().NotBeExactly(typeof(OtherClass));
+```
+
 
 ## Null
 
