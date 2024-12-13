@@ -13,7 +13,7 @@ internal class WhichNode<TSource, TMember> : Node
 	private readonly Func<TSource, TMember?>? _memberAccessor;
 	private readonly string? _separator;
 	private Node? _inner;
-	private Node? _parent;
+	private readonly Node? _parent;
 
 	public WhichNode(
 		Node? parent,
