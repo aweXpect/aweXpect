@@ -96,11 +96,20 @@ public static partial class ThatEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			IEnumerable<TItem> materialized =
-				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			int matchingCount = 0;
 			int notMatchingCount = 0;
 			int? totalCount = null;
+
+			if (actual is ICollection<TItem> collectionOfT)
+			{
+				matchingCount = collectionOfT.Count;
+				totalCount = matchingCount;
+				return Task.FromResult(_quantifier.GetResult(
+					actual, _it, null, matchingCount, notMatchingCount, totalCount));
+			}
+			
+			IEnumerable<TItem> materialized =
+				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 
 			foreach (TItem _ in materialized)
 			{
@@ -120,8 +129,9 @@ public static partial class ThatEnumerableShould
 				}
 			}
 
+			totalCount = matchingCount + notMatchingCount;
 			return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount));
+				totalCount));
 		}
 	}
 }
