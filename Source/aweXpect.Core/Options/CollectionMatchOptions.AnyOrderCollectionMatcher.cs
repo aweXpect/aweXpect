@@ -33,12 +33,12 @@ public partial class CollectionMatchOptions
 			_missingItems.Remove(value);
 			_index++;
 			error = null;
-			return _additionalItems.Count > 2 * CollectionFormatCount;
+			return _additionalItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
 		}
 
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
 		{
-			if (_additionalItems.Count + _missingItems.Count > 2 * CollectionFormatCount)
+			if (_additionalItems.Count + _missingItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
 			{
 				error = null;
 				return true;

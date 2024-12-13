@@ -50,7 +50,7 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			error = null;
-			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * CollectionFormatCount;
+			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
 		}
 
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
@@ -68,7 +68,7 @@ public partial class CollectionMatchOptions
 					}
 
 					if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count >
-					    2 * CollectionFormatCount)
+					    2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
 					{
 						error = null;
 						return true;

@@ -46,7 +46,7 @@ public static partial class ValueFormatters
 		FormattingOptions? options = null)
 	{
 		options ??= FormattingOptions.SingleLine;
-		int maxCount = CollectionFormatCount;
+		int maxCount = Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
 		int count = maxCount;
 		stringBuilder.Append('[');
 		bool hasMoreValues = false;

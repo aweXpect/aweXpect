@@ -41,12 +41,12 @@ public partial class CollectionMatchOptions
 			_uniqueItems.Add(value);
 			_index++;
 
-			return _additionalItems.Count > 2 * CollectionFormatCount;
+			return _additionalItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
 		}
 
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
 		{
-			if (_missingItems.Count + _additionalItems.Count > 2 * CollectionFormatCount)
+			if (_missingItems.Count + _additionalItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
 			{
 				error = null;
 				return true;
