@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using aweXpect.Core;
+using aweXpect.Helpers;
 
 namespace aweXpect.Results;
 
 /// <summary>
-///     An <see cref="ExpectationResult" /> when an exception was thrown.
+///     An <see cref="ExpectationResult" /> for a single item from a collection.
 /// </summary>
 public class SingleItemResult<TCollection, TItem>
 	: ExpectationResult<TItem, SingleItemResult<TCollection, TItem>>
@@ -25,12 +25,15 @@ public class SingleItemResult<TCollection, TItem>
 	///     Further expectations on the single <typeparamref name="TItem" />
 	/// </summary>
 	public IExpectSubject<TItem> Which
-		=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_memberAccessor, " which should "));
+		=> new That.Subject<TItem>(_expectationBuilder.ForWhich(_memberAccessor, " which should "));
 
+	/// <summary>
+	///     An <see cref="ExpectationResult" /> for a single item from an asynchronous collection.
+	/// </summary>
 	public class Async : ExpectationResult<TItem, Async>
 	{
-		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly Func<TCollection, Task<TItem?>> _asyncMemberAccessor;
+		private readonly ExpectationBuilder _expectationBuilder;
 
 		internal Async(ExpectationBuilder expectationBuilder, Func<TCollection, Task<TItem?>> asyncMemberAccessor)
 			: base(expectationBuilder)
@@ -43,20 +46,6 @@ public class SingleItemResult<TCollection, TItem>
 		///     Further expectations on the single item.
 		/// </summary>
 		public IExpectSubject<TItem> Which
-			=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_asyncMemberAccessor, " which should "));
-	}
-
-	[DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
-	private readonly struct ThatSubject<T>(ExpectationBuilder expectationBuilder)
-		: IExpectSubject<T>, IThat<T>
-	{
-		public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
-
-		/// <inheritdoc />
-		public IThat<T> Should(Action<ExpectationBuilder> builderOptions)
-		{
-			builderOptions.Invoke(ExpectationBuilder);
-			return this;
-		}
+			=> new That.Subject<TItem>(_expectationBuilder.ForWhich(_asyncMemberAccessor, " which should "));
 	}
 }

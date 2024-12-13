@@ -14,7 +14,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual collection is empty.
+	///     Verifies that the collection is empty.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		BeEmpty<TItem>(
@@ -24,7 +24,7 @@ public static partial class ThatAsyncEnumerableShould
 			source);
 
 	/// <summary>
-	///     Verifies that the actual collection is not empty.
+	///     Verifies that the collection is not empty.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		NotBeEmpty<TItem>(

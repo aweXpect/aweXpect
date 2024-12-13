@@ -17,7 +17,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Start delegate expectations on the current collection of <typeparamref name="TItem" /> values.
+	///     Start expectations on the collection of <typeparamref name="TItem" /> values.
 	/// </summary>
 	public static IThat<IAsyncEnumerable<TItem>> Should<TItem>(
 		this IExpectSubject<IAsyncEnumerable<TItem>> subject)

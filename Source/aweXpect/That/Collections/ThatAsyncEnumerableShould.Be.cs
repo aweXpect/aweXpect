@@ -19,7 +19,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
 	public static CollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Be<TItem>(

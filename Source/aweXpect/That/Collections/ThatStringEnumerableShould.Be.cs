@@ -14,7 +14,7 @@ namespace aweXpect;
 public static partial class ThatStringEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
 	public static StringCollectionBeTypeResult<IEnumerable<string>, IThat<IEnumerable<string>>>
 		Be(this IThat<IEnumerable<string>> source,
