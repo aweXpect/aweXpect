@@ -9,13 +9,30 @@ namespace aweXpect.Core.Nodes;
 
 internal class WhichNode<TSource, TMember> : Node
 {
-	private readonly Func<TSource, TMember?> _memberAccessor;
+	private readonly Func<TSource, Task<TMember?>>? _asyncMemberAccessor;
+	private readonly Func<TSource, TMember?>? _memberAccessor;
+	private readonly string? _separator;
 	private Node? _inner;
+	private Node? _parent;
 
 	public WhichNode(
-		Func<TSource, TMember?> memberAccessor)
+		Node? parent,
+		Func<TSource, TMember?> memberAccessor,
+		string? separator = null)
 	{
+		_parent = parent;
 		_memberAccessor = memberAccessor;
+		_separator = separator;
+	}
+
+	public WhichNode(
+		Node? parent,
+		Func<TSource, Task<TMember?>> asyncMemberAccessor,
+		string? separator = null)
+	{
+		_parent = parent;
+		_asyncMemberAccessor = asyncMemberAccessor;
+		_separator = separator;
 	}
 
 	/// <inheritdoc />
@@ -34,11 +51,17 @@ internal class WhichNode<TSource, TMember> : Node
 		=> _inner = node;
 
 	/// <inheritdoc />
-	public override Task<ConstraintResult> IsMetBy<TValue>(
+	public override async Task<ConstraintResult> IsMetBy<TValue>(
 		TValue? value,
 		IEvaluationContext context,
 		CancellationToken cancellationToken) where TValue : default
 	{
+		ConstraintResult? parentResult = null;
+		if (_parent != null)
+		{
+			parentResult = await _parent.IsMetBy(value, context, cancellationToken);
+		}
+		
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
@@ -50,8 +73,73 @@ internal class WhichNode<TSource, TMember> : Node
 			throw new InvalidOperationException("No inner node specified for the which node.");
 		}
 
-		TMember? matchingValue = _memberAccessor(typedValue);
-		return _inner.IsMetBy(matchingValue, context, cancellationToken);
+		TMember? matchingValue;
+		if (_memberAccessor != null)
+		{
+			matchingValue = _memberAccessor(typedValue);
+		}
+		else
+		{
+			matchingValue = await _asyncMemberAccessor!.Invoke(typedValue);
+		}
+		var result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
+		return CombineResults(parentResult, result, _separator ?? "", ConstraintResult.FurtherProcessing.IgnoreResult);
+	}
+
+	private static ConstraintResult CombineResults(
+		ConstraintResult? leftResult,
+		ConstraintResult rightResult,
+		string separator,
+		ConstraintResult.FurtherProcessing? furtherProcessingStrategy)
+	{
+		if (leftResult == null)
+		{
+			return rightResult;
+		}
+
+		string combinedExpectation =
+			$"{leftResult.ExpectationText}{separator}{rightResult.ExpectationText}";
+
+		if (leftResult is ConstraintResult.Failure leftFailure &&
+		    rightResult is ConstraintResult.Failure rightFailure)
+		{
+			return leftFailure.CombineWith(
+				combinedExpectation,
+				CombineResultTexts(
+					leftFailure.ResultText,
+					rightFailure.ResultText,
+					furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue));
+		}
+
+		if (leftResult is ConstraintResult.Failure onlyLeftFailure)
+		{
+			return onlyLeftFailure.CombineWith(
+				combinedExpectation,
+				onlyLeftFailure.ResultText);
+		}
+
+		if (rightResult is ConstraintResult.Failure onlyRightFailure)
+		{
+			return onlyRightFailure.CombineWith(
+				combinedExpectation,
+				onlyRightFailure.ResultText);
+		}
+
+		return leftResult.CombineWith(combinedExpectation, "");
+	}
+
+	private static string CombineResultTexts(
+		string leftResultText,
+		string rightResultText,
+		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
+	{
+		if (furtherProcessingStrategy == ConstraintResult.FurtherProcessing.IgnoreResult ||
+		    leftResultText == rightResultText)
+		{
+			return leftResultText;
+		}
+
+		return $"{leftResultText} and {rightResultText}";
 	}
 
 	/// <inheritdoc />
