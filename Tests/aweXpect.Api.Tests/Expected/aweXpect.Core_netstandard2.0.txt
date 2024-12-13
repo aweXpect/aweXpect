@@ -197,7 +197,6 @@ namespace aweXpect.Customization
     public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeReflection
     {
         public static aweXpect.Customization.ICustomizeFormatting Formatting { get; }
-        public static aweXpect.Customization.Customize Instance { get; }
         public static aweXpect.Customization.ICustomizeReflection Reflection { get; }
     }
     public interface ICustomizeFormatting

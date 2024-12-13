@@ -12,7 +12,7 @@ public partial class Customize
 	/// <summary>
 	///     The current customization values.
 	/// </summary>
-	public static Customize Instance { get; } = new();
+	private static readonly Customize Instance = new();
 
 	private class ActionDisposable(Action callback) : IDisposable
 	{
