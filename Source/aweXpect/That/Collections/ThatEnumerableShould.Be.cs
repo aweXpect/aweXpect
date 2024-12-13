@@ -65,7 +65,7 @@ public static partial class ThatEnumerableShould
 		}
 
 		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
-			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * CollectionFormatCount} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
+			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
 		public override string ToString()
 			=> $"match collection {expectedExpression}{matchOptions}";

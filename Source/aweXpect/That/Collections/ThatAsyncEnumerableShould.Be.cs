@@ -80,7 +80,7 @@ public static partial class ThatAsyncEnumerableShould
 			int count = 0;
 			await foreach (TItem item in materializedEnumerable)
 			{
-				if (count++ >= CollectionFormatCount)
+				if (count++ >= Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
 				{
 					break;
 				}
@@ -91,7 +91,7 @@ public static partial class ThatAsyncEnumerableShould
 				sb.Append(",");
 			}
 
-			if (count > CollectionFormatCount)
+			if (count > Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
 			{
 				sb.AppendLine();
 				sb.Append("  …,");
@@ -100,9 +100,9 @@ public static partial class ThatAsyncEnumerableShould
 			sb.Length--;
 			sb.AppendLine();
 			sb.Append("] had more than ");
-			sb.Append(2 * CollectionFormatCount);
+			sb.Append(2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems);
 			sb.Append(" deviations compared to ");
-			Formatter.Format(sb, expected.Take(CollectionFormatCount + 1), FormattingOptions.MultipleLines);
+			Formatter.Format(sb, expected.Take(Customization.Customize.Formatting.MaximumNumberOfCollectionItems + 1), FormattingOptions.MultipleLines);
 			return sb.ToString();
 		}
 

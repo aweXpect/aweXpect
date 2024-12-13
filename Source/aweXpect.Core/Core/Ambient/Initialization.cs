@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using aweXpect.Core.Adapters;
+using aweXpect.Customization;
 
 namespace aweXpect.Core.Ambient;
 
@@ -11,22 +11,11 @@ internal static class Initialization
 {
 	public static Lazy<InitializationState> State { get; } = new(Initialize);
 
-	private static List<string> ExcludedAssemblyNamespaces { get; } =
-	[
-		"mscorlib",
-		"System",
-		"Microsoft",
-		"JetBrains",
-		"xunit",
-		"Castle",
-		"DynamicProxyGenAssembly2"
-	];
-
 	private static ITestFrameworkAdapter DetectFramework()
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
 		foreach (Type frameworkType in AppDomain.CurrentDomain.GetAssemblies()
-			         .Where(a => ExcludedAssemblyNamespaces.All(x => !a.FullName!.StartsWith(x)))
+			         .Where(a => Customize.Reflection.ExcludedAssemblyPrefixes.All(x => !a.FullName!.StartsWith(x)))
 			         .SelectMany(a => a.GetTypes())
 			         .Where(x => x is { IsClass: true, IsAbstract: false })
 			         .Where(frameworkInterface.IsAssignableFrom))

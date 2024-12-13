@@ -192,6 +192,25 @@ namespace aweXpect.Core.Sources
         public TValue Value { get; }
     }
 }
+namespace aweXpect.Customization
+{
+    public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeReflection
+    {
+        public static aweXpect.Customization.ICustomizeFormatting Formatting { get; }
+        public static aweXpect.Customization.Customize Instance { get; }
+        public static aweXpect.Customization.ICustomizeReflection Reflection { get; }
+    }
+    public interface ICustomizeFormatting
+    {
+        int MaximumNumberOfCollectionItems { get; }
+        System.IDisposable SetMaximumNumberOfCollectionItems(int value);
+    }
+    public interface ICustomizeReflection
+    {
+        string[] ExcludedAssemblyPrefixes { get; }
+        System.IDisposable ExcludeAssemblies(System.Action<System.Collections.Generic.List<string>> excludedAssemblyPrefixes);
+    }
+}
 namespace aweXpect
 {
     public static class Expect
@@ -251,7 +270,6 @@ namespace aweXpect.Formatting
 {
     public static class Format
     {
-        public static int CollectionFormatCount { get; }
         public static aweXpect.Formatting.ValueFormatter Formatter { get; }
     }
     public class FormattingOptions

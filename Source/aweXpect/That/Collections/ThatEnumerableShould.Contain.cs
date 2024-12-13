@@ -107,7 +107,7 @@ public static partial class ThatEnumerableShould
 					if (check == false)
 					{
 						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-							$"{it} contained it at least {count} times in {Formatter.Format(materializedEnumerable.Take(CollectionFormatCount + 1).ToArray())}");
+							$"{it} contained it at least {count} times in {Formatter.Format(materializedEnumerable)}");
 					}
 
 					if (check == true)
@@ -125,7 +125,7 @@ public static partial class ThatEnumerableShould
 			}
 
 			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable.Take(CollectionFormatCount + 1).ToArray())}");
+				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable)}");
 		}
 
 		public override string ToString()
