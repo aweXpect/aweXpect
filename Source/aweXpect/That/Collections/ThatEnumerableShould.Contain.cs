@@ -16,7 +16,7 @@ namespace aweXpect;
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual enumerable contains the <paramref name="expected" /> value.
+	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
 	public static ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		Contain<TItem>(
@@ -37,7 +37,7 @@ public static partial class ThatEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the actual enumerable contains an item that satisfies the <paramref name="predicate" />.
+	///     Verifies that the collection contains an item that satisfies the <paramref name="predicate" />.
 	/// </summary>
 	public static CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		Contain<TItem>(
@@ -59,7 +59,7 @@ public static partial class ThatEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the actual enumerable does not contain the <paramref name="unexpected" /> value.
+	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
 	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		NotContain<TItem>(
@@ -74,7 +74,7 @@ public static partial class ThatEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the actual enumerable contains no item that satisfies the <paramref name="predicate" />.
+	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		NotContain<TItem>(

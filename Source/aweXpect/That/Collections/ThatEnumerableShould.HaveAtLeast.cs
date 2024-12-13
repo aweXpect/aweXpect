@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that at least <paramref name="minimum" /> items in the synchronous enumerable satisfy the
+	///     Verifies that at least <paramref name="minimum" /> items in the collection satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtLeast<TItem>(
@@ -20,7 +20,7 @@ public static partial class ThatEnumerableShould
 			source);
 
 	/// <summary>
-	///     Verifies that the synchronous enumerable has at least <paramref name="minimum" /> items.
+	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
 	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> HaveAtLeast<TItem>(
 		this IThat<IEnumerable<TItem>> source,

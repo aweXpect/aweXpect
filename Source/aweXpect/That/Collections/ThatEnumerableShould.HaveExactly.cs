@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that exactly <paramref name="expected" /> items in the synchronous enumerable satisfy the
+	///     Verifies that exactly <paramref name="expected" /> items in the collection satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveExactly<TItem>(
@@ -20,7 +20,7 @@ public static partial class ThatEnumerableShould
 			source);
 
 	/// <summary>
-	///     Verifies that the synchronous enumerable has exactly <paramref name="expected" /> items.
+	///     Verifies that the collection has exactly <paramref name="expected" /> items.
 	/// </summary>
 	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> HaveExactly<TItem>(
 		this IThat<IEnumerable<TItem>> source,
