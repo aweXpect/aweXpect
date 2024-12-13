@@ -16,6 +16,7 @@ internal static class Initialization
 		"mscorlib",
 		"System",
 		"Microsoft",
+		"JetBrains",
 		"xunit",
 		"Castle",
 		"DynamicProxyGenAssembly2"
