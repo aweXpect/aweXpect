@@ -4,7 +4,7 @@ using aweXpect.Core.Constraints;
 namespace aweXpect;
 
 /// <summary>
-///     Quantifier for evaluating enumerables.
+///     Quantifier for evaluating collections.
 /// </summary>
 public abstract partial class EnumerableQuantifier
 {

@@ -187,9 +187,6 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Specifies a mapping to add expectations on the member from the <paramref name="memberAccessor" />.
 	/// </summary>
-	/// <remarks>
-	///     Intended for mapping the <see cref="DelegateValue{TValue}" /> to an exception.
-	/// </remarks>
 	public ExpectationBuilder ForWhich<TSource, TTarget>(
 		Func<TSource, TTarget?> memberAccessor,
 		string? separator = null)
@@ -208,9 +205,6 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Specifies a mapping to add expectations on the member from the <paramref name="asyncMemberAccessor" />.
 	/// </summary>
-	/// <remarks>
-	///     Intended for mapping the <see cref="DelegateValue{TValue}" /> to an exception.
-	/// </remarks>
 	public ExpectationBuilder ForWhich<TSource, TTarget>(
 		Func<TSource, Task<TTarget?>> asyncMemberAccessor,
 		string? separator = null)

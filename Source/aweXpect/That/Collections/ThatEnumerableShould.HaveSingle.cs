@@ -13,7 +13,7 @@ namespace aweXpect;
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the synchronous enumerable contains exactly one element.
+	///     Verifies that the collection contains exactly one element.
 	/// </summary>
 	public static SingleItemResult<IEnumerable<TItem>, TItem> HaveSingle<TItem>(
 		this IThat<IEnumerable<TItem>> source)

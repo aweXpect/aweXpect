@@ -5,13 +5,14 @@ using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
 public static partial class ThatEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual enumerable is empty.
+	///     Verifies that the collection is empty.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		BeEmpty<TItem>(this IThat<IEnumerable<TItem>> source)
@@ -20,7 +21,7 @@ public static partial class ThatEnumerableShould
 			source);
 
 	/// <summary>
-	///     Verifies that the actual enumerable is not empty.
+	///     Verifies that the collection is not empty.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		NotBeEmpty<TItem>(
@@ -53,7 +54,7 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
-			IEnumerable<TItem>? materializedEnumerable =
+			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			using IEnumerator<TItem> enumerator = materializedEnumerable.GetEnumerator();
 			if (enumerator.MoveNext())

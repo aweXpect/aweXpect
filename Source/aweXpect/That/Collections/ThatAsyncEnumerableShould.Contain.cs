@@ -18,7 +18,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual enumerable contains the <paramref name="expected" /> value.
+	///     Verifies that the actual collection contains the <paramref name="expected" /> value.
 	/// </summary>
 	public static ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Contain<TItem>(
@@ -39,7 +39,7 @@ public static partial class ThatAsyncEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the actual enumerable contains an item that satisfies the <paramref name="predicate" />.
+	///     Verifies that the actual collection contains an item that satisfies the <paramref name="predicate" />.
 	/// </summary>
 	public static CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Contain<TItem>(
@@ -61,7 +61,7 @@ public static partial class ThatAsyncEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the actual enumerable does not contain the <paramref name="unexpected" /> value.
+	///     Verifies that the actual collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
 	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		NotContain<TItem>(
@@ -77,7 +77,7 @@ public static partial class ThatAsyncEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the actual enumerable contains no item that satisfies the <paramref name="predicate" />.
+	///     Verifies that the actual collection contains no item that satisfies the <paramref name="predicate" />.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		NotContain<TItem>(

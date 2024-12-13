@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that exactly <paramref name="expected" /> items in the asynchronous enumerable satisfy the
+	///     Verifies that exactly <paramref name="expected" /> items in the collection satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveExactly<TItem>(
@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerableShould
 			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected), expectations)), source);
 
 	/// <summary>
-	///     Verifies that the asynchronous enumerable has exactly <paramref name="expected" /> items.
+	///     Verifies that the collection has exactly <paramref name="expected" /> items.
 	/// </summary>
 	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>> HaveExactly<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,

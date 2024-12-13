@@ -6,6 +6,7 @@ using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 #if NET6_0_OR_GREATER
 namespace aweXpect;
@@ -13,7 +14,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the asynchronous enumerable contains exactly one element.
+	///     Verifies that the collection contains exactly one element.
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HaveSingle<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source)
