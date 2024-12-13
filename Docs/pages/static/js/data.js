@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734083514293,
+  "lastUpdate": 1734088134734,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -4832,6 +4832,102 @@ window.BENCHMARK_DATA = {
             "value": 1904.0227206303523,
             "unit": "ns",
             "range": "± 2.5478521168007005"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9d43513691be9b3dddbe966ff25176535874b42f",
+          "message": "feat: add `BeExactly`/`NotBeExactly` for objects (#116)\n\nAdd `BeExactly` and `NotBeExactly` expectations for `object`:\n```csharp\nrecord MyClass(int Value);\nrecord OtherClass(int Value);\n\nobject subject = new MyClass(1);\n\nawait Expect.That(subject).Should().BeExactly<MyClass>();\nawait Expect.That(subject).Should().BeExactly(typeof(MyClass));\nawait Expect.That(subject).Should().NotBeExactly<OtherClass>();\nawait Expect.That(subject).Should().NotBeExactly(typeof(OtherClass));\n```\nThis verifies, that the types match exactly (a sub-type will fail).",
+          "timestamp": "2024-12-13T11:03:51Z",
+          "tree_id": "48f9c81e14c6e2d0e7a6becce0384a5f41524963",
+          "url": "https://github.com/aweXpect/aweXpect/commit/9d43513691be9b3dddbe966ff25176535874b42f"
+        },
+        "date": 1734088134057,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.96236984546368,
+            "unit": "ns",
+            "range": "± 1.2374603946551308"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 216.9401425600052,
+            "unit": "ns",
+            "range": "± 1.7946277345982284"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 601.1350690205892,
+            "unit": "ns",
+            "range": "± 3.6539252232112593"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 318.6242059298924,
+            "unit": "ns",
+            "range": "± 1.6385766090150666"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 407.6458013057709,
+            "unit": "ns",
+            "range": "± 3.7102876107221534"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 804.5615877151489,
+            "unit": "ns",
+            "range": "± 6.084430045179622"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 967.2271714528401,
+            "unit": "ns",
+            "range": "± 6.932234348769666"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1191.402584584554,
+            "unit": "ns",
+            "range": "± 7.024282226086955"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1139.2834312438965,
+            "unit": "ns",
+            "range": "± 6.540699898024803"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1037.7859040773833,
+            "unit": "ns",
+            "range": "± 7.414408487905953"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 231160.20962289663,
+            "unit": "ns",
+            "range": "± 895.0568061627439"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1931.3864075587346,
+            "unit": "ns",
+            "range": "± 6.959664587255562"
           }
         ]
       }
