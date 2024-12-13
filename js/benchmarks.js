@@ -202,12 +202,14 @@
 		function renderBenchSet(benchSet, main) {
 			const chartGroups = new Map();
 			for (const [benchName, benches] of benchSet.entries()) {
-				const title = benchName.split("_");
-				if (title.length == 2) {
-					const arr = chartGroups.get(title[0]);
-					const result = [title[1], benches];
+				const lastIndex = benchName.lastIndexOf('_');
+				if (lastIndex > 0) {
+					const title = benchName.substring(0, lastIndex);
+					const tool = benchName.substring(lastIndex + 1); 
+					const arr = chartGroups.get(title);
+					const result = [tool, benches];
 					if (arr === undefined) {
-						chartGroups.set(title[0], [result]);
+						chartGroups.set(title, [result]);
 					} else {
 						arr.push(result);
 					}
