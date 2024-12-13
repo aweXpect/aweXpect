@@ -14,7 +14,7 @@ public partial class Customize
 	/// </summary>
 	private static readonly Customize Instance = new();
 
-	private class ActionDisposable(Action callback) : IDisposable
+	private sealed class ActionDisposable(Action callback) : IDisposable
 	{
 		public void Dispose() => callback();
 	}
