@@ -52,6 +52,60 @@ await Expect.That(values).Should().Be([3, 3, 1, 1]).OrMore().InAnyOrder().Ignori
 To check for a proper superset, use `AndMore` instead (which would fail for equal collections).
 
 
+## Contain
+
+You can verify, that the collection contains a specific item or not:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).Should().Contain(13);
+await Expect.That(values).Should().NotContain(42);
+```
+
+You can also set occurrence constraints on `Contain`:
+```csharp
+IEnumerable<int> values = [1, 1, 1, 2];
+
+await Expect.That(values).Should().Contain(1).AtLeast(2.Times());
+await Expect.That(values).Should().Contain(1).Exactly(3.Times());
+await Expect.That(values).Should().Contain(1).AtMost(4.Times());
+await Expect.That(values).Should().Contain(1).Between(1).And(5.Times());
+```
+
+You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
+```csharp
+IEnumerable<MyClass> values = //...
+MyClass expected = //...
+
+await Expect.That(values).Should().Contain(expected).Equivalent();
+await Expect.That(values).Should().Contain(expected).Using(new MyClassComparer());
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+### Predicate
+You can verify, that the collection contains an item that satisfies a condition:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 20);
+
+await Expect.That(values).Should().Contain(x => x > 12 && x < 14);
+await Expect.That(values).Should().NotContain(x => x >= 42);
+```
+
+You can also set occurrence constraints on `Contain`:
+```csharp
+IEnumerable<int> values = [1, 1, 1, 2];
+
+await Expect.That(values).Should().Contain(x => x == 1).AtLeast(2.Times());
+await Expect.That(values).Should().Contain(x => x == 1).Exactly(3.Times());
+await Expect.That(values).Should().Contain(x => x == 1).AtMost(4.Times());
+await Expect.That(values).Should().Contain(x => x == 1).Between(1).And(5.Times());
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
 ## Have
 Specifications that count the elements in a collection.
 
@@ -159,55 +213,22 @@ await Expect.That(values).Should().BeEmpty();
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 
-## Contain
+## Have single
 
-You can verify, that the collection contains a specific item or not:
+You can verify, that the collection contains a single element that satisfies an expectation.
 ```csharp
-IEnumerable<int> values = Enumerable.Range(1, 20);
+IEnumerable<int> values = [42];
 
-await Expect.That(values).Should().Contain(13);
-await Expect.That(values).Should().NotContain(42);
+await Expect.That(values).Should().HaveSingle();
+await Expect.That(values).Should().HaveSingle().Which.Should().BeGreaterThan(41);
 ```
 
-You can also set occurrence constraints on `Contain`:
+The awaited result is the single element:
 ```csharp
-IEnumerable<int> values = [1, 1, 1, 2];
+IEnumerable<int> values = [42];
 
-await Expect.That(values).Should().Contain(1).AtLeast(2.Times());
-await Expect.That(values).Should().Contain(1).Exactly(3.Times());
-await Expect.That(values).Should().Contain(1).AtMost(4.Times());
-await Expect.That(values).Should().Contain(1).Between(1).And(5.Times());
-```
-
-You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
-```csharp
-IEnumerable<MyClass> values = //...
-MyClass expected = //...
-
-await Expect.That(values).Should().Contain(expected).Equivalent();
-await Expect.That(values).Should().Contain(expected).Using(new MyClassComparer());
-```
-
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
-
-
-### Predicate
-You can verify, that the collection contains an item that satisfies a condition:
-```csharp
-IEnumerable<int> values = Enumerable.Range(1, 20);
-
-await Expect.That(values).Should().Contain(x => x > 12 && x < 14);
-await Expect.That(values).Should().NotContain(x => x >= 42);
-```
-
-You can also set occurrence constraints on `Contain`:
-```csharp
-IEnumerable<int> values = [1, 1, 1, 2];
-
-await Expect.That(values).Should().Contain(x => x == 1).AtLeast(2.Times());
-await Expect.That(values).Should().Contain(x => x == 1).Exactly(3.Times());
-await Expect.That(values).Should().Contain(x => x == 1).AtMost(4.Times());
-await Expect.That(values).Should().Contain(x => x == 1).Between(1).And(5.Times());
+int result = await Expect.That(values).Should().HaveSingle();
+await Expect.That(result).Should().BeGreaterThan(41);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*

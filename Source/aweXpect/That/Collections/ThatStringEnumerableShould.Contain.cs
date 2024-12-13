@@ -3,13 +3,14 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Options;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
 public static partial class ThatStringEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual collection contains the <paramref name="expected" /> value.
+	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
 	public static StringCountResult<IEnumerable<string>, IThat<IEnumerable<string>>> Contain(
 		this IThat<IEnumerable<string>> source,

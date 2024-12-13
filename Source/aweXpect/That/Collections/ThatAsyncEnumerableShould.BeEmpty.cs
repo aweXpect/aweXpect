@@ -7,13 +7,14 @@ using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual enumerable is empty.
+	///     Verifies that the collection is empty.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		BeEmpty<TItem>(
@@ -23,7 +24,7 @@ public static partial class ThatAsyncEnumerableShould
 			source);
 
 	/// <summary>
-	///     Verifies that the actual enumerable is not empty.
+	///     Verifies that the collection is not empty.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		NotBeEmpty<TItem>(

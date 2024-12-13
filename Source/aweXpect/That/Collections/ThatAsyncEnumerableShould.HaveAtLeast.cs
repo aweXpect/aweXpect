@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that at least <paramref name="minimum" /> items in the asynchronous enumerable satisfy the
+	///     Verifies that at least <paramref name="minimum" /> items in the collection satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveAtLeast<TItem>(
@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerableShould
 			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)), source);
 
 	/// <summary>
-	///     Verifies that the asynchronous enumerable has at least <paramref name="minimum" /> items.
+	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
 	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>> HaveAtLeast<TItem>(
 		this IThat<IAsyncEnumerable<TItem>> source,
