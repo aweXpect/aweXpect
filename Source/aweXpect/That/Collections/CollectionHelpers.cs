@@ -3,7 +3,7 @@ using System.Text;
 
 namespace aweXpect;
 
-internal class CollectionHelpers
+internal static class CollectionHelpers
 {
 	internal static string CreateDuplicateFailureMessage<TItem>(string it, List<TItem> duplicates)
 	{
