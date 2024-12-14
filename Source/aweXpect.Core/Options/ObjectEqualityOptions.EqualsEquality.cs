@@ -13,6 +13,9 @@ public partial class ObjectEqualityOptions
 
 	private sealed class EqualsEquality : IEquality
 	{
+		/// <inheritdoc />
+		public override string? ToString() => "";
+
 		#region IEquality Members
 
 		/// <inheritdoc />

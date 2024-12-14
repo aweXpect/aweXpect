@@ -26,25 +26,43 @@ public static partial class ThatEnumerableShould
 		CollectionMatchOptions matchOptions = new();
 		return new CollectionBeResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it
-					=> new BeConstraint<TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+	/// <summary>
+	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionBeTypeResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+		Be(this IThat<IEnumerable<string>> source,
+			IEnumerable<string> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new();
+		return new StringCollectionBeTypeResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
 	}
 
-	private readonly struct BeConstraint<TItem>(
+	private readonly struct BeConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
 		IEnumerable<TItem> expected,
-		ObjectEqualityOptions options,
+		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: IContextConstraint<IEnumerable<TItem>>
+		where TItem : TMatch
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			ICollectionMatcher<TItem, object?> matcher = matchOptions.GetCollectionMatcher<TItem, object?>(expected);
+			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
 			foreach (TItem item in materializedEnumerable)
 			{
 				if (matcher.Verify(it, item, options, out string? failure))

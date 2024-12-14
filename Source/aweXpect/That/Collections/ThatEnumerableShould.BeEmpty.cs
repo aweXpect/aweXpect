@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -14,8 +13,8 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection is empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
-		BeEmpty<TItem>(this IThat<IEnumerable<TItem>> source)
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> BeEmpty<TItem>(
+		this IThat<IEnumerable<TItem>> source)
 		=> new(source.ExpectationBuilder
 				.AddConstraint(it => new BeEmptyConstraint<TItem>(it)),
 			source);
@@ -23,8 +22,7 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
-		NotBeEmpty<TItem>(
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> NotBeEmpty<TItem>(
 			this IThat<IEnumerable<TItem>> source)
 		=> new(source.ExpectationBuilder
 				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
@@ -35,11 +33,22 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual)
 		{
+			if (actual is ICollection<TItem> collectionOfT)
+			{
+				if (collectionOfT.Count > 0)
+				{
+					return new ConstraintResult.Failure(ToString(),
+						$"{it} was {Formatter.Format(collectionOfT, FormattingOptions.MultipleLines)}");
+				}
+
+				return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
+			}
+			
 			using IEnumerator<TItem> enumerator = actual.GetEnumerator();
 			if (enumerator.MoveNext())
 			{
 				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(actual.Take(11))}");
+					$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
 			}
 
 			return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
@@ -54,6 +63,16 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			if (actual is ICollection<TItem> collectionOfT)
+			{
+				if (collectionOfT.Count > 0)
+				{
+					return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
+				}
+
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} was");
+			}
+
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			using IEnumerator<TItem> enumerator = materializedEnumerable.GetEnumerator();
@@ -63,7 +82,7 @@ public static partial class ThatEnumerableShould
 					ToString());
 			}
 
-			return new ConstraintResult.Failure(ToString(), $"{it} was");
+			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} was");
 		}
 
 		public override string ToString()

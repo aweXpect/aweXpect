@@ -27,6 +27,9 @@ public partial class ObjectEqualityOptions : IOptionsEquality<object?>
 	public string GetExpectation(string expectedExpression)
 		=> _type.GetExpectation(expectedExpression);
 
+	/// <inheritdoc />
+	public override string? ToString() => _type.ToString();
+
 	/// <summary>
 	///     The result of an equality check.
 	/// </summary>

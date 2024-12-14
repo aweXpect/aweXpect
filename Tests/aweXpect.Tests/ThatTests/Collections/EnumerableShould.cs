@@ -65,10 +65,10 @@ public partial class EnumerableShould
 		#endregion
 	}
 
-	public class MyClass
+	public class MyClass(int value = 0)
 	{
 		public InnerClass? Inner { get; set; }
-		public int Value { get; set; }
+		public int Value { get; set; } = value;
 	}
 
 	public class InnerClass
