@@ -147,7 +147,7 @@ public static partial class ThatEnumerableShould
 					if (check == false)
 					{
 						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-							$"{it} contained it at least {count} times in {Formatter.Format(materializedEnumerable)}");
+							$"{it} contained it at least {count} times in {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
 					}
 
 					if (check == true)
@@ -165,7 +165,7 @@ public static partial class ThatEnumerableShould
 			}
 
 			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable)}");
+				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
 		}
 
 		public override string ToString()

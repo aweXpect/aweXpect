@@ -31,7 +31,7 @@ public static partial class ThatAsyncEnumerableShould
 		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it => new ContainConstraint<TItem>(
 					it,
-					q => $"contain {Formatter.Format(expected)} {q}",
+					q => $"contain {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -53,7 +53,7 @@ public static partial class ThatAsyncEnumerableShould
 				.ExpectationBuilder
 				.AddConstraint(it => new ContainConstraint<string>(
 					it,
-					q => $"contain {Formatter.Format(expected)} {q}",
+					q => $"contain {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -95,7 +95,7 @@ public static partial class ThatAsyncEnumerableShould
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it => new NotContainConstraint<TItem>(it,
-					() => $"not contain {Formatter.Format(unexpected)}",
+					() => $"not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -113,7 +113,7 @@ public static partial class ThatAsyncEnumerableShould
 		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it => new NotContainConstraint<string>(it,
-					() => $"not contain {Formatter.Format(unexpected)}",
+					() => $"not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -175,7 +175,7 @@ public static partial class ThatAsyncEnumerableShould
 				if (items.Count > Customize.Formatting.MaximumNumberOfCollectionItems && isFailed)
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray())}");
+						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray(), FormattingOptions.MultipleLines)}");
 				}
 			}
 
@@ -186,7 +186,7 @@ public static partial class ThatAsyncEnumerableShould
 			}
 
 			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained it {count} times in {Formatter.Format(items.ToArray())}");
+				$"{it} contained it {count} times in {Formatter.Format(items.ToArray(), FormattingOptions.MultipleLines)}");
 		}
 
 		public override string ToString()

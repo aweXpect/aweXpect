@@ -62,7 +62,7 @@ public static partial class ThatAsyncEnumerableShould
 				}
 
 				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(items)}");
+					$"{it} was {Formatter.Format(items, FormattingOptions.MultipleLines)}");
 			}
 
 			if (cancellationToken.IsCancellationRequested)

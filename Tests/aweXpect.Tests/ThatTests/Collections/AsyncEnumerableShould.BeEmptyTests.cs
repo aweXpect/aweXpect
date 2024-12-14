@@ -43,7 +43,13 @@ public sealed partial class AsyncEnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             be empty,
-				             but it was [0, 1, 2, 3, 4]
+				             but it was [
+				               0,
+				               1,
+				               2,
+				               3,
+				               4
+				             ]
 				             """);
 		}
 
@@ -61,7 +67,19 @@ public sealed partial class AsyncEnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             be empty,
-				             but it was [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, …]
+				             but it was [
+				               0,
+				               1,
+				               2,
+				               3,
+				               4,
+				               5,
+				               6,
+				               7,
+				               8,
+				               9,
+				               …
+				             ]
 				             """);
 		}
 
@@ -77,7 +95,11 @@ public sealed partial class AsyncEnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             be empty,
-				             but it was [1, 1, 2]
+				             but it was [
+				               1,
+				               1,
+				               2
+				             ]
 				             """);
 		}
 

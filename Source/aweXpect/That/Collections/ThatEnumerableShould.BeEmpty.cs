@@ -38,7 +38,7 @@ public static partial class ThatEnumerableShould
 				if (collectionOfT.Count > 0)
 				{
 					return new ConstraintResult.Failure(ToString(),
-						$"{it} was {Formatter.Format(collectionOfT)}");
+						$"{it} was {Formatter.Format(collectionOfT, FormattingOptions.MultipleLines)}");
 				}
 
 				return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
@@ -48,7 +48,7 @@ public static partial class ThatEnumerableShould
 			if (enumerator.MoveNext())
 			{
 				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(actual)}");
+					$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
 			}
 
 			return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
