@@ -213,6 +213,18 @@ await Expect.That(values).Should().BeEmpty();
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
 
 
+## All be unique
+
+You can verify, that all items in a collection are unique.
+```csharp
+IEnumerable<int> values = [1, 2, 3];
+
+await Expect.That(values).Should().AllBeUnique();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
 ## Have single
 
 You can verify, that the collection contains a single element that satisfies an expectation.
