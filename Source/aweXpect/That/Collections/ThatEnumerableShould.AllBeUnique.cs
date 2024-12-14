@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -36,12 +35,14 @@ public static partial class ThatEnumerableShould
 	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem, TMember>(
 		this IThat<IEnumerable<TItem>> source,
 		Func<TItem, TMember> memberAccessor,
-		[CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "")
+		[CallerArgumentExpression("memberAccessor")]
+		string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember>(it, memberAccessor, doNotPopulateThisValue, options)),
+				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember>(it, memberAccessor, doNotPopulateThisValue,
+					options)),
 			source, options
 		);
 	}
@@ -59,15 +60,11 @@ public static partial class ThatEnumerableShould
 			ObjectEqualityOptions o = options;
 			foreach (TItem item in materialized)
 			{
-				foreach (TItem compareWith in checkedItems)
+				if (checkedItems.Any(compareWith =>
+					    o.AreConsideredEqual(item, compareWith) &&
+					    duplicates.All(x => !o.AreConsideredEqual(item, x))))
 				{
-					if (options.AreConsideredEqual(item, compareWith))
-					{
-						if (duplicates.All(x => !o.AreConsideredEqual(item, x)))
-						{
-							duplicates.Add(item);
-						}
-					}
+					duplicates.Add(item);
 				}
 
 				checkedItems.Add(item);
@@ -75,28 +72,8 @@ public static partial class ThatEnumerableShould
 
 			if (duplicates.Any())
 			{
-				StringBuilder sb = new();
-				sb.Append(it).Append(" contained ");
-				if (duplicates.Count == 1)
-				{
-					sb.Append("1 duplicate:");
-				}
-				else
-				{
-					sb.Append(duplicates.Count).Append(" duplicates:");
-				}
-
-				foreach (TItem duplicate in duplicates)
-				{
-					sb.AppendLine();
-					sb.Append("  ");
-					Formatter.Format(sb, duplicate);
-					sb.Append(',');
-				}
-
-				sb.Length--;
-
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), sb.ToString());
+				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), failure);
 			}
 
 			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,
@@ -106,7 +83,11 @@ public static partial class ThatEnumerableShould
 		public override string ToString() => "only have unique items";
 	}
 
-	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember>(string it, Func<TItem, TMember> memberAccessor, string memberAccessorExpression, ObjectEqualityOptions options)
+	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember>(
+		string it,
+		Func<TItem, TMember> memberAccessor,
+		string memberAccessorExpression,
+		ObjectEqualityOptions options)
 		: IContextConstraint<IEnumerable<TItem>>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
@@ -119,16 +100,12 @@ public static partial class ThatEnumerableShould
 			ObjectEqualityOptions o = options;
 			foreach (TItem item in materialized)
 			{
-				var itemMember = memberAccessor(item);
-				foreach (TMember compareWith in checkedItems)
+				TMember itemMember = memberAccessor(item);
+				if (checkedItems.Any(compareWith =>
+					    o.AreConsideredEqual(itemMember, compareWith) &&
+					    duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
 				{
-					if (options.AreConsideredEqual(itemMember, compareWith))
-					{
-						if (duplicates.All(x => !o.AreConsideredEqual(item, x)))
-						{
-							duplicates.Add(itemMember);
-						}
-					}
+					duplicates.Add(itemMember);
 				}
 
 				checkedItems.Add(itemMember);
@@ -136,28 +113,8 @@ public static partial class ThatEnumerableShould
 
 			if (duplicates.Any())
 			{
-				StringBuilder sb = new();
-				sb.Append(it).Append(" contained ");
-				if (duplicates.Count == 1)
-				{
-					sb.Append("1 duplicate:");
-				}
-				else
-				{
-					sb.Append(duplicates.Count).Append(" duplicates:");
-				}
-
-				foreach (TMember duplicate in duplicates)
-				{
-					sb.AppendLine();
-					sb.Append("  ");
-					Formatter.Format(sb, duplicate);
-					sb.Append(',');
-				}
-
-				sb.Length--;
-
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), sb.ToString());
+				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), failure);
 			}
 
 			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,

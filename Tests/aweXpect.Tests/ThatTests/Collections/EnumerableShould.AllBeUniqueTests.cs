@@ -12,7 +12,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_ShouldUseCustomComparer()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "a", "a"]).Select(x => new MyClass(x));
+			IEnumerable<MyUniqueClass> subject = ToEnumerable(["a", "a", "a"]).Select(x => new MyUniqueClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value).Using(new AllDifferentComparer());
@@ -23,7 +23,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_WhenAllItemsAreUnique_ShouldSucceed()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "b", "c"]).Select(x => new MyClass(x));
+			IEnumerable<MyUniqueClass> subject = ToEnumerable(["a", "b", "c"]).Select(x => new MyUniqueClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value);
@@ -34,7 +34,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_WhenItContainsDuplicates_ShouldFail()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "b", "c", "a"]).Select(x => new MyClass(x));
+			IEnumerable<MyUniqueClass> subject = ToEnumerable(["a", "b", "c", "a"]).Select(x => new MyUniqueClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value);
@@ -51,7 +51,8 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_WhenItContainsMultipleDuplicates_ShouldFail()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "b", "c", "a", "b", "x"]).Select(x => new MyClass(x));
+			IEnumerable<MyUniqueClass> subject =
+				ToEnumerable(["a", "b", "c", "a", "b", "x"]).Select(x => new MyUniqueClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value);
@@ -123,16 +124,16 @@ public sealed partial class EnumerableShould
 				             """);
 		}
 
-		private sealed class MyClass(string value)
+		private sealed class MyUniqueClass(string value)
 		{
 			public string Value { get; } = value;
 		}
 
 		private class AllDifferentComparer : IEqualityComparer<object>
 		{
-			public bool Equals(object? x, object? y) => false;
+			bool IEqualityComparer<object>.Equals(object? x, object? y) => false;
 
-			public int GetHashCode(object obj) => obj.GetHashCode();
+			int IEqualityComparer<object>.GetHashCode(object obj) => obj.GetHashCode();
 		}
 	}
 }
