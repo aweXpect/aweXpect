@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -27,6 +26,26 @@ public static partial class ThatEnumerableShould
 		ObjectEqualityOptions options = new();
 		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it => new ContainConstraint<TItem>(
+					it,
+					q => $"contain {Formatter.Format(expected)} {q}",
+					a => options.AreConsideredEqual(a, expected),
+					quantifier)),
+			source,
+			quantifier,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the collection contains the <paramref name="expected" /> value.
+	/// </summary>
+	public static StringCountResult<IEnumerable<string>, IThat<IEnumerable<string>>> Contain(
+		this IThat<IEnumerable<string>> source,
+		string expected)
+	{
+		Quantifier quantifier = new();
+		StringEqualityOptions options = new();
+		return new StringCountResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
+				.AddConstraint(it => new ContainConstraint<string>(
 					it,
 					q => $"contain {Formatter.Format(expected)} {q}",
 					a => options.AreConsideredEqual(a, expected),
@@ -68,7 +87,22 @@ public static partial class ThatEnumerableShould
 	{
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
-				.AddConstraint(it => new NotContainConstraint<TItem>(it, unexpected, options)),
+				.AddConstraint(it => new NotContainConstraint<TItem, object?>(it, unexpected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+		NotContain(
+			this IThat<IEnumerable<string>> source,
+			string unexpected)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
+				.AddConstraint(it => new NotContainConstraint<string, string>(it, unexpected, options)),
 			source,
 			options);
 	}
@@ -132,8 +166,12 @@ public static partial class ThatEnumerableShould
 			=> expectationText(quantifier);
 	}
 
-	private readonly struct NotContainConstraint<TItem>(string it, TItem unexpected, ObjectEqualityOptions options)
+	private readonly struct NotContainConstraint<TItem, TMatch>(
+		string it,
+		TItem unexpected,
+		IOptionsEquality<TMatch> options)
 		: IContextConstraint<IEnumerable<TItem>>
+		where TItem : TMatch
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
