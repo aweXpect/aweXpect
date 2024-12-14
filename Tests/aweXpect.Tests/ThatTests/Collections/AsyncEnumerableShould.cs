@@ -34,6 +34,15 @@ public partial class AsyncEnumerableShould
 		}
 	}
 
+	public static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(int[] items, Func<int, T> mapper)
+	{
+		foreach (int item in items)
+		{
+			await Task.Yield();
+			yield return mapper(item);
+		}
+	}
+
 	public static async IAsyncEnumerable<int> ToDelayedAsyncEnumerable(
 		int[] items,
 		[EnumeratorCancellation] CancellationToken cancellationToken = default)
@@ -94,9 +103,9 @@ public partial class AsyncEnumerableShould
 		#endregion
 	}
 
-	public class MyClass
+	public class MyClass(int value = 0)
 	{
-		public int Value { get; set; }
+		public int Value { get; set; } = value;
 	}
 }
 #endif

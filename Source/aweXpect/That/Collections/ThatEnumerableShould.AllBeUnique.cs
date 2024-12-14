@@ -24,13 +24,27 @@ public static partial class ThatEnumerableShould
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueConstraint<TItem>(it, options)),
+				=> new AllBeUniqueConstraint<TItem, object?>(it, options)),
 			source, options
 		);
 	}
 
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
+	/// </summary>
+	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>> AllBeUnique(
+		this IThat<IEnumerable<string>> source)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeUniqueConstraint<string, string>(it, options)),
+			source, options
+		);
+	}
+
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
 	/// </summary>
 	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem, TMember>(
 		this IThat<IEnumerable<TItem>> source,
@@ -41,14 +55,33 @@ public static partial class ThatEnumerableShould
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember>(it, memberAccessor, doNotPopulateThisValue,
+				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor, doNotPopulateThisValue,
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct AllBeUniqueConstraint<TItem>(string it, ObjectEqualityOptions options)
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
+	/// </summary>
+	public static StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem>(
+		this IThat<IEnumerable<TItem>> source,
+		Func<TItem, string> memberAccessor,
+		[CallerArgumentExpression("memberAccessor")]
+		string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor, doNotPopulateThisValue,
+					options)),
+			source, options
+		);
+	}
+
+	private readonly struct AllBeUniqueConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
 		: IContextConstraint<IEnumerable<TItem>>
+		where TItem: TMatch
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
@@ -57,7 +90,7 @@ public static partial class ThatEnumerableShould
 			List<TItem> checkedItems = new();
 			List<TItem> duplicates = new();
 
-			ObjectEqualityOptions o = options;
+			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
 			{
 				if (checkedItems.Any(compareWith =>
@@ -80,15 +113,16 @@ public static partial class ThatEnumerableShould
 				ToString());
 		}
 
-		public override string ToString() => "only have unique items";
+		public override string ToString() => $"only have unique items{options}";
 	}
 
-	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember>(
+	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
 		string it,
 		Func<TItem, TMember> memberAccessor,
 		string memberAccessorExpression,
-		ObjectEqualityOptions options)
+		IOptionsEquality<TMatch> options)
 		: IContextConstraint<IEnumerable<TItem>>
+		where TMember : TMatch
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
@@ -97,7 +131,7 @@ public static partial class ThatEnumerableShould
 			List<TMember> checkedItems = new();
 			List<TMember> duplicates = new();
 
-			ObjectEqualityOptions o = options;
+			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
 			{
 				TMember itemMember = memberAccessor(item);
@@ -121,6 +155,6 @@ public static partial class ThatEnumerableShould
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique items for {memberAccessorExpression}";
+		public override string ToString() => $"only have unique items for {memberAccessorExpression}{options}";
 	}
 }

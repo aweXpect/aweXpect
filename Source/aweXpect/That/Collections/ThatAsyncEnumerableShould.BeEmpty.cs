@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Results;
 // ReSharper disable PossibleMultipleEnumeration
@@ -47,14 +48,14 @@ public static partial class ThatAsyncEnumerableShould
 				materializedEnumerable.GetAsyncEnumerator(cancellationToken);
 			if (await enumerator.MoveNextAsync())
 			{
-				List<TItem> items = new(11)
+				List<TItem> items = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1)
 				{
 					enumerator.Current
 				};
 				while (await enumerator.MoveNextAsync())
 				{
 					items.Add(enumerator.Current);
-					if (items.Count == 11)
+					if (items.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
 					{
 						break;
 					}

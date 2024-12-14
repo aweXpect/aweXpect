@@ -422,6 +422,7 @@ namespace aweXpect.Options
         public aweXpect.Options.ObjectEqualityOptions.Result AreConsideredEqual(object? actual, object? expected, string it) { }
         public aweXpect.Options.ObjectEqualityOptions Equals() { }
         public string GetExpectation(string expectedExpression) { }
+        public override string? ToString() { }
         public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
         public readonly struct Result
         {

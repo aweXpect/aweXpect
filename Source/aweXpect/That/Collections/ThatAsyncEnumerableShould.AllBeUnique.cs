@@ -27,13 +27,27 @@ public static partial class ThatAsyncEnumerableShould
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueConstraint<TItem>(it, options)),
+				=> new AllBeUniqueConstraint<TItem, object?>(it, options)),
 			source, options
 		);
 	}
 
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
+	/// </summary>
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>> AllBeUnique(
+		this IThat<IAsyncEnumerable<string>> source)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeUniqueConstraint<string, string>(it, options)),
+			source, options
+		);
+	}
+
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
 	/// </summary>
 	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AllBeUnique<TItem,
 		TMember>(
@@ -45,14 +59,33 @@ public static partial class ThatAsyncEnumerableShould
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember>(it, memberAccessor, doNotPopulateThisValue,
+				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor, doNotPopulateThisValue,
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct AllBeUniqueConstraint<TItem>(string it, ObjectEqualityOptions options)
+	/// <summary>
+	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
+	/// </summary>
+	public static StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AllBeUnique<TItem>(
+		this IThat<IAsyncEnumerable<TItem>> source,
+		Func<TItem, string> memberAccessor,
+		[CallerArgumentExpression("memberAccessor")]
+		string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor, doNotPopulateThisValue,
+					options)),
+			source, options
+		);
+	}
+
+	private readonly struct AllBeUniqueConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		where TItem: TMatch
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
@@ -62,7 +95,7 @@ public static partial class ThatAsyncEnumerableShould
 			List<TItem> checkedItems = new();
 			List<TItem> duplicates = new();
 
-			ObjectEqualityOptions o = options;
+			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				if (checkedItems.Any(compareWith =>
@@ -85,15 +118,16 @@ public static partial class ThatAsyncEnumerableShould
 				ToString());
 		}
 
-		public override string ToString() => "only have unique items";
+		public override string ToString() => $"only have unique items{options}";
 	}
 
-	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember>(
+	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
 		string it,
 		Func<TItem, TMember> memberAccessor,
 		string memberAccessorExpression,
-		ObjectEqualityOptions options)
+		IOptionsEquality<TMatch> options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		where TMember: TMatch
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
@@ -103,7 +137,7 @@ public static partial class ThatAsyncEnumerableShould
 			List<TMember> checkedItems = new();
 			List<TMember> duplicates = new();
 
-			ObjectEqualityOptions o = options;
+			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				TMember itemMember = memberAccessor(item);
@@ -127,7 +161,7 @@ public static partial class ThatAsyncEnumerableShould
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique items for {memberAccessorExpression}";
+		public override string ToString() => $"only have unique items for {memberAccessorExpression}{options}";
 	}
 }
 #endif

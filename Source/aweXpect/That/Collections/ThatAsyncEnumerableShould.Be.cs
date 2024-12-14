@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -32,26 +33,47 @@ public static partial class ThatAsyncEnumerableShould
 		return new CollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
-					=> new BeConstraint<TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
 	}
 
-	private readonly struct BeConstraint<TItem>(
+	/// <summary>
+	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionBeResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+		Be(
+			this IThat<IAsyncEnumerable<string>> source,
+			IEnumerable<string> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new();
+		return new StringCollectionBeResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+				.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+
+	private readonly struct BeConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
 		IEnumerable<TItem> expected,
-		ObjectEqualityOptions options,
+		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		where TItem : TMatch
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			ICollectionMatcher<TItem, object?> matcher = matchOptions.GetCollectionMatcher<TItem, object?>(expected);
+			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				if (matcher.Verify(it, item, options, out string? failure))
@@ -80,7 +102,7 @@ public static partial class ThatAsyncEnumerableShould
 			int count = 0;
 			await foreach (TItem item in materializedEnumerable)
 			{
-				if (count++ >= Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
+				if (count++ >= Customize.Formatting.MaximumNumberOfCollectionItems)
 				{
 					break;
 				}
@@ -91,7 +113,7 @@ public static partial class ThatAsyncEnumerableShould
 				sb.Append(",");
 			}
 
-			if (count > Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
+			if (count > Customize.Formatting.MaximumNumberOfCollectionItems)
 			{
 				sb.AppendLine();
 				sb.Append("  …,");
@@ -100,9 +122,10 @@ public static partial class ThatAsyncEnumerableShould
 			sb.Length--;
 			sb.AppendLine();
 			sb.Append("] had more than ");
-			sb.Append(2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems);
+			sb.Append(2 * Customize.Formatting.MaximumNumberOfCollectionItems);
 			sb.Append(" deviations compared to ");
-			Formatter.Format(sb, expected.Take(Customization.Customize.Formatting.MaximumNumberOfCollectionItems + 1), FormattingOptions.MultipleLines);
+			Formatter.Format(sb, expected.Take(Customize.Formatting.MaximumNumberOfCollectionItems + 1),
+				FormattingOptions.MultipleLines);
 			return sb.ToString();
 		}
 

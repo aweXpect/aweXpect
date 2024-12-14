@@ -13,7 +13,6 @@ public partial class ObjectEqualityOptions
 		_type = new ComparerEquality(comparer);
 		return this;
 	}
-
 	private sealed class ComparerEquality : IEquality
 	{
 		private readonly IEqualityComparer<object> _comparer;
@@ -43,7 +42,10 @@ public partial class ObjectEqualityOptions
 		/// <inheritdoc />
 		public string GetExpectation(string expectedExpression)
 			=> _options?.GetExpectation(expectedExpression)
-			   ?? $"be equal to {expectedExpression} using {Formatter.Format(_comparer.GetType())}";
+			   ?? $"be equal to {expectedExpression}" + ToString();
+		
+		/// <inheritdoc />
+		public override string? ToString() => $" using {Formatter.Format(_comparer.GetType())}";
 
 		#endregion
 	}
