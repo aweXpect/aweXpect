@@ -25,6 +25,15 @@ public partial class AsyncEnumerableShould
 		}
 	}
 
+	public static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(string[] items, Func<string, T> mapper)
+	{
+		foreach (string item in items)
+		{
+			await Task.Yield();
+			yield return mapper(item);
+		}
+	}
+
 	public static async IAsyncEnumerable<int> ToDelayedAsyncEnumerable(
 		int[] items,
 		[EnumeratorCancellation] CancellationToken cancellationToken = default)

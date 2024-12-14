@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿#if NET6_0_OR_GREATER
+using System.Collections.Generic;
 
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
 
-public sealed partial class EnumerableShould
+public sealed partial class AsyncEnumerableShould
 {
 	public sealed class AllBeUniqueTests
 	{
 		[Fact]
 		public async Task ForMember_ShouldUseCustomComparer()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "a", "a"]).Select(x => new MyClass(x));
+			IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable(["a", "a", "a"], x => new MyClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value).Using(new AllDifferentComparer());
@@ -23,7 +23,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_WhenAllItemsAreUnique_ShouldSucceed()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "b", "c"]).Select(x => new MyClass(x));
+			IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable(["a", "b", "c"], x => new MyClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value);
@@ -34,7 +34,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_WhenItContainsDuplicates_ShouldFail()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "b", "c", "a"]).Select(x => new MyClass(x));
+			IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable(["a", "b", "c", "a"], x => new MyClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value);
@@ -51,7 +51,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ForMember_WhenItContainsMultipleDuplicates_ShouldFail()
 		{
-			IEnumerable<MyClass> subject = ToEnumerable(["a", "b", "c", "a", "b", "x"]).Select(x => new MyClass(x));
+			IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable(["a", "b", "c", "a", "b", "x"], x => new MyClass(x));
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique(x => x.Value);
@@ -69,7 +69,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task ShouldUseCustomComparer()
 		{
-			IEnumerable<string> subject = ToEnumerable(["a", "a", "a"]);
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "a"]);
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique().Using(new AllDifferentComparer());
@@ -80,7 +80,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenAllItemsAreUnique_ShouldSucceed()
 		{
-			IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique();
@@ -91,7 +91,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenItContainsDuplicates_ShouldFail()
 		{
-			IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a"]);
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "a"]);
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique();
@@ -108,7 +108,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 		{
-			IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a", "b", "x"]);
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "a", "b", "x"]);
 
 			async Task Act()
 				=> await That(subject).Should().AllBeUnique();
@@ -136,3 +136,4 @@ public sealed partial class EnumerableShould
 		}
 	}
 }
+#endif

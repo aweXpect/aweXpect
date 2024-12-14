@@ -1,8 +1,11 @@
-﻿using System;
+﻿#if NET6_0_OR_GREATER
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -14,16 +17,16 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatEnumerableShould
+public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AllBeUnique<TItem>(
+		this IThat<IAsyncEnumerable<TItem>> source)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueConstraint<TItem>(it, options)),
 			source, options
@@ -33,13 +36,13 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem, TMember>(
-		this IThat<IEnumerable<TItem>> source,
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AllBeUnique<TItem, TMember>(
+		this IThat<IAsyncEnumerable<TItem>> source,
 		Func<TItem, TMember> memberAccessor,
 		[CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember>(it, memberAccessor, doNotPopulateThisValue, options)),
 			source, options
@@ -47,17 +50,17 @@ public static partial class ThatEnumerableShould
 	}
 
 	private readonly struct AllBeUniqueConstraint<TItem>(string it, ObjectEqualityOptions options)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IEnumerable<TItem> materialized = context
-				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			IAsyncEnumerable<TItem> materialized = context
+				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
 			List<TItem> duplicates = new();
 
 			ObjectEqualityOptions o = options;
-			foreach (TItem item in materialized)
+			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				foreach (TItem compareWith in checkedItems)
 				{
@@ -96,10 +99,10 @@ public static partial class ThatEnumerableShould
 
 				sb.Length--;
 
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), sb.ToString());
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), sb.ToString());
 			}
 
-			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,
+			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual,
 				ToString());
 		}
 
@@ -107,17 +110,17 @@ public static partial class ThatEnumerableShould
 	}
 
 	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember>(string it, Func<TItem, TMember> memberAccessor, string memberAccessorExpression, ObjectEqualityOptions options)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IEnumerable<TItem> materialized = context
-				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			IAsyncEnumerable<TItem> materialized = context
+				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TMember> checkedItems = new();
 			List<TMember> duplicates = new();
 
 			ObjectEqualityOptions o = options;
-			foreach (TItem item in materialized)
+			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				var itemMember = memberAccessor(item);
 				foreach (TMember compareWith in checkedItems)
@@ -157,13 +160,14 @@ public static partial class ThatEnumerableShould
 
 				sb.Length--;
 
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), sb.ToString());
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), sb.ToString());
 			}
 
-			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,
+			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual,
 				ToString());
 		}
 
 		public override string ToString() => $"only have unique items for {memberAccessorExpression}";
 	}
 }
+#endif
