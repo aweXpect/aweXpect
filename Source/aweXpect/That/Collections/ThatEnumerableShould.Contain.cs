@@ -105,7 +105,7 @@ public static partial class ThatEnumerableShould
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
 				.AddConstraint(it => new NotContainConstraint<string>(it,
-					() => $"not contain {Formatter.Format(unexpected)}",
+					() => $"not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
