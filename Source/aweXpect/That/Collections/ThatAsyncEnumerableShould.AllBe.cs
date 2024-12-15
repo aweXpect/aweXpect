@@ -1,7 +1,6 @@
 ﻿#if NET6_0_OR_GREATER
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -27,8 +26,9 @@ public static partial class ThatAsyncEnumerableShould
 			TItem expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source.ExpectationBuilder
-				.AddConstraint(it => new AllBeConstraint<TItem>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeConstraint<TItem>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
 					a => options.AreConsideredEqual(a, expected))),
@@ -44,8 +44,9 @@ public static partial class ThatAsyncEnumerableShould
 		string expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source.ExpectationBuilder
-				.AddConstraint(it => new AllBeConstraint<string>(
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeConstraint<string>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
 					a => options.AreConsideredEqual(a, expected))),
@@ -53,30 +54,16 @@ public static partial class ThatAsyncEnumerableShould
 			options);
 	}
 
-	/// <summary>
-	///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
-	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
-		AllBe<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
-			Func<TItem, bool> predicate,
-			[CallerArgumentExpression("predicate")]
-			string doNotPopulateThisValue = "")
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it
-					=> new AllBeConstraint<TItem>(
-						it,
-						() => $"have all items satisfy {doNotPopulateThisValue}",
-						predicate)),
-			source);
-
 	private readonly struct AllBeConstraint<TItem>(
 		string it,
 		Func<string> expectationText,
 		Func<TItem, bool> predicate)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(
+			IAsyncEnumerable<TItem> actual,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
 		{
 			IAsyncEnumerable<TItem> materializedAsyncEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
@@ -88,7 +75,7 @@ public static partial class ThatAsyncEnumerableShould
 					notMatchingItems.Add(item);
 					if (notMatchingItems.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
 					{
-						var displayCount = Math.Min(
+						int displayCount = Math.Min(
 							Customize.Formatting.MaximumNumberOfCollectionItems,
 							notMatchingItems.Count);
 						return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
