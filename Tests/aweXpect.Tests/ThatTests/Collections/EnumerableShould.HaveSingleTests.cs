@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using aweXpect.Tests.TestHelpers;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -8,6 +9,22 @@ public sealed partial class EnumerableShould
 {
 	public sealed class HaveSingleTests
 	{
+		[Fact]
+		public async Task DoesNotMaterializeEnumerable()
+		{
+			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+
+			async Task Act()
+				=> await That(subject).Should().HaveSingle();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have a single item,
+				             but it contained more than one item
+				             """);
+		}
+
 		[Fact]
 		public async Task ShouldReturnSingleItem()
 		{
