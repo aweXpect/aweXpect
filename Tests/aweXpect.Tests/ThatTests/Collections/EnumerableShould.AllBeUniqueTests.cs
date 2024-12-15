@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using aweXpect.Tests.TestHelpers;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -298,13 +299,6 @@ public sealed partial class EnumerableShould
 		private sealed class MyStringClass(string value)
 		{
 			public string Value { get; } = value;
-		}
-
-		private class AllDifferentComparer : IEqualityComparer<object>
-		{
-			bool IEqualityComparer<object>.Equals(object? x, object? y) => false;
-
-			int IEqualityComparer<object>.GetHashCode(object obj) => obj.GetHashCode();
 		}
 	}
 }
