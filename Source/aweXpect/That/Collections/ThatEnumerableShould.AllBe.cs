@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -24,8 +23,9 @@ public static partial class ThatEnumerableShould
 			TItem expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
-				.AddConstraint(it => new AllBeConstraint<TItem>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeConstraint<TItem>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
 					a => options.AreConsideredEqual(a, expected))),
@@ -41,31 +41,15 @@ public static partial class ThatEnumerableShould
 		string expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
-				.AddConstraint(it => new AllBeConstraint<string>(
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new AllBeConstraint<string>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
 					a => options.AreConsideredEqual(a, expected))),
 			source,
 			options);
 	}
-
-	/// <summary>
-	///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
-	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
-		AllBe<TItem>(
-			this IThat<IEnumerable<TItem>> source,
-			Func<TItem, bool> predicate,
-			[CallerArgumentExpression("predicate")]
-			string doNotPopulateThisValue = "")
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it
-					=> new AllBeConstraint<TItem>(
-						it,
-						() => $"have all items satisfy {doNotPopulateThisValue}",
-						predicate)),
-			source);
 
 	private readonly struct AllBeConstraint<TItem>(
 		string it,
@@ -85,7 +69,7 @@ public static partial class ThatEnumerableShould
 					notMatchingItems.Add(item);
 					if (notMatchingItems.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
 					{
-						var displayCount = Math.Min(
+						int displayCount = Math.Min(
 							Customize.Formatting.MaximumNumberOfCollectionItems,
 							notMatchingItems.Count);
 						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),

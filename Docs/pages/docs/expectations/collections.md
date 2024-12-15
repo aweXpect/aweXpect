@@ -70,18 +70,35 @@ await Expect.That(values).Should().AllBe(expected).Equivalent();
 await Expect.That(values).Should().AllBe(expected).Using(new MyClassComparer());
 ```
 
-For strings you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
+For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
 ```csharp
 string[] values = ["foo", "FOO", "Foo"];
 
 await Expect.That(values).Should().AllBe("foo").IgnoringCase();
 ```
 
-You can also use a predicate that all items have to satisfy:
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+## All be unique
+
+You can verify, that all items in a collection are unique.
+```csharp
+IEnumerable<int> values = [1, 2, 3];
+
+await Expect.That(values).Should().AllBeUnique();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+## All satisfy
+
+You can verify, that all items in a collection satisfy a condition:
 ```csharp
 int[] values = [1, 2, 3];
 
-await Expect.That(values).Should().AllBe(x => x < 4);
+await Expect.That(values).Should().AllSatisfy(x => x < 4);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
@@ -246,18 +263,6 @@ await Expect.That(values).Should().BeEmpty();
 ```
 
 *Note: The same expectations works also for `IAsyncEnumerable<T>`.*
-
-
-## All be unique
-
-You can verify, that all items in a collection are unique.
-```csharp
-IEnumerable<int> values = [1, 2, 3];
-
-await Expect.That(values).Should().AllBeUnique();
-```
-
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
 ## Have single
