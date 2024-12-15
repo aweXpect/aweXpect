@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
+using aweXpect.Options;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
@@ -117,6 +120,67 @@ public static partial class ThatAsyncEnumerableShould
 			return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
 				matchingCount + notMatchingCount);
 		}
+	}
+
+	private readonly struct BeInOrderConstraint<TItem, TMember>(
+		string it,
+		Func<TItem, TMember> memberAccessor,
+		SortOrder sortOrder,
+		CollectionOrderOptions<TMember> options,
+		string memberExpression)
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	{
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			IAsyncEnumerable<TItem> materialized = context
+				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
+
+			TMember previous = default!;
+			int index = 0;
+			IComparer<TMember> comparer = options.GetComparer();
+			List<TItem> values = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
+			string? failureText = null;
+			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
+			{
+				if (values.Count <= Customize.Formatting.MaximumNumberOfCollectionItems)
+				{
+					values.Add(item);
+				}
+
+				TMember current = memberAccessor(item);
+				if (index++ == 0)
+				{
+					previous = current;
+					continue;
+				}
+
+				int comparisonResult = comparer.Compare(previous, current);
+				if ((comparisonResult > 0 && sortOrder == SortOrder.Ascending) ||
+				    (comparisonResult < 0 && sortOrder == SortOrder.Descending))
+				{
+					failureText ??=
+						$"{it} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order in ";
+				}
+
+				if (failureText != null && values.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
+				{
+					break;
+				}
+
+				previous = current;
+			}
+
+			if (failureText != null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), failureText + Formatter.Format(values, FormattingOptions.MultipleLines));
+			}
+
+			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
+		}
+
+		public override string ToString()
+			=> $"be in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
 	}
 }
 

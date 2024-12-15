@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Formatting;
 
@@ -78,7 +79,7 @@ public static partial class ValueFormatters
 				break;
 			}
 
-			stringBuilder.Append(Format(formatter, v, options));
+			stringBuilder.Append(Format(formatter, v, options).Indent("  ", false));
 		}
 
 		if (hasMoreValues)

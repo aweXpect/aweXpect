@@ -104,6 +104,29 @@ await Expect.That(values).Should().AllSatisfy(x => x < 4);
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
+## Sort order
+
+You can verify, that the collection contains is sorted in ascending or descending order:
+```csharp
+await Expect.That([1, 2, 3]).Should().BeInAscendingOrder();
+await Expect.That(["c", "b", "a"]).Should().BeInDescendingOrder();
+```
+
+You can also specify a custom comparer:
+```csharp
+await Expect.That(["a", "B", "c"]).Should().BeInAscendingOrder().Using(StringComparer.OrdinalIgnoreCase);
+```
+
+For objects, you can also verify the sort order on a member:
+```csharp
+MyClass[] values = //...
+
+await Expect.That(values).Should().BeInAscendingOrder(x => x.Value);
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
 ## Contain
 
 You can verify, that the collection contains a specific item or not:

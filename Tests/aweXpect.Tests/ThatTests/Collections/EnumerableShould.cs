@@ -22,6 +22,22 @@ public partial class EnumerableShould
 		}
 	}
 
+	public static IEnumerable<T> ToEnumerable<T>(int[] items, Func<int, T> mapper)
+	{
+		foreach (int item in items)
+		{
+			yield return mapper(item);
+		}
+	}
+
+	public static IEnumerable<T> ToEnumerable<T>(string[] items, Func<string, T> mapper)
+	{
+		foreach (string item in items)
+		{
+			yield return mapper(item);
+		}
+	}
+
 	/// <summary>
 	///     Returns an <see cref="IEnumerable{T}" /> with incrementing numbers, starting with 0, which cancels the
 	///     <paramref name="cancellationTokenSource" /> after <paramref name="cancelAfter" /> iteration.

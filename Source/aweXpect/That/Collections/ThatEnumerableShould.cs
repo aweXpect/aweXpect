@@ -6,6 +6,8 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
+using aweXpect.Options;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
@@ -108,7 +110,7 @@ public static partial class ThatEnumerableShould
 				return Task.FromResult(_quantifier.GetResult(
 					actual, _it, null, matchingCount, notMatchingCount, totalCount));
 			}
-			
+
 			IEnumerable<TItem> materialized =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 
@@ -134,5 +136,49 @@ public static partial class ThatEnumerableShould
 			return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
 				totalCount));
 		}
+	}
+
+	private readonly struct BeInOrderConstraint<TItem, TMember>(
+		string it,
+		Func<TItem, TMember> memberAccessor,
+		SortOrder sortOrder,
+		CollectionOrderOptions<TMember> options,
+		string memberExpression)
+		: IContextConstraint<IEnumerable<TItem>>
+	{
+		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		{
+			IEnumerable<TItem> materialized = context
+				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+
+			TMember previous = default!;
+			int index = 0;
+			IComparer<TMember> comparer = options.GetComparer();
+			foreach (TItem item in materialized)
+			{
+				TMember current = memberAccessor(item);
+				if (index++ == 0)
+				{
+					previous = current;
+					continue;
+				}
+
+				int comparisonResult = comparer.Compare(previous, current);
+				if ((comparisonResult > 0 && sortOrder == SortOrder.Ascending) ||
+				    (comparisonResult < 0 && sortOrder == SortOrder.Descending))
+				{
+					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+						$"{it} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order in {Formatter.Format(materialized, FormattingOptions.MultipleLines)}");
+				}
+
+				previous = current;
+			}
+
+			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,
+				ToString());
+		}
+
+		public override string ToString()
+			=> $"be in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
 	}
 }

@@ -390,6 +390,13 @@ namespace aweXpect.Options
             Superset = 8,
         }
     }
+    public class CollectionOrderOptions<TItem>
+    {
+        public CollectionOrderOptions() { }
+        public System.Collections.Generic.IComparer<TItem> GetComparer() { }
+        public void SetComparer(System.Collections.Generic.IComparer<TItem> comparer) { }
+        public override string ToString() { }
+    }
     public class EquivalencyOptions
     {
         public EquivalencyOptions() { }
@@ -488,6 +495,11 @@ namespace aweXpect.Results
     {
         public BetweenResult(System.Func<int, TTarget> callback) { }
         public TTarget And(aweXpect.Times maximum) { }
+    }
+    public class CollectionOrderResult<TMember, TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
+    {
+        public CollectionOrderResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.CollectionOrderOptions<TMember> options) { }
+        public aweXpect.Results.AndOrResult<TType, TThat> Using(System.Collections.Generic.IComparer<TMember> comparer) { }
     }
     public class CountResult<TType, TThat> : aweXpect.Results.CountResult<TType, TThat, aweXpect.Results.CountResult<TType, TThat>>
     {

@@ -1,0 +1,27 @@
+﻿using System.Collections.Generic;
+using aweXpect.Core;
+using aweXpect.Options;
+
+namespace aweXpect.Results;
+
+/// <summary>
+///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
+///     <para />
+///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows specifying
+///     the <see cref="IComparer{TMember}" /> used to verify the order of items.
+/// </summary>
+public class CollectionOrderResult<TMember, TType, TThat>(
+	ExpectationBuilder expectationBuilder,
+	TThat returnValue,
+	CollectionOrderOptions<TMember> options)
+	: AndOrResult<TType, TThat>(expectationBuilder, returnValue)
+{
+	/// <summary>
+	///     Use the given <paramref name="comparer" /> to verify the order of items.
+	/// </summary>
+	public AndOrResult<TType, TThat> Using(IComparer<TMember> comparer)
+	{
+		options.SetComparer(comparer);
+		return this;
+	}
+}
