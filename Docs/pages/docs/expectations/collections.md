@@ -52,6 +52,39 @@ await Expect.That(values).Should().Be([3, 3, 1, 1]).OrMore().InAnyOrder().Ignori
 To check for a proper superset, use `AndMore` instead (which would fail for equal collections).
 
 
+## All be
+
+You can verify, that all items in the collection are equal to the `expected` value
+```csharp
+int[] values = [1, 1, 1]
+
+await Expect.That(values).Should().AllBe(1);
+```
+
+You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
+```csharp
+IEnumerable<MyClass> values = //...
+MyClass expected = //...
+
+await Expect.That(values).Should().AllBe(expected).Equivalent();
+await Expect.That(values).Should().AllBe(expected).Using(new MyClassComparer());
+```
+
+For strings you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
+```csharp
+string[] values = ["foo", "FOO", "Foo"];
+
+await Expect.That(values).Should().AllBe("foo").IgnoringCase();
+```
+
+You can also use a predicate that all items have to satisfy:
+```csharp
+int[] values = [1, 2, 3];
+
+await Expect.That(values).Should().AllBe(x => x < 4);
+```
+
+
 ## Contain
 
 You can verify, that the collection contains a specific item or not:
