@@ -12,6 +12,112 @@ public sealed partial class AsyncEnumerableShould
 	public sealed class ContainTests
 	{
 		[Fact]
+		public async Task ForStrings_ShouldCompareCaseSensitive()
+		{
+			IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+
+			async Task Act()
+				=> await That(sut).Should().Contain("GREEN");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "GREEN" at least once,
+				             but it contained it 0 times in [
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenExpectedIsNotPartOfStringEnumerable_ShouldFail()
+		{
+			IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+
+			async Task Act()
+				=> await That(sut).Should().Contain("red");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "red" at least once,
+				             but it contained it 0 times in [
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenExpectedIsPartOfStringEnumerable_ShouldSucceed()
+		{
+			IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+
+			async Task Act()
+				=> await That(sut).Should().Contain("blue");
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenIgnoringCase_ShouldSucceedForCaseSensitiveDifference()
+		{
+			IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+
+			async Task Act()
+				=> await That(sut).Should().Contain("GREEN").IgnoringCase();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_WithAtLeast_ShouldVerifyCorrectNumberOfTimes()
+		{
+			IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "green", "blue", "yellow"]);
+
+			async Task Act()
+				=> await That(sut).Should().Contain("green").AtLeast(3.Times());
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "green" at least 3 times,
+				             but it contained it 2 times in [
+				               "green",
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WithAtMost_ShouldVerifyCorrectNumberOfTimes()
+		{
+			IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "green", "green", "green", "blue", "yellow"]);
+
+			async Task Act()
+				=> await That(sut).Should().Contain("green").AtMost(2.Times());
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "green" at most 2 times,
+				             but it contained it 4 times in [
+				               "green",
+				               "green",
+				               "green",
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
 			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
@@ -130,8 +236,14 @@ public sealed partial class AsyncEnumerableShould
 		[Fact]
 		public async Task Item_ShouldSupportEquivalent()
 		{
-			IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass { Value = x }, 20);
-			MyClass expected = new() { Value = 1 };
+			IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass
+			{
+				Value = x
+			}, 20);
+			MyClass expected = new()
+			{
+				Value = 1
+			};
 
 			async Task Act()
 				=> await That(subject).Should().Contain(expected).AtLeast(1).Equivalent();
@@ -193,6 +305,7 @@ public sealed partial class AsyncEnumerableShould
 			{
 				expected++;
 			}
+
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values);
 
 			async Task Act()
@@ -376,6 +489,7 @@ public sealed partial class AsyncEnumerableShould
 			{
 				expected++;
 			}
+
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values.ToArray());
 
 			async Task Act()
@@ -388,47 +502,43 @@ public sealed partial class AsyncEnumerableShould
 				              but it contained it 0 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
 				              """);
 		}
-
-		[Fact]
-		public async Task String_WhenStringDiffersInCase_ShouldFail()
-		{
-			string[] values = ["a", "b", "c"];
-			string unexpected = "A";
-			
-			IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
-
-			async Task Act()
-				=> await That(subject).Should().Contain(unexpected);
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage($"""
-				             Expected subject to
-				             contain "A" at least once,
-				             but it contained it 0 times in [
-				               "a",
-				               "b",
-				               "c"
-				             ]
-				             """);
-		}
-
-		[Fact]
-		public async Task String_WhenStringDiffersInCase_WhileIgnoringCase_ShouldSucceed()
-		{
-			string[] values = ["a", "b", "c"];
-			string unexpected = "A";
-			
-			IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
-
-			async Task Act()
-				=> await That(subject).Should().Contain(unexpected).IgnoringCase();
-
-			await That(Act).Should().NotThrow();
-		}
 	}
 
 	public sealed class NotContainTests
 	{
+		[Fact]
+		public async Task ForStrings_WhenStringDiffersInCase_ShouldSucceed()
+		{
+			string[] values = ["a", "b", "c"];
+			string unexpected = "A";
+
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
+
+			async Task Act()
+				=> await That(subject).Should().NotContain(unexpected);
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenStringDiffersInCase_WhileIgnoringCase_ShouldFail()
+		{
+			string[] values = ["a", "b", "c"];
+			string unexpected = "A";
+
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
+
+			async Task Act()
+				=> await That(subject).Should().NotContain(unexpected).IgnoringCase();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "A" ignoring case,
+				             but it did
+				             """);
+		}
+
 		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
@@ -461,7 +571,10 @@ public sealed partial class AsyncEnumerableShould
 		public async Task Item_ShouldSupportEquivalent()
 		{
 			IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass(x), 20);
-			MyClass unexpected = new() { Value = 5 };
+			MyClass unexpected = new()
+			{
+				Value = 5
+			};
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(unexpected).Equivalent();
@@ -504,45 +617,13 @@ public sealed partial class AsyncEnumerableShould
 			{
 				unexpected++;
 			}
+
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values);
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(unexpected);
 
 			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task String_WhenStringDiffersInCase_ShouldSucceed()
-		{
-			string[] values = ["a", "b", "c"];
-			string unexpected = "A";
-			
-			IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
-
-			async Task Act()
-				=> await That(subject).Should().NotContain(unexpected);
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task String_WhenStringDiffersInCase_WhileIgnoringCase_ShouldFail()
-		{
-			string[] values = ["a", "b", "c"];
-			string unexpected = "A";
-			
-			IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
-
-			async Task Act()
-				=> await That(subject).Should().NotContain(unexpected).IgnoringCase();
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             not contain "A" ignoring case,
-				             but it did
-				             """);
 		}
 
 		[Fact]
@@ -601,6 +682,7 @@ public sealed partial class AsyncEnumerableShould
 			{
 				unexpected++;
 			}
+
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(values);
 
 			async Task Act()

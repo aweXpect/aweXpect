@@ -639,6 +639,42 @@ public sealed partial class EnumerableShould
 		}
 
 		[Fact]
+		public async Task ForStrings_AsWildcard_ShouldNotThrowWhenMatchingWildcard()
+		{
+			IEnumerable<string> subject = ["foo", "bar", "baz"];
+			string[] expected = ["*oo", "*a?", "?a?"];
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected).AsWildcard();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_IgnoringLeadingWhiteSpace_ShouldNotThrowWhenOnlyDifferenceIsInLeadingWhiteSpace()
+		{
+			IEnumerable<string> subject = [" a", "b", "\tc"];
+			string[] expected = ["a", " b", "c"];
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringLeadingWhiteSpace();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_IgnoringTrailingWhiteSpace_ShouldNotThrowWhenOnlyDifferenceIsInTrailingWhiteSpace()
+		{
+			IEnumerable<string> subject = ["a ", "b", "c\t"];
+			string[] expected = ["a", "b ", "c"];
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringTrailingWhiteSpace();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
 		public async Task SameOrder_CollectionWithMoreThan20Deviations_ShouldFail()
 		{
 			IEnumerable<int> subject = Enumerable.Range(1, 21);

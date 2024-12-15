@@ -668,6 +668,42 @@ public sealed partial class AsyncEnumerableShould
 		}
 
 		[Fact]
+		public async Task ForStrings_AsWildcard_ShouldNotThrowWhenMatchingWildcard()
+		{
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+			string[] expected = ["*oo", "*a?", "?a?"];
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected).AsWildcard();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_IgnoringLeadingWhiteSpace_ShouldNotThrowWhenOnlyDifferenceIsInLeadingWhiteSpace()
+		{
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable([" a", "b", "\tc"]);
+			string[] expected = ["a", " b", "c"];
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringLeadingWhiteSpace();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_IgnoringTrailingWhiteSpace_ShouldNotThrowWhenOnlyDifferenceIsInTrailingWhiteSpace()
+		{
+			IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a ", "b", "c\t"]);
+			string[] expected = ["a", "b ", "c"];
+
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringTrailingWhiteSpace();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
 		public async Task SameOrder_CollectionWithMoreThan20Deviations_ShouldFail()
 		{
 			IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 21));
