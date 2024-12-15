@@ -21,7 +21,7 @@ public sealed partial class QuantifiedCollectionResult
 				.WithMessage("""
 				             Expected subject to
 				             have all items be type MyClass,
-				             but not all were
+				             but only 2 of 3 were
 				             """);
 		}
 
