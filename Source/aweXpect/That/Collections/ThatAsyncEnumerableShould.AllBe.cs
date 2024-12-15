@@ -1,6 +1,9 @@
-﻿using System;
+﻿#if NET6_0_OR_GREATER
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -13,18 +16,18 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatEnumerableShould
+public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		AllBe<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>> source,
 			TItem expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it => new AllBeConstraint<TItem>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
@@ -36,12 +39,12 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>> AllBe(
-		this IThat<IEnumerable<string>> source,
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>> AllBe(
+		this IThat<IAsyncEnumerable<string>> source,
 		string expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source.ExpectationBuilder
 				.AddConstraint(it => new AllBeConstraint<string>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
@@ -53,9 +56,9 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		AllBe<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
@@ -71,14 +74,14 @@ public static partial class ThatEnumerableShould
 		string it,
 		Func<string> expectationText,
 		Func<TItem, bool> predicate)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context, CancellationToken cancellationToken)
 		{
-			IEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			IAsyncEnumerable<TItem> materializedAsyncEnumerable =
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> notMatchingItems = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
-			foreach (TItem item in materializedEnumerable)
+			await foreach (TItem item in materializedAsyncEnumerable.WithCancellation(cancellationToken))
 			{
 				if (!predicate(item))
 				{
@@ -88,7 +91,7 @@ public static partial class ThatEnumerableShould
 						var displayCount = Math.Min(
 							Customize.Formatting.MaximumNumberOfCollectionItems,
 							notMatchingItems.Count);
-						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+						return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 							$"{it} contained at least {displayCount} other {(displayCount == 1 ? "item" : "items")}: {Formatter.Format(notMatchingItems, FormattingOptions.MultipleLines)}");
 					}
 				}
@@ -96,11 +99,11 @@ public static partial class ThatEnumerableShould
 
 			if (notMatchingItems.Count == 0)
 			{
-				return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
+				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedAsyncEnumerable,
 					ToString());
 			}
 
-			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 				$"{it} contained {notMatchingItems.Count} other {(notMatchingItems.Count == 1 ? "item" : "items")}: {Formatter.Format(notMatchingItems, FormattingOptions.MultipleLines)}");
 		}
 
@@ -108,3 +111,4 @@ public static partial class ThatEnumerableShould
 			=> expectationText();
 	}
 }
+#endif

@@ -84,6 +84,8 @@ int[] values = [1, 2, 3];
 await Expect.That(values).Should().AllBe(x => x < 4);
 ```
 
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
 
 ## Contain
 

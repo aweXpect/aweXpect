@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if NET6_0_OR_GREATER
+using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Tests.TestHelpers;
 
@@ -6,14 +7,14 @@ using aweXpect.Tests.TestHelpers;
 
 namespace aweXpect.Tests.ThatTests.Collections;
 
-public sealed partial class EnumerableShould
+public sealed partial class AsyncEnumerableShould
 {
 	public sealed class AllBeTests
 	{
 		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(1)
@@ -23,9 +24,9 @@ public sealed partial class EnumerableShould
 		}
 
 		[Fact]
-		public async Task Item_DoesNotMaterializeEnumerable()
+		public async Task Item_DoesNotMaterializeAsyncEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(1);
@@ -93,7 +94,7 @@ public sealed partial class EnumerableShould
 		public async Task Item_WhenNoItemsDiffer_ShouldSucceed()
 		{
 			int constantValue = 42;
-			int[] subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
+			IAsyncEnumerable<int> subject = Factory.GetConstantValueAsyncEnumerable(constantValue, 20);
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(constantValue);
@@ -104,7 +105,7 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Predicate_DoesNotEnumerateTwice()
 		{
-			ThrowWhenIteratingTwiceEnumerable subject = new();
+			ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(x => x > 0)
@@ -114,9 +115,9 @@ public sealed partial class EnumerableShould
 		}
 
 		[Fact]
-		public async Task Predicate_DoesNotMaterializeEnumerable()
+		public async Task Predicate_DoesNotMaterializeAsyncEnumerable()
 		{
-			IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+			IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(x => x <= 1);
@@ -173,7 +174,7 @@ public sealed partial class EnumerableShould
 		public async Task Predicate_WhenNoItemsDiffer_ShouldSucceed()
 		{
 			int constantValue = 42;
-			int[] subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
+			IAsyncEnumerable<int> subject = Factory.GetConstantValueAsyncEnumerable(constantValue, 20);
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(constantValue);
@@ -182,9 +183,9 @@ public sealed partial class EnumerableShould
 		}
 
 		[Fact]
-		public async Task String_DoesNotMaterializeEnumerable()
+		public async Task String_DoesNotMaterializeAsyncEnumerable()
 		{
-			IEnumerable<string> subject = Factory.GetFibonacciNumbers(i => $"item-{i}");
+			IAsyncEnumerable<string> subject = Factory.GetAsyncFibonacciNumbers(i => $"item-{i}");
 
 			async Task Act()
 				=> await That(subject).Should().AllBe("item-1");
@@ -270,7 +271,7 @@ public sealed partial class EnumerableShould
 		public async Task String_WhenNoItemsDiffer_ShouldSucceed()
 		{
 			string constantValue = "foo";
-			string[] subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
+			IAsyncEnumerable<string> subject = Factory.GetConstantValueAsyncEnumerable(constantValue, 20);
 
 			async Task Act()
 				=> await That(subject).Should().AllBe(constantValue);
@@ -279,3 +280,4 @@ public sealed partial class EnumerableShould
 		}
 	}
 }
+#endif

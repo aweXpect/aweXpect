@@ -49,6 +49,21 @@ internal static class Factory
 	}
 #endif
 
+#if NET6_0_OR_GREATER
+	/// <summary>
+	///     Returns an "infinite" <see cref="IAsyncEnumerable{T}" /> of <paramref name="value"/>.
+	/// </summary>
+	public static async IAsyncEnumerable<T> GetConstantValueAsyncEnumerable<T>(T value, int maxIterations = int.MaxValue)
+	{
+		int iterations = 0;
+		do
+		{
+			await Task.Yield();
+			yield return value;
+		} while (++iterations < maxIterations);
+	}
+#endif
+
 	/// <summary>
 	///     Returns an "infinite" <see cref="IEnumerable{T}" /> of fibonacci numbers.
 	/// </summary>
