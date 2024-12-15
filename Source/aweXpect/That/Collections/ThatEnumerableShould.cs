@@ -44,6 +44,7 @@ public static partial class ThatEnumerableShould
 			CancellationToken cancellationToken)
 		{
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			bool cancelEarly = actual is not ICollection<TItem>;
 			int matchingCount = 0;
 			int notMatchingCount = 0;
 			int? totalCount = null;
@@ -60,7 +61,7 @@ public static partial class ThatEnumerableShould
 					notMatchingCount++;
 				}
 
-				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
 						totalCount);

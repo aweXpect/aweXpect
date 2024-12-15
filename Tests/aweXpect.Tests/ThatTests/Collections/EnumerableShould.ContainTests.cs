@@ -115,7 +115,7 @@ public sealed partial class EnumerableShould
 				             ]
 				             """);
 		}
-		
+
 		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
@@ -235,8 +235,14 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Item_ShouldSupportEquivalent()
 		{
-			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass { Value = x });
-			MyClass expected = new() { Value = 1 };
+			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass
+			{
+				Value = x
+			});
+			MyClass expected = new()
+			{
+				Value = 1
+			};
 
 			async Task Act()
 				=> await That(subject).Should().Contain(expected).AtLeast(1).Equivalent();
@@ -494,6 +500,65 @@ public sealed partial class EnumerableShould
 	public sealed class NotContainTests
 	{
 		[Fact]
+		public async Task ForStrings_DoesNotMaterializeEnumerable()
+		{
+			IEnumerable<string> subject = Factory.GetFibonacciNumbers(x => $"item-{x}");
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("item-5");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "item-5",
+				             but it did
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_ShouldSupportCasing()
+		{
+			string[] subject = ["FOO"];
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("foo").IgnoringCase();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "foo" ignoring case,
+				             but it did
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenEnumerableContainsUnexpectedValue_ShouldFail()
+		{
+			string[] subject = ["FOO", "foo"];
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("foo");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "foo",
+				             but it did
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenEnumerableDoesNotContainUnexpectedValue_ShouldSucceed()
+		{
+			string[] subject = ["FOO"];
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("foo");
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
 			ThrowWhenIteratingTwiceEnumerable subject = new();
@@ -524,8 +589,14 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Item_ShouldSupportEquivalent()
 		{
-			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass { Value = x });
-			MyClass unexpected = new() { Value = 5 };
+			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass
+			{
+				Value = x
+			});
+			MyClass unexpected = new()
+			{
+				Value = 5
+			};
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(unexpected).Equivalent();

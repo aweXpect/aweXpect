@@ -77,6 +77,49 @@ public sealed partial class EnumerableShould
 		}
 
 		[Fact]
+		public async Task Items_WhenArrayContainsMatchingItems_ShouldSucceed()
+		{
+			int[] subject = [1, 2, 3];
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Items_WhenArrayContainsTooFewItems_ShouldFail()
+		{
+			int[] subject = [1, 2];
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found only 2
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenArrayContainsTooManyItems_ShouldSucceed()
+		{
+			int[] subject = [1, 2, 3, 4, 5, 6, 7];
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found 7
+				             """);
+		}
+
+		[Fact]
 		public async Task Items_WhenEnumerableContainsMatchingItems_ShouldSucceed()
 		{
 			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
