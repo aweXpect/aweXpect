@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Formatting;
 
@@ -9,24 +10,60 @@ public static partial class ValueFormatters
 {
 	private static readonly Dictionary<Type, string> Aliases = new()
 	{
-		{ typeof(byte), "byte" },
-		{ typeof(sbyte), "sbyte" },
-		{ typeof(short), "short" },
-		{ typeof(ushort), "ushort" },
-		{ typeof(int), "int" },
-		{ typeof(uint), "uint" },
-		{ typeof(long), "long" },
-		{ typeof(ulong), "ulong" },
-		{ typeof(float), "float" },
-		{ typeof(double), "double" },
-		{ typeof(decimal), "decimal" },
-		{ typeof(object), "object" },
-		{ typeof(bool), "bool" },
-		{ typeof(char), "char" },
-		{ typeof(string), "string" },
-		{ typeof(void), "void" },
-		{ typeof(nint), "nint" },
-		{ typeof(nuint), "nuint" }
+		{
+			typeof(byte), "byte"
+		},
+		{
+			typeof(sbyte), "sbyte"
+		},
+		{
+			typeof(short), "short"
+		},
+		{
+			typeof(ushort), "ushort"
+		},
+		{
+			typeof(int), "int"
+		},
+		{
+			typeof(uint), "uint"
+		},
+		{
+			typeof(long), "long"
+		},
+		{
+			typeof(ulong), "ulong"
+		},
+		{
+			typeof(float), "float"
+		},
+		{
+			typeof(double), "double"
+		},
+		{
+			typeof(decimal), "decimal"
+		},
+		{
+			typeof(object), "object"
+		},
+		{
+			typeof(bool), "bool"
+		},
+		{
+			typeof(char), "char"
+		},
+		{
+			typeof(string), "string"
+		},
+		{
+			typeof(void), "void"
+		},
+		{
+			typeof(nint), "nint"
+		},
+		{
+			typeof(nuint), "nuint"
+		}
 	};
 
 	/// <summary>
@@ -82,8 +119,7 @@ public static partial class ValueFormatters
 		else if (value.IsGenericType)
 		{
 			Type genericTypeDefinition = value.GetGenericTypeDefinition();
-			stringBuilder.Append(genericTypeDefinition.Name
-				.Substring(0, genericTypeDefinition.Name.IndexOf('`')));
+			stringBuilder.Append(genericTypeDefinition.Name.SubstringUntilFirst('`'));
 			stringBuilder.Append('<');
 			bool isFirstArgument = true;
 			foreach (Type argument in value.GetGenericArguments())

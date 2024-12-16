@@ -15,11 +15,11 @@ public static partial class ValueFormatters
 	/// </summary>
 	public static string Format<T>(
 		this ValueFormatter formatter,
-		IEnumerable<T> value,
+		IEnumerable<T>? value,
 		FormattingOptions? options = null)
 	{
 		StringBuilder stringBuilder = new();
-		Format(formatter, stringBuilder, (IEnumerable)value, options);
+		Format(formatter, stringBuilder, (IEnumerable?)value, options);
 		return stringBuilder.ToString();
 	}
 
@@ -28,7 +28,7 @@ public static partial class ValueFormatters
 	/// </summary>
 	public static string Format(
 		this ValueFormatter formatter,
-		IEnumerable value,
+		IEnumerable? value,
 		FormattingOptions? options = null)
 	{
 		StringBuilder stringBuilder = new();
@@ -43,9 +43,15 @@ public static partial class ValueFormatters
 	public static void Format(
 		this ValueFormatter formatter,
 		StringBuilder stringBuilder,
-		IEnumerable value,
+		IEnumerable? value,
 		FormattingOptions? options = null)
 	{
+		if (value == null)
+		{
+			stringBuilder.Append(ValueFormatter.NullString);
+			return;
+		}
+
 		options ??= FormattingOptions.SingleLine;
 		int maxCount = Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
 		int count = maxCount;
@@ -103,7 +109,7 @@ public static partial class ValueFormatters
 	public static void Format<T>(
 		this ValueFormatter formatter,
 		StringBuilder stringBuilder,
-		IEnumerable<T> value,
+		IEnumerable<T>? value,
 		FormattingOptions? options = null)
-		=> Format(formatter, stringBuilder, (IEnumerable)value, options);
+		=> Format(formatter, stringBuilder, (IEnumerable?)value, options);
 }
