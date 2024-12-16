@@ -157,6 +157,7 @@ partial class Build
 		sb.AppendLine($"### {projectName}");
 		sb.AppendLine("<details>");
 		sb.AppendLine("<summary>Details</summary>");
+		sb.AppendLine();
 		int count = 0;
 		foreach (string line in fileContent.Skip(1))
 		{
@@ -169,6 +170,7 @@ partial class Build
 			{
 				if (++count == 1)
 				{
+					sb.AppendLine();
 					sb.AppendLine("</details>");
 					sb.AppendLine();
 				}
