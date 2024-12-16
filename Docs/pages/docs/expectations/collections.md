@@ -56,9 +56,7 @@ To check for a proper superset, use `AndMore` instead (which would fail for equa
 
 You can verify, that all items in the collection are equal to the `expected` value
 ```csharp
-int[] values = [1, 1, 1]
-
-await Expect.That(values).Should().AllBe(1);
+await Expect.That([1, 1, 1]).Should().AllBe(1);
 ```
 
 You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
@@ -72,9 +70,7 @@ await Expect.That(values).Should().AllBe(expected).Using(new MyClassComparer());
 
 For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
 ```csharp
-string[] values = ["foo", "FOO", "Foo"];
-
-await Expect.That(values).Should().AllBe("foo").IgnoringCase();
+await Expect.That(["foo", "FOO", "Foo"]).Should().AllBe("foo").IgnoringCase();
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
@@ -84,9 +80,7 @@ await Expect.That(values).Should().AllBe("foo").IgnoringCase();
 
 You can verify, that all items in a collection are unique.
 ```csharp
-IEnumerable<int> values = [1, 2, 3];
-
-await Expect.That(values).Should().AllBeUnique();
+await Expect.That([1, 2, 3]).Should().AllBeUnique();
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
@@ -96,9 +90,7 @@ await Expect.That(values).Should().AllBeUnique();
 
 You can verify, that all items in a collection satisfy a condition:
 ```csharp
-int[] values = [1, 2, 3];
-
-await Expect.That(values).Should().AllSatisfy(x => x < 4);
+await Expect.That([1, 2, 3]).Should().AllSatisfy(x => x < 4);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
@@ -237,6 +229,7 @@ await Expect.That(values).Should().HaveAtMost(11).Items();
 You can verify, that between `minimum` and `maximum` items in the collection, satisfy an expectation:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
+
 await Expect.That(values).Should().HaveBetween(1).And(2, x => x.Satisfy(i => i < 2));
 ```
 
