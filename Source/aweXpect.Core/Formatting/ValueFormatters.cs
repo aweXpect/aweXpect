@@ -16,7 +16,8 @@ public static partial class ValueFormatters
 	public static string Format(
 		this ValueFormatter formatter,
 		object? value,
-		FormattingOptions? options = null)
+		FormattingOptions? options = null,
+		FormattingContext? context = null)
 	{
 		if (value is null)
 		{
@@ -24,7 +25,7 @@ public static partial class ValueFormatters
 		}
 
 		StringBuilder stringBuilder = new();
-		Format(formatter, stringBuilder, value, options);
+		Format(formatter, stringBuilder, value, options, context);
 		return stringBuilder.ToString();
 	}
 
@@ -35,7 +36,8 @@ public static partial class ValueFormatters
 		this ValueFormatter formatter,
 		StringBuilder stringBuilder,
 		object? value,
-		FormattingOptions? options = null)
+		FormattingOptions? options = null,
+		FormattingContext? context = null)
 	{
 		if (value is null)
 		{
@@ -145,8 +147,8 @@ public static partial class ValueFormatters
 		}
 		else
 		{
-			ValueFormatter.FormatObject(stringBuilder, value,
-				options ?? FormattingOptions.MultipleLines);
+			FormatObject(stringBuilder, value,
+				options ?? FormattingOptions.MultipleLines, context);
 		}
 	}
 }
