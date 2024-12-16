@@ -34,6 +34,17 @@ internal static class StringExtensions
 			.Replace("\r", "\n", StringComparison.Ordinal);
 	}
 
+	public static string SubstringUntilFirst(this string name, char c)
+	{
+		int index = name.IndexOf(c);
+		if (index >= 0)
+		{
+			return name.Substring(0, index);
+		}
+
+		return name;
+	}
+
 	[return: NotNullIfNotNull(nameof(value))]
 	public static string? ToSingleLine(this string? value) => value?.Replace("\n", "\\n").Replace("\r", "\\r");
 
