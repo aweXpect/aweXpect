@@ -8,6 +8,13 @@ namespace aweXpect.Tests.TestHelpers;
 /// </summary>
 public sealed class IgnoreCaseForVocalsComparer : IEqualityComparer<string>
 {
+	private static string? LowercaseVocals(string? input)
+		=> input?.Replace('A', 'a')
+			.Replace('E', 'e')
+			.Replace('I', 'i')
+			.Replace('O', 'o')
+			.Replace('U', 'u');
+
 	#region IEqualityComparer<string> Members
 
 	public bool Equals(string? x, string? y)
@@ -18,17 +25,7 @@ public sealed class IgnoreCaseForVocalsComparer : IEqualityComparer<string>
 		return adjustedX?.Equals(adjustedY, StringComparison.Ordinal) == true;
 	}
 
-	public int GetHashCode(string obj)
-	{
-		return obj.GetHashCode();
-	}
+	public int GetHashCode(string obj) => obj.GetHashCode();
 
 	#endregion
-
-	private static string? LowercaseVocals(string? input)
-		=> input?.Replace('A', 'a')
-			.Replace('E', 'e')
-			.Replace('I', 'i')
-			.Replace('O', 'o')
-			.Replace('U', 'u');
 }

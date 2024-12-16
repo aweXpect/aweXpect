@@ -12,15 +12,13 @@ public static partial class ThatDateTimeShould
 	public static AndOrResult<DateTime, IThat<DateTime>> HaveMillisecond(
 		this IThat<DateTime> source,
 		int? expected)
-	{
-		return new AndOrResult<DateTime, IThat<DateTime>>(source.ExpectationBuilder.AddConstraint(it
+		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
 					it,
 					expected,
 					(a, e) => a.Millisecond == e,
 					$"have millisecond of {Formatter.Format(expected)}")),
 			source);
-	}
 
 	/// <summary>
 	///     Verifies that the millisecond of the subject is not equal to the <paramref name="unexpected" /> value.

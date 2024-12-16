@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
@@ -86,7 +87,7 @@ public abstract class Expectation
 			if (expectations.Length == 0)
 			{
 				throw new ArgumentException("You must provide at least one expectation.",
-					paramName: nameof(expectations));
+					nameof(expectations));
 			}
 
 			_expectations = expectations;
@@ -133,7 +134,7 @@ public abstract class Expectation
 				{
 					expectationTexts.Add(
 						$"{result.SubjectLine} {result.ConstraintResult.ExpectationText
-							.Indent("      ", indentFirstLine: false)}");
+							.Indent("      ", false)}");
 				}
 
 				if (result.ConstraintResult is ConstraintResult.Failure failure)
@@ -147,7 +148,7 @@ public abstract class Expectation
 					else
 					{
 						failureText =
-							$" [{index:00}] {failure.ResultText.Indent("      ", indentFirstLine: false)}";
+							$" [{index:00}] {failure.ResultText.Indent("      ", false)}";
 					}
 
 					failureTexts.Add(failureText);
@@ -170,12 +171,12 @@ public abstract class Expectation
 
 		private string CreateFailureMessage(ConstraintResult.Failure failure)
 		{
-			return $"""
-			        {GetSubjectLine()}
-			        {failure.ExpectationText}
-			        but
-			        {failure.ResultText}
-			        """;
+			StringBuilder sb = new();
+			sb.AppendLine(GetSubjectLine());
+			sb.AppendLine(failure.ExpectationText);
+			sb.AppendLine("but");
+			sb.Append(failure.ResultText);
+			return sb.ToString();
 		}
 
 		private async Task GetResultOrThrow()

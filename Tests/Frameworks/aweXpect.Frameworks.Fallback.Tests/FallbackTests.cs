@@ -8,9 +8,7 @@ public sealed class FallbackTests
 	public void OnFail_WhenNotSpecifyingAnyTestFramework_ShouldFallbackToThrowingAFailException()
 	{
 		void Act()
-		{
-			Fail.Test("my message");
-		}
+			=> Fail.Test("my message");
 
 		FailException exception = Assert.Throws<FailException>(Act);
 		Assert.Equal("my message", exception.Message);
@@ -20,9 +18,7 @@ public sealed class FallbackTests
 	public void OnSkip_WhenNotSpecifyingAnyTestFramework_ShouldFallbackToThrowingASkipException()
 	{
 		void Act()
-		{
-			Skip.Test("my message");
-		}
+			=> Skip.Test("my message");
 
 		SkipException exception = Assert.Throws<SkipException>(Act);
 		Assert.Equal("my message", exception.Message);

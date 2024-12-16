@@ -13,9 +13,7 @@ internal static class Compare
 {
 	internal static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
 		CompareOptions options)
-	{
-		return CheckEquivalent(actual, expected, options, [], MemberType.Value);
-	}
+		=> CheckEquivalent(actual, expected, options, [], MemberType.Value);
 
 	internal static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
 		CompareOptions options, string[] memberNames, MemberType memberType)
@@ -56,7 +54,7 @@ internal static class Compare
 				object? expectedObject = expectedObjects.ElementAtOrDefault(i);
 
 				foreach (ComparisonFailure comparisonFailure in CheckEquivalent(actualObject,
-					expectedObject, options, [..memberNames, $"[{i}]"], MemberType.EnumerableItem))
+					         expectedObject, options, [..memberNames, $"[{i}]"], MemberType.EnumerableItem))
 				{
 					yield return comparisonFailure;
 				}
@@ -83,7 +81,7 @@ internal static class Compare
 		}
 
 		foreach (FieldInfo fieldInfo in actual.GetType().GetFields()
-			.Concat(expected.GetType().GetFields()).Distinct())
+			         .Concat(expected.GetType().GetFields()).Distinct())
 		{
 			string?[] readOnlySpan = [..memberNames, fieldInfo.Name];
 
@@ -117,16 +115,16 @@ internal static class Compare
 			}
 
 			foreach (ComparisonFailure comparisonFailure in CheckEquivalent(actualFieldValue,
-				expectedFieldValue, options, [..memberNames, fieldInfo.Name], MemberType.Field))
+				         expectedFieldValue, options, [..memberNames, fieldInfo.Name], MemberType.Field))
 			{
 				yield return comparisonFailure;
 			}
 		}
 
 		foreach (PropertyInfo propertyInfo in actual.GetType().GetProperties()
-			.Concat(expected.GetType().GetProperties())
-			.Distinct()
-			.Where(p => p.GetIndexParameters().Length == 0))
+			         .Concat(expected.GetType().GetProperties())
+			         .Distinct()
+			         .Where(p => p.GetIndexParameters().Length == 0))
 		{
 			string?[] readOnlySpan = [..memberNames, propertyInfo.Name];
 
@@ -160,8 +158,8 @@ internal static class Compare
 			}
 
 			foreach (ComparisonFailure comparisonFailure in CheckEquivalent(actualPropertyValue,
-				expectedPropertyValue, options, [..memberNames, propertyInfo.Name],
-				MemberType.Property))
+				         expectedPropertyValue, options, [..memberNames, propertyInfo.Name],
+				         MemberType.Property))
 			{
 				yield return comparisonFailure;
 			}

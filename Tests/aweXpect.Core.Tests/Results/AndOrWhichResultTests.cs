@@ -8,12 +8,10 @@ public class AndOrWhichResultTests
 		MyClass sut = new();
 
 		async Task Act()
-		{
-			await That(sut).Should().Be<MyClass>()
+			=> await That(sut).Should().Be<MyClass>()
 				.Which(f => f.Value1, f => f.Should().BeTrue())
 				.AndWhich(f => f.Value2, f => f.Should().BeTrue())
 				.And.BeSameAs(sut);
-		}
 
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
@@ -36,11 +34,9 @@ public class AndOrWhichResultTests
 		MyClass sut = new() { Value1 = value1, Value2 = value2 };
 
 		async Task Act()
-		{
-			await That(sut).Should().Be<MyClass>()
+			=> await That(sut).Should().Be<MyClass>()
 				.Which(f => f.Value1, f => f.Should().BeTrue())
 				.AndWhich(f => f.Value2, f => f.Should().BeTrue());
-		}
 
 		await That(Act).Should().ThrowException().OnlyIf(!expectSuccess)
 			.WithMessage($"""

@@ -5,15 +5,17 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the actual enumerable is empty.
+	///     Verifies that the collection is empty.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		BeEmpty<TItem>(
@@ -23,7 +25,7 @@ public static partial class ThatAsyncEnumerableShould
 			source);
 
 	/// <summary>
-	///     Verifies that the actual enumerable is not empty.
+	///     Verifies that the collection is not empty.
 	/// </summary>
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		NotBeEmpty<TItem>(
@@ -46,18 +48,21 @@ public static partial class ThatAsyncEnumerableShould
 				materializedEnumerable.GetAsyncEnumerator(cancellationToken);
 			if (await enumerator.MoveNextAsync())
 			{
-				List<TItem> items = new(11) { enumerator.Current };
+				List<TItem> items = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1)
+				{
+					enumerator.Current
+				};
 				while (await enumerator.MoveNextAsync())
 				{
 					items.Add(enumerator.Current);
-					if (items.Count == 11)
+					if (items.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
 					{
 						break;
 					}
 				}
 
 				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(items)}");
+					$"{it} was {Formatter.Format(items, FormattingOptions.MultipleLines)}");
 			}
 
 			if (cancellationToken.IsCancellationRequested)

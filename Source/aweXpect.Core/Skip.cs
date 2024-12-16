@@ -17,10 +17,7 @@ public static class Skip
 	/// </summary>
 	/// <param name="reason">The reason why the test was skipped</param>
 	[DoesNotReturn]
-	public static void Test(string reason)
-	{
-		Initialization.State.Value.Skip(reason);
-	}
+	public static void Test(string reason) => Initialization.State.Value.Skip(reason);
 
 	/// <summary>
 	///     Dynamically skips the current test when the <paramref name="condition" /> is <c>false</c>.

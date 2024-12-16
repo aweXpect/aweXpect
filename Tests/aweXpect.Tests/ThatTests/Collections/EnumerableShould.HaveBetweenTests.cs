@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using aweXpect.Tests.TestHelpers;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
@@ -53,6 +54,111 @@ public sealed partial class EnumerableShould
 				             Expected subject to
 				             have between 0 and 1 items be equal to 1,
 				             but at least 2 were
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_ConsidersCancellationToken()
+		{
+			using CancellationTokenSource cts = new();
+			CancellationToken token = cts.Token;
+			IEnumerable<int> subject = GetCancellingEnumerable(4, cts);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items()
+					.WithCancellation(token);
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but could not verify, because it was cancelled early
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenArrayContainsMatchingItems_ShouldSucceed()
+		{
+			int[] subject = [1, 2, 3];
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Items_WhenArrayContainsTooFewItems_ShouldFail()
+		{
+			int[] subject = [1, 2];
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found only 2
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenArrayContainsTooManyItems_ShouldSucceed()
+		{
+			int[] subject = [1, 2, 3, 4, 5, 6, 7];
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found 7
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsMatchingItems_ShouldSucceed()
+		{
+			IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsTooFewItems_ShouldFail()
+		{
+			IEnumerable<int> subject = ToEnumerable([1, 2]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found only 2
+				             """);
+		}
+
+		[Fact]
+		public async Task Items_WhenEnumerableContainsTooManyItems_ShouldSucceed()
+		{
+			IEnumerable<int> subject = ToEnumerable([1, 2, 3, 4, 5, 6, 7]);
+
+			async Task Act()
+				=> await That(subject).Should().HaveBetween(3).And(6).Items();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             have between 3 and 6 items,
+				             but found at least 7
 				             """);
 		}
 

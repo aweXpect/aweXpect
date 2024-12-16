@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Formatting;
 
@@ -14,11 +15,11 @@ public static partial class ValueFormatters
 	/// </summary>
 	public static string Format<T>(
 		this ValueFormatter formatter,
-		IEnumerable<T> value,
+		IEnumerable<T>? value,
 		FormattingOptions? options = null)
 	{
 		StringBuilder stringBuilder = new();
-		Format(formatter, stringBuilder, (IEnumerable)value, options);
+		Format(formatter, stringBuilder, (IEnumerable?)value, options);
 		return stringBuilder.ToString();
 	}
 
@@ -27,7 +28,7 @@ public static partial class ValueFormatters
 	/// </summary>
 	public static string Format(
 		this ValueFormatter formatter,
-		IEnumerable value,
+		IEnumerable? value,
 		FormattingOptions? options = null)
 	{
 		StringBuilder stringBuilder = new();
@@ -42,16 +43,24 @@ public static partial class ValueFormatters
 	public static void Format(
 		this ValueFormatter formatter,
 		StringBuilder stringBuilder,
-		IEnumerable value,
+		IEnumerable? value,
 		FormattingOptions? options = null)
 	{
+		if (value == null)
+		{
+			stringBuilder.Append(ValueFormatter.NullString);
+			return;
+		}
+
 		options ??= FormattingOptions.SingleLine;
-		int maxCount = CollectionFormatCount;
+		int maxCount = Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
 		int count = maxCount;
 		stringBuilder.Append('[');
 		bool hasMoreValues = false;
+		bool isNotEmpty = false;
 		foreach (object? v in value)
 		{
+			isNotEmpty = true;
 			if (count < maxCount)
 			{
 				if (options.UseLineBreaks)
@@ -76,7 +85,7 @@ public static partial class ValueFormatters
 				break;
 			}
 
-			stringBuilder.Append(Format(formatter, v, options));
+			stringBuilder.Append(Format(formatter, v, options).Indent("  ", false));
 		}
 
 		if (hasMoreValues)
@@ -85,7 +94,7 @@ public static partial class ValueFormatters
 			stringBuilder.Append(ellipsis);
 		}
 
-		if (options.UseLineBreaks)
+		if (options.UseLineBreaks && isNotEmpty)
 		{
 			stringBuilder.AppendLine();
 		}
@@ -100,7 +109,7 @@ public static partial class ValueFormatters
 	public static void Format<T>(
 		this ValueFormatter formatter,
 		StringBuilder stringBuilder,
-		IEnumerable<T> value,
+		IEnumerable<T>? value,
 		FormattingOptions? options = null)
-		=> Format(formatter, stringBuilder, (IEnumerable)value, options);
+		=> Format(formatter, stringBuilder, (IEnumerable?)value, options);
 }

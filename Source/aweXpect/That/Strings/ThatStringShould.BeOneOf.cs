@@ -11,12 +11,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>
-	public static StringEqualityResult<string?, IThat<string?>> BeOneOf(
+	public static StringEqualityTypeResult<string?, IThat<string?>> BeOneOf(
 		this IThat<string?> source,
 		params string?[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeOneOfConstraint(it, expected, options)),
 			source,
@@ -26,12 +26,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
 	/// </summary>
-	public static StringEqualityResult<string?, IThat<string?>> NotBeOneOf(
+	public static StringEqualityTypeResult<string?, IThat<string?>> NotBeOneOf(
 		this IThat<string?> source,
 		params string?[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new NotBeOneOfConstraint(it, unexpected, options)),
 			source,
@@ -54,8 +54,7 @@ public static partial class ThatStringShould
 			}
 
 			StringEqualityOptions stringEqualityOptions = options;
-			if (expectedValues.Any(expectedValue => stringEqualityOptions.Comparer
-				.Equals(actual, expectedValue)))
+			if (expectedValues.Any(expectedValue => stringEqualityOptions.AreConsideredEqual(actual, expectedValue)))
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}
@@ -85,8 +84,8 @@ public static partial class ThatStringShould
 			}
 
 			StringEqualityOptions stringEqualityOptions = options;
-			if (unexpectedValues.Any(unexpectedValue => stringEqualityOptions.Comparer
-				.Equals(actual, unexpectedValue)))
+			if (unexpectedValues.Any(unexpectedValue
+				    => stringEqualityOptions.AreConsideredEqual(actual, unexpectedValue)))
 			{
 				return new ConstraintResult.Failure<string?>(actual, ToString(),
 					$"{it} was {Formatter.Format(actual)}");

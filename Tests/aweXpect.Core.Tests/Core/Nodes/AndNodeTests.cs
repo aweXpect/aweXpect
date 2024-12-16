@@ -5,10 +5,10 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task ToString_ShouldCombineAllNodes()
 	{
-		#pragma warning disable CS4014
+#pragma warning disable CS4014
 		IThat<bool> that = That(true).Should();
 		that.BeTrue().And.BeFalse().And.Imply(false);
-		#pragma warning restore CS4014
+#pragma warning restore CS4014
 
 		string expectedResult = "be True and be False and imply False";
 

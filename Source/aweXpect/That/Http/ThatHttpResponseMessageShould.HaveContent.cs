@@ -14,16 +14,20 @@ public static partial class ThatHttpResponseMessageShould
 	/// <summary>
 	///     Verifies that the string content is equal to <paramref name="expected" />
 	/// </summary>
-	public static StringMatcherResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+	public static StringEqualityTypeResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
 		HaveContent(
 			this IThat<HttpResponseMessage?> source,
-			StringMatcher expected)
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new HasContentConstraint(it, expected)),
+			string expected)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityTypeResult<HttpResponseMessage, IThat<HttpResponseMessage?>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new HasContentConstraint(it, expected, options)),
 			source,
-			expected);
+			options);
+	}
 
-	private readonly struct HasContentConstraint(string it, StringMatcher expected)
+	private readonly struct HasContentConstraint(string it, string expected, StringEqualityOptions options)
 		: IAsyncConstraint<HttpResponseMessage>
 	{
 		public async Task<ConstraintResult> IsMetBy(
@@ -37,17 +41,17 @@ public static partial class ThatHttpResponseMessageShould
 			}
 
 			string message = await actual.Content.ReadAsStringAsync(cancellationToken);
-			if (expected.Matches(message))
+			if (options.AreConsideredEqual(message, expected))
 			{
 				return new ConstraintResult.Success<HttpResponseMessage?>(actual, ToString());
 			}
 
 			return new ConstraintResult.Failure<HttpResponseMessage?>(actual, ToString(),
-				expected.GetExtendedFailure(it, message));
+				options.GetExtendedFailure(it, expected, message));
 		}
 
 		public override string ToString()
-			=> $"have a string content {expected.GetExpectation(StringMatcher.GrammaticVoice.PassiveVoice)}";
+			=> $"have a string content {options.GetExpectation(expected, false)}";
 	}
 }
 #endif

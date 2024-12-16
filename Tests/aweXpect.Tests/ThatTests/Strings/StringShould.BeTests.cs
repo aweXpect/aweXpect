@@ -21,6 +21,36 @@ public sealed partial class StringShould
 		}
 
 		[Theory]
+		[InlineAutoData(" foo", "foo")]
+		[InlineAutoData("foo", " foo")]
+		[InlineAutoData("\tfoo", "\nfoo")]
+		[InlineAutoData("\r\nfoo", "foo")]
+		[InlineAutoData("foo", "\tfoo")]
+		public async Task IgnoringLeadingWhiteSpace_WhenStringsDifferOnlyInLeadingWhiteSpace_ShouldSucceed(
+			string subject, string expected)
+		{
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringLeadingWhiteSpace();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Theory]
+		[InlineAutoData("foo ", "foo")]
+		[InlineAutoData("foo", "foo ")]
+		[InlineAutoData("foo\t", "foo\n")]
+		[InlineAutoData("foo\r\n", "foo")]
+		[InlineAutoData("foo", "foo\t")]
+		public async Task IgnoringTrailingWhiteSpace_WhenStringsDifferOnlyInTrailingWhiteSpace_ShouldSucceed(
+			string subject, string expected)
+		{
+			async Task Act()
+				=> await That(subject).Should().Be(expected).IgnoringTrailingWhiteSpace();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Theory]
 		[AutoData]
 		public async Task WhenStringsAreTheSame_ShouldSucceed(string subject)
 		{

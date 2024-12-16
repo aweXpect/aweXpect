@@ -1,7 +1,7 @@
 <Project>
 
 	<Import Project="$(MSBuildThisFileDirectory)/../Directory.Build.props"
-	        Condition="Exists('$(MSBuildThisFileDirectory)/../Directory.Build.props')" />
+			Condition="Exists('$(MSBuildThisFileDirectory)/../Directory.Build.props')"/>
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net48</TargetFrameworks>
@@ -17,13 +17,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="xunit" />
+		<PackageReference Include="xunit"/>
 		<PackageReference Include="xunit.runner.visualstudio">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="AutoFixture.Xunit2" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" />
+		<PackageReference Include="AutoFixture.Xunit2"/>
+		<PackageReference Include="Microsoft.NET.Test.Sdk"/>
 		<PackageReference Include="Nullable">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -11,9 +11,7 @@ public class XUnit3TestFrameworkTests
 	public async Task OnFail_WhenUsingXunit3AsTestFramework_ShouldThrowXunitException()
 	{
 		void Act()
-		{
-			Fail.Test("my message");
-		}
+			=> Fail.Test("my message");
 
 		Exception exception = await Expect.That(Act).Should().ThrowException()
 			.WithMessage("my message");
@@ -25,9 +23,7 @@ public class XUnit3TestFrameworkTests
 	public async Task OnSkip_WhenUsingXunit3AsTestFramework_ShouldThrowSkipException()
 	{
 		void Act()
-		{
-			Skip.Test("my message");
-		}
+			=> Skip.Test("my message");
 
 		await Expect.That(Act).Should().ThrowException()
 			.WithMessage("$XunitDynamicSkip$my message");

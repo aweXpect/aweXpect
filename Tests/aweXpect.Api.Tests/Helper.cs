@@ -1,11 +1,11 @@
-﻿using PublicApiGenerator;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using PublicApiGenerator;
 
 namespace aweXpect.Api.Tests;
 
@@ -21,7 +21,7 @@ public static class Helper
 		string assemblyFile =
 			CombinedPaths("Source", assemblyName, "bin", configuration, framework, $"{assemblyName}.dll");
 		Assembly assembly = Assembly.LoadFile(assemblyFile);
-		string publicApi = assembly.GeneratePublicApi(null);
+		string publicApi = assembly.GeneratePublicApi();
 		return publicApi.Replace("\r\n", "\n");
 	}
 

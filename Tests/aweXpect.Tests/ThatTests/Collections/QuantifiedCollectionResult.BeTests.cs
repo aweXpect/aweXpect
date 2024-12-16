@@ -21,7 +21,7 @@ public sealed partial class QuantifiedCollectionResult
 				.WithMessage("""
 				             Expected subject to
 				             have all items be type MyClass,
-				             but not all were
+				             but only 2 of 3 were
 				             """);
 		}
 
@@ -31,7 +31,7 @@ public sealed partial class QuantifiedCollectionResult
 			object[] subject =
 			[
 				new MyClass(1),
-				new SubClass(1),
+				new SubClass(1)
 			];
 
 			async Task Act()

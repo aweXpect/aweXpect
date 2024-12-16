@@ -1,5 +1,5 @@
-﻿using aweXpect.Core.EvaluationContext;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using aweXpect.Core.EvaluationContext;
 
 namespace aweXpect.Helpers;
 
@@ -19,7 +19,7 @@ internal static class EvaluationContextExtensions
 		where TCollection : IEnumerable<TItem>
 	{
 		if (evaluationContext.TryReceive(MaterializedEnumerableKey,
-			out IEnumerable<TItem>? existingValue))
+			    out IEnumerable<TItem>? existingValue))
 		{
 			return existingValue;
 		}
@@ -43,7 +43,7 @@ internal static class EvaluationContextExtensions
 		where TCollection : IAsyncEnumerable<TItem>
 	{
 		if (evaluationContext.TryReceive(MaterializedAsyncEnumerableKey,
-			out IAsyncEnumerable<TItem>? existingValue))
+			    out IAsyncEnumerable<TItem>? existingValue))
 		{
 			return existingValue;
 		}
@@ -56,5 +56,4 @@ internal static class EvaluationContextExtensions
 		return materializedEnumerable;
 	}
 #endif
-
 }

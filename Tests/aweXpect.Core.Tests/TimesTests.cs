@@ -13,18 +13,18 @@ public class TimesTests
 
 	[Theory]
 	[AutoData]
-	public async Task ImplicitOperator_ShouldSetValueProperty(int value)
+	public async Task ExtensionMethod_ShouldSetValueProperty(int value)
 	{
-		Times times = value;
+		Times times = value.Times();
 
 		await That(times.Value).Should().Be(value);
 	}
 
 	[Theory]
 	[AutoData]
-	public async Task ExtensionMethod_ShouldSetValueProperty(int value)
+	public async Task ImplicitOperator_ShouldSetValueProperty(int value)
 	{
-		Times times = value.Times();
+		Times times = value;
 
 		await That(times.Value).Should().Be(value);
 	}

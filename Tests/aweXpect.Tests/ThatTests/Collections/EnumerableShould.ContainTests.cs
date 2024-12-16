@@ -11,6 +11,112 @@ public sealed partial class EnumerableShould
 	public sealed class ContainTests
 	{
 		[Fact]
+		public async Task ForStrings_ShouldCompareCaseSensitive()
+		{
+			string[] sut = ["green", "blue", "yellow"];
+
+			async Task Act()
+				=> await That(sut).Should().Contain("GREEN");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "GREEN" at least once,
+				             but it contained it 0 times in [
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenExpectedIsNotPartOfStringEnumerable_ShouldFail()
+		{
+			string[] sut = ["green", "blue", "yellow"];
+
+			async Task Act()
+				=> await That(sut).Should().Contain("red");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "red" at least once,
+				             but it contained it 0 times in [
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenExpectedIsPartOfStringEnumerable_ShouldSucceed()
+		{
+			string[] sut = ["green", "blue", "yellow"];
+
+			async Task Act()
+				=> await That(sut).Should().Contain("blue");
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenIgnoringCase_ShouldSucceedForCaseSensitiveDifference()
+		{
+			string[] sut = ["green", "blue", "yellow"];
+
+			async Task Act()
+				=> await That(sut).Should().Contain("GREEN").IgnoringCase();
+
+			await That(Act).Should().NotThrow();
+		}
+
+		[Fact]
+		public async Task ForStrings_WithAtLeast_ShouldVerifyCorrectNumberOfTimes()
+		{
+			string[] sut = ["green", "green", "blue", "yellow"];
+
+			async Task Act()
+				=> await That(sut).Should().Contain("green").AtLeast(3.Times());
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "green" at least 3 times,
+				             but it contained it 2 times in [
+				               "green",
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WithAtMost_ShouldVerifyCorrectNumberOfTimes()
+		{
+			string[] sut = ["green", "green", "green", "green", "blue", "yellow"];
+
+			async Task Act()
+				=> await That(sut).Should().Contain("green").AtMost(2.Times());
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected sut to
+				             contain "green" at most 2 times,
+				             but it contained it at least 3 times in [
+				               "green",
+				               "green",
+				               "green",
+				               "green",
+				               "blue",
+				               "yellow"
+				             ]
+				             """);
+		}
+
+		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
 			ThrowWhenIteratingTwiceEnumerable subject = new();
@@ -48,7 +154,19 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain 1 at least {minimum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              but it contained it 2 times in [
+				                1,
+				                1,
+				                2,
+				                3,
+				                5,
+				                8,
+				                13,
+				                21,
+				                34,
+				                55,
+				                …
+				              ]
 				              """);
 		}
 
@@ -67,7 +185,19 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             contain 1 at most once,
-				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				             but it contained it at least 2 times in [
+				               1,
+				               1,
+				               2,
+				               3,
+				               5,
+				               8,
+				               13,
+				               21,
+				               34,
+				               55,
+				               …
+				             ]
 				             """);
 		}
 
@@ -86,15 +216,33 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain 1 between {minimum} and {maximum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              but it contained it 2 times in [
+				                1,
+				                1,
+				                2,
+				                3,
+				                5,
+				                8,
+				                13,
+				                21,
+				                34,
+				                55,
+				                …
+				              ]
 				              """);
 		}
 
 		[Fact]
 		public async Task Item_ShouldSupportEquivalent()
 		{
-			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass { Value = x });
-			MyClass expected = new() { Value = 1 };
+			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass
+			{
+				Value = x
+			});
+			MyClass expected = new()
+			{
+				Value = 1
+			};
 
 			async Task Act()
 				=> await That(subject).Should().Contain(expected).AtLeast(1).Equivalent();
@@ -117,7 +265,19 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
-				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+				                1,
+				                1,
+				                2,
+				                3,
+				                5,
+				                8,
+				                13,
+				                21,
+				                34,
+				                55,
+				                …
+				              ]
 				              """);
 		}
 
@@ -151,7 +311,7 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain {Formatter.Format(expected)} at least once,
-				              but it contained it 0 times in [{string.Join(", ", subject.Select(s => Formatter.Format(s)))}]
+				              but it contained it 0 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 				              """);
 		}
 
@@ -193,7 +353,19 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == 1 at least {minimum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              but it contained it 2 times in [
+				                1,
+				                1,
+				                2,
+				                3,
+				                5,
+				                8,
+				                13,
+				                21,
+				                34,
+				                55,
+				                …
+				              ]
 				              """);
 		}
 
@@ -212,7 +384,19 @@ public sealed partial class EnumerableShould
 				.WithMessage("""
 				             Expected subject to
 				             contain item matching x => x == 1 at most once,
-				             but it contained it at least 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				             but it contained it at least 2 times in [
+				               1,
+				               1,
+				               2,
+				               3,
+				               5,
+				               8,
+				               13,
+				               21,
+				               34,
+				               55,
+				               …
+				             ]
 				             """);
 		}
 
@@ -231,7 +415,19 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == 1 between {minimum} and {maximum} times,
-				              but it contained it 2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              but it contained it 2 times in [
+				                1,
+				                1,
+				                2,
+				                3,
+				                5,
+				                8,
+				                13,
+				                21,
+				                34,
+				                55,
+				                …
+				              ]
 				              """);
 		}
 
@@ -250,7 +446,19 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
-				              but it contained it {(times == 1 ? "at least " : "")}2 times in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]
+				              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+				                1,
+				                1,
+				                2,
+				                3,
+				                5,
+				                8,
+				                13,
+				                21,
+				                34,
+				                55,
+				                …
+				              ]
 				              """);
 		}
 
@@ -284,13 +492,72 @@ public sealed partial class EnumerableShould
 				.WithMessage($"""
 				              Expected subject to
 				              contain item matching x => x == expected at least once,
-				              but it contained it 0 times in [{string.Join(", ", subject.Select(s => Formatter.Format(s)))}]
+				              but it contained it 0 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 				              """);
 		}
 	}
 
 	public sealed class NotContainTests
 	{
+		[Fact]
+		public async Task ForStrings_DoesNotMaterializeEnumerable()
+		{
+			IEnumerable<string> subject = Factory.GetFibonacciNumbers(x => $"item-{x}");
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("item-5");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "item-5",
+				             but it did
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_ShouldSupportCasing()
+		{
+			string[] subject = ["FOO"];
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("foo").IgnoringCase();
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "foo" ignoring case,
+				             but it did
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenEnumerableContainsUnexpectedValue_ShouldFail()
+		{
+			string[] subject = ["FOO", "foo"];
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("foo");
+
+			await That(Act).Should().Throw<XunitException>()
+				.WithMessage("""
+				             Expected subject to
+				             not contain "foo",
+				             but it did
+				             """);
+		}
+
+		[Fact]
+		public async Task ForStrings_WhenEnumerableDoesNotContainUnexpectedValue_ShouldSucceed()
+		{
+			string[] subject = ["FOO"];
+
+			async Task Act()
+				=> await That(subject).Should().NotContain("foo");
+
+			await That(Act).Should().NotThrow();
+		}
+
 		[Fact]
 		public async Task Item_DoesNotEnumerateTwice()
 		{
@@ -322,8 +589,14 @@ public sealed partial class EnumerableShould
 		[Fact]
 		public async Task Item_ShouldSupportEquivalent()
 		{
-			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass { Value = x });
-			MyClass unexpected = new() { Value = 5 };
+			IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass
+			{
+				Value = x
+			});
+			MyClass unexpected = new()
+			{
+				Value = 5
+			};
 
 			async Task Act()
 				=> await That(subject).Should().NotContain(unexpected).Equivalent();

@@ -4,7 +4,7 @@ using aweXpect.Core.Constraints;
 namespace aweXpect;
 
 /// <summary>
-///     Quantifier for evaluating enumerables.
+///     Quantifier for evaluating collections.
 /// </summary>
 public abstract partial class EnumerableQuantifier
 {
@@ -17,7 +17,7 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Returns the expectation text.
 	/// </summary>
-	public abstract string GetExpectation(string it, ExpectationBuilder expectationBuilder);
+	public abstract string GetExpectation(string it, ExpectationBuilder? expectationBuilder);
 
 	/// <summary>
 	///     Returns the result.
@@ -25,7 +25,7 @@ public abstract partial class EnumerableQuantifier
 	public abstract ConstraintResult GetResult<TEnumerable>(
 		TEnumerable actual,
 		string it,
-		ExpectationBuilder expectationBuilder,
+		ExpectationBuilder? expectationBuilder,
 		int matchingCount,
 		int notMatchingCount,
 		int? totalCount);

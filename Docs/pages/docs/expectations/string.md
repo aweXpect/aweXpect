@@ -9,7 +9,7 @@ Describes the possible expectations for strings.
 ## Equality
 
 You can verify, that the `string` is equal to another one.  
-This expectation can be configured to ignore case, or use a custom `IEqualityComparer<string>`:
+This expectation can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
 ```csharp
 string subject = "some text";
 
@@ -17,6 +17,12 @@ await Expect.That(subject).Should().Be("some text")
   .Because("it is equal");
 await Expect.That(subject).Should().Be("SOME TEXT").IgnoringCase()
   .Because("we ignored the casing");
+await Expect.That("a\r\nb").Should().Be("a\nb").IgnoringNewlineStyle()
+  .Because("we ignored the newline style");
+await Expect.That(subject).Should().Be("  some text").IgnoringLeadingWhiteSpace()
+  .Because("we ignored leading white-space");
+await Expect.That(subject).Should().Be("some text \t").IgnoringTrailingWhiteSpace()
+  .Because("we ignored trailing white-space");
 await Expect.That(subject).Should().Be("SOME TEXT").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 ```
@@ -54,7 +60,7 @@ The regex comparison uses the following [`options`](https://learn.microsoft.com/
 ## One of
 
 You can verify, that the `string` is one of many alternatives.  
-This expectation can be configured to ignore case, or use a custom `IEqualityComparer<string>`:
+This expectation can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
 
 ```csharp
 string subject = "some";
@@ -90,7 +96,7 @@ await Expect.That("foo").Should().NotBeNullOrWhiteSpace();
 ## String start / end
 
 You can verify, that the `string` starts or ends with a given string.  
-These expectations can be configured to ignore case, or use a custom `IEqualityComparer<string>`:
+These expectations can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
 ```csharp
 string subject = "some text";
 
@@ -111,7 +117,7 @@ await Expect.That(subject).Should().EndWith("TEXT").Using(StringComparer.Ordinal
 ## Contains
 
 You can verify, that the `string` contains a given substring.  
-These expectations can be configured to ignore case, or use a custom `IEqualityComparer<string>`:
+These expectations can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
 ```csharp
 string subject = "some text";
 

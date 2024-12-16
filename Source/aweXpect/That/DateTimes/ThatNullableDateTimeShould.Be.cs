@@ -21,8 +21,8 @@ public static partial class ThatNullableDateTimeShould
 					it,
 					expected,
 					$"be {Formatter.Format(expected)}{tolerance}",
-					(a, e, t) => a?.Kind == e?.Kind && IsWithinTolerance(t, a - e),
-					(a, e, i) => a?.Kind == e?.Kind
+					(a, e, t) => AreKindCompatible(a?.Kind, e?.Kind) && IsWithinTolerance(t, a - e),
+					(a, e, i) => AreKindCompatible(a?.Kind, e?.Kind)
 						? $"{i} was {Formatter.Format(a)}"
 						: $"{i} differed in the Kind property",
 					tolerance)),
@@ -44,10 +44,20 @@ public static partial class ThatNullableDateTimeShould
 					it,
 					unexpected,
 					$"not be {Formatter.Format(unexpected)}{tolerance}",
-					(a, e, t) => a?.Kind != e?.Kind || !IsWithinTolerance(t, a - e),
+					(a, e, t) => !AreKindCompatible(a?.Kind, e?.Kind) || !IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
 			source,
 			tolerance);
+	}
+
+	private static bool AreKindCompatible(DateTimeKind? actualKind, DateTimeKind? expectedKind)
+	{
+		if (actualKind == DateTimeKind.Unspecified || expectedKind == DateTimeKind.Unspecified)
+		{
+			return true;
+		}
+
+		return actualKind == expectedKind;
 	}
 }

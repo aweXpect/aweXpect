@@ -24,7 +24,7 @@ public sealed partial class QuantifiableCollectionItems
 				.WithMessage("""
 				             Expected subject to
 				             have all items be equivalent to expected,
-				             but not all were
+				             but only 3 of 4 were
 				             """);
 		}
 

@@ -13,11 +13,28 @@ public partial class EnumerableShould
 			yield return item;
 		}
 	}
+
 	public static IEnumerable<string> ToEnumerable(string[] items)
 	{
 		foreach (string item in items)
 		{
 			yield return item;
+		}
+	}
+
+	public static IEnumerable<T> ToEnumerable<T>(int[] items, Func<int, T> mapper)
+	{
+		foreach (int item in items)
+		{
+			yield return mapper(item);
+		}
+	}
+
+	public static IEnumerable<T> ToEnumerable<T>(string[] items, Func<string, T> mapper)
+	{
+		foreach (string item in items)
+		{
+			yield return mapper(item);
 		}
 	}
 
@@ -64,10 +81,10 @@ public partial class EnumerableShould
 		#endregion
 	}
 
-	public class MyClass
+	public class MyClass(int value = 0)
 	{
 		public InnerClass? Inner { get; set; }
-		public int Value { get; set; }
+		public int Value { get; set; } = value;
 	}
 
 	public class InnerClass

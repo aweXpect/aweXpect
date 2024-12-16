@@ -10,31 +10,34 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is equal to <paramref name="expected" />.
 	/// </summary>
-	public static StringMatcherResult<string?, IThat<string?>> Be(
+	public static StringEqualityTypeResult<string?, IThat<string?>> Be(
 		this IThat<string?> source,
-		StringMatcher expected)
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new BeConstraint(it, expected)),
+		string? expected)
+	{
+		StringEqualityOptions options = new StringEqualityOptions();
+		return new StringEqualityTypeResult<string?, IThat<string?>>(source.ExpectationBuilder.AddConstraint(it
+				=> new BeConstraint(it, expected, options)),
 			source,
-			expected);
+			options);
+	}
 
-	private readonly struct BeConstraint(string it, StringMatcher expected)
+	private readonly struct BeConstraint(string it, string? expected, StringEqualityOptions options)
 		: IValueConstraint<string?>
 	{
 		/// <inheritdoc />
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (expected.Matches(actual))
+			if (options.AreConsideredEqual(actual, expected))
 			{
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}
 
 			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				expected.GetExtendedFailure(it, actual));
+				options.GetExtendedFailure(it, expected, actual));
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> expected.GetExpectation(StringMatcher.GrammaticVoice.ActiveVoice);
+			=> options.GetExpectation(expected, true);
 	}
 }

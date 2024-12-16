@@ -41,8 +41,8 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		}
 
 		if (_memberAccessor.TryAccessMember(
-			typedValue,
-			out TTarget? matchingValue))
+			    typedValue,
+			    out TTarget? matchingValue))
 		{
 			ConstraintResult result = await base.IsMetBy(matchingValue, context, cancellationToken);
 			return result.UseValue(value);
@@ -107,7 +107,5 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 	private static string DefaultExpectationTextGenerator(
 		MemberAccessor<TSource, TTarget?> memberAccessor,
 		string expectationText)
-	{
-		return memberAccessor + expectationText;
-	}
+		=> memberAccessor + expectationText;
 }

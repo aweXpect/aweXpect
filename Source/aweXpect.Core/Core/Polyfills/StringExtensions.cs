@@ -69,6 +69,16 @@ internal static class StringExtensionMethods
 	}
 
 	/// <summary>
+	///     Returns a new string in which all occurrences of a specified string in the current instance are replaced with
+	///     another specified string, using the provided comparison type.
+	/// </summary>
+	internal static string Replace(this string @this,
+		string oldValue,
+		string? newValue,
+		StringComparison comparisonType) =>
+		@this.Replace(oldValue, newValue);
+
+	/// <summary>
 	///     Determines whether this string instance starts with the specified character.
 	/// </summary>
 	internal static bool StartsWith(

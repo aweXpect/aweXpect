@@ -21,7 +21,7 @@ public sealed partial class ObjectShould
 			object subject = new MyClass();
 			object expected = new MyClass();
 
-			async Task Act() 
+			async Task Act()
 				=> await That(subject).Should().Be(expected)
 					.Because("we want to test the failure");
 
@@ -348,7 +348,7 @@ public sealed partial class ObjectShould
 				             }
 				             """);
 		}
-		
+
 		[Fact]
 		public async Task NotBe_SubjectToSomeOtherValue_ShouldSucceed()
 		{

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<PackageReference Include="MSTest.TestAdapter" />
-		<PackageReference Include="MSTest.TestFramework" />
+		<PackageReference Include="MSTest.TestAdapter"/>
+		<PackageReference Include="MSTest.TestFramework"/>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
@@ -184,15 +185,38 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
-	///     Specifies a global mapping for the value to test.
+	///     Specifies a mapping to add expectations on the member from the <paramref name="memberAccessor" />.
 	/// </summary>
-	/// <remarks>
-	///     Intended for mapping the <see cref="DelegateValue{TValue}" /> to an exception.
-	/// </remarks>
 	public ExpectationBuilder ForWhich<TSource, TTarget>(
-		Func<TSource, TTarget?> whichAccessor)
+		Func<TSource, TTarget?> memberAccessor,
+		string? separator = null)
 	{
-		_whichNode = new WhichNode<TSource, TTarget>(whichAccessor);
+		Node? parentNode = null;
+		if (_node is not ExpectationNode e || !e.IsEmpty())
+		{
+			parentNode = _node;
+			_node = new ExpectationNode();
+		}
+
+		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
+		return this;
+	}
+
+	/// <summary>
+	///     Specifies a mapping to add expectations on the member from the <paramref name="asyncMemberAccessor" />.
+	/// </summary>
+	public ExpectationBuilder ForWhich<TSource, TTarget>(
+		Func<TSource, Task<TTarget?>> asyncMemberAccessor,
+		string? separator = null)
+	{
+		Node? parentNode = null;
+		if (_node is not ExpectationNode e || !e.IsEmpty())
+		{
+			parentNode = _node;
+			_node = new ExpectationNode();
+		}
+
+		_whichNode = new WhichNode<TSource, TTarget>(parentNode, asyncMemberAccessor, separator);
 		return this;
 	}
 
@@ -200,11 +224,13 @@ public abstract class ExpectationBuilder
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
 	internal static string FromFailure(string subject, ConstraintResult.Failure failure)
-		=> $"""
-		    Expected {subject} to
-		    {failure.ExpectationText},
-		    but {failure.ResultText}
-		    """;
+	{
+		StringBuilder sb = new();
+		sb.Append("Expected ").Append(subject).AppendLine(" to");
+		sb.Append(failure.ExpectationText).AppendLine(",");
+		sb.Append("but ").Append(failure.ResultText);
+		return sb.ToString();
+	}
 
 	internal Node GetRootNode()
 	{

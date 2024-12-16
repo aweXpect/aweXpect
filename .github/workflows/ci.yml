@@ -65,6 +65,8 @@ jobs:
         name: "Mutation tests"
         if: ${{ github.actor != 'dependabot[bot]' }}
         runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
         env:
             STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
             DOTNET_NOLOGO: true
@@ -79,6 +81,8 @@ jobs:
                         8.0.x
             -   name: Run mutation tests
                 run: ./build.sh MutationTests
+                env:
+                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
     
     benchmarks:
         name: "Benchmarks"
@@ -98,26 +102,10 @@ jobs:
                 with:
                     dotnet-version: |
                         8.0.x
-            -   name: Create benchmarks branch
-                run: |
-                    git config --global user.email "benchmarks@testably.org"
-                    git config --global user.name "Benchmark User"
-                    git switch benchmarks 2>/dev/null || git switch -c benchmarks;
-                    git push --set-upstream origin benchmarks
-                    git merge origin/main --no-edit
             -   name: Run benchmarks
                 run: ./build.sh Benchmarks
-            -   name: Store benchmark result
-                uses: rhysd/github-action-benchmark@v1
-                with:
-                    name: Benchmark.Net Benchmark
-                    tool: 'benchmarkdotnet'
-                    output-file-path: Artifacts/Benchmarks/results/aweXpect.Benchmarks.HappyCaseBenchmarks-report-full-compressed.json
-                    github-token: ${{ secrets.GITHUB_TOKEN }}
-                    fail-on-alert: true
-                    alert-threshold: '150%'
-                    comment-on-alert: true
-                    auto-push: false
+                env:
+                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
     
     static-code-analysis:
         name: "Static code analysis"
