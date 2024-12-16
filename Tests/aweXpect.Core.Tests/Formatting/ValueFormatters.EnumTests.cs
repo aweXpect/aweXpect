@@ -6,12 +6,6 @@ public partial class ValueFormatters
 {
 	public sealed class EnumTests
 	{
-		public enum Dummy
-		{
-			Foo,
-			Bar
-		}
-
 		[Theory]
 		[InlineData(Dummy.Foo, "Foo")]
 		[InlineData(Dummy.Bar, "Bar")]
@@ -21,9 +15,11 @@ public partial class ValueFormatters
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
 			await That(sb.ToString()).Should().Be(expectedResult);
 		}
 
@@ -35,10 +31,32 @@ public partial class ValueFormatters
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
 			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task WhenNull_ShouldUseDefaultNullString()
+		{
+			Dummy? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
+		}
+
+		public enum Dummy
+		{
+			Foo,
+			Bar
 		}
 	}
 }

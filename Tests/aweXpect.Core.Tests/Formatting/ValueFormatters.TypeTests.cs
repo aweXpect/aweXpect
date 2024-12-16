@@ -8,7 +8,115 @@ public partial class ValueFormatters
 {
 	public sealed class TypeTests
 	{
-		#region Test Setup
+		[Fact]
+		public async Task ShouldSupportArraySyntax()
+		{
+			Type value = typeof(int[]);
+			string expectedResult = "int[]";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportArraySyntaxWithComplexObjects()
+		{
+			Type value = typeof(TypeTests[]);
+			string expectedResult = $"{nameof(TypeTests)}[]";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportGenericTypeDefinitions()
+		{
+			Type value = typeof(IEnumerable<int>);
+			string expectedResult = "IEnumerable<int>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportNestedGenericTypeDefinitions()
+		{
+			Type value = typeof(Expression<Func<TypeTests[], bool>>);
+			string expectedResult = $"Expression<Func<{nameof(TypeTests)}[], bool>>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Theory]
+		[MemberData(nameof(SimpleTypes))]
+		public async Task SimpleTypes_ShouldUseSimpleNames(Type value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task Types_ShouldOnlyIncludeTheName()
+		{
+			Type value = typeof(TypeTests);
+			string expectedResult = nameof(TypeTests);
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task WhenNull_ShouldUseDefaultNullString()
+		{
+			Type? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
+		}
 
 		public static TheoryData<Type, string> SimpleTypes
 			=> new()
@@ -113,90 +221,5 @@ public partial class ValueFormatters
 					typeof(void), "void"
 				}
 			};
-
-		#endregion
-
-		[Fact]
-		public async Task ShouldSupportArraySyntax()
-		{
-			Type value = typeof(int[]);
-			string expectedResult = "int[]";
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			Formatter.Format(sb, value);
-
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
-		}
-
-		[Fact]
-		public async Task ShouldSupportArraySyntaxWithComplexObjects()
-		{
-			Type value = typeof(TypeTests[]);
-			string expectedResult = $"{nameof(TypeTests)}[]";
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			Formatter.Format(sb, value);
-
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
-		}
-
-		[Fact]
-		public async Task ShouldSupportGenericTypeDefinitions()
-		{
-			Type value = typeof(IEnumerable<int>);
-			string expectedResult = "IEnumerable<int>";
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			Formatter.Format(sb, value);
-
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
-		}
-
-		[Fact]
-		public async Task ShouldSupportNestedGenericTypeDefinitions()
-		{
-			Type value = typeof(Expression<Func<TypeTests[], bool>>);
-			string expectedResult = $"Expression<Func<{nameof(TypeTests)}[], bool>>";
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			Formatter.Format(sb, value);
-
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
-		}
-
-		[Theory]
-		[MemberData(nameof(SimpleTypes))]
-		public async Task SimpleTypes_ShouldUseSimpleNames(Type value, string expectedResult)
-		{
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			Formatter.Format(sb, value);
-
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
-		}
-
-		[Fact]
-		public async Task Types_ShouldOnlyIncludeTheName()
-		{
-			Type value = typeof(TypeTests);
-			string expectedResult = nameof(TypeTests);
-			StringBuilder sb = new();
-
-			string result = Formatter.Format(value);
-			Formatter.Format(sb, value);
-
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
-		}
 	}
 }

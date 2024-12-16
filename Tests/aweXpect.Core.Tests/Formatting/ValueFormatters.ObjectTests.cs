@@ -155,6 +155,20 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task WhenNull_ShouldUseDefaultNullString()
+		{
+			object? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format(value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
+		}
+
+		[Fact]
 		public async Task WhenObject_ShouldDisplayHashCode()
 		{
 			object value = new();
