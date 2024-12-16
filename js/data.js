@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734359617983,
+  "lastUpdate": 1734359694571,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -6608,6 +6608,138 @@ window.BENCHMARK_DATA = {
             "value": 1862.364588873727,
             "unit": "ns",
             "range": "± 6.709457297100939"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e9b32dfe3c38f051df47218b55bf2bebc5281236",
+          "message": "build(deps): bump TUnit.Assertions from 0.4.86 to 0.4.105 in the tunit group (#128)\n\nbuild(deps): bump TUnit.Assertions in the tunit group\n\nBumps the tunit group with 1 update: [TUnit.Assertions](https://github.com/thomhurst/TUnit).\n\n\nUpdates `TUnit.Assertions` from 0.4.86 to 0.4.105\n- [Commits](https://github.com/thomhurst/TUnit/commits)\n\n---\nupdated-dependencies:\n- dependency-name: TUnit.Assertions\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: tunit\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-16T14:27:56Z",
+          "tree_id": "6ddbc7ced7d23c9ace84b5ced28dfc2b00c82640",
+          "url": "https://github.com/aweXpect/aweXpect/commit/e9b32dfe3c38f051df47218b55bf2bebc5281236"
+        },
+        "date": 1734359693789,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 172.12612422874994,
+            "unit": "ns",
+            "range": "± 1.135512200630582"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 226.0510808944702,
+            "unit": "ns",
+            "range": "± 2.2409751687846104"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 607.930641242436,
+            "unit": "ns",
+            "range": "± 3.216331057712859"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 355.4656248728434,
+            "unit": "ns",
+            "range": "± 2.778570082884164"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 471.4211906433105,
+            "unit": "ns",
+            "range": "± 2.7069357120834674"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 14150.457238515219,
+            "unit": "ns",
+            "range": "± 21.79694387437836"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 240.36133966445922,
+            "unit": "ns",
+            "range": "± 1.3105375030313615"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 272.98168869018554,
+            "unit": "ns",
+            "range": "± 2.7928786875986167"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 787.0246102015177,
+            "unit": "ns",
+            "range": "± 5.290793134594606"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 335.4533143384116,
+            "unit": "ns",
+            "range": "± 1.3548117417092298"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 416.82957836786903,
+            "unit": "ns",
+            "range": "± 2.36268651598922"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 814.2108441080366,
+            "unit": "ns",
+            "range": "± 4.853680037227374"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1081.777041308085,
+            "unit": "ns",
+            "range": "± 6.682387275994808"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1209.651858990009,
+            "unit": "ns",
+            "range": "± 4.243391192265288"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1192.8932097117106,
+            "unit": "ns",
+            "range": "± 7.101124155575874"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1059.7198773897612,
+            "unit": "ns",
+            "range": "± 4.296921596644255"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 297372.9697265625,
+            "unit": "ns",
+            "range": "± 2311.8127550444888"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1944.7262268066406,
+            "unit": "ns",
+            "range": "± 7.239858916209525"
           }
         ]
       }
