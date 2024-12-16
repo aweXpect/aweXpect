@@ -18,11 +18,11 @@ namespace Build;
 
 partial class Build
 {
+	static string MutationCommentBody = "";
+
 	Target MutationTests => _ => _
 		.DependsOn(MutationTestExecution)
 		.DependsOn(MutationComment);
-	
-	static string MutationCommentBody = "";
 
 	Target MutationTestExecution => _ => _
 		.DependsOn(Compile)
@@ -40,7 +40,9 @@ partial class Build
 
 			Dictionary<Project, Project[]> projects = new()
 			{
-				//{ Solution.aweXpect, UnitTestProjects },
+				{
+					Solution.aweXpect, UnitTestProjects
+				},
 				{
 					Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests, Solution.Tests.aweXpect_Tests]
 				}
