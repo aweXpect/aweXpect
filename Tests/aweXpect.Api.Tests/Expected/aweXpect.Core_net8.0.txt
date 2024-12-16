@@ -273,6 +273,11 @@ namespace aweXpect.Formatting
     {
         public static aweXpect.Formatting.ValueFormatter Formatter { get; }
     }
+    public class FormattingContext
+    {
+        public FormattingContext() { }
+        public System.Collections.Generic.HashSet<object> FormattedObjects { get; }
+    }
     public class FormattingOptions
     {
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
@@ -324,7 +329,6 @@ namespace aweXpect.Formatting
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, float? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, int? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, long? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, object? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, sbyte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, short? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, uint? value, aweXpect.Formatting.FormattingOptions? options = null) { }
@@ -369,13 +373,14 @@ namespace aweXpect.Formatting
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, float? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, int? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, long? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, object? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, sbyte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, short? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, string? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, uint? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ulong? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, ushort? value, aweXpect.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, object? value, aweXpect.Formatting.FormattingOptions? options = null, aweXpect.Formatting.FormattingContext? context = null) { }
+        public static void Format(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, object? value, aweXpect.Formatting.FormattingOptions? options = null, aweXpect.Formatting.FormattingContext? context = null) { }
         public static string Format<T>(this aweXpect.Formatting.ValueFormatter formatter, System.Collections.Generic.IEnumerable<T> value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static void Format<T>(this aweXpect.Formatting.ValueFormatter formatter, System.Text.StringBuilder stringBuilder, System.Collections.Generic.IEnumerable<T> value, aweXpect.Formatting.FormattingOptions? options = null) { }
     }
