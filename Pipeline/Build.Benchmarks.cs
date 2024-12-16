@@ -45,7 +45,7 @@ partial class Build
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
-			string body = CreateCommentBody();
+			string body = CreateBenchmarkCommentBody();
 			int? prId = GitHubActions.PullRequestNumber;
 			Log.Debug("Pull request number: {PullRequestId}", prId);
 			if (prId != null)
@@ -84,7 +84,7 @@ partial class Build
 		.DependsOn(BenchmarkResult)
 		.DependsOn(BenchmarkComment);
 
-	string CreateCommentBody()
+	string CreateBenchmarkCommentBody()
 	{
 		string[] fileContent = File.ReadAllLines(ArtifactsDirectory / "Benchmarks" / "results" /
 		                                         "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
