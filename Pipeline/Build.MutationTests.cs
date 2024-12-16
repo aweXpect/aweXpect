@@ -179,6 +179,13 @@ partial class Build
 				continue;
 			}
 
+			if (count == 0 &&
+			    line.StartsWith("|") &&
+			    line.Contains("| N\\/A"))
+			{
+				continue;
+			}
+
 			sb.AppendLine(line);
 		}
 
