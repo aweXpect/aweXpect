@@ -130,7 +130,7 @@ partial class Build
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
 				{
-					if (comment.Body.Contains("## :alien: Mutation results"))
+					if (comment.Body.Contains("## :alien: Mutation Results"))
 					{
 						Log.Information($"Found comment: {comment.Body}");
 						commentId = comment.Id;
