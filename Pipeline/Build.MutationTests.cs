@@ -1,14 +1,14 @@
-using Nuke.Common;
-using Nuke.Common.IO;
-using Nuke.Common.Tooling;
-using Nuke.Common.Tools.DotNet;
-using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Nuke.Common;
+using Nuke.Common.IO;
+using Nuke.Common.Tooling;
+using Nuke.Common.Tools.DotNet;
 using Octokit;
+using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using Project = Nuke.Common.ProjectModel.Project;
 
@@ -18,9 +18,13 @@ namespace Build;
 
 partial class Build
 {
-	static string MutationCommentBody = "";
-	
 	Target MutationTests => _ => _
+		.DependsOn(MutationTestExecution)
+		.DependsOn(MutationComment);
+	
+	static string MutationCommentBody = "";
+
+	Target MutationTestExecution => _ => _
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
@@ -37,7 +41,9 @@ partial class Build
 			Dictionary<Project, Project[]> projects = new()
 			{
 				//{ Solution.aweXpect, UnitTestProjects },
-				{ Solution.aweXpect_Core, [ Solution.Tests.aweXpect_Core_Tests, Solution.Tests.aweXpect_Tests ] }
+				{
+					Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests, Solution.Tests.aweXpect_Tests]
+				}
 			};
 
 			foreach (KeyValuePair<Project, Project[]> project in projects)
@@ -49,7 +55,7 @@ partial class Build
 					branchName = "release/" + version;
 					Log.Information("Use release branch analysis for '{BranchName}'", branchName);
 				}
-				
+
 				string configText = $$"""
 				                      {
 				                      	"stryker-config": {
@@ -98,7 +104,7 @@ partial class Build
 		});
 
 	Target MutationComment => _ => _
-		.After(MutationTests)
+		.After(MutationTestExecution)
 		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
@@ -108,9 +114,9 @@ partial class Build
 			{
 				return;
 			}
-			
+
 			string body = "## :alien: Mutation Results" + Environment.NewLine + MutationCommentBody;
-			
+
 			if (prId != null)
 			{
 				GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
@@ -141,7 +147,7 @@ partial class Build
 				}
 			}
 		});
-	
+
 	string CreateMutationCommentBody(string projectName)
 	{
 		string[] fileContent = File.ReadAllLines(ArtifactsDirectory / "Stryker" / "reports" / "mutation-report.md");
@@ -156,7 +162,7 @@ partial class Build
 			{
 				continue;
 			}
-			
+
 			if (line.StartsWith("#"))
 			{
 				if (++count == 1)
@@ -168,7 +174,7 @@ partial class Build
 				sb.AppendLine("##" + line);
 				continue;
 			}
-			
+
 			sb.AppendLine(line);
 		}
 
