@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734374610783,
+  "lastUpdate": 1734466776830,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -7004,6 +7004,138 @@ window.BENCHMARK_DATA = {
             "value": 1878.005552973066,
             "unit": "ns",
             "range": "± 7.751519873089752"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "782222bfe4439d5f51991be681d95866639e22ba",
+          "message": "feat: support event triggers (#132)\n\nAdd expectations for triggered events:\n\n## Triggering\n\nYou can verify, that an object triggers an event:\n```csharp\nclass ThresholdReachedEventArgs(int threshold = 0) : EventArgs\n{\n    public int Threshold { get; } = threshold;\n}\nclass MyClass\n{\n  public event EventHandler? ThresholdReached;\n  public void OnThresholdReached(ThresholdReachedEventArgs e)\n    => ThresholdReached?.Invoke(this, e);\n}\nMyClass sut = new MyClass();\n\nawait Expect.That(sut)\n  .Triggers(nameof(MyClass.ThresholdReached))\n  .While(t => t.OnThresholdReached(new ThresholdReachedEventArgs()));\n```\n\nThis will register a recording of all events named \"ThresholdReached\" that are triggered during the execution of the callback.\n\n\n## Filtering\n\nYou can filter triggered events based on their parameters.\n```csharp\nawait Expect.That(sut)\n  .Triggers(nameof(MyClass.ThresholdReached))\n  .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10)\n  .While(t =>\n  {\n    t.OnThresholdReached(new ThresholdReachedEventArgs(5));\n    t.OnThresholdReached(new ThresholdReachedEventArgs(15));\n  });\n```\n\n## Counting\n\nYou can verify, that an event was triggered a specific number of times\n```csharp\nawait Expect.That(sut)\n  .Triggers(nameof(MyClass.ThresholdReached))\n  .While(t =>\n  {\n    t.OnThresholdReached(new ThresholdReachedEventArgs(5));\n    t.OnThresholdReached(new ThresholdReachedEventArgs(15));\n  })\n  .Between(1).And(2.Times());\n```\nYou can use the same occurrence constraints as in the [contain](https://awexpect.github.io/aweXpect/docs/expectations/collections#contain) method:\n- `AtLeast(2.Times())`\n- `AtMost(3.Times())`\n- `Between(1).And(4.Times())`\n- `Exactly(0.Times())`\n\n\n## Special events\n\nFor common events, you can create specific overloads.  \nIncluded is an overload for the [`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged) event:\n```csharp\nMyClass sut = // ...implements INotifyPropertyChanged\n\nawait Expect.That(sut)\n  .TriggersPropertyChanged()\n  .WithPropertyChangedEventArgs(e => e.PropertyName == \"MyProperty\")\n  .While(t => t.Execute())\n  .AtLeast(2.Times());\n```",
+          "timestamp": "2024-12-17T20:12:20Z",
+          "tree_id": "2cc2f3d4cfe372b5930c0c153458870273ed9767",
+          "url": "https://github.com/aweXpect/aweXpect/commit/782222bfe4439d5f51991be681d95866639e22ba"
+        },
+        "date": 1734466776576,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.86262629713332,
+            "unit": "ns",
+            "range": "± 1.3819818796176901"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.09419565934402,
+            "unit": "ns",
+            "range": "± 1.0171928862934407"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 595.7564320197472,
+            "unit": "ns",
+            "range": "± 3.959549718160773"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 337.55172303744723,
+            "unit": "ns",
+            "range": "± 2.3415225079018485"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 450.6003569602966,
+            "unit": "ns",
+            "range": "± 1.8342023513981327"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13958.454769427959,
+            "unit": "ns",
+            "range": "± 78.12941129993595"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 216.47835346857707,
+            "unit": "ns",
+            "range": "± 0.8657215709241082"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 258.7902417500814,
+            "unit": "ns",
+            "range": "± 1.173561776793557"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 758.6908238484309,
+            "unit": "ns",
+            "range": "± 2.5221132671817186"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 319.81333729426063,
+            "unit": "ns",
+            "range": "± 1.4932625103711483"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 398.53863385745456,
+            "unit": "ns",
+            "range": "± 4.58408976255175"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 836.8312337239583,
+            "unit": "ns",
+            "range": "± 4.0440554136735125"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1037.6285837173461,
+            "unit": "ns",
+            "range": "± 7.469815034326173"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1173.0294353778545,
+            "unit": "ns",
+            "range": "± 3.4402576729231544"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1129.3934570040021,
+            "unit": "ns",
+            "range": "± 4.08774439629604"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1097.0345949445452,
+            "unit": "ns",
+            "range": "± 4.6891028359961"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 287921.24271065847,
+            "unit": "ns",
+            "range": "± 2380.767310400575"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1851.0132815497261,
+            "unit": "ns",
+            "range": "± 6.786885842705209"
           }
         ]
       }
