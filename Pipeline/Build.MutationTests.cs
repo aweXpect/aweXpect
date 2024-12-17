@@ -117,7 +117,11 @@ partial class Build
 				return;
 			}
 
-			string body = "## :alien: Mutation Results" + Environment.NewLine + MutationCommentBody;
+			string body = "## :alien: Mutation Results"
+			              + Environment.NewLine
+			              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
+			              + Environment.NewLine
+			              + MutationCommentBody;
 
 			if (prId != null)
 			{
