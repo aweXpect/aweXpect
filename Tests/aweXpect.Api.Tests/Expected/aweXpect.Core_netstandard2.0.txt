@@ -265,6 +265,10 @@ namespace aweXpect
     {
         public static aweXpect.Times Times(this int value) { }
     }
+    public static class TriggersExtensions
+    {
+        public static aweXpect.Results.TriggerParameterResult<T> Triggers<T>(this aweXpect.Core.IExpectSubject<T> subject, string eventName) { }
+    }
 }
 namespace aweXpect.Formatting
 {
@@ -469,6 +473,13 @@ namespace aweXpect.Options
         public string ToDayString() { }
         public override string ToString() { }
     }
+    public class TriggerEventFilter
+    {
+        public TriggerEventFilter() { }
+        public void AddPredicate<TProperty>(System.Func<object?[], bool> predicate, string predicateExpression) { }
+        public bool IsMatch(string eventName, object?[] parameters) { }
+        public override string ToString() { }
+    }
 }
 namespace aweXpect.Results
 {
@@ -655,5 +666,18 @@ namespace aweXpect.Results
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
         public TSelf Within(System.TimeSpan tolerance) { }
+    }
+    public class TriggerParameterResult<T> : aweXpect.Results.TriggerResult<T>
+    {
+        public TriggerParameterResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
+        protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
+        public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(int position, System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+    }
+    public class TriggerResult<T>
+    {
+        public TriggerResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
+        protected virtual aweXpect.Options.TriggerEventFilter? GetFilter() { }
+        public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Action<T> callback) { }
     }
 }

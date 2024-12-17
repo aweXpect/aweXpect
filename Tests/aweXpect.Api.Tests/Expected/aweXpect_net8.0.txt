@@ -864,6 +864,11 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> NotBePositive(this aweXpect.Core.IThat<System.TimeSpan> source) { }
         public static aweXpect.Core.IThat<System.TimeSpan> Should(this aweXpect.Core.IExpectSubject<System.TimeSpan> subject) { }
     }
+    public static class TriggerExtensions
+    {
+        public static aweXpect.Results.TriggerPropertyChangedParameterResult<T> TriggersPropertyChanged<T>(this aweXpect.Core.IExpectSubject<T> subject)
+            where T : System.ComponentModel.INotifyPropertyChanged { }
+    }
 }
 namespace aweXpect.Extensions
 {
@@ -967,5 +972,11 @@ namespace aweXpect.Results
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
         public TSelf IgnoringDuplicates() { }
         public TSelf InAnyOrder() { }
+    }
+    public class TriggerPropertyChangedParameterResult<T> : aweXpect.Results.TriggerParameterResult<T>
+    {
+        public TriggerPropertyChangedParameterResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
+        protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
+        public aweXpect.Results.TriggerResult<T> WithPropertyChangedEventArgs(System.Func<System.ComponentModel.PropertyChangedEventArgs, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
 }
