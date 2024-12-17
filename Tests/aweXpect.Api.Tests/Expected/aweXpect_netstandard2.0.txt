@@ -730,14 +730,8 @@ namespace aweXpect
     }
     public static class TriggerExtensions
     {
-        public static aweXpect.TriggerPropertyChangedParameterResult<T> TriggersPropertyChanged<T>(this aweXpect.Core.IExpectSubject<T> subject)
+        public static aweXpect.Results.TriggerPropertyChangedParameterResult<T> TriggersPropertyChanged<T>(this aweXpect.Core.IExpectSubject<T> subject)
             where T : System.ComponentModel.INotifyPropertyChanged { }
-    }
-    public class TriggerPropertyChangedParameterResult<T> : aweXpect.Results.TriggerResult<T>
-    {
-        public TriggerPropertyChangedParameterResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
-        protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
-        public aweXpect.Results.TriggerResult<T> WithPropertyChangedEventArgs(System.Func<System.ComponentModel.PropertyChangedEventArgs, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
 }
 namespace aweXpect.Extensions
@@ -842,5 +836,11 @@ namespace aweXpect.Results
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
         public TSelf IgnoringDuplicates() { }
         public TSelf InAnyOrder() { }
+    }
+    public class TriggerPropertyChangedParameterResult<T> : aweXpect.Results.TriggerParameterResult<T>
+    {
+        public TriggerPropertyChangedParameterResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
+        protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
+        public aweXpect.Results.TriggerResult<T> WithPropertyChangedEventArgs(System.Func<System.ComponentModel.PropertyChangedEventArgs, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
 }
