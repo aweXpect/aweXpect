@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
@@ -80,7 +79,6 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 
 	private sealed class EventRecorder(string name) : IDisposable
 	{
-		private int _sequence;
 		private Action? _onDispose;
 		public ConcurrentQueue<OccurredEvent> EventQueue { get; } = new();
 
@@ -88,8 +86,7 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 
 		public void Attach(WeakReference subject, EventInfo eventInfo)
 		{
-			MethodInfo handlerType = eventInfo.EventHandlerType?.GetMethod("Invoke") ??
-			                         throw new MissingMethodException("Invoke");
+			MethodInfo handlerType = eventInfo.EventHandlerType!.GetMethod("Invoke")!;
 			Delegate? handler = null;
 			foreach (MethodInfo method in typeof(EventRecorder).GetMethods().Where(x => x.Name == nameof(RecordEvent)))
 			{
@@ -108,6 +105,11 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 				}
 			}
 
+			if (handler == null)
+			{
+				throw new NotSupportedException($"The event {name} contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
+			}
+
 			eventInfo.AddEventHandler(subject.Target, handler);
 
 			_onDispose = () =>
@@ -121,41 +123,34 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 
 		public void RecordEvent()
 		{
-			int sequence = Interlocked.Increment(ref _sequence);
-			EventQueue.Enqueue(new OccurredEvent(name, sequence));
+			EventQueue.Enqueue(new OccurredEvent(name));
 		}
 
 		public void RecordEvent<T1>(T1 parameter1)
 		{
-			int sequence = Interlocked.Increment(ref _sequence);
-			EventQueue.Enqueue(new OccurredEvent(name, sequence, parameter1));
+			EventQueue.Enqueue(new OccurredEvent(name, parameter1));
 		}
 
 		public void RecordEvent<T1, T2>(T1 parameter1, T2 parameter2)
 		{
-			int sequence = Interlocked.Increment(ref _sequence);
-			EventQueue.Enqueue(new OccurredEvent(name, sequence, parameter1, parameter2));
+			EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2));
 		}
 
 		public void RecordEvent<T1, T2, T3>(T1 parameter1, T2 parameter2, T3 parameter3)
 		{
-			int sequence = Interlocked.Increment(ref _sequence);
-			EventQueue.Enqueue(new OccurredEvent(name, sequence, parameter1, parameter2, parameter3));
+			EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3));
 		}
 
 		public void RecordEvent<T1, T2, T3, T4>(T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4)
 		{
-			int sequence = Interlocked.Increment(ref _sequence);
-			EventQueue.Enqueue(new OccurredEvent(name, sequence, parameter1, parameter2, parameter3, parameter4));
+			EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3, parameter4));
 		}
 	}
 
-	private readonly struct OccurredEvent(string name, int sequence, params object?[] parameters)
+	private readonly struct OccurredEvent(string name, params object?[] parameters)
 	{
 		public string Name { get; } = name;
 		public object?[] Parameters { get; } = parameters;
-
-		public int Sequence { get; } = sequence;
 
 		/// <inheritdoc />
 		public override string ToString()

@@ -20,7 +20,7 @@ public class TriggerParameterResult<T>(IThat<T> returnValue, string eventName)
 	/// <remarks>
 	///     The filter will exclude parameters where the type does not match any parameter.
 	/// </remarks>
-	public TriggerResult<T> WithParameter<TParameter>(Func<TParameter, bool> predicate,
+	public TriggerParameterResult<T> WithParameter<TParameter>(Func<TParameter, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
@@ -36,14 +36,14 @@ public class TriggerParameterResult<T>(IThat<T> returnValue, string eventName)
 	/// <remarks>
 	///     The filter will exclude parameters where the type does not match.
 	/// </remarks>
-	public TriggerResult<T> WithParameter<TParameter>(int position, Func<TParameter, bool> predicate,
+	public TriggerParameterResult<T> WithParameter<TParameter>(int position, Func<TParameter, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
 		_filter ??= new TriggerEventFilter();
 		_filter.AddPredicate<TParameter>(
-			o => o.Length < position && o[position] is TParameter m && predicate(m),
-			doNotPopulateThisValue);
+			o => o.Length > position && o[position] is TParameter m && predicate(m),
+			$"[{position}] {doNotPopulateThisValue}");
 		return this;
 	}
 
