@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using aweXpect.Core;
+using aweXpect.Results;
 
 namespace aweXpect;
 

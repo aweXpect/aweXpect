@@ -4,15 +4,20 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Options;
-using aweXpect.Results;
 
-namespace aweXpect;
+namespace aweXpect.Results;
 
+/// <summary>
+///     Result for a <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
+/// </summary>
 public class TriggerPropertyChangedParameterResult<T>(IThat<T> returnValue, string eventName)
-	: TriggerResult<T>(returnValue, eventName)
+	: TriggerParameterResult<T>(returnValue, eventName)
 {
 	private TriggerEventFilter? _filter;
 
+	/// <summary>
+	///     Predicate to filter for the <see cref="PropertyChangedEventArgs" /> parameter.
+	/// </summary>
 	public TriggerResult<T> WithPropertyChangedEventArgs(Func<PropertyChangedEventArgs, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
