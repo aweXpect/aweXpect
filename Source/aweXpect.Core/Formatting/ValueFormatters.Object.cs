@@ -23,7 +23,7 @@ public static partial class ValueFormatters
 		}
 		else if (options.UseLineBreaks)
 		{
-			stringBuilder.AppendLine(value.ToString().Indent(indentFirstLine: false));
+			stringBuilder.Append(value.ToString().Indent(indentFirstLine: false));
 		}
 		else
 		{

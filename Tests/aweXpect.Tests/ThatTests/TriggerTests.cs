@@ -11,8 +11,8 @@ public sealed class TriggerTests
 
 		async Task Act() =>
 			await That(sut)
-				.Triggers(nameof(PropertyChangedClass.PropertyChanged))
-				.WithParameter<PropertyChangedEventArgs>(e => e.PropertyName == "foo")
+				.TriggersPropertyChanged()
+				.WithPropertyChangedEventArgs(e => e.PropertyName == "foo")
 				.While(t =>
 				{
 					t.NotifyPropertyChanged("foo");
@@ -43,7 +43,11 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event PropertyChanged with PropertyChangedEventArgs parameter e => e.PropertyName == "foo" at least 3 times,
-			             but it was only recorded once
+			             but it was only recorded once in [
+			               PropertyChanged(PropertyChangedClass { }, PropertyChangedEventArgs {
+			                   PropertyName = "foo"
+			                 })
+			             ]
 			             """);
 	}
 	[Fact]
@@ -83,7 +87,9 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 3 times,
-			             but it was only recorded once
+			             but it was only recorded once in [
+			               CustomEvent()
+			             ]
 			             """);
 	}
 	[Fact]
@@ -124,7 +130,9 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 3 times,
-			             but it was only recorded once
+			             but it was only recorded once in [
+			               CustomEvent("foo")
+			             ]
 			             """);
 	}
 

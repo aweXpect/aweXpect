@@ -82,7 +82,7 @@ public partial class ValueFormatters
 		public async Task ShouldUseToStringWhenImplemented_Default(string[] values)
 		{
 			string value = string.Join(Environment.NewLine, values);
-			string expectedResult = string.Join($"{Environment.NewLine}  ", values) + Environment.NewLine;
+			string expectedResult = string.Join($"{Environment.NewLine}  ", values);
 			ClassWithToString subject = new(value);
 			StringBuilder sb = new();
 
