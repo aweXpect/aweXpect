@@ -26,7 +26,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 				.WithMessage($"""
 				              Expected sut to
-				              trigger event CustomEvent at least {(minimum == 1 ? "once" : $"{minimum} times")},
+				              trigger the CustomEvent event at least {(minimum == 1 ? "once" : $"{minimum} times")},
 				              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 				              """).AsWildcard();
 		}
@@ -51,7 +51,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 				.WithMessage($"""
 				              Expected sut to
-				              trigger event CustomEvent at most {(maximum == 1 ? "once" : $"{maximum} times")},
+				              trigger the CustomEvent event at most {(maximum == 1 ? "once" : $"{maximum} times")},
 				              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 				              """).AsWildcard();
 		}
@@ -78,7 +78,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 				.WithMessage($"""
 				              Expected sut to
-				              trigger event CustomEvent between {minimum} and {maximum} times,
+				              trigger the CustomEvent event between {minimum} and {maximum} times,
 				              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 				              """).AsWildcard();
 		}
@@ -103,7 +103,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 				.WithMessage($"""
 				              Expected sut to
-				              trigger event CustomEvent exactly {(expected == 1 ? "once" : $"{expected} times")},
+				              trigger the CustomEvent event exactly {(expected == 1 ? "once" : $"{expected} times")},
 				              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 				              """).AsWildcard();
 		}
@@ -124,7 +124,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 				.WithMessage("""
 				             Expected sut to
-				             trigger event CustomEvent never,
+				             trigger the CustomEvent event never,
 				             but it was recorded once in *
 				             """).AsWildcard();
 		}
@@ -146,7 +146,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 				.WithMessage($"""
 				              Expected sut to
-				              trigger event CustomEvent exactly once,
+				              trigger the CustomEvent event exactly once,
 				              but it was {(count == 0 ? "never recorded" : $"recorded {count} times")} in *
 				              """).AsWildcard();
 		}

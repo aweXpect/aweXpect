@@ -24,9 +24,6 @@ public class TriggerEventFilter
 			_toString.Append(" and");
 		}
 
-		_toString.Append(" with ");
-		Formatter.Format(_toString, typeof(TProperty));
-		_toString.Append(" parameter ");
 		_toString.Append(predicateExpression);
 		_predicates.Add(predicate);
 	}
