@@ -176,8 +176,8 @@ internal class EventConstraints
 					stringBuilder.Append(eventCount switch
 					{
 						0 => " never recorded",
-						1 => " only recorded once",
-						_ => $" only recorded {eventCount} times"
+						1 => " recorded once",
+						_ => $" recorded {eventCount} times"
 					});
 					stringBuilder.AppendLine(" and");
 				}
@@ -191,8 +191,8 @@ internal class EventConstraints
 					stringBuilder.Append(eventCount switch
 					{
 						0 => " never recorded",
-						1 => " only recorded once",
-						_ => $" only recorded {eventCount} times"
+						1 => " recorded once",
+						_ => $" recorded {eventCount} times"
 					});
 				}
 			}

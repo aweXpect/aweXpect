@@ -64,12 +64,12 @@ You can verify, that an event was triggered a specific number of times
 ```csharp
 await Expect.That(sut)
   .Triggers(nameof(MyClass.ThresholdReached))
+  .Between(1).And(2.Times()
   .While(subject =>
   {
     subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
     subject.OnThresholdReached(new ThresholdReachedEventArgs(15));
-  })
-  .Between(1).And(2.Times());
+  }));
 ```
 You can use the same occurrence constraints as in the [contain](/docs/expectations/collections#contain) method:
 - `AtLeast(2.Times())`
@@ -88,6 +88,6 @@ MyClass sut = // ...implements INotifyPropertyChanged
 await Expect.That(sut)
   .TriggersPropertyChanged()
   .WithPropertyChangedEventArgs(e => e.PropertyName == "MyProperty")
-  .While(subject => subject.Execute())
-  .AtLeast(2.Times());
+  .AtLeast(2.Times())
+  .While(subject => subject.Execute());
 ```

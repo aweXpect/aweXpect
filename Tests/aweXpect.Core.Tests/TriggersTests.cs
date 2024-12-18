@@ -4,151 +4,8 @@
 
 namespace aweXpect.Core.Tests;
 
-public sealed class TriggerTests
+public sealed partial class TriggerTests
 {
-	[Fact]
-	public async Task MultipleEvents_WhenCombination()
-	{
-		MultipleEventsClass<string, int> sut = new();
-
-		async Task Act() =>
-			await That(sut)
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
-				.WithParameter<string>(s => s == "foo")
-				.AtLeast(2.Times())
-				.And
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
-				.WithParameter<string>(s => s == "bar")
-				.AtMost(1.Times())
-				.And
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventB))
-				.WithParameter<int>(s => s == 3)
-				.While(t =>
-				{
-					t.NotifyCustomEventA("foo");
-					t.NotifyCustomEventA("bar");
-					t.NotifyCustomEventB(2);
-				});
-
-		await That(Act).Should().Throw<XunitException>()
-			.WithMessage("""
-			             Expected sut to
-			               trigger event CustomEventA
-			                 [1] with string parameter s => s == "foo" at least 2 times and
-			                 [2] with string parameter s => s == "bar" at most once and
-			               [3] trigger event CustomEventB with int parameter s => s == 3 at least once,
-			             but it was
-			               [1] only recorded once in [
-			                     CustomEventA("foo"),
-			                     CustomEventA("bar")
-			                   ] and
-			               [3] never recorded in [
-			                     CustomEventB(2)
-			                   ]
-			             """);
-	}
-
-	[Fact]
-	public async Task MultipleEvents_WhenListeningMultipleTimesToDifferentEvent_ShouldDisplayAllEventQueues()
-	{
-		MultipleEventsClass<string, int> sut = new();
-
-		async Task Act() =>
-			await That(sut)
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
-				.WithParameter<string>(s => s == "foo")
-				.AtLeast(2.Times())
-				.And
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventB))
-				.WithParameter<int>(s => s == 3)
-				.While(t =>
-				{
-					t.NotifyCustomEventA("foo");
-					t.NotifyCustomEventB(2);
-				});
-
-		await That(Act).Should().Throw<XunitException>()
-			.WithMessage("""
-			             Expected sut to
-			               [1] trigger event CustomEventA with string parameter s => s == "foo" at least 2 times and
-			               [2] trigger event CustomEventB with int parameter s => s == 3 at least once,
-			             but it was
-			               [1] only recorded once in [
-			                     CustomEventA("foo")
-			                   ] and
-			               [2] never recorded in [
-			                     CustomEventB(2)
-			                   ]
-			             """);
-	}
-
-	[Fact]
-	public async Task
-		MultipleEvents_WhenListeningMultipleTimesToDifferentEventAndOnlySomeAreSatisfied_ShouldDisplayAllFailedEventQueues()
-	{
-		MultipleEventsClass<string, int> sut = new();
-
-		async Task Act() =>
-			await That(sut)
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
-				.WithParameter<string>(s => s == "foo")
-				.AtLeast(2.Times())
-				.And
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventB))
-				.WithParameter<int>(s => s == 3)
-				.While(t =>
-				{
-					t.NotifyCustomEventA("foo");
-					t.NotifyCustomEventB(3);
-				});
-
-		await That(Act).Should().Throw<XunitException>()
-			.WithMessage("""
-			             Expected sut to
-			               [1] trigger event CustomEventA with string parameter s => s == "foo" at least 2 times and
-			               [2] trigger event CustomEventB with int parameter s => s == 3 at least once,
-			             but it was
-			               [1] only recorded once in [
-			                     CustomEventA("foo")
-			                   ]
-			             """);
-	}
-
-	[Fact]
-	public async Task MultipleEvents_WhenListeningMultipleTimesToSameEvent_ShouldGroupEventsInFailureMessage()
-	{
-		MultipleEventsClass<string, int> sut = new();
-
-		async Task Act() =>
-			await That(sut)
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
-				.WithParameter<string>(s => s == "foo")
-				.AtLeast(2.Times())
-				.And
-				.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
-				.WithParameter<string>(s => s == "bar")
-				.AtLeast(3.Times())
-				.While(t =>
-				{
-					t.NotifyCustomEventA("foo");
-					t.NotifyCustomEventA("bar");
-				});
-
-		await That(Act).Should().Throw<XunitException>()
-			.WithMessage("""
-			             Expected sut to
-			             trigger event CustomEventA
-			               [1] with string parameter s => s == "foo" at least 2 times and
-			               [2] with string parameter s => s == "bar" at least 3 times,
-			             but it was
-			               [1] only recorded once and
-			               [2] only recorded once in [
-			                     CustomEventA("foo"),
-			                     CustomEventA("bar")
-			                   ]
-			             """);
-	}
-
 	[Fact]
 	public async Task ShouldConsiderCancellationTokenInAsyncCallback()
 	{
@@ -193,7 +50,7 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 2 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent()
 			             ]
 			             """);
@@ -214,7 +71,7 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 2 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent()
 			             ]
 			             """);
@@ -304,7 +161,7 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 3 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent()
 			             ]
 			             """);
@@ -330,7 +187,7 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent with string parameter s => s == "foo" at least 2 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")
 			             ]
@@ -376,7 +233,7 @@ public sealed class TriggerTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 3 times,
-			             but it was only recorded 2 times in [
+			             but it was recorded 2 times in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")
 			             ]
@@ -458,6 +315,14 @@ public sealed class TriggerTests
 
 		public void NotifyCustomEvent()
 			=> CustomEvent?.Invoke();
+
+		public void NotifyCustomEvents(int notificationCount)
+		{
+			for (int i = 0; i < notificationCount; i++)
+			{
+				CustomEvent?.Invoke();
+			}
+		}
 	}
 
 	private sealed class CustomEventWithParametersClass<T1>
@@ -468,22 +333,6 @@ public sealed class TriggerTests
 
 		public void NotifyCustomEvent(T1 arg1)
 			=> CustomEvent?.Invoke(arg1);
-	}
-
-	private sealed class MultipleEventsClass<T1, T2>
-	{
-		public delegate void CustomEventDelegateA(T1 arg1);
-
-		public delegate void CustomEventDelegateB(T2 arg1);
-
-		public event CustomEventDelegateA? CustomEventA;
-		public event CustomEventDelegateB? CustomEventB;
-
-		public void NotifyCustomEventA(T1 arg1)
-			=> CustomEventA?.Invoke(arg1);
-
-		public void NotifyCustomEventB(T2 arg1)
-			=> CustomEventB?.Invoke(arg1);
 	}
 
 	private sealed class CustomEventWithParametersClass<T1, T2>
