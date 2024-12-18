@@ -679,5 +679,7 @@ namespace aweXpect.Results
         public TriggerResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
         protected virtual aweXpect.Options.TriggerEventFilter? GetFilter() { }
         public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Action<T> callback) { }
+        public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Func<T, System.Threading.Tasks.Task> callback) { }
+        public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Func<T, System.Threading.CancellationToken, System.Threading.Tasks.Task> callback) { }
     }
 }
