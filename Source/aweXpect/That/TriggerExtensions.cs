@@ -18,6 +18,6 @@ public static class TriggerExtensions
 	{
 		Quantifier quantifier = new();
 		IThat<T> should = subject.Should(_ => { });
-		return new TriggerPropertyChangedParameterResult<T>(should, nameof(INotifyPropertyChanged.PropertyChanged), quantifier);
+		return new TriggerPropertyChangedParameterResult<T>(should.ExpectationBuilder, subject, nameof(INotifyPropertyChanged.PropertyChanged), quantifier);
 	}
 }

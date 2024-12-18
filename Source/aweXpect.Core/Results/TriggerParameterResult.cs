@@ -9,8 +9,8 @@ namespace aweXpect.Results;
 /// <summary>
 ///     A trigger result that also allows specifying parameter filters.
 /// </summary>
-public class TriggerParameterResult<T>(IThat<T> returnValue, string eventName, Quantifier quantifier)
-	: TriggerResult<T>(returnValue, eventName, quantifier)
+public class TriggerParameterResult<T>(ExpectationBuilder expectationBuilder, IExpectSubject<T> returnValue, string eventName, Quantifier quantifier)
+	: TriggerResult<T, TriggerParameterResult<T>>(expectationBuilder, returnValue, eventName, quantifier)
 {
 	private TriggerEventFilter? _filter;
 
@@ -49,4 +49,7 @@ public class TriggerParameterResult<T>(IThat<T> returnValue, string eventName, Q
 
 	/// <inheritdoc />
 	protected override TriggerEventFilter? GetFilter() => _filter;
+
+	protected override void ResetFilter() =>
+		_filter = null;
 }

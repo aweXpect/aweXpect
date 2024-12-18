@@ -17,6 +17,6 @@ public static class TriggersExtensions
 	{
 		Quantifier quantifier = new();
 		IThat<T> should = subject.Should(_ => { });
-		return new TriggerParameterResult<T>(should, eventName, quantifier);
+		return new TriggerParameterResult<T>(should.ExpectationBuilder, subject, eventName, quantifier);
 	}
 }
