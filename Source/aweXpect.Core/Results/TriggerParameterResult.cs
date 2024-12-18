@@ -30,7 +30,7 @@ public class TriggerParameterResult<T>(
 		string doNotPopulateThisValue = "")
 	{
 		_filter ??= new TriggerEventFilter();
-		_filter.AddPredicate<object?>(
+		_filter.AddPredicate(
 			o => o.Length > 0 && predicate(o[0]),
 			$" with sender {doNotPopulateThisValue}");
 		return this;
@@ -49,7 +49,7 @@ public class TriggerParameterResult<T>(
 		where TEventArgs : EventArgs
 	{
 		_filter ??= new TriggerEventFilter();
-		_filter.AddPredicate<TEventArgs>(
+		_filter.AddPredicate(
 			o => o.Length > 1 && o[1] is TEventArgs m && predicate(m),
 			$" with {Formatter.Format(typeof(TEventArgs))} {doNotPopulateThisValue}");
 		return this;
@@ -66,7 +66,7 @@ public class TriggerParameterResult<T>(
 		string doNotPopulateThisValue = "")
 	{
 		_filter ??= new TriggerEventFilter();
-		_filter.AddPredicate<TParameter>(
+		_filter.AddPredicate(
 			o => o.Any(x => x is TParameter m && predicate(m)),
 			$" with {Formatter.Format(typeof(TParameter))} parameter {doNotPopulateThisValue}");
 		return this;
@@ -84,7 +84,7 @@ public class TriggerParameterResult<T>(
 		string doNotPopulateThisValue = "")
 	{
 		_filter ??= new TriggerEventFilter();
-		_filter.AddPredicate<TParameter>(
+		_filter.AddPredicate(
 			o => o.Length > position && o[position] is TParameter m && predicate(m),
 			$" with {Formatter.Format(typeof(TParameter))} parameter [{position}] {doNotPopulateThisValue}");
 		return this;
@@ -104,9 +104,9 @@ public class TriggerParameterResult<T>(
 		Func<TParameter, bool> predicate)
 	{
 		_filter ??= new TriggerEventFilter();
-		_filter.AddPredicate<TParameter>(
+		_filter.AddPredicate(
 			o => position == null
-				? o.Any(x => x is TParameter m && predicate(m))
+				? o.Any(x => x is TParameter p && predicate(p))
 				: o.Length > position && o[position.Value] is TParameter m && predicate(m),
 			expression);
 		return this;
