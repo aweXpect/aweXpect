@@ -58,6 +58,32 @@ await Expect.That(sut)
   });
 ```
 
+### Sender
+
+When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the triggered events based on the sender (the first parameter):
+```csharp
+await Expect.That(sut)
+  .Triggers(nameof(MyClass.ThresholdReached))
+  .WithSender(s => s == sut)
+  .While(subject =>
+  {
+    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
+  });
+```
+
+### EventArgs
+
+When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the triggered events based on their `EventArgs` (the second parameter):
+```csharp
+await Expect.That(sut)
+  .Triggers(nameof(MyClass.ThresholdReached))
+  .With<ThresholdReachedEventArgs>(e => e < 10)
+  .While(subject =>
+  {
+    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
+  });
+```
+
 ## Counting
 
 You can verify, that an event was triggered a specific number of times
@@ -81,13 +107,27 @@ You can use the same occurrence constraints as in the [contain](/docs/expectatio
 ## Special events
 
 For common events, you can create specific overloads.  
-Included is an overload for the [`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged) event:
+Included are some overloads for the [`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged) event:
 ```csharp
 MyClass sut = // ...implements INotifyPropertyChanged
 
 await Expect.That(sut)
   .TriggersPropertyChanged()
-  .WithPropertyChangedEventArgs(e => e.PropertyName == "MyProperty")
-  .AtLeast(2.Times())
-  .While(subject => subject.Execute());
+  .While(subject => subject.Execute())
+  .Because("it should trigger the PropertyChanged event for any property name");
+
+await Expect.That(sut)
+  .TriggersPropertyChangedFor(x => x.MyProperty)
+  .While(subject => subject.Execute())
+  .Because("it should trigger the PropertyChanged event for the 'MyProperty' property name");
+
+await Expect.That(sut)
+  .DoesNotTriggerPropertyChanged()
+  .While(subject => subject.ExecuteWithoutNotification())
+  .Because("it should not trigger for any property name");
+
+await Expect.That(sut)
+  .DoesNotTriggerPropertyChangedFor(x => x.MyProperty)
+  .While(subject => subject.ExecuteWithoutNotification())
+  .Because("it should not trigger for the 'MyProperty' property name");
 ```

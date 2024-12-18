@@ -39,7 +39,7 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 		if (handler == null)
 		{
 			throw new NotSupportedException(
-				$"The event {eventName} contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
+				$"The {eventName} event contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
 		}
 
 		eventInfo.AddEventHandler(subject.Target, handler);

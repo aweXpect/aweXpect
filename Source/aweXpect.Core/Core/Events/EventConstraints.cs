@@ -53,7 +53,7 @@ internal class EventConstraints
 			bool hasMultipleGroupConstraints = group.Value.Count > 1;
 			if (hasMultipleGroupConstraints)
 			{
-				sb.Append("trigger event ").Append(group.Key);
+				sb.Append("trigger the ").Append(group.Key).Append(" event");
 				AppendExpectationForGroupWithMultipleValues(sb, group.Value, hasMultipleGroups);
 			}
 			else
@@ -107,8 +107,8 @@ internal class EventConstraints
 		{
 			sb.Append("[" + item.Index + "] ");
 		}
-
-		sb.Append("trigger event ").Append(eventName);
+		
+		sb.Append("trigger the ").Append(eventName).Append(" event");
 		if (item.Filter != null)
 		{
 			sb.Append(item.Filter);

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.ComponentModel;
+using System.Threading;
 
 // ReSharper disable MemberCanBePrivate.Local
 
@@ -25,7 +26,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent at least 2 times,
+			             trigger the CustomEvent event at least 2 times,
 			             but it was never recorded in []
 			             """);
 	}
@@ -44,7 +45,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent at least 2 times,
+			             trigger the CustomEvent event at least 2 times,
 			             but it was recorded once in [
 			               CustomEvent()
 			             ]
@@ -90,7 +91,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage($"""
 			              Expected sut to
-			              trigger event CustomEvent with string parameter [{position}] s => s == "p1" at least 2 times,
+			              trigger the CustomEvent event with string parameter [{position}] s => s == "p1" at least 2 times,
 			              but it was never recorded in [
 			                CustomEvent("p0", "p1", "p2"),
 			                CustomEvent("p0", "p1", "p2")
@@ -134,7 +135,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent at least 3 times,
+			             trigger the CustomEvent event at least 3 times,
 			             but it was recorded once in [
 			               CustomEvent()
 			             ]
@@ -160,7 +161,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent with string parameter s => s == "foo" at least 2 times,
+			             trigger the CustomEvent event with string parameter s => s == "foo" at least 2 times,
 			             but it was recorded once in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")
@@ -206,7 +207,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent at least 3 times,
+			             trigger the CustomEvent event at least 3 times,
 			             but it was recorded 2 times in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")
@@ -234,7 +235,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent with string parameter s => s == "foo" and with int parameter i => i > 1 at least once,
+			             trigger the CustomEvent event with string parameter s => s == "foo" and with int parameter i => i > 1 at least once,
 			             but it was never recorded in [
 			               CustomEvent("foo", 1),
 			               CustomEvent("bar", 2)
@@ -261,7 +262,7 @@ public sealed partial class TriggerTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
-			             trigger event CustomEvent with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
+			             trigger the CustomEvent event with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
 			             but it was never recorded in [
 			               CustomEvent("foo1", "bar2"),
 			               CustomEvent("bar1", "foo2")
@@ -300,7 +301,117 @@ public sealed partial class TriggerTests
 				});
 
 		await That(Act).Should().Throw<NotSupportedException>()
-			.WithMessage("The event CustomEvent contains too many parameters (5): [string, int?, bool, DateTime, int]");
+			.WithMessage("The CustomEvent event contains too many parameters (5): [string, int?, bool, DateTime, int]");
+	}
+
+	[Fact]
+	public async Task WithEventArgs_WhenEventIsTriggeredBySomethingElse_ShouldFail()
+	{
+		PropertyChangedClass sut = new()
+		{
+			MyValue = 2
+		};
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(INotifyPropertyChanged.PropertyChanged))
+				.With<PropertyChangedEventArgs>(e => e.PropertyName == "SomethingElse")
+				.While(t =>
+				{
+					t.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				});
+
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger the PropertyChanged event with PropertyChangedEventArgs e => e.PropertyName == "SomethingElse" at least once,
+			             but it was never recorded in [
+			               PropertyChanged(PropertyChangedClass {
+			                   MyValue = 2
+			                 }, PropertyChangedEventArgs {
+			                   PropertyName = "MyValue"
+			                 })
+			             ]
+			             """);
+	}
+
+	[Fact]
+	public async Task WithEventArgs_WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
+	{
+		PropertyChangedClass sut = new()
+		{
+			MyValue = 2
+		};
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(INotifyPropertyChanged.PropertyChanged))
+				.With<PropertyChangedEventArgs>(e => e.PropertyName == "MyValue")
+				.While(t =>
+				{
+					t.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				});
+
+		await That(Act).Should().NotThrow();
+	}
+
+	[Fact]
+	public async Task WithSender_WhenEventIsTriggeredBySomethingElse_ShouldFail()
+	{
+		PropertyChangedClass sender = new()
+		{
+			MyValue = 1
+		};
+		PropertyChangedClass sut = new()
+		{
+			MyValue = 2
+		};
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(INotifyPropertyChanged.PropertyChanged))
+				.WithSender(s => s == sender)
+				.While(t =>
+				{
+					t.NotifyPropertyChanged(sut, nameof(PropertyChangedClass.MyValue));
+				});
+
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger the PropertyChanged event with sender s => s == sender at least once,
+			             but it was never recorded in [
+			               PropertyChanged(PropertyChangedClass {
+			                   MyValue = 2
+			                 }, PropertyChangedEventArgs {
+			                   PropertyName = "MyValue"
+			                 })
+			             ]
+			             """);
+	}
+
+	[Fact]
+	public async Task WithSender_WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
+	{
+		PropertyChangedClass sender = new()
+		{
+			MyValue = 1
+		};
+		PropertyChangedClass sut = new()
+		{
+			MyValue = 2
+		};
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(INotifyPropertyChanged.PropertyChanged))
+				.WithSender(s => s == sender)
+				.While(t =>
+				{
+					t.NotifyPropertyChanged(sender, nameof(PropertyChangedClass.MyValue));
+				});
+
+		await That(Act).Should().NotThrow();
 	}
 
 	private sealed class AsyncCustomEventClass
@@ -391,5 +502,17 @@ public sealed partial class TriggerTests
 
 		public void NotifyCustomEvent(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
 			=> CustomEvent?.Invoke(arg1, arg2, arg3, arg4, arg5);
+	}
+
+	private sealed class PropertyChangedClass : INotifyPropertyChanged
+	{
+		public int MyValue { get; set; }
+		public event PropertyChangedEventHandler? PropertyChanged;
+
+		public void NotifyPropertyChanged(string propertyName)
+			=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+		public void NotifyPropertyChanged(object? sender, string? propertyName)
+			=> PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propertyName));
 	}
 }

@@ -476,7 +476,7 @@ namespace aweXpect.Options
     public class TriggerEventFilter
     {
         public TriggerEventFilter() { }
-        public void AddPredicate<TProperty>(System.Func<object?[], bool> predicate, string predicateExpression) { }
+        public void AddPredicate(System.Func<object?[], bool> predicate, string predicateExpression) { }
         public bool IsMatch(string eventName, object?[] parameters) { }
         public override string ToString() { }
     }
@@ -672,8 +672,12 @@ namespace aweXpect.Results
         public TriggerParameterResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IExpectSubject<T> returnValue, string eventName, aweXpect.Options.Quantifier quantifier) { }
         protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
         protected override void ResetFilter() { }
+        public aweXpect.Results.TriggerParameterResult<T> With<TEventArgs>(System.Func<TEventArgs, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "")
+            where TEventArgs : System.EventArgs { }
         public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(int position, System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate) { }
+        public aweXpect.Results.TriggerParameterResult<T> WithSender(System.Func<object?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public abstract class TriggerResult<T, TSelf>
         where TSelf : aweXpect.Results.TriggerResult<T, TSelf>

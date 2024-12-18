@@ -33,10 +33,10 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
-				               trigger event CustomEventA
+				               trigger the CustomEventA event
 				                 [1] with string parameter s => s == "foo" at least 2 times and
 				                 [2] with string parameter s => s == "bar" at most once and
-				               [3] trigger event CustomEventB with int parameter s => s == 3 at least once,
+				               [3] trigger the CustomEventB event with int parameter s => s == 3 at least once,
 				             but it was
 				               [1] recorded once in [
 				                     CustomEventA("foo"),
@@ -71,7 +71,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
-				             trigger event CustomEventA
+				             trigger the CustomEventA event
 				               [1] with string parameter s => s == "foo" at least 2 times and
 				               [2] with string parameter s => s == "bar" at least 3 times,
 				             but it was
@@ -106,8 +106,8 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
-				               [1] trigger event CustomEventA with string parameter s => s == "foo" never and
-				               [2] trigger event CustomEventB with int parameter s => s == 3 at least once,
+				               [1] trigger the CustomEventA event with string parameter s => s == "foo" never and
+				               [2] trigger the CustomEventB event with int parameter s => s == 3 at least once,
 				             but it was
 				               [1] recorded once in [
 				                     CustomEventA("foo")
@@ -137,8 +137,8 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
-				               [1] trigger event CustomEventA with string parameter s => s == "foo" at least 2 times and
-				               [2] trigger event CustomEventB with int parameter s => s == 3 at least once,
+				               [1] trigger the CustomEventA event with string parameter s => s == "foo" at least 2 times and
+				               [2] trigger the CustomEventB event with int parameter s => s == 3 at least once,
 				             but it was
 				               [1] recorded once in [
 				                     CustomEventA("foo")
