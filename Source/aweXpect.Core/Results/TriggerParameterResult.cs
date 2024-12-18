@@ -30,7 +30,7 @@ public class TriggerParameterResult<T>(ExpectationBuilder expectationBuilder, IE
 	}
 
 	/// <summary>
-	///     Adds a parameter predicate on the parameter at the given <paramref name="position" /> of type
+	///     Adds a parameter predicate on the parameter at the given zero-based <paramref name="position" /> of type
 	///     <typeparamref name="TParameter" />.
 	/// </summary>
 	/// <remarks>

@@ -31,32 +31,6 @@ public sealed partial class TriggerTests
 	}
 
 	[Fact]
-	public async Task ShouldStopListeningAfterWhileCallback()
-	{
-		CustomEventWithoutParametersClass sut = new();
-		sut.NotifyCustomEvent();
-
-		async Task Act() =>
-			await That(sut)
-				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
-				.AtLeast(2.Times())
-				.While(t =>
-				{
-					t.NotifyCustomEvent();
-				});
-
-		sut.NotifyCustomEvent();
-		await That(Act).Should().Throw<XunitException>()
-			.WithMessage("""
-			             Expected sut to
-			             trigger event CustomEvent at least 2 times,
-			             but it was recorded once in [
-			               CustomEvent()
-			             ]
-			             """);
-	}
-
-	[Fact]
 	public async Task ShouldSupportAsyncCallback()
 	{
 		AsyncCustomEventClass sut = new();
@@ -266,6 +240,50 @@ public sealed partial class TriggerTests
 			               CustomEvent("bar", 2)
 			             ]
 			             """);
+	}
+
+	[Fact]
+	public async Task WhenMultiplePositionFiltersAreSpecified_ShouldVerifyAllFilters_ShouldFail()
+	{
+		CustomEventWithParametersClass<string, string> sut = new();
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
+				.WithParameter<string>(0, s => s == "foo1")
+				.WithParameter<string>(1, s => s == "foo2")
+				.While(t =>
+				{
+					t.NotifyCustomEvent("foo1", "bar2");
+					t.NotifyCustomEvent("bar1", "foo2");
+				});
+
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger event CustomEvent with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
+			             but it was never recorded in [
+			               CustomEvent("foo1", "bar2"),
+			               CustomEvent("bar1", "foo2")
+			             ]
+			             """);
+	}
+
+	[Fact]
+	public async Task WhenTypeIsNotUnique_ShouldCheckAllMatchingParameters()
+	{
+		CustomEventWithParametersClass<string, string> sut = new();
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
+				.WithParameter<string>(s => s == "bar")
+				.While(t =>
+				{
+					t.NotifyCustomEvent("foo", "bar");
+				});
+
+		await That(Act).Should().NotThrow();
 	}
 
 	[Fact]

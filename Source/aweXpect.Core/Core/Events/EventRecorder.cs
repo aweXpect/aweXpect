@@ -46,10 +46,7 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 
 		_onDispose = () =>
 		{
-			if (subject.Target is not null)
-			{
-				eventInfo.RemoveEventHandler(subject.Target, handler);
-			}
+			eventInfo.RemoveEventHandler(subject.Target, handler);
 		};
 	}
 
@@ -72,14 +69,7 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 	///     Returns a formatted string for all recorded events.
 	/// </summary>
 	public string ToString(string indent)
-	{
-		if (string.IsNullOrEmpty(indent))
-		{
-			return Formatter.Format(_eventQueue, FormattingOptions.MultipleLines);
-		}
-
-		return Formatter.Format(_eventQueue, FormattingOptions.MultipleLines).Indent(indent, false);
-	}
+		=> Formatter.Format(_eventQueue, FormattingOptions.MultipleLines).Indent(indent, false);
 
 	/// <summary>
 	///     Gets the number of recorded events that match the <paramref name="filter" />.

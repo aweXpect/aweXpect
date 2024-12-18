@@ -193,12 +193,7 @@ internal class EventConstraints
 		if (hasMultipleGroups)
 		{
 			stringBuilder.Append("  [").Append(item.Index).Append(']');
-			stringBuilder.Append(eventCount switch
-			{
-				0 => " never recorded",
-				1 => " recorded once",
-				_ => $" recorded {eventCount} times"
-			});
+			stringBuilder.Append(GetRecordingDisplayString(eventCount));
 			stringBuilder.AppendLine(" and");
 		}
 		else
@@ -208,12 +203,14 @@ internal class EventConstraints
 				stringBuilder.Append("  [").Append(item.Index).Append(']');
 			}
 
-			stringBuilder.Append(eventCount switch
-			{
-				0 => " never recorded",
-				1 => " recorded once",
-				_ => $" recorded {eventCount} times"
-			});
+			stringBuilder.Append(GetRecordingDisplayString(eventCount));
 		}
 	}
+
+	private static string GetRecordingDisplayString(int eventCount) => eventCount switch
+	{
+		0 => " never recorded",
+		1 => " recorded once",
+		_ => $" recorded {eventCount} times"
+	};
 }

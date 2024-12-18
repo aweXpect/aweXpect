@@ -93,7 +93,7 @@ public sealed partial class TriggerTests
 				await That(sut)
 					.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventA))
 					.WithParameter<string>(s => s == "foo")
-					.AtLeast(2.Times())
+					.Never()
 					.And
 					.Triggers(nameof(MultipleEventsClass<string, int>.CustomEventB))
 					.WithParameter<int>(s => s == 3)
@@ -106,7 +106,7 @@ public sealed partial class TriggerTests
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
-				               [1] trigger event CustomEventA with string parameter s => s == "foo" at least 2 times and
+				               [1] trigger event CustomEventA with string parameter s => s == "foo" never and
 				               [2] trigger event CustomEventB with int parameter s => s == 3 at least once,
 				             but it was
 				               [1] recorded once in [
