@@ -14,12 +14,16 @@ namespace aweXpect.Results;
 /// <summary>
 ///     The result for a <see cref="TriggersExtensions.Triggers{T}" /> expectation.
 /// </summary>
-public class TriggerResult<T>(IThat<T> returnValue, string eventName)
+public class TriggerResult<T>(IThat<T> returnValue, string eventName, Quantifier quantifier)
+	: CountResult<T, IThat<T>, TriggerResult<T>>(returnValue.ExpectationBuilder, returnValue, quantifier)
 {
+	private readonly IThat<T> _returnValue = returnValue;
+	private readonly Quantifier _quantifier = quantifier;
+
 	/// <summary>
 	///     Executes the <paramref name="callback" /> while monitoring the triggered events.
 	/// </summary>
-	public CountResult<T, IThat<T>> While(Action<T> callback)
+	public AndOrResult<T, IThat<T>> While(Action<T> callback)
 		=> While((t, _) =>
 		{
 			callback(t);
@@ -29,23 +33,22 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 	/// <summary>
 	///     Executes the asynchronous <paramref name="callback" /> while monitoring the triggered events.
 	/// </summary>
-	public CountResult<T, IThat<T>> While(Func<T, Task> callback)
+	public AndOrResult<T, IThat<T>> While(Func<T, Task> callback)
 		=> While((t, _) => callback(t));
 
 	/// <summary>
 	///     Executes the asynchronous <paramref name="callback" /> with cancellation support
 	///     while monitoring the triggered events.
 	/// </summary>
-	public CountResult<T, IThat<T>> While(Func<T, CancellationToken, Task> callback)
+	public AndOrResult<T, IThat<T>> While(Func<T, CancellationToken, Task> callback)
 	{
-		Quantifier quantifier = new();
-		returnValue.ExpectationBuilder.AddConstraint(it
+		_returnValue.ExpectationBuilder.AddConstraint(it
 			=> new EventConstraint(it,
 				eventName,
 				callback,
 				GetFilter(),
-				quantifier));
-		return new CountResult<T, IThat<T>>(returnValue.ExpectationBuilder, returnValue, quantifier);
+				_quantifier));
+		return new AndOrResult<T, IThat<T>>(_returnValue.ExpectationBuilder, _returnValue);
 	}
 
 	/// <summary>

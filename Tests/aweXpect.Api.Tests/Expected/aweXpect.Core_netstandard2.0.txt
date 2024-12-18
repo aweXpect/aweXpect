@@ -669,17 +669,17 @@ namespace aweXpect.Results
     }
     public class TriggerParameterResult<T> : aweXpect.Results.TriggerResult<T>
     {
-        public TriggerParameterResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
+        public TriggerParameterResult(aweXpect.Core.IThat<T> returnValue, string eventName, aweXpect.Options.Quantifier quantifier) { }
         protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
         public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(int position, System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
-    public class TriggerResult<T>
+    public class TriggerResult<T> : aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>, aweXpect.Results.TriggerResult<T>>
     {
-        public TriggerResult(aweXpect.Core.IThat<T> returnValue, string eventName) { }
+        public TriggerResult(aweXpect.Core.IThat<T> returnValue, string eventName, aweXpect.Options.Quantifier quantifier) { }
         protected virtual aweXpect.Options.TriggerEventFilter? GetFilter() { }
-        public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Action<T> callback) { }
-        public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Func<T, System.Threading.Tasks.Task> callback) { }
-        public aweXpect.Results.CountResult<T, aweXpect.Core.IThat<T>> While(System.Func<T, System.Threading.CancellationToken, System.Threading.Tasks.Task> callback) { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> While(System.Action<T> callback) { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> While(System.Func<T, System.Threading.Tasks.Task> callback) { }
+        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> While(System.Func<T, System.Threading.CancellationToken, System.Threading.Tasks.Task> callback) { }
     }
 }

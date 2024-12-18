@@ -10,8 +10,8 @@ namespace aweXpect.Results;
 /// <summary>
 ///     Result for a <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
 /// </summary>
-public class TriggerPropertyChangedParameterResult<T>(IThat<T> returnValue, string eventName)
-	: TriggerParameterResult<T>(returnValue, eventName)
+public class TriggerPropertyChangedParameterResult<T>(IThat<T> returnValue, string eventName, Quantifier quantifier)
+	: TriggerParameterResult<T>(returnValue, eventName, quantifier)
 {
 	private TriggerEventFilter? _filter;
 

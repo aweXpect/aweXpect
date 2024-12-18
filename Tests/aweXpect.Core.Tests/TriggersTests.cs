@@ -17,8 +17,8 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(AsyncCustomEventClass.CustomEvent))
-				.While((t, c) => t.NotifyCustomEventAsync(c))
 				.AtLeast(2.Times())
+				.While((t, c) => t.NotifyCustomEventAsync(c))
 				.WithCancellation(token);
 
 		await That(Act).Should().Throw<XunitException>()
@@ -38,11 +38,11 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
+				.AtLeast(2.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent();
-				})
-				.AtLeast(2.Times());
+				});
 
 		sut.NotifyCustomEvent();
 		await That(Act).Should().Throw<XunitException>()
@@ -63,8 +63,8 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(AsyncCustomEventClass.CustomEvent))
-				.While(t => t.NotifyCustomEventAsync())
-				.AtLeast(2.Times());
+				.AtLeast(2.Times())
+				.While(t => t.NotifyCustomEventAsync());
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
@@ -105,12 +105,12 @@ public sealed class TriggerTests
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string, string, string>.CustomEvent))
 				.WithParameter<string>(position, s => s == "p1")
+				.AtLeast(2.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("p0", "p1", "p2");
 					t.NotifyCustomEvent("p0", "p1", "p2");
-				})
-				.AtLeast(2.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage($"""
@@ -131,13 +131,13 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent();
 					t.NotifyCustomEvent();
 					t.NotifyCustomEvent();
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().NotThrow();
 	}
@@ -150,11 +150,11 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent();
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
@@ -175,12 +175,39 @@ public sealed class TriggerTests
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
 				.WithParameter<string>(s => s == "foo")
+				.AtLeast(2.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("bar");
-				})
-				.AtLeast(2.Times());
+				});
+
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger event CustomEvent with string parameter s => s == "foo" at least 2 times,
+			             but it was only recorded once in [
+			               CustomEvent("foo"),
+			               CustomEvent("bar")
+			             ]
+			             """);
+	}
+
+	[Fact]
+	public async Task WhenCustomEventWithParameters2222_WhenFilterResultsInTooFewRecordings_ShouldFail()
+	{
+		CustomEventWithParametersClass<string> sut = new();
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.WithParameter<string>(s => s == "foo")
+				.AtLeast(2.Times())
+				.While(t =>
+				{
+					t.NotifyCustomEvent("foo");
+					t.NotifyCustomEvent("bar");
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
@@ -202,13 +229,13 @@ public sealed class TriggerTests
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
 				.WithParameter<string>(s => s == "foo")
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("foo");
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().NotThrow();
 	}
@@ -221,12 +248,12 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("bar");
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
@@ -249,12 +276,12 @@ public sealed class TriggerTests
 				.Triggers(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
 				.WithParameter<string>(s => s == "foo")
 				.WithParameter<int>(i => i > 1)
+				.AtLeast(1.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo", 1);
 					t.NotifyCustomEvent("bar", 2);
-				})
-				.AtLeast(1.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
