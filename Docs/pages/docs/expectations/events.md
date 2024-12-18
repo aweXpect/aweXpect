@@ -113,12 +113,21 @@ MyClass sut = // ...implements INotifyPropertyChanged
 
 await Expect.That(sut)
   .TriggersPropertyChanged()
-  .With<PropertyChangedEventArgs>(e => e.PropertyChanged == "MyProperty")
   .While(subject => subject.Execute())
-  .Because("we have a special method for PropertyChanged");
+  .Because("it should trigger the PropertyChanged event for any property name");
 
 await Expect.That(sut)
   .TriggersPropertyChangedFor(x => x.MyProperty)
   .While(subject => subject.Execute())
-  .Because("we have a special method for PropertyChanged");
+  .Because("it should trigger the PropertyChanged event for the 'MyProperty' property name");
+
+await Expect.That(sut)
+  .DoesNotTriggerPropertyChanged()
+  .While(subject => subject.ExecuteWithoutNotification())
+  .Because("it should not trigger for any property name");
+
+await Expect.That(sut)
+  .DoesNotTriggerPropertyChangedFor(x => x.MyProperty)
+  .While(subject => subject.ExecuteWithoutNotification())
+  .Because("it should not trigger for the 'MyProperty' property name");
 ```
