@@ -1,4 +1,5 @@
 ﻿using aweXpect.Core;
+using aweXpect.Options;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -14,7 +15,8 @@ public static class TriggersExtensions
 	public static TriggerParameterResult<T> Triggers<T>(
 		this IExpectSubject<T> subject, string eventName)
 	{
+		Quantifier quantifier = new();
 		IThat<T> should = subject.Should(_ => { });
-		return new TriggerParameterResult<T>(should, eventName);
+		return new TriggerParameterResult<T>(should.ExpectationBuilder, subject, eventName, quantifier);
 	}
 }

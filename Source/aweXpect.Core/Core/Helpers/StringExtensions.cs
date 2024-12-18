@@ -13,9 +13,9 @@ internal static class StringExtensions
 	public static string? Indent(this string? value, string indentation = "  ",
 		bool indentFirstLine = true)
 	{
-		if (value == null)
+		if (value == null || string.IsNullOrEmpty(indentation))
 		{
-			return null;
+			return value;
 		}
 
 		return (indentFirstLine ? indentation : "")

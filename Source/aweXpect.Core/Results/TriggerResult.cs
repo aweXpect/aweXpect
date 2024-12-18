@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Events;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -14,12 +12,90 @@ namespace aweXpect.Results;
 /// <summary>
 ///     The result for a <see cref="TriggersExtensions.Triggers{T}" /> expectation.
 /// </summary>
-public class TriggerResult<T>(IThat<T> returnValue, string eventName)
+public abstract class TriggerResult<T, TSelf>(
+	ExpectationBuilder expectationBuilder,
+	IExpectSubject<T> returnValue,
+	string eventName,
+	Quantifier quantifier)
+	where TSelf : TriggerResult<T, TSelf>
 {
+	private readonly EventConstraints _eventConstraints = new();
+	private string _eventName = eventName;
+	private Quantifier _quantifier = quantifier;
+
+	/// <summary>
+	///     Add additional trigger expectations.
+	/// </summary>
+	public TriggerAndResult<TSelf> And => new(s =>
+	{
+		_eventConstraints.Add(_eventName, GetFilter(), _quantifier);
+		_eventName = s;
+		_quantifier = new Quantifier();
+		ResetFilter();
+
+		return (TSelf)this;
+	});
+
+	/// <summary>
+	///     Verifies, that it occurs at least <paramref name="minimum" /> times.
+	/// </summary>
+	public TSelf AtLeast(Times minimum)
+	{
+		_quantifier.AtLeast(minimum.Value);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs at most <paramref name="maximum" /> times.
+	/// </summary>
+	public TSelf AtMost(Times maximum)
+	{
+		_quantifier.AtMost(maximum.Value);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs between <paramref name="minimum" />...
+	/// </summary>
+	public BetweenResult<TSelf> Between(int minimum)
+		=> new(maximum =>
+		{
+			_quantifier.Between(minimum, maximum);
+			return (TSelf)this;
+		});
+
+	/// <summary>
+	///     Verifies, that it occurs exactly <paramref name="expected" /> times.
+	/// </summary>
+	public TSelf Exactly(Times expected)
+	{
+		_quantifier.Exactly(expected.Value);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs never.
+	/// </summary>
+	public TSelf Never()
+	{
+		_quantifier.Exactly(0);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs exactly once.
+	/// </summary>
+	public TSelf Once()
+	{
+		_quantifier.Exactly(1);
+		return (TSelf)this;
+	}
+
+
 	/// <summary>
 	///     Executes the <paramref name="callback" /> while monitoring the triggered events.
 	/// </summary>
-	public CountResult<T, IThat<T>> While(Action<T> callback)
+	public AndOrResult<T, IExpectSubject<T>> While(Action<T> callback)
 		=> While((t, _) =>
 		{
 			callback(t);
@@ -29,23 +105,21 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 	/// <summary>
 	///     Executes the asynchronous <paramref name="callback" /> while monitoring the triggered events.
 	/// </summary>
-	public CountResult<T, IThat<T>> While(Func<T, Task> callback)
+	public AndOrResult<T, IExpectSubject<T>> While(Func<T, Task> callback)
 		=> While((t, _) => callback(t));
 
 	/// <summary>
 	///     Executes the asynchronous <paramref name="callback" /> with cancellation support
 	///     while monitoring the triggered events.
 	/// </summary>
-	public CountResult<T, IThat<T>> While(Func<T, CancellationToken, Task> callback)
+	public AndOrResult<T, IExpectSubject<T>> While(Func<T, CancellationToken, Task> callback)
 	{
-		Quantifier quantifier = new();
-		returnValue.ExpectationBuilder.AddConstraint(it
-			=> new EventConstraint(it,
-				eventName,
-				callback,
-				GetFilter(),
-				quantifier));
-		return new CountResult<T, IThat<T>>(returnValue.ExpectationBuilder, returnValue, quantifier);
+		_eventConstraints.Add(_eventName, GetFilter(), _quantifier);
+		expectationBuilder.AddConstraint(it
+			=> new EventTriggerConstraint(it,
+				_eventConstraints,
+				callback));
+		return new AndOrResult<T, IExpectSubject<T>>(expectationBuilder, returnValue);
 	}
 
 	/// <summary>
@@ -53,139 +127,46 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 	/// </summary>
 	protected virtual TriggerEventFilter? GetFilter() => null;
 
-	private readonly struct EventConstraint(
+	/// <summary>
+	///     Resets the event filter.
+	/// </summary>
+	protected abstract void ResetFilter();
+
+	/// <summary>
+	///     Result for combining multiple trigger filters.
+	/// </summary>
+	public class TriggerAndResult<TResult>(Func<string, TResult> callback)
+	{
+		/// <summary>
+		///     Verifies that the subject triggers an additional event with the given <paramref name="eventName" />.
+		/// </summary>
+		public TResult Triggers(string eventName) => callback(eventName);
+	}
+
+	private readonly struct EventTriggerConstraint(
 		string it,
-		string eventName,
-		Func<T, CancellationToken, Task> callback,
-		TriggerEventFilter? filter,
-		Quantifier quantifier)
+		EventConstraints eventConstraints,
+		Func<T, CancellationToken, Task> callback)
 		: IAsyncConstraint<T>
 	{
 		public async Task<ConstraintResult> IsMetBy(T actual, CancellationToken cancellationToken)
 		{
-			EventInfo[] events = typeof(T).GetEvents();
-			string name = eventName;
-			using EventRecorder recorder = new(name);
+			using EventRecording<T> recording = eventConstraints.StartRecordingEvents(actual);
 
-			EventInfo? @event = events.FirstOrDefault(x => x.Name == name);
-			if (@event == null)
-			{
-				throw new NotSupportedException($"Event {name} is not supported on {Formatter.Format(actual)}");
-			}
-
-			recorder.Attach(new WeakReference(actual), @event);
 			await callback(actual, cancellationToken);
-			int eventCount = recorder.EventQueue.Count;
-			if (filter != null)
-			{
-				TriggerEventFilter f = filter;
-				eventCount = recorder.EventQueue.Count(x => f.IsMatch(name, x.Parameters));
-			}
 
-			if (quantifier.Check(eventCount, true) == true)
+			StringBuilder sb = new();
+			sb.Append(it).Append(" was");
+			bool hasErrors = eventConstraints.HasErrors(recording, sb);
+			if (!hasErrors)
 			{
 				return new ConstraintResult.Success<T>(actual, ToString());
 			}
 
-			return new ConstraintResult.Failure<T>(actual, ToString(),
-				eventCount switch
-				{
-					0 =>
-						$"{it} was never recorded in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}",
-					1 =>
-						$"{it} was only recorded once in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}",
-					_ =>
-						$"{it} was only recorded {eventCount} times in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}"
-				});
+			return new ConstraintResult.Failure<T>(actual, ToString(), sb.ToString());
 		}
 
-		public override string ToString() => $"trigger event {eventName}{filter?.ToString() ?? ""} {quantifier}";
-	}
-
-	private sealed class EventRecorder(string name) : IDisposable
-	{
-		private Action? _onDispose;
-		public ConcurrentQueue<OccurredEvent> EventQueue { get; } = new();
-
-		public void Dispose() => _onDispose?.Invoke();
-
-		public void Attach(WeakReference subject, EventInfo eventInfo)
-		{
-			MethodInfo handlerType = eventInfo.EventHandlerType!.GetMethod("Invoke")!;
-			Delegate? handler = null;
-			foreach (MethodInfo method in typeof(EventRecorder).GetMethods().Where(x => x.Name == nameof(RecordEvent)))
-			{
-				if (method.GetParameters().Length == handlerType.GetParameters().Length)
-				{
-					MethodInfo handlerMethod = method;
-					if (handlerType.GetParameters().Length > 0)
-					{
-						handlerMethod = method
-							.MakeGenericMethod(handlerType.GetParameters()
-								.Select(x => x.ParameterType)
-								.ToArray());
-					}
-
-					handler = Delegate.CreateDelegate(eventInfo.EventHandlerType, this, handlerMethod);
-				}
-			}
-
-			if (handler == null)
-			{
-				throw new NotSupportedException(
-					$"The event {name} contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
-			}
-
-			eventInfo.AddEventHandler(subject.Target, handler);
-
-			_onDispose = () =>
-			{
-				if (subject.Target is not null)
-				{
-					eventInfo.RemoveEventHandler(subject.Target, handler);
-				}
-			};
-		}
-
-		public void RecordEvent()
-			=> EventQueue.Enqueue(new OccurredEvent(name));
-
-		public void RecordEvent<T1>(T1 parameter1)
-			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1));
-
-		public void RecordEvent<T1, T2>(T1 parameter1, T2 parameter2)
-			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2));
-
-		public void RecordEvent<T1, T2, T3>(T1 parameter1, T2 parameter2, T3 parameter3)
-			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3));
-
-		public void RecordEvent<T1, T2, T3, T4>(T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4)
-			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3, parameter4));
-	}
-
-	private readonly struct OccurredEvent(string name, params object?[] parameters)
-	{
-		public string Name { get; } = name;
-		public object?[] Parameters { get; } = parameters;
-
-		/// <inheritdoc />
 		public override string ToString()
-		{
-			StringBuilder sb = new();
-			sb.Append(Name).Append('(');
-			if (Parameters.Length > 0)
-			{
-				foreach (object? parameter in Parameters)
-				{
-					Formatter.Format(sb, parameter);
-					sb.Append(", ");
-				}
-
-				sb.Length -= 2;
-			}
-
-			sb.Append(')');
-			return sb.ToString();
-		}
+			=> eventConstraints.ToString();
 	}
 }

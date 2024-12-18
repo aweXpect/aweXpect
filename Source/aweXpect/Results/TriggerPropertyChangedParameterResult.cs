@@ -10,15 +10,15 @@ namespace aweXpect.Results;
 /// <summary>
 ///     Result for a <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
 /// </summary>
-public class TriggerPropertyChangedParameterResult<T>(IThat<T> returnValue, string eventName)
-	: TriggerParameterResult<T>(returnValue, eventName)
+public class TriggerPropertyChangedParameterResult<T>(ExpectationBuilder expectationBuilder, IExpectSubject<T> returnValue, string eventName, Quantifier quantifier)
+	: TriggerParameterResult<T>(expectationBuilder, returnValue, eventName, quantifier)
 {
 	private TriggerEventFilter? _filter;
 
 	/// <summary>
 	///     Predicate to filter for the <see cref="PropertyChangedEventArgs" /> parameter.
 	/// </summary>
-	public TriggerResult<T> WithPropertyChangedEventArgs(Func<PropertyChangedEventArgs, bool> predicate,
+	public TriggerParameterResult<T> WithPropertyChangedEventArgs(Func<PropertyChangedEventArgs, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{

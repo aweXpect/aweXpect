@@ -1,9 +1,10 @@
 ﻿using System.Threading;
+
 // ReSharper disable MemberCanBePrivate.Local
 
 namespace aweXpect.Core.Tests;
 
-public sealed class TriggerTests
+public sealed partial class TriggerTests
 {
 	[Fact]
 	public async Task ShouldConsiderCancellationTokenInAsyncCallback()
@@ -17,8 +18,8 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(AsyncCustomEventClass.CustomEvent))
-				.While((t, c) => t.NotifyCustomEventAsync(c))
 				.AtLeast(2.Times())
+				.While((t, c) => t.NotifyCustomEventAsync(c))
 				.WithCancellation(token);
 
 		await That(Act).Should().Throw<XunitException>()
@@ -30,32 +31,6 @@ public sealed class TriggerTests
 	}
 
 	[Fact]
-	public async Task ShouldStopListeningAfterWhileCallback()
-	{
-		CustomEventWithoutParametersClass sut = new();
-		sut.NotifyCustomEvent();
-
-		async Task Act() =>
-			await That(sut)
-				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
-				.While(t =>
-				{
-					t.NotifyCustomEvent();
-				})
-				.AtLeast(2.Times());
-
-		sut.NotifyCustomEvent();
-		await That(Act).Should().Throw<XunitException>()
-			.WithMessage("""
-			             Expected sut to
-			             trigger event CustomEvent at least 2 times,
-			             but it was only recorded once in [
-			               CustomEvent()
-			             ]
-			             """);
-	}
-
-	[Fact]
 	public async Task ShouldSupportAsyncCallback()
 	{
 		AsyncCustomEventClass sut = new();
@@ -63,14 +38,14 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(AsyncCustomEventClass.CustomEvent))
-				.While(t => t.NotifyCustomEventAsync())
-				.AtLeast(2.Times());
+				.AtLeast(2.Times())
+				.While(t => t.NotifyCustomEventAsync());
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 2 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent()
 			             ]
 			             """);
@@ -105,12 +80,12 @@ public sealed class TriggerTests
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string, string, string>.CustomEvent))
 				.WithParameter<string>(position, s => s == "p1")
+				.AtLeast(2.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("p0", "p1", "p2");
 					t.NotifyCustomEvent("p0", "p1", "p2");
-				})
-				.AtLeast(2.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage($"""
@@ -131,13 +106,13 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent();
 					t.NotifyCustomEvent();
 					t.NotifyCustomEvent();
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().NotThrow();
 	}
@@ -150,17 +125,17 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithoutParametersClass.CustomEvent))
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent();
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 3 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent()
 			             ]
 			             """);
@@ -175,18 +150,18 @@ public sealed class TriggerTests
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
 				.WithParameter<string>(s => s == "foo")
+				.AtLeast(2.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("bar");
-				})
-				.AtLeast(2.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent with string parameter s => s == "foo" at least 2 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")
 			             ]
@@ -202,13 +177,13 @@ public sealed class TriggerTests
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
 				.WithParameter<string>(s => s == "foo")
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("foo");
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().NotThrow();
 	}
@@ -221,18 +196,18 @@ public sealed class TriggerTests
 		async Task Act() =>
 			await That(sut)
 				.Triggers(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.AtLeast(3.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo");
 					t.NotifyCustomEvent("bar");
-				})
-				.AtLeast(3.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
 			             trigger event CustomEvent at least 3 times,
-			             but it was only recorded 2 times in [
+			             but it was recorded 2 times in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")
 			             ]
@@ -249,12 +224,12 @@ public sealed class TriggerTests
 				.Triggers(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
 				.WithParameter<string>(s => s == "foo")
 				.WithParameter<int>(i => i > 1)
+				.AtLeast(1.Times())
 				.While(t =>
 				{
 					t.NotifyCustomEvent("foo", 1);
 					t.NotifyCustomEvent("bar", 2);
-				})
-				.AtLeast(1.Times());
+				});
 
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
@@ -265,6 +240,50 @@ public sealed class TriggerTests
 			               CustomEvent("bar", 2)
 			             ]
 			             """);
+	}
+
+	[Fact]
+	public async Task WhenMultiplePositionFiltersAreSpecified_ShouldVerifyAllFilters_ShouldFail()
+	{
+		CustomEventWithParametersClass<string, string> sut = new();
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
+				.WithParameter<string>(0, s => s == "foo1")
+				.WithParameter<string>(1, s => s == "foo2")
+				.While(t =>
+				{
+					t.NotifyCustomEvent("foo1", "bar2");
+					t.NotifyCustomEvent("bar1", "foo2");
+				});
+
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger event CustomEvent with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
+			             but it was never recorded in [
+			               CustomEvent("foo1", "bar2"),
+			               CustomEvent("bar1", "foo2")
+			             ]
+			             """);
+	}
+
+	[Fact]
+	public async Task WhenTypeIsNotUnique_ShouldCheckAllMatchingParameters()
+	{
+		CustomEventWithParametersClass<string, string> sut = new();
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
+				.WithParameter<string>(s => s == "bar")
+				.While(t =>
+				{
+					t.NotifyCustomEvent("foo", "bar");
+				});
+
+		await That(Act).Should().NotThrow();
 	}
 
 	[Fact]
@@ -314,6 +333,14 @@ public sealed class TriggerTests
 
 		public void NotifyCustomEvent()
 			=> CustomEvent?.Invoke();
+
+		public void NotifyCustomEvents(int notificationCount)
+		{
+			for (int i = 0; i < notificationCount; i++)
+			{
+				CustomEvent?.Invoke();
+			}
+		}
 	}
 
 	private sealed class CustomEventWithParametersClass<T1>
