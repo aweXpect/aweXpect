@@ -163,8 +163,6 @@ public abstract class TriggerResult<T, TSelf>(
 				return new ConstraintResult.Success<T>(actual, ToString());
 			}
 
-			sb.Length -= 4;
-			sb.Length -= Environment.NewLine.Length;
 			return new ConstraintResult.Failure<T>(actual, ToString(), sb.ToString());
 		}
 
