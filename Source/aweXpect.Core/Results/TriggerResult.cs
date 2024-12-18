@@ -157,7 +157,7 @@ public abstract class TriggerResult<T, TSelf>(
 
 			StringBuilder sb = new();
 			sb.Append(it).Append(" was");
-			bool hasErrors = recording.HasErrors(sb);
+			bool hasErrors = eventConstraints.HasErrors(recording, sb);
 			if (!hasErrors)
 			{
 				return new ConstraintResult.Success<T>(actual, ToString());

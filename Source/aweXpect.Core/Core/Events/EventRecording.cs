@@ -11,14 +11,12 @@ namespace aweXpect.Core.Events;
 
 internal class EventRecording<T> : IDisposable
 {
-	private readonly EventConstraints _constraints;
 	private readonly Dictionary<string, EventRecorder> _recorders = new();
 
-	public EventRecording(EventConstraints constraints, T actual)
+	public EventRecording(T actual, IEnumerable<string> eventNames)
 	{
-		_constraints = constraints;
 		EventInfo[] events = typeof(T).GetEvents();
-		foreach (string? eventName in constraints.Constraints.Keys)
+		foreach (string? eventName in eventNames)
 		{
 			EventRecorder? recorder = new(eventName);
 			_recorders.Add(eventName, recorder);
@@ -40,79 +38,25 @@ internal class EventRecording<T> : IDisposable
 		}
 	}
 
-	public bool HasErrors(StringBuilder sb)
+	public int GetEventCount(string name, TriggerEventFilter? filter)
 	{
-		bool hasErrors = false;
-
-		bool hasMultipleConstraints = _constraints.TotalCount > 1;
-		if (hasMultipleConstraints)
+		if (filter != null)
 		{
-			sb.AppendLine();
+			return _recorders[name].EventQueue.Count(x => filter.IsMatch(name, x.Parameters));
 		}
 
-		foreach (var constraint in _constraints.Constraints)
+		return _recorders[name].EventQueue.Count;
+	}
+
+	public string ToString(string name, string indent)
+	{
+		ConcurrentQueue<OccurredEvent>? eventQueue = _recorders[name].EventQueue;
+		if (string.IsNullOrEmpty(indent))
 		{
-			string? name = constraint.Key;
-			ConcurrentQueue<OccurredEvent>? eventQueue = null;
-			bool hasGroupError = false;
-			foreach (var item in constraint.Value)
-			{
-				eventQueue = _recorders[name].EventQueue;
-				int eventCount = eventQueue.Count;
-				TriggerEventFilter? filter = item.Filter;
-				if (filter != null)
-				{
-					eventCount = eventQueue.Count(x => filter.IsMatch(name, x.Parameters));
-				}
-
-				if (item.Quantifier.Check(eventCount, true) != true)
-				{
-					hasErrors = true;
-					hasGroupError = true;
-					if (constraint.Value.Count > 1)
-					{
-						sb.Append("  [").Append(item.Index).Append(']');
-						sb.Append(eventCount switch
-						{
-							0 => " never recorded",
-							1 => " only recorded once",
-							_ => $" only recorded {eventCount} times"
-						});
-						sb.AppendLine(" and");
-					}
-					else
-					{
-						if (hasMultipleConstraints)
-						{
-							sb.Append("  [").Append(item.Index).Append(']');
-						}
-
-						sb.Append(eventCount switch
-						{
-							0 => " never recorded",
-							1 => " only recorded once",
-							_ => $" only recorded {eventCount} times"
-						});
-					}
-				}
-			}
-
-			if (constraint.Value.Count > 1)
-			{
-				sb.Length -= 4;
-				sb.Length -= Environment.NewLine.Length;
-			}
-
-			if (hasGroupError)
-			{
-				sb.Append(" in ");
-				sb.Append(Formatter.Format(eventQueue, FormattingOptions.MultipleLines)
-					.Indent(hasMultipleConstraints ? "      " : "", false));
-				sb.AppendLine(" and");
-			}
+			return Formatter.Format(eventQueue, FormattingOptions.MultipleLines);
 		}
 
-		return hasErrors;
+		return Formatter.Format(eventQueue, FormattingOptions.MultipleLines).Indent(indent, false);
 	}
 
 	private sealed class EventRecorder(string name) : IDisposable

@@ -8,30 +8,31 @@ namespace aweXpect.Core.Events;
 
 internal class EventConstraints
 {
-	private int _index;
-	public int TotalCount => _index;
-	internal Dictionary<string, List<EventConstraint>> Constraints { get; } = new();
+	private readonly Dictionary<string, List<EventConstraint>> _constraints = new();
+
+	private int _constraintCount;
 
 	public void Add(string name, TriggerEventFilter? filter, Quantifier quantifier)
 	{
-		int index = ++_index;
-		if (!Constraints.TryGetValue(name, out List<EventConstraint>? constraint))
+		int index = ++_constraintCount;
+		if (!_constraints.TryGetValue(name, out List<EventConstraint>? constraint))
 		{
 			constraint = new List<EventConstraint>();
-			Constraints.Add(name, constraint);
+			_constraints.Add(name, constraint);
 		}
 
 		constraint!.Add(new EventConstraint(index, filter, quantifier));
 	}
 
-	public EventRecording<T> StartRecordingEvents<T>(T actual) => new(this, actual);
+	public EventRecording<T> StartRecordingEvents<T>(T actual)
+		=> new(actual, _constraints.Keys);
 
 	public override string ToString()
 	{
 		StringBuilder? sb = new();
-		bool hasMultipleGroups = Constraints.Count > 1;
-		bool hasMultipleConstraints = _index > 1;
-		foreach (KeyValuePair<string, List<EventConstraint>> group in Constraints)
+		bool hasMultipleGroups = _constraints.Count > 1;
+		bool hasMultipleConstraints = _constraintCount > 1;
+		foreach (KeyValuePair<string, List<EventConstraint>> group in _constraints)
 		{
 			if (hasMultipleGroups)
 			{
@@ -88,10 +89,71 @@ internal class EventConstraints
 		return sb.ToString();
 	}
 
-	internal class EventConstraint(int index, TriggerEventFilter? filter, Quantifier quantifier)
+
+	public bool HasErrors<T>(EventRecording<T> recording, StringBuilder sb)
 	{
-		public int Index { get; } = index;
-		public TriggerEventFilter? Filter { get; } = filter;
-		public Quantifier Quantifier { get; } = quantifier;
+		bool hasErrors = false;
+
+		bool hasMultipleConstraints = _constraintCount > 1;
+		if (hasMultipleConstraints)
+		{
+			sb.AppendLine();
+		}
+
+		foreach (KeyValuePair<string, List<EventConstraint>> constraint in _constraints)
+		{
+			string? name = constraint.Key;
+			bool hasGroupError = false;
+			foreach (EventConstraint? item in constraint.Value)
+			{
+				int eventCount = recording.GetEventCount(name, item.Filter);
+
+				if (item.Quantifier.Check(eventCount, true) != true)
+				{
+					hasErrors = true;
+					hasGroupError = true;
+					if (constraint.Value.Count > 1)
+					{
+						sb.Append("  [").Append(item.Index).Append(']');
+						sb.Append(eventCount switch
+						{
+							0 => " never recorded",
+							1 => " only recorded once",
+							_ => $" only recorded {eventCount} times"
+						});
+						sb.AppendLine(" and");
+					}
+					else
+					{
+						if (hasMultipleConstraints)
+						{
+							sb.Append("  [").Append(item.Index).Append(']');
+						}
+
+						sb.Append(eventCount switch
+						{
+							0 => " never recorded",
+							1 => " only recorded once",
+							_ => $" only recorded {eventCount} times"
+						});
+					}
+				}
+			}
+
+			if (constraint.Value.Count > 1)
+			{
+				sb.Length -= 4;
+				sb.Length -= Environment.NewLine.Length;
+			}
+
+			if (hasGroupError)
+			{
+				sb.Append(" in ");
+				sb.Append(recording.ToString(name, hasMultipleConstraints ? "      " : ""));
+				sb.AppendLine(" and");
+			}
+		}
+
+		return hasErrors;
 	}
 }
