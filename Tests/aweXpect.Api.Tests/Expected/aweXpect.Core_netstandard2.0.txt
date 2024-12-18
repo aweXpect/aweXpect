@@ -476,7 +476,7 @@ namespace aweXpect.Options
     public class TriggerEventFilter
     {
         public TriggerEventFilter() { }
-        public void AddPredicate<TProperty>(System.Func<object?[], bool> predicate, string predicateExpression) { }
+        public void AddPredicate(System.Func<object?[], bool> predicate, string predicateExpression) { }
         public bool IsMatch(string eventName, object?[] parameters) { }
         public override string ToString() { }
     }
