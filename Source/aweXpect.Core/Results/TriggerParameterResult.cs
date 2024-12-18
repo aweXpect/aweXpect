@@ -50,6 +50,7 @@ public class TriggerParameterResult<T>(ExpectationBuilder expectationBuilder, IE
 	/// <inheritdoc />
 	protected override TriggerEventFilter? GetFilter() => _filter;
 
+	/// <inheritdoc />
 	protected override void ResetFilter() =>
 		_filter = null;
 }

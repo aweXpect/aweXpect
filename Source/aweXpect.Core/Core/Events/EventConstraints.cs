@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using aweXpect.Options;
 
@@ -24,7 +23,7 @@ internal class EventConstraints
 			_constraints.Add(eventName, constraint);
 		}
 
-		constraint!.Add(new EventConstraint(index, filter, quantifier));
+		constraint.Add(new EventConstraint(index, filter, quantifier));
 	}
 
 	/// <summary>
@@ -41,7 +40,7 @@ internal class EventConstraints
 	/// </summary>
 	public override string ToString()
 	{
-		StringBuilder? sb = new();
+		StringBuilder sb = new();
 		bool hasMultipleConstraints = _constraintCount > 1;
 		bool hasMultipleGroups = _constraints.Count > 1;
 		foreach (KeyValuePair<string, List<EventConstraint>> group in _constraints)
@@ -59,7 +58,7 @@ internal class EventConstraints
 			}
 			else
 			{
-				EventConstraint item = group.Value.First();
+				EventConstraint item = group.Value[0];
 				AppendExpectationForGroupWithSingleValue(sb, group.Key, item, hasMultipleConstraints);
 			}
 
@@ -85,7 +84,7 @@ internal class EventConstraints
 				sb.Append("  ");
 			}
 
-			sb.Append("  [").Append(item.Index).Append("]");
+			sb.Append("  [").Append(item.Index).Append(']');
 			if (item.Filter != null)
 			{
 				sb.Append(item.Filter);
@@ -163,6 +162,7 @@ internal class EventConstraints
 		bool hasMultipleConstraints)
 	{
 		bool hasGroupError = false;
+		bool hasMultipleGroups = constraints.Count > 1;
 		foreach (EventConstraint? item in constraints)
 		{
 			int eventCount = recording.GetEventCount(eventName, item.Filter);
@@ -170,40 +170,50 @@ internal class EventConstraints
 			if (item.Quantifier.Check(eventCount, true) != true)
 			{
 				hasGroupError = true;
-				if (constraints.Count > 1)
-				{
-					stringBuilder.Append("  [").Append(item.Index).Append(']');
-					stringBuilder.Append(eventCount switch
-					{
-						0 => " never recorded",
-						1 => " recorded once",
-						_ => $" recorded {eventCount} times"
-					});
-					stringBuilder.AppendLine(" and");
-				}
-				else
-				{
-					if (hasMultipleConstraints)
-					{
-						stringBuilder.Append("  [").Append(item.Index).Append(']');
-					}
-
-					stringBuilder.Append(eventCount switch
-					{
-						0 => " never recorded",
-						1 => " recorded once",
-						_ => $" recorded {eventCount} times"
-					});
-				}
+				AppendConstraintError(stringBuilder, item, eventCount, hasMultipleConstraints, hasMultipleGroups);
 			}
 		}
 
-		if (constraints.Count > 1)
+		if (hasMultipleGroups)
 		{
 			stringBuilder.Length -= 4;
 			stringBuilder.Length -= Environment.NewLine.Length;
 		}
 
 		return hasGroupError;
+	}
+
+	private static void AppendConstraintError(
+		StringBuilder stringBuilder,
+		EventConstraint item,
+		int eventCount,
+		bool hasMultipleConstraints,
+		bool hasMultipleGroups)
+	{
+		if (hasMultipleGroups)
+		{
+			stringBuilder.Append("  [").Append(item.Index).Append(']');
+			stringBuilder.Append(eventCount switch
+			{
+				0 => " never recorded",
+				1 => " recorded once",
+				_ => $" recorded {eventCount} times"
+			});
+			stringBuilder.AppendLine(" and");
+		}
+		else
+		{
+			if (hasMultipleConstraints)
+			{
+				stringBuilder.Append("  [").Append(item.Index).Append(']');
+			}
+
+			stringBuilder.Append(eventCount switch
+			{
+				0 => " never recorded",
+				1 => " recorded once",
+				_ => $" recorded {eventCount} times"
+			});
+		}
 	}
 }

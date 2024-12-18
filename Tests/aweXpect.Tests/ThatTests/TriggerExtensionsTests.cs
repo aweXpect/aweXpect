@@ -44,7 +44,7 @@ public sealed class TriggerExtensionsTests
 			.WithMessage("""
 			             Expected sut to
 			             trigger event PropertyChanged with PropertyChangedEventArgs parameter e => e.PropertyName == "foo" at least 2 times,
-			             but it was only recorded once in [
+			             but it was recorded once in [
 			               PropertyChanged(PropertyChangedClass { }, PropertyChangedEventArgs {
 			                   PropertyName = "foo"
 			                 }),

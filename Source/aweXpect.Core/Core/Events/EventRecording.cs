@@ -6,7 +6,7 @@ using aweXpect.Options;
 
 namespace aweXpect.Core.Events;
 
-internal class EventRecording<T> : IDisposable
+internal sealed class EventRecording<T> : IDisposable
 {
 	private readonly Dictionary<string, EventRecorder> _recorders = new();
 
@@ -19,7 +19,7 @@ internal class EventRecording<T> : IDisposable
 		EventInfo[] events = typeof(T).GetEvents();
 		foreach (string? eventName in eventNames)
 		{
-			EventRecorder? recorder = new(eventName);
+			EventRecorder recorder = new(eventName);
 			_recorders.Add(eventName, recorder);
 			EventInfo? @event = events.FirstOrDefault(x => x.Name == eventName);
 			if (@event == null)
