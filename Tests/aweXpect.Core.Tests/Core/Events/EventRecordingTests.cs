@@ -18,7 +18,7 @@ public sealed class EventRecordingTests
 				});
 
 		await That(Act).Should().Throw<NotSupportedException>()
-			.WithMessage("Event someMissingEventName is not supported on CustomEventWithoutParametersClass { }");
+			.WithMessage("Event someMissingEventName is not supported on CustomEventClass { }");
 	}
 
 	[Fact]
