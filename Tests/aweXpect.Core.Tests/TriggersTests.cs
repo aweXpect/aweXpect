@@ -1,7 +1,34 @@
-﻿namespace aweXpect.Core.Tests;
+﻿using System.Threading;
+// ReSharper disable MemberCanBePrivate.Local
+
+namespace aweXpect.Core.Tests;
 
 public sealed class TriggerTests
 {
+	[Fact]
+	public async Task ShouldConsiderCancellationTokenInAsyncCallback()
+	{
+		AsyncCustomEventClass sut = new();
+		using CancellationTokenSource cts = new();
+		// ReSharper disable once MethodHasAsyncOverload
+		cts.Cancel();
+		CancellationToken token = cts.Token;
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(AsyncCustomEventClass.CustomEvent))
+				.While((t, c) => t.NotifyCustomEventAsync(c))
+				.AtLeast(2.Times())
+				.WithCancellation(token);
+
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger event CustomEvent at least 2 times,
+			             but it was never recorded in []
+			             """);
+	}
+
 	[Fact]
 	public async Task ShouldStopListeningAfterWhileCallback()
 	{
@@ -18,6 +45,27 @@ public sealed class TriggerTests
 				.AtLeast(2.Times());
 
 		sut.NotifyCustomEvent();
+		await That(Act).Should().Throw<XunitException>()
+			.WithMessage("""
+			             Expected sut to
+			             trigger event CustomEvent at least 2 times,
+			             but it was only recorded once in [
+			               CustomEvent()
+			             ]
+			             """);
+	}
+
+	[Fact]
+	public async Task ShouldSupportAsyncCallback()
+	{
+		AsyncCustomEventClass sut = new();
+
+		async Task Act() =>
+			await That(sut)
+				.Triggers(nameof(AsyncCustomEventClass.CustomEvent))
+				.While(t => t.NotifyCustomEventAsync())
+				.AtLeast(2.Times());
+
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected sut to
@@ -236,6 +284,38 @@ public sealed class TriggerTests
 			.WithMessage("The event CustomEvent contains too many parameters (5): [string, int?, bool, DateTime, int]");
 	}
 
+	private sealed class AsyncCustomEventClass
+	{
+		public delegate void CustomEventDelegate();
+
+		public event CustomEventDelegate? CustomEvent;
+
+		public async Task NotifyCustomEventAsync()
+		{
+			await Task.Delay(5);
+			CustomEvent?.Invoke();
+		}
+
+		public async Task NotifyCustomEventAsync(CancellationToken cancellationToken)
+		{
+			await Task.Yield();
+			if (!cancellationToken.IsCancellationRequested)
+			{
+				CustomEvent?.Invoke();
+			}
+		}
+	}
+
+	private sealed class CustomEventWithoutParametersClass
+	{
+		public delegate void CustomEventDelegate();
+
+		public event CustomEventDelegate? CustomEvent;
+
+		public void NotifyCustomEvent()
+			=> CustomEvent?.Invoke();
+	}
+
 	private sealed class CustomEventWithParametersClass<T1>
 	{
 		public delegate void CustomEventDelegate(T1 arg1);
@@ -284,15 +364,5 @@ public sealed class TriggerTests
 
 		public void NotifyCustomEvent(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
 			=> CustomEvent?.Invoke(arg1, arg2, arg3, arg4, arg5);
-	}
-
-	private sealed class CustomEventWithoutParametersClass
-	{
-		public delegate void CustomEventDelegate();
-
-		public event CustomEventDelegate? CustomEvent;
-
-		public void NotifyCustomEvent()
-			=> CustomEvent?.Invoke();
 	}
 }

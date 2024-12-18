@@ -3,9 +3,10 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.EvaluationContext;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -19,10 +20,31 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 	///     Executes the <paramref name="callback" /> while monitoring the triggered events.
 	/// </summary>
 	public CountResult<T, IThat<T>> While(Action<T> callback)
+		=> While((t, _) =>
+		{
+			callback(t);
+			return Task.CompletedTask;
+		});
+
+	/// <summary>
+	///     Executes the asynchronous <paramref name="callback" /> while monitoring the triggered events.
+	/// </summary>
+	public CountResult<T, IThat<T>> While(Func<T, Task> callback)
+		=> While((t, _) => callback(t));
+
+	/// <summary>
+	///     Executes the asynchronous <paramref name="callback" /> with cancellation support
+	///     while monitoring the triggered events.
+	/// </summary>
+	public CountResult<T, IThat<T>> While(Func<T, CancellationToken, Task> callback)
 	{
 		Quantifier quantifier = new();
 		returnValue.ExpectationBuilder.AddConstraint(it
-			=> new EventConstraint(it, eventName, callback, GetFilter(), quantifier));
+			=> new EventConstraint(it,
+				eventName,
+				callback,
+				GetFilter(),
+				quantifier));
 		return new CountResult<T, IThat<T>>(returnValue.ExpectationBuilder, returnValue, quantifier);
 	}
 
@@ -34,12 +56,12 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 	private readonly struct EventConstraint(
 		string it,
 		string eventName,
-		Action<T> callback,
+		Func<T, CancellationToken, Task> callback,
 		TriggerEventFilter? filter,
 		Quantifier quantifier)
-		: IContextConstraint<T>
+		: IAsyncConstraint<T>
 	{
-		public ConstraintResult IsMetBy(T actual, IEvaluationContext context)
+		public async Task<ConstraintResult> IsMetBy(T actual, CancellationToken cancellationToken)
 		{
 			EventInfo[] events = typeof(T).GetEvents();
 			string name = eventName;
@@ -52,7 +74,7 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 			}
 
 			recorder.Attach(new WeakReference(actual), @event);
-			callback(actual);
+			await callback(actual, cancellationToken);
 			int eventCount = recorder.EventQueue.Count;
 			if (filter != null)
 			{
@@ -68,9 +90,12 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 			return new ConstraintResult.Failure<T>(actual, ToString(),
 				eventCount switch
 				{
-					0 => $"{it} was never recorded in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}",
-					1 => $"{it} was only recorded once in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}",
-					_ => $"{it} was only recorded {eventCount} times in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}"
+					0 =>
+						$"{it} was never recorded in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}",
+					1 =>
+						$"{it} was only recorded once in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}",
+					_ =>
+						$"{it} was only recorded {eventCount} times in {Formatter.Format(recorder.EventQueue, FormattingOptions.MultipleLines)}"
 				});
 		}
 
@@ -107,7 +132,8 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 
 			if (handler == null)
 			{
-				throw new NotSupportedException($"The event {name} contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
+				throw new NotSupportedException(
+					$"The event {name} contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
 			}
 
 			eventInfo.AddEventHandler(subject.Target, handler);
@@ -122,29 +148,19 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 		}
 
 		public void RecordEvent()
-		{
-			EventQueue.Enqueue(new OccurredEvent(name));
-		}
+			=> EventQueue.Enqueue(new OccurredEvent(name));
 
 		public void RecordEvent<T1>(T1 parameter1)
-		{
-			EventQueue.Enqueue(new OccurredEvent(name, parameter1));
-		}
+			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1));
 
 		public void RecordEvent<T1, T2>(T1 parameter1, T2 parameter2)
-		{
-			EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2));
-		}
+			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2));
 
 		public void RecordEvent<T1, T2, T3>(T1 parameter1, T2 parameter2, T3 parameter3)
-		{
-			EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3));
-		}
+			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3));
 
 		public void RecordEvent<T1, T2, T3, T4>(T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4)
-		{
-			EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3, parameter4));
-		}
+			=> EventQueue.Enqueue(new OccurredEvent(name, parameter1, parameter2, parameter3, parameter4));
 	}
 
 	private readonly struct OccurredEvent(string name, params object?[] parameters)
@@ -155,11 +171,11 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			var sb = new StringBuilder();
+			StringBuilder sb = new();
 			sb.Append(Name).Append('(');
 			if (Parameters.Length > 0)
 			{
-				foreach (var parameter in Parameters)
+				foreach (object? parameter in Parameters)
 				{
 					Formatter.Format(sb, parameter);
 					sb.Append(", ");
@@ -167,6 +183,7 @@ public class TriggerResult<T>(IThat<T> returnValue, string eventName)
 
 				sb.Length -= 2;
 			}
+
 			sb.Append(')');
 			return sb.ToString();
 		}
