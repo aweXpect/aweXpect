@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734537495496,
+  "lastUpdate": 1734543696977,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -7400,6 +7400,138 @@ window.BENCHMARK_DATA = {
             "value": 1848.4762695019062,
             "unit": "ns",
             "range": "± 4.19979605582798"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "115307fbf1b82a513992ba5c3ac3a07d7d5c48d3",
+          "message": "feat: improve event extensions for \"PropertyChanged\" (#136)\n\nAdd shortcut for `PropertyChanged`:\n`TriggersPropertyChangedFor(x => x.MyProperty)`\nand also the negation\n`DoesNotTriggerPropertyChangedFor(x => x.Property)`\n\nAlso add extensions `WithSender` and `With<TEventArgs>` that work well when you follow the [Best Practices for Implementing the Event-based Asynchronous Pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern).",
+          "timestamp": "2024-12-18T17:34:36Z",
+          "tree_id": "e6ae4ae67ace5b8980bd4bec23ea212266688f20",
+          "url": "https://github.com/aweXpect/aweXpect/commit/115307fbf1b82a513992ba5c3ac3a07d7d5c48d3"
+        },
+        "date": 1734543696763,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 167.21787550052008,
+            "unit": "ns",
+            "range": "± 0.5827945092665365"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 212.1733971595764,
+            "unit": "ns",
+            "range": "± 1.0564516597458855"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 581.7794985404381,
+            "unit": "ns",
+            "range": "± 2.612146962130065"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 337.61981592178347,
+            "unit": "ns",
+            "range": "± 1.2039233668921774"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 456.30105504989626,
+            "unit": "ns",
+            "range": "± 3.3369021144729136"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13790.544434767504,
+            "unit": "ns",
+            "range": "± 40.1923914885066"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 214.4162973335811,
+            "unit": "ns",
+            "range": "± 1.3179878948415997"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 254.25129130681356,
+            "unit": "ns",
+            "range": "± 1.347319666965426"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 736.7252555993887,
+            "unit": "ns",
+            "range": "± 2.9385483141525905"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 324.8839479173933,
+            "unit": "ns",
+            "range": "± 1.6768388847371205"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 391.27253586905346,
+            "unit": "ns",
+            "range": "± 1.5207324821951147"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 793.8944324493408,
+            "unit": "ns",
+            "range": "± 2.504021912024931"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1059.9307821909586,
+            "unit": "ns",
+            "range": "± 4.177071495371076"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1163.1178071158272,
+            "unit": "ns",
+            "range": "± 4.040462049688371"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1154.9218915792612,
+            "unit": "ns",
+            "range": "± 2.403277615899602"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1036.62572656359,
+            "unit": "ns",
+            "range": "± 7.0600205883510085"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 280383.0263671875,
+            "unit": "ns",
+            "range": "± 575.2970961370155"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1820.4013604384202,
+            "unit": "ns",
+            "range": "± 3.2072619223923047"
           }
         ]
       }
