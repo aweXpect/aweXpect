@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734466776830,
+  "lastUpdate": 1734507567502,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -7136,6 +7136,138 @@ window.BENCHMARK_DATA = {
             "value": 1851.0132815497261,
             "unit": "ns",
             "range": "± 6.786885842705209"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fb95b53862cc5d92e5ce5ae51af69927b1da40f7",
+          "message": "feat: support async event trigger callbacks (#134)\n\nThe callback in `While()` can now also be asynchronous. In this case, you can also get the cancellation token as second parameter:\n```csharp\nawait Expect.That(sut)\n  .Triggers(nameof(MyClass.ThresholdReached))\n  .While(subject => subject.OnThresholdReachedAsync(new ThresholdReachedEventArgs()))\n  .Because(\"we support asynchronous callbacks\");\n\nawait Expect.That(sut)\n  .Triggers(nameof(MyClass.ThresholdReached))\n  .While((subject, token) => subject.OnThresholdReachedAsync(new ThresholdReachedEventArgs(), token))\n  .Because(\"we also support cancellation\");\n```",
+          "timestamp": "2024-12-18T08:32:20+01:00",
+          "tree_id": "b36142546124c0e406ce78871b92bc7fba0403b5",
+          "url": "https://github.com/aweXpect/aweXpect/commit/fb95b53862cc5d92e5ce5ae51af69927b1da40f7"
+        },
+        "date": 1734507567297,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.1389664808909,
+            "unit": "ns",
+            "range": "± 1.2205760595324044"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.05978412287575,
+            "unit": "ns",
+            "range": "± 1.0434231713740514"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 590.7890150705973,
+            "unit": "ns",
+            "range": "± 2.9823455679435287"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 326.97320149739585,
+            "unit": "ns",
+            "range": "± 1.4373044928902623"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 454.5604257583618,
+            "unit": "ns",
+            "range": "± 3.222775093778655"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 14153.850074768066,
+            "unit": "ns",
+            "range": "± 82.15337884904896"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 215.97924149036407,
+            "unit": "ns",
+            "range": "± 0.4496897409564828"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 254.40175692240396,
+            "unit": "ns",
+            "range": "± 1.2750938285963456"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 761.3119087219238,
+            "unit": "ns",
+            "range": "± 3.7262902110219644"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 318.93245005607605,
+            "unit": "ns",
+            "range": "± 1.7427007253361615"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 388.14401489893595,
+            "unit": "ns",
+            "range": "± 2.395408599148073"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 783.2622767175947,
+            "unit": "ns",
+            "range": "± 4.85179903168424"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1086.7429140726724,
+            "unit": "ns",
+            "range": "± 9.439928178887186"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1197.0820927253137,
+            "unit": "ns",
+            "range": "± 1.0076067341248638"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1110.6665316990443,
+            "unit": "ns",
+            "range": "± 7.058307866208675"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1034.353754679362,
+            "unit": "ns",
+            "range": "± 5.260180387693122"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 280865.6023995536,
+            "unit": "ns",
+            "range": "± 1450.3067838307904"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1836.150301106771,
+            "unit": "ns",
+            "range": "± 6.988047101784874"
           }
         ]
       }
