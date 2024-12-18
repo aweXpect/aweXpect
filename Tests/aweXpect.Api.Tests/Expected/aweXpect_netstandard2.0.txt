@@ -730,6 +730,10 @@ namespace aweXpect
     }
     public static class TriggerExtensions
     {
+        public static aweXpect.Results.TriggerParameterResult<T> DoesNotTriggerPropertyChanged<T>(this aweXpect.Core.IExpectSubject<T> subject)
+            where T : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Results.TriggerParameterResult<T> DoesNotTriggerPropertyChangedFor<T>(this aweXpect.Core.IExpectSubject<T> subject, System.Linq.Expressions.Expression<System.Func<T, object>> propertyExpression)
+            where T : System.ComponentModel.INotifyPropertyChanged { }
         public static aweXpect.Results.TriggerParameterResult<T> TriggersPropertyChanged<T>(this aweXpect.Core.IExpectSubject<T> subject)
             where T : System.ComponentModel.INotifyPropertyChanged { }
         public static aweXpect.Results.TriggerParameterResult<T> TriggersPropertyChangedFor<T>(this aweXpect.Core.IExpectSubject<T> subject, System.Linq.Expressions.Expression<System.Func<T, object>> propertyExpression)
