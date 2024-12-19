@@ -125,6 +125,14 @@ namespace aweXpect
         public aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(string expected) { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
+    public static class ThatDictionaryShould
+    {
+        public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IDictionary<TKey, string>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, string>>> AllBeUnique<TKey>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, string>> source) { }
+        public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>>> AllBeUnique<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>> source) { }
+        public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>>> AllBeUnique<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>> source, System.Func<TValue, string> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>>> AllBeUnique<TKey, TValue, TMember>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>> source, System.Func<TValue, TMember> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>> Should<TKey, TValue>(this aweXpect.Core.IExpectSubject<System.Collections.Generic.IDictionary<TKey, TValue>> subject) { }
+    }
     public static class ThatEnumShould
     {
         public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> Be<TEnum>(this aweXpect.Core.IThat<TEnum> source, TEnum? expected)

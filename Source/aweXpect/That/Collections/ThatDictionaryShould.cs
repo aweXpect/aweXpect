@@ -13,15 +13,15 @@ using aweXpect.Options;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on <see cref="IEnumerable{TItem}" />..
+///     Expectations on <see cref="IDictionary{TKey, TValue}" />..
 /// </summary>
-public static partial class ThatEnumerableShould
+public static partial class ThatDictionaryShould
 {
 	/// <summary>
-	///     Start expectations on the current enumerable of <typeparamref name="TItem" /> values.
+	///     Start expectations on the current dictionary.
 	/// </summary>
-	public static IThat<IEnumerable<TItem>> Should<TItem>(
-		this IExpectSubject<IEnumerable<TItem>> subject)
+	public static IThat<IDictionary<TKey, TValue>> Should<TKey, TValue>(
+		this IExpectSubject<IDictionary<TKey, TValue>> subject)
 		=> subject.Should(That.WithoutAction);
 
 	private readonly struct SyncCollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>

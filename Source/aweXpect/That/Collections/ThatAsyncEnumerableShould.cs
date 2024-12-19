@@ -15,7 +15,7 @@ using aweXpect.Options;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on <see cref="IAsyncEnumerable{T}" />.
+///     Expectations on <see cref="IAsyncEnumerable{TItem}" />.
 /// </summary>
 public static partial class ThatAsyncEnumerableShould
 {
