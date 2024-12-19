@@ -53,13 +53,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	///     Get the expectations text.
 	/// </summary>
 	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-		=> useActiveGrammaticVoice switch
-		{
-			true =>
-				$"{(_type is ExactMatchType ? "be equal to" : "match")} {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
-			false =>
-				$"{(_type is ExactMatchType ? "equal to" : "matching")} {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
-		};
+		=> _type.GetExpectation(expected, useActiveGrammaticVoice);
 
 	/// <summary>
 	///     Get an extended failure text.
@@ -181,5 +175,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 		bool Matches(string? value, string? pattern, bool ignoreCase,
 			IEqualityComparer<string> comparer);
+
+		string GetExpectation(string? expected, bool useActiveGrammaticVoice);
 	}
 }
