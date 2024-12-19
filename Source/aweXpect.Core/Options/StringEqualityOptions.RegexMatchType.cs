@@ -34,6 +34,15 @@ public partial class StringEqualityOptions
 			return Regex.IsMatch(value, pattern, options, RegexTimeout);
 		}
 
+		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
+			=> useActiveGrammaticVoice switch
+			{
+				true =>
+					$"match regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+				false =>
+					$"matching regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+			};
+
 		#endregion
 	}
 }

@@ -43,6 +43,15 @@ public partial class StringEqualityOptions
 				RegexTimeout);
 		}
 
+		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
+			=> useActiveGrammaticVoice switch
+			{
+				true =>
+					$"match {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+				false =>
+					$"matching {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+			};
+
 		#endregion
 	}
 }

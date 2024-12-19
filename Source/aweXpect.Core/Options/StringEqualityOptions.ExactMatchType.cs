@@ -101,6 +101,15 @@ public partial class StringEqualityOptions
 			return comparer.Equals(value, pattern);
 		}
 
+		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
+			=> useActiveGrammaticVoice switch
+			{
+				true =>
+					$"be equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+				false =>
+					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+			};
+
 		#endregion
 	}
 }
