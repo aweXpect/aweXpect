@@ -31,6 +31,24 @@ public static class Expect
 			new ValueSource<T[]>(subject), doNotPopulateThisValue));
 
 	/// <summary>
+	///     Specify expectations for the current asynchronous <paramref name="subject" />.
+	/// </summary>
+	public static IExpectSubject<T> That<T>(Task<T?> subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new ThatSubject<T>(new ExpectationBuilder<T?>(
+			new AsyncValueSource<T?>(subject), doNotPopulateThisValue));
+
+#if NET6_0_OR_GREATER
+	/// <summary>
+	///     Specify expectations for the current asynchronous <paramref name="subject" />.
+	/// </summary>
+	public static IExpectSubject<T> That<T>(ValueTask<T?> subject,
+		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+		=> new ThatSubject<T>(new ExpectationBuilder<T?>(
+			new AsyncValueSource<T?>(subject.AsTask()), doNotPopulateThisValue));
+#endif
+
+	/// <summary>
 	///     Specify expectations for the current <see cref="Action" /> <paramref name="delegate" />.
 	/// </summary>
 	public static IExpectSubject<ThatDelegate.WithoutValue> That(Action @delegate,
@@ -80,7 +98,8 @@ public static class Expect
 
 #if NET6_0_OR_GREATER
 	/// <summary>
-	///     Specify expectations for the current <see cref="Func{CancellationToken, ValueTask}" /> <paramref name="delegate" />.
+	///     Specify expectations for the current <see cref="Func{CancellationToken, ValueTask}" /> <paramref name="delegate" />
+	///     .
 	/// </summary>
 	public static IExpectSubject<ThatDelegate.WithoutValue> That(Func<CancellationToken, ValueTask> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
