@@ -13,7 +13,7 @@ using aweXpect.Options;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on <see cref="IEnumerable{T}" />..
+///     Expectations on <see cref="IEnumerable{TItem}" />..
 /// </summary>
 public static partial class ThatEnumerableShould
 {

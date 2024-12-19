@@ -85,6 +85,18 @@ await Expect.That([1, 2, 3]).Should().AllBeUnique();
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
+For dictionaries, this expectation only verifies the values, as the keys are unique by design:
+```csharp
+IDictionary<int, int> subject = new Dictionary<int, int>
+{
+  { 1, 1 },
+  { 2, 1 }
+};
+
+// This following expectation will fail, even though the keys are unique!
+await Expect.That(subject).Should().AllBeUnique();
+```
+
 
 ## All satisfy
 
