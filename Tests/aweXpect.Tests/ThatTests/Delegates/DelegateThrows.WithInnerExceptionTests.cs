@@ -8,8 +8,9 @@ public sealed partial class DelegateThrows
 		public async Task WhenAwaited_WithExpectations_ShouldReturnThrownException()
 		{
 			Exception exception = new OuterException(innerException: new Exception("inner"));
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithInnerException(
 					e => e.HaveMessage("inner"));
 
@@ -20,8 +21,9 @@ public sealed partial class DelegateThrows
 		public async Task WhenAwaited_WithoutExpectations_ShouldReturnThrownException()
 		{
 			Exception exception = new OuterException(innerException: new Exception("inner"));
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithInnerException();
 
 			await That(result).Should().BeSameAs(exception);

@@ -10,7 +10,7 @@ internal class DelegateValueSource<TValue>(Func<CancellationToken, TValue> actio
 {
 	#region IValueSource<DelegateValue<TValue>> Members
 
-	public Task<DelegateValue<TValue>?> GetValue(ITimeSystem timeSystem,
+	public Task<DelegateValue<TValue>> GetValue(ITimeSystem timeSystem,
 		CancellationToken cancellationToken)
 	{
 		IStopwatch sw = timeSystem.Stopwatch.New();
@@ -19,13 +19,11 @@ internal class DelegateValueSource<TValue>(Func<CancellationToken, TValue> actio
 			sw.Start();
 			TValue value = action(cancellationToken);
 			sw.Stop();
-			return Task.FromResult<DelegateValue<TValue>?>(
-				new DelegateValue<TValue>(value, null, sw.Elapsed));
+			return Task.FromResult(new DelegateValue<TValue>(value, null, sw.Elapsed));
 		}
 		catch (Exception ex)
 		{
-			return Task.FromResult<DelegateValue<TValue>?>(
-				new DelegateValue<TValue>(default, ex, sw.Elapsed));
+			return Task.FromResult(new DelegateValue<TValue>(default, ex, sw.Elapsed));
 		}
 	}
 

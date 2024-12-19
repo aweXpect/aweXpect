@@ -4,12 +4,12 @@ using aweXpect.Core.TimeSystem;
 
 namespace aweXpect.Core.Sources;
 
-internal class ValueSource<TValue>(TValue value) : IValueSource<TValue>
+internal class AsyncValueSource<TValue>(Task<TValue> value) : IValueSource<TValue>
 {
 	#region IValueSource<TValue> Members
 
 	public Task<TValue> GetValue(ITimeSystem timeSystem, CancellationToken cancellationToken)
-		=> Task.FromResult(value);
+		=> value;
 
 	#endregion
 }

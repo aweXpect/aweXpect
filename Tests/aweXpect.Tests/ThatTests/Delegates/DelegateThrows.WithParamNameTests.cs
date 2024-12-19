@@ -9,9 +9,10 @@ public sealed partial class DelegateThrows
 		public async Task WhenParamNameMatchesExpected_ShouldSucceed(string message)
 		{
 			ArgumentException exception = new(message, nameof(message));
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should()
+				=> await That(Delegate).Should()
 					.Throw<ArgumentException>().WithParamName("message");
 
 			await That(Act).Should().NotThrow();
@@ -22,14 +23,15 @@ public sealed partial class DelegateThrows
 		public async Task WhenParamNameIsDifferent_ShouldFail(string message)
 		{
 			ArgumentException exception = new(message, nameof(message));
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should()
+				=> await That(Delegate).Should()
 					.Throw<ArgumentException>().WithParamName("somethingElse");
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
-				             Expected () => throw exception to
+				             Expected Delegate to
 				             throw an ArgumentException with ParamName "somethingElse",
 				             but it had ParamName "message"
 				             """);

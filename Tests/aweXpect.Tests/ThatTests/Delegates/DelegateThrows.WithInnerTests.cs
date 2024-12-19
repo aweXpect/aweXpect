@@ -10,8 +10,9 @@ public sealed partial class DelegateThrows
 			string message)
 		{
 			Exception exception = new OuterException(innerException: new CustomException(message));
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithInner<CustomException>(
 					e => e.HaveMessage(message));
 
@@ -22,8 +23,9 @@ public sealed partial class DelegateThrows
 		public async Task ForGeneric_WhenAwaited_WithoutExpectations_ShouldReturnThrownException()
 		{
 			Exception exception = new OuterException(innerException: new CustomException());
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithInner<CustomException>();
 
 			await That(result).Should().BeSameAs(exception);
@@ -112,8 +114,9 @@ public sealed partial class DelegateThrows
 			string message)
 		{
 			Exception exception = new OuterException(innerException: new CustomException(message));
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithInner(typeof(CustomException),
 					e => e.HaveMessage(message));
 
@@ -124,8 +127,9 @@ public sealed partial class DelegateThrows
 		public async Task ForType_WhenAwaited_WithoutExpectations_ShouldReturnThrownException()
 		{
 			Exception exception = new OuterException(innerException: new CustomException());
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithInner(typeof(CustomException));
 
 			await That(result).Should().BeSameAs(exception);
