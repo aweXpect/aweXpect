@@ -10,7 +10,7 @@ internal class DelegateAsyncValueSource<TValue>(Func<CancellationToken, Task<TVa
 {
 	#region IValueSource<DelegateValue<TValue>> Members
 
-	public async Task<DelegateValue<TValue>?> GetValue(ITimeSystem timeSystem,
+	public async Task<DelegateValue<TValue>> GetValue(ITimeSystem timeSystem,
 		CancellationToken cancellationToken)
 	{
 		IStopwatch sw = timeSystem.Stopwatch.New();

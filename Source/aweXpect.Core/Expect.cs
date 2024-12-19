@@ -17,10 +17,10 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T> That<T>(T? subject,
+	public static IExpectSubject<T> That<T>(T subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
-		=> new ThatSubject<T>(new ExpectationBuilder<T?>(
-			new ValueSource<T?>(subject), doNotPopulateThisValue));
+		=> new ThatSubject<T>(new ExpectationBuilder<T>(
+			new ValueSource<T>(subject), doNotPopulateThisValue));
 
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
@@ -33,19 +33,19 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T> That<T>(Task<T?> subject,
+	public static IExpectSubject<T> That<T>(Task<T> subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
-		=> new ThatSubject<T>(new ExpectationBuilder<T?>(
-			new AsyncValueSource<T?>(subject), doNotPopulateThisValue));
+		=> new ThatSubject<T>(new ExpectationBuilder<T>(
+			new AsyncValueSource<T>(subject), doNotPopulateThisValue));
 
 #if NET6_0_OR_GREATER
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T> That<T>(ValueTask<T?> subject,
+	public static IExpectSubject<T> That<T>(ValueTask<T> subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
-		=> new ThatSubject<T>(new ExpectationBuilder<T?>(
-			new AsyncValueSource<T?>(subject.AsTask()), doNotPopulateThisValue));
+		=> new ThatSubject<T>(new ExpectationBuilder<T>(
+			new AsyncValueSource<T>(subject.AsTask()), doNotPopulateThisValue));
 #endif
 
 	/// <summary>
