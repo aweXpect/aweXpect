@@ -8,8 +8,6 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Options;
 using aweXpect.Results;
 
-// ReSharper disable PossibleMultipleEnumeration
-
 namespace aweXpect;
 
 public static partial class ThatDictionaryShould

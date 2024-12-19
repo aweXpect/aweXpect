@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Tests.TestHelpers;
 
-// ReSharper disable PossibleMultipleEnumeration
-
 namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class DictionaryShould
