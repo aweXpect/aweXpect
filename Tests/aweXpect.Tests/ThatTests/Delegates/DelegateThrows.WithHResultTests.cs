@@ -11,9 +11,10 @@ public sealed partial class DelegateThrows
 		public async Task WhenHResultMatchesExpected_ShouldSucceed(int hResult)
 		{
 			Exception exception = new HResultException(hResult);
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should()
+				=> await That(Delegate).Should()
 					.ThrowException().WithHResult(hResult);
 
 			await That(Act).Should().NotThrow();
@@ -25,14 +26,15 @@ public sealed partial class DelegateThrows
 		{
 			int expectedHResult = hResult + 1;
 			Exception exception = new HResultException(hResult);
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should()
+				=> await That(Delegate).Should()
 					.ThrowException().WithHResult(expectedHResult);
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage($"""
-				              Expected () => throw exception to
+				              Expected Delegate to
 				              throw an Exception with HResult {expectedHResult},
 				              but it had HResult {hResult}
 				              """);

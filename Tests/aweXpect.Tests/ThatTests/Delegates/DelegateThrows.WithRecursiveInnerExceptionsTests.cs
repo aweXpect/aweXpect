@@ -33,8 +33,9 @@ public sealed partial class DelegateThrows
 		public async Task WhenAwaited_WithExpectations_ShouldReturnThrownException()
 		{
 			Exception exception = new OuterException(innerException: new CustomException());
+			void Delegate() => throw exception;
 
-			Exception? result = await That(() => throw exception)
+			Exception? result = await That(Delegate)
 				.Should().ThrowException().WithRecursiveInnerExceptions(
 					e => e.HaveNone(x => x.Satisfy(_ => false)));
 

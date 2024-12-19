@@ -10,9 +10,10 @@ public sealed partial class DelegateThrows
 			string message = "FOO";
 			Exception exception =
 				new OuterException(message, new CustomException());
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should().ThrowException()
+				=> await That(Delegate).Should().ThrowException()
 					.WithMessage("foo").IgnoringCase();
 
 			await That(Act).Should().NotThrow();
@@ -24,9 +25,10 @@ public sealed partial class DelegateThrows
 			string message = "foo-bar";
 			Exception exception =
 				new OuterException(message, new CustomException());
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should().ThrowException()
+				=> await That(Delegate).Should().ThrowException()
 					.WithMessage("foo*").AsWildcard();
 
 			await That(Act).Should().NotThrow();
@@ -38,14 +40,15 @@ public sealed partial class DelegateThrows
 			string message = "FOO";
 			Exception exception =
 				new OuterException(message, new CustomException());
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should().ThrowException()
+				=> await That(Delegate).Should().ThrowException()
 					.WithMessage("foo");
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
-				             Expected () => throw exception to
+				             Expected Delegate to
 				             throw an Exception with Message equal to "foo",
 				             but it was "FOO" which differs at index 0:
 				                ↓ (actual)
@@ -60,14 +63,15 @@ public sealed partial class DelegateThrows
 		{
 			string message = "FOO";
 			Exception exception = new CustomException(message);
+			void Delegate() => throw exception;
 
 			async Task Act()
-				=> await That(() => throw exception).Should().Throw<CustomException>()
+				=> await That(Delegate).Should().Throw<CustomException>()
 					.WithMessage("foo");
 
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
-				             Expected () => throw exception to
+				             Expected Delegate to
 				             throw a CustomException with Message equal to "foo",
 				             but it was "FOO" which differs at index 0:
 				                ↓ (actual)
@@ -83,8 +87,9 @@ public sealed partial class DelegateThrows
 		{
 			Exception exception =
 				new OuterException(message, new CustomException());
+			void Delegate() => throw exception;
 
-			Exception result = await That(() => throw exception)
+			Exception result = await That(Delegate)
 				.Should().ThrowException().WithMessage(message);
 
 			await That(result).Should().BeSameAs(exception);
