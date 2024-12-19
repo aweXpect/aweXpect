@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734543696977,
+  "lastUpdate": 1734608037615,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -7532,6 +7532,138 @@ window.BENCHMARK_DATA = {
             "value": 1820.4013604384202,
             "unit": "ns",
             "range": "± 3.2072619223923047"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "12e625820ed1c89460906339f5ab22e0989e347e",
+          "message": "feat: support asynchronous value sources (#137)\n\nSupport asynchronous value sources by removing `Task<T>` and `ValueTask<T>` from being treated as a delegate source and instead treat them as an asynchronous value source.\n\nThis allows to write e.g.\n```csharp\nawait Expect.That(File.ReadAllTextAsync(\"some.txt\")).Should().Be(\"file content\");\n// instead of having to write `await` twice\nawait Expect.That(await File.ReadAllTextAsync(\"some.txt\")).Should().Be(\"file content\");\n```\n\n* Avoid interpreting `Task` or `Task<T>` as delegates (only accept Action or Func)\n* Support `Task<T>` and `ValueTask<T>` as asynchronous value source\n* Fix nullability of value sources\n* Add missing tests",
+          "timestamp": "2024-12-19T12:26:55+01:00",
+          "tree_id": "29eb22e618e6574c2b32e9c6b12701b78caa8bc7",
+          "url": "https://github.com/aweXpect/aweXpect/commit/12e625820ed1c89460906339f5ab22e0989e347e"
+        },
+        "date": 1734608037383,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.2320602280753,
+            "unit": "ns",
+            "range": "± 1.4461162956969522"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 211.38165927728016,
+            "unit": "ns",
+            "range": "± 1.000999229046491"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 576.1948443821499,
+            "unit": "ns",
+            "range": "± 3.499170863147901"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 332.1308470794133,
+            "unit": "ns",
+            "range": "± 1.270022093194782"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 440.19732676233565,
+            "unit": "ns",
+            "range": "± 1.3153643187161546"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13613.521323570838,
+            "unit": "ns",
+            "range": "± 72.30823771195426"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 220.37532363619124,
+            "unit": "ns",
+            "range": "± 2.777975878950835"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 253.73222408294677,
+            "unit": "ns",
+            "range": "± 1.8486095247168486"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 744.1729910532633,
+            "unit": "ns",
+            "range": "± 5.882939096613004"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 314.1530344145639,
+            "unit": "ns",
+            "range": "± 1.8781974648753479"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 393.1359518170357,
+            "unit": "ns",
+            "range": "± 7.803938874709466"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 792.1529841423035,
+            "unit": "ns",
+            "range": "± 4.277542409764458"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1064.7859502156575,
+            "unit": "ns",
+            "range": "± 4.423090905269647"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1149.9706242425102,
+            "unit": "ns",
+            "range": "± 7.63725100203203"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1095.7071299919714,
+            "unit": "ns",
+            "range": "± 3.862015043948714"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1054.6650933583578,
+            "unit": "ns",
+            "range": "± 5.575066264762419"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 281762.24466145836,
+            "unit": "ns",
+            "range": "± 1694.8325545030593"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1839.4081574757895,
+            "unit": "ns",
+            "range": "± 4.9056339776218065"
           }
         ]
       }
