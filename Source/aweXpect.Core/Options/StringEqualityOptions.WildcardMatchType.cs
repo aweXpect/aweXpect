@@ -23,7 +23,15 @@ public partial class StringEqualityOptions
 		public string GetExtendedFailure(string it, string? actual, string? pattern,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
-			=> $"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
+		{
+			if (pattern is null)
+			{
+				return $"could not compare the <null> wildcard pattern with {Formatter.Format(actual)}";
+			}
+
+			return
+				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
+		}
 
 		public bool Matches(string? value, string? pattern, bool ignoreCase,
 			IEqualityComparer<string> comparer)
@@ -33,11 +41,9 @@ public partial class StringEqualityOptions
 				return false;
 			}
 
-			RegexOptions options = RegexOptions.Multiline;
-			if (ignoreCase)
-			{
-				options |= RegexOptions.IgnoreCase;
-			}
+			RegexOptions options = ignoreCase
+				? RegexOptions.Multiline | RegexOptions.IgnoreCase
+				: RegexOptions.Multiline;
 
 			return Regex.IsMatch(value, WildcardToRegularExpression(pattern), options,
 				RegexTimeout);

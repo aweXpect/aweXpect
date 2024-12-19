@@ -33,7 +33,7 @@ public partial class StringEqualityOptions
 		{
 			if (actual == null || pattern == null)
 			{
-				return $"{it} was <null>";
+				return $"{it} was {Formatter.Format(actual)}";
 			}
 
 			string prefix =
