@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using aweXpect.Core.Helpers;
 
@@ -14,7 +15,7 @@ public partial class StringEqualityOptions
 		public string GetExtendedFailure(string it, string? actual, string? pattern,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
-			=> $"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(LongMaxLength).Indent(indentFirstLine: false))}";
+			=> $"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (regex)";
 
 		public bool Matches(string? value, string? pattern, bool ignoreCase,
 			IEqualityComparer<string> comparer)
