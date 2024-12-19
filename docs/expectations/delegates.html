@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.6.3">
 <title data-rh="true">Delegates | aweXpect</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://aweXpect.github.io/aweXpect/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://aweXpect.github.io/aweXpect/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://aweXpect.github.io/aweXpect/docs/expectations/delegates"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Delegates | aweXpect"><meta data-rh="true" name="description" content="Describes the possible expectations for delegates and exceptions."><meta data-rh="true" property="og:description" content="Describes the possible expectations for delegates and exceptions."><link data-rh="true" rel="icon" href="/aweXpect/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://aweXpect.github.io/aweXpect/docs/expectations/delegates"><link data-rh="true" rel="alternate" href="https://aweXpect.github.io/aweXpect/docs/expectations/delegates" hreflang="en"><link data-rh="true" rel="alternate" href="https://aweXpect.github.io/aweXpect/docs/expectations/delegates" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/aweXpect/blog/rss.xml" title="aweXpect RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/aweXpect/blog/atom.xml" title="aweXpect Atom Feed"><link rel="stylesheet" href="/aweXpect/assets/css/styles.468ce494.css">
-<script src="/aweXpect/assets/js/runtime~main.86ef1284.js" defer="defer"></script>
+<script src="/aweXpect/assets/js/runtime~main.6e2e29d9.js" defer="defer"></script>
 <script src="/aweXpect/assets/js/main.cfcb8b36.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -17,14 +17,14 @@
 <!-- -->a synchronous method without return value (optionally accepting a <code>CancellationToken</code> for timeout)</li>
 <li><code>Func&lt;Task&gt;</code> or <code>Func&lt;CancellationToken, Task&gt;</code><br>
 <!-- -->an asynchronous method without return value (optionally accepting a <code>CancellationToken</code> for timeout)</li>
-<li><code>Task</code> or <code>ValueTask</code><br>
-<!-- -->the result of an asynchronous method without return value</li>
+<li><code>Func&lt;ValueTask&gt;</code> or <code>Func&lt;CancellationToken, ValueTask&gt;</code><br>
+<!-- -->an asynchronous method using <code>ValueTask</code> without return value (optionally accepting a <code>CancellationToken</code> for timeout)</li>
 <li><code>Func&lt;T&gt;</code> or <code>Func&lt;CancellationToken, T&gt;</code><br>
 <!-- -->a synchronous method with return value <code>T</code> (optionally accepting a <code>CancellationToken</code> for timeout)</li>
 <li><code>Func&lt;Task&lt;T&gt;&gt;</code> or <code>Func&lt;CancellationToken, Task&lt;T&gt;&gt;</code><br>
 <!-- -->an asynchronous method with return value <code>T</code> (optionally accepting a <code>CancellationToken</code> for timeout)</li>
-<li><code>Task&lt;T&gt;</code> or <code>ValueTask&lt;T&gt;</code><br>
-<!-- -->the result of an asynchronous method with return value <code>T</code></li>
+<li><code>Func&lt;ValueTask&lt;T&gt;&gt;</code> or <code>Func&lt;CancellationToken, ValueTask&lt;T&gt;&gt;</code><br>
+<!-- -->an asynchronous method using <code>ValueTask</code> with return value <code>T</code> (optionally accepting a <code>CancellationToken</code> for timeout)</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="not-throw">Not throw<a href="#not-throw" class="hash-link" aria-label="Direct link to Not throw" title="Direct link to Not throw">​</a></h2>
 <p>You can verify, that the delegate does not throw any exception:</p>
