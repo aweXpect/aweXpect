@@ -174,7 +174,7 @@ public static partial class ThatAsyncEnumerableShould
 				sb.AppendLine();
 				sb.Append("  ");
 				Formatter.Format(sb, item);
-				sb.Append(",");
+				sb.Append(',');
 			}
 
 			if (count > Customize.Formatting.MaximumNumberOfCollectionItems)
