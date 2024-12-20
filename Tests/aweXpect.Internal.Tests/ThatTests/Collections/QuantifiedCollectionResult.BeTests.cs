@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.Collections;
+﻿namespace aweXpect.Internal.Tests.ThatTests.Collections;
 
 public sealed partial class QuantifiedCollectionResult
 {

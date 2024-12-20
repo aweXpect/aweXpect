@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Internal.Tests.ThatTests.Collections;
 
 public partial class QuantifiableCollectionItems
 {
