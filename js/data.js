@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734687461267,
+  "lastUpdate": 1734692029865,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -8060,6 +8060,138 @@ window.BENCHMARK_DATA = {
             "value": 1894.011568069458,
             "unit": "ns",
             "range": "± 6.404185707800877"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8cf175d3495dd46799ecc3db96f91f4c9c89040d",
+          "message": "feat: add `ContainKey` / `ContainValue` expectations for dictionaries (#142)\n\nAdd expectations, that dictionaries contain (or not contain) a given key or value.\n\n### Contain key(s)\n\nYou can verify, that a dictionary contains the `expected` key(s):\n```csharp\nDictionary<int, string> values = new() { { 42, \"foo\" }, { 43, \"bar\" } };\n\nawait Expect.That(values).Should().ContainKey(42);\nawait Expect.That(values).Should().ContainKeys(42, 43);\nawait Expect.That(values).Should().NotContainKey(44);\nawait Expect.That(values).Should().NotContainKeys(44, 45, 46);\n```\n\n### Contain value(s)\n\nYou can verify, that a dictionary contains the `expected` value(s):\n```csharp\nDictionary<int, string> values = new() { { 42, \"foo\" }, { 43, \"bar\" } };\n\nawait Expect.That(values).Should().ContainValue(\"foo\");\nawait Expect.That(values).Should().ContainValues(\"foo\", \"bar\");\nawait Expect.That(values).Should().NotContainValue(\"something\");\nawait Expect.That(values).Should().NotContainValues(\"something\", \"else\");\n```",
+          "timestamp": "2024-12-20T10:46:58Z",
+          "tree_id": "c0de820a291a08a9949f77bd245f510429ee5d2f",
+          "url": "https://github.com/aweXpect/aweXpect/commit/8cf175d3495dd46799ecc3db96f91f4c9c89040d"
+        },
+        "date": 1734692029608,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 176.87265362058366,
+            "unit": "ns",
+            "range": "± 0.4564917765168731"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 238.99998824937003,
+            "unit": "ns",
+            "range": "± 0.8874288306463406"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 593.3315489292145,
+            "unit": "ns",
+            "range": "± 1.5910741147056697"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 332.56999095280963,
+            "unit": "ns",
+            "range": "± 1.8925032038381544"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 483.89958626883373,
+            "unit": "ns",
+            "range": "± 2.49727046129427"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 14669.457389831543,
+            "unit": "ns",
+            "range": "± 58.963788675412786"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 220.6043164889018,
+            "unit": "ns",
+            "range": "± 1.3332182959183083"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 257.46577005386354,
+            "unit": "ns",
+            "range": "± 1.0640238646612208"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 763.1301144282023,
+            "unit": "ns",
+            "range": "± 2.120221939286567"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 323.2603912035624,
+            "unit": "ns",
+            "range": "± 1.9603167904818513"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 389.5136199731093,
+            "unit": "ns",
+            "range": "± 1.2777712888165034"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 810.4840394428799,
+            "unit": "ns",
+            "range": "± 2.7994111087568374"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 982.0675619761149,
+            "unit": "ns",
+            "range": "± 4.5979323593705175"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1203.242910521371,
+            "unit": "ns",
+            "range": "± 7.3248343194036725"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1106.4235689980644,
+            "unit": "ns",
+            "range": "± 7.070588943445147"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 979.2215443929036,
+            "unit": "ns",
+            "range": "± 6.738948840140661"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 284970.41875,
+            "unit": "ns",
+            "range": "± 1380.7964789813966"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1801.5844388326009,
+            "unit": "ns",
+            "range": "± 4.727710976478969"
           }
         ]
       }
