@@ -87,31 +87,37 @@ public static partial class ThatEnumerableShould
 			options);
 	}
 
-	private readonly struct StartWithConstraint<TItem, TMatch>(
-		string it,
-		string expectedExpression,
-		TItem[] expected,
-		IOptionsEquality<TMatch> options)
-		: IContextConstraint<IEnumerable<TItem>>
+	private readonly struct StartWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>>
 		where TItem : TMatch
 	{
+		private readonly string _it;
+		private readonly string _expectedExpression;
+		private readonly TItem[] _expected;
+		private readonly IOptionsEquality<TMatch> _options;
+
+		public StartWithConstraint(string it,
+			string expectedExpression,
+			TItem[] expected,
+			IOptionsEquality<TMatch> options)
+		{
+			_it = it;
+			_expectedExpression = expectedExpression;
+			_expected = expected ?? throw new ArgumentNullException(nameof(expected));
+			_options = options;
+		}
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
-			if (expected == null)
-			{
-				throw new ArgumentNullException(nameof(expected));
-			}
-
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
+					$"{_it} was <null>");
 			}
 
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			if (expected.Length == 0)
+			if (_expected.Length == 0)
 			{
 				return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
 			}
@@ -119,14 +125,14 @@ public static partial class ThatEnumerableShould
 			int index = 0;
 			foreach (TItem item in materializedEnumerable)
 			{
-				TItem expectedItem = expected[index++];
-				if (!options.AreConsideredEqual(item, expectedItem))
+				TItem expectedItem = _expected[index++];
+				if (!_options.AreConsideredEqual(item, expectedItem))
 				{
 					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-						$"{it} contained {Formatter.Format(item)} at index {index - 1} instead of {Formatter.Format(expectedItem)}");
+						$"{_it} contained {Formatter.Format(item)} at index {index - 1} instead of {Formatter.Format(expectedItem)}");
 				}
 
-				if (expected.Length == index)
+				if (_expected.Length == index)
 				{
 					return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
 				}
@@ -134,10 +140,10 @@ public static partial class ThatEnumerableShould
 
 
 			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained only {index} items and misses {expected.Length - index} items: {Formatter.Format(expected.Skip(index), FormattingOptions.MultipleLines)}");
+				$"{_it} contained only {index} items and misses {_expected.Length - index} items: {Formatter.Format(_expected.Skip(index), FormattingOptions.MultipleLines)}");
 		}
 
 		public override string ToString()
-			=> $"start with {expectedExpression}";
+			=> $"start with {_expectedExpression}";
 	}
 }

@@ -90,29 +90,39 @@ public static partial class ThatAsyncEnumerableShould
 			options);
 	}
 
-	private readonly struct StartWithConstraint<TItem, TMatch>(
-		string it,
-		string expectedExpression,
-		TItem[] expected,
-		IOptionsEquality<TMatch> options)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct StartWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 		where TItem : TMatch
 	{
+		private readonly string _it;
+		private readonly string _expectedExpression;
+		private readonly TItem[] _expected;
+		private readonly IOptionsEquality<TMatch> _options;
+
+		public StartWithConstraint(string it,
+			string expectedExpression,
+			TItem[] expected,
+			IOptionsEquality<TMatch> options)
+		{
+			ArgumentNullException.ThrowIfNull(expected);
+			_it = it;
+			_expectedExpression = expectedExpression;
+			_expected = expected;
+			_options = options;
+		}
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			ArgumentNullException.ThrowIfNull(expected, nameof(expected));
-
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
+					$"{_it} was <null>");
 			}
 
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			if (expected.Length == 0)
+			if (_expected.Length == 0)
 			{
 				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
 			}
@@ -120,14 +130,14 @@ public static partial class ThatAsyncEnumerableShould
 			int index = 0;
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
-				TItem expectedItem = expected[index++];
-				if (!options.AreConsideredEqual(item, expectedItem))
+				TItem expectedItem = _expected[index++];
+				if (!_options.AreConsideredEqual(item, expectedItem))
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-						$"{it} contained {Formatter.Format(item)} at index {index - 1} instead of {Formatter.Format(expectedItem)}");
+						$"{_it} contained {Formatter.Format(item)} at index {index - 1} instead of {Formatter.Format(expectedItem)}");
 				}
 
-				if (expected.Length == index)
+				if (_expected.Length == index)
 				{
 					return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
 				}
@@ -135,11 +145,11 @@ public static partial class ThatAsyncEnumerableShould
 
 
 			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained only {index} items and misses {expected.Length - index} items: {Formatter.Format(expected.Skip(index), FormattingOptions.MultipleLines)}");
+				$"{_it} contained only {index} items and misses {_expected.Length - index} items: {Formatter.Format(_expected.Skip(index), FormattingOptions.MultipleLines)}");
 		}
 
 		public override string ToString()
-			=> $"start with {expectedExpression}";
+			=> $"start with {_expectedExpression}";
 	}
 }
 #endif
