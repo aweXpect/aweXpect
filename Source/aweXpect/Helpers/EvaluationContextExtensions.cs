@@ -31,7 +31,7 @@ internal static class EvaluationContextExtensions
 		return materializedEnumerable;
 	}
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	private const string MaterializedAsyncEnumerableKey = nameof(MaterializedAsyncEnumerableKey);
 
 	/// <summary>

@@ -38,7 +38,7 @@ public static class Expect
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new AsyncValueSource<T>(subject), doNotPopulateThisValue));
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
@@ -85,7 +85,7 @@ public static class Expect
 			new ExpectationBuilder<DelegateValue>(
 				new DelegateAsyncSource(@delegate), doNotPopulateThisValue));
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{ValueTask}" /> <paramref name="delegate" />.
 	/// </summary>
@@ -96,7 +96,7 @@ public static class Expect
 				new DelegateAsyncSource(_ => @delegate().AsTask()), doNotPopulateThisValue));
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{CancellationToken, ValueTask}" /> <paramref name="delegate" />
 	///     .
@@ -147,7 +147,7 @@ public static class Expect
 			new ExpectationBuilder<DelegateValue<TValue>>(
 				new DelegateAsyncValueSource<TValue>(@delegate), doNotPopulateThisValue));
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{T}" /> of <see cref="ValueTask{TValue}" />
 	///     <paramref name="delegate" />.
@@ -159,7 +159,7 @@ public static class Expect
 				new DelegateAsyncValueSource<TValue>(_ => @delegate().AsTask()), doNotPopulateThisValue));
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{CancellationToken, T}" /> of <see cref="ValueTask{TValue}" />
 	///     <paramref name="delegate" />.
