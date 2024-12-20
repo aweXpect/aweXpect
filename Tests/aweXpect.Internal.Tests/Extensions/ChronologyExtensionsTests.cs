@@ -1,6 +1,6 @@
 ﻿using aweXpect.Extensions;
 
-namespace aweXpect.Tests.Extensions;
+namespace aweXpect.Internal.Tests.Extensions;
 
 public class ChronologyExtensionsTests
 {

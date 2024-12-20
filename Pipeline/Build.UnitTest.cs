@@ -21,7 +21,8 @@ partial class Build
 	Project[] UnitTestProjects =>
 	[
 		Solution.Tests.aweXpect_Core_Tests,
-		Solution.Tests.aweXpect_Tests
+		Solution.Tests.aweXpect_Tests,
+		Solution.Tests.aweXpect_Internal_Tests
 	];
 
 	Target DotNetFrameworkUnitTests => _ => _
