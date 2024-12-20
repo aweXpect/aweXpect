@@ -10,17 +10,17 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerableShould
 {
 	/// <summary>
-	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
-		Be<TItem>(
+	public static ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+		BeContainedIn<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+		return new ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
@@ -30,17 +30,17 @@ public static partial class ThatAsyncEnumerableShould
 	}
 
 	/// <summary>
-	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionMatchResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
-		Be(
+	public static StringCollectionBeContainedInResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+		BeContainedIn(
 			this IThat<IAsyncEnumerable<string>> source,
 			IEnumerable<string> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionMatchResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+		return new StringCollectionBeContainedInResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),

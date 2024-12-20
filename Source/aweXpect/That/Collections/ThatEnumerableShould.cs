@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 
@@ -23,6 +24,47 @@ public static partial class ThatEnumerableShould
 	public static IThat<IEnumerable<TItem>> Should<TItem>(
 		this IExpectSubject<IEnumerable<TItem>> subject)
 		=> subject.Should(That.WithoutAction);
+
+
+	private readonly struct BeConstraint<TItem, TMatch>(
+		string it,
+		string expectedExpression,
+		IEnumerable<TItem> expected,
+		IOptionsEquality<TMatch> options,
+		CollectionMatchOptions matchOptions)
+		: IContextConstraint<IEnumerable<TItem>>
+		where TItem : TMatch
+	{
+		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		{
+			IEnumerable<TItem> materializedEnumerable =
+				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
+			foreach (TItem item in materializedEnumerable)
+			{
+				if (matcher.Verify(it, item, options, out string? failure))
+				{
+					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+						failure ?? TooManyDeviationsError(materializedEnumerable));
+				}
+			}
+
+			if (matcher.VerifyComplete(it, options, out string? lastFailure))
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+					lastFailure ?? TooManyDeviationsError(materializedEnumerable));
+			}
+
+			return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
+				ToString());
+		}
+
+		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
+			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customize.Formatting.MaximumNumberOfCollectionItems} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
+
+		public override string ToString()
+			=> matchOptions.GetExpectation(expectedExpression);
+	}
 
 	private readonly struct SyncCollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
 	{

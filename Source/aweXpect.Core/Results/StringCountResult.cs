@@ -5,11 +5,11 @@ using aweXpect.Options;
 namespace aweXpect.Results;
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="CountResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="StringEqualityOptions" />.
+///     The result for verifying that a string collection has a specified number of items.
 /// </summary>
+/// <remarks>
+///     <seealso cref="CountResult{TType,TThat,TSelf}" />
+/// </remarks>
 public class StringCountResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
@@ -23,11 +23,11 @@ public class StringCountResult<TType, TThat>(
 		options);
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="CountResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="StringEqualityOptions" />.
+///     The result for verifying that a string collection has a specified number of items.
 /// </summary>
+/// <remarks>
+///     <seealso cref="CountResult{TType,TThat,TSelf}" />
+/// </remarks>
 public class StringCountResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,

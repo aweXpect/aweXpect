@@ -76,6 +76,41 @@ public static partial class ThatEnumerableShould
 			source,
 			quantifier);
 	}
+	/// <summary>
+	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+		Contain<TItem>(
+			this IThat<IEnumerable<TItem>> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+	/// <summary>
+	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionContainResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+		Contain(this IThat<IEnumerable<string>> source,
+			IEnumerable<string> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		return new StringCollectionContainResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
 
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
