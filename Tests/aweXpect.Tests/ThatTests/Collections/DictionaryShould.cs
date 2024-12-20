@@ -4,6 +4,25 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public partial class DictionaryShould
 {
+	public static IDictionary<TKey, TValue> ToDictionary<TKey, TValue>(TKey[] keys, TValue[] values)
+		where TKey : notnull
+	{
+		if (values.Length != keys.Length)
+		{
+			throw new ArgumentException("The number of keys and the number of values do not match.");
+		}
+
+		Dictionary<TKey, TValue> result = new();
+		int index = 0;
+		foreach (TValue value in values)
+		{
+			TKey key = keys[index++];
+			result.Add(key, value);
+		}
+
+		return result;
+	}
+
 	public static IDictionary<int, T> ToDictionary<T>(T[] items)
 	{
 		Dictionary<int, T> result = new();
