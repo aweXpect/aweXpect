@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Results;
@@ -8,18 +9,18 @@ namespace aweXpect;
 public static partial class ThatDictionaryShould
 {
 	/// <summary>
-	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
+	///     Verifies that the dictionary contains all <paramref name="expected" /> values.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> NotHaveValue<TKey, TValue>(
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> ContainValues<TKey, TValue>(
 		this IThat<IDictionary<TKey, TValue>> source,
-		TValue unexpected)
+		params TValue[] expected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new NotHaveValueConstraint<TKey, TValue>(it, unexpected)),
+				=> new ContainValuesConstraint<TKey, TValue>(it, expected)),
 			source
 		);
 
-	private readonly struct NotHaveValueConstraint<TKey, TValue>(string it, TValue unexpected)
+	private readonly struct ContainValuesConstraint<TKey, TValue>(string it, TValue[] expected)
 		: IValueConstraint<IDictionary<TKey, TValue>>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
@@ -31,15 +32,16 @@ public static partial class ThatDictionaryShould
 					$"{it} was <null>");
 			}
 
-			if (actual.ContainsValue(unexpected))
+			List<TValue> missingValues = expected.Where(value => !actual.ContainsValue(value)).ToList();
+			if (missingValues.Any())
 			{
 				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did");
+					$"{it} did not have {Formatter.Format(missingValues, FormattingOptions.MultipleLines)} in {Formatter.Format(actual.Values, FormattingOptions.MultipleLines)}");
 			}
 
 			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 		}
 
-		public override string ToString() => $"not have value {Formatter.Format(unexpected)}";
+		public override string ToString() => $"have values {Formatter.Format(expected)}";
 	}
 }

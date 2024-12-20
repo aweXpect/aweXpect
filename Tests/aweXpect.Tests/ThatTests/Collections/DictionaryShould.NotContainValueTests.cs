@@ -4,49 +4,49 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class DictionaryShould
 {
-	public sealed class NotHaveKey
+	public sealed class NotContainValue
 	{
 		public sealed class Tests
 		{
 			[Fact]
 			public async Task WhenDictionaryIsNull_ShouldFail()
 			{
-				IDictionary<string, int>? subject = null;
+				IDictionary<int, string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().NotHaveKey("foo");
+					=> await That(subject!).Should().NotContainValue("foo");
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             not have key "foo",
+					             not have value "foo",
 					             but it was <null>
 					             """);
 			}
 
 			[Fact]
-			public async Task WhenKeyExists_ShouldFail()
+			public async Task WhenValueExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveKey(2);
+					=> await That(subject).Should().NotContainValue(42);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             not have key 2,
+					             not have value 42,
 					             but it did
 					             """);
 			}
 
 			[Fact]
-			public async Task WhenKeyIsMissing_ShouldSucceed()
+			public async Task WhenValueIsMissing_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveKey(42);
+					=> await That(subject).Should().NotContainValue(2);
 
 				await That(Act).Should().NotThrow();
 			}

@@ -4,35 +4,35 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class DictionaryShould
 {
-	public sealed class NotHaveValues
+	public sealed class NotContainKeys
 	{
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenAllValuesDoNotExist_ShouldSucceed()
+			public async Task WhenAllKeysDoNotExist_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveValues(0, 2);
+					=> await That(subject).Should().NotContainKeys(42, 43);
 
 				await That(Act).Should().NotThrow();
 			}
 
 			[Fact]
-			public async Task WhenAtLeastOneValueExists_ShouldFail()
+			public async Task WhenAtLeastOneKeyExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveValues(42, 2);
+					=> await That(subject).Should().NotContainKeys(42, 2);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             not have values [42, 2],
+					             not have keys [42, 2],
 					             but it did have [
-					               42
+					               2
 					             ]
 					             """);
 			}
@@ -40,15 +40,15 @@ public sealed partial class DictionaryShould
 			[Fact]
 			public async Task WhenDictionaryIsNull_ShouldFail()
 			{
-				IDictionary<int, string>? subject = null;
+				IDictionary<string, int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().NotHaveValues("foo", "bar");
+					=> await That(subject!).Should().NotContainKeys("foo", "bar");
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             not have values ["foo", "bar"],
+					             not have keys ["foo", "bar"],
 					             but it was <null>
 					             """);
 			}

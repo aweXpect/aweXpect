@@ -4,7 +4,7 @@ namespace aweXpect.Tests.ThatTests.Collections;
 
 public sealed partial class DictionaryShould
 {
-	public sealed class HaveValues
+	public sealed class ContainValues
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class DictionaryShould
 				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
 
 				async Task Act()
-					=> await That(subject).Should().HaveValues(42, 41);
+					=> await That(subject).Should().ContainValues(42, 41);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -25,7 +25,7 @@ public sealed partial class DictionaryShould
 				IDictionary<int, string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().HaveValues("foo", "bar");
+					=> await That(subject!).Should().ContainValues("foo", "bar");
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -41,7 +41,7 @@ public sealed partial class DictionaryShould
 				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
 
 				async Task Act()
-					=> await That(subject).Should().HaveValues(42, 2);
+					=> await That(subject).Should().ContainValues(42, 2);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

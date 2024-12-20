@@ -11,16 +11,16 @@ public static partial class ThatDictionaryShould
 	/// <summary>
 	///     Verifies that the dictionary contains none of the <paramref name="unexpected" /> keys.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> NotHaveKeys<TKey, TValue>(
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> NotContainKeys<TKey, TValue>(
 		this IThat<IDictionary<TKey, TValue>> source,
 		params TKey[] unexpected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new NotHaveKeysConstraint<TKey, TValue>(it, unexpected)),
+				=> new NotContainKeysConstraint<TKey, TValue>(it, unexpected)),
 			source
 		);
 
-	private readonly struct NotHaveKeysConstraint<TKey, TValue>(string it, TKey[] unexpected)
+	private readonly struct NotContainKeysConstraint<TKey, TValue>(string it, TKey[] unexpected)
 		: IValueConstraint<IDictionary<TKey, TValue>>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)

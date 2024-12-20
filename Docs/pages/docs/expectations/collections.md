@@ -316,26 +316,26 @@ await Expect.That(result).Should().BeGreaterThan(41);
 
 ## Dictionaries
 
-### Have key(s)
+### Contain key(s)
 
 You can verify, that a dictionary contains the `expected` key(s):
 ```csharp
 Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
 
-await Expect.That(values).Should().HaveKey(42);
-await Expect.That(values).Should().HaveKeys(42, 43);
-await Expect.That(values).Should().NotHaveKey(44);
-await Expect.That(values).Should().NotHaveKeys(44, 45, 46);
+await Expect.That(values).Should().ContainKey(42);
+await Expect.That(values).Should().ContainKeys(42, 43);
+await Expect.That(values).Should().NotContainKey(44);
+await Expect.That(values).Should().NotContainKeys(44, 45, 46);
 ```
 
-### Have value(s)
+### Contain value(s)
 
 You can verify, that a dictionary contains the `expected` value(s):
 ```csharp
 Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
 
-await Expect.That(values).Should().HaveValue("foo");
-await Expect.That(values).Should().HaveValues("foo", "bar");
-await Expect.That(values).Should().NotHaveValue("something");
-await Expect.That(values).Should().NotHaveValues("something", "else");
+await Expect.That(values).Should().ContainValue("foo");
+await Expect.That(values).Should().ContainValues("foo", "bar");
+await Expect.That(values).Should().NotContainValue("something");
+await Expect.That(values).Should().NotContainValues("something", "else");
 ```

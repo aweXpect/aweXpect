@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Results;
@@ -8,18 +9,18 @@ namespace aweXpect;
 public static partial class ThatDictionaryShould
 {
 	/// <summary>
-	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> key.
+	///     Verifies that the dictionary contains all <paramref name="expected" /> keys.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> NotHaveKey<TKey, TValue>(
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> ContainKeys<TKey, TValue>(
 		this IThat<IDictionary<TKey, TValue>> source,
-		TKey unexpected)
+		params TKey[] expected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new NotHaveKeyConstraint<TKey, TValue>(it, unexpected)),
+				=> new ContainKeysConstraint<TKey, TValue>(it, expected)),
 			source
 		);
 
-	private readonly struct NotHaveKeyConstraint<TKey, TValue>(string it, TKey unexpected)
+	private readonly struct ContainKeysConstraint<TKey, TValue>(string it, TKey[] expected)
 		: IValueConstraint<IDictionary<TKey, TValue>>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
@@ -31,15 +32,16 @@ public static partial class ThatDictionaryShould
 					$"{it} was <null>");
 			}
 
-			if (actual.ContainsKey(unexpected))
+			List<TKey> missingKeys = expected.Where(key => !actual.ContainsKey(key)).ToList();
+			if (missingKeys.Any())
 			{
 				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did");
+					$"{it} did not have {Formatter.Format(missingKeys, FormattingOptions.MultipleLines)} in {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
 			}
 
 			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 		}
 
-		public override string ToString() => $"not have key {Formatter.Format(unexpected)}";
+		public override string ToString() => $"have keys {Formatter.Format(expected)}";
 	}
 }

@@ -8,18 +8,18 @@ namespace aweXpect;
 public static partial class ThatDictionaryShould
 {
 	/// <summary>
-	///     Verifies that the dictionary contains the <paramref name="expected" /> value.
+	///     Verifies that the dictionary contains the <paramref name="expected" /> key.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> HaveValue<TKey, TValue>(
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> ContainKey<TKey, TValue>(
 		this IThat<IDictionary<TKey, TValue>> source,
-		TValue expected)
+		TKey expected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new HaveValueConstraint<TKey, TValue>(it, expected)),
+				=> new ContainKeyConstraint<TKey, TValue>(it, expected)),
 			source
 		);
 
-	private readonly struct HaveValueConstraint<TKey, TValue>(string it, TValue expected)
+	private readonly struct ContainKeyConstraint<TKey, TValue>(string it, TKey expected)
 		: IValueConstraint<IDictionary<TKey, TValue>>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
@@ -31,7 +31,7 @@ public static partial class ThatDictionaryShould
 					$"{it} was <null>");
 			}
 
-			if (actual.ContainsValue(expected))
+			if (actual.ContainsKey(expected))
 			{
 				return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 			}
@@ -40,6 +40,6 @@ public static partial class ThatDictionaryShould
 				$"{it} contained only {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
 		}
 
-		public override string ToString() => $"have value {Formatter.Format(expected)}";
+		public override string ToString() => $"have key {Formatter.Format(expected)}";
 	}
 }
