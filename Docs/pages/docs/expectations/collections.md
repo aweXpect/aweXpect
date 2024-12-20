@@ -185,6 +185,32 @@ await Expect.That(values).Should().BeContainedIn([4, 4, 3, 3, 2, 2, 1, 1]).InAny
 To check for a proper superset, append `.Properly()` (which would fail for equal collections).
 
 
+## Start with
+
+You can verify, that a collection starts with another collection:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().StartWith(1, 2);
+```
+
+You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
+```csharp
+IEnumerable<MyClass> values = //...
+MyClass expected = //...
+
+await Expect.That(values).Should().StartWith(expected).Equivalent();
+await Expect.That(values).Should().StartWith(expected).Using(new MyClassComparer());
+```
+
+For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
+```csharp
+await Expect.That(["FOO", "BAR"]).Should().StartWith(["foo"]).IgnoringCase();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
 ## Have
 Specifications that count the elements in a collection.
 
