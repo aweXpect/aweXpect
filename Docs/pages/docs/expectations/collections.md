@@ -312,3 +312,30 @@ await Expect.That(result).Should().BeGreaterThan(41);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+## Dictionaries
+
+### Have key(s)
+
+You can verify, that a dictionary contains the `expected` key(s):
+```csharp
+Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
+
+await Expect.That(values).Should().HaveKey(42);
+await Expect.That(values).Should().HaveKeys(42, 43);
+await Expect.That(values).Should().NotHaveKey(44);
+await Expect.That(values).Should().NotHaveKeys(44, 45, 46);
+```
+
+### Have value(s)
+
+You can verify, that a dictionary contains the `expected` value(s):
+```csharp
+Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
+
+await Expect.That(values).Should().HaveValue("foo");
+await Expect.That(values).Should().HaveValues("foo", "bar");
+await Expect.That(values).Should().NotHaveValue("something");
+await Expect.That(values).Should().NotHaveValues("something", "else");
+```
