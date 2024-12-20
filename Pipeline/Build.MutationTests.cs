@@ -41,10 +41,10 @@ partial class Build
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{
-					Solution.aweXpect, UnitTestProjects
+					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests]
 				},
 				{
-					Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests, Solution.Tests.aweXpect_Tests]
+					Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests]
 				}
 			};
 
