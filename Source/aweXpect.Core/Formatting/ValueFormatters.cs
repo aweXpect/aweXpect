@@ -75,7 +75,7 @@ public static partial class ValueFormatters
 		{
 			formatter.Format(stringBuilder, timeSpanValue, options);
 		}
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		else if (value is DateOnly dateOnlyValue)
 		{
 			formatter.Format(stringBuilder, dateOnlyValue, options);

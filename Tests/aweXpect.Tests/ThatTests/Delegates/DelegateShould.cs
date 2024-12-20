@@ -30,7 +30,7 @@ public sealed partial class DelegateShould
 			await That(result).Should().Be(value);
 		}
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Theory]
 		[AutoData]
 		public async Task ShouldReturnValue_FuncValueTaskValue(int value)
@@ -43,7 +43,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Theory]
 		[AutoData]
 		public async Task ShouldReturnValue_FuncValueTaskValue_WithCancellationToken(int value)
@@ -384,7 +384,7 @@ public sealed partial class DelegateShould
 				              """);
 		}
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_FuncValueTask_WhenSuccess()
 		{
@@ -403,7 +403,7 @@ public sealed partial class DelegateShould
 #endif
 
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_FuncValueTask_WithCancellationToken_WhenSuccess()
 		{
@@ -421,7 +421,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_ValueTask_WhenThrown()
 		{
@@ -440,7 +440,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_ValueTask_WithCancellationToken_WhenThrown()
 		{
@@ -459,7 +459,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_ValueTaskValue_WhenSuccess()
 		{
@@ -477,7 +477,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_ValueTaskValue_WhenThrown()
 		{
@@ -496,7 +496,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_ValueTaskValue_WithCancellationToken_WhenSuccess()
 		{
@@ -514,7 +514,7 @@ public sealed partial class DelegateShould
 		}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task ShouldSupportDelegate_ValueTaskValue_WithCancellationToken_WhenThrown()
 		{

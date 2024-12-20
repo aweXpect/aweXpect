@@ -58,7 +58,7 @@ public sealed partial class DelegateShould
 				              """);
 		}
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task WhenFuncValueTaskThrowsAnException_ShouldFailWithDescriptiveMessage()
 		{
@@ -78,7 +78,7 @@ public sealed partial class DelegateShould
 
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task WhenFuncValueTaskValueThrowsAnException_ShouldFailWithDescriptiveMessage()
 		{
@@ -150,7 +150,7 @@ public sealed partial class DelegateShould
 			await That(Act).Should().NotThrow();
 		}
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task WhenFuncValueTaskThrowsAnException_ShouldSucceed()
 		{
@@ -164,7 +164,7 @@ public sealed partial class DelegateShould
 
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 		[Fact]
 		public async Task WhenFuncValueTaskValueThrowsAnException_ShouldSucceed()
 		{

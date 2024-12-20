@@ -1,5 +1,5 @@
 ﻿using aweXpect.Tests.TestHelpers;
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -377,7 +377,7 @@ public class ExpectTests
 		}
 	}
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Returns an <see cref="IAsyncEnumerable{T}" /> with incrementing numbers, starting with 0, which cancels the
 	///     <paramref name="cancellationTokenSource" /> after <paramref name="cancelAfter" /> iteration.
