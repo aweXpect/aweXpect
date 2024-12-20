@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734638316341,
+  "lastUpdate": 1734687461267,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -7928,6 +7928,138 @@ window.BENCHMARK_DATA = {
             "value": 1886.5354578835625,
             "unit": "ns",
             "range": "± 8.175769631484709"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "dce76a5e56bb27a598b23d44417bc910ba5112e8",
+          "message": "feat!: replace `OrMore`/`OrLess` with `Contain` and `BeContainedIn` (#141)\n\nReplace `OrMore` and `OrLess` expectations on collections with `Contain` and `BeContainedIn`, as they are more clear and less technical.\nReplace `AndMore` and `AndLess` with `Contain(...).Properly()` and `BeContainedIn(...).Properly()` respectively.\n\n### Contain subset\n\nYou can verify, that a collection contains another collection as a subset:\n```csharp\nIEnumerable<int> values = Enumerable.Range(1, 3);\n\nawait Expect.That(values).Should().Contain([1, 2]);\nawait Expect.That(values).Should().Contain([3, 2]).InAnyOrder();\nawait Expect.That(values).Should().Contain([1, 1, 2, 2]).IgnoringDuplicates();\nawait Expect.That(values).Should().Contain([3, 3, 1, 1]).InAnyOrder().IgnoringDuplicates();\n```\n*Note: The same expectation works also for `IAsyncEnumerable<T>`.*\n\nTo check for a proper subset, append `.Properly()` (which would fail for equal collections).\n\n\n### Be contained in\n\nYou can verify, that a collection is contained in another collection (it is a superset):\n```csharp\nIEnumerable<int> values = Enumerable.Range(1, 3);\n\nawait Expect.That(values).Should().BeContainedIn([1, 2, 3, 4]);\nawait Expect.That(values).Should().BeContainedIn([4, 3, 2, 1]).InAnyOrder();\nawait Expect.That(values).Should().BeContainedIn([1, 1, 2, 2, 3, 3, 4, 4]).IgnoringDuplicates();\nawait Expect.That(values).Should().BeContainedIn([4, 4, 3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringDuplicates();\n```\n*Note: The same expectation works also for `IAsyncEnumerable<T>`.*\n\nTo check for a proper superset, append `.Properly()` (which would fail for equal collections).",
+          "timestamp": "2024-12-20T09:30:30Z",
+          "tree_id": "e467ade0b69d288265f90b8da96b2b42ad5d84d9",
+          "url": "https://github.com/aweXpect/aweXpect/commit/dce76a5e56bb27a598b23d44417bc910ba5112e8"
+        },
+        "date": 1734687460999,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 168.97702816816476,
+            "unit": "ns",
+            "range": "± 0.5988906341294107"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 219.06552943161554,
+            "unit": "ns",
+            "range": "± 1.4744098732504196"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 585.7061089106968,
+            "unit": "ns",
+            "range": "± 4.392574990679214"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 336.7457889874776,
+            "unit": "ns",
+            "range": "± 1.9808977761457307"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 476.4222728729248,
+            "unit": "ns",
+            "range": "± 1.5340617394025873"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13756.008900233677,
+            "unit": "ns",
+            "range": "± 71.26775431386785"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 222.2168080977031,
+            "unit": "ns",
+            "range": "± 1.016948956219003"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 259.6221087137858,
+            "unit": "ns",
+            "range": "± 2.1112526938858776"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 773.5751557350159,
+            "unit": "ns",
+            "range": "± 4.98599581512702"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 318.9823556582133,
+            "unit": "ns",
+            "range": "± 1.6562325380388174"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 401.6981083869934,
+            "unit": "ns",
+            "range": "± 3.184362432902275"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 826.3692696253459,
+            "unit": "ns",
+            "range": "± 4.663621188584695"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 992.7323105675833,
+            "unit": "ns",
+            "range": "± 3.8427527067026017"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1200.0197495051793,
+            "unit": "ns",
+            "range": "± 3.7882229513995562"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1127.052708053589,
+            "unit": "ns",
+            "range": "± 10.282411103339479"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1004.850545002864,
+            "unit": "ns",
+            "range": "± 6.6968288987040205"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 284632.6818498884,
+            "unit": "ns",
+            "range": "± 2273.8077192211085"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1894.011568069458,
+            "unit": "ns",
+            "range": "± 6.404185707800877"
           }
         ]
       }
