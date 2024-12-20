@@ -10,18 +10,18 @@ public class CollectionMatchOptionsTests
 		public async Task ProperSubset_ShouldHaveSubsetFlag()
 		{
 			CollectionMatchOptions.EquivalenceRelations subject
-				= CollectionMatchOptions.EquivalenceRelations.ProperSubset;
+				= CollectionMatchOptions.EquivalenceRelations.IsContainedInProperly;
 
-			await That(subject).Should().HaveFlag(CollectionMatchOptions.EquivalenceRelations.Subset);
+			await That(subject).Should().HaveFlag(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		}
 
 		[Fact]
 		public async Task ProperSuperset_ShouldHaveSupersetFlag()
 		{
 			CollectionMatchOptions.EquivalenceRelations subject
-				= CollectionMatchOptions.EquivalenceRelations.ProperSuperset;
+				= CollectionMatchOptions.EquivalenceRelations.ContainsProperly;
 
-			await That(subject).Should().HaveFlag(CollectionMatchOptions.EquivalenceRelations.Superset);
+			await That(subject).Should().HaveFlag(CollectionMatchOptions.EquivalenceRelations.Contains);
 		}
 
 		[Fact]
@@ -30,8 +30,8 @@ public class CollectionMatchOptionsTests
 			CollectionMatchOptions.EquivalenceRelations subject
 				= CollectionMatchOptions.EquivalenceRelations.Equivalent;
 
-			await That(subject).Should().NotHaveFlag(CollectionMatchOptions.EquivalenceRelations.Subset);
-			await That(subject).Should().NotHaveFlag(CollectionMatchOptions.EquivalenceRelations.Superset);
+			await That(subject).Should().NotHaveFlag(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+			await That(subject).Should().NotHaveFlag(CollectionMatchOptions.EquivalenceRelations.Contains);
 		}
 	}
 }

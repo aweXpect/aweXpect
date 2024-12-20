@@ -9,7 +9,7 @@ namespace aweXpect.Results;
 ///     In addition to the combinations from <see cref="ObjectEqualityResult{TResult,TValue}" />, allows specifying
 ///     options on the <see cref="CollectionMatchOptions" />.
 /// </summary>
-public class CollectionBeResult<TType, TThat>(
+public class ObjectCollectionBeResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	ObjectEqualityOptions options,
@@ -26,7 +26,7 @@ public class CollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> AndLess()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ProperSubset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.IsContainedInProperly);
 		return this;
 	}
 
@@ -38,7 +38,7 @@ public class CollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> AndMore()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ProperSuperset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ContainsProperly);
 		return this;
 	}
 
@@ -50,7 +50,7 @@ public class CollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> OrLess()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Subset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return this;
 	}
 
@@ -62,7 +62,7 @@ public class CollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public ObjectCollectionMatchResult<TType, TThat> OrMore()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Superset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return this;
 	}
 }

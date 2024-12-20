@@ -24,24 +24,24 @@ public partial class CollectionMatchOptions
 		Equivalent = 1,
 
 		/// <summary>
-		///     The expected collection contains at least one additional item.
+		///     The subject collection is contained in the expected collection which has at least one additional item.
 		/// </summary>
-		ProperSubset = 2 | Subset,
+		IsContainedInProperly = 2 | IsContainedIn,
 
 		/// <summary>
-		///     The subject collection contains at least one additional item.
+		///     The subject collection contains the expected collection and at least one additional item.
 		/// </summary>
-		ProperSuperset = 2 | Superset,
+		ContainsProperly = 2 | Contains,
 
 		/// <summary>
-		///     The expected collection can contain additional items.
+		///     The subject collection is contained in the expected collection.
 		/// </summary>
-		Subset = 4,
+		IsContainedIn = 4,
 
 		/// <summary>
-		///     The subject collection can contain additional items.
+		///     The subject collection contains the expected collection.
 		/// </summary>
-		Superset = 8
+		Contains = 8
 	}
 
 	private EquivalenceRelations _equivalenceRelations = EquivalenceRelations.Equivalent;
@@ -77,24 +77,28 @@ public partial class CollectionMatchOptions
 			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected)
 		};
 
-	/// <inheritdoc />
-	public override string ToString()
+	/// <summary>
+	///     Specifies the expectation for the <paramref name="expectedExpression" />.
+	/// </summary>
+	public string GetExpectation(string expectedExpression)
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => ToString(_equivalenceRelations) + " in any order ignoring duplicates",
-			(true, false) => ToString(_equivalenceRelations) + " in any order",
-			(false, true) => ToString(_equivalenceRelations) + " ignoring duplicates",
-			(false, false) => ToString(_equivalenceRelations)
+			(true, true) => ToString(_equivalenceRelations, expectedExpression) + " in any order ignoring duplicates",
+			(true, false) => ToString(_equivalenceRelations, expectedExpression) + " in any order",
+			(false, true) => ToString(_equivalenceRelations, expectedExpression) + " in order ignoring duplicates",
+			(false, false) => ToString(_equivalenceRelations, expectedExpression) + " in order"
 		};
 
-	private static string ToString(EquivalenceRelations equivalenceRelation)
+	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression)
 		=> equivalenceRelation switch
 		{
-			EquivalenceRelations.Superset => " or more items",
-			EquivalenceRelations.ProperSuperset => " and at least one more item",
-			EquivalenceRelations.Subset => " or less items",
-			EquivalenceRelations.ProperSubset => " and at least one item less",
-			_ => ""
+			EquivalenceRelations.Contains => $"contain collection {expectedExpression}",
+			EquivalenceRelations.ContainsProperly =>
+				$"contain collection {expectedExpression} and at least one more item",
+			EquivalenceRelations.IsContainedIn => $"be contained in collection {expectedExpression}",
+			EquivalenceRelations.IsContainedInProperly =>
+				$"be contained in collection {expectedExpression} and at least one item less",
+			_ => $"match collection {expectedExpression}"
 		};
 
 	private static string? ReturnErrorString(string it, List<string> errors)
@@ -142,7 +146,7 @@ public partial class CollectionMatchOptions
 		{
 			foreach (KeyValuePair<int, (T Item, T Expected)> incorrectItem in incorrectItems)
 			{
-				if (equivalenceRelation.HasFlag(EquivalenceRelations.Superset) &&
+				if (equivalenceRelation.HasFlag(EquivalenceRelations.Contains) &&
 				    !expectedItems.Contains(incorrectItem.Value.Item))
 				{
 					continue;
@@ -158,7 +162,7 @@ public partial class CollectionMatchOptions
 		EquivalenceRelations equivalenceRelation)
 	{
 		bool hasMissingItems = missingItems.Any();
-		if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelations.Subset))
+		if (hasMissingItems && !equivalenceRelation.HasFlag(EquivalenceRelations.IsContainedIn))
 		{
 			if (missingItems.Count == 1)
 			{

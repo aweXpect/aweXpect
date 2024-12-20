@@ -26,7 +26,7 @@ public class StringCollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public StringCollectionMatchResult<TType, TThat> AndLess()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ProperSubset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.IsContainedInProperly);
 		return this;
 	}
 
@@ -38,7 +38,7 @@ public class StringCollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public StringCollectionMatchResult<TType, TThat> AndMore()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ProperSuperset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ContainsProperly);
 		return this;
 	}
 
@@ -50,7 +50,7 @@ public class StringCollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public StringCollectionMatchResult<TType, TThat> OrLess()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Subset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return this;
 	}
 
@@ -62,7 +62,7 @@ public class StringCollectionBeResult<TType, TThat>(
 	/// </remarks>
 	public StringCollectionMatchResult<TType, TThat> OrMore()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Superset);
+		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return this;
 	}
 }

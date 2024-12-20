@@ -22,7 +22,7 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static CollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectCollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		Be<TItem>(
 			this IThat<IAsyncEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
@@ -30,7 +30,7 @@ public static partial class ThatAsyncEnumerableShould
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new CollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new ObjectCollectionBeResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
@@ -42,7 +42,7 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionBeTypeResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringCollectionBeResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
 		Be(
 			this IThat<IAsyncEnumerable<string>> source,
 			IEnumerable<string> expected,
@@ -50,7 +50,7 @@ public static partial class ThatAsyncEnumerableShould
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionBeTypeResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringCollectionBeResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),

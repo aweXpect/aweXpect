@@ -32,7 +32,7 @@ public class StringCollectionMatchResult<TType, TThat, TSelf>(
 	TThat returnValue,
 	StringEqualityOptions options,
 	CollectionMatchOptions collectionMatchOptions)
-	: StringEqualityResult<TType, TThat>(expectationBuilder, returnValue, options)
+	: StringEqualityTypeResult<TType, TThat>(expectationBuilder, returnValue, options)
 	where TSelf : StringCollectionMatchResult<TType, TThat, TSelf>
 {
 	/// <summary>
