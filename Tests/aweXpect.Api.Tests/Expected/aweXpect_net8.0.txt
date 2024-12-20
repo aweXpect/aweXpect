@@ -936,14 +936,6 @@ namespace aweXpect.Results
         public ObjectCollectionBeContainedInResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
         public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> Properly() { }
     }
-    public class ObjectCollectionBeResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>
-    {
-        public ObjectCollectionBeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
-        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> AndLess() { }
-        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> AndMore() { }
-        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> OrLess() { }
-        public aweXpect.Results.ObjectCollectionMatchResult<TType, TThat> OrMore() { }
-    }
     public class ObjectCollectionContainResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>
     {
         public ObjectCollectionContainResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
@@ -983,14 +975,6 @@ namespace aweXpect.Results
     {
         public StringCollectionBeContainedInResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
         public aweXpect.Results.StringCollectionMatchResult<TType, TThat> Properly() { }
-    }
-    public class StringCollectionBeResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat>
-    {
-        public StringCollectionBeResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
-        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> AndLess() { }
-        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> AndMore() { }
-        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> OrLess() { }
-        public aweXpect.Results.StringCollectionMatchResult<TType, TThat> OrMore() { }
     }
     public class StringCollectionContainResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat>
     {

@@ -20,38 +20,6 @@ await Expect.That(values).Should().Be([3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringD
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
-### Subset
-
-You can verify, that a collection matches another collection or has fewer items (it is a subset of the expected items):
-```csharp
-IEnumerable<int> values = Enumerable.Range(1, 3);
-
-await Expect.That(values).Should().Be([1, 2, 3, 4]).OrLess();
-await Expect.That(values).Should().Be([4, 3, 2, 1]).OrLess().InAnyOrder();
-await Expect.That(values).Should().Be([1, 1, 2, 2, 3, 3, 4, 4]).OrLess().IgnoringDuplicates();
-await Expect.That(values).Should().Be([4, 4, 3, 3, 2, 2, 1, 1]).OrLess().InAnyOrder().IgnoringDuplicates();
-```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
-
-To check for a proper subset, use `AndLess` instead (which would fail for equal collections).
-
-
-### Superset
-
-You can verify, that a collection matches another collection or has more items (it is a superset of the expected items):
-```csharp
-IEnumerable<int> values = Enumerable.Range(1, 3);
-
-await Expect.That(values).Should().Be([1, 2]).OrMore();
-await Expect.That(values).Should().Be([3, 2]).OrMore().InAnyOrder();
-await Expect.That(values).Should().Be([1, 1, 2, 2]).OrMore().IgnoringDuplicates();
-await Expect.That(values).Should().Be([3, 3, 1, 1]).OrMore().InAnyOrder().IgnoringDuplicates();
-```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
-
-To check for a proper superset, use `AndMore` instead (which would fail for equal collections).
-
-
 ## All be
 
 You can verify, that all items in the collection are equal to the `expected` value
@@ -183,6 +151,38 @@ await Expect.That(values).Should().Contain(x => x == 1).Between(1).And(5.Times()
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+### Contain subset
+
+You can verify, that a collection contains another collection as a subset:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().Contain([1, 2]);
+await Expect.That(values).Should().Contain([3, 2]).InAnyOrder();
+await Expect.That(values).Should().Contain([1, 1, 2, 2]).IgnoringDuplicates();
+await Expect.That(values).Should().Contain([3, 3, 1, 1]).InAnyOrder().IgnoringDuplicates();
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+To check for a proper subset, append `.Properly()` (which would fail for equal collections).
+
+
+### Be contained in
+
+You can verify, that a collection is contained in another collection (it is a superset):
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().BeContainedIn([1, 2, 3, 4]);
+await Expect.That(values).Should().BeContainedIn([4, 3, 2, 1]).InAnyOrder();
+await Expect.That(values).Should().BeContainedIn([1, 1, 2, 2, 3, 3, 4, 4]).IgnoringDuplicates();
+await Expect.That(values).Should().BeContainedIn([4, 4, 3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringDuplicates();
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+To check for a proper superset, append `.Properly()` (which would fail for equal collections).
 
 
 ## Have
