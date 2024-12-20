@@ -86,8 +86,7 @@ public static partial class ThatEnumerableShould
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		CollectionMatchOptions matchOptions = new();
-		matchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Contains);
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(source.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
@@ -104,8 +103,7 @@ public static partial class ThatEnumerableShould
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		CollectionMatchOptions matchOptions = new();
-		matchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.Contains);
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IEnumerable<string>, IThat<IEnumerable<string>>>(source.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),

@@ -10,7 +10,9 @@ namespace aweXpect.Options;
 /// <summary>
 ///     Options for matching a collection.
 /// </summary>
-public partial class CollectionMatchOptions
+public partial class CollectionMatchOptions(
+	CollectionMatchOptions.EquivalenceRelations equivalenceRelations
+		= CollectionMatchOptions.EquivalenceRelations.Equivalent)
 {
 	/// <summary>
 	///     Specifies the equivalence relation between subject and expected.
@@ -44,7 +46,7 @@ public partial class CollectionMatchOptions
 		Contains = 8
 	}
 
-	private EquivalenceRelations _equivalenceRelations = EquivalenceRelations.Equivalent;
+	private EquivalenceRelations _equivalenceRelations = equivalenceRelations;
 	private bool _ignoringDuplicates;
 	private bool _inAnyOrder;
 
@@ -94,10 +96,10 @@ public partial class CollectionMatchOptions
 		{
 			EquivalenceRelations.Contains => $"contain collection {expectedExpression}",
 			EquivalenceRelations.ContainsProperly =>
-				$"contain collection {expectedExpression} and at least one more item",
+				$"contain collection {expectedExpression} and at least one additional item",
 			EquivalenceRelations.IsContainedIn => $"be contained in collection {expectedExpression}",
 			EquivalenceRelations.IsContainedInProperly =>
-				$"be contained in collection {expectedExpression} and at least one item less",
+				$"be contained in collection {expectedExpression} which has at least one additional item",
 			_ => $"match collection {expectedExpression}"
 		};
 

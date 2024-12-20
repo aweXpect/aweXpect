@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿#if NET6_0_OR_GREATER
+using System.Collections.Generic;
 using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests.ThatTests.Collections;
 
-public sealed partial class EnumerableShould
+public sealed partial class AsyncEnumerableShould
 {
 	public class BeContainedIn
 	{
@@ -14,7 +15,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -55,7 +56,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -67,7 +68,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -94,7 +95,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -113,7 +114,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -125,7 +126,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -142,7 +143,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -161,7 +162,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -180,7 +181,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -197,7 +198,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -209,7 +210,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -226,7 +227,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -238,7 +239,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -255,7 +256,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -267,7 +268,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -280,7 +281,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -295,7 +296,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -336,7 +337,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -348,7 +349,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "a", "b"];
 
 				async Task Act()
@@ -360,7 +361,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -387,7 +388,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -406,7 +407,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -418,7 +419,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -435,7 +436,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -454,7 +455,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -473,7 +474,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -485,7 +486,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -497,7 +498,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -509,7 +510,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -521,7 +522,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -533,7 +534,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -545,7 +546,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -557,7 +558,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -566,13 +567,13 @@ public sealed partial class EnumerableShould
 				await That(Act).Should().NotThrow();
 			}
 		}
-
+		
 		public sealed class InAnyOrderTests
 		{
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -613,7 +614,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -625,7 +626,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -652,7 +653,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -671,7 +672,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -683,7 +684,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -700,7 +701,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -719,7 +720,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -731,7 +732,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -748,7 +749,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -760,7 +761,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -777,7 +778,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -789,7 +790,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -806,7 +807,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -818,7 +819,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -831,7 +832,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -846,7 +847,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -887,7 +888,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "a", "b", "c", "a"];
 
 				async Task Act()
@@ -899,7 +900,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "a", "b"];
 
 				async Task Act()
@@ -911,7 +912,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -938,7 +939,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -957,7 +958,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -969,7 +970,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -986,7 +987,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1005,7 +1006,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1017,7 +1018,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1029,7 +1030,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -1041,7 +1042,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1053,7 +1054,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -1065,7 +1066,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1077,7 +1078,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -1089,7 +1090,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1101,7 +1102,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1116,7 +1117,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -1157,7 +1158,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1169,7 +1170,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -1196,7 +1197,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -1215,7 +1216,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1227,7 +1228,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1246,7 +1247,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1266,7 +1267,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1286,7 +1287,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1305,7 +1306,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -1317,7 +1318,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1336,7 +1337,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -1348,7 +1349,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1367,7 +1368,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -1379,7 +1380,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1392,7 +1393,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1412,7 +1413,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -1453,7 +1454,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1465,7 +1466,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "a", "b"];
 
 				async Task Act()
@@ -1477,7 +1478,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -1504,7 +1505,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -1523,7 +1524,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1535,7 +1536,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1554,7 +1555,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1574,7 +1575,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1594,7 +1595,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1611,7 +1612,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -1628,7 +1629,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1645,7 +1646,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -1662,7 +1663,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1679,7 +1680,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -1691,7 +1692,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1703,7 +1704,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1723,7 +1724,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -1764,7 +1765,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1776,7 +1777,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -1803,7 +1804,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -1822,7 +1823,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1834,7 +1835,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1853,7 +1854,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1873,7 +1874,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1890,7 +1891,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1909,7 +1910,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -1921,7 +1922,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1940,7 +1941,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -1952,7 +1953,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -1971,7 +1972,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -1983,7 +1984,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -1996,7 +1997,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2016,7 +2017,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
 				IEnumerable<int> expected = Enumerable.Range(100, 11);
 
 				async Task Act()
@@ -2058,7 +2059,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "a", "b", "c", "a"];
 
 				async Task Act()
@@ -2071,7 +2072,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 				string[] expected = ["a", "a", "b"];
 
 				async Task Act()
@@ -2084,7 +2085,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task VeryDifferentCollections_ShouldFail()
 			{
-				IEnumerable<int> subject = Enumerable.Range(1, 10);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 10));
 				IEnumerable<int> expected = Enumerable.Range(101, 10);
 
 				async Task Act()
@@ -2112,7 +2113,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c", "x", "y", "z"];
 
 				async Task Act()
@@ -2132,7 +2133,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["b", "b", "c", "d"]);
 				string[] expected = ["a", "b", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -2145,7 +2146,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2165,7 +2166,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2186,7 +2187,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "c", "b"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2204,7 +2205,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["c", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2222,7 +2223,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "c"];
 
 				async Task Act()
@@ -2240,7 +2241,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2258,7 +2259,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "a", "b", "c"];
 
 				async Task Act()
@@ -2276,7 +2277,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2294,7 +2295,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d"];
 
 				async Task Act()
@@ -2307,7 +2308,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c", "d", "e"];
 
 				async Task Act()
@@ -2320,7 +2321,7 @@ public sealed partial class EnumerableShould
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c"]);
 				string[] expected = ["a", "b", "c"];
 
 				async Task Act()
@@ -2337,3 +2338,4 @@ public sealed partial class EnumerableShould
 		}
 	}
 }
+#endif

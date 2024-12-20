@@ -82,6 +82,45 @@ public static partial class ThatAsyncEnumerableShould
 			source,
 			quantifier);
 	}
+	/// <summary>
+	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+		Contain<TItem>(
+			this IThat<IAsyncEnumerable<TItem>> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+				.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionContainResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+		Contain(
+			this IThat<IAsyncEnumerable<string>> source,
+			IEnumerable<string> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		return new StringCollectionContainResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+				.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
 
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
