@@ -4,11 +4,11 @@ using aweXpect.Options;
 namespace aweXpect.Results;
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="ObjectEqualityResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="CollectionMatchOptions" />.
+///     The result for verifying that a string collection matches another collection.
 /// </summary>
+/// <remarks>
+///     <seealso cref="StringEqualityTypeResult{TType,TThat,TSelf}" />
+/// </remarks>
 public class StringCollectionMatchResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
@@ -22,17 +22,17 @@ public class StringCollectionMatchResult<TType, TThat>(
 		collectionMatchOptions);
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="ObjectEqualityResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="CollectionMatchOptions" />.
+///     The result for verifying that a string collection matches another collection.
 /// </summary>
+/// <remarks>
+///     <seealso cref="StringEqualityTypeResult{TType,TThat,TSelf}" />
+/// </remarks>
 public class StringCollectionMatchResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	StringEqualityOptions options,
 	CollectionMatchOptions collectionMatchOptions)
-	: StringEqualityTypeResult<TType, TThat>(expectationBuilder, returnValue, options)
+	: StringEqualityTypeResult<TType, TThat, TSelf>(expectationBuilder, returnValue, options)
 	where TSelf : StringCollectionMatchResult<TType, TThat, TSelf>
 {
 	/// <summary>

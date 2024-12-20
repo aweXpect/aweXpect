@@ -4,11 +4,11 @@ using aweXpect.Options;
 namespace aweXpect.Results;
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="StringEqualityResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="CollectionMatchOptions" />.
+///     The result for verifying that a string collection contains another collection.
 /// </summary>
+/// <remarks>
+///     <seealso cref="StringCollectionMatchResult{TType,TThat}" />
+/// </remarks>
 public class StringCollectionContainResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,

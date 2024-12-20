@@ -845,7 +845,7 @@ namespace aweXpect.Results
     {
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
     }
-    public class StringCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.StringEqualityTypeResult<TType, TThat>
+    public class StringCollectionMatchResult<TType, TThat, TSelf> : aweXpect.Results.StringEqualityTypeResult<TType, TThat, TSelf>
         where TSelf : aweXpect.Results.StringCollectionMatchResult<TType, TThat, TSelf>
     {
         public StringCollectionMatchResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }

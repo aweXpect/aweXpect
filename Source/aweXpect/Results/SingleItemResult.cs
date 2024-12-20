@@ -6,8 +6,11 @@ using aweXpect.Helpers;
 namespace aweXpect.Results;
 
 /// <summary>
-///     An <see cref="ExpectationResult" /> for a single item from a collection.
+///     The result for verifying that a collection contains a single item.
 /// </summary>
+/// <remarks>
+///     <seealso cref="ExpectationResult{TType,TSelf}" />
+/// </remarks>
 public class SingleItemResult<TCollection, TItem>
 	: ExpectationResult<TItem, SingleItemResult<TCollection, TItem>>
 {
