@@ -187,11 +187,12 @@ To check for a proper superset, append `.Properly()` (which would fail for equal
 
 ## Start with
 
-You can verify, that a collection starts with another collection:
+You can verify, if a collection starts with another collection or not:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 3);
 
 await Expect.That(values).Should().StartWith(1, 2);
+await Expect.That(values).Should().NotStartWith(2, 3);
 ```
 
 You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
