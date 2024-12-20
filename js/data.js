@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734704244361,
+  "lastUpdate": 1734711403877,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -8324,6 +8324,138 @@ window.BENCHMARK_DATA = {
             "value": 1825.8102484385172,
             "unit": "ns",
             "range": "± 11.215368354459521"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "29c087a7d3dfc6fb90ea9209f0f732dd9d9df4bd",
+          "message": "feat: add `StartWith` collection extensions (#144)\n\nYou can verify, that a collection starts with another collection:\n```csharp\nIEnumerable<int> values = Enumerable.Range(1, 3);\n\nawait Expect.That(values).Should().StartWith(1, 2);\n```\n\nYou can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):\n```csharp\nIEnumerable<MyClass> values = //...\nMyClass expected = //...\nawait Expect.That(values).Should().StartWith(expected).Equivalent();\nawait Expect.That(values).Should().StartWith(expected).Using(new MyClassComparer());\n```\n\nFor strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:\n```csharp\nawait Expect.That([\"FOO\", \"BAR\"]).Should().StartWith([\"foo\"]).IgnoringCase();\n```\n\n*Note: The same expectation works also for `IAsyncEnumerable<T>`.*",
+          "timestamp": "2024-12-20T16:09:36Z",
+          "tree_id": "4b8a14bf1b4030d93287836a9d9898c78c8c7949",
+          "url": "https://github.com/aweXpect/aweXpect/commit/29c087a7d3dfc6fb90ea9209f0f732dd9d9df4bd"
+        },
+        "date": 1734711403615,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.66142206925613,
+            "unit": "ns",
+            "range": "± 0.521168403441277"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.46346110502878,
+            "unit": "ns",
+            "range": "± 1.321103861338891"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 585.7172293345134,
+            "unit": "ns",
+            "range": "± 3.9350252009842577"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 349.272433587483,
+            "unit": "ns",
+            "range": "± 1.6322782943540894"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 449.6198617390224,
+            "unit": "ns",
+            "range": "± 1.9648103216514439"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13798.781836191813,
+            "unit": "ns",
+            "range": "± 49.22556658490944"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 216.5823735679899,
+            "unit": "ns",
+            "range": "± 1.0220322562919522"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 257.4637027740479,
+            "unit": "ns",
+            "range": "± 1.1657144774009225"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 760.805022753202,
+            "unit": "ns",
+            "range": "± 3.076596951666533"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 314.9310328619821,
+            "unit": "ns",
+            "range": "± 2.0343467578041223"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 395.53352202687944,
+            "unit": "ns",
+            "range": "± 2.1702333351719307"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 821.1680298532758,
+            "unit": "ns",
+            "range": "± 7.542974308373419"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 975.7004232406616,
+            "unit": "ns",
+            "range": "± 7.531804042080038"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1280.6439874013265,
+            "unit": "ns",
+            "range": "± 5.986290850964591"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1110.9946765899658,
+            "unit": "ns",
+            "range": "± 4.287968430831375"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1003.9718236287434,
+            "unit": "ns",
+            "range": "± 6.1928034652140935"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 282859.15087890625,
+            "unit": "ns",
+            "range": "± 1866.0894294320613"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1842.4556036631266,
+            "unit": "ns",
+            "range": "± 6.394028178590792"
           }
         ]
       }
