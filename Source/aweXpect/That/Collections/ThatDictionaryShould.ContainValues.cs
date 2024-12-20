@@ -20,6 +20,19 @@ public static partial class ThatDictionaryShould
 			source
 		);
 
+	/// <summary>
+	///     Verifies that the dictionary contains none of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> NotContainValues<TKey,
+		TValue>(
+		this IThat<IDictionary<TKey, TValue>> source,
+		params TValue[] unexpected)
+		=> new(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new NotContainValuesConstraint<TKey, TValue>(it, unexpected)),
+			source
+		);
+
 	private readonly struct ContainValuesConstraint<TKey, TValue>(string it, TValue[] expected)
 		: IValueConstraint<IDictionary<TKey, TValue>>
 	{
@@ -43,5 +56,30 @@ public static partial class ThatDictionaryShould
 		}
 
 		public override string ToString() => $"have values {Formatter.Format(expected)}";
+	}
+
+	private readonly struct NotContainValuesConstraint<TKey, TValue>(string it, TValue[] unexpected)
+		: IValueConstraint<IDictionary<TKey, TValue>>
+	{
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					$"{it} was <null>");
+			}
+
+			List<TValue> existingValues = unexpected.Where(actual.ContainsValue).ToList();
+			if (existingValues.Any())
+			{
+				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
+					$"{it} did have {Formatter.Format(existingValues, FormattingOptions.MultipleLines)}");
+			}
+
+			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
+		}
+
+		public override string ToString() => $"not have values {Formatter.Format(unexpected)}";
 	}
 }
