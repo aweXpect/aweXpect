@@ -4,95 +4,52 @@ namespace aweXpect.Tests.Streams;
 
 public sealed partial class StreamShould
 {
-	public sealed class BeReadableTests
+	public sealed class BeReadable
 	{
-		[Fact]
-		public async Task WhenSubjectIsNotReadable_ShouldFail()
+		public sealed class Tests
 		{
-			Stream subject = new MyStream(canRead: false);
+			[Fact]
+			public async Task WhenSubjectIsNotReadable_ShouldFail()
+			{
+				Stream subject = new MyStream(canRead: false);
 
-			async Task Act()
-				=> await That(subject).Should().BeReadable();
+				async Task Act()
+					=> await That(subject).Should().BeReadable();
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             be readable,
-				             but it was not
-				             """);
-		}
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be readable,
+					             but it was not
+					             """);
+			}
 
-		[Fact]
-		public async Task WhenSubjectIsNull_ShouldFail()
-		{
-			Stream? subject = null;
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Stream? subject = null;
 
-			async Task Act()
-				=> await That(subject).Should().BeReadable();
+				async Task Act()
+					=> await That(subject).Should().BeReadable();
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             be readable,
-				             but it was <null>
-				             """);
-		}
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be readable,
+					             but it was <null>
+					             """);
+			}
 
-		[Fact]
-		public async Task WhenSubjectIsReadable_ShouldSucceed()
-		{
-			Stream subject = new MyStream(canRead: true);
+			[Fact]
+			public async Task WhenSubjectIsReadable_ShouldSucceed()
+			{
+				Stream subject = new MyStream(canRead: true);
 
-			async Task Act()
-				=> await That(subject).Should().BeReadable();
+				async Task Act()
+					=> await That(subject).Should().BeReadable();
 
-			await That(Act).Should().NotThrow();
-		}
-	}
-
-	public sealed class NotBeReadableTests
-	{
-		[Fact]
-		public async Task WhenSubjectIsNotReadable_ShouldSucceed()
-		{
-			Stream subject = new MyStream(canRead: false);
-
-			async Task Act()
-				=> await That(subject).Should().NotBeReadable();
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task WhenSubjectIsNull_ShouldFail()
-		{
-			Stream? subject = null;
-
-			async Task Act()
-				=> await That(subject).Should().NotBeReadable();
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             not be readable,
-				             but it was <null>
-				             """);
-		}
-
-		[Fact]
-		public async Task WhenSubjectIsReadable_ShouldFail()
-		{
-			Stream subject = new MyStream(canRead: true);
-
-			async Task Act()
-				=> await That(subject).Should().NotBeReadable();
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             not be readable,
-				             but it was
-				             """);
+				await That(Act).Should().NotThrow();
+			}
 		}
 	}
 }

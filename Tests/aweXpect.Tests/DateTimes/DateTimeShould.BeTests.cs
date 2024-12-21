@@ -2,280 +2,156 @@
 
 public sealed partial class DateTimeShould
 {
-	public sealed class BeTests
+	public sealed class Be
 	{
-		[Theory]
-		[InlineData(DateTimeKind.Local)]
-		[InlineData(DateTimeKind.Utc)]
-		[InlineData(DateTimeKind.Unspecified)]
-		public async Task WhenExpectedKindIsUnspecified_ShouldSucceed(DateTimeKind subjectKind)
+		public sealed class Tests
 		{
-			DateTime subject = new(2024, 11, 1, 14, 15, 0, subjectKind);
-			DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
+			[Theory]
+			[InlineData(DateTimeKind.Local)]
+			[InlineData(DateTimeKind.Utc)]
+			[InlineData(DateTimeKind.Unspecified)]
+			public async Task WhenExpectedKindIsUnspecified_ShouldSucceed(DateTimeKind subjectKind)
+			{
+				DateTime subject = new(2024, 11, 1, 14, 15, 0, subjectKind);
+				DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected)
-					.Because("the subject has Unspecified kind");
+				async Task Act()
+					=> await That(subject).Should().Be(expected)
+						.Because("the subject has Unspecified kind");
 
-			await That(Act).Should().NotThrow();
-		}
+				await That(Act).Should().NotThrow();
+			}
 
-		[Fact]
-		public async Task WhenSubjectAndExpectedAreMaxValue_ShouldSucceed()
-		{
-			DateTime subject = DateTime.MaxValue;
-			DateTime expected = DateTime.MaxValue;
+			[Fact]
+			public async Task WhenSubjectAndExpectedAreMaxValue_ShouldSucceed()
+			{
+				DateTime subject = DateTime.MaxValue;
+				DateTime expected = DateTime.MaxValue;
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected);
+				async Task Act()
+					=> await That(subject).Should().Be(expected);
 
-			await That(Act).Should().NotThrow();
-		}
+				await That(Act).Should().NotThrow();
+			}
 
-		[Fact]
-		public async Task WhenSubjectAndExpectedAreMinValue_ShouldSucceed()
-		{
-			DateTime subject = DateTime.MinValue;
-			DateTime expected = DateTime.MinValue;
+			[Fact]
+			public async Task WhenSubjectAndExpectedAreMinValue_ShouldSucceed()
+			{
+				DateTime subject = DateTime.MinValue;
+				DateTime expected = DateTime.MinValue;
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected);
+				async Task Act()
+					=> await That(subject).Should().Be(expected);
 
-			await That(Act).Should().NotThrow();
-		}
+				await That(Act).Should().NotThrow();
+			}
 
-		[Fact]
-		public async Task WhenSubjectIsDifferent_ShouldFail()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? expected = LaterTime();
+			[Fact]
+			public async Task WhenSubjectIsDifferent_ShouldFail()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? expected = LaterTime();
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected).Because("we want to test the failure");
+				async Task Act()
+					=> await That(subject).Should().Be(expected).Because("we want to test the failure");
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage($"""
-				              Expected subject to
-				              be {Formatter.Format(expected)}, because we want to test the failure,
-				              but it was {Formatter.Format(subject)}
-				              """);
-		}
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              be {Formatter.Format(expected)}, because we want to test the failure,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
 
-		[Fact]
-		public async Task WhenSubjectIsTheExpectedValue_ShouldSucceed()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? expected = CurrentTime();
+			[Fact]
+			public async Task WhenSubjectIsTheExpectedValue_ShouldSucceed()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? expected = CurrentTime();
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected);
+				async Task Act()
+					=> await That(subject).Should().Be(expected);
 
-			await That(Act).Should().NotThrow();
-		}
+				await That(Act).Should().NotThrow();
+			}
 
-		[Theory]
-		[InlineData(DateTimeKind.Local)]
-		[InlineData(DateTimeKind.Utc)]
-		[InlineData(DateTimeKind.Unspecified)]
-		public async Task WhenSubjectKindIsUnspecified_ShouldSucceed(DateTimeKind expectedKind)
-		{
-			DateTime subject = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
-			DateTime? expected = new(2024, 11, 1, 14, 15, 0, expectedKind);
+			[Theory]
+			[InlineData(DateTimeKind.Local)]
+			[InlineData(DateTimeKind.Utc)]
+			[InlineData(DateTimeKind.Unspecified)]
+			public async Task WhenSubjectKindIsUnspecified_ShouldSucceed(DateTimeKind expectedKind)
+			{
+				DateTime subject = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
+				DateTime? expected = new(2024, 11, 1, 14, 15, 0, expectedKind);
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected)
-					.Because("the subject has Unspecified kind");
+				async Task Act()
+					=> await That(subject).Should().Be(expected)
+						.Because("the subject has Unspecified kind");
 
-			await That(Act).Should().NotThrow();
-		}
+				await That(Act).Should().NotThrow();
+			}
 
-		[Fact]
-		public async Task WhenSubjectOnlyDiffersInKind_ShouldFail()
-		{
-			DateTime subject = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Utc);
-			DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Local);
+			[Fact]
+			public async Task WhenSubjectOnlyDiffersInKind_ShouldFail()
+			{
+				DateTime subject = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Utc);
+				DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Local);
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected)
-					.Because("we also test the kind property");
+				async Task Act()
+					=> await That(subject).Should().Be(expected)
+						.Because("we also test the kind property");
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage($"""
-				              Expected subject to
-				              be {Formatter.Format(expected)}, because we also test the kind property,
-				              but it differed in the Kind property
-				              """);
-		}
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              be {Formatter.Format(expected)}, because we also test the kind property,
+					              but it differed in the Kind property
+					              """);
+			}
 
-		[Fact]
-		public async Task Within_NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? expected = LaterTime(4);
+			[Fact]
+			public async Task Within_NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? expected = LaterTime(4);
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected).Within(TimeSpan.FromSeconds(-1));
+				async Task Act()
+					=> await That(subject).Should().Be(expected).Within(TimeSpan.FromSeconds(-1));
 
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
-				.WithParamName("tolerance").And
-				.WithMessage("*Tolerance must be non-negative*").AsWildcard();
-		}
+				await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+					.WithParamName("tolerance").And
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+			}
 
-		[Fact]
-		public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldFail()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? expected = LaterTime(4);
+			[Fact]
+			public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldFail()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? expected = LaterTime(4);
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected).Within(TimeSpan.FromSeconds(3))
-					.Because("we want to test the failure");
+				async Task Act()
+					=> await That(subject).Should().Be(expected).Within(TimeSpan.FromSeconds(3))
+						.Because("we want to test the failure");
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage($"""
-				              Expected subject to
-				              be {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
-				              but it was {Formatter.Format(subject)}
-				              """);
-		}
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              be {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
 
-		[Fact]
-		public async Task Within_WhenValuesAreWithinTheTolerance_ShouldSucceed()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? expected = LaterTime(3);
+			[Fact]
+			public async Task Within_WhenValuesAreWithinTheTolerance_ShouldSucceed()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? expected = LaterTime(3);
 
-			async Task Act()
-				=> await That(subject).Should().Be(expected).Within(TimeSpan.FromSeconds(3));
+				async Task Act()
+					=> await That(subject).Should().Be(expected).Within(TimeSpan.FromSeconds(3));
 
-			await That(Act).Should().NotThrow();
-		}
-	}
-
-	public sealed class NotBeTests
-	{
-		[Fact]
-		public async Task WhenSubjectAndExpectedAreMaxValue_ShouldFail()
-		{
-			DateTime subject = DateTime.MaxValue;
-			DateTime unexpected = DateTime.MaxValue;
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected)
-					.Because("we want to test the failure");
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             not be 9999-12-31T23:59:59.9999999, because we want to test the failure,
-				             but it was 9999-12-31T23:59:59.9999999
-				             """);
-		}
-
-		[Fact]
-		public async Task WhenSubjectAndExpectedAreMinValue_ShouldFail()
-		{
-			DateTime subject = DateTime.MinValue;
-			DateTime unexpected = DateTime.MinValue;
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected)
-					.Because("we want to test the failure");
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             not be 0001-01-01T00:00:00.0000000, because we want to test the failure,
-				             but it was 0001-01-01T00:00:00.0000000
-				             """);
-		}
-
-		[Fact]
-		public async Task WhenSubjectIsDifferent_ShouldSucceed()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? unexpected = LaterTime();
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected);
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task WhenSubjectIsTheSame_ShouldFail()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? unexpected = subject;
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected)
-					.Because("we want to test the failure");
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage($"""
-				              Expected subject to
-				              not be {Formatter.Format(unexpected)}, because we want to test the failure,
-				              but it was {Formatter.Format(subject)}
-				              """);
-		}
-
-		[Fact]
-		public async Task WhenSubjectOnlyDiffersInKind_ShouldSucceed()
-		{
-			DateTime subject = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Utc);
-			DateTime? unexpected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Local);
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected)
-					.Because("we also test the kind property");
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task Within_NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? unexpected = LaterTime(4);
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected).Within(TimeSpan.FromSeconds(-1));
-
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
-				.WithParamName("tolerance").And
-				.WithMessage("*Tolerance must be non-negative*").AsWildcard();
-		}
-
-		[Fact]
-		public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldSucceed()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? unexpected = LaterTime(4);
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected)
-					.Within(TimeSpan.FromSeconds(3));
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task Within_WhenValuesAreWithinTheTolerance_ShouldFail()
-		{
-			DateTime subject = CurrentTime();
-			DateTime? unexpected = LaterTime(3);
-
-			async Task Act()
-				=> await That(subject).Should().NotBe(unexpected).Within(TimeSpan.FromSeconds(3))
-					.Because("we want to test the failure");
-
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage($"""
-				              Expected subject to
-				              not be {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
-				              but it was {Formatter.Format(subject)}
-				              """);
+				await That(Act).Should().NotThrow();
+			}
 		}
 	}
 }
