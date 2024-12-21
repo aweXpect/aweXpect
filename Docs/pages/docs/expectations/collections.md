@@ -212,6 +212,35 @@ await Expect.That(["FOO", "BAR"]).Should().StartWith(["foo"]).IgnoringCase();
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
+## End with
+
+You can verify, if a collection ends with another collection or not:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 5);
+
+await Expect.That(values).Should().EndWith(4, 5);
+await Expect.That(values).Should().NotEndWith(3, 5);
+```
+
+You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
+```csharp
+IEnumerable<MyClass> values = //...
+MyClass expected = //...
+
+await Expect.That(values).Should().EndWith(expected).Equivalent();
+await Expect.That(values).Should().EndWith(expected).Using(new MyClassComparer());
+```
+
+For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
+```csharp
+await Expect.That(["FOO", "BAR"]).Should().EndWith(["bar"]).IgnoringCase();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+*Caution: this method will always have to completely materialize the enumerable!*
+
+
 ## Have
 Specifications that count the elements in a collection.
 
