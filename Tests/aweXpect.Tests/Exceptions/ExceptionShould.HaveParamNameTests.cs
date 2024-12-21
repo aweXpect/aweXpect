@@ -2,35 +2,38 @@
 
 public sealed partial class ExceptionShould
 {
-	public class HaveParamNameTests
+	public class HaveParamName
 	{
-		[Theory]
-		[AutoData]
-		public async Task WhenParamNameMatchesExpected_ShouldSucceed(string message)
+		public sealed class Tests
 		{
-			ArgumentException subject = new(message, nameof(message));
+			[Theory]
+			[AutoData]
+			public async Task WhenParamNameMatchesExpected_ShouldSucceed(string message)
+			{
+				ArgumentException subject = new(message, nameof(message));
 
-			async Task Act()
-				=> await That(subject).Should().HaveParamName("message");
+				async Task Act()
+					=> await That(subject).Should().HaveParamName("message");
 
-			await That(Act).Should().NotThrow();
-		}
+				await That(Act).Should().NotThrow();
+			}
 
-		[Theory]
-		[AutoData]
-		public async Task WhenParamNameIsDifferent_ShouldFail(string message)
-		{
-			ArgumentException subject = new(message, nameof(message));
+			[Theory]
+			[AutoData]
+			public async Task WhenParamNameIsDifferent_ShouldFail(string message)
+			{
+				ArgumentException subject = new(message, nameof(message));
 
-			async Task Act()
-				=> await That(subject).Should().HaveParamName("somethingElse");
+				async Task Act()
+					=> await That(subject).Should().HaveParamName("somethingElse");
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected subject to
-				             have ParamName "somethingElse",
-				             but it had ParamName "message"
-				             """);
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have ParamName "somethingElse",
+					             but it had ParamName "message"
+					             """);
+			}
 		}
 	}
 }
