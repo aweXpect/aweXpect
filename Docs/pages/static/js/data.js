@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734734911083,
+  "lastUpdate": 1734770979318,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -8852,6 +8852,138 @@ window.BENCHMARK_DATA = {
             "value": 1827.7737219492594,
             "unit": "ns",
             "range": "± 8.559922720649732"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cf427ff26a7d5d270ebb0ce1c5ab3856f9f536df",
+          "message": "refactor: Extract \"Not\" tests to separate files (#151)\n\nConsolidate test file structure by separating the \"NOT\" tests to separate files and moving all test within a \"Tests\" class to allow grouping within a specific expectation:\n- Booleans\n- DateOnlys\n- DateTimeOffsets\n- DateTimes\n- Delegates\n- Enums\n- Exceptions\n- Guids\n- Http\n- Numbers\n- Objects\n- Streams\n- Strings\n- TimeOnlys\n- TimeSpans",
+          "timestamp": "2024-12-21T08:42:21Z",
+          "tree_id": "97cefcedd2f298669d27e1059a912b82679e98c7",
+          "url": "https://github.com/aweXpect/aweXpect/commit/cf427ff26a7d5d270ebb0ce1c5ab3856f9f536df"
+        },
+        "date": 1734770978942,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 172.54482677777608,
+            "unit": "ns",
+            "range": "± 1.7071282197684645"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 223.1733937104543,
+            "unit": "ns",
+            "range": "± 1.8104600553387498"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 599.3475549404437,
+            "unit": "ns",
+            "range": "± 6.211817891012324"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 334.82908732096354,
+            "unit": "ns",
+            "range": "± 1.9475324813045"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 445.12087331499373,
+            "unit": "ns",
+            "range": "± 2.6597167607921923"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13750.914468892415,
+            "unit": "ns",
+            "range": "± 86.76506945721691"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 218.64602756500244,
+            "unit": "ns",
+            "range": "± 2.08694814136658"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 264.26269480387367,
+            "unit": "ns",
+            "range": "± 3.785210103781426"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 756.02090212015,
+            "unit": "ns",
+            "range": "± 2.375330710537037"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 319.9295426050822,
+            "unit": "ns",
+            "range": "± 2.039169443285899"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 387.0120702156654,
+            "unit": "ns",
+            "range": "± 0.953980568669417"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 797.722381251199,
+            "unit": "ns",
+            "range": "± 6.457827707476416"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 995.011136118571,
+            "unit": "ns",
+            "range": "± 7.971316244052613"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1184.4918941497804,
+            "unit": "ns",
+            "range": "± 12.45819804468149"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1155.4935544331868,
+            "unit": "ns",
+            "range": "± 7.95605068099277"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 979.7332771007831,
+            "unit": "ns",
+            "range": "± 2.2833591215925555"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 280679.2196219308,
+            "unit": "ns",
+            "range": "± 1929.4976113920725"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1802.666026188777,
+            "unit": "ns",
+            "range": "± 3.159200831090256"
           }
         ]
       }
