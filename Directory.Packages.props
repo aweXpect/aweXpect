@@ -32,7 +32,7 @@
 		<PackageVersion Include="FluentAssertions" Version="7.0.0"/>
 		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.4.3"/>
 		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.13.1"/>
-		<PackageVersion Include="PublicApiGenerator" Version="11.2.0"/>
+		<PackageVersion Include="PublicApiGenerator" Version="11.3.0"/>
 		<PackageVersion Include="MSTest.TestAdapter" Version="3.6.4"/>
 		<PackageVersion Include="MSTest.TestFramework" Version="3.6.4"/>
 	</ItemGroup>
