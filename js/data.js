@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734968190741,
+  "lastUpdate": 1734968242504,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -9380,6 +9380,138 @@ window.BENCHMARK_DATA = {
             "value": 1859.258168029785,
             "unit": "ns",
             "range": "± 8.953535512553817"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "414f84b474b29dd66a50db0f9953aea52a5a8385",
+          "message": "build(deps): bump the xunit group with 3 updates (#156)\n\nBumps the xunit group with 3 updates: [xunit.runner.visualstudio](https://github.com/xunit/visualstudio.xunit), [xunit.v3.core](https://github.com/xunit/xunit) and [xunit.v3](https://github.com/xunit/xunit).\n\n\nUpdates `xunit.runner.visualstudio` from 2.8.2 to 3.0.0\n- [Release notes](https://github.com/xunit/visualstudio.xunit/releases)\n- [Commits](https://github.com/xunit/visualstudio.xunit/compare/2.8.2...3.0.0)\n\nUpdates `xunit.v3.core` from 0.6.0-pre.7 to 1.0.0\n- [Commits](https://github.com/xunit/xunit/compare/v3-0.6.0-pre.7...v3-1.0.0)\n\nUpdates `xunit.v3` from 0.6.0-pre.7 to 1.0.0\n- [Commits](https://github.com/xunit/xunit/compare/v3-0.6.0-pre.7...v3-1.0.0)\n\n---\nupdated-dependencies:\n- dependency-name: xunit.runner.visualstudio\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n  dependency-group: xunit\n- dependency-name: xunit.v3.core\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n  dependency-group: xunit\n- dependency-name: xunit.v3\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n  dependency-group: xunit\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-23T16:29:56+01:00",
+          "tree_id": "796787d6dde5b1b66c1102f052e6887dd803de3a",
+          "url": "https://github.com/aweXpect/aweXpect/commit/414f84b474b29dd66a50db0f9953aea52a5a8385"
+        },
+        "date": 1734968242214,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.43743067128318,
+            "unit": "ns",
+            "range": "± 0.8404803985027269"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 223.74069472153982,
+            "unit": "ns",
+            "range": "± 0.9343697582092386"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 581.3545158249991,
+            "unit": "ns",
+            "range": "± 2.841055096203165"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 331.8069245631878,
+            "unit": "ns",
+            "range": "± 0.9123062009876772"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 441.2204174261827,
+            "unit": "ns",
+            "range": "± 1.8373832295668062"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13793.997574869793,
+            "unit": "ns",
+            "range": "± 58.71690611604347"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 223.27930921316147,
+            "unit": "ns",
+            "range": "± 0.8109969915630193"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 258.9425655092512,
+            "unit": "ns",
+            "range": "± 1.2939107980208129"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 754.9697074254353,
+            "unit": "ns",
+            "range": "± 4.140908898963653"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 318.57915932791576,
+            "unit": "ns",
+            "range": "± 1.867130899721469"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 393.88781730945294,
+            "unit": "ns",
+            "range": "± 1.4587372359708604"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 788.5655397415161,
+            "unit": "ns",
+            "range": "± 4.200851351440055"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 954.2040462493896,
+            "unit": "ns",
+            "range": "± 5.60221246575764"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1151.9946201031025,
+            "unit": "ns",
+            "range": "± 4.235691900624375"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1107.4140099116735,
+            "unit": "ns",
+            "range": "± 6.371214371438206"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 994.3313457489014,
+            "unit": "ns",
+            "range": "± 6.209255621529788"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 281164.3355794271,
+            "unit": "ns",
+            "range": "± 1171.1403860412925"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1833.959310238178,
+            "unit": "ns",
+            "range": "± 4.860126984945955"
           }
         ]
       }
