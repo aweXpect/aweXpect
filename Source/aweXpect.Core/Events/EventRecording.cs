@@ -18,7 +18,7 @@ internal sealed class EventRecording<TSubject> : IRecording<TSubject>
 	public EventRecording(TSubject subject, string subjectExpression, params string[] eventNames)
 	{
 		_subjectExpression = subjectExpression;
-		EventInfo[] events = GetPublicEvents(subject.GetType());
+		EventInfo[] events = subject.GetType().GetEvents();
 		if (eventNames.Length == 0)
 		{
 			eventNames = events.Select(x => x.Name).ToArray();
@@ -56,26 +56,10 @@ internal sealed class EventRecording<TSubject> : IRecording<TSubject>
 	/// <summary>
 	///     Returns a formatted string for the recorded events for <paramref name="eventName" />.
 	/// </summary>
-	public string ToString(string eventName, string indent)
-		=> _recorders[eventName].ToString(indent);
+	public string ToString(string eventName)
+		=> _recorders[eventName].ToString();
 
 	/// <inheritdoc />
 	public override string ToString()
 		=> _subjectExpression;
-
-	private static EventInfo[] GetPublicEvents(Type type)
-	{
-		if (!type.IsInterface)
-		{
-			return type.GetEvents();
-		}
-
-		return new[]
-			{
-				type
-			}
-			.Concat(type.GetInterfaces())
-			.SelectMany(i => i.GetEvents())
-			.ToArray();
-	}
 }

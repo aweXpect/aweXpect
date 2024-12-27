@@ -61,7 +61,7 @@ public static partial class ThatRecordingShould
 				}
 
 				sb.Append("in ");
-				sb.Append(actual.ToString(eventName, ""));
+				sb.Append(actual.ToString(eventName));
 				return new ConstraintResult.Failure<IRecording<TSubject>>(actual, expectation, sb.ToString());
 			}
 

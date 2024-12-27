@@ -18,5 +18,5 @@ public interface IRecording<TSubject> : IDisposable
 	/// <summary>
 	///     Returns a formatted string for the recorded events for <paramref name="eventName" />.
 	/// </summary>
-	string ToString(string eventName, string indent);
+	string ToString(string eventName);
 }

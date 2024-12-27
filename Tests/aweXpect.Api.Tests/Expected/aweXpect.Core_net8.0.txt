@@ -217,7 +217,7 @@ namespace aweXpect.Events
     public interface IRecording<TSubject> : System.IDisposable
     {
         int GetEventCount(string eventName, System.Func<object?[], bool>? filter = null);
-        string ToString(string eventName, string indent);
+        string ToString(string eventName);
     }
     public static class RecordExtensions
     {

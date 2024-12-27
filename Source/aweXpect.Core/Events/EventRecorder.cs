@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using aweXpect.Core.Helpers;
 
 namespace aweXpect.Events;
 
@@ -67,8 +66,8 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 	/// <summary>
 	///     Returns a formatted string for all recorded events.
 	/// </summary>
-	public string ToString(string indent)
-		=> Formatter.Format(_eventQueue, FormattingOptions.MultipleLines).Indent(indent, false);
+	public override string ToString()
+		=> Formatter.Format(_eventQueue, FormattingOptions.MultipleLines);
 
 	/// <summary>
 	///     Gets the number of recorded events that match the <paramref name="filter" />.
