@@ -8,8 +8,8 @@ namespace aweXpect.Events;
 internal sealed class EventRecording<TSubject> : IRecording<TSubject>
 	where TSubject : notnull
 {
-	private readonly string _subjectExpression;
 	private readonly Dictionary<string, EventRecorder> _recorders = new();
+	private readonly string _subjectExpression;
 
 	/// <summary>
 	///     Creates a new recording the given <paramref name="eventNames" /> that are triggered on the
@@ -59,6 +59,10 @@ internal sealed class EventRecording<TSubject> : IRecording<TSubject>
 	public string ToString(string eventName, string indent)
 		=> _recorders[eventName].ToString(indent);
 
+	/// <inheritdoc />
+	public override string ToString()
+		=> _subjectExpression;
+
 	private static EventInfo[] GetPublicEvents(Type type)
 	{
 		if (!type.IsInterface)
@@ -74,6 +78,4 @@ internal sealed class EventRecording<TSubject> : IRecording<TSubject>
 			.SelectMany(i => i.GetEvents())
 			.ToArray();
 	}
-
-	public override string ToString() => _subjectExpression;
 }
