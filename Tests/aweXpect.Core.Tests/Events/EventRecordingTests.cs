@@ -1,6 +1,6 @@
 ﻿using aweXpect.Events;
 
-namespace aweXpect.Core.Tests.Core.Events;
+namespace aweXpect.Core.Tests.Events;
 
 public sealed class EventRecordingTests
 {
