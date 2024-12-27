@@ -7,9 +7,9 @@ sidebar_position: 15
 Describes the possible expectations for verifying events.
 
 
-## Triggering
+## Recording
 
-You can verify, that an object triggers an event:
+First, you have to start a recording of events. This can be done with the `.Record().Events()` extension method in the "aweXpect.Events" namespace.
 ```csharp
 class ThresholdReachedEventArgs(int threshold = 0) : EventArgs
 {
@@ -23,79 +23,80 @@ class MyClass
 }
 MyClass sut = new MyClass();
 
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .While(subject => subject.OnThresholdReached(new ThresholdReachedEventArgs()));
+// ↓ Records all events
+IRecording recording = sut.Record().Events();
+IRecording recording = sut.Record().Events(nameof(MyClass.ThresholdReached));
+// ↑ Records only the ThresholdReached event
 ```
 
-This will register a recording of all events named "ThresholdReached" that are triggered during the execution of the callback.
+## Triggering
 
-The callback in `While()` can also be asynchronous. In this case, you can also get the cancellation token as second parameter:
+You can verify, that a recording recorded an event:
 ```csharp
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .While(subject => subject.OnThresholdReachedAsync(new ThresholdReachedEventArgs()))
-  .Because("we support asynchronous callbacks");
+// Start the recording
+IRecording recording = sut.Record().Events();
 
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .While((subject, token) => subject.OnThresholdReachedAsync(new ThresholdReachedEventArgs(), token))
-  .Because("we also support cancellation");
+// Perform some action on the subject under test
+sut.OnThresholdReached(new ThresholdReachedEventArgs());
+
+// Expect that the ThresholdReached event was triggered at least once
+await Expect.That(recording).Should()
+  .HaveTriggered(nameof(MyClass.ThresholdReached));
 ```
 
 
 ## Filtering
 
-You can filter triggered events based on their parameters.
+You can filter the recorded events based on their parameters.
 ```csharp
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10)
-  .While(subject =>
-  {
-    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
-    subject.OnThresholdReached(new ThresholdReachedEventArgs(15));
-  });
+IRecording recording = sut.Record().Events();
+
+sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
+
+await Expect.That(recording).Should()
+  .HaveTriggered(nameof(MyClass.ThresholdReached))
+  .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10);
 ```
 
 ### Sender
 
-When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the triggered events based on the sender (the first parameter):
+When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the recorded events based on the sender (the first parameter):
 ```csharp
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .WithSender(s => s == sut)
-  .While(subject =>
-  {
-    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
-  });
+IRecording recording = sut.Record().Events();
+
+sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+
+await Expect.That(recording).Should()
+  .HaveTriggered(nameof(MyClass.ThresholdReached))
+  .WithSender(s => s == sut);
 ```
 
 ### EventArgs
 
-When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the triggered events based on their `EventArgs` (the second parameter):
+When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the recorded events based on their `EventArgs` (the second parameter):
 ```csharp
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .With<ThresholdReachedEventArgs>(e => e < 10)
-  .While(subject =>
-  {
-    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
-  });
+IRecording recording = sut.Record().Events();
+
+sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+
+await Expect.That(recording).Should()
+  .HaveTriggered(nameof(MyClass.ThresholdReached))
+  .With<ThresholdReachedEventArgs>(e => e < 10);
 ```
 
 ## Counting
 
-You can verify, that an event was triggered a specific number of times
+You can verify, that an event was recorded a specific number of times
 ```csharp
-await Expect.That(sut)
-  .Triggers(nameof(MyClass.ThresholdReached))
-  .Between(1).And(2.Times()
-  .While(subject =>
-  {
-    subject.OnThresholdReached(new ThresholdReachedEventArgs(5));
-    subject.OnThresholdReached(new ThresholdReachedEventArgs(15));
-  }));
+IRecording recording = sut.Record().Events();
+
+sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
+
+await Expect.That(recording).Should()
+  .HaveTriggered(nameof(MyClass.ThresholdReached))
+  .Between(1).And(2.Times();
 ```
 You can use the same occurrence constraints as in the [contain](/docs/expectations/collections#contain) method:
 - `AtLeast(2.Times())`
@@ -110,24 +111,24 @@ For common events, you can create specific overloads.
 Included are some overloads for the [`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged) event:
 ```csharp
 MyClass sut = // ...implements INotifyPropertyChanged
+IRecording recording = sut.Record().Events();
 
-await Expect.That(sut)
-  .TriggersPropertyChanged()
-  .While(subject => subject.Execute())
+// do something that triggers the PropertyChanged event
+sut.Execute();
+
+await Expect.That(recording).Should()
+  .HaveTriggeredPropertyChanged()
   .Because("it should trigger the PropertyChanged event for any property name");
 
-await Expect.That(sut)
-  .TriggersPropertyChangedFor(x => x.MyProperty)
-  .While(subject => subject.Execute())
+await Expect.That(recording).Should()
+  .HaveTriggeredPropertyChangedFor(x => x.MyProperty)
   .Because("it should trigger the PropertyChanged event for the 'MyProperty' property name");
 
-await Expect.That(sut)
-  .DoesNotTriggerPropertyChanged()
-  .While(subject => subject.ExecuteWithoutNotification())
+await Expect.That(recording).Should()
+  .NotHaveTriggeredPropertyChanged()
   .Because("it should not trigger for any property name");
 
-await Expect.That(sut)
-  .DoesNotTriggerPropertyChangedFor(x => x.MyProperty)
-  .While(subject => subject.ExecuteWithoutNotification())
+await Expect.That(recording).Should()
+  .NotHaveTriggeredPropertyChangedFor(x => x.MyProperty)
   .Because("it should not trigger for the 'MyProperty' property name");
 ```

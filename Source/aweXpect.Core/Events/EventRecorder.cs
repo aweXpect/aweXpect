@@ -4,9 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using aweXpect.Core.Helpers;
-using aweXpect.Options;
 
-namespace aweXpect.Core.Events;
+namespace aweXpect.Events;
 
 internal sealed class EventRecorder(string eventName) : IDisposable
 {
@@ -74,11 +73,11 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 	/// <summary>
 	///     Gets the number of recorded events that match the <paramref name="filter" />.
 	/// </summary>
-	public int GetEventCount(TriggerEventFilter? filter)
+	public int GetEventCount(Func<object?[], bool>? filter)
 	{
 		if (filter != null)
 		{
-			return _eventQueue.Count(x => filter.IsMatch(eventName, x.Parameters));
+			return _eventQueue.Count(x => filter(x.Parameters));
 		}
 
 		return _eventQueue.Count;

@@ -2,21 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using aweXpect.Options;
 
-namespace aweXpect.Core.Events;
+namespace aweXpect.Events;
 
-internal sealed class EventRecording<T> : IDisposable
+internal sealed class EventRecording<TSubject> : IRecording<TSubject>
+	where TSubject : notnull
 {
+	private readonly string _subjectExpression;
 	private readonly Dictionary<string, EventRecorder> _recorders = new();
 
 	/// <summary>
 	///     Creates a new recording the given <paramref name="eventNames" /> that are triggered on the
 	///     <paramref name="subject" />.
 	/// </summary>
-	public EventRecording(T subject, IEnumerable<string> eventNames)
+	public EventRecording(TSubject subject, string subjectExpression, params string[] eventNames)
 	{
-		EventInfo[] events = typeof(T).GetEvents();
+		_subjectExpression = subjectExpression;
+		EventInfo[] events = GetPublicEvents(subject.GetType());
+		if (eventNames.Length == 0)
+		{
+			eventNames = events.Select(x => x.Name).ToArray();
+		}
+
 		foreach (string? eventName in eventNames)
 		{
 			EventRecorder recorder = new(eventName);
@@ -43,7 +50,7 @@ internal sealed class EventRecording<T> : IDisposable
 	/// <summary>
 	///     Gets the number of recorded events for <paramref name="eventName" /> that match the <paramref name="filter" />.
 	/// </summary>
-	public int GetEventCount(string eventName, TriggerEventFilter? filter)
+	public int GetEventCount(string eventName, Func<object?[], bool>? filter = null)
 		=> _recorders[eventName].GetEventCount(filter);
 
 	/// <summary>
@@ -51,4 +58,22 @@ internal sealed class EventRecording<T> : IDisposable
 	/// </summary>
 	public string ToString(string eventName, string indent)
 		=> _recorders[eventName].ToString(indent);
+
+	private static EventInfo[] GetPublicEvents(Type type)
+	{
+		if (!type.IsInterface)
+		{
+			return type.GetEvents();
+		}
+
+		return new[]
+			{
+				type
+			}
+			.Concat(type.GetInterfaces())
+			.SelectMany(i => i.GetEvents())
+			.ToArray();
+	}
+
+	public override string ToString() => _subjectExpression;
 }
