@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpages=self.webpackChunkpages||[]).push([[903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/aweXpect/blog","blogTitle":"Blog","authorsListPath":"/aweXpect/blog/authors"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpages=self.webpackChunkpages||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Why another assertion library","permalink":"/aweXpect/blog/why-another-assertion-library","unlisted":false,"date":"2024-11-29T00:00:00.000Z"}]}')}}]);

@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1735377365056,
+  "lastUpdate": 1735388943799,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -10040,6 +10040,138 @@ window.BENCHMARK_DATA = {
             "value": 1894.7963483174642,
             "unit": "ns",
             "range": "± 13.38648891421977"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6051de941e8b4613d481e2b15ee1c3d3a50a8abf",
+          "message": "feat: add callback triggers (#160)\n\n## Recording\n\nFirst, you have to start a recording of callbacks. This method is available in the \"aweXpect.Recording\" namespace.\n\n```csharp\n// ↓ Record callbacks without parameters\nICallbackRecording recording = Record.Callback();\nICallbackRecording<string> recording = Record.Callback<string>();\n// ↑ Records callbacks with a string parameter\n```\n\nThen you can trigger the callback on the recording.\n\n```csharp\nclass MyClass\n{\n  public void Execute(Action<string> onCompleted)\n  {\n    // do something in a background thread and then call the onCompleted callback\n  }\n}\n\nsut.Execute(v => recording.Trigger(v));\n```\n\nAt last you can wait for the callback to be triggered:\n\n```csharp\nawait Expect.That(recording).Should().Trigger();\n```\n\nYou can also verify that the callback will not be triggered:\n\n```csharp\nawait Expect.That(recording).Should().NotTrigger();\n```\n\n*NOTE: The last statement will result never return, unless a timeout or cancellation is specified. Therefore, when\nnothing is specified, a default timeout of 30 seconds is applied!*\n\n### Timeout\n\nYou can specify a timeout, how long you want to wait for the callback to be triggered:\n\n```csharp\nawait Expect.That(recording).Should().Trigger().Within(TimeSpan.FromSeconds(5))\n  .Because(\"it should take at most 5 seconds to complete\");\n```\n\nAlternatively you can also use a `CancellationToken` for a timeout:\n\n```csharp\nCancellationToken cancellationToken = new CancellationTokenSource(5000).Token;\nawait Expect.That(recording).Should().Trigger().WithCancellation(cancellationToken)\n  .Because(\"it should be completed, before the cancellationToken is cancelled\");\n```\n\n### Amount\n\nYou can specify a number of times, that a callback must at least be executed:\n\n```csharp\nawait Expect.That(recording).Should().Trigger(3.Times());\n```\n\nYou can also verify, that the callback was not executed at least the given number of times:\n\n```csharp\nawait Expect.That(recording).Should().NotTrigger(3.Times());\n```\n\n### Parameters\n\nYou can also use callbacks with a single parameter:\n\n```csharp\nICallbackRecording<string> recording = Record.Callback<string>();\n\nrecording.Trigger(\"foo\");\nrecording.Trigger(\"bar\");\n\nawait That(recording).Should().Trigger(2.Times());\n```\n\n*In case of a failed expectation, the recorded parameters will be displayed in the error message.*",
+          "timestamp": "2024-12-28T12:22:13Z",
+          "tree_id": "73eccf8387ea6ede33f0047c16ff21b162848127",
+          "url": "https://github.com/aweXpect/aweXpect/commit/6051de941e8b4613d481e2b15ee1c3d3a50a8abf"
+        },
+        "date": 1735388943400,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.7423911828261,
+            "unit": "ns",
+            "range": "± 1.4513752929915014"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 212.33957976561325,
+            "unit": "ns",
+            "range": "± 0.5914925811126039"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 614.1540880884443,
+            "unit": "ns",
+            "range": "± 3.2515554351253737"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 326.82829949061073,
+            "unit": "ns",
+            "range": "± 1.3403919211084996"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 453.9798308690389,
+            "unit": "ns",
+            "range": "± 2.516557802090445"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 15346.121452840169,
+            "unit": "ns",
+            "range": "± 59.0525029425349"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 220.51387750185452,
+            "unit": "ns",
+            "range": "± 1.1680429115992799"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 255.96924381256105,
+            "unit": "ns",
+            "range": "± 1.4743493802568741"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 739.1425348281861,
+            "unit": "ns",
+            "range": "± 1.9258509454137533"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 313.3025530406407,
+            "unit": "ns",
+            "range": "± 1.1717986228121373"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 386.7433036804199,
+            "unit": "ns",
+            "range": "± 2.419316739392137"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 779.8142292316144,
+            "unit": "ns",
+            "range": "± 1.4392877186373052"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 979.2314559391567,
+            "unit": "ns",
+            "range": "± 7.1846996302463255"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1165.157573563712,
+            "unit": "ns",
+            "range": "± 2.626745075332294"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1091.6700469970704,
+            "unit": "ns",
+            "range": "± 6.625023783613316"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1030.1662673950195,
+            "unit": "ns",
+            "range": "± 2.8966655592176194"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 281554.9690755208,
+            "unit": "ns",
+            "range": "± 1979.1556913316692"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1835.8882656097412,
+            "unit": "ns",
+            "range": "± 3.226719246992098"
           }
         ]
       }
