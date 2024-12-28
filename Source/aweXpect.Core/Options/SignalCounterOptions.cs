@@ -45,7 +45,7 @@ public class SignalCounterOptions<TParameter> : SignalCounterOptions
 		_predicates.Add(predicate);
 		if (_builder is null)
 		{
-			_builder ??= new StringBuilder();
+			_builder = new StringBuilder();
 			_builder.Append(" with ");
 			_builder.Append(predicateExpression);
 		}

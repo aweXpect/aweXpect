@@ -176,18 +176,20 @@ public class SignalCounter<TParameter>
 	}
 
 	/// <summary>
-	///     Blocks the current thread until the callback was executed at least once
-	///     or the <paramref name="timeout" /> expired
-	///     or the <paramref name="cancellationToken" /> was cancelled.
+	///     Blocks the current thread until<br />
+	///     - the callback was executed at least once matching the <paramref name="predicate" /><br />
+	///     - or the <paramref name="timeout" /> expired<br />
+	///     - or the <paramref name="cancellationToken" /> was cancelled.
 	/// </summary>
 	/// <remarks>
+	///     If no <paramref name="predicate" /> is provided, all signals are counted.
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
 	public SignalCounterResult<TParameter> Wait(
+		Func<TParameter, bool>? predicate = null,
 		TimeSpan? timeout = null,
-		CancellationToken cancellationToken = default,
-		Func<TParameter, bool>? predicate = null)
+		CancellationToken cancellationToken = default)
 	{
 		_predicate = predicate;
 		lock (_lock)
@@ -224,19 +226,22 @@ public class SignalCounter<TParameter>
 	}
 
 	/// <summary>
-	///     Blocks the current thread until the callback was executed at least the required <paramref name="amount" /> of times
-	///     or the <paramref name="timeout" /> expired
-	///     or the <paramref name="cancellationToken" /> was cancelled.
+	///     Blocks the current thread until<br />
+	///     - the callback was executed at least the required <paramref name="amount" /> of times
+	///     matching the <paramref name="predicate" /><br />
+	///     - or the <paramref name="timeout" /> expired<br />
+	///     - or the <paramref name="cancellationToken" /> was cancelled.
 	/// </summary>
 	/// <remarks>
+	///     If no <paramref name="predicate" /> is provided, all signals are counted.
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
 	public SignalCounterResult<TParameter> Wait(
 		Times amount,
+		Func<TParameter, bool>? predicate = null,
 		TimeSpan? timeout = null,
-		CancellationToken cancellationToken = default,
-		Func<TParameter, bool>? predicate = null)
+		CancellationToken cancellationToken = default)
 
 	{
 		_predicate = predicate;

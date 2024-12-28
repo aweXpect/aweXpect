@@ -535,8 +535,8 @@ namespace aweXpect.Recording
         public SignalCounter() { }
         public bool IsSignaled(aweXpect.Times? amount = default) { }
         public void Signal(TParameter parameter) { }
-        public aweXpect.Recording.SignalCounterResult<TParameter> Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default, System.Func<TParameter, bool>? predicate = null) { }
-        public aweXpect.Recording.SignalCounterResult<TParameter> Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default, System.Func<TParameter, bool>? predicate = null) { }
+        public aweXpect.Recording.SignalCounterResult<TParameter> Wait(System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Recording.SignalCounterResult<TParameter> Wait(aweXpect.Times amount, System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
 }
 namespace aweXpect.Results

@@ -133,14 +133,14 @@ public static partial class ThatSignalCounterShould
 			if (count == 1)
 			{
 				result = await Task.Run(()
-						=> actual.Wait(timeout, cancellationToken, o.Matches),
+						=> actual.Wait(o.Matches, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
 				result = await Task.Run(()
-						=> actual.Wait(amount, timeout, cancellationToken, o.Matches),
+						=> actual.Wait(amount, o.Matches, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 
