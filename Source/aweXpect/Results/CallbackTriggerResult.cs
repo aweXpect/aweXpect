@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
 
 /// <summary>
-///     A trigger result that also allows specifying parameter filters.
+///     A trigger result that also allows specifying the timeout.
 /// </summary>
 public class CallbackTriggerResult<TCallbackResult>(
 	ExpectationBuilder expectationBuilder,

@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using aweXpect.Recording;
 
 namespace aweXpect.Options;
 
 /// <summary>
-///     Filter for callbacks.
+///     Options for <see cref="ICallbackRecording" />
 /// </summary>
 public class TriggerCallbackOptions
 {
+	/// <summary>
+	///     The timeout to use for the recording.
+	/// </summary>
 	public TimeSpan? Timeout { get; set; }
 }
