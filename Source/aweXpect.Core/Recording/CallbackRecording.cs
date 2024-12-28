@@ -77,28 +77,23 @@ internal class CallbackRecording : ICallbackRecording
 		}
 
 		timeout ??= TimeSpan.FromSeconds(30);
-		if (_countdownEvent != null)
+		try
 		{
-			try
+			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
 			{
-				if (_countdownEvent.Wait(timeout.Value, cancellationToken))
-				{
-					return new CallbackRecordingResult(true, _counter);
-				}
+				return new CallbackRecordingResult(true, _counter);
 			}
-			catch (OperationCanceledException)
-			{
-				// Ignore a cancelled operation
-			}
-			finally
-			{
-				_countdownEvent.Dispose();
-			}
-
-			return new CallbackRecordingResult(false, _counter);
+		}
+		catch (OperationCanceledException)
+		{
+			// Ignore a cancelled operation
+		}
+		finally
+		{
+			_countdownEvent.Dispose();
 		}
 
-		return new CallbackRecordingResult(_counter >= amount, _counter);
+		return new CallbackRecordingResult(false, _counter);
 	}
 }
 
@@ -106,9 +101,9 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 {
 	private readonly object _lock = new();
 	private readonly List<TParameter> _parameters = new();
+	private CountdownEvent? _countdownEvent;
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
-	private CountdownEvent? _countdownEvent;
 
 	public void Trigger(TParameter parameter)
 	{
@@ -160,7 +155,7 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 
 	public ICallbackRecordingResult<TParameter> WaitMultiple(int amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
-	
+
 	{
 		if (amount <= 0)
 		{
@@ -178,27 +173,22 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 		}
 
 		timeout ??= TimeSpan.FromSeconds(30);
-		if (_countdownEvent != null)
+		try
 		{
-			try
+			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
 			{
-				if (_countdownEvent.Wait(timeout.Value, cancellationToken))
-				{
-					return new CallbackRecordingResult<TParameter>(true, _parameters.ToArray());
-				}
+				return new CallbackRecordingResult<TParameter>(true, _parameters.ToArray());
 			}
-			catch (OperationCanceledException)
-			{
-				// Ignore a cancelled operation
-			}
-			finally
-			{
-				_countdownEvent.Dispose();
-			}
-
-			return new CallbackRecordingResult<TParameter>(false, _parameters.ToArray());
+		}
+		catch (OperationCanceledException)
+		{
+			// Ignore a cancelled operation
+		}
+		finally
+		{
+			_countdownEvent.Dispose();
 		}
 
-		return new CallbackRecordingResult<TParameter>(_counter >= amount, _parameters.ToArray());
+		return new CallbackRecordingResult<TParameter>(false, _parameters.ToArray());
 	}
 }

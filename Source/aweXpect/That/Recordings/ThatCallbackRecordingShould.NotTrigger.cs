@@ -71,8 +71,7 @@ public static partial class ThatCallbackRecordingShould
 	private readonly struct NotTriggerConstraint(string it, int count, TriggerCallbackOptions options)
 		: IAsyncConstraint<ICallbackRecording>
 	{
-		public async Task<ConstraintResult> IsMetBy(ICallbackRecording actual,
-			CancellationToken cancellationToken = default)
+		public async Task<ConstraintResult> IsMetBy(ICallbackRecording actual, CancellationToken cancellationToken)
 		{
 			ICallbackRecordingResult result;
 			TimeSpan? timeout = options.Timeout;
@@ -123,8 +122,9 @@ public static partial class ThatCallbackRecordingShould
 	private readonly struct NotTriggerConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
 		: IAsyncConstraint<ICallbackRecording<TParameter>>
 	{
-		public async Task<ConstraintResult> IsMetBy(ICallbackRecording<TParameter> actual,
-			CancellationToken cancellationToken = default)
+		public async Task<ConstraintResult> IsMetBy(
+			ICallbackRecording<TParameter> actual,
+			CancellationToken cancellationToken)
 		{
 			ICallbackRecordingResult<TParameter> result;
 			TimeSpan? timeout = options.Timeout;

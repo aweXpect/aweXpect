@@ -26,7 +26,7 @@ public interface ICallbackRecordingResult
 /// <summary>
 ///     The result of a <see cref="ICallbackRecording{TParameter}" />.
 /// </summary>
-public interface ICallbackRecordingResult<TParameter> : ICallbackRecordingResult
+public interface ICallbackRecordingResult<out TParameter> : ICallbackRecordingResult
 {
 	/// <summary>
 	///     The parameters provided while triggering the callback.
