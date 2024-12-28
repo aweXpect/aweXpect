@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1734968853735,
+  "lastUpdate": 1735375144808,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -9776,6 +9776,138 @@ window.BENCHMARK_DATA = {
             "value": 1887.167525100708,
             "unit": "ns",
             "range": "± 10.90509015682254"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "43d5683fea3678fb51bc49484dd3daf7a41e4490",
+          "message": "feat: change event trigger to use a `IRecording` (#158)\n\nAvoid using the `.While` pattern so that the tests can follow the Arrange-Act-Assert pattern.\n\nMake the recording public so that it can be started in the arrange phase and return an `IRecording` instance from the \"aweXpect.Events\" namespace.\n```csharp\nMyClass sut = new MyClass();\n\n// ↓ Records all events\nIRecording recording = sut.Record().Events();\nIRecording recording = sut.Record().Events(nameof(MyClass.ThresholdReached));\n// ↑ Records only the ThresholdReached event\n```\nAdd extension methods on this `IRecording`, e.g. `Should().HaveTriggered(\"PropertyChanged\")`, that leads to a more consistent API:\n```csharp\nawait Expect.That(recording).Should()\n  .HaveTriggered(nameof(MyClass.ThresholdReached));\n\nawait Expect.That(recording).Should()\n  .HaveTriggered(nameof(MyClass.ThresholdReached))\n  .With<ThresholdReachedEventArgs>(e => e.Threshold > 10);\n```\n\nThe expectations use \"one or more\" per default, but can be changed similar to [other expectations](https://awexpect.github.io/aweXpect/docs/expectations/collections#contain):\n- `AtLeast(2.Times())`\n- `AtMost(3.Times())`\n- `Between(1).And(4.Times())`\n- `Exactly(0.Times())`\n\n```csharp\nawait Expect.That(recording).Should()\n  .HaveTriggered(nameof(MyClass.ThresholdReached))\n  .Between(1).And(2.Times();\n```",
+          "timestamp": "2024-12-28T08:32:05Z",
+          "tree_id": "0b76a97a7bdcb7f40862222b68f537badfb6cf55",
+          "url": "https://github.com/aweXpect/aweXpect/commit/43d5683fea3678fb51bc49484dd3daf7a41e4490"
+        },
+        "date": 1735375144434,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 171.14330727713448,
+            "unit": "ns",
+            "range": "± 1.194338461062068"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 213.1890649965831,
+            "unit": "ns",
+            "range": "± 1.0360310312889216"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 574.7635358401707,
+            "unit": "ns",
+            "range": "± 4.089505425122342"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 333.30192902882897,
+            "unit": "ns",
+            "range": "± 1.4850745249605546"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 498.65336881365096,
+            "unit": "ns",
+            "range": "± 1.805434109411094"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13456.9068069458,
+            "unit": "ns",
+            "range": "± 18.97621304784656"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 219.79212042490641,
+            "unit": "ns",
+            "range": "± 1.6601798330489999"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 256.2138350168864,
+            "unit": "ns",
+            "range": "± 3.925670471861821"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 754.2133427302043,
+            "unit": "ns",
+            "range": "± 6.636247897118945"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 323.0897146974291,
+            "unit": "ns",
+            "range": "± 1.6899228866008968"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 389.2882268269857,
+            "unit": "ns",
+            "range": "± 1.5969642444475218"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 785.8350413186209,
+            "unit": "ns",
+            "range": "± 4.601884240681244"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 976.193943786621,
+            "unit": "ns",
+            "range": "± 3.891278994475713"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1185.4283582051596,
+            "unit": "ns",
+            "range": "± 6.509693888116098"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1138.4111368815104,
+            "unit": "ns",
+            "range": "± 5.851782468576727"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 982.18317426954,
+            "unit": "ns",
+            "range": "± 5.380545102984481"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 278669.6320638021,
+            "unit": "ns",
+            "range": "± 2090.979121246414"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1831.3175399780273,
+            "unit": "ns",
+            "range": "± 5.301460633735681"
           }
         ]
       }
