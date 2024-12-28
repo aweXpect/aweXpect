@@ -1,6 +1,6 @@
 ﻿using aweXpect.Recording;
 
-namespace aweXpect.Core.Tests.Events;
+namespace aweXpect.Core.Tests.Recording;
 
 public sealed class EventRecordingTests
 {
@@ -25,11 +25,22 @@ public sealed class EventRecordingTests
 		subject.NotifyCustomEvent(1);
 		subject.NotifyCustomEvent(2);
 
-		var result = recording.Stop();
+		IEventRecordingResult result = recording.Stop();
 
 		subject.NotifyCustomEvent(3);
 
 		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent), _ => true)).Should().Be(2);
+	}
+
+	[Fact]
+	public async Task WhenStopIsCalledTwice_ShouldNotThrowAnyException()
+	{
+		CustomEventClass subject = new();
+
+		IEventRecording<CustomEventClass> recording = subject.Record().Events();
+		recording.Stop();
+
+		await That(() => recording.Stop()).Should().NotThrow();
 	}
 
 	private sealed class CustomEventClass

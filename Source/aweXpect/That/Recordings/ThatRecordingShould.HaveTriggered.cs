@@ -12,6 +12,9 @@ public static partial class ThatRecordingShould
 	/// <summary>
 	///     Verifies that the subject has triggered the expected <paramref name="eventName" />.
 	/// </summary>
+	/// <remarks>
+	///     This will stop the recording on the <see cref="IEventRecording{TSubject}" /> subject.
+	/// </remarks>
 	public static EventTriggerResult<TSubject> HaveTriggered<TSubject>(this IThat<IEventRecording<TSubject>> source,
 		string eventName)
 		where TSubject : notnull
