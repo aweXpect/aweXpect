@@ -1,8 +1,5 @@
 ﻿using System.ComponentModel;
-using aweXpect.Events;
-// ReSharper disable AccessToDisposedClosure
-
-// ReSharper disable MemberCanBePrivate.Local
+using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -23,7 +20,7 @@ public sealed partial class RecordingShould
 				{
 					MyValue = 2
 				};
-				using IRecording<PropertyChangedClass> recording = sut.Record().Events();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 				sut.NotifyPropertyChanged(sut, nameof(PropertyChangedClass.MyValue));
 
@@ -57,7 +54,7 @@ public sealed partial class RecordingShould
 				{
 					MyValue = 2
 				};
-				using IRecording<PropertyChangedClass> recording = sut.Record().Events();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 				sut.NotifyPropertyChanged(sender, nameof(PropertyChangedClass.MyValue));
 

@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
-using aweXpect.Events;
-
-// ReSharper disable AccessToDisposedClosure
+using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -13,8 +11,8 @@ public sealed partial class RecordingShould
 		public async Task TriggersPropertyChangedFor_WhenEventIsTriggeredOftenEnough_ShouldSucceed()
 		{
 			PropertyChangedClass sut = new();
-			
-			using IRecording<PropertyChangedClass> recording = sut.Record().Events();
+
+			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
 			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
@@ -35,7 +33,7 @@ public sealed partial class RecordingShould
 			{
 				MyValue = 42
 			};
-			using IRecording<PropertyChangedClass> recording = sut.Record().Events();
+			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
 
@@ -62,7 +60,7 @@ public sealed partial class RecordingShould
 		public async Task WhenPropertyChangedEventIsTriggeredOftenEnough_ShouldSucceed()
 		{
 			PropertyChangedClass sut = new();
-			using IRecording<PropertyChangedClass> recording = sut.Record().Events();
+			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 			sut.NotifyPropertyChanged("foo");
 			sut.NotifyPropertyChanged("foo");
@@ -81,7 +79,7 @@ public sealed partial class RecordingShould
 		public async Task WhenPropertyChangedEventIsTriggeredTooFewTimes_ShouldFail()
 		{
 			PropertyChangedClass sut = new();
-			using IRecording<PropertyChangedClass> recording = sut.Record().Events();
+			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 			sut.NotifyPropertyChanged("foo");
 			sut.NotifyPropertyChanged("bar");

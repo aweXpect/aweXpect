@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Events;
 using aweXpect.Options;
+using aweXpect.Recording;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -12,7 +12,10 @@ public static partial class ThatRecordingShould
 	/// <summary>
 	///     Verifies that the subject has triggered the expected <paramref name="eventName" />.
 	/// </summary>
-	public static EventTriggerResult<TSubject> HaveTriggered<TSubject>(this IThat<IRecording<TSubject>> source,
+	/// <remarks>
+	///     This will stop the recording on the <see cref="IEventRecording{TSubject}" /> subject.
+	/// </remarks>
+	public static EventTriggerResult<TSubject> HaveTriggered<TSubject>(this IThat<IEventRecording<TSubject>> source,
 		string eventName)
 		where TSubject : notnull
 	{
@@ -30,12 +33,13 @@ public static partial class ThatRecordingShould
 		string it,
 		string eventName,
 		TriggerEventFilter filter,
-		Quantifier quantifier) : IValueConstraint<IRecording<TSubject>>
+		Quantifier quantifier) : IValueConstraint<IEventRecording<TSubject>>
 		where TSubject : notnull
 	{
-		public ConstraintResult IsMetBy(IRecording<TSubject> actual)
+		public ConstraintResult IsMetBy(IEventRecording<TSubject> actual)
 		{
-			int eventCount = actual.GetEventCount(eventName, filter.IsMatch);
+			IEventRecordingResult recordingResult = actual.Stop();
+			int eventCount = recordingResult.GetEventCount(eventName, filter.IsMatch);
 			string quantifierString = quantifier.ToString();
 			string expectation = $"have recorded the {eventName} event on {actual}{filter} {quantifier}";
 			if (quantifierString == "never")
@@ -61,11 +65,11 @@ public static partial class ThatRecordingShould
 				}
 
 				sb.Append("in ");
-				sb.Append(actual.ToString(eventName));
-				return new ConstraintResult.Failure<IRecording<TSubject>>(actual, expectation, sb.ToString());
+				sb.Append(recordingResult.ToString(eventName));
+				return new ConstraintResult.Failure<IEventRecording<TSubject>>(actual, expectation, sb.ToString());
 			}
 
-			return new ConstraintResult.Success<IRecording<TSubject>>(actual, expectation);
+			return new ConstraintResult.Success<IEventRecording<TSubject>>(actual, expectation);
 		}
 	}
 }

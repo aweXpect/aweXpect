@@ -1,7 +1,4 @@
-﻿using aweXpect.Events;
-// ReSharper disable AccessToDisposedClosure
-
-// ReSharper disable MemberCanBePrivate.Local
+﻿using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -15,7 +12,8 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportEventsWith4Parameters()
 			{
 				CustomEventWithParametersClass<string, int, bool, DateTime> sut = new();
-				using IRecording<CustomEventWithParametersClass<string, int, bool, DateTime>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string, int, bool, DateTime>> recording =
+					sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo", 1, true, DateTime.Now);
 
@@ -30,7 +28,7 @@ public sealed partial class RecordingShould
 			public async Task WhenCustomEventWithoutParametersIsTriggeredOftenEnough_ShouldSucceed()
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent();
 				sut.NotifyCustomEvent();
@@ -48,7 +46,7 @@ public sealed partial class RecordingShould
 			public async Task WhenCustomEventWithoutParametersIsTriggeredTooFewTimes_ShouldFail()
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent();
 
@@ -71,7 +69,7 @@ public sealed partial class RecordingShould
 			public async Task WhenCustomEventWithParametersIsTriggeredTooFewTimes_ShouldFail()
 			{
 				CustomEventWithParametersClass<string> sut = new();
-				using IRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo");
 				sut.NotifyCustomEvent("bar");

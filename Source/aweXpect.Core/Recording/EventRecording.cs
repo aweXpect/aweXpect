@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace aweXpect.Events;
+namespace aweXpect.Recording;
 
-internal sealed class EventRecording<TSubject> : IRecording<TSubject>
+internal sealed class EventRecording<TSubject> : IEventRecording<TSubject>, IEventRecordingResult
 	where TSubject : notnull
 {
 	private readonly Dictionary<string, EventRecorder> _recorders = new();
@@ -38,13 +38,17 @@ internal sealed class EventRecording<TSubject> : IRecording<TSubject>
 		}
 	}
 
-	/// <inheritdoc />
-	public void Dispose()
+	/// <summary>
+	///     Stops the recording of events.
+	/// </summary>
+	public IEventRecordingResult Stop()
 	{
 		foreach (EventRecorder recorder in _recorders.Values)
 		{
 			recorder.Dispose();
 		}
+
+		return this;
 	}
 
 	/// <summary>

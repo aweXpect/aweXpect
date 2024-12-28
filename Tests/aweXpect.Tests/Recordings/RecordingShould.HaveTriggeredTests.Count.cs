@@ -1,7 +1,4 @@
-﻿// ReSharper disable MemberCanBePrivate.Local
-
-using aweXpect.Events;
-// ReSharper disable AccessToDisposedClosure
+﻿using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -21,7 +18,7 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportAtLeast(int minimum, int count, bool expectSuccess)
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvents(count);
 
@@ -48,7 +45,7 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportAtMost(int maximum, int count, bool expectSuccess)
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvents(count);
 
@@ -77,7 +74,7 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportBetween(int minimum, int maximum, int count, bool expectSuccess)
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvents(count);
 
@@ -104,7 +101,7 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportExactly(int expected, int count, bool expectSuccess)
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvents(count);
 
@@ -127,7 +124,7 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportNever(int count, bool expectSuccess)
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvents(count);
 
@@ -151,7 +148,7 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportOnce(int count, bool expectSuccess)
 			{
 				CustomEventWithoutParametersClass sut = new();
-				using IRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvents(count);
 

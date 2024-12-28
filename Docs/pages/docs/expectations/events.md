@@ -9,7 +9,7 @@ Describes the possible expectations for verifying events.
 
 ## Recording
 
-First, you have to start a recording of events. This can be done with the `.Record().Events()` extension method in the "aweXpect.Events" namespace.
+First, you have to start a recording of events. This can be done with the `.Record().Events()` extension method in the "aweXpect.Recording" namespace.
 ```csharp
 class ThresholdReachedEventArgs(int threshold = 0) : EventArgs
 {

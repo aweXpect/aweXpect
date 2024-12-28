@@ -1,7 +1,4 @@
-﻿using aweXpect.Events;
-// ReSharper disable AccessToDisposedClosure
-
-// ReSharper disable MemberCanBePrivate.Local
+﻿using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -19,7 +16,8 @@ public sealed partial class RecordingShould
 			public async Task ShouldSupportPositionalParameterFilters(int position, bool expectSuccess)
 			{
 				CustomEventWithParametersClass<string, string, string> sut = new();
-				using IRecording<CustomEventWithParametersClass<string, string, string>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string, string, string>> recording =
+					sut.Record().Events();
 
 				sut.NotifyCustomEvent("p0", "p1", "p2");
 				sut.NotifyCustomEvent("p0", "p1", "p2");
@@ -45,7 +43,7 @@ public sealed partial class RecordingShould
 			public async Task WhenCustomEventWithParameters_WhenFilterResultsInTooFewRecordings_ShouldFail()
 			{
 				CustomEventWithParametersClass<string> sut = new();
-				using IRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo");
 				sut.NotifyCustomEvent("bar");
@@ -71,7 +69,7 @@ public sealed partial class RecordingShould
 			public async Task WhenCustomEventWithParametersIsTriggeredOftenEnough_ShouldSucceed()
 			{
 				CustomEventWithParametersClass<string> sut = new();
-				using IRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo");
 				sut.NotifyCustomEvent("foo");
@@ -90,7 +88,7 @@ public sealed partial class RecordingShould
 			public async Task WhenMultipleFiltersAreSpecified_ShouldVerifyAllFilters_ShouldFail()
 			{
 				CustomEventWithParametersClass<string, int> sut = new();
-				using IRecording<CustomEventWithParametersClass<string, int>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string, int>> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo", 1);
 				sut.NotifyCustomEvent("bar", 2);
@@ -117,7 +115,7 @@ public sealed partial class RecordingShould
 			public async Task WhenMultiplePositionFiltersAreSpecified_ShouldVerifyAllFilters_ShouldFail()
 			{
 				CustomEventWithParametersClass<string, string> sut = new();
-				using IRecording<CustomEventWithParametersClass<string, string>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string, string>> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo1", "bar2");
 				sut.NotifyCustomEvent("bar1", "foo2");
@@ -143,7 +141,7 @@ public sealed partial class RecordingShould
 			public async Task WhenTypeIsNotUnique_ShouldCheckAllMatchingParameters()
 			{
 				CustomEventWithParametersClass<string, string> sut = new();
-				using IRecording<CustomEventWithParametersClass<string, string>> recording = sut.Record().Events();
+				IEventRecording<CustomEventWithParametersClass<string, string>> recording = sut.Record().Events();
 
 				sut.NotifyCustomEvent("foo", "bar");
 

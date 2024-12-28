@@ -1,4 +1,4 @@
-﻿using aweXpect.Events;
+﻿using aweXpect.Recording;
 
 // ReSharper disable AccessToDisposedClosure
 
@@ -14,7 +14,7 @@ public sealed partial class RecordingShould
 			public async Task WhenEventIsNotTriggeredAtAll_ShouldSucceed()
 			{
 				PropertyChangedClass sut = new();
-				IRecording<PropertyChangedClass> recording = sut.Record().Events();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 				async Task Act() =>
 					await That(recording).Should()
@@ -30,7 +30,7 @@ public sealed partial class RecordingShould
 				{
 					MyValue = 421
 				};
-				IRecording<PropertyChangedClass> recording = sut.Record().Events();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
 
@@ -56,7 +56,7 @@ public sealed partial class RecordingShould
 			public async Task WhenEventIsTriggeredForOtherPropertyName_ShouldSucceed()
 			{
 				PropertyChangedClass sut = new();
-				IRecording<PropertyChangedClass> recording = sut.Record().Events();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 				sut.NotifyPropertyChanged("SomeOtherProperty");
 

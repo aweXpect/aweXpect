@@ -212,25 +212,6 @@ namespace aweXpect.Customization
         System.IDisposable ExcludeAssemblies(System.Action<System.Collections.Generic.List<string>> excludedAssemblyPrefixes);
     }
 }
-namespace aweXpect.Events
-{
-    public interface IRecording<TSubject> : System.IDisposable
-    {
-        int GetEventCount(string eventName, System.Func<object?[], bool>? filter = null);
-        string ToString(string eventName);
-    }
-    public static class RecordExtensions
-    {
-        public static aweXpect.Events.RecordingFactory<TSubject> Record<TSubject>(this TSubject subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
-            where TSubject :  notnull { }
-    }
-    public class RecordingFactory<TSubject>
-        where TSubject :  notnull
-    {
-        public RecordingFactory(TSubject subject, string subjectExpression) { }
-        public aweXpect.Events.IRecording<TSubject> Events(params string[] eventNames) { }
-    }
-}
 namespace aweXpect
 {
     public static class Expect
@@ -506,6 +487,29 @@ namespace aweXpect.Options
         public void AddPredicate(System.Func<object?[], bool> predicate, string predicateExpression) { }
         public bool IsMatch(object?[] parameters) { }
         public override string ToString() { }
+    }
+}
+namespace aweXpect.Recording
+{
+    public interface IEventRecordingResult
+    {
+        int GetEventCount(string eventName, System.Func<object?[], bool>? filter = null);
+        string ToString(string eventName);
+    }
+    public interface IEventRecording<TSubject>
+    {
+        aweXpect.Recording.IEventRecordingResult Stop();
+    }
+    public static class RecordExtensions
+    {
+        public static aweXpect.Recording.RecordingFactory<TSubject> Record<TSubject>(this TSubject subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+            where TSubject :  notnull { }
+    }
+    public class RecordingFactory<TSubject>
+        where TSubject :  notnull
+    {
+        public RecordingFactory(TSubject subject, string subjectExpression) { }
+        public aweXpect.Recording.IEventRecording<TSubject> Events(params string[] eventNames) { }
     }
 }
 namespace aweXpect.Results

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using aweXpect.Core;
-using aweXpect.Events;
 using aweXpect.Options;
+using aweXpect.Recording;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -12,7 +12,7 @@ public static partial class ThatRecordingShould
 	///     Verifies that the subject has triggered the <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
 	/// </summary>
 	public static EventTriggerResult<TSubject> HaveTriggeredPropertyChanged<TSubject>(
-		this IThat<IRecording<TSubject>> source)
+		this IThat<IEventRecording<TSubject>> source)
 		where TSubject : INotifyPropertyChanged
 	{
 		Quantifier quantifier = new();
@@ -30,7 +30,7 @@ public static partial class ThatRecordingShould
 	///     Verifies that the subject has not triggered the <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
 	/// </summary>
 	public static EventTriggerResult<TSubject> NotHaveTriggeredPropertyChanged<TSubject>(
-		this IThat<IRecording<TSubject>> source)
+		this IThat<IEventRecording<TSubject>> source)
 		where TSubject : INotifyPropertyChanged
 	{
 		Quantifier quantifier = new();
