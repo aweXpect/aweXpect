@@ -15,11 +15,11 @@ public static partial class ThatCallbackRecordingShould
 	/// <summary>
 	///     Verifies that the expected callback was not signaled.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter> NotBeSignaled(
+	public static CallbackTriggerResult<SignalCounter, SignalCounterResult> NotBeSignaled(
 		this IThat<SignalCounter> source)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter, SignalCounterResult>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint(it, 1, options)),
 			source,
 			options);
@@ -28,11 +28,11 @@ public static partial class ThatCallbackRecordingShould
 	/// <summary>
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter<TParameter>> NotBeSignaled<TParameter>(
+	public static CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>> NotBeSignaled<TParameter>(
 		this IThat<SignalCounter<TParameter>> source)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter<TParameter>>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
@@ -42,12 +42,12 @@ public static partial class ThatCallbackRecordingShould
 	///     Verifies that the expected callback was not signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter> NotBeSignaled(
+	public static CallbackTriggerResult<SignalCounter, SignalCounterResult> NotBeSignaled(
 		this IThat<SignalCounter> source,
 		Times times)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter, SignalCounterResult>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint(it, times.Value, options)),
 			source,
 			options);
@@ -57,12 +57,12 @@ public static partial class ThatCallbackRecordingShould
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter<TParameter>> NotBeSignaled<TParameter>(
+	public static CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>> NotBeSignaled<TParameter>(
 		this IThat<SignalCounter<TParameter>> source,
 		Times times)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter<TParameter>>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
@@ -101,7 +101,7 @@ public static partial class ThatCallbackRecordingShould
 
 			if (!result.IsSuccess)
 			{
-				return new ConstraintResult.Success<SignalCounter>(actual, expectation);
+				return new ConstraintResult.Success<SignalCounterResult>(result, expectation);
 			}
 
 			StringBuilder sb = new();
@@ -115,7 +115,7 @@ public static partial class ThatCallbackRecordingShould
 				sb.Append("recorded ").Append(result.Count).Append(" times");
 			}
 
-			return new ConstraintResult.Failure<SignalCounter>(actual, expectation, sb.ToString());
+			return new ConstraintResult.Failure<SignalCounterResult>(result, expectation, sb.ToString());
 		}
 	}
 
@@ -154,7 +154,7 @@ public static partial class ThatCallbackRecordingShould
 
 			if (!result.IsSuccess)
 			{
-				return new ConstraintResult.Success<SignalCounter<TParameter>>(actual, expectation);
+				return new ConstraintResult.Success<SignalCounterResult<TParameter>>(result, expectation);
 			}
 
 			StringBuilder sb = new();
@@ -171,7 +171,7 @@ public static partial class ThatCallbackRecordingShould
 			sb.Append(" with ");
 			Formatter.Format(sb, result.Parameters, FormattingOptions.MultipleLines);
 
-			return new ConstraintResult.Failure<SignalCounter<TParameter>>(actual, expectation, sb.ToString());
+			return new ConstraintResult.Failure<SignalCounterResult<TParameter>>(result, expectation, sb.ToString());
 		}
 	}
 }
