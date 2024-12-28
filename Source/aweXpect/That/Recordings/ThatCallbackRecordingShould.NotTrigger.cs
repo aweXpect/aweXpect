@@ -79,14 +79,14 @@ public static partial class ThatCallbackRecordingShould
 			{
 				result = await Task.Run(()
 						=> actual.Wait(timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
 				result = await Task.Run(()
 						=> actual.WaitMultiple(amount, timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 
 			string expectation = count switch
@@ -132,14 +132,14 @@ public static partial class ThatCallbackRecordingShould
 			{
 				result = await Task.Run(()
 						=> actual.Wait(timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
 				result = await Task.Run(()
 						=> actual.WaitMultiple(amount, timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 
 			string expectation = count switch

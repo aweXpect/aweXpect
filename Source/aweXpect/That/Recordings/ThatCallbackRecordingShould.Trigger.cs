@@ -20,7 +20,7 @@ public static partial class ThatCallbackRecordingShould
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording>(source.ExpectationBuilder.AddConstraint(it
-				=> new HaveTriggeredConstraint(it, 1, options)),
+				=> new TriggerConstraint(it, 1, options)),
 			source,
 			options);
 	}
@@ -33,7 +33,7 @@ public static partial class ThatCallbackRecordingShould
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording<TParameter>>(source.ExpectationBuilder.AddConstraint(it
-				=> new HaveTriggeredConstraint<TParameter>(it, 1, options)),
+				=> new TriggerConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
 	}
@@ -48,7 +48,7 @@ public static partial class ThatCallbackRecordingShould
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording>(source.ExpectationBuilder.AddConstraint(it
-				=> new HaveTriggeredConstraint(it, times.Value, options)),
+				=> new TriggerConstraint(it, times.Value, options)),
 			source,
 			options);
 	}
@@ -63,12 +63,12 @@ public static partial class ThatCallbackRecordingShould
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording<TParameter>>(source.ExpectationBuilder.AddConstraint(it
-				=> new HaveTriggeredConstraint<TParameter>(it, times.Value, options)),
+				=> new TriggerConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
 	}
 
-	private readonly struct HaveTriggeredConstraint(string it, int count, TriggerCallbackOptions options)
+	private readonly struct TriggerConstraint(string it, int count, TriggerCallbackOptions options)
 		: IAsyncConstraint<ICallbackRecording>
 	{
 		public async Task<ConstraintResult> IsMetBy(ICallbackRecording actual, CancellationToken cancellationToken)
@@ -79,14 +79,14 @@ public static partial class ThatCallbackRecordingShould
 			{
 				result = await Task.Run(()
 						=> actual.Wait(timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
 				result = await Task.Run(()
 						=> actual.WaitMultiple(amount, timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 
 			string expectation = count switch
@@ -123,7 +123,7 @@ public static partial class ThatCallbackRecordingShould
 		}
 	}
 
-	private readonly struct HaveTriggeredConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
+	private readonly struct TriggerConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
 		: IAsyncConstraint<ICallbackRecording<TParameter>>
 	{
 		public async Task<ConstraintResult> IsMetBy(
@@ -136,14 +136,14 @@ public static partial class ThatCallbackRecordingShould
 			{
 				result = await Task.Run(()
 						=> actual.Wait(timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
 				result = await Task.Run(()
 						=> actual.WaitMultiple(amount, timeout, cancellationToken),
-					cancellationToken);
+					CancellationToken.None);
 			}
 
 			string expectation = count switch

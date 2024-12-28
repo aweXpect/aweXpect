@@ -33,8 +33,7 @@ public sealed partial class CallbackRecordingShould
 			public async Task WhenNotTriggeredWithParameter_ShouldFail()
 			{
 				ICallbackRecording<int> recording = Record.Callback<int>();
-				using CancellationTokenSource cts = new();
-				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
+				using CancellationTokenSource cts = new(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>

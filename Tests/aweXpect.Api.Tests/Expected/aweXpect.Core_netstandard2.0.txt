@@ -494,7 +494,7 @@ namespace aweXpect.Recording
         int Count { get; }
         bool IsSuccess { get; }
     }
-    public interface ICallbackRecordingResult<TParameter> : aweXpect.Recording.ICallbackRecordingResult
+    public interface ICallbackRecordingResult<out TParameter> : aweXpect.Recording.ICallbackRecordingResult
     {
         TParameter[] Parameters { get; }
     }
