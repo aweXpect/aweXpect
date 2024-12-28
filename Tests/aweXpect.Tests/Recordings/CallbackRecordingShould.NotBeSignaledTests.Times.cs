@@ -6,7 +6,7 @@ namespace aweXpect.Tests.Recordings;
 
 public sealed partial class CallbackRecordingShould
 {
-	public sealed partial class NotTrigger
+	public sealed partial class NotBeSignaled
 	{
 		public sealed class TimesTests
 		{
@@ -18,10 +18,10 @@ public sealed partial class CallbackRecordingShould
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
 
-				recording.Trigger();
+				recording.Signal();
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger(2.Times()).WithCancellation(token);
+					await That(recording).Should().NotBeSignaled(2.Times()).WithCancellation(token);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -34,11 +34,11 @@ public sealed partial class CallbackRecordingShould
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
 
-				recording.Trigger(1);
-				recording.Trigger(2);
+				recording.Signal(1);
+				recording.Signal(2);
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger(3.Times()).WithCancellation(token);
+					await That(recording).Should().NotBeSignaled(3.Times()).WithCancellation(token);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -51,13 +51,13 @@ public sealed partial class CallbackRecordingShould
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
 					{
-						recording.Trigger();
-						recording.Trigger();
-						recording.Trigger();
+						recording.Signal();
+						recording.Signal();
+						recording.Signal();
 					});
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger(2.Times());
+					await That(recording).Should().NotBeSignaled(2.Times());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -75,12 +75,12 @@ public sealed partial class CallbackRecordingShould
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
 					{
-						recording.Trigger();
-						recording.Trigger();
+						recording.Signal();
+						recording.Signal();
 					});
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger(2.Times());
+					await That(recording).Should().NotBeSignaled(2.Times());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -98,14 +98,14 @@ public sealed partial class CallbackRecordingShould
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
 					{
-						recording.Trigger(1);
-						recording.Trigger(2);
-						recording.Trigger(3);
-						recording.Trigger(4);
+						recording.Signal(1);
+						recording.Signal(2);
+						recording.Signal(3);
+						recording.Signal(4);
 					});
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger(3.Times());
+					await That(recording).Should().NotBeSignaled(3.Times());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -128,13 +128,13 @@ public sealed partial class CallbackRecordingShould
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
 					{
-						recording.Trigger(1);
-						recording.Trigger(2);
-						recording.Trigger(3);
+						recording.Signal(1);
+						recording.Signal(2);
+						recording.Signal(3);
 					});
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger(3.Times());
+					await That(recording).Should().NotBeSignaled(3.Times());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

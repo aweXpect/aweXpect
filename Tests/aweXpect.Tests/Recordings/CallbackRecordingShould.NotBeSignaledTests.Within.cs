@@ -6,7 +6,7 @@ namespace aweXpect.Tests.Recordings;
 
 public sealed partial class CallbackRecordingShould
 {
-	public sealed partial class NotTrigger
+	public sealed partial class NotBeSignaled
 	{
 		public sealed class WithinTests
 		{
@@ -18,10 +18,10 @@ public sealed partial class CallbackRecordingShould
 				CancellationToken token = cts.Token;
 
 				_ = Task.Delay(TimeSpan.FromSeconds(5), token)
-					.ContinueWith(_ => recording.Trigger(), token);
+					.ContinueWith(_ => recording.Signal(), token);
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger().Within(TimeSpan.FromMilliseconds(40));
+					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromMilliseconds(40));
 
 				await That(Act).Should().NotThrow();
 				cts.Cancel();
@@ -35,10 +35,10 @@ public sealed partial class CallbackRecordingShould
 				CancellationToken token = cts.Token;
 
 				_ = Task.Delay(TimeSpan.FromSeconds(5), token)
-					.ContinueWith(_ => recording.Trigger("foo"), token);
+					.ContinueWith(_ => recording.Signal("foo"), token);
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger().Within(TimeSpan.FromMilliseconds(40));
+					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromMilliseconds(40));
 
 				await That(Act).Should().NotThrow();
 				cts.Cancel();
@@ -50,10 +50,10 @@ public sealed partial class CallbackRecordingShould
 				ICallbackRecording recording = Record.Callback();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger());
+					.ContinueWith(_ => recording.Signal());
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger().Within(TimeSpan.FromSeconds(10));
+					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromSeconds(10));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -69,10 +69,10 @@ public sealed partial class CallbackRecordingShould
 				ICallbackRecording<string> recording = Record.Callback<string>();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger("foo"));
+					.ContinueWith(_ => recording.Signal("foo"));
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger().Within(TimeSpan.FromSeconds(10));
+					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromSeconds(10));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

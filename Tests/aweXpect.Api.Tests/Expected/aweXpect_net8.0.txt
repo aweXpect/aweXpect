@@ -93,16 +93,16 @@ namespace aweXpect
     }
     public static class ThatCallbackRecordingShould
     {
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> NotTrigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> NotTrigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> NotTrigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> NotTrigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source, aweXpect.Times times) { }
         public static aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.ICallbackRecording> subject) { }
         public static aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.ICallbackRecording<TParameter>> subject) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> Trigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> Trigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> Trigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> Trigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source, aweXpect.Times times) { }
     }
     public static class ThatDateOnlyShould
     {

@@ -11,7 +11,15 @@ internal class CallbackRecording : ICallbackRecording
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
 
-	public void Trigger()
+	/// <inheritdoc cref="ICallbackRecording.IsSignaled(Times?)" />
+	public bool IsSignaled(Times? amount = null)
+	{
+		int value = amount?.Value ?? 1;
+		return _counter >= value;
+	}
+
+	/// <inheritdoc cref="ICallbackRecording.Signal()" />
+	public void Signal()
 	{
 		lock (_lock)
 		{
@@ -21,6 +29,7 @@ internal class CallbackRecording : ICallbackRecording
 		}
 	}
 
+	/// <inheritdoc cref="ICallbackRecording.Wait(TimeSpan?, CancellationToken)" />
 	public ICallbackRecordingResult Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
@@ -58,22 +67,24 @@ internal class CallbackRecording : ICallbackRecording
 		return new CallbackRecordingResult(_counter > 0, _counter);
 	}
 
-	public ICallbackRecordingResult WaitMultiple(int amount, TimeSpan? timeout = null,
+	/// <inheritdoc
+	///     cref="ICallbackRecording.Wait(aweXpect.Times,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)" />
+	public ICallbackRecordingResult Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
-		if (amount <= 0)
+		if (amount.Value <= 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.");
 		}
 
 		lock (_lock)
 		{
-			if (_counter >= amount)
+			if (_counter >= amount.Value)
 			{
 				return new CallbackRecordingResult(true, _counter);
 			}
 
-			_countdownEvent = new CountdownEvent(amount - _counter);
+			_countdownEvent = new CountdownEvent(amount.Value - _counter);
 		}
 
 		timeout ??= TimeSpan.FromSeconds(30);
@@ -105,7 +116,13 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
 
-	public void Trigger(TParameter parameter)
+	public bool IsSignaled(Times? amount = null)
+	{
+		int value = amount?.Value ?? 1;
+		return _counter >= value;
+	}
+
+	public void Signal(TParameter parameter)
 	{
 		lock (_lock)
 		{
@@ -153,23 +170,23 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 		return new CallbackRecordingResult<TParameter>(_counter > 0, _parameters.ToArray());
 	}
 
-	public ICallbackRecordingResult<TParameter> WaitMultiple(int amount, TimeSpan? timeout = null,
+	public ICallbackRecordingResult<TParameter> Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 
 	{
-		if (amount <= 0)
+		if (amount.Value <= 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.");
 		}
 
 		lock (_lock)
 		{
-			if (_counter >= amount)
+			if (_counter >= amount.Value)
 			{
 				return new CallbackRecordingResult<TParameter>(true, _parameters.ToArray());
 			}
 
-			_countdownEvent = new CountdownEvent(amount - _counter);
+			_countdownEvent = new CountdownEvent(amount.Value - _counter);
 		}
 
 		timeout ??= TimeSpan.FromSeconds(30);

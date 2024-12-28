@@ -13,9 +13,9 @@ namespace aweXpect;
 public static partial class ThatCallbackRecordingShould
 {
 	/// <summary>
-	///     Verifies that the expected callback was triggered at least once.
+	///     Verifies that the expected callback was signaled at least once.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording> Trigger(
+	public static CallbackTriggerResult<ICallbackRecording> BeSignaled(
 		this IThat<ICallbackRecording> source)
 	{
 		TriggerCallbackOptions options = new();
@@ -26,9 +26,9 @@ public static partial class ThatCallbackRecordingShould
 	}
 
 	/// <summary>
-	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was triggered at least once.
+	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled at least once.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording<TParameter>> Trigger<TParameter>(
+	public static CallbackTriggerResult<ICallbackRecording<TParameter>> BeSignaled<TParameter>(
 		this IThat<ICallbackRecording<TParameter>> source)
 	{
 		TriggerCallbackOptions options = new();
@@ -39,10 +39,10 @@ public static partial class ThatCallbackRecordingShould
 	}
 
 	/// <summary>
-	///     Verifies that the expected callback was triggered
+	///     Verifies that the expected callback was signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording> Trigger(
+	public static CallbackTriggerResult<ICallbackRecording> BeSignaled(
 		this IThat<ICallbackRecording> source,
 		Times times)
 	{
@@ -54,10 +54,10 @@ public static partial class ThatCallbackRecordingShould
 	}
 
 	/// <summary>
-	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was triggered
+	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording<TParameter>> Trigger<TParameter>(
+	public static CallbackTriggerResult<ICallbackRecording<TParameter>> BeSignaled<TParameter>(
 		this IThat<ICallbackRecording<TParameter>> source,
 		Times times)
 	{
@@ -85,7 +85,7 @@ public static partial class ThatCallbackRecordingShould
 			{
 				int amount = count;
 				result = await Task.Run(()
-						=> actual.WaitMultiple(amount, timeout, cancellationToken),
+						=> actual.Wait(amount, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 
@@ -142,7 +142,7 @@ public static partial class ThatCallbackRecordingShould
 			{
 				int amount = count;
 				result = await Task.Run(()
-						=> actual.WaitMultiple(amount, timeout, cancellationToken),
+						=> actual.Wait(amount, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 

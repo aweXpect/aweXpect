@@ -13,62 +13,62 @@ namespace aweXpect;
 public static partial class ThatCallbackRecordingShould
 {
 	/// <summary>
-	///     Verifies that the expected callback was not triggered.
+	///     Verifies that the expected callback was not signaled.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording> NotTrigger(
+	public static CallbackTriggerResult<ICallbackRecording> NotBeSignaled(
 		this IThat<ICallbackRecording> source)
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording>(source.ExpectationBuilder.AddConstraint(it
-				=> new NotTriggerConstraint(it, 1, options)),
+				=> new NotSignaledConstraint(it, 1, options)),
 			source,
 			options);
 	}
 
 	/// <summary>
-	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not triggered.
+	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording<TParameter>> NotTrigger<TParameter>(
+	public static CallbackTriggerResult<ICallbackRecording<TParameter>> NotBeSignaled<TParameter>(
 		this IThat<ICallbackRecording<TParameter>> source)
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording<TParameter>>(source.ExpectationBuilder.AddConstraint(it
-				=> new NotTriggerConstraint<TParameter>(it, 1, options)),
+				=> new NotSignaledConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
 	}
 
 	/// <summary>
-	///     Verifies that the expected callback was not triggered
+	///     Verifies that the expected callback was not signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording> NotTrigger(
+	public static CallbackTriggerResult<ICallbackRecording> NotBeSignaled(
 		this IThat<ICallbackRecording> source,
 		Times times)
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording>(source.ExpectationBuilder.AddConstraint(it
-				=> new NotTriggerConstraint(it, times.Value, options)),
+				=> new NotSignaledConstraint(it, times.Value, options)),
 			source,
 			options);
 	}
 
 	/// <summary>
-	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not triggered
+	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<ICallbackRecording<TParameter>> NotTrigger<TParameter>(
+	public static CallbackTriggerResult<ICallbackRecording<TParameter>> NotBeSignaled<TParameter>(
 		this IThat<ICallbackRecording<TParameter>> source,
 		Times times)
 	{
 		TriggerCallbackOptions options = new();
 		return new CallbackTriggerResult<ICallbackRecording<TParameter>>(source.ExpectationBuilder.AddConstraint(it
-				=> new NotTriggerConstraint<TParameter>(it, times.Value, options)),
+				=> new NotSignaledConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
 	}
 
-	private readonly struct NotTriggerConstraint(string it, int count, TriggerCallbackOptions options)
+	private readonly struct NotSignaledConstraint(string it, int count, TriggerCallbackOptions options)
 		: IAsyncConstraint<ICallbackRecording>
 	{
 		public async Task<ConstraintResult> IsMetBy(ICallbackRecording actual, CancellationToken cancellationToken)
@@ -85,7 +85,7 @@ public static partial class ThatCallbackRecordingShould
 			{
 				int amount = count;
 				result = await Task.Run(()
-						=> actual.WaitMultiple(amount, timeout, cancellationToken),
+						=> actual.Wait(amount, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 
@@ -119,7 +119,7 @@ public static partial class ThatCallbackRecordingShould
 		}
 	}
 
-	private readonly struct NotTriggerConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
+	private readonly struct NotSignaledConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
 		: IAsyncConstraint<ICallbackRecording<TParameter>>
 	{
 		public async Task<ConstraintResult> IsMetBy(
@@ -138,7 +138,7 @@ public static partial class ThatCallbackRecordingShould
 			{
 				int amount = count;
 				result = await Task.Run(()
-						=> actual.WaitMultiple(amount, timeout, cancellationToken),
+						=> actual.Wait(amount, timeout, cancellationToken),
 					CancellationToken.None);
 			}
 

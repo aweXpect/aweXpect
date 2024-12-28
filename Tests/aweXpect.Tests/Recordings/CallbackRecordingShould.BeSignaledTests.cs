@@ -6,7 +6,7 @@ namespace aweXpect.Tests.Recordings;
 
 public sealed partial class CallbackRecordingShould
 {
-	public sealed partial class Trigger
+	public sealed partial class BeSignaled
 	{
 		public sealed class Tests
 		{
@@ -19,7 +19,7 @@ public sealed partial class CallbackRecordingShould
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>
-					await That(recording).Should().Trigger().WithCancellation(token);
+					await That(recording).Should().BeSignaled().WithCancellation(token);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -37,7 +37,7 @@ public sealed partial class CallbackRecordingShould
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>
-					await That(recording).Should().Trigger().WithCancellation(token);
+					await That(recording).Should().BeSignaled().WithCancellation(token);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -53,10 +53,10 @@ public sealed partial class CallbackRecordingShould
 				ICallbackRecording recording = Record.Callback();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger());
+					.ContinueWith(_ => recording.Signal());
 
 				async Task Act() =>
-					await That(recording).Should().Trigger();
+					await That(recording).Should().BeSignaled();
 
 				await That(Act).Should().NotThrow();
 			}
@@ -67,10 +67,10 @@ public sealed partial class CallbackRecordingShould
 				ICallbackRecording<int> recording = Record.Callback<int>();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger(1));
+					.ContinueWith(_ => recording.Signal(1));
 
 				async Task Act() =>
-					await That(recording).Should().Trigger();
+					await That(recording).Should().BeSignaled();
 
 				await That(Act).Should().NotThrow();
 			}

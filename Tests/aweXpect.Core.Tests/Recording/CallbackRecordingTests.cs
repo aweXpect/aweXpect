@@ -10,7 +10,7 @@ public class CallbackRecordingTests
 	{
 		ICallbackRecording recording = Record.Callback();
 
-		_ = Task.Delay(1000).ContinueWith(_ => recording.Trigger());
+		_ = Task.Delay(1000).ContinueWith(_ => recording.Signal());
 
 		ICallbackRecordingResult result = recording.Wait(timeout: TimeSpan.FromMilliseconds(1100));
 
@@ -22,7 +22,7 @@ public class CallbackRecordingTests
 	{
 		ICallbackRecording recording = Record.Callback();
 
-		_ = Task.Delay(10000).ContinueWith(_ => recording.Trigger());
+		_ = Task.Delay(10000).ContinueWith(_ => recording.Signal());
 
 		ICallbackRecordingResult result = recording.Wait(timeout: TimeSpan.FromMilliseconds(500));
 

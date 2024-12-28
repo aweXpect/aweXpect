@@ -485,9 +485,10 @@ namespace aweXpect.Recording
 {
     public interface ICallbackRecording
     {
-        void Trigger();
+        bool IsSignaled(aweXpect.Times? amount = default);
+        void Signal();
         aweXpect.Recording.ICallbackRecordingResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
-        aweXpect.Recording.ICallbackRecordingResult WaitMultiple(int amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+        aweXpect.Recording.ICallbackRecordingResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
     }
     public interface ICallbackRecordingResult
     {
@@ -500,9 +501,10 @@ namespace aweXpect.Recording
     }
     public interface ICallbackRecording<TParameter>
     {
-        void Trigger(TParameter parameter);
+        bool IsSignaled(aweXpect.Times? amount = default);
+        void Signal(TParameter parameter);
         aweXpect.Recording.ICallbackRecordingResult<TParameter> Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
-        aweXpect.Recording.ICallbackRecordingResult<TParameter> WaitMultiple(int amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+        aweXpect.Recording.ICallbackRecordingResult<TParameter> Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
     }
     public interface IEventRecordingResult
     {
