@@ -15,11 +15,11 @@ public static partial class ThatCallbackRecordingShould
 	/// <summary>
 	///     Verifies that the expected callback was signaled at least once.
 	/// </summary>
-	public static CallbackTriggerResult<ISignalCounter> BeSignaled(
-		this IThat<ISignalCounter> source)
+	public static CallbackTriggerResult<SignalCounter> BeSignaled(
+		this IThat<SignalCounter> source)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<ISignalCounter>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter>(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint(it, 1, options)),
 			source,
 			options);
@@ -28,11 +28,11 @@ public static partial class ThatCallbackRecordingShould
 	/// <summary>
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled at least once.
 	/// </summary>
-	public static CallbackTriggerResult<ISignalCounter<TParameter>> BeSignaled<TParameter>(
-		this IThat<ISignalCounter<TParameter>> source)
+	public static CallbackTriggerResult<SignalCounter<TParameter>> BeSignaled<TParameter>(
+		this IThat<SignalCounter<TParameter>> source)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<ISignalCounter<TParameter>>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter<TParameter>>(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
@@ -42,12 +42,12 @@ public static partial class ThatCallbackRecordingShould
 	///     Verifies that the expected callback was signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<ISignalCounter> BeSignaled(
-		this IThat<ISignalCounter> source,
+	public static CallbackTriggerResult<SignalCounter> BeSignaled(
+		this IThat<SignalCounter> source,
 		Times times)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<ISignalCounter>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter>(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint(it, times.Value, options)),
 			source,
 			options);
@@ -57,23 +57,23 @@ public static partial class ThatCallbackRecordingShould
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<ISignalCounter<TParameter>> BeSignaled<TParameter>(
-		this IThat<ISignalCounter<TParameter>> source,
+	public static CallbackTriggerResult<SignalCounter<TParameter>> BeSignaled<TParameter>(
+		this IThat<SignalCounter<TParameter>> source,
 		Times times)
 	{
 		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<ISignalCounter<TParameter>>(source.ExpectationBuilder.AddConstraint(it
+		return new CallbackTriggerResult<SignalCounter<TParameter>>(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
 	}
 
 	private readonly struct TriggerConstraint(string it, int count, TriggerCallbackOptions options)
-		: IAsyncConstraint<ISignalCounter>
+		: IAsyncConstraint<SignalCounter>
 	{
-		public async Task<ConstraintResult> IsMetBy(ISignalCounter actual, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(SignalCounter actual, CancellationToken cancellationToken)
 		{
-			ISignalCounterResult result;
+			SignalCounterResult result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
@@ -101,7 +101,7 @@ public static partial class ThatCallbackRecordingShould
 
 			if (result.IsSuccess)
 			{
-				return new ConstraintResult.Success<ISignalCounter>(actual, expectation);
+				return new ConstraintResult.Success<SignalCounter>(actual, expectation);
 			}
 
 			StringBuilder sb = new();
@@ -119,18 +119,18 @@ public static partial class ThatCallbackRecordingShould
 				sb.Append("only recorded ").Append(result.Count).Append(" times");
 			}
 
-			return new ConstraintResult.Failure<ISignalCounter>(actual, expectation, sb.ToString());
+			return new ConstraintResult.Failure<SignalCounter>(actual, expectation, sb.ToString());
 		}
 	}
 
 	private readonly struct TriggerConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
-		: IAsyncConstraint<ISignalCounter<TParameter>>
+		: IAsyncConstraint<SignalCounter<TParameter>>
 	{
 		public async Task<ConstraintResult> IsMetBy(
-			ISignalCounter<TParameter> actual,
+			SignalCounter<TParameter> actual,
 			CancellationToken cancellationToken)
 		{
-			ISignalCounterResult<TParameter> result;
+			SignalCounterResult<TParameter> result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
@@ -158,7 +158,7 @@ public static partial class ThatCallbackRecordingShould
 
 			if (result.IsSuccess)
 			{
-				return new ConstraintResult.Success<ISignalCounter<TParameter>>(actual, expectation);
+				return new ConstraintResult.Success<SignalCounter<TParameter>>(actual, expectation);
 			}
 
 			StringBuilder sb = new();
@@ -182,7 +182,7 @@ public static partial class ThatCallbackRecordingShould
 				Formatter.Format(sb, result.Parameters, FormattingOptions.MultipleLines);
 			}
 
-			return new ConstraintResult.Failure<ISignalCounter<TParameter>>(actual, expectation, sb.ToString());
+			return new ConstraintResult.Failure<SignalCounter<TParameter>>(actual, expectation, sb.ToString());
 		}
 	}
 }

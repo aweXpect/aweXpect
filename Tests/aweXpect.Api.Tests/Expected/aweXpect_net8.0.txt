@@ -93,16 +93,16 @@ namespace aweXpect
     }
     public static class ThatCallbackRecordingShould
     {
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter<TParameter>> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter<TParameter>> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter<TParameter>> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ISignalCounter<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter<TParameter>> source, aweXpect.Times times) { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.ISignalCounter> subject) { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.ISignalCounter<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.ISignalCounter<TParameter>> subject) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter> subject) { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter<TParameter>> subject) { }
     }
     public static class ThatDateOnlyShould
     {

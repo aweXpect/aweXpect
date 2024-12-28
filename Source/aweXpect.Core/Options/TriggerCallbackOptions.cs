@@ -4,7 +4,7 @@ using aweXpect.Recording;
 namespace aweXpect.Options;
 
 /// <summary>
-///     Options for <see cref="ISignalCounter" />
+///     Options for <see cref="SignalCounter" />
 /// </summary>
 public class TriggerCallbackOptions
 {

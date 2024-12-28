@@ -12,7 +12,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggered_ShouldSucceed()
 			{
-				ISignalCounter recording = new SignalCounter();
+				SignalCounter recording = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -26,7 +26,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameter_ShouldSucceed()
 			{
-				ISignalCounter<int> recording = new SignalCounter<int>();
+				SignalCounter<int> recording = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -40,7 +40,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggered_ShouldFail()
 			{
-				ISignalCounter recording = new SignalCounter();
+				SignalCounter recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ => recording.Signal());
@@ -59,7 +59,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameter_ShouldFail()
 			{
-				ISignalCounter<int> recording = new SignalCounter<int>();
+				SignalCounter<int> recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ => recording.Signal(42));

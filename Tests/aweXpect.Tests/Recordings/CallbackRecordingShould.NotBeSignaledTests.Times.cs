@@ -12,7 +12,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredOftenEnough_ShouldSucceed()
 			{
-				ISignalCounter recording = new SignalCounter();
+				SignalCounter recording = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -28,7 +28,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameter_ShouldSucceeded()
 			{
-				ISignalCounter<int> recording = new SignalCounter<int>();
+				SignalCounter<int> recording = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -45,7 +45,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredMoreOften_ShouldFail()
 			{
-				ISignalCounter recording = new SignalCounter();
+				SignalCounter recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
@@ -69,7 +69,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredOftenEnough_ShouldFail()
 			{
-				ISignalCounter recording = new SignalCounter();
+				SignalCounter recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
@@ -92,7 +92,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameterMoreOften_ShouldFail()
 			{
-				ISignalCounter<int> recording = new SignalCounter<int>();
+				SignalCounter<int> recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
@@ -122,7 +122,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameterOftenEnough_ShouldFail()
 			{
-				ISignalCounter<int> recording = new SignalCounter<int>();
+				SignalCounter<int> recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>

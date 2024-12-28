@@ -7,21 +7,28 @@ namespace aweXpect.Recording;
 /// <summary>
 ///     Creates a new signal counter without parameters.
 /// </summary>
-public class SignalCounter : ISignalCounter
+public class SignalCounter
 {
 	private readonly object _lock = new();
 	private CountdownEvent? _countdownEvent;
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
 
-	/// <inheritdoc cref="ISignalCounter.IsSignaled(Times?)" />
+	/// <summary>
+	///     Checks if the callback was signaled at least <paramref name="amount" /> times.
+	/// </summary>
+	/// <remarks>
+	///     If no <paramref name="amount" /> is specified, checks if it was signaled at least once.
+	/// </remarks>
 	public bool IsSignaled(Times? amount = null)
 	{
 		int value = amount?.Value ?? 1;
 		return _counter >= value;
 	}
 
-	/// <inheritdoc cref="ISignalCounter.Signal()" />
+	/// <summary>
+	///     Signals that the callback was executed.
+	/// </summary>
 	public void Signal()
 	{
 		lock (_lock)
@@ -32,8 +39,16 @@ public class SignalCounter : ISignalCounter
 		}
 	}
 
-	/// <inheritdoc cref="ISignalCounter.Wait(TimeSpan?, CancellationToken)" />
-	public ISignalCounterResult Wait(
+	/// <summary>
+	///     Blocks the current thread until the callback was executed at least once
+	///     or the <paramref name="timeout" /> expired
+	///     or the <paramref name="cancellationToken" /> was cancelled.
+	/// </summary>
+	/// <remarks>
+	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
+	///     a default timeout of 30 seconds is used.
+	/// </remarks>
+	public SignalCounterResult Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
@@ -70,9 +85,16 @@ public class SignalCounter : ISignalCounter
 		return new SignalCounterResult(_counter > 0, _counter);
 	}
 
-	/// <inheritdoc
-	///     cref="ISignalCounter.Wait(aweXpect.Times,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)" />
-	public ISignalCounterResult Wait(Times amount, TimeSpan? timeout = null,
+	/// <summary>
+	///     Blocks the current thread until the callback was executed at least the required <paramref name="amount" /> of times
+	///     or the <paramref name="timeout" /> expired
+	///     or the <paramref name="cancellationToken" /> was cancelled.
+	/// </summary>
+	/// <remarks>
+	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
+	///     a default timeout of 30 seconds is used.
+	/// </remarks>
+	public SignalCounterResult Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
 		if (amount.Value <= 0)
@@ -114,7 +136,7 @@ public class SignalCounter : ISignalCounter
 /// <summary>
 ///     Creates a new signal counter with parameters of type <typeparamref name="TParameter" />.
 /// </summary>
-public class SignalCounter<TParameter> : ISignalCounter<TParameter>
+public class SignalCounter<TParameter>
 {
 	private readonly object _lock = new();
 	private readonly List<TParameter> _parameters = new();
@@ -122,14 +144,21 @@ public class SignalCounter<TParameter> : ISignalCounter<TParameter>
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
 
-	/// <inheritdoc cref="ISignalCounter{TParameter}.IsSignaled(Times?)" />
+	/// <summary>
+	///     Checks if the callback was signaled at least <paramref name="amount" /> times.
+	/// </summary>
+	/// <remarks>
+	///     If no <paramref name="amount" /> is specified, checks if it was signaled at least once.
+	/// </remarks>
 	public bool IsSignaled(Times? amount = null)
 	{
 		int value = amount?.Value ?? 1;
 		return _counter >= value;
 	}
 
-	/// <inheritdoc cref="ISignalCounter{TParameter}.Signal(TParameter)" />
+	/// <summary>
+	///     Signals that the callback was executed with the provided <paramref name="parameter" />.
+	/// </summary>
 	public void Signal(TParameter parameter)
 	{
 		lock (_lock)
@@ -141,8 +170,16 @@ public class SignalCounter<TParameter> : ISignalCounter<TParameter>
 		}
 	}
 
-	/// <inheritdoc cref="ISignalCounter{TParameter}.Wait(TimeSpan?, CancellationToken)" />
-	public ISignalCounterResult<TParameter> Wait(
+	/// <summary>
+	///     Blocks the current thread until the callback was executed at least once
+	///     or the <paramref name="timeout" /> expired
+	///     or the <paramref name="cancellationToken" /> was cancelled.
+	/// </summary>
+	/// <remarks>
+	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
+	///     a default timeout of 30 seconds is used.
+	/// </remarks>
+	public SignalCounterResult<TParameter> Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
@@ -179,8 +216,16 @@ public class SignalCounter<TParameter> : ISignalCounter<TParameter>
 		return new SignalCounterResult<TParameter>(_counter > 0, _parameters.ToArray());
 	}
 
-	/// <inheritdoc cref="ISignalCounter{TParameter}.Wait(Times, TimeSpan?, CancellationToken)" />
-	public ISignalCounterResult<TParameter> Wait(Times amount, TimeSpan? timeout = null,
+	/// <summary>
+	///     Blocks the current thread until the callback was executed at least the required <paramref name="amount" /> of times
+	///     or the <paramref name="timeout" /> expired
+	///     or the <paramref name="cancellationToken" /> was cancelled.
+	/// </summary>
+	/// <remarks>
+	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
+	///     a default timeout of 30 seconds is used.
+	/// </remarks>
+	public SignalCounterResult<TParameter> Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 
 	{

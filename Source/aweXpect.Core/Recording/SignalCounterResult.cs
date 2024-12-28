@@ -1,24 +1,36 @@
+using System.Threading;
+
 namespace aweXpect.Recording;
 
-internal class SignalCounterResult(bool wasTriggered, int counter)
-	: ISignalCounterResult
+/// <summary>
+///     The result when waiting in a <see cref="SignalCounter" />.
+/// </summary>
+public class SignalCounterResult(bool wasTriggered, int counter)
 {
-	/// <inheritdoc cref="ISignalCounterResult.Count" />
+	/// <summary>
+	///     The number of times the callback was triggered.
+	/// </summary>
 	public int Count { get; } = counter;
 
-	/// <inheritdoc cref="ISignalCounterResult.IsSuccess" />
+	/// <summary>
+	///     Flag, indicating if the waiting was successful or not.
+	/// </summary>
+	/// <remarks>
+	///     This flag will be <see langword="false" /> if the timeout expired
+	///     or the <see cref="CancellationToken" /> was cancelled prior to enough triggered callbacks;
+	///     otherwise <see langword="true" />.
+	/// </remarks>
 	public bool IsSuccess { get; } = wasTriggered;
 }
 
-internal class SignalCounterResult<TParameter>(bool wasTriggered, TParameter[] parameters)
-	: ISignalCounterResult<TParameter>
+/// <summary>
+///     The result when waiting in a <see cref="SignalCounter{TParameter}" />.
+/// </summary>
+public class SignalCounterResult<TParameter>(bool wasTriggered, TParameter[] parameters)
+	: SignalCounterResult(wasTriggered, parameters.Length)
 {
-	/// <inheritdoc cref="ISignalCounterResult.Count" />
-	public int Count => Parameters.Length;
-
-	/// <inheritdoc cref="ISignalCounterResult.IsSuccess" />
-	public bool IsSuccess { get; } = wasTriggered;
-
-	/// <inheritdoc cref="ISignalCounterResult{TParameter}.Parameters" />
+	/// <summary>
+	///     The parameters provided while triggering the callback.
+	/// </summary>
 	public TParameter[] Parameters { get; } = parameters;
 }
