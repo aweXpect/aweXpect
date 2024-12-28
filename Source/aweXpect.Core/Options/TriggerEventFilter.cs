@@ -29,10 +29,9 @@ public class TriggerEventFilter
 	}
 
 	/// <summary>
-	///     Checks if the provided <paramref name="parameters" /> match all registered predicates
-	///     for the <paramref name="eventName" />.
+	///     Checks if the provided <paramref name="parameters" /> match all registered predicates.
 	/// </summary>
-	public bool IsMatch(string eventName, object?[] parameters)
+	public bool IsMatch(object?[] parameters)
 		=> _predicates.All(predicate => predicate(parameters));
 
 	/// <summary>

@@ -3,10 +3,8 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using aweXpect.Core.Helpers;
-using aweXpect.Options;
 
-namespace aweXpect.Core.Events;
+namespace aweXpect.Events;
 
 internal sealed class EventRecorder(string eventName) : IDisposable
 {
@@ -46,7 +44,10 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 
 		_onDispose = () =>
 		{
-			eventInfo.RemoveEventHandler(subject.Target, handler);
+			if (subject.Target is not null)
+			{
+				eventInfo.RemoveEventHandler(subject.Target, handler);
+			}
 		};
 	}
 
@@ -68,17 +69,17 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 	/// <summary>
 	///     Returns a formatted string for all recorded events.
 	/// </summary>
-	public string ToString(string indent)
-		=> Formatter.Format(_eventQueue, FormattingOptions.MultipleLines).Indent(indent, false);
+	public override string ToString()
+		=> Formatter.Format(_eventQueue, FormattingOptions.MultipleLines);
 
 	/// <summary>
 	///     Gets the number of recorded events that match the <paramref name="filter" />.
 	/// </summary>
-	public int GetEventCount(TriggerEventFilter? filter)
+	public int GetEventCount(Func<object?[], bool>? filter)
 	{
 		if (filter != null)
 		{
-			return _eventQueue.Count(x => filter.IsMatch(eventName, x.Parameters));
+			return _eventQueue.Count(x => filter(x.Parameters));
 		}
 
 		return _eventQueue.Count;

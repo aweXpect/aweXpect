@@ -1,6 +1,6 @@
-﻿using aweXpect.Core.Events;
+﻿using aweXpect.Events;
 
-namespace aweXpect.Core.Tests.Core.Events;
+namespace aweXpect.Core.Tests.Events;
 
 public sealed class EventRecordingTests
 {
@@ -9,13 +9,8 @@ public sealed class EventRecordingTests
 	{
 		CustomEventClass sut = new();
 
-		async Task Act() =>
-			await That(sut)
-				.Triggers("someMissingEventName")
-				.While(t =>
-				{
-					t.NotifyCustomEvent(1);
-				});
+		void Act()
+			=> sut.Record().Events("someMissingEventName");
 
 		await That(Act).Should().Throw<NotSupportedException>()
 			.WithMessage("Event someMissingEventName is not supported on CustomEventClass { }");
@@ -25,14 +20,16 @@ public sealed class EventRecordingTests
 	public async Task ShouldStopListeningOnDispose()
 	{
 		CustomEventClass subject = new();
-		EventRecording<CustomEventClass> sut = new(subject, [nameof(CustomEventClass.CustomEvent)]);
+
+		IRecording<CustomEventClass> recording = subject.Record().Events();
 		subject.NotifyCustomEvent(1);
 		subject.NotifyCustomEvent(2);
 
-		sut.Dispose();
+		recording.Dispose();
 
 		subject.NotifyCustomEvent(3);
-		await That(sut.GetEventCount(nameof(CustomEventClass.CustomEvent), null)).Should().Be(2);
+
+		await That(recording.GetEventCount(nameof(CustomEventClass.CustomEvent), _ => true)).Should().Be(2);
 	}
 
 	private sealed class CustomEventClass

@@ -212,6 +212,25 @@ namespace aweXpect.Customization
         System.IDisposable ExcludeAssemblies(System.Action<System.Collections.Generic.List<string>> excludedAssemblyPrefixes);
     }
 }
+namespace aweXpect.Events
+{
+    public interface IRecording<TSubject> : System.IDisposable
+    {
+        int GetEventCount(string eventName, System.Func<object?[], bool>? filter = null);
+        string ToString(string eventName);
+    }
+    public static class RecordExtensions
+    {
+        public static aweXpect.Events.RecordingFactory<TSubject> Record<TSubject>(this TSubject subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
+            where TSubject :  notnull { }
+    }
+    public class RecordingFactory<TSubject>
+        where TSubject :  notnull
+    {
+        public RecordingFactory(TSubject subject, string subjectExpression) { }
+        public aweXpect.Events.IRecording<TSubject> Events(params string[] eventNames) { }
+    }
+}
 namespace aweXpect
 {
     public static class Expect
@@ -263,10 +282,6 @@ namespace aweXpect
     public static class TimesExtensions
     {
         public static aweXpect.Times Times(this int value) { }
-    }
-    public static class TriggersExtensions
-    {
-        public static aweXpect.Results.TriggerParameterResult<T> Triggers<T>(this aweXpect.Core.IExpectSubject<T> subject, string eventName) { }
     }
 }
 namespace aweXpect.Formatting
@@ -476,7 +491,7 @@ namespace aweXpect.Options
     {
         public TriggerEventFilter() { }
         public void AddPredicate(System.Func<object?[], bool> predicate, string predicateExpression) { }
-        public bool IsMatch(string eventName, object?[] parameters) { }
+        public bool IsMatch(object?[] parameters) { }
         public override string ToString() { }
     }
 }
@@ -670,39 +685,5 @@ namespace aweXpect.Results
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
         public TSelf Within(System.TimeSpan tolerance) { }
-    }
-    public class TriggerParameterResult<T> : aweXpect.Results.TriggerResult<T, aweXpect.Results.TriggerParameterResult<T>>
-    {
-        public TriggerParameterResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IExpectSubject<T> returnValue, string eventName, aweXpect.Options.Quantifier quantifier) { }
-        protected override aweXpect.Options.TriggerEventFilter? GetFilter() { }
-        protected override void ResetFilter() { }
-        public aweXpect.Results.TriggerParameterResult<T> With<TEventArgs>(System.Func<TEventArgs, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "")
-            where TEventArgs : System.EventArgs { }
-        public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(int position, System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public aweXpect.Results.TriggerParameterResult<T> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate) { }
-        public aweXpect.Results.TriggerParameterResult<T> WithSender(System.Func<object?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-    }
-    public abstract class TriggerResult<T, TSelf>
-        where TSelf : aweXpect.Results.TriggerResult<T, TSelf>
-    {
-        protected TriggerResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IExpectSubject<T> returnValue, string eventName, aweXpect.Options.Quantifier quantifier) { }
-        public aweXpect.Results.TriggerResult<T, TSelf>.TriggerAndResult<TSelf> And { get; }
-        public TSelf AtLeast(aweXpect.Times minimum) { }
-        public TSelf AtMost(aweXpect.Times maximum) { }
-        public aweXpect.Results.BetweenResult<TSelf> Between(int minimum) { }
-        public TSelf Exactly(aweXpect.Times expected) { }
-        protected virtual aweXpect.Options.TriggerEventFilter? GetFilter() { }
-        public TSelf Never() { }
-        public TSelf Once() { }
-        protected abstract void ResetFilter();
-        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> While(System.Action<T> callback) { }
-        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> While(System.Func<T, System.Threading.Tasks.Task> callback) { }
-        public aweXpect.Results.AndOrResult<T, aweXpect.Core.IExpectSubject<T>> While(System.Func<T, System.Threading.CancellationToken, System.Threading.Tasks.Task> callback) { }
-        public class TriggerAndResult<TResult>
-        {
-            public TriggerAndResult(System.Func<string, TResult> callback) { }
-            public TResult Triggers(string eventName) { }
-        }
     }
 }
