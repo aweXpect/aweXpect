@@ -3,14 +3,14 @@ using System.Threading;
 namespace aweXpect.Recording;
 
 /// <summary>
-///     The result of a <see cref="ICallbackRecording" />.
+///     The result when waiting in a <see cref="SignalCounter" />.
 /// </summary>
-public interface ICallbackRecordingResult
+public class SignalCounterResult(bool wasTriggered, int counter)
 {
 	/// <summary>
 	///     The number of times the callback was triggered.
 	/// </summary>
-	public int Count { get; }
+	public int Count { get; } = counter;
 
 	/// <summary>
 	///     Flag, indicating if the waiting was successful or not.
@@ -20,16 +20,17 @@ public interface ICallbackRecordingResult
 	///     or the <see cref="CancellationToken" /> was cancelled prior to enough triggered callbacks;
 	///     otherwise <see langword="true" />.
 	/// </remarks>
-	public bool IsSuccess { get; }
+	public bool IsSuccess { get; } = wasTriggered;
 }
 
 /// <summary>
-///     The result of a <see cref="ICallbackRecording{TParameter}" />.
+///     The result when waiting in a <see cref="SignalCounter{TParameter}" />.
 /// </summary>
-public interface ICallbackRecordingResult<out TParameter> : ICallbackRecordingResult
+public class SignalCounterResult<TParameter>(bool wasTriggered, TParameter[] parameters)
+	: SignalCounterResult(wasTriggered, parameters.Length)
 {
 	/// <summary>
 	///     The parameters provided while triggering the callback.
 	/// </summary>
-	public TParameter[] Parameters { get; }
+	public TParameter[] Parameters { get; } = parameters;
 }

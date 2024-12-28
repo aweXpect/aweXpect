@@ -1,27 +1,27 @@
 ﻿using System.Threading;
 using aweXpect.Recording;
-using Record = aweXpect.Recording.Record;
+// ReSharper disable MethodHasAsyncOverload
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class CallbackRecordingShould
+public sealed partial class SignalCounterShould
 {
-	public sealed partial class Trigger
+	public sealed partial class BeSignaled
 	{
 		public sealed class WithinTests
 		{
 			[Fact]
 			public async Task WhenNotTriggeredWithinTheGivenTimeout_ShouldFail()
 			{
-				ICallbackRecording recording = Record.Callback();
+				SignalCounter recording = new();
 				using CancellationTokenSource cts = new();
 				CancellationToken token = cts.Token;
 
 				_ = Task.Delay(TimeSpan.FromSeconds(5), token)
-					.ContinueWith(_ => recording.Trigger(), token);
+					.ContinueWith(_ => recording.Signal(), token);
 
 				async Task Act() =>
-					await That(recording).Should().Trigger().Within(TimeSpan.FromMilliseconds(40));
+					await That(recording).Should().BeSignaled().Within(TimeSpan.FromMilliseconds(40));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -35,15 +35,15 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameterWithinTheGivenTimeout_ShouldFail()
 			{
-				ICallbackRecording<string> recording = Record.Callback<string>();
+				SignalCounter<string> recording = new();
 				using CancellationTokenSource cts = new();
 				CancellationToken token = cts.Token;
 
 				_ = Task.Delay(TimeSpan.FromSeconds(5), token)
-					.ContinueWith(_ => recording.Trigger("foo"), token);
+					.ContinueWith(_ => recording.Signal("foo"), token);
 
 				async Task Act() =>
-					await That(recording).Should().Trigger().Within(TimeSpan.FromMilliseconds(40));
+					await That(recording).Should().BeSignaled().Within(TimeSpan.FromMilliseconds(40));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -57,13 +57,13 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithinTheGivenTimeout_ShouldSucceed()
 			{
-				ICallbackRecording recording = Record.Callback();
+				SignalCounter recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger());
+					.ContinueWith(_ => recording.Signal());
 
 				async Task Act() =>
-					await That(recording).Should().Trigger().Within(TimeSpan.FromSeconds(10));
+					await That(recording).Should().BeSignaled().Within(TimeSpan.FromSeconds(10));
 
 				await That(Act).Should().NotThrow();
 			}
@@ -71,13 +71,13 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameterWithinTheGivenTimeout_ShouldSucceed()
 			{
-				ICallbackRecording<string> recording = Record.Callback<string>();
+				SignalCounter<string> recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger("foo"));
+					.ContinueWith(_ => recording.Signal("foo"));
 
 				async Task Act() =>
-					await That(recording).Should().Trigger().Within(TimeSpan.FromSeconds(10));
+					await That(recording).Should().BeSignaled().Within(TimeSpan.FromSeconds(10));
 
 				await That(Act).Should().NotThrow();
 			}

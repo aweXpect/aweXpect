@@ -1,25 +1,24 @@
 ﻿using System.Threading;
 using aweXpect.Recording;
-using Record = aweXpect.Recording.Record;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class CallbackRecordingShould
+public sealed partial class SignalCounterShould
 {
-	public sealed partial class NotTrigger
+	public sealed partial class NotBeSignaled
 	{
 		public sealed class Tests
 		{
 			[Fact]
 			public async Task WhenNotTriggered_ShouldSucceed()
 			{
-				ICallbackRecording recording = Record.Callback();
+				SignalCounter recording = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger().WithCancellation(token);
+					await That(recording).Should().NotBeSignaled().WithCancellation(token);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -27,13 +26,13 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameter_ShouldSucceed()
 			{
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				SignalCounter<int> recording = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger().WithCancellation(token);
+					await That(recording).Should().NotBeSignaled().WithCancellation(token);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -41,13 +40,13 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggered_ShouldFail()
 			{
-				ICallbackRecording recording = Record.Callback();
+				SignalCounter recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger());
+					.ContinueWith(_ => recording.Signal());
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger();
+					await That(recording).Should().NotBeSignaled();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -60,20 +59,19 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameter_ShouldFail()
 			{
-				var token = new CancellationTokenSource(5000).Token;
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				SignalCounter<int> recording = new();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
-					.ContinueWith(_ => recording.Trigger(42));
+					.ContinueWith(_ => recording.Signal(42));
 
 				async Task Act() =>
-					await That(recording).Should().NotTrigger();
+					await That(recording).Should().NotBeSignaled();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             not have recorded the callback,
-					             but it was recorded once with [
+					             but it was recorded once in [
 					               42
 					             ]
 					             """);
