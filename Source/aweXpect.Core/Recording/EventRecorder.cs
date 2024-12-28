@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace aweXpect.Events;
+namespace aweXpect.Recording;
 
 internal sealed class EventRecorder(string eventName) : IDisposable
 {

@@ -3,8 +3,8 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 using aweXpect.Core;
-using aweXpect.Events;
 using aweXpect.Options;
+using aweXpect.Recording;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -16,7 +16,7 @@ public static partial class ThatRecordingShould
 	///     for the property given by the <paramref name="propertyExpression" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> HaveTriggeredPropertyChangedFor<TSubject, TProperty>(
-		this IThat<IRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		Expression<Func<TSubject, TProperty>> propertyExpression)
 		where TSubject : INotifyPropertyChanged
 	{
@@ -32,7 +32,7 @@ public static partial class ThatRecordingShould
 	///     for the given <paramref name="propertyName" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> HaveTriggeredPropertyChangedFor<TSubject>(
-		this IThat<IRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		string? propertyName)
 		where TSubject : INotifyPropertyChanged
 	{
@@ -55,7 +55,7 @@ public static partial class ThatRecordingShould
 	///     for the property given by the <paramref name="propertyExpression" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> NotHaveTriggeredPropertyChangedFor<TSubject, TProperty>(
-		this IThat<IRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		Expression<Func<TSubject, TProperty>> propertyExpression)
 		where TSubject : INotifyPropertyChanged
 	{
@@ -71,7 +71,7 @@ public static partial class ThatRecordingShould
 	///     for the given <paramref name="propertyName" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> NotHaveTriggeredPropertyChangedFor<TSubject>(
-		this IThat<IRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		string? propertyName)
 		where TSubject : INotifyPropertyChanged
 	{

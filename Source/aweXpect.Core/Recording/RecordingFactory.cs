@@ -1,7 +1,7 @@
-namespace aweXpect.Events;
+namespace aweXpect.Recording;
 
 /// <summary>
-///     Factory for creating a <see cref="IRecording{TSubject}" />.
+///     Factory for creating a <see cref="IEventRecording{TSubject}" />.
 /// </summary>
 public class RecordingFactory<TSubject>(TSubject subject, string subjectExpression)
 	where TSubject : notnull
@@ -12,6 +12,6 @@ public class RecordingFactory<TSubject>(TSubject subject, string subjectExpressi
 	/// <remarks>
 	///     If no <paramref name="eventNames" /> are provided, all events on the subject are recorded.
 	/// </remarks>
-	public IRecording<TSubject> Events(params string[] eventNames)
+	public IEventRecording<TSubject> Events(params string[] eventNames)
 		=> new EventRecording<TSubject>(subject, subjectExpression, eventNames);
 }

@@ -1,18 +1,19 @@
 ﻿using aweXpect.Core;
-using aweXpect.Events;
 using aweXpect.Helpers;
+using aweXpect.Recording;
 
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on event <see cref="IRecording{TSubject}" />.
+///     Expectations on event <see cref="IEventRecording{TSubject}" />.
 /// </summary>
 public static partial class ThatRecordingShould
 {
 	/// <summary>
-	///     Start expectations for the current <see cref="IRecording{TSubject}" /> <paramref name="subject" />.
+	///     Start expectations for the current <see cref="IEventRecording{TSubject}" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<IRecording<TSubject>> Should<TSubject>(this IExpectSubject<IRecording<TSubject>> subject)
+	public static IThat<IEventRecording<TSubject>> Should<TSubject>(
+		this IExpectSubject<IEventRecording<TSubject>> subject)
 		where TSubject : notnull
 		=> subject.Should(That.WithoutAction);
 }

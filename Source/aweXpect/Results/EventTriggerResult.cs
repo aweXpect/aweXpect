@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
-using aweXpect.Events;
 using aweXpect.Options;
+using aweXpect.Recording;
 
 namespace aweXpect.Results;
 
@@ -12,10 +12,10 @@ namespace aweXpect.Results;
 /// </summary>
 public class EventTriggerResult<TSubject>(
 	ExpectationBuilder expectationBuilder,
-	IThat<IRecording<TSubject>> returnValue,
+	IThat<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
 	Quantifier quantifier)
-	: CountResult<IRecording<TSubject>, IThat<IRecording<TSubject>>>(expectationBuilder, returnValue, quantifier)
+	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(expectationBuilder, returnValue, quantifier)
 where TSubject : notnull
 {
 	/// <summary>

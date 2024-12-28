@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace aweXpect.Events;
+namespace aweXpect.Recording;
 
 /// <summary>
-///     Extension methods for creating <see cref="IRecording{TSubject}" />.
+///     Extension methods for creating <see cref="IEventRecording{TSubject}" />.
 /// </summary>
 public static class RecordExtensions
 {
