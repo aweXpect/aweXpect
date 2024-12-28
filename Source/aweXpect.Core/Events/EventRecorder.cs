@@ -44,7 +44,10 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 
 		_onDispose = () =>
 		{
-			eventInfo.RemoveEventHandler(subject.Target, handler);
+			if (subject.Target is not null)
+			{
+				eventInfo.RemoveEventHandler(subject.Target, handler);
+			}
 		};
 	}
 
