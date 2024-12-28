@@ -3,7 +3,7 @@ using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class CallbackRecordingShould
+public sealed partial class SignalCounterShould
 {
 	public sealed partial class NotBeSignaled
 	{
@@ -110,7 +110,7 @@ public sealed partial class CallbackRecordingShould
 					.WithMessage("""
 					             Expected recording to
 					             not have recorded the callback at least 3 times,
-					             but it was recorded 4 times with [
+					             but it was recorded 4 times in [
 					               1,
 					               2,
 					               3,
@@ -139,7 +139,7 @@ public sealed partial class CallbackRecordingShould
 					.WithMessage("""
 					             Expected recording to
 					             not have recorded the callback at least 3 times,
-					             but it was recorded 3 times with [
+					             but it was recorded 3 times in [
 					               1,
 					               2,
 					               3

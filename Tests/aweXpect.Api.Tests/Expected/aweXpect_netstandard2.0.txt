@@ -31,19 +31,6 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<bool, aweXpect.Core.IThat<bool>> NotBe(this aweXpect.Core.IThat<bool> source, bool unexpected) { }
         public static aweXpect.Core.IThat<bool> Should(this aweXpect.Core.IExpectSubject<bool> subject) { }
     }
-    public static class ThatCallbackRecordingShould
-    {
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter, aweXpect.Recording.SignalCounterResult> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter, aweXpect.Recording.SignalCounterResult> BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>, aweXpect.Recording.SignalCounterResult<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>, aweXpect.Recording.SignalCounterResult<TParameter>> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter, aweXpect.Recording.SignalCounterResult> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter, aweXpect.Recording.SignalCounterResult> NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>, aweXpect.Recording.SignalCounterResult<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
-        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.SignalCounter<TParameter>, aweXpect.Recording.SignalCounterResult<TParameter>> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter> subject) { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter<TParameter>> subject) { }
-    }
     public static class ThatDateTimeOffsetShould
     {
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> Be(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
@@ -733,6 +720,19 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> NotBeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Core.IThat<object?> Should(this aweXpect.Core.IExpectSubject<object?> subject) { }
     }
+    public static class ThatSignalCounterShould
+    {
+        public static aweXpect.Results.SignalCountResult BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
+        public static aweXpect.Results.SignalCountResult BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
+        public static aweXpect.Results.SignalCountResult NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter> subject) { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter<TParameter>> subject) { }
+    }
     public static class ThatStreamShould
     {
         public static aweXpect.Results.AndOrResult<System.IO.Stream?, aweXpect.Core.IThat<System.IO.Stream?>> BeReadOnly(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
@@ -832,11 +832,6 @@ namespace aweXpect.Results
         public aweXpect.Results.ItemsResult<TTarget> And(int maximum) { }
         public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
     }
-    public class CallbackTriggerResult<TCallback, TCallbackResult> : aweXpect.Results.AndOrResult<TCallbackResult, aweXpect.Core.IThat<TCallback>>
-    {
-        public CallbackTriggerResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCallback> returnValue, aweXpect.Options.TriggerCallbackOptions options) { }
-        public aweXpect.Results.CallbackTriggerResult<TCallback, TCallbackResult> Within(System.TimeSpan timeout) { }
-    }
     public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>
         where TSubject :  notnull
     {
@@ -884,6 +879,17 @@ namespace aweXpect.Results
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions options) { }
         public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+    }
+    public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Recording.SignalCounterResult, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter>>
+    {
+        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> returnValue, aweXpect.Options.SignalCounterOptions options) { }
+        public aweXpect.Results.SignalCountResult Within(System.TimeSpan timeout) { }
+    }
+    public class SignalCountResult<TParameter> : aweXpect.Results.AndOrResult<aweXpect.Recording.SignalCounterResult<TParameter>, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>>>
+    {
+        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> returnValue, aweXpect.Options.SignalCounterOptions<TParameter> options) { }
+        public aweXpect.Results.SignalCountResult<TParameter> With(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.SignalCountResult<TParameter> Within(System.TimeSpan timeout) { }
     }
     public class SingleItemResult<TCollection, TItem> : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>>
     {

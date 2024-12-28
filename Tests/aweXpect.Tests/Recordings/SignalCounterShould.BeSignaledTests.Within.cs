@@ -4,7 +4,7 @@ using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class CallbackRecordingShould
+public sealed partial class SignalCounterShould
 {
 	public sealed partial class BeSignaled
 	{

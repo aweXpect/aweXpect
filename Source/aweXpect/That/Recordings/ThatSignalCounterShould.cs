@@ -5,9 +5,9 @@ using aweXpect.Recording;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on callback recordings.
+///     Expectations on signal counters.
 /// </summary>
-public static partial class ThatCallbackRecordingShould
+public static partial class ThatSignalCounterShould
 {
 	/// <summary>
 	///     Start expectations for the current <see cref="SignalCounter" /> <paramref name="subject" />.

@@ -4,7 +4,7 @@ using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class CallbackRecordingShould
+public sealed partial class SignalCounterShould
 {
 	public sealed partial class NotBeSignaled
 	{
@@ -78,7 +78,7 @@ public sealed partial class CallbackRecordingShould
 					.WithMessage("""
 					             Expected recording to
 					             not have recorded the callback within 0:10,
-					             but it was recorded once with [
+					             but it was recorded once in [
 					               "foo"
 					             ]
 					             """);

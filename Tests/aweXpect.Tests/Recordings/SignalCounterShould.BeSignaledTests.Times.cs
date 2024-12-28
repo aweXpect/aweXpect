@@ -3,7 +3,7 @@ using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class CallbackRecordingShould
+public sealed partial class SignalCounterShould
 {
 	public sealed partial class BeSignaled
 	{
@@ -48,7 +48,7 @@ public sealed partial class CallbackRecordingShould
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the callback at least 3 times,
-					             but it was only recorded 2 times with [
+					             but it was only recorded 2 times in [
 					               1,
 					               2
 					             ]

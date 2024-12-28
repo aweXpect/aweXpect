@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace aweXpect.Recording;
@@ -142,6 +143,7 @@ public class SignalCounter<TParameter>
 	private readonly List<TParameter> _parameters = new();
 	private CountdownEvent? _countdownEvent;
 	private int _counter;
+	private Func<TParameter, bool>? _predicate;
 	private ManualResetEventSlim? _resetEvent;
 
 	/// <summary>
@@ -165,8 +167,11 @@ public class SignalCounter<TParameter>
 		{
 			Interlocked.Increment(ref _counter);
 			_parameters.Add(parameter);
-			_resetEvent?.Set();
-			_countdownEvent?.Signal();
+			if (_predicate?.Invoke(parameter) != false)
+			{
+				_resetEvent?.Set();
+				_countdownEvent?.Signal();
+			}
 		}
 	}
 
@@ -181,11 +186,13 @@ public class SignalCounter<TParameter>
 	/// </remarks>
 	public SignalCounterResult<TParameter> Wait(
 		TimeSpan? timeout = null,
-		CancellationToken cancellationToken = default)
+		CancellationToken cancellationToken = default,
+		Func<TParameter, bool>? predicate = null)
 	{
+		_predicate = predicate;
 		lock (_lock)
 		{
-			if (_counter == 0)
+			if (GetMatchingCount(predicate) == 0)
 			{
 				_resetEvent = new ManualResetEventSlim();
 			}
@@ -213,7 +220,7 @@ public class SignalCounter<TParameter>
 			return new SignalCounterResult<TParameter>(false, _parameters.ToArray());
 		}
 
-		return new SignalCounterResult<TParameter>(_counter > 0, _parameters.ToArray());
+		return new SignalCounterResult<TParameter>(GetMatchingCount(predicate) > 0, _parameters.ToArray());
 	}
 
 	/// <summary>
@@ -225,10 +232,14 @@ public class SignalCounter<TParameter>
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	public SignalCounterResult<TParameter> Wait(Times amount, TimeSpan? timeout = null,
-		CancellationToken cancellationToken = default)
+	public SignalCounterResult<TParameter> Wait(
+		Times amount,
+		TimeSpan? timeout = null,
+		CancellationToken cancellationToken = default,
+		Func<TParameter, bool>? predicate = null)
 
 	{
+		_predicate = predicate;
 		if (amount.Value <= 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(amount), "The amount must be greater than zero.");
@@ -236,12 +247,13 @@ public class SignalCounter<TParameter>
 
 		lock (_lock)
 		{
-			if (_counter >= amount.Value)
+			int actualCount = GetMatchingCount(predicate);
+			if (actualCount >= amount.Value)
 			{
 				return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
 			}
 
-			_countdownEvent = new CountdownEvent(amount.Value - _counter);
+			_countdownEvent = new CountdownEvent(amount.Value - actualCount);
 		}
 
 		timeout ??= TimeSpan.FromSeconds(30);
@@ -262,5 +274,15 @@ public class SignalCounter<TParameter>
 		}
 
 		return new SignalCounterResult<TParameter>(false, _parameters.ToArray());
+	}
+
+	private int GetMatchingCount(Func<TParameter, bool>? predicate)
+	{
+		if (predicate is null)
+		{
+			return _parameters.Count;
+		}
+
+		return _parameters.Count(predicate);
 	}
 }

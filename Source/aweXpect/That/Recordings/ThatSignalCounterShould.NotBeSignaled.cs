@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,16 +11,16 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatCallbackRecordingShould
+public static partial class ThatSignalCounterShould
 {
 	/// <summary>
 	///     Verifies that the expected callback was not signaled.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter, SignalCounterResult> NotBeSignaled(
+	public static SignalCountResult NotBeSignaled(
 		this IThat<SignalCounter> source)
 	{
-		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter, SignalCounterResult>(source.ExpectationBuilder.AddConstraint(it
+		SignalCounterOptions options = new();
+		return new SignalCountResult(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint(it, 1, options)),
 			source,
 			options);
@@ -28,11 +29,11 @@ public static partial class ThatCallbackRecordingShould
 	/// <summary>
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>> NotBeSignaled<TParameter>(
+	public static SignalCountResult<TParameter> NotBeSignaled<TParameter>(
 		this IThat<SignalCounter<TParameter>> source)
 	{
-		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>>(source.ExpectationBuilder.AddConstraint(it
+		SignalCounterOptions<TParameter> options = new();
+		return new SignalCountResult<TParameter>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
@@ -42,12 +43,12 @@ public static partial class ThatCallbackRecordingShould
 	///     Verifies that the expected callback was not signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter, SignalCounterResult> NotBeSignaled(
+	public static SignalCountResult NotBeSignaled(
 		this IThat<SignalCounter> source,
 		Times times)
 	{
-		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter, SignalCounterResult>(source.ExpectationBuilder.AddConstraint(it
+		SignalCounterOptions options = new();
+		return new SignalCountResult(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint(it, times.Value, options)),
 			source,
 			options);
@@ -57,18 +58,18 @@ public static partial class ThatCallbackRecordingShould
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>> NotBeSignaled<TParameter>(
+	public static SignalCountResult<TParameter> NotBeSignaled<TParameter>(
 		this IThat<SignalCounter<TParameter>> source,
 		Times times)
 	{
-		TriggerCallbackOptions options = new();
-		return new CallbackTriggerResult<SignalCounter<TParameter>, SignalCounterResult<TParameter>>(source.ExpectationBuilder.AddConstraint(it
+		SignalCounterOptions<TParameter> options = new();
+		return new SignalCountResult<TParameter>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotSignaledConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
 	}
 
-	private readonly struct NotSignaledConstraint(string it, int count, TriggerCallbackOptions options)
+	private readonly struct NotSignaledConstraint(string it, int count, SignalCounterOptions options)
 		: IAsyncConstraint<SignalCounter>
 	{
 		public async Task<ConstraintResult> IsMetBy(SignalCounter actual, CancellationToken cancellationToken)
@@ -91,13 +92,9 @@ public static partial class ThatCallbackRecordingShould
 
 			string expectation = count switch
 			{
-				1 => "not have recorded the callback",
-				_ => $"not have recorded the callback at least {count} times"
+				1 => $"not have recorded the callback{options}",
+				_ => $"not have recorded the callback at least {count} times{options}"
 			};
-			if (timeout != null)
-			{
-				expectation += $" within {Formatter.Format(timeout.Value)}";
-			}
 
 			if (!result.IsSuccess)
 			{
@@ -119,56 +116,58 @@ public static partial class ThatCallbackRecordingShould
 		}
 	}
 
-	private readonly struct NotSignaledConstraint<TParameter>(string it, int count, TriggerCallbackOptions options)
+	private readonly struct NotSignaledConstraint<TParameter>(
+		string it,
+		int count,
+		SignalCounterOptions<TParameter> options)
 		: IAsyncConstraint<SignalCounter<TParameter>>
 	{
 		public async Task<ConstraintResult> IsMetBy(
 			SignalCounter<TParameter> actual,
 			CancellationToken cancellationToken)
 		{
+			SignalCounterOptions<TParameter> o = options;
 			SignalCounterResult<TParameter> result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
 				result = await Task.Run(()
-						=> actual.Wait(timeout, cancellationToken),
+						=> actual.Wait(timeout, cancellationToken, o.Matches),
 					CancellationToken.None);
 			}
 			else
 			{
 				int amount = count;
 				result = await Task.Run(()
-						=> actual.Wait(amount, timeout, cancellationToken),
+						=> actual.Wait(amount, timeout, cancellationToken, o.Matches),
 					CancellationToken.None);
 			}
 
+			int actualCount = result.Parameters.Count(p => o.Matches(p));
+
 			string expectation = count switch
 			{
-				1 => "not have recorded the callback",
-				_ => $"not have recorded the callback at least {count} times"
+				1 => $"not have recorded the callback{options}",
+				_ => $"not have recorded the callback at least {count} times{options}"
 			};
-			if (timeout != null)
-			{
-				expectation += $" within {Formatter.Format(timeout.Value)}";
-			}
 
-			if (!result.IsSuccess)
+			if (!result.IsSuccess || actualCount < count)
 			{
 				return new ConstraintResult.Success<SignalCounterResult<TParameter>>(result, expectation);
 			}
 
 			StringBuilder sb = new();
 			sb.Append(it).Append(" was ");
-			if (result.Count == 1)
+			if (actualCount == 1)
 			{
 				sb.Append("recorded once");
 			}
 			else
 			{
-				sb.Append("recorded ").Append(result.Count).Append(" times");
+				sb.Append("recorded ").Append(actualCount).Append(" times");
 			}
 
-			sb.Append(" with ");
+			sb.Append(" in ");
 			Formatter.Format(sb, result.Parameters, FormattingOptions.MultipleLines);
 
 			return new ConstraintResult.Failure<SignalCounterResult<TParameter>>(result, expectation, sb.ToString());
