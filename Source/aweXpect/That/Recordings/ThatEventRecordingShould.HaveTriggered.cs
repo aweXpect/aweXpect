@@ -7,7 +7,7 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatRecordingShould
+public static partial class ThatEventRecordingShould
 {
 	/// <summary>
 	///     Verifies that the subject has triggered the expected <paramref name="eventName" />.

@@ -2,7 +2,7 @@
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class RecordingShould
+public sealed partial class EventRecordingShould
 {
 	public sealed partial class HaveTriggered
 	{

@@ -1,0 +1,83 @@
+﻿using System.Threading;
+using aweXpect.Recording;
+using Record = aweXpect.Recording.Record;
+
+namespace aweXpect.Tests.Recordings;
+
+public sealed partial class CallbackRecordingShould
+{
+	public sealed partial class NotTrigger
+	{
+		public sealed class Tests
+		{
+			[Fact]
+			public async Task WhenNotTriggered_ShouldSucceed()
+			{
+				ICallbackRecording recording = Record.Callback();
+				using CancellationTokenSource cts = new();
+				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
+				CancellationToken token = cts.Token;
+
+				async Task Act() =>
+					await That(recording).Should().NotTrigger().WithCancellation(token);
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenNotTriggeredWithParameter_ShouldSucceed()
+			{
+				ICallbackRecording<int> recording = Record.Callback<int>();
+				using CancellationTokenSource cts = new();
+				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
+				CancellationToken token = cts.Token;
+
+				async Task Act() =>
+					await That(recording).Should().NotTrigger().WithCancellation(token);
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenTriggered_ShouldFail()
+			{
+				ICallbackRecording recording = Record.Callback();
+
+				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+					.ContinueWith(_ => recording.Trigger());
+
+				async Task Act() =>
+					await That(recording).Should().NotTrigger();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected recording to
+					             not have recorded the callback,
+					             but it was recorded once
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenTriggeredWithParameter_ShouldFail()
+			{
+				var token = new CancellationTokenSource(5000).Token;
+				ICallbackRecording<int> recording = Record.Callback<int>();
+
+				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+					.ContinueWith(_ => recording.Trigger(42));
+
+				async Task Act() =>
+					await That(recording).Should().NotTrigger();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected recording to
+					             not have recorded the callback,
+					             but it was recorded once with [
+					               42
+					             ]
+					             """);
+			}
+		}
+	}
+}

@@ -24,8 +24,8 @@ class MyClass
 MyClass sut = new MyClass();
 
 // ↓ Records all events
-IRecording recording = sut.Record().Events();
-IRecording recording = sut.Record().Events(nameof(MyClass.ThresholdReached));
+IEventRecording<MyClass> recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events(nameof(MyClass.ThresholdReached));
 // ↑ Records only the ThresholdReached event
 ```
 
@@ -34,7 +34,7 @@ IRecording recording = sut.Record().Events(nameof(MyClass.ThresholdReached));
 You can verify, that a recording recorded an event:
 ```csharp
 // Start the recording
-IRecording recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events();
 
 // Perform some action on the subject under test
 sut.OnThresholdReached(new ThresholdReachedEventArgs());
@@ -49,7 +49,7 @@ await Expect.That(recording).Should()
 
 You can filter the recorded events based on their parameters.
 ```csharp
-IRecording recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events();
 
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
@@ -63,7 +63,7 @@ await Expect.That(recording).Should()
 
 When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the recorded events based on the sender (the first parameter):
 ```csharp
-IRecording recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events();
 
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 
@@ -76,7 +76,7 @@ await Expect.That(recording).Should()
 
 When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the recorded events based on their `EventArgs` (the second parameter):
 ```csharp
-IRecording recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events();
 
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 
@@ -89,7 +89,7 @@ await Expect.That(recording).Should()
 
 You can verify, that an event was recorded a specific number of times
 ```csharp
-IRecording recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events();
 
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
@@ -111,7 +111,7 @@ For common events, you can create specific overloads.
 Included are some overloads for the [`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged) event:
 ```csharp
 MyClass sut = // ...implements INotifyPropertyChanged
-IRecording recording = sut.Record().Events();
+IEventRecording<MyClass> recording = sut.Record().Events();
 
 // do something that triggers the PropertyChanged event
 sut.Execute();
