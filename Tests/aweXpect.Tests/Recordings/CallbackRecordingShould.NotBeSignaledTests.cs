@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using aweXpect.Recording;
-using Record = aweXpect.Recording.Record;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -13,7 +12,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggered_ShouldSucceed()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -27,7 +26,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameter_ShouldSucceed()
 			{
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				ISignalCounter<int> recording = new SignalCounter<int>();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -41,7 +40,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggered_ShouldFail()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ => recording.Signal());
@@ -60,8 +59,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameter_ShouldFail()
 			{
-				var token = new CancellationTokenSource(5000).Token;
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				ISignalCounter<int> recording = new SignalCounter<int>();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ => recording.Signal(42));

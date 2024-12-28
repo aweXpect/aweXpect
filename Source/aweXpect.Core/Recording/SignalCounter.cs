@@ -4,21 +4,24 @@ using System.Threading;
 
 namespace aweXpect.Recording;
 
-internal class CallbackRecording : ICallbackRecording
+/// <summary>
+///     Creates a new signal counter without parameters.
+/// </summary>
+public class SignalCounter : ISignalCounter
 {
 	private readonly object _lock = new();
 	private CountdownEvent? _countdownEvent;
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
 
-	/// <inheritdoc cref="ICallbackRecording.IsSignaled(Times?)" />
+	/// <inheritdoc cref="ISignalCounter.IsSignaled(Times?)" />
 	public bool IsSignaled(Times? amount = null)
 	{
 		int value = amount?.Value ?? 1;
 		return _counter >= value;
 	}
 
-	/// <inheritdoc cref="ICallbackRecording.Signal()" />
+	/// <inheritdoc cref="ISignalCounter.Signal()" />
 	public void Signal()
 	{
 		lock (_lock)
@@ -29,8 +32,8 @@ internal class CallbackRecording : ICallbackRecording
 		}
 	}
 
-	/// <inheritdoc cref="ICallbackRecording.Wait(TimeSpan?, CancellationToken)" />
-	public ICallbackRecordingResult Wait(
+	/// <inheritdoc cref="ISignalCounter.Wait(TimeSpan?, CancellationToken)" />
+	public ISignalCounterResult Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
@@ -49,7 +52,7 @@ internal class CallbackRecording : ICallbackRecording
 			{
 				if (_resetEvent.Wait(timeout.Value, cancellationToken))
 				{
-					return new CallbackRecordingResult(true, _counter);
+					return new SignalCounterResult(true, _counter);
 				}
 			}
 			catch (OperationCanceledException)
@@ -61,15 +64,15 @@ internal class CallbackRecording : ICallbackRecording
 				_resetEvent.Dispose();
 			}
 
-			return new CallbackRecordingResult(false, _counter);
+			return new SignalCounterResult(false, _counter);
 		}
 
-		return new CallbackRecordingResult(_counter > 0, _counter);
+		return new SignalCounterResult(_counter > 0, _counter);
 	}
 
 	/// <inheritdoc
-	///     cref="ICallbackRecording.Wait(aweXpect.Times,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)" />
-	public ICallbackRecordingResult Wait(Times amount, TimeSpan? timeout = null,
+	///     cref="ISignalCounter.Wait(aweXpect.Times,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)" />
+	public ISignalCounterResult Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
 		if (amount.Value <= 0)
@@ -81,7 +84,7 @@ internal class CallbackRecording : ICallbackRecording
 		{
 			if (_counter >= amount.Value)
 			{
-				return new CallbackRecordingResult(true, _counter);
+				return new SignalCounterResult(true, _counter);
 			}
 
 			_countdownEvent = new CountdownEvent(amount.Value - _counter);
@@ -92,7 +95,7 @@ internal class CallbackRecording : ICallbackRecording
 		{
 			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
 			{
-				return new CallbackRecordingResult(true, _counter);
+				return new SignalCounterResult(true, _counter);
 			}
 		}
 		catch (OperationCanceledException)
@@ -104,11 +107,14 @@ internal class CallbackRecording : ICallbackRecording
 			_countdownEvent.Dispose();
 		}
 
-		return new CallbackRecordingResult(false, _counter);
+		return new SignalCounterResult(false, _counter);
 	}
 }
 
-internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
+/// <summary>
+///     Creates a new signal counter with parameters of type <typeparamref name="TParameter" />.
+/// </summary>
+public class SignalCounter<TParameter> : ISignalCounter<TParameter>
 {
 	private readonly object _lock = new();
 	private readonly List<TParameter> _parameters = new();
@@ -116,12 +122,14 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 	private int _counter;
 	private ManualResetEventSlim? _resetEvent;
 
+	/// <inheritdoc cref="ISignalCounter{TParameter}.IsSignaled(Times?)" />
 	public bool IsSignaled(Times? amount = null)
 	{
 		int value = amount?.Value ?? 1;
 		return _counter >= value;
 	}
 
+	/// <inheritdoc cref="ISignalCounter{TParameter}.Signal(TParameter)" />
 	public void Signal(TParameter parameter)
 	{
 		lock (_lock)
@@ -133,7 +141,8 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 		}
 	}
 
-	public ICallbackRecordingResult<TParameter> Wait(
+	/// <inheritdoc cref="ISignalCounter{TParameter}.Wait(TimeSpan?, CancellationToken)" />
+	public ISignalCounterResult<TParameter> Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
@@ -152,7 +161,7 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 			{
 				if (_resetEvent.Wait(timeout.Value, cancellationToken))
 				{
-					return new CallbackRecordingResult<TParameter>(true, _parameters.ToArray());
+					return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
 				}
 			}
 			catch (OperationCanceledException)
@@ -164,13 +173,14 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 				_resetEvent.Dispose();
 			}
 
-			return new CallbackRecordingResult<TParameter>(false, _parameters.ToArray());
+			return new SignalCounterResult<TParameter>(false, _parameters.ToArray());
 		}
 
-		return new CallbackRecordingResult<TParameter>(_counter > 0, _parameters.ToArray());
+		return new SignalCounterResult<TParameter>(_counter > 0, _parameters.ToArray());
 	}
 
-	public ICallbackRecordingResult<TParameter> Wait(Times amount, TimeSpan? timeout = null,
+	/// <inheritdoc cref="ISignalCounter{TParameter}.Wait(Times, TimeSpan?, CancellationToken)" />
+	public ISignalCounterResult<TParameter> Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 
 	{
@@ -183,7 +193,7 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 		{
 			if (_counter >= amount.Value)
 			{
-				return new CallbackRecordingResult<TParameter>(true, _parameters.ToArray());
+				return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
 			}
 
 			_countdownEvent = new CountdownEvent(amount.Value - _counter);
@@ -194,7 +204,7 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 		{
 			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
 			{
-				return new CallbackRecordingResult<TParameter>(true, _parameters.ToArray());
+				return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
 			}
 		}
 		catch (OperationCanceledException)
@@ -206,6 +216,6 @@ internal class CallbackRecording<TParameter> : ICallbackRecording<TParameter>
 			_countdownEvent.Dispose();
 		}
 
-		return new CallbackRecordingResult<TParameter>(false, _parameters.ToArray());
+		return new SignalCounterResult<TParameter>(false, _parameters.ToArray());
 	}
 }

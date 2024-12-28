@@ -483,29 +483,6 @@ namespace aweXpect.Options
 }
 namespace aweXpect.Recording
 {
-    public interface ICallbackRecording
-    {
-        bool IsSignaled(aweXpect.Times? amount = default);
-        void Signal();
-        aweXpect.Recording.ICallbackRecordingResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
-        aweXpect.Recording.ICallbackRecordingResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
-    }
-    public interface ICallbackRecordingResult
-    {
-        int Count { get; }
-        bool IsSuccess { get; }
-    }
-    public interface ICallbackRecordingResult<out TParameter> : aweXpect.Recording.ICallbackRecordingResult
-    {
-        TParameter[] Parameters { get; }
-    }
-    public interface ICallbackRecording<TParameter>
-    {
-        bool IsSignaled(aweXpect.Times? amount = default);
-        void Signal(TParameter parameter);
-        aweXpect.Recording.ICallbackRecordingResult<TParameter> Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
-        aweXpect.Recording.ICallbackRecordingResult<TParameter> Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
-    }
     public interface IEventRecordingResult
     {
         int GetEventCount(string eventName, System.Func<object?[], bool>? filter = null);
@@ -515,10 +492,28 @@ namespace aweXpect.Recording
     {
         aweXpect.Recording.IEventRecordingResult Stop();
     }
-    public static class Record
+    public interface ISignalCounter
     {
-        public static aweXpect.Recording.ICallbackRecording Callback() { }
-        public static aweXpect.Recording.ICallbackRecording<TParameter> Callback<TParameter>() { }
+        bool IsSignaled(aweXpect.Times? amount = default);
+        void Signal();
+        aweXpect.Recording.ISignalCounterResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+        aweXpect.Recording.ISignalCounterResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+    }
+    public interface ISignalCounterResult
+    {
+        int Count { get; }
+        bool IsSuccess { get; }
+    }
+    public interface ISignalCounterResult<out TParameter> : aweXpect.Recording.ISignalCounterResult
+    {
+        TParameter[] Parameters { get; }
+    }
+    public interface ISignalCounter<TParameter>
+    {
+        bool IsSignaled(aweXpect.Times? amount = default);
+        void Signal(TParameter parameter);
+        aweXpect.Recording.ISignalCounterResult<TParameter> Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+        aweXpect.Recording.ISignalCounterResult<TParameter> Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
     }
     public static class RecordExtensions
     {
@@ -530,6 +525,22 @@ namespace aweXpect.Recording
     {
         public RecordingFactory(TSubject subject, string subjectExpression) { }
         public aweXpect.Recording.IEventRecording<TSubject> Events(params string[] eventNames) { }
+    }
+    public class SignalCounter : aweXpect.Recording.ISignalCounter
+    {
+        public SignalCounter() { }
+        public bool IsSignaled(aweXpect.Times? amount = default) { }
+        public void Signal() { }
+        public aweXpect.Recording.ISignalCounterResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Recording.ISignalCounterResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+    }
+    public class SignalCounter<TParameter> : aweXpect.Recording.ISignalCounter<TParameter>
+    {
+        public SignalCounter() { }
+        public bool IsSignaled(aweXpect.Times? amount = default) { }
+        public void Signal(TParameter parameter) { }
+        public aweXpect.Recording.ISignalCounterResult<TParameter> Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Recording.ISignalCounterResult<TParameter> Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
 }
 namespace aweXpect.Results

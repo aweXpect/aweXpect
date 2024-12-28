@@ -10,16 +10,16 @@ namespace aweXpect;
 public static partial class ThatCallbackRecordingShould
 {
 	/// <summary>
-	///     Start expectations for the current <see cref="ICallbackRecording" /> <paramref name="subject" />.
+	///     Start expectations for the current <see cref="ISignalCounter" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<ICallbackRecording> Should(
-		this IExpectSubject<ICallbackRecording> subject)
+	public static IThat<ISignalCounter> Should(
+		this IExpectSubject<ISignalCounter> subject)
 		=> subject.Should(That.WithoutAction);
 	
 	/// <summary>
-	///     Start expectations for the current <see cref="ICallbackRecording{TParameter}" /> <paramref name="subject" />.
+	///     Start expectations for the current <see cref="ISignalCounter{TParameter}" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<ICallbackRecording<TParameter>> Should<TParameter>(
-		this IExpectSubject<ICallbackRecording<TParameter>> subject)
+	public static IThat<ISignalCounter<TParameter>> Should<TParameter>(
+		this IExpectSubject<ISignalCounter<TParameter>> subject)
 		=> subject.Should(That.WithoutAction);
 }

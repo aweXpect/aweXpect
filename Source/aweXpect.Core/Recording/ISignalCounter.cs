@@ -6,7 +6,7 @@ namespace aweXpect.Recording;
 /// <summary>
 ///     Record executions of a callback.
 /// </summary>
-public interface ICallbackRecording
+public interface ISignalCounter
 {
 	/// <summary>
 	///     Checks if the callback was signaled at least <paramref name="amount" /> times.
@@ -30,7 +30,7 @@ public interface ICallbackRecording
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	ICallbackRecordingResult Wait(
+	ISignalCounterResult Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default);
 
@@ -43,7 +43,7 @@ public interface ICallbackRecording
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	ICallbackRecordingResult Wait(
+	ISignalCounterResult Wait(
 		Times amount,
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default);
@@ -52,7 +52,7 @@ public interface ICallbackRecording
 /// <summary>
 ///     Record executions of a callback with a <typeparamref name="TParameter" />.
 /// </summary>
-public interface ICallbackRecording<TParameter>
+public interface ISignalCounter<TParameter>
 {
 	/// <summary>
 	///     Checks if the callback was signaled at least <paramref name="amount" /> times.
@@ -76,7 +76,7 @@ public interface ICallbackRecording<TParameter>
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	ICallbackRecordingResult<TParameter> Wait(
+	ISignalCounterResult<TParameter> Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default);
 
@@ -89,7 +89,7 @@ public interface ICallbackRecording<TParameter>
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	ICallbackRecordingResult<TParameter> Wait(
+	ISignalCounterResult<TParameter> Wait(
 		Times amount,
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default);

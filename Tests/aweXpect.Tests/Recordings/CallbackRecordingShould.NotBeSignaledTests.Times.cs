@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using aweXpect.Recording;
-using Record = aweXpect.Recording.Record;
 
 namespace aweXpect.Tests.Recordings;
 
@@ -13,7 +12,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredOftenEnough_ShouldSucceed()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -29,7 +28,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameter_ShouldSucceeded()
 			{
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				ISignalCounter<int> recording = new SignalCounter<int>();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
 				CancellationToken token = cts.Token;
@@ -46,7 +45,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredMoreOften_ShouldFail()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
@@ -70,7 +69,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredOftenEnough_ShouldFail()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
@@ -93,7 +92,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameterMoreOften_ShouldFail()
 			{
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				ISignalCounter<int> recording = new SignalCounter<int>();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>
@@ -123,7 +122,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameterOftenEnough_ShouldFail()
 			{
-				ICallbackRecording<int> recording = Record.Callback<int>();
+				ISignalCounter<int> recording = new SignalCounter<int>();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ =>

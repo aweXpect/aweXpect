@@ -3,9 +3,9 @@ using System.Threading;
 namespace aweXpect.Recording;
 
 /// <summary>
-///     The result of a <see cref="ICallbackRecording" />.
+///     The result of a <see cref="ISignalCounter" />.
 /// </summary>
-public interface ICallbackRecordingResult
+public interface ISignalCounterResult
 {
 	/// <summary>
 	///     The number of times the callback was triggered.
@@ -24,9 +24,9 @@ public interface ICallbackRecordingResult
 }
 
 /// <summary>
-///     The result of a <see cref="ICallbackRecording{TParameter}" />.
+///     The result of a <see cref="ISignalCounter{TParameter}" />.
 /// </summary>
-public interface ICallbackRecordingResult<out TParameter> : ICallbackRecordingResult
+public interface ISignalCounterResult<out TParameter> : ISignalCounterResult
 {
 	/// <summary>
 	///     The parameters provided while triggering the callback.

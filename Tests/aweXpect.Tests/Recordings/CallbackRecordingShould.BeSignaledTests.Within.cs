@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using aweXpect.Recording;
-using Record = aweXpect.Recording.Record;
+// ReSharper disable MethodHasAsyncOverload
 
 namespace aweXpect.Tests.Recordings;
 
@@ -13,7 +13,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithinTheGivenTimeout_ShouldFail()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 				using CancellationTokenSource cts = new();
 				CancellationToken token = cts.Token;
 
@@ -35,7 +35,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameterWithinTheGivenTimeout_ShouldFail()
 			{
-				ICallbackRecording<string> recording = Record.Callback<string>();
+				ISignalCounter<string> recording = new SignalCounter<string>();
 				using CancellationTokenSource cts = new();
 				CancellationToken token = cts.Token;
 
@@ -57,7 +57,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithinTheGivenTimeout_ShouldSucceed()
 			{
-				ICallbackRecording recording = Record.Callback();
+				ISignalCounter recording = new SignalCounter();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ => recording.Signal());
@@ -71,7 +71,7 @@ public sealed partial class CallbackRecordingShould
 			[Fact]
 			public async Task WhenTriggeredWithParameterWithinTheGivenTimeout_ShouldSucceed()
 			{
-				ICallbackRecording<string> recording = Record.Callback<string>();
+				ISignalCounter<string> recording = new SignalCounter<string>();
 
 				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
 					.ContinueWith(_ => recording.Signal("foo"));
