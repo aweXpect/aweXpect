@@ -3,7 +3,7 @@ using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class RecordingShould
+public sealed partial class EventRecordingShould
 {
 	public sealed class HaveTriggeredPropertyChanged
 	{

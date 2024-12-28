@@ -7,7 +7,7 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on event <see cref="IEventRecording{TSubject}" />.
 /// </summary>
-public static partial class ThatRecordingShould
+public static partial class ThatEventRecordingShould
 {
 	/// <summary>
 	///     Start expectations for the current <see cref="IEventRecording{TSubject}" /> <paramref name="subject" />.

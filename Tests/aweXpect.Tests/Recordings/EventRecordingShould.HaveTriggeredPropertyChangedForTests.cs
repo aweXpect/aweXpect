@@ -1,16 +1,15 @@
-﻿using System.ComponentModel;
-using aweXpect.Recording;
+﻿using aweXpect.Recording;
 
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class RecordingShould
+public sealed partial class EventRecordingShould
 {
-	public sealed partial class HaveTriggered
+	public sealed class HaveTriggeredPropertyChangedFor
 	{
-		public sealed class WithTests
+		public sealed class Tests
 		{
 			[Fact]
-			public async Task WithEventArgs_WhenEventIsTriggeredBySomethingElse_ShouldFail()
+			public async Task WhenPropertyNameDoesNotMatch_ShouldFail()
 			{
 				PropertyChangedClass sut = new()
 				{
@@ -18,29 +17,28 @@ public sealed partial class RecordingShould
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
-				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				sut.NotifyPropertyChanged("foo");
 
 				async Task Act() =>
 					await That(recording).Should()
-						.HaveTriggered(nameof(INotifyPropertyChanged.PropertyChanged))
-						.With<PropertyChangedEventArgs>(e => e.PropertyName == "SomethingElse");
+						.HaveTriggeredPropertyChangedFor(x => x.MyValue);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
-					             have recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "SomethingElse" at least once,
+					             have recorded the PropertyChanged event on sut for property MyValue at least once,
 					             but it was never recorded in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 2
 					                 }, PropertyChangedEventArgs {
-					                   PropertyName = "MyValue"
+					                   PropertyName = "foo"
 					                 })
 					             ]
 					             """);
 			}
 
 			[Fact]
-			public async Task WithEventArgs_WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
+			public async Task WhenPropertyNameMatches_ShouldSucceed()
 			{
 				PropertyChangedClass sut = new()
 				{
@@ -52,8 +50,7 @@ public sealed partial class RecordingShould
 
 				async Task Act() =>
 					await That(recording).Should()
-						.HaveTriggered(nameof(INotifyPropertyChanged.PropertyChanged))
-						.With<PropertyChangedEventArgs>(e => e.PropertyName == "MyValue");
+						.HaveTriggeredPropertyChangedFor(x => x.MyValue);
 
 				await That(Act).Should().NotThrow();
 			}

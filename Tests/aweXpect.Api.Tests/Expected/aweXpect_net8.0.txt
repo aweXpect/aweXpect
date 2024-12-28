@@ -91,6 +91,19 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.IO.BufferedStream?, aweXpect.Core.IThat<System.IO.BufferedStream?>> HaveBufferSize(this aweXpect.Core.IThat<System.IO.BufferedStream?> source, int expected) { }
         public static aweXpect.Results.AndOrResult<System.IO.BufferedStream?, aweXpect.Core.IThat<System.IO.BufferedStream?>> NotHaveBufferSize(this aweXpect.Core.IThat<System.IO.BufferedStream?> source, int unexpected) { }
     }
+    public static class ThatCallbackRecordingShould
+    {
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> NotTrigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> NotTrigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> NotTrigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> NotTrigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.ICallbackRecording> subject) { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.ICallbackRecording<TParameter>> subject) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> Trigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording> Trigger(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording> source, aweXpect.Times times) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> Trigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source) { }
+        public static aweXpect.Results.CallbackTriggerResult<aweXpect.Recording.ICallbackRecording<TParameter>> Trigger<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.ICallbackRecording<TParameter>> source, aweXpect.Times times) { }
+    }
     public static class ThatDateOnlyShould
     {
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> Be(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
@@ -297,6 +310,25 @@ namespace aweXpect
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> StartWith(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, System.Collections.Generic.IEnumerable<string> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> StartWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, params TItem[] expected) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> StartWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+    }
+    public static class ThatEventRecordingShould
+    {
+        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggered<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, string eventName)
+            where TSubject :  notnull { }
+        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggeredPropertyChanged<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source)
+            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggeredPropertyChangedFor<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, string? propertyName)
+            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggeredPropertyChangedFor<TSubject, TProperty>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, System.Linq.Expressions.Expression<System.Func<TSubject, TProperty>> propertyExpression)
+            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Results.EventTriggerResult<TSubject> NotHaveTriggeredPropertyChanged<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source)
+            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Results.EventTriggerResult<TSubject> NotHaveTriggeredPropertyChangedFor<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, string? propertyName)
+            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Results.EventTriggerResult<TSubject> NotHaveTriggeredPropertyChangedFor<TSubject, TProperty>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, System.Linq.Expressions.Expression<System.Func<TSubject, TProperty>> propertyExpression)
+            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
+        public static aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> Should<TSubject>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.IEventRecording<TSubject>> subject)
+            where TSubject :  notnull { }
     }
     public static class ThatExceptionShould
     {
@@ -835,25 +867,6 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> NotBeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Core.IThat<object?> Should(this aweXpect.Core.IExpectSubject<object?> subject) { }
     }
-    public static class ThatRecordingShould
-    {
-        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggered<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, string eventName)
-            where TSubject :  notnull { }
-        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggeredPropertyChanged<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source)
-            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
-        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggeredPropertyChangedFor<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, string? propertyName)
-            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
-        public static aweXpect.Results.EventTriggerResult<TSubject> HaveTriggeredPropertyChangedFor<TSubject, TProperty>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, System.Linq.Expressions.Expression<System.Func<TSubject, TProperty>> propertyExpression)
-            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
-        public static aweXpect.Results.EventTriggerResult<TSubject> NotHaveTriggeredPropertyChanged<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source)
-            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
-        public static aweXpect.Results.EventTriggerResult<TSubject> NotHaveTriggeredPropertyChangedFor<TSubject>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, string? propertyName)
-            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
-        public static aweXpect.Results.EventTriggerResult<TSubject> NotHaveTriggeredPropertyChangedFor<TSubject, TProperty>(this aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> source, System.Linq.Expressions.Expression<System.Func<TSubject, TProperty>> propertyExpression)
-            where TSubject : System.ComponentModel.INotifyPropertyChanged { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> Should<TSubject>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.IEventRecording<TSubject>> subject)
-            where TSubject :  notnull { }
-    }
     public static class ThatStreamShould
     {
         public static aweXpect.Results.AndOrResult<System.IO.Stream?, aweXpect.Core.IThat<System.IO.Stream?>> BeReadOnly(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
@@ -974,6 +987,12 @@ namespace aweXpect.Results
         public BetweenResult(System.Func<int, System.Action<TExpectation>, TTarget> callback, System.Func<int, TTarget> itemsCallback) { }
         public aweXpect.Results.ItemsResult<TTarget> And(int maximum) { }
         public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
+    }
+    public class CallbackTriggerResult<TCallbackResult> : aweXpect.Results.AndOrResult<TCallbackResult, aweXpect.Core.IThat<TCallbackResult>>
+        where TCallbackResult :  notnull
+    {
+        public CallbackTriggerResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<TCallbackResult> returnValue, aweXpect.Options.TriggerCallbackOptions options) { }
+        public aweXpect.Results.CallbackTriggerResult<TCallbackResult> Within(System.TimeSpan timeout) { }
     }
     public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>
         where TSubject :  notnull

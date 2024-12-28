@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel;
 
-// ReSharper disable MemberCanBePrivate.Local
-
 namespace aweXpect.Tests.Recordings;
 
-public sealed partial class RecordingShould
+public sealed partial class EventRecordingShould
 {
 	private sealed class CustomEventWithoutParametersClass
 	{

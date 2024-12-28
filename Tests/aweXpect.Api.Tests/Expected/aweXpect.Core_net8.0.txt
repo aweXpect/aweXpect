@@ -481,6 +481,11 @@ namespace aweXpect.Options
         public string ToDayString() { }
         public override string ToString() { }
     }
+    public class TriggerCallbackOptions
+    {
+        public TriggerCallbackOptions() { }
+        public System.TimeSpan? Timeout { get; set; }
+    }
     public class TriggerEventFilter
     {
         public TriggerEventFilter() { }
@@ -491,6 +496,27 @@ namespace aweXpect.Options
 }
 namespace aweXpect.Recording
 {
+    public interface ICallbackRecording
+    {
+        void Trigger();
+        aweXpect.Recording.ICallbackRecordingResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+        aweXpect.Recording.ICallbackRecordingResult WaitMultiple(int amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+    }
+    public interface ICallbackRecordingResult
+    {
+        int Count { get; }
+        bool IsSuccess { get; }
+    }
+    public interface ICallbackRecordingResult<out TParameter> : aweXpect.Recording.ICallbackRecordingResult
+    {
+        TParameter[] Parameters { get; }
+    }
+    public interface ICallbackRecording<TParameter>
+    {
+        void Trigger(TParameter parameter);
+        aweXpect.Recording.ICallbackRecordingResult<TParameter> Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+        aweXpect.Recording.ICallbackRecordingResult<TParameter> WaitMultiple(int amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default);
+    }
     public interface IEventRecordingResult
     {
         int GetEventCount(string eventName, System.Func<object?[], bool>? filter = null);
@@ -499,6 +525,11 @@ namespace aweXpect.Recording
     public interface IEventRecording<TSubject>
     {
         aweXpect.Recording.IEventRecordingResult Stop();
+    }
+    public static class Record
+    {
+        public static aweXpect.Recording.ICallbackRecording Callback() { }
+        public static aweXpect.Recording.ICallbackRecording<TParameter> Callback<TParameter>() { }
     }
     public static class RecordExtensions
     {
