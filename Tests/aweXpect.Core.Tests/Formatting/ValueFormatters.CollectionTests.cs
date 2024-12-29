@@ -49,9 +49,11 @@ public partial class ValueFormatters
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value!);
+			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value!);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 	}

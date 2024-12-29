@@ -162,6 +162,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -192,6 +193,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -222,6 +224,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -252,6 +255,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -283,6 +287,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -313,6 +318,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -375,6 +381,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -405,6 +412,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -435,6 +443,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -465,6 +474,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
@@ -495,6 +505,7 @@ public partial class ValueFormatters
 			Formatter.Format(sb, value);
 
 			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
 			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
