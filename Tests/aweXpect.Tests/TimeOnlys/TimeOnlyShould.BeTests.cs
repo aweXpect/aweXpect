@@ -61,7 +61,7 @@ public sealed partial class TimeOnlyShould
 			public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldFail(
 				int actualDifference, int toleranceSeconds, bool expectToThrow)
 			{
-				TimeSpan tolerance = TimeSpan.FromSeconds(toleranceSeconds);
+				TimeSpan tolerance = toleranceSeconds.Seconds();
 				TimeOnly subject = EarlierTime(actualDifference);
 				TimeOnly expected = CurrentTime();
 

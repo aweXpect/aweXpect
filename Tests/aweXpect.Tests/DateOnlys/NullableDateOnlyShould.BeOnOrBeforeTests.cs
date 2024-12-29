@@ -97,7 +97,7 @@ public sealed partial class NullableDateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().BeOnOrBefore(expected)
-						.Within(TimeSpan.FromDays(3));
+						.Within(3.Days());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -115,7 +115,7 @@ public sealed partial class NullableDateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().BeOnOrBefore(expected)
-						.Within(TimeSpan.FromDays(3))
+						.Within(3.Days())
 						.Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()
@@ -134,7 +134,7 @@ public sealed partial class NullableDateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().BeOnOrBefore(expected)
-						.Within(TimeSpan.FromDays(3));
+						.Within(3.Days());
 
 				await That(Act).Should().NotThrow();
 			}

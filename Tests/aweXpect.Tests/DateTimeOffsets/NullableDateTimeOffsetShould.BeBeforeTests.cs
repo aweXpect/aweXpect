@@ -111,7 +111,7 @@ public sealed partial class NullableDateTimeOffsetShould
 
 				async Task Act()
 					=> await That(subject).Should().BeBefore(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -129,7 +129,7 @@ public sealed partial class NullableDateTimeOffsetShould
 
 				async Task Act()
 					=> await That(subject).Should().BeBefore(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -147,7 +147,7 @@ public sealed partial class NullableDateTimeOffsetShould
 
 				async Task Act()
 					=> await That(subject).Should().BeBefore(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().NotThrow();
 			}

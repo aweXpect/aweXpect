@@ -1,4 +1,5 @@
-﻿using aweXpect.Core.Tests.TestHelpers;
+﻿using aweXpect.Chronology;
+using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Sources;
 
@@ -7,10 +8,10 @@ public class DelegateAsyncValueSourceTests
 	[Fact]
 	public async Task ForExecutionTime_ShouldUseElapsedFromTimeSystem()
 	{
-		TimeSystemMock timeSystem = new TimeSystemMock().SetElapsed(TimeSpan.FromSeconds(1.1));
+		TimeSystemMock timeSystem = new TimeSystemMock().SetElapsed(1100.Milliseconds());
 
 		async Task Act() =>
-			await That(() => Task.FromResult(0)).Should().NotExecuteWithin(TimeSpan.FromSeconds(1))
+			await That(() => Task.FromResult(0)).Should().NotExecuteWithin(1000.Milliseconds())
 				.UseTimeSystem(timeSystem);
 
 		await That(Act).Should().NotThrow();

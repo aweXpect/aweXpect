@@ -6,14 +6,14 @@ public sealed partial class NullableTimeSpanShould
 	///     Use a fixed random time in each test run to ensure, that the tests don't rely on special times.
 	/// </summary>
 	private static readonly Lazy<TimeSpan?> CurrentTimeLazy = new(
-		() => TimeSpan.FromSeconds(new Random().Next(100, 100000)));
+		() => new Random().Next(100, 100000).Seconds());
 
 	private static TimeSpan? CurrentTime()
 		=> CurrentTimeLazy.Value;
 
 	private static TimeSpan? EarlierTime(int seconds = 1)
-		=> CurrentTime()?.Add(TimeSpan.FromSeconds(-1 * seconds));
+		=> CurrentTime()?.Add(-seconds.Seconds());
 
 	private static TimeSpan? LaterTime(int seconds = 1)
-		=> CurrentTime()?.Add(TimeSpan.FromSeconds(seconds));
+		=> CurrentTime()?.Add(seconds.Seconds());
 }

@@ -16,7 +16,7 @@
 		<PackageVersion Include="Meziantou.Analyzer" Version="2.0.163"/>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageVersion Include="aweXpect.Chronology" Version="0.1.0"/>
+		<PackageVersion Include="aweXpect.Chronology" Version="0.3.0"/>
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
 		<PackageVersion Include="BenchmarkDotNet" Version="0.14.0"/>
 		<PackageVersion Include="NUnit" Version="4.3.1"/>

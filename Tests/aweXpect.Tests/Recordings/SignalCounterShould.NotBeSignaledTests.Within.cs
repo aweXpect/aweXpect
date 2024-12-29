@@ -17,11 +17,11 @@ public sealed partial class SignalCounterShould
 				using CancellationTokenSource cts = new();
 				CancellationToken token = cts.Token;
 
-				_ = Task.Delay(TimeSpan.FromSeconds(5), token)
+				_ = Task.Delay(5.Seconds(), token)
 					.ContinueWith(_ => recording.Signal(), token);
 
 				async Task Act() =>
-					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromMilliseconds(40));
+					await That(recording).Should().NotBeSignaled().Within(40.Milliseconds());
 
 				await That(Act).Should().NotThrow();
 				cts.Cancel();
@@ -34,11 +34,11 @@ public sealed partial class SignalCounterShould
 				using CancellationTokenSource cts = new();
 				CancellationToken token = cts.Token;
 
-				_ = Task.Delay(TimeSpan.FromSeconds(5), token)
+				_ = Task.Delay(5.Seconds(), token)
 					.ContinueWith(_ => recording.Signal("foo"), token);
 
 				async Task Act() =>
-					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromMilliseconds(40));
+					await That(recording).Should().NotBeSignaled().Within(40.Milliseconds());
 
 				await That(Act).Should().NotThrow();
 				cts.Cancel();
@@ -49,11 +49,11 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter recording = new();
 
-				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+				_ = Task.Delay(10.Milliseconds())
 					.ContinueWith(_ => recording.Signal());
 
 				async Task Act() =>
-					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromSeconds(10));
+					await That(recording).Should().NotBeSignaled().Within(10.Seconds());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -68,11 +68,11 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter<string> recording = new();
 
-				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+				_ = Task.Delay(10.Milliseconds())
 					.ContinueWith(_ => recording.Signal("foo"));
 
 				async Task Act() =>
-					await That(recording).Should().NotBeSignaled().Within(TimeSpan.FromSeconds(10));
+					await That(recording).Should().NotBeSignaled().Within(10.Seconds());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

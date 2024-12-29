@@ -1,5 +1,4 @@
-﻿using aweXpect.Chronology;
-using aweXpect.Tests.TestHelpers;
+﻿using aweXpect.Tests.TestHelpers;
 
 namespace aweXpect.Tests.Delegates;
 

@@ -113,7 +113,7 @@ public sealed partial class DateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().BeBefore(expected)
-						.Within(TimeSpan.FromDays(3));
+						.Within(3.Days());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -131,7 +131,7 @@ public sealed partial class DateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().BeBefore(expected)
-						.Within(TimeSpan.FromDays(3))
+						.Within(3.Days())
 						.Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()
@@ -150,7 +150,7 @@ public sealed partial class DateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().BeBefore(expected)
-						.Within(TimeSpan.FromDays(3));
+						.Within(3.Days());
 
 				await That(Act).Should().NotThrow();
 			}

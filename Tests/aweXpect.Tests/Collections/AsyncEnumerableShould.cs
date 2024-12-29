@@ -49,7 +49,7 @@ public partial class AsyncEnumerableShould
 	{
 		foreach (int item in items)
 		{
-			await Task.Delay(TimeSpan.FromMilliseconds(100), cancellationToken);
+			await Task.Delay(100.Milliseconds(), cancellationToken);
 			if (cancellationToken.IsCancellationRequested)
 			{
 				break;
