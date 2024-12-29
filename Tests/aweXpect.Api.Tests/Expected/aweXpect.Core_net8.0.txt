@@ -196,15 +196,21 @@ namespace aweXpect.Core.Sources
 }
 namespace aweXpect.Customization
 {
-    public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeReflection
+    public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeRecording, aweXpect.Customization.ICustomizeReflection
     {
         public static aweXpect.Customization.ICustomizeFormatting Formatting { get; }
+        public static aweXpect.Customization.ICustomizeRecording Recording { get; }
         public static aweXpect.Customization.ICustomizeReflection Reflection { get; }
     }
     public interface ICustomizeFormatting
     {
         int MaximumNumberOfCollectionItems { get; }
         System.IDisposable SetMaximumNumberOfCollectionItems(int value);
+    }
+    public interface ICustomizeRecording
+    {
+        System.TimeSpan DefaultTimeout { get; }
+        System.IDisposable SetDefaultTimeout(System.TimeSpan timeout);
     }
     public interface ICustomizeReflection
     {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using aweXpect.Customization;
 
 namespace aweXpect.Recording;
 
@@ -61,7 +62,7 @@ public class SignalCounter
 			}
 		}
 
-		timeout ??= TimeSpan.FromSeconds(30);
+		timeout ??= Customize.Recording.DefaultTimeout;
 		if (_resetEvent != null)
 		{
 			try
@@ -113,7 +114,7 @@ public class SignalCounter
 			_countdownEvent = new CountdownEvent(amount.Value - _counter);
 		}
 
-		timeout ??= TimeSpan.FromSeconds(30);
+		timeout ??= Customize.Recording.DefaultTimeout;
 		try
 		{
 			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
@@ -200,7 +201,7 @@ public class SignalCounter<TParameter>
 			}
 		}
 
-		timeout ??= TimeSpan.FromSeconds(30);
+		timeout ??= Customize.Recording.DefaultTimeout;
 		if (_resetEvent != null)
 		{
 			try
@@ -261,7 +262,7 @@ public class SignalCounter<TParameter>
 			_countdownEvent = new CountdownEvent(amount.Value - actualCount);
 		}
 
-		timeout ??= TimeSpan.FromSeconds(30);
+		timeout ??= Customize.Recording.DefaultTimeout;
 		try
 		{
 			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
