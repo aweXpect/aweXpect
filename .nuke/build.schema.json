@@ -38,6 +38,8 @@
         "Compile",
         "DotNetFrameworkUnitTests",
         "DotNetUnitTests",
+        "MutationComment",
+        "MutationTestExecution",
         "MutationTests",
         "Pack",
         "Restore",
