@@ -8,4 +8,8 @@
 		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="aweXpect.Chronology"/>
+	</ItemGroup>
+
 </Project>

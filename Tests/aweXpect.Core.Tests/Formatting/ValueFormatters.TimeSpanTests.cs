@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using aweXpect.Extensions;
+using aweXpect.Chronology;
 
 namespace aweXpect.Core.Tests.Formatting;
 

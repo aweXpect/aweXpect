@@ -798,32 +798,6 @@ namespace aweXpect
         public static aweXpect.Core.IThat<System.TimeSpan> Should(this aweXpect.Core.IExpectSubject<System.TimeSpan> subject) { }
     }
 }
-namespace aweXpect.Extensions
-{
-    public static class ChronologyExtensions
-    {
-        public static System.TimeSpan Days(this double days) { }
-        public static System.TimeSpan Days(this int days) { }
-        public static System.TimeSpan Days(this double days, System.TimeSpan offset) { }
-        public static System.TimeSpan Days(this int days, System.TimeSpan offset) { }
-        public static System.TimeSpan Hours(this double hours) { }
-        public static System.TimeSpan Hours(this int hours) { }
-        public static System.TimeSpan Hours(this double hours, System.TimeSpan offset) { }
-        public static System.TimeSpan Hours(this int hours, System.TimeSpan offset) { }
-        public static System.TimeSpan Milliseconds(this double milliseconds) { }
-        public static System.TimeSpan Milliseconds(this int milliseconds) { }
-        public static System.TimeSpan Milliseconds(this double milliseconds, System.TimeSpan offset) { }
-        public static System.TimeSpan Milliseconds(this int milliseconds, System.TimeSpan offset) { }
-        public static System.TimeSpan Minutes(this double minutes) { }
-        public static System.TimeSpan Minutes(this int minutes) { }
-        public static System.TimeSpan Minutes(this double minutes, System.TimeSpan offset) { }
-        public static System.TimeSpan Minutes(this int minutes, System.TimeSpan offset) { }
-        public static System.TimeSpan Seconds(this double seconds) { }
-        public static System.TimeSpan Seconds(this int seconds) { }
-        public static System.TimeSpan Seconds(this double seconds, System.TimeSpan offset) { }
-        public static System.TimeSpan Seconds(this int seconds, System.TimeSpan offset) { }
-    }
-}
 namespace aweXpect.Results
 {
     public class BetweenResult<TTarget, TExpectation>
