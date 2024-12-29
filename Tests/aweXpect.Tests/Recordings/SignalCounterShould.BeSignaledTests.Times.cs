@@ -14,7 +14,7 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter recording = new();
 				using CancellationTokenSource cts = new();
-				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
+				cts.CancelAfter(50.Milliseconds());
 				CancellationToken token = cts.Token;
 
 				recording.Signal();
@@ -35,7 +35,7 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter<int> recording = new();
 				using CancellationTokenSource cts = new();
-				cts.CancelAfter(TimeSpan.FromMilliseconds(50));
+				cts.CancelAfter(50.Milliseconds());
 				CancellationToken token = cts.Token;
 
 				recording.Signal(1);
@@ -60,7 +60,7 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter recording = new();
 
-				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+				_ = Task.Delay(10.Milliseconds())
 					.ContinueWith(_ =>
 					{
 						recording.Signal();
@@ -79,7 +79,7 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter recording = new();
 
-				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+				_ = Task.Delay(10.Milliseconds())
 					.ContinueWith(_ =>
 					{
 						recording.Signal();
@@ -97,7 +97,7 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter<int> recording = new();
 
-				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+				_ = Task.Delay(10.Milliseconds())
 					.ContinueWith(_ =>
 					{
 						recording.Signal(1);
@@ -117,7 +117,7 @@ public sealed partial class SignalCounterShould
 			{
 				SignalCounter<int> recording = new();
 
-				_ = Task.Delay(TimeSpan.FromMilliseconds(10))
+				_ = Task.Delay(10.Milliseconds())
 					.ContinueWith(_ =>
 					{
 						recording.Signal(1);

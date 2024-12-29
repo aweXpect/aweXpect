@@ -90,7 +90,7 @@ public sealed partial class NullableDateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().NotBe(unexpected)
-						.Within(TimeSpan.FromDays(tolerance))
+						.Within(tolerance.Days())
 						.Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()

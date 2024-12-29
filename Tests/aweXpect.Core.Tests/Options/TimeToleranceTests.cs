@@ -1,4 +1,5 @@
-﻿using aweXpect.Options;
+﻿using aweXpect.Chronology;
+using aweXpect.Options;
 
 namespace aweXpect.Core.Tests.Options;
 
@@ -9,7 +10,7 @@ public class TimeToleranceTests
 	{
 		TimeTolerance sut = new();
 
-		void Act() => sut.SetTolerance(TimeSpan.FromSeconds(-1));
+		void Act() => sut.SetTolerance(-1.Seconds());
 
 		await That(Act).Should().Throw<ArgumentOutOfRangeException>()
 			.WithMessage("*Tolerance must be non-negative*").AsWildcard();

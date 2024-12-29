@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using aweXpect.Chronology;
 
 namespace aweXpect.Core.Tests.Formatting;
 
@@ -9,7 +10,7 @@ public partial class ValueFormatters
 		[Fact]
 		public async Task Nullable_ShouldUseRoundtripFormat()
 		{
-			DateTimeOffset? value = new(2024, 11, 2, 15, 42, 08, 123, TimeSpan.FromHours(3));
+			DateTimeOffset? value = new(2024, 11, 2, 15, 42, 08, 123, 3.Hours());
 			string expectedResult = "2024-11-02T15:42:08.1230000+03:00";
 			StringBuilder sb = new();
 
@@ -25,7 +26,7 @@ public partial class ValueFormatters
 		[Fact]
 		public async Task ShouldUseRoundtripFormat()
 		{
-			DateTimeOffset value = new(2024, 11, 2, 15, 42, 08, 123, TimeSpan.FromHours(3));
+			DateTimeOffset value = new(2024, 11, 2, 15, 42, 08, 123, 3.Hours());
 			string expectedResult = "2024-11-02T15:42:08.1230000+03:00";
 			StringBuilder sb = new();
 

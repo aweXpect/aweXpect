@@ -36,7 +36,7 @@ public sealed partial class TimeSpanShould
 			[Fact]
 			public async Task WhenSubjectIsNegative_ShouldFail()
 			{
-				TimeSpan subject = TimeSpan.FromSeconds(-1);
+				TimeSpan subject = -1.Seconds();
 
 				async Task Act()
 					=> await That(subject).Should().BePositive();
@@ -52,7 +52,7 @@ public sealed partial class TimeSpanShould
 			[Fact]
 			public async Task WhenSubjectIsPositive_ShouldSucceed()
 			{
-				TimeSpan subject = TimeSpan.FromSeconds(1);
+				TimeSpan subject = 1.Seconds();
 
 				async Task Act()
 					=> await That(subject).Should().BePositive();

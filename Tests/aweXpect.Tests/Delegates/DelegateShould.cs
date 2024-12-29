@@ -1,6 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-using System.Threading;
-using aweXpect.Tests.TestHelpers;
 
 namespace aweXpect.Tests.Delegates;
 

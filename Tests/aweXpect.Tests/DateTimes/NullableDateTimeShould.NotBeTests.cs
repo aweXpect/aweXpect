@@ -92,7 +92,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(expected).Within(TimeSpan.FromSeconds(-1));
+					=> await That(subject).Should().NotBe(expected).Within(-1.Seconds());
 
 				await That(Act).Should().Throw<ArgumentOutOfRangeException>()
 					.WithParamName("tolerance").And
@@ -107,7 +107,7 @@ public sealed partial class NullableDateTimeShould
 
 				async Task Act()
 					=> await That(subject).Should().NotBe(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().NotThrow();
 			}
@@ -119,7 +119,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = LaterTime(3);
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(expected).Within(TimeSpan.FromSeconds(3))
+					=> await That(subject).Should().NotBe(expected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()

@@ -66,7 +66,7 @@ public sealed partial class DateOnlyShould
 
 				async Task Act()
 					=> await That(subject).Should().Be(expected)
-						.Within(TimeSpan.FromDays(tolerance))
+						.Within(tolerance.Days())
 						.Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()

@@ -33,7 +33,7 @@ public sealed partial class NullableDateTimeOffsetShould
 			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldSucceed()
 			{
-				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, TimeSpan.FromHours(2));
+				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
 				int? unexpected = null;
 
 				async Task Act()
@@ -45,7 +45,7 @@ public sealed partial class NullableDateTimeOffsetShould
 			[Fact]
 			public async Task WhenYearOfSubjectIsDifferent_ShouldSucceed()
 			{
-				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, TimeSpan.FromHours(2));
+				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
 				int? unexpected = 2011;
 
 				async Task Act()
@@ -57,7 +57,7 @@ public sealed partial class NullableDateTimeOffsetShould
 			[Fact]
 			public async Task WhenYearOfSubjectIsTheSame_ShouldFail()
 			{
-				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, TimeSpan.FromHours(2));
+				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
 				int unexpected = 2010;
 
 				async Task Act()

@@ -9,7 +9,7 @@ public sealed partial class DateTimeOffsetShould
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				DateTimeOffset subject = new(2010, 11, 12, 13, 14, 15, 167, TimeSpan.FromHours(2));
+				DateTimeOffset subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
 				int? expected = null;
 
 				async Task Act()
@@ -26,7 +26,7 @@ public sealed partial class DateTimeOffsetShould
 			[Fact]
 			public async Task WhenMinuteOfSubjectIsDifferent_ShouldFail()
 			{
-				DateTimeOffset subject = new(2010, 11, 12, 13, 14, 15, 167, TimeSpan.FromHours(2));
+				DateTimeOffset subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
 				int? expected = 13;
 
 				async Task Act()
@@ -43,7 +43,7 @@ public sealed partial class DateTimeOffsetShould
 			[Fact]
 			public async Task WhenMinuteOfSubjectIsTheSame_ShouldSucceed()
 			{
-				DateTimeOffset subject = new(2010, 11, 12, 13, 14, 15, 167, TimeSpan.FromHours(2));
+				DateTimeOffset subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
 				int expected = 14;
 
 				async Task Act()

@@ -96,7 +96,7 @@ public sealed partial class DateTimeShould
 
 				async Task Act()
 					=> await That(subject).Should().BeOnOrBefore(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -114,7 +114,7 @@ public sealed partial class DateTimeShould
 
 				async Task Act()
 					=> await That(subject).Should().BeOnOrBefore(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -132,7 +132,7 @@ public sealed partial class DateTimeShould
 
 				async Task Act()
 					=> await That(subject).Should().BeOnOrBefore(expected)
-						.Within(TimeSpan.FromSeconds(3));
+						.Within(3.Seconds());
 
 				await That(Act).Should().NotThrow();
 			}
