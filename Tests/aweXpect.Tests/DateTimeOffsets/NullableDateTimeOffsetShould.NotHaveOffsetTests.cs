@@ -9,7 +9,7 @@ public sealed partial class NullableDateTimeOffsetShould
 			[Fact]
 			public async Task WhenOffsetOfSubjectIsDifferent_ShouldSucceed()
 			{
-				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
+				DateTimeOffset? subject = 12.November(2010).At(13, 14, 15, 167).WithOffset(2.Hours());
 				TimeSpan unexpected = 1.Hours();
 
 				async Task Act()
@@ -21,7 +21,7 @@ public sealed partial class NullableDateTimeOffsetShould
 			[Fact]
 			public async Task WhenOffsetOfSubjectIsTheSame_ShouldFail()
 			{
-				DateTimeOffset? subject = new(2010, 11, 12, 13, 14, 15, 167, 2.Hours());
+				DateTimeOffset? subject = 12.November(2010).At(13, 14, 15, 167).WithOffset(2.Hours());
 				TimeSpan unexpected = 2.Hours();
 
 				async Task Act()
