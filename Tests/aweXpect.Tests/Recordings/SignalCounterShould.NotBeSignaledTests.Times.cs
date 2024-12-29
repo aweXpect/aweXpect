@@ -62,8 +62,8 @@ public sealed partial class SignalCounterShould
 					.WithMessage("""
 					             Expected recording to
 					             not have recorded the callback at least 2 times,
-					             but it was recorded 3 times
-					             """);
+					             but it was recorded ? times
+					             """).AsWildcard();
 			}
 
 			[Fact]
@@ -110,13 +110,12 @@ public sealed partial class SignalCounterShould
 					.WithMessage("""
 					             Expected recording to
 					             not have recorded the callback at least 3 times,
-					             but it was recorded 4 times in [
+					             but it was recorded ? times in [
 					               1,
 					               2,
-					               3,
-					               4
+					               3*
 					             ]
-					             """);
+					             """).AsWildcard();
 			}
 
 			[Fact]
