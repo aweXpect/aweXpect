@@ -2,7 +2,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="xunit.v3.core"/>
-		<PackageReference Include="xunit.runner.visualstudio" VersionOverride="3.0.0-pre.49"/>
+		<PackageReference Include="xunit.runner.visualstudio" VersionOverride="3.0.0"/>
 	</ItemGroup>
 
 	<PropertyGroup>
