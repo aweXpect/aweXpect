@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1735550150805,
+  "lastUpdate": 1735550415689,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -11360,6 +11360,138 @@ window.BENCHMARK_DATA = {
             "value": 1874.1178716932025,
             "unit": "ns",
             "range": "± 27.558748823012422"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "44310a2c9135202ba22383fffc90499f21316503",
+          "message": "build(deps): bump xunit.runner.visualstudio from 3.0.0-pre.49 to 3.0.0 in the xunit group (#169)\n\nbuild(deps): bump xunit.runner.visualstudio in the xunit group\n\nBumps the xunit group with 1 update: [xunit.runner.visualstudio](https://github.com/xunit/visualstudio.xunit).\n\n\nUpdates `xunit.runner.visualstudio` from 3.0.0-pre.49 to 3.0.0\n- [Release notes](https://github.com/xunit/visualstudio.xunit/releases)\n- [Commits](https://github.com/xunit/visualstudio.xunit/compare/3.0.0-pre.49...3.0.0)\n\n---\nupdated-dependencies:\n- dependency-name: xunit.runner.visualstudio\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: xunit\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2024-12-30T10:09:01+01:00",
+          "tree_id": "e0fb21cd26506d4078472baa49b744be8ef4f306",
+          "url": "https://github.com/aweXpect/aweXpect/commit/44310a2c9135202ba22383fffc90499f21316503"
+        },
+        "date": 1735550415375,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 175.08477796827043,
+            "unit": "ns",
+            "range": "± 1.5681851868084555"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 235.98593517144522,
+            "unit": "ns",
+            "range": "± 2.3987900498723747"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 582.372731072562,
+            "unit": "ns",
+            "range": "± 3.066862525544205"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 333.70116001764933,
+            "unit": "ns",
+            "range": "± 1.9700440944598838"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 456.1447713751542,
+            "unit": "ns",
+            "range": "± 9.960710736326472"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 16068.352438354492,
+            "unit": "ns",
+            "range": "± 95.00093862844888"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 231.4788477563858,
+            "unit": "ns",
+            "range": "± 8.660533175381035"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 328.5360891024272,
+            "unit": "ns",
+            "range": "± 4.610408289413471"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 794.0457811355591,
+            "unit": "ns",
+            "range": "± 5.184644291698683"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 334.0692478929247,
+            "unit": "ns",
+            "range": "± 2.5980369835947466"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 407.76560050964355,
+            "unit": "ns",
+            "range": "± 10.651116659493312"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 820.6813185373942,
+            "unit": "ns",
+            "range": "± 6.950587291884749"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1005.134002049764,
+            "unit": "ns",
+            "range": "± 7.236518802318028"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1211.5339558124542,
+            "unit": "ns",
+            "range": "± 23.588939471604846"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1159.6571900503975,
+            "unit": "ns",
+            "range": "± 6.329267388841931"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 971.624532699585,
+            "unit": "ns",
+            "range": "± 2.2616310721519"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 288190.49560546875,
+            "unit": "ns",
+            "range": "± 1326.7385053190103"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1978.8455867767334,
+            "unit": "ns",
+            "range": "± 17.120908296692473"
           }
         ]
       }
