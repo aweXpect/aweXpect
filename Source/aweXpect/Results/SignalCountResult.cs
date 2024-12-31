@@ -2,7 +2,6 @@
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Options;
-using aweXpect.Recording;
 using aweXpect.Signaling;
 
 namespace aweXpect.Results;
