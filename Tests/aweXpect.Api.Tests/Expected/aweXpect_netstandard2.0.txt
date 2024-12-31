@@ -720,18 +720,18 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> NotBeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Core.IThat<object?> Should(this aweXpect.Core.IExpectSubject<object?> subject) { }
     }
-    public static class ThatSignalCounterShould
+    public static class ThatSignalerShould
     {
-        public static aweXpect.Results.SignalCountResult BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
-        public static aweXpect.Results.SignalCountResult BeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
-        public static aweXpect.Results.SignalCountResult NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source) { }
-        public static aweXpect.Results.SignalCountResult NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> source, aweXpect.Times times) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> source, aweXpect.Times times) { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> Should(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter> subject) { }
-        public static aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Recording.SignalCounter<TParameter>> subject) { }
+        public static aweXpect.Results.SignalCountResult BeSignaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source) { }
+        public static aweXpect.Results.SignalCountResult BeSignaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> BeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source) { }
+        public static aweXpect.Results.SignalCountResult NotBeSignaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> NotBeSignaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Core.IThat<aweXpect.Signaling.Signaler> Should(this aweXpect.Core.IExpectSubject<aweXpect.Signaling.Signaler> subject) { }
+        public static aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> Should<TParameter>(this aweXpect.Core.IExpectSubject<aweXpect.Signaling.Signaler<TParameter>> subject) { }
     }
     public static class ThatStreamShould
     {
@@ -854,14 +854,14 @@ namespace aweXpect.Results
         public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
-    public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Recording.SignalCounterResult, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter>>
+    public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>
     {
-        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter> returnValue, aweXpect.Options.SignalCounterOptions options) { }
+        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler> returnValue, aweXpect.Options.SignalerOptions options) { }
         public aweXpect.Results.SignalCountResult Within(System.TimeSpan timeout) { }
     }
-    public class SignalCountResult<TParameter> : aweXpect.Results.AndOrResult<aweXpect.Recording.SignalCounterResult<TParameter>, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>>>
+    public class SignalCountResult<TParameter> : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult<TParameter>, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>>>
     {
-        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Recording.SignalCounter<TParameter>> returnValue, aweXpect.Options.SignalCounterOptions<TParameter> options) { }
+        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
         public aweXpect.Results.SignalCountResult<TParameter> With(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public aweXpect.Results.SignalCountResult<TParameter> Within(System.TimeSpan timeout) { }
     }

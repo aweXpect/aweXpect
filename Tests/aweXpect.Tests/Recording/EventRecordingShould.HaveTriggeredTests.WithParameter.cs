@@ -1,6 +1,6 @@
 ﻿using aweXpect.Recording;
 
-namespace aweXpect.Tests.Recordings;
+namespace aweXpect.Tests.Recording;
 
 public sealed partial class EventRecordingShould
 {

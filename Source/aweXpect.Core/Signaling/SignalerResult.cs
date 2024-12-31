@@ -1,11 +1,11 @@
 using System.Threading;
 
-namespace aweXpect.Recording;
+namespace aweXpect.Signaling;
 
 /// <summary>
-///     The result when waiting in a <see cref="SignalCounter" />.
+///     The result when waiting in a <see cref="Signaler" />.
 /// </summary>
-public class SignalCounterResult(bool wasTriggered, int counter)
+public class SignalerResult(bool wasTriggered, int counter)
 {
 	/// <summary>
 	///     The number of times the callback was triggered.
@@ -24,10 +24,10 @@ public class SignalCounterResult(bool wasTriggered, int counter)
 }
 
 /// <summary>
-///     The result when waiting in a <see cref="SignalCounter{TParameter}" />.
+///     The result when waiting in a <see cref="Signaler{TParameter}" />.
 /// </summary>
-public class SignalCounterResult<TParameter>(bool wasTriggered, TParameter[] parameters)
-	: SignalCounterResult(wasTriggered, parameters.Length)
+public class SignalerResult<TParameter>(bool wasTriggered, TParameter[] parameters)
+	: SignalerResult(wasTriggered, parameters.Length)
 {
 	/// <summary>
 	///     The parameters provided while triggering the callback.

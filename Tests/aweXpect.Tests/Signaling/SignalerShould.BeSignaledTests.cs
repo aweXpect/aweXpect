@@ -1,9 +1,9 @@
 ﻿using System.Threading;
-using aweXpect.Recording;
+using aweXpect.Signaling;
 
-namespace aweXpect.Tests.Recordings;
+namespace aweXpect.Tests.Signaling;
 
-public sealed partial class SignalCounterShould
+public sealed partial class SignalerShould
 {
 	public sealed partial class BeSignaled
 	{
@@ -12,17 +12,17 @@ public sealed partial class SignalCounterShould
 			[Fact]
 			public async Task WhenNotTriggered_ShouldFail()
 			{
-				SignalCounter recording = new();
+				Signaler signaler = new();
 				using CancellationTokenSource cts = new();
 				cts.CancelAfter(50.Milliseconds());
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>
-					await That(recording).Should().BeSignaled().WithCancellation(token);
+					await That(signaler).Should().BeSignaled().WithCancellation(token);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
-					             Expected recording to
+					             Expected signaler to
 					             have recorded the callback at least once,
 					             but it was never recorded
 					             """);
@@ -31,16 +31,16 @@ public sealed partial class SignalCounterShould
 			[Fact]
 			public async Task WhenNotTriggeredWithParameter_ShouldFail()
 			{
-				SignalCounter<int> recording = new();
+				Signaler<int> signaler = new();
 				using CancellationTokenSource cts = new(50.Milliseconds());
 				CancellationToken token = cts.Token;
 
 				async Task Act() =>
-					await That(recording).Should().BeSignaled().WithCancellation(token);
+					await That(signaler).Should().BeSignaled().WithCancellation(token);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
-					             Expected recording to
+					             Expected signaler to
 					             have recorded the callback at least once,
 					             but it was never recorded
 					             """);
@@ -49,13 +49,13 @@ public sealed partial class SignalCounterShould
 			[Fact]
 			public async Task WhenTriggered_ShouldSucceed()
 			{
-				SignalCounter recording = new();
+				Signaler signaler = new();
 
 				_ = Task.Delay(10.Milliseconds())
-					.ContinueWith(_ => recording.Signal());
+					.ContinueWith(_ => signaler.Signal());
 
 				async Task Act() =>
-					await That(recording).Should().BeSignaled();
+					await That(signaler).Should().BeSignaled();
 
 				await That(Act).Should().NotThrow();
 			}
@@ -63,13 +63,13 @@ public sealed partial class SignalCounterShould
 			[Fact]
 			public async Task WhenTriggeredWithParameter_ShouldSucceed()
 			{
-				SignalCounter<int> recording = new();
+				Signaler<int> signaler = new();
 
 				_ = Task.Delay(10.Milliseconds())
-					.ContinueWith(_ => recording.Signal(1));
+					.ContinueWith(_ => signaler.Signal(1));
 
 				async Task Act() =>
-					await That(recording).Should().BeSignaled();
+					await That(signaler).Should().BeSignaled();
 
 				await That(Act).Should().NotThrow();
 			}

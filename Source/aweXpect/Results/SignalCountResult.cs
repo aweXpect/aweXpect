@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Options;
-using aweXpect.Recording;
+using aweXpect.Signaling;
 
 namespace aweXpect.Results;
 
@@ -11,9 +11,9 @@ namespace aweXpect.Results;
 /// </summary>
 public class SignalCountResult(
 	ExpectationBuilder expectationBuilder,
-	IThat<SignalCounter> returnValue,
-	SignalCounterOptions options)
-	: AndOrResult<SignalCounterResult, IThat<SignalCounter>>(expectationBuilder, returnValue)
+	IThat<Signaler> returnValue,
+	SignalerOptions options)
+	: AndOrResult<SignalerResult, IThat<Signaler>>(expectationBuilder, returnValue)
 {
 	/// <summary>
 	///     Specifies a timeout for waiting on the callback.
@@ -30,9 +30,9 @@ public class SignalCountResult(
 /// </summary>
 public class SignalCountResult<TParameter>(
 	ExpectationBuilder expectationBuilder,
-	IThat<SignalCounter<TParameter>> returnValue,
-	SignalCounterOptions<TParameter> options)
-	: AndOrResult<SignalCounterResult<TParameter>, IThat<SignalCounter<TParameter>>>(expectationBuilder, returnValue)
+	IThat<Signaler<TParameter>> returnValue,
+	SignalerOptions<TParameter> options)
+	: AndOrResult<SignalerResult<TParameter>, IThat<Signaler<TParameter>>>(expectationBuilder, returnValue)
 {
 	/// <summary>
 	///     Specifies a timeout for waiting on the callback.

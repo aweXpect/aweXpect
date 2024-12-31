@@ -6,14 +6,14 @@ sidebar_position: 16
 
 Describes the possible expectations for working with callbacks.
 
-## Recording
+## Signaler
 
-First, you have to start recording callback signals. This class is available in the "aweXpect.Recording" namespace.
+First, you have to start recording callback signals using the `Signaler` class. This class is available in the "aweXpect.Signaling" namespace.
 
 ```csharp
 // ↓ Counts signals from callbacks without parameters
-SignalCounter signal = new();
-SignalCounter<string> signal = new();
+Signaler signaler = new();
+Signaler<string> signaler = new();
 // ↑ Counts signals from callbacks with a string parameter
 ```
 
@@ -28,19 +28,19 @@ class MyClass
   }
 }
 
-sut.Execute(v => signal.Signal(v));
+sut.Execute(v => signaler.Signal(v));
 ```
 
 At last, you can wait for the callback to be signaled:
 
 ```csharp
-await Expect.That(signal).Should().BeSignaled();
+await Expect.That(signaler).Should().BeSignaled();
 ```
 
 You can also verify that the callback will not be signaled:
 
 ```csharp
-await Expect.That(signal).Should().NotBeSignaled();
+await Expect.That(signaler).Should().NotBeSignaled();
 ```
 
 *NOTE: The last statement will result never return, unless a timeout or cancellation is specified.
@@ -51,7 +51,7 @@ Therefore, when nothing is specified, a default timeout of 30 seconds is applied
 You can specify a timeout, how long you want to wait for the callback to be signaled:
 
 ```csharp
-await Expect.That(signal).Should().BeSignaled().Within(TimeSpan.FromSeconds(5))
+await Expect.That(signaler).Should().BeSignaled().Within(TimeSpan.FromSeconds(5))
   .Because("it should take at most 5 seconds to complete");
 ```
 
@@ -59,7 +59,7 @@ Alternatively you can also use a `CancellationToken` for a timeout:
 
 ```csharp
 CancellationToken cancellationToken = new CancellationTokenSource(5000).Token;
-await Expect.That(signal).Should().BeSignaled().WithCancellation(cancellationToken)
+await Expect.That(signaler).Should().BeSignaled().WithCancellation(cancellationToken)
   .Because("it should be completed, before the cancellationToken is cancelled");
 ```
 
@@ -68,13 +68,13 @@ await Expect.That(signal).Should().BeSignaled().WithCancellation(cancellationTok
 You can specify a number of times, that a callback must at least be signaled:
 
 ```csharp
-await Expect.That(signal).Should().BeSignaled(3.Times());
+await Expect.That(signaler).Should().BeSignaled(3.Times());
 ```
 
 You can also verify, that the callback was not signaled at least the given number of times:
 
 ```csharp
-await Expect.That(signal).Should().NotBeSignaled(3.Times());
+await Expect.That(signaler).Should().NotBeSignaled(3.Times());
 ```
 
 ### Parameters
@@ -82,23 +82,23 @@ await Expect.That(signal).Should().NotBeSignaled(3.Times());
 You can also include a parameter during signaling:
 
 ```csharp
-SignalCounter<string> signal = new();
+Signaler<string> signaler = new();
 
-signal.Signal("foo");
-signal.Signal("bar");
+signaler.Signal("foo");
+signaler.Signal("bar");
 
-await That(signal).Should().BeSignaled(2.Times());
+await That(signaler).Should().BeSignaled(2.Times());
 ```
 
 You can filter for signals with specific parameters by providing a `predicate`:
 ```csharp
-SignalCounter<string> signal = new();
+Signaler<string> signaler = new();
 
-signal.Signal("foo");
-signal.Signal("bar");
-signal.Signal("foo");
+signaler.Signal("foo");
+signaler.Signal("bar");
+signaler.Signal("foo");
 
-await That(signal).Should().BeSignaled(2.Times()).With(p => p == "foo");
+await That(signaler).Should().BeSignaled(2.Times()).With(p => p == "foo");
 ```
 
 *In case of a failed expectation, the recorded parameters will be displayed in the error message.*
