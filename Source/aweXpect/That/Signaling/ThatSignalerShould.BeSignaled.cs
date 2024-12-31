@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Options;
-using aweXpect.Recording;
 using aweXpect.Results;
+using aweXpect.Signaling;
 
 namespace aweXpect;
 
-public static partial class ThatSignalCounterShould
+public static partial class ThatSignalerShould
 {
 	/// <summary>
 	///     Verifies that the expected callback was signaled at least once.
 	/// </summary>
 	public static SignalCountResult BeSignaled(
-		this IThat<SignalCounter> source)
+		this IThat<Signaler> source)
 	{
-		SignalCounterOptions options = new();
+		SignalerOptions options = new();
 		return new SignalCountResult(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint(it, 1, options)),
 			source,
@@ -30,9 +30,9 @@ public static partial class ThatSignalCounterShould
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled at least once.
 	/// </summary>
 	public static SignalCountResult<TParameter> BeSignaled<TParameter>(
-		this IThat<SignalCounter<TParameter>> source)
+		this IThat<Signaler<TParameter>> source)
 	{
-		SignalCounterOptions<TParameter> options = new();
+		SignalerOptions<TParameter> options = new();
 		return new SignalCountResult<TParameter>(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint<TParameter>(it, 1, options)),
 			source,
@@ -44,10 +44,10 @@ public static partial class ThatSignalCounterShould
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult BeSignaled(
-		this IThat<SignalCounter> source,
+		this IThat<Signaler> source,
 		Times times)
 	{
-		SignalCounterOptions options = new();
+		SignalerOptions options = new();
 		return new SignalCountResult(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint(it, times.Value, options)),
 			source,
@@ -59,22 +59,22 @@ public static partial class ThatSignalCounterShould
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult<TParameter> BeSignaled<TParameter>(
-		this IThat<SignalCounter<TParameter>> source,
+		this IThat<Signaler<TParameter>> source,
 		Times times)
 	{
-		SignalCounterOptions<TParameter> options = new();
+		SignalerOptions<TParameter> options = new();
 		return new SignalCountResult<TParameter>(source.ExpectationBuilder.AddConstraint(it
 				=> new TriggerConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
 	}
 
-	private readonly struct TriggerConstraint(string it, int count, SignalCounterOptions options)
-		: IAsyncConstraint<SignalCounter>
+	private readonly struct TriggerConstraint(string it, int count, SignalerOptions options)
+		: IAsyncConstraint<Signaler>
 	{
-		public async Task<ConstraintResult> IsMetBy(SignalCounter actual, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(Signaler actual, CancellationToken cancellationToken)
 		{
-			SignalCounterResult result;
+			SignalerResult result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
@@ -98,7 +98,7 @@ public static partial class ThatSignalCounterShould
 
 			if (result.IsSuccess)
 			{
-				return new ConstraintResult.Success<SignalCounterResult>(result, expectation);
+				return new ConstraintResult.Success<SignalerResult>(result, expectation);
 			}
 
 			StringBuilder sb = new();
@@ -116,19 +116,19 @@ public static partial class ThatSignalCounterShould
 				sb.Append("only recorded ").Append(result.Count).Append(" times");
 			}
 
-			return new ConstraintResult.Failure<SignalCounterResult>(result, expectation, sb.ToString());
+			return new ConstraintResult.Failure<SignalerResult>(result, expectation, sb.ToString());
 		}
 	}
 
-	private readonly struct TriggerConstraint<TParameter>(string it, int count, SignalCounterOptions<TParameter> options)
-		: IAsyncConstraint<SignalCounter<TParameter>>
+	private readonly struct TriggerConstraint<TParameter>(string it, int count, SignalerOptions<TParameter> options)
+		: IAsyncConstraint<Signaler<TParameter>>
 	{
 		public async Task<ConstraintResult> IsMetBy(
-			SignalCounter<TParameter> actual,
+			Signaler<TParameter> actual,
 			CancellationToken cancellationToken)
 		{
-			SignalCounterOptions<TParameter> o = options;
-			SignalCounterResult<TParameter> result;
+			SignalerOptions<TParameter> o = options;
+			SignalerResult<TParameter> result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
 			{
@@ -154,7 +154,7 @@ public static partial class ThatSignalCounterShould
 
 			if (result.IsSuccess && actualCount >= count)
 			{
-				return new ConstraintResult.Success<SignalCounterResult<TParameter>>(result, expectation);
+				return new ConstraintResult.Success<SignalerResult<TParameter>>(result, expectation);
 			}
 
 			StringBuilder sb = new();
@@ -178,7 +178,7 @@ public static partial class ThatSignalCounterShould
 				Formatter.Format(sb, result.Parameters, FormattingOptions.MultipleLines);
 			}
 
-			return new ConstraintResult.Failure<SignalCounterResult<TParameter>>(result, expectation, sb.ToString());
+			return new ConstraintResult.Failure<SignalerResult<TParameter>>(result, expectation, sb.ToString());
 		}
 	}
 }

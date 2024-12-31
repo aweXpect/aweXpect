@@ -2,23 +2,23 @@
 
 // ReSharper disable AccessToDisposedClosure
 
-namespace aweXpect.Tests.Recordings;
+namespace aweXpect.Tests.Recording;
 
 public sealed partial class EventRecordingShould
 {
-	public sealed class NotHaveTriggeredPropertyChangedFor
+	public sealed class NotHaveTriggeredPropertyChanged
 	{
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenEventIsNotTriggeredAtAll_ShouldSucceed()
+			public async Task WhenEventIsNotTriggered_ShouldSucceed()
 			{
 				PropertyChangedClass sut = new();
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
 				async Task Act() =>
 					await That(recording).Should()
-						.NotHaveTriggeredPropertyChangedFor(x => x.MyValue);
+						.NotHaveTriggeredPropertyChanged();
 
 				await That(Act).Should().NotThrow();
 			}
@@ -28,43 +28,28 @@ public sealed partial class EventRecordingShould
 			{
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 421
+					MyValue = 422
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
-				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				sut.NotifyPropertyChanged("SomeArbitraryProperty");
 
 				async Task Act() =>
 					await That(recording).Should()
-						.NotHaveTriggeredPropertyChangedFor(x => x.MyValue);
+						.NotHaveTriggeredPropertyChanged();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
-					             have never recorded the PropertyChanged event on sut for property MyValue,
+					             have never recorded the PropertyChanged event on sut,
 					             but it was recorded once in [
 					               PropertyChanged(PropertyChangedClass {
-					                   MyValue = 421
+					                   MyValue = 422
 					                 }, PropertyChangedEventArgs {
-					                   PropertyName = "MyValue"
+					                   PropertyName = "SomeArbitraryProperty"
 					                 })
 					             ]
 					             """);
-			}
-
-			[Fact]
-			public async Task WhenEventIsTriggeredForOtherPropertyName_ShouldSucceed()
-			{
-				PropertyChangedClass sut = new();
-				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
-
-				sut.NotifyPropertyChanged("SomeOtherProperty");
-
-				async Task Act() =>
-					await That(recording).Should()
-						.NotHaveTriggeredPropertyChangedFor(x => x.MyValue);
-
-				await That(Act).Should().NotThrow();
 			}
 		}
 	}

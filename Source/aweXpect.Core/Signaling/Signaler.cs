@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading;
 using aweXpect.Customization;
 
-namespace aweXpect.Recording;
+namespace aweXpect.Signaling;
 
 /// <summary>
-///     Creates a new signal counter without parameters.
+///     Creates a new signaler which receives signals without parameters.
 /// </summary>
-public class SignalCounter
+public class Signaler
 {
 	private readonly object _lock = new();
 	private CountdownEvent? _countdownEvent;
@@ -50,7 +50,7 @@ public class SignalCounter
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	public SignalCounterResult Wait(
+	public SignalerResult Wait(
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
@@ -69,7 +69,7 @@ public class SignalCounter
 			{
 				if (_resetEvent.Wait(timeout.Value, cancellationToken))
 				{
-					return new SignalCounterResult(true, _counter);
+					return new SignalerResult(true, _counter);
 				}
 			}
 			catch (OperationCanceledException)
@@ -81,10 +81,10 @@ public class SignalCounter
 				_resetEvent.Dispose();
 			}
 
-			return new SignalCounterResult(false, _counter);
+			return new SignalerResult(false, _counter);
 		}
 
-		return new SignalCounterResult(_counter > 0, _counter);
+		return new SignalerResult(_counter > 0, _counter);
 	}
 
 	/// <summary>
@@ -96,7 +96,7 @@ public class SignalCounter
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	public SignalCounterResult Wait(Times amount, TimeSpan? timeout = null,
+	public SignalerResult Wait(Times amount, TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
 	{
 		if (amount.Value <= 0)
@@ -108,7 +108,7 @@ public class SignalCounter
 		{
 			if (_counter >= amount.Value)
 			{
-				return new SignalCounterResult(true, _counter);
+				return new SignalerResult(true, _counter);
 			}
 
 			_countdownEvent = new CountdownEvent(amount.Value - _counter);
@@ -119,7 +119,7 @@ public class SignalCounter
 		{
 			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
 			{
-				return new SignalCounterResult(true, _counter);
+				return new SignalerResult(true, _counter);
 			}
 		}
 		catch (OperationCanceledException)
@@ -131,14 +131,14 @@ public class SignalCounter
 			_countdownEvent.Dispose();
 		}
 
-		return new SignalCounterResult(false, _counter);
+		return new SignalerResult(false, _counter);
 	}
 }
 
 /// <summary>
-///     Creates a new signal counter with parameters of type <typeparamref name="TParameter" />.
+///     Creates a new signaler which receives signals with parameters of type <typeparamref name="TParameter" />.
 /// </summary>
-public class SignalCounter<TParameter>
+public class Signaler<TParameter>
 {
 	private readonly object _lock = new();
 	private readonly List<TParameter> _parameters = new();
@@ -187,7 +187,7 @@ public class SignalCounter<TParameter>
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	public SignalCounterResult<TParameter> Wait(
+	public SignalerResult<TParameter> Wait(
 		Func<TParameter, bool>? predicate = null,
 		TimeSpan? timeout = null,
 		CancellationToken cancellationToken = default)
@@ -208,7 +208,7 @@ public class SignalCounter<TParameter>
 			{
 				if (_resetEvent.Wait(timeout.Value, cancellationToken))
 				{
-					return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
+					return new SignalerResult<TParameter>(true, _parameters.ToArray());
 				}
 			}
 			catch (OperationCanceledException)
@@ -220,10 +220,10 @@ public class SignalCounter<TParameter>
 				_resetEvent.Dispose();
 			}
 
-			return new SignalCounterResult<TParameter>(false, _parameters.ToArray());
+			return new SignalerResult<TParameter>(false, _parameters.ToArray());
 		}
 
-		return new SignalCounterResult<TParameter>(GetMatchingCount(predicate) > 0, _parameters.ToArray());
+		return new SignalerResult<TParameter>(GetMatchingCount(predicate) > 0, _parameters.ToArray());
 	}
 
 	/// <summary>
@@ -238,7 +238,7 @@ public class SignalCounter<TParameter>
 	///     If no <paramref name="timeout" /> is specified (set to <see langword="null" />),
 	///     a default timeout of 30 seconds is used.
 	/// </remarks>
-	public SignalCounterResult<TParameter> Wait(
+	public SignalerResult<TParameter> Wait(
 		Times amount,
 		Func<TParameter, bool>? predicate = null,
 		TimeSpan? timeout = null,
@@ -256,7 +256,7 @@ public class SignalCounter<TParameter>
 			int actualCount = GetMatchingCount(predicate);
 			if (actualCount >= amount.Value)
 			{
-				return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
+				return new SignalerResult<TParameter>(true, _parameters.ToArray());
 			}
 
 			_countdownEvent = new CountdownEvent(amount.Value - actualCount);
@@ -267,7 +267,7 @@ public class SignalCounter<TParameter>
 		{
 			if (_countdownEvent.Wait(timeout.Value, cancellationToken))
 			{
-				return new SignalCounterResult<TParameter>(true, _parameters.ToArray());
+				return new SignalerResult<TParameter>(true, _parameters.ToArray());
 			}
 		}
 		catch (OperationCanceledException)
@@ -279,7 +279,7 @@ public class SignalCounter<TParameter>
 			_countdownEvent.Dispose();
 		}
 
-		return new SignalCounterResult<TParameter>(false, _parameters.ToArray());
+		return new SignalerResult<TParameter>(false, _parameters.ToArray());
 	}
 
 	private int GetMatchingCount(Func<TParameter, bool>? predicate)

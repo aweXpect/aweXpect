@@ -463,15 +463,15 @@ namespace aweXpect.Options
         public void Exactly(int expected) { }
         public override string ToString() { }
     }
-    public class SignalCounterOptions
+    public class SignalerOptions
     {
-        public SignalCounterOptions() { }
+        public SignalerOptions() { }
         public System.TimeSpan? Timeout { get; set; }
         public override string ToString() { }
     }
-    public class SignalCounterOptions<TParameter> : aweXpect.Options.SignalCounterOptions
+    public class SignalerOptions<TParameter> : aweXpect.Options.SignalerOptions
     {
-        public SignalCounterOptions() { }
+        public SignalerOptions() { }
         public bool Matches(TParameter parameter) { }
         public override string ToString() { }
         public void WithPredicate(System.Func<TParameter, bool> predicate, string predicateExpression) { }
@@ -529,33 +529,6 @@ namespace aweXpect.Recording
     {
         public RecordingFactory(TSubject subject, string subjectExpression) { }
         public aweXpect.Recording.IEventRecording<TSubject> Events(params string[] eventNames) { }
-    }
-    public class SignalCounter
-    {
-        public SignalCounter() { }
-        public bool IsSignaled(aweXpect.Times? amount = default) { }
-        public void Signal() { }
-        public aweXpect.Recording.SignalCounterResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
-        public aweXpect.Recording.SignalCounterResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
-    }
-    public class SignalCounterResult
-    {
-        public SignalCounterResult(bool wasTriggered, int counter) { }
-        public int Count { get; }
-        public bool IsSuccess { get; }
-    }
-    public class SignalCounterResult<TParameter> : aweXpect.Recording.SignalCounterResult
-    {
-        public SignalCounterResult(bool wasTriggered, TParameter[] parameters) { }
-        public TParameter[] Parameters { get; }
-    }
-    public class SignalCounter<TParameter>
-    {
-        public SignalCounter() { }
-        public bool IsSignaled(aweXpect.Times? amount = default) { }
-        public void Signal(TParameter parameter) { }
-        public aweXpect.Recording.SignalCounterResult<TParameter> Wait(System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
-        public aweXpect.Recording.SignalCounterResult<TParameter> Wait(aweXpect.Times amount, System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
 }
 namespace aweXpect.Results
@@ -748,5 +721,35 @@ namespace aweXpect.Results
     {
         public TimeToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.TimeTolerance options) { }
         public TSelf Within(System.TimeSpan tolerance) { }
+    }
+}
+namespace aweXpect.Signaling
+{
+    public class Signaler
+    {
+        public Signaler() { }
+        public bool IsSignaled(aweXpect.Times? amount = default) { }
+        public void Signal() { }
+        public aweXpect.Signaling.SignalerResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Signaling.SignalerResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+    }
+    public class SignalerResult
+    {
+        public SignalerResult(bool wasTriggered, int counter) { }
+        public int Count { get; }
+        public bool IsSuccess { get; }
+    }
+    public class SignalerResult<TParameter> : aweXpect.Signaling.SignalerResult
+    {
+        public SignalerResult(bool wasTriggered, TParameter[] parameters) { }
+        public TParameter[] Parameters { get; }
+    }
+    public class Signaler<TParameter>
+    {
+        public Signaler() { }
+        public bool IsSignaled(aweXpect.Times? amount = default) { }
+        public void Signal(TParameter parameter) { }
+        public aweXpect.Signaling.SignalerResult<TParameter> Wait(System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Signaling.SignalerResult<TParameter> Wait(aweXpect.Times amount, System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
 }

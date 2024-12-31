@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using aweXpect.Recording;
+using aweXpect.Signaling;
 
 namespace aweXpect.Options;
 
 /// <summary>
-///     Options for <see cref="SignalCounter" />
+///     Options for <see cref="Signaler" />
 /// </summary>
-public class SignalCounterOptions
+public class SignalerOptions
 {
 	/// <summary>
 	///     The timeout to use for the recording.
@@ -29,15 +29,15 @@ public class SignalCounterOptions
 }
 
 /// <summary>
-///     Options for <see cref="SignalCounter{TParameter}" />
+///     Options for <see cref="Signaler{TParameter}" />
 /// </summary>
-public class SignalCounterOptions<TParameter> : SignalCounterOptions
+public class SignalerOptions<TParameter> : SignalerOptions
 {
 	private StringBuilder? _builder;
 	private List<Func<TParameter, bool>>? _predicates;
 
 	/// <summary>
-	///     Add a predicate to the signal counter options.
+	///     Add a predicate to the signaler options.
 	/// </summary>
 	public void WithPredicate(Func<TParameter, bool> predicate, string predicateExpression)
 	{
