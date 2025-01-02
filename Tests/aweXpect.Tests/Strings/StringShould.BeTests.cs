@@ -2,7 +2,7 @@
 
 public sealed partial class StringShould
 {
-	public class Be
+	public sealed partial class Be
 	{
 		public sealed class Tests
 		{
