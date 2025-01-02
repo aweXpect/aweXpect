@@ -9,7 +9,7 @@ public sealed partial class DictionaryShould
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenDictionaryIsNull_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IDictionary<int, string>? subject = null;
 

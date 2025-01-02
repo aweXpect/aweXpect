@@ -20,22 +20,6 @@ public sealed partial class DictionaryShould
 			}
 
 			[Fact]
-			public async Task WhenDictionaryIsNull_ShouldFail()
-			{
-				IDictionary<int, string>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Should().ContainValues("foo", "bar");
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             have values ["foo", "bar"],
-					             but it was <null>
-					             """);
-			}
-
-			[Fact]
 			public async Task WhenOneValueIsMissing_ShouldFail()
 			{
 				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
@@ -54,6 +38,22 @@ public sealed partial class DictionaryShould
 					               42,
 					               43
 					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<int, string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().ContainValues("foo", "bar");
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have values ["foo", "bar"],
+					             but it was <null>
 					             """);
 			}
 		}

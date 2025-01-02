@@ -9,22 +9,6 @@ public sealed partial class DictionaryShould
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenDictionaryIsNull_ShouldFail()
-			{
-				IDictionary<string, int>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Should().ContainKey("foo");
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             have key "foo",
-					             but it was <null>
-					             """);
-			}
-
-			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
 				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
@@ -52,6 +36,22 @@ public sealed partial class DictionaryShould
 					               2,
 					               3
 					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<string, int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().ContainKey("foo");
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have key "foo",
+					             but it was <null>
 					             """);
 			}
 		}

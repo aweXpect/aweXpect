@@ -38,7 +38,7 @@ public sealed partial class DictionaryShould
 			}
 
 			[Fact]
-			public async Task WhenDictionaryIsNull_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IDictionary<string, int>? subject = null;
 
