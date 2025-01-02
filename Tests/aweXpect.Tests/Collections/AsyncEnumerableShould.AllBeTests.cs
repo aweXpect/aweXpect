@@ -119,10 +119,10 @@ public sealed partial class AsyncEnumerableShould
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				int constantValue = 42;
-				IAsyncEnumerable<int>? subject = null!;
+				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().AllBe(constantValue);
+					=> await That(subject!).Should().AllBe(constantValue);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

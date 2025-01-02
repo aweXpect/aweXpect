@@ -65,8 +65,24 @@ public sealed partial class DictionaryShould
 					               2
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<int, int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBeUnique();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             only have unique values,
+					             but it was <null>
+					             """);
+			}
 		}
-		
+
 		public sealed class StringTests
 		{
 			[Fact]
@@ -153,8 +169,24 @@ public sealed partial class DictionaryShould
 					               "b"
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<int, string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBeUnique();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             only have unique values,
+					             but it was <null>
+					             """);
+			}
 		}
-		
+
 		public sealed class MemberTests
 		{
 			[Fact]
@@ -212,6 +244,22 @@ public sealed partial class DictionaryShould
 					             but it contained 2 duplicates:
 					               1,
 					               2
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<int, MyClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBeUnique(x => x.Value);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             only have unique values for x => x.Value,
+					             but it was <null>
 					             """);
 			}
 		}
@@ -301,6 +349,22 @@ public sealed partial class DictionaryShould
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<int, MyStringClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBeUnique(x => x.Value);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             only have unique values for x => x.Value,
+					             but it was <null>
 					             """);
 			}
 
