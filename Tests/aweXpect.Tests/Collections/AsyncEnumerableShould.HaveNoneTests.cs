@@ -87,6 +87,22 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().HaveNone(x => x.Be(0));
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have no items be equal to 0,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

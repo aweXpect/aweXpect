@@ -68,6 +68,22 @@ public sealed partial class AsyncEnumerableShould
 					               2
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBeUnique();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             only have unique items,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringTests
@@ -305,6 +321,22 @@ public sealed partial class AsyncEnumerableShould
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBeUnique();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             only have unique items,
+					             but it was <null>
 					             """);
 			}
 

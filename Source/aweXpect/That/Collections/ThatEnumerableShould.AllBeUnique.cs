@@ -85,6 +85,12 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
@@ -126,6 +132,12 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			List<TMember> checkedItems = new();

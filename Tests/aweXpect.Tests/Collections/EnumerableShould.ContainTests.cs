@@ -210,6 +210,23 @@ public sealed partial class EnumerableShould
 					              but it contained it 0 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 					              """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				int expected = 42;
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Contain(expected);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain 42 at least once,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringItemTests
@@ -274,6 +291,23 @@ public sealed partial class EnumerableShould
 					=> await That(sut).Should().Contain("GREEN").IgnoringCase();
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string expected = "foo";
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Contain(expected);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain "foo" at least once,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]
@@ -502,6 +536,22 @@ public sealed partial class EnumerableShould
 					              contain item matching x => x == expected at least once,
 					              but it contained it 0 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Contain(_ => true);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain item matching _ => true at least once,
+					             but it was <null>
+					             """);
 			}
 		}
 	}

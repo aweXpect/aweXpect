@@ -53,6 +53,17 @@ public sealed partial class EnumerableShould
 			}
 
 			[Fact]
+			public async Task ShouldSupportNullableValues()
+			{
+				IEnumerable<int?> subject = Factory.GetConstantValueEnumerable<int?>(null, 20);
+
+				async Task Act()
+					=> await That(subject).Should().AllBe(null);
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
 				int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
@@ -102,6 +113,23 @@ public sealed partial class EnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				int constantValue = 42;
+				IEnumerable<int>? subject = null!;
+
+				async Task Act()
+					=> await That(subject).Should().AllBe(constantValue);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have all items be equal to 42,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringItemTests
@@ -132,6 +160,17 @@ public sealed partial class EnumerableShould
 					               …
 					             ]
 					             """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNullableValues()
+			{
+				IEnumerable<string?> subject = Factory.GetConstantValueEnumerable<string?>(null, 20);
+
+				async Task Act()
+					=> await That(subject).Should().AllBe(null);
+
+				await That(Act).Should().NotThrow();
 			}
 
 			[Fact]
@@ -201,6 +240,23 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().AllBe(constantValue);
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string constantValue = "foo";
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBe(constantValue);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have all items be equal to "foo",
+					             but it was <null>
+					             """);
 			}
 		}
 	}

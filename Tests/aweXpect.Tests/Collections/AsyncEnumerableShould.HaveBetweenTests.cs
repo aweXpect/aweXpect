@@ -103,6 +103,22 @@ public sealed partial class AsyncEnumerableShould
 					             but at least 4 were
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().HaveBetween(0).And(1, x => x.Be(0));
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have between 0 and 1 items be equal to 0,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class ItemsTests

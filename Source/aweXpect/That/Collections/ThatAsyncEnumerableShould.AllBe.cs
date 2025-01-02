@@ -39,14 +39,14 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>> AllBe(
-		this IThat<IAsyncEnumerable<string>> source,
-		string expected)
+	public static StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>> AllBe(
+		this IThat<IAsyncEnumerable<string?>> source,
+		string? expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(
+		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeConstraint<string>(
+				=> new AllBeConstraint<string?>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
 					a => options.AreConsideredEqual(a, expected))),
@@ -65,6 +65,12 @@ public static partial class ThatAsyncEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+			
 			IAsyncEnumerable<TItem> materializedAsyncEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> notMatchingItems = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);

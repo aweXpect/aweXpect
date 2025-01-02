@@ -29,7 +29,7 @@ public static partial class ThatEnumerableShould
 	private readonly struct BeConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
-		IEnumerable<TItem> expected,
+		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: IContextConstraint<IEnumerable<TItem>>
@@ -37,6 +37,17 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+			
+			if (expected is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} cannot compare to <null>");
+			}
+
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
@@ -87,6 +98,15 @@ public static partial class ThatEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(
+					actual!,
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					$"{_it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			bool cancelEarly = actual is not ICollection<TItem>;
 			int matchingCount = 0;
@@ -141,6 +161,16 @@ public static partial class ThatEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return Task.FromResult<ConstraintResult>(
+					new ConstraintResult.Failure<IEnumerable<TItem>>(
+						actual!,
+						_quantifier.GetExpectation(_it, null),
+						$"{_it} was <null>"));
+			}
+
 			int matchingCount = 0;
 			int notMatchingCount = 0;
 			int? totalCount = null;
@@ -190,6 +220,12 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 

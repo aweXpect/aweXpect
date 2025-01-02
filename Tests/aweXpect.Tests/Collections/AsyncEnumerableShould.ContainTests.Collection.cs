@@ -12,6 +12,39 @@ public sealed partial class AsyncEnumerableShould
 	{
 		public sealed class InSameOrderTests
 		{
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Should().Contain(expected!);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain collection expected in order,
+					             but it cannot compare to <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Contain([]);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain collection [] in order,
+					             but it was <null>
+					             """);
+			}
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{

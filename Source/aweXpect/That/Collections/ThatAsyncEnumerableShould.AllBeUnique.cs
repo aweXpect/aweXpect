@@ -90,6 +90,12 @@ public static partial class ThatAsyncEnumerableShould
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+			
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
@@ -132,6 +138,12 @@ public static partial class ThatAsyncEnumerableShould
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TMember> checkedItems = new();

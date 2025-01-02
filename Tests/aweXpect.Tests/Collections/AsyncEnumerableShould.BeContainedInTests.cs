@@ -93,6 +93,39 @@ public sealed partial class AsyncEnumerableShould
 			}
 
 			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Should().BeContainedIn(expected!);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be contained in collection expected in order,
+					             but it cannot compare to <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().BeContainedIn([]);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be contained in collection [] in order,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["a", "b", "c", "d", "e"]);
@@ -276,7 +309,6 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
@@ -567,7 +599,7 @@ public sealed partial class AsyncEnumerableShould
 				await That(Act).Should().NotThrow();
 			}
 		}
-		
+
 		public sealed class InAnyOrderTests
 		{
 			[Fact]
@@ -827,7 +859,6 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
@@ -1388,7 +1419,6 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
@@ -1992,7 +2022,6 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()

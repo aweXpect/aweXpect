@@ -99,6 +99,23 @@ public sealed partial class EnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				int expected = 42;
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotContain(expected);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not contain 42,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringItemTests
@@ -160,6 +177,23 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().NotContain("foo");
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string expected = "foo";
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotContain(expected);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not contain "foo",
+					             but it was <null>
+					             """);
 			}
 		}
 
@@ -225,6 +259,22 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().NotContain(x => x == unexpected);
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotContain(_ => true);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not contain item matching _ => true,
+					             but it was <null>
+					             """);
 			}
 		}
 	}

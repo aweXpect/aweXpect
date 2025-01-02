@@ -91,6 +91,22 @@ public sealed partial class EnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllSatisfy(_ => true);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have all items satisfy _ => true,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

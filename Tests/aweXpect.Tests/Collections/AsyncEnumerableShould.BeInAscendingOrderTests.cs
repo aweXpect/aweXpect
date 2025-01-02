@@ -43,6 +43,22 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().BeInAscendingOrder();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be in ascending order,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringTests
@@ -107,6 +123,22 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().BeInAscendingOrder();
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().BeInAscendingOrder();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be in ascending order,
+					             but it was <null>
+					             """);
 			}
 		}
 

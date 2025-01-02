@@ -101,6 +101,12 @@ public static partial class ThatDictionaryShould
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			List<TValue> checkedItems = new();
 			List<TValue> duplicates = new();
 
@@ -140,6 +146,12 @@ public static partial class ThatDictionaryShould
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			List<TMember> checkedItems = new();
 			List<TMember> duplicates = new();
 
