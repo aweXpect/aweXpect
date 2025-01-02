@@ -54,6 +54,17 @@ public sealed partial class AsyncEnumerableShould
 			}
 
 			[Fact]
+			public async Task ShouldSupportNullableValues()
+			{
+				IAsyncEnumerable<int?> subject = Factory.GetConstantValueAsyncEnumerable<int?>(null, 20);
+
+				async Task Act()
+					=> await That(subject).Should().AllBe(null);
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
 				int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
@@ -103,6 +114,23 @@ public sealed partial class AsyncEnumerableShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				int constantValue = 42;
+				IAsyncEnumerable<int>? subject = null!;
+
+				async Task Act()
+					=> await That(subject).Should().AllBe(constantValue);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have all items be equal to 42,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringItemTests
@@ -133,6 +161,17 @@ public sealed partial class AsyncEnumerableShould
 					               …
 					             ]
 					             """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNullableValues()
+			{
+				IAsyncEnumerable<string?> subject = Factory.GetConstantValueAsyncEnumerable<string?>(null, 20);
+
+				async Task Act()
+					=> await That(subject).Should().AllBe(null);
+
+				await That(Act).Should().NotThrow();
 			}
 
 			[Fact]
@@ -202,6 +241,23 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().AllBe(constantValue);
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string constantValue = "foo";
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().AllBe(constantValue);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have all items be equal to "foo",
+					             but it was <null>
+					             """);
 			}
 		}
 	}

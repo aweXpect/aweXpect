@@ -165,7 +165,7 @@ namespace aweXpect
     }
     public static class ThatEnumerableShould
     {
-        public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> AllBe(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source, string expected) { }
+        public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>>> AllBe(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>> source, string? expected) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AllBe<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source, TItem expected) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>>> AllBeUnique(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string>> source) { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>>> AllBeUnique<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>> source) { }

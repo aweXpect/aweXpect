@@ -36,14 +36,14 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>> AllBe(
-		this IThat<IEnumerable<string>> source,
-		string expected)
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> AllBe(
+		this IThat<IEnumerable<string?>> source,
+		string? expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
 			source.ExpectationBuilder.AddConstraint(it
-				=> new AllBeConstraint<string>(
+				=> new AllBeConstraint<string?>(
 					it,
 					() => $"have all items be equal to {Formatter.Format(expected)}",
 					a => options.AreConsideredEqual(a, expected))),
