@@ -12,6 +12,21 @@ public sealed partial class EnumerableShould
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotBeEmpty();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not be empty,
+					             but it was <null>
+					             """);
+			}
+			[Fact]
 			public async Task DoesNotEnumerateTwice()
 			{
 				ThrowWhenIteratingTwiceEnumerable subject = new();

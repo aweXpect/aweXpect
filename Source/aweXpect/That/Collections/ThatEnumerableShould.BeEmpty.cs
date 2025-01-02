@@ -33,6 +33,12 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			if (actual is ICollection<TItem> collectionOfT)
 			{
 				if (collectionOfT.Count > 0)
@@ -63,6 +69,12 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			if (actual is ICollection<TItem> collectionOfT)
 			{
 				if (collectionOfT.Count > 0)

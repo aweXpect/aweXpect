@@ -100,6 +100,39 @@ public sealed partial class EnumerableShould
 			}
 
 			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Should().Contain(expected!);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain collection expected in order,
+					             but it cannot compare to <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Contain([]);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain collection [] in order,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
@@ -603,7 +636,7 @@ public sealed partial class EnumerableShould
 				await That(Act).Should().NotThrow();
 			}
 		}
-		
+
 		public sealed class InAnyOrderTests
 		{
 			[Fact]

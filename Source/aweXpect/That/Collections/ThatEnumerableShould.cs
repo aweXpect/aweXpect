@@ -29,7 +29,7 @@ public static partial class ThatEnumerableShould
 	private readonly struct BeConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
-		IEnumerable<TItem> expected,
+		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: IContextConstraint<IEnumerable<TItem>>
@@ -37,6 +37,17 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+			
+			if (expected is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} cannot compare to <null>");
+			}
+
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
@@ -190,6 +201,12 @@ public static partial class ThatEnumerableShould
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 

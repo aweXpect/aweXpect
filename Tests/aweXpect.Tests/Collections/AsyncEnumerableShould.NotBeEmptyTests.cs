@@ -37,6 +37,22 @@ public sealed partial class AsyncEnumerableShould
 					             but it was
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotBeEmpty();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not be empty,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

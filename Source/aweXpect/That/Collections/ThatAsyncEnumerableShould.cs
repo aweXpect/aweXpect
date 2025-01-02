@@ -127,7 +127,7 @@ public static partial class ThatAsyncEnumerableShould
 	private readonly struct BeConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
-		IEnumerable<TItem> expected,
+		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
@@ -136,6 +136,18 @@ public static partial class ThatAsyncEnumerableShould
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+			
+			if (expected is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), $"{it} cannot compare to <null>");
+			}
+
+
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
@@ -188,7 +200,7 @@ public static partial class ThatAsyncEnumerableShould
 			sb.Append("] had more than ");
 			sb.Append(2 * Customize.Formatting.MaximumNumberOfCollectionItems);
 			sb.Append(" deviations compared to ");
-			Formatter.Format(sb, expected.Take(Customize.Formatting.MaximumNumberOfCollectionItems + 1),
+			Formatter.Format(sb, expected?.Take(Customize.Formatting.MaximumNumberOfCollectionItems + 1),
 				FormattingOptions.MultipleLines);
 			return sb.ToString();
 		}
@@ -208,6 +220,12 @@ public static partial class ThatAsyncEnumerableShould
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 
