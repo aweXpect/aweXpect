@@ -20,9 +20,13 @@ public abstract partial class EnumerableQuantifier
 
 		/// <inheritdoc />
 		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> expectationBuilder is null
-				? $"have exactly {expected} items"
-				: $"have exactly {expected} items {expectationBuilder}";
+			=> (expected, expectationBuilder is null) switch
+			{
+				(1, true) => "have exactly one item",
+				(1, false) => $"have exactly one item {expectationBuilder}",
+				(_, true) => $"have exactly {expected} items",
+				(_, false) => $"have exactly {expected} items {expectationBuilder}"
+			};
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,

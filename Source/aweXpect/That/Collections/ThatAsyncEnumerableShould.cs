@@ -49,6 +49,15 @@ public static partial class ThatAsyncEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
+					actual!,
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					$"{_it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materialized =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			int matchingCount = 0;
@@ -95,6 +104,15 @@ public static partial class ThatAsyncEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
+					actual!,
+					quantifier.GetExpectation(it, null),
+					$"{it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materialized =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			int matchingCount = 0;

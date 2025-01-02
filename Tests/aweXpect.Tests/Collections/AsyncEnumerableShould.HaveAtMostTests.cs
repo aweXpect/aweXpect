@@ -87,6 +87,22 @@ public sealed partial class AsyncEnumerableShould
 					             but at least 4 were
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().HaveAtMost(1, x => x.Be(0));
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have at most one item be equal to 0,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class ItemsTests

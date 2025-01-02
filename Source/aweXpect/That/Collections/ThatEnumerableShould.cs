@@ -98,6 +98,15 @@ public static partial class ThatEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(
+					actual!,
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					$"{_it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			bool cancelEarly = actual is not ICollection<TItem>;
 			int matchingCount = 0;
@@ -152,6 +161,16 @@ public static partial class ThatEnumerableShould
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return Task.FromResult<ConstraintResult>(
+					new ConstraintResult.Failure<IEnumerable<TItem>>(
+						actual!,
+						_quantifier.GetExpectation(_it, null),
+						$"{_it} was <null>"));
+			}
+
 			int matchingCount = 0;
 			int notMatchingCount = 0;
 			int? totalCount = null;
