@@ -70,7 +70,6 @@ public partial class ValueFormatters
 			await That(sb.ToString()).Should().Be(expectedResult);
 		}
 
-
 		[Fact]
 		public async Task Numbers_Int32_ShouldReturnExpectedValue()
 		{
@@ -339,6 +338,21 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task Numbers_NullableNint_WhenNull_ShouldUseDefaultNullString()
+		{
+			nint? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
+			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
+		}
+
+		[Fact]
 		public async Task Numbers_NullableNuint_ShouldReturnExpectedValue()
 		{
 			nuint? value = 123;
@@ -352,6 +366,21 @@ public partial class ValueFormatters
 			await That(result).Should().Be(expectedResult);
 			await That(objectResult).Should().Be(expectedResult);
 			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_NullableNuint_WhenNull_ShouldUseDefaultNullString()
+		{
+			nuint? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(ValueFormatter.NullString);
+			await That(objectResult).Should().Be(ValueFormatter.NullString);
+			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
 		}
 
 		[Fact]

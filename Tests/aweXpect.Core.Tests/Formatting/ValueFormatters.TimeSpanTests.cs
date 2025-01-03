@@ -232,6 +232,22 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task ShouldSupportTenAsHoursOrMinutes()
+		{
+			TimeSpan value = 10.Days(10.Hours(10.Minutes(10.Seconds())));
+			string expectedResult = "10.10:10:10";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).Should().Be(expectedResult);
+			await That(objectResult).Should().Be(expectedResult);
+			await That(sb.ToString()).Should().Be(expectedResult);
+		}
+
+		[Fact]
 		public async Task WhenNull_ShouldUseDefaultNullString()
 		{
 			TimeSpan? value = null;

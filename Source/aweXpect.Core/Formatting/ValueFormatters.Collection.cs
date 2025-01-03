@@ -24,19 +24,6 @@ public static partial class ValueFormatters
 	}
 
 	/// <summary>
-	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
-	/// </summary>
-	public static string Format(
-		this ValueFormatter formatter,
-		IEnumerable? value,
-		FormattingOptions? options = null)
-	{
-		StringBuilder stringBuilder = new();
-		Format(formatter, stringBuilder, value, options);
-		return stringBuilder.ToString();
-	}
-
-	/// <summary>
 	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
 	///     to the <paramref name="stringBuilder" />
 	/// </summary>
