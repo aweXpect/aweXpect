@@ -21,12 +21,12 @@ public partial class ThatExceptionShould<TException>
 	/// </remarks>
 	public AndOrResult<TException?, ThatExceptionShould<TException>>
 		HaveRecursiveInnerExceptions(
-			Action<IThat<IEnumerable<Exception>>> expectations)
+			Action<IExpectSubject<IEnumerable<Exception>>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
 						e => e.GetInnerExpectations(),
 						"recursive inner exceptions "),
-					(property, expectation) => $"have {property}which {expectation}",
+					(property, expectation) => $"have {property}which should {expectation}",
 					false)
 				.AddExpectations(e => expectations(
 					new That.Subject<IEnumerable<Exception>>(e))),

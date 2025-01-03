@@ -18,12 +18,12 @@ public partial class ThatDelegateThrows<TException>
 	/// </remarks>
 	public AndOrResult<TException?, ThatDelegateThrows<TException>>
 		WithRecursiveInnerExceptions(
-			Action<IThat<IEnumerable<Exception>>> expectations)
+			Action<IExpectSubject<IEnumerable<Exception>>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember(
 					MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
 						e => e.GetInnerExpectations(), "recursive inner exceptions "),
-					(property, expectation) => $"with {property}which {expectation}")
+					(property, expectation) => $"with {property}which should {expectation}")
 				.AddExpectations(e
 					=> expectations(new That.Subject<IEnumerable<Exception>>(e))),
 			this);

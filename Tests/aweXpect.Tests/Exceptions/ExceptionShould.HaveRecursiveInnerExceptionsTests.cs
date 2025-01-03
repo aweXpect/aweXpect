@@ -17,7 +17,7 @@ public sealed partial class ExceptionShould
 
 				async Task Act()
 					=> await That(subject).Should().HaveRecursiveInnerExceptions(c
-						=> c.HaveAll(x => x.Satisfy(e => e.Message.StartsWith("inner"))));
+						=> c.Should().HaveAll(x => x.Satisfy(e => e.Message.StartsWith("inner"))));
 
 				await That(Act).Should().NotThrow();
 			}
@@ -33,12 +33,12 @@ public sealed partial class ExceptionShould
 
 				async Task Act()
 					=> await That(subject).Should().HaveRecursiveInnerExceptions(
-						c => c.HaveAll(x => x.Satisfy(e => e.Message != "inner3A")));
+						c => c.Should().HaveAll(x => x.Satisfy(e => e.Message != "inner3A")));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have recursive inner exceptions which have all items satisfy e => e.Message != "inner3A",
+					             have recursive inner exceptions which should have all items satisfy e => e.Message != "inner3A",
 					             but not all were
 					             """);
 			}
@@ -54,12 +54,12 @@ public sealed partial class ExceptionShould
 
 				async Task Act()
 					=> await That(subject).Should().HaveRecursiveInnerExceptions(
-						c => c.HaveNone(x => x.Satisfy(e => e.Message != "inner3A")));
+						c => c.Should().HaveNone(x => x.Satisfy(e => e.Message != "inner3A")));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have recursive inner exceptions which have no items satisfy e => e.Message != "inner3A",
+					             have recursive inner exceptions which should have no items satisfy e => e.Message != "inner3A",
 					             but at least one was
 					             """);
 			}
@@ -70,12 +70,12 @@ public sealed partial class ExceptionShould
 				Exception? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveRecursiveInnerExceptions(c => c.BeEmpty());
+					=> await That(subject).Should().HaveRecursiveInnerExceptions(c => c.Should().BeEmpty());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have recursive inner exceptions which be empty,
+					             have recursive inner exceptions which should be empty,
 					             but it was <null>
 					             """);
 			}

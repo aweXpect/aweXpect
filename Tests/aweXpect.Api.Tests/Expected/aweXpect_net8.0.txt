@@ -204,7 +204,7 @@ namespace aweXpect
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException() { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
         public aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(string expected) { }
-        public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
+        public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<aweXpect.Core.IExpectSubject<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatDictionaryShould
     {
@@ -344,7 +344,7 @@ namespace aweXpect
         public aweXpect.Results.AndOrResult<TException, aweXpect.ThatExceptionShould<TException>> HaveInnerException() { }
         public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveInnerException(System.Action<aweXpect.ThatExceptionShould<System.Exception?>> expectations) { }
         public aweXpect.Results.StringEqualityTypeResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveMessage(string expected) { }
-        public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
+        public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatExceptionShould<TException>> HaveRecursiveInnerExceptions(System.Action<aweXpect.Core.IExpectSubject<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatGeneric
     {
