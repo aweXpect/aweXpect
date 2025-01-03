@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Core.Tests.Core;
+﻿using aweXpect.Core.Helpers;
+
+namespace aweXpect.Core.Tests.Core;
 
 public class StringDifferenceTests
 {
@@ -122,6 +124,7 @@ public class StringDifferenceTests
 	public async Task WhenTextHasMultipleLines_ShouldIncludeLineAndColumnNumbers()
 	{
 		int expectedIndex = 100 + (3 * Environment.NewLine.Length);
+		string nl = Environment.NewLine.DisplayWhitespace();
 
 		string actual = """
 		                @startuml
@@ -148,8 +151,8 @@ public class StringDifferenceTests
 			$"""
 			 differs on line 4 and column 16 (index {expectedIndex}):
 			              ↓ (actual)
-			   "…-> Bob : Another authentication Request\r\nAlice <-- Bob :…"
-			   "…-> Bob : Invalid authentication Request\r\nAlice <-- Bob :…"
+			   "…-> Bob : Another authentication Request{nl}Alice <-- Bob :…"
+			   "…-> Bob : Invalid authentication Request{nl}Alice <-- Bob :…"
 			              ↑ (expected)
 			 """);
 	}
