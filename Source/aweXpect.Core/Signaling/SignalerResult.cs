@@ -5,7 +5,7 @@ namespace aweXpect.Signaling;
 /// <summary>
 ///     The result when waiting in a <see cref="Signaler" />.
 /// </summary>
-public class SignalerResult(bool wasTriggered, int counter)
+public class SignalerResult(bool isSuccess, int counter)
 {
 	/// <summary>
 	///     The number of times the callback was triggered.
@@ -20,14 +20,14 @@ public class SignalerResult(bool wasTriggered, int counter)
 	///     or the <see cref="CancellationToken" /> was cancelled prior to enough triggered callbacks;
 	///     otherwise <see langword="true" />.
 	/// </remarks>
-	public bool IsSuccess { get; } = wasTriggered;
+	public bool IsSuccess { get; } = isSuccess;
 }
 
 /// <summary>
 ///     The result when waiting in a <see cref="Signaler{TParameter}" />.
 /// </summary>
-public class SignalerResult<TParameter>(bool wasTriggered, TParameter[] parameters)
-	: SignalerResult(wasTriggered, parameters.Length)
+public class SignalerResult<TParameter>(bool isSuccess, TParameter[] parameters)
+	: SignalerResult(isSuccess, parameters.Length)
 {
 	/// <summary>
 	///     The parameters provided while triggering the callback.
