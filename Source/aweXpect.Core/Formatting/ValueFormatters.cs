@@ -19,11 +19,6 @@ public static partial class ValueFormatters
 		FormattingOptions? options = null,
 		FormattingContext? context = null)
 	{
-		if (value is null)
-		{
-			return ValueFormatter.NullString;
-		}
-
 		StringBuilder stringBuilder = new();
 		Format(formatter, stringBuilder, value, options, context);
 		return stringBuilder.ToString();

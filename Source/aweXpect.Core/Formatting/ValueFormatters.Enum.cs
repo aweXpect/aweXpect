@@ -34,9 +34,10 @@ public static partial class ValueFormatters
 		if (value == null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
-			return;
 		}
-
-		stringBuilder.Append(value);
+		else
+		{
+			stringBuilder.Append(value);
+		}
 	}
 }

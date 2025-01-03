@@ -313,7 +313,6 @@ namespace aweXpect.Formatting
         public static string Format(this aweXpect.Formatting.ValueFormatter _, ulong value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, System.UIntPtr value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, string? value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.Collections.IEnumerable? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.DateTime? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.DateTimeOffset? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.Enum? value, aweXpect.Formatting.FormattingOptions? options = null) { }
@@ -723,13 +722,13 @@ namespace aweXpect.Signaling
     }
     public class SignalerResult
     {
-        public SignalerResult(bool wasTriggered, int counter) { }
+        public SignalerResult(bool isSuccess, int counter) { }
         public int Count { get; }
         public bool IsSuccess { get; }
     }
     public class SignalerResult<TParameter> : aweXpect.Signaling.SignalerResult
     {
-        public SignalerResult(bool wasTriggered, TParameter[] parameters) { }
+        public SignalerResult(bool isSuccess, TParameter[] parameters) { }
         public TParameter[] Parameters { get; }
     }
     public class Signaler<TParameter>
