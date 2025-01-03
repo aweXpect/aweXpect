@@ -1,4 +1,5 @@
-﻿using aweXpect.Tests.TestHelpers;
+﻿using System.Threading;
+using aweXpect.Tests.TestHelpers;
 
 namespace aweXpect.Tests.Delegates;
 
@@ -178,6 +179,107 @@ public sealed partial class DelegateShould
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				Func<ValueTask>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
+#endif
+
+#if NET8_0_OR_GREATER
+		public sealed class FuncCancellationTokenValueTaskTests
+		{
+			[Fact]
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				ValueTask Delegate(CancellationToken _)
+					=> new(Task.CompletedTask);
+
+				async Task Act()
+					=> await That(Delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected Delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
+			{
+				ValueTask Delegate(CancellationToken _)
+					=> new(Task.FromException(new MyException()));
+
+				async Task Act()
+					=> await That(Delegate).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<CancellationToken, ValueTask>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
+#endif
+
+#if NET8_0_OR_GREATER
+
+		public sealed class FuncCancellationTokenValueTaskValueTests
+		{
+			[Fact]
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				ValueTask<int> Delegate(CancellationToken _)
+					=> new(Task.FromResult(1));
+
+				async Task Act()
+					=> await That(Delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected Delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
+			{
+				ValueTask<int> Delegate(CancellationToken _)
+					=> new(Task.FromException<int>(new MyException()));
+
+				async Task Act()
+					=> await That(Delegate).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<CancellationToken, ValueTask<int>>? subject = null;
 
 				async Task Act()
 					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
