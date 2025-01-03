@@ -52,8 +52,7 @@ public static partial class ThatDelegateShould
 		{
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
-					"it was <null>");
+				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(), That.ItWasNull);
 			}
 
 			if (actual.Exception is { } exception)
@@ -82,8 +81,7 @@ public static partial class ThatDelegateShould
 		{
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					"it was <null>");
+				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
 			}
 
 			if (actual.Exception is { } exception)
@@ -112,8 +110,7 @@ public static partial class ThatDelegateShould
 		{
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					"it was <null>");
+				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
 			}
 
 			if (actual.Exception is not null || actual.Duration > duration)
@@ -136,8 +133,7 @@ public static partial class ThatDelegateShould
 		{
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					"it was <null>");
+				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
 			}
 
 			if (actual.Exception is not null || actual.Duration > duration)

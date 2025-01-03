@@ -29,8 +29,7 @@ public static partial class ThatDelegateShould
 		{
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					"it was <null>");
+				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
 			}
 
 			if (actual.Exception is { } exception)
@@ -52,8 +51,7 @@ public static partial class ThatDelegateShould
 		{
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure<TValue?>(default, ToString(),
-					"it was <null>");
+				return new ConstraintResult.Failure<TValue?>(default, ToString(), That.ItWasNull);
 			}
 
 			if (actual.Exception is { } exception)
