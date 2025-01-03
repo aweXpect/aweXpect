@@ -137,7 +137,7 @@ public class SignalerTests
 			Signaler signaler = new();
 			using ManualResetEventSlim ms = new();
 
-			_ = Task.Run(() =>
+			_ = Task.Run(async () =>
 			{
 				for (int i = 10; i < 1000; i++)
 				{
@@ -147,7 +147,7 @@ public class SignalerTests
 						break;
 					}
 
-					Thread.Sleep(i.Milliseconds());
+					await Task.Delay(i.Milliseconds());
 					signaler.Signal();
 				}
 			});
@@ -297,7 +297,7 @@ public class SignalerTests
 			Signaler<int> signaler = new();
 			using ManualResetEventSlim ms = new();
 
-			_ = Task.Run(() =>
+			_ = Task.Run(async () =>
 			{
 				for (int i = 10; i < 1000; i++)
 				{
@@ -308,7 +308,7 @@ public class SignalerTests
 					}
 
 					int value = i;
-					Thread.Sleep(i.Milliseconds());
+					await Task.Delay(i.Milliseconds());
 					signaler.Signal(value);
 				}
 			});
@@ -392,7 +392,7 @@ public class SignalerTests
 			Signaler<int> signaler = new();
 			using ManualResetEventSlim ms = new();
 
-			_ = Task.Run(() =>
+			_ = Task.Run(async () =>
 			{
 				for (int i = 10; i < 1000; i++)
 				{
@@ -403,7 +403,7 @@ public class SignalerTests
 					}
 
 					int value = i;
-					Thread.Sleep(i.Milliseconds());
+					await Task.Delay(i.Milliseconds());
 					signaler.Signal(value);
 				}
 			});
