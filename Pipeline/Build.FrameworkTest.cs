@@ -11,9 +11,19 @@ namespace Build;
 
 partial class Build
 {
+	Project[] FrameworkUnitTestProjects =>
+	[
+		Solution.Tests.Frameworks.aweXpect_Frameworks_Fallback_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
+		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests
+	];
+	
 	Target TestFrameworks => _ => _
 		.DependsOn(VsTestFrameworks)
-		.DependsOn(TunitTestingPlatformFrameworks)
+		.DependsOn(TestingPlatformFrameworks)
 		.DependsOn(XunitTestingPlatformFrameworks);
 
 	Target VsTestFrameworks => _ => _
@@ -21,18 +31,8 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			Project[] projects =
-			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_Fallback_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_MsTest_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests
-			];
-
 			var testCombinations =
-				from project in projects
+				from project in FrameworkUnitTestProjects
 				let frameworks = project.GetTargetFrameworks()
 				let supportedFrameworks = EnvironmentInfo.IsWin ? frameworks : frameworks.Except(["net48"])
 				from framework in supportedFrameworks
@@ -59,7 +59,7 @@ partial class Build
 						.AddLoggers($"trx;LogFileName={v.project.Name}_{v.framework}.trx")), completeOnFailure: true);
 		});
 
-	Target TunitTestingPlatformFrameworks => _ => _
+	Target TestingPlatformFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
 		.Executes(() =>
