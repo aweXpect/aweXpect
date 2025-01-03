@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
-	private sealed class WildcardMatchType : IMatchType
+	private sealed class WildcardMatchType : IStringMatchType
 	{
 		private static string WildcardToRegularExpression(string value)
 		{
@@ -33,10 +34,10 @@ public partial class StringEqualityOptions
 				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
 		}
 
-		public bool Matches(string? value, string? pattern, bool ignoreCase,
+		public bool Matches(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
-			if (value is null || pattern is null)
+			if (actual is null || expected is null)
 			{
 				return false;
 			}
@@ -45,7 +46,7 @@ public partial class StringEqualityOptions
 				? RegexOptions.Multiline | RegexOptions.IgnoreCase
 				: RegexOptions.Multiline;
 
-			return Regex.IsMatch(value, WildcardToRegularExpression(pattern), options,
+			return Regex.IsMatch(actual, WildcardToRegularExpression(expected), options,
 				RegexTimeout);
 		}
 

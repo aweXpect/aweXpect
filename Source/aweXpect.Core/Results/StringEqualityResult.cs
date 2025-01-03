@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using aweXpect.Core;
 using aweXpect.Options;
 
@@ -33,6 +34,12 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
 	where TSelf : StringEqualityResult<TType, TThat, TSelf>
 {
+	/// <summary>
+	///     The <see cref="StringEqualityOptions" /> for extension methods.
+	/// </summary>
+	[EditorBrowsable(EditorBrowsableState.Advanced)]
+	public StringEqualityOptions Options => options;
+
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s,
 	///     according to the <paramref name="ignoreCase" /> parameter.

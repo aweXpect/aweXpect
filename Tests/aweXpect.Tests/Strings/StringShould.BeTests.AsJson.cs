@@ -8,24 +8,6 @@ public sealed partial class StringShould
 		public sealed class AsJsonTests
 		{
 			[Fact]
-			public async Task WhenStringsAreSameValidJson_ShouldSucceed()
-			{
-				string subject = """
-				                 { "foo": 1 }
-				                 """;
-				string expected = """
-				                  {
-				                    "foo": 1
-				                  }
-				                  """;
-
-				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson();
-
-				await That(Act).Should().NotThrow();
-			}
-			
-			[Fact]
 			public async Task WhenStringsAreDifferentValidJson_ShouldFail()
 			{
 				string subject = """
@@ -43,11 +25,32 @@ public sealed partial class StringShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             be equal to "{\r\n  "foo": 2\r\n}",
-					             but it was "{ "foo": 1 }"
+					             be JSON equivalent to {
+					               "foo": 2
+					             },
+					             but it differed in:
+					              - .foo was 1 instead of 2
 					             """);
 			}
-			
+
+			[Fact]
+			public async Task WhenStringsAreSameValidJson_ShouldSucceed()
+			{
+				string subject = """
+				                 { "foo": 1 }
+				                 """;
+				string expected = """
+				                  {
+				                    "foo": 1
+				                  }
+				                  """;
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson();
+
+				await That(Act).Should().NotThrow();
+			}
+
 			[Theory]
 			[InlineData(false)]
 			[InlineData(true)]
@@ -58,18 +61,22 @@ public sealed partial class StringShould
 				                 """;
 				string expected = """
 				                  {
-				                    "foo": 2
+				                    "foo": 1
 				                  }
 				                  """;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalMembers(ignoreAdditionalMembers));
+					=> await That(subject).Should().Be(expected)
+						.AsJson(o => o.IgnoringAdditionalMembers(ignoreAdditionalMembers));
 
 				await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreAdditionalMembers)
 					.WithMessage("""
 					             Expected subject to
-					             be equal to "{\r\n  "foo": 2\r\n}",
-					             but it was "{ "foo": 1, "bar" : "xyz" }" which differs at index
+					             be JSON equivalent to {
+					               "foo": 1
+					             },
+					             but it contained unexpected members:
+					              - .bar
 					             """);
 			}
 		}

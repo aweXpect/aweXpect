@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using aweXpect.Core;
 using aweXpect.Options;
 
@@ -33,6 +34,12 @@ public class ObjectEqualityResult<TType, TThat, TSelf>(
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
 	where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
 {
+	/// <summary>
+	///     The <see cref="ObjectEqualityOptions" /> for extension methods.
+	/// </summary>
+	[EditorBrowsable(EditorBrowsableState.Advanced)]
+	public ObjectEqualityOptions Options => options;
+
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.
 	/// </summary>

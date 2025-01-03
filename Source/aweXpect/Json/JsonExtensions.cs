@@ -26,7 +26,7 @@ public static class JsonExtensions
 	{
 		JsonComparerOptions equivalencyOptions =
 			optionsCallback?.Invoke(new JsonComparerOptions()) ?? new JsonComparerOptions();
-		options.Using(new JsonComparer(equivalencyOptions));
+		options.Options.SetMatchType(new JsonComparer(equivalencyOptions));
 		return (TSelf)options;
 	}
 
@@ -36,16 +36,16 @@ public static class JsonExtensions
 	public static StringEqualityOptions AsJson(this StringEqualityOptions options,
 		JsonComparerOptions equivalencyOptions)
 	{
-		options.UsingComparer(new JsonComparer(equivalencyOptions));
+		options.SetMatchType(new JsonComparer(equivalencyOptions));
 		return options;
 	}
 
 	private sealed class JsonComparer(JsonComparerOptions equivalencyOptions)
-		: IEqualityComparer<string>, IComparerOptions
+		: IStringMatchType, IEqualityComparer<string>, IComparerOptions
 	{
-		private readonly List<string> _additionalProperties = new();
-		private readonly List<(string, string)> _differentProperties = new();
-		private readonly List<string> _missingProperties = new();
+		private readonly List<string> _additionalMembers = new();
+		private readonly Dictionary<string, string> _differentMembers = new();
+		private readonly List<string> _missingMembers = new();
 
 		public string GetExpectation(string expectedExpression) => $"be JSON equivalent to {expectedExpression}";
 
@@ -53,32 +53,32 @@ public static class JsonExtensions
 		{
 			StringBuilder sb = new();
 			sb.Append(it).Append(' ');
-			if (_missingProperties.Any())
+			if (_missingMembers.Any())
 			{
 				sb.Append("did not contain ");
-				Formatter.Format(sb, _missingProperties, FormattingOptions.MultipleLines);
+				Formatter.Format(sb, _missingMembers, FormattingOptions.MultipleLines);
 			}
 
-			if (_additionalProperties.Any())
+			if (_additionalMembers.Any())
 			{
-				if (_missingProperties.Any())
+				if (_missingMembers.Any())
 				{
 					sb.AppendLine(" and");
 				}
 
 				sb.Append("contained unexpected properties ");
-				Formatter.Format(sb, _additionalProperties, FormattingOptions.MultipleLines);
+				Formatter.Format(sb, _additionalMembers, FormattingOptions.MultipleLines);
 			}
 
-			if (_differentProperties.Any())
+			if (_differentMembers.Any())
 			{
-				if (_missingProperties.Any() || _additionalProperties.Any())
+				if (_missingMembers.Any() || _additionalMembers.Any())
 				{
 					sb.AppendLine(" and");
 				}
 
 				sb.Append("did not match the following properties ");
-				Formatter.Format(sb, _differentProperties.Select(x => $"{x.Item1}: {x.Item2}"),
+				Formatter.Format(sb, _differentMembers.Select(x => $"{x.Key}: {x.Value}"),
 					FormattingOptions.MultipleLines);
 			}
 
@@ -97,25 +97,88 @@ public static class JsonExtensions
 				return false;
 			}
 
-			try
-			{
-				using JsonDocument json1 = JsonDocument.Parse(x);
-				using JsonDocument json2 = JsonDocument.Parse(y);
+			using JsonDocument json1 = JsonDocument.Parse(x);
+			using JsonDocument json2 = JsonDocument.Parse(y);
 
-				return CompareJson("",
-					json1.RootElement,
-					json2.RootElement,
-					equivalencyOptions);
-			}
-			catch (JsonException e)
-			{
-				Console.WriteLine(e);
-				throw;
-			}
-			//return !_missingProperties.Any() && !_additionalProperties.Any() && !_differentProperties.Any();
+			return CompareJson("",
+				json1.RootElement,
+				json2.RootElement,
+				equivalencyOptions);
 		}
 
 		public int GetHashCode(string obj) => obj.GetHashCode();
+
+		public string GetExtendedFailure(string it, string? actual, string? pattern, bool ignoreCase,
+			IEqualityComparer<string> comparer)
+		{
+			StringBuilder sb = new();
+			sb.Append(it).Append(' ');
+			if (_missingMembers.Any())
+			{
+				sb.Append("did not contain:");
+				foreach (string missingMember in _missingMembers)
+				{
+					sb.AppendLine();
+					sb.Append(" - ").Append(missingMember);
+				}
+			}
+
+			if (_additionalMembers.Any())
+			{
+				if (_missingMembers.Any())
+				{
+					sb.AppendLine().Append("and ");
+				}
+
+				sb.Append("contained unexpected members:");
+				foreach (string additionalMember in _additionalMembers)
+				{
+					sb.AppendLine();
+					sb.Append(" - ").Append(additionalMember);
+				}
+			}
+
+			if (_differentMembers.Any())
+			{
+				if (_missingMembers.Any() || _additionalMembers.Any())
+				{
+					sb.AppendLine().Append("and ");
+				}
+
+				sb.Append("differed in:");
+				foreach (KeyValuePair<string, string> differentMember in _differentMembers)
+				{
+					sb.AppendLine();
+					sb.Append(" - ").Append(differentMember.Key).Append(" ").Append(differentMember.Value);
+				}
+			}
+
+			return sb.ToString();
+		}
+
+		public bool Matches(string? actual, string? expected, bool ignoreCase, IEqualityComparer<string> comparer)
+		{
+			if (actual == null && expected == null)
+			{
+				return true;
+			}
+
+			if (actual == null || expected == null)
+			{
+				return false;
+			}
+
+			using JsonDocument json1 = JsonDocument.Parse(actual);
+			using JsonDocument json2 = JsonDocument.Parse(expected);
+
+			return CompareJson("",
+				json1.RootElement,
+				json2.RootElement,
+				equivalencyOptions);
+		}
+
+		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
+			=> $"be JSON equivalent to {expected}";
 
 		private bool CompareJson(string path,
 			JsonElement jsonElement1,
@@ -141,7 +204,7 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.False)
 			{
-				_differentProperties.Add((path, "was false"));
+				_differentMembers[path] = "was false";
 				return false;
 			}
 
@@ -155,7 +218,7 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.True)
 			{
-				_differentProperties.Add((path, "was true"));
+				_differentMembers[path] = "was true";
 				return false;
 			}
 
@@ -169,16 +232,44 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.Number)
 			{
-				_differentProperties.Add((path, "was no number"));
+				_differentMembers[path] = "was no number";
 				return false;
 			}
 
-			if (jsonElement1.TryGetInt32(out var v1) && jsonElement2.TryGetInt32(out var v2) && v1 == v2)
+			if (jsonElement1.TryGetInt32(out int v1) && jsonElement2.TryGetInt32(out int v2))
 			{
-				return true;
+				if (v1 == v2)
+				{
+					return true;
+				}
+
+				_differentMembers[path] = $"was {Formatter.Format(v1)} instead of {Formatter.Format(v2)}";
+				return false;
 			}
 
-			_differentProperties.Add((path, "differed"));
+			if (jsonElement1.TryGetDouble(out double n1) && jsonElement2.TryGetDouble(out double n2))
+			{
+				if (n1.Equals(n2))
+				{
+					return true;
+				}
+
+				_differentMembers[path] = $"was {Formatter.Format(n1)} instead of {Formatter.Format(n2)}";
+				return false;
+			}
+
+			if (jsonElement1.TryGetDecimal(out decimal d1) && jsonElement2.TryGetDecimal(out decimal d2))
+			{
+				if (d1.Equals(d2))
+				{
+					return true;
+				}
+
+				_differentMembers[path] = $"was {Formatter.Format(d1)} instead of {Formatter.Format(d2)}";
+				return false;
+			}
+
+			_differentMembers[path] = "differed";
 			return false;
 		}
 
@@ -189,7 +280,7 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.String)
 			{
-				_differentProperties.Add((path, "was no string"));
+				_differentMembers[path] = "was no string";
 				return false;
 			}
 
@@ -197,7 +288,7 @@ public static class JsonExtensions
 			string? value2 = jsonElement2.GetString();
 			if (value1 != value2)
 			{
-				_differentProperties.Add((path, $"was {Formatter.Format(value1)} instead of {Formatter.Format(value2)}"));
+				_differentMembers.Add(path, $"was {Formatter.Format(value1)} instead of {Formatter.Format(value2)}");
 				return false;
 			}
 
@@ -211,7 +302,7 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.Null)
 			{
-				_differentProperties.Add((path, "was not null"));
+				_differentMembers[path] = "was not null";
 				return false;
 			}
 
@@ -225,7 +316,7 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.Undefined)
 			{
-				_differentProperties.Add((path, "was not undefined"));
+				_differentMembers[path] = "was not undefined";
 				return false;
 			}
 
@@ -239,7 +330,7 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.Object)
 			{
-				_differentProperties.Add((path, "was no object"));
+				_differentMembers[path] = "was no object";
 				return false;
 			}
 
@@ -249,7 +340,7 @@ public static class JsonExtensions
 				string memberPath = path + "." + item.Name;
 				if (!jsonElement1.TryGetProperty(item.Name, out JsonElement property))
 				{
-					_missingProperties.Add(memberPath);
+					_missingMembers.Add(memberPath);
 					isConsideredEqual = false;
 					continue;
 				}
@@ -262,9 +353,14 @@ public static class JsonExtensions
 				foreach (JsonProperty item in jsonElement1.EnumerateObject())
 				{
 					string memberPath = path + "." + item.Name;
+					if (_differentMembers.ContainsKey(memberPath))
+					{
+						continue;
+					}
+
 					if (!jsonElement2.TryGetProperty(item.Name, out JsonElement property))
 					{
-						_additionalProperties.Add(memberPath);
+						_additionalMembers.Add(memberPath);
 						isConsideredEqual = false;
 						continue;
 					}
@@ -283,10 +379,10 @@ public static class JsonExtensions
 		{
 			if (jsonElement2.ValueKind != JsonValueKind.Array)
 			{
-				_differentProperties.Add((path, "was no array"));
+				_differentMembers[path] = "was no array";
 				return false;
 			}
-			
+
 			// TODO
 
 			return true;
