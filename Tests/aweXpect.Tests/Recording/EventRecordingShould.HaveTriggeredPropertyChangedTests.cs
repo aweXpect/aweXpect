@@ -7,106 +7,126 @@ public sealed partial class EventRecordingShould
 {
 	public sealed class HaveTriggeredPropertyChanged
 	{
-		[Fact]
-		public async Task TriggersPropertyChangedFor_WhenEventIsTriggeredOftenEnough_ShouldSucceed()
+		public sealed class Tests
 		{
-			PropertyChangedClass sut = new();
-
-			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
-
-			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
-			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
-			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
-
-			async Task Act() =>
-				await That(recording).Should()
-					.HaveTriggeredPropertyChanged()
-					.AtLeast(3.Times());
-
-			await That(Act).Should().NotThrow();
-		}
-
-		[Fact]
-		public async Task TriggersPropertyChangedFor_WhenEventIsTriggeredTooFewTimes_ShouldFail()
-		{
-			PropertyChangedClass sut = new()
+			[Fact]
+			public async Task TriggersPropertyChangedFor_WhenEventIsTriggeredOftenEnough_ShouldSucceed()
 			{
-				MyValue = 42
-			};
-			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+				PropertyChangedClass sut = new();
 
-			sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
-			async Task Act() =>
-				await That(recording).Should()
-					.HaveTriggeredPropertyChanged()
-					.AtLeast(2.Times());
+				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected recording to
-				             have recorded the PropertyChanged event on sut at least 2 times,
-				             but it was recorded once in [
-				               PropertyChanged(PropertyChangedClass {
-				                   MyValue = 42
-				                 }, PropertyChangedEventArgs {
-				                   PropertyName = "MyValue"
-				                 })
-				             ]
-				             """);
-		}
+				async Task Act() =>
+					await That(recording).Should()
+						.HaveTriggeredPropertyChanged()
+						.AtLeast(3.Times());
 
-		[Fact]
-		public async Task WhenPropertyChangedEventIsTriggeredOftenEnough_ShouldSucceed()
-		{
-			PropertyChangedClass sut = new();
-			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+				await That(Act).Should().NotThrow();
+			}
 
-			sut.NotifyPropertyChanged("foo");
-			sut.NotifyPropertyChanged("foo");
-			sut.NotifyPropertyChanged("foo");
+			[Fact]
+			public async Task TriggersPropertyChangedFor_WhenEventIsTriggeredTooFewTimes_ShouldFail()
+			{
+				PropertyChangedClass sut = new()
+				{
+					MyValue = 42
+				};
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
-			async Task Act() =>
-				await That(recording).Should()
-					.HaveTriggeredPropertyChanged()
-					.With<PropertyChangedEventArgs>(e => e.PropertyName == "foo")
-					.AtLeast(3.Times());
+				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
 
-			await That(Act).Should().NotThrow();
-		}
+				async Task Act() =>
+					await That(recording).Should()
+						.HaveTriggeredPropertyChanged()
+						.AtLeast(2.Times());
 
-		[Fact]
-		public async Task WhenPropertyChangedEventIsTriggeredTooFewTimes_ShouldFail()
-		{
-			PropertyChangedClass sut = new();
-			IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected recording to
+					             have recorded the PropertyChanged event on sut at least 2 times,
+					             but it was recorded once in [
+					               PropertyChanged(PropertyChangedClass {
+					                   MyValue = 42
+					                 }, PropertyChangedEventArgs {
+					                   PropertyName = "MyValue"
+					                 })
+					             ]
+					             """);
+			}
 
-			sut.NotifyPropertyChanged("foo");
-			sut.NotifyPropertyChanged("bar");
+			[Fact]
+			public async Task WhenPropertyChangedEventIsTriggeredOftenEnough_ShouldSucceed()
+			{
+				PropertyChangedClass sut = new();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
-			async Task Act() =>
-				await That(recording).Should()
-					.HaveTriggeredPropertyChanged()
-					.With<PropertyChangedEventArgs>(e => e.PropertyName == "foo")
-					.AtLeast(2.Times());
+				sut.NotifyPropertyChanged("foo");
+				sut.NotifyPropertyChanged("foo");
+				sut.NotifyPropertyChanged("foo");
 
-			await That(Act).Should().Throw<XunitException>()
-				.WithMessage("""
-				             Expected recording to
-				             have recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least 2 times,
-				             but it was recorded once in [
-				               PropertyChanged(PropertyChangedClass {
-				                   MyValue = 0
-				                 }, PropertyChangedEventArgs {
-				                   PropertyName = "foo"
-				                 }),
-				               PropertyChanged(PropertyChangedClass {
-				                   MyValue = 0
-				                 }, PropertyChangedEventArgs {
-				                   PropertyName = "bar"
-				                 })
-				             ]
-				             """);
+				async Task Act() =>
+					await That(recording).Should()
+						.HaveTriggeredPropertyChanged()
+						.With<PropertyChangedEventArgs>(e => e.PropertyName == "foo")
+						.AtLeast(3.Times());
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenPropertyChangedEventIsTriggeredTooFewTimes_ShouldFail()
+			{
+				PropertyChangedClass sut = new();
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+
+				sut.NotifyPropertyChanged("foo");
+				sut.NotifyPropertyChanged("bar");
+
+				async Task Act() =>
+					await That(recording).Should()
+						.HaveTriggeredPropertyChanged()
+						.With<PropertyChangedEventArgs>(e => e.PropertyName == "foo")
+						.AtLeast(2.Times());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected recording to
+					             have recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least 2 times,
+					             but it was recorded once in [
+					               PropertyChanged(PropertyChangedClass {
+					                   MyValue = 0
+					                 }, PropertyChangedEventArgs {
+					                   PropertyName = "foo"
+					                 }),
+					               PropertyChanged(PropertyChangedClass {
+					                   MyValue = 0
+					                 }, PropertyChangedEventArgs {
+					                   PropertyName = "bar"
+					                 })
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEventRecording<PropertyChangedClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should()
+						.HaveTriggeredPropertyChanged();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the PropertyChanged event at least once,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

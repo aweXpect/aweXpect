@@ -38,14 +38,25 @@ public static partial class ThatEventRecordingShould
 	{
 		public ConstraintResult IsMetBy(IEventRecording<TSubject> actual)
 		{
-			IEventRecordingResult recordingResult = actual.Stop();
-			int eventCount = recordingResult.GetEventCount(eventName, filter.IsMatch);
-			string quantifierString = quantifier.ToString();
 			string expectation = $"have recorded the {eventName} event on {actual}{filter} {quantifier}";
+			string quantifierString = quantifier.ToString();
 			if (quantifierString == "never")
 			{
 				expectation = $"have never recorded the {eventName} event on {actual}{filter}";
 			}
+
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				expectation = quantifierString == "never"
+					? $"have never recorded the {eventName} event{filter}"
+					: $"have recorded the {eventName} event{filter} {quantifier}";
+				return new ConstraintResult.Failure<IEventRecording<TSubject>>(actual!, expectation,
+					$"{it} was <null>");
+			}
+
+			IEventRecordingResult recordingResult = actual.Stop();
+			int eventCount = recordingResult.GetEventCount(eventName, filter.IsMatch);
 
 			if (quantifier.Check(eventCount, true) != true)
 			{
