@@ -34,7 +34,7 @@ public static partial class ThatHttpResponseMessageShould
 				=> new HasStatusCodeRangeConstraint(
 					it,
 					statusCode => statusCode != (int)unexpected,
-					$"has StatusCode different to {Formatter.Format(unexpected)}")),
+					$"have StatusCode different to {Formatter.Format(unexpected)}")),
 			source);
 
 	private readonly struct HasStatusCodeConstraint(string it, HttpStatusCode expected)
