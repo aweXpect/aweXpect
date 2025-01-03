@@ -5,7 +5,7 @@ using aweXpect.Core.TimeSystem;
 
 namespace aweXpect.Core.Sources;
 
-internal class DelegateValueSource<TValue>(Func<CancellationToken, TValue> action)
+internal class DelegateValueSource<TValue>(Func<CancellationToken, TValue>? action)
 	: IValueSource<DelegateValue<TValue>>
 {
 	#region IValueSource<DelegateValue<TValue>> Members
@@ -13,6 +13,11 @@ internal class DelegateValueSource<TValue>(Func<CancellationToken, TValue> actio
 	public Task<DelegateValue<TValue>> GetValue(ITimeSystem timeSystem,
 		CancellationToken cancellationToken)
 	{
+		if (action is null)
+		{
+			return Task.FromResult(new DelegateValue<TValue>(default, null, TimeSpan.Zero, true));
+		}
+
 		IStopwatch sw = timeSystem.Stopwatch.New();
 		try
 		{

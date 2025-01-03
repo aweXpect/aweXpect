@@ -50,6 +50,12 @@ public static partial class ThatDelegateShould
 	{
 		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
 		{
+			if (actual.IsNull)
+			{
+				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
+					"it was <null>");
+			}
+
 			if (actual.Exception is { } exception)
 			{
 				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
@@ -74,6 +80,12 @@ public static partial class ThatDelegateShould
 	{
 		public ConstraintResult IsMetBy(DelegateValue actual)
 		{
+			if (actual.IsNull)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					"it was <null>");
+			}
+
 			if (actual.Exception is { } exception)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -98,6 +110,12 @@ public static partial class ThatDelegateShould
 	{
 		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
 		{
+			if (actual.IsNull)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					"it was <null>");
+			}
+
 			if (actual.Exception is not null || actual.Duration > duration)
 			{
 				return new ConstraintResult.Success<TValue?>(actual.Value, ToString());
@@ -116,6 +134,12 @@ public static partial class ThatDelegateShould
 	{
 		public ConstraintResult IsMetBy(DelegateValue actual)
 		{
+			if (actual.IsNull)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					"it was <null>");
+			}
+
 			if (actual.Exception is not null || actual.Duration > duration)
 			{
 				return new ConstraintResult.Success(ToString());

@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Core.Sources;
 
 namespace aweXpect.Core.Nodes;
 
@@ -34,7 +35,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		IEvaluationContext context,
 		CancellationToken cancellationToken) where TValue : default
 	{
-		if (value is null)
+		if (value is null || value is DelegateValue { IsNull: true })
 		{
 			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
 			return new ConstraintResult.Failure<TValue?>(value, result.ExpectationText, "it was <null>");

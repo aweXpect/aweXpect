@@ -4,11 +4,11 @@ public sealed partial class DelegateShould
 {
 	public sealed partial class Throw
 	{
-		public sealed class Tests
+		public sealed class GenericTests
 		{
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenAwaited_ShouldReturnThrownException(string value)
+			public async Task WhenAwaited_ShouldReturnThrownException(string value)
 			{
 				Exception exception = new CustomException
 				{
@@ -24,7 +24,7 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenExactExceptionTypeIsThrown_ShouldSucceed()
+			public async Task WhenExactExceptionTypeIsThrown_ShouldSucceed()
 			{
 				Exception exception = new CustomException();
 				Action action = () => throw exception;
@@ -36,7 +36,7 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenNoExceptionIsThrown_ShouldFail()
+			public async Task WhenNoExceptionIsThrown_ShouldFail()
 			{
 				Action action = () => { };
 
@@ -53,7 +53,7 @@ public sealed partial class DelegateShould
 
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenOtherExceptionIsThrown_ShouldFail(string message)
+			public async Task WhenOtherExceptionIsThrown_ShouldFail(string message)
 			{
 				Exception exception = new OtherException(message);
 				Action action = () => throw exception;
@@ -71,7 +71,7 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenSubCustomExceptionIsThrown_ShouldSucceed()
+			public async Task WhenSubCustomExceptionIsThrown_ShouldSucceed()
 			{
 				Exception exception = new SubCustomException();
 				Action action = () => throw exception;
@@ -82,9 +82,25 @@ public sealed partial class DelegateShould
 				await That(Act).Should().NotThrow();
 			}
 
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Action? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Throw<CustomException>();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             throw a CustomException,
+					             but it was <null>
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenSupertypeExceptionIsThrown_ShouldFail(string message)
+			public async Task WhenSupertypeExceptionIsThrown_ShouldFail(string message)
 			{
 				Exception exception = new CustomException(message);
 				Action action = () => throw exception;
@@ -100,10 +116,13 @@ public sealed partial class DelegateShould
 					                {message}
 					              """);
 			}
+		}
 
+		public sealed class TypeTests
+		{
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenAwaited_ShouldReturnThrownException(string value)
+			public async Task WhenAwaited_ShouldReturnThrownException(string value)
 			{
 				Exception exception = new CustomException
 				{
@@ -118,7 +137,7 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenExactExceptionTypeIsThrown_ShouldSucceed()
+			public async Task WhenExactExceptionTypeIsThrown_ShouldSucceed()
 			{
 				Exception exception = new CustomException();
 				Action action = () => throw exception;
@@ -130,7 +149,7 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenNoExceptionIsThrown_ShouldFail()
+			public async Task WhenNoExceptionIsThrown_ShouldFail()
 			{
 				Action action = () => { };
 
@@ -147,7 +166,7 @@ public sealed partial class DelegateShould
 
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenOtherExceptionIsThrown_ShouldFail(string message)
+			public async Task WhenOtherExceptionIsThrown_ShouldFail(string message)
 			{
 				Exception exception = new OtherException(message);
 				Action action = () => throw exception;
@@ -165,7 +184,7 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenSubCustomExceptionIsThrown_ShouldSucceed()
+			public async Task WhenSubCustomExceptionIsThrown_ShouldSucceed()
 			{
 				Exception exception = new SubCustomException();
 				Action action = () => throw exception;
@@ -176,9 +195,25 @@ public sealed partial class DelegateShould
 				await That(Act).Should().NotThrow();
 			}
 
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Action? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().Throw(typeof(CustomException));
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             throw a CustomException,
+					             but it was <null>
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenSupertypeExceptionIsThrown_ShouldFail(string message)
+			public async Task WhenSupertypeExceptionIsThrown_ShouldFail(string message)
 			{
 				Exception exception = new CustomException(message);
 				Action action = () => throw exception;
