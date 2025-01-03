@@ -6,8 +6,20 @@ public sealed partial class ExceptionShould
 	{
 		public sealed class Tests
 		{
+			[Theory]
+			[AutoData]
+			public async Task WhenStringsAreEqual_ShouldSucceed(string actual)
+			{
+				Exception subject = new(actual);
+
+				async Task Act()
+					=> await That(subject).Should().HaveMessage(actual);
+
+				await That(Act).Should().NotThrow();
+			}
+
 			[Fact]
-			public async Task FailsForDifferentStrings()
+			public async Task WhenStringsDiffer_ShouldFail()
 			{
 				string actual = "actual text";
 				string expected = "expected other text";
@@ -28,16 +40,20 @@ public sealed partial class ExceptionShould
 					             """);
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task SucceedsForSameStrings(string actual)
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Exception subject = new(actual);
+				Exception? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveMessage(actual);
+					=> await That(subject).Should().HaveMessage("expected text");
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have Message equal to "expected text",
+					             but it was <null>
+					             """);
 			}
 		}
 	}

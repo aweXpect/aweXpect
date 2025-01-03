@@ -34,10 +34,16 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		IEvaluationContext context,
 		CancellationToken cancellationToken) where TValue : default
 	{
+		if (value is null)
+		{
+			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
+			return new ConstraintResult.Failure<TValue?>(value, result.ExpectationText, "it was <null>");
+		}
+
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TSource).Name},{Environment.NewLine}but found {value?.GetType().Name}");
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TSource).Name},{Environment.NewLine}but found {value.GetType().Name}");
 		}
 
 		if (_memberAccessor.TryAccessMember(
