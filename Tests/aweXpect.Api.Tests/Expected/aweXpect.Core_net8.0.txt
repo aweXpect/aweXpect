@@ -151,7 +151,7 @@ namespace aweXpect.Core
     }
     public class StringDifference
     {
-        public StringDifference(string actual, string expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null) { }
+        public StringDifference(string? actual, string? expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null) { }
         public int IndexOfFirstMismatch { get; }
         public override string ToString() { }
     }

@@ -14,8 +14,8 @@ namespace aweXpect.Core;
 ///     If no <paramref name="comparer" /> is specified, uses the <see cref="StringComparer.Ordinal" /> string comparer.
 /// </remarks>
 public class StringDifference(
-	string actual,
-	string expected,
+	string? actual,
+	string? expected,
 	IEqualityComparer<string>? comparer = null)
 {
 	private readonly IEqualityComparer<string> _comparer = comparer ?? StringComparer.Ordinal;
@@ -43,14 +43,42 @@ public class StringDifference(
 	/// <param name="prefix">The prefix, e.g. <c>differs at index</c></param>
 	private string ToString(string prefix)
 	{
+		const char arrowDown = '\u2193';
+		const char arrowUp = '\u2191';
+		const string linePrefix = "  \"";
+		const string suffix = "\"";
+
 		int firstIndexOfMismatch = IndexOfFirstMismatch;
+		if (firstIndexOfMismatch < 0)
+		{
+			return prefix;
+		}
+
+		StringBuilder sb = new();
+		if (actual == null)
+		{
+			sb.Append(prefix).Append(" at index ").Append(firstIndexOfMismatch).AppendLine(":");
+			sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+			sb.AppendLine("  <null>");
+			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected!,
+				0, suffix);
+			sb.Append("  ").Append(arrowUp).Append(" (expected)");
+			return sb.ToString();
+		}
+
+		if (expected == null)
+		{
+			sb.Append(prefix).Append(" at index ").Append(firstIndexOfMismatch).AppendLine(":");
+			sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual!,
+				0, suffix);
+			sb.AppendLine("  <null>");
+			sb.Append("  ").Append(arrowUp).Append(" (expected)");
+			return sb.ToString();
+		}
 
 		int trimStart =
 			GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actual, firstIndexOfMismatch);
-		const string linePrefix = "  \"";
-		const string suffix = "\"";
-		const char arrowDown = '\u2193';
-		const char arrowUp = '\u2191';
 
 		int whiteSpaceCountBeforeArrow = firstIndexOfMismatch - trimStart + linePrefix.Length;
 
@@ -59,11 +87,10 @@ public class StringDifference(
 			whiteSpaceCountBeforeArrow++;
 		}
 
-		string? visibleText = actual[trimStart..firstIndexOfMismatch];
+		string visibleText = actual[trimStart..firstIndexOfMismatch];
 		whiteSpaceCountBeforeArrow += visibleText.Count(c => c is '\r' or '\n');
 
-		StringBuilder? sb = new();
-		string? matchingString = actual[..IndexOfFirstMismatch];
+		string matchingString = actual[..IndexOfFirstMismatch];
 		int lineNumber = matchingString.Count(c => c == '\n');
 
 		if (lineNumber > 0)
@@ -156,7 +183,7 @@ public class StringDifference(
 	///     Calculates how many characters to keep in <paramref name="value" />.
 	/// </summary>
 	/// <remarks>
-	///     If a word end is found between 15 and 25 characters, use this word end, otherwise keep 20 characters.
+	///     If a word end is found between 45 and 60 characters, use this word end, otherwise keep 50 characters.
 	/// </remarks>
 	private static int GetLengthOfPhraseToShowOrDefaultLength(string value)
 	{
