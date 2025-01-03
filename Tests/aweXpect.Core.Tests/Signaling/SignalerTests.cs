@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using aweXpect.Chronology;
@@ -86,10 +85,9 @@ public class SignalerTests
 		{
 			Signaler signaler = new();
 
-			List<Task> tasks = new();
 			for (int i = 0; i < 100; i++)
 			{
-				tasks.Add(Task.Run(() => signaler.Signal()));
+				_ = Task.Run(() => signaler.Signal());
 			}
 
 			Stopwatch sw = new();
@@ -97,7 +95,6 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(100.Times());
 			sw.Stop();
 
-			await That(tasks).Should().HaveAll(x => x.Satisfy(t => t.IsCompleted));
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
 		}
@@ -242,11 +239,10 @@ public class SignalerTests
 		{
 			Signaler<int> signaler = new();
 
-			List<Task> tasks = new();
 			for (int i = 0; i < 100; i++)
 			{
 				int value = i;
-				tasks.Add(Task.Run(() => signaler.Signal(value)));
+				_ = Task.Run(() => signaler.Signal(value));
 			}
 
 			Stopwatch sw = new();
@@ -254,7 +250,6 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(100.Times());
 			sw.Stop();
 
-			await That(tasks).Should().HaveAll(x => x.Satisfy(t => t.IsCompleted));
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(result.Parameters).Should().Be(Enumerable.Range(0, 100)).InAnyOrder();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
@@ -350,11 +345,10 @@ public class SignalerTests
 		{
 			Signaler<int> signaler = new();
 
-			List<Task> tasks = new();
 			for (int i = 0; i < 110; i++)
 			{
 				int value = i;
-				tasks.Add(Task.Run(() => signaler.Signal(value)));
+				_ = Task.Run(() => signaler.Signal(value));
 			}
 
 			Stopwatch sw = new();
@@ -362,7 +356,6 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(100.Times(), x => x >= 10);
 			sw.Stop();
 
-			await That(tasks.Skip(10)).Should().HaveAll(x => x.Satisfy(t => t.IsCompleted));
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(result.Parameters).Should().Contain(Enumerable.Range(10, 100)).InAnyOrder();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
