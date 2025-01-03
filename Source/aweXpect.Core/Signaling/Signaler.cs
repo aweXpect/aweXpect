@@ -56,35 +56,32 @@ public class Signaler
 	{
 		lock (_lock)
 		{
-			if (_counter == 0)
+			if (_counter > 0)
 			{
-				_resetEvent = new ManualResetEventSlim();
+				return new SignalerResult(true, _counter);
 			}
+
+			_resetEvent = new ManualResetEventSlim();
 		}
 
 		timeout ??= Customize.Recording.DefaultTimeout;
-		if (_resetEvent != null)
+		try
 		{
-			try
+			if (_resetEvent.Wait(timeout.Value, cancellationToken))
 			{
-				if (_resetEvent.Wait(timeout.Value, cancellationToken))
-				{
-					return new SignalerResult(true, _counter);
-				}
+				return new SignalerResult(true, _counter);
 			}
-			catch (OperationCanceledException)
-			{
-				// Ignore a cancelled operation
-			}
-			finally
-			{
-				_resetEvent.Dispose();
-			}
-
-			return new SignalerResult(false, _counter);
+		}
+		catch (OperationCanceledException)
+		{
+			// Ignore a cancelled operation
+		}
+		finally
+		{
+			_resetEvent.Dispose();
 		}
 
-		return new SignalerResult(_counter > 0, _counter);
+		return new SignalerResult(false, _counter);
 	}
 
 	/// <summary>
