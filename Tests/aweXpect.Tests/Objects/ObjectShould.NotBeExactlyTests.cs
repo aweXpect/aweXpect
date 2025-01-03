@@ -4,11 +4,11 @@ public sealed partial class ObjectShould
 {
 	public sealed class NotBeExactly
 	{
-		public sealed class Tests
+		public sealed class GenericTests
 		{
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenAwaited_ShouldReturnObjectResult(int value)
+			public async Task WhenAwaited_ShouldReturnObjectResult(int value)
 			{
 				object subject = new MyClass
 				{
@@ -21,7 +21,18 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenTypeDoesNotMatch_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				object? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().NotBeExactly<MyClass>();
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenTypeDoesNotMatch_ShouldSucceed()
 			{
 				object subject = new MyClass();
 
@@ -32,7 +43,7 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenTypeIsSubtype_ShouldSucceed()
+			public async Task WhenTypeIsSubtype_ShouldSucceed()
 			{
 				object subject = new MyClass();
 
@@ -42,9 +53,20 @@ public sealed partial class ObjectShould
 				await That(Act).Should().NotThrow();
 			}
 
+			[Fact]
+			public async Task WhenTypeIsSupertype_ShouldSucceed()
+			{
+				object subject = new MyBaseClass();
+
+				async Task Act()
+					=> await That(subject).Should().NotBeExactly<MyClass>();
+
+				await That(Act).Should().NotThrow();
+			}
+
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenTypeMatches_ShouldFail(int value, string reason)
+			public async Task WhenTypeMatches_ShouldFail(int value, string reason)
 			{
 				object subject = new MyClass
 				{
@@ -64,21 +86,13 @@ public sealed partial class ObjectShould
 					               }
 					               """);
 			}
+		}
 
-			[Fact]
-			public async Task ForGeneric_WhenTypeIsSupertype_ShouldSucceed()
-			{
-				object subject = new MyBaseClass();
-
-				async Task Act()
-					=> await That(subject).Should().NotBeExactly<MyClass>();
-
-				await That(Act).Should().NotThrow();
-			}
-
+		public sealed class TypeTests
+		{
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenAwaited_ShouldReturnTypedResult(int value)
+			public async Task WhenAwaited_ShouldReturnTypedResult(int value)
 			{
 				object subject = new MyClass
 				{
@@ -91,7 +105,29 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenTypeIsSubtype_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				object? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenTypeDoesNotMatch_ShouldSucceed()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).Should().NotBeExactly(typeof(OtherClass));
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenTypeIsSubtype_ShouldSucceed()
 			{
 				object subject = new MyClass();
 
@@ -102,19 +138,19 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenTypeDoesNotMatch_ShouldSucceed()
+			public async Task WhenTypeIsSupertype_ShouldSucceed()
 			{
-				object subject = new MyClass();
+				object subject = new MyBaseClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(OtherClass));
+					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
 
 				await That(Act).Should().NotThrow();
 			}
 
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenTypeMatches_ShouldFail(int value, string reason)
+			public async Task WhenTypeMatches_ShouldFail(int value, string reason)
 			{
 				object subject = new MyClass
 				{
@@ -133,17 +169,6 @@ public sealed partial class ObjectShould
 					                 Value = {{value}}
 					               }
 					               """);
-			}
-
-			[Fact]
-			public async Task ForType_WhenTypeIsSupertype_ShouldSucceed()
-			{
-				object subject = new MyBaseClass();
-
-				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
-
-				await That(Act).Should().NotThrow();
 			}
 		}
 	}
