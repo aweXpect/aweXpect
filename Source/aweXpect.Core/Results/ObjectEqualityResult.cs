@@ -30,9 +30,13 @@ public class ObjectEqualityResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	ObjectEqualityOptions options)
-	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
+	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
+		IOptionsProvider<ObjectEqualityOptions>
 	where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	ObjectEqualityOptions IOptionsProvider<ObjectEqualityOptions>.Options => options;
+
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.
 	/// </summary>

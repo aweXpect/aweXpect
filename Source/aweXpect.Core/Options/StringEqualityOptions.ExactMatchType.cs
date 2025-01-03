@@ -7,7 +7,7 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
-	private sealed class ExactMatchType : IMatchType
+	private sealed class ExactMatchType : IStringMatchType
 	{
 		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
 			IEqualityComparer<string> comparer)
@@ -85,20 +85,20 @@ public partial class StringEqualityOptions
 			return $"{prefix} which {stringDifference}";
 		}
 
-		public bool Matches(string? value, string? pattern, bool ignoreCase,
+		public bool Matches(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
-			if (value is null && pattern is null)
+			if (actual is null && expected is null)
 			{
 				return true;
 			}
 
-			if (value is null || pattern is null)
+			if (actual is null || expected is null)
 			{
 				return false;
 			}
 
-			return comparer.Equals(value, pattern);
+			return comparer.Equals(actual, expected);
 		}
 
 		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)

@@ -30,9 +30,13 @@ public class StringEqualityResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
 	StringEqualityOptions options)
-	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
+	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
+		IOptionsProvider<StringEqualityOptions>
 	where TSelf : StringEqualityResult<TType, TThat, TSelf>
 {
+	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
+	StringEqualityOptions IOptionsProvider<StringEqualityOptions>.Options => options;
+
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s,
 	///     according to the <paramref name="ignoreCase" /> parameter.

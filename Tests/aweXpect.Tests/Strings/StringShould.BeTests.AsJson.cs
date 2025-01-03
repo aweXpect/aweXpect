@@ -1,4 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
+using aweXpect.Customization;
+
 namespace aweXpect.Tests.Strings;
 
 public sealed partial class StringShould
@@ -8,10 +10,212 @@ public sealed partial class StringShould
 		public sealed class AsJsonTests
 		{
 			[Fact]
-			public async Task WhenStringsAreSameValidJson_ShouldSucceed()
+			public async Task WhenContainsMoreThan10Differences_ShouldLimitListOfDifferences()
 			{
 				string subject = """
-				                 { "foo": 1 }
+				                 {
+				                   "foo1": null,
+				                   "foo2": null,
+				                   "foo3": null,
+				                   "foo4": null,
+				                   "foo5": null,
+				                   "foo6": null,
+				                   "foo7": null,
+				                   "foo8": null,
+				                   "foo9": null,
+				                   "foo10": null,
+				                   "foo11": null,
+				                   "foo12": null,
+				                 }
+				                 """;
+				string expected = "{}";
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to {},
+					             but it differed as
+					               .foo1 was unexpected and
+					               .foo2 was unexpected and
+					               .foo3 was unexpected and
+					               .foo4 was unexpected and
+					               .foo5 was unexpected and
+					               .foo6 was unexpected and
+					               .foo7 was unexpected and
+					               .foo8 was unexpected and
+					               .foo9 was unexpected and
+					               .foo10 was unexpected and
+					                … (2 more)
+					             """);
+			}
+
+			[Fact]
+			public async Task
+				WhenContainsMoreThanMaximumNumberOfCollectionItemsDifferences_ShouldLimitListOfDifferences()
+			{
+				using IDisposable x = Customize.Formatting.SetMaximumNumberOfCollectionItems(3);
+				string subject = """
+				                 {
+				                   "foo1": null,
+				                   "foo2": null,
+				                   "foo3": null,
+				                   "foo4": null,
+				                   "foo5": null,
+				                   "foo6": null,
+				                   "foo7": null,
+				                   "foo8": null,
+				                   "foo9": null,
+				                   "foo10": null,
+				                   "foo11": null,
+				                   "foo12": null,
+				                 }
+				                 """;
+				string expected = "{}";
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to {},
+					             but it differed as
+					               .foo1 was unexpected and
+					               .foo2 was unexpected and
+					               .foo3 was unexpected and
+					                … (9 more)
+					             """);
+			}
+
+			[Theory]
+			[InlineData("{ \"foo\": 2 }", "{  \"foo\": \"2\"  }", "was number 2 instead of \"2\"")]
+			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": \"1.23\"  }", "was number 1.23 instead of \"1.23\"")]
+			[InlineData("{ \"foo\": \"2\" }", "{  \"foo\": 2  }", "was string \"2\" instead of 2")]
+			[InlineData("{ \"foo\": true }", "{  \"foo\": \"\"  }", "was boolean True instead of \"\"")]
+			[InlineData("{ \"foo\": 1 }", "{  \"foo\": true  }", "was number 1 instead of True")]
+			[InlineData("{ \"foo\": {\"value\":false} }", "{  \"foo\": false  }",
+				"was object {\"value\":false} instead of False")]
+			[InlineData("{ \"foo\": null }", "{  \"foo\": \"\"  }", "was Null instead of \"\"")]
+			public async Task WhenPropertiesOfValuesHaveDifferentType_ShouldFail(string subject, string expected,
+				string message)
+			{
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($"*but it differed as .foo {message}").AsWildcard();
+			}
+
+			[Theory]
+			[InlineData("{ \"foo\": 2 }", "{  \"foo\": 3  }", ".foo was 2 instead of 3")]
+			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": 2.23  }", ".foo was 1.23 instead of 2.23")]
+			[InlineData("{ \"foo\": \"bar\" }", "{  \"foo\": \"baz\"  }", ".foo was \"bar\" instead of \"baz\"")]
+			[InlineData("{ \"foo\": true }", "{  \"foo\": false  }", ".foo was True instead of False")]
+			[InlineData("{ \"foo\": false }", "{  \"foo\": true  }", ".foo was False instead of True")]
+			[InlineData("{ \"foo\": { \"bar\" : 1 } }", "{\"foo\":{\"bar\":2}}", ".foo.bar was 1 instead of 2")]
+			[InlineData("{ \"foo\": [1, 3, 3] }", "{\"foo\":[1,2,3]}", ".foo[1] was 3 instead of 2")]
+			public async Task WhenPropertiesOfValuesHaveDifferentValue_ShouldFail(string subject, string expected,
+				string message)
+			{
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($"*but it differed as {message}").AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenStringsHaveMultipleDifferences_ShouldListAllDifferencesInFailureMessage()
+			{
+				string subject = """
+				                 { "foo": 1.1, "bar": "baz", "something": "else" }
+				                 """;
+				string expected = """
+				                  {
+				                    "foo": 2.1,
+				                    "bar": "bart",
+				                    "baz": true
+				                  }
+				                  """;
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to {
+					               "foo": 2.1,
+					               "bar": "bart",
+					               "baz": true
+					             },
+					             but it differed as
+					               .foo was 1.1 instead of 2.1 and
+					               .bar was "baz" instead of "bart" and
+					               .baz was missing and
+					               .something was unexpected
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasFewerArrayItems_ShouldFail()
+			{
+				string subject = """
+				                 [1, 2]
+				                 """;
+				string expected = """
+				                  [1,2,3,4]
+				                  """;
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to [1,2,3,4],
+					             but it differed as
+					               [2] had missing 3 and
+					               [3] had missing 4
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasMoreArrayItems_ShouldFail()
+			{
+				string subject = """
+				                 {
+				                   "foo": [1, 2, 3, 4]
+				                 }
+				                 """;
+				string expected = """
+				                  {"foo":[1,2]}
+				                  """;
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to {"foo":[1,2]},
+					             but it differed as
+					               .foo[2] had unexpected 3 and
+					               .foo[3] had unexpected 4
+					             """);
+			}
+
+			[Theory]
+			[InlineData(false)]
+			[InlineData(true)]
+			public async Task WhenSubjectContainsAdditionalMembers_ShouldFailWhenCheckingForAdditionalMembers(
+				bool checkForAdditionalMembers)
+			{
+				string subject = """
+				                 { "foo": 1, "bar" : "xyz" }
 				                 """;
 				string expected = """
 				                  {
@@ -20,57 +224,34 @@ public sealed partial class StringShould
 				                  """;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson();
+					=> await That(subject).Should().Be(expected)
+						.AsJson(o => o.CheckingForAdditionalProperties(checkForAdditionalMembers));
 
-				await That(Act).Should().NotThrow();
-			}
-			
-			[Fact]
-			public async Task WhenStringsAreDifferentValidJson_ShouldFail()
-			{
-				string subject = """
-				                 { "foo": 1 }
-				                 """;
-				string expected = """
-				                  {
-				                    "foo": 2
-				                  }
-				                  """;
-
-				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson();
-
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Should().Throw<XunitException>().OnlyIf(checkForAdditionalMembers)
 					.WithMessage("""
 					             Expected subject to
-					             be equal to "{\r\n  "foo": 2\r\n}",
-					             but it was "{ "foo": 1 }"
+					             be JSON equivalent to {
+					               "foo": 1
+					             },
+					             but it differed as .bar was unexpected
 					             """);
 			}
-			
+
 			[Theory]
-			[InlineData(false)]
-			[InlineData(true)]
-			public async Task WhenSubjectContainsAdditionalMembers_ShouldFail(bool ignoreAdditionalMembers)
+			[InlineData("{ \"foo\": 2 }", "{  \"foo\": 2  }", "integer values are supported")]
+			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": 1.23  }", "floating values are supported")]
+			[InlineData("{ \"foo\": \"bar\" }", "{  \"foo\": \"bar\"  }", "string values are supported")]
+			[InlineData("{ \"foo\": true }", "{  \"foo\": true  }", "boolean true is supported")]
+			[InlineData("{ \"foo\": false }", "{  \"foo\": false  }", "boolean false is supported")]
+			[InlineData("{ \"foo\": null }", "{  \"foo\": null  }", "null is supported")]
+			[InlineData("{ \"foo\": { \"bar\" : 1 } }", "{\"foo\":{\"bar\":1}}", "nested objects are supported")]
+			[InlineData("{ \"foo\": [ 1, 2, 3 ] }", "{\"foo\":[1,2,3]}", "arrays are supported")]
+			public async Task WhenValuesAreSameValidJson_ShouldSucceed(string subject, string expected, string because)
 			{
-				string subject = """
-				                 { "foo": 1, "bar" : "xyz" }
-				                 """;
-				string expected = """
-				                  {
-				                    "foo": 2
-				                  }
-				                  """;
-
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalMembers(ignoreAdditionalMembers));
+					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreAdditionalMembers)
-					.WithMessage("""
-					             Expected subject to
-					             be equal to "{\r\n  "foo": 2\r\n}",
-					             but it was "{ "foo": 1, "bar" : "xyz" }" which differs at index
-					             """);
+				await That(Act).Should().NotThrow().Because(because);
 			}
 		}
 	}

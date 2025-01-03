@@ -22,6 +22,11 @@ namespace aweXpect
         public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> options, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> { }
     }
+    public static class JsonExtensions
+    {
+        public static TSelf AsJson<TType, TThat, TSelf>(this aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null)
+            where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> { }
+    }
     public static class ThatAsyncEnumerableShould
     {
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>>> AllBe(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>> source, string? expected) { }
@@ -952,6 +957,17 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> NotBeNegative(this aweXpect.Core.IThat<System.TimeSpan> source) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> NotBePositive(this aweXpect.Core.IThat<System.TimeSpan> source) { }
         public static aweXpect.Core.IThat<System.TimeSpan> Should(this aweXpect.Core.IExpectSubject<System.TimeSpan> subject) { }
+    }
+}
+namespace aweXpect.Json
+{
+    public class JsonOptions
+    {
+        public JsonOptions() { }
+        public bool CheckForAdditionalProperties { get; }
+        public System.Text.Json.JsonDocumentOptions DocumentOptions { get; }
+        public aweXpect.Json.JsonOptions CheckingForAdditionalProperties(bool checkForAdditionalProperties = true) { }
+        public aweXpect.Json.JsonOptions UsingJsonOptions(System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions> jsonDocumentOptions) { }
     }
 }
 namespace aweXpect.Results
