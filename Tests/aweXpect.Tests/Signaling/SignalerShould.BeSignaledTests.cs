@@ -47,6 +47,38 @@ public sealed partial class SignalerShould
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Signaler? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().BeSignaled();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the callback at least once,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectWithParameterIsNull_ShouldFail()
+			{
+				Signaler<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().BeSignaled();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the callback at least once,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenTriggered_ShouldSucceed()
 			{
 				Signaler signaler = new();

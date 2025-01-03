@@ -74,6 +74,18 @@ public static partial class ThatSignalerShould
 	{
 		public async Task<ConstraintResult> IsMetBy(Signaler actual, CancellationToken cancellationToken)
 		{
+			string expectation = count switch
+			{
+				1 => $"have recorded the callback at least once{options}",
+				_ => $"have recorded the callback at least {count} times{options}"
+			};
+
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<SignalerResult>(null!, expectation, $"{it} was <null>");
+			}
+
 			SignalerResult result;
 			TimeSpan? timeout = options.Timeout;
 			if (count == 1)
@@ -89,12 +101,6 @@ public static partial class ThatSignalerShould
 						=> actual.Wait(amount, timeout, cancellationToken),
 					CancellationToken.None);
 			}
-
-			string expectation = count switch
-			{
-				1 => $"have recorded the callback at least once{options}",
-				_ => $"have recorded the callback at least {count} times{options}"
-			};
 
 			if (result.IsSuccess)
 			{
@@ -127,6 +133,18 @@ public static partial class ThatSignalerShould
 			Signaler<TParameter> actual,
 			CancellationToken cancellationToken)
 		{
+			string expectation = count switch
+			{
+				1 => $"have recorded the callback at least once{options}",
+				_ => $"have recorded the callback at least {count} times{options}"
+			};
+
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<SignalerResult>(null!, expectation, $"{it} was <null>");
+			}
+
 			SignalerOptions<TParameter> o = options;
 			SignalerResult<TParameter> result;
 			TimeSpan? timeout = options.Timeout;
@@ -145,12 +163,6 @@ public static partial class ThatSignalerShould
 			}
 
 			int actualCount = result.Parameters.Count(p => o.Matches(p));
-
-			string expectation = count switch
-			{
-				1 => $"have recorded the callback at least once{options}",
-				_ => $"have recorded the callback at least {count} times{options}"
-			};
 
 			if (result.IsSuccess && actualCount >= count)
 			{
