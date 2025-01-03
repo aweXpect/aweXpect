@@ -46,7 +46,8 @@ internal static class StringExtensions
 	}
 
 	[return: NotNullIfNotNull(nameof(value))]
-	public static string? ToSingleLine(this string? value) => value?.Replace("\n", "\\n").Replace("\r", "\\r");
+	public static string? ToSingleLine(this string? value)
+		=> value?.Replace("\n", "\\n").Replace("\r", "\\r");
 
 	[return: NotNullIfNotNull(nameof(value))]
 	public static string? TruncateWithEllipsis(this string? value, int maxLength)
