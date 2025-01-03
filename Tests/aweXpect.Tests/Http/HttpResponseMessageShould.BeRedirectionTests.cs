@@ -39,6 +39,22 @@ public sealed partial class HttpResponseMessageShould
 					.WithMessage("*be redirection (status code 3xx)*")
 					.AsWildcard();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				HttpResponseMessage? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().BeRedirection();
+
+				await That(Act).Should().Throw<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             be redirection (status code 3xx),
+						             but it was <null>
+						             """);
+			}
 		}
 	}
 }

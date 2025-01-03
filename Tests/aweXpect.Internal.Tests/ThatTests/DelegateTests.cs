@@ -64,7 +64,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -112,7 +112,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -145,7 +145,7 @@ public sealed class DelegateTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -193,7 +193,7 @@ public sealed class DelegateTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -226,7 +226,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -274,7 +274,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -308,7 +308,7 @@ public sealed class DelegateTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -359,7 +359,7 @@ public sealed class DelegateTests
 		await That(Act).Should().Throw<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -393,7 +393,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected Delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -412,7 +412,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected Delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -468,7 +468,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected Delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -505,7 +505,7 @@ public sealed class DelegateTests
 		await That(Act).Should().ThrowException()
 			.WithMessage("""
 			             Expected Delegate to
-			             throw an Exception,
+			             throw an exception,
 			             but it did not throw any exception
 			             """);
 	}

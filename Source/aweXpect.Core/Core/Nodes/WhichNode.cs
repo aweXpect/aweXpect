@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Core.Helpers;
+using aweXpect.Core.Sources;
 
 namespace aweXpect.Core.Nodes;
 
@@ -11,9 +12,9 @@ internal class WhichNode<TSource, TMember> : Node
 {
 	private readonly Func<TSource, Task<TMember?>>? _asyncMemberAccessor;
 	private readonly Func<TSource, TMember?>? _memberAccessor;
+	private readonly Node? _parent;
 	private readonly string? _separator;
 	private Node? _inner;
-	private readonly Node? _parent;
 
 	public WhichNode(
 		Node? parent,
@@ -61,16 +62,22 @@ internal class WhichNode<TSource, TMember> : Node
 		{
 			parentResult = await _parent.IsMetBy(value, context, cancellationToken);
 		}
-		
-		if (value is not TSource typedValue)
-		{
-			throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TValue).Name},{Environment.NewLine}but found {value?.GetType().Name}");
-		}
 
 		if (_inner == null)
 		{
 			throw new InvalidOperationException("No inner node specified for the which node.");
+		}
+
+		if (value is null || value is DelegateValue { IsNull: true })
+		{
+			ConstraintResult nullResult = await _inner.IsMetBy<TMember>(default, context, cancellationToken);
+			return new ConstraintResult.Failure<TValue?>(value, nullResult.ExpectationText, "it was <null>");
+		}
+
+		if (value is not TSource typedValue)
+		{
+			throw new InvalidOperationException(
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TValue).Name},{Environment.NewLine}but found {value.GetType().Name}");
 		}
 
 		TMember? matchingValue;
@@ -82,7 +89,8 @@ internal class WhichNode<TSource, TMember> : Node
 		{
 			matchingValue = await _asyncMemberAccessor!.Invoke(typedValue);
 		}
-		var result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
+
+		ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
 		return CombineResults(parentResult, result, _separator ?? "", ConstraintResult.FurtherProcessing.IgnoreResult);
 	}
 

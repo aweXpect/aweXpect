@@ -2,52 +2,25 @@
 
 public sealed partial class ExceptionShould
 {
-	public class HaveInnerException
+	public sealed class HaveInnerException
 	{
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task FailsWhenInnerExceptionHasCorrectMessageButUnexpectedType()
-			{
-				Exception subject = new("outer", new Exception("inner"));
-
-				async Task Act()
-					=> await That(subject).Should()
-						.HaveInner<CustomException>(e => e.HaveMessage("inner"));
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             have an inner CustomException which should have Message equal to "inner",
-					             but it was an Exception:
-					               inner
-					             """);
-			}
-
-			[Fact]
-			public async Task FailsWhenInnerExceptionHasCorrectTypeButUnexpectedMessage()
+			public async Task WhenInnerExceptionHasCorrectMessage_ShouldSucceed()
 			{
 				Exception subject = new("outer",
 					new CustomException("inner"));
 
 				async Task Act()
 					=> await That(subject).Should()
-						.HaveInner<CustomException>(e => e.HaveMessage("some other message"));
+						.HaveInnerException(e => e.HaveMessage("inner"));
 
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             have an inner CustomException which should have Message equal to "some other message",
-					             but it was "inner" which differs at index 0:
-					                ↓ (actual)
-					               "inner"
-					               "some other message"
-					                ↑ (expected)
-					             """);
+				await That(Act).Should().NotThrow();
 			}
 
 			[Fact]
-			public async Task FailsWhenInnerExceptionHasUnexpectedMessage()
+			public async Task WhenInnerExceptionHasUnexpectedMessage_ShouldFail()
 			{
 				Exception subject = new("outer",
 					new Exception("inner"));
@@ -69,25 +42,7 @@ public sealed partial class ExceptionShould
 			}
 
 			[Fact]
-			public async Task FailsWhenInnerExceptionIsNotOfTheExpectedType()
-			{
-				Exception subject = new("outer",
-					new Exception("inner"));
-
-				async Task Act()
-					=> await That(subject).Should().HaveInner<CustomException>();
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             have an inner CustomException,
-					             but it was an Exception:
-					               inner
-					             """);
-			}
-
-			[Fact]
-			public async Task FailsWhenInnerExceptionIsNotSet()
+			public async Task WhenInnerExceptionIsNotSet_ShouldFail()
 			{
 				Exception subject = new("outer");
 
@@ -103,33 +58,7 @@ public sealed partial class ExceptionShould
 			}
 
 			[Fact]
-			public async Task SucceedsWhenInnerExceptionHasCorrectMessage()
-			{
-				Exception subject = new("outer",
-					new CustomException("inner"));
-
-				async Task Act()
-					=> await That(subject).Should()
-						.HaveInnerException(e => e.HaveMessage("inner"));
-
-				await That(Act).Should().NotThrow();
-			}
-
-			[Fact]
-			public async Task SucceedsWhenInnerExceptionHasCorrectTypeAndMessage()
-			{
-				Exception subject = new("outer",
-					new CustomException("inner"));
-
-				async Task Act()
-					=> await That(subject).Should()
-						.HaveInner<CustomException>(e => e.HaveMessage("inner"));
-
-				await That(Act).Should().NotThrow();
-			}
-
-			[Fact]
-			public async Task SucceedsWhenInnerExceptionIsSet()
+			public async Task WhenInnerExceptionIsSet_ShouldSucceed()
 			{
 				Exception subject = new("outer",
 					new Exception("inner"));
@@ -141,15 +70,19 @@ public sealed partial class ExceptionShould
 			}
 
 			[Fact]
-			public async Task SucceedsWhenInnerExceptionMeetsType()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Exception subject = new("outer",
-					new CustomException("inner"));
+				Exception? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveInner<CustomException>();
+					=> await That(subject).Should().HaveInnerException();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have an inner exception,
+					             but it was <null>
+					             """);
 			}
 		}
 	}

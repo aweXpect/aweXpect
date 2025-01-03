@@ -23,7 +23,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected Delegate to
-					              throw an Exception which .HResult should be equal to {expectedHResult},
+					              throw an exception which .HResult should be equal to {expectedHResult},
 					              but .HResult was {hResult}
 					              """);
 			}

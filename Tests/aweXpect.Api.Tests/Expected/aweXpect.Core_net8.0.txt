@@ -184,13 +184,14 @@ namespace aweXpect.Core.Sources
 {
     public class DelegateValue
     {
-        public DelegateValue(System.Exception? exception, System.TimeSpan duration) { }
+        public DelegateValue(System.Exception? exception, System.TimeSpan duration, bool isNull = false) { }
         public System.TimeSpan Duration { get; }
         public System.Exception? Exception { get; }
+        public bool IsNull { get; }
     }
     public class DelegateValue<TValue> : aweXpect.Core.Sources.DelegateValue
     {
-        public DelegateValue(in TValue? value, System.Exception? exception, System.TimeSpan duration) { }
+        public DelegateValue(in TValue? value, System.Exception? exception, System.TimeSpan duration, bool isNull = false) { }
         public TValue Value { get; }
     }
 }

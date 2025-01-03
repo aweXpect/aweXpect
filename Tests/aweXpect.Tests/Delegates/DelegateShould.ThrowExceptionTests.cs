@@ -28,7 +28,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().ThrowException()
 					.WithMessage("""
 					             Expected action to
-					             throw an Exception with Message equal to "foo",
+					             throw an exception with Message equal to "foo",
 					             but it did not throw any exception
 					             """);
 			}
@@ -56,8 +56,24 @@ public sealed partial class DelegateShould
 				await That(Act).Should().ThrowException()
 					.WithMessage("""
 					             Expected action to
-					             throw an Exception,
+					             throw an exception,
 					             but it did not throw any exception
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Action? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().ThrowException();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             throw an exception,
+					             but it was <null>
 					             """);
 			}
 		}

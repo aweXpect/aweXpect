@@ -78,7 +78,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Should().Throw<XunitException>()
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
-				             throw an Exception with Message matching regex "bar",
+				             throw an exception with Message matching regex "bar",
 				             but it did not match
 				               ↓ (actual)
 				               "foo"

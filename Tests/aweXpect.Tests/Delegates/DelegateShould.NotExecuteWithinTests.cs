@@ -6,10 +6,26 @@ public sealed partial class DelegateShould
 {
 	public sealed class NotExecuteWithin
 	{
-		public sealed class Tests
+		public sealed class ActionTests
 		{
 			[Fact]
-			public async Task WhenActionThrowsAnException_ShouldSucceed()
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				Action @delegate = () => { };
+
+				async Task Act()
+					=> await That(@delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected @delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
 			{
 				Action @delegate = () => throw new MyException();
 
@@ -20,7 +36,42 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task WhenFuncTaskThrowsAnException_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Action? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class FuncTaskTests
+		{
+			[Fact]
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				Func<Task> @delegate = () => Task.CompletedTask;
+
+				async Task Act()
+					=> await That(@delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected @delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
 			{
 				Func<Task> @delegate = () => Task.FromException(new MyException());
 
@@ -31,7 +82,42 @@ public sealed partial class DelegateShould
 			}
 
 			[Fact]
-			public async Task WhenFuncTaskValueThrowsAnException_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<Task>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class FuncTaskValueTests
+		{
+			[Fact]
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				Func<Task<int>> @delegate = () => Task.FromResult(1);
+
+				async Task Act()
+					=> await That(@delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected @delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
 			{
 				Func<Task<int>> @delegate = () => Task.FromException<int>(new MyException());
 
@@ -41,9 +127,44 @@ public sealed partial class DelegateShould
 				await That(Act).Should().NotThrow();
 			}
 
-#if NET8_0_OR_GREATER
 			[Fact]
-			public async Task WhenFuncValueTaskThrowsAnException_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<Task<int>>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
+
+#if NET8_0_OR_GREATER
+		public sealed class FuncValueTaskTests
+		{
+			[Fact]
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				ValueTask Delegate() => new(Task.CompletedTask);
+
+				async Task Act()
+					=> await That(Delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected Delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
 			{
 				ValueTask Delegate() => new(Task.FromException(new MyException()));
 
@@ -53,11 +174,46 @@ public sealed partial class DelegateShould
 				await That(Act).Should().NotThrow();
 			}
 
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<ValueTask>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
 #endif
 
 #if NET8_0_OR_GREATER
+
+		public sealed class FuncValueTaskValueTests
+		{
 			[Fact]
-			public async Task WhenFuncValueTaskValueThrowsAnException_ShouldSucceed()
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				ValueTask<int> Delegate() => new(Task.FromResult(1));
+
+				async Task Act()
+					=> await That(Delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected Delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
 			{
 				ValueTask<int> Delegate() => new(Task.FromException<int>(new MyException()));
 
@@ -66,10 +222,45 @@ public sealed partial class DelegateShould
 
 				await That(Act).Should().NotThrow();
 			}
-#endif
 
 			[Fact]
-			public async Task WhenFuncValueThrowsAnException_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<ValueTask<int>>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
+			}
+		}
+#endif
+
+		public sealed class FuncValueTests
+		{
+			[Fact]
+			public async Task WhenDelegateIsFastEnough_ShouldFail()
+			{
+				Func<int> @delegate = () => 1;
+
+				async Task Act()
+					=> await That(@delegate).Should().NotExecuteWithin(5000.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected @delegate to
+					             not execute within 0:05,
+					             but it took only *
+					             """).AsWildcard();
+			}
+
+			[Fact]
+			public async Task WhenDelegateThrowsAnException_ShouldSucceed()
 			{
 				Func<int> @delegate = () => throw new MyException();
 
@@ -77,6 +268,22 @@ public sealed partial class DelegateShould
 					=> await That(@delegate).Should().NotExecuteWithin(500.Milliseconds());
 
 				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Func<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotExecuteWithin(500.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not execute within 0:00.500,
+					             but it was <null>
+					             """);
 			}
 		}
 	}

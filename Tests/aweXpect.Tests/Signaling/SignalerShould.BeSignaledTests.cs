@@ -29,7 +29,40 @@ public sealed partial class SignalerShould
 			}
 
 			[Fact]
-			public async Task WhenNotTriggeredWithParameter_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Signaler? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().BeSignaled();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the callback at least once,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenTriggered_ShouldSucceed()
+			{
+				Signaler signaler = new();
+
+				_ = Task.Delay(10.Milliseconds())
+					.ContinueWith(_ => signaler.Signal());
+
+				async Task Act() =>
+					await That(signaler).Should().BeSignaled();
+
+				await That(Act).Should().NotThrow();
+			}
+		}
+
+		public sealed class WithParameterTests
+		{
+			[Fact]
+			public async Task WhenNotTriggered_ShouldFail()
 			{
 				Signaler<int> signaler = new();
 				using CancellationTokenSource cts = new(50.Milliseconds());
@@ -47,21 +80,23 @@ public sealed partial class SignalerShould
 			}
 
 			[Fact]
-			public async Task WhenTriggered_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				Signaler signaler = new();
+				Signaler<int>? subject = null;
 
-				_ = Task.Delay(10.Milliseconds())
-					.ContinueWith(_ => signaler.Signal());
+				async Task Act()
+					=> await That(subject!).Should().BeSignaled();
 
-				async Task Act() =>
-					await That(signaler).Should().BeSignaled();
-
-				await That(Act).Should().NotThrow();
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the callback at least once,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]
-			public async Task WhenTriggeredWithParameter_ShouldSucceed()
+			public async Task WhenTriggered_ShouldSucceed()
 			{
 				Signaler<int> signaler = new();
 

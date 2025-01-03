@@ -1,5 +1,4 @@
-﻿using System;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Sources;
 using aweXpect.Helpers;
@@ -26,20 +25,20 @@ public static partial class ThatDelegateShould
 
 	private readonly struct DoesNotThrowConstraint : IValueConstraint<DelegateValue>
 	{
-		public ConstraintResult IsMetBy(DelegateValue? actual)
+		public ConstraintResult IsMetBy(DelegateValue actual)
 		{
-			if (actual?.Exception is { } exception)
+			if (actual.IsNull)
+			{
+				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
+			}
+
+			if (actual.Exception is { } exception)
 			{
 				return new ConstraintResult.Failure(ToString(),
 					$"it did throw {exception.FormatForMessage()}");
 			}
 
-			if (actual is not null)
-			{
-				return new ConstraintResult.Success(ToString());
-			}
-
-			throw new InvalidOperationException("Received <null> in DoesNotThrowConstraint.");
+			return new ConstraintResult.Success(ToString());
 		}
 
 		public override string ToString()
@@ -48,20 +47,20 @@ public static partial class ThatDelegateShould
 
 	private readonly struct DoesNotThrowConstraint<TValue> : IValueConstraint<DelegateValue<TValue>>
 	{
-		public ConstraintResult IsMetBy(DelegateValue<TValue>? actual)
+		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
 		{
-			if (actual?.Exception is { } exception)
+			if (actual.IsNull)
+			{
+				return new ConstraintResult.Failure<TValue?>(default, ToString(), That.ItWasNull);
+			}
+
+			if (actual.Exception is { } exception)
 			{
 				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
 					$"it did throw {exception.FormatForMessage()}");
 			}
 
-			if (actual is not null)
-			{
-				return new ConstraintResult.Success<TValue?>(actual.Value, ToString());
-			}
-
-			throw new InvalidOperationException("Received <null> in DoesNotThrowConstraint.");
+			return new ConstraintResult.Success<TValue?>(actual.Value, ToString());
 		}
 
 		public override string ToString()

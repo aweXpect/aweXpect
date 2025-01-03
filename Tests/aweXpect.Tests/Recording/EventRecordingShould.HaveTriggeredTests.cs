@@ -91,6 +91,23 @@ public sealed partial class EventRecordingShould
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEventRecording<CustomEventWithoutParametersClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should()
+						.HaveTriggered(nameof(CustomEventWithoutParametersClass.CustomEvent));
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the CustomEvent event at least once,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenUsingEventWith5Parameters_ShouldThrowNotSupportedException()
 			{
 				CustomEventWithParametersClass<string, int?, bool, DateTime, int> sut = new();

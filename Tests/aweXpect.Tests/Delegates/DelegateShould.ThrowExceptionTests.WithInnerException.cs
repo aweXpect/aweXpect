@@ -53,7 +53,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
-					             throw an Exception with an inner exception,
+					             throw an exception with an inner exception,
 					             but it was <null>
 					             """);
 			}

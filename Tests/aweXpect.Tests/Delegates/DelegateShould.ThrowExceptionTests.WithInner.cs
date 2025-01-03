@@ -46,7 +46,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
-					              throw an Exception with an inner SubCustomException,
+					              throw an exception with an inner SubCustomException,
 					              but it was a CustomException:
 					                {message}
 					              """);
@@ -65,7 +65,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
-					              throw an Exception with an inner CustomException,
+					              throw an exception with an inner CustomException,
 					              but it was an OtherException:
 					                {message}
 					              """);
@@ -105,7 +105,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
-					             throw an Exception with an inner CustomException,
+					             throw an exception with an inner CustomException,
 					             but it was <null>
 					             """);
 			}
@@ -151,7 +151,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
-					              throw an Exception with an inner SubCustomException,
+					              throw an exception with an inner SubCustomException,
 					              but it was a CustomException:
 					                {message}
 					              """);
@@ -170,7 +170,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
-					              throw an Exception with an inner CustomException,
+					              throw an exception with an inner CustomException,
 					              but it was an OtherException:
 					                {message}
 					              """);
@@ -210,7 +210,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
-					             throw an Exception with an inner CustomException,
+					             throw an exception with an inner CustomException,
 					             but it was <null>
 					             """);
 			}

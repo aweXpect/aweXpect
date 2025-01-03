@@ -41,6 +41,22 @@ public sealed partial class HttpResponseMessageShould
 					.WithMessage("*StatusCode different to*")
 					.AsWildcard();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				HttpResponseMessage? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().NotHaveStatusCode(HttpStatusCode.Accepted);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have StatusCode different to 202 Accepted,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

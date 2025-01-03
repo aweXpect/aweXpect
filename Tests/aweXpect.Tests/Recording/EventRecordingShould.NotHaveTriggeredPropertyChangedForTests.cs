@@ -66,6 +66,23 @@ public sealed partial class EventRecordingShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEventRecording<PropertyChangedClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should()
+						.NotHaveTriggeredPropertyChangedFor(x => x.MyValue);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have never recorded the PropertyChanged event for property MyValue,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

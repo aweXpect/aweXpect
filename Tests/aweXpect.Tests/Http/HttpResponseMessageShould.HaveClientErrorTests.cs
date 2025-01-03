@@ -39,6 +39,22 @@ public sealed partial class HttpResponseMessageShould
 					.WithMessage("*have client error (status code 4xx)*")
 					.AsWildcard();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				HttpResponseMessage? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().HaveClientError();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have client error (status code 4xx),
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

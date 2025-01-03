@@ -111,7 +111,9 @@ public static partial class ThatDelegateShould
 				return DoesNotThrowExpectation;
 			}
 
-			return $"throw {typeof(TException).Name.PrependAOrAn()}";
+			return typeof(TException) == typeof(Exception)
+				? "throw an exception"
+				: $"throw {typeof(TException).Name.PrependAOrAn()}";
 		}
 	}
 }

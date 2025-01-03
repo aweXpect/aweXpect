@@ -88,7 +88,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().ThrowException()
 					.WithMessage("""
 					             Expected action to
-					             throw an Exception,
+					             throw an exception,
 					             but it did not throw any exception
 					             """);
 			}

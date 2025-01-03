@@ -84,6 +84,22 @@ public sealed partial class HttpResponseMessageShould
 
 				await That(Act).Should().NotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				HttpResponseMessage? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().HaveStatusCode(HttpStatusCode.Accepted);
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have StatusCode 202 Accepted,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

@@ -37,7 +37,7 @@ public sealed partial class DelegateShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected Delegate to
-					              throw an Exception with HResult {expectedHResult},
+					              throw an exception with HResult {expectedHResult},
 					              but it had HResult {hResult}
 					              """);
 			}

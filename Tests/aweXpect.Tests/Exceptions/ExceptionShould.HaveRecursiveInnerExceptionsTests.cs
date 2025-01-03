@@ -63,6 +63,22 @@ public sealed partial class ExceptionShould
 					             but at least one was
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Exception? subject = null;
+
+				async Task Act()
+					=> await That(subject).Should().HaveRecursiveInnerExceptions(c => c.BeEmpty());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recursive inner exceptions which be empty,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }
