@@ -32,8 +32,10 @@ public class SignalerTests
 			await That(result).Should().Be(expectedResult);
 		}
 
-		[Fact]
-		public async Task Wait_EnoughSignals_ShouldSucceed()
+		[Theory]
+		[InlineData(2)]
+		[InlineData(3)]
+		public async Task Wait_EnoughSignals_ShouldSucceed(int amount)
 		{
 			Signaler signaler = new();
 
@@ -41,22 +43,9 @@ public class SignalerTests
 			signaler.Signal();
 			signaler.Signal();
 
-			SignalerResult result = signaler.Wait(2);
+			SignalerResult result = signaler.Wait(amount);
 
 			await That(result.IsSuccess).Should().BeTrue();
-		}
-
-		[Fact]
-		public async Task Wait_NegativeAmount_ShouldThrowArgumentOutOfRangeException()
-		{
-			Signaler signaler = new();
-
-			void Act()
-				=> signaler.Wait(-1);
-
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
-				.WithMessage("The amount must be greater than zero*").AsWildcard().And
-				.WithParamName("amount");
 		}
 
 		[Fact]
@@ -73,7 +62,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(100.Times(), cancellationToken: token);
+			SignalerResult result = signaler.Wait(100.Times(), 10.Seconds(), token);
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeFalse();
@@ -92,11 +81,28 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(100.Times());
+			SignalerResult result = signaler.Wait(100.Times(), 10.Seconds());
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+		}
+
+		[Fact]
+		public async Task Wait_ShouldUseTimeout()
+		{
+			Signaler signaler = new();
+			TimeSpan timeout = 10.Milliseconds();
+
+			signaler.Signal();
+
+			Stopwatch sw = new();
+			sw.Start();
+			SignalerResult result = signaler.Wait(2.Times(), timeout);
+			sw.Stop();
+
+			await That(result.IsSuccess).Should().BeFalse();
+			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -121,7 +127,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(cancellationToken: token);
+			SignalerResult result = signaler.Wait(10.Seconds(), token);
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeFalse();
@@ -151,12 +157,42 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait();
+			SignalerResult result = signaler.Wait(10.Seconds());
 			sw.Stop();
 
 			ms.Set();
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+		}
+
+		[Fact]
+		public async Task Wait_Single_ShouldUseTimeout()
+		{
+			Signaler signaler = new();
+			TimeSpan timeout = 10.Milliseconds();
+
+			Stopwatch sw = new();
+			sw.Start();
+			SignalerResult result = signaler.Wait(timeout);
+			sw.Stop();
+
+			await That(result.IsSuccess).Should().BeFalse();
+			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+		}
+
+		[Theory]
+		[InlineData(0)]
+		[InlineData(-1)]
+		public async Task Wait_ZeroOrNegativeAmount_ShouldThrowArgumentOutOfRangeException(int amount)
+		{
+			Signaler signaler = new();
+
+			void Act()
+				=> signaler.Wait(amount);
+
+			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+				.WithMessage("The amount must be greater than zero*").AsWildcard().And
+				.WithParamName("amount");
 		}
 	}
 
@@ -184,8 +220,10 @@ public class SignalerTests
 			await That(result).Should().Be(expectedResult);
 		}
 
-		[Fact]
-		public async Task Wait_EnoughSignals_ShouldSucceed()
+		[Theory]
+		[InlineData(2)]
+		[InlineData(3)]
+		public async Task Wait_EnoughSignals_ShouldSucceed(int amount)
 		{
 			Signaler<int> signaler = new();
 
@@ -193,23 +231,10 @@ public class SignalerTests
 			signaler.Signal(5);
 			signaler.Signal(6);
 
-			SignalerResult<int> result = signaler.Wait(2);
+			SignalerResult<int> result = signaler.Wait(amount);
 
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(result.Parameters).Should().Be([4, 5, 6]).InAnyOrder();
-		}
-
-		[Fact]
-		public async Task Wait_NegativeAmount_ShouldThrowArgumentOutOfRangeException()
-		{
-			Signaler<int> signaler = new();
-
-			void Act()
-				=> signaler.Wait(-1);
-
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
-				.WithMessage("The amount must be greater than zero*").AsWildcard().And
-				.WithParamName("amount");
 		}
 
 		[Fact]
@@ -227,7 +252,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(100.Times(), cancellationToken: token);
+			SignalerResult result = signaler.Wait(100.Times(), timeout: 10.Seconds(), cancellationToken: token);
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeFalse();
@@ -247,12 +272,29 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult<int> result = signaler.Wait(100.Times());
+			SignalerResult<int> result = signaler.Wait(100.Times(), timeout: 10.Seconds());
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(result.Parameters).Should().Be(Enumerable.Range(0, 100)).InAnyOrder();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+		}
+
+		[Fact]
+		public async Task Wait_ShouldUseTimeout()
+		{
+			Signaler<int> signaler = new();
+			TimeSpan timeout = 10.Milliseconds();
+
+			signaler.Signal(1);
+
+			Stopwatch sw = new();
+			sw.Start();
+			SignalerResult<int> result = signaler.Wait(2.Times(), timeout: timeout);
+			sw.Stop();
+
+			await That(result.IsSuccess).Should().BeFalse();
+			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -279,7 +321,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(cancellationToken: token);
+			SignalerResult result = signaler.Wait(timeout: 10.Seconds(), cancellationToken: token);
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeFalse();
@@ -310,12 +352,27 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait();
+			SignalerResult result = signaler.Wait(timeout: 10.Seconds());
 			sw.Stop();
 
 			ms.Set();
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+		}
+
+		[Fact]
+		public async Task Wait_Single_ShouldUseTimeout()
+		{
+			Signaler<int> signaler = new();
+			TimeSpan timeout = 10.Milliseconds();
+
+			Stopwatch sw = new();
+			sw.Start();
+			SignalerResult<int> result = signaler.Wait(timeout: timeout);
+			sw.Stop();
+
+			await That(result.IsSuccess).Should().BeFalse();
+			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -333,7 +390,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(100.Times(), x => x != 50, cancellationToken: token);
+			SignalerResult result = signaler.Wait(100.Times(), x => x != 50, 10.Seconds(), token);
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeFalse();
@@ -353,7 +410,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult<int> result = signaler.Wait(100.Times(), x => x >= 10);
+			SignalerResult<int> result = signaler.Wait(100.Times(), x => x >= 10, 10.Seconds());
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeTrue();
@@ -372,7 +429,7 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(x => x != 50, cancellationToken: token);
+			SignalerResult result = signaler.Wait(x => x != 50, 10.Seconds(), token);
 			sw.Stop();
 
 			await That(result.IsSuccess).Should().BeFalse();
@@ -403,13 +460,28 @@ public class SignalerTests
 
 			Stopwatch sw = new();
 			sw.Start();
-			SignalerResult result = signaler.Wait(x => x > 10);
+			SignalerResult result = signaler.Wait(x => x > 10, 10.Seconds());
 			sw.Stop();
 
 			ms.Set();
 			await That(result.IsSuccess).Should().BeTrue();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds())
 				.And.BeGreaterThanOrEqualTo(10.Milliseconds());
+		}
+
+		[Theory]
+		[InlineData(0)]
+		[InlineData(-1)]
+		public async Task Wait_ZeroOrNegativeAmount_ShouldThrowArgumentOutOfRangeException(int amount)
+		{
+			Signaler<int> signaler = new();
+
+			void Act()
+				=> signaler.Wait(amount);
+
+			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+				.WithMessage("The amount must be greater than zero*").AsWildcard().And
+				.WithParamName("amount");
 		}
 	}
 }

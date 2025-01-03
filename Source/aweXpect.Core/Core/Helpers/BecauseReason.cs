@@ -3,11 +3,11 @@ using aweXpect.Core.Constraints;
 
 namespace aweXpect.Core.Helpers;
 
-internal struct BecauseReason(string reason)
+internal readonly struct BecauseReason(string reason)
 {
-	private string? _message;
+	private readonly Lazy<string> _message = new(() => CreateMessage(reason));
 
-	private string CreateMessage()
+	private static string CreateMessage(string reason)
 	{
 		const string prefix = "because";
 		string message = reason.Trim();
@@ -18,14 +18,11 @@ internal struct BecauseReason(string reason)
 	}
 
 	public override string ToString()
-	{
-		_message ??= CreateMessage();
-		return _message;
-	}
+		=> _message.Value;
 
 	public ConstraintResult ApplyTo(ConstraintResult result)
 	{
-		string message = CreateMessage();
+		string message = _message.Value;
 		return result.UpdateExpectationText(e => e.ExpectationText + message);
 	}
 }

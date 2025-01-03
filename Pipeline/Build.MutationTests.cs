@@ -44,7 +44,7 @@ partial class Build
 					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests]
 				},
 				{
-					Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests]
+					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests]
 				}
 			};
 
