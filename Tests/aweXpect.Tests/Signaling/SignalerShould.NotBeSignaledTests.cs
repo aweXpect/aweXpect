@@ -24,39 +24,9 @@ public sealed partial class SignalerShould
 			}
 
 			[Fact]
-			public async Task WhenNotTriggeredWithParameter_ShouldSucceed()
-			{
-				Signaler<int> signaler = new();
-				using CancellationTokenSource cts = new();
-				cts.CancelAfter(50.Milliseconds());
-				CancellationToken token = cts.Token;
-
-				async Task Act() =>
-					await That(signaler).Should().NotBeSignaled().WithCancellation(token);
-
-				await That(Act).Should().NotThrow();
-			}
-
-			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				Signaler? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Should().NotBeSignaled();
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             not have recorded the callback,
-					             but it was <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectWithParameterIsNull_ShouldFail()
-			{
-				Signaler<int>? subject = null;
 
 				async Task Act()
 					=> await That(subject!).Should().NotBeSignaled();
@@ -87,9 +57,42 @@ public sealed partial class SignalerShould
 					             but it was recorded once
 					             """);
 			}
+		}
+
+		public sealed class WithParameterTests
+		{
+			[Fact]
+			public async Task WhenNotTriggered_ShouldSucceed()
+			{
+				Signaler<int> signaler = new();
+				using CancellationTokenSource cts = new();
+				cts.CancelAfter(50.Milliseconds());
+				CancellationToken token = cts.Token;
+
+				async Task Act() =>
+					await That(signaler).Should().NotBeSignaled().WithCancellation(token);
+
+				await That(Act).Should().NotThrow();
+			}
 
 			[Fact]
-			public async Task WhenTriggeredWithParameter_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Signaler<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Should().NotBeSignaled();
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not have recorded the callback,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenTriggered_ShouldFail()
 			{
 				Signaler<int> signaler = new();
 

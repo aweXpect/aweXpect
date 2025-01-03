@@ -8,7 +8,7 @@ public sealed partial class ObjectShould
 		{
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenAwaited_ShouldReturnObjectResult(int value)
+			public async Task WhenAwaited_ShouldReturnObjectResult(int value)
 			{
 				object subject = new MyClass
 				{
@@ -21,7 +21,7 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenTypeDoesNotMatch_ShouldSucceed()
+			public async Task WhenTypeDoesNotMatch_ShouldSucceed()
 			{
 				object subject = new MyClass();
 
@@ -33,7 +33,7 @@ public sealed partial class ObjectShould
 
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenTypeIsSubtype_ShouldFail(int value)
+			public async Task WhenTypeIsSubtype_ShouldFail(int value)
 			{
 				object subject = new MyClass
 				{
@@ -55,7 +55,7 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForGeneric_WhenTypeIsSupertype_ShouldSucceed()
+			public async Task WhenTypeIsSupertype_ShouldSucceed()
 			{
 				object subject = new MyBaseClass();
 
@@ -67,7 +67,7 @@ public sealed partial class ObjectShould
 
 			[Theory]
 			[AutoData]
-			public async Task ForGeneric_WhenTypeMatches_ShouldFail(int value, string reason)
+			public async Task WhenTypeMatches_ShouldFail(int value, string reason)
 			{
 				object subject = new MyClass
 				{
@@ -104,7 +104,7 @@ public sealed partial class ObjectShould
 		{
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenAwaited_ShouldReturnTypedResult(int value)
+			public async Task WhenAwaited_ShouldReturnTypedResult(int value)
 			{
 				object subject = new MyClass
 				{
@@ -117,7 +117,7 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenTypeDoesNotMatch_ShouldSucceed()
+			public async Task WhenTypeDoesNotMatch_ShouldSucceed()
 			{
 				object subject = new MyClass();
 
@@ -129,7 +129,7 @@ public sealed partial class ObjectShould
 
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenTypeIsSubtype_ShouldFail(int value)
+			public async Task WhenTypeIsSubtype_ShouldFail(int value)
 			{
 				object subject = new MyClass
 				{
@@ -151,7 +151,7 @@ public sealed partial class ObjectShould
 			}
 
 			[Fact]
-			public async Task ForType_WhenTypeIsSupertype_ShouldSucceed()
+			public async Task WhenTypeIsSupertype_ShouldSucceed()
 			{
 				object subject = new MyBaseClass();
 
@@ -163,7 +163,7 @@ public sealed partial class ObjectShould
 
 			[Theory]
 			[AutoData]
-			public async Task ForType_WhenTypeMatches_ShouldFail(int value, string reason)
+			public async Task WhenTypeMatches_ShouldFail(int value, string reason)
 			{
 				object subject = new MyClass
 				{
