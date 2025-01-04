@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1735932218689,
+  "lastUpdate": 1735975813886,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -12680,6 +12680,138 @@ window.BENCHMARK_DATA = {
             "value": 1907.5317456563314,
             "unit": "ns",
             "range": "± 12.918618213500405"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3e2344ca446540f6f658ec9e53e847aeeb918be4",
+          "message": "coverage: add missing tests in aweXpect.Core (2) (#185)\n\nImprove test coverage in aweXpect.Core:\n\n- Add missing tests for `Expect`\n- Improve `Signaler` coverage\n- Add tests for `ConstraintResult`\n- Use \"FrameworkTests\" for mutation testing to improve coverage in `Initialization`\n- Improve coverage for `BecauseReason`\n- Add missing tests for `StringExtensions`",
+          "timestamp": "2025-01-03T20:35:10Z",
+          "tree_id": "f873e4cf89bc110f7ee54ba85902774f0ee248b8",
+          "url": "https://github.com/aweXpect/aweXpect/commit/3e2344ca446540f6f658ec9e53e847aeeb918be4"
+        },
+        "date": 1735975813561,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.25810899734498,
+            "unit": "ns",
+            "range": "± 1.5862649876385289"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 222.47804605960846,
+            "unit": "ns",
+            "range": "± 1.9496466113585786"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 580.5361540476481,
+            "unit": "ns",
+            "range": "± 4.577596752629532"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 329.4779920578003,
+            "unit": "ns",
+            "range": "± 1.2833270940390675"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 452.11357743399486,
+            "unit": "ns",
+            "range": "± 4.230944530275121"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 14070.290033976236,
+            "unit": "ns",
+            "range": "± 63.584100118595586"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 218.53274952570598,
+            "unit": "ns",
+            "range": "± 1.7175323557721123"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 257.1359887463706,
+            "unit": "ns",
+            "range": "± 1.178900116541642"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 758.1195474624634,
+            "unit": "ns",
+            "range": "± 4.182941399938534"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 310.75929747309004,
+            "unit": "ns",
+            "range": "± 2.9588086183861844"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 392.2994035085042,
+            "unit": "ns",
+            "range": "± 1.752504573635945"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 787.1315460840862,
+            "unit": "ns",
+            "range": "± 3.2182158198856645"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1001.0263803922213,
+            "unit": "ns",
+            "range": "± 3.749100164358462"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1177.9472252982002,
+            "unit": "ns",
+            "range": "± 7.824741102490441"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1132.1296159199305,
+            "unit": "ns",
+            "range": "± 4.952930766332268"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 980.1101831289438,
+            "unit": "ns",
+            "range": "± 2.4953673167193786"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 280461.5138596755,
+            "unit": "ns",
+            "range": "± 1899.6207392659003"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1940.9277905055455,
+            "unit": "ns",
+            "range": "± 5.0781845010878826"
           }
         ]
       }
