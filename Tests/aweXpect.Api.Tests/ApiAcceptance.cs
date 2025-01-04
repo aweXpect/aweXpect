@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace aweXpect.Api.Tests;
@@ -10,7 +11,7 @@ public sealed class ApiAcceptance
 	/// </summary>
 	[TestCase]
 	[Explicit]
-	public void AcceptApiChanges()
+	public async Task AcceptApiChanges()
 	{
 		string[] assemblyNames =
 		[
@@ -28,6 +29,6 @@ public sealed class ApiAcceptance
 			}
 		}
 
-		Assert.That(assemblyNames, Is.Not.Empty);
+		await Expect.That(assemblyNames).Should().NotBeEmpty();
 	}
 }

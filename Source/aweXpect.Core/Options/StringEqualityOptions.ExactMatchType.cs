@@ -33,7 +33,7 @@ public partial class StringEqualityOptions
 		{
 			if (actual == null || pattern == null)
 			{
-				return $"{it} was <null>";
+				return $"{it} was {Formatter.Format(actual)}";
 			}
 
 			string prefix =
@@ -100,6 +100,15 @@ public partial class StringEqualityOptions
 
 			return comparer.Equals(value, pattern);
 		}
+
+		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
+			=> useActiveGrammaticVoice switch
+			{
+				true =>
+					$"be equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+				false =>
+					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+			};
 
 		#endregion
 	}

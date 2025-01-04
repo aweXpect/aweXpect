@@ -20,9 +20,13 @@ public abstract partial class EnumerableQuantifier
 
 		/// <inheritdoc />
 		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> expectationBuilder == null
-				? $"have at least {minimum} items"
-				: $"have at least {minimum} items {expectationBuilder}";
+			=> (minimum, expectationBuilder is null) switch
+			{
+				(1, true) => "have at least one item",
+				(1, false) => $"have at least one item {expectationBuilder}",
+				(_, true) => $"have at least {minimum} items",
+				(_, false) => $"have at least {minimum} items {expectationBuilder}",
+			};
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,

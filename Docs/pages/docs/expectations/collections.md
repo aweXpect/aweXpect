@@ -20,38 +20,6 @@ await Expect.That(values).Should().Be([3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringD
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 
-### Subset
-
-You can verify, that a collection matches another collection or has fewer items (it is a subset of the expected items):
-```csharp
-IEnumerable<int> values = Enumerable.Range(1, 3);
-
-await Expect.That(values).Should().Be([1, 2, 3, 4]).OrLess();
-await Expect.That(values).Should().Be([4, 3, 2, 1]).OrLess().InAnyOrder();
-await Expect.That(values).Should().Be([1, 1, 2, 2, 3, 3, 4, 4]).OrLess().IgnoringDuplicates();
-await Expect.That(values).Should().Be([4, 4, 3, 3, 2, 2, 1, 1]).OrLess().InAnyOrder().IgnoringDuplicates();
-```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
-
-To check for a proper subset, use `AndLess` instead (which would fail for equal collections).
-
-
-### Superset
-
-You can verify, that a collection matches another collection or has more items (it is a superset of the expected items):
-```csharp
-IEnumerable<int> values = Enumerable.Range(1, 3);
-
-await Expect.That(values).Should().Be([1, 2]).OrMore();
-await Expect.That(values).Should().Be([3, 2]).OrMore().InAnyOrder();
-await Expect.That(values).Should().Be([1, 1, 2, 2]).OrMore().IgnoringDuplicates();
-await Expect.That(values).Should().Be([3, 3, 1, 1]).OrMore().InAnyOrder().IgnoringDuplicates();
-```
-*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
-
-To check for a proper superset, use `AndMore` instead (which would fail for equal collections).
-
-
 ## All be
 
 You can verify, that all items in the collection are equal to the `expected` value
@@ -84,6 +52,18 @@ await Expect.That([1, 2, 3]).Should().AllBeUnique();
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+For dictionaries, this expectation only verifies the values, as the keys are unique by design:
+```csharp
+IDictionary<int, int> subject = new Dictionary<int, int>
+{
+  { 1, 1 },
+  { 2, 1 }
+};
+
+// This following expectation will fail, even though the keys are unique!
+await Expect.That(subject).Should().AllBeUnique();
+```
 
 
 ## All satisfy
@@ -171,6 +151,94 @@ await Expect.That(values).Should().Contain(x => x == 1).Between(1).And(5.Times()
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+### Contain subset
+
+You can verify, that a collection contains another collection as a subset:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().Contain([1, 2]);
+await Expect.That(values).Should().Contain([3, 2]).InAnyOrder();
+await Expect.That(values).Should().Contain([1, 1, 2, 2]).IgnoringDuplicates();
+await Expect.That(values).Should().Contain([3, 3, 1, 1]).InAnyOrder().IgnoringDuplicates();
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+To check for a proper subset, append `.Properly()` (which would fail for equal collections).
+
+
+### Be contained in
+
+You can verify, that a collection is contained in another collection (it is a superset):
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().BeContainedIn([1, 2, 3, 4]);
+await Expect.That(values).Should().BeContainedIn([4, 3, 2, 1]).InAnyOrder();
+await Expect.That(values).Should().BeContainedIn([1, 1, 2, 2, 3, 3, 4, 4]).IgnoringDuplicates();
+await Expect.That(values).Should().BeContainedIn([4, 4, 3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringDuplicates();
+```
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+To check for a proper superset, append `.Properly()` (which would fail for equal collections).
+
+
+## Start with
+
+You can verify, if a collection starts with another collection or not:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 3);
+
+await Expect.That(values).Should().StartWith(1, 2);
+await Expect.That(values).Should().NotStartWith(2, 3);
+```
+
+You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
+```csharp
+IEnumerable<MyClass> values = //...
+MyClass expected = //...
+
+await Expect.That(values).Should().StartWith(expected).Equivalent();
+await Expect.That(values).Should().StartWith(expected).Using(new MyClassComparer());
+```
+
+For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
+```csharp
+await Expect.That(["FOO", "BAR"]).Should().StartWith(["foo"]).IgnoringCase();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+## End with
+
+You can verify, if a collection ends with another collection or not:
+```csharp
+IEnumerable<int> values = Enumerable.Range(1, 5);
+
+await Expect.That(values).Should().EndWith(4, 5);
+await Expect.That(values).Should().NotEndWith(3, 5);
+```
+
+You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or configure [equivalence](/docs/expectations/object#equivalence):
+```csharp
+IEnumerable<MyClass> values = //...
+MyClass expected = //...
+
+await Expect.That(values).Should().EndWith(expected).Equivalent();
+await Expect.That(values).Should().EndWith(expected).Using(new MyClassComparer());
+```
+
+For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing white-space, or use a custom `IEqualityComparer<string>`:
+```csharp
+await Expect.That(["FOO", "BAR"]).Should().EndWith(["bar"]).IgnoringCase();
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+*Caution: this method will always have to completely materialize the enumerable!*
 
 
 ## Have
@@ -300,3 +368,30 @@ await Expect.That(result).Should().BeGreaterThan(41);
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+
+## Dictionaries
+
+### Contain key(s)
+
+You can verify, that a dictionary contains the `expected` key(s):
+```csharp
+Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
+
+await Expect.That(values).Should().ContainKey(42);
+await Expect.That(values).Should().ContainKeys(42, 43);
+await Expect.That(values).Should().NotContainKey(44);
+await Expect.That(values).Should().NotContainKeys(44, 45, 46);
+```
+
+### Contain value(s)
+
+You can verify, that a dictionary contains the `expected` value(s):
+```csharp
+Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
+
+await Expect.That(values).Should().ContainValue("foo");
+await Expect.That(values).Should().ContainValues("foo", "bar");
+await Expect.That(values).Should().NotContainValue("something");
+await Expect.That(values).Should().NotContainValues("something", "else");
+```

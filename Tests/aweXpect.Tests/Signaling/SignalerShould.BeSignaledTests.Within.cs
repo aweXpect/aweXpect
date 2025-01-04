@@ -1,0 +1,87 @@
+﻿using System.Threading;
+using aweXpect.Signaling;
+
+// ReSharper disable MethodHasAsyncOverload
+
+namespace aweXpect.Tests.Signaling;
+
+public sealed partial class SignalerShould
+{
+	public sealed partial class BeSignaled
+	{
+		public sealed class WithinTests
+		{
+			[Fact]
+			public async Task WhenNotTriggeredWithinTheGivenTimeout_ShouldFail()
+			{
+				Signaler signaler = new();
+				using CancellationTokenSource cts = new();
+				CancellationToken token = cts.Token;
+
+				_ = Task.Delay(5.Seconds(), token)
+					.ContinueWith(_ => signaler.Signal(), token);
+
+				async Task Act() =>
+					await That(signaler).Should().BeSignaled().Within(40.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected signaler to
+					             have recorded the callback at least once within 0:00.040,
+					             but it was never recorded
+					             """);
+				cts.Cancel();
+			}
+
+			[Fact]
+			public async Task WhenNotTriggeredWithParameterWithinTheGivenTimeout_ShouldFail()
+			{
+				Signaler<string> signaler = new();
+				using CancellationTokenSource cts = new();
+				CancellationToken token = cts.Token;
+
+				_ = Task.Delay(5.Seconds(), token)
+					.ContinueWith(_ => signaler.Signal("foo"), token);
+
+				async Task Act() =>
+					await That(signaler).Should().BeSignaled().Within(40.Milliseconds());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected signaler to
+					             have recorded the callback at least once within 0:00.040,
+					             but it was never recorded
+					             """);
+				cts.Cancel();
+			}
+
+			[Fact]
+			public async Task WhenTriggeredWithinTheGivenTimeout_ShouldSucceed()
+			{
+				Signaler signaler = new();
+
+				_ = Task.Delay(10.Milliseconds())
+					.ContinueWith(_ => signaler.Signal());
+
+				async Task Act() =>
+					await That(signaler).Should().BeSignaled().Within(10.Seconds());
+
+				await That(Act).Should().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenTriggeredWithParameterWithinTheGivenTimeout_ShouldSucceed()
+			{
+				Signaler<string> signaler = new();
+
+				_ = Task.Delay(10.Milliseconds())
+					.ContinueWith(_ => signaler.Signal("foo"));
+
+				async Task Act() =>
+					await That(signaler).Should().BeSignaled().Within(10.Seconds());
+
+				await That(Act).Should().NotThrow();
+			}
+		}
+	}
+}

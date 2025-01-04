@@ -20,11 +20,6 @@ internal static class Initialization
 			         .Where(x => x is { IsClass: true, IsAbstract: false })
 			         .Where(frameworkInterface.IsAssignableFrom))
 		{
-			if (frameworkType == typeof(FallbackTestFramework))
-			{
-				continue;
-			}
-
 			try
 			{
 				ITestFrameworkAdapter? testFramework =

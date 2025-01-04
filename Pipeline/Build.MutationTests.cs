@@ -41,10 +41,10 @@ partial class Build
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{
-					Solution.aweXpect, UnitTestProjects
+					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests]
 				},
 				{
-					Solution.aweXpect_Core, [Solution.Tests.aweXpect_Core_Tests, Solution.Tests.aweXpect_Tests]
+					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests]
 				}
 			};
 
@@ -117,7 +117,11 @@ partial class Build
 				return;
 			}
 
-			string body = "## :alien: Mutation Results" + Environment.NewLine + MutationCommentBody;
+			string body = "## :alien: Mutation Results"
+			              + Environment.NewLine
+			              + $"[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FaweXpect%2FaweXpect%2Fpull/{prId}/merge)](https://dashboard.stryker-mutator.io/reports/github.com/aweXpect/aweXpect/pull/{prId}/merge)"
+			              + Environment.NewLine
+			              + MutationCommentBody;
 
 			if (prId != null)
 			{

@@ -76,7 +76,7 @@ public partial class CollectionMatchOptions
 				}
 			}
 
-			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset) &&
+			if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn) &&
 			    !_incorrectItems.Any())
 			{
 				VerifyCompleteForSubsetMatch(options);
@@ -84,20 +84,20 @@ public partial class CollectionMatchOptions
 
 			List<string> errors = new();
 			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedItems, _equivalenceRelations));
-			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Superset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
 			{
 				errors.AddRange(AdditionalItemsError(_additionalItems));
 			}
-			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSuperset) && !_additionalItems.Any())
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ContainsProperly) && !_additionalItems.Any())
 			{
 				errors.Add("did not contain any additional items");
 			}
 
-			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
 			{
 				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations));
 			}
-			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSubset) && !_missingItems.Any())
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedInProperly) && !_missingItems.Any())
 			{
 				errors.Add("contained all expected items");
 			}
@@ -108,7 +108,7 @@ public partial class CollectionMatchOptions
 
 		private void VerifyTheCurrentValueIsDifferentFromTheExpectedValue(T value, IOptionsEquality<T2> options)
 		{
-			bool movedMatch = _equivalenceRelations.HasFlag(EquivalenceRelations.Subset) &&
+			bool movedMatch = _equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn) &&
 			                  _matchIndex > 0 &&
 			                  SearchForMatchInFoundItems(value, options);
 

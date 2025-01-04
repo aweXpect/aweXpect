@@ -77,6 +77,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.XUnit3.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Frameworks.XUnit3.Core.Tests", "Tests\Frameworks\aweXpect.Frameworks.XUnit3.Core.Tests\aweXpect.Frameworks.XUnit3.Core.Tests.csproj", "{A815B631-402C-44B0-80B3-50B6EAFD8078}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aweXpect.Internal.Tests", "Tests\aweXpect.Internal.Tests\aweXpect.Internal.Tests.csproj", "{4A940BE9-D9E0-4004-89D4-5D6E8CB37208}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{A815B631-402C-44B0-80B3-50B6EAFD8078}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A815B631-402C-44B0-80B3-50B6EAFD8078}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A815B631-402C-44B0-80B3-50B6EAFD8078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A940BE9-D9E0-4004-89D4-5D6E8CB37208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A940BE9-D9E0-4004-89D4-5D6E8CB37208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A940BE9-D9E0-4004-89D4-5D6E8CB37208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A940BE9-D9E0-4004-89D4-5D6E8CB37208}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{97D64B45-D97E-4A94-9EF0-37BF25310EBA} = {9CC57AD0-4984-4618-96EA-01FFFCCD84FA}
@@ -162,5 +168,6 @@ Global
 		{1EC393AD-DE25-4C0E-A8B5-B19A2843A4E2} = {97A9E15D-5A21-4BA1-940B-7F42933DE0A5}
 		{5D0060AC-986B-4C28-A871-BA0EC9223DA7} = {97A9E15D-5A21-4BA1-940B-7F42933DE0A5}
 		{A815B631-402C-44B0-80B3-50B6EAFD8078} = {97A9E15D-5A21-4BA1-940B-7F42933DE0A5}
+		{4A940BE9-D9E0-4004-89D4-5D6E8CB37208} = {9CC57AD0-4984-4618-96EA-01FFFCCD84FA}
 	EndGlobalSection
 EndGlobal

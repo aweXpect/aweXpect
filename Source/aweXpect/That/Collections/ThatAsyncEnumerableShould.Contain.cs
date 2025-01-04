@@ -1,4 +1,4 @@
-﻿#if NET6_0_OR_GREATER
+﻿#if NET8_0_OR_GREATER
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -42,16 +42,16 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringCountResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>
 		Contain(
-			this IThat<IAsyncEnumerable<string>> source,
-			string expected)
+			this IThat<IAsyncEnumerable<string?>> source,
+			string? expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringCountResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>(source
 				.ExpectationBuilder
-				.AddConstraint(it => new ContainConstraint<string>(
+				.AddConstraint(it => new ContainConstraint<string?>(
 					it,
 					q => $"contain {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
@@ -82,6 +82,45 @@ public static partial class ThatAsyncEnumerableShould
 			source,
 			quantifier);
 	}
+	/// <summary>
+	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+		Contain<TItem>(
+			this IThat<IAsyncEnumerable<TItem>> source,
+			IEnumerable<TItem> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+				.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
+	/// </summary>
+	public static StringCollectionContainResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>
+		Contain(
+			this IThat<IAsyncEnumerable<string?>> source,
+			IEnumerable<string?> expected,
+			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
+		return new StringCollectionContainResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>(source
+				.ExpectationBuilder
+				.AddConstraint(it
+					=> new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
 
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
@@ -104,15 +143,15 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>
 		NotContain(
-			this IThat<IAsyncEnumerable<string>> source,
-			string unexpected)
+			this IThat<IAsyncEnumerable<string?>> source,
+			string? unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>(source
 				.ExpectationBuilder
-				.AddConstraint(it => new NotContainConstraint<string>(it,
+				.AddConstraint(it => new NotContainConstraint<string?>(it,
 					() => $"not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
@@ -144,6 +183,12 @@ public static partial class ThatAsyncEnumerableShould
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> items = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
@@ -202,6 +247,12 @@ public static partial class ThatAsyncEnumerableShould
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))

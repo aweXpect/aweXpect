@@ -344,7 +344,7 @@ internal class ExpectationBuilder<TValue> : ExpectationBuilder
 		ITimeSystem timeSystem,
 		CancellationToken cancellationToken)
 	{
-		TValue? data = await _subjectSource.GetValue(timeSystem, cancellationToken);
+		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken);
 		return await rootNode.IsMetBy(data, context, cancellationToken);
 	}
 }

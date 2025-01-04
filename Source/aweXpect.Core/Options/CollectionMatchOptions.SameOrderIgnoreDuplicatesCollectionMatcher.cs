@@ -34,7 +34,7 @@ public partial class CollectionMatchOptions
 		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
 		{
 			error = null;
-			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
+			if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
 			{
 				_foundItems.Add(value);
 			}
@@ -91,7 +91,7 @@ public partial class CollectionMatchOptions
 				}
 			}
 
-			if (_equivalenceRelations.HasFlag(EquivalenceRelations.Subset) &&
+			if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn) &&
 			    !_incorrectItems.Any())
 			{
 				VerifyCompleteForSubsetMatch(options);
@@ -99,11 +99,11 @@ public partial class CollectionMatchOptions
 
 			List<string> errors = new();
 			errors.AddRange(IncorrectItemsError(_incorrectItems, _expectedDistinctItems, _equivalenceRelations));
-			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Superset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Contains))
 			{
 				errors.AddRange(AdditionalItemsError(_additionalItems));
 			}
-			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSuperset) &&
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ContainsProperly) &&
 			         !_additionalItems.Any() &&
 			         !_incorrectItems.Any(i
 				         => _expectedDistinctItems.All(e => !options.AreConsideredEqual(e, i.Value.Item))))
@@ -111,11 +111,11 @@ public partial class CollectionMatchOptions
 				errors.Add("did not contain any additional items");
 			}
 
-			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.Subset))
+			if (!_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
 			{
 				errors.AddRange(MissingItemsError(_totalExpectedItems, _missingItems, _equivalenceRelations));
 			}
-			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.ProperSubset) && !_missingItems.Any())
+			else if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedInProperly) && !_missingItems.Any())
 			{
 				errors.Add("contained all expected items");
 			}

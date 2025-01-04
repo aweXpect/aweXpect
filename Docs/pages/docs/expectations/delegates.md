@@ -11,14 +11,14 @@ A delegate can be any of the following:
   a synchronous method without return value (optionally accepting a `CancellationToken` for timeout)
 - `Func<Task>` or `Func<CancellationToken, Task>`  
   an asynchronous method without return value (optionally accepting a `CancellationToken` for timeout)
-- `Task` or `ValueTask`  
-  the result of an asynchronous method without return value
+- `Func<ValueTask>` or `Func<CancellationToken, ValueTask>`  
+  an asynchronous method using `ValueTask` without return value (optionally accepting a `CancellationToken` for timeout)
 - `Func<T>` or `Func<CancellationToken, T>`  
   a synchronous method with return value `T` (optionally accepting a `CancellationToken` for timeout)
 - `Func<Task<T>>` or `Func<CancellationToken, Task<T>>`  
   an asynchronous method with return value `T` (optionally accepting a `CancellationToken` for timeout)
-- `Task<T>` or `ValueTask<T>`  
-  the result of an asynchronous method with return value `T`
+- `Func<ValueTask<T>>` or `Func<CancellationToken, ValueTask<T>>`  
+  an asynchronous method using `ValueTask` with return value `T` (optionally accepting a `CancellationToken` for timeout)
 
 
 ## Not throw
@@ -103,7 +103,7 @@ You can recursively verify the collection of inner exceptions of the thrown exce
 ```csharp
 void Act() => throw new AggregateException("outer", new CustomException("inner"));
 
-await Expect.That(Act).Should().ThrowException().WithRecursiveInnerExceptions(a => a.HaveAtLeast(1).Be<CustomException>());
+await Expect.That(Act).Should().ThrowException().WithRecursiveInnerExceptions(innerExceptions => innerExceptions.Should().HaveAtLeast(1).Be<CustomException>());
 ```
 
 ### Other members

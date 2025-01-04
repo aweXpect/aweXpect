@@ -4,11 +4,11 @@ using aweXpect.Options;
 namespace aweXpect.Results;
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="ObjectEqualityResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="CollectionMatchOptions" />.
+///     The result for verifying that a collection matches another collection.
 /// </summary>
+/// <remarks>
+///     <seealso cref="ObjectEqualityResult{TType,TThat,TSelf}" />
+/// </remarks>
 public class ObjectCollectionMatchResult<TType, TThat>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
@@ -22,11 +22,11 @@ public class ObjectCollectionMatchResult<TType, TThat>(
 		collectionMatchOptions);
 
 /// <summary>
-///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
-///     <para />
-///     In addition to the combinations from <see cref="ObjectEqualityResult{TResult,TValue}" />, allows specifying
-///     options on the <see cref="CollectionMatchOptions" />.
+///     The result for verifying that a collection matches another collection.
 /// </summary>
+/// <remarks>
+///     <seealso cref="ObjectEqualityResult{TType,TThat,TSelf}" />
+/// </remarks>
 public class ObjectCollectionMatchResult<TType, TThat, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,

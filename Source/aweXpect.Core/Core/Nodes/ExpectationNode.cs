@@ -64,25 +64,32 @@ internal class ExpectationNode : Node
 		CancellationToken cancellationToken) where TValue : default
 	{
 		ConstraintResult? result = null;
-		if (_constraint is IValueConstraint<TValue?> valueConstraint)
+		try
 		{
-			result = valueConstraint.IsMetBy(value);
-			result = _reason?.ApplyTo(result) ?? result;
+			if (_constraint is IValueConstraint<TValue?> valueConstraint)
+			{
+				result = valueConstraint.IsMetBy(value);
+				result = _reason?.ApplyTo(result) ?? result;
+			}
+			else if (_constraint is IContextConstraint<TValue?> contextConstraint)
+			{
+				result = contextConstraint.IsMetBy(value, context);
+				result = _reason?.ApplyTo(result) ?? result;
+			}
+			else if (_constraint is IAsyncConstraint<TValue?> asyncConstraint)
+			{
+				result = await asyncConstraint.IsMetBy(value, cancellationToken);
+				result = _reason?.ApplyTo(result) ?? result;
+			}
+			else if (_constraint is IAsyncContextConstraint<TValue?> asyncContextConstraint)
+			{
+				result = await asyncContextConstraint.IsMetBy(value, context, cancellationToken);
+				result = _reason?.ApplyTo(result) ?? result;
+			}
 		}
-		else if (_constraint is IContextConstraint<TValue?> contextConstraint)
+		catch (Exception e) when (_constraint is not null)
 		{
-			result = contextConstraint.IsMetBy(value, context);
-			result = _reason?.ApplyTo(result) ?? result;
-		}
-		else if (_constraint is IAsyncConstraint<TValue?> asyncConstraint)
-		{
-			result = await asyncConstraint.IsMetBy(value, cancellationToken);
-			result = _reason?.ApplyTo(result) ?? result;
-		}
-		else if (_constraint is IAsyncContextConstraint<TValue?> asyncContextConstraint)
-		{
-			result = await asyncContextConstraint.IsMetBy(value, context, cancellationToken);
-			result = _reason?.ApplyTo(result) ?? result;
+			throw new InvalidOperationException($"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}", e);
 		}
 
 		if (_inner != null)
@@ -98,7 +105,7 @@ internal class ExpectationNode : Node
 		}
 
 		return result ?? throw new InvalidOperationException(
-			$"The expectation node does not support {typeof(TValue).Name} {value}");
+			$"The expectation node does not support {Formatter.Format(typeof(TValue))} with value {Formatter.Format(value)}");
 	}
 
 	/// <inheritdoc />

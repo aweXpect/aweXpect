@@ -9,7 +9,7 @@ using PublicApiGenerator;
 
 namespace aweXpect.Api.Tests;
 
-public static class Helper
+internal static class Helper
 {
 	public static string CreatePublicApi(string framework, string assemblyName)
 	{

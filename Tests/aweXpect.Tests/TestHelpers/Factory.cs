@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 using System.Runtime.CompilerServices;
 using System.Threading;
 #endif
@@ -8,7 +8,7 @@ namespace aweXpect.Tests.TestHelpers;
 
 internal static class Factory
 {
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Returns an "infinite" <see cref="IAsyncEnumerable{T}" /> of fibonacci numbers.
 	/// </summary>
@@ -28,7 +28,7 @@ internal static class Factory
 	}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Returns an "infinite" <see cref="IAsyncEnumerable{T}" /> of mapped fibonacci numbers.
 	/// </summary>
@@ -49,7 +49,7 @@ internal static class Factory
 	}
 #endif
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
 	/// <summary>
 	///     Returns an "infinite" <see cref="IAsyncEnumerable{T}" /> of <paramref name="value"/>.
 	/// </summary>

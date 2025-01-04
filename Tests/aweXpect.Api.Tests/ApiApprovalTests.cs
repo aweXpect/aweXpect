@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace aweXpect.Api.Tests;
@@ -11,25 +12,25 @@ namespace aweXpect.Api.Tests;
 public sealed class ApiApprovalTests
 {
 	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
-	public void VerifyPublicApiForAweXpect(string framework)
+	public async Task VerifyPublicApiForAweXpect(string framework)
 	{
 		const string assemblyName = "aweXpect";
 
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
 
-		Assert.That(publicApi, Is.EqualTo(expectedApi));
+		await Expect.That(publicApi).Should().Be(expectedApi);
 	}
 
 	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
-	public void VerifyPublicApiForAweXpectCore(string framework)
+	public async Task VerifyPublicApiForAweXpectCore(string framework)
 	{
 		const string assemblyName = "aweXpect.Core";
 
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
 
-		Assert.That(publicApi, Is.EqualTo(expectedApi));
+		await Expect.That(publicApi).Should().Be(expectedApi);
 	}
 
 	private sealed class TargetFrameworksTheoryData : IEnumerable

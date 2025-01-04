@@ -8,6 +8,8 @@ internal class That
 {
 	public static readonly Action<ExpectationBuilder> WithoutAction = _ => { };
 
+	internal static readonly string ItWasNull = "it was <null>";
+
 	[DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
 	internal readonly struct Subject<T>(ExpectationBuilder expectationBuilder)
 		: IExpectSubject<T>, IThat<T>
