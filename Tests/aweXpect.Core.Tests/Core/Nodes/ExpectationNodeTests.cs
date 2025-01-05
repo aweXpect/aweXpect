@@ -20,7 +20,7 @@ public class ExpectationNodeTests
 
 		await That(Act).Should().Throw<InvalidOperationException>()
 			.WithMessage("""
-			             Error evaluating DummyAsyncConstraint<int> constraint with value 44
+			             Error evaluating DummyAsyncConstraint<int> constraint with value 44: WhenAsyncConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
 			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
 	}
@@ -37,7 +37,7 @@ public class ExpectationNodeTests
 
 		await That(Act).Should().Throw<InvalidOperationException>()
 			.WithMessage("""
-			             Error evaluating DummyAsyncContextConstraint<int> constraint with value 45
+			             Error evaluating DummyAsyncContextConstraint<int> constraint with value 45: WhenAsyncContextConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
 			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
 	}
@@ -54,7 +54,7 @@ public class ExpectationNodeTests
 
 		await That(Act).Should().Throw<InvalidOperationException>()
 			.WithMessage("""
-			             Error evaluating DummyContextConstraint<int> constraint with value 43
+			             Error evaluating DummyContextConstraint<int> constraint with value 43: WhenContextConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
 			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
 	}
@@ -71,7 +71,7 @@ public class ExpectationNodeTests
 
 		await That(Act).Should().Throw<InvalidOperationException>()
 			.WithMessage("""
-			             Error evaluating DummyValueConstraint<string> constraint with value "42"
+			             Error evaluating DummyValueConstraint<string> constraint with value "42": WhenValueConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
 			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
 	}
