@@ -51,5 +51,24 @@ public static partial class ThatJsonElementShould
 				false => $"match {expectedExpression} exactly"
 			};
 	}
+
+
+	private readonly struct BeValueKindConstraint(string it, JsonValueKind expected)
+		: IValueConstraint<JsonElement>
+	{
+		public ConstraintResult IsMetBy(JsonElement actual)
+		{
+			if (actual.ValueKind != expected)
+			{
+				return new ConstraintResult.Failure<JsonElement>(actual, ToString(),
+					$"{it} was {actual.ValueKind}");
+			}
+
+			return new ConstraintResult.Success<JsonElement>(actual, ToString());
+		}
+
+		public override string ToString()
+			=> $"be {expected}";
+	}
 }
 #endif
