@@ -105,52 +105,52 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 		=> $"be JSON equivalent to {expected}";
 
 	private bool CompareJson(string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
-		=> jsonElement1.ValueKind switch
+		JsonElement actualElement,
+		JsonElement expectedElement)
+		=> actualElement.ValueKind switch
 		{
-			JsonValueKind.Array => CompareJsonArray(path, jsonElement1, jsonElement2),
-			JsonValueKind.False => CompareJsonBoolean(JsonValueKind.False, path, jsonElement1, jsonElement2),
-			JsonValueKind.True => CompareJsonBoolean(JsonValueKind.True, path, jsonElement1, jsonElement2),
-			JsonValueKind.Null => CompareJsonNull(path, jsonElement1, jsonElement2),
-			JsonValueKind.Number => CompareJsonNumber(path, jsonElement1, jsonElement2),
-			JsonValueKind.String => CompareJsonString(path, jsonElement1, jsonElement2),
-			JsonValueKind.Object => CompareJsonObject(path, jsonElement1, jsonElement2),
-			_ => throw new ArgumentOutOfRangeException($"Unsupported JsonValueKind: {jsonElement1.ValueKind}")
+			JsonValueKind.Array => CompareJsonArray(path, actualElement, expectedElement),
+			JsonValueKind.False => CompareJsonBoolean(JsonValueKind.False, path, actualElement, expectedElement),
+			JsonValueKind.True => CompareJsonBoolean(JsonValueKind.True, path, actualElement, expectedElement),
+			JsonValueKind.Null => CompareJsonNull(path, actualElement, expectedElement),
+			JsonValueKind.Number => CompareJsonNumber(path, actualElement, expectedElement),
+			JsonValueKind.String => CompareJsonString(path, actualElement, expectedElement),
+			JsonValueKind.Object => CompareJsonObject(path, actualElement, expectedElement),
+			_ => throw new ArgumentOutOfRangeException($"Unsupported JsonValueKind: {actualElement.ValueKind}")
 		};
 
 	private bool CompareJsonArray(
 		string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
+		JsonElement actualElement,
+		JsonElement expectedElement)
 	{
-		if (jsonElement2.ValueKind != JsonValueKind.Array)
+		if (expectedElement.ValueKind != JsonValueKind.Array)
 		{
-			_differences[path] = $"was {Format(jsonElement1, true)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement, true)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
 		bool isConsideredEqual = true;
-		for (int index = 0; index < jsonElement2.GetArrayLength(); index++)
+		for (int index = 0; index < expectedElement.GetArrayLength(); index++)
 		{
 			string memberPath = path + "[" + index + "]";
-			JsonElement expectedElement = jsonElement2[index];
-			if (jsonElement1.GetArrayLength() <= index)
+			JsonElement expectedArrayElement = expectedElement[index];
+			if (actualElement.GetArrayLength() <= index)
 			{
-				_differences.Add(memberPath, $"had missing {Format(expectedElement)}");
+				_differences.Add(memberPath, $"had missing {Format(expectedArrayElement)}");
 				isConsideredEqual = false;
 				continue;
 			}
 
-			JsonElement actualElement = jsonElement1[index];
-			isConsideredEqual = CompareJson(memberPath, actualElement, expectedElement) && isConsideredEqual;
+			JsonElement actualArrayElement = actualElement[index];
+			isConsideredEqual = CompareJson(memberPath, actualArrayElement, expectedArrayElement) && isConsideredEqual;
 		}
 
-		for (int index = jsonElement2.GetArrayLength(); index < jsonElement1.GetArrayLength(); index++)
+		for (int index = expectedElement.GetArrayLength(); index < actualElement.GetArrayLength(); index++)
 		{
-			JsonElement actualElement = jsonElement1[index];
+			JsonElement actualArrayElement = actualElement[index];
 			string memberPath = path + "[" + index + "]";
-			_differences.Add(memberPath, $"had unexpected {Format(actualElement)}");
+			_differences.Add(memberPath, $"had unexpected {Format(actualArrayElement)}");
 			isConsideredEqual = false;
 		}
 
@@ -160,14 +160,14 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	private bool CompareJsonBoolean(
 		JsonValueKind valueKind,
 		string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
+		JsonElement actualElement,
+		JsonElement expectedElement)
 	{
-		if (jsonElement2.ValueKind != valueKind)
+		if (expectedElement.ValueKind != valueKind)
 		{
-			_differences[path] = jsonElement2.ValueKind is JsonValueKind.False or JsonValueKind.True
-				? $"was {Format(jsonElement1)} instead of {Format(jsonElement2)}"
-				: $"was {Format(jsonElement1, true)} instead of {Format(jsonElement2)}";
+			_differences[path] = expectedElement.ValueKind is JsonValueKind.False or JsonValueKind.True
+				? $"was {Format(actualElement)} instead of {Format(expectedElement)}"
+				: $"was {Format(actualElement, true)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
@@ -175,12 +175,12 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	}
 
 	private bool CompareJsonNull(string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
+		JsonElement actualElement,
+		JsonElement expectedElement)
 	{
-		if (jsonElement2.ValueKind != JsonValueKind.Null)
+		if (expectedElement.ValueKind != JsonValueKind.Null)
 		{
-			_differences[path] = $"was {Format(jsonElement1, true)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement, true)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
@@ -188,34 +188,34 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	}
 
 	private bool CompareJsonNumber(string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
+		JsonElement actualElement,
+		JsonElement expectedElement)
 	{
-		if (jsonElement2.ValueKind != JsonValueKind.Number)
+		if (expectedElement.ValueKind != JsonValueKind.Number)
 		{
-			_differences[path] = $"was {Format(jsonElement1, true)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement, true)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
-		if (jsonElement1.TryGetInt32(out int v1) && jsonElement2.TryGetInt32(out int v2))
+		if (actualElement.TryGetInt32(out int v1) && expectedElement.TryGetInt32(out int v2))
 		{
 			if (v1 == v2)
 			{
 				return true;
 			}
 
-			_differences[path] = $"was {Format(jsonElement1)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
-		if (jsonElement1.TryGetDouble(out double n1) && jsonElement2.TryGetDouble(out double n2))
+		if (actualElement.TryGetDouble(out double n1) && expectedElement.TryGetDouble(out double n2))
 		{
 			if (n1.Equals(n2))
 			{
 				return true;
 			}
 
-			_differences[path] = $"was {Format(jsonElement1)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
@@ -224,20 +224,20 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	}
 
 	private bool CompareJsonObject(string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
+		JsonElement actualElement,
+		JsonElement expectedElement)
 	{
-		if (jsonElement2.ValueKind != JsonValueKind.Object)
+		if (expectedElement.ValueKind != JsonValueKind.Object)
 		{
-			_differences[path] = $"was {Format(jsonElement1, true)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement, true)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
 		bool isConsideredEqual = true;
-		foreach (JsonProperty item in jsonElement2.EnumerateObject())
+		foreach (JsonProperty item in expectedElement.EnumerateObject())
 		{
 			string memberPath = path + "." + item.Name;
-			if (!jsonElement1.TryGetProperty(item.Name, out JsonElement property))
+			if (!actualElement.TryGetProperty(item.Name, out JsonElement property))
 			{
 				_differences.Add(memberPath, "was missing");
 				isConsideredEqual = false;
@@ -249,11 +249,11 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 
 		if (!options.IgnoreAdditionalProperties)
 		{
-			foreach (JsonProperty item in jsonElement1.EnumerateObject())
+			foreach (string propertyName in actualElement.EnumerateObject().Select(x => x.Name))
 			{
-				string memberPath = path + "." + item.Name;
+				string memberPath = path + "." + propertyName;
 				if (_differences.ContainsKey(memberPath) ||
-				    jsonElement2.TryGetProperty(item.Name, out _))
+				    expectedElement.TryGetProperty(propertyName, out _))
 				{
 					continue;
 				}
@@ -267,20 +267,20 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	}
 
 	private bool CompareJsonString(string path,
-		JsonElement jsonElement1,
-		JsonElement jsonElement2)
+		JsonElement actualElement,
+		JsonElement expectedElement)
 	{
-		if (jsonElement2.ValueKind != JsonValueKind.String)
+		if (expectedElement.ValueKind != JsonValueKind.String)
 		{
-			_differences[path] = $"was {Format(jsonElement1, true)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement, true)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
-		string? value1 = jsonElement1.GetString();
-		string? value2 = jsonElement2.GetString();
+		string? value1 = actualElement.GetString();
+		string? value2 = expectedElement.GetString();
 		if (value1 != value2)
 		{
-			_differences[path] = $"was {Format(jsonElement1)} instead of {Format(jsonElement2)}";
+			_differences[path] = $"was {Format(actualElement)} instead of {Format(expectedElement)}";
 			return false;
 		}
 
