@@ -38,16 +38,16 @@ public sealed partial class StringShould
 					             Expected subject to
 					             be JSON equivalent to {},
 					             but it differed as
-					               .foo1 was unexpected and
-					               .foo2 was unexpected and
-					               .foo3 was unexpected and
-					               .foo4 was unexpected and
-					               .foo5 was unexpected and
-					               .foo6 was unexpected and
-					               .foo7 was unexpected and
-					               .foo8 was unexpected and
-					               .foo9 was unexpected and
-					               .foo10 was unexpected and
+					               $.foo1 was unexpected and
+					               $.foo2 was unexpected and
+					               $.foo3 was unexpected and
+					               $.foo4 was unexpected and
+					               $.foo5 was unexpected and
+					               $.foo6 was unexpected and
+					               $.foo7 was unexpected and
+					               $.foo8 was unexpected and
+					               $.foo9 was unexpected and
+					               $.foo10 was unexpected and
 					                … (2 more)
 					             """);
 			}
@@ -83,22 +83,44 @@ public sealed partial class StringShould
 					             Expected subject to
 					             be JSON equivalent to {},
 					             but it differed as
-					               .foo1 was unexpected and
-					               .foo2 was unexpected and
-					               .foo3 was unexpected and
+					               $.foo1 was unexpected and
+					               $.foo2 was unexpected and
+					               $.foo3 was unexpected and
 					                … (9 more)
 					             """);
 			}
 
 			[Theory]
-			[InlineData("{ \"foo\": 2 }", "{  \"foo\": \"2\"  }", "was number 2 instead of \"2\"")]
-			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": \"1.23\"  }", "was number 1.23 instead of \"1.23\"")]
-			[InlineData("{ \"foo\": \"2\" }", "{  \"foo\": 2  }", "was string \"2\" instead of 2")]
-			[InlineData("{ \"foo\": true }", "{  \"foo\": \"\"  }", "was boolean True instead of \"\"")]
-			[InlineData("{ \"foo\": 1 }", "{  \"foo\": true  }", "was number 1 instead of True")]
+			[InlineData("foo",
+				"'foo' is an invalid JSON literal. Expected the literal 'false'. LineNumber: 0 | BytePositionInLine: 1.")]
+			[InlineData("{\"foo\":{\"bar\":False}}",
+				"'F' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 14.")]
+			[InlineData("{\"foo\":{\"bar\":[1,2}}",
+				"'}' is invalid without a matching open. LineNumber: 0 | BytePositionInLine: 18.")]
+			public async Task WhenExpectedIsIncorrectJson_ShouldFail(string expected, string errorMessage)
+			{
+				string subject = "{}";
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              be JSON equivalent to {expected},
+					              but could not parse expected: {errorMessage}
+					              """);
+			}
+
+			[Theory]
+			[InlineData("{ \"foo\": 2 }", "{  \"foo\": \"2\"  }", "$.foo was number 2 instead of \"2\"")]
+			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": \"1.23\"  }", "$.foo was number 1.23 instead of \"1.23\"")]
+			[InlineData("{ \"foo\": \"2\" }", "{  \"foo\": 2  }", "$.foo was string \"2\" instead of 2")]
+			[InlineData("{ \"foo\": true }", "{  \"foo\": \"\"  }", "$.foo was boolean True instead of \"\"")]
+			[InlineData("{ \"foo\": 1 }", "{  \"foo\": true  }", "$.foo was number 1 instead of True")]
 			[InlineData("{ \"foo\": {\"value\":false} }", "{  \"foo\": false  }",
-				"was object {\"value\":false} instead of False")]
-			[InlineData("{ \"foo\": null }", "{  \"foo\": \"\"  }", "was Null instead of \"\"")]
+				"$.foo was object {\"value\":false} instead of False")]
+			[InlineData("{ \"foo\": null }", "{  \"foo\": \"\"  }", "$.foo was Null instead of \"\"")]
 			public async Task WhenPropertiesOfValuesHaveDifferentType_ShouldFail(string subject, string expected,
 				string message)
 			{
@@ -106,17 +128,17 @@ public sealed partial class StringShould
 					=> await That(subject).Should().Be(expected).AsJson();
 
 				await That(Act).Should().Throw<XunitException>()
-					.WithMessage($"*but it differed as .foo {message}").AsWildcard();
+					.WithMessage($"*but it differed as {message}").AsWildcard();
 			}
 
 			[Theory]
-			[InlineData("{ \"foo\": 2 }", "{  \"foo\": 3  }", ".foo was 2 instead of 3")]
-			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": 2.23  }", ".foo was 1.23 instead of 2.23")]
-			[InlineData("{ \"foo\": \"bar\" }", "{  \"foo\": \"baz\"  }", ".foo was \"bar\" instead of \"baz\"")]
-			[InlineData("{ \"foo\": true }", "{  \"foo\": false  }", ".foo was True instead of False")]
-			[InlineData("{ \"foo\": false }", "{  \"foo\": true  }", ".foo was False instead of True")]
-			[InlineData("{ \"foo\": { \"bar\" : 1 } }", "{\"foo\":{\"bar\":2}}", ".foo.bar was 1 instead of 2")]
-			[InlineData("{ \"foo\": [1, 3, 3] }", "{\"foo\":[1,2,3]}", ".foo[1] was 3 instead of 2")]
+			[InlineData("{ \"foo\": 2 }", "{  \"foo\": 3  }", "$.foo was 2 instead of 3")]
+			[InlineData("{ \"foo\": 1.23 }", "{  \"foo\": 2.23  }", "$.foo was 1.23 instead of 2.23")]
+			[InlineData("{ \"foo\": \"bar\" }", "{  \"foo\": \"baz\"  }", "$.foo was \"bar\" instead of \"baz\"")]
+			[InlineData("{ \"foo\": true }", "{  \"foo\": false  }", "$.foo was True instead of False")]
+			[InlineData("{ \"foo\": false }", "{  \"foo\": true  }", "$.foo was False instead of True")]
+			[InlineData("{ \"foo\": { \"bar\" : 1 } }", "{\"foo\":{\"bar\":2}}", "$.foo.bar was 1 instead of 2")]
+			[InlineData("{ \"foo\": [1, 3, 3] }", "{\"foo\":[1,2,3]}", "$.foo[1] was 3 instead of 2")]
 			public async Task WhenPropertiesOfValuesHaveDifferentValue_ShouldFail(string subject, string expected,
 				string message)
 			{
@@ -153,58 +175,10 @@ public sealed partial class StringShould
 					               "baz": true
 					             },
 					             but it differed as
-					               .foo was 1.1 instead of 2.1 and
-					               .bar was "baz" instead of "bart" and
-					               .baz was missing and
-					               .something was unexpected
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectHasFewerArrayItems_ShouldFail()
-			{
-				string subject = """
-				                 [1, 2]
-				                 """;
-				string expected = """
-				                  [1,2,3,4]
-				                  """;
-
-				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be JSON equivalent to [1,2,3,4],
-					             but it differed as
-					               [2] had missing 3 and
-					               [3] had missing 4
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectHasMoreArrayItems_ShouldFail()
-			{
-				string subject = """
-				                 {
-				                   "foo": [1, 2, 3, 4]
-				                 }
-				                 """;
-				string expected = """
-				                  {"foo":[1,2]}
-				                  """;
-
-				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
-
-				await That(Act).Should().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be JSON equivalent to {"foo":[1,2]},
-					             but it differed as
-					               .foo[2] had unexpected 3 and
-					               .foo[3] had unexpected 4
+					               $.foo was 1.1 instead of 2.1 and
+					               $.bar was "baz" instead of "bart" and
+					               $.baz was missing and
+					               $.something was unexpected
 					             """);
 			}
 
@@ -233,8 +207,78 @@ public sealed partial class StringShould
 					             be JSON equivalent to {
 					               "foo": 1
 					             },
-					             but it differed as .bar was unexpected
+					             but it differed as $.bar was unexpected
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasFewerArrayItems_ShouldFail()
+			{
+				string subject = """
+				                 [1, 2]
+				                 """;
+				string expected = """
+				                  [1,2,3,4]
+				                  """;
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to [1,2,3,4],
+					             but it differed as
+					               $[2] had missing 3 and
+					               $[3] had missing 4
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasMoreArrayItems_ShouldFail()
+			{
+				string subject = """
+				                 {
+				                   "foo": [1, 2, 3, 4]
+				                 }
+				                 """;
+				string expected = """
+				                  {"foo":[1,2]}
+				                  """;
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be JSON equivalent to {"foo":[1,2]},
+					             but it differed as
+					               $.foo[2] had unexpected 3 and
+					               $.foo[3] had unexpected 4
+					             """);
+			}
+
+			[Theory]
+			[InlineData("foo",
+				"'foo' is an invalid JSON literal. Expected the literal 'false'. LineNumber: 0 | BytePositionInLine: 1.")]
+			[InlineData("{\"foo\":{\"bar\":False}}",
+				"'F' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 14.")]
+			[InlineData("{\"foo\":{\"bar\":[1,2}}",
+				"'}' is invalid without a matching open. LineNumber: 0 | BytePositionInLine: 18.")]
+			public async Task WhenSubjectIsIncorrectJson_ShouldFail(string subject, string errorMessage)
+			{
+				string expected = "{}";
+
+				async Task Act()
+					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+
+				await That(Act).Should().Throw<XunitException>()
+					.WithMessage($$"""
+					               Expected subject to
+					               be JSON equivalent to {},
+					               but could not parse subject: {{errorMessage}}
+					               """);
 			}
 
 			[Theory]
