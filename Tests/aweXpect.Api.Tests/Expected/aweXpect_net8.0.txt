@@ -964,10 +964,10 @@ namespace aweXpect.Json
     public class JsonOptions
     {
         public JsonOptions() { }
-        public bool CheckForAdditionalProperties { get; }
         public System.Text.Json.JsonDocumentOptions DocumentOptions { get; }
-        public aweXpect.Json.JsonOptions CheckingForAdditionalProperties(bool checkForAdditionalProperties = true) { }
-        public aweXpect.Json.JsonOptions UsingJsonOptions(System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions> jsonDocumentOptions) { }
+        public bool IgnoreAdditionalProperties { get; }
+        public aweXpect.Json.JsonOptions IgnoringAdditionalProperties(bool ignoreAdditionalProperties = true) { }
+        public aweXpect.Json.JsonOptions WithJsonOptions(System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions> jsonDocumentOptions) { }
     }
 }
 namespace aweXpect.Results

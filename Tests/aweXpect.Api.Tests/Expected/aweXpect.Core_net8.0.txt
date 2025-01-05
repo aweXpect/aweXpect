@@ -207,9 +207,10 @@ namespace aweXpect.Core.Sources
 }
 namespace aweXpect.Customization
 {
-    public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeRecording, aweXpect.Customization.ICustomizeReflection
+    public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeJson, aweXpect.Customization.ICustomizeRecording, aweXpect.Customization.ICustomizeReflection
     {
         public static aweXpect.Customization.ICustomizeFormatting Formatting { get; }
+        public static aweXpect.Customization.ICustomizeJson Json { get; }
         public static aweXpect.Customization.ICustomizeRecording Recording { get; }
         public static aweXpect.Customization.ICustomizeReflection Reflection { get; }
     }
@@ -217,6 +218,11 @@ namespace aweXpect.Customization
     {
         int MaximumNumberOfCollectionItems { get; }
         System.IDisposable SetMaximumNumberOfCollectionItems(int value);
+    }
+    public interface ICustomizeJson
+    {
+        System.Text.Json.JsonDocumentOptions DefaultJsonDocumentOptions { get; }
+        System.IDisposable SetDefaultJsonDocumentOptions(System.Text.Json.JsonDocumentOptions options);
     }
     public interface ICustomizeRecording
     {
