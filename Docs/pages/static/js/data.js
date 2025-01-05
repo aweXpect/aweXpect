@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736051080231,
+  "lastUpdate": 1736052599174,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -12944,6 +12944,138 @@ window.BENCHMARK_DATA = {
             "value": 1873.4103090922038,
             "unit": "ns",
             "range": "± 6.546628821012563"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c7023aa7bb05a03646b1729c218029b854384eb6",
+          "message": "feat: add string comparison as JSON (#186)\n\n**Prerequisites:**\nAdd an `IOptionsProvider<StringEqualityOptions` to the `StringEqualityResult` to give access to the underlying options and allow specifying the `IStringMatchType` explicitely.\nThis also enhances the extensibility options.\n\n**Implementation:**\nAdd an `AsJson` on  extension method on `StringEqualityResult` which parses both the subject and expected string to a `JsonDocument` and verifies that the two documents have the same values.\nThe options callback allows\n- specifying, that additional properties on the subject should be ignored\n- specifying the [`JsonDocumentOptions`](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsondocumentoptions?view=net-8.0) used when parsing the string.\n  *The default value used, sets [`AllowTrailingCommas`](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsondocumentoptions.allowtrailingcommas?view=net-8.0) to true and can be overwritten in `Customize.Json.SetDefaultJsonDocumentOptions`.*\n\n---\n\nImplements #176\n> Suppose you have the JSON result of a web api and you want to ensure, that it has a certain format, it would be nice to have this as a string match option, e.g.\n> ```csharp\n> var expected = \"\"\"\n>     {\n>         \"id\": 2,\n>         \"type\": \"foo\"\n>     }\n>     \"\"\"\n> var result = await response.Content.ReadAsStringAsync(); // contains HUGE JSON with lots of data\n> \n> await Expect.That(result).Is(expected).AsJson(o => o.IgnoringAdditionalProperties);\n> ```\n> \n> which should validate that the result is a valid JSON file and has (at least) `\"id\"` set to `2` and `\"type\"` set to `\"foo\"`.",
+          "timestamp": "2025-01-05T04:42:52Z",
+          "tree_id": "ad2574db1b553ea20fc1563814b6385c7bd00d07",
+          "url": "https://github.com/aweXpect/aweXpect/commit/c7023aa7bb05a03646b1729c218029b854384eb6"
+        },
+        "date": 1736052598473,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 169.65589736302692,
+            "unit": "ns",
+            "range": "± 2.1649954253749684"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 214.22775766849517,
+            "unit": "ns",
+            "range": "± 1.240399233707134"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 573.022715473175,
+            "unit": "ns",
+            "range": "± 4.124365485331177"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 335.069192477635,
+            "unit": "ns",
+            "range": "± 1.576118374717529"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 443.76071987833296,
+            "unit": "ns",
+            "range": "± 2.077765387058666"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13659.917088435246,
+            "unit": "ns",
+            "range": "± 20.9866700185147"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 223.87700188159943,
+            "unit": "ns",
+            "range": "± 0.9767883638994262"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 257.23749923706055,
+            "unit": "ns",
+            "range": "± 0.813845073338305"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 745.8536865370614,
+            "unit": "ns",
+            "range": "± 1.654775906719207"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 321.78648338317873,
+            "unit": "ns",
+            "range": "± 2.3208389750138987"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 408.28119694391887,
+            "unit": "ns",
+            "range": "± 2.359850338217362"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 789.7188666025797,
+            "unit": "ns",
+            "range": "± 6.086342618128117"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 968.4196066538493,
+            "unit": "ns",
+            "range": "± 3.9512832732277734"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1269.710377913255,
+            "unit": "ns",
+            "range": "± 10.653646080331637"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1171.1137256622314,
+            "unit": "ns",
+            "range": "± 6.376258070510768"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 987.1945452008929,
+            "unit": "ns",
+            "range": "± 6.2307258455661945"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 282019.6441731771,
+            "unit": "ns",
+            "range": "± 1260.416893200863"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1845.8013138089862,
+            "unit": "ns",
+            "range": "± 7.1478677859663975"
           }
         ]
       }
