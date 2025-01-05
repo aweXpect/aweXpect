@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using System.Text.Json;
+using aweXpect.Customization;
 
 namespace aweXpect.Json;
 
@@ -9,17 +10,12 @@ namespace aweXpect.Json;
 /// </summary>
 public class JsonOptions
 {
-	private static readonly JsonDocumentOptions DefaultOptions = new()
-	{
-		AllowTrailingCommas = true
-	};
-
 	private JsonDocumentOptions? _options;
 
 	/// <summary>
 	///     The current <see cref="JsonDocumentOptions" /> to use when interpreting a <see langword="string" /> as JSON.
 	/// </summary>
-	public JsonDocumentOptions DocumentOptions => _options ?? DefaultOptions;
+	public JsonDocumentOptions DocumentOptions => _options ?? Customize.Json.DefaultJsonDocumentOptions;
 
 	/// <summary>
 	///     Flag indicating, if the subject should be checked for additional properties.
@@ -29,10 +25,10 @@ public class JsonOptions
 	/// <summary>
 	///     Specify the <see cref="JsonDocumentOptions" /> to use when interpreting a <see langword="string" /> as JSON.
 	/// </summary>
-	public JsonOptions UsingJsonOptions(
+	public JsonOptions WithJsonOptions(
 		Func<JsonDocumentOptions, JsonDocumentOptions> jsonDocumentOptions)
 	{
-		_options ??= DefaultOptions;
+		_options ??= Customize.Json.DefaultJsonDocumentOptions;
 		_options = jsonDocumentOptions(_options.Value);
 		return this;
 	}
