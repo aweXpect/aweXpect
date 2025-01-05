@@ -31,7 +31,7 @@ public sealed partial class StringShould
 				string expected = "{}";
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -76,7 +76,7 @@ public sealed partial class StringShould
 				string expected = "{}";
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -102,7 +102,7 @@ public sealed partial class StringShould
 				string subject = "{}";
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($"""
@@ -164,7 +164,7 @@ public sealed partial class StringShould
 				                  """;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -186,7 +186,7 @@ public sealed partial class StringShould
 			[InlineData(false)]
 			[InlineData(true)]
 			public async Task WhenSubjectContainsAdditionalMembers_ShouldFailWhenCheckingForAdditionalMembers(
-				bool checkForAdditionalMembers)
+				bool ignoreAdditionalProperties)
 			{
 				string subject = """
 				                 { "foo": 1, "bar" : "xyz" }
@@ -199,9 +199,9 @@ public sealed partial class StringShould
 
 				async Task Act()
 					=> await That(subject).Should().Be(expected)
-						.AsJson(o => o.CheckingForAdditionalProperties(checkForAdditionalMembers));
+						.AsJson(o => o.IgnoringAdditionalProperties(ignoreAdditionalProperties));
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(checkForAdditionalMembers)
+				await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreAdditionalProperties)
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to {
@@ -222,7 +222,7 @@ public sealed partial class StringShould
 				                  """;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -247,7 +247,7 @@ public sealed partial class StringShould
 				                  """;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -271,7 +271,7 @@ public sealed partial class StringShould
 				string expected = "{}";
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.CheckingForAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage($$"""

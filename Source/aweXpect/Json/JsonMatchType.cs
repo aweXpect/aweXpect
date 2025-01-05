@@ -247,7 +247,7 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 			isConsideredEqual = CompareJson(memberPath, property, item.Value) && isConsideredEqual;
 		}
 
-		if (options.CheckForAdditionalProperties)
+		if (!options.IgnoreAdditionalProperties)
 		{
 			foreach (JsonProperty item in jsonElement1.EnumerateObject())
 			{

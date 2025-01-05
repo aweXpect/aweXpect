@@ -18,9 +18,9 @@ public class JsonOptions
 	public JsonDocumentOptions DocumentOptions => _options ?? Customize.Json.DefaultJsonDocumentOptions;
 
 	/// <summary>
-	///     Flag indicating, if the subject should be checked for additional properties.
+	///     Flag indicating, if the additional properties in the subject should be ignored.
 	/// </summary>
-	public bool CheckForAdditionalProperties { get; private set; }
+	public bool IgnoreAdditionalProperties { get; private set; }
 
 	/// <summary>
 	///     Specify the <see cref="JsonDocumentOptions" /> to use when interpreting a <see langword="string" /> as JSON.
@@ -34,11 +34,12 @@ public class JsonOptions
 	}
 
 	/// <summary>
-	///     Check for additional properties in the subject.
+	///     Ignores additional properties in the subject
+	///     when <paramref name="ignoreAdditionalProperties" /> is <see langword="true" />
 	/// </summary>
-	public JsonOptions CheckingForAdditionalProperties(bool checkForAdditionalProperties = true)
+	public JsonOptions IgnoringAdditionalProperties(bool ignoreAdditionalProperties = true)
 	{
-		CheckForAdditionalProperties = checkForAdditionalProperties;
+		IgnoreAdditionalProperties = ignoreAdditionalProperties;
 		return this;
 	}
 }
