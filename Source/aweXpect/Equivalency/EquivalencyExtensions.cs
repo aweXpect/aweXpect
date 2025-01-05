@@ -24,7 +24,7 @@ public static class EquivalencyExtensions
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
 		where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
 	{
-		EquivalencyOptions? equivalencyOptions =
+		EquivalencyOptions equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
 		options.Using(new EquivalencyComparer(equivalencyOptions));
 		return (TSelf)options;

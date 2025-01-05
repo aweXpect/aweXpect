@@ -13,17 +13,17 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 {
 	private const int DefaultMaxLength = 30;
 	private const int LongMaxLength = 300;
-	private static readonly IMatchType ExactMatch = new ExactMatchType();
-	private static readonly IMatchType RegexMatch = new RegexMatchType();
+	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
+	private static readonly IStringMatchType RegexMatch = new RegexMatchType();
 
 	private static readonly TimeSpan RegexTimeout = TimeSpan.FromMilliseconds(1000);
-	private static readonly IMatchType WildcardMatch = new WildcardMatchType();
+	private static readonly IStringMatchType WildcardMatch = new WildcardMatchType();
 	private IEqualityComparer<string>? _comparer;
 	private bool _ignoreCase;
 	private bool _ignoreLeadingWhiteSpace;
 	private bool _ignoreNewlineStyle;
 	private bool _ignoreTrailingWhiteSpace;
-	private IMatchType _type = ExactMatch;
+	private IStringMatchType _matchType = ExactMatch;
 
 	/// <inheritdoc />
 	public bool AreConsideredEqual(string? actual, string? expected)
@@ -46,20 +46,25 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expected = expected?.TrimEnd();
 		}
 
-		return _type.Matches(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
+		return _matchType.Matches(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
 	}
+
+	/// <summary>
+	///     Specifies a new <see cref="IStringMatchType" /> to use for matching two strings.
+	/// </summary>
+	public void SetMatchType(IStringMatchType matchType) => _matchType = matchType;
 
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
 	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-		=> _type.GetExpectation(expected, useActiveGrammaticVoice);
+		=> _matchType.GetExpectation(expected, useActiveGrammaticVoice);
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
 	public string GetExtendedFailure(string it, string? expected, string? actual)
-		=> _type.GetExtendedFailure(it, actual, expected, _ignoreCase,
+		=> _matchType.GetExtendedFailure(it, actual, expected, _ignoreCase,
 			_comparer ?? UseDefaultComparer(_ignoreCase));
 
 	/// <summary>
@@ -142,7 +147,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// </summary>
 	public StringEqualityOptions AsRegex()
 	{
-		_type = RegexMatch;
+		_matchType = RegexMatch;
 		return this;
 	}
 
@@ -152,7 +157,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// </summary>
 	public StringEqualityOptions AsWildcard()
 	{
-		_type = WildcardMatch;
+		_matchType = WildcardMatch;
 		return this;
 	}
 
@@ -161,21 +166,10 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// </summary>
 	public StringEqualityOptions Exactly()
 	{
-		_type = ExactMatch;
+		_matchType = ExactMatch;
 		return this;
 	}
 
 	private static StringComparer UseDefaultComparer(bool ignoreCase)
 		=> ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
-
-	private interface IMatchType
-	{
-		string GetExtendedFailure(string it, string? actual, string? pattern, bool ignoreCase,
-			IEqualityComparer<string> comparer);
-
-		bool Matches(string? value, string? pattern, bool ignoreCase,
-			IEqualityComparer<string> comparer);
-
-		string GetExpectation(string? expected, bool useActiveGrammaticVoice);
-	}
 }

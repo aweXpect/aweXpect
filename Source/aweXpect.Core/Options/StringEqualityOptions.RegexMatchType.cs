@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
 namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
-	private sealed class RegexMatchType : IMatchType
+	private sealed class RegexMatchType : IStringMatchType
 	{
 		#region IMatchType Members
 
@@ -25,10 +26,10 @@ public partial class StringEqualityOptions
 				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (regex)";
 		}
 
-		public bool Matches(string? value, string? pattern, bool ignoreCase,
+		public bool Matches(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
-			if (value is null || pattern is null)
+			if (actual is null || expected is null)
 			{
 				return false;
 			}
@@ -39,7 +40,7 @@ public partial class StringEqualityOptions
 				options |= RegexOptions.IgnoreCase;
 			}
 
-			return Regex.IsMatch(value, pattern, options, RegexTimeout);
+			return Regex.IsMatch(actual, expected, options, RegexTimeout);
 		}
 
 		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)

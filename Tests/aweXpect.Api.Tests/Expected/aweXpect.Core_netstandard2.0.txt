@@ -126,6 +126,16 @@ namespace aweXpect.Core
     {
         bool AreConsideredEqual(T actual, T expected);
     }
+    public interface IOptionsProvider<out TOptions>
+    {
+        TOptions Options { get; }
+    }
+    public interface IStringMatchType
+    {
+        string GetExpectation(string? expected, bool useActiveGrammaticVoice);
+        string GetExtendedFailure(string it, string? actual, string? pattern, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
+        bool Matches(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
+    }
     public interface IThat<out T>
     {
         aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
@@ -476,6 +486,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
+        public void SetMatchType(aweXpect.Core.IStringMatchType matchType) { }
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
     }
@@ -648,7 +659,7 @@ namespace aweXpect.Results
     {
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
     }
-    public class ObjectEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class ObjectEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions>
         where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
     {
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
@@ -670,7 +681,7 @@ namespace aweXpect.Results
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
     }
-    public class StringEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class StringEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.StringEqualityOptions>
         where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf>
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
