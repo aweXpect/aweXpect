@@ -913,6 +913,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeNullOrWhiteSpace(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> BeOneOf(this aweXpect.Core.IThat<string?> source, params string?[] expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeUpperCased(this aweXpect.Core.IThat<string?> source) { }
+        public static aweXpect.Results.JsonWhichResult BeValidJson(this aweXpect.Core.IThat<string?> source, System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions>? options = null) { }
         public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> Contain(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> EndWith(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> HaveLength(this aweXpect.Core.IThat<string?> source, int expected) { }
@@ -1005,6 +1006,11 @@ namespace aweXpect.Results
     {
         public ItemsResult(TReturn value) { }
         public TReturn Items() { }
+    }
+    public class JsonWhichResult : aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>>
+    {
+        public JsonWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<string?> returnValue, System.Text.Json.JsonDocumentOptions options) { }
+        public aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> Which(System.Action<aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement?>> expectations) { }
     }
     public class ObjectCollectionBeContainedInResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>
     {
