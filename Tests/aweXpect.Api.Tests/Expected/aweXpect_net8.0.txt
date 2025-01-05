@@ -379,6 +379,11 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> NotHaveStatusCode(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, System.Net.HttpStatusCode unexpected) { }
         public static aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> Should(this aweXpect.Core.IExpectSubject<System.Net.Http.HttpResponseMessage?> subject) { }
     }
+    public static class ThatJsonElementShould
+    {
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> HaveCount(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, int expected) { }
+        public static aweXpect.Core.IThat<System.Text.Json.JsonElement> Should(this aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement> subject) { }
+    }
     public static class ThatNullableBoolShould
     {
         public static aweXpect.Results.AndOrResult<bool?, aweXpect.Core.IThat<bool?>> Be(this aweXpect.Core.IThat<bool?> source, bool? expected) { }
@@ -505,6 +510,11 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> NotBeEmpty(this aweXpect.Core.IThat<System.Guid?> source) { }
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> NotBeNull(this aweXpect.Core.IThat<System.Guid?> source) { }
         public static aweXpect.Core.IThat<System.Guid?> Should(this aweXpect.Core.IExpectSubject<System.Guid?> subject) { }
+    }
+    public static class ThatNullableJsonElementShould
+    {
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> HaveCount(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, int expected) { }
+        public static aweXpect.Core.IThat<System.Text.Json.JsonElement?> Should(this aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement?> subject) { }
     }
     public static class ThatNullableTimeOnlyShould
     {
