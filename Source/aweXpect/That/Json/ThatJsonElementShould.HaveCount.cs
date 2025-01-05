@@ -11,14 +11,34 @@ namespace aweXpect;
 public static partial class ThatJsonElementShould
 {
 	/// <summary>
-	///     Verifies that the number of items in the current <see cref="JsonElement" /> matches the supplied
-	///     <paramref name="expected" /> amount.
+	///     Verifies that the subject <see cref="JsonElement" /> has the <paramref name="expected" /> number of items.
 	/// </summary>
+	/// <remarks>
+	///     Fails when the <see cref="JsonValueKind" /> is neither <see cref="JsonValueKind.Array" />
+	///     nor <see cref="JsonValueKind.Object" />.
+	/// </remarks>
 	public static AndOrResult<JsonElement, IThat<JsonElement>> HaveCount(this IThat<JsonElement> source, int expected)
 	{
 		ArgumentOutOfRangeException.ThrowIfNegative(expected);
 		return new AndOrResult<JsonElement, IThat<JsonElement>>(source.ExpectationBuilder.AddConstraint(it
 				=> new HaveCountConstraint(it, expected)),
+			source);
+	}
+
+	/// <summary>
+	///     Verifies that the subject <see cref="JsonElement" /> does not have
+	///     the <paramref name="unexpected" /> number of items.
+	/// </summary>
+	/// <remarks>
+	///     Fails when the <see cref="JsonValueKind" /> is neither <see cref="JsonValueKind.Array" />
+	///     nor <see cref="JsonValueKind.Object" />.
+	/// </remarks>
+	public static AndOrResult<JsonElement, IThat<JsonElement>> NotHaveCount(this IThat<JsonElement> source,
+		int unexpected)
+	{
+		ArgumentOutOfRangeException.ThrowIfNegative(unexpected);
+		return new AndOrResult<JsonElement, IThat<JsonElement>>(source.ExpectationBuilder.AddConstraint(it
+				=> new NotHaveCountConstraint(it, unexpected)),
 			source);
 	}
 
@@ -29,7 +49,7 @@ public static partial class ThatJsonElementShould
 		{
 			if (actual.ValueKind is not JsonValueKind.Array and not JsonValueKind.Object)
 			{
-				return new ConstraintResult.Failure<JsonElement?>(actual, ToString(),
+				return new ConstraintResult.Failure<JsonElement>(actual, ToString(),
 					$"{it} had type {actual.ValueKind}");
 			}
 
@@ -41,15 +61,45 @@ public static partial class ThatJsonElementShould
 
 			if (count == expected)
 			{
-				return new ConstraintResult.Success<JsonElement?>(actual, ToString());
+				return new ConstraintResult.Success<JsonElement>(actual, ToString());
 			}
 
-			return new ConstraintResult.Failure<JsonElement?>(actual, ToString(),
+			return new ConstraintResult.Failure<JsonElement>(actual, ToString(),
 				$"{it} had {count}");
 		}
 
 		public override string ToString()
 			=> $"have {expected} items";
+	}
+
+	private readonly struct NotHaveCountConstraint(string it, int unexpected)
+		: IValueConstraint<JsonElement>
+	{
+		public ConstraintResult IsMetBy(JsonElement actual)
+		{
+			if (actual.ValueKind is not JsonValueKind.Array and not JsonValueKind.Object)
+			{
+				return new ConstraintResult.Failure<JsonElement>(actual, ToString(),
+					$"{it} had type {actual.ValueKind}");
+			}
+
+			int? count = actual.ValueKind switch
+			{
+				JsonValueKind.Array => actual.GetArrayLength(),
+				_ => actual.EnumerateObject().Count()
+			};
+
+			if (count == unexpected)
+			{
+				return new ConstraintResult.Failure<JsonElement>(actual, ToString(),
+					$"{it} did");
+			}
+
+			return new ConstraintResult.Success<JsonElement>(actual, ToString());
+		}
+
+		public override string ToString()
+			=> $"not have {unexpected} items";
 	}
 }
 #endif

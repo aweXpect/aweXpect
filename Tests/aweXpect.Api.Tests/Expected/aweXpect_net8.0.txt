@@ -382,6 +382,7 @@ namespace aweXpect
     public static class ThatJsonElementShould
     {
         public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> HaveCount(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, int expected) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> NotHaveCount(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, int unexpected) { }
         public static aweXpect.Core.IThat<System.Text.Json.JsonElement> Should(this aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement> subject) { }
     }
     public static class ThatNullableBoolShould
@@ -514,6 +515,7 @@ namespace aweXpect
     public static class ThatNullableJsonElementShould
     {
         public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> HaveCount(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, int expected) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> NotHaveCount(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, int unexpected) { }
         public static aweXpect.Core.IThat<System.Text.Json.JsonElement?> Should(this aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement?> subject) { }
     }
     public static class ThatNullableTimeOnlyShould

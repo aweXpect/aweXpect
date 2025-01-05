@@ -13,6 +13,7 @@ You can verify, that the `JsonElement` has the expected number of items:
 JsonElement subject = JsonDocument.Parse("[1,2]").RootElement;
 
 await Expect.That(subject).Should().HaveCount(2);
+await Expect.That(subject).Should().NotHaveCount(3);
 ```
 
 This works for both, arrays and objects, but fails for all other JSON types.
