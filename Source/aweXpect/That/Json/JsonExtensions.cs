@@ -15,7 +15,8 @@ public static class JsonExtensions
 	/// <summary>
 	///     Interpret the <see cref="string" /> as JSON.
 	/// </summary>
-	public static TSelf AsJson<TType, TThat, TSelf>(this StringEqualityResult<TType, TThat, TSelf> result,
+	public static TSelf AsJson<TType, TThat, TSelf>(
+		this StringEqualityResult<TType, TThat, TSelf> result,
 		Func<JsonOptions, JsonOptions>? options = null)
 		where TSelf : StringEqualityResult<TType, TThat, TSelf>
 	{
