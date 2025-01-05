@@ -5,7 +5,6 @@ using aweXpect.Json;
 using aweXpect.Options;
 using aweXpect.Results;
 
-// ReSharper disable once CheckNamespace
 namespace aweXpect;
 
 /// <summary>
