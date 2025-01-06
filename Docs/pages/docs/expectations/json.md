@@ -77,16 +77,3 @@ await Expect.That(JsonDocument.Parse("42.3").RootElement).Should().Match(42.3);
 await Expect.That(JsonDocument.Parse("true").RootElement).Should().Match(true);
 await Expect.That(JsonDocument.Parse("null").RootElement).Should().Match(null);
 ```
-
-
-### Have count
-
-You can verify, that the `JsonElement` has the expected number of items:
-```csharp
-JsonElement subject = JsonDocument.Parse("[1,2]").RootElement;
-
-await Expect.That(subject).Should().HaveCount(2);
-await Expect.That(subject).Should().NotHaveCount(3);
-```
-
-This works for both, arrays and objects, but fails for all other JSON types.
