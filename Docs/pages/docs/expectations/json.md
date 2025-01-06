@@ -46,11 +46,40 @@ You can also add additional expectations on the [`JsonElement`](https://learn.mi
 ```csharp
 string subject = "{\"foo\": 2}";
 
-await Expect.That(subject).Should().BeValidJson().Which(j => j.Should().HaveCount(1));
+await Expect.That(subject).Should().BeValidJson().Which(j => j.Should().Match(new{foo = 2}));
 ```
 
 
 ## `JsonElement`
+
+### Match
+
+You can verify, that the `JsonElement` matches an expected object:
+```csharp
+JsonElement subject = JsonDocument.Parse("{\"foo\": 1, \"bar\": \"baz\"}").RootElement;
+
+await Expect.That(subject).Should().Match(new{foo = 1});
+await Expect.That(subject).Should().MatchExactly(new{foo = 1, bar = "baz"});
+```
+
+You can verify, that the `JsonElement` matches an expected array:
+```csharp
+JsonElement subject = JsonDocument.Parse("[1,2,3]").RootElement;
+
+await Expect.That(subject).Should().Match([1, 2]);
+await Expect.That(subject).Should().MatchExactly([1, 2, 3]);
+```
+
+You can also verify, that the `JsonElement` matches a primitive type:
+```csharp
+await Expect.That(JsonDocument.Parse("\"foo\"").RootElement).Should().Match("foo");
+await Expect.That(JsonDocument.Parse("42.3").RootElement).Should().Match(42.3);
+await Expect.That(JsonDocument.Parse("true").RootElement).Should().Match(true);
+await Expect.That(JsonDocument.Parse("null").RootElement).Should().Match(null);
+```
+
+
+### Have count
 
 You can verify, that the `JsonElement` has the expected number of items:
 ```csharp

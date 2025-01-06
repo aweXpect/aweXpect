@@ -38,16 +38,16 @@ public sealed partial class StringShould
 					             Expected subject to
 					             be JSON equivalent to {},
 					             but it differed as
-					               $.foo1 was unexpected and
-					               $.foo2 was unexpected and
-					               $.foo3 was unexpected and
-					               $.foo4 was unexpected and
-					               $.foo5 was unexpected and
-					               $.foo6 was unexpected and
-					               $.foo7 was unexpected and
-					               $.foo8 was unexpected and
-					               $.foo9 was unexpected and
-					               $.foo10 was unexpected and
+					               $.foo1 had unexpected Null and
+					               $.foo2 had unexpected Null and
+					               $.foo3 had unexpected Null and
+					               $.foo4 had unexpected Null and
+					               $.foo5 had unexpected Null and
+					               $.foo6 had unexpected Null and
+					               $.foo7 had unexpected Null and
+					               $.foo8 had unexpected Null and
+					               $.foo9 had unexpected Null and
+					               $.foo10 had unexpected Null and
 					                … (2 more)
 					             """);
 			}
@@ -83,9 +83,9 @@ public sealed partial class StringShould
 					             Expected subject to
 					             be JSON equivalent to {},
 					             but it differed as
-					               $.foo1 was unexpected and
-					               $.foo2 was unexpected and
-					               $.foo3 was unexpected and
+					               $.foo1 had unexpected Null and
+					               $.foo2 had unexpected Null and
+					               $.foo3 had unexpected Null and
 					                … (9 more)
 					             """);
 			}
@@ -178,7 +178,7 @@ public sealed partial class StringShould
 					               $.foo was 1.1 instead of 2.1 and
 					               $.bar was "baz" instead of "bart" and
 					               $.baz was missing and
-					               $.something was unexpected
+					               $.something had unexpected "else"
 					             """);
 			}
 
@@ -207,7 +207,7 @@ public sealed partial class StringShould
 					             be JSON equivalent to {
 					               "foo": 1
 					             },
-					             but it differed as $.bar was unexpected
+					             but it differed as $.bar had unexpected "xyz"
 					             """);
 			}
 
@@ -247,7 +247,7 @@ public sealed partial class StringShould
 				                  """;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
+					=> await That(subject).Should().Be(expected).AsJson();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
