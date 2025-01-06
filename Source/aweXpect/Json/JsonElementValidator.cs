@@ -28,13 +28,11 @@ internal static class JsonElementValidator
 		=> actualElement.ValueKind switch
 		{
 			JsonValueKind.Array => result.CompareJsonArray(path, actualElement, expectedElement, options),
-			JsonValueKind.False => result.CompareJsonBoolean(JsonValueKind.False, path, actualElement, expectedElement,
-				options),
-			JsonValueKind.True => result.CompareJsonBoolean(JsonValueKind.True, path, actualElement, expectedElement,
-				options),
-			JsonValueKind.Null => result.CompareJsonNull(path, actualElement, expectedElement, options),
-			JsonValueKind.Number => result.CompareJsonNumber(path, actualElement, expectedElement, options),
-			JsonValueKind.String => result.CompareJsonString(path, actualElement, expectedElement, options),
+			JsonValueKind.False => result.CompareJsonBoolean(JsonValueKind.False, path, actualElement, expectedElement),
+			JsonValueKind.True => result.CompareJsonBoolean(JsonValueKind.True, path, actualElement, expectedElement),
+			JsonValueKind.Null => result.CompareJsonNull(path, actualElement, expectedElement),
+			JsonValueKind.Number => result.CompareJsonNumber(path, actualElement, expectedElement),
+			JsonValueKind.String => result.CompareJsonString(path, actualElement, expectedElement),
 			JsonValueKind.Object => result.CompareJsonObject(path, actualElement, expectedElement, options),
 			_ => throw new ArgumentOutOfRangeException($"Unsupported JsonValueKind: {actualElement.ValueKind}")
 		};
@@ -84,8 +82,7 @@ internal static class JsonElementValidator
 		JsonValueKind valueKind,
 		string path,
 		JsonElement actualElement,
-		JsonElement expectedElement,
-		JsonOptions options)
+		JsonElement expectedElement)
 	{
 		if (expectedElement.ValueKind != valueKind)
 		{
@@ -101,8 +98,7 @@ internal static class JsonElementValidator
 		this JsonComparisonResult result,
 		string path,
 		JsonElement actualElement,
-		JsonElement expectedElement,
-		JsonOptions options)
+		JsonElement expectedElement)
 	{
 		if (expectedElement.ValueKind != JsonValueKind.Null)
 		{
@@ -116,8 +112,7 @@ internal static class JsonElementValidator
 		this JsonComparisonResult result,
 		string path,
 		JsonElement actualElement,
-		JsonElement expectedElement,
-		JsonOptions options)
+		JsonElement expectedElement)
 	{
 		if (expectedElement.ValueKind != JsonValueKind.Number)
 		{
@@ -197,8 +192,7 @@ internal static class JsonElementValidator
 		this JsonComparisonResult result,
 		string path,
 		JsonElement actualElement,
-		JsonElement expectedElement,
-		JsonOptions options)
+		JsonElement expectedElement)
 	{
 		if (expectedElement.ValueKind != JsonValueKind.String)
 		{
