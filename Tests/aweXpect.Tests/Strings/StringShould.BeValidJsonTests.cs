@@ -105,13 +105,13 @@ public sealed partial class StringShould
 				string subject = "[1, 2]";
 
 				async Task Act()
-					=> await That(subject).Should().BeValidJson().Which(d => d.Should().HaveCount(3));
+					=> await That(subject).Should().BeValidJson().Which(d => d.Should().Match([1, 3]));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             be valid JSON which should have 3 items,
-					             but it had 2
+					             be valid JSON which should match [1, 3],
+					             but it differed as $[1] was 2 instead of 3
 					             """);
 			}
 
@@ -121,7 +121,7 @@ public sealed partial class StringShould
 				string subject = "[1, 2]";
 
 				async Task Act()
-					=> await That(subject).Should().BeValidJson().Which(d => d.Should().HaveCount(2));
+					=> await That(subject).Should().BeValidJson().Which(d => d.Should().Match([1, 2]));
 
 				await That(Act).Should().NotThrow();
 			}
