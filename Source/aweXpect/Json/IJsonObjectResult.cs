@@ -1,41 +1,37 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
 
-namespace aweXpect;
+namespace aweXpect.Json;
 
 /// <summary>
 ///     The result for an expectation on a JSON <see cref="JsonValueKind.Object" />.
 /// </summary>
-public class JsonObjectResult(JsonElement source)
+public interface IJsonObjectResult
 {
 	/// <summary>
 	///     Combine multiple JSON expectations on this <see cref="JsonValueKind.Object" />.
 	/// </summary>
-	public JsonObjectResult And => this;
+	public IJsonObjectResult And { get; }
 
 	/// <summary>
 	///     Add an expectation on the number of properties in the object.
 	/// </summary>
-	public JsonObjectLengthResult With(int amount)
-	{
-		_ = source;
-		return new JsonObjectLengthResult(this);
-	}
+	public IJsonObjectLengthResult With(int amount);
 
 	/// <summary>
 	///     Add an expectation on the property with the given <paramref name="propertyName" />.
 	/// </summary>
-	public JsonPropertyResult<JsonObjectResult> With(string propertyName) => new(this);
+	public IJsonPropertyResult<IJsonObjectResult> With(string propertyName);
 
 	/// <summary>
 	///     Result for the number of properties in a JSON <see cref="JsonValueKind.Object" />.
 	/// </summary>
-	public class JsonObjectLengthResult(JsonObjectResult result)
+	public interface IJsonObjectLengthResult
 	{
 		/// <summary>
 		///     The number of properties in a JSON <see cref="JsonValueKind.Object" />.
 		/// </summary>
-		public JsonObjectResult Properties() => result;
+		public IJsonObjectResult Properties();
 	}
 }
 #endif

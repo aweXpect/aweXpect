@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace aweXpect.Tests.Json;
 
-public sealed partial class JsonElementShould
+public sealed partial class NullableJsonElementShould
 {
 	public sealed class BeObject
 	{
@@ -15,7 +15,7 @@ public sealed partial class JsonElementShould
 			[InlineData("\"foo\"", "a string")]
 			public async Task WhenJsonIsNoObject_ShouldFail(string json, string kindString)
 			{
-				JsonElement subject = FromString(json);
+				JsonElement? subject = FromString(json);
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").Matching(true));
@@ -28,12 +28,13 @@ public sealed partial class JsonElementShould
 					              """);
 			}
 		}
+
 		public sealed class WithTests
 		{
 			[Fact]
 			public async Task WhenMatchFails_ShouldFail()
 			{
-				JsonElement subject = FromString("{\"foo\": 1}");
+				JsonElement? subject = FromString("{\"foo\": 1}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").Matching(2));
@@ -49,7 +50,7 @@ public sealed partial class JsonElementShould
 			[Fact]
 			public async Task WhenMatchSucceeds_ShouldSucceed()
 			{
-				JsonElement subject = FromString("{\"foo\": 2}");
+				JsonElement? subject = FromString("{\"foo\": 2}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").Matching(2));
@@ -61,7 +62,7 @@ public sealed partial class JsonElementShould
 			[Fact]
 			public async Task WhenMultipleMatchesFail_ShouldListAllFailures()
 			{
-				JsonElement subject = FromString("{\"foo\": 1, \"bar\": 2}");
+				JsonElement? subject = FromString("{\"foo\": 1, \"bar\": 2}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").Matching(2).With("bar").Matching(1));
@@ -79,7 +80,7 @@ public sealed partial class JsonElementShould
 			[Fact]
 			public async Task WhenNestedMatchesFail_ShouldListAllFailures()
 			{
-				JsonElement subject = FromString("{\"foo\": 1, \"bar\": {\"baz\": 1, \"bat\": 2}}");
+				JsonElement? subject = FromString("{\"foo\": 1, \"bar\": {\"baz\": 1, \"bat\": 2}}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o
@@ -102,7 +103,7 @@ public sealed partial class JsonElementShould
 			[Fact]
 			public async Task WhenPropertyDoesNotExist_ShouldFail()
 			{
-				JsonElement subject = FromString("{\"foo\": 1}");
+				JsonElement? subject = FromString("{\"foo\": 1}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("bar").Matching(true));
@@ -121,7 +122,7 @@ public sealed partial class JsonElementShould
 			[Fact]
 			public async Task WhenNull_ShouldNotAddFailureMessage()
 			{
-				JsonElement subject = FromString("{}");
+				JsonElement? subject = FromString("{}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o
@@ -139,7 +140,7 @@ public sealed partial class JsonElementShould
 			[Fact]
 			public async Task WhenNumberDiffers_ShouldFail()
 			{
-				JsonElement subject = FromString("{\"foo\": 1, \"bar\": 2}");
+				JsonElement? subject = FromString("{\"foo\": 1, \"bar\": 2}");
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o
@@ -159,7 +160,7 @@ public sealed partial class JsonElementShould
 			[InlineData("{\"foo\": 1, \"bar\": 2, \"baz\": 3}", 3)]
 			public async Task WhenNumberMatches_ShouldSucceed(string json, int expected)
 			{
-				JsonElement subject = FromString(json);
+				JsonElement? subject = FromString(json);
 
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o

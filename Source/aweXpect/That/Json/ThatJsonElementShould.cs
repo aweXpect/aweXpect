@@ -38,7 +38,7 @@ public static partial class ThatJsonElementShould
 
 			if (comparisonResult.HasError)
 			{
-				return new ConstraintResult.Failure<JsonElement>(actual, ToString(), $"{it} {comparisonResult}");
+				return new ConstraintResult.Failure<JsonElement>(actual, ToString(), $"{it} differed as{comparisonResult}");
 			}
 
 			return new ConstraintResult.Success<JsonElement>(actual, ToString());

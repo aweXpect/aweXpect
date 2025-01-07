@@ -8,12 +8,12 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatJsonElementShould
+public static partial class ThatNullableJsonElementShould
 {
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> is an <see cref="JsonValueKind.Object" />.
 	/// </summary>
-	public static AndOrResult<JsonElement, IThat<JsonElement>> BeObject(this IThat<JsonElement> source)
+	public static AndOrResult<JsonElement?, IThat<JsonElement?>> BeObject(this IThat<JsonElement?> source)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeValueKindConstraint(it, JsonValueKind.Object)),
@@ -23,7 +23,7 @@ public static partial class ThatJsonElementShould
 	///     Verifies that the subject <see cref="JsonElement" /> is an <see cref="JsonValueKind.Object" />
 	///     whose value satisfies the <paramref name="expectation" />.
 	/// </summary>
-	public static AndOrResult<JsonElement, IThat<JsonElement>> BeObject(this IThat<JsonElement> source,
+	public static AndOrResult<JsonElement?, IThat<JsonElement?>> BeObject(this IThat<JsonElement?> source,
 		Func<IJsonObjectResult, IJsonObjectResult> expectation,
 		Func<JsonOptions, JsonOptions>? options = null)
 	{
@@ -33,7 +33,7 @@ public static partial class ThatJsonElementShould
 		{
 			jsonOptions = options(jsonOptions);
 		}
-		return new AndOrResult<JsonElement, IThat<JsonElement>>(
+		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeObjectConstraint(it, expectation, jsonOptions)),
 			source);
@@ -43,19 +43,19 @@ public static partial class ThatJsonElementShould
 		string it,
 		Func<IJsonObjectResult, IJsonObjectResult> expectation,
 		JsonOptions options)
-		: IValueConstraint<JsonElement>
+		: IValueConstraint<JsonElement?>
 	{
-		public ConstraintResult IsMetBy(JsonElement actual)
+		public ConstraintResult IsMetBy(JsonElement? actual)
 		{
 			JsonValidation jsonValidation = new(actual, JsonValueKind.Object, options);
 			expectation(jsonValidation);
 			if (!jsonValidation.IsMet())
 			{
-				return new ConstraintResult.Failure<JsonElement>(actual, jsonValidation.GetExpectation(),
+				return new ConstraintResult.Failure<JsonElement?>(actual, jsonValidation.GetExpectation(),
 					jsonValidation.GetFailure(it));
 			}
 
-			return new ConstraintResult.Success<JsonElement>(actual, jsonValidation.GetExpectation());
+			return new ConstraintResult.Success<JsonElement?>(actual, jsonValidation.GetExpectation());
 		}
 	}
 }

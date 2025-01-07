@@ -2,67 +2,58 @@
 using System;
 using System.Text.Json;
 
-namespace aweXpect;
+namespace aweXpect.Json;
+
 
 /// <summary>
 ///     The result for an expectation on a JSON <see cref="JsonValueKind.Array" />.
 /// </summary>
-public class JsonArrayResult(JsonElement source)
+public interface IJsonArrayResult
 {
 	/// <summary>
 	///     Combine multiple JSON expectations on this <see cref="JsonValueKind.Array" />.
 	/// </summary>
-	public JsonArrayResult And => this;
+	public IJsonArrayResult And { get; }
 
 	/// <summary>
 	///     Add an expectation on the number of elements in the array.
 	/// </summary>
-	public JsonArrayLengthResult With(int amount)
-	{
-		_ = source;
-		return new JsonArrayLengthResult(this);
-	}
+	public IJsonArrayLengthResult With(int amount);
 
 	/// <summary>
 	///     Add an expectation on the element at the given zero-based <paramref name="index" />.
 	/// </summary>
-	public JsonPropertyResult<JsonArrayResult> At(int index) => new(this);
+	public IJsonPropertyResult<IJsonArrayResult> At(int index);
 
 	/// <summary>
 	///     Add an expectation on the elements of the array. They are matched against the <paramref name="expected" /> values.
 	/// </summary>
-	public JsonArrayElementsResult WithElements(params object[] expected) => new(source);
+	public IJsonArrayElementsResult WithElements(params object?[] expected);
 
 	/// <summary>
 	///     Add an expectation that the elements of the array are arrays which satisfy the <paramref name="expectations" />.
 	/// </summary>
-	public JsonArrayElementsResult WithArrays(params Action<JsonArrayResult>[] expectations) => new(source);
+	public IJsonArrayElementsResult WithArrays(params Action<IJsonArrayResult>?[] expectations);
 
 	/// <summary>
 	///     Add an expectation that the elements of the array are objects which satisfy the <paramref name="expectations" />.
 	/// </summary>
-	public JsonArrayElementsResult WithObjects(params Action<JsonObjectResult>[] expectations) => new(source);
+	public IJsonArrayElementsResult WithObjects(params Action<IJsonObjectResult>?[] expectations);
 
 	/// <summary>
 	///     Result for the number of elements in a JSON <see cref="JsonValueKind.Array" />.
 	/// </summary>
-	public class JsonArrayLengthResult(JsonArrayResult result)
+	public interface IJsonArrayLengthResult
 	{
 		/// <summary>
 		///     The number of elements in a JSON <see cref="JsonValueKind.Array" />.
 		/// </summary>
-		public JsonArrayResult Elements() => result;
+		public IJsonArrayResult Elements();
 	}
 
 	/// <summary>
 	///     Result for the enumeration of elements in a JSON array.
 	/// </summary>
-	public class JsonArrayElementsResult(JsonElement source) : JsonArrayResult(source)
-	{
-		/// <summary>
-		///     The provided elements can be in any order.
-		/// </summary>
-		public JsonArrayResult InAnyOrder() => this;
-	}
+	public interface IJsonArrayElementsResult : IJsonArrayResult;
 }
 #endif
