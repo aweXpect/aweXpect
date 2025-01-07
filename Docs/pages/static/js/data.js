@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736165969742,
+  "lastUpdate": 1736282874103,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -13868,6 +13868,138 @@ window.BENCHMARK_DATA = {
             "value": 1927.3288941016565,
             "unit": "ns",
             "range": "± 11.250880291799891"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6504546e3c7220fe4d7662b6cd2fc1a2b723fe06",
+          "message": "feat: add `BeObject` and `BeArray` expectations on `JsonElement` (#195)\n\n### Be object\n\nYou can verify that a `JsonElement` is a JSON object that satisfy some expectations:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"{\\\"foo\\\": 1, \\\"bar\\\": \\\"baz\\\"}\").RootElement;\n\nawait Expect.That(subject).Should().BeObject(o => o\n    .With(\"foo\").Matching(1).And\n    .With(\"bar\").Matching(\"baz\"));\n```\n\nYou can also verify that a property is another object recursively:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"{\\\"foo\\\": {\\\"bar\\\": \\\"baz\\\"}}\").RootElement;\n\nawait Expect.That(subject).Should().BeObject(o => o\n    .With(\"foo\").AnObject(i => i\n        .With(\"bar\").Matching(\"baz\")));\n```\n\nYou can also verify that a property is an array:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"{\\\"foo\\\": [1, 2]}\").RootElement;\n\nawait Expect.That(subject).Should().BeObject(o => o\n    .With(\"foo\").AnArray(a => a.WithElements(1, 2)));\n```\n\nYou can also verify the number of properties in a JSON object:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"{\\\"foo\\\": 1, \\\"bar\\\": \\\"baz\\\"}\").RootElement;\n\nawait Expect.That(subject).Should().BeObject(o => o.With(2).Properties());\n```\n\n### Be array\n\nYou can verify that a `JsonElement` is a JSON array that satisfy some expectations:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"[\\\"foo\\\",\\\"bar\\\"]\").RootElement;\n\nawait Expect.That(subject).Should().BeArray(a => a\n    .At(0).Matching(\"foo\").And\n    .At(1).Matching(\"bar\"));\n```\n\nYou can also verify the number of elements in a JSON array:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"[1, 2, 3]\").RootElement;\n\nawait Expect.That(subject).Should().BeArray(o => o.With(3).Elements());\n```\n\nYou can also directly match the expected values of an array:\n```csharp\nJsonElement subject = JsonDocument.Parse(\"[\\\"foo\\\",\\\"bar\\\"]\").RootElement;\n\nawait Expect.That(subject).Should().BeArray(a => a\n    .WithElements(\"foo\", \"bar\"));\n```\n\nYou can also match sub-arrays recursively (add `null` to skip an element):\n```csharp\nJsonElement subject = JsonDocument.Parse(\"[[0,1,2],[1,2,3],[2,3,4],[3,4,5,6]]\").RootElement;\n\nawait Expect.That(subject).Should().BeArray(a => a\n    .WithArrays(\n        i => i.WithElements(0,1,2),\n        i => i.At(0).Matching(1).And.At(2).Matching(3),\n        null,\n        i => i.With(4).Elements()\n    ));\n```\n\nYou can also match objects recursively (add `null` to skip an element):\n```csharp\nJsonElement subject = JsonDocument.Parse(\n\t\"\"\"\n\t[\n\t  {\"foo\":1},\n\t  {\"bar\":2},\n\t  {\"bar\": null, \"baz\": true}\n\t]\n\t\"\"\").RootElement;\nawait Expect.That(subject).Should().BeArray(a => a\n\t.WithObjects(\n\t\ti => i.With(\"foo\").Matching(1),\n\t\tnull,\n\t\ti => i.With(2).Properties()\n\t));\n```",
+          "timestamp": "2025-01-07T20:40:16Z",
+          "tree_id": "de4108f3761429935ccebca5cd87477e674c9f6e",
+          "url": "https://github.com/aweXpect/aweXpect/commit/6504546e3c7220fe4d7662b6cd2fc1a2b723fe06"
+        },
+        "date": 1736282873771,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 177.18749084472657,
+            "unit": "ns",
+            "range": "± 1.5215894621887347"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 221.09702944755554,
+            "unit": "ns",
+            "range": "± 0.6011044408342306"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 549.451043673924,
+            "unit": "ns",
+            "range": "± 1.9391761711535227"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 335.3373505152189,
+            "unit": "ns",
+            "range": "± 1.1968455233937192"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 435.7383380669814,
+            "unit": "ns",
+            "range": "± 1.0623847604527088"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13803.263496907552,
+            "unit": "ns",
+            "range": "± 61.22872210304133"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 223.413449939092,
+            "unit": "ns",
+            "range": "± 1.5112165807441507"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 257.89068813323973,
+            "unit": "ns",
+            "range": "± 1.3054728473949158"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 746.3848918279012,
+            "unit": "ns",
+            "range": "± 5.949120878527872"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 315.63001817067465,
+            "unit": "ns",
+            "range": "± 2.081047157118687"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 394.8110974385188,
+            "unit": "ns",
+            "range": "± 1.4888427009539584"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 792.9973654429118,
+            "unit": "ns",
+            "range": "± 4.316100824680907"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 973.9026673180716,
+            "unit": "ns",
+            "range": "± 3.2699465268023094"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1153.0418142954509,
+            "unit": "ns",
+            "range": "± 2.886394416025704"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1125.7740985325404,
+            "unit": "ns",
+            "range": "± 1.6293796560230929"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 976.1732391629901,
+            "unit": "ns",
+            "range": "± 7.459795471491407"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 289263.3058035714,
+            "unit": "ns",
+            "range": "± 1429.9219253582987"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1890.9149097442628,
+            "unit": "ns",
+            "range": "± 5.021839039767301"
           }
         ]
       }
