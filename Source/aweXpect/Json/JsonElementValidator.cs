@@ -19,6 +19,13 @@ internal static class JsonElementValidator
 		JsonOptions options)
 		=> Compare(new JsonComparisonResult(), "$", actualElement, expectedElement, options);
 
+	public static JsonComparisonResult Compare(
+		string basePath,
+		JsonElement actualElement,
+		JsonElement expectedElement,
+		JsonOptions options)
+		=> Compare(new JsonComparisonResult(), basePath, actualElement, expectedElement, options);
+
 	private static JsonComparisonResult Compare(
 		this JsonComparisonResult result,
 		string path,
@@ -259,7 +266,6 @@ internal static class JsonElementValidator
 			StringBuilder sb = new();
 			if (_errors.Any())
 			{
-				sb.Append("differed as");
 				bool hasMoreThanOneDifference = _errors.Count > 1;
 				int count = 0;
 				foreach (KeyValuePair<string, string> differentMember in _errors)
