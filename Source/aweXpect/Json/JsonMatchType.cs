@@ -26,7 +26,7 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 		string? result = _comparisonResult?.ToString();
 		if (!string.IsNullOrEmpty(result))
 		{
-			return $"{it} {result}";
+			return $"{it} differed as{result}";
 		}
 
 		return "";
