@@ -14,6 +14,7 @@ internal class JsonValidation : IJsonObjectResult,
 	IJsonPropertyResult<IJsonArrayResult>,
 	IJsonPropertyResult<IJsonObjectResult>
 {
+	private const string And = " and ";
 	private readonly Stack<JsonElement?> _currentElements = new();
 	private readonly Stack<string> _currentPath = new();
 	private readonly JsonElement? _element;
@@ -99,7 +100,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 			_currentPath.Push($"[{i}]");
 
-			_expectationBuilder.Append(" and ").Append(CurrentPath).Append(" match ")
+			_expectationBuilder.Append(And).Append(CurrentPath).Append(" match ")
 				.Append(expectedValue == null ? "Null" : Formatter.Format(expectedValue));
 
 			if (currentElement != null)
@@ -151,7 +152,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 			_currentPath.Push($"[{i}]");
 
-			_expectationBuilder.Append(" and ").Append(CurrentPath).Append(' ');
+			_expectationBuilder.Append(And).Append(CurrentPath).Append(' ');
 
 			JsonValidation jsonValidation = new(CurrentPath, currentElement, JsonValueKind.Array, _options);
 			expectation.Invoke(jsonValidation);
@@ -202,7 +203,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 			_currentPath.Push($"[{i}]");
 
-			_expectationBuilder.Append(" and ").Append(CurrentPath).Append(' ');
+			_expectationBuilder.Append(And).Append(CurrentPath).Append(' ');
 
 			JsonValidation jsonValidation = new(CurrentPath, currentElement, JsonValueKind.Object, _options);
 			expectation.Invoke(jsonValidation);
@@ -305,7 +306,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	IJsonArrayResult IJsonPropertyResult<IJsonArrayResult>.Matching(object? expected, string doNotPopulateThisValue)
 	{
-		_expectationBuilder.Append(" and ").Append(CurrentPath).Append(" match ").Append(doNotPopulateThisValue);
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(" match ").Append(doNotPopulateThisValue);
 		JsonElement? currentElement = _currentElements.Pop();
 		if (currentElement == null)
 		{
@@ -356,7 +357,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	IJsonObjectResult IJsonPropertyResult<IJsonObjectResult>.Matching(object? expected, string doNotPopulateThisValue)
 	{
-		_expectationBuilder.Append(" and ").Append(CurrentPath).Append(" match ").Append(doNotPopulateThisValue);
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(" match ").Append(doNotPopulateThisValue);
 		JsonElement? currentElement = _currentElements.Pop();
 		if (currentElement == null)
 		{
@@ -383,7 +384,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	private JsonValidation An(JsonValueKind kind, Action<JsonValidation> expectation)
 	{
-		_expectationBuilder.Append(" and ").Append(CurrentPath).Append(' ');
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(' ');
 		JsonElement? currentElement = _currentElements.Pop();
 
 		JsonValidation jsonValidation = new(CurrentPath, currentElement, kind, _options);
@@ -408,7 +409,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	private JsonValidation An(JsonValueKind kind)
 	{
-		_expectationBuilder.Append(" and ").Append(CurrentPath).Append(" be ").Append(Format(kind));
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(" be ").Append(Format(kind));
 		JsonElement? currentElement = _currentElements.Pop();
 
 		if (currentElement != null && currentElement.Value.ValueKind != kind)

@@ -15,7 +15,6 @@ public class JsonWhichResult(
 	JsonDocumentOptions options) : AndOrResult<string?, IThat<string?>>(expectationBuilder, returnValue)
 {
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
-	private readonly IThat<string?> _returnValue = returnValue;
 
 	/// <summary>
 	///     Allows specifying <paramref name="expectations" /> on the <see cref="JsonElement" />
