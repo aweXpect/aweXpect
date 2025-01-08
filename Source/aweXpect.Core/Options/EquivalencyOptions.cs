@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace aweXpect.Options;
 
@@ -22,4 +23,15 @@ public class EquivalencyOptions
 		_membersToIgnore.Add(memberToIgnore);
 		return this;
 	}
+
+	/// <summary>
+	///     Creates a new <see cref="EquivalencyOptions" /> instance from the provided <paramref name="callback" />.
+	/// </summary>
+	/// <remarks>
+	///     Uses the default instance, when no <paramref name="callback" /> is given.
+	/// </remarks>
+	public static EquivalencyOptions FromCallback(Func<EquivalencyOptions, EquivalencyOptions>? callback)
+		=> callback is null
+			? new EquivalencyOptions()
+			: callback(new EquivalencyOptions());
 }

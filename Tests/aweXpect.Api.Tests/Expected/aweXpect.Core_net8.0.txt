@@ -444,6 +444,7 @@ namespace aweXpect.Options
         public EquivalencyOptions() { }
         public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
         public aweXpect.Options.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
+        public static aweXpect.Options.EquivalencyOptions FromCallback(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? callback) { }
     }
     public class NumberTolerance<TNumber>
         where TNumber :  struct, System.IComparable<TNumber>
