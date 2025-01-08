@@ -169,3 +169,32 @@ await Expect.That(subject).Should().BeArray(a => a
 		i => i.With(2).Properties()
 	));
 ```
+
+## JSON serializable
+
+You can verify that an `object` is JSON serializable:
+
+```csharp
+MyClass subject = new MyClass();
+
+await Expect.That(subject).Should().BeJsonSerializable();
+```
+This validates, that the `MyClass` can be serialized and deserialized to/from JSON and that the result is equivalent to the original subject.
+
+You can specify both, the [`JsonSerializerOptions`](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsonserializeroptions) and the equivalency options:
+```csharp
+MyClass subject = new MyClass();
+
+await Expect.That(subject).Should().BeJsonSerializable(
+    new JsonSerializerOptions { IncludeFields = true },
+    e => e.IgnoringMember("Foo"));
+```
+
+You can also specify an expected generic type that the subject should have:
+```csharp
+object subject = //...
+
+await Expect.That(subject).Should().BeJsonSerializable<MyClass>(
+    new JsonSerializerOptions { IncludeFields = true },
+    e => e.IgnoringMember("Foo"));
+```
