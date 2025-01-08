@@ -26,7 +26,8 @@ public static class EquivalencyExtensions
 	{
 		EquivalencyOptions equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		((IOptionsProvider<ObjectEqualityOptions>)result).Options.SetMatchType(new EquivalencyComparer(equivalencyOptions));
+		((IOptionsProvider<ObjectEqualityOptions>)result).Options.SetMatchType(
+			new EquivalencyComparer(equivalencyOptions));
 		return (TSelf)result;
 	}
 
@@ -45,6 +46,7 @@ public static class EquivalencyExtensions
 	{
 		private ComparisonFailure? _firstFailure;
 
+		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual(object?, object?)" />
 		public bool AreConsideredEqual(object? actual, object? expected)
 		{
 			if (HandleSpecialCases(actual, expected, out bool? specialCaseResult))
@@ -72,8 +74,10 @@ public static class EquivalencyExtensions
 			return true;
 		}
 
-		public string GetExpectation(string expectedExpression) => $"be equivalent to {expectedExpression}";
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
+		public string GetExpectation(string expected) => $"be equivalent to {expected}";
 
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 		public string GetExtendedFailure(string it, object? actual, object? expected)
 		{
 			if (_firstFailure == null)
