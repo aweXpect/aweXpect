@@ -19,7 +19,7 @@ namespace aweXpect
     public static class EquivalencyExtensions
     {
         public static aweXpect.Options.ObjectEqualityOptions Equivalent(this aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
-        public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null)
+        public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> { }
     }
     public static class JsonExtensions
@@ -874,6 +874,10 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> Be<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> BeExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> BeExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable(this aweXpect.Core.IThat<object?> source, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable(this aweXpect.Core.IThat<object?> source, System.Text.Json.JsonSerializerOptions serializerOptions, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable<T>(this aweXpect.Core.IThat<object?> source, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable<T>(this aweXpect.Core.IThat<object?> source, System.Text.Json.JsonSerializerOptions serializerOptions, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }

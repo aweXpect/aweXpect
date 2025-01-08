@@ -19,7 +19,7 @@ namespace aweXpect
     public static class EquivalencyExtensions
     {
         public static aweXpect.Options.ObjectEqualityOptions Equivalent(this aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
-        public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null)
+        public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> { }
     }
     public static class ThatBoolShould
