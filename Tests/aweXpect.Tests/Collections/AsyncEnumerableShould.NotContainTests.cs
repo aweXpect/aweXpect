@@ -58,7 +58,7 @@ public sealed partial class AsyncEnumerableShould
 					             Expected subject to
 					             not contain MyClass {
 					               Value = 5
-					             } using EquivalencyComparer,
+					             } equivalent,
 					             but it did
 					             """);
 			}

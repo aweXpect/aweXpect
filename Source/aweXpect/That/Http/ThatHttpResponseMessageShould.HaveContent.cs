@@ -47,7 +47,7 @@ public static partial class ThatHttpResponseMessageShould
 			}
 
 			return new ConstraintResult.Failure<HttpResponseMessage?>(actual, ToString(),
-				options.GetExtendedFailure(it, expected, message));
+				options.GetExtendedFailure(it, message, expected));
 		}
 
 		public override string ToString()

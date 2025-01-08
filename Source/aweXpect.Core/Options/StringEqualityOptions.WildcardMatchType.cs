@@ -8,6 +8,16 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
+	/// <summary>
+	///     Interprets the expected <see langword="string" /> as wildcard pattern.<br />
+	///     Supports * to match zero or more characters and ? to match exactly one character.
+	/// </summary>
+	public StringEqualityOptions AsWildcard()
+	{
+		_matchType = WildcardMatch;
+		return this;
+	}
+	
 	private sealed class WildcardMatchType : IStringMatchType
 	{
 		private static string WildcardToRegularExpression(string value)
@@ -21,20 +31,20 @@ public partial class StringEqualityOptions
 		#region IMatchType Members
 
 		/// <inheritdoc />
-		public string GetExtendedFailure(string it, string? actual, string? pattern,
+		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
-			if (pattern is null)
+			if (expected is null)
 			{
 				return $"could not compare the <null> wildcard pattern with {Formatter.Format(actual)}";
 			}
 
 			return
-				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
+				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(expected.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
 		}
 
-		public bool Matches(string? actual, string? expected, bool ignoreCase,
+		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
 			if (actual is null || expected is null)

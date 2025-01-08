@@ -33,7 +33,7 @@ public static partial class ThatStringShould
 			}
 
 			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				options.GetExtendedFailure(it, expected, actual));
+				options.GetExtendedFailure(it, actual, expected));
 		}
 
 		/// <inheritdoc />

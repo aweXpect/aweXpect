@@ -109,11 +109,6 @@ namespace aweXpect.Core
         bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, out string? error);
         bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, out string? error);
     }
-    public interface IComparerOptions
-    {
-        string GetExpectation(string expectedExpression);
-        string GetExtendedFailure(string it, object? actual, object? expected);
-    }
     public interface IExpectSubject<out T>
     {
         bool Equals(object? obj);
@@ -121,6 +116,12 @@ namespace aweXpect.Core
         System.Type GetType();
         aweXpect.Core.IThat<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
         string? ToString();
+    }
+    public interface IObjectMatchType
+    {
+        bool AreConsideredEqual(object? actual, object? expected);
+        string GetExpectation(string expected);
+        string GetExtendedFailure(string it, object? actual, object? expected);
     }
     public interface IOptionsEquality<in T>
     {
@@ -132,9 +133,9 @@ namespace aweXpect.Core
     }
     public interface IStringMatchType
     {
+        bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
         string GetExpectation(string? expected, bool useActiveGrammaticVoice);
-        string GetExtendedFailure(string it, string? actual, string? pattern, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
-        bool Matches(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
+        string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
     }
     public interface IThat<out T>
     {
@@ -438,17 +439,12 @@ namespace aweXpect.Options
     {
         public ObjectEqualityOptions() { }
         public bool AreConsideredEqual(object? actual, object? expected) { }
-        public aweXpect.Options.ObjectEqualityOptions.Result AreConsideredEqual(object? actual, object? expected, string it) { }
         public aweXpect.Options.ObjectEqualityOptions Equals() { }
         public string GetExpectation(string expectedExpression) { }
+        public string GetExtendedFailure(string it, object? actual, object? expected) { }
+        public void SetMatchType(aweXpect.Core.IObjectMatchType matchType) { }
         public override string? ToString() { }
         public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
-        public readonly struct Result
-        {
-            public Result(bool areConsideredEqual, System.Func<string> failure) { }
-            public bool AreConsideredEqual { get; }
-            public string Failure { get; }
-        }
     }
     public class Quantifier
     {
@@ -481,7 +477,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
         public string GetExpectation(string? expected, bool useActiveGrammaticVoice) { }
-        public string GetExtendedFailure(string it, string? expected, string? actual) { }
+        public string GetExtendedFailure(string it, string? actual, string? expected) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }

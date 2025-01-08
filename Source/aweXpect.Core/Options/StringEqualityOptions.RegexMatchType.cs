@@ -8,25 +8,34 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
+	/// <summary>
+	///     Interprets the expected <see langword="string" /> as <see cref="Regex" /> pattern.
+	/// </summary>
+	public StringEqualityOptions AsRegex()
+	{
+		_matchType = RegexMatch;
+		return this;
+	}
+	
 	private sealed class RegexMatchType : IStringMatchType
 	{
 		#region IMatchType Members
 
 		/// <inheritdoc />
-		public string GetExtendedFailure(string it, string? actual, string? pattern,
+		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
-			if (pattern is null)
+			if (expected is null)
 			{
 				return $"could not compare the <null> regex with {Formatter.Format(actual)}";
 			}
 
 			return
-				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(pattern.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (regex)";
+				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(expected.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (regex)";
 		}
 
-		public bool Matches(string? actual, string? expected, bool ignoreCase,
+		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
 			if (actual is null || expected is null)

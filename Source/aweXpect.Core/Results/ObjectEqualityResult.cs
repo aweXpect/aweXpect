@@ -40,9 +40,6 @@ public class ObjectEqualityResult<TType, TThat, TSelf>(
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.
 	/// </summary>
-	/// <remarks>
-	///     For more customization, the comparer can additionally implement the <see cref="IComparerOptions" /> interface.
-	/// </remarks>
 	public TSelf Using(IEqualityComparer<object> comparer)
 	{
 		options.Using(comparer);
