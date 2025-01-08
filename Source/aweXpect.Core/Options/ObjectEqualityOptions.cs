@@ -1,5 +1,4 @@
-﻿using System;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 
 namespace aweXpect.Options;
 
@@ -8,48 +7,30 @@ namespace aweXpect.Options;
 /// </summary>
 public partial class ObjectEqualityOptions : IOptionsEquality<object?>
 {
-	private static readonly IEquality EqualsType = new EqualsEquality();
-	private IEquality _type = EqualsType;
+	private static readonly IObjectMatchType EqualsMatch = new EqualsMatchType();
+	private IObjectMatchType _matchType = EqualsMatch;
 
 	/// <inheritdoc />
 	public bool AreConsideredEqual(object? actual, object? expected)
-		=> _type.AreConsideredEqual(actual, expected);
+		=> _matchType.AreConsideredEqual(actual, expected);
 
 	/// <summary>
-	///     Returns a <see cref="Result" /> that has the result of the comparison and additionally an extended failure string.
+	///     Specifies a new <see cref="IStringMatchType" /> to use for matching two strings.
 	/// </summary>
-	public Result AreConsideredEqual(object? actual, object? expected, string it)
-		=> _type.AreConsideredEqual(actual, expected, it);
+	public void SetMatchType(IObjectMatchType matchType) => _matchType = matchType;
+
+	/// <summary>
+	///     Get an extended failure text.
+	/// </summary>
+	public string GetExtendedFailure(string it, object? actual, object? expected)
+		=> _matchType.GetExtendedFailure(it, actual, expected);
 
 	/// <summary>
 	///     Returns the expectation string, e.g. <c>be equal to {expectedExpression}</c>.
 	/// </summary>
 	public string GetExpectation(string expectedExpression)
-		=> _type.GetExpectation(expectedExpression);
+		=> _matchType.GetExpectation(expectedExpression);
 
 	/// <inheritdoc />
-	public override string? ToString() => _type.ToString();
-
-	/// <summary>
-	///     The result of an equality check.
-	/// </summary>
-	public readonly struct Result(bool areConsideredEqual, Func<string> failure)
-	{
-		/// <summary>
-		///     Flag indicating if the two values were considered equal.
-		/// </summary>
-		public bool AreConsideredEqual { get; } = areConsideredEqual;
-
-		/// <summary>
-		///     The failure message, when the two values were not equal.
-		/// </summary>
-		public string Failure { get; } = failure();
-	}
-
-	private interface IEquality
-	{
-		bool AreConsideredEqual(object? actual, object? expected);
-		Result AreConsideredEqual(object? actual, object? expected, string it);
-		string GetExpectation(string expectedExpression);
-	}
+	public override string? ToString() => _matchType.ToString();
 }

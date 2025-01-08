@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Options;
+﻿using aweXpect.Core;
+
+namespace aweXpect.Options;
 
 public partial class ObjectEqualityOptions
 {
@@ -7,11 +9,11 @@ public partial class ObjectEqualityOptions
 	/// </summary>
 	public ObjectEqualityOptions Equals()
 	{
-		_type = EqualsType;
+		_matchType = EqualsMatch;
 		return this;
 	}
 
-	private sealed class EqualsEquality : IEquality
+	private sealed class EqualsMatchType : IObjectMatchType
 	{
 		/// <inheritdoc />
 		public override string? ToString() => "";
@@ -22,13 +24,12 @@ public partial class ObjectEqualityOptions
 		public bool AreConsideredEqual(object? actual, object? expected) => Equals(actual, expected);
 
 		/// <inheritdoc />
-		public Result AreConsideredEqual(object? actual, object? expected, string it)
-			=> new(Equals(actual, expected),
-				() => $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
+		public string GetExpectation(string expected)
+			=> $"be equal to {expected}";
 
 		/// <inheritdoc />
-		public string GetExpectation(string expectedExpression)
-			=> $"be equal to {expectedExpression}";
+		public string GetExtendedFailure(string it, object? actual, object? expected)
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
 
 		#endregion
 	}

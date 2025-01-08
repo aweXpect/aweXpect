@@ -46,7 +46,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expected = expected?.TrimEnd();
 		}
 
-		return _matchType.Matches(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
+		return _matchType.AreConsideredEqual(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
 	}
 
 	/// <summary>
@@ -63,7 +63,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
-	public string GetExtendedFailure(string it, string? expected, string? actual)
+	public string GetExtendedFailure(string it, string? actual, string? expected)
 		=> _matchType.GetExtendedFailure(it, actual, expected, _ignoreCase,
 			_comparer ?? UseDefaultComparer(_ignoreCase));
 
@@ -139,34 +139,6 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	public StringEqualityOptions UsingComparer(IEqualityComparer<string>? comparer)
 	{
 		_comparer = comparer;
-		return this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> as <see cref="Regex" /> pattern.
-	/// </summary>
-	public StringEqualityOptions AsRegex()
-	{
-		_matchType = RegexMatch;
-		return this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> as wildcard pattern.<br />
-	///     Supports * to match zero or more characters and ? to match exactly one character.
-	/// </summary>
-	public StringEqualityOptions AsWildcard()
-	{
-		_matchType = WildcardMatch;
-		return this;
-	}
-
-	/// <summary>
-	///     Interprets the expected <see langword="string" /> to be exactly equal.
-	/// </summary>
-	public StringEqualityOptions Exactly()
-	{
-		_matchType = ExactMatch;
 		return this;
 	}
 

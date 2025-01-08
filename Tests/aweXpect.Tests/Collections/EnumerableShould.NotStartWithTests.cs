@@ -64,7 +64,7 @@ public sealed partial class EnumerableShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             not start with unexpected using EquivalencyComparer,
+					             not start with unexpected equivalent,
 					             but it did start with [
 					               MyClass {
 					                 Inner = <null>,

@@ -58,7 +58,7 @@ public sealed partial class AsyncEnumerableShould
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             not end with [MyClass { Value = 3 }, MyClass { Value = 5 }, MyClass { Value = 8 }] using EquivalencyComparer,
+					             not end with [MyClass { Value = 3 }, MyClass { Value = 5 }, MyClass { Value = 8 }] equivalent,
 					             but it did in [
 					               MyClass {
 					                 Value = 1

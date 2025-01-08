@@ -14,7 +14,7 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	public string GetExtendedFailure(
 		string it,
 		string? actual,
-		string? pattern,
+		string? expected,
 		bool ignoreCase,
 		IEqualityComparer<string> comparer)
 	{
@@ -32,8 +32,8 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 		return "";
 	}
 
-	/// <inheritdoc cref="IStringMatchType.Matches(string?, string?, bool, IEqualityComparer{string})" />
-	public bool Matches(
+	/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
+	public bool AreConsideredEqual(
 		string? actual,
 		string? expected,
 		bool ignoreCase,

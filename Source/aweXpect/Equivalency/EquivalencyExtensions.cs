@@ -20,14 +20,15 @@ public static class EquivalencyExtensions
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public static TSelf Equivalent<TType, TThat, TSelf>(this ObjectEqualityResult<TType, TThat, TSelf> options,
+	public static TSelf Equivalent<TType, TThat, TSelf>(this ObjectEqualityResult<TType, TThat, TSelf> result,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
 		where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
 	{
 		EquivalencyOptions equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		options.Using(new EquivalencyComparer(equivalencyOptions));
-		return (TSelf)options;
+		((IOptionsProvider<ObjectEqualityOptions>)result).Options.SetMatchType(
+			new EquivalencyComparer(equivalencyOptions));
+		return (TSelf)result;
 	}
 
 	/// <summary>
@@ -36,17 +37,47 @@ public static class EquivalencyExtensions
 	public static ObjectEqualityOptions Equivalent(this ObjectEqualityOptions options,
 		EquivalencyOptions equivalencyOptions)
 	{
-		options.Using(new EquivalencyComparer(equivalencyOptions));
+		options.SetMatchType(new EquivalencyComparer(equivalencyOptions));
 		return options;
 	}
 
 	private sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
-		: IEqualityComparer<object>, IComparerOptions
+		: IObjectMatchType
 	{
 		private ComparisonFailure? _firstFailure;
 
-		public string GetExpectation(string expectedExpression) => $"be equivalent to {expectedExpression}";
+		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual(object?, object?)" />
+		public bool AreConsideredEqual(object? actual, object? expected)
+		{
+			if (HandleSpecialCases(actual, expected, out bool? specialCaseResult))
+			{
+				return specialCaseResult.Value;
+			}
 
+			List<ComparisonFailure> failures = Compare.CheckEquivalent(actual, expected,
+				new CompareOptions
+				{
+					MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
+				}).ToList();
+
+			if (failures.FirstOrDefault() is { } firstFailure)
+			{
+				_firstFailure = firstFailure;
+				if (firstFailure.Type == MemberType.Value)
+				{
+					return false;
+				}
+
+				return false;
+			}
+
+			return true;
+		}
+
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
+		public string GetExpectation(string expected) => $"be equivalent to {expected}";
+
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 		public string GetExtendedFailure(string it, object? actual, object? expected)
 		{
 			if (_firstFailure == null)
@@ -73,35 +104,6 @@ public static class EquivalencyExtensions
 			return sb.ToString();
 		}
 
-		bool IEqualityComparer<object>.Equals(object? x, object? y)
-		{
-			if (HandleSpecialCases(x, y, out bool? specialCaseResult))
-			{
-				return specialCaseResult.Value;
-			}
-
-			List<ComparisonFailure> failures = Compare.CheckEquivalent(x, y,
-				new CompareOptions
-				{
-					MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
-				}).ToList();
-
-			if (failures.FirstOrDefault() is { } firstFailure)
-			{
-				_firstFailure = firstFailure;
-				if (firstFailure.Type == MemberType.Value)
-				{
-					return false;
-				}
-
-				return false;
-			}
-
-			return true;
-		}
-
-		public int GetHashCode(object obj) => obj.GetHashCode();
-
 		private static bool HandleSpecialCases(object? a, object? b,
 			[NotNullWhen(true)] out bool? isConsideredEqual)
 		{
@@ -127,5 +129,7 @@ public static class EquivalencyExtensions
 			isConsideredEqual = null;
 			return false;
 		}
+
+		public override string ToString() => " equivalent";
 	}
 }

@@ -7,6 +7,15 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
+	/// <summary>
+	///     Interprets the expected <see langword="string" /> to be exactly equal.
+	/// </summary>
+	public StringEqualityOptions Exactly()
+	{
+		_matchType = ExactMatch;
+		return this;
+	}
+
 	private sealed class ExactMatchType : IStringMatchType
 	{
 		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
@@ -27,65 +36,65 @@ public partial class StringEqualityOptions
 		#region IMatchType Members
 
 		/// <inheritdoc />
-		public string GetExtendedFailure(string it, string? actual, string? pattern,
+		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
-			if (actual == null || pattern == null)
+			if (actual == null || expected == null)
 			{
 				return $"{it} was {Formatter.Format(actual)}";
 			}
 
 			string prefix =
 				$"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}";
-			int minCommonLength = Math.Min(actual.Length, pattern.Length);
-			StringDifference stringDifference = new(actual, pattern, comparer);
+			int minCommonLength = Math.Min(actual.Length, expected.Length);
+			StringDifference stringDifference = new(actual, expected, comparer);
 			if (stringDifference.IndexOfFirstMismatch == 0 &&
-			    comparer.Equals(actual.TrimStart(), pattern))
+			    comparer.Equals(actual.TrimStart(), expected))
 			{
 				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, pattern, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
+					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
 			}
 
 			if (stringDifference.IndexOfFirstMismatch == 0 &&
-			    comparer.Equals(actual, pattern.TrimStart()))
+			    comparer.Equals(actual, expected.TrimStart()))
 			{
 				return
-					$"{prefix} which misses some whitespace (\"{pattern.Substring(0, GetIndexOfFirstMatch(pattern, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
+					$"{prefix} which misses some whitespace (\"{expected.Substring(0, GetIndexOfFirstMatch(expected, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
 			}
 
 			if (stringDifference.IndexOfFirstMismatch == minCommonLength &&
-			    comparer.Equals(actual.TrimEnd(), pattern))
+			    comparer.Equals(actual.TrimEnd(), expected))
 			{
 				return
 					$"{prefix} which has unexpected whitespace (\"{actual.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
 			}
 
 			if (stringDifference.IndexOfFirstMismatch == minCommonLength &&
-			    comparer.Equals(actual, pattern.TrimEnd()))
+			    comparer.Equals(actual, expected.TrimEnd()))
 			{
 				return
-					$"{prefix} which misses some whitespace (\"{pattern.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+					$"{prefix} which misses some whitespace (\"{expected.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
 			}
 
-			if (actual.Length < pattern.Length &&
+			if (actual.Length < expected.Length &&
 			    stringDifference.IndexOfFirstMismatch == actual.Length)
 			{
 				return
-					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {pattern.Length} and misses:{Environment.NewLine}  \"{pattern.Substring(actual.Length).TruncateWithEllipsis(100)}\"";
+					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {expected.Length} and misses:{Environment.NewLine}  \"{expected.Substring(actual.Length).TruncateWithEllipsis(100)}\"";
 			}
 
-			if (actual.Length > pattern.Length &&
-			    stringDifference.IndexOfFirstMismatch == pattern.Length)
+			if (actual.Length > expected.Length &&
+			    stringDifference.IndexOfFirstMismatch == expected.Length)
 			{
 				return
-					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {pattern.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(pattern.Length).TruncateWithEllipsis(100)}\"";
+					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {expected.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(expected.Length).TruncateWithEllipsis(100)}\"";
 			}
 
 			return $"{prefix} which {stringDifference}";
 		}
 
-		public bool Matches(string? actual, string? expected, bool ignoreCase,
+		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
 			if (actual is null && expected is null)
