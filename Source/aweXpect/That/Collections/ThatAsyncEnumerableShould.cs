@@ -194,9 +194,11 @@ public static partial class ThatAsyncEnumerableShould
 			sb.Append(it);
 			sb.Append(" was completely different: [");
 			int count = 0;
+			int maximumNumberOfCollectionItems =
+				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 			await foreach (TItem item in materializedEnumerable)
 			{
-				if (count++ >= Customize.Formatting.MaximumNumberOfCollectionItems)
+				if (count++ >= maximumNumberOfCollectionItems)
 				{
 					break;
 				}
@@ -207,7 +209,7 @@ public static partial class ThatAsyncEnumerableShould
 				sb.Append(',');
 			}
 
-			if (count > Customize.Formatting.MaximumNumberOfCollectionItems)
+			if (count > maximumNumberOfCollectionItems)
 			{
 				sb.AppendLine();
 				sb.Append("  …,");
@@ -216,9 +218,9 @@ public static partial class ThatAsyncEnumerableShould
 			sb.Length--;
 			sb.AppendLine();
 			sb.Append("] had more than ");
-			sb.Append(2 * Customize.Formatting.MaximumNumberOfCollectionItems);
+			sb.Append(2 * maximumNumberOfCollectionItems);
 			sb.Append(" deviations compared to ");
-			Formatter.Format(sb, expected?.Take(Customize.Formatting.MaximumNumberOfCollectionItems + 1),
+			Formatter.Format(sb, expected?.Take(maximumNumberOfCollectionItems + 1),
 				FormattingOptions.MultipleLines);
 			return sb.ToString();
 		}
@@ -249,12 +251,14 @@ public static partial class ThatAsyncEnumerableShould
 
 			TMember previous = default!;
 			int index = 0;
+			int maximumNumberOfCollectionItems =
+				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 			IComparer<TMember> comparer = options.GetComparer();
-			List<TItem> values = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
+			List<TItem> values = new(maximumNumberOfCollectionItems + 1);
 			string? failureText = null;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
-				if (values.Count <= Customize.Formatting.MaximumNumberOfCollectionItems)
+				if (values.Count <= maximumNumberOfCollectionItems)
 				{
 					values.Add(item);
 				}
@@ -274,7 +278,7 @@ public static partial class ThatAsyncEnumerableShould
 						$"{it} had {Formatter.Format(previous)} before {Formatter.Format(current)} which is not in {sortOrder.ToString().ToLower()} order in ";
 				}
 
-				if (failureText != null && values.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
+				if (failureText != null && values.Count > maximumNumberOfCollectionItems)
 				{
 					break;
 				}

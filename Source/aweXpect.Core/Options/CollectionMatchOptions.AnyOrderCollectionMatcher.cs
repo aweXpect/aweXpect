@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
+using aweXpect.Customization;
 
 namespace aweXpect.Options;
 
@@ -33,12 +34,12 @@ public partial class CollectionMatchOptions
 			_missingItems.Remove(value);
 			_index++;
 			error = null;
-			return _additionalItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
+			return _additionalItems.Count > 2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		}
 
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
 		{
-			if (_additionalItems.Count + _missingItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
+			if (_additionalItems.Count + _missingItems.Count > 2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get())
 			{
 				error = null;
 				return true;

@@ -67,17 +67,17 @@ public static partial class ThatEnumerableShould
 
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			List<TItem> notMatchingItems = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
+			int maximumNumberOfCollectionItems =
+				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			List<TItem> notMatchingItems = new(maximumNumberOfCollectionItems + 1);
 			foreach (TItem item in materializedEnumerable)
 			{
 				if (!predicate(item))
 				{
 					notMatchingItems.Add(item);
-					if (notMatchingItems.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
+					if (notMatchingItems.Count > maximumNumberOfCollectionItems)
 					{
-						int displayCount = Math.Min(
-							Customize.Formatting.MaximumNumberOfCollectionItems,
-							notMatchingItems.Count);
+						int displayCount = Math.Min(maximumNumberOfCollectionItems, notMatchingItems.Count);
 						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
 							$"{it} contained at least {displayCount} other {(displayCount == 1 ? "item" : "items")}: {Formatter.Format(notMatchingItems, FormattingOptions.MultipleLines)}");
 					}

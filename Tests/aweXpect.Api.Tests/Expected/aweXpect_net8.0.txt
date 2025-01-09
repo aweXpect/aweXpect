@@ -990,6 +990,21 @@ namespace aweXpect
 }
 namespace aweXpect.Json
 {
+    public static class GlobalCustomizationJsonExtensions
+    {
+        public static aweXpect.Json.GlobalCustomizationJsonExtensions.JsonCustomization Json(this aweXpect.Customization.GlobalCustomization globalCustomization) { }
+        public class JsonCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Json.GlobalCustomizationJsonExtensions.JsonCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValue<System.Text.Json.JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
+            public aweXpect.Json.GlobalCustomizationJsonExtensions.JsonCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Json.GlobalCustomizationJsonExtensions.JsonCustomizationValue, aweXpect.Json.GlobalCustomizationJsonExtensions.JsonCustomizationValue> update) { }
+        }
+        public class JsonCustomizationValue : System.IEquatable<aweXpect.Json.GlobalCustomizationJsonExtensions.JsonCustomizationValue>
+        {
+            public JsonCustomizationValue() { }
+            public System.Text.Json.JsonDocumentOptions DefaultJsonDocumentOptions { get; set; }
+        }
+    }
     public interface IJsonArrayResult
     {
         aweXpect.Json.IJsonArrayResult And { get; }

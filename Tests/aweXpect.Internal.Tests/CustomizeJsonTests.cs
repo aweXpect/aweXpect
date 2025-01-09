@@ -1,8 +1,9 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
 using aweXpect.Customization;
+using aweXpect.Json;
 
-namespace aweXpect.Core.Tests.Customization;
+namespace aweXpect.Internal.Tests;
 
 public sealed class CustomizeJsonTests
 {
@@ -15,7 +16,7 @@ public sealed class CustomizeJsonTests
 		async Task Act()
 			=> await That(jsonWithTrailingCommas).Should().Be(jsonWithoutTrailingCommas).AsJson();
 
-		using (IDisposable __ = Customize.Json.SetDefaultJsonDocumentOptions(new JsonDocumentOptions
+		using (IDisposable __ = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Set(new JsonDocumentOptions
 		       {
 			       // Default options set AllowTrailingCommas to true
 			       AllowTrailingCommas = false

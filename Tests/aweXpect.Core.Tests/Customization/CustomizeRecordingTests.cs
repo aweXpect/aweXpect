@@ -11,20 +11,20 @@ public sealed class CustomizeRecordingTests
 	public async Task MaximumNumberOfCollectionItems_ShouldBeUsedInFormatter()
 	{
 		Signaler signaler = new();
-		await That(Customize.Recording.DefaultTimeout.TotalMilliseconds).Should().Be(30000);
-		using (IDisposable __ = Customize.Recording.SetDefaultTimeout(TimeSpan.FromMilliseconds(10)))
+		await That(Customize.aweXpect.Recording().DefaultTimeout.Get()).Should().Be(30000.Milliseconds());
+		using (IDisposable __ = Customize.aweXpect.Recording().DefaultTimeout.Set(10.Milliseconds()))
 		{
 			_ = Task.Delay(1000.Milliseconds()).ContinueWith(_ => signaler.Signal());
 			SignalerResult result = signaler.Wait();
 			await That(result.IsSuccess).Should().BeFalse();
-			await That(Customize.Recording.DefaultTimeout.TotalMilliseconds).Should().Be(10);
+			await That(Customize.aweXpect.Recording().DefaultTimeout.Get()).Should().Be(10.Milliseconds());
 		}
 
 		{
 			_ = Task.Delay(200.Milliseconds()).ContinueWith(_ => signaler.Signal());
 			SignalerResult result = signaler.Wait();
 			await That(result.IsSuccess).Should().BeTrue();
-			await That(Customize.Recording.DefaultTimeout.TotalMilliseconds).Should().Be(30000);
+			await That(Customize.aweXpect.Recording().DefaultTimeout.Get()).Should().Be(30000.Milliseconds());
 		}
 	}
 }

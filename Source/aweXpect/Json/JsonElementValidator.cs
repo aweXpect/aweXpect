@@ -268,12 +268,14 @@ internal static class JsonElementValidator
 			{
 				bool hasMoreThanOneDifference = _errors.Count > 1;
 				int count = 0;
+				int maximumNumberOfCollectionItems =
+					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 				foreach (KeyValuePair<string, string> differentMember in _errors)
 				{
-					if (count++ >= Customize.Formatting.MaximumNumberOfCollectionItems)
+					if (count++ >= maximumNumberOfCollectionItems)
 					{
 						sb.AppendLine().Append("   … (")
-							.Append(_errors.Count - Customize.Formatting.MaximumNumberOfCollectionItems)
+							.Append(_errors.Count - maximumNumberOfCollectionItems)
 							.Append(" more)");
 						return sb.ToString();
 					}
