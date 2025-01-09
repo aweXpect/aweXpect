@@ -16,7 +16,7 @@ public static class JsonAwexpectCustomizationExtensions
 	public static JsonCustomization Json(this AwexpectCustomization awexpectCustomization)
 		=> new(awexpectCustomization);
 
-	private class CustomizationValue<TValue>(
+	private sealed class CustomizationValue<TValue>(
 		Func<TValue> getter,
 		Func<TValue, CustomizationLifetime> setter)
 		: ICustomizationValue<TValue>

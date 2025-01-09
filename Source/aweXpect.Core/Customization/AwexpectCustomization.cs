@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -31,7 +30,7 @@ public class AwexpectCustomization : IAwexpectCustomization
 		return _store.Value.Set(key, value);
 	}
 
-	private class CustomizationStore
+	private sealed class CustomizationStore
 	{
 		private readonly Dictionary<string, object?> _store = new();
 
@@ -61,73 +60,4 @@ public class AwexpectCustomization : IAwexpectCustomization
 			return lifetime;
 		}
 	}
-}
-
-/// <summary>
-///     A customization value of type <typeparamref name="TValue" /> that can be set.
-/// </summary>
-/// <remarks>
-///     This is primarily intended for primitive types
-/// </remarks>
-public interface ICustomizationValue<TValue>
-{
-	/// <summary>
-	///     Get the stored <typeparamref name="TValue" />.
-	/// </summary>
-	TValue Get();
-
-	/// <summary>
-	///     Set the stored <typeparamref name="TValue" />.
-	/// </summary>
-	CustomizationLifetime Set(TValue value);
-}
-
-/// <summary>
-///     A customization value of type <typeparamref name="TValue" /> that can be updated.
-/// </summary>
-/// <remarks>
-///     This is primarily intended for record types.
-/// </remarks>
-public interface IUpdateableCustomizationValue<TValue>
-{
-	/// <summary>
-	///     Get the stored <typeparamref name="TValue" />.
-	/// </summary>
-	TValue Get();
-
-	/// <summary>
-	///     Update the stored <typeparamref name="TValue" />.
-	/// </summary>
-	CustomizationLifetime Update(Func<TValue, TValue> update);
-}
-
-/// <summary>
-///     The lifetime of a customization setting.
-/// </summary>
-public sealed class CustomizationLifetime(Action callback) : IDisposable
-{
-	/// <inheritdoc cref="IDisposable.Dispose()" />
-	public void Dispose() => callback();
-}
-
-/// <summary>
-///     Customize the global behaviour of aweXpect.
-/// </summary>
-public interface IAwexpectCustomization
-{
-	/// <summary>
-	///     Get the customization <typeparamref name="TValue" /> stored under the given <paramref name="key" />.
-	/// </summary>
-	/// <remarks>
-	///     If no customization was stored, use the given <paramref name="defaultValue" />.
-	/// </remarks>
-	TValue Get<TValue>(string key, TValue defaultValue);
-
-	/// <summary>
-	///     Set the customization <typeparamref name="TValue" /> stored under the given <paramref name="key" />.
-	/// </summary>
-	/// <remarks>
-	///     When the returned <see cref="CustomizationLifetime" /> is disposed, the value will be reset to the previous value.
-	/// </remarks>
-	CustomizationLifetime Set<TValue>(string key, TValue value);
 }

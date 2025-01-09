@@ -7,7 +7,7 @@ namespace aweXpect.Customization;
 /// </summary>
 public static partial class AwexpectCustomizationExtensions
 {
-	private class CustomizationValue<TValue>(
+	private sealed class CustomizationValue<TValue>(
 		Func<TValue> getter,
 		Func<TValue, CustomizationLifetime> setter)
 		: ICustomizationValue<TValue>
