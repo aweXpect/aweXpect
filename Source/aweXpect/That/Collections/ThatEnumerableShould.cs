@@ -51,16 +51,18 @@ public static partial class ThatEnumerableShould
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
+			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (matcher.Verify(it, item, options, out string? failure))
+				if (matcher.Verify(it, item, options, maximumNumber, out string? failure))
 				{
 					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
 						failure ?? TooManyDeviationsError(materializedEnumerable));
 				}
 			}
 
-			if (matcher.VerifyComplete(it, options, out string? lastFailure))
+			if (matcher.VerifyComplete(it, options, maximumNumber, out string? lastFailure))
 			{
 				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
 					lastFailure ?? TooManyDeviationsError(materializedEnumerable));
@@ -71,7 +73,7 @@ public static partial class ThatEnumerableShould
 		}
 
 		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
-			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customize.Formatting.MaximumNumberOfCollectionItems} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
+			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
 		public override string ToString()
 			=> matchOptions.GetExpectation(expectedExpression);

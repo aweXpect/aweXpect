@@ -4,6 +4,7 @@ using System.Text.Json;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
+using aweXpect.Json;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -17,7 +18,7 @@ public static partial class ThatStringShould
 		this IThat<string?> source,
 		Func<JsonDocumentOptions, JsonDocumentOptions>? options = null)
 	{
-		JsonDocumentOptions defaultOptions = Customize.Json.DefaultJsonDocumentOptions;
+		JsonDocumentOptions defaultOptions = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get();
 		if (options != null)
 		{
 			defaultOptions = options(defaultOptions);

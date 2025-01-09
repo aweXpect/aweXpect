@@ -1,21 +1,13 @@
-﻿using System;
-
-namespace aweXpect.Customization;
+﻿namespace aweXpect.Customization;
 
 /// <summary>
-///     Allows customizing the static behaviour of aweXpect.
+///     Allows customizing the global behaviour of aweXpect.
 /// </summary>
-public partial class Customize
+public static class Customize
 {
-	private Customize() { }
-
 	/// <summary>
-	///     The current customization values.
+	///     Customize the global behaviour of aweXpect.
 	/// </summary>
-	private static readonly Customize Instance = new();
-
-	private sealed class ActionDisposable(Action callback) : IDisposable
-	{
-		public void Dispose() => callback();
-	}
+	// ReSharper disable once InconsistentNaming
+	public static AwexpectCustomization aweXpect { get; } = new();
 }

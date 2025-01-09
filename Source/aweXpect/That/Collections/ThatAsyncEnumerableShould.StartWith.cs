@@ -263,11 +263,13 @@ public static partial class ThatAsyncEnumerableShould
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			if (_unexpected.Length == 0)
 			{
-				List<TItem> displayValues = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
+				int maximumNumberOfCollectionItems =
+					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+				List<TItem> displayValues = new(maximumNumberOfCollectionItems + 1);
 				await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 				{
 					displayValues.Add(item);
-					if (displayValues.Count == Customize.Formatting.MaximumNumberOfCollectionItems)
+					if (displayValues.Count == maximumNumberOfCollectionItems)
 					{
 						break;
 					}

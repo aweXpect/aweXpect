@@ -15,7 +15,7 @@ public class JsonOptions
 	/// <summary>
 	///     The current <see cref="JsonDocumentOptions" /> to use when interpreting a <see langword="string" /> as JSON.
 	/// </summary>
-	public JsonDocumentOptions DocumentOptions => _options ?? Customize.Json.DefaultJsonDocumentOptions;
+	public JsonDocumentOptions DocumentOptions => _options ?? Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get();
 
 	/// <summary>
 	///     Flag indicating, if the additional properties in the subject should be ignored.
@@ -28,7 +28,7 @@ public class JsonOptions
 	public JsonOptions WithJsonOptions(
 		Func<JsonDocumentOptions, JsonDocumentOptions> jsonDocumentOptions)
 	{
-		_options ??= Customize.Json.DefaultJsonDocumentOptions;
+		_options ??= Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get();
 		_options = jsonDocumentOptions(_options.Value);
 		return this;
 	}

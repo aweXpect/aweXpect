@@ -191,12 +191,14 @@ public static partial class ThatAsyncEnumerableShould
 
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			List<TItem> items = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1);
+			int maximumNumberOfCollectionItems =
+				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			List<TItem> items = new(maximumNumberOfCollectionItems + 1);
 			int count = 0;
 			bool isFailed = false;
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
-				if (items.Count <= Customize.Formatting.MaximumNumberOfCollectionItems)
+				if (items.Count <= maximumNumberOfCollectionItems)
 				{
 					items.Add(item);
 				}
@@ -217,7 +219,7 @@ public static partial class ThatAsyncEnumerableShould
 					}
 				}
 
-				if (items.Count > Customize.Formatting.MaximumNumberOfCollectionItems && isFailed)
+				if (items.Count > maximumNumberOfCollectionItems && isFailed)
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 						$"{it} contained it at least {count} times in {Formatter.Format(items.ToArray(), FormattingOptions.MultipleLines)}");

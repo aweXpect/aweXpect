@@ -56,7 +56,7 @@ public sealed partial class StringShould
 			public async Task
 				WhenContainsMoreThanMaximumNumberOfCollectionItemsDifferences_ShouldLimitListOfDifferences()
 			{
-				using IDisposable x = Customize.Formatting.SetMaximumNumberOfCollectionItems(3);
+				using IDisposable x = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Set(3);
 				string subject = """
 				                 {
 				                   "foo1": null,

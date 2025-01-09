@@ -1022,6 +1022,23 @@ namespace aweXpect.Json
         TReturn AnObject(System.Action<aweXpect.Json.IJsonObjectResult> expectation);
         TReturn Matching(object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "");
     }
+    public static class JsonAwexpectCustomizationExtensions
+    {
+        public static aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomization Json(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public class JsonCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<System.Text.Json.JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.Text.Json.JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
+            public aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue, aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue> update) { }
+        }
+        public class JsonCustomizationValue : System.IEquatable<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue>
+        {
+            public JsonCustomizationValue() { }
+            public System.Text.Json.JsonDocumentOptions DefaultJsonDocumentOptions { get; init; }
+            public System.Text.Json.JsonSerializerOptions DefaultJsonSerializerOptions { get; init; }
+        }
+    }
     public class JsonOptions
     {
         public JsonOptions() { }

@@ -13,7 +13,7 @@ public interface ICollectionMatcher<in T, out T2> where T : T2
 	///     many deviations.
 	/// </remarks>
 	/// <returns><see langword="true" /> when it results in a failure, otherwise <see langword="false" />.</returns>
-	bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error);
+	bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error);
 
 	/// <summary>
 	///     Verifies if it results in a failure when the enumeration is complete.
@@ -23,5 +23,5 @@ public interface ICollectionMatcher<in T, out T2> where T : T2
 	///     many deviations.
 	/// </remarks>
 	/// <returns><see langword="true" /> when it results in a failure, otherwise <see langword="false" />.</returns>
-	bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error);
+	bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error);
 }
