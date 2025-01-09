@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736370034514,
+  "lastUpdate": 1736424463557,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -14396,6 +14396,138 @@ window.BENCHMARK_DATA = {
             "value": 2061.7176310221353,
             "unit": "ns",
             "range": "± 28.927321609629715"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "eec64e11bdbecffa655849d843db5161eccff982",
+          "message": "feat: make customization extensible (#199)\n\nMake the customization logic extensible and move JSON customization to project \"aweXpect\"\n\nYou can add you own customizations on top of the `AwexpectCustomization` class by adding extension methods.\n\n## Add a simple customization value\n\nYou can add a simple customizable value (e.g. an `int`):\n```csharp\npublic static class MyCustomizationExtensions\n{\n    public static ICustomizationValue<int> MyCustomization(this AwexpectCustomization awexpectCustomization)\n        => new CustomizationValue<int>(awexpectCustomization, nameof(MyCustomization), 42);\n\n    internal class CustomizationValue<TValue>(IAwexpectCustomization awexpectCustomization, string key, TValue defaultValue)\n        : ICustomizationValue<TValue>\n    {\n        public TValue Get()\n            => awexpectCustomization.Get(key, defaultValue);\n\n        public CustomizationLifetime Set(TValue value)\n            => awexpectCustomization.Set(key, value);\n    }\n}\n```\n\nThis allows expectations to access the value:\n```csharp\n // will return the default value of 42\nint myCustomization = Customize.aweXpect.MyCustomization().Get();\n```\n\nAnd users can customize the value:\n```csharp\nusing (Customize.aweXpect.MyCustomization().Set(43))\n{\n    // will now return 43\n    int myCustomization = Customize.aweXpect.MyCustomization().Get();\n}\n// will now return again the default value of 42, because the customization lifetime was disposed\n_ = Customize.aweXpect.MyCustomization().Get();\n```\n\n*Note: you can also use this mechanism for complex objects like classes, but they can only be changed as a whole (and not individual properties)*\n\n\n## Add a customization group\n\nYou can also add a group of customization values, that can be changed individually or as a whole\n```csharp\npublic static class JsonAwexpectCustomizationExtensions\n{\n    public static JsonCustomization Json(this AwexpectCustomization awexpectCustomization)\n        => new(awexpectCustomization);\n\n    public class JsonCustomization : IUpdateableCustomizationValue<JsonCustomizationValue>\n    {\n        private readonly IAwexpectCustomization _awexpectCustomization;\n\n        internal JsonCustomization(IAwexpectCustomization awexpectCustomization)\n        {\n            _awexpectCustomization = awexpectCustomization;\n            DefaultJsonDocumentOptions = new CustomizationValue<JsonDocumentOptions>(\n                () => Get().DefaultJsonDocumentOptions,\n                v => Update(p => p with { DefaultJsonDocumentOptions = v }));\n            DefaultJsonSerializerOptions = new CustomizationValue<JsonSerializerOptions>(\n                () => Get().DefaultJsonSerializerOptions,\n                v => Update(p => p with { DefaultJsonSerializerOptions = v }));\n        }\n\n        public ICustomizationValue<JsonDocumentOptions> DefaultJsonDocumentOptions { get; }\n        public ICustomizationValue<JsonSerializerOptions> DefaultJsonSerializerOptions { get; }\n\n        public JsonCustomizationValue Get()\n            => _awexpectCustomization.Get(nameof(Json), new JsonCustomizationValue());\n\n        public CustomizationLifetime Update(Func<JsonCustomizationValue, JsonCustomizationValue> update)\n            => _awexpectCustomization.Set(nameof(Json), update(Get()));\n    }\n\n    public record JsonCustomizationValue\n    {\n        public JsonDocumentOptions DefaultJsonDocumentOptions { get; set; } = new()\n        {\n            AllowTrailingCommas = true\n        };\n        public JsonSerializerOptions DefaultJsonSerializerOptions { get; set; } = new()\n        {\n            AllowTrailingCommas = true\n        };\n    }\n\n    private class CustomizationValue<TValue>(\n        Func<TValue> getter,\n        Func<TValue, CustomizationLifetime> setter)\n        : ICustomizationValue<TValue>\n    {\n        public TValue Get() => getter();\n        public CustomizationLifetime Set(TValue value) => setter(value);\n    }\n}\n```\n\nThis allows expectations to access values either individually or for the whole group:\n```csharp\n // both will return the default value 'true'\nint myCustomization1 = Customize.aweXpect.Json().Get().DefaultJsonDocumentOptions.AllowTrailingCommas;\nint myCustomization2 = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas;\n```\n\nAnd users can customize either individual values or the whole group:\n```csharp\n// update a single value (keeping the other values)\nJsonSerializerOptions mySerializerOptions = new();\nusing (Customize.aweXpect.Json().DefaultJsonSerializerOptions.Set(mySerializerOptions))\n{\n    // will use `mySerializerOptions` for the `JsonSerializerOptions`\n\t// but keep any configured `JsonDocumentOptions`\n}\n\n// ...or update the whole group\nJsonCustomizationValue myCustomization = new();\nusing (Customize.aweXpect.Json().Update(_ => myCustomization))\n{\n    // will use the all set properties from the `myCustomization`\n}\n```",
+          "timestamp": "2025-01-09T12:00:34Z",
+          "tree_id": "19e91e59285f3c0533e98aeb1b221064f3e930e0",
+          "url": "https://github.com/aweXpect/aweXpect/commit/eec64e11bdbecffa655849d843db5161eccff982"
+        },
+        "date": 1736424463305,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 170.7498335838318,
+            "unit": "ns",
+            "range": "± 1.2998245660651184"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 215.84306240876515,
+            "unit": "ns",
+            "range": "± 1.1928148437550496"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 555.1709324029775,
+            "unit": "ns",
+            "range": "± 3.2632101677260374"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 332.0336340836116,
+            "unit": "ns",
+            "range": "± 1.7538342562650187"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 450.8069799627577,
+            "unit": "ns",
+            "range": "± 3.002765453697563"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13552.443185424805,
+            "unit": "ns",
+            "range": "± 78.1398335845298"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 230.4733355998993,
+            "unit": "ns",
+            "range": "± 1.4391171259600366"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 257.45832045873004,
+            "unit": "ns",
+            "range": "± 2.4164719642768757"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 763.0860086849758,
+            "unit": "ns",
+            "range": "± 5.026315223439243"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 316.1396953719003,
+            "unit": "ns",
+            "range": "± 1.882154660973864"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 389.12546087900796,
+            "unit": "ns",
+            "range": "± 2.965709071881724"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 786.8042127745492,
+            "unit": "ns",
+            "range": "± 2.836645631181952"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1036.377681187221,
+            "unit": "ns",
+            "range": "± 3.5110812815338006"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1190.555717976888,
+            "unit": "ns",
+            "range": "± 7.543989151024379"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1154.7349026997883,
+            "unit": "ns",
+            "range": "± 6.1759885366096325"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1057.27007077535,
+            "unit": "ns",
+            "range": "± 9.176445148765502"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 281863.7344098772,
+            "unit": "ns",
+            "range": "± 1150.7046359062238"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1902.542944101187,
+            "unit": "ns",
+            "range": "± 4.483507301282729"
           }
         ]
       }
