@@ -217,9 +217,9 @@ namespace aweXpect.Customization
         public static aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomization Formatting(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
         public static aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomization Recording(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
         public static aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomization Reflection(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
-        public class FormattingCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
+        public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
         {
-            public aweXpect.Customization.ICustomizationValue<int> MaximumNumberOfCollectionItems { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
             public aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue Get() { }
             public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue> update) { }
         }
@@ -228,9 +228,9 @@ namespace aweXpect.Customization
             public FormattingCustomizationValue() { }
             public int MaximumNumberOfCollectionItems { get; set; }
         }
-        public class RecordingCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue>
+        public class RecordingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue>
         {
-            public aweXpect.Customization.ICustomizationValue<System.TimeSpan> DefaultTimeout { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeout { get; }
             public aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue Get() { }
             public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue> update) { }
         }
@@ -239,9 +239,9 @@ namespace aweXpect.Customization
             public RecordingCustomizationValue() { }
             public System.TimeSpan DefaultTimeout { get; set; }
         }
-        public class ReflectionCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
+        public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
         {
-            public aweXpect.Customization.ICustomizationValue<string[]> ExcludedAssemblyPrefixes { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<string[]> ExcludedAssemblyPrefixes { get; }
             public aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue Get() { }
             public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue> update) { }
         }
@@ -265,12 +265,12 @@ namespace aweXpect.Customization
         TValue Get<TValue>(string key, TValue defaultValue);
         aweXpect.Customization.CustomizationLifetime Set<TValue>(string key, TValue value);
     }
-    public interface ICustomizationValue<TValue>
+    public interface ICustomizationValueSetter<TValue>
     {
         TValue Get();
         aweXpect.Customization.CustomizationLifetime Set(TValue value);
     }
-    public interface IUpdateableCustomizationValue<TValue>
+    public interface ICustomizationValueUpdater<TValue>
     {
         TValue Get();
         aweXpect.Customization.CustomizationLifetime Update(System.Func<TValue, TValue> update);

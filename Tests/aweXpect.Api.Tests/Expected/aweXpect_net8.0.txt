@@ -1025,10 +1025,10 @@ namespace aweXpect.Json
     public static class JsonAwexpectCustomizationExtensions
     {
         public static aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomization Json(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
-        public class JsonCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue>
+        public class JsonCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue>
         {
-            public aweXpect.Customization.ICustomizationValue<System.Text.Json.JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
-            public aweXpect.Customization.ICustomizationValue<System.Text.Json.JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.Text.Json.JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.Text.Json.JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
             public aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue Get() { }
             public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue, aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue> update) { }
         }

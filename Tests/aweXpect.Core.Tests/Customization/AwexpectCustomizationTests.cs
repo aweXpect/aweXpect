@@ -82,11 +82,11 @@ public static class DummyExtensions
 {
 	private static readonly string MyKey = Guid.NewGuid().ToString();
 
-	public static ICustomizationValue<string> MyConfiguration(this AwexpectCustomization awexpectCustomization)
+	public static ICustomizationValueSetter<string> MyConfiguration(this AwexpectCustomization awexpectCustomization)
 		=> new CustomizationValue<string>(awexpectCustomization, MyKey, "foo");
 
 	private class CustomizationValue<TValue>(IAwexpectCustomization customization, string key, TValue defaultValue)
-		: ICustomizationValue<TValue>
+		: ICustomizationValueSetter<TValue>
 	{
 		public TValue Get()
 			=> customization.Get(key, defaultValue);

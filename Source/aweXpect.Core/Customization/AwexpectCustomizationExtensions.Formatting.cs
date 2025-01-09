@@ -13,7 +13,7 @@ public static partial class AwexpectCustomizationExtensions
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
-	public class FormattingCustomization : IUpdateableCustomizationValue<FormattingCustomizationValue>
+	public class FormattingCustomization : ICustomizationValueUpdater<FormattingCustomizationValue>
 	{
 		private readonly IAwexpectCustomization _awexpectCustomization;
 
@@ -30,14 +30,14 @@ public static partial class AwexpectCustomizationExtensions
 		}
 
 		/// <inheritdoc cref="FormattingCustomizationValue.MaximumNumberOfCollectionItems" />
-		public ICustomizationValue<int> MaximumNumberOfCollectionItems { get; }
+		public ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
 
-		/// <inheritdoc cref="IUpdateableCustomizationValue{FormattingCustomizationValue}.Get()" />
+		/// <inheritdoc cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Get()" />
 		public FormattingCustomizationValue Get()
 			=> _awexpectCustomization.Get(nameof(Formatting), new FormattingCustomizationValue());
 
 		/// <inheritdoc
-		///     cref="IUpdateableCustomizationValue{FormattingCustomizationValue}.Update(Func{FormattingCustomizationValue,FormattingCustomizationValue})" />
+		///     cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Update(Func{FormattingCustomizationValue,FormattingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<FormattingCustomizationValue, FormattingCustomizationValue> update)
 			=> _awexpectCustomization.Set(nameof(Formatting), update(Get()));
 	}

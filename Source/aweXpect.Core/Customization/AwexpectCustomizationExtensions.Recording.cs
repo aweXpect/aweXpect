@@ -14,7 +14,7 @@ public static partial class AwexpectCustomizationExtensions
 	/// <summary>
 	///     Customize the recording settings.
 	/// </summary>
-	public class RecordingCustomization : IUpdateableCustomizationValue<RecordingCustomizationValue>
+	public class RecordingCustomization : ICustomizationValueUpdater<RecordingCustomizationValue>
 	{
 		private readonly IAwexpectCustomization _awexpectCustomization;
 
@@ -31,14 +31,14 @@ public static partial class AwexpectCustomizationExtensions
 		}
 
 		/// <inheritdoc cref="RecordingCustomizationValue.DefaultTimeout" />
-		public ICustomizationValue<TimeSpan> DefaultTimeout { get; }
+		public ICustomizationValueSetter<TimeSpan> DefaultTimeout { get; }
 
-		/// <inheritdoc cref="IUpdateableCustomizationValue{RecordingCustomizationValue}.Get()" />
+		/// <inheritdoc cref="ICustomizationValueUpdater{RecordingCustomizationValue}.Get()" />
 		public RecordingCustomizationValue Get()
 			=> _awexpectCustomization.Get(nameof(Recording), new RecordingCustomizationValue());
 
 		/// <inheritdoc
-		///     cref="IUpdateableCustomizationValue{RecordingCustomizationValue}.Update(Func{RecordingCustomizationValue,RecordingCustomizationValue})" />
+		///     cref="ICustomizationValueUpdater{RecordingCustomizationValue}.Update(Func{RecordingCustomizationValue,RecordingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<RecordingCustomizationValue, RecordingCustomizationValue> update)
 			=> _awexpectCustomization.Set(nameof(Recording), update(Get()));
 	}

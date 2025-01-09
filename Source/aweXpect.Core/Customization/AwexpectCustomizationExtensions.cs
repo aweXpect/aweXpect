@@ -10,12 +10,12 @@ public static partial class AwexpectCustomizationExtensions
 	private sealed class CustomizationValue<TValue>(
 		Func<TValue> getter,
 		Func<TValue, CustomizationLifetime> setter)
-		: ICustomizationValue<TValue>
+		: ICustomizationValueSetter<TValue>
 	{
-		/// <inheritdoc cref="ICustomizationValue{TValue}.Get()" />
+		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Get()" />
 		public TValue Get() => getter();
 
-		/// <inheritdoc cref="ICustomizationValue{TValue}.Set(TValue)" />
+		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Set(TValue)" />
 		public CustomizationLifetime Set(TValue value) => setter(value);
 	}
 }

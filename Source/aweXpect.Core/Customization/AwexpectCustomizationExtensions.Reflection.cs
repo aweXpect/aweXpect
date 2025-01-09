@@ -13,7 +13,7 @@ public static partial class AwexpectCustomizationExtensions
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
-	public class ReflectionCustomization : IUpdateableCustomizationValue<ReflectionCustomizationValue>
+	public class ReflectionCustomization : ICustomizationValueUpdater<ReflectionCustomizationValue>
 	{
 		private readonly IAwexpectCustomization _awexpectCustomization;
 
@@ -30,14 +30,14 @@ public static partial class AwexpectCustomizationExtensions
 		}
 
 		/// <inheritdoc cref="ReflectionCustomizationValue.ExcludedAssemblyPrefixes" />
-		public ICustomizationValue<string[]> ExcludedAssemblyPrefixes { get; }
+		public ICustomizationValueSetter<string[]> ExcludedAssemblyPrefixes { get; }
 
-		/// <inheritdoc cref="IUpdateableCustomizationValue{ReflectionCustomizationValue}.Get()" />
+		/// <inheritdoc cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Get()" />
 		public ReflectionCustomizationValue Get()
 			=> _awexpectCustomization.Get(nameof(Reflection), new ReflectionCustomizationValue());
 
 		/// <inheritdoc
-		///     cref="IUpdateableCustomizationValue{ReflectionCustomizationValue}.Update(Func{ReflectionCustomizationValue,ReflectionCustomizationValue})" />
+		///     cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Update(Func{ReflectionCustomizationValue,ReflectionCustomizationValue})" />
 		public CustomizationLifetime Update(Func<ReflectionCustomizationValue, ReflectionCustomizationValue> update)
 			=> _awexpectCustomization.Set(nameof(Reflection), update(Get()));
 	}

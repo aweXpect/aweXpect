@@ -8,7 +8,7 @@ namespace aweXpect.Customization;
 /// <remarks>
 ///     This is primarily intended for record types.
 /// </remarks>
-public interface IUpdateableCustomizationValue<TValue>
+public interface ICustomizationValueUpdater<TValue>
 {
 	/// <summary>
 	///     Get the stored <typeparamref name="TValue" />.

@@ -12,11 +12,11 @@ You can add a simple customizable value (e.g. an `int`):
 ```csharp
 public static class MyCustomizationExtensions
 {
-    public static ICustomizationValue<int> MyCustomization(this AwexpectCustomization awexpectCustomization)
+    public static ICustomizationValueSetter<int> MyCustomization(this AwexpectCustomization awexpectCustomization)
         => new CustomizationValue<int>(awexpectCustomization, nameof(MyCustomization), 42);
 
     internal class CustomizationValue<TValue>(IAwexpectCustomization awexpectCustomization, string key, TValue defaultValue)
-        : ICustomizationValue<TValue>
+        : ICustomizationValueSetter<TValue>
     {
         public TValue Get()
             => awexpectCustomization.Get(key, defaultValue);
@@ -56,7 +56,7 @@ public static class JsonAwexpectCustomizationExtensions
     public static JsonCustomization Json(this AwexpectCustomization awexpectCustomization)
         => new(awexpectCustomization);
 
-    public class JsonCustomization : IUpdateableCustomizationValue<JsonCustomizationValue>
+    public class JsonCustomization : ICustomizationValueUpdater<JsonCustomizationValue>
     {
         private readonly IAwexpectCustomization _awexpectCustomization;
 
@@ -71,8 +71,8 @@ public static class JsonAwexpectCustomizationExtensions
                 v => Update(p => p with { DefaultJsonSerializerOptions = v }));
         }
 
-        public ICustomizationValue<JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
-        public ICustomizationValue<JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
+        public ICustomizationValueSetter<JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
+        public ICustomizationValueSetter<JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
 
         public JsonCustomizationValue Get()
             => _awexpectCustomization.Get(nameof(Json), new JsonCustomizationValue());
@@ -96,7 +96,7 @@ public static class JsonAwexpectCustomizationExtensions
     private class CustomizationValue<TValue>(
         Func<TValue> getter,
         Func<TValue, CustomizationLifetime> setter)
-        : ICustomizationValue<TValue>
+        : ICustomizationValueSetter<TValue>
     {
         public TValue Get() => getter();
         public CustomizationLifetime Set(TValue value) => setter(value);

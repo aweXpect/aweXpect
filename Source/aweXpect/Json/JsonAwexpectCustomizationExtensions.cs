@@ -19,19 +19,19 @@ public static class JsonAwexpectCustomizationExtensions
 	private sealed class CustomizationValue<TValue>(
 		Func<TValue> getter,
 		Func<TValue, CustomizationLifetime> setter)
-		: ICustomizationValue<TValue>
+		: ICustomizationValueSetter<TValue>
 	{
-		/// <inheritdoc cref="ICustomizationValue{TValue}.Get()" />
+		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Get()" />
 		public TValue Get() => getter();
 
-		/// <inheritdoc cref="ICustomizationValue{TValue}.Set(TValue)" />
+		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Set(TValue)" />
 		public CustomizationLifetime Set(TValue value) => setter(value);
 	}
 
 	/// <summary>
 	///     Customize the JSON settings.
 	/// </summary>
-	public class JsonCustomization : IUpdateableCustomizationValue<JsonCustomizationValue>
+	public class JsonCustomization : ICustomizationValueUpdater<JsonCustomizationValue>
 	{
 		private readonly IAwexpectCustomization _awexpectCustomization;
 
@@ -53,17 +53,17 @@ public static class JsonAwexpectCustomizationExtensions
 		}
 
 		/// <inheritdoc cref="JsonCustomizationValue.DefaultJsonDocumentOptions" />
-		public ICustomizationValue<JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
+		public ICustomizationValueSetter<JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
 
 		/// <inheritdoc cref="JsonCustomizationValue.DefaultJsonSerializerOptions" />
-		public ICustomizationValue<JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
+		public ICustomizationValueSetter<JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
 
-		/// <inheritdoc cref="IUpdateableCustomizationValue{JsonCustomizationValue}.Get()" />
+		/// <inheritdoc cref="ICustomizationValueUpdater{JsonCustomizationValue}.Get()" />
 		public JsonCustomizationValue Get()
 			=> _awexpectCustomization.Get(nameof(Json), new JsonCustomizationValue());
 
 		/// <inheritdoc
-		///     cref="IUpdateableCustomizationValue{JsonCustomizationValue}.Update(Func{JsonCustomizationValue,JsonCustomizationValue})" />
+		///     cref="ICustomizationValueUpdater{JsonCustomizationValue}.Update(Func{JsonCustomizationValue,JsonCustomizationValue})" />
 		public CustomizationLifetime Update(Func<JsonCustomizationValue, JsonCustomizationValue> update)
 			=> _awexpectCustomization.Set(nameof(Json), update(Get()));
 	}

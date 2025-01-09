@@ -6,7 +6,7 @@
 /// <remarks>
 ///     This is primarily intended for primitive types
 /// </remarks>
-public interface ICustomizationValue<TValue>
+public interface ICustomizationValueSetter<TValue>
 {
 	/// <summary>
 	///     Get the stored <typeparamref name="TValue" />.
