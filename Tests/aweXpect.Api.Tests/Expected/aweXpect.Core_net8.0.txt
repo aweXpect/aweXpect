@@ -106,8 +106,8 @@ namespace aweXpect.Core
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
     {
-        bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, out string? error);
-        bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, out string? error);
+        bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
+        bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
     }
     public interface IExpectSubject<out T>
     {

@@ -51,16 +51,18 @@ public static partial class ThatEnumerableShould
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
+			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			
 			foreach (TItem item in materializedEnumerable)
 			{
-				if (matcher.Verify(it, item, options, out string? failure))
+				if (matcher.Verify(it, item, options, maximumNumber, out string? failure))
 				{
 					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
 						failure ?? TooManyDeviationsError(materializedEnumerable));
 				}
 			}
 
-			if (matcher.VerifyComplete(it, options, out string? lastFailure))
+			if (matcher.VerifyComplete(it, options, maximumNumber, out string? lastFailure))
 			{
 				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
 					lastFailure ?? TooManyDeviationsError(materializedEnumerable));

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
-using aweXpect.Customization;
 
 namespace aweXpect.Options;
 
@@ -31,7 +30,7 @@ public partial class CollectionMatchOptions
 			_totalExpectedItems = _expectedItems.Length;
 		}
 
-		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
+		public bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			_foundItems.Add(value);
 
@@ -51,14 +50,12 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			error = null;
-			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
 		}
 
-		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
+		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _matchIndex);
-			int maximumNumberOfCollectionItems =
-				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 			if (_expectedItems.Length > consideredExpectedItems)
 			{
 				for (int i = consideredExpectedItems; i < _expectedItems.Length; i++)
@@ -71,7 +68,7 @@ public partial class CollectionMatchOptions
 					}
 
 					if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count >
-					    2 * maximumNumberOfCollectionItems)
+					    2 * maximumNumber)
 					{
 						error = null;
 						return true;

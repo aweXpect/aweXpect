@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
-using aweXpect.Customization;
 
 namespace aweXpect.Options;
 
@@ -32,7 +31,7 @@ public partial class CollectionMatchOptions
 			_totalExpectedItems = _expectedDistinctItems.Length;
 		}
 
-		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
+		public bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			error = null;
 			if (_equivalenceRelations.HasFlag(EquivalenceRelations.IsContainedIn))
@@ -66,13 +65,13 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count >
-			       2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			       2 * maximumNumber;
 		}
 
-		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
+		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			int maximumNumberOfCollectionItems =
-				Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+				maximumNumber;
 			foreach (T item in _expectedDistinctItems.Skip(Math.Max(_expectationIndex - 1, _matchIndex)))
 			{
 				if (!_uniqueItems.Add(item))

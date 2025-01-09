@@ -159,26 +159,28 @@ public static partial class ThatAsyncEnumerableShould
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
 			}
-			
+
 			if (expected is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(), $"{it} cannot compare to <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
+					$"{it} cannot compare to <null>");
 			}
-
 
 			IAsyncEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
+			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
-				if (matcher.Verify(it, item, options, out string? failure))
+				if (matcher.Verify(it, item, options, maximumNumber, out string? failure))
 				{
 					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 						failure ?? await TooManyDeviationsError(materializedEnumerable));
 				}
 			}
 
-			if (matcher.VerifyComplete(it, options, out string? lastFailure))
+			if (matcher.VerifyComplete(it, options, maximumNumber, out string? lastFailure))
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
 					lastFailure ?? await TooManyDeviationsError(materializedEnumerable));
