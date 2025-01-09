@@ -2,24 +2,24 @@ using System;
 
 namespace aweXpect.Customization;
 
-public static partial class GlobalCustomizationExtensions
+public static partial class AwexpectCustomizationExtensions
 {
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
-	public static FormattingCustomization Formatting(this GlobalCustomization globalCustomization)
-		=> new(globalCustomization);
+	public static FormattingCustomization Formatting(this AwexpectCustomization awexpectCustomization)
+		=> new(awexpectCustomization);
 
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
 	public class FormattingCustomization : IUpdateableCustomizationValue<FormattingCustomizationValue>
 	{
-		private readonly IGlobalCustomization _globalCustomization;
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal FormattingCustomization(IGlobalCustomization globalCustomization)
+		internal FormattingCustomization(IAwexpectCustomization awexpectCustomization)
 		{
-			_globalCustomization = globalCustomization;
+			_awexpectCustomization = awexpectCustomization;
 			MaximumNumberOfCollectionItems = new CustomizationValue<int>(
 				() => Get().MaximumNumberOfCollectionItems,
 				// ReSharper disable once WithExpressionModifiesAllMembers
@@ -34,12 +34,12 @@ public static partial class GlobalCustomizationExtensions
 
 		/// <inheritdoc cref="IUpdateableCustomizationValue{FormattingCustomizationValue}.Get()" />
 		public FormattingCustomizationValue Get()
-			=> _globalCustomization.Get(nameof(Formatting), new FormattingCustomizationValue());
+			=> _awexpectCustomization.Get(nameof(Formatting), new FormattingCustomizationValue());
 
 		/// <inheritdoc
 		///     cref="IUpdateableCustomizationValue{FormattingCustomizationValue}.Update(Func{FormattingCustomizationValue,FormattingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<FormattingCustomizationValue, FormattingCustomizationValue> update)
-			=> _globalCustomization.Set(nameof(Formatting), update(Get()));
+			=> _awexpectCustomization.Set(nameof(Formatting), update(Get()));
 	}
 
 	/// <summary>

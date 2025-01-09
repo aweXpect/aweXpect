@@ -2,7 +2,7 @@
 
 namespace aweXpect.Core.Tests.Customization;
 
-public class GlobalCustomizationTests
+public class AwexpectCustomizationTests
 {
 	[Fact]
 	public async Task Formatting_ShouldReturnTenAsDefaultMaximumNumberOfCollectionItems()
@@ -82,10 +82,10 @@ public static class DummyExtensions
 {
 	private static readonly string MyKey = Guid.NewGuid().ToString();
 
-	public static ICustomizationValue<string> MyConfiguration(this GlobalCustomization globalCustomization)
-		=> new CustomizationValue<string>(globalCustomization, MyKey, "foo");
+	public static ICustomizationValue<string> MyConfiguration(this AwexpectCustomization awexpectCustomization)
+		=> new CustomizationValue<string>(awexpectCustomization, MyKey, "foo");
 
-	private class CustomizationValue<TValue>(IGlobalCustomization customization, string key, TValue defaultValue)
+	private class CustomizationValue<TValue>(IAwexpectCustomization customization, string key, TValue defaultValue)
 		: ICustomizationValue<TValue>
 	{
 		public TValue Get()

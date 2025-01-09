@@ -2,24 +2,24 @@ using System;
 
 namespace aweXpect.Customization;
 
-public static partial class GlobalCustomizationExtensions
+public static partial class AwexpectCustomizationExtensions
 {
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
-	public static ReflectionCustomization Reflection(this GlobalCustomization globalCustomization)
-		=> new(globalCustomization);
+	public static ReflectionCustomization Reflection(this AwexpectCustomization awexpectCustomization)
+		=> new(awexpectCustomization);
 
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
 	public class ReflectionCustomization : IUpdateableCustomizationValue<ReflectionCustomizationValue>
 	{
-		private readonly IGlobalCustomization _globalCustomization;
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal ReflectionCustomization(IGlobalCustomization globalCustomization)
+		internal ReflectionCustomization(IAwexpectCustomization awexpectCustomization)
 		{
-			_globalCustomization = globalCustomization;
+			_awexpectCustomization = awexpectCustomization;
 			ExcludedAssemblyPrefixes = new CustomizationValue<string[]>(
 				() => Get().ExcludedAssemblyPrefixes,
 				// ReSharper disable once WithExpressionModifiesAllMembers
@@ -34,12 +34,12 @@ public static partial class GlobalCustomizationExtensions
 
 		/// <inheritdoc cref="IUpdateableCustomizationValue{ReflectionCustomizationValue}.Get()" />
 		public ReflectionCustomizationValue Get()
-			=> _globalCustomization.Get(nameof(Reflection), new ReflectionCustomizationValue());
+			=> _awexpectCustomization.Get(nameof(Reflection), new ReflectionCustomizationValue());
 
 		/// <inheritdoc
 		///     cref="IUpdateableCustomizationValue{ReflectionCustomizationValue}.Update(Func{ReflectionCustomizationValue,ReflectionCustomizationValue})" />
 		public CustomizationLifetime Update(Func<ReflectionCustomizationValue, ReflectionCustomizationValue> update)
-			=> _globalCustomization.Set(nameof(Reflection), update(Get()));
+			=> _awexpectCustomization.Set(nameof(Reflection), update(Get()));
 	}
 
 	/// <summary>

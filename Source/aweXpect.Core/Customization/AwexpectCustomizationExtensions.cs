@@ -3,9 +3,9 @@ using System;
 namespace aweXpect.Customization;
 
 /// <summary>
-///     Extension methods for <see cref="GlobalCustomization" />.
+///     Extension methods for <see cref="AwexpectCustomization" />.
 /// </summary>
-public static partial class GlobalCustomizationExtensions
+public static partial class AwexpectCustomizationExtensions
 {
 	private class CustomizationValue<TValue>(
 		Func<TValue> getter,

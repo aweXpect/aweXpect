@@ -7,11 +7,11 @@ namespace aweXpect.Customization;
 /// <summary>
 ///     Customize the global behaviour of aweXpect.
 /// </summary>
-public class GlobalCustomization : IGlobalCustomization
+public class AwexpectCustomization : IAwexpectCustomization
 {
 	private readonly AsyncLocal<CustomizationStore> _store = new();
 
-	TValue IGlobalCustomization.Get<TValue>(string key, TValue defaultValue)
+	TValue IAwexpectCustomization.Get<TValue>(string key, TValue defaultValue)
 	{
 		if (_store.Value == null)
 		{
@@ -21,7 +21,7 @@ public class GlobalCustomization : IGlobalCustomization
 		return _store.Value.Get(key, defaultValue);
 	}
 
-	CustomizationLifetime IGlobalCustomization.Set<TValue>(string key, TValue value)
+	CustomizationLifetime IAwexpectCustomization.Set<TValue>(string key, TValue value)
 	{
 		if (_store.Value == null)
 		{
@@ -113,7 +113,7 @@ public sealed class CustomizationLifetime(Action callback) : IDisposable
 /// <summary>
 ///     Customize the global behaviour of aweXpect.
 /// </summary>
-public interface IGlobalCustomization
+public interface IAwexpectCustomization
 {
 	/// <summary>
 	///     Get the customization <typeparamref name="TValue" /> stored under the given <paramref name="key" />.

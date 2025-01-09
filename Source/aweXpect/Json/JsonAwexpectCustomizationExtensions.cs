@@ -6,15 +6,15 @@ using aweXpect.Customization;
 namespace aweXpect.Json;
 
 /// <summary>
-///     Extension methods on <see cref="GlobalCustomization" /> for JSON.
+///     Extension methods on <see cref="AwexpectCustomization" /> for JSON.
 /// </summary>
-public static class GlobalCustomizationJsonExtensions
+public static class JsonAwexpectCustomizationExtensions
 {
 	/// <summary>
 	///     Customize the JSON settings.
 	/// </summary>
-	public static JsonCustomization Json(this GlobalCustomization globalCustomization)
-		=> new(globalCustomization);
+	public static JsonCustomization Json(this AwexpectCustomization awexpectCustomization)
+		=> new(awexpectCustomization);
 
 	private class CustomizationValue<TValue>(
 		Func<TValue> getter,
@@ -33,31 +33,39 @@ public static class GlobalCustomizationJsonExtensions
 	/// </summary>
 	public class JsonCustomization : IUpdateableCustomizationValue<JsonCustomizationValue>
 	{
-		private readonly IGlobalCustomization _globalCustomization;
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal JsonCustomization(IGlobalCustomization globalCustomization)
+		internal JsonCustomization(IAwexpectCustomization awexpectCustomization)
 		{
-			_globalCustomization = globalCustomization;
+			_awexpectCustomization = awexpectCustomization;
 			DefaultJsonDocumentOptions = new CustomizationValue<JsonDocumentOptions>(
 				() => Get().DefaultJsonDocumentOptions,
-				// ReSharper disable once WithExpressionModifiesAllMembers
 				v => Update(p => p with
 				{
 					DefaultJsonDocumentOptions = v
+				}));
+			DefaultJsonSerializerOptions = new CustomizationValue<JsonSerializerOptions>(
+				() => Get().DefaultJsonSerializerOptions,
+				v => Update(p => p with
+				{
+					DefaultJsonSerializerOptions = v
 				}));
 		}
 
 		/// <inheritdoc cref="JsonCustomizationValue.DefaultJsonDocumentOptions" />
 		public ICustomizationValue<JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
 
+		/// <inheritdoc cref="JsonCustomizationValue.DefaultJsonSerializerOptions" />
+		public ICustomizationValue<JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
+
 		/// <inheritdoc cref="IUpdateableCustomizationValue{JsonCustomizationValue}.Get()" />
 		public JsonCustomizationValue Get()
-			=> _globalCustomization.Get(nameof(Json), new JsonCustomizationValue());
+			=> _awexpectCustomization.Get(nameof(Json), new JsonCustomizationValue());
 
 		/// <inheritdoc
 		///     cref="IUpdateableCustomizationValue{JsonCustomizationValue}.Update(Func{JsonCustomizationValue,JsonCustomizationValue})" />
 		public CustomizationLifetime Update(Func<JsonCustomizationValue, JsonCustomizationValue> update)
-			=> _globalCustomization.Set(nameof(Json), update(Get()));
+			=> _awexpectCustomization.Set(nameof(Json), update(Get()));
 	}
 
 	/// <summary>
@@ -68,7 +76,15 @@ public static class GlobalCustomizationJsonExtensions
 		/// <summary>
 		///     The default <see cref="JsonDocumentOptions" />.
 		/// </summary>
-		public JsonDocumentOptions DefaultJsonDocumentOptions { get; set; } = new()
+		public JsonDocumentOptions DefaultJsonDocumentOptions { get; init; } = new()
+		{
+			AllowTrailingCommas = true
+		};
+
+		/// <summary>
+		///     The default <see cref="JsonSerializerOptions" />.
+		/// </summary>
+		public JsonSerializerOptions DefaultJsonSerializerOptions { get; init; } = new()
 		{
 			AllowTrailingCommas = true
 		};

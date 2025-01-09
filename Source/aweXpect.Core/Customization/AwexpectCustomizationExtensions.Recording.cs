@@ -3,24 +3,24 @@ using aweXpect.Signaling;
 
 namespace aweXpect.Customization;
 
-public static partial class GlobalCustomizationExtensions
+public static partial class AwexpectCustomizationExtensions
 {
 	/// <summary>
 	///     Customize the recording settings.
 	/// </summary>
-	public static RecordingCustomization Recording(this GlobalCustomization globalCustomization)
-		=> new(globalCustomization);
+	public static RecordingCustomization Recording(this AwexpectCustomization awexpectCustomization)
+		=> new(awexpectCustomization);
 
 	/// <summary>
 	///     Customize the recording settings.
 	/// </summary>
 	public class RecordingCustomization : IUpdateableCustomizationValue<RecordingCustomizationValue>
 	{
-		private readonly IGlobalCustomization _globalCustomization;
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal RecordingCustomization(IGlobalCustomization globalCustomization)
+		internal RecordingCustomization(IAwexpectCustomization awexpectCustomization)
 		{
-			_globalCustomization = globalCustomization;
+			_awexpectCustomization = awexpectCustomization;
 			DefaultTimeout = new CustomizationValue<TimeSpan>(
 				() => Get().DefaultTimeout,
 				// ReSharper disable once WithExpressionModifiesAllMembers
@@ -35,12 +35,12 @@ public static partial class GlobalCustomizationExtensions
 
 		/// <inheritdoc cref="IUpdateableCustomizationValue{RecordingCustomizationValue}.Get()" />
 		public RecordingCustomizationValue Get()
-			=> _globalCustomization.Get(nameof(Recording), new RecordingCustomizationValue());
+			=> _awexpectCustomization.Get(nameof(Recording), new RecordingCustomizationValue());
 
 		/// <inheritdoc
 		///     cref="IUpdateableCustomizationValue{RecordingCustomizationValue}.Update(Func{RecordingCustomizationValue,RecordingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<RecordingCustomizationValue, RecordingCustomizationValue> update)
-			=> _globalCustomization.Set(nameof(Recording), update(Get()));
+			=> _awexpectCustomization.Set(nameof(Recording), update(Get()));
 	}
 
 	/// <summary>

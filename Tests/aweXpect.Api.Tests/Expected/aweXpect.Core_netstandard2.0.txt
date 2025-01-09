@@ -208,68 +208,67 @@ namespace aweXpect.Core.Sources
 }
 namespace aweXpect.Customization
 {
-    public sealed class CustomizationLifetime : System.IDisposable
+    public class AwexpectCustomization : aweXpect.Customization.IAwexpectCustomization
     {
-        public CustomizationLifetime(System.Action callback) { }
-        public void Dispose() { }
+        public AwexpectCustomization() { }
     }
-    public class Customize
+    public static class AwexpectCustomizationExtensions
     {
-        public Customize() { }
-        public static aweXpect.Customization.GlobalCustomization aweXpect { get; }
-    }
-    public class GlobalCustomization : aweXpect.Customization.IGlobalCustomization
-    {
-        public GlobalCustomization() { }
-    }
-    public static class GlobalCustomizationExtensions
-    {
-        public static aweXpect.Customization.GlobalCustomizationExtensions.FormattingCustomization Formatting(this aweXpect.Customization.GlobalCustomization globalCustomization) { }
-        public static aweXpect.Customization.GlobalCustomizationExtensions.RecordingCustomization Recording(this aweXpect.Customization.GlobalCustomization globalCustomization) { }
-        public static aweXpect.Customization.GlobalCustomizationExtensions.ReflectionCustomization Reflection(this aweXpect.Customization.GlobalCustomization globalCustomization) { }
-        public class FormattingCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.GlobalCustomizationExtensions.FormattingCustomizationValue>
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomization Formatting(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomization Recording(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomization Reflection(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public class FormattingCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValue<int> MaximumNumberOfCollectionItems { get; }
-            public aweXpect.Customization.GlobalCustomizationExtensions.FormattingCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.GlobalCustomizationExtensions.FormattingCustomizationValue, aweXpect.Customization.GlobalCustomizationExtensions.FormattingCustomizationValue> update) { }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue> update) { }
         }
-        public class FormattingCustomizationValue : System.IEquatable<aweXpect.Customization.GlobalCustomizationExtensions.FormattingCustomizationValue>
+        public class FormattingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
         {
             public FormattingCustomizationValue() { }
             public int MaximumNumberOfCollectionItems { get; set; }
         }
-        public class RecordingCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.GlobalCustomizationExtensions.RecordingCustomizationValue>
+        public class RecordingCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValue<System.TimeSpan> DefaultTimeout { get; }
-            public aweXpect.Customization.GlobalCustomizationExtensions.RecordingCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.GlobalCustomizationExtensions.RecordingCustomizationValue, aweXpect.Customization.GlobalCustomizationExtensions.RecordingCustomizationValue> update) { }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue> update) { }
         }
-        public class RecordingCustomizationValue : System.IEquatable<aweXpect.Customization.GlobalCustomizationExtensions.RecordingCustomizationValue>
+        public class RecordingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue>
         {
             public RecordingCustomizationValue() { }
             public System.TimeSpan DefaultTimeout { get; set; }
         }
-        public class ReflectionCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.GlobalCustomizationExtensions.ReflectionCustomizationValue>
+        public class ReflectionCustomization : aweXpect.Customization.IUpdateableCustomizationValue<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValue<string[]> ExcludedAssemblyPrefixes { get; }
-            public aweXpect.Customization.GlobalCustomizationExtensions.ReflectionCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.GlobalCustomizationExtensions.ReflectionCustomizationValue, aweXpect.Customization.GlobalCustomizationExtensions.ReflectionCustomizationValue> update) { }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue> update) { }
         }
-        public class ReflectionCustomizationValue : System.IEquatable<aweXpect.Customization.GlobalCustomizationExtensions.ReflectionCustomizationValue>
+        public class ReflectionCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
         {
             public ReflectionCustomizationValue() { }
             public string[] ExcludedAssemblyPrefixes { get; set; }
         }
     }
+    public sealed class CustomizationLifetime : System.IDisposable
+    {
+        public CustomizationLifetime(System.Action callback) { }
+        public void Dispose() { }
+    }
+    public static class Customize
+    {
+        public static aweXpect.Customization.AwexpectCustomization aweXpect { get; }
+    }
+    public interface IAwexpectCustomization
+    {
+        TValue Get<TValue>(string key, TValue defaultValue);
+        aweXpect.Customization.CustomizationLifetime Set<TValue>(string key, TValue value);
+    }
     public interface ICustomizationValue<TValue>
     {
         TValue Get();
         aweXpect.Customization.CustomizationLifetime Set(TValue value);
-    }
-    public interface IGlobalCustomization
-    {
-        TValue Get<TValue>(string key, TValue defaultValue);
-        aweXpect.Customization.CustomizationLifetime Set<TValue>(string key, TValue value);
     }
     public interface IUpdateableCustomizationValue<TValue>
     {
