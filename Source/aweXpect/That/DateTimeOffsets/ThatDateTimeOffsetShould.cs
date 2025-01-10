@@ -1,6 +1,7 @@
 ﻿using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 
@@ -19,10 +20,7 @@ public static partial class ThatDateTimeOffsetShould
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan difference)
 	{
-		if (tolerance == null)
-		{
-			return difference == TimeSpan.Zero;
-		}
+		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 
 		return difference <= tolerance.Value &&
 		       difference >= tolerance.Value.Negate();
@@ -64,7 +62,8 @@ public static partial class ThatDateTimeOffsetShould
 					failureMessageFactory(actual, expected, it));
 			}
 
-			if (condition(actual, expected.Value, tolerance.Tolerance ?? TimeSpan.Zero))
+			if (condition(actual, expected.Value, tolerance.Tolerance
+			                                      ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<DateTimeOffset>(actual, ToString());
 			}

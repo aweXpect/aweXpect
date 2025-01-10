@@ -32,6 +32,7 @@ await Expect.That(subject2).Should().Be(new DateTimeOffset(2024, 12, 24, 13, 5, 
   .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
 ```
 
+
 ## After
 
 You can verify, that the `DateTime` or `DateTimeOffset` is (on or) after another value:
@@ -103,4 +104,13 @@ await Expect.That(subject).Should().HaveKind(DateTimeKind.Utc);
 For `DateTimeOffset` you can also verify the `Offset` property:
 ```csharp
 await Expect.That(subject).Should().HaveOffset(TimeSpan.FromMinutes(90));
+```
+
+
+## Default Tolerance
+
+In Windows the `DateTime` resolution is [about 10 to 15 milliseconds](https://stackoverflow.com/q/3140826/4003370), so comparing them as exact values might result in brittle tests.
+Therefore, it is possible to specify a default tolerance that is used for all `DateTime`, `DateTimeOffset`, `DateOnly`, `TimeOnly` and `TimeSpan` comparisons (unless an explicit tolerance is given):
+```csharp
+IDisposable lifetime = Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Set(15.Milliseconds());
 ```

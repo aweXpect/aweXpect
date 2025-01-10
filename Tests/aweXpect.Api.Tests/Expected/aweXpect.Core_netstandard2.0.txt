@@ -215,8 +215,8 @@ namespace aweXpect.Customization
     public static class AwexpectCustomizationExtensions
     {
         public static aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomization Formatting(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
-        public static aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomization Recording(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
         public static aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomization Reflection(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomization Settings(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
         public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
@@ -228,17 +228,6 @@ namespace aweXpect.Customization
             public FormattingCustomizationValue() { }
             public int MaximumNumberOfCollectionItems { get; set; }
         }
-        public class RecordingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue>
-        {
-            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeout { get; }
-            public aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue> update) { }
-        }
-        public class RecordingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.RecordingCustomizationValue>
-        {
-            public RecordingCustomizationValue() { }
-            public System.TimeSpan DefaultTimeout { get; set; }
-        }
         public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<string[]> ExcludedAssemblyPrefixes { get; }
@@ -249,6 +238,19 @@ namespace aweXpect.Customization
         {
             public ReflectionCustomizationValue() { }
             public string[] ExcludedAssemblyPrefixes { get; set; }
+        }
+        public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultSignalerTimeout { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeComparisonTolerance { get; }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue> update) { }
+        }
+        public class SettingsCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
+        {
+            public SettingsCustomizationValue() { }
+            public System.TimeSpan DefaultSignalerTimeout { get; set; }
+            public System.TimeSpan DefaultTimeComparisonTolerance { get; set; }
         }
     }
     public sealed class CustomizationLifetime : System.IDisposable
