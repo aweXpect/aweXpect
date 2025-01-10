@@ -25,10 +25,7 @@ public static partial class ThatNullableDateTimeOffsetShould
 			return false;
 		}
 
-		if (tolerance == null)
-		{
-			return difference.Value == Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
-		}
+		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
 
 		return difference.Value <= tolerance.Value &&
 		       difference.Value >= tolerance.Value.Negate();

@@ -18,10 +18,7 @@ public static partial class ThatNullableTimeSpanShould
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan? difference)
 	{
-		if (tolerance == null)
-		{
-			tolerance = Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
-		}
+		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
 
 		return difference <= tolerance.Value &&
 		       difference >= tolerance.Value.Negate();

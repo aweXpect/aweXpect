@@ -20,10 +20,7 @@ public static partial class ThatDateTimeShould
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan difference)
 	{
-		if (tolerance == null)
-		{
-			return difference == Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
-		}
+		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
 
 		return difference <= tolerance.Value &&
 		       difference >= tolerance.Value.Negate();
