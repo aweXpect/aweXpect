@@ -2,6 +2,7 @@
 using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 
@@ -49,7 +50,8 @@ public static partial class ThatDateOnlyShould
 	{
 		public ConstraintResult IsMetBy(DateOnly actual)
 		{
-			if (condition(actual, expected, tolerance.Tolerance ?? TimeSpan.Zero))
+			if (condition(actual, expected, tolerance.Tolerance
+			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get()))
 			{
 				return new ConstraintResult.Success<DateOnly>(actual, ToString());
 			}

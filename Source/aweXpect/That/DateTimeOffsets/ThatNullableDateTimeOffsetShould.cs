@@ -1,6 +1,7 @@
 ﻿using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 
@@ -26,7 +27,7 @@ public static partial class ThatNullableDateTimeOffsetShould
 
 		if (tolerance == null)
 		{
-			return difference.Value == TimeSpan.Zero;
+			return difference.Value == Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
 		}
 
 		return difference.Value <= tolerance.Value &&
@@ -63,7 +64,8 @@ public static partial class ThatNullableDateTimeOffsetShould
 	{
 		public ConstraintResult IsMetBy(DateTimeOffset? actual)
 		{
-			if (condition(actual, expected, tolerance.Tolerance ?? TimeSpan.Zero))
+			if (condition(actual, expected, tolerance.Tolerance 
+			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get()))
 			{
 				return new ConstraintResult.Success<DateTimeOffset?>(actual, ToString());
 			}

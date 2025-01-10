@@ -1,5 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 
 namespace aweXpect;
@@ -19,7 +20,7 @@ public static partial class ThatTimeSpanShould
 	{
 		if (tolerance == null)
 		{
-			return difference == TimeSpan.Zero;
+			tolerance = Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
 		}
 
 		return difference <= tolerance.Value &&
