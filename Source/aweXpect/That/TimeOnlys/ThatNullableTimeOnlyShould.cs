@@ -51,7 +51,7 @@ public static partial class ThatNullableTimeOnlyShould
 		public ConstraintResult IsMetBy(TimeOnly? actual)
 		{
 			if (condition(actual, expected, tolerance.Tolerance
-			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get()))
+			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<TimeOnly?>(actual, ToString());
 			}

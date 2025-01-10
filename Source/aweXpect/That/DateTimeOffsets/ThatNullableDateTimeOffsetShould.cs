@@ -25,7 +25,7 @@ public static partial class ThatNullableDateTimeOffsetShould
 			return false;
 		}
 
-		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
+		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 
 		return difference.Value <= tolerance.Value &&
 		       difference.Value >= tolerance.Value.Negate();
@@ -62,7 +62,7 @@ public static partial class ThatNullableDateTimeOffsetShould
 		public ConstraintResult IsMetBy(DateTimeOffset? actual)
 		{
 			if (condition(actual, expected, tolerance.Tolerance 
-			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get()))
+			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<DateTimeOffset?>(actual, ToString());
 			}

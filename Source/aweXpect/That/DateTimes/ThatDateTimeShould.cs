@@ -20,7 +20,7 @@ public static partial class ThatDateTimeShould
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan difference)
 	{
-		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
+		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 
 		return difference <= tolerance.Value &&
 		       difference >= tolerance.Value.Negate();
@@ -63,7 +63,7 @@ public static partial class ThatDateTimeShould
 			}
 
 			if (condition(actual, expected.Value, tolerance.Tolerance
-			                                      ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get()))
+			                                      ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<DateTime>(actual, ToString());
 			}

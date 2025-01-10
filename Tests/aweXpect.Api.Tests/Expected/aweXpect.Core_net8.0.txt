@@ -242,7 +242,7 @@ namespace aweXpect.Customization
         public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultSignalerTimeout { get; }
-            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeComparisonTimeout { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeComparisonTolerance { get; }
             public aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue Get() { }
             public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue> update) { }
         }
@@ -250,7 +250,7 @@ namespace aweXpect.Customization
         {
             public SettingsCustomizationValue() { }
             public System.TimeSpan DefaultSignalerTimeout { get; set; }
-            public System.TimeSpan DefaultTimeComparisonTimeout { get; set; }
+            public System.TimeSpan DefaultTimeComparisonTolerance { get; set; }
         }
     }
     public sealed class CustomizationLifetime : System.IDisposable

@@ -48,7 +48,7 @@ public static partial class ThatTimeSpanShould
 		public ConstraintResult IsMetBy(TimeSpan actual)
 		{
 			TimeSpan timeTolerance = tolerance.Tolerance
-			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
+			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 			if (actual - timeTolerance <= expected)
 			{
 				return new ConstraintResult.Success<TimeSpan>(actual, ToString());
@@ -71,7 +71,7 @@ public static partial class ThatTimeSpanShould
 		public ConstraintResult IsMetBy(TimeSpan actual)
 		{
 			TimeSpan timeTolerance = tolerance.Tolerance
-			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get();
+			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 			if (actual + timeTolerance > unexpected)
 			{
 				return new ConstraintResult.Success<TimeSpan>(actual, ToString());

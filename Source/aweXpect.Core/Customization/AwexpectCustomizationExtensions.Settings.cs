@@ -27,19 +27,19 @@ public static partial class AwexpectCustomizationExtensions
 				{
 					DefaultSignalerTimeout = v
 				}));
-			DefaultTimeComparisonTimeout = new CustomizationValue<TimeSpan>(
-				() => Get().DefaultTimeComparisonTimeout,
+			DefaultTimeComparisonTolerance = new CustomizationValue<TimeSpan>(
+				() => Get().DefaultTimeComparisonTolerance,
 				v => Update(p => p with
 				{
-					DefaultTimeComparisonTimeout = v
+					DefaultTimeComparisonTolerance = v
 				}));
 		}
 
 		/// <inheritdoc cref="SettingsCustomizationValue.DefaultSignalerTimeout" />
 		public ICustomizationValueSetter<TimeSpan> DefaultSignalerTimeout { get; }
 
-		/// <inheritdoc cref="SettingsCustomizationValue.DefaultTimeComparisonTimeout" />
-		public ICustomizationValueSetter<TimeSpan> DefaultTimeComparisonTimeout { get; }
+		/// <inheritdoc cref="SettingsCustomizationValue.DefaultTimeComparisonTolerance" />
+		public ICustomizationValueSetter<TimeSpan> DefaultTimeComparisonTolerance { get; }
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Get()" />
 		public SettingsCustomizationValue Get()
@@ -60,10 +60,32 @@ public static partial class AwexpectCustomizationExtensions
 		///     The default timeout for the <see cref="Signaler" />.
 		/// </summary>
 		public TimeSpan DefaultSignalerTimeout { get; set; } = TimeSpan.FromSeconds(30);
-		
+
+#if NET8_0_OR_GREATER
 		/// <summary>
-		///     The default timeout for time comparisons.
+		///     The default tolerance for time comparisons.
 		/// </summary>
-		public TimeSpan DefaultTimeComparisonTimeout { get; set; } = TimeSpan.Zero;
+		/// <remarks>
+		///     In Windows the `DateTime` resolution is about 10 to 15
+		///     milliseconds (<see href="https://stackoverflow.com/q/3140826/4003370" />), so
+		///     comparing them as exact values might result in brittle tests.<br />
+		///     Therefore, it is possible to specify a default tolerance that is used for all <see cref="DateTime" />,
+		///     <see cref="DateTimeOffset" />, <see cref="DateOnly" />, <see cref="TimeOnly" /> and <see cref="TimeSpan" />
+		///     comparisons (unless an explicit tolerance is given).
+		/// </remarks>
+#else
+		/// <summary>
+		///     The default tolerance for time comparisons.
+		/// </summary>
+		/// <remarks>
+		///     In Windows the `DateTime` resolution is about 10 to 15
+		///     milliseconds (<see href="https://stackoverflow.com/q/3140826/4003370" />), so
+		///     comparing them as exact values might result in brittle tests.<br />
+		///     Therefore, it is possible to specify a default tolerance that is used for all <see cref="DateTime" />,
+		///     <see cref="DateTimeOffset" /> and <see cref="TimeSpan" /> comparisons
+		///     (unless an explicit tolerance is given).
+		/// </remarks>
+#endif
+		public TimeSpan DefaultTimeComparisonTolerance { get; set; } = TimeSpan.Zero;
 	}
 }

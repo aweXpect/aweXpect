@@ -51,7 +51,7 @@ public static partial class ThatDateOnlyShould
 		public ConstraintResult IsMetBy(DateOnly actual)
 		{
 			if (condition(actual, expected, tolerance.Tolerance
-			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTimeout.Get()))
+			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<DateOnly>(actual, ToString());
 			}
