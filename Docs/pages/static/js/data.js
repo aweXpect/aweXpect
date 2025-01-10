@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736424463557,
+  "lastUpdate": 1736516081584,
   "repoUrl": "https://github.com/aweXpect/aweXpect",
   "entries": {
     "Benchmark.Net Benchmark": [
@@ -14528,6 +14528,138 @@ window.BENCHMARK_DATA = {
             "value": 1902.542944101187,
             "unit": "ns",
             "range": "± 4.483507301282729"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vbreuss@gmail.com",
+            "name": "Valentin Breuß",
+            "username": "vbreuss"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7ecc95f164e9fefeee1ee7d248de4339f3a10068",
+          "message": "feat: add default timeout for time comparisons (#200)\n\nAdd a default tolerance for time comparisons that can be set via customizations, e.g.\n```csharp\nCustomize.aweXpect.Settings().DefaultTimeComparisonTolerance.Set(15.Milliseconds());\n```\nThis should set a default tolerance that is automatically applied to all tests (and also displayed in the test expectation). When the disposable gets disposed, the default tolerance is reset to zero.\n\n**Motivation:**\nIn Windows the `DateTime` resolution is [about 10 to 15 milliseconds](https://stackoverflow.com/questions/3140826/windows-system-time-with-millisecond-precision), so comparing them as exact values results in brittle tests which could be improved by applying a corresponding default tolerance, when the tests you are doing don't require exact values.",
+          "timestamp": "2025-01-10T13:27:19Z",
+          "tree_id": "9e41536e6468eb311b51d4b106ef2db774650477",
+          "url": "https://github.com/aweXpect/aweXpect/commit/7ecc95f164e9fefeee1ee7d248de4339f3a10068"
+        },
+        "date": 1736516081355,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_aweXpect",
+            "value": 173.69539101307208,
+            "unit": "ns",
+            "range": "± 0.8804367266508207"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_FluentAssertions",
+            "value": 217.76771567549025,
+            "unit": "ns",
+            "range": "± 1.1364681624133213"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Bool_TUnit",
+            "value": 575.231541633606,
+            "unit": "ns",
+            "range": "± 1.7491597883142038"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_aweXpect",
+            "value": 332.2989683787028,
+            "unit": "ns",
+            "range": "± 1.9193400326640937"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_FluentAssertions",
+            "value": 454.1270415941874,
+            "unit": "ns",
+            "range": "± 1.9663646020724608"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.ItemsCount_AtLeast_TUnit",
+            "value": 13829.81765638079,
+            "unit": "ns",
+            "range": "± 58.38025216914179"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_aweXpect",
+            "value": 223.80134951151334,
+            "unit": "ns",
+            "range": "± 1.051747032591342"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_FluentAssertions",
+            "value": 258.71759344736734,
+            "unit": "ns",
+            "range": "± 1.4182304449215588"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.Int_GreaterThan_TUnit",
+            "value": 763.2141124089559,
+            "unit": "ns",
+            "range": "± 2.402834847416327"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_aweXpect",
+            "value": 316.7069518407186,
+            "unit": "ns",
+            "range": "± 2.1671899244842914"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_FluentAssertions",
+            "value": 399.56852647236417,
+            "unit": "ns",
+            "range": "± 4.01284917227662"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.String_TUnit",
+            "value": 788.9910508564541,
+            "unit": "ns",
+            "range": "± 2.8804727369761403"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_aweXpect",
+            "value": 1047.5747885022845,
+            "unit": "ns",
+            "range": "± 4.753207435969372"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_FluentAssertions",
+            "value": 1193.6312295277914,
+            "unit": "ns",
+            "range": "± 7.698229929684671"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArray_TUnit",
+            "value": 1142.8355354309083,
+            "unit": "ns",
+            "range": "± 4.380136536197982"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_aweXpect",
+            "value": 1053.9683938026428,
+            "unit": "ns",
+            "range": "± 2.2076700537789744"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_FluentAssertions",
+            "value": 281987.8146623884,
+            "unit": "ns",
+            "range": "± 1581.3961133515638"
+          },
+          {
+            "name": "aweXpect.Benchmarks.HappyCaseBenchmarks.StringArrayInAnyOrder_TUnit",
+            "value": 1856.6496549333845,
+            "unit": "ns",
+            "range": "± 5.805801797803765"
           }
         ]
       }
