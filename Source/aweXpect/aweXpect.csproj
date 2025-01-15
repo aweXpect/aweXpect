@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<ItemGroup>
+	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+		<PackageReference Include="aweXpect.Core"/>
+	</ItemGroup>
+	<ItemGroup Condition=" '$(Configuration)' != 'Release' ">
 		<ProjectReference Include="..\aweXpect.Core\aweXpect.Core.csproj"/>
 	</ItemGroup>
 
