@@ -1,14 +1,14 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities.Collections;
-using Nuke.Components;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Nuke.Common.Utilities;
 using static Serilog.Log;
 
+// ReSharper disable UnusedMember.Local
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;
@@ -16,11 +16,11 @@ namespace Build;
 partial class Build
 {
 	Target UpdateReadme => _ => _
-		.DependsOn(Clean)
+		.DependsOn(Clean, CalculateNugetVersion)
 		.Before(Compile)
 		.Executes(() =>
 		{
-			string version = string.Join('.', GitVersion.SemVer.Split('.').Take(3));
+			string version = string.Join('.', SemVer.Split('.').Take(3));
 			if (version.IndexOf('-') != -1)
 			{
 				version = version.Substring(0, version.IndexOf('-'));
@@ -65,20 +65,22 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			ReportSummary(s => s
-				.WhenNotNull(SemVer, (c, semVer) => c
-					.AddPair("Packed version", semVer)));
-
 			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
 			packagesDirectory.CreateOrCleanDirectory();
 
-			foreach (Project project in new[] { Solution.aweXpect, Solution.aweXpect_Core })
+			List<string> packages = new();
+			foreach (Project project in new[]
+			         {
+				         Solution.aweXpect, Solution.aweXpect_Core
+			         })
 			{
 				foreach (string package in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.nupkg", SearchOption.AllDirectories))
 				{
-					File.Move(package, packagesDirectory / Path.GetFileName(package));
+					Directory.CreateDirectory(packagesDirectory / project.Name);
+					File.Move(package, packagesDirectory / project.Name / Path.GetFileName(package));
 					Debug("Found nuget package: {PackagePath}", package);
+					packages.Add(Path.GetFileName(package));
 				}
 
 				foreach (string symbolPackage in
@@ -88,5 +90,8 @@ partial class Build
 					Debug("Found symbol package: {PackagePath}", symbolPackage);
 				}
 			}
+
+			ReportSummary(s => s
+				.AddPair("Packages", string.Join(", ", packages)));
 		});
 }

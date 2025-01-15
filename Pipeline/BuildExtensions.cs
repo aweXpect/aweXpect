@@ -1,5 +1,4 @@
 ﻿using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Tools.SonarScanner;
 using Serilog;
 using System;
@@ -11,7 +10,7 @@ public static class BuildExtensions
 	public static SonarScannerBeginSettings SetPullRequestOrBranchName(
 		this SonarScannerBeginSettings settings,
 		GitHubActions gitHubActions,
-		GitVersion gitVersion)
+		string branchName)
 	{
 		if (gitHubActions?.IsPullRequest == true)
 		{
@@ -25,12 +24,12 @@ public static class BuildExtensions
 		if (gitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
 		{
 			string version = gitHubActions.Ref.Substring("refs/tags/".Length);
-			string branchName = "release/" + version;
+			branchName = "release/" + version;
 			Log.Information("Use release branch analysis for '{BranchName}'", branchName);
 			return settings.SetBranchName(branchName);
 		}
 
-		Log.Information("Use branch analysis for '{BranchName}'", gitVersion.BranchName);
-		return settings.SetBranchName(gitVersion.BranchName);
+		Log.Information("Use branch analysis for '{BranchName}'", branchName);
+		return settings.SetBranchName(branchName);
 	}
 }
