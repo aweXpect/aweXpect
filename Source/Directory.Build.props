@@ -9,6 +9,7 @@
 		<Copyright>Copyright (c) 2024 Valentin Breuß</Copyright>
 		<RepositoryUrl>https://github.com/aweXpect/aweXpect.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
+		<PackageProjectUrl>https://awexpect.github.io/aweXpect/</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>Docs/logo_256x256.png</PackageIcon>
 		<PackageReadmeFile>Docs/README.md</PackageReadmeFile>
