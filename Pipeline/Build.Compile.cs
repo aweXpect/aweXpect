@@ -94,12 +94,7 @@ partial class Build
 				.WhenNotNull(CoreVersion, (summary, version) => summary
 					.AddPair("Core", version.FileVersion)));
 
-			foreach (string package in Directory
-				         .EnumerateFiles(Solution.aweXpect.Directory / "bin", "*nupkg",
-					         SearchOption.AllDirectories))
-			{
-				File.Delete(package);
-			}
+			ClearNugetPackages(Solution.aweXpect.Directory / "bin");
 
 			DotNetBuild(s => s
 				.SetProjectFile(Solution)
@@ -111,12 +106,7 @@ partial class Build
 				.SetFileVersion(MainVersion.FileVersion)
 				.SetInformationalVersion(MainVersion.InformationalVersion));
 
-			foreach (string package in Directory
-				         .EnumerateFiles(Solution.aweXpect_Core.Directory / "bin", "*nupkg",
-					         SearchOption.AllDirectories))
-			{
-				File.Delete(package);
-			}
+			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
 
 			DotNetBuild(s => s
 				.SetProjectFile(Solution.aweXpect_Core)
@@ -140,6 +130,17 @@ partial class Build
 			}
 
 			return new AssemblyVersion(gitVersion.AssemblySemVer, gitVersion.InformationalVersion);
+		}
+	}
+
+	private static void ClearNugetPackages(string binPath)
+	{
+		if (Directory.Exists(binPath))
+		{
+			foreach (string package in Directory.EnumerateFiles(binPath, "*nupkg", SearchOption.AllDirectories))
+			{
+				File.Delete(package);
+			}
 		}
 	}
 }
