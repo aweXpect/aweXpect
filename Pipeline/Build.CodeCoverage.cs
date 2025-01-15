@@ -3,6 +3,7 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.ReportGenerator;
 using static Nuke.Common.Tools.ReportGenerator.ReportGeneratorTasks;
 
+// ReSharper disable UnusedMember.Local
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;

@@ -12,6 +12,7 @@ using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using Project = Nuke.Common.ProjectModel.Project;
 
+// ReSharper disable UnusedMember.Local
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;
@@ -50,7 +51,7 @@ partial class Build
 
 			foreach (KeyValuePair<Project, Project[]> project in projects)
 			{
-				string branchName = GitVersion.BranchName;
+				string branchName = BranchName;
 				if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
 				{
 					string version = GitHubActions.Ref.Substring("refs/tags/".Length);
@@ -73,7 +74,7 @@ partial class Build
 				                      		"target-framework": "net8.0",
 				                      		"since": {
 				                      			"target": "main",
-				                      			"enabled": {{(GitVersion.BranchName != "main").ToString().ToLowerInvariant()}},
+				                      			"enabled": {{(BranchName != "main").ToString().ToLowerInvariant()}},
 				                      			"ignore-changes-in": [
 				                      				"**/.github/**/*.*"
 				                      			]
