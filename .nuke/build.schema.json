@@ -44,7 +44,7 @@
         "Pack",
         "Restore",
         "TestFrameworks",
-        "TunitTestingPlatformFrameworks",
+        "TestingPlatformFrameworks",
         "UnitTests",
         "UpdateReadme",
         "VsTestFrameworks",

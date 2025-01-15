@@ -8,6 +8,7 @@ using System.Linq;
 using static Nuke.Common.Tools.Xunit.XunitTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
+// ReSharper disable UnusedMember.Local
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;

@@ -2,7 +2,6 @@ using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
-using Nuke.Common.Tools.GitVersion;
 
 namespace Build;
 
@@ -19,8 +18,6 @@ partial class Build : NukeBuild
 
 	[Parameter("Github Token")] readonly string GithubToken;
 
-	[Required] [GitVersion(Framework = "net8.0", NoCache = true, NoFetch = true)] readonly GitVersion GitVersion;
-
 	[Solution(GenerateProjects = true)] readonly Solution Solution;
 
 	AbsolutePath ArtifactsDirectory => RootDirectory / "Artifacts";
@@ -28,8 +25,8 @@ partial class Build : NukeBuild
 	GitHubActions GitHubActions => GitHubActions.Instance;
 
 	public static int Main() => Execute<Build>([
-		x => x.ApiChecks,
-		x => x.Benchmarks,
-		x => x.CodeAnalysis,
+		x => x.Pack,
+		//x => x.Benchmarks,
+		//x => x.CodeAnalysis,
 	]);
 }
