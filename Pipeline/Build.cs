@@ -26,7 +26,8 @@ partial class Build : NukeBuild
 
 	public static int Main() => Execute<Build>([
 		x => x.Pack,
-		//x => x.Benchmarks,
-		//x => x.CodeAnalysis,
+		x => x.ApiChecks,
+		x => x.Benchmarks,
+		x => x.CodeAnalysis,
 	]);
 }
