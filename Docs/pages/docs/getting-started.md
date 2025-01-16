@@ -25,8 +25,8 @@ sidebar_position: 1
    This allows writing a more concise syntax:
    ```csharp
    //    ↓ Default behaviour
-   await Expect.That(subject).Should().BeTrue();
-   await That(subject).Should().BeTrue();
+   await Expect.That(subject).IsTrue();
+   await That(subject).IsTrue();
    //    ↑ With global static
    ```
 
@@ -40,7 +40,7 @@ public async Task SomeMethod_WhenInputIsInvalid_ShouldReturnFalse()
 {
   bool result = SomeMethod("invalid input");
   
-  await Expect.That(result).Should().BeFalse();
+  await Expect.That(result).IsFalse();
 }
 ```
 
@@ -62,7 +62,7 @@ public async Task SomeMethod_WhenInputIsInvalid_ShouldReturnFalse()
 {
   bool result = SomeMethod("invalid input");
   
-  await Expect.That(result).Should().BeFalse().Because("the input was invalid");
+  await Expect.That(result).IsFalse().Because("the input was invalid");
 }
 ```
 

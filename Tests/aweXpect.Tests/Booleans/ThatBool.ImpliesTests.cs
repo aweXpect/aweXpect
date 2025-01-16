@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Booleans;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class BoolShould
+public sealed partial class ThatBool
 {
-	public sealed class Imply
+	public sealed class Implies
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class BoolShould
 				bool consequent = false;
 
 				async Task Act()
-					=> await That(antecedent).Should().Imply(consequent)
+					=> await That(antecedent).Implies(consequent)
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -32,7 +32,7 @@ public sealed partial class BoolShould
 				bool consequent)
 			{
 				async Task Act()
-					=> await That(antecedent).Should().Imply(consequent);
+					=> await That(antecedent).Implies(consequent);
 
 				await That(Act).Does().NotThrow();
 			}

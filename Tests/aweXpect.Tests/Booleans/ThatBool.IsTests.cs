@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Booleans;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class BoolShould
+public sealed partial class ThatBool
 {
-	public sealed class Be
+	public sealed class Is
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class BoolShould
 				bool expected = !subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -33,7 +33,7 @@ public sealed partial class BoolShould
 				bool expected = !subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Because(reason);
+					=> await That(subject).Is(expected).Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -51,7 +51,7 @@ public sealed partial class BoolShould
 				bool expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}

@@ -6,13 +6,13 @@ public sealed class AndNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
-		IThatShould<bool> that = That(true).Should();
-		that.BeTrue().And.BeFalse().And.Imply(false);
+		IExpectSubject<bool> that = That(true);
+		that.IsTrue().And.IsFalse().And.Implies(false);
 #pragma warning restore CS4014
 
 		string expectedResult = "be True and be False and imply False";
 
-		string? result = that.ExpectationBuilder.ToString();
+		string? result = that.Should(_ => { }).ExpectationBuilder.ToString();
 
 		await That(result).Should().Be(expectedResult);
 	}
@@ -21,7 +21,7 @@ public sealed class AndNodeTests
 	public async Task WithFirstFailedTests_ShouldIncludeSingleFailureInMessage()
 	{
 		async Task Act()
-			=> await That(true).Should().BeFalse().And.BeTrue();
+			=> await That(true).IsFalse().And.IsTrue();
 
 		await That(Act).Does().ThrowException()
 			.WithMessage("""
@@ -35,7 +35,7 @@ public sealed class AndNodeTests
 	public async Task WithMultipleFailedTests_ShouldIncludeAllFailuresInMessage()
 	{
 		async Task Act()
-			=> await That(true).Should().BeFalse().And.BeFalse().And.Imply(false);
+			=> await That(true).IsFalse().And.IsFalse().And.Implies(false);
 
 		await That(Act).Does().ThrowException()
 			.WithMessage("""
@@ -49,7 +49,7 @@ public sealed class AndNodeTests
 	public async Task WithSecondFailedTests_ShouldIncludeSingleFailureInMessage()
 	{
 		async Task Act()
-			=> await That(true).Should().BeTrue().And.BeFalse();
+			=> await That(true).IsTrue().And.IsFalse();
 
 		await That(Act).Does().ThrowException()
 			.WithMessage("""
@@ -63,7 +63,7 @@ public sealed class AndNodeTests
 	public async Task WithTwoSuccessfulTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).Should().BeTrue().And.NotBe(false);
+			=> await That(true).IsTrue().And.IsNot(false);
 
 		await That(Act).Does().NotThrow();
 	}

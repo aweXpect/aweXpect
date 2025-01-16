@@ -15,14 +15,14 @@ public sealed class CustomizeSettingsTests
 		{
 			_ = Task.Delay(1000.Milliseconds()).ContinueWith(_ => signaler.Signal());
 			SignalerResult result = signaler.Wait();
-			await That(result.IsSuccess).Should().BeFalse();
+			await That(result.IsSuccess).IsFalse();
 			await That(Customize.aweXpect.Settings().DefaultSignalerTimeout.Get()).Should().Be(10.Milliseconds());
 		}
 
 		{
 			_ = Task.Delay(200.Milliseconds()).ContinueWith(_ => signaler.Signal());
 			SignalerResult result = signaler.Wait();
-			await That(result.IsSuccess).Should().BeTrue();
+			await That(result.IsSuccess).IsTrue();
 			await That(Customize.aweXpect.Settings().DefaultSignalerTimeout.Get()).Should().Be(30000.Milliseconds());
 		}
 	}

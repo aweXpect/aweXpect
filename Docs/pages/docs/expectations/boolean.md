@@ -20,8 +20,8 @@ await Expect.That(subject).Should().NotBe(true);
 
 You can verify, that the `bool` is `true` or `false`:
 ```csharp
-await Expect.That(false).Should().BeFalse();
-await Expect.That(true).Should().BeTrue();
+await Expect.That(false).IsFalse();
+await Expect.That(true).IsTrue();
 ```
 
 The negation is only available for nullable booleans:

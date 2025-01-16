@@ -26,7 +26,7 @@ public class EvaluationContextTests
 		IEvaluationContext context = await GetSut();
 
 		bool result = context.TryReceive("foo", out string? fooResult);
-		await That(result).Should().BeFalse();
+		await That(result).IsFalse();
 		await That(fooResult).Should().BeNull();
 	}
 
@@ -38,7 +38,7 @@ public class EvaluationContextTests
 		context.Store("foo", 42);
 
 		bool result = context.TryReceive("foo", out string? fooResult);
-		await That(result).Should().BeFalse();
+		await That(result).IsFalse();
 		await That(fooResult).Should().BeNull();
 	}
 
@@ -50,15 +50,13 @@ public class EvaluationContextTests
 		context.Store("foo", "bar");
 
 		bool result = context.TryReceive("foo", out string? fooResult);
-		await That(result).Should().BeTrue();
+		await That(result).IsTrue();
 		await That(fooResult).Should().Be("bar");
 	}
 
-	#region Helpers
-
 	private static async Task<IEvaluationContext> GetSut()
 	{
-		IThatShould<bool> that = That(true).Should();
+		IThatShould<bool> that = That(true).Should(_ => { });
 		MyContextConstraint constraint = new();
 		await new AndOrResult<bool, IThatShould<bool>>(
 			that.ExpectationBuilder
@@ -67,8 +65,6 @@ public class EvaluationContextTests
 
 		return constraint.Context!;
 	}
-
-	#endregion
 
 	private sealed class MyContextConstraint : IContextConstraint<bool>
 	{

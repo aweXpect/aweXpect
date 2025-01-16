@@ -6,13 +6,13 @@ public sealed class OrNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
-		IThatShould<bool> that = That(true).Should();
-		that.BeTrue().Or.BeFalse().Or.Imply(false);
+		IExpectSubject<bool> that = That(true);
+		that.IsTrue().Or.IsFalse().Or.Implies(false);
 #pragma warning restore CS4014
 
 		string expectedResult = "be True or be False or imply False";
 
-		string? result = that.ExpectationBuilder.ToString();
+		string? result = that.Should(_ => { }).ExpectationBuilder.ToString();
 
 		await That(result).Should().Be(expectedResult);
 	}
@@ -21,7 +21,7 @@ public sealed class OrNodeTests
 	public async Task WithFirstFailedTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).Should().BeFalse().Or.BeTrue();
+			=> await That(true).IsFalse().Or.IsTrue();
 
 		await That(Act).Does().NotThrow();
 	}
@@ -30,7 +30,7 @@ public sealed class OrNodeTests
 	public async Task WithMultipleFailedTests_ShouldIncludeAllFailuresInMessage()
 	{
 		async Task Act()
-			=> await That(true).Should().BeFalse().Or.BeFalse().Or.Imply(false);
+			=> await That(true).IsFalse().Or.IsFalse().Or.Implies(false);
 
 		await That(Act).Does().ThrowException()
 			.WithMessage("""
@@ -44,7 +44,7 @@ public sealed class OrNodeTests
 	public async Task WithSecondFailedTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).Should().BeTrue().Or.BeFalse();
+			=> await That(true).IsTrue().Or.IsFalse();
 
 		await That(Act).Does().NotThrow();
 	}
@@ -53,7 +53,7 @@ public sealed class OrNodeTests
 	public async Task WithTwoSuccessfulTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).Should().BeTrue().Or.NotBe(false);
+			=> await That(true).IsTrue().Or.IsNot(false);
 
 		await That(Act).Does().NotThrow();
 	}

@@ -7,9 +7,9 @@ public class ExpectationTests
 	[Fact]
 	public async Task Equals_ShouldThrowNotSupportedException()
 	{
-		Expectation sut = That(true).Should().BeTrue();
+		Expectation sut = That(true).IsTrue();
 
-		bool Act() => sut.Equals(That(true).Should().BeTrue());
+		bool Act() => sut.Equals(That(true).IsTrue());
 
 		await That(Act).Does().Throw<NotSupportedException>()
 			.WithMessage("Equals is not supported. Did you mean Be() instead?");
@@ -18,7 +18,7 @@ public class ExpectationTests
 	[Fact]
 	public async Task GetHashCode_ShouldThrowNotSupportedException()
 	{
-		Expectation sut = That(true).Should().BeTrue();
+		Expectation sut = That(true).IsTrue();
 
 		int Act() => sut.GetHashCode();
 

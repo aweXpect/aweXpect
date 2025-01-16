@@ -10,7 +10,7 @@ public partial class HappyCaseBenchmarks
 
 	[Benchmark]
 	public async Task<bool> Bool_aweXpect()
-		=> await Expect.That(_boolSubject).Should().BeTrue();
+		=> await Expect.That(_boolSubject).IsTrue();
 
 	[Benchmark]
 	public AndConstraint<BooleanAssertions> Bool_FluentAssertions()

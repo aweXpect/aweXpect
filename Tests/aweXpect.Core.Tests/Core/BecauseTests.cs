@@ -11,7 +11,7 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because);
+			=> await That(subject).IsFalse().Because(because);
 
 		await That(Act).Does().ThrowException().WithMessage($"*{because}*").AsWildcard();
 	}
@@ -37,7 +37,7 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because);
+			=> await That(subject).IsFalse().Because(because);
 
 		await That(Act).Does().ThrowException().WithMessage($"*{expectedWithPrefix}*")
 			.AsWildcard();
@@ -51,8 +51,8 @@ public class BecauseTests
 		bool subject = false;
 
 		async Task Act()
-			=> await That(subject).Should().BeTrue().Because(because1)
-				.And.BeFalse().Because(because2);
+			=> await That(subject).IsTrue().Because(because1)
+				.And.IsFalse().Because(because2);
 
 		await That(Act).Does().ThrowException().WithMessage($"*{because1}*").AsWildcard();
 	}
@@ -65,8 +65,8 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeTrue().Because(because1)
-				.And.BeFalse().Because(because2);
+			=> await That(subject).IsTrue().Because(because1)
+				.And.IsFalse().Because(because2);
 
 		await That(Act).Does().ThrowException().WithMessage($"*{because2}*").AsWildcard();
 	}
@@ -78,8 +78,8 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeTrue().Because(because)
-				.And.BeFalse();
+			=> await That(subject).IsTrue().Because(because)
+				.And.IsFalse();
 
 		await That(Act).Does().ThrowException()
 			.WithMessage("""
@@ -97,8 +97,8 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because1)
-				.Or.BeFalse().Because(because2);
+			=> await That(subject).IsFalse().Because(because1)
+				.Or.IsFalse().Because(because2);
 
 		await That(Act).Does().ThrowException().WithMessage($"*{because1}*{because2}*")
 			.AsWildcard();
@@ -110,7 +110,7 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse();
+			=> await That(subject).IsFalse();
 
 		await That(Act).Does().ThrowException()
 			.WithMessage("""
@@ -127,7 +127,7 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because);
+			=> await That(subject).IsFalse().Because(because);
 
 		Exception exception = await That(Act).Does().ThrowException()
 			.WithMessage("*because*").AsWildcard();

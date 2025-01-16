@@ -15,8 +15,8 @@ public class ExpectTests
 		{
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage($"""
@@ -69,8 +69,8 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
 			await That(Act).Does().NotThrow();
 		}
@@ -83,8 +83,8 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -106,7 +106,7 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(true).Should().BeTrue(),
+					That(true).IsTrue(),
 					ThatAll(
 						That(subjectA).Should().Be("subject A"),
 						That(subjectB).Should().Be("subject B"),
@@ -145,10 +145,10 @@ public class ExpectTests
 			async Task Act()
 				=> await ThatAll(
 					ThatAny(
-						That(subjectA).Should().BeTrue(),
-						That(subjectB).Should().BeTrue()),
-					That(subjectC).Should().BeTrue(),
-					That(subjectD).Should().BeTrue());
+						That(subjectA).IsTrue(),
+						That(subjectB).IsTrue()),
+					That(subjectC).IsTrue(),
+					That(subjectD).IsTrue());
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -187,8 +187,8 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAny(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -247,8 +247,8 @@ public class ExpectTests
 		{
 			async Task Act()
 				=> await ThatAny(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
 			await That(Act).Does().NotThrow();
 		}
@@ -262,7 +262,7 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAny(
-					That(false).Should().BeTrue(),
+					That(false).IsTrue(),
 					ThatAny(
 						That(subjectA).Should().Be("subject A"),
 						That(subjectB).Should().Be("subject B"),
@@ -300,7 +300,7 @@ public class ExpectTests
 		public async Task WhenNested_ShouldIndentMultiLineResults()
 		{
 			async Task Act()
-				=> await ThatAll(That(true).Should().IsMyConstraint(
+				=> await ThatAll(That(true).IsMyConstraint(
 					"""
 					expectation
 					over
@@ -342,10 +342,10 @@ public class ExpectTests
 			async Task Act()
 				=> await ThatAny(
 					ThatAll(
-						That(subjectA).Should().BeTrue(),
-						That(subjectB).Should().BeTrue()),
-					That(subjectC).Should().BeTrue(),
-					That(subjectD).Should().BeTrue());
+						That(subjectA).IsTrue(),
+						That(subjectB).IsTrue()),
+					That(subjectC).IsTrue(),
+					That(subjectD).IsTrue());
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""

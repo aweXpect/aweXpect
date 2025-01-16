@@ -11,7 +11,7 @@ public class ConstraintResultTests
 
 		bool result = sut.TryGetValue(out string? value);
 
-		await That(result).Should().BeFalse();
+		await That(result).IsFalse();
 		await That(value).Should().BeNull();
 	}
 
@@ -22,7 +22,7 @@ public class ConstraintResultTests
 
 		bool result = sut.TryGetValue(out string? value);
 
-		await That(result).Should().BeTrue();
+		await That(result).IsTrue();
 		await That(value).Should().Be("bar");
 	}
 
@@ -33,7 +33,7 @@ public class ConstraintResultTests
 
 		bool result = sut.TryGetValue(out string? value);
 
-		await That(result).Should().BeFalse();
+		await That(result).IsFalse();
 		await That(value).Should().BeNull();
 	}
 }

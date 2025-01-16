@@ -11,7 +11,7 @@ public class JsonOptionsTests
 	{
 		JsonOptions sut = new();
 
-		await That(sut.DocumentOptions.AllowTrailingCommas).Should().BeTrue();
+		await That(sut.DocumentOptions.AllowTrailingCommas).IsTrue();
 	}
 
 	[Fact]

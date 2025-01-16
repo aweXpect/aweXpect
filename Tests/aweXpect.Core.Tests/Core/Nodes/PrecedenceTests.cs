@@ -8,7 +8,7 @@ public sealed class PrecedenceTests
 		public async Task F_and_T_or_F_ShouldFail()
 		{
 			async Task Act()
-				=> await That(true).Should().BeFalse().And.BeTrue().Or.BeFalse();
+				=> await That(true).IsFalse().And.IsTrue().Or.IsFalse();
 
 			await That(Act).Does().ThrowException()
 				.WithMessage("""
@@ -22,7 +22,7 @@ public sealed class PrecedenceTests
 		public async Task F_and_T_or_T_and_F_ShouldFail()
 		{
 			async Task Act()
-				=> await That(true).Should().BeFalse().And.BeTrue().Or.BeTrue().And.BeFalse();
+				=> await That(true).IsFalse().And.IsTrue().Or.IsTrue().And.IsFalse();
 
 			await That(Act).Does().ThrowException()
 				.WithMessage("""
@@ -36,7 +36,7 @@ public sealed class PrecedenceTests
 		public async Task F_and_T_or_T_ShouldSucceed()
 		{
 			async Task Act()
-				=> await That(true).Should().BeFalse().And.BeTrue().Or.BeTrue();
+				=> await That(true).IsFalse().And.IsTrue().Or.IsTrue();
 
 			await That(Act).Does().NotThrow();
 		}
@@ -45,7 +45,7 @@ public sealed class PrecedenceTests
 		public async Task F_or_T_and_F_ShouldFail()
 		{
 			async Task Act()
-				=> await That(true).Should().BeFalse().Or.BeTrue().And.BeFalse();
+				=> await That(true).IsFalse().Or.IsTrue().And.IsFalse();
 
 			await That(Act).Does().ThrowException()
 				.WithMessage("""
@@ -59,7 +59,7 @@ public sealed class PrecedenceTests
 		public async Task T_and_F_or_F_ShouldFail()
 		{
 			async Task Act()
-				=> await That(true).Should().BeTrue().And.BeFalse().Or.BeFalse();
+				=> await That(true).IsTrue().And.IsFalse().Or.IsFalse();
 
 			await That(Act).Does().ThrowException()
 				.WithMessage("""
@@ -73,7 +73,7 @@ public sealed class PrecedenceTests
 		public async Task T_and_F_or_T_ShouldSucceed()
 		{
 			async Task Act()
-				=> await That(true).Should().BeTrue().And.BeFalse().Or.BeTrue();
+				=> await That(true).IsTrue().And.IsFalse().Or.IsTrue();
 
 			await That(Act).Does().NotThrow();
 		}
@@ -82,7 +82,7 @@ public sealed class PrecedenceTests
 		public async Task T_or_T_and_F_ShouldSucceed()
 		{
 			async Task Act()
-				=> await That(true).Should().BeTrue().Or.BeTrue().And.BeFalse();
+				=> await That(true).IsTrue().Or.IsTrue().And.IsFalse();
 
 			await That(Act).Does().NotThrow();
 		}

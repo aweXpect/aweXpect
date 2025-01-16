@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Booleans;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class BoolShould
+public sealed partial class ThatBool
 {
-	public sealed class BeFalse
+	public sealed class IsFalse
 	{
 		public sealed class Tests
 		{

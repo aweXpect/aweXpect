@@ -10,15 +10,6 @@ public static partial class ThatBool
 	/// <summary>
 	///     Verifies that the subject is <see langword="true" />.
 	/// </summary>
-	[Obsolete("TODO")]
-	public static AndOrResult<bool, IThatShould<bool>> BeTrue(this IThatShould<bool> source)
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new BeValueConstraint(it, true)),
-			source);
-	
-	/// <summary>
-	///     Verifies that the subject is <see langword="true" />.
-	/// </summary>
 	public static AndOrResult<bool, IExpectSubject<bool>> IsTrue(this IExpectSubject<bool> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeValueConstraint(it, true)),

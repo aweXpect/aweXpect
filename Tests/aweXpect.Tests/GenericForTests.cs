@@ -13,8 +13,8 @@ public sealed class GenericForTests
 
 		async Task Act()
 			=> await That(subject)
-				.For(o => o.A, v => v.Should().BeTrue()).And
-				.For(o => o.B, v => v.Should().BeTrue());
+				.For(o => o.A, v => v.IsTrue()).And
+				.For(o => o.B, v => v.IsTrue());
 
 		await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage($"""
@@ -35,8 +35,8 @@ public sealed class GenericForTests
 
 		async Task Act()
 			=> await That(subject)
-				.For(o => o.A, v => v.Should().BeTrue()).Or
-				.For(o => o.B, v => v.Should().BeTrue());
+				.For(o => o.A, v => v.IsTrue()).Or
+				.For(o => o.B, v => v.IsTrue());
 
 		await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage("""
