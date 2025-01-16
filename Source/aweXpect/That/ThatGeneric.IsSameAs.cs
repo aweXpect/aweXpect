@@ -11,31 +11,6 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to be the same as the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T, IThatShould<T>> BeSameAs<T>(this IThatShould<T> source,
-		object? expected,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it =>
-					new BeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
-			source);
-
-	/// <summary>
-	///     Expect the actual value to not be the same as the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<T, IThatShould<T>> NotBeSameAs<T>(this IThatShould<T> source,
-		object? unexpected,
-		[CallerArgumentExpression("unexpected")]
-		string doNotPopulateThisValue = "")
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it =>
-					new NotBeSameAsConstraint<T>(it, unexpected, doNotPopulateThisValue)),
-			source);
-	
-	
-	
-	/// <summary>
-	///     Expect the actual value to be the same as the <paramref name="expected" /> value.
-	/// </summary>
 	public static AndOrResult<T, IExpectSubject<T>> IsSameAs<T>(this IExpectSubject<T> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
 public partial class AsyncEnumerableShould
 {

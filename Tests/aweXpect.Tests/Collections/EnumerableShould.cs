@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
 public partial class EnumerableShould
 {

@@ -3,11 +3,11 @@ using aweXpect.Tests.TestHelpers;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
-public sealed partial class EnumerableShould
+public sealed partial class ThatEnumerable
 {
-	public sealed class BeEmpty
+	public sealed class IsEmpty
 	{
 		public sealed class Tests
 		{
@@ -17,7 +17,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).Should().BeEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -45,7 +45,7 @@ public sealed partial class EnumerableShould
 				string[] subject = ["foo"];
 
 				async Task Act()
-					=> await That(subject).Should().BeEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -63,7 +63,7 @@ public sealed partial class EnumerableShould
 				string[] subject = [];
 
 				async Task Act()
-					=> await That(subject).Should().BeEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -74,7 +74,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([1, 1, 2]);
 
 				async Task Act()
-					=> await That(subject).Should().BeEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -94,7 +94,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable((int[]) []);
 
 				async Task Act()
-					=> await That(subject).Should().BeEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -105,7 +105,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().BeEmpty();
+					=> await That(subject!).IsEmpty();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

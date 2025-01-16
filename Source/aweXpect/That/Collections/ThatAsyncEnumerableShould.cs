@@ -54,7 +54,7 @@ public static partial class ThatAsyncEnumerableShould
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
 					actual!,
-					_quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 					$"{_it} was <null>");
 			}
 
@@ -78,20 +78,20 @@ public static partial class ThatAsyncEnumerableShould
 
 				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
-						totalCount);
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+						totalCount, null);
 				}
 			}
 
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 					"could not verify, because it was cancelled early");
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount);
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount, null);
 		}
 	}
 
@@ -126,7 +126,7 @@ public static partial class ThatAsyncEnumerableShould
 				if (quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
-						totalCount);
+						totalCount, null);
 				}
 			}
 
@@ -138,7 +138,7 @@ public static partial class ThatAsyncEnumerableShould
 			}
 
 			return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount);
+				matchingCount + notMatchingCount, null);
 		}
 	}
 

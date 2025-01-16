@@ -4,11 +4,11 @@ using aweXpect.Tests.TestHelpers;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
-public sealed partial class EnumerableShould
+public sealed partial class ThatEnumerable
 {
-	public sealed class AllBeUnique
+	public sealed class AreAllUnique
 	{
 		public sealed class Tests
 		{
@@ -18,7 +18,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([1, 1, 1]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique().Using(new AllDifferentComparer());
+					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
 
 				await That(Act).Does().NotThrow();
 			}
@@ -29,7 +29,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -40,7 +40,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -57,7 +57,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 1, 2, -1]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -75,7 +75,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().AllBeUnique();
+					=> await That(subject!).AreAllUnique();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -94,7 +94,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["a", "a", "a"]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique().Using(new AllDifferentComparer());
+					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
 
 				await That(Act).Does().NotThrow();
 			}
@@ -105,7 +105,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -116,7 +116,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["a", "A"]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -127,7 +127,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["a", "A"]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique().IgnoringCase();
+					=> await That(subject).AreAllUnique().IgnoringCase();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -144,7 +144,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a"]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -161,7 +161,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "a", "b", "x"]);
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -179,7 +179,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().AllBeUnique();
+					=> await That(subject!).AreAllUnique();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -198,7 +198,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyClass> subject = ToEnumerable([1, 1, 1]).Select(x => new MyClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value).Using(new AllDifferentComparer());
+					=> await That(subject).AreAllUnique(x => x.Value).Using(new AllDifferentComparer());
 
 				await That(Act).Does().NotThrow();
 			}
@@ -209,7 +209,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3]).Select(x => new MyClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -220,7 +220,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyClass> subject = ToEnumerable([1, 2, 3, 1]).Select(x => new MyClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -238,7 +238,7 @@ public sealed partial class EnumerableShould
 					ToEnumerable([1, 2, 3, 1, 2, -1]).Select(x => new MyClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -259,7 +259,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "a", "a"]).Select(x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value).Using(new AllDifferentComparer());
+					=> await That(subject).AreAllUnique(x => x.Value).Using(new AllDifferentComparer());
 
 				await That(Act).Does().NotThrow();
 			}
@@ -270,7 +270,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "b", "c"]).Select(x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -281,7 +281,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "A"]).Select(x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -292,7 +292,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["a", "A"]).Select(x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value).IgnoringCase();
+					=> await That(subject).AreAllUnique(x => x.Value).IgnoringCase();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -310,7 +310,7 @@ public sealed partial class EnumerableShould
 					ToEnumerable(["a", "b", "c", "a"]).Select(x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -328,7 +328,7 @@ public sealed partial class EnumerableShould
 					ToEnumerable(["a", "b", "c", "a", "b", "x"]).Select(x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().AllBeUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

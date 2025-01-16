@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Tests.TestHelpers;
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
 public sealed partial class DictionaryShould
 {

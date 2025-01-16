@@ -20,7 +20,7 @@ public sealed partial class ThatObject
 					OuterClass expected = subject;
 
 					async Task Act()
-						=> await That(subject).Is().EqualTo(expected).Using(new MyComparer(false));
+						=> await That(subject).Is(expected).Using(new MyComparer(false));
 
 					await That(Act).Does().Throw<XunitException>()
 						.WithMessage("""
@@ -46,7 +46,7 @@ public sealed partial class ThatObject
 					};
 
 					async Task Act()
-						=> await That(subject).Is().EqualTo(expected).Using(new MyComparer(true));
+						=> await That(subject).Is(expected).Using(new MyComparer(true));
 
 					await That(Act).Does().NotThrow();
 				}

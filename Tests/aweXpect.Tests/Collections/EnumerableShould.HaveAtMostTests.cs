@@ -4,7 +4,7 @@ using aweXpect.Tests.TestHelpers;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
 public sealed partial class EnumerableShould
 {

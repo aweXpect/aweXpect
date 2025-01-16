@@ -1,11 +1,10 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
-using System.Linq;
 using aweXpect.Tests.TestHelpers;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
 public sealed partial class AsyncEnumerableShould
 {
@@ -67,7 +66,7 @@ public sealed partial class AsyncEnumerableShould
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
 
 				async Task Act()
 					=> await That(subject).Should().AllBe(5).Using(new AllEqualComparer());
@@ -78,7 +77,7 @@ public sealed partial class AsyncEnumerableShould
 			[Fact]
 			public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
 			{
-				int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
 
 				async Task Act()
 					=> await That(subject).Should().AllBe(5);
@@ -177,7 +176,7 @@ public sealed partial class AsyncEnumerableShould
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				string[] subject = Factory.GetFibonacciNumbers(i => $"item-{i}", 20).ToArray();
+				IAsyncEnumerable<string> subject = Factory.GetAsyncFibonacciNumbers(i => $"item-{i}", 20);
 
 				async Task Act()
 					=> await That(subject).Should().AllBe("item-5").Using(new AllEqualComparer());
@@ -188,7 +187,7 @@ public sealed partial class AsyncEnumerableShould
 			[Fact]
 			public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
 			{
-				string[] subject = Factory.GetFibonacciNumbers(i => $"item-{i}", 10).ToArray();
+				IAsyncEnumerable<string> subject = Factory.GetAsyncFibonacciNumbers(i => $"item-{i}", 10);
 
 				async Task Act()
 					=> await That(subject).Should().AllBe("item-5");
@@ -216,7 +215,7 @@ public sealed partial class AsyncEnumerableShould
 			[InlineData(false)]
 			public async Task WhenItemsDifferInCase_ShouldSucceedWhenIgnoringCase(bool ignoreCase)
 			{
-				string[] subject = ["foo", "FOO"];
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO"]);
 
 				async Task Act()
 					=> await That(subject).Should().AllBe("foo").IgnoringCase(ignoreCase);

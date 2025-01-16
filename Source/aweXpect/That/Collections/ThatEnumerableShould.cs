@@ -105,7 +105,7 @@ public static partial class ThatEnumerableShould
 			{
 				return new ConstraintResult.Failure<IEnumerable<TItem>>(
 					actual!,
-					_quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 					$"{_it} was <null>");
 			}
 
@@ -129,20 +129,20 @@ public static partial class ThatEnumerableShould
 
 				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
-						totalCount);
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+						totalCount, null);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
 					return new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder),
+						actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 						"could not verify, because it was cancelled early");
 				}
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount);
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount, null);
 		}
 	}
 
@@ -182,7 +182,7 @@ public static partial class ThatEnumerableShould
 				matchingCount = collectionOfT.Count;
 				totalCount = matchingCount;
 				return Task.FromResult(_quantifier.GetResult(
-					actual, _it, null, matchingCount, notMatchingCount, totalCount));
+					actual, _it, null, matchingCount, notMatchingCount, totalCount, null));
 			}
 
 			IEnumerable<TItem> materialized =
@@ -195,7 +195,7 @@ public static partial class ThatEnumerableShould
 				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-						totalCount));
+						totalCount, null));
 				}
 
 				if (cancellationToken.IsCancellationRequested)
@@ -208,7 +208,7 @@ public static partial class ThatEnumerableShould
 
 			totalCount = matchingCount + notMatchingCount;
 			return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-				totalCount));
+				totalCount, null));
 		}
 	}
 

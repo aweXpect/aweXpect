@@ -14,7 +14,7 @@ public sealed partial class ThatObject
 					object subject = new MyClass();
 
 					async Task Act()
-						=> await That(subject).Is().NotEqualTo(subject)
+						=> await That(subject).IsNot(subject)
 							.Because("we want to test the failure");
 
 					await That(Act).Does().Throw<XunitException>()
@@ -34,7 +34,7 @@ public sealed partial class ThatObject
 					object unexpected = new MyClass();
 
 					async Task Act()
-						=> await That(subject).Is().NotEqualTo(unexpected);
+						=> await That(subject).IsNot(unexpected);
 
 					await That(Act).Does().NotThrow();
 				}
@@ -46,7 +46,7 @@ public sealed partial class ThatObject
 					MyClass? expected = null;
 
 					async Task Act()
-						=> await That(subject).Is().NotEqualTo(expected);
+						=> await That(subject).IsNot(expected);
 
 					await That(Act).Does().Throw<XunitException>()
 						.WithMessage("""
@@ -62,7 +62,7 @@ public sealed partial class ThatObject
 					MyClass? subject = null;
 
 					async Task Act()
-						=> await That(subject).Is().NotEqualTo(new MyClass());
+						=> await That(subject).IsNot(new MyClass());
 
 					await That(Act).Does().NotThrow();
 				}

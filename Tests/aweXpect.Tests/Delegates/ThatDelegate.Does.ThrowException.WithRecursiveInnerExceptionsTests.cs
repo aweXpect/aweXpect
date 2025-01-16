@@ -23,13 +23,13 @@ public sealed partial class ThatDelegate
 
 					async Task Act()
 						=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
-							e => e.HasAtLeast(minimum, x => x.Is<CustomException>()));
+							e => e.AtLeast(minimum).Are<CustomException>());
 
 					await That(Act).Does().Throw<XunitException>().OnlyIf(shouldThrow)
 						.WithMessage($"""
 						              Expected action to
-						              throw an exception with recursive inner exceptions which should have at least {minimum} items be type CustomException,
-						              but only 1 of 5 were
+						              throw an exception with recursive inner exceptions which should have at least {minimum} items be of type CustomException,
+						              but only 1 of 5 did
 						              """);
 				}
 
@@ -41,7 +41,7 @@ public sealed partial class ThatDelegate
 
 					Exception? result = await That(Delegate)
 						.Does().ThrowException().WithRecursiveInnerExceptions(
-							e => e.Should().HaveNone(x => x.Satisfy(_ => false)));
+							e => e.All().Satisfy(_ => true));
 
 					await That(result).IsSameAs(exception);
 				}
@@ -53,13 +53,13 @@ public sealed partial class ThatDelegate
 
 					async Task Act()
 						=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
-							e => e.Should().HaveAll(x => x.Satisfy(_ => false)));
+							e => e.All().Satisfy(_ => false));
 
 					await That(Act).Does().Throw<XunitException>()
 						.WithMessage("""
 						             Expected action to
 						             throw an exception with recursive inner exceptions which should have all items satisfy _ => false,
-						             but not all were
+						             but not all did
 						             """);
 				}
 
@@ -70,7 +70,7 @@ public sealed partial class ThatDelegate
 
 					async Task Act()
 						=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
-							e => e.Should().HaveAll(x => x.Satisfy(_ => false)));
+							e => e.All().Satisfy(_ => false));
 
 					await That(Act).Does().NotThrow();
 				}

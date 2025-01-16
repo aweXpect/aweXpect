@@ -28,23 +28,5 @@ public class ExpectTests
 			yield return index++;
 		}
 	}
-
-	[Fact]
-	public async Task ShouldWithExpressionBuilder_ShouldApplyMethods()
-	{
-		using CancellationTokenSource cts = new();
-		CancellationToken token = cts.Token;
-		IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
-
-		async Task Act()
-			=> await That(subject).Should(b => b.WithCancellation(token)).HaveAll(x => x.Satisfy(y => y < 6));
-
-		await That(Act).Does().Throw<XunitException>()
-			.WithMessage("""
-			             Expected subject to
-			             have all items satisfy y => y < 6,
-			             but could not verify, because it was cancelled early
-			             """);
-	}
 #endif
 }

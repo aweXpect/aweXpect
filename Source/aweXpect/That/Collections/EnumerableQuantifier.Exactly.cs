@@ -1,5 +1,4 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -19,33 +18,35 @@ public abstract partial class EnumerableQuantifier
 			=> matchingCount > expected;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> (expected, expectationBuilder is null) switch
+		public override string GetExpectation(string it, string? expectationExpression)
+			=> (expected, expectationExpression is null) switch
 			{
 				(1, true) => "have exactly one item",
-				(1, false) => $"have exactly one item {expectationBuilder}",
+				(1, false) => $"have exactly one item {expectationExpression}",
 				(_, true) => $"have exactly {expected} items",
-				(_, false) => $"have exactly {expected} items {expectationBuilder}"
+				(_, false) => $"have exactly {expected} items {expectationExpression}"
 			};
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
 			string it,
-			ExpectationBuilder? expectationBuilder,
+			string? expectationExpression,
 			int matchingCount,
 			int notMatchingCount,
-			int? totalCount)
+			int? totalCount,
+			string? verb)
 		{
+			verb ??= "were";
 			if (matchingCount > expected)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder),
-					(totalCount.HasValue, expectationBuilder is null) switch
+					GetExpectation(it, expectationExpression),
+					(totalCount.HasValue, expectationExpression is null) switch
 					{
 						(true, true) => $"found {matchingCount}",
-						(true, false) => $"{matchingCount} of {totalCount} were",
+						(true, false) => $"{matchingCount} of {totalCount} {verb}",
 						(false, true) => $"found at least {matchingCount}",
-						(false, false) => $"at least {matchingCount} were"
+						(false, false) => $"at least {matchingCount} {verb}"
 					});
 			}
 
@@ -54,18 +55,18 @@ public abstract partial class EnumerableQuantifier
 				if (matchingCount == expected)
 				{
 					return new ConstraintResult.Success<TEnumerable>(actual,
-						GetExpectation(it, expectationBuilder));
+						GetExpectation(it, expectationExpression));
 				}
 
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder),
-					expectationBuilder is null
+					GetExpectation(it, expectationExpression),
+					expectationExpression is null
 						? $"found only {matchingCount}"
-						: $"only {matchingCount} of {totalCount} were");
+						: $"only {matchingCount} of {totalCount} {verb}");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GetExpectation(it, expectationBuilder),
+				GetExpectation(it, expectationExpression),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

@@ -8,7 +8,6 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
-using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -35,17 +34,18 @@ public static partial class ThatEnumerable
 			{
 				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
 			}
-			
+
 			if (expected is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} cannot compare to <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
+					$"{it} cannot compare to <null>");
 			}
 
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
 			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
-			
+
 			foreach (TItem item in materializedEnumerable)
 			{
 				if (matcher.Verify(it, item, options, maximumNumber, out string? failure))
@@ -98,7 +98,7 @@ public static partial class ThatEnumerable
 			{
 				return new ConstraintResult.Failure<IEnumerable<TItem>>(
 					actual!,
-					_quantifier.GetExpectation(_it, _itemExpectationBuilder),
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 					$"{_it} was <null>");
 			}
 
@@ -122,20 +122,89 @@ public static partial class ThatEnumerable
 
 				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
-						totalCount);
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+						totalCount, null);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
 					return new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder),
+						actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 						"could not verify, because it was cancelled early");
 				}
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount);
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount, null);
+		}
+	}
+
+	private readonly struct SyncCollectionConstraint2<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
+	{
+		private readonly string _it;
+		private readonly EnumerableQuantifier _quantifier;
+		private readonly Func<string> _expectationText;
+		private readonly Func<TItem, bool> _predicate;
+
+		public SyncCollectionConstraint2(string it,
+			EnumerableQuantifier quantifier,
+			Func<string> expectationText,
+			Func<TItem, bool> predicate)
+		{
+			_it = it;
+			_quantifier = quantifier;
+			_expectationText = expectationText;
+			_predicate = predicate;
+		}
+
+		public async Task<ConstraintResult> IsMetBy(
+			IEnumerable<TItem> actual,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			await Task.Yield();
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(
+					actual!,
+					_quantifier.GetExpectation(_it, _expectationText()),
+					$"{_it} was <null>");
+			}
+
+			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			bool cancelEarly = actual is not ICollection<TItem>;
+			int matchingCount = 0;
+			int notMatchingCount = 0;
+			int? totalCount = null;
+
+			foreach (TItem item in materialized)
+			{
+				if (_predicate(item))
+				{
+					matchingCount++;
+				}
+				else
+				{
+					notMatchingCount++;
+				}
+
+				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				{
+					return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
+						totalCount, "did");
+				}
+
+				if (cancellationToken.IsCancellationRequested)
+				{
+					return new ConstraintResult.Failure<IEnumerable<TItem>>(
+						actual, _quantifier.GetExpectation(_it, _expectationText()),
+						"could not verify, because it was cancelled early");
+				}
+			}
+
+			return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount, "did");
 		}
 	}
 
@@ -175,7 +244,7 @@ public static partial class ThatEnumerable
 				matchingCount = collectionOfT.Count;
 				totalCount = matchingCount;
 				return Task.FromResult(_quantifier.GetResult(
-					actual, _it, null, matchingCount, notMatchingCount, totalCount));
+					actual, _it, null, matchingCount, notMatchingCount, totalCount, null));
 			}
 
 			IEnumerable<TItem> materialized =
@@ -188,7 +257,7 @@ public static partial class ThatEnumerable
 				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-						totalCount));
+						totalCount, null));
 				}
 
 				if (cancellationToken.IsCancellationRequested)
@@ -201,7 +270,7 @@ public static partial class ThatEnumerable
 
 			totalCount = matchingCount + notMatchingCount;
 			return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-				totalCount));
+				totalCount, null));
 		}
 	}
 

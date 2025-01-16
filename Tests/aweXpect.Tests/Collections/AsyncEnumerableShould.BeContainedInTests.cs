@@ -4,7 +4,7 @@ using System.Linq;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
 public sealed partial class AsyncEnumerableShould
 {

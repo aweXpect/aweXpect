@@ -19,36 +19,38 @@ public abstract partial class EnumerableQuantifier
 			=> notMatchingCount > 0;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> expectationBuilder == null
+		public override string GetExpectation(string it, string? expectationExpression)
+			=> expectationExpression == null
 				? "have all items"
-				: $"have all items {expectationBuilder}";
+				: $"have all items {expectationExpression}";
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
 			string it,
-			ExpectationBuilder? expectationBuilder,
+			string? expectationExpression,
 			int matchingCount,
 			int notMatchingCount,
-			int? totalCount)
+			int? totalCount,
+			string? verb)
 		{
+			verb ??= "were";
 			if (notMatchingCount > 0)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder),
+					GetExpectation(it, expectationExpression),
 					totalCount.HasValue
-						? $"only {matchingCount} of {totalCount} were"
-						: "not all were");
+						? $"only {matchingCount} of {totalCount} {verb}"
+						: $"not all {verb}");
 			}
 
 			if (matchingCount == totalCount)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder));
+					GetExpectation(it, expectationExpression));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GetExpectation(it, expectationBuilder),
+				GetExpectation(it, expectationExpression),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

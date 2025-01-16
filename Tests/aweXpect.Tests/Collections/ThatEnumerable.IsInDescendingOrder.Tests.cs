@@ -2,11 +2,11 @@
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace aweXpect.Tests.Collections;
+namespace aweXpect.Tests;
 
-public sealed partial class EnumerableShould
+public sealed partial class ThatEnumerable
 {
-	public sealed class BeInDescendingOrder
+	public sealed class IsInDescendingOrder
 	{
 		public sealed class Tests
 		{
@@ -16,7 +16,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([3, 3, 2, 1, 3]);
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -38,7 +38,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int> subject = ToEnumerable([3, 2, 1]);
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -49,7 +49,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().BeInDescendingOrder();
+					=> await That(subject!).IsInDescendingOrder();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -68,7 +68,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["A", "a"]);
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -87,7 +87,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["A", "a"]);
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder().Using(StringComparer.OrdinalIgnoreCase);
+					=> await That(subject).IsInDescendingOrder().Using(StringComparer.OrdinalIgnoreCase);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -98,7 +98,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["c", "b", "a", "c"]);
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -119,7 +119,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string> subject = ToEnumerable(["c", "b", "a"]);
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -130,7 +130,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().BeInDescendingOrder();
+					=> await That(subject!).IsInDescendingOrder();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -149,7 +149,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyIntClass> subject = ToEnumerable([3, 3, 2, 1, 3], x => new MyIntClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder(x => x.Value);
+					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -181,7 +181,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyIntClass> subject = ToEnumerable([3, 2, 1], x => new MyIntClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder(x => x.Value);
+					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -200,7 +200,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["A", "a"], x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder(x => x.Value);
+					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -223,7 +223,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["A", "a"], x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder(x => x.Value)
+					=> await That(subject).IsInDescendingOrder(x => x.Value)
 						.Using(StringComparer.OrdinalIgnoreCase);
 
 				await That(Act).Does().NotThrow();
@@ -235,7 +235,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["c", "b", "a", "c"], x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder(x => x.Value);
+					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -264,7 +264,7 @@ public sealed partial class EnumerableShould
 				IEnumerable<MyStringClass> subject = ToEnumerable(["c", "b", "a"], x => new MyStringClass(x));
 
 				async Task Act()
-					=> await That(subject).Should().BeInDescendingOrder(x => x.Value);
+					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
 				await That(Act).Does().NotThrow();
 			}

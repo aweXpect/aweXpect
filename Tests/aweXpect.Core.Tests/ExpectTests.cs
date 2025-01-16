@@ -6,7 +6,7 @@ public class ExpectTests
 	public async Task ShouldSupportCollectionExpressionsAsSubject()
 	{
 		async Task Act()
-			=> await That([1, 2, 3]).Should().BeInAscendingOrder();
+			=> await That([1, 2, 3]).IsInAscendingOrder();
 
 		await That(Act).Does().NotThrow();
 	}

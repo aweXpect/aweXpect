@@ -7,16 +7,16 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Start expectations on the current enumerable of <typeparamref name="TItem" /> values.
+	///     Expect that all items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
-	public static ThatAll<TItem> All<TItem>(
+	public static Elements<TItem> All<TItem>(
 		this IExpectSubject<IEnumerable<TItem>> subject)
-		=> throw new NotImplementedException();
-
+	=> new(subject, EnumerableQuantifier.All);
+	
 	/// <summary>
-	///     Expectations on all items of the <see cref="IEnumerable{TItem}" />.
+	///     Expect that all items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
-	public partial class ThatAll<TItem>
-	{
-	}
+	public static Elements All(
+		this IExpectSubject<IEnumerable<string?>> subject)
+		=> new(subject, EnumerableQuantifier.All);
 }

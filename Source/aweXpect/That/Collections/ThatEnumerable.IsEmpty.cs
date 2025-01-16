@@ -8,23 +8,23 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatEnumerableShould
+public static partial class ThatEnumerable
 {
 	/// <summary>
 	///     Verifies that the collection is empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>> BeEmpty<TItem>(
-		this IThatShould<IEnumerable<TItem>> source)
-		=> new(source.ExpectationBuilder
+	public static AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>> IsEmpty<TItem>(
+		this IExpectSubject<IEnumerable<TItem>> source)
+		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it => new BeEmptyConstraint<TItem>(it)),
 			source);
 
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>> NotBeEmpty<TItem>(
-			this IThatShould<IEnumerable<TItem>> source)
-		=> new(source.ExpectationBuilder
+	public static AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>> IsNotEmpty<TItem>(
+			this IExpectSubject<IEnumerable<TItem>> source)
+		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
 			source);
 
