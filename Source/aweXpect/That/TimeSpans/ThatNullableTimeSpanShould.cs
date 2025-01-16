@@ -13,7 +13,7 @@ public static partial class ThatNullableTimeSpanShould
 	/// <summary>
 	///     Start expectations for current <see cref="TimeSpan" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<TimeSpan?> Should(this IExpectSubject<TimeSpan?> subject)
+	public static IThatShould<TimeSpan?> Should(this IExpectSubject<TimeSpan?> subject)
 		=> subject.Should(That.WithoutAction);
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan? difference)

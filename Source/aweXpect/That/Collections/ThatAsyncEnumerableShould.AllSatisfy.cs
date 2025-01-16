@@ -12,9 +12,9 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		AllSatisfy<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")

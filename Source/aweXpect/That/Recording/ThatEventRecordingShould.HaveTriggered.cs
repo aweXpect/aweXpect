@@ -15,7 +15,7 @@ public static partial class ThatEventRecordingShould
 	/// <remarks>
 	///     This will stop the recording on the <see cref="IEventRecording{TSubject}" /> subject.
 	/// </remarks>
-	public static EventTriggerResult<TSubject> HaveTriggered<TSubject>(this IThat<IEventRecording<TSubject>> source,
+	public static EventTriggerResult<TSubject> HaveTriggered<TSubject>(this IThatShould<IEventRecording<TSubject>> source,
 		string eventName)
 		where TSubject : notnull
 	{

@@ -10,7 +10,7 @@ public static partial class ThatDateOnlyShould
 	/// <summary>
 	///     Verifies that the month of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateOnly, IThat<DateOnly>> HaveMonth(this IThat<DateOnly> source,
+	public static AndOrResult<DateOnly, IThatShould<DateOnly>> HaveMonth(this IThatShould<DateOnly> source,
 		int? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
@@ -23,8 +23,8 @@ public static partial class ThatDateOnlyShould
 	/// <summary>
 	///     Verifies that the month of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateOnly, IThat<DateOnly>> NotHaveMonth(
-		this IThat<DateOnly> source,
+	public static AndOrResult<DateOnly, IThatShould<DateOnly>> NotHaveMonth(
+		this IThatShould<DateOnly> source,
 		int? unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(

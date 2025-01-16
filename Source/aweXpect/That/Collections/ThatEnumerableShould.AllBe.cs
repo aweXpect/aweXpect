@@ -17,13 +17,13 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>
 		AllBe<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThatShould<IEnumerable<TItem>> source,
 			TItem expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeConstraint<TItem>(
 					it,
@@ -36,12 +36,12 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> AllBe(
-		this IThat<IEnumerable<string?>> source,
+	public static StringEqualityResult<IEnumerable<string?>, IThatShould<IEnumerable<string?>>> AllBe(
+		this IThatShould<IEnumerable<string?>> source,
 		string? expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThatShould<IEnumerable<string?>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeConstraint<string?>(
 					it,

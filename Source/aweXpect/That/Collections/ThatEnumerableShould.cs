@@ -21,7 +21,7 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Start expectations on the current enumerable of <typeparamref name="TItem" /> values.
 	/// </summary>
-	public static IThat<IEnumerable<TItem>> Should<TItem>(
+	public static IThatShould<IEnumerable<TItem>> Should<TItem>(
 		this IExpectSubject<IEnumerable<TItem>> subject)
 		=> subject.Should(That.WithoutAction);
 
@@ -87,7 +87,7 @@ public static partial class ThatEnumerableShould
 
 		public SyncCollectionConstraint(string it,
 			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
+			Action<IThatShould<TItem>> expectations)
 		{
 			_it = it;
 			_quantifier = quantifier;

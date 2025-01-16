@@ -24,7 +24,7 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Start expectations on the collection of <typeparamref name="TItem" /> values.
 	/// </summary>
-	public static IThat<IAsyncEnumerable<TItem>> Should<TItem>(
+	public static IThatShould<IAsyncEnumerable<TItem>> Should<TItem>(
 		this IExpectSubject<IAsyncEnumerable<TItem>> subject)
 		=> subject.Should(That.WithoutAction);
 
@@ -36,7 +36,7 @@ public static partial class ThatAsyncEnumerableShould
 
 		public AsyncCollectionConstraint(string it,
 			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
+			Action<IThatShould<TItem>> expectations)
 		{
 			_it = it;
 			_quantifier = quantifier;

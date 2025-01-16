@@ -10,7 +10,7 @@ public static partial class ThatNullableTimeSpanShould
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<TimeSpan?, IThat<TimeSpan?>> BePositive(this IThat<TimeSpan?> source)
+	public static AndOrResult<TimeSpan?, IThatShould<TimeSpan?>> BePositive(this IThatShould<TimeSpan?> source)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BePositiveConstraint(it)),
@@ -19,8 +19,8 @@ public static partial class ThatNullableTimeSpanShould
 	/// <summary>
 	///     Verifies that the subject is not positive.
 	/// </summary>
-	public static AndOrResult<TimeSpan?, IThat<TimeSpan?>> NotBePositive(
-		this IThat<TimeSpan?> source)
+	public static AndOrResult<TimeSpan?, IThatShould<TimeSpan?>> NotBePositive(
+		this IThatShould<TimeSpan?> source)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new NotBePositiveConstraint(it)),

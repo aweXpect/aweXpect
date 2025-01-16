@@ -9,7 +9,7 @@ public static partial class ThatDateTimeShould
 	/// <summary>
 	///     Verifies that the hour of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> HaveHour(this IThat<DateTime> source,
+	public static AndOrResult<DateTime, IThatShould<DateTime>> HaveHour(this IThatShould<DateTime> source,
 		int? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
@@ -22,8 +22,8 @@ public static partial class ThatDateTimeShould
 	/// <summary>
 	///     Verifies that the hour of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> NotHaveHour(
-		this IThat<DateTime> source,
+	public static AndOrResult<DateTime, IThatShould<DateTime>> NotHaveHour(
+		this IThatShould<DateTime> source,
 		int? unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(

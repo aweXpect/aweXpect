@@ -10,12 +10,12 @@ public static partial class ThatDateTimeOffsetShould
 	/// <summary>
 	///     Verifies that the subject is on or after the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateTimeOffset, IThat<DateTimeOffset>> BeOnOrAfter(
-		this IThat<DateTimeOffset> source,
+	public static TimeToleranceResult<DateTimeOffset, IThatShould<DateTimeOffset>> BeOnOrAfter(
+		this IThatShould<DateTimeOffset> source,
 		DateTimeOffset? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateTimeOffset, IThat<DateTimeOffset>>(
+		return new TimeToleranceResult<DateTimeOffset, IThatShould<DateTimeOffset>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ConditionConstraint(
 					it,
@@ -31,12 +31,12 @@ public static partial class ThatDateTimeOffsetShould
 	/// <summary>
 	///     Verifies that the subject is not on or after the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateTimeOffset, IThat<DateTimeOffset>> NotBeOnOrAfter(
-		this IThat<DateTimeOffset> source,
+	public static TimeToleranceResult<DateTimeOffset, IThatShould<DateTimeOffset>> NotBeOnOrAfter(
+		this IThatShould<DateTimeOffset> source,
 		DateTimeOffset? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateTimeOffset, IThat<DateTimeOffset>>(
+		return new TimeToleranceResult<DateTimeOffset, IThatShould<DateTimeOffset>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ConditionConstraint(
 					it,

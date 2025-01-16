@@ -20,13 +20,13 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		AllBe<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			TItem expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeConstraint<TItem>(
 					it,
@@ -39,12 +39,12 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection are equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>> AllBe(
-		this IThat<IAsyncEnumerable<string?>> source,
+	public static StringEqualityResult<IAsyncEnumerable<string?>, IThatShould<IAsyncEnumerable<string?>>> AllBe(
+		this IThatShould<IAsyncEnumerable<string?>> source,
 		string? expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>(
+		return new StringEqualityResult<IAsyncEnumerable<string?>, IThatShould<IAsyncEnumerable<string?>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeConstraint<string?>(
 					it,

@@ -6,7 +6,7 @@ namespace aweXpect.Tests.TestHelpers;
 
 public static class MyConstraintExtensions
 {
-	public static AndOrResult<bool, IThat<bool>> IsMyConstraint(this IThat<bool> subject,
+	public static AndOrResult<bool, IThatShould<bool>> IsMyConstraint(this IThatShould<bool> subject,
 		string expectation,
 		Func<bool, bool> isSuccess, string failureMessage)
 		=> new(subject.ExpectationBuilder.AddConstraint(_

@@ -194,12 +194,12 @@ public static class Expect
 
 	[DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
 	internal readonly struct ThatSubject<T>(ExpectationBuilder expectationBuilder)
-		: IExpectSubject<T>, IThat<T>
+		: IExpectSubject<T>, IThatShould<T>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
 
 		/// <inheritdoc />
-		public IThat<T> Should(Action<ExpectationBuilder> builderOptions)
+		public IThatShould<T> Should(Action<ExpectationBuilder> builderOptions)
 		{
 			builderOptions.Invoke(ExpectationBuilder);
 			return this;

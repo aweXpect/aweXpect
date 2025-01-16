@@ -13,7 +13,7 @@ public static partial class ThatNullableJsonElementShould
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> is an <see cref="JsonValueKind.Array" />.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IThat<JsonElement?>> BeArray(this IThat<JsonElement?> source)
+	public static AndOrResult<JsonElement?, IThatShould<JsonElement?>> BeArray(this IThatShould<JsonElement?> source)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeValueKindConstraint(it, JsonValueKind.Array)),
@@ -23,7 +23,7 @@ public static partial class ThatNullableJsonElementShould
 	///     Verifies that the subject <see cref="JsonElement" /> is an <see cref="JsonValueKind.Array" />
 	///     whose value satisfies the <paramref name="expectation" />.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IThat<JsonElement?>> BeArray(this IThat<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IThatShould<JsonElement?>> BeArray(this IThatShould<JsonElement?> source,
 		Func<IJsonArrayResult, IJsonArrayResult> expectation,
 		Func<JsonOptions, JsonOptions>? options = null)
 	{
@@ -34,7 +34,7 @@ public static partial class ThatNullableJsonElementShould
 			jsonOptions = options(jsonOptions);
 		}
 
-		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(
+		return new AndOrResult<JsonElement?, IThatShould<JsonElement?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeArrayConstraint(it, expectation, jsonOptions)),
 			source);

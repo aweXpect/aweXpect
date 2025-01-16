@@ -12,8 +12,8 @@ public static partial class ThatStringShould
 	/// <remarks>
 	///     That is, that the string could be the result of a call to <see cref="string.ToLowerInvariant()" />.
 	/// </remarks>
-	public static AndOrResult<string?, IThat<string?>> BeLowerCased(
-		this IThat<string?> source)
+	public static AndOrResult<string?, IThatShould<string?>> BeLowerCased(
+		this IThatShould<string?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new BeLowerCasedConstraint(it)),
 			source);
@@ -24,8 +24,8 @@ public static partial class ThatStringShould
 	/// <remarks>
 	///     That is, that the string could not be the result of a call to <see cref="string.ToLowerInvariant()" />.
 	/// </remarks>
-	public static AndOrResult<string, IThat<string?>> NotBeLowerCased(
-		this IThat<string?> source)
+	public static AndOrResult<string, IThatShould<string?>> NotBeLowerCased(
+		this IThatShould<string?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NotBeLowerCasedConstraint(it)),
 			source);

@@ -10,12 +10,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject ends with the <paramref name="expected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> EndWith(
-		this IThat<string?> source,
+	public static StringEqualityTypeResult<string?, IThatShould<string?>> EndWith(
+		this IThatShould<string?> source,
 		string expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThatShould<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new EndWithConstraint(it, expected, options)),
 			source,
@@ -25,12 +25,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject does not end with the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> NotEndWith(
-		this IThat<string?> source,
+	public static StringEqualityTypeResult<string?, IThatShould<string?>> NotEndWith(
+		this IThatShould<string?> source,
 		string unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThatShould<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new NotEndWithConstraint(it, unexpected, options)),
 			source,

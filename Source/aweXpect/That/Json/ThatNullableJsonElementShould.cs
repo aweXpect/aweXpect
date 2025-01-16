@@ -15,7 +15,7 @@ public static partial class ThatNullableJsonElementShould
 	/// <summary>
 	///     Start expectations for the current <see cref="JsonElement" />? <paramref name="subject" />.
 	/// </summary>
-	public static IThat<JsonElement?> Should(
+	public static IThatShould<JsonElement?> Should(
 		this IExpectSubject<JsonElement?> subject)
 		=> subject.Should(That.WithoutAction);
 	

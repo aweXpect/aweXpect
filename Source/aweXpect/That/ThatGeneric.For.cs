@@ -16,7 +16,7 @@ public static partial class ThatGeneric
 		Expression<Func<T, TMember?>> memberSelector,
 		Action<IExpectSubject<TMember?>> expectations)
 	{
-		IThat<T> should = source.Should(expectationBuilder => expectationBuilder
+		IThatShould<T> should = source.Should(expectationBuilder => expectationBuilder
 			.ForMember(
 				MemberAccessor<T, TMember?>.FromExpression(memberSelector),
 				(member, expectation) => $"for {member}{expectation}")

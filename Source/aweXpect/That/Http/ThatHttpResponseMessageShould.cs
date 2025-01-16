@@ -21,7 +21,7 @@ public static partial class ThatHttpResponseMessageShould
 	/// <summary>
 	///     Start expectations for the current <see cref="HttpResponseMessage" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<HttpResponseMessage?> Should(
+	public static IThatShould<HttpResponseMessage?> Should(
 		this IExpectSubject<HttpResponseMessage?> subject)
 		=> subject.Should(That.WithoutAction);
 

@@ -9,14 +9,14 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that between <paramref name="minimum" />...
 	/// </summary>
-	public static BetweenResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>, IThat<TItem>>
-		HaveBetween<TItem>(this IThat<IEnumerable<TItem>> source, int minimum)
-		=> new((maximum, expectations) => new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+	public static BetweenResult<AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>, IThatShould<TItem>>
+		HaveBetween<TItem>(this IThatShould<IEnumerable<TItem>> source, int minimum)
+		=> new((maximum, expectations) => new AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum),
 					expectations)),
 			source),
-			maximum => new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			maximum => new AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 				source.ExpectationBuilder.AddConstraint(it
 					=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum))),
 				source));

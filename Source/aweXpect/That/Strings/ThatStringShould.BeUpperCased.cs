@@ -12,8 +12,8 @@ public static partial class ThatStringShould
 	/// <remarks>
 	///     That is, that the string could be the result of a call to <see cref="string.ToUpperInvariant()" />.
 	/// </remarks>
-	public static AndOrResult<string?, IThat<string?>> BeUpperCased(
-		this IThat<string?> source)
+	public static AndOrResult<string?, IThatShould<string?>> BeUpperCased(
+		this IThatShould<string?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new BeUpperCasedConstraint(it)),
 			source);
@@ -24,8 +24,8 @@ public static partial class ThatStringShould
 	/// <remarks>
 	///     That is, that the string could not be the result of a call to <see cref="string.ToUpperInvariant()" />.
 	/// </remarks>
-	public static AndOrResult<string, IThat<string?>> NotBeUpperCased(
-		this IThat<string?> source)
+	public static AndOrResult<string, IThatShould<string?>> NotBeUpperCased(
+		this IThatShould<string?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NotBeUpperCasedConstraint(it)),
 			source);

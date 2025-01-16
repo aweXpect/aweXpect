@@ -9,8 +9,8 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<string?, IThat<string?>> BeNull(
-		this IThat<string?> source)
+	public static AndOrResult<string?, IThatShould<string?>> BeNull(
+		this IThatShould<string?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new BeNullConstraint(it)),
 			source);
@@ -18,8 +18,8 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is not <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<string, IThat<string?>> NotBeNull(
-		this IThat<string?> source)
+	public static AndOrResult<string, IThatShould<string?>> NotBeNull(
+		this IThatShould<string?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NotBeNullConstraint(it)),
 			source);

@@ -17,7 +17,7 @@ public static partial class ThatSignalerShould
 	///     Verifies that the expected callback was not signaled.
 	/// </summary>
 	public static SignalCountResult NotBeSignaled(
-		this IThat<Signaler> source)
+		this IThatShould<Signaler> source)
 	{
 		SignalerOptions options = new();
 		return new SignalCountResult(source.ExpectationBuilder.AddConstraint(it
@@ -30,7 +30,7 @@ public static partial class ThatSignalerShould
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled.
 	/// </summary>
 	public static SignalCountResult<TParameter> NotBeSignaled<TParameter>(
-		this IThat<Signaler<TParameter>> source)
+		this IThatShould<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
 		return new SignalCountResult<TParameter>(source.ExpectationBuilder.AddConstraint(it
@@ -44,7 +44,7 @@ public static partial class ThatSignalerShould
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult NotBeSignaled(
-		this IThat<Signaler> source,
+		this IThatShould<Signaler> source,
 		Times times)
 	{
 		SignalerOptions options = new();
@@ -59,7 +59,7 @@ public static partial class ThatSignalerShould
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult<TParameter> NotBeSignaled<TParameter>(
-		this IThat<Signaler<TParameter>> source,
+		this IThatShould<Signaler<TParameter>> source,
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();

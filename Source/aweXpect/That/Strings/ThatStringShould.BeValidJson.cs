@@ -15,7 +15,7 @@ public static partial class ThatStringShould
 	///     Verifies that the subject is a valid JSON string.
 	/// </summary>
 	public static JsonWhichResult BeValidJson(
-		this IThat<string?> source,
+		this IThatShould<string?> source,
 		Func<JsonDocumentOptions, JsonDocumentOptions>? options = null)
 	{
 		JsonDocumentOptions defaultOptions = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get();

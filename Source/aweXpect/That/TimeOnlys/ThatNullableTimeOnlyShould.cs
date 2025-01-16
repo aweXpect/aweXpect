@@ -16,7 +16,7 @@ public static partial class ThatNullableTimeOnlyShould
 	/// <summary>
 	///     Start expectations for current <see cref="TimeOnly" />? <paramref name="subject" />.
 	/// </summary>
-	public static IThat<TimeOnly?> Should(this IExpectSubject<TimeOnly?> subject)
+	public static IThatShould<TimeOnly?> Should(this IExpectSubject<TimeOnly?> subject)
 		=> subject.Should(That.WithoutAction);
 
 	private readonly struct PropertyConstraint<T>(

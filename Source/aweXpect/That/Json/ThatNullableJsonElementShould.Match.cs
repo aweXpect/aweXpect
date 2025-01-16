@@ -14,7 +14,7 @@ public static partial class ThatNullableJsonElementShould
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> matches the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IThat<JsonElement?>> Match(this IThat<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IThatShould<JsonElement?>> Match(this IThatShould<JsonElement?> source,
 		object? expected,
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -26,7 +26,7 @@ public static partial class ThatNullableJsonElementShould
 			jsonOptions = options(jsonOptions);
 		}
 
-		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
+		return new AndOrResult<JsonElement?, IThatShould<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new MatchConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}
@@ -34,7 +34,7 @@ public static partial class ThatNullableJsonElementShould
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> matches the <paramref name="expected" /> array.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IThat<JsonElement?>> Match<T>(this IThat<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IThatShould<JsonElement?>> Match<T>(this IThatShould<JsonElement?> source,
 		IEnumerable<T> expected,
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -46,7 +46,7 @@ public static partial class ThatNullableJsonElementShould
 			jsonOptions = options(jsonOptions);
 		}
 
-		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
+		return new AndOrResult<JsonElement?, IThatShould<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new MatchConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}

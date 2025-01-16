@@ -10,7 +10,7 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to be the same as the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> BeSameAs<T>(this IThat<T> source,
+	public static AndOrResult<T, IThatShould<T>> BeSameAs<T>(this IThatShould<T> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		=> new(source.ExpectationBuilder
@@ -21,7 +21,7 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to not be the same as the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> NotBeSameAs<T>(this IThat<T> source,
+	public static AndOrResult<T, IThatShould<T>> NotBeSameAs<T>(this IThatShould<T> source,
 		object? unexpected,
 		[CallerArgumentExpression("unexpected")]
 		string doNotPopulateThisValue = "")

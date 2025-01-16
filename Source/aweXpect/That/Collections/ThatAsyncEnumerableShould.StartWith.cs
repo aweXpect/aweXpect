@@ -22,14 +22,14 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		StartWith<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new StartWithConstraint<TItem, object?>(it, doNotPopulateThisValue, expected.ToArray(),
@@ -41,13 +41,13 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		StartWith<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			params TItem[] expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new StartWithConstraint<TItem, object?>(it, Formatter.Format(expected), expected, options)),
@@ -58,14 +58,14 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>
 		StartWith(
-			this IThat<IAsyncEnumerable<string>> source,
+			this IThatShould<IAsyncEnumerable<string>> source,
 			IEnumerable<string> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new StartWithConstraint<string, string>(it, doNotPopulateThisValue, expected.ToArray(),
@@ -77,13 +77,13 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>
 		StartWith(
-			this IThat<IAsyncEnumerable<string>> source,
+			this IThatShould<IAsyncEnumerable<string>> source,
 			params string[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new StartWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
@@ -94,15 +94,15 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		NotStartWith<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			IEnumerable<TItem> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new NotStartWithConstraint<TItem, object?>(it, doNotPopulateThisValue, unexpected.ToArray(),
@@ -114,13 +114,13 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		NotStartWith<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			params TItem[] unexpected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new NotStartWithConstraint<TItem, object?>(it, Formatter.Format(unexpected), unexpected,
@@ -132,15 +132,15 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>
 		NotStartWith(
-			this IThat<IAsyncEnumerable<string>> source,
+			this IThatShould<IAsyncEnumerable<string>> source,
 			IEnumerable<string> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new NotStartWithConstraint<string, string>(it, doNotPopulateThisValue, unexpected.ToArray(),
@@ -152,13 +152,13 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>
 		NotStartWith(
-			this IThat<IAsyncEnumerable<string>> source,
+			this IThatShould<IAsyncEnumerable<string>> source,
 			params string[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new NotStartWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,

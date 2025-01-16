@@ -10,8 +10,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<sbyte, IThat<sbyte>> BeNegative(
-		this IThat<sbyte> source)
+	public static AndOrResult<sbyte, IThatShould<sbyte>> BeNegative(
+		this IThatShould<sbyte> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<sbyte>(
 					it,
@@ -24,8 +24,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<short, IThat<short>> BeNegative(
-		this IThat<short> source)
+	public static AndOrResult<short, IThatShould<short>> BeNegative(
+		this IThatShould<short> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<short>(
 					it,
@@ -38,8 +38,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<int, IThat<int>> BeNegative(
-		this IThat<int> source)
+	public static AndOrResult<int, IThatShould<int>> BeNegative(
+		this IThatShould<int> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<int>(
 					it,
@@ -52,8 +52,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<long, IThat<long>> BeNegative(
-		this IThat<long> source)
+	public static AndOrResult<long, IThatShould<long>> BeNegative(
+		this IThatShould<long> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<long>(
 					it,
@@ -66,8 +66,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<float, IThat<float>> BeNegative(
-		this IThat<float> source)
+	public static AndOrResult<float, IThatShould<float>> BeNegative(
+		this IThatShould<float> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<float>(
 					it,
@@ -80,8 +80,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<double, IThat<double>> BeNegative(
-		this IThat<double> source)
+	public static AndOrResult<double, IThatShould<double>> BeNegative(
+		this IThatShould<double> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<double>(
 					it,
@@ -94,8 +94,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<decimal, IThat<decimal>> BeNegative(
-		this IThat<decimal> source)
+	public static AndOrResult<decimal, IThatShould<decimal>> BeNegative(
+		this IThatShould<decimal> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<decimal>(
 					it,
@@ -108,8 +108,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<sbyte?, IThat<sbyte?>> BeNegative(
-		this IThat<sbyte?> source)
+	public static AndOrResult<sbyte?, IThatShould<sbyte?>> BeNegative(
+		this IThatShould<sbyte?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<sbyte>(
 					it,
@@ -122,8 +122,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<short?, IThat<short?>> BeNegative(
-		this IThat<short?> source)
+	public static AndOrResult<short?, IThatShould<short?>> BeNegative(
+		this IThatShould<short?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<short>(
 					it,
@@ -136,8 +136,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<int?, IThat<int?>> BeNegative(
-		this IThat<int?> source)
+	public static AndOrResult<int?, IThatShould<int?>> BeNegative(
+		this IThatShould<int?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<int>(
 					it,
@@ -150,8 +150,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<long?, IThat<long?>> BeNegative(
-		this IThat<long?> source)
+	public static AndOrResult<long?, IThatShould<long?>> BeNegative(
+		this IThatShould<long?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<long>(
 					it,
@@ -164,8 +164,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<float?, IThat<float?>> BeNegative(
-		this IThat<float?> source)
+	public static AndOrResult<float?, IThatShould<float?>> BeNegative(
+		this IThatShould<float?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<float>(
 					it,
@@ -178,8 +178,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<double?, IThat<double?>> BeNegative(
-		this IThat<double?> source)
+	public static AndOrResult<double?, IThatShould<double?>> BeNegative(
+		this IThatShould<double?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<double>(
 					it,
@@ -192,8 +192,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is negative.
 	/// </summary>
-	public static AndOrResult<decimal?, IThat<decimal?>> BeNegative(
-		this IThat<decimal?> source)
+	public static AndOrResult<decimal?, IThatShould<decimal?>> BeNegative(
+		this IThatShould<decimal?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<decimal>(
 					it,

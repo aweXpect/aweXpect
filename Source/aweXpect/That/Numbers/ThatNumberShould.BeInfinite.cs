@@ -11,7 +11,7 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float, IThat<float>> BeInfinite(this IThat<float> source)
+	public static AndOrResult<float, IThatShould<float>> BeInfinite(this IThatShould<float> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<float>(
 					it,
@@ -24,8 +24,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="double.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<double, IThat<double>> BeInfinite(
-		this IThat<double> source)
+	public static AndOrResult<double, IThatShould<double>> BeInfinite(
+		this IThatShould<double> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<double>(
 					it,
@@ -38,7 +38,7 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (not <see langword="null" /> and <see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float?, IThat<float?>> BeInfinite(this IThat<float?> source)
+	public static AndOrResult<float?, IThatShould<float?>> BeInfinite(this IThatShould<float?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<float>(
 					it,
@@ -51,8 +51,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (not <see langword="null" /> and <see cref="double.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<double?, IThat<double?>> BeInfinite(
-		this IThat<double?> source)
+	public static AndOrResult<double?, IThatShould<double?>> BeInfinite(
+		this IThatShould<double?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<double>(
 					it,
@@ -65,8 +65,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is not seen as infinite (not <see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float, IThat<float>> NotBeInfinite(
-		this IThat<float> source)
+	public static AndOrResult<float, IThatShould<float>> NotBeInfinite(
+		this IThatShould<float> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<float>(
 					it,
@@ -79,8 +79,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is not seen as infinite (not <see cref="double.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<double, IThat<double>> NotBeInfinite(
-		this IThat<double> source)
+	public static AndOrResult<double, IThatShould<double>> NotBeInfinite(
+		this IThatShould<double> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<double>(
 					it,
@@ -93,8 +93,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is not seen as infinite (<see langword="null" /> or not <see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float?, IThat<float?>> NotBeInfinite(
-		this IThat<float?> source)
+	public static AndOrResult<float?, IThatShould<float?>> NotBeInfinite(
+		this IThatShould<float?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<float>(
 					it,
@@ -108,8 +108,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is not seen as infinite (<see langword="null" /> or not <see cref="double.IsInfinity" />
 	///     ).
 	/// </summary>
-	public static AndOrResult<double?, IThat<double?>> NotBeInfinite(
-		this IThat<double?> source)
+	public static AndOrResult<double?, IThatShould<double?>> NotBeInfinite(
+		this IThatShould<double?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<double>(
 					it,

@@ -11,10 +11,10 @@ public static partial class ThatEnumerableShould
 	///     Verifies that at most <paramref name="maximum" /> items in the collection satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> HaveAtMost<TItem>(
-		this IThat<IEnumerable<TItem>> source,
+	public static AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>> HaveAtMost<TItem>(
+		this IThatShould<IEnumerable<TItem>> source,
 		int maximum,
-		Action<IThat<TItem>> expectations)
+		Action<IThatShould<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum), expectations)),
 			source);
@@ -22,10 +22,10 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection has at most <paramref name="maximum" /> items.
 	/// </summary>
-	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> HaveAtMost<TItem>(
-		this IThat<IEnumerable<TItem>> source,
+	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>> HaveAtMost<TItem>(
+		this IThatShould<IEnumerable<TItem>> source,
 		int maximum)
-		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		=> new(new AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum))),
 			source));

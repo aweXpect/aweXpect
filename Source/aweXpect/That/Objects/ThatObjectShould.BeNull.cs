@@ -8,8 +8,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject is null.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> BeNull(
-		this IThat<object?> source)
+	public static AndOrResult<object?, IThatShould<object?>> BeNull(
+		this IThatShould<object?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<object?>(
 					it,
@@ -22,8 +22,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject is not null.
 	/// </summary>
-	public static AndOrResult<object, IThat<object?>> NotBeNull(
-		this IThat<object?> source)
+	public static AndOrResult<object, IThatShould<object?>> NotBeNull(
+		this IThatShould<object?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<object?>(
 					it,

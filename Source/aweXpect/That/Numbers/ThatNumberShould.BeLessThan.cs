@@ -8,8 +8,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<byte, IThat<byte>> BeLessThan(
-		this IThat<byte> source,
+	public static AndOrResult<byte, IThatShould<byte>> BeLessThan(
+		this IThatShould<byte> source,
 		byte? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<byte>(
@@ -23,8 +23,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<sbyte, IThat<sbyte>> BeLessThan(
-		this IThat<sbyte> source,
+	public static AndOrResult<sbyte, IThatShould<sbyte>> BeLessThan(
+		this IThatShould<sbyte> source,
 		sbyte? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<sbyte>(
@@ -38,8 +38,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<short, IThat<short>> BeLessThan(
-		this IThat<short> source,
+	public static AndOrResult<short, IThatShould<short>> BeLessThan(
+		this IThatShould<short> source,
 		short? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<short>(
@@ -53,8 +53,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<ushort, IThat<ushort>> BeLessThan(
-		this IThat<ushort> source,
+	public static AndOrResult<ushort, IThatShould<ushort>> BeLessThan(
+		this IThatShould<ushort> source,
 		ushort? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<ushort>(
@@ -68,8 +68,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<int, IThat<int>> BeLessThan(
-		this IThat<int> source,
+	public static AndOrResult<int, IThatShould<int>> BeLessThan(
+		this IThatShould<int> source,
 		int? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<int>(
@@ -83,8 +83,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<uint, IThat<uint>> BeLessThan(
-		this IThat<uint> source,
+	public static AndOrResult<uint, IThatShould<uint>> BeLessThan(
+		this IThatShould<uint> source,
 		uint? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<uint>(
@@ -98,8 +98,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<long, IThat<long>> BeLessThan(
-		this IThat<long> source,
+	public static AndOrResult<long, IThatShould<long>> BeLessThan(
+		this IThatShould<long> source,
 		long? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<long>(
@@ -113,8 +113,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<ulong, IThat<ulong>> BeLessThan(
-		this IThat<ulong> source,
+	public static AndOrResult<ulong, IThatShould<ulong>> BeLessThan(
+		this IThatShould<ulong> source,
 		ulong? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<ulong>(
@@ -128,8 +128,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<float, IThat<float>> BeLessThan(
-		this IThat<float> source,
+	public static AndOrResult<float, IThatShould<float>> BeLessThan(
+		this IThatShould<float> source,
 		float? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<float>(
@@ -143,8 +143,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<double, IThat<double>> BeLessThan(
-		this IThat<double> source,
+	public static AndOrResult<double, IThatShould<double>> BeLessThan(
+		this IThatShould<double> source,
 		double? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<double>(
@@ -158,8 +158,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<decimal, IThat<decimal>> BeLessThan(
-		this IThat<decimal> source,
+	public static AndOrResult<decimal, IThatShould<decimal>> BeLessThan(
+		this IThatShould<decimal> source,
 		decimal? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<decimal>(
@@ -173,8 +173,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<byte?, IThat<byte?>> BeLessThan(
-		this IThat<byte?> source,
+	public static AndOrResult<byte?, IThatShould<byte?>> BeLessThan(
+		this IThatShould<byte?> source,
 		byte? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<byte>(
@@ -188,8 +188,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<sbyte?, IThat<sbyte?>> BeLessThan(
-		this IThat<sbyte?> source,
+	public static AndOrResult<sbyte?, IThatShould<sbyte?>> BeLessThan(
+		this IThatShould<sbyte?> source,
 		sbyte? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<sbyte>(
@@ -203,8 +203,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<short?, IThat<short?>> BeLessThan(
-		this IThat<short?> source,
+	public static AndOrResult<short?, IThatShould<short?>> BeLessThan(
+		this IThatShould<short?> source,
 		short? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<short>(
@@ -218,8 +218,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<ushort?, IThat<ushort?>> BeLessThan(
-		this IThat<ushort?> source,
+	public static AndOrResult<ushort?, IThatShould<ushort?>> BeLessThan(
+		this IThatShould<ushort?> source,
 		ushort? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<ushort>(
@@ -233,8 +233,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<int?, IThat<int?>> BeLessThan(
-		this IThat<int?> source,
+	public static AndOrResult<int?, IThatShould<int?>> BeLessThan(
+		this IThatShould<int?> source,
 		int? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<int>(
@@ -248,8 +248,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<uint?, IThat<uint?>> BeLessThan(
-		this IThat<uint?> source,
+	public static AndOrResult<uint?, IThatShould<uint?>> BeLessThan(
+		this IThatShould<uint?> source,
 		uint? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<uint>(
@@ -263,8 +263,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<long?, IThat<long?>> BeLessThan(
-		this IThat<long?> source,
+	public static AndOrResult<long?, IThatShould<long?>> BeLessThan(
+		this IThatShould<long?> source,
 		long? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<long>(
@@ -278,8 +278,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<ulong?, IThat<ulong?>> BeLessThan(
-		this IThat<ulong?> source,
+	public static AndOrResult<ulong?, IThatShould<ulong?>> BeLessThan(
+		this IThatShould<ulong?> source,
 		ulong? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<ulong>(
@@ -293,8 +293,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<float?, IThat<float?>> BeLessThan(
-		this IThat<float?> source,
+	public static AndOrResult<float?, IThatShould<float?>> BeLessThan(
+		this IThatShould<float?> source,
 		float? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<float>(
@@ -308,8 +308,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<double?, IThat<double?>> BeLessThan(
-		this IThat<double?> source,
+	public static AndOrResult<double?, IThatShould<double?>> BeLessThan(
+		this IThatShould<double?> source,
 		double? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<double>(
@@ -323,8 +323,8 @@ public static partial class ThatNumberShould
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<decimal?, IThat<decimal?>> BeLessThan(
-		this IThat<decimal?> source,
+	public static AndOrResult<decimal?, IThatShould<decimal?>> BeLessThan(
+		this IThatShould<decimal?> source,
 		decimal? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<decimal>(

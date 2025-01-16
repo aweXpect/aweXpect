@@ -12,15 +12,15 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>
 		Be<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThatShould<IAsyncEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(source
+		return new ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
@@ -32,15 +32,15 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionMatchResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringCollectionMatchResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>
 		Be(
-			this IThat<IAsyncEnumerable<string>> source,
+			this IThatShould<IAsyncEnumerable<string>> source,
 			IEnumerable<string> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionMatchResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(source
+		return new StringCollectionMatchResult<IAsyncEnumerable<string>, IThatShould<IAsyncEnumerable<string>>>(source
 				.ExpectationBuilder
 				.AddConstraint(it
 					=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),

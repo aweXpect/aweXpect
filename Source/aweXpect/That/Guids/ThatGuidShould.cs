@@ -13,7 +13,7 @@ public static partial class ThatGuidShould
 	/// <summary>
 	///     Start expectations for current <see cref="Guid" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<Guid> Should(this IExpectSubject<Guid> subject)
+	public static IThatShould<Guid> Should(this IExpectSubject<Guid> subject)
 		=> subject.Should(That.WithoutAction);
 
 	private readonly struct ValueConstraint(

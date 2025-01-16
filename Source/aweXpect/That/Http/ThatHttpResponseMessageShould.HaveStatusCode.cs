@@ -15,9 +15,9 @@ public static partial class ThatHttpResponseMessageShould
 	/// <summary>
 	///     Verifies that the response has a status code equal to <paramref name="expected" />
 	/// </summary>
-	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+	public static AndOrResult<HttpResponseMessage, IThatShould<HttpResponseMessage?>>
 		HaveStatusCode(
-			this IThat<HttpResponseMessage?> source,
+			this IThatShould<HttpResponseMessage?> source,
 			HttpStatusCode expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new HasStatusCodeConstraint(it, expected)),
@@ -26,9 +26,9 @@ public static partial class ThatHttpResponseMessageShould
 	/// <summary>
 	///     Verifies that the response has a status code different to <paramref name="unexpected" />
 	/// </summary>
-	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+	public static AndOrResult<HttpResponseMessage, IThatShould<HttpResponseMessage?>>
 		NotHaveStatusCode(
-			this IThat<HttpResponseMessage?> source,
+			this IThatShould<HttpResponseMessage?> source,
 			HttpStatusCode unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new HasStatusCodeRangeConstraint(

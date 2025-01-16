@@ -10,8 +10,8 @@ public static partial class ThatTimeOnlyShould
 	/// <summary>
 	///     Verifies that the millisecond of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<TimeOnly, IThat<TimeOnly>> HaveMillisecond(
-		this IThat<TimeOnly> source,
+	public static AndOrResult<TimeOnly, IThatShould<TimeOnly>> HaveMillisecond(
+		this IThatShould<TimeOnly> source,
 		int? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
@@ -24,8 +24,8 @@ public static partial class ThatTimeOnlyShould
 	/// <summary>
 	///     Verifies that the millisecond of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<TimeOnly, IThat<TimeOnly>> NotHaveMillisecond(
-		this IThat<TimeOnly> source,
+	public static AndOrResult<TimeOnly, IThatShould<TimeOnly>> NotHaveMillisecond(
+		this IThatShould<TimeOnly> source,
 		int? unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(

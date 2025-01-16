@@ -18,11 +18,11 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>> AllBeUnique<TItem>(
+		this IThatShould<IEnumerable<TItem>> source)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueConstraint<TItem, object?>(it, options)),
 			source, options
@@ -32,11 +32,11 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>> AllBeUnique(
-		this IThat<IEnumerable<string>> source)
+	public static StringEqualityResult<IEnumerable<string>, IThatShould<IEnumerable<string>>> AllBeUnique(
+		this IThatShould<IEnumerable<string>> source)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string>, IThatShould<IEnumerable<string>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueConstraint<string, string>(it, options)),
 			source, options
@@ -46,14 +46,14 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem, TMember>(
-		this IThat<IEnumerable<TItem>> source,
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>> AllBeUnique<TItem, TMember>(
+		this IThatShould<IEnumerable<TItem>> source,
 		Func<TItem, TMember> memberAccessor,
 		[CallerArgumentExpression("memberAccessor")]
 		string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor, doNotPopulateThisValue,
 					options)),
@@ -64,14 +64,14 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> AllBeUnique<TItem>(
-		this IThat<IEnumerable<TItem>> source,
+	public static StringEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>> AllBeUnique<TItem>(
+		this IThatShould<IEnumerable<TItem>> source,
 		Func<TItem, string> memberAccessor,
 		[CallerArgumentExpression("memberAccessor")]
 		string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new StringEqualityResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor, doNotPopulateThisValue,
 					options)),

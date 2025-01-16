@@ -11,8 +11,8 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject has the <paramref name="expected" /> length.
 	/// </summary>
-	public static AndOrResult<string?, IThat<string?>> HaveLength(
-		this IThat<string?> source,
+	public static AndOrResult<string?, IThatShould<string?>> HaveLength(
+		this IThatShould<string?> source,
 		int expected)
 	{
 		if (expected < 0)
@@ -21,7 +21,7 @@ public static partial class ThatStringShould
 				"The expected length must be greater than or equal to zero.");
 		}
 
-		return new AndOrResult<string?, IThat<string?>>(source.ExpectationBuilder.AddConstraint(it
+		return new AndOrResult<string?, IThatShould<string?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new HaveLengthConstraint(it, expected)),
 			source);
 	}
@@ -29,8 +29,8 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject does not have the <paramref name="unexpected" /> length.
 	/// </summary>
-	public static AndOrResult<string, IThat<string?>> NotHaveLength(
-		this IThat<string?> source,
+	public static AndOrResult<string, IThatShould<string?>> NotHaveLength(
+		this IThatShould<string?> source,
 		int unexpected)
 	{
 		if (unexpected < 0)
@@ -39,7 +39,7 @@ public static partial class ThatStringShould
 				"The unexpected length must be greater than or equal to zero.");
 		}
 
-		return new AndOrResult<string, IThat<string?>>(source.ExpectationBuilder.AddConstraint(it
+		return new AndOrResult<string, IThatShould<string?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new NotHaveLengthConstraint(it, unexpected)),
 			source);
 	}

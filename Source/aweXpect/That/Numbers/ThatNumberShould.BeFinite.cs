@@ -12,8 +12,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor <see cref="float.IsNaN" />
 	///     ).
 	/// </summary>
-	public static AndOrResult<float, IThat<float>> BeFinite(
-		this IThat<float> source)
+	public static AndOrResult<float, IThatShould<float>> BeFinite(
+		this IThatShould<float> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<float>(
 					it,
@@ -27,8 +27,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is seen as finite (neither <see cref="double.IsInfinity" /> nor
 	///     <see cref="double.IsNaN" />).
 	/// </summary>
-	public static AndOrResult<double, IThat<double>> BeFinite(
-		this IThat<double> source)
+	public static AndOrResult<double, IThatShould<double>> BeFinite(
+		this IThatShould<double> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<double>(
 					it,
@@ -42,8 +42,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor
 	///     <see cref="float.IsNaN" /> nor <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<float, IThat<float?>> BeFinite(
-		this IThat<float?> source)
+	public static AndOrResult<float, IThatShould<float?>> BeFinite(
+		this IThatShould<float?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<float>(
 					it,
@@ -57,8 +57,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is seen as finite (neither <see cref="double.IsInfinity" /> nor
 	///     <see cref="double.IsNaN" /> nor <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<double, IThat<double?>> BeFinite(
-		this IThat<double?> source)
+	public static AndOrResult<double, IThatShould<double?>> BeFinite(
+		this IThatShould<double?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<double>(
 					it,
@@ -72,8 +72,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is not seen as finite (either <see cref="float.IsInfinity" /> or
 	///     <see cref="float.IsNaN" />).
 	/// </summary>
-	public static AndOrResult<float, IThat<float>> NotBeFinite(
-		this IThat<float> source)
+	public static AndOrResult<float, IThatShould<float>> NotBeFinite(
+		this IThatShould<float> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<float>(
 					it,
@@ -87,8 +87,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is not seen as finite (either <see cref="double.IsInfinity" /> or
 	///     <see cref="double.IsNaN" />).
 	/// </summary>
-	public static AndOrResult<double, IThat<double>> NotBeFinite(
-		this IThat<double> source)
+	public static AndOrResult<double, IThatShould<double>> NotBeFinite(
+		this IThatShould<double> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<double>(
 					it,
@@ -102,8 +102,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is not seen as finite (either <see cref="float.IsInfinity" /> or
 	///     <see cref="float.IsNaN" /> or <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<float?, IThat<float?>> NotBeFinite(
-		this IThat<float?> source)
+	public static AndOrResult<float?, IThatShould<float?>> NotBeFinite(
+		this IThatShould<float?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<float>(
 					it,
@@ -117,8 +117,8 @@ public static partial class ThatNumberShould
 	///     Verifies that the subject is not seen as finite (either <see cref="double.IsInfinity" /> or
 	///     <see cref="double.IsNaN" /> or <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<double?, IThat<double?>> NotBeFinite(
-		this IThat<double?> source)
+	public static AndOrResult<double?, IThatShould<double?>> NotBeFinite(
+		this IThatShould<double?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new NullableGenericConstraint<double>(
 					it,

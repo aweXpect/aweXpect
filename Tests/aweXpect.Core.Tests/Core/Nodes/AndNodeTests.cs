@@ -6,7 +6,7 @@ public sealed class AndNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
-		IThat<bool> that = That(true).Should();
+		IThatShould<bool> that = That(true).Should();
 		that.BeTrue().And.BeFalse().And.Imply(false);
 #pragma warning restore CS4014
 

@@ -15,7 +15,7 @@ public static partial class ThatNullableDateTimeOffsetShould
 	/// <summary>
 	///     Start expectations for the current <see cref="DateTimeOffset" />? <paramref name="subject" />.
 	/// </summary>
-	public static IThat<DateTimeOffset?> Should(this IExpectSubject<DateTimeOffset?> subject)
+	public static IThatShould<DateTimeOffset?> Should(this IExpectSubject<DateTimeOffset?> subject)
 		=> subject.Should(That.WithoutAction);
 
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan? difference)

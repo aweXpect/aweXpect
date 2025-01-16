@@ -11,9 +11,9 @@ public static partial class ThatAsyncEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection satisfy the <paramref name="expectations" />.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveAll<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> source,
-		Action<IThat<TItem>> expectations)
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>> HaveAll<TItem>(
+		this IThatShould<IAsyncEnumerable<TItem>> source,
+		Action<IThatShould<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.All, expectations)), source);
 }

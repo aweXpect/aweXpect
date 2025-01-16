@@ -13,7 +13,7 @@ public static partial class ThatEnumShould
 	/// <summary>
 	///     Start expectations for the current <typeparamref name="TEnum" /> <paramref name="subject" />.
 	/// </summary>
-	public static IThat<TEnum> Should<TEnum>(this IExpectSubject<TEnum> subject)
+	public static IThatShould<TEnum> Should<TEnum>(this IExpectSubject<TEnum> subject)
 		where TEnum : struct, Enum
 		=> subject.Should(That.WithoutAction);
 

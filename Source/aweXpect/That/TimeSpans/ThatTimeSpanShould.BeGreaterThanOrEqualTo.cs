@@ -12,12 +12,12 @@ public static partial class ThatTimeSpanShould
 	/// <summary>
 	///     Verifies that the subject is greater than or equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeSpan, IThat<TimeSpan>> BeGreaterThanOrEqualTo(
-		this IThat<TimeSpan> source,
+	public static TimeToleranceResult<TimeSpan, IThatShould<TimeSpan>> BeGreaterThanOrEqualTo(
+		this IThatShould<TimeSpan> source,
 		TimeSpan? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
+		return new TimeToleranceResult<TimeSpan, IThatShould<TimeSpan>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeGreaterThanOrEqualToConstraint(it, expected, tolerance)),
 			source,
@@ -27,12 +27,12 @@ public static partial class ThatTimeSpanShould
 	/// <summary>
 	///     Verifies that the subject is not greater than or equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeSpan, IThat<TimeSpan>> NotBeGreaterThanOrEqualTo(
-		this IThat<TimeSpan> source,
+	public static TimeToleranceResult<TimeSpan, IThatShould<TimeSpan>> NotBeGreaterThanOrEqualTo(
+		this IThatShould<TimeSpan> source,
 		TimeSpan? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
+		return new TimeToleranceResult<TimeSpan, IThatShould<TimeSpan>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new NotBeGreaterThanOrEqualToConstraint(it, unexpected, tolerance)),
 			source,

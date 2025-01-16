@@ -11,7 +11,7 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> Satisfy<T>(this IThat<T> source,
+	public static AndOrResult<T, IThatShould<T>> Satisfy<T>(this IThatShould<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
@@ -23,7 +23,7 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to not satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> NotSatisfy<T>(this IThat<T> source,
+	public static AndOrResult<T, IThatShould<T>> NotSatisfy<T>(this IThatShould<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")

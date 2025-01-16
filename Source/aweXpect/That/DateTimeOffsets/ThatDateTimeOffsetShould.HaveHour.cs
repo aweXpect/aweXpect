@@ -9,8 +9,8 @@ public static partial class ThatDateTimeOffsetShould
 	/// <summary>
 	///     Verifies that the hour of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTimeOffset, IThat<DateTimeOffset>> HaveHour(
-		this IThat<DateTimeOffset> source,
+	public static AndOrResult<DateTimeOffset, IThatShould<DateTimeOffset>> HaveHour(
+		this IThatShould<DateTimeOffset> source,
 		int? expected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
@@ -24,8 +24,8 @@ public static partial class ThatDateTimeOffsetShould
 	/// <summary>
 	///     Verifies that the hour of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTimeOffset, IThat<DateTimeOffset>> NotHaveHour(
-		this IThat<DateTimeOffset> source,
+	public static AndOrResult<DateTimeOffset, IThatShould<DateTimeOffset>> NotHaveHour(
+		this IThatShould<DateTimeOffset> source,
 		int? unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(

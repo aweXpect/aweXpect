@@ -13,7 +13,7 @@ public static partial class ThatDictionaryShould
 	/// <summary>
 	///     Start expectations on the current dictionary.
 	/// </summary>
-	public static IThat<IDictionary<TKey, TValue>> Should<TKey, TValue>(
+	public static IThatShould<IDictionary<TKey, TValue>> Should<TKey, TValue>(
 		this IExpectSubject<IDictionary<TKey, TValue>> subject)
 		=> subject.Should(That.WithoutAction);
 

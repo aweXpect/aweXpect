@@ -14,8 +14,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> BeJsonSerializable(
-		this IThat<object?> source,
+	public static AndOrResult<object?, IThatShould<object?>> BeJsonSerializable(
+		this IThatShould<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
@@ -26,8 +26,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> BeJsonSerializable(
-		this IThat<object?> source,
+	public static AndOrResult<object?, IThatShould<object?>> BeJsonSerializable(
+		this IThatShould<object?> source,
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
@@ -39,8 +39,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON of type <typeparamref name="T" />.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> BeJsonSerializable<T>(
-		this IThat<object?> source,
+	public static AndOrResult<object?, IThatShould<object?>> BeJsonSerializable<T>(
+		this IThatShould<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
@@ -51,8 +51,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON of type <typeparamref name="T" />.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> BeJsonSerializable<T>(
-		this IThat<object?> source,
+	public static AndOrResult<object?, IThatShould<object?>> BeJsonSerializable<T>(
+		this IThatShould<object?> source,
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(

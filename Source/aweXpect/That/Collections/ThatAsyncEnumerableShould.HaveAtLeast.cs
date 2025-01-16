@@ -12,20 +12,20 @@ public static partial class ThatAsyncEnumerableShould
 	///     Verifies that at least <paramref name="minimum" /> items in the collection satisfy the
 	///     <paramref name="expectations" />.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> HaveAtLeast<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> source,
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>> HaveAtLeast<TItem>(
+		this IThatShould<IAsyncEnumerable<TItem>> source,
 		int minimum,
-		Action<IThat<TItem>> expectations)
+		Action<IThatShould<TItem>> expectations)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 			=> new AsyncCollectionConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum), expectations)), source);
 
 	/// <summary>
 	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
-	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>> HaveAtLeast<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> source,
+	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>> HaveAtLeast<TItem>(
+		this IThatShould<IAsyncEnumerable<TItem>> source,
 		int minimum)
-		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IThatShould<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),
 			source));

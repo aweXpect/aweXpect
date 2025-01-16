@@ -12,8 +12,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject is excactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<TType, IThat<object?>> BeExactly<TType>(
-		this IThat<object?> source)
+	public static AndOrWhichResult<TType, IThatShould<object?>> BeExactly<TType>(
+		this IThatShould<object?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new IsExactlyOfTypeConstraint<TType>(it)),
 			source);
@@ -21,8 +21,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject is exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> BeExactly(
-		this IThat<object?> source,
+	public static AndOrWhichResult<object?, IThatShould<object?>> BeExactly(
+		this IThatShould<object?> source,
 		Type type)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new IsExactlyOfTypeConstraint(it, type)),
@@ -31,8 +31,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> NotBeExactly<TType>(
-		this IThat<object?> source)
+	public static AndOrWhichResult<object?, IThatShould<object?>> NotBeExactly<TType>(
+		this IThatShould<object?> source)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new IsNotExactlyOfTypeConstraint<TType>(it)),
 			source);
@@ -40,8 +40,8 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> NotBeExactly(
-		this IThat<object?> source,
+	public static AndOrWhichResult<object?, IThatShould<object?>> NotBeExactly(
+		this IThatShould<object?> source,
 		Type type)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new IsNotExactlyOfTypeConstraint(it, type)),

@@ -10,8 +10,8 @@ public static partial class ThatDictionaryShould
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> key.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> ContainKey<TKey, TValue>(
-		this IThat<IDictionary<TKey, TValue>> source,
+	public static AndOrResult<IDictionary<TKey, TValue>, IThatShould<IDictionary<TKey, TValue>>> ContainKey<TKey, TValue>(
+		this IThatShould<IDictionary<TKey, TValue>> source,
 		TKey expected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it
@@ -22,8 +22,8 @@ public static partial class ThatDictionaryShould
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> key.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> NotContainKey<TKey, TValue>(
-		this IThat<IDictionary<TKey, TValue>> source,
+	public static AndOrResult<IDictionary<TKey, TValue>, IThatShould<IDictionary<TKey, TValue>>> NotContainKey<TKey, TValue>(
+		this IThatShould<IDictionary<TKey, TValue>> source,
 		TKey unexpected)
 		=> new(
 			source.ExpectationBuilder.AddConstraint(it

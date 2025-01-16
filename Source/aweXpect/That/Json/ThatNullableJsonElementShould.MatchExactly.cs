@@ -14,7 +14,7 @@ public static partial class ThatNullableJsonElementShould
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> matches the <paramref name="expected" /> value exactly.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IThat<JsonElement?>> MatchExactly(this IThat<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IThatShould<JsonElement?>> MatchExactly(this IThatShould<JsonElement?> source,
 		object? expected,
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -25,7 +25,7 @@ public static partial class ThatNullableJsonElementShould
 			jsonOptions = options(jsonOptions);
 		}
 
-		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
+		return new AndOrResult<JsonElement?, IThatShould<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new MatchConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}
@@ -33,7 +33,7 @@ public static partial class ThatNullableJsonElementShould
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> matches the <paramref name="expected" /> array exactly.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IThat<JsonElement?>> MatchExactly<T>(this IThat<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IThatShould<JsonElement?>> MatchExactly<T>(this IThatShould<JsonElement?> source,
 		IEnumerable<T> expected,
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -44,7 +44,7 @@ public static partial class ThatNullableJsonElementShould
 			jsonOptions = options(jsonOptions);
 		}
 
-		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
+		return new AndOrResult<JsonElement?, IThatShould<JsonElement?>>(source.ExpectationBuilder.AddConstraint(it
 				=> new MatchConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}

@@ -9,7 +9,7 @@ public static partial class ThatNullableGuidShould
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<Guid?, IThat<Guid?>> Be(this IThat<Guid?> source,
+	public static AndOrResult<Guid?, IThatShould<Guid?>> Be(this IThatShould<Guid?> source,
 		Guid? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new ValueConstraint(
@@ -21,7 +21,7 @@ public static partial class ThatNullableGuidShould
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<Guid?, IThat<Guid?>> NotBe(this IThat<Guid?> source,
+	public static AndOrResult<Guid?, IThatShould<Guid?>> NotBe(this IThatShould<Guid?> source,
 		Guid? unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new ValueConstraint(

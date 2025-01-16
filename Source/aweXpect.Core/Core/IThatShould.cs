@@ -7,7 +7,7 @@ namespace aweXpect.Core;
 ///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
 /// </summary>
 // ReSharper disable once UnusedTypeParameter
-public interface IThat<out T>
+public interface IThatShould<out T>
 {
 	/// <summary>
 	///     The expectation builder.<br />

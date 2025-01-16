@@ -11,9 +11,9 @@ public static partial class ThatEnumerableShould
 	/// <summary>
 	///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static AndOrResult<IEnumerable<TItem>, IThatShould<IEnumerable<TItem>>>
 		AllSatisfy<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThatShould<IEnumerable<TItem>> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")

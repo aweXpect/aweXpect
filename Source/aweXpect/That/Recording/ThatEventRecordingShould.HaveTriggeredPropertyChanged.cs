@@ -12,7 +12,7 @@ public static partial class ThatEventRecordingShould
 	///     Verifies that the subject has triggered the <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
 	/// </summary>
 	public static EventTriggerResult<TSubject> HaveTriggeredPropertyChanged<TSubject>(
-		this IThat<IEventRecording<TSubject>> source)
+		this IThatShould<IEventRecording<TSubject>> source)
 		where TSubject : INotifyPropertyChanged
 	{
 		Quantifier quantifier = new();
@@ -30,7 +30,7 @@ public static partial class ThatEventRecordingShould
 	///     Verifies that the subject has not triggered the <see cref="INotifyPropertyChanged.PropertyChanged" /> event.
 	/// </summary>
 	public static EventTriggerResult<TSubject> NotHaveTriggeredPropertyChanged<TSubject>(
-		this IThat<IEventRecording<TSubject>> source)
+		this IThatShould<IEventRecording<TSubject>> source)
 		where TSubject : INotifyPropertyChanged
 	{
 		Quantifier quantifier = new();

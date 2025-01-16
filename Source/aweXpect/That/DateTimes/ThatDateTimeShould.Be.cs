@@ -10,12 +10,12 @@ public static partial class ThatDateTimeShould
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateTime, IThat<DateTime>> Be(
-		this IThat<DateTime> source,
+	public static TimeToleranceResult<DateTime, IThatShould<DateTime>> Be(
+		this IThatShould<DateTime> source,
 		DateTime? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateTime, IThat<DateTime>>(
+		return new TimeToleranceResult<DateTime, IThatShould<DateTime>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ConditionConstraint(
 					it,
@@ -33,12 +33,12 @@ public static partial class ThatDateTimeShould
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateTime, IThat<DateTime>> NotBe(
-		this IThat<DateTime> source,
+	public static TimeToleranceResult<DateTime, IThatShould<DateTime>> NotBe(
+		this IThatShould<DateTime> source,
 		DateTime? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateTime, IThat<DateTime>>(
+		return new TimeToleranceResult<DateTime, IThatShould<DateTime>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new ConditionConstraint(
 					it,

@@ -11,12 +11,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> BeOneOf(
-		this IThat<string?> source,
+	public static StringEqualityTypeResult<string?, IThatShould<string?>> BeOneOf(
+		this IThatShould<string?> source,
 		params string?[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThatShould<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new BeOneOfConstraint(it, expected, options)),
 			source,
@@ -26,12 +26,12 @@ public static partial class ThatStringShould
 	/// <summary>
 	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> NotBeOneOf(
-		this IThat<string?> source,
+	public static StringEqualityTypeResult<string?, IThatShould<string?>> NotBeOneOf(
+		this IThatShould<string?> source,
 		params string?[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
+		return new StringEqualityTypeResult<string?, IThatShould<string?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new NotBeOneOfConstraint(it, unexpected, options)),
 			source,

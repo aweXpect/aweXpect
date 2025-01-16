@@ -13,7 +13,7 @@ public static partial class ThatObjectShould
 	/// <summary>
 	///     Start expectations for the current <see cref="object" />? <paramref name="subject" />.
 	/// </summary>
-	public static IThat<object?> Should(this IExpectSubject<object?> subject)
+	public static IThatShould<object?> Should(this IExpectSubject<object?> subject)
 		=> subject.Should(That.WithoutAction);
 
 	private readonly struct GenericConstraint<T>(

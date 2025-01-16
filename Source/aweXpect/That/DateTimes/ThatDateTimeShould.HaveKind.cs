@@ -9,7 +9,7 @@ public static partial class ThatDateTimeShould
 	/// <summary>
 	///     Verifies that the kind of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> HaveKind(this IThat<DateTime> source,
+	public static AndOrResult<DateTime, IThatShould<DateTime>> HaveKind(this IThatShould<DateTime> source,
 		DateTimeKind expected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<DateTimeKind>(
@@ -22,8 +22,8 @@ public static partial class ThatDateTimeShould
 	/// <summary>
 	///     Verifies that the kind of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> NotHaveKind(
-		this IThat<DateTime> source,
+	public static AndOrResult<DateTime, IThatShould<DateTime>> NotHaveKind(
+		this IThatShould<DateTime> source,
 		DateTimeKind unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<DateTimeKind>(

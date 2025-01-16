@@ -9,7 +9,7 @@ public static partial class ThatNullableDateTimeShould
 	/// <summary>
 	///     Verifies that the year of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime?, IThat<DateTime?>> HaveYear(this IThat<DateTime?> source,
+	public static AndOrResult<DateTime?, IThatShould<DateTime?>> HaveYear(this IThatShould<DateTime?> source,
 		int? expected)
 		=> new(source.ExpectationBuilder.AddConstraint(
 				it
@@ -23,8 +23,8 @@ public static partial class ThatNullableDateTimeShould
 	/// <summary>
 	///     Verifies that the year of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime?, IThat<DateTime?>> NotHaveYear(
-		this IThat<DateTime?> source,
+	public static AndOrResult<DateTime?, IThatShould<DateTime?>> NotHaveYear(
+		this IThatShould<DateTime?> source,
 		int? unexpected)
 		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new PropertyConstraint<int?>(
