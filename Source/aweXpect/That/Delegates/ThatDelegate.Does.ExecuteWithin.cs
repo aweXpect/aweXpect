@@ -7,13 +7,13 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatDelegateShould
+public static partial class ThatDelegate
 {
 	/// <summary>
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult<TValue> ExecuteWithin<TValue>(
-		this ThatDelegate.WithValue<TValue> source,
+		this Core.ThatDelegate.WithValue<TValue> source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new ExecuteWithinConstraint<TValue>(duration)));
@@ -22,7 +22,7 @@ public static partial class ThatDelegateShould
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult ExecuteWithin(
-		this ThatDelegate.WithoutValue source,
+		this Core.ThatDelegate.WithoutValue source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new ExecuteWithinConstraint(duration)));
@@ -31,7 +31,7 @@ public static partial class ThatDelegateShould
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult<TValue> NotExecuteWithin<TValue>(
-		this ThatDelegate.WithValue<TValue> source,
+		this Core.ThatDelegate.WithValue<TValue> source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new NotExecuteWithinConstraint<TValue>(duration)));
@@ -40,7 +40,7 @@ public static partial class ThatDelegateShould
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult NotExecuteWithin(
-		this ThatDelegate.WithoutValue source,
+		this Core.ThatDelegate.WithoutValue source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new NotExecuteWithinConstraint(duration)));

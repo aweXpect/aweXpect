@@ -1,8 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace aweXpect.Tests.Delegates;
+namespace aweXpect.Tests;
 
-public sealed partial class DelegateShould
+public sealed partial class ThatDelegate
 {
 	public class CustomException(
 		[CallerMemberName] string message = "",

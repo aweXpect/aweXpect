@@ -6,12 +6,12 @@ using aweXpect.Helpers;
 
 namespace aweXpect;
 
-public static partial class ThatDelegateShould
+public static partial class ThatDelegate
 {
 	/// <summary>
 	///     Verifies that the delegate throws exactly an exception of type <typeparamref name="TException" />.
 	/// </summary>
-	public static ThatDelegateThrows<TException> ThrowExactly<TException>(this ThatDelegate source)
+	public static ThatDelegateThrows<TException> ThrowExactly<TException>(this Core.ThatDelegate source)
 		where TException : Exception
 	{
 		ThrowsOption throwOptions = new();
@@ -25,7 +25,7 @@ public static partial class ThatDelegateShould
 	/// <summary>
 	///     Verifies that the delegate throws exactly an exception of type <paramref name="exceptionType" />.
 	/// </summary>
-	public static ThatDelegateThrows<Exception> ThrowExactly(this ThatDelegate source,
+	public static ThatDelegateThrows<Exception> ThrowExactly(this Core.ThatDelegate source,
 		Type exceptionType)
 	{
 		ThrowsOption throwOptions = new();

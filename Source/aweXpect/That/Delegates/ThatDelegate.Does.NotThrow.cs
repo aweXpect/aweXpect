@@ -6,20 +6,20 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatDelegateShould
+public static partial class ThatDelegate
 {
 	/// <summary>
 	///     Verifies that the delegate does not throw any exception.
 	/// </summary>
 	public static ExpectationResult<TValue> NotThrow<TValue>(
-		this ThatDelegate.WithValue<TValue> source)
+		this Core.ThatDelegate.WithValue<TValue> source)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new DoesNotThrowConstraint<TValue>()));
 
 	/// <summary>
 	///     Verifies that the delegate does not throw any exception.
 	/// </summary>
-	public static ExpectationResult NotThrow(this ThatDelegate.WithoutValue source)
+	public static ExpectationResult NotThrow(this Core.ThatDelegate.WithoutValue source)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new DoesNotThrowConstraint()));
 

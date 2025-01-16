@@ -11,10 +11,10 @@ public partial class ThatDelegateThrows<TException>
 	: ExpectationResult<TException, ThatDelegateThrows<TException>>
 	where TException : Exception?
 {
-	private readonly ThrowsOption _throwOptions;
+	private readonly ThatDelegate.ThrowsOption _throwOptions;
 
 	internal ThatDelegateThrows(ExpectationBuilder expectationBuilder,
-		ThrowsOption throwOptions)
+		ThatDelegate.ThrowsOption throwOptions)
 		: base(expectationBuilder)
 	{
 		ExpectationBuilder = expectationBuilder;

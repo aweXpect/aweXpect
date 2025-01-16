@@ -1,5 +1,4 @@
 ﻿using System;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 
@@ -8,23 +7,9 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on delegate values.
 /// </summary>
-public static partial class ThatDelegateShould
+public static partial class ThatDelegate
 {
 	private static readonly string DoesNotThrowExpectation = "not throw any exception";
-
-	/// <summary>
-	///     Start expectations for the current <see cref="Action" /> <paramref name="subject" />.
-	/// </summary>
-	public static ThatDelegate.WithoutValue Does(
-		this IExpectSubject<ThatDelegate.WithoutValue> subject)
-		=> new(subject.Should(_ => { }).ExpectationBuilder);
-
-	/// <summary>
-	///     Start expectations for the current <see cref="Func{TValue}" /> <paramref name="subject" />.
-	/// </summary>
-	public static ThatDelegate.WithValue<TValue> Does<TValue>(
-		this IExpectSubject<ThatDelegate.WithValue<TValue>> subject)
-		=> new(subject.Should(_ => { }).ExpectationBuilder);
 
 	private static ConstraintResult DoesNotThrowResult<TException>(Exception? exception)
 		where TException : Exception?
@@ -115,5 +100,12 @@ public static partial class ThatDelegateShould
 				? "throw an exception"
 				: $"throw {typeof(TException).Name.PrependAOrAn()}";
 		}
+	}
+
+	internal class ThrowsOption
+	{
+		public bool DoCheckThrow { get; private set; } = true;
+
+		public void CheckThrow(bool doCheckThrow) => DoCheckThrow = doCheckThrow;
 	}
 }
