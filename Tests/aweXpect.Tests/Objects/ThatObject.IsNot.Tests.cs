@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Objects;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ObjectShould
+public sealed partial class ThatObject
 {
-	public sealed partial class NotBe
+	public sealed class IsNot
 	{
 		public sealed class GenericTests
 		{
@@ -15,9 +15,9 @@ public sealed partial class ObjectShould
 					Value = value
 				};
 
-				object? result = await That(subject).Should().NotBe<OtherClass>();
+				object? result = await That(subject).IsNot<OtherClass>();
 
-				await That(result).Should().BeSameAs(subject);
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
@@ -26,7 +26,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBe<OtherClass>();
+					=> await That(subject).IsNot<OtherClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -41,7 +41,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().NotBe<MyBaseClass>()
+					=> await That(subject).IsNot<MyBaseClass>()
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -60,7 +60,7 @@ public sealed partial class ObjectShould
 				object subject = new MyBaseClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBe<MyClass>();
+					=> await That(subject).IsNot<MyClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -75,7 +75,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().NotBe<MyClass>()
+					=> await That(subject).IsNot<MyClass>()
 						.Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()
@@ -94,7 +94,7 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotBe<MyClass>();
+					=> await That(subject).IsNot<MyClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -111,9 +111,9 @@ public sealed partial class ObjectShould
 					Value = value
 				};
 
-				object? result = await That(subject).Should().NotBe(typeof(OtherClass));
+				object? result = await That(subject).IsNot(typeof(OtherClass));
 
-				await That(result).Should().BeSameAs(subject);
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
@@ -122,7 +122,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(typeof(OtherClass));
+					=> await That(subject).IsNot(typeof(OtherClass));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -137,7 +137,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(typeof(MyBaseClass))
+					=> await That(subject).IsNot(typeof(MyBaseClass))
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -156,7 +156,7 @@ public sealed partial class ObjectShould
 				object subject = new MyBaseClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(typeof(MyClass));
+					=> await That(subject).IsNot(typeof(MyClass));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -171,7 +171,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(typeof(MyClass))
+					=> await That(subject).IsNot(typeof(MyClass))
 						.Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()
@@ -190,7 +190,7 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(typeof(MyClass));
+					=> await That(subject).IsNot(typeof(MyClass));
 
 				await That(Act).Does().NotThrow();
 			}

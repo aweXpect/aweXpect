@@ -25,7 +25,7 @@ You can verify, that the `object` has the same reference as another one:
 record MyClass(int Value);
 MyClass subject = new(1);
 
-await Expect.That(subject).Should().BeSameAs(subject);
+await Expect.That(subject).IsSameAs(subject);
 await Expect.That(subject).Should().NotBeSameAs(new MyClass(1));
 ```
 *Note: this uses the underlying `object.ReferenceEquals(object?, object?)` method*
@@ -93,6 +93,6 @@ You can verify, if the `object` is `null` or not:
 ```csharp
 object? subject = null;
 
-await Expect.That(subject).Should().BeNull();
+await Expect.That(subject).IsNull();
 await Expect.That(new object()).Should().NotBeNull();
 ```

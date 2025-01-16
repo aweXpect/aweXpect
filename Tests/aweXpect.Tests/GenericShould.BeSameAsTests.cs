@@ -11,7 +11,7 @@ public sealed partial class GenericShould
 			Other expected = subject;
 
 			async Task Act()
-				=> await That(subject).Should().BeSameAs(expected);
+				=> await That(subject).IsSameAs(expected);
 
 			await That(Act).Does().NotThrow();
 		}
@@ -23,7 +23,7 @@ public sealed partial class GenericShould
 			Other expected = new() { Value = 1 };
 
 			async Task Act()
-				=> await That(subject).Should().BeSameAs(expected);
+				=> await That(subject).IsSameAs(expected);
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -44,7 +44,7 @@ public sealed partial class GenericShould
 			Other? expected = null;
 
 			async Task Act()
-				=> await That(subject).Should().BeSameAs(expected);
+				=> await That(subject).IsSameAs(expected);
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -63,7 +63,7 @@ public sealed partial class GenericShould
 			Other? expected = null;
 
 			async Task Act()
-				=> await That(subject).Should().BeSameAs(expected);
+				=> await That(subject).IsSameAs(expected);
 
 			await That(Act).Does().NotThrow();
 		}
@@ -75,7 +75,7 @@ public sealed partial class GenericShould
 			Other expected = new() { Value = 1 };
 
 			async Task Act()
-				=> await That(subject).Should().BeSameAs(expected);
+				=> await That(subject).IsSameAs(expected);
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -97,7 +97,7 @@ public sealed partial class GenericShould
 			Other expected = subject;
 
 			async Task Act()
-				=> await That(subject).Should().NotBeSameAs(expected);
+				=> await That(subject).IsNotSameAs(expected);
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -116,7 +116,7 @@ public sealed partial class GenericShould
 			Other expected = new() { Value = 1 };
 
 			async Task Act()
-				=> await That(subject).Should().NotBeSameAs(expected);
+				=> await That(subject).IsNotSameAs(expected);
 
 			await That(Act).Does().NotThrow();
 		}
@@ -128,7 +128,7 @@ public sealed partial class GenericShould
 			Other? expected = null;
 
 			async Task Act()
-				=> await That(subject).Should().NotBeSameAs(expected);
+				=> await That(subject).IsNotSameAs(expected);
 
 			await That(Act).Does().NotThrow();
 		}
@@ -140,7 +140,7 @@ public sealed partial class GenericShould
 			Other? expected = null;
 
 			async Task Act()
-				=> await That(subject).Should().NotBeSameAs(expected);
+				=> await That(subject).IsNotSameAs(expected);
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -157,7 +157,7 @@ public sealed partial class GenericShould
 			Other expected = new() { Value = 1 };
 
 			async Task Act()
-				=> await That(subject).Should().NotBeSameAs(expected);
+				=> await That(subject).IsNotSameAs(expected);
 
 			await That(Act).Does().NotThrow();
 		}

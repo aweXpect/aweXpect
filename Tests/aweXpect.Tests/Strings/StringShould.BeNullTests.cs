@@ -12,7 +12,7 @@ public sealed partial class StringShould
 				string subject = "";
 
 				async Task Act()
-					=> await That(subject).Should().BeNull();
+					=> await That(subject).IsNull();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -27,7 +27,7 @@ public sealed partial class StringShould
 			public async Task WhenActualIsNotNull_ShouldFail(string? subject)
 			{
 				async Task Act()
-					=> await That(subject).Should().BeNull();
+					=> await That(subject).IsNull();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -43,7 +43,7 @@ public sealed partial class StringShould
 				string? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().BeNull();
+					=> await That(subject).IsNull();
 
 				await That(Act).Does().NotThrow();
 			}

@@ -12,7 +12,7 @@ public sealed partial class GenericShould
 			Other subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().Satisfy(_ => predicateResult);
+				=> await That(subject).Satisfies(_ => predicateResult);
 
 			await That(Act).Does().Throw<XunitException>()
 				.OnlyIf(!predicateResult)
@@ -36,7 +36,7 @@ public sealed partial class GenericShould
 			Other subject = new();
 
 			async Task Act()
-				=> await That(subject).Should().NotSatisfy(_ => predicateResult);
+				=> await That(subject).Satisfies(_ => predicateResult);
 
 			await That(Act).Does().Throw<XunitException>()
 				.OnlyIf(predicateResult)

@@ -27,7 +27,7 @@ public class EvaluationContextTests
 
 		bool result = context.TryReceive("foo", out string? fooResult);
 		await That(result).IsFalse();
-		await That(fooResult).Should().BeNull();
+		await That(fooResult).IsNull();
 	}
 
 	[Fact]
@@ -39,7 +39,7 @@ public class EvaluationContextTests
 
 		bool result = context.TryReceive("foo", out string? fooResult);
 		await That(result).IsFalse();
-		await That(fooResult).Should().BeNull();
+		await That(fooResult).IsNull();
 	}
 
 	[Fact]

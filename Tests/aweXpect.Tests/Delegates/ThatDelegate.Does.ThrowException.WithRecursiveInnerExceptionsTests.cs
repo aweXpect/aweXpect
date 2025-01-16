@@ -23,7 +23,7 @@ public sealed partial class ThatDelegate
 
 					async Task Act()
 						=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
-							e => e.Should().HaveAtLeast(minimum, x => x.Be<CustomException>()));
+							e => e.HasAtLeast(minimum, x => x.Is<CustomException>()));
 
 					await That(Act).Does().Throw<XunitException>().OnlyIf(shouldThrow)
 						.WithMessage($"""
@@ -43,7 +43,7 @@ public sealed partial class ThatDelegate
 						.Does().ThrowException().WithRecursiveInnerExceptions(
 							e => e.Should().HaveNone(x => x.Satisfy(_ => false)));
 
-					await That(result).Should().BeSameAs(exception);
+					await That(result).IsSameAs(exception);
 				}
 
 				[Fact]

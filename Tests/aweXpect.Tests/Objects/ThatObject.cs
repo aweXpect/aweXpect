@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+
 // ReSharper disable UnusedAutoPropertyAccessor.Local
 
-namespace aweXpect.Tests.Objects;
+namespace aweXpect.Tests;
 
-public sealed partial class ObjectShould
+public sealed partial class ThatObject
 {
 	private class MyBaseClass
 	{

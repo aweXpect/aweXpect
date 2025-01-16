@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Objects;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ObjectShould
+public sealed partial class ThatObject
 {
-	public sealed class BeNull
+	public sealed class IsNull
 	{
 		public sealed class Tests
 		{
@@ -12,7 +12,7 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().BeNull();
+					=> await That(subject).IsNull();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -23,7 +23,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().BeNull()
+					=> await That(subject).IsNull()
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()

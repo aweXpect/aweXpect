@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Objects;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ObjectShould
+public sealed partial class ThatObject
 {
-	public sealed class BeExactly
+	public sealed partial class Is
 	{
 		public sealed class GenericTests
 		{
@@ -15,9 +15,9 @@ public sealed partial class ObjectShould
 					Value = value
 				};
 
-				MyClass result = await That(subject).Should().BeExactly<MyClass>();
+				MyClass result = await That(subject).Is<MyClass>();
 
-				await That(result).Should().BeSameAs(subject);
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
@@ -26,12 +26,12 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly<MyClass>();
+					=> await That(subject).Is<MyClass>();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             be exactly type MyClass,
+					             be type MyClass,
 					             but it was <null>
 					             """);
 			}
@@ -46,40 +46,28 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly<OtherClass>()
+					=> await That(subject).Is<OtherClass>()
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
-					               be exactly type OtherClass, because we want to test the failure,
+					               be type OtherClass, because we want to test the failure,
 					               but it was MyClass {
 					                 Value = {{value}}
 					               }
 					               """);
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task WhenTypeIsSubtype_ShouldFail(int value)
+			[Fact]
+			public async Task WhenTypeIsSubtype_ShouldSucceed()
 			{
-				object subject = new MyClass
-				{
-					Value = value
-				};
+				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly<MyBaseClass>()
-						.Because("we want to test the failure");
+					=> await That(subject).Is<MyBaseClass>();
 
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage($$"""
-					               Expected subject to
-					               be exactly type MyBaseClass, because we want to test the failure,
-					               but it was MyClass {
-					                 Value = {{value}}
-					               }
-					               """);
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -92,13 +80,13 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly<MyClass>()
+					=> await That(subject).Is<MyClass>()
 						.Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
-					               be exactly type MyClass, because {{reason}},
+					               be type MyClass, because {{reason}},
 					               but it was MyBaseClass {
 					                 Value = {{value}}
 					               }
@@ -111,7 +99,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly<MyClass>();
+					=> await That(subject).Is<MyClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -128,9 +116,9 @@ public sealed partial class ObjectShould
 					Value = value
 				};
 
-				object? result = await That(subject).Should().BeExactly(typeof(MyClass));
+				object? result = await That(subject).Is(typeof(MyClass));
 
-				await That(result).Should().BeSameAs(subject);
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
@@ -139,12 +127,12 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly(typeof(MyClass));
+					=> await That(subject).Is(typeof(MyClass));
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             be exactly type MyClass,
+					             be type MyClass,
 					             but it was <null>
 					             """);
 			}
@@ -159,40 +147,28 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly(typeof(OtherClass))
+					=> await That(subject).Is(typeof(OtherClass))
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
-					               be exactly type OtherClass, because we want to test the failure,
+					               be type OtherClass, because we want to test the failure,
 					               but it was MyClass {
 					                 Value = {{value}}
 					               }
 					               """);
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task WhenTypeIsSubtype_ShouldSucceed(int value)
+			[Fact]
+			public async Task WhenTypeIsSubtype_ShouldSucceed()
 			{
-				object subject = new MyClass
-				{
-					Value = value
-				};
+				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly(typeof(MyBaseClass))
-						.Because("we want to test the failure");
+					=> await That(subject).Is(typeof(MyBaseClass));
 
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage($$"""
-					               Expected subject to
-					               be exactly type MyBaseClass, because we want to test the failure,
-					               but it was MyClass {
-					                 Value = {{value}}
-					               }
-					               """);
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -205,13 +181,13 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly(typeof(MyClass))
+					=> await That(subject).Is(typeof(MyClass))
 						.Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
-					               be exactly type MyClass, because {{reason}},
+					               be type MyClass, because {{reason}},
 					               but it was MyBaseClass {
 					                 Value = {{value}}
 					               }
@@ -224,7 +200,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().BeExactly(typeof(MyClass));
+					=> await That(subject).Is(typeof(MyClass));
 
 				await That(Act).Does().NotThrow();
 			}

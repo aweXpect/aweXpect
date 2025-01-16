@@ -79,16 +79,16 @@ You can verify, that the `string` is null, empty or contains only whitespace:
 ```csharp
 string? subject = null;
 
-await Expect.That(subject).Should().BeNull();
+await Expect.That(subject).IsNull();
 await Expect.That("foo").Should().NotBeNull();
 
 await Expect.That("").Should().BeEmpty();
 await Expect.That("foo").Should().NotBeEmpty()
   .Because("the string is not empty");
 
-await Expect.That(subject).Should().BeNullOrEmpty();
+await Expect.That(subject).IsNullOrEmpty();
 await Expect.That("foo").Should().NotBeNullOrEmpty();
-await Expect.That(subject).Should().BeNullOrWhiteSpace();
+await Expect.That(subject).IsNullOrWhiteSpace();
 await Expect.That("foo").Should().NotBeNullOrWhiteSpace();
 ```
 

@@ -547,7 +547,7 @@ public sealed class DelegateTests
 					.HaveParamName(nameof(innermostMessage)).And.HaveMessage($"{innermostMessage}*")
 					.AsWildcard()));
 
-		await That(result).Should().BeSameAs(exception);
+		await That(result).IsSameAs(exception);
 	}
 
 	public class MyException(

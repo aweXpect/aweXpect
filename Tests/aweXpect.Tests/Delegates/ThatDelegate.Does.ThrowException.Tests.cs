@@ -16,7 +16,7 @@ public sealed partial class ThatDelegate
 
 					Exception result = await That(action).Does().ThrowException();
 
-					await That(result).Should().BeSameAs(exception);
+					await That(result).IsSameAs(exception);
 				}
 
 				[Fact]

@@ -36,7 +36,7 @@ public sealed partial class ThatDelegate
 					CustomException? result =
 						await That(action).Does().Throw<CustomException>().OnlyIf(false);
 
-					await That(result).Should().BeNull();
+					await That(result).IsNull();
 				}
 
 				[Fact]
@@ -48,7 +48,7 @@ public sealed partial class ThatDelegate
 					CustomException? result =
 						await That(action).Does().Throw<CustomException>().OnlyIf(true);
 
-					await That(result).Should().BeSameAs(exception);
+					await That(result).IsSameAs(exception);
 				}
 
 				[Fact]

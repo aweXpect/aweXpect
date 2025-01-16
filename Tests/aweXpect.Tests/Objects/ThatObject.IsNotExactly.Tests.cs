@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Objects;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ObjectShould
+public sealed partial class ThatObject
 {
-	public sealed class NotBeExactly
+	public sealed class IsNotExactly
 	{
 		public sealed class GenericTests
 		{
@@ -15,9 +15,9 @@ public sealed partial class ObjectShould
 					Value = value
 				};
 
-				object? result = await That(subject).Should().NotBeExactly<OtherClass>();
+				object? result = await That(subject).IsNotExactly<OtherClass>();
 
-				await That(result).Should().BeSameAs(subject);
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
@@ -26,7 +26,7 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly<MyClass>();
+					=> await That(subject).IsNotExactly<MyClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -37,7 +37,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly<OtherClass>();
+					=> await That(subject).IsNotExactly<OtherClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -48,7 +48,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly<MyBaseClass>();
+					=> await That(subject).IsNotExactly<MyBaseClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -59,7 +59,7 @@ public sealed partial class ObjectShould
 				object subject = new MyBaseClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly<MyClass>();
+					=> await That(subject).IsNotExactly<MyClass>();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -74,7 +74,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly<MyClass>()
+					=> await That(subject).IsNotExactly<MyClass>()
 						.Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()
@@ -99,9 +99,9 @@ public sealed partial class ObjectShould
 					Value = value
 				};
 
-				object? result = await That(subject).Should().NotBeExactly(typeof(OtherClass));
+				object? result = await That(subject).IsNotExactly(typeof(OtherClass));
 
-				await That(result).Should().BeSameAs(subject);
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
@@ -110,7 +110,7 @@ public sealed partial class ObjectShould
 				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
+					=> await That(subject).IsNotExactly(typeof(MyClass));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -121,7 +121,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(OtherClass));
+					=> await That(subject).IsNotExactly(typeof(OtherClass));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -132,7 +132,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(MyBaseClass));
+					=> await That(subject).IsNotExactly(typeof(MyBaseClass));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -143,7 +143,7 @@ public sealed partial class ObjectShould
 				object subject = new MyBaseClass();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
+					=> await That(subject).IsNotExactly(typeof(MyClass));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -158,7 +158,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().NotBeExactly(typeof(MyClass))
+					=> await That(subject).IsNotExactly(typeof(MyClass))
 						.Because(reason);
 
 				await That(Act).Does().Throw<XunitException>()

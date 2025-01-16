@@ -22,7 +22,7 @@ public sealed partial class ThatDelegate
 						await That(action).Does().Throw<CustomException>();
 
 					await That(result.Value).Should().Be(value);
-					await That(result).Should().BeSameAs(exception);
+					await That(result).IsSameAs(exception);
 				}
 
 				[Fact]
@@ -135,7 +135,7 @@ public sealed partial class ThatDelegate
 					Exception result =
 						await That(action).Does().Throw(typeof(CustomException));
 
-					await That(result).Should().BeSameAs(exception);
+					await That(result).IsSameAs(exception);
 				}
 
 				[Fact]

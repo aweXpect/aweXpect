@@ -22,7 +22,7 @@ public class StringExtensionsTests
 
 		string? result = input.DisplayWhitespace();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 
@@ -65,7 +65,7 @@ public class StringExtensionsTests
 
 		string? result = input.Indent();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -87,7 +87,7 @@ public class StringExtensionsTests
 
 		string? result = input.Indent();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -140,7 +140,7 @@ public class StringExtensionsTests
 
 		string? result = input.ToSingleLine();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -162,7 +162,7 @@ public class StringExtensionsTests
 
 		string? result = input.TruncateWithEllipsis(10);
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -204,7 +204,7 @@ public class StringExtensionsTests
 
 		string? result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]

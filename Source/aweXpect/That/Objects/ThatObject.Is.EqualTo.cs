@@ -28,17 +28,17 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IThatShould<object?>> NotEqualTo(
-		this IThatShould<object?> source,
+	public static ObjectEqualityResult<object?, IExpectSubject<object?>> NotEqualTo(
+		this IThatIs<object?> source,
 		object? unexpected,
 		[CallerArgumentExpression("unexpected")]
 		string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<object?, IThatShould<object?>>(
+		return new ObjectEqualityResult<object?, IExpectSubject<object?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
-			source,
+			source.ExpectSubject(),
 			options);
 	}
 

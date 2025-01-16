@@ -96,7 +96,7 @@ public sealed partial class ThatDelegate
 					Exception result = await That(Delegate)
 						.Does().ThrowException().WithMessage(message);
 
-					await That(result).Should().BeSameAs(exception);
+					await That(result).IsSameAs(exception);
 				}
 
 				[Fact]

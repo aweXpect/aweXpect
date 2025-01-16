@@ -8,7 +8,7 @@ public sealed class WhichNodeTests
 		Dummy subject = new() { Inner = new Dummy.Nested { Id = 1 }, Value = "foo" };
 
 		async Task Act()
-			=> await That(subject).Should().Be<Dummy>()
+			=> await That(subject).Is<Dummy>()
 				.Which(p => p.Value, e => e.Should().Be("bar"));
 
 		await That(Act).Does().Throw<XunitException>()

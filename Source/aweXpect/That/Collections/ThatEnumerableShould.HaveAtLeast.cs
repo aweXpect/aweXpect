@@ -29,4 +29,15 @@ public static partial class ThatEnumerableShould
 			source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),
 			source));
+	
+	/// <summary>
+	///     Verifies that all items in the collection satisfy the <paramref name="expectations" />.
+	/// </summary>
+	public static AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>> HasAtLeast<TItem>(
+		this IExpectSubject<IEnumerable<TItem>> source,
+		int minimum,
+		Action<IExpectSubject<TItem>> expectations)
+	{
+		throw new NotImplementedException();
+	}
 }
