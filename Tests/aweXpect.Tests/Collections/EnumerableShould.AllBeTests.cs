@@ -21,7 +21,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().AllBe(1)
 						.And.AllBe(1);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -32,7 +32,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(1);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to 1,
@@ -60,7 +60,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(null);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -71,7 +71,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(5).Using(new AllEqualComparer());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -82,7 +82,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(5);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to 5,
@@ -111,7 +111,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(constantValue);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -123,7 +123,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(constantValue);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to 42,
@@ -142,7 +142,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe("item-1");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to "item-1",
@@ -170,7 +170,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(null);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -181,7 +181,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe("item-5").Using(new AllEqualComparer());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -192,7 +192,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe("item-5");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to "item-5",
@@ -220,7 +220,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe("foo").IgnoringCase(ignoreCase);
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreCase)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!ignoreCase)
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to "foo",
@@ -239,7 +239,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllBe(constantValue);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -251,7 +251,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().AllBe(constantValue);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to "foo",

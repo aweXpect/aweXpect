@@ -12,9 +12,9 @@ public sealed partial class DelegateShould
 				Action @delegate = () => { };
 
 				async Task Act()
-					=> await That(@delegate).Should().NotThrow();
+					=> await That(@delegate).Does().NotThrow();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -25,9 +25,9 @@ public sealed partial class DelegateShould
 				Action @delegate = () => throw exception;
 
 				async Task Act()
-					=> await That(@delegate).Should().NotThrow();
+					=> await That(@delegate).Does().NotThrow();
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage($"""
 					              Expected @delegate to
 					              not throw any exception,
@@ -42,9 +42,9 @@ public sealed partial class DelegateShould
 				Action? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().NotThrow();
+					=> await That(subject!).Does().NotThrow();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not throw any exception,
@@ -61,7 +61,7 @@ public sealed partial class DelegateShould
 			{
 				Func<int> @delegate = () => value;
 
-				int result = await That(@delegate).Should().NotThrow();
+				int result = await That(@delegate).Does().NotThrow();
 
 				await That(result).Should().Be(value);
 			}
@@ -72,9 +72,9 @@ public sealed partial class DelegateShould
 				Func<int> @delegate = () => 1;
 
 				async Task Act()
-					=> await That(@delegate).Should().NotThrow();
+					=> await That(@delegate).Does().NotThrow();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -85,9 +85,9 @@ public sealed partial class DelegateShould
 				Func<int> @delegate = () => throw exception;
 
 				async Task Act()
-					=> await That(@delegate).Should().NotThrow();
+					=> await That(@delegate).Does().NotThrow();
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage($"""
 					              Expected @delegate to
 					              not throw any exception,
@@ -102,9 +102,9 @@ public sealed partial class DelegateShould
 				Func<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().NotThrow();
+					=> await That(subject!).Does().NotThrow();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not throw any exception,

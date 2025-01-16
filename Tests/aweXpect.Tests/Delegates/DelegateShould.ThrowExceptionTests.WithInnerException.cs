@@ -13,7 +13,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithInnerException(
+					.Does().ThrowException().WithInnerException(
 						e => e.HaveMessage("inner"));
 
 				await That(result).Should().BeSameAs(exception);
@@ -26,7 +26,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithInnerException();
+					.Does().ThrowException().WithInnerException();
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -37,9 +37,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException(innerException: new Exception());
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInnerException();
+					=> await That(action).Does().ThrowException().WithInnerException();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -48,9 +48,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException();
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInnerException();
+					=> await That(action).Does().ThrowException().WithInnerException();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception with an inner exception,

@@ -21,7 +21,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(expected);
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected,
@@ -39,7 +39,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(expected);
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected,
@@ -57,7 +57,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(expected);
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected,
@@ -75,7 +75,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(null);
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match null,
@@ -93,7 +93,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(expected);
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected,
@@ -109,7 +109,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(new object());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match new object(),
@@ -128,7 +128,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -140,7 +140,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              match expected,
@@ -156,7 +156,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match([2, 1]);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match [2, 1],
@@ -174,7 +174,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match([1, 2, 3]);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match [1, 2, 3],
@@ -190,7 +190,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match([1, 2]);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			public static TheoryData<object, string> MatchingArrayValues
@@ -257,7 +257,7 @@ public sealed partial class NullableJsonElementShould
 						foo = 2
 					});
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(errorMessage != null)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(errorMessage != null)
 					.WithMessage($$"""
 					               Expected subject to
 					               match new
@@ -278,7 +278,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().Match(new object());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -292,7 +292,7 @@ public sealed partial class NullableJsonElementShould
 						bar = 3
 					});
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match new
@@ -314,7 +314,7 @@ public sealed partial class NullableJsonElementShould
 						bar = 2
 					});
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

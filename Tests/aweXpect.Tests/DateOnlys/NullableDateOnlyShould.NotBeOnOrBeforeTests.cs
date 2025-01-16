@@ -16,7 +16,7 @@ public sealed partial class NullableDateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before {Formatter.Format(unexpected)},
@@ -33,7 +33,7 @@ public sealed partial class NullableDateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before {Formatter.Format(unexpected)},
@@ -50,7 +50,7 @@ public sealed partial class NullableDateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before {Formatter.Format(unexpected)},
@@ -67,7 +67,7 @@ public sealed partial class NullableDateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before {Formatter.Format(unexpected)},
@@ -84,7 +84,7 @@ public sealed partial class NullableDateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -97,7 +97,7 @@ public sealed partial class NullableDateOnlyShould
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before <null>, because we want to test the failure,
@@ -116,7 +116,7 @@ public sealed partial class NullableDateOnlyShould
 						.Within(3.Days())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
@@ -134,7 +134,7 @@ public sealed partial class NullableDateOnlyShould
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
 						.Within(3.Days());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or before {Formatter.Format(unexpected)} ± 3 days,
@@ -152,7 +152,7 @@ public sealed partial class NullableDateOnlyShould
 					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
 						.Within(3.Days());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

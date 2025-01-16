@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be on or after 9999-12-31T23:59:59.9999999,
@@ -32,7 +32,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be on or after 0001-01-01T00:00:00.0000000,
@@ -49,7 +49,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)},
@@ -66,7 +66,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)},
@@ -83,7 +83,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -96,7 +96,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after <null>, because we want to test the failure,
@@ -115,7 +115,7 @@ public sealed partial class NullableDateTimeShould
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
@@ -133,7 +133,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)} ± 0:03,
@@ -151,7 +151,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().NotBeOnOrAfter(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

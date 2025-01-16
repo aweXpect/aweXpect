@@ -19,7 +19,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().Be(expected)
 						.Because("the subject has Unspecified kind");
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -43,7 +43,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -59,7 +59,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().Be(expected)
 						.Because("the subject has Unspecified kind");
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -71,7 +71,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -83,7 +83,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)}, because we want to test the failure,
@@ -101,7 +101,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().Be(expected)
 						.Because("we also test the kind property");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)}, because we also test the kind property,
@@ -118,7 +118,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).Within(-1.Seconds());
 
-				await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 					.WithParamName("tolerance").And
 					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
 			}
@@ -133,7 +133,7 @@ public sealed partial class NullableDateTimeShould
 					=> await That(subject).Should().Be(expected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
@@ -150,7 +150,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

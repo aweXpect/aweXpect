@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveKind(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have kind of {Formatter.Format(expected)},
@@ -32,7 +32,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveKind(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -44,7 +44,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveKind(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have kind of Utc,

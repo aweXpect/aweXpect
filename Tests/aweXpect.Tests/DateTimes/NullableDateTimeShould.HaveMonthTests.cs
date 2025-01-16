@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveMonth(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have month of <null>,
@@ -32,7 +32,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveMonth(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have month of {Formatter.Format(expected)},
@@ -49,7 +49,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveMonth(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -61,7 +61,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveMonth(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have month of <null>,
@@ -78,7 +78,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().HaveMonth(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have month of 1,

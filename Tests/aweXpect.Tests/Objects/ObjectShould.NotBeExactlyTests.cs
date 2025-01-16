@@ -28,7 +28,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly<MyClass>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -39,7 +39,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly<OtherClass>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -50,7 +50,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly<MyBaseClass>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -61,7 +61,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly<MyClass>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -77,7 +77,7 @@ public sealed partial class ObjectShould
 					=> await That(subject).Should().NotBeExactly<MyClass>()
 						.Because(reason);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               not be exactly type MyClass, because {{reason}},
@@ -112,7 +112,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -123,7 +123,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly(typeof(OtherClass));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -134,7 +134,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly(typeof(MyBaseClass));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -145,7 +145,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBeExactly(typeof(MyClass));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -161,7 +161,7 @@ public sealed partial class ObjectShould
 					=> await That(subject).Should().NotBeExactly(typeof(MyClass))
 						.Because(reason);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               not be exactly type MyClass, because {{reason}},

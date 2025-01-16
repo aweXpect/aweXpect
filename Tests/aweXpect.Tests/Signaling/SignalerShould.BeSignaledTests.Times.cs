@@ -22,7 +22,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled(2.Times()).WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             have recorded the callback at least 2 times,
@@ -44,7 +44,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled(3.Times()).WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             have recorded the callback at least 3 times,
@@ -71,7 +71,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled(2.Times());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -89,7 +89,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled(2.Times());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -109,7 +109,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled(3.Times());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -128,7 +128,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled(3.Times());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

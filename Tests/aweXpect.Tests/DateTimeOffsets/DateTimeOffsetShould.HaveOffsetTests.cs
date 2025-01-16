@@ -15,7 +15,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveOffset(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have offset of {Formatter.Format(expected)},
@@ -32,7 +32,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveOffset(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

@@ -21,7 +21,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().EndWith(1)
 						.And.EndWith(1);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -32,7 +32,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith("bar").IgnoringCase();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -47,7 +47,7 @@ public sealed partial class EnumerableShould
 						new MyClass(8)
 					).Equivalent();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -58,7 +58,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(1, 2, 3);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -70,7 +70,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             end with expected,
@@ -86,7 +86,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(0, 0, 1, 2, 3);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             end with [0, 0, 1, 2, 3],
@@ -105,7 +105,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -116,7 +116,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(null!);
 
-				await That(Act).Should().Throw<ArgumentNullException>()
+				await That(Act).Does().Throw<ArgumentNullException>()
 					.WithParamName("expected");
 			}
 
@@ -128,7 +128,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().EndWith();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             end with [],
@@ -145,7 +145,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

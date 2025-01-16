@@ -15,7 +15,7 @@ public sealed partial class DateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveMinute(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class DateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveMinute(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have minute of {Formatter.Format(unexpected)},
@@ -44,7 +44,7 @@ public sealed partial class DateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveMinute(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

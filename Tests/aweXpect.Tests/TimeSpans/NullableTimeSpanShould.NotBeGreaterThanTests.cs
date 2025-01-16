@@ -15,7 +15,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().NotBeGreaterThan(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().NotBeGreaterThan(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -39,7 +39,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().NotBeGreaterThan(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be greater than {Formatter.Format(unexpected)},
@@ -56,7 +56,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().NotBeGreaterThan(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -68,7 +68,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().NotBeGreaterThan(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -81,7 +81,7 @@ public sealed partial class NullableTimeSpanShould
 					=> await That(subject).Should().NotBeGreaterThan(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be greater than <null>, because we want to test the failure,
@@ -100,7 +100,7 @@ public sealed partial class NullableTimeSpanShould
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be greater than {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
@@ -118,7 +118,7 @@ public sealed partial class NullableTimeSpanShould
 					=> await That(subject).Should().NotBeGreaterThan(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be greater than {Formatter.Format(unexpected)} ± 0:03,
@@ -136,7 +136,7 @@ public sealed partial class NullableTimeSpanShould
 					=> await That(subject).Should().NotBeGreaterThan(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

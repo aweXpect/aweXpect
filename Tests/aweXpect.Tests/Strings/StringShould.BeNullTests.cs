@@ -14,7 +14,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeNull();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be null,
@@ -29,7 +29,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeNull();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be null,
@@ -45,7 +45,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeNull();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

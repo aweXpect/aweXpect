@@ -20,7 +20,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").AnArray(a => a.At(0).Matching(null)));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be an object and $.foo be an array and $.foo[0] match null,
@@ -39,7 +39,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").AnArray(a => a.With(0).Elements()));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be an object and $.foo be an array with 0 elements,
@@ -58,7 +58,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().BeObject(o => o.With("foo").AnArray());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be an object and $.foo be an array,
@@ -77,7 +77,7 @@ public sealed partial class NullableJsonElementShould
 				async Task Act()
 					=> await That(subject).Should().BeArray(o => o.At(0).Matching(true));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be an array and $[0] match true,
@@ -98,7 +98,7 @@ public sealed partial class NullableJsonElementShould
 						.With("foo").AnArray(a => a
 							.With(1).Elements()));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an object and $.foo be an array with 1 element,
@@ -115,7 +115,7 @@ public sealed partial class NullableJsonElementShould
 					=> await That(subject).Should().BeArray(o => o
 						.With(3).Elements());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an array with 3 elements,
@@ -135,7 +135,7 @@ public sealed partial class NullableJsonElementShould
 					=> await That(subject).Should().BeArray(o => o
 						.With(expected).Elements());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 		
@@ -151,7 +151,7 @@ public sealed partial class NullableJsonElementShould
 						.With("foo").AnArray(a => a
 							.WithArrays(p => p.With(0).Elements())));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an object and $.foo be an array and $.foo[0] be an array with 0 elements,
@@ -168,7 +168,7 @@ public sealed partial class NullableJsonElementShould
 					=> await That(subject).Should().BeArray(e => e
 						.WithArrays(o => o.At(0).Matching(1), null, o => o.At(0).Matching(2)));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an array and $[0] be an array and $[0][0] match 1 and $[2] be an array and $[2][0] match 2,
@@ -195,7 +195,7 @@ public sealed partial class NullableJsonElementShould
 							o => o.At(0).Matching(2),
 							o => o.At(0).Matching(3)));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an array and $[0] be an array and $[0][0] match 1 and $[1] be an array and $[1][0] match 2 and $[2] be an array and $[2][0] match 3,
@@ -224,7 +224,7 @@ public sealed partial class NullableJsonElementShould
 							o => o.At(0).Matching(2),
 							o => o.At(0).Matching(3)));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -240,7 +240,7 @@ public sealed partial class NullableJsonElementShould
 						.With("foo").AnArray(a => a
 							.WithElements(2, 3)));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an object and $.foo be an array and $.foo[0] match 2 and $.foo[1] match 3,
@@ -261,7 +261,7 @@ public sealed partial class NullableJsonElementShould
 					=> await That(subject).Should().BeArray(e => e
 						.WithElements(3, true, null, 1.2, false, "bar"));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an array and $[0] match 3 and $[1] match True and $[2] match Null and $[3] match 1.2 and $[4] match False and $[5] match "bar",
@@ -284,7 +284,7 @@ public sealed partial class NullableJsonElementShould
 					=> await That(subject).Should().BeArray(e => e
 						.WithElements(3, true, null, 1.2, false, "bar"));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 		
@@ -300,7 +300,7 @@ public sealed partial class NullableJsonElementShould
 						.With("foo").AnArray(a => a
 							.WithObjects(p => p.With(0).Properties())));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an object and $.foo be an array and $.foo[0] be an object with 0 properties,
@@ -317,7 +317,7 @@ public sealed partial class NullableJsonElementShould
 					=> await That(subject).Should().BeArray(e => e
 						.WithObjects(o => o.With(0).Properties(), null, o => o.With(0).Properties()));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an array and $[0] be an object with 0 properties and $[2] be an object with 0 properties,
@@ -344,7 +344,7 @@ public sealed partial class NullableJsonElementShould
 							o => o.With("bar").Matching(2),
 							o => o.With("foo").Matching(3)));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be an array and $[0] be an object and $[0].foo match 1 and $[1] be an object and $[1].bar match 2 and $[2] be an object and $[2].foo match 3,
@@ -373,7 +373,7 @@ public sealed partial class NullableJsonElementShould
 							o => o.With("bar").Matching(2),
 							o => o.With("foo").Matching(3)));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

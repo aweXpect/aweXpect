@@ -15,7 +15,7 @@ public class QuantifierTests
 
 		void Act() => sut.AtLeast(minimum);
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
 			.WithMessage("*The parameter 'minimum' must be non-negative*").AsWildcard();
 	}
 
@@ -30,7 +30,7 @@ public class QuantifierTests
 
 		void Act() => sut.AtMost(maximum);
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
 			.WithMessage("*The parameter 'maximum' must be non-negative*").AsWildcard();
 	}
 
@@ -45,7 +45,7 @@ public class QuantifierTests
 
 		void Act() => sut.Between(minimum, 1);
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
 			.WithMessage("*The parameter 'minimum' must be non-negative*").AsWildcard();
 	}
 
@@ -60,7 +60,7 @@ public class QuantifierTests
 
 		void Act() => sut.Between(0, maximum);
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
 			.WithMessage("*The parameter 'maximum' must be non-negative*").AsWildcard();
 	}
 
@@ -75,7 +75,7 @@ public class QuantifierTests
 
 		void Act() => sut.Between(minimum, maximum);
 
-		await That(Act).Should().Throw<ArgumentException>().OnlyIf(expectThrow)
+		await That(Act).Does().Throw<ArgumentException>().OnlyIf(expectThrow)
 			.WithMessage("*The parameter 'maximum' must be greater than or equal to 'minimum'*").AsWildcard();
 	}
 
@@ -90,7 +90,7 @@ public class QuantifierTests
 
 		void Act() => sut.Exactly(expected);
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
 			.WithMessage("*The parameter 'expected' must be non-negative*").AsWildcard();
 	}
 }

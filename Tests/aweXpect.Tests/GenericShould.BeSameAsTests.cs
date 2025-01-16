@@ -13,7 +13,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().BeSameAs(expected);
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -25,7 +25,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().BeSameAs(expected);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             refer to expected Other {
@@ -46,7 +46,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().BeSameAs(expected);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             refer to expected <null>,
@@ -65,7 +65,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().BeSameAs(expected);
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -77,7 +77,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().BeSameAs(expected);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             refer to expected Other {
@@ -99,7 +99,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().NotBeSameAs(expected);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             not refer to expected Other {
@@ -118,7 +118,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().NotBeSameAs(expected);
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -130,7 +130,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().NotBeSameAs(expected);
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -142,7 +142,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().NotBeSameAs(expected);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             not refer to expected <null>,
@@ -159,7 +159,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().NotBeSameAs(expected);
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 	}
 }

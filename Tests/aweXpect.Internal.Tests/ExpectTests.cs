@@ -39,7 +39,7 @@ public class ExpectTests
 		async Task Act()
 			=> await That(subject).Should(b => b.WithCancellation(token)).HaveAll(x => x.Satisfy(y => y < 6));
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage("""
 			             Expected subject to
 			             have all items satisfy y => y < 6,

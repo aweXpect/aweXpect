@@ -16,7 +16,7 @@ public sealed partial class DictionaryShould
 				async Task Act()
 					=> await That(subject!).Should().NotContainValue("foo");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have value "foo",
@@ -32,7 +32,7 @@ public sealed partial class DictionaryShould
 				async Task Act()
 					=> await That(subject).Should().NotContainValue(42);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have value 42,
@@ -48,7 +48,7 @@ public sealed partial class DictionaryShould
 				async Task Act()
 					=> await That(subject).Should().NotContainValue(2);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

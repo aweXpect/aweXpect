@@ -16,7 +16,7 @@ public sealed partial class DateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeBefore(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -28,7 +28,7 @@ public sealed partial class DateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeBefore(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -40,7 +40,7 @@ public sealed partial class DateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeBefore(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be before {Formatter.Format(unexpected)},
@@ -57,7 +57,7 @@ public sealed partial class DateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeBefore(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -69,7 +69,7 @@ public sealed partial class DateOnlyShould
 				async Task Act()
 					=> await That(subject).Should().NotBeBefore(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -82,7 +82,7 @@ public sealed partial class DateOnlyShould
 					=> await That(subject).Should().NotBeBefore(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be before <null>, because we want to test the failure,
@@ -101,7 +101,7 @@ public sealed partial class DateOnlyShould
 						.Within(3.Days())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be before {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
@@ -119,7 +119,7 @@ public sealed partial class DateOnlyShould
 					=> await That(subject).Should().NotBeBefore(unexpected)
 						.Within(3.Days());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be before {Formatter.Format(unexpected)} ± 3 days,
@@ -137,7 +137,7 @@ public sealed partial class DateOnlyShould
 					=> await That(subject).Should().NotBeBefore(unexpected)
 						.Within(3.Days());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

@@ -15,7 +15,7 @@ public sealed partial class NumberShould
 					=> await That(subject).Should().BeNaN()
 						.And.Be(subject);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -26,7 +26,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -41,7 +41,7 @@ public sealed partial class NumberShould
 
 				async Task Act() => await That(subject).Should().BeNaN();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -56,7 +56,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -72,7 +72,7 @@ public sealed partial class NumberShould
 				async Task Act() => await That(subject).Should().BeNaN()
 					.And.Be(subject);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -83,7 +83,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -99,7 +99,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -114,7 +114,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -131,7 +131,7 @@ public sealed partial class NumberShould
 					=> await That(subject).Should().BeNaN()
 						.And.Be(subject);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -144,7 +144,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -159,7 +159,7 @@ public sealed partial class NumberShould
 
 				async Task Act() => await That(subject).Should().BeNaN();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -175,7 +175,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -191,7 +191,7 @@ public sealed partial class NumberShould
 				async Task Act() => await That(subject).Should().BeNaN()
 					.And.Be(subject);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -203,7 +203,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -219,7 +219,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -234,7 +234,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeNaN();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,

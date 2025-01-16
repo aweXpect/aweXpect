@@ -15,7 +15,7 @@ public sealed partial class ExceptionShould
 					=> await That(subject).Should()
 						.HaveInner<CustomException>(e => e.HaveMessage("inner"));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException which should have Message equal to "inner",
@@ -34,7 +34,7 @@ public sealed partial class ExceptionShould
 					=> await That(subject).Should()
 						.HaveInner<CustomException>(e => e.HaveMessage("inner"));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -47,7 +47,7 @@ public sealed partial class ExceptionShould
 					=> await That(subject).Should()
 						.HaveInner<CustomException>(e => e.HaveMessage("some other message"));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException which should have Message equal to "some other message",
@@ -68,7 +68,7 @@ public sealed partial class ExceptionShould
 				async Task Act()
 					=> await That(subject).Should().HaveInner<CustomException>();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException,
@@ -87,7 +87,7 @@ public sealed partial class ExceptionShould
 				async Task Act()
 					=> await That(subject).Should().HaveInner<CustomException>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -98,7 +98,7 @@ public sealed partial class ExceptionShould
 				async Task Act()
 					=> await That(subject).Should().HaveInner<CustomException>();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException,

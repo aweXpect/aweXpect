@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveSecond(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have second of <null>,
@@ -32,7 +32,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveSecond(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have second of {Formatter.Format(expected)},
@@ -49,7 +49,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveSecond(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -61,7 +61,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveSecond(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have second of <null>,
@@ -78,7 +78,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveSecond(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have second of 1,

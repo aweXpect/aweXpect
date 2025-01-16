@@ -15,10 +15,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should().ThrowException()
+					=> await That(Delegate).Does().ThrowException()
 						.WithMessage("foo").IgnoringCase();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -30,10 +30,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should().ThrowException()
+					=> await That(Delegate).Does().ThrowException()
 						.WithMessage("foo*").AsWildcard();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -45,10 +45,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should().ThrowException()
+					=> await That(Delegate).Does().ThrowException()
 						.WithMessage("foo");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected Delegate to
 					             throw an exception with Message equal to "foo",
@@ -68,10 +68,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should().Throw<CustomException>()
+					=> await That(Delegate).Does().Throw<CustomException>()
 						.WithMessage("foo");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected Delegate to
 					             throw a CustomException with Message equal to "foo",
@@ -92,7 +92,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithMessage(message);
+					.Does().ThrowException().WithMessage(message);
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -105,9 +105,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new CustomException(actual);
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithMessage(expected);
+					=> await That(action).Does().ThrowException().WithMessage(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception with Message equal to "expected other text",
@@ -128,7 +128,7 @@ public sealed partial class DelegateShould
 				async Task Act()
 					=> await That(subject).Should().HaveMessage(message);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

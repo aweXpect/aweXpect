@@ -20,7 +20,7 @@ public sealed partial class HttpResponseMessageShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveStatusCode(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -37,7 +37,7 @@ public sealed partial class HttpResponseMessageShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveStatusCode(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("*StatusCode different to*")
 					.AsWildcard();
 			}
@@ -50,7 +50,7 @@ public sealed partial class HttpResponseMessageShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveStatusCode(HttpStatusCode.Accepted);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have StatusCode different to 202 Accepted,

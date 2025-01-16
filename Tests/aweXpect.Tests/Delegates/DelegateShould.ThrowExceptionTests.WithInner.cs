@@ -15,7 +15,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithInner<CustomException>(
+					.Does().ThrowException().WithInner<CustomException>(
 						e => e.HaveMessage(message));
 
 				await That(result).Should().BeSameAs(exception);
@@ -28,7 +28,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithInner<CustomException>();
+					.Does().ThrowException().WithInner<CustomException>();
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -41,9 +41,9 @@ public sealed partial class DelegateShould
 					=> throw new OuterException(innerException: new CustomException(message));
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner<SubCustomException>();
+					=> await That(action).Does().ThrowException().WithInner<SubCustomException>();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
 					              throw an exception with an inner SubCustomException,
@@ -60,9 +60,9 @@ public sealed partial class DelegateShould
 					=> throw new OuterException(innerException: new OtherException(message));
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner<CustomException>();
+					=> await That(action).Does().ThrowException().WithInner<CustomException>();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
 					              throw an exception with an inner CustomException,
@@ -77,9 +77,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException(innerException: new CustomException());
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner<CustomException>();
+					=> await That(action).Does().ThrowException().WithInner<CustomException>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -89,9 +89,9 @@ public sealed partial class DelegateShould
 					=> throw new OuterException(innerException: new SubCustomException());
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner<CustomException>();
+					=> await That(action).Does().ThrowException().WithInner<CustomException>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -100,9 +100,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException();
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner<CustomException>();
+					=> await That(action).Does().ThrowException().WithInner<CustomException>();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception with an inner CustomException,
@@ -119,7 +119,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithInner(typeof(CustomException),
+					.Does().ThrowException().WithInner(typeof(CustomException),
 						e => e.HaveMessage(message));
 
 				await That(result).Should().BeSameAs(exception);
@@ -132,7 +132,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception result = await That(Delegate)
-					.Should().ThrowException().WithInner(typeof(CustomException));
+					.Does().ThrowException().WithInner(typeof(CustomException));
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -145,10 +145,10 @@ public sealed partial class DelegateShould
 					=> throw new OuterException(innerException: new CustomException(message));
 
 				async Task Act()
-					=> await That(action).Should().ThrowException()
+					=> await That(action).Does().ThrowException()
 						.WithInner(typeof(SubCustomException));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
 					              throw an exception with an inner SubCustomException,
@@ -165,9 +165,9 @@ public sealed partial class DelegateShould
 					=> throw new OuterException(innerException: new OtherException(message));
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner(typeof(CustomException));
+					=> await That(action).Does().ThrowException().WithInner(typeof(CustomException));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected action to
 					              throw an exception with an inner CustomException,
@@ -182,9 +182,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException(innerException: new CustomException());
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner(typeof(CustomException));
+					=> await That(action).Does().ThrowException().WithInner(typeof(CustomException));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -194,9 +194,9 @@ public sealed partial class DelegateShould
 					=> throw new OuterException(innerException: new SubCustomException());
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner(typeof(CustomException));
+					=> await That(action).Does().ThrowException().WithInner(typeof(CustomException));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -205,9 +205,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException();
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithInner(typeof(CustomException));
+					=> await That(action).Does().ThrowException().WithInner(typeof(CustomException));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception with an inner CustomException,

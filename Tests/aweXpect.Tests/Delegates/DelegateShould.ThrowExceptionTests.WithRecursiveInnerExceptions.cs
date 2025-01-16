@@ -20,10 +20,10 @@ public sealed partial class DelegateShould
 								innerException: new CustomException()))));
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
+					=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
 						e => e.Should().HaveAtLeast(minimum, x => x.Be<CustomException>()));
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(shouldThrow)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(shouldThrow)
 					.WithMessage($"""
 					              Expected action to
 					              throw an exception with recursive inner exceptions which should have at least {minimum} items be type CustomException,
@@ -38,7 +38,7 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				Exception? result = await That(Delegate)
-					.Should().ThrowException().WithRecursiveInnerExceptions(
+					.Does().ThrowException().WithRecursiveInnerExceptions(
 						e => e.Should().HaveNone(x => x.Satisfy(_ => false)));
 
 				await That(result).Should().BeSameAs(exception);
@@ -50,10 +50,10 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException(innerException: new CustomException());
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
+					=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
 						e => e.Should().HaveAll(x => x.Satisfy(_ => false)));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception with recursive inner exceptions which should have all items satisfy _ => false,
@@ -67,10 +67,10 @@ public sealed partial class DelegateShould
 				Action action = () => throw new OuterException();
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().WithRecursiveInnerExceptions(
+					=> await That(action).Does().ThrowException().WithRecursiveInnerExceptions(
 						e => e.Should().HaveAll(x => x.Satisfy(_ => false)));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

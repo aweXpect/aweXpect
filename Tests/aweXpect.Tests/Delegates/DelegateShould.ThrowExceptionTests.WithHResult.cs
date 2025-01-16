@@ -16,10 +16,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should()
+					=> await That(Delegate).Does()
 						.ThrowException().WithHResult(hResult);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -31,10 +31,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should()
+					=> await That(Delegate).Does()
 						.ThrowException().WithHResult(expectedHResult);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected Delegate to
 					              throw an exception with HResult {expectedHResult},

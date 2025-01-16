@@ -12,7 +12,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Fail.Test("my message");
 
-		await Expect.That(Act).Should().Throw<XunitException>();
+		await Expect.That(Act).Does().Throw<XunitException>();
 	}
 
 	[Fact]
@@ -21,7 +21,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Skip.Test("my message");
 
-		await Expect.That(Act).Should().Throw<SkipException>()
+		await Expect.That(Act).Does().Throw<SkipException>()
 			.WithMessage("$XunitDynamicSkip$my message");
 	}
 }

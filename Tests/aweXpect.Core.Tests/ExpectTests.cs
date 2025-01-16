@@ -8,7 +8,7 @@ public class ExpectTests
 		async Task Act()
 			=> await That([1, 2, 3]).Should().BeInAscendingOrder();
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 
 	[Fact]
@@ -19,7 +19,7 @@ public class ExpectTests
 		async Task Act()
 			=> await That(sut).Should().BeGreaterThan(41);
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 
 #if NET8_0_OR_GREATER
@@ -31,7 +31,7 @@ public class ExpectTests
 		async Task Act()
 			=> await That(sut).Should().BeGreaterThan(41);
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 #endif
 }

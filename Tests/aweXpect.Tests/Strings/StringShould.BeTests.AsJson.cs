@@ -33,7 +33,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to {},
@@ -78,7 +78,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to {},
@@ -104,7 +104,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be JSON equivalent to {expected},
@@ -127,7 +127,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"*but it differed as {message}").AsWildcard();
 			}
 
@@ -145,7 +145,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"*but it differed as {message}").AsWildcard();
 			}
 
@@ -166,7 +166,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to {
@@ -201,7 +201,7 @@ public sealed partial class StringShould
 					=> await That(subject).Should().Be(expected)
 						.AsJson(o => o.IgnoringAdditionalProperties(ignoreAdditionalProperties));
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreAdditionalProperties)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!ignoreAdditionalProperties)
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to {
@@ -224,7 +224,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to [1,2,3,4],
@@ -249,7 +249,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be JSON equivalent to {"foo":[1,2]},
@@ -273,7 +273,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be JSON equivalent to {},
@@ -295,7 +295,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsJson();
 
-				await That(Act).Should().NotThrow().Because(because);
+				await That(Act).Does().NotThrow().Because(because);
 			}
 		}
 	}

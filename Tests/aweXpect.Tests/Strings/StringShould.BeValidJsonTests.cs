@@ -20,7 +20,7 @@ public sealed partial class StringShould
 						AllowTrailingCommas = allowTrailingCommas
 					});
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!allowTrailingCommas);
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!allowTrailingCommas);
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeValidJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be valid JSON,
@@ -52,7 +52,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeValidJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be valid JSON,
@@ -68,7 +68,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeValidJson();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be valid JSON,
@@ -93,7 +93,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeValidJson();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -107,7 +107,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeValidJson().Which(d => d.Should().Match([1, 3]));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be valid JSON which should match [1, 3],
@@ -123,7 +123,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().BeValidJson().Which(d => d.Should().Match([1, 2]));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

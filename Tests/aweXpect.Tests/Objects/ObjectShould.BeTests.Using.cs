@@ -17,7 +17,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EqualTo(expected).Using(new MyComparer(false));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be equal to expected using MyComparer,
@@ -37,7 +37,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EqualTo(expected).Using(new MyComparer(true));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			private sealed class MyComparer(bool considerEqual) : IEqualityComparer<object>

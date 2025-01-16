@@ -21,7 +21,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(expected).IgnoringCase(ignoreCase);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.OnlyIf(!ignoreCase)
 					.WithMessage("""
 					             Expected subject to
@@ -40,7 +40,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(expected).IgnoringCase();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             end with "SOME" ignoring case,
@@ -59,7 +59,7 @@ public sealed partial class StringShould
 					=> await That(subject).Should().EndWith(expected)
 						.Using(new IgnoreCaseForVocalsComparer());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             end with "TEXT" using IgnoreCaseForVocalsComparer,
@@ -78,7 +78,7 @@ public sealed partial class StringShould
 					=> await That(subject).Should().EndWith(expected)
 						.Using(new IgnoreCaseForVocalsComparer());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -90,7 +90,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             end with "some",
@@ -107,7 +107,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().EndWith(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

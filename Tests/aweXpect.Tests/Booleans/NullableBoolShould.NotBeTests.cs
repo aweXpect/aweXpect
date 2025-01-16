@@ -18,7 +18,7 @@ public sealed partial class NullableBoolShould
 				async Task Act()
 					=> await That(subject).Should().NotBe(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -32,7 +32,7 @@ public sealed partial class NullableBoolShould
 				async Task Act()
 					=> await That(subject).Should().NotBe(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be {Formatter.Format(unexpected)},

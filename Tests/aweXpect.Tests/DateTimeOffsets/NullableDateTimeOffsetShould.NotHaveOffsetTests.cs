@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveOffset(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveOffset(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have offset of {Formatter.Format(unexpected)},
@@ -44,7 +44,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveOffset(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

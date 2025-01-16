@@ -19,7 +19,7 @@ public sealed partial class BufferedStreamShould
 				async Task Act()
 					=> await That(subject).Should().HaveBufferSize(bufferSize);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have buffer size {bufferSize},
@@ -36,7 +36,7 @@ public sealed partial class BufferedStreamShould
 				async Task Act()
 					=> await That(subject).Should().HaveBufferSize(bufferSize);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -47,7 +47,7 @@ public sealed partial class BufferedStreamShould
 				async Task Act()
 					=> await That(subject).Should().HaveBufferSize(0);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have buffer size 0,

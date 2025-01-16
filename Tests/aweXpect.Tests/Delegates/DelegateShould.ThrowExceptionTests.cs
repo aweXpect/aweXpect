@@ -12,7 +12,7 @@ public sealed partial class DelegateShould
 				Exception exception = new CustomException();
 				Action action = () => throw exception;
 
-				Exception result = await That(action).Should().ThrowException();
+				Exception result = await That(action).Does().ThrowException();
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -23,9 +23,9 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				async Task<Exception> Act()
-					=> await That(action).Should().ThrowException().WithMessage("foo");
+					=> await That(action).Does().ThrowException().WithMessage("foo");
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception with Message equal to "foo",
@@ -40,9 +40,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<Exception> Act()
-					=> await That(action).Should().ThrowException();
+					=> await That(action).Does().ThrowException();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -51,9 +51,9 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				async Task<Exception> Act()
-					=> await That(action).Should().ThrowException();
+					=> await That(action).Does().ThrowException();
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception,
@@ -67,9 +67,9 @@ public sealed partial class DelegateShould
 				Action? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().ThrowException();
+					=> await That(subject!).Does().ThrowException();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             throw an exception,

@@ -22,7 +22,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAll(x => x.Satisfy(y => y < 6)).WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items satisfy y => y < 6,
@@ -39,7 +39,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().HaveAll(x => x.Satisfy(_ => true))
 						.And.HaveAll(x => x.Satisfy(_ => true));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -50,7 +50,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAll(x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to 1,
@@ -66,7 +66,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAll(x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to 1,
@@ -82,7 +82,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAll(x => x.Be(0));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -93,7 +93,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAll(x => x.Be(1));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -104,7 +104,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().HaveAll(x => x.Be(0));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items be equal to 0,

@@ -25,7 +25,7 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().HaveBetween(6).And(8, x => x.Satisfy(y => y < 6))
 						.WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 6 and 8 items satisfy y => y < 6,
@@ -42,7 +42,7 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().HaveBetween(0).And(2, x => x.Be(1))
 						.And.HaveBetween(0).And(1, x => x.Be(1));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -53,7 +53,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(0).And(1, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 0 and 1 items be equal to 1,
@@ -69,7 +69,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(3).And(4, x => x.Be(1));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -80,7 +80,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(3).And(4, x => x.Be(2));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 3 and 4 items be equal to 2,
@@ -96,7 +96,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(1).And(3, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 1 and 3 items be equal to 1,
@@ -112,7 +112,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().HaveBetween(0).And(1, x => x.Be(0));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 0 and 1 items be equal to 0,
@@ -134,7 +134,7 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().HaveBetween(3).And(6).Items()
 						.WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 3 and 6 items,
@@ -150,7 +150,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(3).And(6).Items();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -161,7 +161,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(3).And(6).Items();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 3 and 6 items,
@@ -177,7 +177,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveBetween(3).And(6).Items();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 3 and 6 items,

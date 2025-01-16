@@ -14,7 +14,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().Satisfy(_ => predicateResult);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.OnlyIf(!predicateResult)
 				.WithMessage("""
 				             Expected subject to
@@ -38,7 +38,7 @@ public sealed partial class GenericShould
 			async Task Act()
 				=> await That(subject).Should().NotSatisfy(_ => predicateResult);
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.OnlyIf(predicateResult)
 				.WithMessage("""
 				             Expected subject to

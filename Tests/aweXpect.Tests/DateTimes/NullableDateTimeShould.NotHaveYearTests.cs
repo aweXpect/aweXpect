@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveYear(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveYear(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -39,7 +39,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveYear(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -51,7 +51,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveYear(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -63,7 +63,7 @@ public sealed partial class NullableDateTimeShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveYear(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have year of {Formatter.Format(unexpected)},

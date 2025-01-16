@@ -25,7 +25,7 @@ public sealed partial class EventRecordingShould
 						.HaveTriggered(nameof(INotifyPropertyChanged.PropertyChanged))
 						.With<PropertyChangedEventArgs>(e => e.PropertyName == "SomethingElse");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "SomethingElse" at least once,
@@ -55,7 +55,7 @@ public sealed partial class EventRecordingShould
 						.HaveTriggered(nameof(INotifyPropertyChanged.PropertyChanged))
 						.With<PropertyChangedEventArgs>(e => e.PropertyName == "MyValue");
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

@@ -15,7 +15,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -32,7 +32,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be greater than the maximum time span,
@@ -49,7 +49,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be greater than the minimum time span,
@@ -66,7 +66,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -84,7 +84,7 @@ public sealed partial class NullableTimeSpanShould
 					=> await That(subject).Should().BeGreaterThan(expected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)}, because we want to test the failure,
@@ -101,7 +101,7 @@ public sealed partial class NullableTimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -114,7 +114,7 @@ public sealed partial class NullableTimeSpanShould
 					=> await That(subject).Should().BeGreaterThan(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)} ± 0:03,
@@ -133,7 +133,7 @@ public sealed partial class NullableTimeSpanShould
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
@@ -151,7 +151,7 @@ public sealed partial class NullableTimeSpanShould
 					=> await That(subject).Should().BeGreaterThan(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

@@ -11,7 +11,7 @@ public sealed partial class DelegateShould
 			{
 				Action action = () => { };
 
-				await That(action).Should().ThrowException()
+				await That(action).Does().ThrowException()
 					.OnlyIf(false)
 					.WithMessage("foo");
 			}
@@ -21,7 +21,7 @@ public sealed partial class DelegateShould
 			{
 				Action action = () => { };
 
-				await That(action).Should().Throw<ArgumentException>()
+				await That(action).Does().Throw<ArgumentException>()
 					.OnlyIf(false)
 					.WithMessage("foo");
 			}
@@ -32,7 +32,7 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				CustomException? result =
-					await That(action).Should().Throw<CustomException>().OnlyIf(false);
+					await That(action).Does().Throw<CustomException>().OnlyIf(false);
 
 				await That(result).Should().BeNull();
 			}
@@ -44,7 +44,7 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				CustomException? result =
-					await That(action).Should().Throw<CustomException>().OnlyIf(true);
+					await That(action).Does().Throw<CustomException>().OnlyIf(true);
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -56,9 +56,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().OnlyIf(false);
+					=> await That(action).Does().ThrowException().OnlyIf(false);
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected action to
 					             not throw any exception,
@@ -72,9 +72,9 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().OnlyIf(false);
+					=> await That(action).Does().ThrowException().OnlyIf(false);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -83,9 +83,9 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().OnlyIf(true);
+					=> await That(action).Does().ThrowException().OnlyIf(true);
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected action to
 					             throw an exception,
@@ -100,9 +100,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task Act()
-					=> await That(action).Should().ThrowException().OnlyIf(true);
+					=> await That(action).Does().ThrowException().OnlyIf(true);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

@@ -14,7 +14,7 @@ public sealed partial class NullableEnumShould
 				async Task Act()
 					=> await That(subject).Should().NotBeDefined();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be defined,
@@ -30,7 +30,7 @@ public sealed partial class NullableEnumShould
 				async Task Act()
 					=> await That(subject).Should().NotBeDefined();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -41,7 +41,7 @@ public sealed partial class NullableEnumShould
 				async Task Act()
 					=> await That(subject).Should().NotBeDefined();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be defined,

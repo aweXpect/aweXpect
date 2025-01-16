@@ -29,7 +29,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveSingle();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item,
@@ -55,7 +55,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveSingle();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item,
@@ -85,7 +85,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(4);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item which should be greater than 4,
@@ -101,7 +101,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(4);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item which should be greater than 4,
@@ -117,7 +117,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(4);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item which should be greater than 4,
@@ -133,7 +133,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(2);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

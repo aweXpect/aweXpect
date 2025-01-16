@@ -14,7 +14,7 @@ public sealed partial class NullableBoolShould
 				async Task Act()
 					=> await That(subject).Should().NotBeTrue();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class NullableBoolShould
 				async Task Act()
 					=> await That(subject).Should().NotBeTrue().Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be True, because we want to test the failure,

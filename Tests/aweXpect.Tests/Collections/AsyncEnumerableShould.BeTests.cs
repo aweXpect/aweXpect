@@ -20,7 +20,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be([]);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection [] in order,
@@ -49,7 +49,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -90,7 +90,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -110,7 +110,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -148,7 +148,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected!);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -164,7 +164,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().Be([]);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection [] in order,
@@ -181,7 +181,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -204,7 +204,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -221,7 +221,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -240,7 +240,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -259,7 +259,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -276,7 +276,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -293,7 +293,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -310,7 +310,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -330,7 +330,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -347,7 +347,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order,
@@ -366,7 +366,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -380,7 +380,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be([]).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection [] in order ignoring duplicates,
@@ -409,7 +409,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -450,7 +450,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -470,7 +470,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -489,7 +489,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -527,7 +527,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -550,7 +550,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -567,7 +567,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -586,7 +586,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -605,7 +605,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -617,7 +617,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -629,7 +629,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -641,7 +641,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -653,7 +653,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -665,7 +665,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -682,7 +682,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in order ignoring duplicates,
@@ -701,7 +701,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -715,7 +715,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be([]).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection [] in any order,
@@ -744,7 +744,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -785,7 +785,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -805,7 +805,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -843,7 +843,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -866,7 +866,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -883,7 +883,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -902,7 +902,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -914,7 +914,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -931,7 +931,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -948,7 +948,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -965,7 +965,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -982,7 +982,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -999,7 +999,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -1016,7 +1016,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order,
@@ -1035,7 +1035,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -1049,7 +1049,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be([]).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection [] in any order ignoring duplicates,
@@ -1078,7 +1078,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1119,7 +1119,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1139,7 +1139,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1158,7 +1158,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1196,7 +1196,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1219,7 +1219,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1236,7 +1236,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1255,7 +1255,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1267,7 +1267,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1279,7 +1279,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1291,7 +1291,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1303,7 +1303,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1315,7 +1315,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1327,7 +1327,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1344,7 +1344,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match collection expected in any order ignoring duplicates,
@@ -1363,7 +1363,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -1378,7 +1378,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).AsWildcard();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1391,7 +1391,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringLeadingWhiteSpace();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1404,7 +1404,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Be(expected).IgnoringTrailingWhiteSpace();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

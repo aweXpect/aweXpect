@@ -14,7 +14,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BePositive();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BePositive();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -41,7 +41,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BePositive();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -57,7 +57,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BePositive();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -68,7 +68,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BePositive();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,

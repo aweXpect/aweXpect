@@ -16,7 +16,7 @@ public sealed partial class BoolShould
 					=> await That(antecedent).Should().Imply(consequent)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected antecedent to
 					              imply {Formatter.Format(consequent)}, because we want to test the failure,
@@ -34,7 +34,7 @@ public sealed partial class BoolShould
 				async Task Act()
 					=> await That(antecedent).Should().Imply(consequent);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

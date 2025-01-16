@@ -14,7 +14,7 @@ public sealed partial class EnumShould
 				async Task Act()
 					=> await That(subject).Should().HaveFlag(null);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have flag <null>,
@@ -30,7 +30,7 @@ public sealed partial class EnumShould
 				async Task Act()
 					=> await That(subject).Should().HaveFlag(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have flag {Formatter.Format(expected)},
@@ -48,7 +48,7 @@ public sealed partial class EnumShould
 				async Task Act()
 					=> await That(subject).Should().HaveFlag(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -61,7 +61,7 @@ public sealed partial class EnumShould
 				async Task Act()
 					=> await That(subject).Should().HaveFlag(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

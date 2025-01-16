@@ -15,7 +15,7 @@ public sealed partial class ObjectShould
 					=> await That(subject).Should().NotBe(subject)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be equal to subject, because we want to test the failure,
@@ -34,7 +34,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBe(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -46,7 +46,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBe(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be equal to expected,
@@ -62,7 +62,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Should().NotBe(new MyClass());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

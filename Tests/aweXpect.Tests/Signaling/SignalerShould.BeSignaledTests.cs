@@ -20,7 +20,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled().WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             have recorded the callback at least once,
@@ -36,7 +36,7 @@ public sealed partial class SignalerShould
 				async Task Act()
 					=> await That(subject!).Should().BeSignaled();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have recorded the callback at least once,
@@ -55,7 +55,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -71,7 +71,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled().WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             have recorded the callback at least once,
@@ -87,7 +87,7 @@ public sealed partial class SignalerShould
 				async Task Act()
 					=> await That(subject!).Should().BeSignaled();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have recorded the callback at least once,
@@ -106,7 +106,7 @@ public sealed partial class SignalerShould
 				async Task Act() =>
 					await That(signaler).Should().BeSignaled();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

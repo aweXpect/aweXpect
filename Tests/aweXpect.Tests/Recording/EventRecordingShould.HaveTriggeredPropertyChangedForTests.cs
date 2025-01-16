@@ -23,7 +23,7 @@ public sealed partial class EventRecordingShould
 					await That(recording).Should()
 						.HaveTriggeredPropertyChangedFor(x => x.MyValue);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the PropertyChanged event on sut for property MyValue at least once,
@@ -52,7 +52,7 @@ public sealed partial class EventRecordingShould
 					await That(recording).Should()
 						.HaveTriggeredPropertyChangedFor(x => x.MyValue);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -64,7 +64,7 @@ public sealed partial class EventRecordingShould
 					=> await That(subject!).Should()
 						.HaveTriggeredPropertyChangedFor(x => x.MyValue);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have recorded the PropertyChanged event for property MyValue at least once,

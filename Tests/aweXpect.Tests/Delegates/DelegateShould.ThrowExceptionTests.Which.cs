@@ -17,10 +17,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should().ThrowException()
+					=> await That(Delegate).Does().ThrowException()
 						.Which(e => e.HResult, h => h.Should().Be(expectedHResult));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected Delegate to
 					              throw an exception which .HResult should be equal to {expectedHResult},
@@ -36,10 +36,10 @@ public sealed partial class DelegateShould
 				void Delegate() => throw exception;
 
 				async Task Act()
-					=> await That(Delegate).Should().ThrowException()
+					=> await That(Delegate).Does().ThrowException()
 						.Which(e => e.HResult, h => h.Should().Be(hResult));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

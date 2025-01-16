@@ -21,7 +21,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EquivalentTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -36,7 +36,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EquivalentTo(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
@@ -79,7 +79,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EquivalentTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -116,7 +116,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EquivalentTo(expected);
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
@@ -162,7 +162,7 @@ public sealed partial class ObjectShould
 					=> await That(subject).Should().Be(expected)
 						.Equivalent(o => o.IgnoringMember("Inner.Inner.Collection.[3]"));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -201,7 +201,7 @@ public sealed partial class ObjectShould
 					=> await That(subject).Should().Be(expected)
 						.Equivalent(o => o.IgnoringMember("Inner.Inner.Collection.[3]"));
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
@@ -240,7 +240,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EquivalentTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -271,7 +271,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EquivalentTo(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,

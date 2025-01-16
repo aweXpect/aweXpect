@@ -16,7 +16,7 @@ public sealed partial class NullableEnumShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveValue(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -29,7 +29,7 @@ public sealed partial class NullableEnumShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveValue(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have value {Formatter.Format(unexpected)},
@@ -45,7 +45,7 @@ public sealed partial class NullableEnumShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveValue(null);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

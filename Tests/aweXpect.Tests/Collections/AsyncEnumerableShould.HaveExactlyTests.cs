@@ -25,7 +25,7 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().HaveExactly(6, x => x.Satisfy(y => y < 6))
 						.WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 6 items satisfy y => y < 6,
@@ -42,7 +42,7 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().HaveExactly(1, x => x.Be(1))
 						.And.HaveExactly(1, x => x.Be(1));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -53,7 +53,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(1, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly one item be equal to 1,
@@ -69,7 +69,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(4, x => x.Be(1));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -80,7 +80,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(4, x => x.Be(2));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 4 items be equal to 2,
@@ -96,7 +96,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(3, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 3 items be equal to 1,
@@ -112,7 +112,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().HaveExactly(1, x => x.Be(0));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly one item be equal to 0,
@@ -135,7 +135,7 @@ public sealed partial class AsyncEnumerableShould
 					=> await That(subject).Should().HaveExactly(6).Items()
 						.WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 6 items,
@@ -151,7 +151,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(3).Items();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -162,7 +162,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(4).Items();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 4 items,
@@ -178,7 +178,7 @@ public sealed partial class AsyncEnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveExactly(2).Items();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 2 items,

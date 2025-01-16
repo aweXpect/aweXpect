@@ -23,7 +23,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().HaveAtMost(8, x => x.Satisfy(y => y < 6))
 						.WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most 8 items satisfy y => y < 6,
@@ -40,7 +40,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().HaveAtMost(3, x => x.Be(1))
 						.And.HaveAtMost(3, x => x.Be(1));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -51,7 +51,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(1, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most one item be equal to 1,
@@ -67,7 +67,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(3, x => x.Be(2));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -78,7 +78,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(3, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most 3 items be equal to 1,
@@ -94,7 +94,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(3, x => x.Be(2));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -105,7 +105,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(3, x => x.Be(1));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most 3 items be equal to 1,
@@ -121,7 +121,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().HaveAtMost(1, x => x.Be(0));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most one item be equal to 0,
@@ -143,7 +143,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().HaveAtMost(6).Items()
 						.WithCancellation(token);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most 6 items,
@@ -159,7 +159,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(3).Items();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -170,7 +170,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(4).Items();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -181,7 +181,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(2).Items();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most 2 items,
@@ -197,7 +197,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(3).Items();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -208,7 +208,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(4).Items();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -219,7 +219,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().HaveAtMost(2).Items();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have at most 2 items,

@@ -16,7 +16,7 @@ public sealed partial class NullableTimeOnlyShould
 				async Task Act()
 					=> await That(subject).Should().BeOnOrAfter(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after <null>,
@@ -33,7 +33,7 @@ public sealed partial class NullableTimeOnlyShould
 				async Task Act()
 					=> await That(subject).Should().BeOnOrAfter(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -45,7 +45,7 @@ public sealed partial class NullableTimeOnlyShould
 				async Task Act()
 					=> await That(subject).Should().BeOnOrAfter(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -57,7 +57,7 @@ public sealed partial class NullableTimeOnlyShould
 				async Task Act()
 					=> await That(subject).Should().BeOnOrAfter(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)},
@@ -74,7 +74,7 @@ public sealed partial class NullableTimeOnlyShould
 				async Task Act()
 					=> await That(subject).Should().BeOnOrAfter(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -86,7 +86,7 @@ public sealed partial class NullableTimeOnlyShould
 				async Task Act()
 					=> await That(subject).Should().BeOnOrAfter(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -99,7 +99,7 @@ public sealed partial class NullableTimeOnlyShould
 					=> await That(subject).Should().BeOnOrAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)} ± 0:03,
@@ -118,7 +118,7 @@ public sealed partial class NullableTimeOnlyShould
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
@@ -136,7 +136,7 @@ public sealed partial class NullableTimeOnlyShould
 					=> await That(subject).Should().BeOnOrAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

@@ -190,7 +190,7 @@ public class SignalerTests
 			void Act()
 				=> signaler.Wait(amount);
 
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+			await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 				.WithMessage("The amount must be greater than zero*").AsWildcard().And
 				.WithParamName("amount");
 		}
@@ -479,7 +479,7 @@ public class SignalerTests
 			void Act()
 				=> signaler.Wait(amount);
 
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+			await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 				.WithMessage("The amount must be greater than zero*").AsWildcard().And
 				.WithParamName("amount");
 		}

@@ -11,9 +11,9 @@ public class DelegateAsyncSourceTests
 		TimeSystemMock timeSystem = new TimeSystemMock().SetElapsed(1100.Milliseconds());
 
 		async Task Act() =>
-			await That(() => Task.CompletedTask).Should().NotExecuteWithin(1000.Milliseconds())
+			await That(() => Task.CompletedTask).Does().NotExecuteWithin(1000.Milliseconds())
 				.UseTimeSystem(timeSystem);
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 }

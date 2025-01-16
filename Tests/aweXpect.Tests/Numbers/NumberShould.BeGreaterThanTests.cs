@@ -16,7 +16,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -32,7 +32,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -44,7 +44,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -61,7 +61,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -80,7 +80,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -96,7 +96,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -113,7 +113,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -129,7 +129,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -140,7 +140,7 @@ public sealed partial class NumberShould
 			{
 				async Task Act() => await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -156,7 +156,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -169,7 +169,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -186,7 +186,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -202,7 +202,7 @@ public sealed partial class NumberShould
 			{
 				async Task Act() => await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -218,7 +218,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -231,7 +231,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -249,7 +249,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -265,7 +265,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -277,7 +277,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -295,7 +295,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -310,7 +310,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -321,7 +321,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -333,7 +333,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -349,7 +349,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -361,7 +361,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -379,7 +379,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -396,7 +396,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -415,7 +415,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -431,7 +431,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -448,7 +448,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -464,7 +464,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -477,7 +477,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -494,7 +494,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -510,7 +510,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -523,7 +523,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -539,7 +539,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -551,7 +551,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -569,7 +569,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -585,7 +585,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -597,7 +597,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -615,7 +615,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -631,7 +631,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -643,7 +643,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -661,7 +661,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -677,7 +677,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -689,7 +689,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -707,7 +707,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -723,7 +723,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -735,7 +735,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -753,7 +753,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -769,7 +769,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -781,7 +781,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -799,7 +799,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -815,7 +815,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -827,7 +827,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -845,7 +845,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -863,7 +863,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -879,7 +879,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -891,7 +891,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -909,7 +909,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -925,7 +925,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -937,7 +937,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -955,7 +955,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -971,7 +971,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -983,7 +983,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -1001,7 +1001,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -1017,7 +1017,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -1029,7 +1029,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},
@@ -1047,7 +1047,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than <null>,
@@ -1063,7 +1063,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -1075,7 +1075,7 @@ public sealed partial class NumberShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThan(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than {Formatter.Format(expected)},

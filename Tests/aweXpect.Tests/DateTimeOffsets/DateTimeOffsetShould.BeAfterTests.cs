@@ -15,7 +15,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().BeAfter(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be after <null>,
@@ -32,7 +32,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().BeAfter(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be after 9999-12-31T23:59:59.9999999+00:00,
@@ -49,7 +49,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().BeAfter(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be after 0001-01-01T00:00:00.0000000+00:00,
@@ -66,7 +66,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().BeAfter(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be after {Formatter.Format(expected)},
@@ -84,7 +84,7 @@ public sealed partial class DateTimeOffsetShould
 					=> await That(subject).Should().BeAfter(expected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be after {Formatter.Format(expected)}, because we want to test the failure,
@@ -101,7 +101,7 @@ public sealed partial class DateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().BeAfter(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -114,7 +114,7 @@ public sealed partial class DateTimeOffsetShould
 					=> await That(subject).Should().BeAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be after {Formatter.Format(expected)} ± 0:03,
@@ -133,7 +133,7 @@ public sealed partial class DateTimeOffsetShould
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be after {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
@@ -151,7 +151,7 @@ public sealed partial class DateTimeOffsetShould
 					=> await That(subject).Should().BeAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

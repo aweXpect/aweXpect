@@ -20,7 +20,7 @@ public sealed partial class EventRecordingShould
 					await That(recording).Should()
 						.NotHaveTriggeredPropertyChanged();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -38,7 +38,7 @@ public sealed partial class EventRecordingShould
 					await That(recording).Should()
 						.NotHaveTriggeredPropertyChanged();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have never recorded the PropertyChanged event on sut,
@@ -61,7 +61,7 @@ public sealed partial class EventRecordingShould
 					=> await That(subject!).Should()
 						.NotHaveTriggeredPropertyChanged();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have never recorded the PropertyChanged event,

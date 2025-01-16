@@ -14,7 +14,7 @@ public sealed partial class BoolShould
 				async Task Act()
 					=> await That(subject).IsFalse();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class BoolShould
 				async Task Act()
 					=> await That(subject).IsFalse();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be False,
@@ -41,7 +41,7 @@ public sealed partial class BoolShould
 				async Task Act()
 					=> await That(subject).IsFalse().Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be False, because we want to test the failure,

@@ -20,7 +20,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -61,7 +61,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -81,7 +81,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -108,7 +108,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected!);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -124,7 +124,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().Contain([]);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection [] in order,
@@ -141,7 +141,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -161,7 +161,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -180,7 +180,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -192,7 +192,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -204,7 +204,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -223,7 +223,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -235,7 +235,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -252,7 +252,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -264,7 +264,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -284,7 +284,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -296,7 +296,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -313,7 +313,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order,
@@ -333,7 +333,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -348,7 +348,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -389,7 +389,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -409,7 +409,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -428,7 +428,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -455,7 +455,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -475,7 +475,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -494,7 +494,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -506,7 +506,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -518,7 +518,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -537,7 +537,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -549,7 +549,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -561,7 +561,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -573,7 +573,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -585,7 +585,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -597,7 +597,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -614,7 +614,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in order ignoring duplicates,
@@ -633,7 +633,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -648,7 +648,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -689,7 +689,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -709,7 +709,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -736,7 +736,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -756,7 +756,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -775,7 +775,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -787,7 +787,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -799,7 +799,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -811,7 +811,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -823,7 +823,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -840,7 +840,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -852,7 +852,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -869,7 +869,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -881,7 +881,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -898,7 +898,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order,
@@ -918,7 +918,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -933,7 +933,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -974,7 +974,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -994,7 +994,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -1013,7 +1013,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -1040,7 +1040,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -1060,7 +1060,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -1079,7 +1079,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1091,7 +1091,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1103,7 +1103,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1115,7 +1115,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1127,7 +1127,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1139,7 +1139,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1151,7 +1151,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1163,7 +1163,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1175,7 +1175,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -1192,7 +1192,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected in any order ignoring duplicates,
@@ -1211,7 +1211,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 
@@ -1226,7 +1226,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1267,7 +1267,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1289,7 +1289,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1316,7 +1316,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1338,7 +1338,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1357,7 +1357,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1369,7 +1369,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1381,7 +1381,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1401,7 +1401,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1413,7 +1413,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1432,7 +1432,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1444,7 +1444,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1465,7 +1465,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1477,7 +1477,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1496,7 +1496,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1518,7 +1518,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order,
@@ -1538,7 +1538,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1579,7 +1579,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1601,7 +1601,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1622,7 +1622,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1649,7 +1649,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1669,7 +1669,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1688,7 +1688,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1700,7 +1700,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -1712,7 +1712,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1732,7 +1732,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1749,7 +1749,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1766,7 +1766,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1783,7 +1783,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1800,7 +1800,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1817,7 +1817,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1836,7 +1836,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1857,7 +1857,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in order ignoring duplicates,
@@ -1877,7 +1877,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -1918,7 +1918,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -1940,7 +1940,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -1967,7 +1967,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -1987,7 +1987,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2008,7 +2008,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2020,7 +2020,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2032,7 +2032,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2049,7 +2049,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2061,7 +2061,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2080,7 +2080,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2092,7 +2092,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2111,7 +2111,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2123,7 +2123,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2142,7 +2142,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2164,7 +2164,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order,
@@ -2184,7 +2184,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2225,7 +2225,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2247,7 +2247,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2268,7 +2268,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2295,7 +2295,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2315,7 +2315,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2336,7 +2336,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2348,7 +2348,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -2360,7 +2360,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2377,7 +2377,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2394,7 +2394,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2411,7 +2411,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2428,7 +2428,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2445,7 +2445,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2462,7 +2462,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2481,7 +2481,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,
@@ -2502,7 +2502,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().Contain(expected).Properly().InAnyOrder().IgnoringDuplicates();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain collection expected and at least one additional item in any order ignoring duplicates,

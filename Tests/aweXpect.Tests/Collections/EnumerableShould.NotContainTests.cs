@@ -21,7 +21,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().NotContain(0)
 						.And.NotContain(0);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -32,7 +32,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(5);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain 5,
@@ -55,7 +55,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(unexpected).Equivalent();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain MyClass {
@@ -76,7 +76,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not contain {Formatter.Format(unexpected)},
@@ -97,7 +97,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -109,7 +109,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().NotContain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain 42,
@@ -128,7 +128,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain("item-5");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain "item-5",
@@ -144,7 +144,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain("foo").IgnoringCase();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain "foo" ignoring case,
@@ -160,7 +160,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain("foo");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain "foo",
@@ -176,7 +176,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain("foo");
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -188,7 +188,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().NotContain(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain "foo",
@@ -208,7 +208,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().NotContain(x => x == 0)
 						.And.NotContain(x => x == 0);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -219,7 +219,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(x => x == 5);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain item matching x => x == 5,
@@ -237,7 +237,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(x => x == unexpected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain item matching x => x == unexpected,
@@ -258,7 +258,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().NotContain(x => x == unexpected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -269,7 +269,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().NotContain(_ => true);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not contain item matching _ => true,

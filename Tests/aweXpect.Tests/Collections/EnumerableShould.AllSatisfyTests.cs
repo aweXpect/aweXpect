@@ -21,7 +21,7 @@ public sealed partial class EnumerableShould
 					=> await That(subject).Should().AllSatisfy(x => x > 0)
 						.And.AllSatisfy(x => x < 2);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -32,7 +32,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllSatisfy(x => x <= 1);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items satisfy x => x <= 1,
@@ -60,7 +60,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllSatisfy(x => x is > 4 and < 6);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items satisfy x => x is > 4 and < 6,
@@ -89,7 +89,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject).Should().AllSatisfy(x => x == constantValue);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -100,7 +100,7 @@ public sealed partial class EnumerableShould
 				async Task Act()
 					=> await That(subject!).Should().AllSatisfy(_ => true);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have all items satisfy _ => true,

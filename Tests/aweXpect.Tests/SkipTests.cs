@@ -9,7 +9,7 @@ public class SkipTests
 		void Act()
 			=> Skip.Test(message);
 
-		await That(Act).Should().ThrowException()
+		await That(Act).Does().ThrowException()
 			.WithMessage($"*{message}*").AsWildcard();
 	}
 
@@ -21,7 +21,7 @@ public class SkipTests
 		void Act()
 			=> Skip.Unless(condition, message);
 
-		await That(Act).Should().ThrowException().OnlyIf(!condition)
+		await That(Act).Does().ThrowException().OnlyIf(!condition)
 			.WithMessage($"*{message}*").AsWildcard();
 	}
 
@@ -33,7 +33,7 @@ public class SkipTests
 		void Act()
 			=> Skip.When(condition, message);
 
-		await That(Act).Should().ThrowException().OnlyIf(condition)
+		await That(Act).Does().ThrowException().OnlyIf(condition)
 			.WithMessage($"*{message}*").AsWildcard();
 	}
 }

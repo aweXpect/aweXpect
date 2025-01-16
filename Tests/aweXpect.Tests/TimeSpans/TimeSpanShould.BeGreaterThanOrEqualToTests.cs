@@ -15,7 +15,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than or equal to <null>,
@@ -32,7 +32,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -44,7 +44,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -56,7 +56,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than or equal to {Formatter.Format(expected)},
@@ -73,7 +73,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -85,7 +85,7 @@ public sealed partial class TimeSpanShould
 				async Task Act()
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -98,7 +98,7 @@ public sealed partial class TimeSpanShould
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than or equal to {Formatter.Format(expected)} ± 0:03,
@@ -116,7 +116,7 @@ public sealed partial class TimeSpanShould
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be greater than or equal to {Formatter.Format(expected)} ± 0:03,
@@ -134,7 +134,7 @@ public sealed partial class TimeSpanShould
 					=> await That(subject).Should().BeGreaterThanOrEqualTo(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

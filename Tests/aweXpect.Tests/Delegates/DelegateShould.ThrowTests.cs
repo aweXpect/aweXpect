@@ -17,7 +17,7 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				CustomException result =
-					await That(action).Should().Throw<CustomException>();
+					await That(action).Does().Throw<CustomException>();
 
 				await That(result.Value).Should().Be(value);
 				await That(result).Should().BeSameAs(exception);
@@ -30,9 +30,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<CustomException> Act()
-					=> await That(action).Should().Throw<CustomException>();
+					=> await That(action).Does().Throw<CustomException>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -41,9 +41,9 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				async Task<CustomException> Act()
-					=> await That(action).Should().Throw<CustomException>();
+					=> await That(action).Does().Throw<CustomException>();
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected action to
 					             throw a CustomException,
@@ -59,9 +59,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<CustomException> Act()
-					=> await That(action).Should().Throw<CustomException>();
+					=> await That(action).Does().Throw<CustomException>();
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage($"""
 					              Expected action to
 					              throw a CustomException,
@@ -77,9 +77,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<CustomException> Act()
-					=> await That(action).Should().Throw<CustomException>();
+					=> await That(action).Does().Throw<CustomException>();
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -88,9 +88,9 @@ public sealed partial class DelegateShould
 				Action? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().Throw<CustomException>();
+					=> await That(subject!).Does().Throw<CustomException>();
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             throw a CustomException,
@@ -106,9 +106,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<SubCustomException> Act()
-					=> await That(action).Should().Throw<SubCustomException>();
+					=> await That(action).Does().Throw<SubCustomException>();
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage($"""
 					              Expected action to
 					              throw a SubCustomException,
@@ -131,7 +131,7 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				Exception result =
-					await That(action).Should().Throw(typeof(CustomException));
+					await That(action).Does().Throw(typeof(CustomException));
 
 				await That(result).Should().BeSameAs(exception);
 			}
@@ -143,9 +143,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<Exception> Act()
-					=> await That(action).Should().Throw(typeof(CustomException));
+					=> await That(action).Does().Throw(typeof(CustomException));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -154,9 +154,9 @@ public sealed partial class DelegateShould
 				Action action = () => { };
 
 				async Task<Exception> Act()
-					=> await That(action).Should().Throw(typeof(CustomException));
+					=> await That(action).Does().Throw(typeof(CustomException));
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage("""
 					             Expected action to
 					             throw a CustomException,
@@ -172,9 +172,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<Exception> Act()
-					=> await That(action).Should().Throw(typeof(CustomException));
+					=> await That(action).Does().Throw(typeof(CustomException));
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage($"""
 					              Expected action to
 					              throw a CustomException,
@@ -190,9 +190,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<Exception> Act()
-					=> await That(action).Should().Throw(typeof(CustomException));
+					=> await That(action).Does().Throw(typeof(CustomException));
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -201,9 +201,9 @@ public sealed partial class DelegateShould
 				Action? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Should().Throw(typeof(CustomException));
+					=> await That(subject!).Does().Throw(typeof(CustomException));
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             throw a CustomException,
@@ -219,9 +219,9 @@ public sealed partial class DelegateShould
 				Action action = () => throw exception;
 
 				async Task<Exception> Act()
-					=> await That(action).Should().Throw(typeof(SubCustomException));
+					=> await That(action).Does().Throw(typeof(SubCustomException));
 
-				await That(Act).Should().ThrowException()
+				await That(Act).Does().ThrowException()
 					.WithMessage($"""
 					              Expected action to
 					              throw a SubCustomException,

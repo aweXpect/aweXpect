@@ -15,7 +15,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveYear(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have year of <null>,
@@ -32,7 +32,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveYear(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have year of <null>,
@@ -49,7 +49,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveYear(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have year of 1,
@@ -66,7 +66,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveYear(expected);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have year of {Formatter.Format(expected)},
@@ -83,7 +83,7 @@ public sealed partial class NullableDateTimeOffsetShould
 				async Task Act()
 					=> await That(subject).Should().HaveYear(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

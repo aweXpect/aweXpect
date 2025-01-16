@@ -28,7 +28,7 @@ public sealed partial class EventRecordingShould
 						.WithParameter<string>(position, s => s == "p1")
 						.AtLeast(2.Times());
 
-				await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected recording to
 					              have recorded the CustomEvent event on sut with string parameter [{position}] s => s == "p1" at least 2 times,
@@ -54,7 +54,7 @@ public sealed partial class EventRecordingShould
 						.WithParameter<string>(s => s == "foo")
 						.AtLeast(2.Times());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the CustomEvent event on sut with string parameter s => s == "foo" at least 2 times,
@@ -81,7 +81,7 @@ public sealed partial class EventRecordingShould
 						.WithParameter<string>(s => s == "foo")
 						.AtLeast(3.Times());
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -100,7 +100,7 @@ public sealed partial class EventRecordingShould
 						.WithParameter<int>(i => i > 1)
 						.AtLeast(1.Times());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the CustomEvent event on sut with string parameter s => s == "foo" and with int parameter i => i > 1 at least once,
@@ -126,7 +126,7 @@ public sealed partial class EventRecordingShould
 						.WithParameter<string>(0, s => s == "foo1")
 						.WithParameter<string>(1, s => s == "foo2");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the CustomEvent event on sut with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
@@ -150,7 +150,7 @@ public sealed partial class EventRecordingShould
 						.HaveTriggered(nameof(CustomEventWithParametersClass<string, int>.CustomEvent))
 						.WithParameter<string>(s => s == "bar");
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 		}
 	}

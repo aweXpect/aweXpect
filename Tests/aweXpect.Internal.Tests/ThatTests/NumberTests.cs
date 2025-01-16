@@ -9,7 +9,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -24,7 +24,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -39,7 +39,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -54,7 +54,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -69,7 +69,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -84,7 +84,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -99,7 +99,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -114,7 +114,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -129,7 +129,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -144,7 +144,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},
@@ -159,7 +159,7 @@ public sealed class NumberTests
 		async Task Act()
 			=> await That(subject).Should().Be(expected);
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              be equal to {Formatter.Format(expected)},

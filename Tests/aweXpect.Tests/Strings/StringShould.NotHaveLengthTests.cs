@@ -14,7 +14,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveLength(0);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -26,7 +26,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveLength(length);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Theory]
@@ -38,7 +38,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveLength(length);
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have length {length},
@@ -55,7 +55,7 @@ public sealed partial class StringShould
 				async Task Act()
 					=> await That(subject).Should().NotHaveLength(-1);
 
-				await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 					.WithParamName("unexpected").And
 					.WithMessage("*The unexpected length must be greater than or equal to zero*")
 					.AsWildcard();

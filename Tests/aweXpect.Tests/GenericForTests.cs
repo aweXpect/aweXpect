@@ -16,7 +16,7 @@ public sealed class GenericForTests
 				.For(o => o.A, v => v.Should().BeTrue()).And
 				.For(o => o.B, v => v.Should().BeTrue());
 
-		await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+		await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage($"""
 			              Expected subject to
 			              for .A be True and for .B be True,
@@ -38,7 +38,7 @@ public sealed class GenericForTests
 				.For(o => o.A, v => v.Should().BeTrue()).Or
 				.For(o => o.B, v => v.Should().BeTrue());
 
-		await That(Act).Should().Throw<XunitException>().OnlyIf(!expectSuccess)
+		await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
 			.WithMessage("""
 			             Expected subject to
 			             for .A be True or for .B be True,
@@ -57,7 +57,7 @@ public sealed class GenericForTests
 			=> await That(subject)
 				.For(o => o.Value, v => v.Should().Be(expectedValue));
 
-		await That(Act).Should().Throw<XunitException>()
+		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
 			              Expected subject to
 			              for .Value be equal to {Formatter.Format(expectedValue)},
@@ -74,7 +74,7 @@ public sealed class GenericForTests
 		async Task Act()
 			=> await That(subject).For(o => o.Value, v => v.Should().Be(value));
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 
 	private sealed class MyClass

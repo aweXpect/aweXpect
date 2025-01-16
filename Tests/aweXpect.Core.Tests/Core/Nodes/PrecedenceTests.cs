@@ -10,7 +10,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeFalse().And.BeTrue().Or.BeFalse();
 
-			await That(Act).Should().ThrowException()
+			await That(Act).Does().ThrowException()
 				.WithMessage("""
 				             Expected true to
 				             be False and be True or be False,
@@ -24,7 +24,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeFalse().And.BeTrue().Or.BeTrue().And.BeFalse();
 
-			await That(Act).Should().ThrowException()
+			await That(Act).Does().ThrowException()
 				.WithMessage("""
 				             Expected true to
 				             be False and be True or be True and be False,
@@ -38,7 +38,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeFalse().And.BeTrue().Or.BeTrue();
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -47,7 +47,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeFalse().Or.BeTrue().And.BeFalse();
 
-			await That(Act).Should().ThrowException()
+			await That(Act).Does().ThrowException()
 				.WithMessage("""
 				             Expected true to
 				             be False or be True and be False,
@@ -61,7 +61,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeTrue().And.BeFalse().Or.BeFalse();
 
-			await That(Act).Should().ThrowException()
+			await That(Act).Does().ThrowException()
 				.WithMessage("""
 				             Expected true to
 				             be True and be False or be False,
@@ -75,7 +75,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeTrue().And.BeFalse().Or.BeTrue();
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -84,7 +84,7 @@ public sealed class PrecedenceTests
 			async Task Act()
 				=> await That(true).Should().BeTrue().Or.BeTrue().And.BeFalse();
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 	}
 }

@@ -14,7 +14,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EqualTo(subject);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ObjectShould
 					=> await That(subject).Is().EqualTo(expected)
 						.Because("we want to test the failure");
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be equal to expected, because we want to test the failure,
@@ -46,7 +46,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EqualTo(expected);
 
-				await That(Act).Should().NotThrow();
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -57,7 +57,7 @@ public sealed partial class ObjectShould
 				async Task Act()
 					=> await That(subject).Is().EqualTo(new MyClass());
 
-				await That(Act).Should().Throw<XunitException>()
+				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be equal to new MyClass(),
