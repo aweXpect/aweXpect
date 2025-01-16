@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -28,6 +29,30 @@ public static partial class ThatGeneric
 		=> new(source.ExpectationBuilder
 				.AddConstraint(it =>
 					new NotBeSameAsConstraint<T>(it, unexpected, doNotPopulateThisValue)),
+			source);
+	
+	
+	
+	/// <summary>
+	///     Expect the actual value to be the same as the <paramref name="expected" /> value.
+	/// </summary>
+	public static AndOrResult<T, IExpectSubject<T>> IsSameAs<T>(this IExpectSubject<T> source,
+		object? expected,
+		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		=> new(source.ThatIs().ExpectationBuilder
+				.AddConstraint(it =>
+					new BeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
+			source);
+	
+	/// <summary>
+	///     Expect the actual value to not be the same as the <paramref name="expected" /> value.
+	/// </summary>
+	public static AndOrResult<T, IExpectSubject<T>> IsNotSameAs<T>(this IExpectSubject<T> source,
+		object? expected,
+		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		=> new(source.ThatIs().ExpectationBuilder
+				.AddConstraint(it =>
+					new NotBeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
 			source);
 
 	private readonly struct BeSameAsConstraint<T>(

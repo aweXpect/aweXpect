@@ -12,7 +12,7 @@ internal class That
 
 	[DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
 	internal readonly struct Subject<T>(ExpectationBuilder expectationBuilder)
-		: IExpectSubject<T>, IThatShould<T>
+		: IExpectSubject<T>, IThatShould<T>, IThatIs<T>, IThatHas<T>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
 

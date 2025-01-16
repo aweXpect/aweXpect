@@ -8,6 +8,7 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
+using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -16,16 +17,8 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see cref="IEnumerable{TItem}" />.
 /// </summary>
-public static partial class ThatEnumerableShould
+public static partial class ThatEnumerable
 {
-	/// <summary>
-	///     Start expectations on the current enumerable of <typeparamref name="TItem" /> values.
-	/// </summary>
-	public static IThatShould<IEnumerable<TItem>> Should<TItem>(
-		this IExpectSubject<IEnumerable<TItem>> subject)
-		=> subject.Should(That.WithoutAction);
-
-
 	private readonly struct BeConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,

@@ -15,7 +15,7 @@ public sealed partial class ObjectShould
 				OuterClass expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Using(new MyComparer(false));
+					=> await That(subject).Is().EqualTo(expected).Using(new MyComparer(false));
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -35,7 +35,7 @@ public sealed partial class ObjectShould
 				OuterClass expected = new() { Value = "Bar" };
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Using(new MyComparer(true));
+					=> await That(subject).Is().EqualTo(expected).Using(new MyComparer(true));
 
 				await That(Act).Should().NotThrow();
 			}

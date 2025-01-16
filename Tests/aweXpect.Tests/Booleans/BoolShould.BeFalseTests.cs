@@ -12,7 +12,7 @@ public sealed partial class BoolShould
 				bool subject = false;
 
 				async Task Act()
-					=> await That(subject).Should().BeFalse();
+					=> await That(subject).IsFalse();
 
 				await That(Act).Should().NotThrow();
 			}
@@ -23,7 +23,7 @@ public sealed partial class BoolShould
 				bool subject = true;
 
 				async Task Act()
-					=> await That(subject).Should().BeFalse();
+					=> await That(subject).IsFalse();
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -39,7 +39,7 @@ public sealed partial class BoolShould
 				bool subject = true;
 
 				async Task Act()
-					=> await That(subject).Should().BeFalse().Because("we want to test the failure");
+					=> await That(subject).IsFalse().Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

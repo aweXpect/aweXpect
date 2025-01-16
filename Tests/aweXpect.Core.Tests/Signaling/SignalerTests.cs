@@ -293,7 +293,7 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(2.Times(), timeout: timeout);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
+			await That(result.IsSuccess).Is().False();
 			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
 		}
 

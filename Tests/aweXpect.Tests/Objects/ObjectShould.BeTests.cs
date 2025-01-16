@@ -12,7 +12,7 @@ public sealed partial class ObjectShould
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().Be(subject);
+					=> await That(subject).Is().EqualTo(subject);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -24,7 +24,7 @@ public sealed partial class ObjectShould
 				object expected = new MyClass();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected)
+					=> await That(subject).Is().EqualTo(expected)
 						.Because("we want to test the failure");
 
 				await That(Act).Should().Throw<XunitException>()
@@ -44,7 +44,7 @@ public sealed partial class ObjectShould
 				MyClass? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is().EqualTo(expected);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -55,7 +55,7 @@ public sealed partial class ObjectShould
 				MyClass? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().Be(new MyClass());
+					=> await That(subject).Is().EqualTo(new MyClass());
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""

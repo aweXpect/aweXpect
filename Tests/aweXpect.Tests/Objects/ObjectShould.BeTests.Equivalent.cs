@@ -19,7 +19,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Equivalent();
+					=> await That(subject).Is().EquivalentTo(expected);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -34,7 +34,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Equivalent();
+					=> await That(subject).Is().EquivalentTo(expected);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
@@ -77,7 +77,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Equivalent();
+					=> await That(subject).Is().EquivalentTo(expected);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -114,7 +114,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Equivalent();
+					=> await That(subject).Is().EquivalentTo(expected);
 
 				await That(Act).Should().ThrowException()
 					.WithMessage("""
@@ -238,7 +238,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Equivalent();
+					=> await That(subject).Is().EquivalentTo(expected);
 
 				await That(Act).Should().NotThrow();
 			}
@@ -269,7 +269,7 @@ public sealed partial class ObjectShould
 				};
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Equivalent();
+					=> await That(subject).Is().EquivalentTo(expected);
 
 				await That(Act).Should().Throw<XunitException>()
 					.WithMessage("""
