@@ -15,7 +15,7 @@ public sealed partial class QuantifiedCollectionResult
 			];
 
 			async Task Act()
-				=> await That(subject).HasAll(item => item.Is<MyClass>());
+				=> await That(subject).All().Are<MyClass>();
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -35,7 +35,7 @@ public sealed partial class QuantifiedCollectionResult
 			];
 
 			async Task Act()
-				=> await That(subject).HasAll(item => item.Is<MyClass>());
+				=> await That(subject).All().Are<MyClass>();
 
 			await That(Act).Does().NotThrow();
 		}

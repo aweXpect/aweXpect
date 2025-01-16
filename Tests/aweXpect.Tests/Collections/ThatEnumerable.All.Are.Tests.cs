@@ -38,7 +38,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have all items equal to 1,
-						             but not all did
+						             but not all were
 						             """);
 				}
 
@@ -76,7 +76,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have all items equal to 5,
-						             but only 1 of 20 did
+						             but only 1 of 20 were
 						             """);
 				}
 
@@ -124,7 +124,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have all items equal to "item-1",
-						             but not all did
+						             but not all were
 						             """);
 				}
 
@@ -162,7 +162,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have all items equal to "item-5",
-						             but only 1 of 10 did
+						             but only 1 of 10 were
 						             """);
 				}
 
@@ -180,7 +180,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have all items equal to "foo",
-						             but only 1 of 2 did
+						             but only 1 of 2 were
 						             """);
 				}
 

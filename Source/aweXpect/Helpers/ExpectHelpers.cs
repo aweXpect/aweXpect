@@ -34,7 +34,7 @@ internal static class ExpectHelpers
 		return new That.Subject<T>(thatIs.ExpectationBuilder);
 	}
 	
-	public static IExpectSubject<T> Expect<T>(this IThatHas<T> thatHas)
+	public static IExpectSubject<T> ExpectSubject<T>(this IThatHas<T> thatHas)
 	{
 		if (thatHas is IExpectSubject<T> expectSubject)
 		{

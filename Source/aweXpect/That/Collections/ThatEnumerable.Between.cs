@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -21,4 +22,15 @@ public static partial class ThatEnumerable
 		this IExpectSubject<IEnumerable<string>> subject,
 		int minimum)
 		=> new(maximum => new(subject, EnumerableQuantifier.Between(minimum, maximum)));
+
+	/// <summary>
+	///     Verifies that the collection has between <paramref name="minimum" /> and…
+	/// </summary>
+	public static BetweenResult<ItemsResult<AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>>> Between<TItem>(
+		this IThatHas<IEnumerable<TItem>> source,
+		int minimum)
+		=> new(maximum => new(new AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+			source.ExpectationBuilder.AddConstraint(it
+				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum))),
+			source.ExpectSubject())));
 }

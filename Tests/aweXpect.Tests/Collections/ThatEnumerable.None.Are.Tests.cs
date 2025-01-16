@@ -58,7 +58,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have no items equal to 5,
-						             but at least one did
+						             but at least one was
 						             """);
 				}
 
@@ -74,7 +74,7 @@ public sealed partial class ThatEnumerable
 						.WithMessage("""
 						             Expected subject to
 						             have no items equal to 1,
-						             but at least one did
+						             but at least one was
 						             """);
 				}
 

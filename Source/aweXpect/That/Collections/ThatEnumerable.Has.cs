@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Helpers;
 
 namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Start expectations on the current enumerable of <typeparamref name="TItem" /> values.
+	///     Expect that the <paramref name="subject" /> has…
 	/// </summary>
 	public static IThatHas<IEnumerable<TItem>> Has<TItem>(
 		this IExpectSubject<IEnumerable<TItem>> subject)
-		=> throw new NotImplementedException();
+		=> subject.ThatHas();
 }

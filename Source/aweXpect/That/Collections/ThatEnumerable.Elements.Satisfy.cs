@@ -20,11 +20,12 @@ public static partial class ThatEnumerable
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
 			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
-					=> new SyncCollectionConstraint2<string?>(
+					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
 						() => $"satisfy {doNotPopulateThisValue}",
-						predicate)),
+						predicate,
+						"did")),
 				_subject);
 	}
 
@@ -39,11 +40,12 @@ public static partial class ThatEnumerable
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
 			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new SyncCollectionConstraint2<TItem>(
+				=> new CollectionConstraint<TItem>(
 					it,
 					_quantifier,
 					() => $"satisfy {doNotPopulateThisValue}",
-					predicate)),
+					predicate,
+					"did")),
 				_subject);
 	}
 }

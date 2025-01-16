@@ -6,7 +6,8 @@ using TUnit.Assertions.Enums;
 
 namespace aweXpect.Benchmarks;
 
-public partial class HappyCaseBenchmarks
+public partial class 
+	HappyCaseBenchmarks
 {
 	private readonly string[] _stringArrayExpectation = ["foo", "bar", "baz"];
 	private readonly string[] _stringArrayOtherOrderExpectation = ["foo", "baz", "bar"];

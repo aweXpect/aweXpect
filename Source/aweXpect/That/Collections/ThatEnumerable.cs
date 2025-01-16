@@ -80,6 +80,73 @@ public static partial class ThatEnumerable
 
 		public SyncCollectionConstraint(string it,
 			EnumerableQuantifier quantifier,
+			Action<IExpectSubject<TItem>> expectations)
+		{
+			_it = it;
+			_quantifier = quantifier;
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
+			expectations.Invoke(new That.Subject<TItem>(_itemExpectationBuilder));
+		}
+
+		public async Task<ConstraintResult> IsMetBy(
+			IEnumerable<TItem> actual,
+			IEvaluationContext context,
+			CancellationToken cancellationToken)
+		{
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure<IEnumerable<TItem>>(
+					actual!,
+					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
+					$"{_it} was <null>");
+			}
+
+			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+			bool cancelEarly = actual is not ICollection<TItem>;
+			int matchingCount = 0;
+			int notMatchingCount = 0;
+			int? totalCount = null;
+
+			foreach (TItem item in materialized)
+			{
+				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
+				if (isMatch is ConstraintResult.Success)
+				{
+					matchingCount++;
+				}
+				else
+				{
+					notMatchingCount++;
+				}
+
+				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				{
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+						totalCount, null);
+				}
+
+				if (cancellationToken.IsCancellationRequested)
+				{
+					return new ConstraintResult.Failure<IEnumerable<TItem>>(
+						actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
+						"could not verify, because it was cancelled early");
+				}
+			}
+
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+				matchingCount + notMatchingCount, null);
+		}
+	}
+
+	private readonly struct SyncCollectionConstraintTODO<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
+	{
+		private readonly string _it;
+		private readonly EnumerableQuantifier _quantifier;
+		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
+
+		public SyncCollectionConstraintTODO(string it,
+			EnumerableQuantifier quantifier,
 			Action<IThatShould<TItem>> expectations)
 		{
 			_it = it;
@@ -139,22 +206,25 @@ public static partial class ThatEnumerable
 		}
 	}
 
-	private readonly struct SyncCollectionConstraint2<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
+	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
 		private readonly Func<string> _expectationText;
 		private readonly Func<TItem, bool> _predicate;
+		private readonly string _verb;
 
-		public SyncCollectionConstraint2(string it,
+		public CollectionConstraint(string it,
 			EnumerableQuantifier quantifier,
 			Func<string> expectationText,
-			Func<TItem, bool> predicate)
+			Func<TItem, bool> predicate,
+			string verb)
 		{
 			_it = it;
 			_quantifier = quantifier;
 			_expectationText = expectationText;
 			_predicate = predicate;
+			_verb = verb;
 		}
 
 		public async Task<ConstraintResult> IsMetBy(
@@ -192,7 +262,7 @@ public static partial class ThatEnumerable
 				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
-						totalCount, "did");
+						totalCount, _verb);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
@@ -204,7 +274,7 @@ public static partial class ThatEnumerable
 			}
 
 			return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount, "did");
+				matchingCount + notMatchingCount, _verb);
 		}
 	}
 
