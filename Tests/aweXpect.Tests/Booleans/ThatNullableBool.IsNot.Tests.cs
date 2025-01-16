@@ -1,8 +1,8 @@
 ﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableBoolShould
+public sealed partial class ThatNullableBool
 {
-	public sealed class NotBe
+	public sealed class IsNot
 	{
 		public sealed class Tests
 		{
@@ -16,7 +16,7 @@ public sealed partial class NullableBoolShould
 			public async Task WhenSubjectIsDifferent_ShouldSucceed(bool? subject, bool? unexpected)
 			{
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected);
+					=> await That(subject).IsNot(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -30,7 +30,7 @@ public sealed partial class NullableBoolShould
 				bool? unexpected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected);
+					=> await That(subject).IsNot(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""

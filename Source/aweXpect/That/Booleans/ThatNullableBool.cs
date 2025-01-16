@@ -7,7 +7,7 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see cref="bool" />? values.
 /// </summary>
-public static partial class ThatNullableBoolShould
+public static partial class ThatNullableBool
 {
 	/// <summary>
 	///     Start expectations for the current <see cref="bool" />? <paramref name="subject" />.

@@ -1,6 +1,6 @@
 ﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableBoolShould
+public sealed partial class ThatNullableBool
 {
 	public sealed class BeTrue
 	{
@@ -12,7 +12,7 @@ public sealed partial class NullableBoolShould
 			public async Task WhenFalseOrNull_ShouldFail(bool? subject)
 			{
 				async Task Act()
-					=> await That(subject).Should().BeTrue().Because("we want to test the failure");
+					=> await That(subject).IsTrue().Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -28,7 +28,7 @@ public sealed partial class NullableBoolShould
 				bool? subject = true;
 
 				async Task Act()
-					=> await That(subject).Should().BeTrue();
+					=> await That(subject).IsTrue();
 
 				await That(Act).Does().NotThrow();
 			}
