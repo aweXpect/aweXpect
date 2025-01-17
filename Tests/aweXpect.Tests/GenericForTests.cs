@@ -55,7 +55,7 @@ public sealed class GenericForTests
 
 		async Task Act()
 			=> await That(subject)
-				.For(o => o.Value, v => v.Should().Be(expectedValue));
+				.For(o => o.Value, v => v.Is(expectedValue));
 
 		await That(Act).Does().Throw<XunitException>()
 			.WithMessage($"""
@@ -72,7 +72,7 @@ public sealed class GenericForTests
 		MyClass subject = new() { Value = value };
 
 		async Task Act()
-			=> await That(subject).For(o => o.Value, v => v.Should().Be(value));
+			=> await That(subject).For(o => o.Value, v => v.Is(value));
 
 		await That(Act).Does().NotThrow();
 	}

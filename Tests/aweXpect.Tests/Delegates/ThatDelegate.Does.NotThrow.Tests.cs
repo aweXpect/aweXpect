@@ -65,7 +65,7 @@ public sealed partial class ThatDelegate
 
 					int result = await That(@delegate).Does().NotThrow();
 
-					await That(result).Should().Be(value);
+					await That(result).Is(value);
 				}
 
 				[Fact]

@@ -29,7 +29,7 @@ public sealed class EventRecordingTests
 
 		subject.NotifyCustomEvent(3);
 
-		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent), _ => true)).Should().Be(2);
+		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent), _ => true)).Is(2);
 	}
 
 	[Fact]

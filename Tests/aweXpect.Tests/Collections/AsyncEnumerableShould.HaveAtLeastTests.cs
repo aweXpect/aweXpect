@@ -46,7 +46,7 @@ public sealed partial class AsyncEnumerableShould
 				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).Should().HaveAtLeast(2, x => x.Be(1));
+					=> await That(subject).Should().HaveAtLeast(2, x => x.Is(1));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -57,7 +57,7 @@ public sealed partial class AsyncEnumerableShould
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).Should().HaveAtLeast(3, x => x.Be(1));
+					=> await That(subject).Should().HaveAtLeast(3, x => x.Is(1));
 
 				await That(Act).Does().NotThrow();
 			}

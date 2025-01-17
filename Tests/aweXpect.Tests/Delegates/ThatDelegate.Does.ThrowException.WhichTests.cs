@@ -20,7 +20,7 @@ public sealed partial class ThatDelegate
 
 					async Task Act()
 						=> await That(Delegate).Does().ThrowException()
-							.Which(e => e.HResult, h => h.Should().Be(expectedHResult));
+							.Which(e => e.HResult, h => h.Is(expectedHResult));
 
 					await That(Act).Does().Throw<XunitException>()
 						.WithMessage($"""
@@ -39,7 +39,7 @@ public sealed partial class ThatDelegate
 
 					async Task Act()
 						=> await That(Delegate).Does().ThrowException()
-							.Which(e => e.HResult, h => h.Should().Be(hResult));
+							.Which(e => e.HResult, h => h.Is(hResult));
 
 					await That(Act).Does().NotThrow();
 				}

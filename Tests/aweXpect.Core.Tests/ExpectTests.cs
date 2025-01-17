@@ -17,7 +17,7 @@ public class ExpectTests
 		Task<int> sut = Task.FromResult(42);
 
 		async Task Act()
-			=> await That(sut).Should().BeGreaterThan(41);
+			=> await That(sut).IsGreaterThan(41);
 
 		await That(Act).Does().NotThrow();
 	}
@@ -29,7 +29,7 @@ public class ExpectTests
 		ValueTask<int> sut = ValueTask.FromResult(42);
 
 		async Task Act()
-			=> await That(sut).Should().BeGreaterThan(41);
+			=> await That(sut).IsGreaterThan(41);
 
 		await That(Act).Does().NotThrow();
 	}

@@ -18,7 +18,7 @@ public sealed partial class AsyncEnumerableShould
 
 				int result = await That(subject).Should().HaveSingle();
 
-				await That(result).Should().Be(42);
+				await That(result).Is(42);
 			}
 
 			[Fact]
@@ -44,7 +44,7 @@ public sealed partial class AsyncEnumerableShould
 
 				int result = await That(subject).Should().HaveSingle();
 
-				await That(result).Should().Be(1);
+				await That(result).Is(1);
 			}
 
 			[Fact]
@@ -71,10 +71,10 @@ public sealed partial class AsyncEnumerableShould
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([42]);
 
-				int result = await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(41).And
-					.BeLessThan(43);
+				int result = await That(subject).Should().HaveSingle().Which.IsGreaterThan(41).And
+					.IsLessThan(43);
 
-				await That(result).Should().Be(42);
+				await That(result).Is(42);
 			}
 
 			[Fact]
@@ -83,7 +83,7 @@ public sealed partial class AsyncEnumerableShould
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(4);
+					=> await That(subject).Should().HaveSingle().Which.IsGreaterThan(4);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -99,7 +99,7 @@ public sealed partial class AsyncEnumerableShould
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 				async Task Act()
-					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(4);
+					=> await That(subject).Should().HaveSingle().Which.IsGreaterThan(4);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -115,7 +115,7 @@ public sealed partial class AsyncEnumerableShould
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([3]);
 
 				async Task Act()
-					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(4);
+					=> await That(subject).Should().HaveSingle().Which.IsGreaterThan(4);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -131,7 +131,7 @@ public sealed partial class AsyncEnumerableShould
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([3]);
 
 				async Task Act()
-					=> await That(subject).Should().HaveSingle().Which.Should().BeGreaterThan(2);
+					=> await That(subject).Should().HaveSingle().Which.IsGreaterThan(2);
 
 				await That(Act).Does().NotThrow();
 			}
