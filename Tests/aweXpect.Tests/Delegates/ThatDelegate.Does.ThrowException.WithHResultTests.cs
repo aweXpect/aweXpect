@@ -1,6 +1,4 @@
-﻿using aweXpect.Tests.TestHelpers;
-
-namespace aweXpect.Tests;
+﻿namespace aweXpect.Tests;
 
 public sealed partial class ThatDelegate
 {

@@ -1,8 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Threading;
 #endif
-using aweXpect.Tests.TestHelpers;
-
 namespace aweXpect.Tests;
 
 public sealed partial class ThatDelegate

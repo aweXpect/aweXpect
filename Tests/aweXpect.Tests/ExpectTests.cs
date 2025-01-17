@@ -1,5 +1,4 @@
-﻿using aweXpect.Tests.TestHelpers;
-#if NET8_0_OR_GREATER
+﻿#if NET8_0_OR_GREATER
 #endif
 
 namespace aweXpect.Tests;

@@ -1,0 +1,55 @@
+﻿using System.IO;
+
+namespace aweXpect.Tests;
+
+public sealed partial class ThatStream
+{
+	public sealed class IsWritable
+	{
+		public sealed class Tests
+		{
+			[Fact]
+			public async Task WhenSubjectIsNotWritable_ShouldFail()
+			{
+				Stream subject = new MyStream(canWrite: false);
+
+				async Task Act()
+					=> await That(subject).IsWritable();
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be writable,
+					             but it was not
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Stream? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsWritable();
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be writable,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsWritable_ShouldSucceed()
+			{
+				Stream subject = new MyStream(canWrite: true);
+
+				async Task Act()
+					=> await That(subject).IsWritable();
+
+				await That(Act).Does().NotThrow();
+			}
+		}
+	}
+}

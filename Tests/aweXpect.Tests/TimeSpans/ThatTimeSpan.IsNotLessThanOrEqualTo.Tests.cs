@@ -1,6 +1,6 @@
 ﻿namespace aweXpect.Tests;
 
-public sealed partial class TimeSpanShould
+public sealed partial class ThatTimeSpan
 {
 	public sealed class IsNotLessThanOrEqualTo
 	{

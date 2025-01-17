@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.TestHelpers.Models;
+﻿namespace aweXpect.Tests.Models;
 
 public class SimplePocoWithPrimitiveTypes
 {

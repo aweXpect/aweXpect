@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-#if NET8_0_OR_GREATER
 using System.Runtime.CompilerServices;
 using System.Threading;
-#endif
 
-namespace aweXpect.Tests.TestHelpers;
+namespace aweXpect.Tests;
 
 internal static class Factory
 {

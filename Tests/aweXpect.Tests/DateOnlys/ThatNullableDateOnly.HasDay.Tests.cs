@@ -1,5 +1,5 @@
 ﻿#if NET8_0_OR_GREATER
-namespace aweXpect.Tests.DateOnlys;
+namespace aweXpect.Tests;
 
 public sealed partial class ThatNullableDateOnly
 {

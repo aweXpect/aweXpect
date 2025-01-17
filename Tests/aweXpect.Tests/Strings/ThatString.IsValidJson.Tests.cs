@@ -105,7 +105,7 @@ public sealed partial class ThatString
 				string subject = "[1, 2]";
 
 				async Task Act()
-					=> await That(subject).IsValidJson().Which(d => d.Should().Match([1, 3]));
+					=> await That(subject).IsValidJson().Which(d => d.Matches([1, 3]));
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -121,7 +121,7 @@ public sealed partial class ThatString
 				string subject = "[1, 2]";
 
 				async Task Act()
-					=> await That(subject).IsValidJson().Which(d => d.Should().Match([1, 2]));
+					=> await That(subject).IsValidJson().Which(d => d.Matches([1, 2]));
 
 				await That(Act).Does().NotThrow();
 			}

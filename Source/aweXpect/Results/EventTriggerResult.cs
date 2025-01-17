@@ -12,10 +12,10 @@ namespace aweXpect.Results;
 /// </summary>
 public class EventTriggerResult<TSubject>(
 	ExpectationBuilder expectationBuilder,
-	IThatShould<IEventRecording<TSubject>> returnValue,
+	IExpectSubject<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
 	Quantifier quantifier)
-	: CountResult<IEventRecording<TSubject>, IThatShould<IEventRecording<TSubject>>>(expectationBuilder, returnValue, quantifier)
+	: CountResult<IEventRecording<TSubject>, IExpectSubject<IEventRecording<TSubject>>>(expectationBuilder, returnValue, quantifier)
 where TSubject : notnull
 {
 	/// <summary>

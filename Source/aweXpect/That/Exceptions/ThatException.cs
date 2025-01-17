@@ -137,18 +137,3 @@ public static partial class ThatException
 		#endregion
 	}
 }
-
-/// <summary>
-///     Base class for expectations on <typeparamref name="TException" />, containing an <see cref="ExpectationBuilder" />.
-/// </summary>
-public partial class ThatException<TException>(ExpectationBuilder expectationBuilder)
-	: IThatShould<TException>
-	where TException : Exception?
-{
-	#region IThat<TException> Members
-
-	/// <inheritdoc />
-	public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
-
-	#endregion
-}

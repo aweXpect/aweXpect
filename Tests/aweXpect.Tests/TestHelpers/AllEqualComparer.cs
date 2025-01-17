@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace aweXpect.Tests.TestHelpers;
+namespace aweXpect.Tests;
 
 /// <summary>
 ///     A comparer that treats all items as equal.

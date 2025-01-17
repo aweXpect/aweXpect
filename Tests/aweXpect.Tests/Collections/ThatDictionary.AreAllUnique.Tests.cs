@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using aweXpect.Tests.TestHelpers;
 
 namespace aweXpect.Tests;
 

@@ -32,8 +32,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IThatShould<object?>> NotEquivalentTo(
-		this IThatShould<object?> source,
+	public static ObjectEqualityResult<object?, IExpectSubject<object?>> NotEquivalentTo(
+		this IExpectSubject<object?> source,
 		object? unexpected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
 		[CallerArgumentExpression("unexpected")]
@@ -43,8 +43,8 @@ public static partial class ThatObject
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
 		ObjectEqualityOptions options = new();
 		options.Equivalent(equivalencyOptions);
-		return new ObjectEqualityResult<object?, IThatShould<object?>>(
-			source.ExpectationBuilder.AddConstraint(it
+		return new ObjectEqualityResult<object?, IExpectSubject<object?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
 			source,
 			options);

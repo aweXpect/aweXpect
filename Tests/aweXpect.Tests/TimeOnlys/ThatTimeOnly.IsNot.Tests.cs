@@ -1,7 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 namespace aweXpect.Tests;
 
-public sealed partial class TimeOnlyShould
+public sealed partial class ThatTimeOnly
 {
 	public sealed class IsNot
 	{

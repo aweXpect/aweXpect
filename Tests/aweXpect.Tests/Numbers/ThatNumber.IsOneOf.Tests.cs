@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace aweXpect.Tests.Numbers;
+namespace aweXpect.Tests;
 
 public sealed partial class ThatNumber
 {

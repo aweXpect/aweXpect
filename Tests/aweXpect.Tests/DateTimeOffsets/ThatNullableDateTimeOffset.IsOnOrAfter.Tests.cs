@@ -1,4 +1,4 @@
-﻿namespace aweXpect.Tests.DateTimeOffsets;
+﻿namespace aweXpect.Tests;
 
 public sealed partial class ThatNullableDateTimeOffset
 {
