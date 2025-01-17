@@ -1,9 +1,9 @@
 ﻿#if NET8_0_OR_GREATER
-namespace aweXpect.Tests.TimeOnlys;
+namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeOnlyShould
 {
-	public sealed class HaveHour
+	public sealed class HasHour
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveHour(expected);
+					=> await That(subject).HasHour(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -31,7 +31,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? expected = 11;
 
 				async Task Act()
-					=> await That(subject).Should().HaveHour(expected);
+					=> await That(subject).HasHour(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -48,7 +48,7 @@ public sealed partial class NullableTimeOnlyShould
 				int expected = 10;
 
 				async Task Act()
-					=> await That(subject).Should().HaveHour(expected);
+					=> await That(subject).HasHour(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -60,7 +60,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveHour(expected);
+					=> await That(subject).HasHour(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -77,7 +77,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? expected = 1;
 
 				async Task Act()
-					=> await That(subject).Should().HaveHour(expected);
+					=> await That(subject).HasHour(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

@@ -24,6 +24,6 @@ public class TimeToleranceTests
 		void Act() => sut.SetTolerance(TimeSpan.Zero);
 
 		await That(Act).Does().NotThrow();
-		await That(sut.Tolerance).Should().Be(TimeSpan.Zero);
+		await That(sut.Tolerance).Is(TimeSpan.Zero);
 	}
 }

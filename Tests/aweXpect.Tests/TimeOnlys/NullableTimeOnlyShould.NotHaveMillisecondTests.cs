@@ -1,9 +1,9 @@
 ﻿#if NET8_0_OR_GREATER
-namespace aweXpect.Tests.TimeOnlys;
+namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeOnlyShould
 {
-	public sealed class NotHaveMillisecond
+	public sealed class DoesNotHaveMillisecond
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? unexpected = 12;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveMillisecond(unexpected);
+					=> await That(subject).DoesNotHaveMillisecond(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -26,7 +26,7 @@ public sealed partial class NullableTimeOnlyShould
 				int unexpected = 345;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveMillisecond(unexpected);
+					=> await That(subject).DoesNotHaveMillisecond(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -43,7 +43,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveMillisecond(expected);
+					=> await That(subject).DoesNotHaveMillisecond(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -55,7 +55,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? expected = 1;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveMillisecond(expected);
+					=> await That(subject).DoesNotHaveMillisecond(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -67,7 +67,7 @@ public sealed partial class NullableTimeOnlyShould
 				int? unexpected = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveMillisecond(unexpected);
+					=> await That(subject).DoesNotHaveMillisecond(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}

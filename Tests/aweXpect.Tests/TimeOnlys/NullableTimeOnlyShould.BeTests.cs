@@ -1,9 +1,9 @@
 ﻿#if NET8_0_OR_GREATER
-namespace aweXpect.Tests.TimeOnlys;
+namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeOnlyShould
 {
-	public sealed class Be
+	public sealed class Is
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -31,7 +31,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -48,7 +48,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -60,7 +60,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? expected = LaterTime();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -77,7 +77,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -95,7 +95,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected)
+					=> await That(subject).Is(expected)
 						.Within(tolerance)
 						.Because("we want to test the failure");
 

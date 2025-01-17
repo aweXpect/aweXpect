@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.TimeSpans;
+﻿namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeSpanShould
 {
-	public sealed class BePositive
+	public sealed class IsPositive
 	{
 		public sealed class Tests
 		{
@@ -12,7 +12,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? subject = TimeSpan.MaxValue;
 
 				async Task Act()
-					=> await That(subject).Should().BePositive();
+					=> await That(subject).IsPositive();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -23,7 +23,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? subject = TimeSpan.MinValue;
 
 				async Task Act()
-					=> await That(subject).Should().BePositive();
+					=> await That(subject).IsPositive();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -39,7 +39,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? subject = -1.Seconds();
 
 				async Task Act()
-					=> await That(subject).Should().BePositive();
+					=> await That(subject).IsPositive();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -55,7 +55,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? subject = 1.Seconds();
 
 				async Task Act()
-					=> await That(subject).Should().BePositive();
+					=> await That(subject).IsPositive();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -66,7 +66,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? subject = TimeSpan.Zero;
 
 				async Task Act()
-					=> await That(subject).Should().BePositive();
+					=> await That(subject).IsPositive();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""

@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.DateTimes;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableDateTimeShould
+public sealed partial class ThatNullableDateTime
 {
-	public sealed class HaveDay
+	public sealed class HasDay
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = 11;
 
 				async Task Act()
-					=> await That(subject).Should().HaveDay(expected);
+					=> await That(subject).HasDay(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -30,7 +30,7 @@ public sealed partial class NullableDateTimeShould
 				int expected = 12;
 
 				async Task Act()
-					=> await That(subject).Should().HaveDay(expected);
+					=> await That(subject).HasDay(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -42,7 +42,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveDay(expected);
+					=> await That(subject).HasDay(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -59,7 +59,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveDay(expected);
+					=> await That(subject).HasDay(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -76,7 +76,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = 1;
 
 				async Task Act()
-					=> await That(subject).Should().HaveDay(expected);
+					=> await That(subject).HasDay(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

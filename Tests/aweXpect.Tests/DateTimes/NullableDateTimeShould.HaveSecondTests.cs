@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.DateTimes;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableDateTimeShould
+public sealed partial class ThatNullableDateTime
 {
-	public sealed class HaveSecond
+	public sealed class HasSecond
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveSecond(expected);
+					=> await That(subject).HasSecond(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -30,7 +30,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = 14;
 
 				async Task Act()
-					=> await That(subject).Should().HaveSecond(expected);
+					=> await That(subject).HasSecond(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -47,7 +47,7 @@ public sealed partial class NullableDateTimeShould
 				int expected = 15;
 
 				async Task Act()
-					=> await That(subject).Should().HaveSecond(expected);
+					=> await That(subject).HasSecond(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -59,7 +59,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveSecond(expected);
+					=> await That(subject).HasSecond(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -76,7 +76,7 @@ public sealed partial class NullableDateTimeShould
 				int? expected = 1;
 
 				async Task Act()
-					=> await That(subject).Should().HaveSecond(expected);
+					=> await That(subject).HasSecond(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

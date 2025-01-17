@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.TimeSpans;
+﻿namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeSpanShould
 {
-	public sealed class NotBe
+	public sealed class IsNot
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan unexpected = TimeSpan.MaxValue;
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected)
+					=> await That(subject).IsNot(unexpected)
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -31,7 +31,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan unexpected = TimeSpan.MinValue;
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected)
+					=> await That(subject).IsNot(unexpected)
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -49,7 +49,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? unexpected = LaterTime();
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected);
+					=> await That(subject).IsNot(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -61,7 +61,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? unexpected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected)
+					=> await That(subject).IsNot(unexpected)
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -79,7 +79,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? unexpected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected).Within(-1.Seconds());
+					=> await That(subject).IsNot(unexpected).Within(-1.Seconds());
 
 				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 					.WithParamName("tolerance").And
@@ -93,7 +93,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? unexpected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected)
+					=> await That(subject).IsNot(unexpected)
 						.Within(3.Seconds());
 
 				await That(Act).Does().NotThrow();
@@ -106,7 +106,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? unexpected = LaterTime(3);
 
 				async Task Act()
-					=> await That(subject).Should().NotBe(unexpected).Within(3.Seconds())
+					=> await That(subject).IsNot(unexpected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()

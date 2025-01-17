@@ -66,7 +66,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -85,7 +85,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -102,7 +102,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -131,7 +131,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -162,7 +162,7 @@ public class SignalerTests
 
 			ms.Set();
 			await That(result.IsSuccess).IsTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -177,7 +177,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Theory]
@@ -256,7 +256,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -277,7 +277,7 @@ public class SignalerTests
 
 			await That(result.IsSuccess).IsTrue();
 			await That(result.Parameters).Is(Enumerable.Range(0, 100)).InAnyOrder();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -294,7 +294,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -325,7 +325,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -357,7 +357,7 @@ public class SignalerTests
 
 			ms.Set();
 			await That(result.IsSuccess).IsTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -372,7 +372,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -394,7 +394,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -415,7 +415,7 @@ public class SignalerTests
 
 			await That(result.IsSuccess).IsTrue();
 			await That(result.Parameters).Contains(Enumerable.Range(10, 100)).InAnyOrder();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -433,7 +433,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -465,8 +465,8 @@ public class SignalerTests
 
 			ms.Set();
 			await That(result.IsSuccess).IsTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds())
-				.And.BeGreaterThanOrEqualTo(10.Milliseconds());
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds())
+				.And.IsGreaterThanOrEqualTo(10.Milliseconds());
 		}
 
 		[Theory]

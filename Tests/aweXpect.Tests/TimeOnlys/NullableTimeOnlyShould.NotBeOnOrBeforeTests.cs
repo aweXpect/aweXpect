@@ -1,9 +1,9 @@
 ﻿#if NET8_0_OR_GREATER
-namespace aweXpect.Tests.TimeOnlys;
+namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeOnlyShould
 {
-	public sealed class NotBeOnOrBefore
+	public sealed class IsNotOnOrBefore
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly unexpected = TimeOnly.MaxValue;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
+					=> await That(subject).IsNotOnOrBefore(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -31,7 +31,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly unexpected = TimeOnly.MinValue;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
+					=> await That(subject).IsNotOnOrBefore(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -48,7 +48,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
+					=> await That(subject).IsNotOnOrBefore(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -65,7 +65,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
+					=> await That(subject).IsNotOnOrBefore(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -82,7 +82,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected);
+					=> await That(subject).IsNotOnOrBefore(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -94,7 +94,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
+					=> await That(subject).IsNotOnOrBefore(unexpected)
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -112,7 +112,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = LaterTime(3);
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
+					=> await That(subject).IsNotOnOrBefore(unexpected)
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
@@ -131,7 +131,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
+					=> await That(subject).IsNotOnOrBefore(unexpected)
 						.Within(3.Seconds());
 
 				await That(Act).Does().Throw<XunitException>()
@@ -149,7 +149,7 @@ public sealed partial class NullableTimeOnlyShould
 				TimeOnly? unexpected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().NotBeOnOrBefore(unexpected)
+					=> await That(subject).IsNotOnOrBefore(unexpected)
 						.Within(3.Seconds());
 
 				await That(Act).Does().NotThrow();

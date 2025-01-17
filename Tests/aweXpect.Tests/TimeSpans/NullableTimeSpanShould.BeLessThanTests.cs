@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.TimeSpans;
+﻿namespace aweXpect.Tests;
 
 public sealed partial class NullableTimeSpanShould
 {
-	public sealed class BeLessThan
+	public sealed class IsLessThan
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = null;
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected);
+					=> await That(subject).IsLessThan(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -30,7 +30,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan expected = TimeSpan.MaxValue;
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected);
+					=> await That(subject).IsLessThan(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -47,7 +47,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan expected = TimeSpan.MinValue;
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected);
+					=> await That(subject).IsLessThan(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -64,7 +64,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected);
+					=> await That(subject).IsLessThan(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -81,7 +81,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected);
+					=> await That(subject).IsLessThan(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -98,7 +98,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected);
+					=> await That(subject).IsLessThan(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -110,7 +110,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = LaterTime(-3);
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected)
+					=> await That(subject).IsLessThan(expected)
 						.Within(3.Seconds());
 
 				await That(Act).Does().Throw<XunitException>()
@@ -128,7 +128,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected)
+					=> await That(subject).IsLessThan(expected)
 						.Within(3.Seconds());
 
 				await That(Act).Does().Throw<XunitException>()
@@ -146,7 +146,7 @@ public sealed partial class NullableTimeSpanShould
 				TimeSpan? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().BeLessThan(expected)
+					=> await That(subject).IsLessThan(expected)
 						.Within(3.Seconds());
 
 				await That(Act).Does().NotThrow();

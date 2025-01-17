@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.DateTimes;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableDateTimeShould
+public sealed partial class ThatNullableDateTime
 {
-	public sealed class HaveKind
+	public sealed class HasKind
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class NullableDateTimeShould
 				DateTimeKind expected = DateTimeKind.Local;
 
 				async Task Act()
-					=> await That(subject).Should().HaveKind(expected);
+					=> await That(subject).HasKind(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -30,7 +30,7 @@ public sealed partial class NullableDateTimeShould
 				DateTimeKind expected = DateTimeKind.Utc;
 
 				async Task Act()
-					=> await That(subject).Should().HaveKind(expected);
+					=> await That(subject).HasKind(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -42,7 +42,7 @@ public sealed partial class NullableDateTimeShould
 				DateTimeKind expected = DateTimeKind.Utc;
 
 				async Task Act()
-					=> await That(subject).Should().HaveKind(expected);
+					=> await That(subject).HasKind(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

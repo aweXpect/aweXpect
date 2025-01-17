@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.DateTimes;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableDateTimeShould
+public sealed partial class ThatNullableDateTime
 {
-	public sealed class Be
+	public sealed class Is
 	{
 		public sealed class Tests
 		{
@@ -16,7 +16,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Unspecified);
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected)
+					=> await That(subject).Is(expected)
 						.Because("the subject has Unspecified kind");
 
 				await That(Act).Does().NotThrow();
@@ -29,7 +29,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -41,7 +41,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -56,7 +56,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = new(2024, 11, 1, 14, 15, 0, expectedKind);
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected)
+					=> await That(subject).Is(expected)
 						.Because("the subject has Unspecified kind");
 
 				await That(Act).Does().NotThrow();
@@ -69,7 +69,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = DateTime.MinValue;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -81,7 +81,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = LaterTime();
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Because("we want to test the failure");
+					=> await That(subject).Is(expected).Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -98,7 +98,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = new(2024, 11, 1, 14, 15, 0, DateTimeKind.Local);
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected)
+					=> await That(subject).Is(expected)
 						.Because("we also test the kind property");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -116,7 +116,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Within(-1.Seconds());
+					=> await That(subject).Is(expected).Within(-1.Seconds());
 
 				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 					.WithParamName("tolerance").And
@@ -130,7 +130,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Within(3.Seconds())
+					=> await That(subject).Is(expected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
 				await That(Act).Does().Throw<XunitException>()
@@ -148,7 +148,7 @@ public sealed partial class NullableDateTimeShould
 				DateTime? expected = LaterTime(3);
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected).Within(3.Seconds());
+					=> await That(subject).Is(expected).Within(3.Seconds());
 
 				await That(Act).Does().NotThrow();
 			}
