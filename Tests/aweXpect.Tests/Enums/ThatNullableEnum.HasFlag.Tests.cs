@@ -1,18 +1,18 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class EnumShould
+public sealed partial class ThatNullableEnum
 {
-	public sealed class HaveFlag
+	public sealed class HasFlag
 	{
 		public sealed class Tests
 		{
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				MyColors subject = MyColors.Yellow;
+				MyColors? subject = MyColors.Yellow;
 
 				async Task Act()
-					=> await That(subject).Should().HaveFlag(null);
+					=> await That(subject).HasFlag(null);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -22,13 +22,25 @@ public sealed partial class EnumShould
 					              """);
 			}
 
+			[Fact]
+			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
+			{
+				MyColors? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasFlag(null);
+
+				await That(Act).Does().NotThrow();
+			}
+
 			[Theory]
 			[InlineData(MyColors.Blue | MyColors.Red, MyColors.Green)]
 			[InlineData(MyColors.Green | MyColors.Yellow, MyColors.Blue)]
-			public async Task WhenSubjectDoesNotHaveFlag_ShouldFail(MyColors subject, MyColors expected)
+			public async Task WhenSubjectDoesNotHaveFlag_ShouldFail(MyColors? subject,
+				MyColors expected)
 			{
 				async Task Act()
-					=> await That(subject).Should().HaveFlag(expected);
+					=> await That(subject).HasFlag(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -43,10 +55,10 @@ public sealed partial class EnumShould
 			[InlineData(MyColors.Green)]
 			public async Task WhenSubjectHasFlag_ShouldSucceed(MyColors expected)
 			{
-				MyColors subject = MyColors.Yellow | MyColors.Red | expected;
+				MyColors? subject = MyColors.Yellow | MyColors.Red | expected;
 
 				async Task Act()
-					=> await That(subject).Should().HaveFlag(expected);
+					=> await That(subject).HasFlag(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -54,12 +66,12 @@ public sealed partial class EnumShould
 			[Theory]
 			[InlineData(MyColors.Blue)]
 			[InlineData(MyColors.Green)]
-			public async Task WhenSubjectIsTheSame_ShouldSucceed(MyColors subject)
+			public async Task WhenSubjectIsTheSame_ShouldSucceed(MyColors expected)
 			{
-				MyColors expected = subject;
+				MyColors? subject = expected;
 
 				async Task Act()
-					=> await That(subject).Should().HaveFlag(expected);
+					=> await That(subject).HasFlag(expected);
 
 				await That(Act).Does().NotThrow();
 			}

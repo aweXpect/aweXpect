@@ -1,6 +1,6 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class EnumShould
+public sealed partial class ThatEnum
 {
 	public enum EnumLong : long
 	{

@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableEnumShould
+public sealed partial class ThatNullableEnum
 {
-	public sealed class NotBeNull
+	public sealed class IsNotNull
 	{
 		public sealed class Tests
 		{
@@ -12,7 +12,7 @@ public sealed partial class NullableEnumShould
 			public async Task WhenSubjectIsNotNull_ShouldSucceed(MyColors? subject)
 			{
 				async Task Act()
-					=> await That(subject).Should().NotBeNull();
+					=> await That(subject).IsNotNull();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -23,7 +23,7 @@ public sealed partial class NullableEnumShould
 				MyColors? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeNull();
+					=> await That(subject).IsNotNull();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class EnumShould
+public sealed partial class ThatEnum
 {
-	public sealed class NotBeDefined
+	public sealed class IsNotDefined
 	{
 		public sealed class Tests
 		{
@@ -12,7 +12,7 @@ public sealed partial class EnumShould
 			public async Task WhenSubjectIsDefined_ShouldFail(MyColors subject)
 			{
 				async Task Act()
-					=> await That(subject).Should().NotBeDefined();
+					=> await That(subject).IsNotDefined();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -28,7 +28,7 @@ public sealed partial class EnumShould
 				MyColors subject = (MyColors)42;
 
 				async Task Act()
-					=> await That(subject).Should().NotBeDefined();
+					=> await That(subject).IsNotDefined();
 
 				await That(Act).Does().NotThrow();
 			}

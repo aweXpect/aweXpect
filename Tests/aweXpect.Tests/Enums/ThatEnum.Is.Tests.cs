@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class EnumShould
+public sealed partial class ThatEnum
 {
-	public sealed class Be
+	public sealed class Is
 	{
 		public sealed class Tests
 		{
@@ -12,7 +12,7 @@ public sealed partial class EnumShould
 				EnumLong expected)
 			{
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -30,7 +30,7 @@ public sealed partial class EnumShould
 				EnumLong expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -42,7 +42,7 @@ public sealed partial class EnumShould
 				EnumULong expected)
 			{
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -61,7 +61,7 @@ public sealed partial class EnumShould
 				EnumULong expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -72,7 +72,7 @@ public sealed partial class EnumShould
 				MyColors subject = MyColors.Yellow;
 
 				async Task Act()
-					=> await That(subject).Should().Be(null);
+					=> await That(subject).Is(null);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -88,7 +88,7 @@ public sealed partial class EnumShould
 			public async Task WhenSubjectIsDifferent_ShouldFail(MyColors subject, MyColors expected)
 			{
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -106,7 +106,7 @@ public sealed partial class EnumShould
 				MyColors expected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().Be(expected);
+					=> await That(subject).Is(expected);
 
 				await That(Act).Does().NotThrow();
 			}

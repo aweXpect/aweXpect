@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Globalization;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatEnumShould
+public static partial class ThatEnum
 {
 	/// <summary>
 	///     Verifies that the subject has the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<TEnum, IThatShould<TEnum>> HaveValue<TEnum>(
-		this IThatShould<TEnum> source,
+	public static AndOrResult<TEnum, IExpectSubject<TEnum>> HasValue<TEnum>(
+		this IExpectSubject<TEnum> source,
 		long? expected)
 		where TEnum : struct, Enum
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new ValueConstraint<TEnum>(
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+				new ValueConstraint<TEnum>(
 					it,
 					$"have value {Formatter.Format(expected)}",
 					actual => Convert.ToInt64(actual, CultureInfo.InvariantCulture) == expected)),
@@ -24,12 +25,12 @@ public static partial class ThatEnumShould
 	/// <summary>
 	///     Verifies that the subject does not have the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<TEnum, IThatShould<TEnum>> NotHaveValue<TEnum>(
-		this IThatShould<TEnum> source,
+	public static AndOrResult<TEnum, IExpectSubject<TEnum>> DoesNotHaveValue<TEnum>(
+		this IExpectSubject<TEnum> source,
 		long? unexpected)
 		where TEnum : struct, Enum
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new ValueConstraint<TEnum>(
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+				new ValueConstraint<TEnum>(
 					it,
 					$"not have value {Formatter.Format(unexpected)}",
 					actual => Convert.ToInt64(actual, CultureInfo.InvariantCulture) != unexpected)),

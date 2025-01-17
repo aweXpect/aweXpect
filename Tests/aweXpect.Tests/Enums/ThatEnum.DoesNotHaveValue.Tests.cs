@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class EnumShould
+public sealed partial class ThatEnum
 {
-	public sealed class NotHaveValue
+	public sealed class DoesNotHaveValue
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class EnumShould
 				long unexpected)
 			{
 				async Task Act()
-					=> await That(subject).Should().NotHaveValue(unexpected);
+					=> await That(subject).DoesNotHaveValue(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -27,7 +27,7 @@ public sealed partial class EnumShould
 				long unexpected)
 			{
 				async Task Act()
-					=> await That(subject).Should().NotHaveValue(unexpected);
+					=> await That(subject).DoesNotHaveValue(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -43,7 +43,7 @@ public sealed partial class EnumShould
 				MyColors subject = MyColors.Yellow;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveValue(null);
+					=> await That(subject).DoesNotHaveValue(null);
 
 				await That(Act).Does().NotThrow();
 			}

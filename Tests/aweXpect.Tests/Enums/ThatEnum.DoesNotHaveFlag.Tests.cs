@@ -1,36 +1,20 @@
-﻿namespace aweXpect.Tests.Enums;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class NullableEnumShould
+public sealed partial class ThatEnum
 {
-	public sealed class NotHaveFlag
+	public sealed class DoesNotHaveFlag
 	{
 		public sealed class Tests
 		{
-			[Fact]
-			public async Task WhenSubjectAndUnexpectedIsNull_ShouldFail()
-			{
-				MyColors? subject = null;
-
-				async Task Act()
-					=> await That(subject).Should().NotHaveFlag(null);
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             not have flag <null>,
-					             but it was <null>
-					             """);
-			}
-
 			[Theory]
 			[InlineData(MyColors.Blue)]
 			[InlineData(MyColors.Green)]
 			public async Task WhenSubjectDoesNotHaveFlag_ShouldSucceed(MyColors unexpected)
 			{
-				MyColors? subject = MyColors.Yellow | (MyColors.Red & ~unexpected);
+				MyColors subject = MyColors.Yellow | (MyColors.Red & ~unexpected);
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveFlag(unexpected);
+					=> await That(subject).DoesNotHaveFlag(unexpected);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -38,10 +22,10 @@ public sealed partial class NullableEnumShould
 			[Theory]
 			[InlineData(MyColors.Blue | MyColors.Green, MyColors.Green)]
 			[InlineData(MyColors.Blue | MyColors.Yellow, MyColors.Blue)]
-			public async Task WhenSubjectHasFlag_ShouldFail(MyColors? subject, MyColors unexpected)
+			public async Task WhenSubjectHasFlag_ShouldFail(MyColors subject, MyColors unexpected)
 			{
 				async Task Act()
-					=> await That(subject).Should().NotHaveFlag(unexpected);
+					=> await That(subject).DoesNotHaveFlag(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -54,12 +38,12 @@ public sealed partial class NullableEnumShould
 			[Theory]
 			[InlineData(MyColors.Blue)]
 			[InlineData(MyColors.Green)]
-			public async Task WhenSubjectIsTheSame_ShouldFail(MyColors unexpected)
+			public async Task WhenSubjectIsTheSame_ShouldFail(MyColors subject)
 			{
-				MyColors? subject = unexpected;
+				MyColors unexpected = subject;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveFlag(unexpected);
+					=> await That(subject).DoesNotHaveFlag(unexpected);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -72,10 +56,10 @@ public sealed partial class NullableEnumShould
 			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldSucceed()
 			{
-				MyColors? subject = MyColors.Yellow;
+				MyColors subject = MyColors.Yellow;
 
 				async Task Act()
-					=> await That(subject).Should().NotHaveFlag(null);
+					=> await That(subject).DoesNotHaveFlag(null);
 
 				await That(Act).Does().NotThrow();
 			}

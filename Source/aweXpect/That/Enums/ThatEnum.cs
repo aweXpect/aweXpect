@@ -8,15 +8,8 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see langword="enum" /> values.
 /// </summary>
-public static partial class ThatEnumShould
+public static partial class ThatEnum
 {
-	/// <summary>
-	///     Start expectations for the current <typeparamref name="TEnum" /> <paramref name="subject" />.
-	/// </summary>
-	public static IThatShould<TEnum> Should<TEnum>(this IExpectSubject<TEnum> subject)
-		where TEnum : struct, Enum
-		=> subject.Should(That.WithoutAction);
-
 	private readonly struct ValueConstraint<TEnum>(
 		string it,
 		string expectation,

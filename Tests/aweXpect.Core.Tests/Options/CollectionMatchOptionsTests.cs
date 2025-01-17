@@ -30,8 +30,8 @@ public class CollectionMatchOptionsTests
 			CollectionMatchOptions.EquivalenceRelations subject
 				= CollectionMatchOptions.EquivalenceRelations.Equivalent;
 
-			await That(subject).Should().NotHaveFlag(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
-			await That(subject).Should().NotHaveFlag(CollectionMatchOptions.EquivalenceRelations.Contains);
+			await That(subject).DoesNotHaveFlag(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+			await That(subject).DoesNotHaveFlag(CollectionMatchOptions.EquivalenceRelations.Contains);
 		}
 	}
 }

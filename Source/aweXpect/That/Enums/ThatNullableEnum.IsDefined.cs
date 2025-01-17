@@ -1,19 +1,20 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatNullableEnumShould
+public static partial class ThatNullableEnum
 {
 	/// <summary>
 	///     Verifies that the subject is defined inside the <typeparamref name="TEnum" />.
 	/// </summary>
-	public static AndOrResult<TEnum?, IThatShould<TEnum?>> BeDefined<TEnum>(
-		this IThatShould<TEnum?> source)
+	public static AndOrResult<TEnum?, IExpectSubject<TEnum?>> IsDefined<TEnum>(
+		this IExpectSubject<TEnum?> source)
 		where TEnum : struct, Enum
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new ValueConstraint<TEnum>(
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+				new ValueConstraint<TEnum>(
 					it,
 					"be defined",
 					actual => actual != null && Enum.IsDefined(typeof(TEnum), actual.Value))),
@@ -22,11 +23,11 @@ public static partial class ThatNullableEnumShould
 	/// <summary>
 	///     Verifies that the subject is not defined inside the <typeparamref name="TEnum" />.
 	/// </summary>
-	public static AndOrResult<TEnum?, IThatShould<TEnum?>> NotBeDefined<TEnum>(
-		this IThatShould<TEnum?> source)
+	public static AndOrResult<TEnum?, IExpectSubject<TEnum?>> IsNotDefined<TEnum>(
+		this IExpectSubject<TEnum?> source)
 		where TEnum : struct, Enum
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new ValueConstraint<TEnum>(
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+				new ValueConstraint<TEnum>(
 					it,
 					"not be defined",
 					actual => actual != null && !Enum.IsDefined(typeof(TEnum), actual.Value))),
