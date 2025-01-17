@@ -12,7 +12,7 @@ public class CollectionMatchOptionsTests
 			CollectionMatchOptions.EquivalenceRelations subject
 				= CollectionMatchOptions.EquivalenceRelations.IsContainedInProperly;
 
-			await That(subject).Should().HaveFlag(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
+			await That(subject).HasFlag(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		}
 
 		[Fact]
@@ -21,7 +21,7 @@ public class CollectionMatchOptionsTests
 			CollectionMatchOptions.EquivalenceRelations subject
 				= CollectionMatchOptions.EquivalenceRelations.ContainsProperly;
 
-			await That(subject).Should().HaveFlag(CollectionMatchOptions.EquivalenceRelations.Contains);
+			await That(subject).HasFlag(CollectionMatchOptions.EquivalenceRelations.Contains);
 		}
 
 		[Fact]
