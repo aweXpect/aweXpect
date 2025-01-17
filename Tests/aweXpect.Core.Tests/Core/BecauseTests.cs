@@ -131,6 +131,6 @@ public class BecauseTests
 
 		Exception exception = await That(Act).Does().ThrowException()
 			.WithMessage("*because*").AsWildcard();
-		await That(exception.Message).Should().NotContain("because because");
+		await That(exception.Message).DoesNotContain("because because");
 	}
 }

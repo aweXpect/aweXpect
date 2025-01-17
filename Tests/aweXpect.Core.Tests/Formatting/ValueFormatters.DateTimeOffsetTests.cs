@@ -18,9 +18,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Should().Be(expectedResult);
-			await That(objectResult).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(objectResult).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -34,9 +34,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Should().Be(expectedResult);
-			await That(objectResult).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(objectResult).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -49,9 +49,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Should().Be(ValueFormatter.NullString);
-			await That(objectResult).Should().Be(ValueFormatter.NullString);
-			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
+			await That(result).Is(ValueFormatter.NullString);
+			await That(objectResult).Is(ValueFormatter.NullString);
+			await That(sb.ToString()).Is(ValueFormatter.NullString);
 		}
 	}
 }

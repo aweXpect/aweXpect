@@ -14,7 +14,7 @@ public sealed class AndNodeTests
 
 		string? result = that.Should(_ => { }).ExpectationBuilder.ToString();
 
-		await That(result).Should().Be(expectedResult);
+		await That(result).Is(expectedResult);
 	}
 
 	[Fact]

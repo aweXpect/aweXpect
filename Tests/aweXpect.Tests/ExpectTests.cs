@@ -37,9 +37,9 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().Be("subject A"),
-					That(subjectB).Should().Be("subject B"),
-					That(subjectC).Should().Be("subject C"));
+					That(subjectA).Is("subject A"),
+					That(subjectB).Is("subject B"),
+					That(subjectC).Is("subject C"));
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -108,9 +108,9 @@ public class ExpectTests
 				=> await ThatAll(
 					That(true).IsTrue(),
 					ThatAll(
-						That(subjectA).Should().Be("subject A"),
-						That(subjectB).Should().Be("subject B"),
-						That(subjectC).Should().Be("subject C")));
+						That(subjectA).Is("subject A"),
+						That(subjectB).Is("subject B"),
+						That(subjectC).Is("subject C")));
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -210,9 +210,9 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAny(
-					That(subjectA).Should().Be("subject A"),
-					That(subjectB).Should().Be("subject B"),
-					That(subjectC).Should().Be("subject C"));
+					That(subjectA).Is("subject A"),
+					That(subjectB).Is("subject B"),
+					That(subjectC).Is("subject C"));
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
@@ -264,9 +264,9 @@ public class ExpectTests
 				=> await ThatAny(
 					That(false).IsTrue(),
 					ThatAny(
-						That(subjectA).Should().Be("subject A"),
-						That(subjectB).Should().Be("subject B"),
-						That(subjectC).Should().Be("subject C")));
+						That(subjectA).Is("subject A"),
+						That(subjectB).Is("subject B"),
+						That(subjectC).Is("subject C")));
 
 			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
