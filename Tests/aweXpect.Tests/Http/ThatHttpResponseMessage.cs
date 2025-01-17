@@ -89,7 +89,9 @@ public sealed partial class ThatHttpResponseMessage
 		///     Implicitly converts the <paramref name="builder" /> to a <see cref="HttpResponseMessage" />.
 		/// </summary>
 		public static implicit operator HttpResponseMessage(HttpResponseBuilder builder)
-			=> builder.Build();
+		{
+			return builder.Build();
+		}
 
 		public HttpResponseBuilder WithContent(string content)
 		{
@@ -124,10 +126,10 @@ public sealed partial class ThatHttpResponseMessage
 
 		public class HttpRequestBuilder
 		{
-			private HttpContent? _content;
 			private readonly HttpMethod _method;
 			private readonly HttpResponseBuilder _responseBuilder;
 			private readonly string _uri;
+			private HttpContent? _content;
 
 			public HttpRequestBuilder(HttpResponseBuilder responseBuilder, HttpMethod method,
 				string uri)
@@ -141,13 +143,17 @@ public sealed partial class ThatHttpResponseMessage
 			///     Implicitly converts the <paramref name="builder" /> to a <see cref="HttpResponseMessage" />.
 			/// </summary>
 			public static implicit operator HttpRequestMessage(HttpRequestBuilder builder)
-				=> builder.Build();
+			{
+				return builder.Build();
+			}
 
 			/// <summary>
 			///     Implicitly converts the <paramref name="builder" /> to a <see cref="HttpResponseMessage" />.
 			/// </summary>
 			public static implicit operator HttpResponseMessage(HttpRequestBuilder builder)
-				=> builder._responseBuilder.Build();
+			{
+				return builder._responseBuilder.Build();
+			}
 
 			public HttpRequestBuilder WithRequestContent(string content)
 			{

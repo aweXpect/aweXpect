@@ -76,6 +76,7 @@ public interface IThatShould<out T> : IThat<T>
 public interface IThatIs<out T> : IThat<T>
 {
 }
+
 /// <summary>
 ///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
 /// </summary>

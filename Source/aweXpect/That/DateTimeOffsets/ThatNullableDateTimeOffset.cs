@@ -1,8 +1,6 @@
 ﻿using System;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
-using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect;
@@ -55,7 +53,7 @@ public static partial class ThatNullableDateTimeOffset
 	{
 		public ConstraintResult IsMetBy(DateTimeOffset? actual)
 		{
-			if (condition(actual, expected, tolerance.Tolerance 
+			if (condition(actual, expected, tolerance.Tolerance
 			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<DateTimeOffset?>(actual, ToString());

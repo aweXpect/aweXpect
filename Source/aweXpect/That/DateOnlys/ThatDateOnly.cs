@@ -1,9 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
-using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect;

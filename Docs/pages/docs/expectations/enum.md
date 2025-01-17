@@ -9,6 +9,7 @@ Describes the possible expectations for `enum` values.
 ## Equality
 
 You can verify, that the `enum` is equal to another one or not:
+
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
@@ -21,6 +22,7 @@ await Expect.That(Colors.Red).IsNot(Colors.Blue)
 ## Value
 
 You can verify, that the `enum` has a given value or not:
+
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
@@ -33,6 +35,7 @@ await Expect.That(Colors.Red).DoesNotHaveValue(2)
 ## Defined
 
 You can verify, that the `enum` has a defined value or not:
+
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
@@ -45,6 +48,7 @@ await Expect.That((Colors)4).IsNotDefined()
 ## Flags
 
 You can verify, that the `enum` has a specific flag or not:
+
 ```csharp
 RegexOptions subject = RegexOptions.Multiline | RegexOptions.IgnoreCase;
 

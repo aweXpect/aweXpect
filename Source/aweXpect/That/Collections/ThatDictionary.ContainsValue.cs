@@ -11,7 +11,8 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>> ContainsValue<TKey, TValue>(
+	public static AndOrResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>> ContainsValue<TKey,
+		TValue>(
 		this IExpectSubject<IDictionary<TKey, TValue>> source,
 		TValue expected)
 		=> new(

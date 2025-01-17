@@ -15,7 +15,7 @@ public static partial class ThatString
 		this IExpectSubject<string?> source,
 		string? expected)
 	{
-		StringEqualityOptions options = new StringEqualityOptions();
+		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint(it, expected, options)),

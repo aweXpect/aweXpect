@@ -76,13 +76,14 @@ public static partial class ThatAsyncEnumerable
 		return new CountResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
-						it,
-						q => $"contain item matching {doNotPopulateThisValue} {q}",
-						predicate,
-						quantifier)),
+					it,
+					q => $"contain item matching {doNotPopulateThisValue} {q}",
+					predicate,
+					quantifier)),
 			source,
 			quantifier);
 	}
+
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>

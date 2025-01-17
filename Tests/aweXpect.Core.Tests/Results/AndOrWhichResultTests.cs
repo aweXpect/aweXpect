@@ -31,7 +31,11 @@ public class AndOrWhichResultTests
 	[InlineData(false, false, false)]
 	public async Task MultipleWhich_ShouldVerifyAll(bool value1, bool value2, bool expectSuccess)
 	{
-		MyClass sut = new() { Value1 = value1, Value2 = value2 };
+		MyClass sut = new()
+		{
+			Value1 = value1,
+			Value2 = value2
+		};
 
 		async Task Act()
 			=> await That(sut).Is<MyClass>()

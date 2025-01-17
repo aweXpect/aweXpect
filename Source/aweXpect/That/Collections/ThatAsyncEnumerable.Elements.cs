@@ -1,14 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
-using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Core.EvaluationContext;
-using aweXpect.Customization;
-using aweXpect.Helpers;
-using aweXpect.Options;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -24,8 +16,8 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public partial class Elements
 	{
-		private readonly IExpectSubject<IAsyncEnumerable<string?>> _subject;
 		private readonly EnumerableQuantifier _quantifier;
+		private readonly IExpectSubject<IAsyncEnumerable<string?>> _subject;
 
 		internal Elements(IExpectSubject<IAsyncEnumerable<string?>> subject, EnumerableQuantifier quantifier)
 		{
@@ -40,8 +32,8 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public partial class Elements<TItem>
 	{
-		private readonly IExpectSubject<IAsyncEnumerable<TItem>> _subject;
 		private readonly EnumerableQuantifier _quantifier;
+		private readonly IExpectSubject<IAsyncEnumerable<TItem>> _subject;
 
 		internal Elements(IExpectSubject<IAsyncEnumerable<TItem>> subject, EnumerableQuantifier quantifier)
 		{

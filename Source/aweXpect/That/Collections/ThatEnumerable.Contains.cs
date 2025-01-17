@@ -71,13 +71,14 @@ public static partial class ThatEnumerable
 		return new CountResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
-						it,
-						q => $"contain item matching {doNotPopulateThisValue} {q}",
-						predicate,
-						quantifier)),
+					it,
+					q => $"contain item matching {doNotPopulateThisValue} {q}",
+					predicate,
+					quantifier)),
 			source,
 			quantifier);
 	}
+
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
@@ -96,6 +97,7 @@ public static partial class ThatEnumerable
 			options,
 			matchOptions);
 	}
+
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>

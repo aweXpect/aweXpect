@@ -1,8 +1,6 @@
 ﻿using System;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
-using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect;
@@ -57,7 +55,8 @@ public static partial class ThatDateTimeOffset
 			}
 
 			if (condition(actual, expected.Value, tolerance.Tolerance
-			                                      ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
+			                                      ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance
+				                                      .Get()))
 			{
 				return new ConstraintResult.Success<DateTimeOffset>(actual, ToString());
 			}

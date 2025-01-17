@@ -49,9 +49,10 @@ internal static class Factory
 
 #if NET8_0_OR_GREATER
 	/// <summary>
-	///     Returns an "infinite" <see cref="IAsyncEnumerable{T}" /> of <paramref name="value"/>.
+	///     Returns an "infinite" <see cref="IAsyncEnumerable{T}" /> of <paramref name="value" />.
 	/// </summary>
-	public static async IAsyncEnumerable<T> GetConstantValueAsyncEnumerable<T>(T value, int maxIterations = int.MaxValue)
+	public static async IAsyncEnumerable<T> GetConstantValueAsyncEnumerable<T>(T value,
+		int maxIterations = int.MaxValue)
 	{
 		int iterations = 0;
 		do
@@ -93,7 +94,7 @@ internal static class Factory
 	}
 
 	/// <summary>
-	///     Returns an "infinite" <see cref="IEnumerable{T}" /> of <paramref name="value"/>.
+	///     Returns an "infinite" <see cref="IEnumerable{T}" /> of <paramref name="value" />.
 	/// </summary>
 	public static IEnumerable<T> GetConstantValueEnumerable<T>(T value, int maxIterations = int.MaxValue)
 	{

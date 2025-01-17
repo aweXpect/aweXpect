@@ -8,5 +8,4 @@ namespace aweXpect.Benchmarks;
 public partial class HappyCaseBenchmarks
 {
 	private readonly Consumer _consumer = new();
-	
 }

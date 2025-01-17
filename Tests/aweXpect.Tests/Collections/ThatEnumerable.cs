@@ -77,7 +77,7 @@ public partial class ThatEnumerable
 				cancellationTokenSource.Cancel();
 			}
 
-			var idx = index++ % values.Length;
+			int idx = index++ % values.Length;
 			yield return values[idx];
 		}
 	}

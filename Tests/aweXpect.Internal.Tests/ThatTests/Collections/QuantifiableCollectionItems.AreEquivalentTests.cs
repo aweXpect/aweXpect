@@ -9,13 +9,28 @@ public sealed partial class QuantifiableCollectionItems
 		{
 			MyClass[] subject =
 			[
-				new() { Value = "Foo" },
-				new() { Value = "Foo" },
-				new() { Value = "Foo" },
-				new() { Value = "Bar" }
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Bar"
+				}
 			];
 
-			MyClass expected = new() { Value = "Foo" };
+			MyClass expected = new()
+			{
+				Value = "Foo"
+			};
 
 			async Task Act()
 				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
@@ -33,12 +48,24 @@ public sealed partial class QuantifiableCollectionItems
 		{
 			MyClass[] subject =
 			[
-				new() { Value = "Foo" },
-				new() { Value = "Foo" },
-				new() { Value = "Foo" }
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				}
 			];
 
-			MyClass expected = new() { Value = "Foo" };
+			MyClass expected = new()
+			{
+				Value = "Foo"
+			};
 
 			async Task Act()
 				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));

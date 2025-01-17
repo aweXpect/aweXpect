@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Threading;
 #endif
+
 namespace aweXpect.Tests;
 
 public sealed partial class ThatDelegate
@@ -151,203 +152,203 @@ public sealed partial class ThatDelegate
 			}
 
 #if NET8_0_OR_GREATER
-		public sealed class FuncValueTaskTests
-		{
-			[Fact]
-			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+			public sealed class FuncValueTaskTests
 			{
-				ValueTask Delegate() => new(Task.CompletedTask);
+				[Fact]
+				public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+				{
+					ValueTask Delegate() => new(Task.CompletedTask);
 
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
 
-				await That(Act).Does().NotThrow();
+					await That(Act).Does().NotThrow();
+				}
+
+				[Fact]
+				public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
+				{
+					ValueTask Delegate() => new(Task.FromException(new MyException()));
+
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage($"""
+						              Expected Delegate to
+						              execute within 0:00.500,
+						              but it did throw a MyException:
+						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					Func<ValueTask>? subject = null;
+
+					async Task Act()
+						=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             execute within 0:00.500,
+						             but it was <null>
+						             """);
+				}
 			}
-
-			[Fact]
-			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
-			{
-				ValueTask Delegate() => new(Task.FromException(new MyException()));
-
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage($"""
-					              Expected Delegate to
-					              execute within 0:00.500,
-					              but it did throw a MyException:
-					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
-					              """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				Func<ValueTask>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             execute within 0:00.500,
-					             but it was <null>
-					             """);
-			}
-		}
 #endif
 
 #if NET8_0_OR_GREATER
-		public sealed class FuncCancellationTokenValueTaskTests
-		{
-			[Fact]
-			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+			public sealed class FuncCancellationTokenValueTaskTests
 			{
-				ValueTask Delegate(CancellationToken _)
-					=> new(Task.CompletedTask);
+				[Fact]
+				public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+				{
+					ValueTask Delegate(CancellationToken _)
+						=> new(Task.CompletedTask);
 
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
 
-				await That(Act).Does().NotThrow();
+					await That(Act).Does().NotThrow();
+				}
+
+				[Fact]
+				public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
+				{
+					ValueTask Delegate(CancellationToken _)
+						=> new(Task.FromException(new MyException()));
+
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage($"""
+						              Expected Delegate to
+						              execute within 0:00.500,
+						              but it did throw a MyException:
+						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					Func<CancellationToken, ValueTask>? subject = null;
+
+					async Task Act()
+						=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             execute within 0:00.500,
+						             but it was <null>
+						             """);
+				}
 			}
-
-			[Fact]
-			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
-			{
-				ValueTask Delegate(CancellationToken _)
-					=> new(Task.FromException(new MyException()));
-
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage($"""
-					              Expected Delegate to
-					              execute within 0:00.500,
-					              but it did throw a MyException:
-					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
-					              """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				Func<CancellationToken, ValueTask>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             execute within 0:00.500,
-					             but it was <null>
-					             """);
-			}
-		}
 #endif
 
 #if NET8_0_OR_GREATER
-		public sealed class FuncValueTaskValueTests
-		{
-			[Fact]
-			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+			public sealed class FuncValueTaskValueTests
 			{
-				ValueTask<int> Delegate() => new(Task.FromResult(1));
+				[Fact]
+				public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+				{
+					ValueTask<int> Delegate() => new(Task.FromResult(1));
 
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
 
-				await That(Act).Does().NotThrow();
+					await That(Act).Does().NotThrow();
+				}
+
+				[Fact]
+				public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
+				{
+					ValueTask<int> Delegate() => new(Task.FromException<int>(new MyException()));
+
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage($"""
+						              Expected Delegate to
+						              execute within 0:00.500,
+						              but it did throw a MyException:
+						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					Func<ValueTask<int>>? subject = null;
+
+					async Task Act()
+						=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             execute within 0:00.500,
+						             but it was <null>
+						             """);
+				}
 			}
-
-			[Fact]
-			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
-			{
-				ValueTask<int> Delegate() => new(Task.FromException<int>(new MyException()));
-
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage($"""
-					              Expected Delegate to
-					              execute within 0:00.500,
-					              but it did throw a MyException:
-					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
-					              """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				Func<ValueTask<int>>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             execute within 0:00.500,
-					             but it was <null>
-					             """);
-			}
-		}
 #endif
 
 #if NET8_0_OR_GREATER
-		public sealed class FuncCancellationTokenValueTaskValueTests
-		{
-			[Fact]
-			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+			public sealed class FuncCancellationTokenValueTaskValueTests
 			{
-				ValueTask<int> Delegate(CancellationToken _)
-					=> new(Task.FromResult(1));
+				[Fact]
+				public async Task WhenDelegateIsFastEnough_ShouldSucceed()
+				{
+					ValueTask<int> Delegate(CancellationToken _)
+						=> new(Task.FromResult(1));
 
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(5000.Milliseconds());
 
-				await That(Act).Does().NotThrow();
+					await That(Act).Does().NotThrow();
+				}
+
+				[Fact]
+				public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
+				{
+					ValueTask<int> Delegate(CancellationToken _)
+						=> new(Task.FromException<int>(new MyException()));
+
+					async Task Act()
+						=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage($"""
+						              Expected Delegate to
+						              execute within 0:00.500,
+						              but it did throw a MyException:
+						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					Func<CancellationToken, ValueTask<int>>? subject = null;
+
+					async Task Act()
+						=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
+
+					await That(Act).Does().Throw<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             execute within 0:00.500,
+						             but it was <null>
+						             """);
+				}
 			}
-
-			[Fact]
-			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
-			{
-				ValueTask<int> Delegate(CancellationToken _)
-					=> new(Task.FromException<int>(new MyException()));
-
-				async Task Act()
-					=> await That(Delegate).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage($"""
-					              Expected Delegate to
-					              execute within 0:00.500,
-					              but it did throw a MyException:
-					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
-					              """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				Func<CancellationToken, ValueTask<int>>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Does().ExecuteWithin(500.Milliseconds());
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             execute within 0:00.500,
-					             but it was <null>
-					             """);
-			}
-		}
 #endif
 
 			public sealed class FuncValueTests

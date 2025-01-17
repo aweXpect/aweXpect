@@ -15,8 +15,8 @@ public static partial class ThatException
 	///     Verifies that the actual <see cref="Exception" /> has an <paramref name="expected" /> HResult.
 	/// </summary>
 	public static AndOrResult<TException, IExpectSubject<TException>> HasHResult<TException>(
-			this IExpectSubject<TException> source,
-			int expected)
+		this IExpectSubject<TException> source,
+		int expected)
 		where TException : Exception?
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasHResultValueConstraint(it, "have", expected)),

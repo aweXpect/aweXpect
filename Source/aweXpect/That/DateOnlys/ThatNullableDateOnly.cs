@@ -1,9 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
-using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect;
@@ -44,7 +42,7 @@ public static partial class ThatNullableDateOnly
 	{
 		public ConstraintResult IsMetBy(DateOnly? actual)
 		{
-			if (condition(actual, expected, tolerance.Tolerance 
+			if (condition(actual, expected, tolerance.Tolerance
 			                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()))
 			{
 				return new ConstraintResult.Success<DateOnly?>(actual, ToString());

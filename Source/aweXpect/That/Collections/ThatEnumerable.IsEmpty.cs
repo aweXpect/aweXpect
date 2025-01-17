@@ -4,6 +4,7 @@ using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Results;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
@@ -23,7 +24,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection is not empty.
 	/// </summary>
 	public static AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>> IsNotEmpty<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source)
+		this IExpectSubject<IEnumerable<TItem>> source)
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
 			source);
@@ -49,7 +50,7 @@ public static partial class ThatEnumerable
 
 				return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
 			}
-			
+
 			using IEnumerator<TItem> enumerator = actual.GetEnumerator();
 			if (enumerator.MoveNext())
 			{

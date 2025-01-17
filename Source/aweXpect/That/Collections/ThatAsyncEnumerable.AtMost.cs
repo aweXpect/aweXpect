@@ -27,9 +27,10 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection has at most <paramref name="maximum" /> items.
 	/// </summary>
-	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>> AtMost<TItem>(
-		this IThatHas<IAsyncEnumerable<TItem>> source,
-		int maximum)
+	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>>
+		AtMost<TItem>(
+			this IThatHas<IAsyncEnumerable<TItem>> source,
+			int maximum)
 		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum))),

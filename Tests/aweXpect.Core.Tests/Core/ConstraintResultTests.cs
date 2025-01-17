@@ -20,7 +20,10 @@ public sealed class ConstraintResultTests
 	public async Task Failure_WithValue_ShouldStoreValueAndTexts(string expectationText,
 		string resultText)
 	{
-		Dummy value = new() { Value = 1 };
+		Dummy value = new()
+		{
+			Value = 1
+		};
 
 		ConstraintResult.Failure<Dummy> subject = new(value, expectationText, resultText);
 
@@ -33,7 +36,10 @@ public sealed class ConstraintResultTests
 	[AutoData]
 	public async Task Success_WithValue_ShouldStoreValue(string expectationText)
 	{
-		Dummy value = new() { Value = 1 };
+		Dummy value = new()
+		{
+			Value = 1
+		};
 
 		ConstraintResult.Success<Dummy> subject = new(value, expectationText);
 

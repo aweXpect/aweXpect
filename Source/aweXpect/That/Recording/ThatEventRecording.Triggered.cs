@@ -1,6 +1,4 @@
-﻿using System.Text;
-using aweXpect.Core;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Recording;
@@ -16,7 +14,8 @@ public static partial class ThatEventRecording
 	/// <remarks>
 	///     This will stop the recording on the <see cref="IEventRecording{TSubject}" /> subject.
 	/// </remarks>
-	public static EventTriggerResult<TSubject> Triggered<TSubject>(this IExpectSubject<IEventRecording<TSubject>> source,
+	public static EventTriggerResult<TSubject> Triggered<TSubject>(
+		this IExpectSubject<IEventRecording<TSubject>> source,
 		string eventName)
 		where TSubject : notnull
 	{

@@ -18,7 +18,8 @@ public sealed partial class ThatEventRecording
 				sut.NotifyCustomEvent("foo", 1, true, DateTime.Now);
 
 				async Task Act() =>
-					await That(recording).Triggered(nameof(CustomEventWithParametersClass<string, int, bool, DateTime>.CustomEvent));
+					await That(recording)
+						.Triggered(nameof(CustomEventWithParametersClass<string, int, bool, DateTime>.CustomEvent));
 
 				await That(Act).Does().NotThrow();
 			}

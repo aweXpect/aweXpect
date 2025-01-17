@@ -91,6 +91,7 @@ public static partial class ThatAsyncEnumerable
 				matchingCount + notMatchingCount, _verb);
 		}
 	}
+
 	private readonly struct AsyncCollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
 	{
 		private readonly string _it;
@@ -141,7 +142,8 @@ public static partial class ThatAsyncEnumerable
 
 				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
+						notMatchingCount,
 						totalCount, null);
 				}
 			}
@@ -153,7 +155,8 @@ public static partial class ThatAsyncEnumerable
 					"could not verify, because it was cancelled early");
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
+				notMatchingCount,
 				matchingCount + notMatchingCount, null);
 		}
 	}
@@ -233,7 +236,7 @@ public static partial class ThatAsyncEnumerable
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
 			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
-			
+
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
 				if (matcher.Verify(it, item, options, maximumNumber, out string? failure))

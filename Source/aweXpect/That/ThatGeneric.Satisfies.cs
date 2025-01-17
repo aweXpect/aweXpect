@@ -9,7 +9,6 @@ namespace aweXpect;
 
 public static partial class ThatGeneric
 {
-	
 	/// <summary>
 	///     Expect the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>
@@ -23,7 +22,7 @@ public static partial class ThatGeneric
 					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
 			source);
 
-	
+
 	/// <summary>
 	///     Expect the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>

@@ -27,9 +27,10 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
-	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>> AtLeast<TItem>(
-		this IThatHas<IAsyncEnumerable<TItem>> source,
-		int minimum)
+	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>>
+		AtLeast<TItem>(
+			this IThatHas<IAsyncEnumerable<TItem>> source,
+			int minimum)
 		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),

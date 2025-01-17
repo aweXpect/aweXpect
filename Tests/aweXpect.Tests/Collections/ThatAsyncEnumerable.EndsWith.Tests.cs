@@ -120,6 +120,18 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
+			public async Task WhenSubjectEndsWithExpectedValues_ShouldSucceed()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> expected = ["bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).Does().NotThrow();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IAsyncEnumerable<int>? subject = null;
@@ -133,18 +145,6 @@ public sealed partial class ThatAsyncEnumerable
 					             end with [],
 					             but it was <null>
 					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectEndsWithExpectedValues_ShouldSucceed()
-			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> expected = ["bar", "baz"];
-
-				async Task Act()
-					=> await That(subject).EndsWith(expected);
-
-				await That(Act).Does().NotThrow();
 			}
 		}
 	}

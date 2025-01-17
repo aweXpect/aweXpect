@@ -1,8 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
 using aweXpect.Json;
 
 namespace aweXpect;
@@ -37,7 +35,8 @@ public static partial class ThatNullableJsonElement
 
 			if (comparisonResult.HasError)
 			{
-				return new ConstraintResult.Failure<JsonElement?>(actual, ToString(), $"{it} differed as{comparisonResult}");
+				return new ConstraintResult.Failure<JsonElement?>(actual, ToString(),
+					$"{it} differed as{comparisonResult}");
 			}
 
 			return new ConstraintResult.Success<JsonElement?>(actual, ToString());
@@ -62,7 +61,7 @@ public static partial class ThatNullableJsonElement
 				return new ConstraintResult.Failure<JsonElement?>(actual, ToString(),
 					$"{it} was <null>");
 			}
-			
+
 			if (actual.Value.ValueKind != expected)
 			{
 				return new ConstraintResult.Failure<JsonElement?>(actual, ToString(),

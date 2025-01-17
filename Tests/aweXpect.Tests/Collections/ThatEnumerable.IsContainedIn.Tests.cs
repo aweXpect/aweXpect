@@ -12,38 +12,6 @@ public sealed partial class ThatEnumerable
 		public sealed class InSameOrderTests
 		{
 			[Fact]
-			public async Task WhenExpectedIsNull_ShouldFail()
-			{
-				IEnumerable<int> subject = Enumerable.Range(1, 11);
-				IEnumerable<int>? expected = null;
-
-				async Task Act()
-					=> await That(subject).IsContainedIn(expected!);
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
-					             but it cannot compare to <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IEnumerable<string>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).IsContainedIn([]);
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be contained in collection [] in order,
-					             but it was <null>
-					             """);
-			}
-			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
 				IEnumerable<int> subject = Enumerable.Range(1, 11);
@@ -120,6 +88,39 @@ public sealed partial class ThatEnumerable
 					               contained item 8 at index 7 that was not expected and
 					               contained item 9 at index 8 that was not expected and
 					               contained item 10 at index 9 that was not expected
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IEnumerable<int> subject = Enumerable.Range(1, 11);
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsContainedIn(expected!);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be contained in collection expected in order,
+					             but it cannot compare to <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).IsContainedIn([]);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be contained in collection [] in order,
+					             but it was <null>
 					             """);
 			}
 

@@ -49,11 +49,11 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).IsRedirection();
 
 				await That(Act).Does().Throw<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             be redirection (status code 3xx),
-						             but it was <null>
-						             """);
+					.WithMessage("""
+					             Expected subject to
+					             be redirection (status code 3xx),
+					             but it was <null>
+					             """);
 			}
 		}
 	}

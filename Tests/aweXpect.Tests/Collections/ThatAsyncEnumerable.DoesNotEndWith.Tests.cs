@@ -114,6 +114,43 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
+			public async Task WhenSubjectEndsWithUnexpectedValues_ShouldFail()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> unexpected = ["bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).DoesNotEndWith(unexpected);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not end with unexpected,
+					             but it did in [
+					               "foo",
+					               "bar",
+					               "baz"
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).DoesNotEndWith();
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not end with [],
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenUnexpectedContainsAdditionalElements_ShouldSucceed()
 			{
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
@@ -153,43 +190,6 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Does().Throw<ArgumentNullException>()
 					.WithParamName("unexpected");
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IAsyncEnumerable<int>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).DoesNotEndWith();
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             not end with [],
-					             but it was <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectEndsWithUnexpectedValues_ShouldFail()
-			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> unexpected = ["bar", "baz"];
-
-				async Task Act()
-					=> await That(subject).DoesNotEndWith(unexpected);
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             not end with unexpected,
-					             but it did in [
-					               "foo",
-					               "bar",
-					               "baz"
-					             ]
-					             """);
 			}
 		}
 	}

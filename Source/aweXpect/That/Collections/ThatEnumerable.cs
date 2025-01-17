@@ -122,7 +122,8 @@ public static partial class ThatEnumerable
 
 				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
+						notMatchingCount,
 						totalCount, null);
 				}
 
@@ -134,7 +135,8 @@ public static partial class ThatEnumerable
 				}
 			}
 
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount, notMatchingCount,
+			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
+				notMatchingCount,
 				matchingCount + notMatchingCount, null);
 		}
 	}

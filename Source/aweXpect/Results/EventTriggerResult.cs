@@ -15,8 +15,9 @@ public class EventTriggerResult<TSubject>(
 	IExpectSubject<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
 	Quantifier quantifier)
-	: CountResult<IEventRecording<TSubject>, IExpectSubject<IEventRecording<TSubject>>>(expectationBuilder, returnValue, quantifier)
-where TSubject : notnull
+	: CountResult<IEventRecording<TSubject>, IExpectSubject<IEventRecording<TSubject>>>(expectationBuilder, returnValue,
+		quantifier)
+	where TSubject : notnull
 {
 	/// <summary>
 	///     Adds a predicate for the sender of the event.

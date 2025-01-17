@@ -39,16 +39,17 @@ public static partial class ThatNullableDateOnly
 		DateOnly? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateOnly?, IExpectSubject<DateOnly?>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ConditionConstraintWithTolerance(
-					it,
-					unexpected,
-					(e, t) => $"not be {Formatter.Format(e)}{t.ToDayString()}",
-					(a, u, t) => a == null != (u == null) ||
-					             (a != null && u != null &&
-					              Math.Abs(a.Value.DayNumber - u.Value.DayNumber) > (int)t.TotalDays),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+		return new TimeToleranceResult<DateOnly?, IExpectSubject<DateOnly?>>(source.ThatIs().ExpectationBuilder
+				.AddConstraint(it =>
+					new ConditionConstraintWithTolerance(
+						it,
+						unexpected,
+						(e, t) => $"not be {Formatter.Format(e)}{t.ToDayString()}",
+						(a, u, t) => a == null != (u == null) ||
+						             (a != null && u != null &&
+						              Math.Abs(a.Value.DayNumber - u.Value.DayNumber) > (int)t.TotalDays),
+						(a, _, i) => $"{i} was {Formatter.Format(a)}",
+						tolerance)),
 			source,
 			tolerance);
 	}

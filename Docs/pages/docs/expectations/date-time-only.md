@@ -9,6 +9,7 @@ Describes the possible expectations for `DateOnly` and `TimeOnly`.
 ## Equality
 
 You can verify, that the `DateOnly` or `TimeOnly` is equal to another one or not:
+
 ```csharp
 DateOnly subjectA = new DateOnly(2024, 12, 24);
 
@@ -22,6 +23,7 @@ await Expect.That(subjectB).IsNot(new TimeOnly(13, 15, 16));
 ```
 
 You can also specify a tolerance:
+
 ```csharp
 DateOnly subjectA = new DateOnly(2024, 12, 24);
 
@@ -37,6 +39,7 @@ await Expect.That(subjectB).Is(new TimeOnly(14, 15, 17)).Within(TimeSpan.FromSec
 ## After
 
 You can verify, that the `DateOnly` or `TimeOnly` is (on or) after another value
+
 ```csharp
 DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
 
@@ -50,6 +53,7 @@ await Expect.That(subjectB).IsOnOrAfter(new TimeOnly(0, 0, 0));
 ```
 
 You can also specify a tolerance:
+
 ```csharp
 DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
 
@@ -63,6 +67,7 @@ await Expect.That(subjectB).IsAfter(TimeOnly.FromDateTime(DateTime.Now)).Within(
 ## Before
 
 You can verify, that the `DateOnly` or `TimeOnly` is (on or) before another value
+
 ```csharp
 DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
 
@@ -76,6 +81,7 @@ await Expect.That(subjectB).IsOnOrBefore(new TimeOnly(23, 59, 59));
 ```
 
 You can also specify a tolerance:
+
 ```csharp
 DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
 
@@ -89,6 +95,7 @@ await Expect.That(subjectB).IsBefore(TimeOnly.FromDateTime(DateTime.Now)).Within
 ## Properties
 
 You can verify, the properties of the `DateTime`:
+
 ```csharp
 DateOnly subject = new DateOnly(2024, 12, 31);
 

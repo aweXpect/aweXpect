@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -16,8 +13,9 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in descending order.
 	/// </summary>
-	public static CollectionOrderResult<TItem, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>> IsInDescendingOrder<TItem>(
-		this IExpectSubject<IEnumerable<TItem>> source)
+	public static CollectionOrderResult<TItem, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+		IsInDescendingOrder<TItem>(
+			this IExpectSubject<IEnumerable<TItem>> source)
 	{
 		CollectionOrderOptions<TItem> options = new();
 		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
@@ -30,12 +28,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in descending order.
 	/// </summary>
-	public static CollectionOrderResult<TMember, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>> IsInDescendingOrder<
-		TItem, TMember>(
-		this IExpectSubject<IEnumerable<TItem>> source,
-		Func<TItem, TMember> memberAccessor,
-		[CallerArgumentExpression("memberAccessor")]
-		string doNotPopulateThisValue = "")
+	public static CollectionOrderResult<TMember, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+		IsInDescendingOrder<
+			TItem, TMember>(
+			this IExpectSubject<IEnumerable<TItem>> source,
+			Func<TItem, TMember> memberAccessor,
+			[CallerArgumentExpression("memberAccessor")]
+			string doNotPopulateThisValue = "")
 	{
 		CollectionOrderOptions<TMember> options = new();
 		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(

@@ -6,10 +6,11 @@ sidebar_position: 15
 
 Describes the possible expectations for verifying events.
 
-
 ## Recording
 
-First, you have to start a recording of events. This can be done with the `.Record().Events()` extension method in the "aweXpect.Recording" namespace.
+First, you have to start a recording of events. This can be done with the `.Record().Events()` extension method in the "
+aweXpect.Recording" namespace.
+
 ```csharp
 class ThresholdReachedEventArgs(int threshold = 0) : EventArgs
 {
@@ -32,6 +33,7 @@ IEventRecording<MyClass> recording = sut.Record().Events(nameof(MyClass.Threshol
 ## Triggering
 
 You can verify, that a recording recorded an event:
+
 ```csharp
 // Start the recording
 IEventRecording<MyClass> recording = sut.Record().Events();
@@ -43,10 +45,10 @@ sut.OnThresholdReached(new ThresholdReachedEventArgs());
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached));
 ```
 
-
 ## Filtering
 
 You can filter the recorded events based on their parameters.
+
 ```csharp
 IEventRecording<MyClass> recording = sut.Record().Events();
 
@@ -59,7 +61,10 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
 
 ### Sender
 
-When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the recorded events based on the sender (the first parameter):
+When you follow
+the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern),
+you can filter the recorded events based on the sender (the first parameter):
+
 ```csharp
 IEventRecording<MyClass> recording = sut.Record().Events();
 
@@ -71,7 +76,10 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
 
 ### EventArgs
 
-When you follow the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern), you can filter the recorded events based on their `EventArgs` (the second parameter):
+When you follow
+the [event best practices](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern),
+you can filter the recorded events based on their `EventArgs` (the second parameter):
+
 ```csharp
 IEventRecording<MyClass> recording = sut.Record().Events();
 
@@ -84,6 +92,7 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
 ## Counting
 
 You can verify, that an event was recorded a specific number of times
+
 ```csharp
 IEventRecording<MyClass> recording = sut.Record().Events();
 
@@ -93,17 +102,21 @@ sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
 await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .Between(1).And(2.Times();
 ```
+
 You can use the same occurrence constraints as in the [contain](/docs/expectations/collections#contain) method:
+
 - `AtLeast(2.Times())`
 - `AtMost(3.Times())`
 - `Between(1).And(4.Times())`
 - `Exactly(0.Times())`
 
-
 ## Special events
 
 For common events, you can create specific overloads.  
-Included are some overloads for the [`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged) event:
+Included are some overloads for the [
+`INotifyPropertyChanged.PropertyChanged`](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged)
+event:
+
 ```csharp
 MyClass sut = // ...implements INotifyPropertyChanged
 IEventRecording<MyClass> recording = sut.Record().Events();

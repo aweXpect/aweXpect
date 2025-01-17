@@ -14,7 +14,8 @@ public static partial class ThatJsonElement
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> is an <see cref="JsonValueKind.Object" />.
 	/// </summary>
-	public static AndOrResult<JsonElement, IExpectSubject<JsonElement>> IsObject(this IExpectSubject<JsonElement> source)
+	public static AndOrResult<JsonElement, IExpectSubject<JsonElement>> IsObject(
+		this IExpectSubject<JsonElement> source)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeValueKindConstraint(it, JsonValueKind.Object)),
@@ -24,7 +25,8 @@ public static partial class ThatJsonElement
 	///     Verifies that the subject <see cref="JsonElement" /> is an <see cref="JsonValueKind.Object" />
 	///     whose value satisfies the <paramref name="expectation" />.
 	/// </summary>
-	public static AndOrResult<JsonElement, IExpectSubject<JsonElement>> IsObject(this IExpectSubject<JsonElement> source,
+	public static AndOrResult<JsonElement, IExpectSubject<JsonElement>> IsObject(
+		this IExpectSubject<JsonElement> source,
 		Func<IJsonObjectResult, IJsonObjectResult> expectation,
 		Func<JsonOptions, JsonOptions>? options = null)
 	{
@@ -34,6 +36,7 @@ public static partial class ThatJsonElement
 		{
 			jsonOptions = options(jsonOptions);
 		}
+
 		return new AndOrResult<JsonElement, IExpectSubject<JsonElement>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeObjectConstraint(it, expectation, jsonOptions)),

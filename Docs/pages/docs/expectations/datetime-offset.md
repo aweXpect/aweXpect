@@ -9,6 +9,7 @@ Describes the possible expectations for `DateTime` and `DateTimeOffset`.
 ## Equality
 
 You can verify, that the `DateTime` or `DateTimeOffset` is equal to another one or not:
+
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
 
@@ -20,6 +21,7 @@ await Expect.That(subject2).Is(new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeS
 ```
 
 You can also specify a tolerance:
+
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
 
@@ -32,10 +34,10 @@ await Expect.That(subject2).Is(new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSp
   .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
 ```
 
-
 ## After
 
 You can verify, that the `DateTime` or `DateTimeOffset` is (on or) after another value:
+
 ```csharp
 DateTime subject1 = DateTime.Now;
 
@@ -49,6 +51,7 @@ await Expect.That(subject2).IsOnOrAfter(new DateTimeOffset(2024, 1, 1, 0, 0, 0, 
 ```
 
 You can also specify a tolerance:
+
 ```csharp
 DateTime subject = DateTime.Now;
 
@@ -59,6 +62,7 @@ await Expect.That(subject).IsAfter(DateTime.Now).Within(TimeSpan.FromSeconds(1))
 ## Before
 
 You can verify, that the `DateTime` or `DateTimeOffset` is (on or) before another value:
+
 ```csharp
 DateTime subject1 = DateTime.Now;
 
@@ -72,6 +76,7 @@ await Expect.That(subject2).IsOnOrBefore(new DateTimeOffset(2124, 12, 31, 23, 59
 ```
 
 You can also specify a tolerance:
+
 ```csharp
 DateTime subject = DateTime.Now;
 
@@ -82,6 +87,7 @@ await Expect.That(subject).IsOnOrBefore(DateTime.Now).Within(TimeSpan.FromSecond
 ## Properties
 
 You can verify, the properties of `DateTime` or `DateTimeOffset`:
+
 ```csharp
 DateTime subject = new DateTime(2024, 12, 31, 15, 16, 17, 189, DateTimeKind.Utc);
 // or
@@ -97,20 +103,24 @@ await Expect.That(subject).HasMillisecond(189);
 ```
 
 For `DateTime` you can also verify the `Kind` property:
+
 ```csharp
 await Expect.That(subject).HasKind(DateTimeKind.Utc);
 ```
 
 For `DateTimeOffset` you can also verify the `Offset` property:
+
 ```csharp
 await Expect.That(subject).HasOffset(TimeSpan.FromMinutes(90));
 ```
 
-
 ## Default Tolerance
 
-In Windows the `DateTime` resolution is [about 10 to 15 milliseconds](https://stackoverflow.com/q/3140826/4003370), so comparing them as exact values might result in brittle tests.
-Therefore, it is possible to specify a default tolerance that is used for all `DateTime`, `DateTimeOffset`, `DateOnly`, `TimeOnly` and `TimeSpan` comparisons (unless an explicit tolerance is given):
+In Windows the `DateTime` resolution is [about 10 to 15 milliseconds](https://stackoverflow.com/q/3140826/4003370), so
+comparing them as exact values might result in brittle tests.
+Therefore, it is possible to specify a default tolerance that is used for all `DateTime`, `DateTimeOffset`, `DateOnly`,
+`TimeOnly` and `TimeSpan` comparisons (unless an explicit tolerance is given):
+
 ```csharp
 IDisposable lifetime = Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Set(15.Milliseconds());
 ```

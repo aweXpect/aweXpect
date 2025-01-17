@@ -21,8 +21,9 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>> AreAllUnique<TItem>(
-		this IExpectSubject<IAsyncEnumerable<TItem>> source)
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+		AreAllUnique<TItem>(
+			this IExpectSubject<IAsyncEnumerable<TItem>> source)
 	{
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
@@ -47,9 +48,11 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	/// <summary>
-	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
+	///     Verifies that the collection only contains items with unique members specified by the
+	///     <paramref name="memberAccessor" />.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>> AreAllUnique<TItem,
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>> AreAllUnique<
+		TItem,
 		TMember>(
 		this IExpectSubject<IAsyncEnumerable<TItem>> source,
 		Func<TItem, TMember> memberAccessor,
@@ -59,25 +62,29 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AreAllUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor, doNotPopulateThisValue,
+				new AreAllUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor,
+					doNotPopulateThisValue,
 					options)),
 			source, options
 		);
 	}
 
 	/// <summary>
-	///     Verifies that the collection only contains items with unique members specified by the <paramref name="memberAccessor"/>.
+	///     Verifies that the collection only contains items with unique members specified by the
+	///     <paramref name="memberAccessor" />.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>> AreAllUnique<TItem>(
-		this IExpectSubject<IAsyncEnumerable<TItem>> source,
-		Func<TItem, string> memberAccessor,
-		[CallerArgumentExpression("memberAccessor")]
-		string doNotPopulateThisValue = "")
+	public static StringEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+		AreAllUnique<TItem>(
+			this IExpectSubject<IAsyncEnumerable<TItem>> source,
+			Func<TItem, string> memberAccessor,
+			[CallerArgumentExpression("memberAccessor")]
+			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor, doNotPopulateThisValue,
+				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
+					doNotPopulateThisValue,
 					options)),
 			source, options
 		);
@@ -85,7 +92,7 @@ public static partial class ThatAsyncEnumerable
 
 	private readonly struct AreAllUniqueConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
-		where TItem: TMatch
+		where TItem : TMatch
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
@@ -95,7 +102,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
 			}
-			
+
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
@@ -133,7 +140,7 @@ public static partial class ThatAsyncEnumerable
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
 		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
-		where TMember: TMatch
+		where TMember : TMatch
 	{
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
 			CancellationToken cancellationToken)

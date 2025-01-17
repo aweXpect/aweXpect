@@ -52,6 +52,7 @@ public static partial class ThatAsyncEnumerable
 				_subject,
 				options);
 		}
+
 		/// <summary>
 		///     Verifies that the items in the collection satisfy the <paramref name="expectations" />.
 		/// </summary>
@@ -65,7 +66,7 @@ public static partial class ThatAsyncEnumerable
 				_subject,
 				options);
 		}
-		
+
 		/// <summary>
 		///     Verifies that all items in the collection are of type <typeparamref name="TType" />.
 		/// </summary>
@@ -84,7 +85,7 @@ public static partial class ThatAsyncEnumerable
 				_subject,
 				options);
 		}
-		
+
 		/// <summary>
 		///     Verifies that all items in the collection are of type <paramref name="type" />.
 		/// </summary>

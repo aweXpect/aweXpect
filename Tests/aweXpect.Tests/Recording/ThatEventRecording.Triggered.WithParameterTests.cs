@@ -23,7 +23,8 @@ public sealed partial class ThatEventRecording
 				sut.NotifyCustomEvent("p0", "p1", "p2");
 
 				async Task Act() =>
-					await That(recording).Triggered(nameof(CustomEventWithParametersClass<string, string, string>.CustomEvent))
+					await That(recording)
+						.Triggered(nameof(CustomEventWithParametersClass<string, string, string>.CustomEvent))
 						.WithParameter<string>(position, s => s == "p1")
 						.AtLeast(2.Times());
 

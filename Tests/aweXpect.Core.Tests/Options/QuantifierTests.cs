@@ -35,18 +35,18 @@ public class QuantifierTests
 	}
 
 	[Theory]
-	[InlineData(-1, true)]
-	[InlineData(0, false)]
-	[InlineData(1, false)]
-	public async Task Between_WhenMinimumIsNegative_ShouldThrowArgumentOutOfRangeException(
-		int minimum, bool expectThrow)
+	[InlineData(2, 1, true)]
+	[InlineData(1, 1, false)]
+	[InlineData(1, 2, false)]
+	public async Task Between_WhenMaximumIsLessThanMinimum_ShouldThrowArgumentException(
+		int minimum, int maximum, bool expectThrow)
 	{
 		Quantifier sut = new();
 
-		void Act() => sut.Between(minimum, 1);
+		void Act() => sut.Between(minimum, maximum);
 
-		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
-			.WithMessage("*The parameter 'minimum' must be non-negative*").AsWildcard();
+		await That(Act).Does().Throw<ArgumentException>().OnlyIf(expectThrow)
+			.WithMessage("*The parameter 'maximum' must be greater than or equal to 'minimum'*").AsWildcard();
 	}
 
 	[Theory]
@@ -65,18 +65,18 @@ public class QuantifierTests
 	}
 
 	[Theory]
-	[InlineData(2, 1, true)]
-	[InlineData(1, 1, false)]
-	[InlineData(1, 2, false)]
-	public async Task Between_WhenMaximumIsLessThanMinimum_ShouldThrowArgumentException(
-		int minimum, int maximum, bool expectThrow)
+	[InlineData(-1, true)]
+	[InlineData(0, false)]
+	[InlineData(1, false)]
+	public async Task Between_WhenMinimumIsNegative_ShouldThrowArgumentOutOfRangeException(
+		int minimum, bool expectThrow)
 	{
 		Quantifier sut = new();
 
-		void Act() => sut.Between(minimum, maximum);
+		void Act() => sut.Between(minimum, 1);
 
-		await That(Act).Does().Throw<ArgumentException>().OnlyIf(expectThrow)
-			.WithMessage("*The parameter 'maximum' must be greater than or equal to 'minimum'*").AsWildcard();
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>().OnlyIf(expectThrow)
+			.WithMessage("*The parameter 'minimum' must be non-negative*").AsWildcard();
 	}
 
 	[Theory]

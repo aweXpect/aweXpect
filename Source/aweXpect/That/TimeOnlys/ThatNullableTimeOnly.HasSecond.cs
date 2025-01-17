@@ -15,10 +15,10 @@ public static partial class ThatNullableTimeOnly
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(
-						it,
-						expected,
-						(a, e) => a.HasValue && a.Value.Second == e,
-						$"have second of {Formatter.Format(expected)}")),
+					it,
+					expected,
+					(a, e) => a.HasValue && a.Value.Second == e,
+					$"have second of {Formatter.Format(expected)}")),
 			source);
 
 	/// <summary>

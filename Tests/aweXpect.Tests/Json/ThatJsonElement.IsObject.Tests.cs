@@ -28,6 +28,7 @@ public sealed partial class ThatJsonElement
 					              """);
 			}
 		}
+
 		public sealed class WithTests
 		{
 			[Fact]

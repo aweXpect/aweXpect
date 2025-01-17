@@ -138,7 +138,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Does().NotThrow();
 			}
 		}
-		
+
 		public sealed class WithArraysTests
 		{
 			[Fact]
@@ -287,7 +287,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Does().NotThrow();
 			}
 		}
-		
+
 		public sealed class WithObjectsTests
 		{
 			[Fact]

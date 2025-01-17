@@ -32,7 +32,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new StartsWithConstraint<TItem, object?>(it, doNotPopulateThisValue, expected.ToArray(),
-						options)),
+					options)),
 			source,
 			options);
 	}
@@ -66,7 +66,7 @@ public static partial class ThatAsyncEnumerable
 		return new StringEqualityResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new StartsWithConstraint<string, string>(it, doNotPopulateThisValue, expected.ToArray(),
-						options)),
+					options)),
 			source,
 			options);
 	}
@@ -101,7 +101,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new DoesNotStartWithConstraint<TItem, object?>(it, doNotPopulateThisValue, unexpected.ToArray(),
-						options)),
+					options)),
 			source,
 			options);
 	}
@@ -118,7 +118,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new DoesNotStartWithConstraint<TItem, object?>(it, Formatter.Format(unexpected), unexpected,
-						options)),
+					options)),
 			source,
 			options);
 	}
@@ -137,7 +137,7 @@ public static partial class ThatAsyncEnumerable
 		return new StringEqualityResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new DoesNotStartWithConstraint<string, string>(it, doNotPopulateThisValue, unexpected.ToArray(),
-						options)),
+					options)),
 			source,
 			options);
 	}
@@ -154,7 +154,7 @@ public static partial class ThatAsyncEnumerable
 		return new StringEqualityResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new DoesNotStartWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
-						options)),
+					options)),
 			source,
 			options);
 	}

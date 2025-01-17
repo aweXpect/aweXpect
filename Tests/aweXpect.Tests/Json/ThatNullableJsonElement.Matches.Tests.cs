@@ -117,6 +117,7 @@ public sealed partial class ThatNullableJsonElement
 					             """);
 			}
 		}
+
 		public sealed class ArrayTests
 		{
 			[Theory]

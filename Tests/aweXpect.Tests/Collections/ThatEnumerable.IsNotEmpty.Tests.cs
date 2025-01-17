@@ -11,21 +11,6 @@ public sealed partial class ThatEnumerable
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IEnumerable<int>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).IsNotEmpty();
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             not be empty,
-					             but it was <null>
-					             """);
-			}
-			[Fact]
 			public async Task DoesNotEnumerateTwice()
 			{
 				ThrowWhenIteratingTwiceEnumerable subject = new();
@@ -99,6 +84,22 @@ public sealed partial class ThatEnumerable
 					             Expected subject to
 					             not be empty,
 					             but it was
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).IsNotEmpty();
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             not be empty,
+					             but it was <null>
 					             """);
 			}
 		}

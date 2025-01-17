@@ -23,9 +23,7 @@ internal static class StringExtensionMethods
 		this string @this,
 		char value,
 		StringComparison comparisonType)
-	{
-		return @this.Contains(value);
-	}
+		=> @this.Contains(value);
 
 	/// <summary>
 	///     Returns a value indicating whether a specified character occurs within this string, using the specified comparison
@@ -39,9 +37,7 @@ internal static class StringExtensionMethods
 		this string @this,
 		string value,
 		StringComparison comparisonType)
-	{
-		return @this.Contains(value);
-	}
+		=> @this.Contains(value);
 
 	/// <summary>
 	///     Determines whether the end of this string instance matches the specified character.
@@ -49,9 +45,7 @@ internal static class StringExtensionMethods
 	internal static bool EndsWith(
 		this string @this,
 		char value)
-	{
-		return @this.EndsWith($"{value}");
-	}
+		=> @this.EndsWith($"{value}");
 
 	/// <summary>
 	///     Reports the zero-based index of the first occurrence of the specified Unicode character in this string. A parameter
@@ -64,9 +58,7 @@ internal static class StringExtensionMethods
 		this string @this,
 		char value,
 		StringComparison comparisonType)
-	{
-		return @this.IndexOf($"{value}", comparisonType);
-	}
+		=> @this.IndexOf($"{value}", comparisonType);
 
 	/// <summary>
 	///     Returns a new string in which all occurrences of a specified string in the current instance are replaced with
@@ -84,8 +76,6 @@ internal static class StringExtensionMethods
 	internal static bool StartsWith(
 		this string @this,
 		char value)
-	{
-		return @this.StartsWith($"{value}");
-	}
+		=> @this.StartsWith($"{value}");
 }
 #endif

@@ -16,15 +16,16 @@ public static partial class ThatDateOnly
 		DateOnly? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateOnly, IExpectSubject<DateOnly>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ConditionConstraintWithTolerance(
-					it,
-					expected,
-					(e, t) => $"be {Formatter.Format(e)}{t.ToDayString()}",
-					(a, e, t) => e != null &&
-					             Math.Abs(a.DayNumber - e.Value.DayNumber) <= (int)t.TotalDays,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+		return new TimeToleranceResult<DateOnly, IExpectSubject<DateOnly>>(source.ThatIs().ExpectationBuilder
+				.AddConstraint(it =>
+					new ConditionConstraintWithTolerance(
+						it,
+						expected,
+						(e, t) => $"be {Formatter.Format(e)}{t.ToDayString()}",
+						(a, e, t) => e != null &&
+						             Math.Abs(a.DayNumber - e.Value.DayNumber) <= (int)t.TotalDays,
+						(a, _, i) => $"{i} was {Formatter.Format(a)}",
+						tolerance)),
 			source,
 			tolerance);
 	}

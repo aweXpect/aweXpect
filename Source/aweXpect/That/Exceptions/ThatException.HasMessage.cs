@@ -15,8 +15,8 @@ public static partial class ThatException
 	///     Verifies that the actual exception has a message equal to <paramref name="expected" />
 	/// </summary>
 	public static StringEqualityTypeResult<Exception?, IExpectSubject<Exception?>> HasMessage(
-			this IExpectSubject<Exception?> source,
-			string expected)
+		this IExpectSubject<Exception?> source,
+		string expected)
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<Exception?, IExpectSubject<Exception?>>(

@@ -6,7 +6,7 @@ using TUnit.Assertions.Enums;
 
 namespace aweXpect.Benchmarks;
 
-public partial class 
+public partial class
 	HappyCaseBenchmarks
 {
 	private readonly string[] _stringArrayExpectation = ["foo", "bar", "baz"];

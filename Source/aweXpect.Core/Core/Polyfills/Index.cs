@@ -145,14 +145,17 @@ public readonly struct Index : IEquatable<Index>
 	public override int GetHashCode() => _value;
 
 	/// <summary>Converts integer number to an Index.</summary>
-	public static implicit operator Index(int value) => FromStart(value);
+	public static implicit operator Index(int value)
+	{
+		return FromStart(value);
+	}
 
 	/// <summary>Converts the value of the current Index object to its equivalent string representation.</summary>
 	public override string ToString()
 	{
 		if (IsFromEnd)
 		{
-			return "^" + ((uint)Value);
+			return "^" + (uint)Value;
 		}
 
 		return ((uint)Value).ToString();

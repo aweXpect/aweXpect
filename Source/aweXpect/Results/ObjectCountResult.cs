@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Equivalency;
 using aweXpect.Options;
 
 namespace aweXpect.Results;

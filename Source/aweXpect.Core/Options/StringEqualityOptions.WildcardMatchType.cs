@@ -17,7 +17,7 @@ public partial class StringEqualityOptions
 		_matchType = WildcardMatch;
 		return this;
 	}
-	
+
 	private sealed class WildcardMatchType : IStringMatchType
 	{
 		private static string WildcardToRegularExpression(string value)

@@ -20,8 +20,8 @@ public static partial class ThatException
 	///     and for <see cref="AggregateException" /> also on the <see cref="AggregateException.InnerExceptions" />.
 	/// </remarks>
 	public static AndOrResult<Exception?, IExpectSubject<Exception?>> HasRecursiveInnerExceptions(
-			this IExpectSubject<Exception?> source,
-			Action<IExpectSubject<IEnumerable<Exception>>> expectations)
+		this IExpectSubject<Exception?> source,
+		Action<IExpectSubject<IEnumerable<Exception>>> expectations)
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception?>>.FromFunc(
 						e => e.GetInnerExpectations(),

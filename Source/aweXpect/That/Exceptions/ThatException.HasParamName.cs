@@ -15,8 +15,8 @@ public static partial class ThatException
 	///     Verifies that the actual <see cref="ArgumentException" /> has an <paramref name="expected" /> param name.
 	/// </summary>
 	public static AndOrResult<TException, IExpectSubject<TException>> HasParamName<TException>(
-			this IExpectSubject<TException> source,
-			string expected)
+		this IExpectSubject<TException> source,
+		string expected)
 		where TException : ArgumentException?
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasParamNameValueConstraint<TException>(it, "have", expected)),

@@ -13,7 +13,7 @@ internal static class ExpectHelpers
 
 		return new That.Subject<T>(subject.Should(That.WithoutAction).ExpectationBuilder);
 	}
-	
+
 	public static IThatHas<T> ThatHas<T>(this IExpectSubject<T> subject)
 	{
 		if (subject is IThatHas<T> thatHas)
@@ -23,7 +23,7 @@ internal static class ExpectHelpers
 
 		return new That.Subject<T>(subject.Should(That.WithoutAction).ExpectationBuilder);
 	}
-	
+
 	public static IExpectSubject<T> ExpectSubject<T>(this IThatIs<T> thatIs)
 	{
 		if (thatIs is IExpectSubject<T> expectSubject)
@@ -33,7 +33,7 @@ internal static class ExpectHelpers
 
 		return new That.Subject<T>(thatIs.ExpectationBuilder);
 	}
-	
+
 	public static IExpectSubject<T> ExpectSubject<T>(this IThatHas<T> thatHas)
 	{
 		if (thatHas is IExpectSubject<T> expectSubject)

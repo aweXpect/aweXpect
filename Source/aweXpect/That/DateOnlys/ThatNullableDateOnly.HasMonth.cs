@@ -15,10 +15,10 @@ public static partial class ThatNullableDateOnly
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(
-						it,
-						expected,
-						(a, e) => a.HasValue && a.Value.Month == e,
-						$"have month of {Formatter.Format(expected)}")),
+					it,
+					expected,
+					(a, e) => a.HasValue && a.Value.Month == e,
+					$"have month of {Formatter.Format(expected)}")),
 			source);
 
 	/// <summary>

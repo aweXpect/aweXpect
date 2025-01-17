@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Core.EvaluationContext;
-using aweXpect.Customization;
-using aweXpect.Helpers;
-using aweXpect.Options;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -23,8 +15,8 @@ public static partial class ThatEnumerable
 	/// </summary>
 	public partial class Elements
 	{
-		private readonly IExpectSubject<IEnumerable<string?>> _subject;
 		private readonly EnumerableQuantifier _quantifier;
+		private readonly IExpectSubject<IEnumerable<string?>> _subject;
 
 		internal Elements(IExpectSubject<IEnumerable<string?>> subject, EnumerableQuantifier quantifier)
 		{
@@ -39,8 +31,8 @@ public static partial class ThatEnumerable
 	/// </summary>
 	public partial class Elements<TItem>
 	{
-		private readonly IExpectSubject<IEnumerable<TItem>> _subject;
 		private readonly EnumerableQuantifier _quantifier;
+		private readonly IExpectSubject<IEnumerable<TItem>> _subject;
 
 		internal Elements(IExpectSubject<IEnumerable<TItem>> subject, EnumerableQuantifier quantifier)
 		{

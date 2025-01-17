@@ -1,6 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
-using aweXpect.Tests.Models;
+using System.Text.Json.Serialization;
 
 namespace aweXpect.Tests;
 
@@ -61,7 +61,7 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
-						             but it could not be deserialized: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'aweXpect.Tests.TestHelpers.Models.PocoWithPrivateConstructor'*
+						             but it could not be deserialized: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'aweXpect.Tests.ThatObject+Is+JsonSerializable+PocoWithPrivateConstructor'*
 						             """).AsWildcard();
 				}
 
@@ -89,7 +89,7 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
-						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.TestHelpers.Models.PocoWithoutDefaultConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object*
+						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+Is+JsonSerializable+PocoWithoutDefaultConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object*
 						             """).AsWildcard();
 				}
 
@@ -111,7 +111,7 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
-						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.TestHelpers.Models.PocoWithoutDefaultFieldConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled*
+						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+Is+JsonSerializable+PocoWithoutDefaultFieldConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled*
 						             """).AsWildcard();
 				}
 
@@ -207,7 +207,7 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithPrivateConstructor JSON,
-						             but it could not be deserialized: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'aweXpect.Tests.TestHelpers.Models.PocoWithPrivateConstructor'*
+						             but it could not be deserialized: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'aweXpect.Tests.ThatObject+Is+JsonSerializable+PocoWithPrivateConstructor'*
 						             """).AsWildcard();
 				}
 
@@ -236,7 +236,7 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithoutDefaultConstructor JSON,
-						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.TestHelpers.Models.PocoWithoutDefaultConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object*
+						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+Is+JsonSerializable+PocoWithoutDefaultConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object*
 						             """).AsWildcard();
 				}
 
@@ -259,7 +259,7 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithoutDefaultFieldConstructor JSON,
-						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.TestHelpers.Models.PocoWithoutDefaultFieldConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled*
+						             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+Is+JsonSerializable+PocoWithoutDefaultFieldConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled*
 						             """).AsWildcard();
 				}
 
@@ -329,6 +329,67 @@ public sealed partial class ThatObject
 
 					await That(Act).Does().NotThrow();
 				}
+			}
+			
+			public class PocoWithoutDefaultConstructor(int value)
+			{
+				public int Id { get; } = value;
+			}
+			public class PocoWithIgnoredProperty
+			{
+				public int Id { get; set; }
+
+				[JsonIgnore] public string? Name { get; set; }
+			}
+			public class PocoWithoutDefaultFieldConstructor(int value)
+			{
+				public int Value = value;
+			}
+			public class PocoWithPrivateConstructor
+			{
+				private PocoWithPrivateConstructor() { }
+
+				public int Id { get; set; }
+
+				public static PocoWithPrivateConstructor Create(int id) => new()
+				{
+					Id = id
+				};
+			}
+
+			public class PocoWithPrivateConstructorWithJsonConstructorAttribute
+			{
+				[JsonConstructor]
+				private PocoWithPrivateConstructorWithJsonConstructorAttribute() { }
+
+				public int Id { get; init; }
+
+				public static PocoWithPrivateConstructorWithJsonConstructorAttribute Create(int id) => new()
+				{
+					Id = id
+				};
+			}
+			public class SimplePocoWithPrimitiveTypes
+			{
+				public int Id { get; set; }
+
+				public Guid GlobalId { get; set; }
+
+				public string Name { get; set; } = "";
+
+				public DateTime DateOfBirth { get; set; }
+
+				public decimal Height { get; set; }
+
+				public double Weight { get; set; }
+
+				public float ShoeSize { get; set; }
+
+				public bool IsActive { get; set; }
+
+				public byte[] Image { get; set; } = [];
+
+				public char Category { get; set; }
 			}
 		}
 	}

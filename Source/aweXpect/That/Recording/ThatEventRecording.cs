@@ -1,7 +1,5 @@
 ﻿using System.Text;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Recording;
 

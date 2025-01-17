@@ -16,8 +16,8 @@ public partial class ThatException
 	public static AndOrResult<Exception?, IExpectSubject<Exception?>> HasInnerException(
 		this IExpectSubject<Exception?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new HasInnerExceptionValueConstraint<Exception?>("have",
-						it)),
+				new HasInnerExceptionValueConstraint<Exception?>("have",
+					it)),
 			source);
 
 	/// <summary>

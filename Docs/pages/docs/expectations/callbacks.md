@@ -8,7 +8,8 @@ Describes the possible expectations for working with callbacks.
 
 ## Signaler
 
-First, you have to start recording callback signals using the `Signaler` class. This class is available in the "aweXpect.Signaling" namespace.
+First, you have to start recording callback signals using the `Signaler` class. This class is available in the "
+aweXpect.Signaling" namespace.
 
 ```csharp
 // ↓ Counts signals from callbacks without parameters
@@ -91,6 +92,7 @@ await Expect.That(signaler).Signaled(2.Times());
 ```
 
 You can filter for signals with specific parameters by providing a `predicate`:
+
 ```csharp
 Signaler<string> signaler = new();
 

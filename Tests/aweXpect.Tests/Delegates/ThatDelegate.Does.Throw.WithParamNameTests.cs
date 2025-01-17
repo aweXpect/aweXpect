@@ -10,20 +10,6 @@ public sealed partial class ThatDelegate
 			{
 				[Theory]
 				[AutoData]
-				public async Task WhenParamNameMatchesExpected_ShouldSucceed(string message)
-				{
-					ArgumentException exception = new(message, nameof(message));
-					void Delegate() => throw exception;
-
-					async Task Act()
-						=> await That(Delegate).Does()
-							.Throw<ArgumentException>().WithParamName("message");
-
-					await That(Act).Does().NotThrow();
-				}
-
-				[Theory]
-				[AutoData]
 				public async Task WhenParamNameIsDifferent_ShouldFail(string message)
 				{
 					ArgumentException exception = new(message, nameof(message));
@@ -39,6 +25,20 @@ public sealed partial class ThatDelegate
 						             throw an ArgumentException with ParamName "somethingElse",
 						             but it had ParamName "message"
 						             """);
+				}
+
+				[Theory]
+				[AutoData]
+				public async Task WhenParamNameMatchesExpected_ShouldSucceed(string message)
+				{
+					ArgumentException exception = new(message, nameof(message));
+					void Delegate() => throw exception;
+
+					async Task Act()
+						=> await That(Delegate).Does()
+							.Throw<ArgumentException>().WithParamName("message");
+
+					await That(Act).Does().NotThrow();
 				}
 			}
 		}

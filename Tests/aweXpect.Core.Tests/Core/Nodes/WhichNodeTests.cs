@@ -5,7 +5,14 @@ public sealed class WhichNodeTests
 	[Fact]
 	public async Task WhichCreatesGoodMessage()
 	{
-		Dummy subject = new() { Inner = new Dummy.Nested { Id = 1 }, Value = "foo" };
+		Dummy subject = new()
+		{
+			Inner = new Dummy.Nested
+			{
+				Id = 1
+			},
+			Value = "foo"
+		};
 
 		async Task Act()
 			=> await That(subject).Is<Dummy>()

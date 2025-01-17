@@ -138,7 +138,7 @@ public sealed partial class ThatNullableJsonElement
 				await That(Act).Does().NotThrow();
 			}
 		}
-		
+
 		public sealed class WithArraysTests
 		{
 			[Fact]
@@ -180,13 +180,13 @@ public sealed partial class ThatNullableJsonElement
 			public async Task WhenExpectationsMatchInDifferentOrder_ShouldFail()
 			{
 				JsonElement? subject = FromString("""
-				                                 [
-				                                   [1],
-				                                   [3],
-				                                   [2],
-				                                   [4]
-				                                 ]
-				                                 """);
+				                                  [
+				                                    [1],
+				                                    [3],
+				                                    [2],
+				                                    [4]
+				                                  ]
+				                                  """);
 
 				async Task Act()
 					=> await That(subject).IsArray(e => e
@@ -209,13 +209,13 @@ public sealed partial class ThatNullableJsonElement
 			public async Task WhenExpectationsMatchInOrder_ShouldSucceed()
 			{
 				JsonElement? subject = FromString("""
-				                                 [
-				                                   [1],
-				                                   [2],
-				                                   [3],
-				                                   [4]
-				                                 ]
-				                                 """);
+				                                  [
+				                                    [1],
+				                                    [2],
+				                                    [3],
+				                                    [4]
+				                                  ]
+				                                  """);
 
 				async Task Act()
 					=> await That(subject).IsArray(e => e
@@ -252,10 +252,10 @@ public sealed partial class ThatNullableJsonElement
 			public async Task WhenExpectationsMatchInDifferentOrder_ShouldFail()
 			{
 				JsonElement? subject = FromString("""
-				                                 [
-				                                   3, null, true, 1.2, false, "bar"
-				                                 ]
-				                                 """);
+				                                  [
+				                                    3, null, true, 1.2, false, "bar"
+				                                  ]
+				                                  """);
 
 				async Task Act()
 					=> await That(subject).IsArray(e => e
@@ -275,10 +275,10 @@ public sealed partial class ThatNullableJsonElement
 			public async Task WhenExpectationsMatchInOrder_ShouldSucceed()
 			{
 				JsonElement? subject = FromString("""
-				                                 [
-				                                   3, true, null, 1.2, false, "bar"
-				                                 ]
-				                                 """);
+				                                  [
+				                                    3, true, null, 1.2, false, "bar"
+				                                  ]
+				                                  """);
 
 				async Task Act()
 					=> await That(subject).IsArray(e => e
@@ -287,7 +287,7 @@ public sealed partial class ThatNullableJsonElement
 				await That(Act).Does().NotThrow();
 			}
 		}
-		
+
 		public sealed class WithObjectsTests
 		{
 			[Fact]
@@ -329,13 +329,13 @@ public sealed partial class ThatNullableJsonElement
 			public async Task WhenExpectationsMatchInDifferentOrder_ShouldFail()
 			{
 				JsonElement? subject = FromString("""
-				                                 [
-				                                   {"foo":1},
-				                                   {"foo":3},
-				                                   {"bar":2},
-				                                   {"baz":4}
-				                                 ]
-				                                 """);
+				                                  [
+				                                    {"foo":1},
+				                                    {"foo":3},
+				                                    {"bar":2},
+				                                    {"baz":4}
+				                                  ]
+				                                  """);
 
 				async Task Act()
 					=> await That(subject).IsArray(e => e
@@ -358,13 +358,13 @@ public sealed partial class ThatNullableJsonElement
 			public async Task WhenExpectationsMatchInOrder_ShouldSucceed()
 			{
 				JsonElement? subject = FromString("""
-				                                 [
-				                                   {"foo":1},
-				                                   {"bar":2},
-				                                   {"foo":3},
-				                                   {"baz":4}
-				                                 ]
-				                                 """);
+				                                  [
+				                                    {"foo":1},
+				                                    {"bar":2},
+				                                    {"foo":3},
+				                                    {"baz":4}
+				                                  ]
+				                                  """);
 
 				async Task Act()
 					=> await That(subject).IsArray(e => e

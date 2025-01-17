@@ -21,11 +21,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<byte, IExpectSubject<byte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraintWithNullableValues<byte>(
-						it,
-						expected,
-						e => $"be one of {Formatter.Format(e)}{options}",
-						(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					expected,
+					e => $"be one of {Formatter.Format(e)}{options}",
+					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -126,11 +126,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<uint, IExpectSubject<uint>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraintWithNullableValues<uint>(
-						it,
-						expected,
-						e => $"be one of {Formatter.Format(e)}{options}",
-						(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					expected,
+					e => $"be one of {Formatter.Format(e)}{options}",
+					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -147,11 +147,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<long, IExpectSubject<long>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraintWithNullableValues<long>(
-						it,
-						expected,
-						e => $"be one of {Formatter.Format(e)}{options}",
-						(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					expected,
+					e => $"be one of {Formatter.Format(e)}{options}",
+					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -483,11 +483,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<byte, IExpectSubject<byte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraint<byte>(
-						it,
-						expected,
-						e => $"be one of {Formatter.Format(e)}{options}",
-						(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					expected,
+					e => $"be one of {Formatter.Format(e)}{options}",
+					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -588,11 +588,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<uint, IExpectSubject<uint>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraint<uint>(
-						it,
-						expected,
-						e => $"be one of {Formatter.Format(e)}{options}",
-						(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					expected,
+					e => $"be one of {Formatter.Format(e)}{options}",
+					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -609,11 +609,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<long, IExpectSubject<long>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraint<long>(
-						it,
-						expected,
-						e => $"be one of {Formatter.Format(e)}{options}",
-						(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					expected,
+					e => $"be one of {Formatter.Format(e)}{options}",
+					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -945,11 +945,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<byte, IExpectSubject<byte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraintWithNullableValues<byte>(
-						it,
-						unexpected,
-						u => $"not be one of {Formatter.Format(u)}{options}",
-						(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					unexpected,
+					u => $"not be one of {Formatter.Format(u)}{options}",
+					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -1050,11 +1050,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<uint, IExpectSubject<uint>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraintWithNullableValues<uint>(
-						it,
-						unexpected,
-						u => $"not be one of {Formatter.Format(u)}{options}",
-						(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					unexpected,
+					u => $"not be one of {Formatter.Format(u)}{options}",
+					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -1071,11 +1071,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<long, IExpectSubject<long>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraintWithNullableValues<long>(
-						it,
-						unexpected,
-						u => $"not be one of {Formatter.Format(u)}{options}",
-						(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					unexpected,
+					u => $"not be one of {Formatter.Format(u)}{options}",
+					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -1407,11 +1407,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<byte, IExpectSubject<byte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraint<byte>(
-						it,
-						unexpected,
-						u => $"not be one of {Formatter.Format(u)}{options}",
-						(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					unexpected,
+					u => $"not be one of {Formatter.Format(u)}{options}",
+					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -1512,11 +1512,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<uint, IExpectSubject<uint>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraint<uint>(
-						it,
-						unexpected,
-						u => $"not be one of {Formatter.Format(u)}{options}",
-						(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					unexpected,
+					u => $"not be one of {Formatter.Format(u)}{options}",
+					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}
@@ -1533,11 +1533,11 @@ public static partial class ThatNumber
 		return new NumberToleranceResult<long, IExpectSubject<long>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericArrayConstraint<long>(
-						it,
-						unexpected,
-						u => $"not be one of {Formatter.Format(u)}{options}",
-						(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+					it,
+					unexpected,
+					u => $"not be one of {Formatter.Format(u)}{options}",
+					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
+					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
 			options);
 	}

@@ -12,39 +12,6 @@ public sealed partial class ThatAsyncEnumerable
 	{
 		public sealed class InSameOrderTests
 		{
-
-			[Fact]
-			public async Task WhenExpectedIsNull_ShouldFail()
-			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
-				IEnumerable<int>? expected = null;
-
-				async Task Act()
-					=> await That(subject).Contains(expected!);
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             contain collection expected in order,
-					             but it cannot compare to <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IAsyncEnumerable<string>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).Contains([]);
-
-				await That(Act).Does().Throw<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             contain collection [] in order,
-					             but it was <null>
-					             """);
-			}
 			[Fact]
 			public async Task CompletelyDifferentCollections_ShouldFail()
 			{
@@ -130,6 +97,39 @@ public sealed partial class ThatAsyncEnumerable
 					               108,
 					               109,
 					               110
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Enumerable.Range(1, 11));
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).Contains(expected!);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain collection expected in order,
+					             but it cannot compare to <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).Contains([]);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             contain collection [] in order,
+					             but it was <null>
 					             """);
 			}
 
@@ -323,7 +323,6 @@ public sealed partial class ThatAsyncEnumerable
 					               "e"
 					             """);
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
@@ -637,7 +636,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Does().NotThrow();
 			}
 		}
-		
+
 		public sealed class InAnyOrderTests
 		{
 			[Fact]
@@ -908,7 +907,6 @@ public sealed partial class ThatAsyncEnumerable
 					               "e"
 					             """);
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
@@ -1508,7 +1506,6 @@ public sealed partial class ThatAsyncEnumerable
 					                 "e"
 					             """);
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
@@ -2154,7 +2151,6 @@ public sealed partial class ThatAsyncEnumerable
 					                 "e"
 					             """);
 			}
-
 
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()

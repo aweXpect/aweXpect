@@ -21,6 +21,17 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				object? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNot<MyClass>();
+
+				await That(Act).Does().NotThrow();
+			}
+
+			[Fact]
 			public async Task WhenTypeDoesNotMatch_ShouldSucceed()
 			{
 				object subject = new MyClass();
@@ -87,17 +98,6 @@ public sealed partial class ThatObject
 					               }
 					               """);
 			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
-			{
-				object? subject = null;
-
-				async Task Act()
-					=> await That(subject).IsNot<MyClass>();
-
-				await That(Act).Does().NotThrow();
-			}
 		}
 
 		public sealed class TypeTests
@@ -114,6 +114,17 @@ public sealed partial class ThatObject
 				object? result = await That(subject).IsNot(typeof(OtherClass));
 
 				await That(result).IsSameAs(subject);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				object? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNot(typeof(MyClass));
+
+				await That(Act).Does().NotThrow();
 			}
 
 			[Fact]
@@ -182,17 +193,6 @@ public sealed partial class ThatObject
 					                 Value = {{value}}
 					               }
 					               """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
-			{
-				object? subject = null;
-
-				async Task Act()
-					=> await That(subject).IsNot(typeof(MyClass));
-
-				await That(Act).Does().NotThrow();
 			}
 		}
 	}

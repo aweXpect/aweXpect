@@ -11,7 +11,6 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed class Satisfy
 		{
-
 			public sealed class Tests
 			{
 				[Fact]

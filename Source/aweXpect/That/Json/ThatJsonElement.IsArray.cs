@@ -34,6 +34,7 @@ public static partial class ThatJsonElement
 		{
 			jsonOptions = options(jsonOptions);
 		}
+
 		return new AndOrResult<JsonElement, IExpectSubject<JsonElement>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeArrayConstraint(it, expectation, jsonOptions)),

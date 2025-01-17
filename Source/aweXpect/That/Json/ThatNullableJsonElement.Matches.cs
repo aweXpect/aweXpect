@@ -15,7 +15,8 @@ public static partial class ThatNullableJsonElement
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> matches the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IExpectSubject<JsonElement?>> Matches(this IExpectSubject<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IExpectSubject<JsonElement?>> Matches(
+		this IExpectSubject<JsonElement?> source,
 		object? expected,
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -36,7 +37,8 @@ public static partial class ThatNullableJsonElement
 	/// <summary>
 	///     Verifies that the subject <see cref="JsonElement" /> matches the <paramref name="expected" /> array.
 	/// </summary>
-	public static AndOrResult<JsonElement?, IExpectSubject<JsonElement?>> Matches<T>(this IExpectSubject<JsonElement?> source,
+	public static AndOrResult<JsonElement?, IExpectSubject<JsonElement?>> Matches<T>(
+		this IExpectSubject<JsonElement?> source,
 		IEnumerable<T> expected,
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")

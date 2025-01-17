@@ -21,18 +21,20 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
-		return new ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
-			source,
-			options,
-			matchOptions);
+		return new
+			ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
+				source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				source,
+				options,
+				matchOptions);
 	}
 
 	/// <summary>
 	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionBeContainedInResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>>
+	public static StringCollectionBeContainedInResult<IAsyncEnumerable<string>,
+			IExpectSubject<IAsyncEnumerable<string>>>
 		IsContainedIn(
 			this IExpectSubject<IAsyncEnumerable<string>> source,
 			IEnumerable<string> expected,
@@ -40,7 +42,8 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
-		return new StringCollectionBeContainedInResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>>(
+		return new StringCollectionBeContainedInResult<IAsyncEnumerable<string>,
+			IExpectSubject<IAsyncEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,

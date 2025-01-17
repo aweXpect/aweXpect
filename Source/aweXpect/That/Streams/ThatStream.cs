@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
 
 namespace aweXpect;
 

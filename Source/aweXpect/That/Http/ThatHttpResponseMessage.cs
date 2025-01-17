@@ -7,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 

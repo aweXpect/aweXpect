@@ -140,7 +140,8 @@ public static class Expect
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
 			new ExpectationBuilder<DelegateValue<TValue>>(
 				// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-				new DelegateAsyncValueSource<TValue>(@delegate is null ? null : _ => @delegate()), doNotPopulateThisValue));
+				new DelegateAsyncValueSource<TValue>(@delegate is null ? null : _ => @delegate()),
+				doNotPopulateThisValue));
 
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{CancellationToken, T}" /> of <see cref="Task{TValue}" />

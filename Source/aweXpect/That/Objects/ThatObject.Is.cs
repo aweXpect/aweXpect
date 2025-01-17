@@ -68,7 +68,7 @@ public static partial class ThatObject
 			source,
 			options);
 	}
-	
+
 	/// <summary>
 	///     Verifies that the subject is not of type <typeparamref name="TType" />.
 	/// </summary>
@@ -129,6 +129,7 @@ public static partial class ThatObject
 		public override string ToString()
 			=> "not " + options.GetExpectation(unexpectedExpression);
 	}
+
 	private readonly struct IsOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
 	{
 		public ConstraintResult IsMetBy(object? actual)

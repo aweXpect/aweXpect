@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Core.Constraints;
-using aweXpect.Core.EvaluationContext;
-using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -54,6 +51,7 @@ public static partial class ThatEnumerable
 				_subject,
 				options);
 		}
+
 		/// <summary>
 		///     Verifies that the items in the collection satisfy the <paramref name="expectations" />.
 		/// </summary>
@@ -67,7 +65,7 @@ public static partial class ThatEnumerable
 				_subject,
 				options);
 		}
-		
+
 		/// <summary>
 		///     Verifies that all items in the collection are of type <typeparamref name="TType" />.
 		/// </summary>
@@ -86,7 +84,7 @@ public static partial class ThatEnumerable
 				_subject,
 				options);
 		}
-		
+
 		/// <summary>
 		///     Verifies that all items in the collection are of type <paramref name="type" />.
 		/// </summary>

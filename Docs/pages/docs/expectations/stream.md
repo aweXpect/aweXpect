@@ -9,6 +9,7 @@ Describes the possible expectations for `Stream` and `BufferedStream`.
 ## Properties
 
 You can verify, the properties of the `Stream`:
+
 ```csharp
 Stream subject = new MemoryStream();
 

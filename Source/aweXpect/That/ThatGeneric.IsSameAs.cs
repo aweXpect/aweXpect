@@ -18,7 +18,7 @@ public static partial class ThatGeneric
 				.AddConstraint(it =>
 					new BeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
 			source);
-	
+
 	/// <summary>
 	///     Expect the actual value to not be the same as the <paramref name="expected" /> value.
 	/// </summary>

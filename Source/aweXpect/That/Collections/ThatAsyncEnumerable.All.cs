@@ -1,5 +1,4 @@
 ﻿#if NET8_0_OR_GREATER
-using System;
 using System.Collections.Generic;
 using aweXpect.Core;
 
@@ -12,8 +11,8 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public static Elements<TItem> All<TItem>(
 		this IExpectSubject<IAsyncEnumerable<TItem>> subject)
-	=> new(subject, EnumerableQuantifier.All);
-	
+		=> new(subject, EnumerableQuantifier.All);
+
 	/// <summary>
 	///     Expect that all items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
