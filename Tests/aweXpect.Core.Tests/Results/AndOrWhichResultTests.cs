@@ -8,12 +8,12 @@ public class AndOrWhichResultTests
 		MyClass sut = new();
 
 		async Task Act()
-			=> await That(sut).Should().Be<MyClass>()
-				.Which(f => f.Value1, f => f.Should().BeTrue())
-				.AndWhich(f => f.Value2, f => f.Should().BeTrue())
-				.And.BeSameAs(sut);
+			=> await That(sut).Is<MyClass>()
+				.Which(f => f.Value1, f => f.IsTrue())
+				.AndWhich(f => f.Value2, f => f.IsTrue())
+				.And.IsSameAs(sut);
 
-		await That(Act).Should().ThrowException()
+		await That(Act).Does().ThrowException()
 			.WithMessage("""
 			             Expected sut to
 			             be type MyClass which .Value1 should be True and which .Value2 should be True and refer to sut MyClass {
@@ -31,14 +31,18 @@ public class AndOrWhichResultTests
 	[InlineData(false, false, false)]
 	public async Task MultipleWhich_ShouldVerifyAll(bool value1, bool value2, bool expectSuccess)
 	{
-		MyClass sut = new() { Value1 = value1, Value2 = value2 };
+		MyClass sut = new()
+		{
+			Value1 = value1,
+			Value2 = value2
+		};
 
 		async Task Act()
-			=> await That(sut).Should().Be<MyClass>()
-				.Which(f => f.Value1, f => f.Should().BeTrue())
-				.AndWhich(f => f.Value2, f => f.Should().BeTrue());
+			=> await That(sut).Is<MyClass>()
+				.Which(f => f.Value1, f => f.IsTrue())
+				.AndWhich(f => f.Value2, f => f.IsTrue());
 
-		await That(Act).Should().ThrowException().OnlyIf(!expectSuccess)
+		await That(Act).Does().ThrowException().OnlyIf(!expectSuccess)
 			.WithMessage($"""
 			              Expected sut to
 			              be type MyClass which .Value1 should be True and which .Value2 should be True,

@@ -8,6 +8,6 @@ public sealed class FailExceptionTests
 	{
 		FailException subject = new(message);
 
-		await That(subject.Message).Should().Be(message);
+		await That(subject.Message).Is(message);
 	}
 }

@@ -19,7 +19,7 @@ public sealed class ApiApprovalTests
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
 
-		await Expect.That(publicApi).Should().Be(expectedApi);
+		await Expect.That(publicApi).Is(expectedApi);
 	}
 
 	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
@@ -30,7 +30,7 @@ public sealed class ApiApprovalTests
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
 
-		await Expect.That(publicApi).Should().Be(expectedApi);
+		await Expect.That(publicApi).Is(expectedApi);
 	}
 
 	private sealed class TargetFrameworksTheoryData : IEnumerable
@@ -41,7 +41,10 @@ public sealed class ApiApprovalTests
 		{
 			foreach (string targetFramework in Helper.GetTargetFrameworks())
 			{
-				yield return new object[] { targetFramework };
+				yield return new object[]
+				{
+					targetFramework
+				};
 			}
 		}
 

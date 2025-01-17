@@ -12,7 +12,7 @@ public class StringExtensionsTests
 
 		string result = input.DisplayWhitespace();
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 	[Fact]
@@ -22,7 +22,7 @@ public class StringExtensionsTests
 
 		string? result = input.DisplayWhitespace();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 
@@ -33,7 +33,7 @@ public class StringExtensionsTests
 
 		string result = input.Indent("");
 
-		await That(result).Should().Be(input);
+		await That(result).Is(input);
 	}
 
 	[Fact]
@@ -44,7 +44,7 @@ public class StringExtensionsTests
 
 		string result = input.Indent("   ");
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 	[Fact]
@@ -55,7 +55,7 @@ public class StringExtensionsTests
 
 		string result = input.Indent("   ", false);
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 	[Fact]
@@ -65,7 +65,7 @@ public class StringExtensionsTests
 
 		string? result = input.Indent();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -76,7 +76,7 @@ public class StringExtensionsTests
 
 		string result = input.RemoveNewlineStyle();
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 
@@ -87,7 +87,7 @@ public class StringExtensionsTests
 
 		string? result = input.Indent();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -97,7 +97,7 @@ public class StringExtensionsTests
 
 		string result = input.SubstringUntilFirst('a');
 
-		await That(result).Should().Be("");
+		await That(result).Is("");
 	}
 
 
@@ -108,7 +108,7 @@ public class StringExtensionsTests
 
 		string result = input.SubstringUntilFirst('X');
 
-		await That(result).Should().Be(input);
+		await That(result).Is(input);
 	}
 
 	[Fact]
@@ -118,7 +118,7 @@ public class StringExtensionsTests
 
 		string result = input.SubstringUntilFirst(',');
 
-		await That(result).Should().Be("a");
+		await That(result).Is("a");
 	}
 
 
@@ -130,7 +130,7 @@ public class StringExtensionsTests
 
 		string result = input.ToSingleLine();
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 	[Fact]
@@ -140,7 +140,7 @@ public class StringExtensionsTests
 
 		string? result = input.ToSingleLine();
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -151,7 +151,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsis(10);
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 
@@ -162,7 +162,7 @@ public class StringExtensionsTests
 
 		string? result = input.TruncateWithEllipsis(10);
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -172,7 +172,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsis(10);
 
-		await That(result).Should().Be(input);
+		await That(result).Is(input);
 	}
 
 	[Fact]
@@ -183,7 +183,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsisOnWord(11);
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 	[Fact]
@@ -194,7 +194,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 
 	[Fact]
@@ -204,7 +204,7 @@ public class StringExtensionsTests
 
 		string? result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Should().BeNull();
+		await That(result).IsNull();
 	}
 
 	[Fact]
@@ -214,7 +214,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Should().Be(input);
+		await That(result).Is(input);
 	}
 
 	[Theory]
@@ -225,6 +225,6 @@ public class StringExtensionsTests
 	{
 		string result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Should().Be(expected);
+		await That(result).Is(expected);
 	}
 }

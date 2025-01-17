@@ -12,7 +12,7 @@ public class TimeToleranceTests
 
 		void Act() => sut.SetTolerance(-1.Seconds());
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 			.WithMessage("*Tolerance must be non-negative*").AsWildcard();
 	}
 
@@ -23,7 +23,7 @@ public class TimeToleranceTests
 
 		void Act() => sut.SetTolerance(TimeSpan.Zero);
 
-		await That(Act).Should().NotThrow();
-		await That(sut.Tolerance).Should().Be(TimeSpan.Zero);
+		await That(Act).Does().NotThrow();
+		await That(sut.Tolerance).Is(TimeSpan.Zero);
 	}
 }

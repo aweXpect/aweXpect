@@ -26,7 +26,8 @@ public class StringCollectionBeContainedInResult<TType, TThat>(
 	/// </remarks>
 	public StringCollectionMatchResult<TType, TThat> Properly()
 	{
-		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.IsContainedInProperly);
+		_collectionMatchOptions.SetEquivalenceRelation(
+			CollectionMatchOptions.EquivalenceRelations.IsContainedInProperly);
 		return this;
 	}
 }

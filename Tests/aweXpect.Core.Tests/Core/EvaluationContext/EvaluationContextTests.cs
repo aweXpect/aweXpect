@@ -15,9 +15,9 @@ public class EvaluationContextTests
 		context.Store("bar", "bar-value");
 
 		context.TryReceive("foo", out string? fooResult);
-		await That(fooResult).Should().Be("foo-value");
+		await That(fooResult).Is("foo-value");
 		context.TryReceive("bar", out string? barResult);
-		await That(barResult).Should().Be("bar-value");
+		await That(barResult).Is("bar-value");
 	}
 
 	[Fact]
@@ -26,8 +26,8 @@ public class EvaluationContextTests
 		IEvaluationContext context = await GetSut();
 
 		bool result = context.TryReceive("foo", out string? fooResult);
-		await That(result).Should().BeFalse();
-		await That(fooResult).Should().BeNull();
+		await That(result).IsFalse();
+		await That(fooResult).IsNull();
 	}
 
 	[Fact]
@@ -38,8 +38,8 @@ public class EvaluationContextTests
 		context.Store("foo", 42);
 
 		bool result = context.TryReceive("foo", out string? fooResult);
-		await That(result).Should().BeFalse();
-		await That(fooResult).Should().BeNull();
+		await That(result).IsFalse();
+		await That(fooResult).IsNull();
 	}
 
 	[Fact]
@@ -50,25 +50,21 @@ public class EvaluationContextTests
 		context.Store("foo", "bar");
 
 		bool result = context.TryReceive("foo", out string? fooResult);
-		await That(result).Should().BeTrue();
-		await That(fooResult).Should().Be("bar");
+		await That(result).IsTrue();
+		await That(fooResult).Is("bar");
 	}
-
-	#region Helpers
 
 	private static async Task<IEvaluationContext> GetSut()
 	{
-		IThat<bool> that = That(true).Should();
+		IThatShould<bool> that = That(true).Should(_ => { });
 		MyContextConstraint constraint = new();
-		await new AndOrResult<bool, IThat<bool>>(
+		await new AndOrResult<bool, IThatShould<bool>>(
 			that.ExpectationBuilder
 				.AddConstraint(_ => constraint),
 			that);
 
 		return constraint.Context!;
 	}
-
-	#endregion
 
 	private sealed class MyContextConstraint : IContextConstraint<bool>
 	{

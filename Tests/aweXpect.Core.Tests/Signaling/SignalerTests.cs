@@ -29,7 +29,7 @@ public class SignalerTests
 
 			bool result = signaler.IsSignaled(amount.Times());
 
-			await That(result).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
 		}
 
 		[Theory]
@@ -45,7 +45,7 @@ public class SignalerTests
 
 			SignalerResult result = signaler.Wait(amount);
 
-			await That(result.IsSuccess).Should().BeTrue();
+			await That(result.IsSuccess).IsTrue();
 		}
 
 		[Fact]
@@ -65,8 +65,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(100.Times(), 10.Seconds(), token);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -84,8 +84,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(100.Times(), 10.Seconds());
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsTrue();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -101,8 +101,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(2.Times(), timeout);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -115,7 +115,7 @@ public class SignalerTests
 
 			SignalerResult result = signaler.Wait();
 
-			await That(result.IsSuccess).Should().BeTrue();
+			await That(result.IsSuccess).IsTrue();
 		}
 
 		[Fact]
@@ -130,8 +130,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(10.Seconds(), token);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -161,8 +161,8 @@ public class SignalerTests
 			sw.Stop();
 
 			ms.Set();
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsTrue();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -176,8 +176,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(timeout);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Theory]
@@ -190,7 +190,7 @@ public class SignalerTests
 			void Act()
 				=> signaler.Wait(amount);
 
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+			await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 				.WithMessage("The amount must be greater than zero*").AsWildcard().And
 				.WithParamName("amount");
 		}
@@ -217,7 +217,7 @@ public class SignalerTests
 
 			bool result = signaler.IsSignaled(amount.Times());
 
-			await That(result).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
 		}
 
 		[Theory]
@@ -233,8 +233,8 @@ public class SignalerTests
 
 			SignalerResult<int> result = signaler.Wait(amount);
 
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(result.Parameters).Should().Be([4, 5, 6]).InAnyOrder();
+			await That(result.IsSuccess).IsTrue();
+			await That(result.Parameters).Is([4, 5, 6]).InAnyOrder();
 		}
 
 		[Fact]
@@ -255,8 +255,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(100.Times(), timeout: 10.Seconds(), cancellationToken: token);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -275,9 +275,9 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(100.Times(), timeout: 10.Seconds());
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(result.Parameters).Should().Be(Enumerable.Range(0, 100)).InAnyOrder();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsTrue();
+			await That(result.Parameters).Is(Enumerable.Range(0, 100)).InAnyOrder();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -293,8 +293,8 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(2.Times(), timeout: timeout);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -308,8 +308,8 @@ public class SignalerTests
 
 			SignalerResult<int> result = signaler.Wait();
 
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(result.Parameters).Should().Be([4, 5, 6]).InAnyOrder();
+			await That(result.IsSuccess).IsTrue();
+			await That(result.Parameters).Is([4, 5, 6]).InAnyOrder();
 		}
 
 		[Fact]
@@ -324,8 +324,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(timeout: 10.Seconds(), cancellationToken: token);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -356,8 +356,8 @@ public class SignalerTests
 			sw.Stop();
 
 			ms.Set();
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsTrue();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -371,8 +371,8 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(timeout: timeout);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(500.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(500.Milliseconds());
 		}
 
 		[Fact]
@@ -393,8 +393,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(100.Times(), x => x != 50, 10.Seconds(), token);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -413,9 +413,9 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(100.Times(), x => x >= 10, 10.Seconds());
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(result.Parameters).Should().Contain(Enumerable.Range(10, 100)).InAnyOrder();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsTrue();
+			await That(result.Parameters).Contains(Enumerable.Range(10, 100)).InAnyOrder();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -432,8 +432,8 @@ public class SignalerTests
 			SignalerResult result = signaler.Wait(x => x != 50, 10.Seconds(), token);
 			sw.Stop();
 
-			await That(result.IsSuccess).Should().BeFalse();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
+			await That(result.IsSuccess).IsFalse();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
 		[Fact]
@@ -464,9 +464,9 @@ public class SignalerTests
 			sw.Stop();
 
 			ms.Set();
-			await That(result.IsSuccess).Should().BeTrue();
-			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds())
-				.And.BeGreaterThanOrEqualTo(10.Milliseconds());
+			await That(result.IsSuccess).IsTrue();
+			await That(sw.Elapsed).IsLessThan(5000.Milliseconds())
+				.And.IsGreaterThanOrEqualTo(10.Milliseconds());
 		}
 
 		[Theory]
@@ -479,7 +479,7 @@ public class SignalerTests
 			void Act()
 				=> signaler.Wait(amount);
 
-			await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+			await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 				.WithMessage("The amount must be greater than zero*").AsWildcard().And
 				.WithParamName("amount");
 		}

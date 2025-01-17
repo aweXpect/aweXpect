@@ -25,8 +25,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -45,8 +45,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -73,8 +73,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.MultipleLines);
 			Formatter.Format(sb, value, FormattingOptions.MultipleLines);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Theory]
@@ -89,8 +89,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(subject, FormattingOptions.MultipleLines);
 			Formatter.Format(sb, subject, FormattingOptions.MultipleLines);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Theory]
@@ -104,8 +104,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(subject, FormattingOptions.SingleLine);
 			Formatter.Format(sb, subject, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -121,8 +121,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -135,8 +135,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -150,8 +150,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult);
-			await That(sb.ToString()).Should().Be(expectedResult);
+			await That(result).Is(expectedResult);
+			await That(sb.ToString()).Is(expectedResult);
 		}
 
 		[Fact]
@@ -164,9 +164,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format(value);
 			Formatter.Format(sb, value);
 
-			await That(result).Should().Be(ValueFormatter.NullString);
-			await That(objectResult).Should().Be(ValueFormatter.NullString);
-			await That(sb.ToString()).Should().Be(ValueFormatter.NullString);
+			await That(result).Is(ValueFormatter.NullString);
+			await That(objectResult).Is(ValueFormatter.NullString);
+			await That(sb.ToString()).Is(ValueFormatter.NullString);
 		}
 
 		[Fact]
@@ -179,8 +179,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Should().Be(expectedResult).AsWildcard();
-			await That(sb.ToString()).Should().Be(expectedResult).AsWildcard();
+			await That(result).Is(expectedResult).AsWildcard();
+			await That(sb.ToString()).Is(expectedResult).AsWildcard();
 		}
 
 		private sealed class ClassWithExceptionProperty(Exception exception)

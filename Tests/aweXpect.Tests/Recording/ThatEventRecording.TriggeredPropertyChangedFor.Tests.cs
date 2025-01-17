@@ -1,0 +1,73 @@
+﻿using aweXpect.Recording;
+
+namespace aweXpect.Tests;
+
+public sealed partial class ThatEventRecording
+{
+	public sealed class HasTriggeredPropertyChangedFor
+	{
+		public sealed class Tests
+		{
+			[Fact]
+			public async Task WhenPropertyNameDoesNotMatch_ShouldFail()
+			{
+				PropertyChangedClass sut = new()
+				{
+					MyValue = 2
+				};
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+
+				sut.NotifyPropertyChanged("foo");
+
+				async Task Act() =>
+					await That(recording).TriggeredPropertyChangedFor(x => x.MyValue);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected recording to
+					             have recorded the PropertyChanged event on sut for property MyValue at least once,
+					             but it was never recorded in [
+					               PropertyChanged(PropertyChangedClass {
+					                   MyValue = 2
+					                 }, PropertyChangedEventArgs {
+					                   PropertyName = "foo"
+					                 })
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenPropertyNameMatches_ShouldSucceed()
+			{
+				PropertyChangedClass sut = new()
+				{
+					MyValue = 2
+				};
+				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
+
+				sut.NotifyPropertyChanged(nameof(PropertyChangedClass.MyValue));
+
+				async Task Act() =>
+					await That(recording).TriggeredPropertyChangedFor(x => x.MyValue);
+
+				await That(Act).Does().NotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEventRecording<PropertyChangedClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject!).TriggeredPropertyChangedFor(x => x.MyValue);
+
+				await That(Act).Does().Throw<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have recorded the PropertyChanged event for property MyValue at least once,
+					             but it was <null>
+					             """);
+			}
+		}
+	}
+}

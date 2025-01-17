@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
-using aweXpect.Equivalency;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -44,7 +43,7 @@ public class ObjectCountResult<TType, TThat, TSelf>(
 	public TSelf Equivalent(
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
 	{
-		EquivalencyOptions? equivalencyOptions =
+		EquivalencyOptions equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
 		options.Equivalent(equivalencyOptions);
 		return (TSelf)this;

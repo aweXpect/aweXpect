@@ -12,11 +12,12 @@ namespace aweXpect.Results;
 /// </summary>
 public class EventTriggerResult<TSubject>(
 	ExpectationBuilder expectationBuilder,
-	IThat<IEventRecording<TSubject>> returnValue,
+	IExpectSubject<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
 	Quantifier quantifier)
-	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(expectationBuilder, returnValue, quantifier)
-where TSubject : notnull
+	: CountResult<IEventRecording<TSubject>, IExpectSubject<IEventRecording<TSubject>>>(expectationBuilder, returnValue,
+		quantifier)
+	where TSubject : notnull
 {
 	/// <summary>
 	///     Adds a predicate for the sender of the event.

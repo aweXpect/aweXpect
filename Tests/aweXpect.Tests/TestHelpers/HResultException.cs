@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace aweXpect.Tests.TestHelpers;
+namespace aweXpect.Tests;
 
 public class HResultException : Exception
 {

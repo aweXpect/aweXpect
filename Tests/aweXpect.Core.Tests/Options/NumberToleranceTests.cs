@@ -11,7 +11,7 @@ public class NumberToleranceTests
 
 		void Act() => sut.SetTolerance(-1);
 
-		await That(Act).Should().Throw<ArgumentOutOfRangeException>()
+		await That(Act).Does().Throw<ArgumentOutOfRangeException>()
 			.WithMessage("*Tolerance must be non-negative*").AsWildcard();
 	}
 
@@ -22,7 +22,7 @@ public class NumberToleranceTests
 
 		void Act() => sut.SetTolerance(0);
 
-		await That(Act).Should().NotThrow();
-		await That(sut.Tolerance).Should().Be(0);
+		await That(Act).Does().NotThrow();
+		await That(sut.Tolerance).Is(0);
 	}
 }

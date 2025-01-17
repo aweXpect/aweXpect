@@ -14,5 +14,7 @@ public readonly struct Times(int value)
 	///     Implicitly convert the <paramref name="value" /> to a <see cref="Times" /> instance.
 	/// </summary>
 	public static implicit operator Times(int value)
-		=> new(value);
+	{
+		return new Times(value);
+	}
 }

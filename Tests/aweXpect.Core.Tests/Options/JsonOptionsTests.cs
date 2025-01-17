@@ -11,7 +11,7 @@ public class JsonOptionsTests
 	{
 		JsonOptions sut = new();
 
-		await That(sut.DocumentOptions.AllowTrailingCommas).Should().BeTrue();
+		await That(sut.DocumentOptions.AllowTrailingCommas).IsTrue();
 	}
 
 	[Fact]
@@ -25,7 +25,7 @@ public class JsonOptionsTests
 			MaxDepth = maxDepth
 		});
 
-		await That(sut.DocumentOptions.MaxDepth).Should().Be(maxDepth);
+		await That(sut.DocumentOptions.MaxDepth).Is(maxDepth);
 	}
 
 	[Fact]
@@ -41,7 +41,7 @@ public class JsonOptionsTests
 
 		sut.WithJsonOptions(_ => documentOptions);
 
-		await That(sut.DocumentOptions.MaxDepth).Should().Be(maxDepth);
+		await That(sut.DocumentOptions.MaxDepth).Is(maxDepth);
 	}
 }
 #endif

@@ -114,7 +114,7 @@ namespace aweXpect.Core
         bool Equals(object? obj);
         int GetHashCode();
         System.Type GetType();
-        aweXpect.Core.IThat<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
+        aweXpect.Core.IThatShould<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
         string? ToString();
     }
     public interface IObjectMatchType
@@ -137,6 +137,9 @@ namespace aweXpect.Core
         string GetExpectation(string? expected, bool useActiveGrammaticVoice);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
     }
+    public interface IThatHas<out T> : aweXpect.Core.IThat<T> { }
+    public interface IThatIs<out T> : aweXpect.Core.IThat<T> { }
+    public interface IThatShould<out T> : aweXpect.Core.IThat<T> { }
     public interface IThat<out T>
     {
         aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }

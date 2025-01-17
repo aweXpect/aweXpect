@@ -1,5 +1,4 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -17,7 +16,7 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Returns the expectation text.
 	/// </summary>
-	public abstract string GetExpectation(string it, ExpectationBuilder? expectationBuilder);
+	public abstract string GetExpectation(string it, string? expectationExpression);
 
 	/// <summary>
 	///     Returns the result.
@@ -25,8 +24,9 @@ public abstract partial class EnumerableQuantifier
 	public abstract ConstraintResult GetResult<TEnumerable>(
 		TEnumerable actual,
 		string it,
-		ExpectationBuilder? expectationBuilder,
+		string? expectationExpression,
 		int matchingCount,
 		int notMatchingCount,
-		int? totalCount);
+		int? totalCount,
+		string? verb);
 }

@@ -16,11 +16,12 @@ public static partial class ThatGeneric
 		Expression<Func<T, TMember?>> memberSelector,
 		Action<IExpectSubject<TMember?>> expectations)
 	{
-		IThat<T> should = source.Should(expectationBuilder => expectationBuilder
+		ExpectationBuilder expectationBuilder = source.ThatIs().ExpectationBuilder;
+		expectationBuilder
 			.ForMember(
 				MemberAccessor<T, TMember?>.FromExpression(memberSelector),
 				(member, expectation) => $"for {member}{expectation}")
-			.AddExpectations(e => expectations(new That.Subject<TMember?>(e))));
-		return new AndOrResult<T, IExpectSubject<T>>(should.ExpectationBuilder, source);
+			.AddExpectations(e => expectations(new That.Subject<TMember?>(e)));
+		return new AndOrResult<T, IExpectSubject<T>>(expectationBuilder, source);
 	}
 }

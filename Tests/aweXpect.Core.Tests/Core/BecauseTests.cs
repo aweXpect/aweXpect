@@ -11,9 +11,9 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because);
+			=> await That(subject).IsFalse().Because(because);
 
-		await That(Act).Should().ThrowException().WithMessage($"*{because}*").AsWildcard();
+		await That(Act).Does().ThrowException().WithMessage($"*{because}*").AsWildcard();
 	}
 
 	[Fact]
@@ -23,9 +23,9 @@ public class BecauseTests
 		Action subject = () => throw new MyException();
 
 		async Task Act()
-			=> await That(subject).Should().NotThrow().Because(because);
+			=> await That(subject).Does().NotThrow().Because(because);
 
-		await That(Act).Should().ThrowException().WithMessage($"*{because}*").AsWildcard();
+		await That(Act).Does().ThrowException().WithMessage($"*{because}*").AsWildcard();
 	}
 
 	[Theory]
@@ -37,9 +37,9 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because);
+			=> await That(subject).IsFalse().Because(because);
 
-		await That(Act).Should().ThrowException().WithMessage($"*{expectedWithPrefix}*")
+		await That(Act).Does().ThrowException().WithMessage($"*{expectedWithPrefix}*")
 			.AsWildcard();
 	}
 
@@ -51,10 +51,10 @@ public class BecauseTests
 		bool subject = false;
 
 		async Task Act()
-			=> await That(subject).Should().BeTrue().Because(because1)
-				.And.BeFalse().Because(because2);
+			=> await That(subject).IsTrue().Because(because1)
+				.And.IsFalse().Because(because2);
 
-		await That(Act).Should().ThrowException().WithMessage($"*{because1}*").AsWildcard();
+		await That(Act).Does().ThrowException().WithMessage($"*{because1}*").AsWildcard();
 	}
 
 	[Fact]
@@ -65,10 +65,10 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeTrue().Because(because1)
-				.And.BeFalse().Because(because2);
+			=> await That(subject).IsTrue().Because(because1)
+				.And.IsFalse().Because(because2);
 
-		await That(Act).Should().ThrowException().WithMessage($"*{because2}*").AsWildcard();
+		await That(Act).Does().ThrowException().WithMessage($"*{because2}*").AsWildcard();
 	}
 
 	[Fact]
@@ -78,10 +78,10 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeTrue().Because(because)
-				.And.BeFalse();
+			=> await That(subject).IsTrue().Because(because)
+				.And.IsFalse();
 
-		await That(Act).Should().ThrowException()
+		await That(Act).Does().ThrowException()
 			.WithMessage("""
 			             Expected subject to
 			             be True, because we only apply it to previous constraints and be False,
@@ -97,10 +97,10 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because1)
-				.Or.BeFalse().Because(because2);
+			=> await That(subject).IsFalse().Because(because1)
+				.Or.IsFalse().Because(because2);
 
-		await That(Act).Should().ThrowException().WithMessage($"*{because1}*{because2}*")
+		await That(Act).Does().ThrowException().WithMessage($"*{because1}*{because2}*")
 			.AsWildcard();
 	}
 
@@ -110,9 +110,9 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse();
+			=> await That(subject).IsFalse();
 
-		await That(Act).Should().ThrowException()
+		await That(Act).Does().ThrowException()
 			.WithMessage("""
 			             Expected subject to
 			             be False,
@@ -127,10 +127,10 @@ public class BecauseTests
 		bool subject = true;
 
 		async Task Act()
-			=> await That(subject).Should().BeFalse().Because(because);
+			=> await That(subject).IsFalse().Because(because);
 
-		Exception exception = await That(Act).Should().ThrowException()
+		Exception exception = await That(Act).Does().ThrowException()
 			.WithMessage("*because*").AsWildcard();
-		await That(exception.Message).Should().NotContain("because because");
+		await That(exception.Message).DoesNotContain("because because");
 	}
 }

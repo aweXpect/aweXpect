@@ -4,12 +4,15 @@ sidebar_position: 1
 
 # Write your own extension
 
-This library will never be able to cope with all ideas and use cases. Therefore it is possible to use the [`aweXpect.Core`](https://www.nuget.org/packages/aweXpect.Core/) package and write your own extensions.
+This library will never be able to cope with all ideas and use cases. Therefore it is possible to use the [
+`aweXpect.Core`](https://www.nuget.org/packages/aweXpect.Core/) package and write your own extensions.
 
 ## For existing types
+
 You can extend the functionality for existing types, by adding extension methods on `IThat<TType>`.
 
 ### Example 1
+
 You want to verify that a string corresponds to an absolute path.
 
 ```csharp
@@ -39,23 +42,31 @@ private readonly struct BeAbsolutePathConstraint(string it) : IValueConstraint<s
 ```
 
 ### Constraints
-The basis for expectations are constraints. You can add different constraints to the `ExpectationBuilder` that is available for the `IThat<T>`. They differ in the input and output parameters:
+
+The basis for expectations are constraints. You can add different constraints to the `ExpectationBuilder` that is
+available for the `IThat<T>`. They differ in the input and output parameters:
+
 - `IValueConstraint<T>`   
   It receives the actual value `T` and returns a `ConstraintResult`.
 - `IAsyncConstraint<T>`  
   It receives the actual value `T` and a `CancellationToken` and returns the `ConstraintResult` asynchronously.  
   *Use it when you need asynchronous functionality or access to the timeout `CancellationToken`.*
 - `IContextConstraint<T>` / `IAsyncContextConstraint<T>`  
-  Similar to the `IValueConstraint<T>` and `IAsyncConstraint<T>` respectively but receives an additional `IEvaluationContext` parameter that allows storing and receiving data between expectations.  
+  Similar to the `IValueConstraint<T>` and `IAsyncConstraint<T>` respectively but receives an additional
+  `IEvaluationContext` parameter that allows storing and receiving data between expectations.  
   *This mechanism is used for example to avoid enumerating an `IEnumerable` multiple times across multiple constraints.*
 
 ## For new types
-You can extend the functionality to new types, by adding a `.Should()` extension methods on `IExpectSubject<TType>` and then the corresponding methods on `IThat<TType>`.
+
+You can extend the functionality to new types, by adding a `.Should()` extension methods on `IExpectSubject<TType>` and
+then the corresponding methods on `IThat<TType>`.
 
 ### Example 2
+
 You want to verify that a directory is empty.
 
 First you need to enable expectations for `DirectoryInfo`:
+
 ```csharp
 public static class DirectoryInfoExtensions
 {
@@ -65,6 +76,7 @@ public static class DirectoryInfoExtensions
 ```
 
 Then you can add the [extension method on `IThat<DirectoryInfo>`](#for-existing-types):
+
 ```csharp
 /// <summary>
 ///     Verifies that the <paramref name="directory"/> is empty.

@@ -12,9 +12,9 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Should().Be("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
+				=> await That(sut).Is("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
 
-			await That(Act).Should().Throw<XunitException>().OnlyIf(!ignoreCase)
+			await That(Act).Does().Throw<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "FOO\nBAR",
@@ -32,9 +32,9 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Should().Be("bar").Exactly();
+				=> await That(sut).Is("bar").Exactly();
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "bar",
@@ -52,9 +52,9 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Should().Be("\tsomething\r\nelse").Exactly();
+				=> await That(sut).Is("\tsomething\r\nelse").Exactly();
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "\tsomething\r\nelse",
@@ -72,10 +72,10 @@ public sealed partial class StringEqualityOptionsTests
 			Exception exception = new("foo");
 
 			async Task Act()
-				=> await That(() => Task.FromException(exception)).Should().ThrowException().WithMessage("bar")
+				=> await That(() => Task.FromException(exception)).Does().ThrowException().WithMessage("bar")
 					.Exactly();
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
 				             throw an exception with Message equal to "bar",
@@ -93,9 +93,9 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Should().Be(null).Exactly();
+				=> await That(sut).Is(null).Exactly();
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to <null>,
@@ -109,9 +109,9 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Should().Be("FOO").Exactly().IgnoringCase();
+				=> await That(sut).Is("FOO").Exactly().IgnoringCase();
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -120,9 +120,9 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Should().Be(null).Exactly();
+				=> await That(sut).Is(null).Exactly();
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -131,9 +131,9 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Should().Be("").Exactly();
+				=> await That(sut).Is("").Exactly();
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "",

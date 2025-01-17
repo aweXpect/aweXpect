@@ -1,5 +1,4 @@
-﻿using aweXpect.Tests.TestHelpers;
-#if NET8_0_OR_GREATER
+﻿#if NET8_0_OR_GREATER
 #endif
 
 namespace aweXpect.Tests;
@@ -15,10 +14,10 @@ public class ExpectTests
 		{
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage($"""
 				              Expected all of the following to succeed:
 				               [01] Expected subjectA to be True
@@ -37,11 +36,11 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().Be("subject A"),
-					That(subjectB).Should().Be("subject B"),
-					That(subjectC).Should().Be("subject C"));
+					That(subjectA).Is("subject A"),
+					That(subjectB).Is("subject B"),
+					That(subjectC).Is("subject C"));
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
 				              [01] Expected subjectA to be equal to "subject A"
@@ -69,10 +68,10 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -83,10 +82,10 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
 				              [01] Expected subjectA to be True
@@ -106,13 +105,13 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAll(
-					That(true).Should().BeTrue(),
+					That(true).IsTrue(),
 					ThatAll(
-						That(subjectA).Should().Be("subject A"),
-						That(subjectB).Should().Be("subject B"),
-						That(subjectC).Should().Be("subject C")));
+						That(subjectA).Is("subject A"),
+						That(subjectB).Is("subject B"),
+						That(subjectC).Is("subject C")));
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
 				              [01] Expected true to be True
@@ -145,12 +144,12 @@ public class ExpectTests
 			async Task Act()
 				=> await ThatAll(
 					ThatAny(
-						That(subjectA).Should().BeTrue(),
-						That(subjectB).Should().BeTrue()),
-					That(subjectC).Should().BeTrue(),
-					That(subjectD).Should().BeTrue());
+						That(subjectA).IsTrue(),
+						That(subjectB).IsTrue()),
+					That(subjectC).IsTrue(),
+					That(subjectD).IsTrue());
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
 				               Expected any of the following to succeed:
@@ -171,7 +170,7 @@ public class ExpectTests
 			async Task Act()
 				=> await ThatAll();
 
-			await That(Act).Should().Throw<ArgumentException>()
+			await That(Act).Does().Throw<ArgumentException>()
 				.WithParamName("expectations").And
 				.WithMessage("You must provide at least one expectation*").AsWildcard();
 		}
@@ -187,10 +186,10 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAny(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
 				              [01] Expected subjectA to be True
@@ -210,11 +209,11 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAny(
-					That(subjectA).Should().Be("subject A"),
-					That(subjectB).Should().Be("subject B"),
-					That(subjectC).Should().Be("subject C"));
+					That(subjectA).Is("subject A"),
+					That(subjectB).Is("subject B"),
+					That(subjectC).Is("subject C"));
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
 				              [01] Expected subjectA to be equal to "subject A"
@@ -247,10 +246,10 @@ public class ExpectTests
 		{
 			async Task Act()
 				=> await ThatAny(
-					That(subjectA).Should().BeTrue(),
-					That(subjectB).Should().BeTrue());
+					That(subjectA).IsTrue(),
+					That(subjectB).IsTrue());
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 
 		[Fact]
@@ -262,13 +261,13 @@ public class ExpectTests
 
 			async Task Act()
 				=> await ThatAny(
-					That(false).Should().BeTrue(),
+					That(false).IsTrue(),
 					ThatAny(
-						That(subjectA).Should().Be("subject A"),
-						That(subjectB).Should().Be("subject B"),
-						That(subjectC).Should().Be("subject C")));
+						That(subjectA).Is("subject A"),
+						That(subjectB).Is("subject B"),
+						That(subjectC).Is("subject C")));
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
 				              [01] Expected false to be True
@@ -300,7 +299,7 @@ public class ExpectTests
 		public async Task WhenNested_ShouldIndentMultiLineResults()
 		{
 			async Task Act()
-				=> await ThatAll(That(true).Should().IsMyConstraint(
+				=> await ThatAll(That(true).IsMyConstraint(
 					"""
 					expectation
 					over
@@ -316,7 +315,7 @@ public class ExpectTests
 					"""
 				));
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
 				              [01] Expected true to expectation
@@ -342,12 +341,12 @@ public class ExpectTests
 			async Task Act()
 				=> await ThatAny(
 					ThatAll(
-						That(subjectA).Should().BeTrue(),
-						That(subjectB).Should().BeTrue()),
-					That(subjectC).Should().BeTrue(),
-					That(subjectD).Should().BeTrue());
+						That(subjectA).IsTrue(),
+						That(subjectB).IsTrue()),
+					That(subjectC).IsTrue(),
+					That(subjectD).IsTrue());
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
 				               Expected all of the following to succeed:
@@ -368,7 +367,7 @@ public class ExpectTests
 			async Task Act()
 				=> await ThatAny();
 
-			await That(Act).Should().Throw<ArgumentException>()
+			await That(Act).Does().Throw<ArgumentException>()
 				.WithParamName("expectations").And
 				.WithMessage("You must provide at least one expectation*").AsWildcard();
 		}
