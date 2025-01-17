@@ -13,7 +13,7 @@
 		<Nullable>enable</Nullable>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
-		<NoWarn>701;1702;CA1845</NoWarn>
+		<NoWarn>701;1702;CA1845;S2699</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
