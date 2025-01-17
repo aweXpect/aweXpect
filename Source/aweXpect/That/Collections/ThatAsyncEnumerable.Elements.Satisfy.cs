@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if NET8_0_OR_GREATER
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
@@ -7,14 +8,14 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatEnumerable
+public static partial class ThatAsyncEnumerable
 {
 	public partial class Elements
 	{
 		/// <summary>
 		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<string?>, IExpectSubject<IEnumerable<string?>>>
+		public AndOrResult<IAsyncEnumerable<string?>, IExpectSubject<IAsyncEnumerable<string?>>>
 			Satisfy(
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
@@ -34,7 +35,7 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+		public AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
@@ -49,3 +50,4 @@ public static partial class ThatEnumerable
 				_subject);
 	}
 }
+#endif

@@ -39,7 +39,7 @@ public sealed partial class ExceptionShould
 					.WithMessage("""
 					             Expected subject to
 					             have recursive inner exceptions which should have all items satisfy e => e.Message != "inner3A",
-					             but not all were
+					             but not all did
 					             """);
 			}
 
@@ -54,13 +54,13 @@ public sealed partial class ExceptionShould
 
 				async Task Act()
 					=> await That(subject).Should().HaveRecursiveInnerExceptions(
-						c => c.All().Satisfy(e => e.Message != "inner3A"));
+						c => c.None().Satisfy(e => e.Message != "inner3A"));
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have recursive inner exceptions which should have no items satisfy e => e.Message != "inner3A",
-					             but at least one was
+					             but at least one did
 					             """);
 			}
 
