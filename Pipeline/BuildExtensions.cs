@@ -1,7 +1,7 @@
-﻿using Nuke.Common.CI.GitHubActions;
+﻿using System;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Tools.SonarScanner;
 using Serilog;
-using System;
 
 namespace Build;
 

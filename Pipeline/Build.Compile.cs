@@ -120,6 +120,17 @@ partial class Build
 				.SetInformationalVersion(CoreVersion.InformationalVersion));
 		});
 
+	private static void ClearNugetPackages(string binPath)
+	{
+		if (Directory.Exists(binPath))
+		{
+			foreach (string package in Directory.EnumerateFiles(binPath, "*nupkg", SearchOption.AllDirectories))
+			{
+				File.Delete(package);
+			}
+		}
+	}
+
 	public record AssemblyVersion(string FileVersion, string InformationalVersion)
 	{
 		public static AssemblyVersion FromGitVersion(GitVersion gitVersion)
@@ -130,17 +141,6 @@ partial class Build
 			}
 
 			return new AssemblyVersion(gitVersion.AssemblySemVer, gitVersion.InformationalVersion);
-		}
-	}
-
-	private static void ClearNugetPackages(string binPath)
-	{
-		if (Directory.Exists(binPath))
-		{
-			foreach (string package in Directory.EnumerateFiles(binPath, "*nupkg", SearchOption.AllDirectories))
-			{
-				File.Delete(package);
-			}
 		}
 	}
 }

@@ -21,7 +21,7 @@ partial class Build
 		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests
 	];
-	
+
 	Target TestFrameworks => _ => _
 		.DependsOn(VsTestFrameworks)
 		.DependsOn(TestingPlatformFrameworks)
