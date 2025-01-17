@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Exceptions;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ExceptionShould
+public sealed partial class ThatException
 {
-	public class HaveParamName
+	public class HasParamName
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class ExceptionShould
 				ArgumentException subject = new(message, nameof(message));
 
 				async Task Act()
-					=> await That(subject).Should().HaveParamName("somethingElse");
+					=> await That(subject).HasParamName("somethingElse");
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -30,7 +30,7 @@ public sealed partial class ExceptionShould
 				ArgumentException subject = new(message, nameof(message));
 
 				async Task Act()
-					=> await That(subject).Should().HaveParamName("message");
+					=> await That(subject).HasParamName("message");
 
 				await That(Act).Does().NotThrow();
 			}
@@ -41,7 +41,7 @@ public sealed partial class ExceptionShould
 				ArgumentException? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveParamName("message");
+					=> await That(subject).HasParamName("message");
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

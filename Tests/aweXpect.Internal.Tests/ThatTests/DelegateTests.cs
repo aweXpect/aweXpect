@@ -542,9 +542,9 @@ public sealed class DelegateTests
 
 		CustomException result = await That(Act).Does().Throw<CustomException>()
 			.WithInnerException(e1 => e1
-				.HaveMessage(innerMessage).And
-				.HaveInner<ArgumentException>(e2 => e2
-					.HaveParamName(nameof(innermostMessage)).And.HaveMessage($"{innermostMessage}*")
+				.HasMessage(innerMessage).And
+				.HasInner<ArgumentException>(e2 => e2
+					.HasParamName(nameof(innermostMessage)).And.HasMessage($"{innermostMessage}*")
 					.AsWildcard()));
 
 		await That(result).IsSameAs(exception);

@@ -16,7 +16,7 @@ public sealed partial class ThatDelegate
 
 					Exception result = await That(Delegate)
 						.Does().ThrowException().WithInnerException(
-							e => e.HaveMessage("inner"));
+							e => e.HasMessage("inner"));
 
 					await That(result).IsSameAs(exception);
 				}

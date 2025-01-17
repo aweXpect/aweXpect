@@ -9,7 +9,7 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see cref="Exception" /> values.
 /// </summary>
-public partial class ThatExceptionShould<TException>
+public static partial class ThatException
 {
 	/// <summary>
 	///     Verifies that the actual exception recursively has inner exceptions which satisfy the
@@ -19,16 +19,16 @@ public partial class ThatExceptionShould<TException>
 	///     Recursively applies the expectations on the <see cref="Exception.InnerException" /> (if not <see langword="null" />
 	///     and for <see cref="AggregateException" /> also on the <see cref="AggregateException.InnerExceptions" />.
 	/// </remarks>
-	public AndOrResult<TException?, ThatExceptionShould<TException>>
-		HaveRecursiveInnerExceptions(
+	public static AndOrResult<Exception?, IExpectSubject<Exception?>> HasRecursiveInnerExceptions(
+			this IExpectSubject<Exception?> source,
 			Action<IExpectSubject<IEnumerable<Exception>>> expectations)
-		=> new(ExpectationBuilder
-				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
+		=> new(source.ThatIs().ExpectationBuilder
+				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception?>>.FromFunc(
 						e => e.GetInnerExpectations(),
 						"recursive inner exceptions "),
 					(property, expectation) => $"have {property}which should {expectation}",
 					false)
 				.AddExpectations(e => expectations(
 					new That.Subject<IEnumerable<Exception>>(e))),
-			this);
+			source);
 }

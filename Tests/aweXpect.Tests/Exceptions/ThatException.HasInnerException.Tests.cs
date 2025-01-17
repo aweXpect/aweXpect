@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Exceptions;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ExceptionShould
+public sealed partial class ThatException
 {
-	public sealed class HaveInnerException
+	public sealed class HasInnerException
 	{
 		public sealed class Tests
 		{
@@ -13,8 +13,7 @@ public sealed partial class ExceptionShould
 					new CustomException("inner"));
 
 				async Task Act()
-					=> await That(subject).Should()
-						.HaveInnerException(e => e.HaveMessage("inner"));
+					=> await That(subject).HasInnerException(e => e.HasMessage("inner"));
 
 				await That(Act).Does().NotThrow();
 			}
@@ -26,8 +25,7 @@ public sealed partial class ExceptionShould
 					new Exception("inner"));
 
 				async Task Act()
-					=> await That(subject).Should()
-						.HaveInnerException(e => e.HaveMessage("some other message"));
+					=> await That(subject).HasInnerException(e => e.HasMessage("some other message"));
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -47,7 +45,7 @@ public sealed partial class ExceptionShould
 				Exception subject = new("outer");
 
 				async Task Act()
-					=> await That(subject).Should().HaveInnerException();
+					=> await That(subject).HasInnerException();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""
@@ -64,7 +62,7 @@ public sealed partial class ExceptionShould
 					new Exception("inner"));
 
 				async Task Act()
-					=> await That(subject).Should().HaveInnerException();
+					=> await That(subject).HasInnerException();
 
 				await That(Act).Does().NotThrow();
 			}
@@ -75,7 +73,7 @@ public sealed partial class ExceptionShould
 				Exception? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveInnerException();
+					=> await That(subject).HasInnerException();
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

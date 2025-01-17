@@ -1,10 +1,10 @@
 ﻿using aweXpect.Tests.TestHelpers;
 
-namespace aweXpect.Tests.Exceptions;
+namespace aweXpect.Tests;
 
-public sealed partial class ExceptionShould
+public sealed partial class ThatException
 {
-	public class HaveHResult
+	public class HasHResult
 	{
 		public sealed class Tests
 		{
@@ -16,7 +16,7 @@ public sealed partial class ExceptionShould
 				Exception subject = new HResultException(hResult);
 
 				async Task Act()
-					=> await That(subject).Should().HaveHResult(expectedHResult);
+					=> await That(subject).HasHResult(expectedHResult);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage($"""
@@ -33,7 +33,7 @@ public sealed partial class ExceptionShould
 				Exception subject = new HResultException(hResult);
 
 				async Task Act()
-					=> await That(subject).Should().HaveHResult(hResult);
+					=> await That(subject).HasHResult(hResult);
 
 				await That(Act).Does().NotThrow();
 			}
@@ -44,7 +44,7 @@ public sealed partial class ExceptionShould
 				HResultException? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveHResult(1);
+					=> await That(subject).HasHResult(1);
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

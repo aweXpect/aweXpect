@@ -7,6 +7,11 @@ namespace aweXpect;
 /// <summary>
 ///     An <see cref="ExpectationResult" /> when an exception was thrown.
 /// </summary>
+public static partial class ThatDelegateThrows;
+
+/// <summary>
+///     An <see cref="ExpectationResult" /> when an exception was thrown.
+/// </summary>
 public partial class ThatDelegateThrows<TException>
 	: ExpectationResult<TException, ThatDelegateThrows<TException>>
 	where TException : Exception?

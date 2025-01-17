@@ -1,8 +1,8 @@
-﻿namespace aweXpect.Tests.Exceptions;
+﻿namespace aweXpect.Tests;
 
-public sealed partial class ExceptionShould
+public sealed partial class ThatException
 {
-	public class HaveRecursiveInnerExceptions
+	public class HasRecursiveInnerExceptions
 	{
 		public sealed class Tests
 		{
@@ -16,7 +16,7 @@ public sealed partial class ExceptionShould
 							new Exception("inner3B"))));
 
 				async Task Act()
-					=> await That(subject).Should().HaveRecursiveInnerExceptions(c
+					=> await That(subject).HasRecursiveInnerExceptions(c
 						=> c.All().Satisfy(e => e.Message.StartsWith("inner")));
 
 				await That(Act).Does().NotThrow();
@@ -32,7 +32,7 @@ public sealed partial class ExceptionShould
 							new Exception("inner3B"))));
 
 				async Task Act()
-					=> await That(subject).Should().HaveRecursiveInnerExceptions(
+					=> await That(subject).HasRecursiveInnerExceptions(
 						c => c.All().Satisfy(e => e.Message != "inner3A"));
 
 				await That(Act).Does().Throw<XunitException>()
@@ -53,7 +53,7 @@ public sealed partial class ExceptionShould
 							new Exception("inner3B"))));
 
 				async Task Act()
-					=> await That(subject).Should().HaveRecursiveInnerExceptions(
+					=> await That(subject).HasRecursiveInnerExceptions(
 						c => c.None().Satisfy(e => e.Message != "inner3A"));
 
 				await That(Act).Does().Throw<XunitException>()
@@ -70,7 +70,7 @@ public sealed partial class ExceptionShould
 				Exception? subject = null;
 
 				async Task Act()
-					=> await That(subject).Should().HaveRecursiveInnerExceptions(c => c.IsEmpty());
+					=> await That(subject).HasRecursiveInnerExceptions(c => c.IsEmpty());
 
 				await That(Act).Does().Throw<XunitException>()
 					.WithMessage("""

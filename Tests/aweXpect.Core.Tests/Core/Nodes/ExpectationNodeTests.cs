@@ -22,7 +22,7 @@ public class ExpectationNodeTests
 			.WithMessage("""
 			             Error evaluating DummyAsyncConstraint<int> constraint with value 44: WhenAsyncConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
-			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
+			.WithInner<MyException>(x => x.HasMessage(exception.Message));
 	}
 
 	[Fact]
@@ -39,7 +39,7 @@ public class ExpectationNodeTests
 			.WithMessage("""
 			             Error evaluating DummyAsyncContextConstraint<int> constraint with value 45: WhenAsyncContextConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
-			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
+			.WithInner<MyException>(x => x.HasMessage(exception.Message));
 	}
 
 	[Fact]
@@ -56,7 +56,7 @@ public class ExpectationNodeTests
 			.WithMessage("""
 			             Error evaluating DummyContextConstraint<int> constraint with value 43: WhenContextConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
-			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
+			.WithInner<MyException>(x => x.HasMessage(exception.Message));
 	}
 
 	[Fact]
@@ -73,7 +73,7 @@ public class ExpectationNodeTests
 			.WithMessage("""
 			             Error evaluating DummyValueConstraint<string> constraint with value "42": WhenValueConstraintThrowsException_ShouldThrowInvalidOperationException
 			             """).And
-			.WithInner<MyException>(x => x.HaveMessage(exception.Message));
+			.WithInner<MyException>(x => x.HasMessage(exception.Message));
 	}
 
 	private class DummyValueConstraint<T>(Func<T, ConstraintResult> callback) : IValueConstraint<T>

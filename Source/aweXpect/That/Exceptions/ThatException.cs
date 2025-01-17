@@ -9,16 +9,8 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see cref="Exception" /> values.
 /// </summary>
-public static partial class ThatExceptionShould
+public static partial class ThatException
 {
-	/// <summary>
-	///     Start expectations for the current <see cref="Exception" /> <paramref name="subject" />.
-	/// </summary>
-	public static ThatExceptionShould<TException> Should<TException>(
-		this IExpectSubject<TException> subject)
-		where TException : Exception?
-		=> new(subject.Should(_ => { }).ExpectationBuilder);
-
 	internal readonly struct HasMessageValueConstraint<TException>(
 		string it,
 		string verb,
@@ -149,7 +141,7 @@ public static partial class ThatExceptionShould
 /// <summary>
 ///     Base class for expectations on <typeparamref name="TException" />, containing an <see cref="ExpectationBuilder" />.
 /// </summary>
-public partial class ThatExceptionShould<TException>(ExpectationBuilder expectationBuilder)
+public partial class ThatException<TException>(ExpectationBuilder expectationBuilder)
 	: IThatShould<TException>
 	where TException : Exception?
 {

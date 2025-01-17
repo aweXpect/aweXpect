@@ -120,18 +120,6 @@ public sealed partial class ThatDelegate
 						                ↑ (expected)
 						             """);
 				}
-
-				[Theory]
-				[AutoData]
-				public async Task WhenMessagesAreSame_ShouldSucceed(string message)
-				{
-					Exception subject = new(message);
-
-					async Task Act()
-						=> await That(subject).Should().HaveMessage(message);
-
-					await That(Act).Does().NotThrow();
-				}
 			}
 		}
 	}

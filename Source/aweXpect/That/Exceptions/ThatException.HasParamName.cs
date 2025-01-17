@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
@@ -8,30 +9,17 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see cref="Exception" /> values.
 /// </summary>
-public static partial class ThatExceptionShould
+public static partial class ThatException
 {
 	/// <summary>
 	///     Verifies that the actual <see cref="ArgumentException" /> has an <paramref name="expected" /> param name.
 	/// </summary>
-	public static AndOrResult<TException, ThatExceptionShould<TException>>
-		HaveParamName<TException>(
-			this ThatExceptionShould<TException> source,
+	public static AndOrResult<TException, IExpectSubject<TException>> HasParamName<TException>(
+			this IExpectSubject<TException> source,
 			string expected)
 		where TException : ArgumentException?
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new HasParamNameValueConstraint<TException>(it, "have", expected)),
-			source);
-
-	/// <summary>
-	///     Verifies that the actual <see cref="ArgumentException" /> has an <paramref name="expected" /> param name.
-	/// </summary>
-	public static AndOrResult<TException, ThatDelegateThrows<TException>>
-		WithParamName<TException>(
-			this ThatDelegateThrows<TException> source,
-			string expected)
-		where TException : ArgumentException?
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new HasParamNameValueConstraint<TException>(it, "with", expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+				new HasParamNameValueConstraint<TException>(it, "have", expected)),
 			source);
 
 	internal readonly struct HasParamNameValueConstraint<TArgumentException>(

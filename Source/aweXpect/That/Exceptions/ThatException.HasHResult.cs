@@ -1,5 +1,7 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -7,30 +9,17 @@ namespace aweXpect;
 /// <summary>
 ///     Expectations on <see cref="Exception" /> values.
 /// </summary>
-public static partial class ThatExceptionShould
+public static partial class ThatException
 {
 	/// <summary>
 	///     Verifies that the actual <see cref="Exception" /> has an <paramref name="expected" /> HResult.
 	/// </summary>
-	public static AndOrResult<TException, ThatExceptionShould<TException>>
-		HaveHResult<TException>(
-			this ThatExceptionShould<TException> source,
+	public static AndOrResult<TException, IExpectSubject<TException>> HasHResult<TException>(
+			this IExpectSubject<TException> source,
 			int expected)
 		where TException : Exception?
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new HasHResultValueConstraint(it, "have", expected)),
-			source);
-
-	/// <summary>
-	///     Verifies that the actual <see cref="Exception" /> has an <paramref name="expected" /> HResult.
-	/// </summary>
-	public static AndOrResult<TException, ThatDelegateThrows<TException>>
-		WithHResult<TException>(
-			this ThatDelegateThrows<TException> source,
-			int expected)
-		where TException : Exception?
-		=> new(source.ExpectationBuilder.AddConstraint(it
-				=> new HasHResultValueConstraint(it, "with", expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+				new HasHResultValueConstraint(it, "have", expected)),
 			source);
 
 	internal readonly struct HasHResultValueConstraint(

@@ -18,7 +18,7 @@ public sealed partial class ThatDelegate
 
 					Exception result = await That(Delegate)
 						.Does().ThrowException().WithInner<CustomException>(
-							e => e.HaveMessage(message));
+							e => e.HasMessage(message));
 
 					await That(result).IsSameAs(exception);
 				}
@@ -122,7 +122,7 @@ public sealed partial class ThatDelegate
 
 					Exception result = await That(Delegate)
 						.Does().ThrowException().WithInner(typeof(CustomException),
-							e => e.HaveMessage(message));
+							e => e.HasMessage(message));
 
 					await That(result).IsSameAs(exception);
 				}
