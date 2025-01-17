@@ -16,7 +16,7 @@ public class XUnit3TestFrameworkTests
 		Exception exception = await Expect.That(Act).Does().ThrowException()
 			.WithMessage("my message");
 		await Expect.That(exception.GetType().GetInterfaces().Select(e => e.Name))
-			.Should().Contain("IAssertionException");
+			.Contains("IAssertionException");
 	}
 
 	[Fact]

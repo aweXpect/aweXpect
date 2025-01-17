@@ -15,7 +15,7 @@ public partial class
 
 	[Benchmark]
 	public async Task StringArray_aweXpect()
-		=> (await Expect.That(_stringArraySubject).Should().Be(_stringArrayExpectation)).Consume(_consumer);
+		=> (await Expect.That(_stringArraySubject).Is(_stringArrayExpectation)).Consume(_consumer);
 
 	[Benchmark]
 	public AndConstraint<StringCollectionAssertions<IEnumerable<string>>> StringArray_FluentAssertions()
@@ -27,7 +27,7 @@ public partial class
 
 	[Benchmark]
 	public async Task StringArrayInAnyOrder_aweXpect()
-		=> (await Expect.That(_stringArraySubject).Should().Be(_stringArrayOtherOrderExpectation).InAnyOrder())
+		=> (await Expect.That(_stringArraySubject).Is(_stringArrayOtherOrderExpectation).InAnyOrder())
 			.Consume(_consumer);
 
 	[Benchmark]

@@ -234,7 +234,7 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(amount);
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Should().Be([4, 5, 6]).InAnyOrder();
+			await That(result.Parameters).Is([4, 5, 6]).InAnyOrder();
 		}
 
 		[Fact]
@@ -276,7 +276,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Should().Be(Enumerable.Range(0, 100)).InAnyOrder();
+			await That(result.Parameters).Is(Enumerable.Range(0, 100)).InAnyOrder();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
 		}
 
@@ -309,7 +309,7 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Should().Be([4, 5, 6]).InAnyOrder();
+			await That(result.Parameters).Is([4, 5, 6]).InAnyOrder();
 		}
 
 		[Fact]
@@ -414,7 +414,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Should().Contain(Enumerable.Range(10, 100)).InAnyOrder();
+			await That(result.Parameters).Contains(Enumerable.Range(10, 100)).InAnyOrder();
 			await That(sw.Elapsed).Should().BeLessThan(5000.Milliseconds());
 		}
 
