@@ -89,14 +89,12 @@ public static partial class ThatObjectShould
 	{
 		public ConstraintResult IsMetBy(object? actual)
 		{
-			ObjectEqualityOptions.Result result = options.AreConsideredEqual(actual, expected, it);
-
-			if (!result.AreConsideredEqual)
+			if (options.AreConsideredEqual(actual, expected))
 			{
-				return new ConstraintResult.Failure(ToString(), result.Failure);
+				return new ConstraintResult.Success<object?>(actual, ToString());
 			}
 
-			return new ConstraintResult.Success<object?>(actual, ToString());
+			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
 		}
 
 		public override string ToString()
@@ -112,11 +110,9 @@ public static partial class ThatObjectShould
 	{
 		public ConstraintResult IsMetBy(object? actual)
 		{
-			ObjectEqualityOptions.Result result = options.AreConsideredEqual(actual, unexpected, it);
-
-			if (result.AreConsideredEqual)
+			if (options.AreConsideredEqual(actual, unexpected))
 			{
-				return new ConstraintResult.Failure(ToString(), result.Failure);
+				return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
 			}
 
 			return new ConstraintResult.Success<object?>(actual, ToString());

@@ -19,8 +19,13 @@ namespace aweXpect
     public static class EquivalencyExtensions
     {
         public static aweXpect.Options.ObjectEqualityOptions Equivalent(this aweXpect.Options.ObjectEqualityOptions options, aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
-        public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> options, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null)
+        public static TSelf Equivalent<TType, TThat, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf> { }
+    }
+    public static class JsonExtensions
+    {
+        public static TSelf AsJson<TType, TThat, TSelf>(this aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null)
+            where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> { }
     }
     public static class ThatAsyncEnumerableShould
     {
@@ -374,6 +379,18 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> NotHaveStatusCode(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, System.Net.HttpStatusCode unexpected) { }
         public static aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> Should(this aweXpect.Core.IExpectSubject<System.Net.Http.HttpResponseMessage?> subject) { }
     }
+    public static class ThatJsonElementShould
+    {
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> BeArray(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> BeArray(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, System.Func<aweXpect.Json.IJsonArrayResult, aweXpect.Json.IJsonArrayResult> expectation, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> BeObject(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> BeObject(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, System.Func<aweXpect.Json.IJsonObjectResult, aweXpect.Json.IJsonObjectResult> expectation, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> Match(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, object? expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> Match<T>(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, System.Collections.Generic.IEnumerable<T> expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> MatchExactly(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, object? expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement, aweXpect.Core.IThat<System.Text.Json.JsonElement>> MatchExactly<T>(this aweXpect.Core.IThat<System.Text.Json.JsonElement> source, System.Collections.Generic.IEnumerable<T> expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThat<System.Text.Json.JsonElement> Should(this aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement> subject) { }
+    }
     public static class ThatNullableBoolShould
     {
         public static aweXpect.Results.AndOrResult<bool?, aweXpect.Core.IThat<bool?>> Be(this aweXpect.Core.IThat<bool?> source, bool? expected) { }
@@ -500,6 +517,18 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> NotBeEmpty(this aweXpect.Core.IThat<System.Guid?> source) { }
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> NotBeNull(this aweXpect.Core.IThat<System.Guid?> source) { }
         public static aweXpect.Core.IThat<System.Guid?> Should(this aweXpect.Core.IExpectSubject<System.Guid?> subject) { }
+    }
+    public static class ThatNullableJsonElementShould
+    {
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> BeArray(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> BeArray(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, System.Func<aweXpect.Json.IJsonArrayResult, aweXpect.Json.IJsonArrayResult> expectation, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> BeObject(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> BeObject(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, System.Func<aweXpect.Json.IJsonObjectResult, aweXpect.Json.IJsonObjectResult> expectation, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null) { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> Match(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, object? expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> Match<T>(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, System.Collections.Generic.IEnumerable<T> expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> MatchExactly(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, object? expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<System.Text.Json.JsonElement?, aweXpect.Core.IThat<System.Text.Json.JsonElement?>> MatchExactly<T>(this aweXpect.Core.IThat<System.Text.Json.JsonElement?> source, System.Collections.Generic.IEnumerable<T> expected, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThat<System.Text.Json.JsonElement?> Should(this aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement?> subject) { }
     }
     public static class ThatNullableTimeOnlyShould
     {
@@ -845,6 +874,10 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> Be<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> BeExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> BeExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable(this aweXpect.Core.IThat<object?> source, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable(this aweXpect.Core.IThat<object?> source, System.Text.Json.JsonSerializerOptions serializerOptions, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable<T>(this aweXpect.Core.IThat<object?> source, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeJsonSerializable<T>(this aweXpect.Core.IThat<object?> source, System.Text.Json.JsonSerializerOptions serializerOptions, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> BeNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotBe(this aweXpect.Core.IThat<object?> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
@@ -896,6 +929,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeNullOrWhiteSpace(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> BeOneOf(this aweXpect.Core.IThat<string?> source, params string?[] expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> BeUpperCased(this aweXpect.Core.IThat<string?> source) { }
+        public static aweXpect.Results.JsonWhichResult BeValidJson(this aweXpect.Core.IThat<string?> source, System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions>? options = null) { }
         public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> Contain(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> EndWith(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> HaveLength(this aweXpect.Core.IThat<string?> source, int expected) { }
@@ -954,6 +988,66 @@ namespace aweXpect
         public static aweXpect.Core.IThat<System.TimeSpan> Should(this aweXpect.Core.IExpectSubject<System.TimeSpan> subject) { }
     }
 }
+namespace aweXpect.Json
+{
+    public interface IJsonArrayResult
+    {
+        aweXpect.Json.IJsonArrayResult And { get; }
+        aweXpect.Json.IJsonPropertyResult<aweXpect.Json.IJsonArrayResult> At(int index);
+        aweXpect.Json.IJsonArrayResult.IJsonArrayLengthResult With(int amount);
+        aweXpect.Json.IJsonArrayResult.IJsonArrayElementsResult WithArrays(params System.Action<aweXpect.Json.IJsonArrayResult>?[] expectations);
+        aweXpect.Json.IJsonArrayResult.IJsonArrayElementsResult WithElements(params object?[] expected);
+        aweXpect.Json.IJsonArrayResult.IJsonArrayElementsResult WithObjects(params System.Action<aweXpect.Json.IJsonObjectResult>?[] expectations);
+        public interface IJsonArrayElementsResult : aweXpect.Json.IJsonArrayResult { }
+        public interface IJsonArrayLengthResult
+        {
+            aweXpect.Json.IJsonArrayResult Elements();
+        }
+    }
+    public interface IJsonObjectResult
+    {
+        aweXpect.Json.IJsonObjectResult And { get; }
+        aweXpect.Json.IJsonObjectResult.IJsonObjectLengthResult With(int amount);
+        aweXpect.Json.IJsonPropertyResult<aweXpect.Json.IJsonObjectResult> With(string propertyName);
+        public interface IJsonObjectLengthResult
+        {
+            aweXpect.Json.IJsonObjectResult Properties();
+        }
+    }
+    public interface IJsonPropertyResult<out TReturn>
+    {
+        TReturn AnArray();
+        TReturn AnArray(System.Action<aweXpect.Json.IJsonArrayResult> expectation);
+        TReturn AnObject();
+        TReturn AnObject(System.Action<aweXpect.Json.IJsonObjectResult> expectation);
+        TReturn Matching(object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "");
+    }
+    public static class JsonAwexpectCustomizationExtensions
+    {
+        public static aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomization Json(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public class JsonCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<System.Text.Json.JsonDocumentOptions> DefaultJsonDocumentOptions { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.Text.Json.JsonSerializerOptions> DefaultJsonSerializerOptions { get; }
+            public aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue, aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue> update) { }
+        }
+        public class JsonCustomizationValue : System.IEquatable<aweXpect.Json.JsonAwexpectCustomizationExtensions.JsonCustomizationValue>
+        {
+            public JsonCustomizationValue() { }
+            public System.Text.Json.JsonDocumentOptions DefaultJsonDocumentOptions { get; init; }
+            public System.Text.Json.JsonSerializerOptions DefaultJsonSerializerOptions { get; init; }
+        }
+    }
+    public class JsonOptions
+    {
+        public JsonOptions() { }
+        public System.Text.Json.JsonDocumentOptions DocumentOptions { get; }
+        public bool IgnoreAdditionalProperties { get; }
+        public aweXpect.Json.JsonOptions IgnoringAdditionalProperties(bool ignoreAdditionalProperties = true) { }
+        public aweXpect.Json.JsonOptions WithJsonOptions(System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions> jsonDocumentOptions) { }
+    }
+}
 namespace aweXpect.Results
 {
     public class BetweenResult<TTarget, TExpectation>
@@ -977,6 +1071,11 @@ namespace aweXpect.Results
     {
         public ItemsResult(TReturn value) { }
         public TReturn Items() { }
+    }
+    public class JsonWhichResult : aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>>
+    {
+        public JsonWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<string?> returnValue, System.Text.Json.JsonDocumentOptions options) { }
+        public aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> Which(System.Action<aweXpect.Core.IExpectSubject<System.Text.Json.JsonElement?>> expectations) { }
     }
     public class ObjectCollectionBeContainedInResult<TType, TThat> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat>
     {

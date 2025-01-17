@@ -1,6 +1,7 @@
 ﻿using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Options;
 using aweXpect.Results;
 
@@ -46,7 +47,9 @@ public static partial class ThatNullableTimeSpanShould
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)
 		{
-			if (actual - (tolerance.Tolerance ?? TimeSpan.Zero) < expected)
+			TimeSpan timeTolerance = tolerance.Tolerance
+			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+			if (actual - timeTolerance < expected)
 			{
 				return new ConstraintResult.Success<TimeSpan?>(actual, ToString());
 			}
@@ -67,7 +70,9 @@ public static partial class ThatNullableTimeSpanShould
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)
 		{
-			if (actual + (tolerance.Tolerance ?? TimeSpan.Zero) >= unexpected)
+			TimeSpan timeTolerance = tolerance.Tolerance
+			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+			if (actual + timeTolerance >= unexpected)
 			{
 				return new ConstraintResult.Success<TimeSpan?>(actual, ToString());
 			}

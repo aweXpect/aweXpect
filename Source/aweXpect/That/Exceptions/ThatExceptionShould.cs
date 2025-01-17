@@ -35,7 +35,7 @@ public static partial class ThatExceptionShould
 			}
 
 			return new ConstraintResult.Failure(ToString(),
-				options.GetExtendedFailure(it, expected, actual?.Message));
+				options.GetExtendedFailure(it, actual?.Message, expected));
 		}
 
 		public override string ToString()

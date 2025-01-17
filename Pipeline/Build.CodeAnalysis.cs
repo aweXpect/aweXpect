@@ -1,6 +1,7 @@
 using Nuke.Common;
 using Nuke.Common.Tools.SonarScanner;
 
+// ReSharper disable UnusedMember.Local
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;
@@ -20,8 +21,8 @@ partial class Build
 				.SetProjectKey("aweXpect_aweXpect")
 				.AddVSTestReports(TestResultsDirectory / "*.trx")
 				.AddOpenCoverPaths(TestResultsDirectory / "reports" / "OpenCover.xml")
-				.SetPullRequestOrBranchName(GitHubActions, GitVersion)
-				.SetVersion(GitVersion.SemVer)
+				.SetPullRequestOrBranchName(GitHubActions, BranchName)
+				.SetVersion(SemVer)
 				.SetToken(SonarToken));
 		});
 

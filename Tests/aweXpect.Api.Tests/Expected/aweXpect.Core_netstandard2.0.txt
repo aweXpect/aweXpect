@@ -106,13 +106,8 @@ namespace aweXpect.Core
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
     {
-        bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, out string? error);
-        bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, out string? error);
-    }
-    public interface IComparerOptions
-    {
-        string GetExpectation(string expectedExpression);
-        string GetExtendedFailure(string it, object? actual, object? expected);
+        bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
+        bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
     }
     public interface IExpectSubject<out T>
     {
@@ -122,9 +117,25 @@ namespace aweXpect.Core
         aweXpect.Core.IThat<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
         string? ToString();
     }
+    public interface IObjectMatchType
+    {
+        bool AreConsideredEqual(object? actual, object? expected);
+        string GetExpectation(string expected);
+        string GetExtendedFailure(string it, object? actual, object? expected);
+    }
     public interface IOptionsEquality<in T>
     {
         bool AreConsideredEqual(T actual, T expected);
+    }
+    public interface IOptionsProvider<out TOptions>
+    {
+        TOptions Options { get; }
+    }
+    public interface IStringMatchType
+    {
+        bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
+        string GetExpectation(string? expected, bool useActiveGrammaticVoice);
+        string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
     }
     public interface IThat<out T>
     {
@@ -197,26 +208,74 @@ namespace aweXpect.Core.Sources
 }
 namespace aweXpect.Customization
 {
-    public class Customize : aweXpect.Customization.ICustomizeFormatting, aweXpect.Customization.ICustomizeRecording, aweXpect.Customization.ICustomizeReflection
+    public class AwexpectCustomization : aweXpect.Customization.IAwexpectCustomization
     {
-        public static aweXpect.Customization.ICustomizeFormatting Formatting { get; }
-        public static aweXpect.Customization.ICustomizeRecording Recording { get; }
-        public static aweXpect.Customization.ICustomizeReflection Reflection { get; }
+        public AwexpectCustomization() { }
     }
-    public interface ICustomizeFormatting
+    public static class AwexpectCustomizationExtensions
     {
-        int MaximumNumberOfCollectionItems { get; }
-        System.IDisposable SetMaximumNumberOfCollectionItems(int value);
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomization Formatting(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomization Reflection(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public static aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomization Settings(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue> update) { }
+        }
+        public class FormattingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
+        {
+            public FormattingCustomizationValue() { }
+            public int MaximumNumberOfCollectionItems { get; set; }
+        }
+        public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<string[]> ExcludedAssemblyPrefixes { get; }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue> update) { }
+        }
+        public class ReflectionCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
+        {
+            public ReflectionCustomizationValue() { }
+            public string[] ExcludedAssemblyPrefixes { get; set; }
+        }
+        public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultSignalerTimeout { get; }
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeComparisonTolerance { get; }
+            public aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue> update) { }
+        }
+        public class SettingsCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
+        {
+            public SettingsCustomizationValue() { }
+            public System.TimeSpan DefaultSignalerTimeout { get; set; }
+            public System.TimeSpan DefaultTimeComparisonTolerance { get; set; }
+        }
     }
-    public interface ICustomizeRecording
+    public sealed class CustomizationLifetime : System.IDisposable
     {
-        System.TimeSpan DefaultTimeout { get; }
-        System.IDisposable SetDefaultTimeout(System.TimeSpan timeout);
+        public CustomizationLifetime(System.Action callback) { }
+        public void Dispose() { }
     }
-    public interface ICustomizeReflection
+    public static class Customize
     {
-        string[] ExcludedAssemblyPrefixes { get; }
-        System.IDisposable ExcludeAssemblies(System.Action<System.Collections.Generic.List<string>> excludedAssemblyPrefixes);
+        public static aweXpect.Customization.AwexpectCustomization aweXpect { get; }
+    }
+    public interface IAwexpectCustomization
+    {
+        TValue Get<TValue>(string key, TValue defaultValue);
+        aweXpect.Customization.CustomizationLifetime Set<TValue>(string key, TValue value);
+    }
+    public interface ICustomizationValueSetter<TValue>
+    {
+        TValue Get();
+        aweXpect.Customization.CustomizationLifetime Set(TValue value);
+    }
+    public interface ICustomizationValueUpdater<TValue>
+    {
+        TValue Get();
+        aweXpect.Customization.CustomizationLifetime Update(System.Func<TValue, TValue> update);
     }
 }
 namespace aweXpect
@@ -414,6 +473,7 @@ namespace aweXpect.Options
         public EquivalencyOptions() { }
         public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
         public aweXpect.Options.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
+        public static aweXpect.Options.EquivalencyOptions FromCallback(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? callback) { }
     }
     public class NumberTolerance<TNumber>
         where TNumber :  struct, System.IComparable<TNumber>
@@ -428,17 +488,12 @@ namespace aweXpect.Options
     {
         public ObjectEqualityOptions() { }
         public bool AreConsideredEqual(object? actual, object? expected) { }
-        public aweXpect.Options.ObjectEqualityOptions.Result AreConsideredEqual(object? actual, object? expected, string it) { }
         public aweXpect.Options.ObjectEqualityOptions Equals() { }
         public string GetExpectation(string expectedExpression) { }
+        public string GetExtendedFailure(string it, object? actual, object? expected) { }
+        public void SetMatchType(aweXpect.Core.IObjectMatchType matchType) { }
         public override string? ToString() { }
         public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
-        public readonly struct Result
-        {
-            public Result(bool areConsideredEqual, System.Func<string> failure) { }
-            public bool AreConsideredEqual { get; }
-            public string Failure { get; }
-        }
     }
     public class Quantifier
     {
@@ -471,11 +526,12 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
         public string GetExpectation(string? expected, bool useActiveGrammaticVoice) { }
-        public string GetExtendedFailure(string it, string? expected, string? actual) { }
+        public string GetExtendedFailure(string it, string? actual, string? expected) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringTrailingWhiteSpace(bool ignoreTrailingWhiteSpace = true) { }
+        public void SetMatchType(aweXpect.Core.IStringMatchType matchType) { }
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
     }
@@ -648,7 +704,7 @@ namespace aweXpect.Results
     {
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
     }
-    public class ObjectEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class ObjectEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions>
         where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
     {
         public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
@@ -670,7 +726,7 @@ namespace aweXpect.Results
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }
     }
-    public class StringEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+    public class StringEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.StringEqualityOptions>
         where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf>
     {
         public StringEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.StringEqualityOptions options) { }

@@ -89,7 +89,7 @@ internal class ExpectationNode : Node
 		}
 		catch (Exception e) when (_constraint is not null)
 		{
-			throw new InvalidOperationException($"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}", e);
+			throw new InvalidOperationException($"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}: {e.Message}", e);
 		}
 
 		if (_inner != null)

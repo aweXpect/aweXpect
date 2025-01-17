@@ -54,14 +54,16 @@ public static partial class ThatAsyncEnumerableShould
 				materializedEnumerable.GetAsyncEnumerator(cancellationToken);
 			if (await enumerator.MoveNextAsync())
 			{
-				List<TItem> items = new(Customize.Formatting.MaximumNumberOfCollectionItems + 1)
+				int maximumNumberOfCollectionItems =
+					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+				List<TItem> items = new(maximumNumberOfCollectionItems + 1)
 				{
 					enumerator.Current
 				};
 				while (await enumerator.MoveNextAsync())
 				{
 					items.Add(enumerator.Current);
-					if (items.Count > Customize.Formatting.MaximumNumberOfCollectionItems)
+					if (items.Count > maximumNumberOfCollectionItems)
 					{
 						break;
 					}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using aweXpect.Core.Helpers;
+using aweXpect.Customization;
 
 namespace aweXpect.Formatting;
 
@@ -40,7 +41,7 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
-		int maxCount = Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
+		int maxCount = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		int count = maxCount;
 		stringBuilder.Append('[');
 		bool hasMoreValues = false;

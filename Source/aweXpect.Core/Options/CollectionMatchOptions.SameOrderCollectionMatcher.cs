@@ -30,7 +30,7 @@ public partial class CollectionMatchOptions
 			_totalExpectedItems = _expectedItems.Length;
 		}
 
-		public bool Verify(string it, T value, IOptionsEquality<T2> options, out string? error)
+		public bool Verify(string it, T value, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			_foundItems.Add(value);
 
@@ -50,10 +50,10 @@ public partial class CollectionMatchOptions
 
 			_index++;
 			error = null;
-			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems;
+			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
 		}
 
-		public bool VerifyComplete(string it, IOptionsEquality<T2> options, out string? error)
+		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _matchIndex);
 			if (_expectedItems.Length > consideredExpectedItems)
@@ -68,7 +68,7 @@ public partial class CollectionMatchOptions
 					}
 
 					if (_additionalItems.Count + _incorrectItems.Count + _missingItems.Count >
-					    2 * Customization.Customize.Formatting.MaximumNumberOfCollectionItems)
+					    2 * maximumNumber)
 					{
 						error = null;
 						return true;
