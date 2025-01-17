@@ -12,12 +12,12 @@ You can verify, the properties of the `Stream`:
 ```csharp
 Stream subject = new MemoryStream();
 
-await Expect.That(subject).Should().BeReadable();
-await Expect.That(subject).Should().BeSeekable();
-await Expect.That(subject).Should().BeWritable();
-await Expect.That(File.Open("read-only.txt", FileMode.OpenOrCreate, FileAccess.Read)).Should().BeReadOnly()
+await Expect.That(subject).IsReadable();
+await Expect.That(subject).IsSeekable();
+await Expect.That(subject).IsWritable();
+await Expect.That(File.Open("read-only.txt", FileMode.OpenOrCreate, FileAccess.Read)).IsReadOnly()
   .Because("the file was opened with Read access");
-await Expect.That(File.Open("write-only.txt", FileMode.OpenOrCreate, FileAccess.Write)).Should().BeWriteOnly()
+await Expect.That(File.Open("write-only.txt", FileMode.OpenOrCreate, FileAccess.Write)).IsWriteOnly()
   .Because("the file was opened with Write access");
 ```
 
@@ -28,8 +28,8 @@ You can verify, the length of the `Stream`:
 ```csharp
 Stream subject = new MemoryStream("foo"u8.ToArray());
 
-await Expect.That(subject).Should().HaveLength(3);
-await Expect.That(subject).Should().NotHaveLength(4);
+await Expect.That(subject).HasLength(3);
+await Expect.That(subject).DoesNotHaveLength(4);
 ```
 
 ## Position
@@ -40,8 +40,8 @@ You can verify, the position of the `Stream`:
 Stream subject = new MemoryStream("foo"u8.ToArray());
 subject.Seek(2, SeekOrigin.Current);
 
-await Expect.That(subject).Should().HavePosition(2);
-await Expect.That(subject).Should().NotHavePosition(0);
+await Expect.That(subject).HasPosition(2);
+await Expect.That(subject).DoesNotHavePosition(0);
 ```
 
 ## Buffer size
@@ -51,6 +51,6 @@ You can verify, the buffer size of the `BufferedStream`:
 ```csharp
 BufferedStream subject = new(new MemoryStream("foo"u8.ToArray()), 2);
 
-await Expect.That(subject).Should().HaveBufferSize(2);
-await Expect.That(subject).Should().NotHaveBufferSize(3);
+await Expect.That(subject).HasBufferSize(2);
+await Expect.That(subject).DoesNotHaveBufferSize(3);
 ```

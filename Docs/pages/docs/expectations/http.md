@@ -12,7 +12,7 @@ You can verify, the content of the `HttpResponseMessage`:
 ```csharp
 HttpResponseMessage response = await httpClient.GetAsync("https://github.com/aweXpect/aweXpect");
 
-await Expect.That(response).Should().HaveContent("*aweXpect*").AsWildcard();
+await Expect.That(response).HasContent("*aweXpect*").AsWildcard();
 ```
 
 You can use the same configuration options as when [comparing strings](/docs/expectations/string#equality).
@@ -23,11 +23,11 @@ You can use the same configuration options as when [comparing strings](/docs/exp
 You can verify, that the status code of the `HttpResponseMessage`:
 ```csharp
 HttpResponseMessage response = await httpClient.GetAsync("https://github.com/aweXpect/aweXpect");
-await Expect.That(response).Should().BeSuccess();
-await Expect.That(response).Should().HaveStatusCode(HttpStatusCode.OK);
+await Expect.That(response).IsSuccess();
+await Expect.That(response).HasStatusCode(HttpStatusCode.OK);
 
 response = await httpClient.PostAsync("https://github.com/aweXpect/aweXpect", new StringContent(""));
-await Expect.That(response).Should().HaveClientError().Or.HaveServerError().Or.BeRedirection();
+await Expect.That(response).HasClientError().Or.HaveServerError().Or.BeRedirection();
 ```
 
 Great care was taken to provide as much information as possible, when a status verification failed.  

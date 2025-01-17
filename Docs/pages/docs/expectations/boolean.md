@@ -12,8 +12,8 @@ You can verify, that the `bool` is equal to another one or not:
 ```csharp
 bool subject = false;
 
-await Expect.That(subject).Should().Be(false);
-await Expect.That(subject).Should().NotBe(true);
+await Expect.That(subject).Is(false);
+await Expect.That(subject).IsNot(true);
 ```
 
 ## True / False
@@ -28,9 +28,9 @@ The negation is only available for nullable booleans:
 ```csharp
 bool? subject = null;
 
-await Expect.That(subject).Should().NotBeFalse()
+await Expect.That(subject).IsNotFalse()
   .Because("it could be true or null");
-await Expect.That(subject).Should().NotBeTrue()
+await Expect.That(subject).IsNotTrue()
   .Because("it could be false or null");
 ```
 
@@ -41,5 +41,5 @@ You can verify, that `a` implies `b` (*find [here](https://mathworld.wolfram.com
 bool a = false;
 bool b = true;
 
-await Expect.That(a).Should().Imply(b);
+await Expect.That(a).Implies(b);
 ```

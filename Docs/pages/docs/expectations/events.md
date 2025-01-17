@@ -40,8 +40,7 @@ IEventRecording<MyClass> recording = sut.Record().Events();
 sut.OnThresholdReached(new ThresholdReachedEventArgs());
 
 // Expect that the ThresholdReached event was triggered at least once
-await Expect.That(recording).Should()
-  .HaveTriggered(nameof(MyClass.ThresholdReached));
+await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached));
 ```
 
 
@@ -54,8 +53,7 @@ IEventRecording<MyClass> recording = sut.Record().Events();
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
 
-await Expect.That(recording).Should()
-  .HaveTriggered(nameof(MyClass.ThresholdReached))
+await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10);
 ```
 
@@ -67,8 +65,7 @@ IEventRecording<MyClass> recording = sut.Record().Events();
 
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 
-await Expect.That(recording).Should()
-  .HaveTriggered(nameof(MyClass.ThresholdReached))
+await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .WithSender(s => s == sut);
 ```
 
@@ -80,8 +77,7 @@ IEventRecording<MyClass> recording = sut.Record().Events();
 
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 
-await Expect.That(recording).Should()
-  .HaveTriggered(nameof(MyClass.ThresholdReached))
+await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .With<ThresholdReachedEventArgs>(e => e < 10);
 ```
 
@@ -94,8 +90,7 @@ IEventRecording<MyClass> recording = sut.Record().Events();
 sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
 sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
 
-await Expect.That(recording).Should()
-  .HaveTriggered(nameof(MyClass.ThresholdReached))
+await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .Between(1).And(2.Times();
 ```
 You can use the same occurrence constraints as in the [contain](/docs/expectations/collections#contain) method:
@@ -116,19 +111,15 @@ IEventRecording<MyClass> recording = sut.Record().Events();
 // do something that triggers the PropertyChanged event
 sut.Execute();
 
-await Expect.That(recording).Should()
-  .HaveTriggeredPropertyChanged()
+await Expect.That(recording).TriggeredPropertyChanged()
   .Because("it should trigger the PropertyChanged event for any property name");
 
-await Expect.That(recording).Should()
-  .HaveTriggeredPropertyChangedFor(x => x.MyProperty)
+await Expect.That(recording).TriggeredPropertyChangedFor(x => x.MyProperty)
   .Because("it should trigger the PropertyChanged event for the 'MyProperty' property name");
 
-await Expect.That(recording).Should()
-  .NotHaveTriggeredPropertyChanged()
+await Expect.That(recording).DidNotTriggerPropertyChanged()
   .Because("it should not trigger for any property name");
 
-await Expect.That(recording).Should()
-  .NotHaveTriggeredPropertyChangedFor(x => x.MyProperty)
+await Expect.That(recording).DidNotTriggerPropertyChangedFor(x => x.MyProperty)
   .Because("it should not trigger for the 'MyProperty' property name");
 ```

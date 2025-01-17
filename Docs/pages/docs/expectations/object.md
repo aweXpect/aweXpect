@@ -13,8 +13,8 @@ You can verify, that the `object` is equal to another one or not:
 record MyClass(int Value);
 MyClass subject = new(1);
 
-await Expect.That(subject).Should().Be(new MyClass(1));
-await Expect.That(subject).Should().NotBe(new MyClass(2));
+await Expect.That(subject).Is(new MyClass(1));
+await Expect.That(subject).IsNot(new MyClass(2));
 ```
 *Note: this uses the underlying `object.Equals(object?, object?)` method*
 
@@ -26,7 +26,7 @@ record MyClass(int Value);
 MyClass subject = new(1);
 
 await Expect.That(subject).IsSameAs(subject);
-await Expect.That(subject).Should().NotBeSameAs(new MyClass(1));
+await Expect.That(subject).IsNotSameAs(new MyClass(1));
 ```
 *Note: this uses the underlying `object.ReferenceEquals(object?, object?)` method*
 
@@ -43,7 +43,7 @@ class MyClassComparer : IEqualityComparer<object>
 }
 MyClass subject = new(1);
 
-await Expect.That(subject).Should().Be(new MyClass(2)).Using(new MyClassComparer());
+await Expect.That(subject).Is(new MyClass(2)).Using(new MyClassComparer());
 ```
 
 
@@ -57,8 +57,8 @@ class MyClass(int value)
 }
 MyClass subject = new(1);
 
-await Expect.That(subject).Should().Be(new MyClass(1)).Equivalent();
-await Expect.That(subject).Should().NotBe(new MyClass(2)).Equivalent();
+await Expect.That(subject).Is(new MyClass(1)).Equivalent();
+await Expect.That(subject).IsNot(new MyClass(2)).Equivalent();
 ```
 *Note: this compares recursively all properties on the two objects for equivalence.*
 
@@ -69,10 +69,10 @@ You can verify, that the `object` is of a given type or not:
 ```csharp
 object subject = new MyClass(1);
 
-await Expect.That(subject).Should().Be<MyClass>();
-await Expect.That(subject).Should().Be(typeof(MyClass));
-await Expect.That(subject).Should().NotBe<OtherClass>();
-await Expect.That(subject).Should().NotBe(typeof(OtherClass));
+await Expect.That(subject).Is<MyClass>();
+await Expect.That(subject).Is(typeof(MyClass));
+await Expect.That(subject).IsNot<OtherClass>();
+await Expect.That(subject).IsNot(typeof(OtherClass));
 ```
 This verifies, if the subject is of the given type or a derived type.
 
@@ -80,10 +80,10 @@ You can also verify, that the `object` is only of the given type and not of a de
 ```csharp
 object subject = new MyClass(1);
 
-await Expect.That(subject).Should().BeExactly<MyClass>();
-await Expect.That(subject).Should().BeExactly(typeof(MyClass));
-await Expect.That(subject).Should().NotBeExactly<OtherClass>();
-await Expect.That(subject).Should().NotBeExactly(typeof(OtherClass));
+await Expect.That(subject).IsExactly<MyClass>();
+await Expect.That(subject).IsExactly(typeof(MyClass));
+await Expect.That(subject).IsNotExactly<OtherClass>();
+await Expect.That(subject).IsNotExactly(typeof(OtherClass));
 ```
 
 
@@ -94,5 +94,5 @@ You can verify, if the `object` is `null` or not:
 object? subject = null;
 
 await Expect.That(subject).IsNull();
-await Expect.That(new object()).Should().NotBeNull();
+await Expect.That(new object()).IsNotNull();
 ```

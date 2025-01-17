@@ -27,7 +27,7 @@ You can verify, that the delegate does not throw any exception:
 ```csharp
 void Act() => {};
 
-await Expect.That(Act).Should().NotThrow();
+await Expect.That(Act).Does().NotThrow();
 ```
 
 
@@ -37,7 +37,7 @@ You can verify, that the delegate throws an exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Should().ThrowException();
+await Expect.That(Act).Does().ThrowException();
 ```
 
 ### Specific exception
@@ -46,8 +46,8 @@ You can verify, that the delegate throws a specific exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Should().Throw<CustomException>();
-await Expect.That(Act).Should().Throw(typeof(CustomException));
+await Expect.That(Act).Does().Throw<CustomException>();
+await Expect.That(Act).Does().Throw(typeof(CustomException));
 ```
 This will verify that the thrown exception is of type `CustomException` or any derived type.
 
@@ -58,8 +58,8 @@ You can verify, that the delegate throws exactly a specific exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Should().ThrowExactly<CustomException>();
-await Expect.That(Act).Should().ThrowExactly(typeof(CustomException));
+await Expect.That(Act).Does().ThrowExactly<CustomException>();
+await Expect.That(Act).Does().ThrowExactly(typeof(CustomException));
 ```
 This will verify that the thrown exception is of type `CustomException` and not any derived type.
 
@@ -71,7 +71,7 @@ You can verify, that the delegate throws an exception only if a predicate is sat
 void Act() => throw new CustomException("my exception");
 bool expectThrownException = true;
 
-await Expect.That(Act).Should().Throw<CustomException>().OnlyIf(expectThrownException);
+await Expect.That(Act).Does().Throw<CustomException>().OnlyIf(expectThrownException);
 ```
 This is especially useful with parametrized tests where it depends on a parameter if an exception is thrown or not.
 
@@ -82,7 +82,7 @@ You can verify the message of the thrown exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Should().ThrowException().WithMessage("my exception");
+await Expect.That(Act).Does().ThrowException().WithMessage("my exception");
 ```
 You can use the same configuration options as when [comparing strings](/docs/expectations/string#equality).
 
@@ -93,8 +93,8 @@ You can verify the inner exception of the thrown exception;
 ```csharp
 void Act() => throw new CustomException("outer", new CustomException("inner"));
 
-await Expect.That(Act).Should().ThrowException().WithInnerException();
-await Expect.That(Act).Should().ThrowException().WithInner<CustomException>();
+await Expect.That(Act).Does().ThrowException().WithInnerException();
+await Expect.That(Act).Does().ThrowException().WithInner<CustomException>();
 ```
 
 ### Recursive inner exceptions
@@ -103,7 +103,7 @@ You can recursively verify the collection of inner exceptions of the thrown exce
 ```csharp
 void Act() => throw new AggregateException("outer", new CustomException("inner"));
 
-await Expect.That(Act).Should().ThrowException().WithRecursiveInnerExceptions(innerExceptions => innerExceptions.Should().HaveAtLeast(1).Be<CustomException>());
+await Expect.That(Act).Does().ThrowException().WithRecursiveInnerExceptions(innerExceptions => innerExceptions.HasAtLeast(1).Be<CustomException>());
 ```
 
 ### Other members
@@ -112,12 +112,12 @@ You can recursively verify additional members of the exception:
 ```csharp
 void Act() => throw new MyException("outer", paramName: "paramName", hResult: 12345);
 
-await Expect.That(Act).Should().ThrowException().WithParamName("paramName")
+await Expect.That(Act).Does().ThrowException().WithParamName("paramName")
   .Because("you can verify the `paramName`");
-await Expect.That(Act).Should().ThrowException().WithHResult(12345)
+await Expect.That(Act).Does().ThrowException().WithHResult(12345)
   .Because("you can verify the `HResult`");
-await Expect.That(Act).Should().ThrowException()
-  .Which(e => e.HResult, h => h.Should().BeGreaterThan(12340))
+await Expect.That(Act).Does().ThrowException()
+  .Which(e => e.HResult, h => h.IsGreaterThan(12340))
   .Because("you can verify arbitrary additional members");
 
 ```
@@ -127,8 +127,8 @@ await Expect.That(Act).Should().ThrowException()
 
 You can verify, that the delegate finishes execution in a specified amount of time
 ```csharp
-await Expect.That(Task.Delay(200)).Should().ExecuteWithin(TimeSpan.FromMilliseconds(300))
+await Expect.That(Task.Delay(200)).Does().ExecuteWithin(TimeSpan.FromMilliseconds(300))
   .Because("it should only take about 200ms");
-await Expect.That(Task.Delay(200)).Should().NotExecuteWithin(TimeSpan.FromMilliseconds(100))
+await Expect.That(Task.Delay(200)).Does().NotExecuteWithin(TimeSpan.FromMilliseconds(100))
   .Because("it should take at least 200ms");
 ```

@@ -13,17 +13,17 @@ This expectation can be configured to ignore case, ignore newline style, ignorin
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Should().Be("some text")
+await Expect.That(subject).Is("some text")
   .Because("it is equal");
-await Expect.That(subject).Should().Be("SOME TEXT").IgnoringCase()
+await Expect.That(subject).Is("SOME TEXT").IgnoringCase()
   .Because("we ignored the casing");
-await Expect.That("a\r\nb").Should().Be("a\nb").IgnoringNewlineStyle()
+await Expect.That("a\r\nb").Is("a\nb").IgnoringNewlineStyle()
   .Because("we ignored the newline style");
-await Expect.That(subject).Should().Be("  some text").IgnoringLeadingWhiteSpace()
+await Expect.That(subject).Is("  some text").IgnoringLeadingWhiteSpace()
   .Because("we ignored leading white-space");
-await Expect.That(subject).Should().Be("some text \t").IgnoringTrailingWhiteSpace()
+await Expect.That(subject).Is("some text \t").IgnoringTrailingWhiteSpace()
   .Because("we ignored trailing white-space");
-await Expect.That(subject).Should().Be("SOME TEXT").Using(StringComparer.OrdinalIgnoreCase)
+await Expect.That(subject).Is("SOME TEXT").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 ```
 
@@ -33,7 +33,7 @@ You can also compare strings using wildcards:
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Should().Be("*me tex?").AsWildcard();
+await Expect.That(subject).Is("*me tex?").AsWildcard();
 ```
 
 When using `AsWildcard`, the following wildcard specifiers are supported:
@@ -49,7 +49,7 @@ You can also compare strings using [regular expressions](https://learn.microsoft
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Should().Be("(.*)xt").AsRegex();
+await Expect.That(subject).Is("(.*)xt").AsRegex();
 ```
 
 The regex comparison uses the following [`options`](https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regexoptions?view=net-8.0#fields):
@@ -65,10 +65,10 @@ This expectation can be configured to ignore case, ignore newline style, ignorin
 ```csharp
 string subject = "some";
 
-await Expect.That(subject).Should().BeOneOf("none", "some", "many");
-await Expect.That(subject).Should().BeOneOf("NONE", "SOME", "MANY").IgnoringCase()
+await Expect.That(subject).IsOneOf("none", "some", "many");
+await Expect.That(subject).IsOneOf("NONE", "SOME", "MANY").IgnoringCase()
   .Because("we ignored the casing");
-await Expect.That(subject).Should().BeOneOf("NONE", "SOME", "MANY").Using(StringComparer.OrdinalIgnoreCase)
+await Expect.That(subject).IsOneOf("NONE", "SOME", "MANY").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 ```
 
@@ -80,16 +80,16 @@ You can verify, that the `string` is null, empty or contains only whitespace:
 string? subject = null;
 
 await Expect.That(subject).IsNull();
-await Expect.That("foo").Should().NotBeNull();
+await Expect.That("foo").IsNotNull();
 
-await Expect.That("").Should().BeEmpty();
-await Expect.That("foo").Should().NotBeEmpty()
+await Expect.That("").IsEmpty();
+await Expect.That("foo").IsNotEmpty()
   .Because("the string is not empty");
 
 await Expect.That(subject).IsNullOrEmpty();
-await Expect.That("foo").Should().NotBeNullOrEmpty();
+await Expect.That("foo").IsNotNullOrEmpty();
 await Expect.That(subject).IsNullOrWhiteSpace();
-await Expect.That("foo").Should().NotBeNullOrWhiteSpace();
+await Expect.That("foo").IsNotNullOrWhiteSpace();
 ```
 
 
@@ -100,16 +100,16 @@ These expectations can be configured to ignore case, ignore newline style, ignor
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Should().StartWith("some");
-await Expect.That(subject).Should().StartWith("SOME").IgnoringCase()
+await Expect.That(subject).StartsWith("some");
+await Expect.That(subject).StartsWith("SOME").IgnoringCase()
   .Because("we ignored the casing");
-await Expect.That(subject).Should().StartWith("SOME").Using(StringComparer.OrdinalIgnoreCase)
+await Expect.That(subject).StartsWith("SOME").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 
-await Expect.That(subject).Should().EndWith("text");
-await Expect.That(subject).Should().EndWith("TEXT").IgnoringCase()
+await Expect.That(subject).EndsWith("text");
+await Expect.That(subject).EndsWith("TEXT").IgnoringCase()
   .Because("we ignored the casing");
-await Expect.That(subject).Should().EndWith("TEXT").Using(StringComparer.OrdinalIgnoreCase)
+await Expect.That(subject).EndsWith("TEXT").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 ```
 
@@ -121,10 +121,10 @@ These expectations can be configured to ignore case, ignore newline style, ignor
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Should().Contain("me");
-await Expect.That(subject).Should().Contain("ME").IgnoringCase()
+await Expect.That(subject).Contains("me");
+await Expect.That(subject).Contains("ME").IgnoringCase()
   .Because("we ignored the casing");
-await Expect.That(subject).Should().Contain("ME").Using(StringComparer.OrdinalIgnoreCase)
+await Expect.That(subject).Contains("ME").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 ```
 
@@ -132,13 +132,13 @@ You can also specify, how often the substring should be found:
 ```csharp
 string subject = "In this text in between the word an investigator should find the word 'IN' multiple times.";
 
-await Expect.That(subject).Should().Contain("in").AtLeast(2)
+await Expect.That(subject).Contains("in").AtLeast(2)
   .Because("'in' can be found 3 times");
-await Expect.That(subject).Should().Contain("in").Exactly(3)
+await Expect.That(subject).Contains("in").Exactly(3)
   .Because("'in' can be found 3 times");
-await Expect.That(subject).Should().Contain("in").AtMost(4)
+await Expect.That(subject).Contains("in").AtMost(4)
   .Because("'in' can be found 3 times");
-await Expect.That(subject).Should().Contain("in").Between(1).And(5)
+await Expect.That(subject).Contains("in").Between(1).And(5)
   .Because("'in' can be found 3 times");
 ```
 
@@ -147,13 +147,13 @@ await Expect.That(subject).Should().Contain("in").Between(1).And(5)
 
 You can verify, that the characters in a `string` are all upper or lower cased:
 ```csharp
-await Expect.That("1ST PLACE").Should().BeUpperCased()
+await Expect.That("1ST PLACE").IsUpperCased()
   .Because("it contains no lowercase characters");
-await Expect.That("1st PLACE").Should().NotBeUpperCased()
+await Expect.That("1st PLACE").IsNotUpperCased()
   .Because("it contains at least one lowercase characters");
 
-await Expect.That("1st place").Should().BeLowerCased()
+await Expect.That("1st place").IsLowerCased()
   .Because("it contains no uppercase characters");
-await Expect.That("1st PLACE").Should().NotBeLowerCased()
+await Expect.That("1st PLACE").IsNotLowerCased()
   .Because("it contains at least one uppercase characters");
 ```

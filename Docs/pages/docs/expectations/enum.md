@@ -12,9 +12,9 @@ You can verify, that the `enum` is equal to another one or not:
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
-await Expect.That(Colors.Red).Should().Be(Colors.Red)
+await Expect.That(Colors.Red).Is(Colors.Red)
   .Because("it is 'Red'");
-await Expect.That(Colors.Red).Should().NotBe(Colors.Blue)
+await Expect.That(Colors.Red).IsNot(Colors.Blue)
   .Because("it is 'Red'");
 ```
 
@@ -24,9 +24,9 @@ You can verify, that the `enum` has a given value or not:
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
-await Expect.That(Colors.Red).Should().HaveValue(1)
+await Expect.That(Colors.Red).HasValue(1)
   .Because("'Red' is 1");
-await Expect.That(Colors.Red).Should().NotHaveValue(2)
+await Expect.That(Colors.Red).DoesNotHaveValue(2)
   .Because("'Red' is 1");
 ```
 
@@ -36,9 +36,9 @@ You can verify, that the `enum` has a defined value or not:
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
-await Expect.That((Colors)3).Should().BeDefined()
+await Expect.That((Colors)3).IsDefined()
   .Because("3 corresponds to 'Blue'");
-await Expect.That((Colors)4).Should().NotBeDefined()
+await Expect.That((Colors)4).IsNotDefined()
   .Because("4 is no valid color");
 ```
 
@@ -48,8 +48,8 @@ You can verify, that the `enum` has a specific flag or not:
 ```csharp
 RegexOptions subject = RegexOptions.Multiline | RegexOptions.IgnoreCase;
 
-await Expect.That(subject).Should().HaveFlag(RegexOptions.IgnoreCase)
+await Expect.That(subject).HasFlag(RegexOptions.IgnoreCase)
   .Because("it has the 'IgnoreCase' flag");
-await Expect.That(subject).Should().NotHaveFlag(RegexOptions.ExplicitCapture)
+await Expect.That(subject).DoesNotHaveFlag(RegexOptions.ExplicitCapture)
   .Because("it does not have the 'ExplicitCapture' flag");
 ```

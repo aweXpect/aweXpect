@@ -34,13 +34,13 @@ sut.Execute(v => signaler.Signal(v));
 At last, you can wait for the callback to be signaled:
 
 ```csharp
-await Expect.That(signaler).Should().BeSignaled();
+await Expect.That(signaler).Signaled();
 ```
 
 You can also verify that the callback will not be signaled:
 
 ```csharp
-await Expect.That(signaler).Should().NotBeSignaled();
+await Expect.That(signaler).DidNotSignal();
 ```
 
 *NOTE: The last statement will result never return, unless a timeout or cancellation is specified.
@@ -51,7 +51,7 @@ Therefore, when nothing is specified, a default timeout of 30 seconds is applied
 You can specify a timeout, how long you want to wait for the callback to be signaled:
 
 ```csharp
-await Expect.That(signaler).Should().BeSignaled().Within(TimeSpan.FromSeconds(5))
+await Expect.That(signaler).Signaled().Within(TimeSpan.FromSeconds(5))
   .Because("it should take at most 5 seconds to complete");
 ```
 
@@ -59,7 +59,7 @@ Alternatively you can also use a `CancellationToken` for a timeout:
 
 ```csharp
 CancellationToken cancellationToken = new CancellationTokenSource(5000).Token;
-await Expect.That(signaler).Should().BeSignaled().WithCancellation(cancellationToken)
+await Expect.That(signaler).Signaled().WithCancellation(cancellationToken)
   .Because("it should be completed, before the cancellationToken is cancelled");
 ```
 
@@ -68,13 +68,13 @@ await Expect.That(signaler).Should().BeSignaled().WithCancellation(cancellationT
 You can specify a number of times, that a callback must at least be signaled:
 
 ```csharp
-await Expect.That(signaler).Should().BeSignaled(3.Times());
+await Expect.That(signaler).Signaled(3.Times());
 ```
 
 You can also verify, that the callback was not signaled at least the given number of times:
 
 ```csharp
-await Expect.That(signaler).Should().NotBeSignaled(3.Times());
+await Expect.That(signaler).DidNotSignal(3.Times());
 ```
 
 ### Parameters
@@ -87,7 +87,7 @@ Signaler<string> signaler = new();
 signaler.Signal("foo");
 signaler.Signal("bar");
 
-await That(signaler).Should().BeSignaled(2.Times());
+await Expect.That(signaler).Signaled(2.Times());
 ```
 
 You can filter for signals with specific parameters by providing a `predicate`:
@@ -98,7 +98,7 @@ signaler.Signal("foo");
 signaler.Signal("bar");
 signaler.Signal("foo");
 
-await That(signaler).Should().BeSignaled(2.Times()).With(p => p == "foo");
+await Expect.That(signaler).Signaled(2.Times()).With(p => p == "foo");
 ```
 
 *In case of a failed expectation, the recorded parameters will be displayed in the error message.*
