@@ -19,9 +19,9 @@ public static partial class ThatException
 	///     Recursively applies the expectations on the <see cref="Exception.InnerException" /> (if not <see langword="null" />
 	///     and for <see cref="AggregateException" /> also on the <see cref="AggregateException.InnerExceptions" />.
 	/// </remarks>
-	public static AndOrResult<Exception?, IExpectSubject<Exception?>> HasRecursiveInnerExceptions(
-		this IExpectSubject<Exception?> source,
-		Action<IExpectSubject<IEnumerable<Exception>>> expectations)
+	public static AndOrResult<Exception?, IThat<Exception?>> HasRecursiveInnerExceptions(
+		this IThat<Exception?> source,
+		Action<IThat<IEnumerable<Exception>>> expectations)
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception?>>.FromFunc(
 						e => e.GetInnerExpectations(),
@@ -29,6 +29,6 @@ public static partial class ThatException
 					(property, expectation) => $"have {property}which should {expectation}",
 					false)
 				.AddExpectations(e => expectations(
-					new That.Subject<IEnumerable<Exception>>(e))),
+					new ThatSubject<IEnumerable<Exception>>(e))),
 			source);
 }

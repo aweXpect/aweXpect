@@ -17,7 +17,7 @@ public static partial class ThatEventRecording
 	///     for the property given by the <paramref name="propertyExpression" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> TriggeredPropertyChangedFor<TSubject, TProperty>(
-		this IExpectSubject<IEventRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		Expression<Func<TSubject, TProperty>> propertyExpression)
 		where TSubject : INotifyPropertyChanged
 	{
@@ -33,7 +33,7 @@ public static partial class ThatEventRecording
 	///     for the given <paramref name="propertyName" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> TriggeredPropertyChangedFor<TSubject>(
-		this IExpectSubject<IEventRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		string? propertyName)
 		where TSubject : INotifyPropertyChanged
 	{
@@ -56,7 +56,7 @@ public static partial class ThatEventRecording
 	///     for the property given by the <paramref name="propertyExpression" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> DidNotTriggerPropertyChangedFor<TSubject, TProperty>(
-		this IExpectSubject<IEventRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		Expression<Func<TSubject, TProperty>> propertyExpression)
 		where TSubject : INotifyPropertyChanged
 	{
@@ -72,7 +72,7 @@ public static partial class ThatEventRecording
 	///     for the given <paramref name="propertyName" />
 	/// </summary>
 	public static EventTriggerResult<TSubject> DidNotTriggerPropertyChangedFor<TSubject>(
-		this IExpectSubject<IEventRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		string? propertyName)
 		where TSubject : INotifyPropertyChanged
 	{

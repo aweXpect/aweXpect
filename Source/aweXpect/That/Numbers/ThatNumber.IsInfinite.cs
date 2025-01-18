@@ -12,7 +12,7 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float, IExpectSubject<float>> IsInfinite(this IExpectSubject<float> source)
+	public static AndOrResult<float, IThat<float>> IsInfinite(this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -25,8 +25,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="double.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<double, IExpectSubject<double>> IsInfinite(
-		this IExpectSubject<double> source)
+	public static AndOrResult<double, IThat<double>> IsInfinite(
+		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -39,7 +39,7 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (not <see langword="null" /> and <see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float?, IExpectSubject<float?>> IsInfinite(this IExpectSubject<float?> source)
+	public static AndOrResult<float?, IThat<float?>> IsInfinite(this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -52,8 +52,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (not <see langword="null" /> and <see cref="double.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<double?, IExpectSubject<double?>> IsInfinite(
-		this IExpectSubject<double?> source)
+	public static AndOrResult<double?, IThat<double?>> IsInfinite(
+		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,
@@ -66,8 +66,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not seen as infinite (not <see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float, IExpectSubject<float>> IsNotInfinite(
-		this IExpectSubject<float> source)
+	public static AndOrResult<float, IThat<float>> IsNotInfinite(
+		this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -80,8 +80,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not seen as infinite (not <see cref="double.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<double, IExpectSubject<double>> IsNotInfinite(
-		this IExpectSubject<double> source)
+	public static AndOrResult<double, IThat<double>> IsNotInfinite(
+		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -94,8 +94,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not seen as infinite (<see langword="null" /> or not <see cref="float.IsInfinity" />).
 	/// </summary>
-	public static AndOrResult<float?, IExpectSubject<float?>> IsNotInfinite(
-		this IExpectSubject<float?> source)
+	public static AndOrResult<float?, IThat<float?>> IsNotInfinite(
+		this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -109,8 +109,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is not seen as infinite (<see langword="null" /> or not <see cref="double.IsInfinity" />
 	///     ).
 	/// </summary>
-	public static AndOrResult<double?, IExpectSubject<double?>> IsNotInfinite(
-		this IExpectSubject<double?> source)
+	public static AndOrResult<double?, IThat<double?>> IsNotInfinite(
+		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,

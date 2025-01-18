@@ -11,8 +11,8 @@ public static partial class ThatNullableEnum
 	/// <summary>
 	///     Verifies that the subject has the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<TEnum?, IExpectSubject<TEnum?>> HasValue<TEnum>(
-		this IExpectSubject<TEnum?> source,
+	public static AndOrResult<TEnum?, IThat<TEnum?>> HasValue<TEnum>(
+		this IThat<TEnum?> source,
 		long? expected)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
@@ -27,8 +27,8 @@ public static partial class ThatNullableEnum
 	/// <summary>
 	///     Verifies that the subject does not have the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<TEnum?, IExpectSubject<TEnum?>> DoesNotHaveValue<TEnum>(
-		this IExpectSubject<TEnum?> source,
+	public static AndOrResult<TEnum?, IThat<TEnum?>> DoesNotHaveValue<TEnum>(
+		this IThat<TEnum?> source,
 		long? unexpected)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>

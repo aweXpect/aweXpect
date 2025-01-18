@@ -18,14 +18,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		EndsWith<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new EndsWithConstraint<TItem, object?>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
@@ -36,13 +36,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		EndsWith<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			params TItem[] expected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new EndsWithConstraint<TItem, object?>(it, Formatter.Format(expected), expected, options)),
 			source,
@@ -52,14 +52,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
 		EndsWith(
-			this IExpectSubject<IEnumerable<string>> source,
+			this IThat<IEnumerable<string>> source,
 			IEnumerable<string> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new EndsWithConstraint<string, string>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
@@ -70,13 +70,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
 		EndsWith(
-			this IExpectSubject<IEnumerable<string>> source,
+			this IThat<IEnumerable<string>> source,
 			params string[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new EndsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
 			source,
@@ -86,15 +86,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		DoesNotEndWith<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			IEnumerable<TItem> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotEndsWithConstraint<TItem, object?>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
@@ -105,13 +105,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		DoesNotEndWith<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			params TItem[] unexpected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotEndsWithConstraint<TItem, object?>(it, Formatter.Format(unexpected), unexpected,
 					options)),
@@ -122,15 +122,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
 		DoesNotEndWith(
-			this IExpectSubject<IEnumerable<string>> source,
+			this IThat<IEnumerable<string>> source,
 			IEnumerable<string> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotEndsWithConstraint<string, string>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
@@ -141,13 +141,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
 		DoesNotEndWith(
-			this IExpectSubject<IEnumerable<string>> source,
+			this IThat<IEnumerable<string>> source,
 			params string[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotEndsWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
 					options)),

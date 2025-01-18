@@ -11,12 +11,12 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the subject is after the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateTimeOffset?, IExpectSubject<DateTimeOffset?>> IsAfter(
-		this IExpectSubject<DateTimeOffset?> source,
+	public static TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>> IsAfter(
+		this IThat<DateTimeOffset?> source,
 		DateTimeOffset? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateTimeOffset?, IExpectSubject<DateTimeOffset?>>(
+		return new TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraint(
 					it,
@@ -32,12 +32,12 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the subject is not after the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateTimeOffset?, IExpectSubject<DateTimeOffset?>> IsNotAfter(
-		this IExpectSubject<DateTimeOffset?> source,
+	public static TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>> IsNotAfter(
+		this IThat<DateTimeOffset?> source,
 		DateTimeOffset? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateTimeOffset?, IExpectSubject<DateTimeOffset?>>(
+		return new TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraint(
 					it,

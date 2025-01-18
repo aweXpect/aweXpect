@@ -12,15 +12,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		Is<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
@@ -31,14 +31,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionMatchResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>
-		Is(this IExpectSubject<IEnumerable<string>> source,
+	public static StringCollectionMatchResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+		Is(this IThat<IEnumerable<string>> source,
 			IEnumerable<string> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionMatchResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>(
+		return new StringCollectionMatchResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,

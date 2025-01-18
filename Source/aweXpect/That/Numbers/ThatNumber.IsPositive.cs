@@ -11,8 +11,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<sbyte, IExpectSubject<sbyte>> IsPositive(
-		this IExpectSubject<sbyte> source)
+	public static AndOrResult<sbyte, IThat<sbyte>> IsPositive(
+		this IThat<sbyte> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<sbyte>(
 					it,
@@ -25,8 +25,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<short, IExpectSubject<short>> IsPositive(
-		this IExpectSubject<short> source)
+	public static AndOrResult<short, IThat<short>> IsPositive(
+		this IThat<short> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<short>(
 					it,
@@ -39,8 +39,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<int, IExpectSubject<int>> IsPositive(
-		this IExpectSubject<int> source)
+	public static AndOrResult<int, IThat<int>> IsPositive(
+		this IThat<int> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<int>(
 					it,
@@ -53,8 +53,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<long, IExpectSubject<long>> IsPositive(
-		this IExpectSubject<long> source)
+	public static AndOrResult<long, IThat<long>> IsPositive(
+		this IThat<long> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<long>(
 					it,
@@ -67,8 +67,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<float, IExpectSubject<float>> IsPositive(
-		this IExpectSubject<float> source)
+	public static AndOrResult<float, IThat<float>> IsPositive(
+		this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -81,8 +81,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<double, IExpectSubject<double>> IsPositive(
-		this IExpectSubject<double> source)
+	public static AndOrResult<double, IThat<double>> IsPositive(
+		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -95,8 +95,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<decimal, IExpectSubject<decimal>> IsPositive(
-		this IExpectSubject<decimal> source)
+	public static AndOrResult<decimal, IThat<decimal>> IsPositive(
+		this IThat<decimal> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<decimal>(
 					it,
@@ -109,8 +109,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<sbyte?, IExpectSubject<sbyte?>> IsPositive(
-		this IExpectSubject<sbyte?> source)
+	public static AndOrResult<sbyte?, IThat<sbyte?>> IsPositive(
+		this IThat<sbyte?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<sbyte>(
 					it,
@@ -123,8 +123,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<short?, IExpectSubject<short?>> IsPositive(
-		this IExpectSubject<short?> source)
+	public static AndOrResult<short?, IThat<short?>> IsPositive(
+		this IThat<short?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<short>(
 					it,
@@ -137,8 +137,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<int?, IExpectSubject<int?>> IsPositive(
-		this IExpectSubject<int?> source)
+	public static AndOrResult<int?, IThat<int?>> IsPositive(
+		this IThat<int?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<int>(
 					it,
@@ -151,8 +151,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<long?, IExpectSubject<long?>> IsPositive(
-		this IExpectSubject<long?> source)
+	public static AndOrResult<long?, IThat<long?>> IsPositive(
+		this IThat<long?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<long>(
 					it,
@@ -165,8 +165,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<float?, IExpectSubject<float?>> IsPositive(
-		this IExpectSubject<float?> source)
+	public static AndOrResult<float?, IThat<float?>> IsPositive(
+		this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -179,8 +179,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<double?, IExpectSubject<double?>> IsPositive(
-		this IExpectSubject<double?> source)
+	public static AndOrResult<double?, IThat<double?>> IsPositive(
+		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,
@@ -193,8 +193,8 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<decimal?, IExpectSubject<decimal?>> IsPositive(
-		this IExpectSubject<decimal?> source)
+	public static AndOrResult<decimal?, IThat<decimal?>> IsPositive(
+		this IThat<decimal?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<decimal>(
 					it,

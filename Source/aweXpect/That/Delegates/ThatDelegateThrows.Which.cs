@@ -13,10 +13,10 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> Which<TMember>(
 		Expression<Func<TException, TMember?>> memberSelector,
-		Action<IExpectSubject<TMember?>> expectations)
+		Action<IThat<TMember?>> expectations)
 		=> new(ExpectationBuilder.ForMember(
 					MemberAccessor<TException, TMember?>.FromExpression(memberSelector),
 					(member, expectation) => $"which {member}should {expectation}")
-				.AddExpectations(e => expectations(new That.Subject<TMember?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			this);
 }

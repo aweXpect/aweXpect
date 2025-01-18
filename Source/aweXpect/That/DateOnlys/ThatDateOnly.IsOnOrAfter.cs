@@ -12,12 +12,12 @@ public static partial class ThatDateOnly
 	/// <summary>
 	///     Verifies that the subject is on or after the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateOnly, IExpectSubject<DateOnly>> IsOnOrAfter(
-		this IExpectSubject<DateOnly> source,
+	public static TimeToleranceResult<DateOnly, IThat<DateOnly>> IsOnOrAfter(
+		this IThat<DateOnly> source,
 		DateOnly? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateOnly, IExpectSubject<DateOnly>>(
+		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraintWithTolerance(
 					it,
@@ -33,12 +33,12 @@ public static partial class ThatDateOnly
 	/// <summary>
 	///     Verifies that the subject is not on or after the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<DateOnly, IExpectSubject<DateOnly>> IsNotOnOrAfter(
-		this IExpectSubject<DateOnly> source,
+	public static TimeToleranceResult<DateOnly, IThat<DateOnly>> IsNotOnOrAfter(
+		this IThat<DateOnly> source,
 		DateOnly? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<DateOnly, IExpectSubject<DateOnly>>(
+		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraintWithTolerance(
 					it,

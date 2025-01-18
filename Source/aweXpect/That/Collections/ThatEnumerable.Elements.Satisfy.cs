@@ -14,7 +14,7 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<string?>, IExpectSubject<IEnumerable<string?>>>
+		public AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>
 			Satisfy(
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
@@ -34,7 +34,7 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+		public AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]

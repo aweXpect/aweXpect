@@ -11,8 +11,8 @@ public static partial class ThatHttpResponseMessage
 	/// <summary>
 	///     Verifies that the response has a server error status code (5xx)
 	/// </summary>
-	public static AndOrResult<HttpResponseMessage, IExpectSubject<HttpResponseMessage?>>
-		HasServerError(this IExpectSubject<HttpResponseMessage?> source)
+	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+		HasServerError(this IThat<HttpResponseMessage?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasStatusCodeRangeConstraint(
 					it,

@@ -10,8 +10,8 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the subject <see cref="Stream" /> is readable.
 	/// </summary>
-	public static AndOrResult<Stream?, IExpectSubject<Stream?>> IsReadable(
-		this IExpectSubject<Stream?> source)
+	public static AndOrResult<Stream?, IThat<Stream?>> IsReadable(
+		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					"be readable",
@@ -22,8 +22,8 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the subject <see cref="Stream" /> is not readable.
 	/// </summary>
-	public static AndOrResult<Stream?, IExpectSubject<Stream?>> IsNotReadable(
-		this IExpectSubject<Stream?> source)
+	public static AndOrResult<Stream?, IThat<Stream?>> IsNotReadable(
+		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					"not be readable",

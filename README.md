@@ -40,7 +40,7 @@ By using async assertions per default, we have a consistent API and other perks:
 We added lots of extensibility points to allow you to build custom extensions.  
 Similar to [fluentassertions](https://fluentassertions.com/extensibility/) extensibility is achieved via extension methods on `.Should()`:
 - for new types  
-  write a new `.Should()` extension method on `IExpectSubject<TType>`
+  write a new `.Should()` extension method on `IThat<TType>`
 - for existing types  
   writing an extension method on `IThat<TType>`
 

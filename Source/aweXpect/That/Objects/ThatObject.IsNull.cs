@@ -9,8 +9,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is null.
 	/// </summary>
-	public static AndOrResult<object?, IExpectSubject<object?>> IsNull(
-		this IExpectSubject<object?> source)
+	public static AndOrResult<object?, IThat<object?>> IsNull(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<object?>(
 					it,
@@ -23,8 +23,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not null.
 	/// </summary>
-	public static AndOrResult<object, IExpectSubject<object?>> IsNotNull(
-		this IExpectSubject<object?> source)
+	public static AndOrResult<object, IThat<object?>> IsNotNull(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new GenericConstraint<object?>(
 					it,

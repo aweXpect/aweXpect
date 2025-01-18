@@ -11,7 +11,7 @@ public static partial class ThatTimeSpan
 	/// <summary>
 	///     Verifies that the subject is positive.
 	/// </summary>
-	public static AndOrResult<TimeSpan, IExpectSubject<TimeSpan>> IsPositive(this IExpectSubject<TimeSpan> source)
+	public static AndOrResult<TimeSpan, IThat<TimeSpan>> IsPositive(this IThat<TimeSpan> source)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BePositiveConstraint(it)),
@@ -20,7 +20,7 @@ public static partial class ThatTimeSpan
 	/// <summary>
 	///     Verifies that the subject is not positive.
 	/// </summary>
-	public static AndOrResult<TimeSpan, IExpectSubject<TimeSpan>> IsNotPositive(this IExpectSubject<TimeSpan> source)
+	public static AndOrResult<TimeSpan, IThat<TimeSpan>> IsNotPositive(this IThat<TimeSpan> source)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotBePositiveConstraint(it)),

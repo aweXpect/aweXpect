@@ -12,11 +12,11 @@ public partial class ThatDelegateThrows<TException>
 	///     satisfies the <paramref name="expectations" />.
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException(
-		Action<IExpectSubject<Exception?>> expectations)
+		Action<IThat<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					"with an inner exception which should ")
-				.AddExpectations(e => expectations(new That.Subject<Exception?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
 			this);
 
 	/// <summary>

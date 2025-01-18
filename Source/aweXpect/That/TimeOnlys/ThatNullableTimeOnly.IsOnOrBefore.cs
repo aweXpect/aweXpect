@@ -12,12 +12,12 @@ public static partial class ThatNullableTimeOnly
 	/// <summary>
 	///     Verifies that the subject is on or before the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>> IsOnOrBefore(
-		this IExpectSubject<TimeOnly?> source,
+	public static TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>> IsOnOrBefore(
+		this IThat<TimeOnly?> source,
 		TimeOnly? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>>(
+		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraintWithTolerance(
 					it,
@@ -33,12 +33,12 @@ public static partial class ThatNullableTimeOnly
 	/// <summary>
 	///     Verifies that the subject is not on or before the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>> IsNotOnOrBefore(
-		this IExpectSubject<TimeOnly?> source,
+	public static TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>> IsNotOnOrBefore(
+		this IThat<TimeOnly?> source,
 		TimeOnly? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>>(
+		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraintWithTolerance(
 					it,

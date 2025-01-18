@@ -10,6 +10,6 @@ public static partial class ThatEnumerable
 	///     Expect that the <paramref name="subject" /> has…
 	/// </summary>
 	public static IThatHas<IEnumerable<TItem>> Has<TItem>(
-		this IExpectSubject<IEnumerable<TItem>> subject)
+		this IThat<IEnumerable<TItem>> subject)
 		=> subject.ThatHas();
 }

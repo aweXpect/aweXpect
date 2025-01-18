@@ -18,7 +18,7 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection contains exactly one element.
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(
-		this IExpectSubject<IAsyncEnumerable<TItem>> source)
+		this IThat<IAsyncEnumerable<TItem>> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasSingleConstraint<TItem>(it)),
 			async f =>

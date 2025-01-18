@@ -11,8 +11,8 @@ public static partial class ThatHttpResponseMessage
 	/// <summary>
 	///     Verifies that the response has a redirection status code (3xx)
 	/// </summary>
-	public static AndOrResult<HttpResponseMessage, IExpectSubject<HttpResponseMessage?>>
-		IsRedirection(this IExpectSubject<HttpResponseMessage?> source)
+	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+		IsRedirection(this IThat<HttpResponseMessage?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasStatusCodeRangeConstraint(
 					it,

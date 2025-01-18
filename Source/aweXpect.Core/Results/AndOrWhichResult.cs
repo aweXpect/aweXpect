@@ -39,12 +39,12 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 	public AdditionalAndOrWhichResult
 		Which<TMember>(
 			Expression<Func<TType, TMember?>> memberSelector,
-			Action<IExpectSubject<TMember?>> expectations)
+			Action<IThat<TMember?>> expectations)
 		=> new(
 			_expectationBuilder
 				.ForMember(MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
 					(member, expectation) => $" which {member}should {expectation}")
-				.AddExpectations(e => expectations(new Expect.ThatSubject<TMember?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			_returnValue);
 
 	/// <summary>
@@ -68,7 +68,7 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 		public AdditionalAndOrWhichResult
 			AndWhich<TMember>(
 				Expression<Func<TType, TMember?>> memberSelector,
-				Action<IExpectSubject<TMember?>> expectations)
+				Action<IThat<TMember?>> expectations)
 		{
 			_expectationBuilder.And(" and");
 			return new AdditionalAndOrWhichResult(
@@ -77,7 +77,7 @@ public class AndOrWhichResult<TType, TThat, TSelf>(
 						MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
 						(member, expectation) => $" which {member}should {expectation}")
 					.AddExpectations(e
-						=> expectations(new Expect.ThatSubject<TMember?>(e))),
+						=> expectations(new ThatSubject<TMember?>(e))),
 				_returnValue);
 		}
 	}
