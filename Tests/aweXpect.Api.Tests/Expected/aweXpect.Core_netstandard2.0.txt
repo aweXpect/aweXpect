@@ -109,14 +109,6 @@ namespace aweXpect.Core
         bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
         bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
     }
-    public interface IThat<out T>
-    {
-        bool Equals(object? obj);
-        int GetHashCode();
-        System.Type GetType();
-        aweXpect.Core.IThatShould<T> Should(System.Action<aweXpect.Core.ExpectationBuilder> builderOptions);
-        string? ToString();
-    }
     public interface IObjectMatchType
     {
         bool AreConsideredEqual(object? actual, object? expected);
@@ -137,12 +129,19 @@ namespace aweXpect.Core
         string GetExpectation(string? expected, bool useActiveGrammaticVoice);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
     }
-    public interface IThatHas<out T> : aweXpect.Core.IThat<T> { }
-    public interface IThatIs<out T> : aweXpect.Core.IThat<T> { }
-    public interface IThatShould<out T> : aweXpect.Core.IThat<T> { }
-    public interface IThat<out T>
+    public interface IThatHas<out T> : aweXpect.Core.IThatVerb<T> { }
+    public interface IThatIs<out T> : aweXpect.Core.IThatVerb<T> { }
+    public interface IThatShould<out T> : aweXpect.Core.IThatVerb<T> { }
+    public interface IThatVerb<out T>
     {
         aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
+        bool Equals(object? obj);
+        int GetHashCode();
+        System.Type GetType();
+        string? ToString();
+    }
+    public interface IThat<out T>
+    {
         bool Equals(object? obj);
         int GetHashCode();
         System.Type GetType();
@@ -181,6 +180,12 @@ namespace aweXpect.Core
         {
             public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         }
+    }
+    [System.Diagnostics.DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
+    public readonly struct ThatSubject<T> : aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatShould<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>
+    {
+        public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
+        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
     }
 }
 namespace aweXpect.Core.Helpers
