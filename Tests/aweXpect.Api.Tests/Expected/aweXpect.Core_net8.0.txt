@@ -181,7 +181,7 @@ namespace aweXpect.Core
             public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         }
     }
-    [System.Diagnostics.DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
+    [System.Diagnostics.DebuggerDisplay("ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
     public readonly struct ThatSubject<T> : aweXpect.Core.IThatDoes<T>, aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>
     {
         public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
