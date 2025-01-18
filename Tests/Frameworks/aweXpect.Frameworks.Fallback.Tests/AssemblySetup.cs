@@ -6,7 +6,7 @@ namespace aweXpect.Frameworks.Fallback.Tests;
 [SetUpFixture]
 public class AssemblySetup
 {
-	private CustomizationLifetime _customizer;
+	private CustomizationLifetime? _customizer;
 
 	[OneTimeSetUp]
 	public void RunBeforeAnyTests()
@@ -18,5 +18,5 @@ public class AssemblySetup
 	}
 
 	[OneTimeTearDown]
-	public void RunAfterAnyTests() => _customizer.Dispose();
+	public void RunAfterAnyTests() => _customizer?.Dispose();
 }

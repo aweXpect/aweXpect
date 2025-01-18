@@ -91,7 +91,7 @@ public static partial class ThatException
 			=> $"{verb} an inner {(innerExceptionType == typeof(Exception) ? "exception" : Formatter.Format(innerExceptionType))}";
 	}
 
-	private class InnerExceptionIsTypeConstraint<TInnerException>(string it)
+	private readonly struct InnerExceptionIsTypeConstraint<TInnerException>(string it)
 		: IValueConstraint<Exception?>
 		where TInnerException : Exception?
 	{
@@ -114,7 +114,7 @@ public static partial class ThatException
 		#endregion
 	}
 
-	private class InnerExceptionIsTypeConstraint(string it, Type exceptionType)
+	private readonly struct InnerExceptionIsTypeConstraint(string it, Type exceptionType)
 		: IValueConstraint<Exception?>
 	{
 		#region IValueConstraint<Exception?> Members

@@ -191,12 +191,10 @@ namespace aweXpect
     }
     public static class ThatDelegate
     {
-        public static aweXpect.Delegates.ThatDelegate.WithoutValue Does(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue> subject) { }
-        public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> Does<TValue>(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<TValue>> subject) { }
-        public static aweXpect.Results.ExpectationResult ExecuteWithin(this aweXpect.Delegates.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult<TValue> ExecuteWithin<TValue>(this aweXpect.Delegates.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult NotExecuteWithin(this aweXpect.Delegates.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult<TValue> NotExecuteWithin<TValue>(this aweXpect.Delegates.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult DoesNotExecuteWithin(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult<TValue> DoesNotExecuteWithin<TValue>(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<TValue>> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult ExecutesWithin(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult<TValue> ExecutesWithin<TValue>(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<TValue>> source, System.TimeSpan duration) { }
     }
     public static class ThatDelegateThrows
     {
@@ -206,11 +204,6 @@ namespace aweXpect
             where TException : System.ArgumentException? { }
         public static aweXpect.Results.AndOrResult<TException?, aweXpect.Core.IThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(this aweXpect.Core.IThatDelegateThrows<TException> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations)
             where TException : System.Exception? { }
-    }
-    public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.ThatDelegateThrows<TException>>
-        where TException : System.Exception?
-    {
-        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
     }
     public static class ThatDictionary
     {

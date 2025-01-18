@@ -137,8 +137,8 @@ await Expect.That(Act).ThrowsException()
 You can verify, that the delegate finishes execution in a specified amount of time
 
 ```csharp
-await Expect.That(Task.Delay(200)).Does().ExecuteWithin(TimeSpan.FromMilliseconds(300))
+await Expect.That(Task.Delay(200)).ExecutesWithin(TimeSpan.FromMilliseconds(300))
   .Because("it should only take about 200ms");
-await Expect.That(Task.Delay(200)).Does().NotExecuteWithin(TimeSpan.FromMilliseconds(100))
+await Expect.That(Task.Delay(200)).DoesNotExecuteWithin(TimeSpan.FromMilliseconds(100))
   .Because("it should take at least 200ms");
 ```
