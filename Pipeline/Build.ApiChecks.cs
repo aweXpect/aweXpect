@@ -15,15 +15,21 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			Project project = Solution.Tests.aweXpect_Api_Tests;
+			Project[] projects =
+			[
+				Solution.Tests.aweXpect_Api_Tests,
+				Solution.Tests.aweXpect_Core_Api_Tests
+			];
 
 			DotNetTest(s => s
 				.SetConfiguration(Configuration == Configuration.Debug ? "Debug" : "Release")
 				.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 				.EnableNoBuild()
 				.SetResultsDirectory(TestResultsDirectory)
-				.CombineWith(cc => cc
-					.SetProjectFile(project)
-					.AddLoggers($"trx;LogFileName={project.Name}.trx")), completeOnFailure: true);
+				.CombineWith(
+					projects,
+					(settings, project) => settings
+						.SetProjectFile(project)
+						.AddLoggers($"trx;LogFileName={project.Name}.trx")), completeOnFailure: true);
 		});
 }

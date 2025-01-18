@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace aweXpect.Api.Tests;
+namespace aweXpect.Core.Api.Tests;
 
 public sealed class ApiAcceptance
 {
@@ -15,7 +15,7 @@ public sealed class ApiAcceptance
 	{
 		string[] assemblyNames =
 		[
-			"aweXpect"
+			"aweXpect.Core"
 		];
 
 		foreach (string assemblyName in assemblyNames)
