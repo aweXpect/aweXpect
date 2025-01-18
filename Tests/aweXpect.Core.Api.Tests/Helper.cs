@@ -27,7 +27,7 @@ internal static class Helper
 
 	public static string GetExpectedApi(string framework, string assemblyName)
 	{
-		string expectedPath = CombinedPaths("Tests", "aweXpect.Api.Tests",
+		string expectedPath = CombinedPaths("Tests", "aweXpect.Core.Api.Tests",
 			"Expected", $"{assemblyName}_{framework}.txt");
 		try
 		{
@@ -54,7 +54,7 @@ internal static class Helper
 
 	public static void SetExpectedApi(string framework, string assemblyName, string publicApi)
 	{
-		string expectedPath = CombinedPaths("Tests", "aweXpect.Api.Tests",
+		string expectedPath = CombinedPaths("Tests", "aweXpect.Core.Api.Tests",
 			"Expected", $"{assemblyName}_{framework}.txt");
 		Directory.CreateDirectory(Path.GetDirectoryName(expectedPath)!);
 		File.WriteAllText(expectedPath, publicApi);
