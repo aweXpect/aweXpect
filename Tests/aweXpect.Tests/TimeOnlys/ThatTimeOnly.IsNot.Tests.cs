@@ -16,7 +16,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -28,7 +28,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be {Formatter.Format(unexpected)},
@@ -45,7 +45,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -65,7 +65,7 @@ public sealed partial class ThatTimeOnly
 						.Within(tolerance)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
 					              Expected subject to

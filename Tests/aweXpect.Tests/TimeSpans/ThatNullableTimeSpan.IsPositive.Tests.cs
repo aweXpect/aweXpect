@@ -14,7 +14,7 @@ public sealed partial class ThatNullableTimeSpan
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class ThatNullableTimeSpan
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -41,7 +41,7 @@ public sealed partial class ThatNullableTimeSpan
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -57,7 +57,7 @@ public sealed partial class ThatNullableTimeSpan
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -68,7 +68,7 @@ public sealed partial class ThatNullableTimeSpan
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,

@@ -16,7 +16,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before <null>,
@@ -33,7 +33,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be before 9999-12-31,
@@ -50,7 +50,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be before 0001-01-01,
@@ -67,7 +67,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)},
@@ -85,7 +85,7 @@ public sealed partial class ThatNullableDateOnly
 					=> await That(subject).IsBefore(expected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)}, because we want to test the failure,
@@ -102,7 +102,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -115,7 +115,7 @@ public sealed partial class ThatNullableDateOnly
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Days());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)} ± 3 days,
@@ -134,7 +134,7 @@ public sealed partial class ThatNullableDateOnly
 						.Within(3.Days())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)} ± 3 days, because we want to test the failure,
@@ -152,7 +152,7 @@ public sealed partial class ThatNullableDateOnly
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Days());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

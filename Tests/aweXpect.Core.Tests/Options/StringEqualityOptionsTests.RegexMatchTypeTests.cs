@@ -14,7 +14,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("FOO\nBAR").AsRegex().IgnoringCase(ignoreCase);
 
-			await That(Act).Does().Throw<XunitException>().OnlyIf(!ignoreCase)
+			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
 				             Expected sut to
 				             match regex "FOO\nBAR",
@@ -34,7 +34,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("bar").AsRegex();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match regex "bar",
@@ -54,7 +54,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("\tsomething\r\nelse").AsRegex();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match regex "\tsomething\r\nelse",
@@ -72,10 +72,10 @@ public sealed partial class StringEqualityOptionsTests
 			Exception exception = new("foo");
 
 			async Task Act()
-				=> await That(() => Task.FromException(exception)).Does().ThrowException().WithMessage("bar")
+				=> await That(() => Task.FromException(exception)).ThrowsException().WithMessage("bar")
 					.AsRegex();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
 				             throw an exception with Message matching regex "bar",
@@ -95,7 +95,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("FOO").AsRegex().IgnoringCase();
 
-			await That(Act).Does().NotThrow();
+			await That(Act).DoesNotThrow();
 		}
 
 		[Fact]
@@ -106,7 +106,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(null).AsRegex();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match regex <null>,
@@ -122,7 +122,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(null).AsRegex();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match regex <null>,
@@ -138,7 +138,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(".*").AsRegex();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match regex ".*",

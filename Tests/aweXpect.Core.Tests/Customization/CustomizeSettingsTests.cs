@@ -34,12 +34,12 @@ public sealed class CustomizeSettingsTests
 		DateTime otherTime = time.AddMilliseconds(10);
 		await That(Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()).Is(TimeSpan.Zero);
 		async Task Act() => await That(time).Is(otherTime);
-		await That(Act).Does().ThrowException();
+		await That(Act).ThrowsException();
 		using (IDisposable __ = Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Set(10.Milliseconds()))
 		{
-			await That(Act).Does().NotThrow();
+			await That(Act).DoesNotThrow();
 		}
 
-		await That(Act).Does().ThrowException();
+		await That(Act).ThrowsException();
 	}
 }

@@ -26,7 +26,7 @@ public sealed partial class ThatAsyncEnumerable
 						=> await That(subject).Has().AtMost(6).Items()
 							.WithCancellation(token);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have at most 6 items,
@@ -42,7 +42,7 @@ public sealed partial class ThatAsyncEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtMost(3).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -53,7 +53,7 @@ public sealed partial class ThatAsyncEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtMost(4).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -64,7 +64,7 @@ public sealed partial class ThatAsyncEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtMost(2).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have at most 2 items,

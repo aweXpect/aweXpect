@@ -14,7 +14,7 @@ public sealed partial class ThatEnum
 				async Task Act()
 					=> await That(subject).HasValue(null);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have value <null>,
@@ -32,7 +32,7 @@ public sealed partial class ThatEnum
 				async Task Act()
 					=> await That(subject).HasValue(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have value {Formatter.Format(expected)},
@@ -50,7 +50,7 @@ public sealed partial class ThatEnum
 				async Task Act()
 					=> await That(subject).HasValue(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

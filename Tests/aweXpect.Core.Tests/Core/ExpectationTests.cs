@@ -11,7 +11,7 @@ public sealed class ExpectationTests
 		async Task Act()
 			=> await That(true).Is(a).And.Is(b);
 
-		await That(Act).Does().Throw<XunitException>();
+		await That(Act).Throws<XunitException>();
 	}
 
 	[Theory]
@@ -21,7 +21,7 @@ public sealed class ExpectationTests
 		async Task Act()
 			=> await That(true).Is(a).And.Is(b);
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 
 	[Theory]
@@ -31,7 +31,7 @@ public sealed class ExpectationTests
 		async Task Act()
 			=> await That(true).Is(a).Or.Is(b);
 
-		await That(Act).Does().ThrowException();
+		await That(Act).ThrowsException();
 	}
 
 	[Theory]
@@ -43,6 +43,6 @@ public sealed class ExpectationTests
 		async Task Act()
 			=> await That(true).Is(a).Or.Is(b);
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 }

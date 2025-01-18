@@ -24,7 +24,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).Signaled().Within(40.Milliseconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             have recorded the callback at least once within 0:00.040,
@@ -46,7 +46,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).Signaled().Within(40.Milliseconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             have recorded the callback at least once within 0:00.040,
@@ -66,7 +66,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).Signaled().Within(10.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -80,7 +80,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).Signaled().Within(10.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -19,7 +19,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsReadOnly();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be read-only,
@@ -35,7 +35,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsReadOnly();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be read-only,
@@ -51,7 +51,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsReadOnly();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -18,7 +18,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).HasPosition(position);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have position {position},
@@ -35,7 +35,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).HasPosition(position);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -46,7 +46,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).HasPosition(0);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have position 0,

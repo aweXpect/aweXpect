@@ -15,7 +15,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsNotNaN()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class ThatNumber
 
 				async Task Act() => await That(subject).IsNotNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be NaN,
@@ -47,7 +47,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -58,7 +58,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsNotNaN()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -69,7 +69,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be NaN,
@@ -91,7 +91,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -103,7 +103,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsNotNaN()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -113,7 +113,7 @@ public sealed partial class ThatNumber
 
 				async Task Act() => await That(subject).IsNotNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be NaN,
@@ -137,7 +137,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -148,7 +148,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsNotNaN()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -159,7 +159,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be NaN,
@@ -181,7 +181,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

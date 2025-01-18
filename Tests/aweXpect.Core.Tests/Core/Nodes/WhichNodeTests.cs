@@ -18,7 +18,7 @@ public sealed class WhichNodeTests
 			=> await That(subject).Is<Dummy>()
 				.Which(p => p.Value, e => e.Is("bar"));
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected subject to
 			             be type Dummy which .Value should be equal to "bar",

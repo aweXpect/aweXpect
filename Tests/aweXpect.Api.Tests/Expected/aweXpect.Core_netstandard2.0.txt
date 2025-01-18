@@ -129,6 +129,7 @@ namespace aweXpect.Core
         string GetExpectation(string? expected, bool useActiveGrammaticVoice);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
     }
+    public interface IThatDelegateThrows<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatDoes<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatHas<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatIs<out T> : aweXpect.Core.IThatVerb<T> { }
@@ -167,19 +168,6 @@ namespace aweXpect.Core
         public StringDifference(string? actual, string? expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null) { }
         public int IndexOfFirstMismatch { get; }
         public override string ToString() { }
-    }
-    public abstract class ThatDelegate
-    {
-        protected ThatDelegate(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        public sealed class WithValue<TValue> : aweXpect.Core.ThatDelegate
-        {
-            public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-        }
-        public sealed class WithoutValue : aweXpect.Core.ThatDelegate
-        {
-            public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-        }
     }
     [System.Diagnostics.DebuggerDisplay("ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
     public readonly struct ThatSubject<T> : aweXpect.Core.IThatDoes<T>, aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>
@@ -286,18 +274,59 @@ namespace aweXpect.Customization
         aweXpect.Customization.CustomizationLifetime Update(System.Func<TValue, TValue> update);
     }
 }
+namespace aweXpect.Delegates
+{
+    public abstract class ThatDelegate
+    {
+        protected ThatDelegate(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
+        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public aweXpect.Delegates.ThatDelegateThrows<System.Exception> Throws(System.Type exceptionType) { }
+        public aweXpect.Delegates.ThatDelegateThrows<TException> Throws<TException>()
+            where TException : System.Exception { }
+        public aweXpect.Delegates.ThatDelegateThrows<System.Exception> ThrowsExactly(System.Type exceptionType) { }
+        public aweXpect.Delegates.ThatDelegateThrows<TException> ThrowsExactly<TException>()
+            where TException : System.Exception { }
+        public aweXpect.Delegates.ThatDelegateThrows<System.Exception> ThrowsException() { }
+        public sealed class WithValue<TValue> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>
+        {
+            public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
+            public aweXpect.Results.ExpectationResult<TValue> DoesNotThrow() { }
+        }
+        public sealed class WithoutValue : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue>
+        {
+            public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
+            public aweXpect.Results.ExpectationResult DoesNotThrow() { }
+        }
+    }
+    public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>>, aweXpect.Core.IThatDelegateThrows<TException>, aweXpect.Core.IThatVerb<TException>
+        where TException : System.Exception?
+    {
+        public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public aweXpect.Delegates.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> Which<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType, System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner<TInnerException>()
+            where TInnerException : System.Exception? { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner<TInnerException>(System.Action<aweXpect.Core.IThat<TInnerException?>> expectations)
+            where TInnerException : System.Exception { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInnerException() { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
+        public aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithMessage(string expected) { }
+    }
+}
 namespace aweXpect
 {
     public static class Expect
     {
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithoutValue> That(System.Action @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithoutValue> That(System.Action<System.Threading.CancellationToken> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithoutValue> That(System.Func<System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithoutValue> That(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithValue<TValue>> That<TValue>(System.Func<System.Threading.CancellationToken, TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithoutValue That(System.Action @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithoutValue That(System.Action<System.Threading.CancellationToken> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithoutValue That(System.Func<System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithoutValue That(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<TValue>> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> That<TValue>(System.Func<System.Threading.CancellationToken, TValue> @delegate, [System.Runtime.CompilerServices.CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.Task<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(T subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T[]> That<T>(T[] subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
@@ -641,7 +670,7 @@ namespace aweXpect.Results
         protected Expectation() { }
         public override bool Equals(object? obj) { }
         public override int GetHashCode() { }
-        public new System.Type GetType() { }
+        public System.Type GetType() { }
         public override string? ToString() { }
         public abstract class Combination : aweXpect.Results.Expectation
         {

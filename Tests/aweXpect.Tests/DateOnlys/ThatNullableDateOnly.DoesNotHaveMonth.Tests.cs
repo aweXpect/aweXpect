@@ -16,7 +16,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveMonth(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -28,7 +28,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveMonth(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have month of {Formatter.Format(unexpected)},
@@ -45,7 +45,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveMonth(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -57,7 +57,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveMonth(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -69,7 +69,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveMonth(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

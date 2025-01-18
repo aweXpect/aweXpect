@@ -19,7 +19,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).Is(expected)
 						.Because("the subject has Unspecified kind");
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -43,7 +43,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -55,7 +55,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).Is(expected).Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)}, because we want to test the failure,
@@ -72,7 +72,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -88,7 +88,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).Is(expected)
 						.Because("the subject has Unspecified kind");
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -101,7 +101,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).Is(expected)
 						.Because("we also test the kind property");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)}, because we also test the kind property,
@@ -118,9 +118,9 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).Is(expected).Within(-1.Seconds());
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Fact]
@@ -133,7 +133,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).Is(expected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
@@ -150,7 +150,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).Is(expected).Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

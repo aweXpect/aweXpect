@@ -16,7 +16,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNotOnOrAfter(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)},
@@ -33,7 +33,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNotOnOrAfter(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)},
@@ -50,7 +50,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNotOnOrAfter(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)},
@@ -67,7 +67,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNotOnOrAfter(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)},
@@ -84,7 +84,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsNotOnOrAfter(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -97,7 +97,7 @@ public sealed partial class ThatTimeOnly
 					=> await That(subject).IsNotOnOrAfter(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after <null>, because we want to test the failure,
@@ -116,7 +116,7 @@ public sealed partial class ThatTimeOnly
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
@@ -134,7 +134,7 @@ public sealed partial class ThatTimeOnly
 					=> await That(subject).IsNotOnOrAfter(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be on or after {Formatter.Format(unexpected)} ± 0:03,
@@ -152,7 +152,7 @@ public sealed partial class ThatTimeOnly
 					=> await That(subject).IsNotOnOrAfter(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

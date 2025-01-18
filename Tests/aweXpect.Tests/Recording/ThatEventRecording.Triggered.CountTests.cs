@@ -26,7 +26,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.AtLeast(minimum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected recording to
 					              have recorded the CustomEvent event on sut at least {(minimum == 1 ? "once" : $"{minimum} times")},
@@ -52,7 +52,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.AtMost(maximum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected recording to
 					              have recorded the CustomEvent event on sut at most {(maximum == 1 ? "once" : $"{maximum} times")},
@@ -80,7 +80,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.Between(minimum).And(maximum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected recording to
 					              have recorded the CustomEvent event on sut between {minimum} and {maximum} times,
@@ -106,7 +106,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.Exactly(expected.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected recording to
 					              have recorded the CustomEvent event on sut exactly {(expected == 1 ? "once" : $"{expected} times")},
@@ -128,7 +128,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.Never();
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected recording to
 					             have never recorded the CustomEvent event on sut,
@@ -151,7 +151,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.Once();
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected recording to
 					              have recorded the CustomEvent event on sut exactly once,

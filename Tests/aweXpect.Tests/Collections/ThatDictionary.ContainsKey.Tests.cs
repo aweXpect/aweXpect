@@ -16,7 +16,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).ContainsKey(2);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).ContainsKey(0);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have key 0,
@@ -47,7 +47,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject!).ContainsKey("foo");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have key "foo",

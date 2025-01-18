@@ -18,7 +18,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).IsSameAs(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -36,7 +36,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).IsSameAs(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             refer to expected Other {
@@ -60,7 +60,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).IsSameAs(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             refer to expected <null>,
@@ -79,7 +79,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).IsSameAs(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -94,7 +94,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).IsSameAs(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             refer to expected Other {

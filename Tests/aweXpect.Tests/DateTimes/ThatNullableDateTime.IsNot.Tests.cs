@@ -16,7 +16,7 @@ public sealed partial class ThatNullableDateTime
 					=> await That(subject).IsNot(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be 9999-12-31T23:59:59.9999999, because we want to test the failure,
@@ -34,7 +34,7 @@ public sealed partial class ThatNullableDateTime
 					=> await That(subject).IsNot(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be 0001-01-01T00:00:00.0000000, because we want to test the failure,
@@ -51,7 +51,7 @@ public sealed partial class ThatNullableDateTime
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -64,7 +64,7 @@ public sealed partial class ThatNullableDateTime
 					=> await That(subject).IsNot(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be {Formatter.Format(unexpected)}, because we want to test the failure,
@@ -82,7 +82,7 @@ public sealed partial class ThatNullableDateTime
 					=> await That(subject).IsNot(unexpected)
 						.Because("we also test the kind property");
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -94,9 +94,9 @@ public sealed partial class ThatNullableDateTime
 				async Task Act()
 					=> await That(subject).IsNot(expected).Within(-1.Seconds());
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Fact]
@@ -109,7 +109,7 @@ public sealed partial class ThatNullableDateTime
 					=> await That(subject).IsNot(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -122,7 +122,7 @@ public sealed partial class ThatNullableDateTime
 					=> await That(subject).IsNot(expected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be {Formatter.Format(expected)} ± 0:03, because we want to test the failure,

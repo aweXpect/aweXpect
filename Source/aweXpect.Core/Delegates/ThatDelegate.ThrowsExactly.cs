@@ -1,20 +1,20 @@
 ﻿using System;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 using aweXpect.Core.Sources;
-using aweXpect.Helpers;
 
-namespace aweXpect;
+namespace aweXpect.Delegates;
 
-public static partial class ThatDelegate
+public abstract partial class ThatDelegate
 {
 	/// <summary>
 	///     Verifies that the delegate throws exactly an exception of type <typeparamref name="TException" />.
 	/// </summary>
-	public static ThatDelegateThrows<TException> ThrowExactly<TException>(this Core.ThatDelegate source)
+	public ThatDelegateThrows<TException> ThrowsExactly<TException>()
 		where TException : Exception
 	{
 		ThrowsOption throwOptions = new();
-		return new ThatDelegateThrows<TException>(source.ExpectationBuilder
+		return new ThatDelegateThrows<TException>(ExpectationBuilder
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
 				.AddConstraint(_ => new ThrowsExactlyCastConstraint<TException>(throwOptions))
 				.And(" "),
@@ -24,11 +24,10 @@ public static partial class ThatDelegate
 	/// <summary>
 	///     Verifies that the delegate throws exactly an exception of type <paramref name="exceptionType" />.
 	/// </summary>
-	public static ThatDelegateThrows<Exception> ThrowExactly(this Core.ThatDelegate source,
-		Type exceptionType)
+	public ThatDelegateThrows<Exception> ThrowsExactly(Type exceptionType)
 	{
 		ThrowsOption throwOptions = new();
-		return new ThatDelegateThrows<Exception>(source.ExpectationBuilder
+		return new ThatDelegateThrows<Exception>(ExpectationBuilder
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
 				.AddConstraint(_ => new ThrowsExactlyCastConstraint(exceptionType, throwOptions))
 				.And(" "),
@@ -57,7 +56,7 @@ public static partial class ThatDelegate
 			}
 
 			return new ConstraintResult.Failure<TException?>(null, ToString(),
-				$"it did throw {value.FormatForMessage()}");
+				$"it did throw {FormatForMessage(value)}");
 		}
 
 		/// <inheritdoc />
@@ -96,7 +95,7 @@ public static partial class ThatDelegate
 			}
 
 			return new ConstraintResult.Failure<Exception?>(null, ToString(),
-				$"it did throw {value.FormatForMessage()}");
+				$"it did throw {FormatForMessage(value)}");
 		}
 
 		/// <inheritdoc />

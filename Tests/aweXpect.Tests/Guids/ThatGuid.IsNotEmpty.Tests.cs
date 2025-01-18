@@ -14,7 +14,7 @@ public sealed partial class ThatGuid
 				async Task Act()
 					=> await That(subject).IsNotEmpty();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be empty,
@@ -30,7 +30,7 @@ public sealed partial class ThatGuid
 				async Task Act()
 					=> await That(subject).IsNotEmpty();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

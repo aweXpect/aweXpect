@@ -14,7 +14,7 @@ public sealed partial class ThatBool
 				async Task Act()
 					=> await That(subject).IsTrue();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be True,
@@ -30,7 +30,7 @@ public sealed partial class ThatBool
 				async Task Act()
 					=> await That(subject).IsTrue().Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be True, because we want to test the failure,
@@ -46,7 +46,7 @@ public sealed partial class ThatBool
 				async Task Act()
 					=> await That(subject).IsTrue();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

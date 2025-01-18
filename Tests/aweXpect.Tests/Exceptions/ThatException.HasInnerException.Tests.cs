@@ -15,7 +15,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInnerException(e => e.HasMessage("inner"));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInnerException(e => e.HasMessage("some other message"));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner exception which should have Message equal to "some other message",
@@ -47,7 +47,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInnerException();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner exception,
@@ -64,7 +64,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInnerException();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -75,7 +75,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInnerException();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner exception,

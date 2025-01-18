@@ -15,7 +15,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsNotNull()
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be null, because we want to test the failure,
@@ -31,7 +31,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsNotNull();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

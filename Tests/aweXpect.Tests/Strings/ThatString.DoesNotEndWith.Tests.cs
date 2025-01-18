@@ -15,7 +15,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(expected).IgnoringCase();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with "TEXT" ignoring case,
@@ -32,7 +32,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(expected).IgnoringCase();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -46,7 +46,7 @@ public sealed partial class ThatString
 					=> await That(subject).DoesNotEndWith(expected)
 						.Using(new IgnoreCaseForVocalsComparer());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with "tExt" using IgnoreCaseForVocalsComparer,
@@ -65,7 +65,7 @@ public sealed partial class ThatString
 					=> await That(subject).DoesNotEndWith(expected)
 						.Using(new IgnoreCaseForVocalsComparer());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -77,7 +77,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with "text",
@@ -94,7 +94,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

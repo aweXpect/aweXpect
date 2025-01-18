@@ -16,7 +16,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveDay(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -28,7 +28,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveDay(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have day of {Formatter.Format(unexpected)},
@@ -45,7 +45,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).DoesNotHaveDay(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

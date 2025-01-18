@@ -1,9 +1,8 @@
 ﻿using System;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
-namespace aweXpect;
+namespace aweXpect.Delegates;
 
 public partial class ThatDelegateThrows<TException>
 {
@@ -25,7 +24,7 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException()
 		=> new(ExpectationBuilder
 				.AddConstraint(it =>
-					new ThatException.HasInnerExceptionValueConstraint<Exception>("with",
+					new HasInnerExceptionValueConstraint<Exception>("with",
 						it)),
 			this);
 }

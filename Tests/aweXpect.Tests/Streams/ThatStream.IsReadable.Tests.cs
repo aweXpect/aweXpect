@@ -16,7 +16,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsReadable();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be readable,
@@ -32,7 +32,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsReadable();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be readable,
@@ -48,7 +48,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsReadable();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -16,7 +16,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -38,7 +38,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values,
@@ -55,7 +55,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values,
@@ -73,7 +73,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject!).AreAllUnique();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values,
@@ -92,7 +92,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -103,7 +103,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -114,7 +114,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -125,7 +125,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique().IgnoringCase();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values ignoring case,
@@ -142,7 +142,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values,
@@ -159,7 +159,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values,
@@ -177,7 +177,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject!).AreAllUnique();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values,
@@ -196,7 +196,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value).Using(new AllDifferentComparer());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -207,7 +207,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -218,7 +218,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value,
@@ -236,7 +236,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value,
@@ -254,7 +254,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject!).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value,
@@ -273,7 +273,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value).Using(new AllDifferentComparer());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -284,7 +284,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -295,7 +295,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -306,7 +306,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value).IgnoringCase();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value ignoring case,
@@ -323,7 +323,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value,
@@ -341,7 +341,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value,
@@ -359,7 +359,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject!).AreAllUnique(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             only have unique values for x => x.Value,

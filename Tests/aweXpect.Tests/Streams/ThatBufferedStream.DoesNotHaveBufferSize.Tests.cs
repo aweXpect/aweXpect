@@ -21,7 +21,7 @@ public sealed partial class ThatBufferedStream
 				async Task Act()
 					=> await That(subject).DoesNotHaveBufferSize(bufferSize);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -33,7 +33,7 @@ public sealed partial class ThatBufferedStream
 				async Task Act()
 					=> await That(subject).DoesNotHaveBufferSize(bufferSize);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not have buffer size {bufferSize},
@@ -49,7 +49,7 @@ public sealed partial class ThatBufferedStream
 				async Task Act()
 					=> await That(subject).DoesNotHaveBufferSize(0);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have buffer size 0,

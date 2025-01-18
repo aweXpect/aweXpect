@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Sources;
 using aweXpect.Helpers;
@@ -11,37 +12,37 @@ public static partial class ThatDelegate
 	/// <summary>
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
 	/// </summary>
-	public static ExpectationResult<TValue> ExecuteWithin<TValue>(
-		this Core.ThatDelegate.WithValue<TValue> source,
+	public static ExpectationResult<TValue> ExecutesWithin<TValue>(
+		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
-		=> new(source.ExpectationBuilder
+		=> new(source.ThatIs().ExpectationBuilder
 			.AddConstraint(_ => new ExecuteWithinConstraint<TValue>(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
 	/// </summary>
-	public static ExpectationResult ExecuteWithin(
-		this Core.ThatDelegate.WithoutValue source,
+	public static ExpectationResult ExecutesWithin(
+		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
-		=> new(source.ExpectationBuilder
+		=> new(source.ThatIs().ExpectationBuilder
 			.AddConstraint(_ => new ExecuteWithinConstraint(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
 	/// </summary>
-	public static ExpectationResult<TValue> NotExecuteWithin<TValue>(
-		this Core.ThatDelegate.WithValue<TValue> source,
+	public static ExpectationResult<TValue> DoesNotExecuteWithin<TValue>(
+		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
-		=> new(source.ExpectationBuilder
+		=> new(source.ThatIs().ExpectationBuilder
 			.AddConstraint(_ => new NotExecuteWithinConstraint<TValue>(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
 	/// </summary>
-	public static ExpectationResult NotExecuteWithin(
-		this Core.ThatDelegate.WithoutValue source,
+	public static ExpectationResult DoesNotExecuteWithin(
+		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
-		=> new(source.ExpectationBuilder
+		=> new(source.ThatIs().ExpectationBuilder
 			.AddConstraint(_ => new NotExecuteWithinConstraint(duration)));
 
 	private readonly struct ExecuteWithinConstraint<TValue>(TimeSpan duration)

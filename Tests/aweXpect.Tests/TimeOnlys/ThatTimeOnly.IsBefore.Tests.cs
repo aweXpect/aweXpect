@@ -16,7 +16,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before <null>,
@@ -33,7 +33,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be before 23:59:59.9999999,
@@ -50,7 +50,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be before 00:00:00.0000000,
@@ -67,7 +67,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)},
@@ -85,7 +85,7 @@ public sealed partial class ThatTimeOnly
 					=> await That(subject).IsBefore(expected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)}, because we want to test the failure,
@@ -102,7 +102,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -115,7 +115,7 @@ public sealed partial class ThatTimeOnly
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)} ± 0:03,
@@ -134,7 +134,7 @@ public sealed partial class ThatTimeOnly
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
@@ -152,7 +152,7 @@ public sealed partial class ThatTimeOnly
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

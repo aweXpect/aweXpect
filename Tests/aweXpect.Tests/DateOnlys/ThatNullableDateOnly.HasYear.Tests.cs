@@ -16,7 +16,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).HasYear(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have year of <null>,
@@ -33,7 +33,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).HasYear(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have year of <null>,
@@ -50,7 +50,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).HasYear(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have year of 1,
@@ -67,7 +67,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).HasYear(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have year of {Formatter.Format(expected)},
@@ -84,7 +84,7 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).HasYear(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

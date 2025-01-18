@@ -15,7 +15,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not start with "some",
@@ -46,7 +46,7 @@ public sealed partial class ThatString
 					=> await That(subject).DoesNotStartWith(expected)
 						.Using(new IgnoreCaseForVocalsComparer());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -60,7 +60,7 @@ public sealed partial class ThatString
 					=> await That(subject).DoesNotStartWith(expected)
 						.Using(new IgnoreCaseForVocalsComparer());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not start with "sOmE" using IgnoreCaseForVocalsComparer,
@@ -77,7 +77,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(expected).IgnoringCase();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -89,7 +89,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(expected).IgnoringCase();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not start with "SOME" ignoring case,

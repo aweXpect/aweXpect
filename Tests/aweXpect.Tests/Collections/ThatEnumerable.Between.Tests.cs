@@ -22,7 +22,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Between(6).And(8).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 6 and 8 items satisfy y => y < 6,
@@ -39,7 +39,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Between(0).And(2).Are(1)
 						.And.Between(0).And(1).Are(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -50,7 +50,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Between(0).And(1).Are(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 0 and 1 items equal to 1,
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Between(3).And(4).Are(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -77,7 +77,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Between(3).And(4).Are(2);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 3 and 4 items equal to 2,
@@ -93,7 +93,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Between(1).And(3).Are(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 1 and 3 items equal to 1,
@@ -109,7 +109,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).Between(0).And(1).Are(0);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have between 0 and 1 items equal to 0,

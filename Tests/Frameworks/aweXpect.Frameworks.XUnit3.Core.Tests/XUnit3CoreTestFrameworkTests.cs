@@ -13,7 +13,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Fail.Test("my message");
 
-		Exception exception = await Expect.That(Act).Does().ThrowException()
+		Exception exception = await Expect.That(Act).ThrowsException()
 			.WithMessage("my message");
 		await Expect.That(exception.GetType().GetInterfaces().Select(e => e.Name))
 			.Contains("IAssertionException");
@@ -25,7 +25,7 @@ public class XUnit3TestFrameworkTests
 		void Act()
 			=> Skip.Test("my message");
 
-		await Expect.That(Act).Does().ThrowException()
+		await Expect.That(Act).ThrowsException()
 			.WithMessage("$XunitDynamicSkip$my message");
 	}
 }

@@ -16,7 +16,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after <null>,
@@ -33,7 +33,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -45,7 +45,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -57,7 +57,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)},
@@ -74,7 +74,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -86,7 +86,7 @@ public sealed partial class ThatDateOnly
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -99,7 +99,7 @@ public sealed partial class ThatDateOnly
 					=> await That(subject).IsOnOrAfter(expected)
 						.Within(3.Days());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)} ± 3 days,
@@ -118,7 +118,7 @@ public sealed partial class ThatDateOnly
 						.Within(3.Days())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)} ± 3 days, because we want to test the failure,
@@ -136,7 +136,7 @@ public sealed partial class ThatDateOnly
 					=> await That(subject).IsOnOrAfter(expected)
 						.Within(3.Days());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}
