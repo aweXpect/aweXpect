@@ -15,11 +15,11 @@ public static partial class ThatHttpResponseMessage
 	/// <summary>
 	///     Verifies that the string content is equal to <paramref name="expected" />
 	/// </summary>
-	public static StringEqualityTypeResult<HttpResponseMessage, IExpectSubject<HttpResponseMessage?>>
-		HasContent(this IExpectSubject<HttpResponseMessage?> source, string expected)
+	public static StringEqualityTypeResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+		HasContent(this IThat<HttpResponseMessage?> source, string expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<HttpResponseMessage, IExpectSubject<HttpResponseMessage?>>(
+		return new StringEqualityTypeResult<HttpResponseMessage, IThat<HttpResponseMessage?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasContentConstraint(it, expected, options)),
 			source,

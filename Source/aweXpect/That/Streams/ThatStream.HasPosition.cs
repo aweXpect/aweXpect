@@ -10,8 +10,8 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the subject <see cref="Stream" /> has the <paramref name="expected" /> position.
 	/// </summary>
-	public static AndOrResult<Stream?, IExpectSubject<Stream?>> HasPosition(
-		this IExpectSubject<Stream?> source,
+	public static AndOrResult<Stream?, IThat<Stream?>> HasPosition(
+		this IThat<Stream?> source,
 		long expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
@@ -25,8 +25,8 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the subject <see cref="Stream" /> has the <paramref name="expected" /> position.
 	/// </summary>
-	public static AndOrResult<Stream?, IExpectSubject<Stream?>> DoesNotHavePosition(
-		this IExpectSubject<Stream?> source,
+	public static AndOrResult<Stream?, IThat<Stream?>> DoesNotHavePosition(
+		this IThat<Stream?> source,
 		long expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(

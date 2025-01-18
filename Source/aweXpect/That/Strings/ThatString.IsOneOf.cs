@@ -12,12 +12,12 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IExpectSubject<string?>> IsOneOf(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeResult<string?, IThat<string?>> IsOneOf(
+		this IThat<string?> source,
 		params string?[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeOneOfConstraint(it, expected, options)),
 			source,
@@ -27,12 +27,12 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IExpectSubject<string?>> IsNotOneOf(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeResult<string?, IThat<string?>> IsNotOneOf(
+		this IThat<string?> source,
 		params string?[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotBeOneOfConstraint(it, unexpected, options)),
 			source,

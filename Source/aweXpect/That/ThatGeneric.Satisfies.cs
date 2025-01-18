@@ -13,7 +13,7 @@ public static partial class ThatGeneric
 	///     Expect the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>
 	[Obsolete("TODO")]
-	public static AndOrResult<T, IThat<T>> Satisfy<T>(this IThat<T> source,
+	public static AndOrResult<T, IThatVerb<T>> Satisfy<T>(this IThatVerb<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
@@ -26,7 +26,7 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<T, IExpectSubject<T>> Satisfies<T>(this IExpectSubject<T> source,
+	public static AndOrResult<T, IThat<T>> Satisfies<T>(this IThat<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
@@ -38,7 +38,7 @@ public static partial class ThatGeneric
 	/// <summary>
 	///     Expect the actual value to not satisfy the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<T, IExpectSubject<T>> DoesNotSatisfy<T>(this IExpectSubject<T> source,
+	public static AndOrResult<T, IThat<T>> DoesNotSatisfy<T>(this IThat<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")

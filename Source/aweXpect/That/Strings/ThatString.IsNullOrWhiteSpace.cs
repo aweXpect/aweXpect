@@ -11,8 +11,8 @@ public static partial class ThatString
 	///     Verifies that the subject is <see langword="null" />, <see cref="string.Empty" /> or consists only of white-space
 	///     characters.
 	/// </summary>
-	public static AndOrResult<string?, IExpectSubject<string?>> IsNullOrWhiteSpace(
-		this IExpectSubject<string?> source)
+	public static AndOrResult<string?, IThat<string?>> IsNullOrWhiteSpace(
+		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeNullOrWhiteSpaceConstraint(it)),
 			source);
@@ -21,8 +21,8 @@ public static partial class ThatString
 	///     Verifies that the subject is not <see langword="null" />, <see cref="string.Empty" /> or consists only of
 	///     white-space characters.
 	/// </summary>
-	public static AndOrResult<string, IExpectSubject<string?>> IsNotNullOrWhiteSpace(
-		this IExpectSubject<string?> source)
+	public static AndOrResult<string, IThat<string?>> IsNotNullOrWhiteSpace(
+		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotBeNullOrWhiteSpaceConstraint(it)),
 			source);

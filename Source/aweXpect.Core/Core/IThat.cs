@@ -6,7 +6,11 @@ namespace aweXpect.Core;
 /// <summary>
 ///     Starting point for an expectation.
 /// </summary>
-public interface IExpectSubject<out T>
+/// <remarks>
+///     All implementations are also expected to implement at least <see cref="IThatVerb{T}" />!
+/// </remarks>
+// ReSharper disable once UnusedTypeParameter
+public interface IThat<out T>
 {
 	/// <summary>
 	///     <i>Not supported!</i><br />
@@ -37,11 +41,6 @@ public interface IExpectSubject<out T>
 	/// </remarks>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	Type GetType();
-
-	/// <summary>
-	///     Applies the <paramref name="builderOptions" /> to the <see cref="ExpectationBuilder" />.
-	/// </summary>
-	IThatShould<T> Should(Action<ExpectationBuilder> builderOptions);
 
 	/// <summary>
 	///     <i>Not supported!</i><br />

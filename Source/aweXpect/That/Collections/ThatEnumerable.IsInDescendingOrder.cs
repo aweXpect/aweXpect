@@ -13,12 +13,12 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in descending order.
 	/// </summary>
-	public static CollectionOrderResult<TItem, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		IsInDescendingOrder<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source)
+			this IThat<IEnumerable<TItem>> source)
 	{
 		CollectionOrderOptions<TItem> options = new();
-		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Descending, options, "")),
 			source,
@@ -28,16 +28,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in descending order.
 	/// </summary>
-	public static CollectionOrderResult<TMember, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		IsInDescendingOrder<
 			TItem, TMember>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			Func<TItem, TMember> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
 		CollectionOrderOptions<TMember> options = new();
-		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Descending, options,
 					$" for {doNotPopulateThisValue}")),

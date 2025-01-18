@@ -12,12 +12,12 @@ public static partial class ThatNullableTimeSpan
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeSpan?, IExpectSubject<TimeSpan?>> Is(
-		this IExpectSubject<TimeSpan?> source,
+	public static TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>> Is(
+		this IThat<TimeSpan?> source,
 		TimeSpan? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeSpan?, IExpectSubject<TimeSpan?>>(
+		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint(it, expected, tolerance)),
 			source,
@@ -27,12 +27,12 @@ public static partial class ThatNullableTimeSpan
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeSpan?, IExpectSubject<TimeSpan?>> IsNot(
-		this IExpectSubject<TimeSpan?> source,
+	public static TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>> IsNot(
+		this IThat<TimeSpan?> source,
 		TimeSpan? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeSpan?, IExpectSubject<TimeSpan?>>(
+		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotBeConstraint(it, unexpected, tolerance)),
 			source,

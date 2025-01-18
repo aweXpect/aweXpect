@@ -11,12 +11,12 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject is equal to <paramref name="expected" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IExpectSubject<string?>> Is(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeResult<string?, IThat<string?>> Is(
+		this IThat<string?> source,
 		string? expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint(it, expected, options)),
 			source,

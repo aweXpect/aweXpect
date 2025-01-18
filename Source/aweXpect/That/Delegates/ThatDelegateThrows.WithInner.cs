@@ -13,14 +13,14 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>>
 		WithInner<TInnerException>(
-			Action<IExpectSubject<TInnerException?>> expectations)
+			Action<IThat<TInnerException?>> expectations)
 		where TInnerException : Exception
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					$"with an inner {typeof(TInnerException).Name} which should ")
 				.Validate(it
 					=> new ThatException.InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new That.Subject<TInnerException?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e))),
 			this);
 
 	/// <summary>
@@ -41,14 +41,14 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInner(
 		Type innerExceptionType,
-		Action<IExpectSubject<Exception?>> expectations)
+		Action<IThat<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					$"with an inner {innerExceptionType.Name} which should ")
 				.Validate(it
 					=> new ThatException.InnerExceptionIsTypeConstraint(it,
 						innerExceptionType))
-				.AddExpectations(e => expectations(new That.Subject<Exception?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
 			this);
 
 	/// <summary>

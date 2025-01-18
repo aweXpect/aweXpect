@@ -11,7 +11,7 @@ public static partial class ThatTimeOnly
 	/// <summary>
 	///     Verifies that the second of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<TimeOnly, IExpectSubject<TimeOnly>> HasSecond(this IExpectSubject<TimeOnly> source,
+	public static AndOrResult<TimeOnly, IThat<TimeOnly>> HasSecond(this IThat<TimeOnly> source,
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(
@@ -24,8 +24,8 @@ public static partial class ThatTimeOnly
 	/// <summary>
 	///     Verifies that the second of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<TimeOnly, IExpectSubject<TimeOnly>> DoesNotHaveSecond(
-		this IExpectSubject<TimeOnly> source,
+	public static AndOrResult<TimeOnly, IThat<TimeOnly>> DoesNotHaveSecond(
+		this IThat<TimeOnly> source,
 		int? unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(

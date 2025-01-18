@@ -10,7 +10,7 @@ public static partial class ThatNullableGuid
 	/// <summary>
 	///     Verifies that the subject is <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<Guid?, IExpectSubject<Guid?>> IsNull(this IExpectSubject<Guid?> source)
+	public static AndOrResult<Guid?, IThat<Guid?>> IsNull(this IThat<Guid?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					it,
@@ -21,7 +21,7 @@ public static partial class ThatNullableGuid
 	/// <summary>
 	///     Verifies that the subject is not <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<Guid?, IExpectSubject<Guid?>> IsNotNull(this IExpectSubject<Guid?> source)
+	public static AndOrResult<Guid?, IThat<Guid?>> IsNotNull(this IThat<Guid?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					it,

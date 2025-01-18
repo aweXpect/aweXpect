@@ -10,8 +10,8 @@ public static partial class ThatNullableDateTime
 	/// <summary>
 	///     Verifies that the millisecond of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime?, IExpectSubject<DateTime?>> HasMillisecond(
-		this IExpectSubject<DateTime?> source,
+	public static AndOrResult<DateTime?, IThat<DateTime?>> HasMillisecond(
+		this IThat<DateTime?> source,
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(
@@ -24,8 +24,8 @@ public static partial class ThatNullableDateTime
 	/// <summary>
 	///     Verifies that the millisecond of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime?, IExpectSubject<DateTime?>> DoesNotHaveMillisecond(
-		this IExpectSubject<DateTime?> source,
+	public static AndOrResult<DateTime?, IThat<DateTime?>> DoesNotHaveMillisecond(
+		this IThat<DateTime?> source,
 		int? unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(

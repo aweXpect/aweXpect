@@ -11,8 +11,8 @@ public static partial class ThatBufferedStream
 	/// <summary>
 	///     Verifies that the subject <see cref="BufferedStream" /> has the <paramref name="expected" /> buffer size.
 	/// </summary>
-	public static AndOrResult<BufferedStream?, IExpectSubject<BufferedStream?>> HasBufferSize(
-		this IExpectSubject<BufferedStream?> source,
+	public static AndOrResult<BufferedStream?, IThat<BufferedStream?>> HasBufferSize(
+		this IThat<BufferedStream?> source,
 		int expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
@@ -28,8 +28,8 @@ public static partial class ThatBufferedStream
 	///     Verifies that the subject <see cref="BufferedStream" /> does not have the <paramref name="unexpected" />
 	///     buffer size.
 	/// </summary>
-	public static AndOrResult<BufferedStream?, IExpectSubject<BufferedStream?>>
-		DoesNotHaveBufferSize(this IExpectSubject<BufferedStream?> source,
+	public static AndOrResult<BufferedStream?, IThat<BufferedStream?>>
+		DoesNotHaveBufferSize(this IThat<BufferedStream?> source,
 			int unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(

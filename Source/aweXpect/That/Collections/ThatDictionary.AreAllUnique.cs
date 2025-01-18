@@ -19,13 +19,13 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>>
+	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>
 		AreAllUnique<TKey,
 			TValue>(
-			this IExpectSubject<IDictionary<TKey, TValue>> source)
+			this IThat<IDictionary<TKey, TValue>> source)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>>(
+		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AllBeUniqueConstraint<TKey, TValue, object?>(it, options)),
 			source, options
@@ -38,12 +38,12 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static StringEqualityResult<IDictionary<TKey, string>, IExpectSubject<IDictionary<TKey, string>>>
+	public static StringEqualityResult<IDictionary<TKey, string>, IThat<IDictionary<TKey, string>>>
 		AreAllUnique<TKey>(
-			this IExpectSubject<IDictionary<TKey, string>> source)
+			this IThat<IDictionary<TKey, string>> source)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IDictionary<TKey, string>, IExpectSubject<IDictionary<TKey, string>>>(
+		return new StringEqualityResult<IDictionary<TKey, string>, IThat<IDictionary<TKey, string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AllBeUniqueConstraint<TKey, string, string>(it, options)),
 			source, options
@@ -57,16 +57,16 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>>
+	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>
 		AreAllUnique<TKey,
 			TValue, TMember>(
-			this IExpectSubject<IDictionary<TKey, TValue>> source,
+			this IThat<IDictionary<TKey, TValue>> source,
 			Func<TValue, TMember> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>>(
+		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AllBeUniqueWithPredicateConstraint<TKey, TValue, TMember, object?>(it, memberAccessor,
 					doNotPopulateThisValue,
@@ -82,16 +82,16 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static StringEqualityResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>>
+	public static StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>
 		AreAllUnique<TKey,
 			TValue>(
-			this IExpectSubject<IDictionary<TKey, TValue>> source,
+			this IThat<IDictionary<TKey, TValue>> source,
 			Func<TValue, string> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IDictionary<TKey, TValue>, IExpectSubject<IDictionary<TKey, TValue>>>(
+		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AllBeUniqueWithPredicateConstraint<TKey, TValue, string, string>(it, memberAccessor,
 					doNotPopulateThisValue,

@@ -10,8 +10,8 @@ public static partial class ThatDateTimeOffset
 	/// <summary>
 	///     Verifies that the day of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTimeOffset, IExpectSubject<DateTimeOffset>> HasDay(
-		this IExpectSubject<DateTimeOffset> source,
+	public static AndOrResult<DateTimeOffset, IThat<DateTimeOffset>> HasDay(
+		this IThat<DateTimeOffset> source,
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(
@@ -24,8 +24,8 @@ public static partial class ThatDateTimeOffset
 	/// <summary>
 	///     Verifies that the day of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTimeOffset, IExpectSubject<DateTimeOffset>> DoesNotHaveDay(
-		this IExpectSubject<DateTimeOffset> source,
+	public static AndOrResult<DateTimeOffset, IThat<DateTimeOffset>> DoesNotHaveDay(
+		this IThat<DateTimeOffset> source,
 		int? unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(

@@ -48,7 +48,7 @@ Similar to [fluentassertions](https://fluentassertions.com/extensibility/) exten
 methods on `.Should()`:
 
 - for new types  
-  write a new `.Should()` extension method on `IExpectSubject<TType>`
+  write a new `.Should()` extension method on `IThat<TType>`
 - for existing types  
   writing an extension method on `IThat<TType>`
 

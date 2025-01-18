@@ -56,9 +56,9 @@ public class EvaluationContextTests
 
 	private static async Task<IEvaluationContext> GetSut()
 	{
-		IThatShould<bool> that = That(true).Should(_ => { });
+		IThatVerb<bool> that = (IThatVerb<bool>)That(true);
 		MyContextConstraint constraint = new();
-		await new AndOrResult<bool, IThatShould<bool>>(
+		await new AndOrResult<bool, IThatVerb<bool>>(
 			that.ExpectationBuilder
 				.AddConstraint(_ => constraint),
 			that);

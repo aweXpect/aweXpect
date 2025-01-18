@@ -10,7 +10,7 @@ public static partial class ThatBool
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<bool, IExpectSubject<bool>> Is(this IExpectSubject<bool> source,
+	public static AndOrResult<bool, IThat<bool>> Is(this IThat<bool> source,
 		bool expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeValueConstraint(it, expected)),
@@ -19,7 +19,7 @@ public static partial class ThatBool
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<bool, IExpectSubject<bool>> IsNot(this IExpectSubject<bool> source,
+	public static AndOrResult<bool, IThat<bool>> IsNot(this IThat<bool> source,
 		bool unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotBeValueConstraint(it, unexpected)),

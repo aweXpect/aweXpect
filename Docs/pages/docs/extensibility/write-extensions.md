@@ -58,7 +58,7 @@ available for the `IThat<T>`. They differ in the input and output parameters:
 
 ## For new types
 
-You can extend the functionality to new types, by adding a `.Should()` extension methods on `IExpectSubject<TType>` and
+You can extend the functionality to new types, by adding a `.Should()` extension methods on `IThat<TType>` and
 then the corresponding methods on `IThat<TType>`.
 
 ### Example 2
@@ -70,7 +70,7 @@ First you need to enable expectations for `DirectoryInfo`:
 ```csharp
 public static class DirectoryInfoExtensions
 {
-  public static IThat<DirectoryInfo> Should(this IExpectSubject<DirectoryInfo> subject)
+  public static IThat<DirectoryInfo> Should(this IThat<DirectoryInfo> subject)
     => subject.Should(_ => {});
 }
 ```

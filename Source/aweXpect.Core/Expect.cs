@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T> That<T>(T subject,
+	public static IThat<T> That<T>(T subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new ValueSource<T>(subject), doNotPopulateThisValue));
@@ -25,7 +24,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T[]> That<T>(T[] subject,
+	public static IThat<T[]> That<T>(T[] subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T[]>(new ExpectationBuilder<T[]>(
 			new ValueSource<T[]>(subject), doNotPopulateThisValue));
@@ -33,7 +32,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T> That<T>(Task<T> subject,
+	public static IThat<T> That<T>(Task<T> subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new AsyncValueSource<T>(subject), doNotPopulateThisValue));
@@ -42,7 +41,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.
 	/// </summary>
-	public static IExpectSubject<T> That<T>(ValueTask<T> subject,
+	public static IThat<T> That<T>(ValueTask<T> subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<T>(new ExpectationBuilder<T>(
 			new AsyncValueSource<T>(subject.AsTask()), doNotPopulateThisValue));
@@ -51,7 +50,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Action" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithoutValue> That(Action @delegate,
+	public static IThat<ThatDelegate.WithoutValue> That(Action @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithoutValue>(
 			new ExpectationBuilder<DelegateValue>(
@@ -61,7 +60,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Action{CancellationToken}" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithoutValue> That(
+	public static IThat<ThatDelegate.WithoutValue> That(
 		Action<CancellationToken> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithoutValue>(
@@ -71,7 +70,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{Task}" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithoutValue> That(Func<Task> @delegate,
+	public static IThat<ThatDelegate.WithoutValue> That(Func<Task> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithoutValue>(
 			new ExpectationBuilder<DelegateValue>(
@@ -81,7 +80,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{CancellationToken, Task}" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithoutValue> That(Func<CancellationToken, Task> @delegate,
+	public static IThat<ThatDelegate.WithoutValue> That(Func<CancellationToken, Task> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithoutValue>(
 			new ExpectationBuilder<DelegateValue>(
@@ -91,7 +90,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{ValueTask}" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithoutValue> That(Func<ValueTask> @delegate,
+	public static IThat<ThatDelegate.WithoutValue> That(Func<ValueTask> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithoutValue>(
 			new ExpectationBuilder<DelegateValue>(
@@ -104,7 +103,7 @@ public static class Expect
 	///     Specify expectations for the current <see cref="Func{CancellationToken, ValueTask}" /> <paramref name="delegate" />
 	///     .
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithoutValue> That(Func<CancellationToken, ValueTask> @delegate,
+	public static IThat<ThatDelegate.WithoutValue> That(Func<CancellationToken, ValueTask> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithoutValue>(
 			new ExpectationBuilder<DelegateValue>(
@@ -115,7 +114,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{TValue}" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithValue<TValue>> That<TValue>(Func<TValue> @delegate,
+	public static IThat<ThatDelegate.WithValue<TValue>> That<TValue>(Func<TValue> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
 			new ExpectationBuilder<DelegateValue<TValue>>(
@@ -125,7 +124,7 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{CancellationToken, TValue}" /> <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithValue<TValue>> That<TValue>(Func<CancellationToken, TValue> @delegate,
+	public static IThat<ThatDelegate.WithValue<TValue>> That<TValue>(Func<CancellationToken, TValue> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
 			new ExpectationBuilder<DelegateValue<TValue>>(
@@ -135,7 +134,7 @@ public static class Expect
 	///     Specify expectations for the current <see cref="Func{T}" /> of <see cref="Task{TValue}" />
 	///     <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithValue<TValue>> That<TValue>(Func<Task<TValue>> @delegate,
+	public static IThat<ThatDelegate.WithValue<TValue>> That<TValue>(Func<Task<TValue>> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
 			new ExpectationBuilder<DelegateValue<TValue>>(
@@ -147,7 +146,7 @@ public static class Expect
 	///     Specify expectations for the current <see cref="Func{CancellationToken, T}" /> of <see cref="Task{TValue}" />
 	///     <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithValue<TValue>> That<TValue>(
+	public static IThat<ThatDelegate.WithValue<TValue>> That<TValue>(
 		Func<CancellationToken, Task<TValue>> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
@@ -159,7 +158,7 @@ public static class Expect
 	///     Specify expectations for the current <see cref="Func{T}" /> of <see cref="ValueTask{TValue}" />
 	///     <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithValue<TValue>> That<TValue>(Func<ValueTask<TValue>> @delegate,
+	public static IThat<ThatDelegate.WithValue<TValue>> That<TValue>(Func<ValueTask<TValue>> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
 			new ExpectationBuilder<DelegateValue<TValue>>(
@@ -172,7 +171,7 @@ public static class Expect
 	///     Specify expectations for the current <see cref="Func{CancellationToken, T}" /> of <see cref="ValueTask{TValue}" />
 	///     <paramref name="delegate" />.
 	/// </summary>
-	public static IExpectSubject<ThatDelegate.WithValue<TValue>> That<TValue>(
+	public static IThat<ThatDelegate.WithValue<TValue>> That<TValue>(
 		Func<CancellationToken, ValueTask<TValue>> @delegate,
 		[CallerArgumentExpression("delegate")] string doNotPopulateThisValue = "")
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
@@ -192,18 +191,4 @@ public static class Expect
 	/// </summary>
 	public static Expectation.Combination.Any ThatAny(params Expectation[] expectations)
 		=> new(expectations);
-
-	[DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
-	internal readonly struct ThatSubject<T>(ExpectationBuilder expectationBuilder)
-		: IExpectSubject<T>, IThatShould<T>, IThatIs<T>, IThatHas<T>
-	{
-		public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
-
-		/// <inheritdoc />
-		public IThatShould<T> Should(Action<ExpectationBuilder> builderOptions)
-		{
-			builderOptions.Invoke(ExpectationBuilder);
-			return this;
-		}
-	}
 }

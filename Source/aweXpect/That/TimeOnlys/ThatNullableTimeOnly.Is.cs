@@ -12,11 +12,11 @@ public static partial class ThatNullableTimeOnly
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>> Is(this IExpectSubject<TimeOnly?> source,
+	public static TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>> Is(this IThat<TimeOnly?> source,
 		TimeOnly? expected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>>(
+		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraintWithTolerance(
 					it,
@@ -34,12 +34,12 @@ public static partial class ThatNullableTimeOnly
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>> IsNot(
-		this IExpectSubject<TimeOnly?> source,
+	public static TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>> IsNot(
+		this IThat<TimeOnly?> source,
 		TimeOnly? unexpected)
 	{
 		TimeTolerance tolerance = new();
-		return new TimeToleranceResult<TimeOnly?, IExpectSubject<TimeOnly?>>(
+		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ConditionConstraintWithTolerance(
 					it,

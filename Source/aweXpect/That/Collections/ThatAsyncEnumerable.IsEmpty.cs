@@ -18,9 +18,9 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection is empty.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		IsEmpty<TItem>(
-			this IExpectSubject<IAsyncEnumerable<TItem>> source)
+			this IThat<IAsyncEnumerable<TItem>> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new IsEmptyConstraint<TItem>(it)),
 			source);
@@ -28,9 +28,9 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		IsNotEmpty<TItem>(
-			this IExpectSubject<IAsyncEnumerable<TItem>> source)
+			this IThat<IAsyncEnumerable<TItem>> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotIsEmptyConstraint<TItem>(it)),
 			source);

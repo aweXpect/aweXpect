@@ -6,13 +6,13 @@ public sealed class OrNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
-		IExpectSubject<bool> that = That(true);
+		IThat<bool> that = That(true);
 		that.IsTrue().Or.IsFalse().Or.Implies(false);
 #pragma warning restore CS4014
 
 		string expectedResult = "be True or be False or imply False";
 
-		string? result = that.Should(_ => { }).ExpectationBuilder.ToString();
+		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
 		await That(result).Is(expectedResult);
 	}

@@ -21,12 +21,12 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		AreAllUnique<TItem>(
-			this IExpectSubject<IAsyncEnumerable<TItem>> source)
+			this IThat<IAsyncEnumerable<TItem>> source)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AreAllUniqueConstraint<TItem, object?>(it, options)),
 			source, options
@@ -36,11 +36,11 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>> AreAllUnique(
-		this IExpectSubject<IAsyncEnumerable<string>> source)
+	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>> AreAllUnique(
+		this IThat<IAsyncEnumerable<string>> source)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IExpectSubject<IAsyncEnumerable<string>>>(
+		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AreAllUniqueConstraint<string, string>(it, options)),
 			source, options
@@ -51,16 +51,16 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection only contains items with unique members specified by the
 	///     <paramref name="memberAccessor" />.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>> AreAllUnique<
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>> AreAllUnique<
 		TItem,
 		TMember>(
-		this IExpectSubject<IAsyncEnumerable<TItem>> source,
+		this IThat<IAsyncEnumerable<TItem>> source,
 		Func<TItem, TMember> memberAccessor,
 		[CallerArgumentExpression("memberAccessor")]
 		string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AreAllUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor,
 					doNotPopulateThisValue,
@@ -73,15 +73,15 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection only contains items with unique members specified by the
 	///     <paramref name="memberAccessor" />.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+	public static StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 		AreAllUnique<TItem>(
-			this IExpectSubject<IAsyncEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>> source,
 			Func<TItem, string> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>(
+		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
 					doNotPopulateThisValue,

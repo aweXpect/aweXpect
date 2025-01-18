@@ -14,19 +14,19 @@ public static partial class ThatObject
 	///     Verifies that the subject is...
 	/// </summary>
 	public static IThatIs<object?> Is(
-		this IExpectSubject<object?> source)
+		this IThat<object?> source)
 		=> source.ThatIs();
 
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IExpectSubject<object?>> Is(
-		this IExpectSubject<object?> source,
+	public static ObjectEqualityResult<object?, IThat<object?>> Is(
+		this IThat<object?> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<object?, IExpectSubject<object?>>(
+		return new ObjectEqualityResult<object?, IThat<object?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsEqualToConstraint(it, expected, doNotPopulateThisValue, options)),
 			source,
@@ -36,8 +36,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<TType, IExpectSubject<object?>> Is<TType>(
-		this IExpectSubject<object?> source)
+	public static AndOrWhichResult<TType, IThat<object?>> Is<TType>(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsOfTypeConstraint<TType>(it)),
 			source);
@@ -45,8 +45,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IExpectSubject<object?>> Is(
-		this IExpectSubject<object?> source,
+	public static AndOrWhichResult<object?, IThat<object?>> Is(
+		this IThat<object?> source,
 		Type type)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsOfTypeConstraint(it, type)),
@@ -55,14 +55,14 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IExpectSubject<object?>> IsNot(
-		this IExpectSubject<object?> source,
+	public static ObjectEqualityResult<object?, IThat<object?>> IsNot(
+		this IThat<object?> source,
 		object? unexpected,
 		[CallerArgumentExpression("unexpected")]
 		string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<object?, IExpectSubject<object?>>(
+		return new ObjectEqualityResult<object?, IThat<object?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
 			source,
@@ -72,8 +72,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IExpectSubject<object?>> IsNot<TType>(
-		this IExpectSubject<object?> source)
+	public static AndOrWhichResult<object?, IThat<object?>> IsNot<TType>(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotOfTypeConstraint<TType>(it)),
 			source);
@@ -81,8 +81,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IExpectSubject<object?>> IsNot(
-		this IExpectSubject<object?> source,
+	public static AndOrWhichResult<object?, IThat<object?>> IsNot(
+		this IThat<object?> source,
 		Type type)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotOfTypeConstraint(it, type)),

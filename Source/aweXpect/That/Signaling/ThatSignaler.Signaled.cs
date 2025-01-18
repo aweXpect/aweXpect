@@ -18,7 +18,7 @@ public static partial class ThatSignaler
 	///     Verifies that the expected callback was signaled at least once.
 	/// </summary>
 	public static SignalCountResult Signaled(
-		this IExpectSubject<Signaler> source)
+		this IThat<Signaler> source)
 	{
 		SignalerOptions options = new();
 		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint(it
@@ -31,7 +31,7 @@ public static partial class ThatSignaler
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled at least once.
 	/// </summary>
 	public static SignalCountResult<TParameter> Signaled<TParameter>(
-		this IExpectSubject<Signaler<TParameter>> source)
+		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
 		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint(it
@@ -45,7 +45,7 @@ public static partial class ThatSignaler
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult Signaled(
-		this IExpectSubject<Signaler> source,
+		this IThat<Signaler> source,
 		Times times)
 	{
 		SignalerOptions options = new();
@@ -60,7 +60,7 @@ public static partial class ThatSignaler
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult<TParameter> Signaled<TParameter>(
-		this IExpectSubject<Signaler<TParameter>> source,
+		this IThat<Signaler<TParameter>> source,
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();
@@ -74,7 +74,7 @@ public static partial class ThatSignaler
 	///     Verifies that the expected callback was not signaled.
 	/// </summary>
 	public static SignalCountResult DidNotSignal(
-		this IExpectSubject<Signaler> source)
+		this IThat<Signaler> source)
 	{
 		SignalerOptions options = new();
 		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint(it
@@ -87,7 +87,7 @@ public static partial class ThatSignaler
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was not signaled.
 	/// </summary>
 	public static SignalCountResult<TParameter> DidNotSignal<TParameter>(
-		this IExpectSubject<Signaler<TParameter>> source)
+		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
 		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint(it
@@ -101,7 +101,7 @@ public static partial class ThatSignaler
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult DidNotSignal(
-		this IExpectSubject<Signaler> source,
+		this IThat<Signaler> source,
 		Times times)
 	{
 		SignalerOptions options = new();
@@ -116,7 +116,7 @@ public static partial class ThatSignaler
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
 	public static SignalCountResult<TParameter> DidNotSignal<TParameter>(
-		this IExpectSubject<Signaler<TParameter>> source,
+		this IThat<Signaler<TParameter>> source,
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();

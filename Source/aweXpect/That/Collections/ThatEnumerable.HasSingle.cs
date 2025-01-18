@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection contains exactly one element.
 	/// </summary>
 	public static SingleItemResult<IEnumerable<TItem>, TItem> HasSingle<TItem>(
-		this IExpectSubject<IEnumerable<TItem>> source)
+		this IThat<IEnumerable<TItem>> source)
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it => new HaveSingleConstraint<TItem>(it)),
 			f => f.FirstOrDefault()

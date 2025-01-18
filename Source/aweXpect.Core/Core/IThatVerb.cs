@@ -7,7 +7,7 @@ namespace aweXpect.Core;
 ///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
 /// </summary>
 // ReSharper disable once UnusedTypeParameter
-public interface IThat<out T>
+public interface IThatVerb<out T>
 {
 	/// <summary>
 	///     The expectation builder.<br />
@@ -59,28 +59,4 @@ public interface IThat<out T>
 	/// </remarks>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	string? ToString();
-}
-
-/// <summary>
-///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
-/// </summary>
-// ReSharper disable once UnusedTypeParameter
-public interface IThatShould<out T> : IThat<T>
-{
-}
-
-/// <summary>
-///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
-/// </summary>
-// ReSharper disable once UnusedTypeParameter
-public interface IThatIs<out T> : IThat<T>
-{
-}
-
-/// <summary>
-///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
-/// </summary>
-// ReSharper disable once UnusedTypeParameter
-public interface IThatHas<out T> : IThat<T>
-{
 }
