@@ -16,7 +16,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasHResult(expectedHResult);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have HResult {expectedHResult},
@@ -33,7 +33,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasHResult(hResult);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -44,7 +44,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasHResult(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have HResult 1,

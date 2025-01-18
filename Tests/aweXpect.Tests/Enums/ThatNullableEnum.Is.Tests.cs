@@ -14,7 +14,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)},
@@ -32,7 +32,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -44,7 +44,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)},
@@ -63,7 +63,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -74,7 +74,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(null);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be <null>,
@@ -90,7 +90,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(null);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -105,7 +105,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)},
@@ -121,7 +121,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(MyColors.Red);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be Red,
@@ -139,7 +139,7 @@ public sealed partial class ThatNullableEnum
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

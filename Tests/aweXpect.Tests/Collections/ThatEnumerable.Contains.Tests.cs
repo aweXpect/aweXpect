@@ -20,7 +20,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains(1)
 						.And.Contains(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(5);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -45,7 +45,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(1).AtLeast(minimum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              contain 1 at least {minimum} times,
@@ -76,7 +76,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(1).AtMost(maximum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected subject to
 					             contain 1 at most once,
@@ -107,7 +107,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(1).Between(minimum).And(maximum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              contain 1 between {minimum} and {maximum} times,
@@ -142,7 +142,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(expected).AtLeast(1).Equivalent();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -156,7 +156,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(1).Exactly(times);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
@@ -186,7 +186,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -202,7 +202,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              contain {Formatter.Format(expected)} at least once,
@@ -219,7 +219,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).Contains(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain 42 at least once,
@@ -238,7 +238,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(sut).Contains("GREEN");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected sut to
 					             contain "GREEN" at least once,
@@ -258,7 +258,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(sut).Contains("red");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected sut to
 					             contain "red" at least once,
@@ -278,7 +278,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(sut).Contains("blue");
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -289,7 +289,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(sut).Contains("GREEN").IgnoringCase();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -301,7 +301,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).Contains(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain "foo" at least once,
@@ -317,7 +317,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(sut).Contains("green").AtLeast(3.Times());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected sut to
 					             contain "green" at least 3 times,
@@ -338,7 +338,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(sut).Contains("green").AtMost(2.Times());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected sut to
 					             contain "green" at most 2 times,
@@ -365,7 +365,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Contains(_ => true)
 						.And.Contains(_ => true);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -376,7 +376,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == 5);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -390,7 +390,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == 1).AtLeast(minimum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              contain item matching x => x == 1 at least {minimum} times,
@@ -421,7 +421,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == 1).AtMost(maximum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected subject to
 					             contain item matching x => x == 1 at most once,
@@ -452,7 +452,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == 1).Between(minimum).And(maximum.Times());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              contain item matching x => x == 1 between {minimum} and {maximum} times,
@@ -483,7 +483,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == 1).Exactly(times);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
@@ -513,7 +513,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -529,7 +529,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).Contains(x => x == expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              contain item matching x => x == expected at least once,
@@ -545,7 +545,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).Contains(_ => true);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             contain item matching _ => true at least once,

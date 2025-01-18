@@ -20,7 +20,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).DoesNotEndWith(0)
 						.And.DoesNotEndWith(0);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith("bar").IgnoringCase();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with ["bar"] ignoring case,
@@ -54,7 +54,7 @@ public sealed partial class ThatEnumerable
 						new MyClass(8)
 					).Equivalent();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with [MyClass { Inner = <null>, Value = 3 }, MyClass { Inner = <null>, Value = 5 }, MyClass { Inner = <null>, Value = 8 }] equivalent,
@@ -95,7 +95,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(1, 2, 3);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with [1, 2, 3],
@@ -116,7 +116,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -128,7 +128,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with unexpected,
@@ -148,7 +148,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).DoesNotEndWith();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with [],
@@ -164,7 +164,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(0, 0, 1, 2, 3);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -175,7 +175,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not end with [],
@@ -194,7 +194,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(null!);
 
-				await That(Act).Does().Throw<ArgumentNullException>()
+				await That(Act).Throws<ArgumentNullException>()
 					.WithParamName("unexpected");
 			}
 		}

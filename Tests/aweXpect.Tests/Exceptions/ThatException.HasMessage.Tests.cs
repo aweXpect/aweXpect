@@ -15,7 +15,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasMessage(actual);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -28,7 +28,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasMessage(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have Message equal to "expected other text",
@@ -48,7 +48,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasMessage("expected text");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have Message equal to "expected text",

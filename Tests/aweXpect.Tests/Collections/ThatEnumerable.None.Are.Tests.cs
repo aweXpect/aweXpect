@@ -24,7 +24,7 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).None().Are(8)
 							.WithCancellation(token);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have no items equal to 8,
@@ -41,7 +41,7 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).None().Are(15)
 							.And.None().Are(81);
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -52,7 +52,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).None().Are(5);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have no items equal to 5,
@@ -68,7 +68,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).None().Are(1);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have no items equal to 1,
@@ -84,7 +84,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).None().Are(0);
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -95,7 +95,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).None().Are(42);
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -106,7 +106,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject!).None().Are(0);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have no items equal to 0,

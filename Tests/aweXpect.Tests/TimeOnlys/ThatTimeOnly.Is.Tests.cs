@@ -16,7 +16,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be <null>,
@@ -33,7 +33,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)},
@@ -50,7 +50,7 @@ public sealed partial class ThatTimeOnly
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -70,7 +70,7 @@ public sealed partial class ThatTimeOnly
 						.Within(tolerance)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
 					              Expected subject to

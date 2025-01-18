@@ -20,7 +20,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).IsSuccess();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -35,7 +35,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).IsSuccess();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("*be success (status code 2xx)*")
 					.AsWildcard();
 			}
@@ -48,7 +48,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).IsSuccess();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be success (status code 2xx),

@@ -12,7 +12,7 @@ public sealed class EventRecordingTests
 		void Act()
 			=> sut.Record().Events("someMissingEventName");
 
-		await That(Act).Does().Throw<NotSupportedException>()
+		await That(Act).Throws<NotSupportedException>()
 			.WithMessage("Event someMissingEventName is not supported on CustomEventClass { }");
 	}
 
@@ -40,7 +40,7 @@ public sealed class EventRecordingTests
 		IEventRecording<CustomEventClass> recording = subject.Record().Events();
 		recording.Stop();
 
-		await That(() => recording.Stop()).Does().NotThrow();
+		await That(() => recording.Stop()).DoesNotThrow();
 	}
 
 	private sealed class CustomEventClass

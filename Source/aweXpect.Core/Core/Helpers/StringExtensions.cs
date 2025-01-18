@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace aweXpect.Core.Helpers;
 
@@ -20,6 +21,17 @@ internal static class StringExtensions
 
 		return (indentFirstLine ? indentation : "")
 		       + value.Replace("\n", $"\n{indentation}");
+	}
+	
+	public static string PrependAOrAn(this string value)
+	{
+		char[] vocals = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+		if (value.Length > 0 && vocals.Contains(value[0]))
+		{
+			return $"an {value}";
+		}
+
+		return $"a {value}";
 	}
 
 	[return: NotNullIfNotNull(nameof(value))]

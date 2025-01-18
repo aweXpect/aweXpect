@@ -15,7 +15,7 @@ public sealed partial class ThatGuid
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatGuid
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be {Formatter.Format(unexpected)},
@@ -44,7 +44,7 @@ public sealed partial class ThatGuid
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

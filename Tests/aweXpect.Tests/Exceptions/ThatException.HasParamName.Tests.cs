@@ -15,7 +15,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasParamName("somethingElse");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have ParamName "somethingElse",
@@ -32,7 +32,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasParamName("message");
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -43,7 +43,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasParamName("message");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have ParamName "message",

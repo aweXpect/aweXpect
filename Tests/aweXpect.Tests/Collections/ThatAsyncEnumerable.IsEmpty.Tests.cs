@@ -23,7 +23,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).IsEmpty().WithCancellation(token);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be empty,
@@ -42,7 +42,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).IsEmpty().WithCancellation(token);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be empty,
@@ -66,7 +66,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).IsEmpty();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be empty,
@@ -94,7 +94,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).IsEmpty();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be empty,
@@ -114,7 +114,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).IsEmpty();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -125,7 +125,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject!).IsEmpty();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be empty,

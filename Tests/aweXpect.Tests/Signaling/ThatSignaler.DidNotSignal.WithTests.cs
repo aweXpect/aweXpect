@@ -26,7 +26,7 @@ public sealed partial class ThatSignaler
 						.With(p => p > 1).With(p => p < 3)
 						.WithCancellation(token);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -45,7 +45,7 @@ public sealed partial class ThatSignaler
 						.With(p => p > 1)
 						.WithCancellation(token);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -66,7 +66,7 @@ public sealed partial class ThatSignaler
 					await That(signaler).DidNotSignal(2.Times())
 						.With(p => p > 1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             not have recorded the callback at least 2 times with p => p > 1,
@@ -96,7 +96,7 @@ public sealed partial class ThatSignaler
 					await That(signaler).DidNotSignal(2.Times())
 						.With(p => p > 2);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             not have recorded the callback at least 2 times with p => p > 2,

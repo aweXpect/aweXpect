@@ -16,7 +16,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsWritable();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be writable,
@@ -32,7 +32,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsWritable();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be writable,
@@ -48,7 +48,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsWritable();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

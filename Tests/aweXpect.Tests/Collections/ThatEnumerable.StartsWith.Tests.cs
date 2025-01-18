@@ -19,7 +19,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).StartsWith(1)
 						.And.StartsWith(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -30,7 +30,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(1, 1, 2, 3, 5);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -41,7 +41,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(new MyClass(1), new MyClass(1), new MyClass(2)).Equivalent();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -52,7 +52,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(1, 2, 3);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -64,7 +64,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             start with expected,
@@ -81,7 +81,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             start with expected,
@@ -99,7 +99,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -110,7 +110,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(null!);
 
-				await That(Act).Does().Throw<ArgumentNullException>()
+				await That(Act).Throws<ArgumentNullException>()
 					.WithParamName("expected");
 			}
 
@@ -122,7 +122,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).StartsWith();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             start with [],
@@ -139,7 +139,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).StartsWith(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

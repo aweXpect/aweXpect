@@ -13,7 +13,7 @@ public class AndOrWhichResultTests
 				.AndWhich(f => f.Value2, f => f.IsTrue())
 				.And.IsSameAs(sut);
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected sut to
 			             be type MyClass which .Value1 should be True and which .Value2 should be True and refer to sut MyClass {
@@ -42,7 +42,7 @@ public class AndOrWhichResultTests
 				.Which(f => f.Value1, f => f.IsTrue())
 				.AndWhich(f => f.Value2, f => f.IsTrue());
 
-		await That(Act).Does().ThrowException().OnlyIf(!expectSuccess)
+		await That(Act).ThrowsException().OnlyIf(!expectSuccess)
 			.WithMessage($"""
 			              Expected sut to
 			              be type MyClass which .Value1 should be True and which .Value2 should be True,

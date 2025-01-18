@@ -14,7 +14,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("FOO\nBAR").AsWildcard().IgnoringCase(ignoreCase);
 
-			await That(Act).Does().Throw<XunitException>().OnlyIf(!ignoreCase)
+			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
 				             Expected sut to
 				             match "FOO\nBAR",
@@ -34,7 +34,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("bar").AsWildcard();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match "bar",
@@ -54,7 +54,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("\tsomething\r\nelse").AsWildcard();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match "\tsomething\r\nelse",
@@ -72,10 +72,10 @@ public sealed partial class StringEqualityOptionsTests
 			Exception exception = new("foo");
 
 			async Task Act()
-				=> await That(() => Task.FromException(exception)).Does().ThrowException().WithMessage("bar")
+				=> await That(() => Task.FromException(exception)).ThrowsException().WithMessage("bar")
 					.AsWildcard();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
 				             throw an exception with Message matching "bar",
@@ -95,7 +95,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(null).AsWildcard();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match <null>,
@@ -111,7 +111,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(null).AsWildcard();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match <null>,
@@ -127,7 +127,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("*").AsWildcard();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             match "*",

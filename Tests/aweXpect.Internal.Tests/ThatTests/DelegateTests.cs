@@ -11,7 +11,7 @@ public sealed class DelegateTests
 	{
 		Task<int> Delegate() => Task.FromResult(value);
 
-		int result = await That(Delegate).Does().NotThrow();
+		int result = await That(Delegate).DoesNotThrow();
 
 		await That(result).Is(value);
 	}
@@ -22,7 +22,7 @@ public sealed class DelegateTests
 	{
 		int Delegate() => value;
 
-		int result = await That(Delegate).Does().NotThrow();
+		int result = await That(Delegate).DoesNotThrow();
 
 		await That(result).Is(value);
 	}
@@ -34,7 +34,7 @@ public sealed class DelegateTests
 	{
 		ValueTask<int> Delegate() => ValueTask.FromResult(value);
 
-		int result = await That(Delegate).Does().NotThrow();
+		int result = await That(Delegate).DoesNotThrow();
 
 		await That(result).Is(value);
 	}
@@ -47,7 +47,7 @@ public sealed class DelegateTests
 	{
 		ValueTask<int> Delegate(CancellationToken _) => ValueTask.FromResult(value);
 
-		int result = await That(Delegate).Does().NotThrow();
+		int result = await That(Delegate).DoesNotThrow();
 
 		await That(result).Is(value);
 	}
@@ -59,9 +59,9 @@ public sealed class DelegateTests
 		Action @delegate = () => { };
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -75,9 +75,9 @@ public sealed class DelegateTests
 		Action @delegate = () => throw new MyException();
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -97,7 +97,7 @@ public sealed class DelegateTests
 		void Delegate(CancellationToken t)
 			=> t.ThrowIfCancellationRequested();
 
-		await That(Delegate).Does().Throw<OperationCanceledException>()
+		await That(Delegate).Throws<OperationCanceledException>()
 			.WithCancellation(token);
 	}
 
@@ -107,9 +107,9 @@ public sealed class DelegateTests
 		Action<CancellationToken> @delegate = _ => { };
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -123,9 +123,9 @@ public sealed class DelegateTests
 		Action<CancellationToken> @delegate = _ => throw new MyException();
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -140,9 +140,9 @@ public sealed class DelegateTests
 		Func<Task> @delegate = () => Task.CompletedTask;
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -156,9 +156,9 @@ public sealed class DelegateTests
 		Func<Task> @delegate = () => Task.FromException(new MyException());
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -178,7 +178,7 @@ public sealed class DelegateTests
 		Task Delegate(CancellationToken t)
 			=> Task.FromCanceled(t);
 
-		await That(Delegate).Does().Throw<OperationCanceledException>()
+		await That(Delegate).Throws<OperationCanceledException>()
 			.WithCancellation(token);
 	}
 
@@ -188,9 +188,9 @@ public sealed class DelegateTests
 		Func<CancellationToken, Task> @delegate = _ => Task.CompletedTask;
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -204,9 +204,9 @@ public sealed class DelegateTests
 		Func<CancellationToken, Task> @delegate = _ => Task.FromException(new MyException());
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -221,9 +221,9 @@ public sealed class DelegateTests
 		Func<Task<int>> @delegate = () => Task.FromResult(1);
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -237,9 +237,9 @@ public sealed class DelegateTests
 		Func<Task<int>> @delegate = () => Task.FromException<int>(new MyException());
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -259,7 +259,7 @@ public sealed class DelegateTests
 		Task<int> Delegate(CancellationToken t)
 			=> Task.FromCanceled<int>(t);
 
-		await That(Delegate).Does().Throw<OperationCanceledException>()
+		await That(Delegate).Throws<OperationCanceledException>()
 			.WithCancellation(token);
 	}
 
@@ -269,9 +269,9 @@ public sealed class DelegateTests
 		Func<CancellationToken, Task<int>> @delegate = _ => Task.FromResult(1);
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -286,9 +286,9 @@ public sealed class DelegateTests
 			=> Task.FromException<int>(new MyException());
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -303,9 +303,9 @@ public sealed class DelegateTests
 		Func<int> @delegate = () => 1;
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -319,9 +319,9 @@ public sealed class DelegateTests
 		Func<int> @delegate = () => throw new MyException();
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -344,7 +344,7 @@ public sealed class DelegateTests
 			return 0;
 		}
 
-		await That(Delegate).Does().Throw<OperationCanceledException>()
+		await That(Delegate).Throws<OperationCanceledException>()
 			.WithCancellation(token);
 	}
 
@@ -354,9 +354,9 @@ public sealed class DelegateTests
 		Func<CancellationToken, int> @delegate = _ => 1;
 
 		async Task Act()
-			=> await That(@delegate).Does().ThrowException();
+			=> await That(@delegate).ThrowsException();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected @delegate to
 			             throw an exception,
@@ -370,9 +370,9 @@ public sealed class DelegateTests
 		Func<CancellationToken, int> @delegate = _ => throw new MyException();
 
 		async Task Act()
-			=> await That(@delegate).Does().NotThrow();
+			=> await That(@delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected @delegate to
 			              not throw any exception,
@@ -388,9 +388,9 @@ public sealed class DelegateTests
 		ValueTask Delegate() => ValueTask.CompletedTask;
 
 		async Task Act()
-			=> await That(Delegate).Does().ThrowException();
+			=> await That(Delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected Delegate to
 			             throw an exception,
@@ -407,9 +407,9 @@ public sealed class DelegateTests
 		ValueTask Delegate(CancellationToken _) => ValueTask.CompletedTask;
 
 		async Task Act()
-			=> await That(Delegate).Does().ThrowException();
+			=> await That(Delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected Delegate to
 			             throw an exception,
@@ -425,9 +425,9 @@ public sealed class DelegateTests
 		ValueTask Delegate() => ValueTask.FromException(new MyException());
 
 		async Task Act()
-			=> await That(Delegate).Does().NotThrow();
+			=> await That(Delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected Delegate to
 			              not throw any exception,
@@ -444,9 +444,9 @@ public sealed class DelegateTests
 		ValueTask Delegate(CancellationToken _) => ValueTask.FromException(new MyException());
 
 		async Task Act()
-			=> await That(Delegate).Does().NotThrow();
+			=> await That(Delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected Delegate to
 			              not throw any exception,
@@ -463,9 +463,9 @@ public sealed class DelegateTests
 		ValueTask<int> Delegate() => ValueTask.FromResult(1);
 
 		async Task Act()
-			=> await That(Delegate).Does().ThrowException();
+			=> await That(Delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected Delegate to
 			             throw an exception,
@@ -481,9 +481,9 @@ public sealed class DelegateTests
 		ValueTask<int> Delegate() => ValueTask.FromException<int>(new MyException());
 
 		async Task Act()
-			=> await That(Delegate).Does().NotThrow();
+			=> await That(Delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected Delegate to
 			              not throw any exception,
@@ -500,9 +500,9 @@ public sealed class DelegateTests
 		ValueTask<int> Delegate(CancellationToken _) => ValueTask.FromResult(1);
 
 		async Task Act()
-			=> await That(Delegate).Does().ThrowException();
+			=> await That(Delegate).ThrowsException();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected Delegate to
 			             throw an exception,
@@ -518,9 +518,9 @@ public sealed class DelegateTests
 		ValueTask<int> Delegate(CancellationToken _) => ValueTask.FromException<int>(new MyException());
 
 		async Task Act()
-			=> await That(Delegate).Does().NotThrow();
+			=> await That(Delegate).DoesNotThrow();
 
-		await That(Act).Does().Throw<XunitException>()
+		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected Delegate to
 			              not throw any exception,
@@ -540,7 +540,7 @@ public sealed class DelegateTests
 				new ArgumentException(innermostMessage, nameof(innermostMessage))));
 		void Act() => throw exception;
 
-		CustomException result = await That(Act).Does().Throw<CustomException>()
+		CustomException result = await That(Act).Throws<CustomException>()
 			.WithInnerException(e1 => e1
 				.HasMessage(innerMessage).And
 				.HasInner<ArgumentException>(e2 => e2

@@ -16,7 +16,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -28,7 +28,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -40,7 +40,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be <null>,
@@ -57,7 +57,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -69,7 +69,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be {Formatter.Format(unexpected)},
@@ -94,7 +94,7 @@ public sealed partial class ThatNullableTimeOnly
 						.Within(tolerance)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
 					              Expected subject to

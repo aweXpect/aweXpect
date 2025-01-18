@@ -15,7 +15,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before <null>,
@@ -32,7 +32,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be before 9999-12-31T23:59:59.9999999+00:00,
@@ -49,7 +49,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be before 0001-01-01T00:00:00.0000000+00:00,
@@ -66,7 +66,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)},
@@ -83,7 +83,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)},
@@ -100,7 +100,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				async Task Act()
 					=> await That(subject).IsBefore(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -113,7 +113,7 @@ public sealed partial class ThatNullableDateTimeOffset
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)} ± 0:03,
@@ -131,7 +131,7 @@ public sealed partial class ThatNullableDateTimeOffset
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be before {Formatter.Format(expected)} ± 0:03,
@@ -149,7 +149,7 @@ public sealed partial class ThatNullableDateTimeOffset
 					=> await That(subject).IsBefore(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

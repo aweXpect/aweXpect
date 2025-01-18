@@ -16,7 +16,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -28,7 +28,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -39,7 +39,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -56,7 +56,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -71,7 +71,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -85,7 +85,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -101,7 +101,7 @@ public sealed partial class ThatNumber
 
 				async Task Act() => await That(subject).IsNot(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be equal to NaN,
@@ -117,7 +117,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act() => await That(subject).IsNot(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -128,7 +128,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -145,7 +145,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -157,7 +157,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -168,7 +168,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -184,7 +184,7 @@ public sealed partial class ThatNumber
 
 				async Task Act() => await That(subject).IsNot(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be equal to NaN,
@@ -200,7 +200,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act() => await That(subject).IsNot(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -212,7 +212,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -224,7 +224,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -235,7 +235,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -253,7 +253,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -265,7 +265,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -276,7 +276,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -292,7 +292,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -310,7 +310,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -322,7 +322,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -333,7 +333,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -350,7 +350,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -361,7 +361,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -379,7 +379,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -391,7 +391,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -407,7 +407,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -422,7 +422,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -439,7 +439,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -451,7 +451,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -462,7 +462,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -479,7 +479,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -491,7 +491,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -502,7 +502,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -519,7 +519,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -530,7 +530,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -548,7 +548,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -560,7 +560,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -571,7 +571,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -589,7 +589,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -601,7 +601,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -612,7 +612,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -630,7 +630,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -642,7 +642,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -653,7 +653,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -671,7 +671,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -683,7 +683,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -694,7 +694,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -712,7 +712,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -724,7 +724,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -735,7 +735,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -753,7 +753,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -765,7 +765,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -776,7 +776,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -794,7 +794,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -807,7 +807,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -819,7 +819,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -830,7 +830,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -848,7 +848,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -860,7 +860,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -871,7 +871,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -889,7 +889,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -901,7 +901,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -912,7 +912,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -930,7 +930,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -942,7 +942,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -953,7 +953,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},
@@ -971,7 +971,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -983,7 +983,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -994,7 +994,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)},

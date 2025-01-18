@@ -15,7 +15,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsInfinite()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -25,7 +25,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act() => await That(subject).IsInfinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -41,7 +41,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsInfinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be infinite,
@@ -57,7 +57,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsInfinite()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -68,7 +68,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsInfinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -84,7 +84,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsInfinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be infinite,
@@ -101,7 +101,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsInfinite()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -111,7 +111,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act() => await That(subject).IsInfinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -129,7 +129,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsInfinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be infinite,
@@ -145,7 +145,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsInfinite()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -156,7 +156,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsInfinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -172,7 +172,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsInfinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be infinite,

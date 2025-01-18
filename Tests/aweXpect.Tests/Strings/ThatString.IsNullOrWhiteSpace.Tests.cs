@@ -14,7 +14,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNullOrWhiteSpace();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -24,7 +24,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNullOrWhiteSpace();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be null or white-space,
@@ -40,7 +40,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNullOrWhiteSpace();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be null or white-space,
@@ -56,7 +56,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNullOrWhiteSpace();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -67,7 +67,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNullOrWhiteSpace();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

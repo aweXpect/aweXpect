@@ -24,7 +24,7 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).Exactly(6).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 6 items satisfy y => y < 6,
@@ -41,7 +41,7 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).Exactly(1).Are(1)
 						.And.Exactly(1).Are(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -52,7 +52,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).Exactly(1).Are(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly one item equal to 1,
@@ -68,7 +68,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).Exactly(4).Are(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -79,7 +79,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).Exactly(4).Are(2);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 4 items equal to 2,
@@ -95,7 +95,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).Exactly(3).Are(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly 3 items equal to 1,
@@ -111,7 +111,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject!).Exactly(1).Are(0);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have exactly one item equal to 0,

@@ -24,7 +24,7 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).Has().AtLeast(6).Items()
 							.WithCancellation(token);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have at least 6 items,
@@ -40,7 +40,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtLeast(3).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -51,7 +51,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtLeast(4).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have at least 4 items,
@@ -67,7 +67,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtLeast(2).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -78,7 +78,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtLeast(3).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -89,7 +89,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtLeast(4).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have at least 4 items,
@@ -105,7 +105,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().AtLeast(2).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 			}
 		}

@@ -20,7 +20,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected @delegate to
 						             not execute within 0:05,
@@ -36,7 +36,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -47,7 +47,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -66,7 +66,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected @delegate to
 						             not execute within 0:05,
@@ -82,7 +82,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -93,7 +93,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -112,7 +112,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected @delegate to
 						             not execute within 0:05,
@@ -128,7 +128,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -139,7 +139,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -159,7 +159,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected Delegate to
 						             not execute within 0:05,
@@ -175,7 +175,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -186,7 +186,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -208,7 +208,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected Delegate to
 						             not execute within 0:05,
@@ -225,7 +225,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -236,7 +236,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -259,7 +259,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected Delegate to
 						             not execute within 0:05,
@@ -276,7 +276,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -287,7 +287,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -309,7 +309,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected Delegate to
 						             not execute within 0:05,
@@ -325,7 +325,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(Delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -336,7 +336,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,
@@ -356,7 +356,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(5000.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected @delegate to
 						             not execute within 0:05,
@@ -372,7 +372,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(@delegate).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -383,7 +383,7 @@ public sealed partial class ThatDelegate
 					async Task Act()
 						=> await That(subject!).Does().NotExecuteWithin(500.Milliseconds());
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             not execute within 0:00.500,

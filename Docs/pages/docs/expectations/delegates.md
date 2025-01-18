@@ -29,7 +29,7 @@ You can verify, that the delegate does not throw any exception:
 ```csharp
 void Act() => {};
 
-await Expect.That(Act).Does().NotThrow();
+await Expect.That(Act).DoesNotThrow();
 ```
 
 ## Throw exception
@@ -39,7 +39,7 @@ You can verify, that the delegate throws an exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Does().ThrowException();
+await Expect.That(Act).ThrowsException();
 ```
 
 ### Specific exception
@@ -49,8 +49,8 @@ You can verify, that the delegate throws a specific exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Does().Throw<CustomException>();
-await Expect.That(Act).Does().Throw(typeof(CustomException));
+await Expect.That(Act).Throws<CustomException>();
+await Expect.That(Act).Throws(typeof(CustomException));
 ```
 
 This will verify that the thrown exception is of type `CustomException` or any derived type.
@@ -62,8 +62,8 @@ You can verify, that the delegate throws exactly a specific exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Does().ThrowExactly<CustomException>();
-await Expect.That(Act).Does().ThrowExactly(typeof(CustomException));
+await Expect.That(Act).ThrowsExactly<CustomException>();
+await Expect.That(Act).ThrowsExactly(typeof(CustomException));
 ```
 
 This will verify that the thrown exception is of type `CustomException` and not any derived type.
@@ -77,7 +77,7 @@ exception is thrown):
 void Act() => throw new CustomException("my exception");
 bool expectThrownException = true;
 
-await Expect.That(Act).Does().Throw<CustomException>().OnlyIf(expectThrownException);
+await Expect.That(Act).Throws<CustomException>().OnlyIf(expectThrownException);
 ```
 
 This is especially useful with parametrized tests where it depends on a parameter if an exception is thrown or not.
@@ -89,7 +89,7 @@ You can verify the message of the thrown exception:
 ```csharp
 void Act() => throw new CustomException("my exception");
 
-await Expect.That(Act).Does().ThrowException().WithMessage("my exception");
+await Expect.That(Act).ThrowsException().WithMessage("my exception");
 ```
 
 You can use the same configuration options as when [comparing strings](/docs/expectations/string#equality).
@@ -101,8 +101,8 @@ You can verify the inner exception of the thrown exception;
 ```csharp
 void Act() => throw new CustomException("outer", new CustomException("inner"));
 
-await Expect.That(Act).Does().ThrowException().WithInnerException();
-await Expect.That(Act).Does().ThrowException().WithInner<CustomException>();
+await Expect.That(Act).ThrowsException().WithInnerException();
+await Expect.That(Act).ThrowsException().WithInner<CustomException>();
 ```
 
 ### Recursive inner exceptions
@@ -112,7 +112,7 @@ You can recursively verify the collection of inner exceptions of the thrown exce
 ```csharp
 void Act() => throw new AggregateException("outer", new CustomException("inner"));
 
-await Expect.That(Act).Does().ThrowException().WithRecursiveInnerExceptions(innerExceptions => innerExceptions.HasAtLeast(1).Be<CustomException>());
+await Expect.That(Act).ThrowsException().WithRecursiveInnerExceptions(innerExceptions => innerExceptions.HasAtLeast(1).Be<CustomException>());
 ```
 
 ### Other members
@@ -122,11 +122,11 @@ You can recursively verify additional members of the exception:
 ```csharp
 void Act() => throw new MyException("outer", paramName: "paramName", hResult: 12345);
 
-await Expect.That(Act).Does().ThrowException().WithParamName("paramName")
+await Expect.That(Act).ThrowsException().WithParamName("paramName")
   .Because("you can verify the `paramName`");
-await Expect.That(Act).Does().ThrowException().WithHResult(12345)
+await Expect.That(Act).ThrowsException().WithHResult(12345)
   .Because("you can verify the `HResult`");
-await Expect.That(Act).Does().ThrowException()
+await Expect.That(Act).ThrowsException()
   .Which(e => e.HResult, h => h.IsGreaterThan(12340))
   .Because("you can verify arbitrary additional members");
 

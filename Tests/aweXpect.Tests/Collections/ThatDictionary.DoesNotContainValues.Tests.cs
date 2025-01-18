@@ -16,7 +16,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).DoesNotContainValues(0, 2);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject).DoesNotContainValues(42, 2);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have values [42, 2],
@@ -45,7 +45,7 @@ public sealed partial class ThatDictionary
 				async Task Act()
 					=> await That(subject!).DoesNotContainValues("foo", "bar");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have values ["foo", "bar"],

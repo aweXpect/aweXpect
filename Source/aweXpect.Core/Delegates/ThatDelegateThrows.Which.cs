@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
-namespace aweXpect;
+namespace aweXpect.Delegates;
 
 public partial class ThatDelegateThrows<TException>
 {
@@ -19,4 +18,5 @@ public partial class ThatDelegateThrows<TException>
 					(member, expectation) => $"which {member}should {expectation}")
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			this);
+
 }

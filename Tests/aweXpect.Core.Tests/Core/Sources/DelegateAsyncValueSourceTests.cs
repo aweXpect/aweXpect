@@ -14,6 +14,6 @@ public class DelegateAsyncValueSourceTests
 			await That(() => Task.FromResult(0)).Does().NotExecuteWithin(1000.Milliseconds())
 				.UseTimeSystem(timeSystem);
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 }

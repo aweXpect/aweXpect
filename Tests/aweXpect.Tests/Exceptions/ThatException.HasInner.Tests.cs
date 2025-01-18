@@ -14,7 +14,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInner<CustomException>(e => e.HasMessage("inner"));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException which should have Message equal to "inner",
@@ -32,7 +32,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInner<CustomException>(e => e.HasMessage("inner"));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -44,7 +44,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInner<CustomException>(e => e.HasMessage("some other message"));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException which should have Message equal to "some other message",
@@ -65,7 +65,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInner<CustomException>();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException,
@@ -84,7 +84,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInner<CustomException>();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -95,7 +95,7 @@ public sealed partial class ThatException
 				async Task Act()
 					=> await That(subject).HasInner<CustomException>();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have an inner CustomException,

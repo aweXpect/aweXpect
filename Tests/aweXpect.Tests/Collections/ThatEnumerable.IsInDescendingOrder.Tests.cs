@@ -18,7 +18,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order,
@@ -40,7 +40,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -51,7 +51,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).IsInDescendingOrder();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order,
@@ -70,7 +70,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order,
@@ -89,7 +89,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder().Using(StringComparer.OrdinalIgnoreCase);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -100,7 +100,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order,
@@ -121,7 +121,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -132,7 +132,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject!).IsInDescendingOrder();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order,
@@ -151,7 +151,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order for x => x.Value,
@@ -183,7 +183,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			private sealed class MyIntClass(int value)
@@ -202,7 +202,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order for x => x.Value,
@@ -226,7 +226,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).IsInDescendingOrder(x => x.Value)
 						.Using(StringComparer.OrdinalIgnoreCase);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -237,7 +237,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be in descending order for x => x.Value,
@@ -266,7 +266,7 @@ public sealed partial class ThatEnumerable
 				async Task Act()
 					=> await That(subject).IsInDescendingOrder(x => x.Value);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			private sealed class MyStringClass(string value)

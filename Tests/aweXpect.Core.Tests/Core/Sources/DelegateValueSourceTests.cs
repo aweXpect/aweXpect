@@ -14,6 +14,6 @@ public class DelegateValueSourceTests
 			await That(() => 1).Does().NotExecuteWithin(1000.Milliseconds())
 				.UseTimeSystem(timeSystem);
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 }

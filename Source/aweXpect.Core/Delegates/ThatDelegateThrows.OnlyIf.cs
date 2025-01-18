@@ -1,4 +1,4 @@
-﻿namespace aweXpect;
+﻿namespace aweXpect.Delegates;
 
 public partial class ThatDelegateThrows<TException>
 {

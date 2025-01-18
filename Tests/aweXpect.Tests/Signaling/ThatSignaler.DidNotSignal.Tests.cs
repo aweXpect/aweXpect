@@ -20,7 +20,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).DidNotSignal().WithCancellation(token);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class ThatSignaler
 				async Task Act()
 					=> await That(subject!).DidNotSignal();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have recorded the callback,
@@ -50,7 +50,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).DidNotSignal();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             not have recorded the callback,
@@ -72,7 +72,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).DidNotSignal().WithCancellation(token);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -83,7 +83,7 @@ public sealed partial class ThatSignaler
 				async Task Act()
 					=> await That(subject!).DidNotSignal();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not have recorded the callback,
@@ -102,7 +102,7 @@ public sealed partial class ThatSignaler
 				async Task Act() =>
 					await That(signaler).DidNotSignal();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected signaler to
 					             not have recorded the callback,

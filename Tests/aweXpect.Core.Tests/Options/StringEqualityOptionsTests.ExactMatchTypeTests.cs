@@ -14,7 +14,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
 
-			await That(Act).Does().Throw<XunitException>().OnlyIf(!ignoreCase)
+			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "FOO\nBAR",
@@ -34,7 +34,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("bar").Exactly();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "bar",
@@ -54,7 +54,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("\tsomething\r\nelse").Exactly();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "\tsomething\r\nelse",
@@ -72,10 +72,10 @@ public sealed partial class StringEqualityOptionsTests
 			Exception exception = new("foo");
 
 			async Task Act()
-				=> await That(() => Task.FromException(exception)).Does().ThrowException().WithMessage("bar")
+				=> await That(() => Task.FromException(exception)).ThrowsException().WithMessage("bar")
 					.Exactly();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
 				             throw an exception with Message equal to "bar",
@@ -95,7 +95,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(null).Exactly();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to <null>,
@@ -111,7 +111,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("FOO").Exactly().IgnoringCase();
 
-			await That(Act).Does().NotThrow();
+			await That(Act).DoesNotThrow();
 		}
 
 		[Fact]
@@ -122,7 +122,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is(null).Exactly();
 
-			await That(Act).Does().NotThrow();
+			await That(Act).DoesNotThrow();
 		}
 
 		[Fact]
@@ -133,7 +133,7 @@ public sealed partial class StringEqualityOptionsTests
 			async Task Act()
 				=> await That(sut).Is("").Exactly();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "",

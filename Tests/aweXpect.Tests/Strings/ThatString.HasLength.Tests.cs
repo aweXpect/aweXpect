@@ -14,7 +14,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).HasLength(0);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have length 0,
@@ -30,10 +30,10 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).HasLength(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("expected").And
+				await That(Act).Throws<ArgumentOutOfRangeException>()
 					.WithMessage("*The expected length must be greater than or equal to zero*")
-					.AsWildcard();
+					.AsWildcard().And
+					.WithParamName("expected");
 			}
 
 			[Theory]
@@ -45,7 +45,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).HasLength(length);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have length {length},
@@ -63,7 +63,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).HasLength(length);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -13,7 +13,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -24,7 +24,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -39,7 +39,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -50,7 +50,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -66,7 +66,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -82,7 +82,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -98,7 +98,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -108,7 +108,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -119,7 +119,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -135,7 +135,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -151,7 +151,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -167,7 +167,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -177,7 +177,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -188,7 +188,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -203,7 +203,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -214,7 +214,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -232,7 +232,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -246,7 +246,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -262,7 +262,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -278,7 +278,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -290,7 +290,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -306,7 +306,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -322,7 +322,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -338,7 +338,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -354,7 +354,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -364,7 +364,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -376,7 +376,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -392,7 +392,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -408,7 +408,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -424,7 +424,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -440,7 +440,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -450,7 +450,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -461,7 +461,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -477,7 +477,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -492,7 +492,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -503,7 +503,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -519,7 +519,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -534,7 +534,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -546,7 +546,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -562,7 +562,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -577,7 +577,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -589,7 +589,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -605,7 +605,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be positive,
@@ -620,7 +620,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -631,7 +631,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,
@@ -646,7 +646,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -657,7 +657,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsPositive();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be positive,

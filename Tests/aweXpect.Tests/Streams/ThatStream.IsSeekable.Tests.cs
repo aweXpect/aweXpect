@@ -16,7 +16,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsSeekable();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be seekable,
@@ -32,7 +32,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsSeekable();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be seekable,
@@ -48,7 +48,7 @@ public sealed partial class ThatStream
 				async Task Act()
 					=> await That(subject).IsSeekable();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

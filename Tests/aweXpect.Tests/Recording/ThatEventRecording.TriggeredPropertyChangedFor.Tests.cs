@@ -22,7 +22,7 @@ public sealed partial class ThatEventRecording
 				async Task Act() =>
 					await That(recording).TriggeredPropertyChangedFor(x => x.MyValue);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the PropertyChanged event on sut for property MyValue at least once,
@@ -50,7 +50,7 @@ public sealed partial class ThatEventRecording
 				async Task Act() =>
 					await That(recording).TriggeredPropertyChangedFor(x => x.MyValue);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -61,7 +61,7 @@ public sealed partial class ThatEventRecording
 				async Task Act()
 					=> await That(subject!).TriggeredPropertyChangedFor(x => x.MyValue);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have recorded the PropertyChanged event for property MyValue at least once,

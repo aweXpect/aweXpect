@@ -18,11 +18,11 @@ public class ExpectationNodeTests
 		async Task Act() =>
 			await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(Act).Does().Throw<InvalidOperationException>()
+		await That(Act).Throws<InvalidOperationException>()
+			.WithInner<MyException>(x => x.HasMessage(exception.Message)).And
 			.WithMessage("""
 			             Error evaluating DummyAsyncConstraint<int> constraint with value 44: WhenAsyncConstraintThrowsException_ShouldThrowInvalidOperationException
-			             """).And
-			.WithInner<MyException>(x => x.HasMessage(exception.Message));
+			             """);
 	}
 
 	[Fact]
@@ -35,11 +35,11 @@ public class ExpectationNodeTests
 		async Task Act() =>
 			await node.IsMetBy(45, null!, CancellationToken.None);
 
-		await That(Act).Does().Throw<InvalidOperationException>()
+		await That(Act).Throws<InvalidOperationException>()
+			.WithInner<MyException>(x => x.HasMessage(exception.Message)).And
 			.WithMessage("""
 			             Error evaluating DummyAsyncContextConstraint<int> constraint with value 45: WhenAsyncContextConstraintThrowsException_ShouldThrowInvalidOperationException
-			             """).And
-			.WithInner<MyException>(x => x.HasMessage(exception.Message));
+			             """);
 	}
 
 	[Fact]
@@ -52,11 +52,11 @@ public class ExpectationNodeTests
 		async Task Act() =>
 			await node.IsMetBy(43, null!, CancellationToken.None);
 
-		await That(Act).Does().Throw<InvalidOperationException>()
+		await That(Act).Throws<InvalidOperationException>()
+			.WithInner<MyException>(x => x.HasMessage(exception.Message)).And
 			.WithMessage("""
 			             Error evaluating DummyContextConstraint<int> constraint with value 43: WhenContextConstraintThrowsException_ShouldThrowInvalidOperationException
-			             """).And
-			.WithInner<MyException>(x => x.HasMessage(exception.Message));
+			             """);
 	}
 
 	[Fact]
@@ -69,11 +69,11 @@ public class ExpectationNodeTests
 		async Task Act() =>
 			await node.IsMetBy("42", null!, CancellationToken.None);
 
-		await That(Act).Does().Throw<InvalidOperationException>()
+		await That(Act).Throws<InvalidOperationException>()
+			.WithInner<MyException>(x => x.HasMessage(exception.Message)).And
 			.WithMessage("""
 			             Error evaluating DummyValueConstraint<string> constraint with value "42": WhenValueConstraintThrowsException_ShouldThrowInvalidOperationException
-			             """).And
-			.WithInner<MyException>(x => x.HasMessage(exception.Message));
+			             """);
 	}
 
 	private class DummyValueConstraint<T>(Func<T, ConstraintResult> callback) : IValueConstraint<T>

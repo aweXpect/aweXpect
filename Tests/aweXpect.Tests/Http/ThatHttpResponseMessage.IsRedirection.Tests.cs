@@ -20,7 +20,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).IsRedirection();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -35,7 +35,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).IsRedirection();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("*be redirection (status code 3xx)*")
 					.AsWildcard();
 			}
@@ -48,7 +48,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).IsRedirection();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be redirection (status code 3xx),

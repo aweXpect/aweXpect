@@ -20,7 +20,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasServerError();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -35,7 +35,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasServerError();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("*have server error (status code 5xx)*")
 					.AsWildcard();
 			}
@@ -48,7 +48,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasServerError();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have server error (status code 5xx),

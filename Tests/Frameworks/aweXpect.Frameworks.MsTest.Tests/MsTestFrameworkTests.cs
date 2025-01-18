@@ -12,7 +12,7 @@ public sealed class MsTestFrameworkTests
 		void Act()
 			=> Fail.Test("my message");
 
-		await Expect.That(Act).Does().Throw<AssertFailedException>();
+		await Expect.That(Act).Throws<AssertFailedException>();
 	}
 
 	[TestMethod]
@@ -21,7 +21,7 @@ public sealed class MsTestFrameworkTests
 		void Act()
 			=> Skip.Test("my message");
 
-		await Expect.That(Act).Does().Throw<AssertInconclusiveException>()
+		await Expect.That(Act).Throws<AssertInconclusiveException>()
 			.WithMessage("my message");
 	}
 }

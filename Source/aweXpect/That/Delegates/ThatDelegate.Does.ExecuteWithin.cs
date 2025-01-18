@@ -12,7 +12,7 @@ public static partial class ThatDelegate
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult<TValue> ExecuteWithin<TValue>(
-		this Core.ThatDelegate.WithValue<TValue> source,
+		this Delegates.ThatDelegate.WithValue<TValue> source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new ExecuteWithinConstraint<TValue>(duration)));
@@ -21,7 +21,7 @@ public static partial class ThatDelegate
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult ExecuteWithin(
-		this Core.ThatDelegate.WithoutValue source,
+		this Delegates.ThatDelegate.WithoutValue source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new ExecuteWithinConstraint(duration)));
@@ -30,7 +30,7 @@ public static partial class ThatDelegate
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult<TValue> NotExecuteWithin<TValue>(
-		this Core.ThatDelegate.WithValue<TValue> source,
+		this Delegates.ThatDelegate.WithValue<TValue> source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new NotExecuteWithinConstraint<TValue>(duration)));
@@ -39,7 +39,7 @@ public static partial class ThatDelegate
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
 	/// </summary>
 	public static ExpectationResult NotExecuteWithin(
-		this Core.ThatDelegate.WithoutValue source,
+		this Delegates.ThatDelegate.WithoutValue source,
 		TimeSpan duration)
 		=> new(source.ExpectationBuilder
 			.AddConstraint(_ => new NotExecuteWithinConstraint(duration)));

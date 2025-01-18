@@ -22,7 +22,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasStatusCode(HttpStatusCode.OK);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have StatusCode 200 OK,
@@ -45,7 +45,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasStatusCode(HttpStatusCode.OK);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have StatusCode 200 OK,
@@ -65,7 +65,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasStatusCode(HttpStatusCode.OK);
 
-				await That(Act).Does().Throw<XunitException>();
+				await That(Act).Throws<XunitException>();
 			}
 
 			[Theory]
@@ -82,7 +82,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasStatusCode(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -93,7 +93,7 @@ public sealed partial class ThatHttpResponseMessage
 				async Task Act()
 					=> await That(subject).HasStatusCode(HttpStatusCode.Accepted);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have StatusCode 202 Accepted,

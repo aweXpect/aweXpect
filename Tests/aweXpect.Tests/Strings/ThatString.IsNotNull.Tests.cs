@@ -14,7 +14,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNotNull();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -24,7 +24,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNotNull();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -35,7 +35,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNotNull();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             not be null,

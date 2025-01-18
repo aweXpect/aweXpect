@@ -15,7 +15,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsNotFinite()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -26,7 +26,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act() => await That(subject).IsNotFinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -41,7 +41,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotFinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be finite,
@@ -57,7 +57,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsNotFinite()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -69,7 +69,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotFinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -84,7 +84,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotFinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be finite,
@@ -101,7 +101,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsNotFinite()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -114,7 +114,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act() => await That(subject).IsNotFinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -129,7 +129,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotFinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be finite,
@@ -145,7 +145,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsNotFinite()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -159,7 +159,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotFinite();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -174,7 +174,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNotFinite();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be finite,

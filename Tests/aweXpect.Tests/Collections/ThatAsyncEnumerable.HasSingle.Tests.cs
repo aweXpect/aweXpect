@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).HasSingle();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item,
@@ -55,7 +55,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).HasSingle();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item,
@@ -85,7 +85,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(4);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item which should be greater than 4,
@@ -101,7 +101,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(4);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item which should be greater than 4,
@@ -117,7 +117,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(4);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have a single item which should be greater than 4,
@@ -133,7 +133,7 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).HasSingle().Which.IsGreaterThan(2);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

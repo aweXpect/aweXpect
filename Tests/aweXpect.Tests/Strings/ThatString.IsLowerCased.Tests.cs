@@ -14,7 +14,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -36,7 +36,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -47,7 +47,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -58,7 +58,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be lower-cased,
@@ -74,7 +74,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be lower-cased,
@@ -90,7 +90,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be lower-cased,
@@ -106,7 +106,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be lower-cased,
@@ -122,7 +122,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsLowerCased();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}
