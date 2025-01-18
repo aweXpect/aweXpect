@@ -191,44 +191,26 @@ namespace aweXpect
     }
     public static class ThatDelegate
     {
-        public static aweXpect.Core.ThatDelegate.WithoutValue Does(this aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithoutValue> subject) { }
-        public static aweXpect.Core.ThatDelegate.WithValue<TValue> Does<TValue>(this aweXpect.Core.IThat<aweXpect.Core.ThatDelegate.WithValue<TValue>> subject) { }
-        public static aweXpect.Results.ExpectationResult ExecuteWithin(this aweXpect.Core.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult<TValue> ExecuteWithin<TValue>(this aweXpect.Core.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult NotExecuteWithin(this aweXpect.Core.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult<TValue> NotExecuteWithin<TValue>(this aweXpect.Core.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
-        public static aweXpect.Results.ExpectationResult NotThrow(this aweXpect.Core.ThatDelegate.WithoutValue source) { }
-        public static aweXpect.Results.ExpectationResult<TValue> NotThrow<TValue>(this aweXpect.Core.ThatDelegate.WithValue<TValue> source) { }
-        public static aweXpect.ThatDelegateThrows<System.Exception> Throw(this aweXpect.Core.ThatDelegate source, System.Type exceptionType) { }
-        public static aweXpect.ThatDelegateThrows<TException> Throw<TException>(this aweXpect.Core.ThatDelegate source)
-            where TException : System.Exception { }
-        public static aweXpect.ThatDelegateThrows<System.Exception> ThrowExactly(this aweXpect.Core.ThatDelegate source, System.Type exceptionType) { }
-        public static aweXpect.ThatDelegateThrows<TException> ThrowExactly<TException>(this aweXpect.Core.ThatDelegate source)
-            where TException : System.Exception { }
-        public static aweXpect.ThatDelegateThrows<System.Exception> ThrowException(this aweXpect.Core.ThatDelegate source) { }
+        public static aweXpect.Delegates.ThatDelegate.WithoutValue Does(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue> subject) { }
+        public static aweXpect.Delegates.ThatDelegate.WithValue<TValue> Does<TValue>(this aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<TValue>> subject) { }
+        public static aweXpect.Results.ExpectationResult ExecuteWithin(this aweXpect.Delegates.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult<TValue> ExecuteWithin<TValue>(this aweXpect.Delegates.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult NotExecuteWithin(this aweXpect.Delegates.ThatDelegate.WithoutValue source, System.TimeSpan duration) { }
+        public static aweXpect.Results.ExpectationResult<TValue> NotExecuteWithin<TValue>(this aweXpect.Delegates.ThatDelegate.WithValue<TValue> source, System.TimeSpan duration) { }
     }
     public static class ThatDelegateThrows
     {
-        public static aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.ThatDelegateThrows<TException> source, string expected)
+        public static aweXpect.Results.AndOrResult<TException, aweXpect.Core.IThatDelegateThrows<TException>> WithHResult<TException>(this aweXpect.Core.IThatDelegateThrows<TException> source, int expected)
+            where TException : System.Exception? { }
+        public static aweXpect.Results.AndOrResult<TException, aweXpect.Core.IThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.Core.IThatDelegateThrows<TException> source, string expected)
             where TException : System.ArgumentException? { }
+        public static aweXpect.Results.AndOrResult<TException?, aweXpect.Core.IThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(this aweXpect.Core.IThatDelegateThrows<TException> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations)
+            where TException : System.Exception? { }
     }
     public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.ThatDelegateThrows<TException>>
         where TException : System.Exception?
     {
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        public aweXpect.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> Which<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithHResult(int expected) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType, System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner<TInnerException>()
-            where TInnerException : System.Exception? { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInner<TInnerException>(System.Action<aweXpect.Core.IThat<TInnerException?>> expectations)
-            where TInnerException : System.Exception { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException() { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
-        public aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.ThatDelegateThrows<TException>> WithMessage(string expected) { }
-        public aweXpect.Results.AndOrResult<TException?, aweXpect.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions(System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
     }
     public static class ThatDictionary
     {
