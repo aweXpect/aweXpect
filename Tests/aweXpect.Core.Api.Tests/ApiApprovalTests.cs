@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace aweXpect.Api.Tests;
+namespace aweXpect.Core.Api.Tests;
 
 /// <summary>
 ///     Whenever a test fails, this means that the public API surface changed.
@@ -12,9 +12,9 @@ namespace aweXpect.Api.Tests;
 public sealed class ApiApprovalTests
 {
 	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
-	public async Task VerifyPublicApiForAweXpect(string framework)
+	public async Task VerifyPublicApiForAweXpectCore(string framework)
 	{
-		const string assemblyName = "aweXpect";
+		const string assemblyName = "aweXpect.Core";
 
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);

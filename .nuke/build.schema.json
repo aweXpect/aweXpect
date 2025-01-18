@@ -46,7 +46,6 @@
         "TestFrameworks",
         "TestingPlatformFrameworks",
         "UnitTests",
-        "UpdateReadme",
         "VsTestFrameworks",
         "XunitTestingPlatformFrameworks"
       ]
