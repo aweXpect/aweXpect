@@ -191,7 +191,7 @@ jobs:
     push_awexpect:
         name: "Push aweXpect"
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-        runs-on: ubuntu-latest
+        runs-on: macos-latest
         environment: production
         needs: [ pack ]
         permissions:
@@ -227,7 +227,7 @@ jobs:
     push_core:
         name: "Push aweXpect.Core"
         if: ${{ startsWith(github.ref, 'refs/tags/core/v') }}
-        runs-on: ubuntu-latest
+        runs-on: macos-latest
         environment: production
         needs: [ pack ]
         permissions:
