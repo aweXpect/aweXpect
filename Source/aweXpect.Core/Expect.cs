@@ -140,7 +140,8 @@ public static class Expect
 		=> new ThatSubject<ThatDelegate.WithValue<TValue>>(
 			new ExpectationBuilder<DelegateValue<TValue>>(
 				// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-				new DelegateAsyncValueSource<TValue>(@delegate is null ? null : _ => @delegate()), doNotPopulateThisValue));
+				new DelegateAsyncValueSource<TValue>(@delegate is null ? null : _ => @delegate()),
+				doNotPopulateThisValue));
 
 	/// <summary>
 	///     Specify expectations for the current <see cref="Func{CancellationToken, T}" /> of <see cref="Task{TValue}" />
@@ -194,12 +195,12 @@ public static class Expect
 
 	[DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
 	internal readonly struct ThatSubject<T>(ExpectationBuilder expectationBuilder)
-		: IExpectSubject<T>, IThat<T>
+		: IExpectSubject<T>, IThatShould<T>, IThatIs<T>, IThatHas<T>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
 
 		/// <inheritdoc />
-		public IThat<T> Should(Action<ExpectationBuilder> builderOptions)
+		public IThatShould<T> Should(Action<ExpectationBuilder> builderOptions)
 		{
 			builderOptions.Invoke(ExpectationBuilder);
 			return this;

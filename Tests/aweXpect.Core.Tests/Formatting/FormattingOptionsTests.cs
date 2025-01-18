@@ -7,7 +7,7 @@ public class FormattingOptionsTests
 	{
 		FormattingOptions? multipleLines = FormattingOptions.MultipleLines;
 
-		await That(multipleLines.UseLineBreaks).Should().BeTrue();
+		await That(multipleLines.UseLineBreaks).IsTrue();
 	}
 
 	[Fact]
@@ -15,6 +15,6 @@ public class FormattingOptionsTests
 	{
 		FormattingOptions? multipleLines = FormattingOptions.SingleLine;
 
-		await That(multipleLines.UseLineBreaks).Should().BeFalse();
+		await That(multipleLines.UseLineBreaks).IsFalse();
 	}
 }

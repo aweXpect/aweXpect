@@ -179,7 +179,7 @@ internal static class JsonElementValidator
 
 		if (!options.IgnoreAdditionalProperties)
 		{
-			foreach (var property in actualElement.EnumerateObject())
+			foreach (JsonProperty property in actualElement.EnumerateObject())
 			{
 				string memberPath = path + "." + property.Name;
 				if (result.HasMemberError(memberPath) ||

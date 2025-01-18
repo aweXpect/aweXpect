@@ -1,8 +1,8 @@
 {
-  "label": "Expectations",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "A collection of supported expectations, grouped by subject type:"
-  }
+	"label": "Expectations",
+	"position": 2,
+	"link": {
+		"type": "generated-index",
+		"description": "A collection of supported expectations, grouped by subject type:"
+	}
 }

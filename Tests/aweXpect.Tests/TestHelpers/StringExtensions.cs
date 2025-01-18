@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace aweXpect.Tests.TestHelpers;
+namespace aweXpect.Tests;
 
 internal static class StringExtensions
 {

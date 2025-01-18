@@ -11,8 +11,8 @@ public sealed class ConstraintResultTests
 	{
 		ConstraintResult.Failure subject = new(expectationText, resultText);
 
-		await That(subject.ExpectationText).Should().Be(expectationText);
-		await That(subject.ResultText).Should().Be(resultText);
+		await That(subject.ExpectationText).Is(expectationText);
+		await That(subject.ResultText).Is(resultText);
 	}
 
 	[Theory]
@@ -20,25 +20,31 @@ public sealed class ConstraintResultTests
 	public async Task Failure_WithValue_ShouldStoreValueAndTexts(string expectationText,
 		string resultText)
 	{
-		Dummy value = new() { Value = 1 };
+		Dummy value = new()
+		{
+			Value = 1
+		};
 
 		ConstraintResult.Failure<Dummy> subject = new(value, expectationText, resultText);
 
-		await That(subject.Value).Should().Be(value).Equivalent();
-		await That(subject.ExpectationText).Should().Be(expectationText);
-		await That(subject.ResultText).Should().Be(resultText);
+		await That(subject.Value).Is().EquivalentTo(value);
+		await That(subject.ExpectationText).Is(expectationText);
+		await That(subject.ResultText).Is(resultText);
 	}
 
 	[Theory]
 	[AutoData]
 	public async Task Success_WithValue_ShouldStoreValue(string expectationText)
 	{
-		Dummy value = new() { Value = 1 };
+		Dummy value = new()
+		{
+			Value = 1
+		};
 
 		ConstraintResult.Success<Dummy> subject = new(value, expectationText);
 
-		await That(subject.Value).Should().Be(value).Equivalent();
-		await That(subject.ExpectationText).Should().Be(expectationText);
+		await That(subject.Value).Is().EquivalentTo(value);
+		await That(subject.ExpectationText).Is(expectationText);
 	}
 
 	[Theory]
@@ -50,7 +56,7 @@ public sealed class ConstraintResultTests
 
 		string result = subject.ToString();
 
-		await That(result).Should().Be($"FAILED {expectationText}");
+		await That(result).Is($"FAILED {expectationText}");
 	}
 
 	[Theory]
@@ -62,7 +68,7 @@ public sealed class ConstraintResultTests
 
 		string result = subject.ToString();
 
-		await That(result).Should().Be($"SUCCEEDED {expectationText}");
+		await That(result).Is($"SUCCEEDED {expectationText}");
 	}
 
 	private sealed class Dummy

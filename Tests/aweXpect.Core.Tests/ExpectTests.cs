@@ -6,9 +6,9 @@ public class ExpectTests
 	public async Task ShouldSupportCollectionExpressionsAsSubject()
 	{
 		async Task Act()
-			=> await That([1, 2, 3]).Should().BeInAscendingOrder();
+			=> await That([1, 2, 3]).IsInAscendingOrder();
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 
 	[Fact]
@@ -17,9 +17,9 @@ public class ExpectTests
 		Task<int> sut = Task.FromResult(42);
 
 		async Task Act()
-			=> await That(sut).Should().BeGreaterThan(41);
+			=> await That(sut).IsGreaterThan(41);
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 
 #if NET8_0_OR_GREATER
@@ -29,9 +29,9 @@ public class ExpectTests
 		ValueTask<int> sut = ValueTask.FromResult(42);
 
 		async Task Act()
-			=> await That(sut).Should().BeGreaterThan(41);
+			=> await That(sut).IsGreaterThan(41);
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 #endif
 }

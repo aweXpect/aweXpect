@@ -4,7 +4,6 @@ using System.Text.Json;
 
 namespace aweXpect.Json;
 
-
 /// <summary>
 ///     The result for an expectation on a JSON <see cref="JsonValueKind.Array" />.
 /// </summary>

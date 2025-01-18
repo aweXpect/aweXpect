@@ -11,8 +11,8 @@ namespace aweXpect.Results;
 /// </summary>
 public class JsonWhichResult(
 	ExpectationBuilder expectationBuilder,
-	IThat<string?> returnValue,
-	JsonDocumentOptions options) : AndOrResult<string?, IThat<string?>>(expectationBuilder, returnValue)
+	IExpectSubject<string?> returnValue,
+	JsonDocumentOptions options) : AndOrResult<string?, IExpectSubject<string?>>(expectationBuilder, returnValue)
 {
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 
@@ -20,7 +20,7 @@ public class JsonWhichResult(
 	///     Allows specifying <paramref name="expectations" /> on the <see cref="JsonElement" />
 	///     represented by the <see langword="string" />.
 	/// </summary>
-	public AndOrResult<string?, IThat<string?>> Which(Action<IExpectSubject<JsonElement?>> expectations)
+	public AndOrResult<string?, IExpectSubject<string?>> Which(Action<IExpectSubject<JsonElement?>> expectations)
 	{
 		_expectationBuilder
 			.ForMember(MemberAccessor<string?, JsonElement?>.FromFunc(s =>

@@ -1,5 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -12,14 +13,14 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>>
 		WithInner<TInnerException>(
-			Action<ThatExceptionShould<TInnerException?>> expectations)
+			Action<IExpectSubject<TInnerException?>> expectations)
 		where TInnerException : Exception
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					$"with an inner {typeof(TInnerException).Name} which should ")
 				.Validate(it
-					=> new ThatExceptionShould.InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new ThatExceptionShould<TInnerException?>(e))),
+					=> new ThatException.InnerExceptionIsTypeConstraint<TInnerException>(it))
+				.AddExpectations(e => expectations(new That.Subject<TInnerException?>(e))),
 			this);
 
 	/// <summary>
@@ -30,7 +31,7 @@ public partial class ThatDelegateThrows<TException>
 		where TInnerException : Exception?
 		=> new(ExpectationBuilder
 				.AddConstraint(it =>
-					new ThatExceptionShould.HasInnerExceptionValueConstraint<TInnerException>(
+					new ThatException.HasInnerExceptionValueConstraint<TInnerException>(
 						"with", it)),
 			this);
 
@@ -40,14 +41,14 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInner(
 		Type innerExceptionType,
-		Action<ThatExceptionShould<Exception?>> expectations)
+		Action<IExpectSubject<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					$"with an inner {innerExceptionType.Name} which should ")
 				.Validate(it
-					=> new ThatExceptionShould.InnerExceptionIsTypeConstraint(it,
+					=> new ThatException.InnerExceptionIsTypeConstraint(it,
 						innerExceptionType))
-				.AddExpectations(e => expectations(new ThatExceptionShould<Exception?>(e))),
+				.AddExpectations(e => expectations(new That.Subject<Exception?>(e))),
 			this);
 
 	/// <summary>
@@ -57,7 +58,7 @@ public partial class ThatDelegateThrows<TException>
 		Type innerExceptionType)
 		=> new(ExpectationBuilder
 				.AddConstraint(it =>
-					new ThatExceptionShould.HasInnerExceptionValueConstraint(innerExceptionType,
+					new ThatException.HasInnerExceptionValueConstraint(innerExceptionType,
 						"with", it)),
 			this);
 }

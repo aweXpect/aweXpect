@@ -1,5 +1,4 @@
-﻿using aweXpect.Core;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -19,36 +18,38 @@ public abstract partial class EnumerableQuantifier
 			=> matchingCount > 0;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, ExpectationBuilder? expectationBuilder)
-			=> expectationBuilder is null
+		public override string GetExpectation(string it, string? expectationExpression)
+			=> expectationExpression is null
 				? "have no items"
-				: $"have no items {expectationBuilder}";
+				: $"have no items {expectationExpression}";
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
 			string it,
-			ExpectationBuilder? expectationBuilder,
+			string? expectationExpression,
 			int matchingCount,
 			int notMatchingCount,
-			int? totalCount)
+			int? totalCount,
+			string? verb)
 		{
+			verb ??= "were";
 			if (matchingCount > 0)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder),
+					GetExpectation(it, expectationExpression),
 					totalCount.HasValue
-						? $"{matchingCount} of {totalCount} were"
-						: "at least one was");
+						? $"{matchingCount} of {totalCount} {verb}"
+						: $"at least one {(verb == "were" ? "was" : verb)}");
 			}
 
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GetExpectation(it, expectationBuilder));
+					GetExpectation(it, expectationExpression));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GetExpectation(it, expectationBuilder),
+				GetExpectation(it, expectationExpression),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

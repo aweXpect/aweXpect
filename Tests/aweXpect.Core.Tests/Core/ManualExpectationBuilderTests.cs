@@ -13,7 +13,7 @@ public class ManualExpectationBuilderTests
 
 		ConstraintResult result = await sut.IsMetBy(1, null!, CancellationToken.None);
 
-		await That(result).Should().Be<ConstraintResult.Failure>();
+		await That(result).Is<ConstraintResult.Failure>();
 	}
 
 	[Fact]
@@ -24,7 +24,7 @@ public class ManualExpectationBuilderTests
 
 		ConstraintResult result = await sut.IsMetBy(1, null!, CancellationToken.None);
 
-		await That(result).Should().Be<ConstraintResult.Success>();
+		await That(result).Is<ConstraintResult.Success>();
 	}
 
 	private class DummyConstraint<T>(Func<T, bool> predicate) : IValueConstraint<T>

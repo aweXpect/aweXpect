@@ -13,7 +13,7 @@ public partial class ThatDelegateThrows<TException>
 		StringEqualityOptions? options = new();
 		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(
 			ExpectationBuilder.AddConstraint(it
-				=> new ThatExceptionShould.HasMessageValueConstraint<TException>(
+				=> new ThatException.HasMessageValueConstraint<TException>(
 					it, "with", expected, options)),
 			this,
 			options);

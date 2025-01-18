@@ -11,7 +11,7 @@ public partial class HappyCaseBenchmarks
 
 	[Benchmark]
 	public async Task<string?> String_aweXpect()
-		=> await Expect.That(_stringSubject).Should().Be(_stringExpectation);
+		=> await Expect.That(_stringSubject).Is(_stringExpectation);
 
 	[Benchmark]
 	public AndConstraint<StringAssertions> String_FluentAssertions()

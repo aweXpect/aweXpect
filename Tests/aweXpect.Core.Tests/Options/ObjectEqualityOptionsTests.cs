@@ -15,7 +15,7 @@ public class ObjectEqualityOptionsTests
 
 		sut.Equals();
 
-		await That(sut.AreConsideredEqual(a, b)).Should().Be(isEqual);
+		await That(sut.AreConsideredEqual(a, b)).Is(isEqual);
 	}
 
 	private class EqualsObject(bool isEqual)

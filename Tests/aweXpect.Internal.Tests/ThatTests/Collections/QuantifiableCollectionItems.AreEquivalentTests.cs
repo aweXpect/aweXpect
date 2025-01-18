@@ -9,18 +9,33 @@ public sealed partial class QuantifiableCollectionItems
 		{
 			MyClass[] subject =
 			[
-				new() { Value = "Foo" },
-				new() { Value = "Foo" },
-				new() { Value = "Foo" },
-				new() { Value = "Bar" }
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Bar"
+				}
 			];
 
-			MyClass expected = new() { Value = "Foo" };
+			MyClass expected = new()
+			{
+				Value = "Foo"
+			};
 
 			async Task Act()
-				=> await That(subject).Should().HaveAll(x => x.Be(expected).Equivalent());
+				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
 
-			await That(Act).Should().Throw<XunitException>()
+			await That(Act).Does().Throw<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             have all items be equivalent to expected,
@@ -33,17 +48,29 @@ public sealed partial class QuantifiableCollectionItems
 		{
 			MyClass[] subject =
 			[
-				new() { Value = "Foo" },
-				new() { Value = "Foo" },
-				new() { Value = "Foo" }
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				},
+				new()
+				{
+					Value = "Foo"
+				}
 			];
 
-			MyClass expected = new() { Value = "Foo" };
+			MyClass expected = new()
+			{
+				Value = "Foo"
+			};
 
 			async Task Act()
-				=> await That(subject).Should().HaveAll(x => x.Be(expected).Equivalent());
+				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
 
-			await That(Act).Should().NotThrow();
+			await That(Act).Does().NotThrow();
 		}
 	}
 }

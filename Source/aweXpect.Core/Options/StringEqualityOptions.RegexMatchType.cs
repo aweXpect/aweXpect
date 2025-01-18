@@ -16,7 +16,7 @@ public partial class StringEqualityOptions
 		_matchType = RegexMatch;
 		return this;
 	}
-	
+
 	private sealed class RegexMatchType : IStringMatchType
 	{
 		#region IMatchType Members

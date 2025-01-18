@@ -41,7 +41,7 @@ public interface IExpectSubject<out T>
 	/// <summary>
 	///     Applies the <paramref name="builderOptions" /> to the <see cref="ExpectationBuilder" />.
 	/// </summary>
-	IThat<T> Should(Action<ExpectationBuilder> builderOptions);
+	IThatShould<T> Should(Action<ExpectationBuilder> builderOptions);
 
 	/// <summary>
 	///     <i>Not supported!</i><br />

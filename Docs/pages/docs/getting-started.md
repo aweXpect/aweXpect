@@ -25,8 +25,8 @@ sidebar_position: 1
    This allows writing a more concise syntax:
    ```csharp
    //    ↓ Default behaviour
-   await Expect.That(subject).Should().BeTrue();
-   await That(subject).Should().BeTrue();
+   await Expect.That(subject).IsTrue();
+   await That(subject).IsTrue();
    //    ↑ With global static
    ```
 
@@ -40,7 +40,7 @@ public async Task SomeMethod_WhenInputIsInvalid_ShouldReturnFalse()
 {
   bool result = SomeMethod("invalid input");
   
-  await Expect.That(result).Should().BeFalse();
+  await Expect.That(result).IsFalse();
 }
 ```
 
@@ -62,7 +62,7 @@ public async Task SomeMethod_WhenInputIsInvalid_ShouldReturnFalse()
 {
   bool result = SomeMethod("invalid input");
   
-  await Expect.That(result).Should().BeFalse().Because("the input was invalid");
+  await Expect.That(result).IsFalse().Because("the input was invalid");
 }
 ```
 
@@ -76,6 +76,7 @@ This will result in
 ## Detecting test frameworks
 
 We support a lot of different unit testing frameworks:
+
 - [Microsoft Test Framework](https://github.com/microsoft/testfx/)
 - [xUnit](https://xunit.net/) (v2 & v3)
 - [NUnit](https://nunit.org/) (v3 & v4)
@@ -85,15 +86,18 @@ When you have a reference to the corresponding test framework
 assembly, we will automatically throw the corresponding exceptions.
 
 ## Multiple expectations
+
 You can combine multiple expectations in different ways:
 
 ### On the same property
 
 Simply use `.And` or `.Or` to combine multiple expectations, e.g.
+
 ```csharp
 string subject = "something different"
 await Expect.That(subject).Should().StartWith("some").And.EndWith("text");
 ```
+
 > ```
 > Expected subject to
 > start with "some" and end with "text",
@@ -102,7 +106,9 @@ await Expect.That(subject).Should().StartWith("some").And.EndWith("text");
 
 ### On different properties of the same subject
 
-Use the `For`-syntax to access different properties of a common subject and combine them again with `.And` or `.Or`, e.g.
+Use the `For`-syntax to access different properties of a common subject and combine them again with `.And` or `.Or`,
+e.g.
+
 ```csharp
   public record MyClass(int Status, string Content);
   MyClass subject = new(1, "some other content");
@@ -111,6 +117,7 @@ Use the `For`-syntax to access different properties of a common subject and comb
     .For(x => x.Status, x => x.Should().BeGreaterThan(1)).And
     .For(x => x.Content, x => x.Should().Be("some content"));
 ```
+
 > ```
 > Expected subject to
 > for .Status be greater than 1 and for .Content be equal to "some content",
@@ -124,6 +131,7 @@ Use the `For`-syntax to access different properties of a common subject and comb
 ### On different subjects
 
 Use the `Expect.ThatAll` or `Expect.ThatAny` syntax to combine arbitrary expectations, e.g.
+
 ```csharp
   string subjectA = "ABC";
   string subjectB = "XYZ";
@@ -132,6 +140,7 @@ Use the `Expect.ThatAll` or `Expect.ThatAny` syntax to combine arbitrary expecta
     Expect.That(subjectA).Should().Be("ABC"),
     Expect.That(subjectB).Should().Be("DEF"));
 ```
+
 > ```
 > Expected all of the following to succeed:
 >  [01] Expected subjectA to be equal to "ABC"

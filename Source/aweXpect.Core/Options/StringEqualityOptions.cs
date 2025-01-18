@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -46,7 +45,8 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expected = expected?.TrimEnd();
 		}
 
-		return _matchType.AreConsideredEqual(actual, expected, _ignoreCase, _comparer ?? UseDefaultComparer(_ignoreCase));
+		return _matchType.AreConsideredEqual(actual, expected, _ignoreCase,
+			_comparer ?? UseDefaultComparer(_ignoreCase));
 	}
 
 	/// <summary>

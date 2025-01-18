@@ -14,7 +14,7 @@ public sealed class CustomizeJsonTests
 		string jsonWithoutTrailingCommas = "[1, 2]";
 
 		async Task Act()
-			=> await That(jsonWithTrailingCommas).Should().Be(jsonWithoutTrailingCommas).AsJson();
+			=> await That(jsonWithTrailingCommas).Is(jsonWithoutTrailingCommas).AsJson();
 
 		using (IDisposable __ = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Set(new JsonDocumentOptions
 		       {
@@ -22,7 +22,7 @@ public sealed class CustomizeJsonTests
 			       AllowTrailingCommas = false
 		       }))
 		{
-			await That(Act).Should().ThrowException()
+			await That(Act).Does().ThrowException()
 				.WithMessage("""
 				             Expected jsonWithTrailingCommas to
 				             be JSON equivalent to [1, 2],
@@ -30,16 +30,16 @@ public sealed class CustomizeJsonTests
 				             """);
 		}
 
-		await That(Act).Should().NotThrow();
+		await That(Act).Does().NotThrow();
 	}
 
 	[Fact]
 	public async Task ShouldChangeIndividualProperties()
 	{
 		await That(Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas)
-			.Should().BeTrue();
+			.IsTrue();
 		await That(Customize.aweXpect.Json().DefaultJsonSerializerOptions.Get().AllowTrailingCommas)
-			.Should().BeTrue();
+			.IsTrue();
 
 		using (Customize.aweXpect.Json().DefaultJsonDocumentOptions.Set(new JsonDocumentOptions
 		       {
@@ -48,9 +48,9 @@ public sealed class CustomizeJsonTests
 		       }))
 		{
 			await That(Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas)
-				.Should().BeFalse();
+				.IsFalse();
 			await That(Customize.aweXpect.Json().DefaultJsonSerializerOptions.Get().AllowTrailingCommas)
-				.Should().BeTrue();
+				.IsTrue();
 		}
 
 		using (Customize.aweXpect.Json().DefaultJsonSerializerOptions.Set(new JsonSerializerOptions
@@ -60,15 +60,15 @@ public sealed class CustomizeJsonTests
 		       }))
 		{
 			await That(Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas)
-				.Should().BeTrue();
+				.IsTrue();
 			await That(Customize.aweXpect.Json().DefaultJsonSerializerOptions.Get().AllowTrailingCommas)
-				.Should().BeFalse();
+				.IsFalse();
 		}
 
 		await That(Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas)
-			.Should().BeTrue();
+			.IsTrue();
 		await That(Customize.aweXpect.Json().DefaultJsonSerializerOptions.Get().AllowTrailingCommas)
-			.Should().BeTrue();
+			.IsTrue();
 	}
 }
 #endif
