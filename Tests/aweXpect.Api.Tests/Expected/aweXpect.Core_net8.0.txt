@@ -129,9 +129,9 @@ namespace aweXpect.Core
         string GetExpectation(string? expected, bool useActiveGrammaticVoice);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
     }
+    public interface IThatDoes<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatHas<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatIs<out T> : aweXpect.Core.IThatVerb<T> { }
-    public interface IThatShould<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatVerb<out T>
     {
         aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
@@ -182,7 +182,7 @@ namespace aweXpect.Core
         }
     }
     [System.Diagnostics.DebuggerDisplay("Expect.ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
-    public readonly struct ThatSubject<T> : aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatShould<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>
+    public readonly struct ThatSubject<T> : aweXpect.Core.IThatDoes<T>, aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>
     {
         public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
