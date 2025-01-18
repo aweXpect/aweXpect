@@ -4,7 +4,7 @@ using aweXpect.Core;
 
 namespace aweXpect.Helpers;
 
-internal class That
+internal static class That
 {
 	public static readonly Action<ExpectationBuilder> WithoutAction = _ => { };
 
