@@ -24,7 +24,7 @@ namespace Build;
 
 partial class Build
 {
-	private const string BenchmarkBranch = "benchmark-test"; // TODO
+	private const string BenchmarkBranch = "benchmarks";
 
 	Target BenchmarkDotNet => _ => _
 		.Executes(() =>
@@ -92,7 +92,7 @@ partial class Build
 
 	Target BenchmarkReport => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => BranchName != "main") //TODO
+		.OnlyWhenDynamic(() => BranchName == "main")
 		.Executes(async () =>
 		{
 			BenchmarkFile currentFile = await DownloadBenchmarkFile();
