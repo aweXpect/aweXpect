@@ -92,7 +92,7 @@ partial class Build
 
 	Target BenchmarkReport => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => BranchName == "main")
+		.OnlyWhenDynamic(() => GitHubActions?.IsPullRequest == false)
 		.Executes(async () =>
 		{
 			BenchmarkFile currentFile = await DownloadBenchmarkFile();
