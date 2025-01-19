@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 // ReSharper disable CollectionNeverQueried.Local
 // ReSharper disable UnusedMember.Local
 // ReSharper disable UnusedAutoPropertyAccessor.Local
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Local
 
 namespace Build;
 
@@ -159,10 +160,10 @@ public class PageBenchmarkReportGenerator
 
 	private class PageReport
 	{
-		[JsonPropertyName("commits")] public List<CommitInfo> Commits { get; } = new();
-		[JsonPropertyName("labels")] public List<string> Labels { get; } = new();
+		[JsonPropertyName("commits")] public List<CommitInfo> Commits { get; init; } = new();
+		[JsonPropertyName("labels")] public List<string> Labels { get; init; } = new();
 
-		[JsonPropertyName("datasets")] public List<Dataset> Datasets { get; } = new();
+		[JsonPropertyName("datasets")] public List<Dataset> Datasets { get; init; } = new();
 
 		public class Dataset
 		{
