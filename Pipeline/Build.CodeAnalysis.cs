@@ -12,10 +12,12 @@ partial class Build
 
 	Target CodeAnalysisBegin => _ => _
 		.Unlisted()
-		.Before(CompileDebug)
+		.Before(Compile)
 		.Before(CodeCoverage)
 		.Executes(() =>
 		{
+			Configuration = Configuration.Debug;
+			
 			SonarScannerTasks.SonarScannerBegin(s => s
 				.SetOrganization("awexpect")
 				.SetProjectKey("aweXpect_aweXpect")

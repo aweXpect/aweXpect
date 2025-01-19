@@ -121,19 +121,6 @@ partial class Build
 				.SetInformationalVersion(CoreVersion.InformationalVersion));
 		});
 
-	Target CompileDebug => _ => _
-		.DependsOn(Restore)
-		.DependsOn(CalculateNugetVersion)
-		.Executes(() =>
-		{
-			ClearNugetPackages(Solution.aweXpect.Directory / "bin");
-
-			DotNetBuild(s => s
-				.SetProjectFile(Solution)
-				.SetConfiguration(Configuration.Debug)
-				.EnableNoLogo());
-		});
-
 	private void UpdateReadme(string fileVersion)
 	{
 		string version = string.Join('.', fileVersion.Split('.').Take(3));
