@@ -138,8 +138,9 @@ partial class Build
 				}
 			}
 
+			Log.Debug($"Updating benchmark report for {commitId}: {message} by {author} on {date}");
+			
 			PageBenchmarkReportGenerator.CommitInfo commitInfo = new(commitId, author, date, message);
-			Log.Debug($"Updating benchmark report for {commitInfo}");
 			string updatedFileContent =
 				PageBenchmarkReportGenerator.Append(commitInfo, currentFile.Content, benchmarkReports);
 			await UploadBenchmarkFile(commitInfo, currentFile, updatedFileContent);
