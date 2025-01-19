@@ -12,7 +12,7 @@ partial class Build
 
 	Target CodeAnalysisBegin => _ => _
 		.Unlisted()
-		.Before(Compile)
+		.Before(CompileDebug)
 		.Before(CodeCoverage)
 		.Executes(() =>
 		{
