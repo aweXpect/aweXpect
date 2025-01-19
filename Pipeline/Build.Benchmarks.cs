@@ -92,7 +92,7 @@ partial class Build
 
 	Target BenchmarkReport => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => BranchName != "main")//TODO
+		.OnlyWhenDynamic(() => BranchName != "main") //TODO
 		.Executes(async () =>
 		{
 			BenchmarkFile currentFile = await DownloadBenchmarkFile();
@@ -103,18 +103,43 @@ partial class Build
 				benchmarkReports.Add(await File.ReadAllTextAsync(file));
 			}
 
-			Output[] cli = GitTasks.Git("log -1").ToArray();
-			string commitId = cli[0].Text.Substring("commit ".Length, 40);
-			string author = cli[1].Text.Substring("Author: ".Length);
-			int index = author.IndexOf(" <", StringComparison.Ordinal);
-			if (index > 0)
+			Output[] lines = GitTasks.Git("log -1").ToArray();
+			string commitId = null, author = null, date = null, message = null;
+			foreach (string line in lines.Select(x => x.Text))
 			{
-				author = author.Substring(0, index);
+				if (commitId == null && line.StartsWith("commit "))
+				{
+					commitId = line.Substring("commit ".Length, 40);
+					continue;
+				}
+
+				if (author == null && line.StartsWith("Author: "))
+				{
+					author = line.Substring("Author: ".Length);
+					int index = author.IndexOf(" <", StringComparison.Ordinal);
+					if (index > 0)
+					{
+						author = author.Substring(0, index);
+					}
+
+					continue;
+				}
+
+				if (date == null && line.StartsWith("Date:   "))
+				{
+					date = line.Substring("Date:   ".Length);
+					continue;
+				}
+
+				if (commitId != null && author != null && date != null && !string.IsNullOrWhiteSpace(line))
+				{
+					message = line.Trim();
+					break;
+				}
 			}
 
-			string date = cli[2].Text.Substring("Date:   ".Length);
-			string message = cli[4].Text.Substring("    ".Length);
 			PageBenchmarkReportGenerator.CommitInfo commitInfo = new(commitId, author, date, message);
+			Log.Debug($"Updating benchmark report for {commitInfo}");
 			string updatedFileContent =
 				PageBenchmarkReportGenerator.Append(commitInfo, currentFile.Content, benchmarkReports);
 			await UploadBenchmarkFile(commitInfo, currentFile, updatedFileContent);
