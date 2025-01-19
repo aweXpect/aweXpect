@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 export default function Benchmarks() {
 	useEffect(() => {
 		const chartScript = document.createElement('script');
-		chartScript.setAttribute('src', 'js/Chart.min.js');
+		chartScript.setAttribute('src', 'js/chart.umd.js');
 		document.getElementById("__docusaurus").appendChild(chartScript);
 		const dataScript = document.createElement('script');
 		dataScript.setAttribute('src', 'js/data.js');

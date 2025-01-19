@@ -1,13 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Nuke.Common;
 using Nuke.Common.IO;
+using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tools.Git;
 using Octokit;
 using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
+using ProductHeaderValue = Octokit.ProductHeaderValue;
 
 // ReSharper disable UnusedMember.Local
 // ReSharper disable AllUnderscoreLocalParameterName
@@ -16,6 +24,8 @@ namespace Build;
 
 partial class Build
 {
+	private const string BenchmarkBranch = "benchmarks";
+
 	Target BenchmarkDotNet => _ => _
 		.Executes(() =>
 		{
@@ -43,7 +53,7 @@ partial class Build
 
 	Target BenchmarkComment => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
+		.OnlyWhenDynamic(() => GitHubActions?.IsPullRequest == true)
 		.Executes(async () =>
 		{
 			string body = CreateBenchmarkCommentBody();
@@ -80,10 +90,124 @@ partial class Build
 			}
 		});
 
+	Target BenchmarkReport => _ => _
+		.After(BenchmarkDotNet)
+		.OnlyWhenDynamic(() => BranchName == "main")
+		.Executes(async () =>
+		{
+			BenchmarkFile currentFile = await DownloadBenchmarkFile();
+			List<string> benchmarkReports = new();
+			foreach (string file in Directory.GetFiles(ArtifactsDirectory / "Benchmarks" / "results",
+				         "*full-compressed.json"))
+			{
+				benchmarkReports.Add(await File.ReadAllTextAsync(file));
+			}
+
+			Output[] lines = GitTasks.Git("log -1").ToArray();
+			string commitId = null, author = null, date = null, message = null;
+			foreach (string line in lines.Select(x => x.Text))
+			{
+				if (commitId == null && line.StartsWith("commit "))
+				{
+					commitId = line.Substring("commit ".Length, 40);
+					continue;
+				}
+
+				if (author == null && line.StartsWith("Author: "))
+				{
+					author = line.Substring("Author: ".Length);
+					int index = author.IndexOf(" <", StringComparison.Ordinal);
+					if (index > 0)
+					{
+						author = author.Substring(0, index);
+					}
+
+					continue;
+				}
+
+				if (date == null && line.StartsWith("Date:   "))
+				{
+					date = line.Substring("Date:   ".Length);
+					continue;
+				}
+
+				if (commitId != null && author != null && date != null && !string.IsNullOrWhiteSpace(line))
+				{
+					message = line.Trim();
+					break;
+				}
+			}
+
+			Log.Debug($"Updating benchmark report for {commitId}: {message} by {author} on {date}");
+			
+			PageBenchmarkReportGenerator.CommitInfo commitInfo = new(commitId, author, date, message);
+			string updatedFileContent =
+				PageBenchmarkReportGenerator.Append(commitInfo, currentFile.Content, benchmarkReports);
+			await UploadBenchmarkFile(commitInfo, currentFile, updatedFileContent);
+		});
+
 	Target Benchmarks => _ => _
 		.DependsOn(BenchmarkDotNet)
 		.DependsOn(BenchmarkResult)
-		.DependsOn(BenchmarkComment);
+		.DependsOn(BenchmarkComment)
+		.DependsOn(BenchmarkReport);
+
+	async Task UploadBenchmarkFile(PageBenchmarkReportGenerator.CommitInfo commitInfo, BenchmarkFile currentFile,
+		string updatedFileContent)
+	{
+		using HttpClient client = new();
+		client.DefaultRequestHeaders.UserAgent.ParseAdd("aweXpect");
+		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GithubToken);
+		GithubUpdateFile content = new(
+			$"Update benchmark for {commitInfo.Sha.Substring(0, 8)}: {commitInfo.Message} by {commitInfo.Author}",
+			Base64Encode(updatedFileContent),
+			currentFile.Sha,
+			BenchmarkBranch);
+		HttpResponseMessage response = await client.PutAsync(
+			"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js",
+			new StringContent(JsonSerializer.Serialize(content), Encoding.UTF8, "application/json"));
+		if (response.IsSuccessStatusCode)
+		{
+			Log.Information("Successfully updated the benchmark data...");
+		}
+		else
+		{
+			string responseContent = await response.Content.ReadAsStringAsync();
+			Log.Error($"Could not update the benchmark data: {responseContent}");
+		}
+	}
+
+	async Task<BenchmarkFile> DownloadBenchmarkFile()
+	{
+		using HttpClient client = new();
+		client.DefaultRequestHeaders.UserAgent.ParseAdd("aweXpect");
+		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GithubToken);
+		HttpResponseMessage response = await client.GetAsync(
+			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js?ref={BenchmarkBranch}");
+		string responseContent = await response.Content.ReadAsStringAsync();
+		if (!response.IsSuccessStatusCode)
+		{
+			throw new InvalidOperationException(
+				$"Could not find 'Docs/pages/static/js/data.js' in branch '{BenchmarkBranch}': {responseContent}");
+		}
+
+		using JsonDocument document = JsonDocument.Parse(responseContent);
+		string content = Base64Decode(document.RootElement.GetProperty("content").GetString());
+		string sha = document.RootElement.GetProperty("sha").GetString();
+		return new BenchmarkFile(content, sha);
+	}
+
+	static string Base64Encode(string plainText)
+	{
+		byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+		return Convert.ToBase64String(plainTextBytes);
+	}
+
+	static string Base64Decode(string base64EncodedData)
+	{
+		byte[] base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+		return Encoding.UTF8.GetString(base64EncodedBytes);
+	}
 
 	string CreateBenchmarkCommentBody()
 	{
@@ -139,4 +263,12 @@ partial class Build
 
 		sb.AppendLine();
 	}
+
+	// ReSharper disable InconsistentNaming
+	// ReSharper disable NotAccessedPositionalProperty.Local
+	private record GithubUpdateFile(string message, string content, string sha, string branch);
+	// ReSharper restore NotAccessedPositionalProperty.Local
+	// ReSharper restore InconsistentNaming
+
+	private record BenchmarkFile(string Content, string Sha);
 }
