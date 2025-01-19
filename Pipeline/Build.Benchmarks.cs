@@ -1,10 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using NJsonSchema;
 using Nuke.Common;
 using Nuke.Common.IO;
+using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tools.Git;
+using Nuke.Common.Tools.GitVersion;
 using Octokit;
 using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
@@ -43,7 +49,7 @@ partial class Build
 
 	Target BenchmarkComment => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
+		.OnlyWhenDynamic(() => GitHubActions?.IsPullRequest == true)
 		.Executes(async () =>
 		{
 			string body = CreateBenchmarkCommentBody();
@@ -80,10 +86,46 @@ partial class Build
 			}
 		});
 
+	Target BenchmarkReport => _ => _
+		//.After(BenchmarkDotNet) // TODO: Change to `is main branch`
+		.OnlyWhenDynamic(() => GitHubActions?.IsPullRequest != true)
+		.Executes(async () =>
+		{
+			string currentFileContent = await DownloadBenchmarkFile();
+			var benchmarkReports = new List<string>();
+			foreach (var file in Directory.GetFiles(ArtifactsDirectory / "Benchmarks" / "results",
+				         "*full-compressed.json"))
+			{
+				benchmarkReports.Add(await File.ReadAllTextAsync(file));
+			}
+
+			var cli = GitTasks.Git("log -1").ToArray();
+			var commitId = cli[0].Text.Substring("commit ".Length, 40);
+			var author = cli[1].Text.Substring("Author: ".Length);
+			var date = cli[2].Text.Substring("Date:   ".Length);
+			var message = cli[4].Text.Substring("    ".Length);
+			var commitInfo = new PageBenchmarkReportGenerator.CommitInfo(commitId, author, date, message);
+			string updatedFileContent = PageBenchmarkReportGenerator.Append(commitInfo, currentFileContent, benchmarkReports);
+			await UploadBenchmarkFile(updatedFileContent);
+		});
+
+	Task UploadBenchmarkFile(string updatedFileContent)
+	{
+		//TODO replace with download from Github
+		return File.WriteAllTextAsync(@"C:\Work\src\aweXpect\Docs\pages\static\js\data.js", updatedFileContent);
+	}
+
+	Task<string> DownloadBenchmarkFile()
+	{
+		//TODO replace with download from Github
+		return File.ReadAllTextAsync(@"C:\Work\src\aweXpect\Docs\pages\static\js\data.js");
+	}
+
 	Target Benchmarks => _ => _
 		.DependsOn(BenchmarkDotNet)
 		.DependsOn(BenchmarkResult)
-		.DependsOn(BenchmarkComment);
+		.DependsOn(BenchmarkComment)
+		.DependsOn(BenchmarkReport);
 
 	string CreateBenchmarkCommentBody()
 	{

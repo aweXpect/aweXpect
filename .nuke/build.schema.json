@@ -27,6 +27,7 @@
         "ApiChecks",
         "BenchmarkComment",
         "BenchmarkDotNet",
+        "BenchmarkReport",
         "BenchmarkResult",
         "Benchmarks",
         "CalculateNugetVersion",
