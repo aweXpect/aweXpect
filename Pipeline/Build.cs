@@ -1,6 +1,5 @@
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 
@@ -25,5 +24,5 @@ partial class Build : NukeBuild
 	AbsolutePath TestResultsDirectory => RootDirectory / "TestResults";
 	GitHubActions GitHubActions => GitHubActions.Instance;
 
-	public static int Main() => Execute<Build>(x => x.BenchmarkReport);
+	public static int Main() => Execute<Build>(x => x.Pack, x => x.ApiChecks, x => x.Benchmarks, x => x.CodeAnalysis);
 }

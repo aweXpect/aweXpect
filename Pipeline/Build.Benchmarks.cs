@@ -92,7 +92,7 @@ partial class Build
 
 	Target BenchmarkReport => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => BranchName == "topic/improve-benchmarks")
+		.OnlyWhenDynamic(() => BranchName != "main")//TODO
 		.Executes(async () =>
 		{
 			BenchmarkFile currentFile = await DownloadBenchmarkFile();

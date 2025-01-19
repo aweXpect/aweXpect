@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+// ReSharper disable CollectionNeverQueried.Local
+// ReSharper disable UnusedMember.Local
+// ReSharper disable UnusedAutoPropertyAccessor.Local
 
 namespace Build;
 
 public class PageBenchmarkReportGenerator
 {
-
 	public static string Append(CommitInfo commitInfo, string currentFileContent, List<string> benchmarkReportsContents)
 	{
 		string prefix = "window.BENCHMARK_DATA = ";
@@ -17,14 +19,15 @@ public class PageBenchmarkReportGenerator
 			throw new NotSupportedException($"The benchmark data file is incorrect (does not start with {prefix})");
 		}
 
-		PageReportData pageReport = JsonSerializer.Deserialize<PageReportData>(currentFileContent.Substring(prefix.Length));
+		PageReportData pageReport =
+			JsonSerializer.Deserialize<PageReportData>(currentFileContent.Substring(prefix.Length));
 
 		foreach (string benchmarkReportContent in benchmarkReportsContents)
 		{
 			BenchmarkReport benchmarkReport = JsonSerializer.Deserialize<BenchmarkReport>(benchmarkReportContent);
 			if (!pageReport.Append(commitInfo, benchmarkReport))
 			{
-				throw new NotSupportedException($"The new benchmark data is incorrect");
+				throw new NotSupportedException("The new benchmark data is incorrect");
 			}
 		}
 
@@ -44,17 +47,18 @@ public class PageBenchmarkReportGenerator
 					return false;
 				}
 			}
+
 			return true;
 		}
 
 		private bool Append(CommitInfo commitInfo, BenchmarkReport.Benchmark benchmark)
 		{
-			if (!ParseMethod(benchmark.Method, out var name, out var type))
+			if (!ParseMethod(benchmark.Method, out string name, out string type))
 			{
 				return false;
 			}
 
-			if (!TryGetValue(name, out var pageReport))
+			if (!TryGetValue(name, out PageReport pageReport))
 			{
 				pageReport = new PageReport();
 				this[name] = pageReport;
@@ -65,6 +69,7 @@ public class PageBenchmarkReportGenerator
 				pageReport.Commits.Add(commitInfo);
 				pageReport.Labels.Add(commitInfo.Sha.Substring(0, 8));
 			}
+
 			AppendTimeDataset(benchmark, pageReport, type);
 			AppendMemoryDataset(benchmark, pageReport, type);
 
@@ -73,10 +78,11 @@ public class PageBenchmarkReportGenerator
 
 		void AppendMemoryDataset(BenchmarkReport.Benchmark benchmark, PageReport pageReport, string type)
 		{
-			var memoryDataset = pageReport.Datasets.FirstOrDefault(x => x.Label.StartsWith(type, StringComparison.OrdinalIgnoreCase) && x.YAxisId == "y1");
+			PageReport.Dataset memoryDataset = pageReport.Datasets.FirstOrDefault(x
+				=> x.Label.StartsWith(type, StringComparison.OrdinalIgnoreCase) && x.YAxisId == "y1");
 			if (memoryDataset == null)
 			{
-				memoryDataset = new PageReport.Dataset()
+				memoryDataset = new PageReport.Dataset
 				{
 					Label = $"{type} memory",
 					Unit = "b",
@@ -85,10 +91,11 @@ public class PageBenchmarkReportGenerator
 					YAxisId = "y1",
 					BackgroundColor = GetColor(type),
 					BorderColor = GetColor(type),
-					Data = new()
+					Data = new List<double>()
 				};
 				pageReport.Datasets.Add(memoryDataset);
 			}
+
 			memoryDataset.Data.Add(benchmark.Metrics
 				.Where(x => x.Descriptor.Id == "Allocated Memory")
 				.Select(x => x.Value)
@@ -97,10 +104,11 @@ public class PageBenchmarkReportGenerator
 
 		void AppendTimeDataset(BenchmarkReport.Benchmark benchmark, PageReport pageReport, string type)
 		{
-			var timeDataset = pageReport.Datasets.FirstOrDefault(x => x.Label.StartsWith(type, StringComparison.OrdinalIgnoreCase) && x.YAxisId == "y");
+			PageReport.Dataset timeDataset = pageReport.Datasets.FirstOrDefault(x
+				=> x.Label.StartsWith(type, StringComparison.OrdinalIgnoreCase) && x.YAxisId == "y");
 			if (timeDataset == null)
 			{
-				timeDataset = new PageReport.Dataset()
+				timeDataset = new PageReport.Dataset
 				{
 					Label = $"{type} time",
 					Unit = "ns",
@@ -108,10 +116,11 @@ public class PageBenchmarkReportGenerator
 					YAxisId = "y",
 					BackgroundColor = GetColor(type),
 					BorderColor = GetColor(type),
-					Data = new()
+					Data = new List<double>()
 				};
 				pageReport.Datasets.Add(timeDataset);
 			}
+
 			timeDataset.Data.Add(benchmark.Statistics.Mean);
 		}
 
@@ -138,7 +147,6 @@ public class PageBenchmarkReportGenerator
 			type = method.Substring(index + 1);
 			return true;
 		}
-
 	}
 
 	public class CommitInfo(string sha, string author, string date, string message)
@@ -148,70 +156,32 @@ public class PageBenchmarkReportGenerator
 		[JsonPropertyName("date")] public string Date { get; } = date;
 		[JsonPropertyName("message")] public string Message { get; } = message;
 	}
+
 	private class PageReport
 	{
-		[JsonPropertyName("commits")] public List<CommitInfo> Commits { get; set; } = new();
-		[JsonPropertyName("labels")] public List<string> Labels { get; set; } = new();
+		[JsonPropertyName("commits")] public List<CommitInfo> Commits { get; } = new();
+		[JsonPropertyName("labels")] public List<string> Labels { get; } = new();
 
-		[JsonPropertyName("datasets")] public List<Dataset> Datasets { get; set; } = new();
+		[JsonPropertyName("datasets")] public List<Dataset> Datasets { get; } = new();
 
 		public class Dataset
 		{
-			[JsonPropertyName("label")] public string Label { get; set; }
+			[JsonPropertyName("label")] public string Label { get; init; }
 			[JsonPropertyName("unit")] public string Unit { get; set; }
 
-			[JsonPropertyName("data")] public List<double> Data { get; set; }
+			[JsonPropertyName("data")] public List<double> Data { get; init; }
 
 			[JsonPropertyName("borderColor")] public string BorderColor { get; set; }
 
 			[JsonPropertyName("backgroundColor")] public string BackgroundColor { get; set; }
 
-			[JsonPropertyName("yAxisID")] public string YAxisId { get; set; }
+			[JsonPropertyName("yAxisID")] public string YAxisId { get; init; }
 
 			[JsonPropertyName("borderDash")] public int[] BorderDash { get; set; } = [];
 
 			[JsonPropertyName("pointStyle")] public string PointStyle { get; set; }
 		}
 	}
-	/*
-	 * {
-  labels: ["abc", "def", "xyz"],
-  datasets: [
-    {
-      label: 'aweXpect',
-      data: [1300, 1350, 1340],
-      borderColor: "#63A2AC",
-      backgroundColor: "#63A2AC",
-      yAxisID: 'y',
-    },
-    {
-      label: 'TUnit',
-      data: [854, 848, 816],
-      borderColor: "#AC6262",
-      backgroundColor: "#AC6262",
-      yAxisID: 'y',
-    },
-    {
-      label: 'aweXpect',
-      data: [400, 450, 440],
-      borderColor: "#63A2AC",
-      backgroundColor: "#63A2AC",
-      borderDash: [5, 5],
-      pointStyle: 'triangle',
-      yAxisID: 'y1',
-    },
-    {
-      label: 'TUnit',
-      data: [354, 348, 386],
-      borderColor: "#AC6262",
-      backgroundColor: "#AC6262",
-      borderDash: [5, 5],
-      pointStyle: 'triangle',
-      yAxisID: 'y1',
-    }
-  ]
-}
-	 */
 
 	private class BenchmarkReport
 	{
