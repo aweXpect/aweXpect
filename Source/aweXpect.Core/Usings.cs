@@ -1,5 +1,5 @@
 ﻿#if NETSTANDARD2_0 || NETSTANDARD2_1
-global using aweXpect.Polyfills;
+global using aweXpect.Core.Polyfills;
 #endif
 
 global using aweXpect.Formatting;

@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace aweXpect.Polyfills;
+namespace aweXpect.Core.Polyfills;
 
 /// <summary>
 ///     Provides extension methods to simplify writing platform independent tests.
