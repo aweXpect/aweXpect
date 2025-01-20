@@ -18,12 +18,19 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 08:17:07 2025 \u002B0100",
         "message": "coverage: exclude polyfill files (#222)"
+      },
+      {
+        "sha": "ba348350c55bc5b042f1e6116e5f4ddb00a80a24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 08:43:03 2025 \u002B0100",
+        "message": "fix: finalize release when at least one push succeeded (#223)"
       }
     ],
     "labels": [
       "198447f7",
       "e994b4dd",
-      "a6022c2c"
+      "a6022c2c",
+      "ba348350"
     ],
     "datasets": [
       {
@@ -32,7 +39,8 @@ window.BENCHMARK_DATA = {
         "data": [
           150.75262652910672,
           170.8307419459025,
-          170.6940963904063
+          170.6940963904063,
+          158.4435460090637
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -44,6 +52,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496
@@ -63,7 +72,8 @@ window.BENCHMARK_DATA = {
         "data": [
           200.27242479721704,
           224.86235439777374,
-          222.18419427871703
+          222.18419427871703,
+          199.29969428135797
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -75,6 +85,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776
@@ -94,7 +105,8 @@ window.BENCHMARK_DATA = {
         "data": [
           539.4753929138184,
           595.9496761322022,
-          578.6159603754679
+          578.6159603754679,
+          524.8989543233599
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -106,6 +118,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          1712,
           1712,
           1712,
           1712
@@ -140,12 +153,19 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 08:17:07 2025 \u002B0100",
         "message": "coverage: exclude polyfill files (#222)"
+      },
+      {
+        "sha": "ba348350c55bc5b042f1e6116e5f4ddb00a80a24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 08:43:03 2025 \u002B0100",
+        "message": "fix: finalize release when at least one push succeeded (#223)"
       }
     ],
     "labels": [
       "198447f7",
       "e994b4dd",
-      "a6022c2c"
+      "a6022c2c",
+      "ba348350"
     ],
     "datasets": [
       {
@@ -154,7 +174,8 @@ window.BENCHMARK_DATA = {
         "data": [
           329.63557247320813,
           351.37352555592855,
-          374.3091664632162
+          374.3091664632162,
+          337.2535416603088
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -166,6 +187,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888
@@ -185,7 +207,8 @@ window.BENCHMARK_DATA = {
         "data": [
           417.0791400029109,
           460.97408453623456,
-          456.0185529504503
+          456.0185529504503,
+          406.35335045594434
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -197,6 +220,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816
@@ -216,7 +240,8 @@ window.BENCHMARK_DATA = {
         "data": [
           14911.549033610027,
           15581.482432047525,
-          14722.414560953775
+          14722.414560953775,
+          14283.944193913387
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -228,6 +253,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          26616,
           26616,
           26616,
           26616
@@ -262,12 +288,19 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 08:17:07 2025 \u002B0100",
         "message": "coverage: exclude polyfill files (#222)"
+      },
+      {
+        "sha": "ba348350c55bc5b042f1e6116e5f4ddb00a80a24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 08:43:03 2025 \u002B0100",
+        "message": "fix: finalize release when at least one push succeeded (#223)"
       }
     ],
     "labels": [
       "198447f7",
       "e994b4dd",
-      "a6022c2c"
+      "a6022c2c",
+      "ba348350"
     ],
     "datasets": [
       {
@@ -276,7 +309,8 @@ window.BENCHMARK_DATA = {
         "data": [
           204.06733180681866,
           216.9594315801348,
-          206.10692450205485
+          206.10692450205485,
+          196.2139249581557
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -288,6 +322,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848
@@ -307,7 +342,8 @@ window.BENCHMARK_DATA = {
         "data": [
           250.96880504063196,
           278.63078991572064,
-          270.1289446512858
+          270.1289446512858,
+          242.58121951421103
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -319,6 +355,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048
@@ -338,7 +375,8 @@ window.BENCHMARK_DATA = {
         "data": [
           766.1536415735881,
           829.1234278996785,
-          821.9613706588746
+          821.9613706588746,
+          849.6050724983215
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -350,6 +388,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          2352,
           2352,
           2352,
           2352
@@ -384,12 +423,19 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 08:17:07 2025 \u002B0100",
         "message": "coverage: exclude polyfill files (#222)"
+      },
+      {
+        "sha": "ba348350c55bc5b042f1e6116e5f4ddb00a80a24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 08:43:03 2025 \u002B0100",
+        "message": "fix: finalize release when at least one push succeeded (#223)"
       }
     ],
     "labels": [
       "198447f7",
       "e994b4dd",
-      "a6022c2c"
+      "a6022c2c",
+      "ba348350"
     ],
     "datasets": [
       {
@@ -398,7 +444,8 @@ window.BENCHMARK_DATA = {
         "data": [
           304.53645614477307,
           328.66932388714383,
-          306.69245314598083
+          306.69245314598083,
+          301.3085208960942
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -410,6 +457,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928
@@ -429,7 +477,8 @@ window.BENCHMARK_DATA = {
         "data": [
           351.26639202662875,
           409.45268201828003,
-          351.31532487869265
+          351.31532487869265,
+          354.7790416399638
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -441,6 +490,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832
@@ -460,7 +510,8 @@ window.BENCHMARK_DATA = {
         "data": [
           814.6544300715128,
           895.92631987163,
-          855.6375809351604
+          855.6375809351604,
+          903.2392115910848
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -472,6 +523,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          2328,
           2328,
           2328,
           2328
@@ -506,12 +558,19 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 08:17:07 2025 \u002B0100",
         "message": "coverage: exclude polyfill files (#222)"
+      },
+      {
+        "sha": "ba348350c55bc5b042f1e6116e5f4ddb00a80a24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 08:43:03 2025 \u002B0100",
+        "message": "fix: finalize release when at least one push succeeded (#223)"
       }
     ],
     "labels": [
       "198447f7",
       "e994b4dd",
-      "a6022c2c"
+      "a6022c2c",
+      "ba348350"
     ],
     "datasets": [
       {
@@ -520,7 +579,8 @@ window.BENCHMARK_DATA = {
         "data": [
           1069.4012530190605,
           1128.346786226545,
-          1098.832622391837
+          1098.832622391837,
+          1076.532111985343
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -532,6 +592,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2384,
           2384,
           2384,
           2384
@@ -551,7 +612,8 @@ window.BENCHMARK_DATA = {
         "data": [
           1175.168862915039,
           1306.7912724812825,
-          1294.6244603474936
+          1294.6244603474936,
+          1156.1905431111654
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -563,6 +625,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760
@@ -582,7 +645,8 @@ window.BENCHMARK_DATA = {
         "data": [
           2060.838473510742,
           2126.9997182210286,
-          2178.2397992060733
+          2178.2397992060733,
+          2115.8911359151202
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -594,6 +658,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          3216,
           3216,
           3216,
           3216
@@ -628,12 +693,19 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 08:17:07 2025 \u002B0100",
         "message": "coverage: exclude polyfill files (#222)"
+      },
+      {
+        "sha": "ba348350c55bc5b042f1e6116e5f4ddb00a80a24",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 08:43:03 2025 \u002B0100",
+        "message": "fix: finalize release when at least one push succeeded (#223)"
       }
     ],
     "labels": [
       "198447f7",
       "e994b4dd",
-      "a6022c2c"
+      "a6022c2c",
+      "ba348350"
     ],
     "datasets": [
       {
@@ -642,7 +714,8 @@ window.BENCHMARK_DATA = {
         "data": [
           1094.4609926768712,
           1179.811538441976,
-          1194.3902856191
+          1194.3902856191,
+          1128.3401187016414
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -654,6 +727,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2408,
           2408,
           2408,
           2408
@@ -673,7 +747,8 @@ window.BENCHMARK_DATA = {
         "data": [
           76939.67994791667,
           82148.39580829327,
-          82674.91611328124
+          82674.91611328124,
+          78198.26883370536
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -685,6 +760,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710
@@ -704,7 +780,8 @@ window.BENCHMARK_DATA = {
         "data": [
           3975.66723429362,
           4182.777239118303,
-          4299.858325703939
+          4299.858325703939,
+          4055.510234069824
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -716,6 +793,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          5160,
           5160,
           5160,
           5160
