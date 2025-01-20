@@ -4,14 +4,14 @@ sidebar_position: 1
 
 # Write your own extension
 
-This library will never be able to cope with all ideas and use cases. Therefore it is possible to use the [
+This library will never be able to cope with all ideas and use cases. Therefore, it is possible to use the [
 `aweXpect.Core`](https://www.nuget.org/packages/aweXpect.Core/) package and write your own extensions.
+Goal of this package is to be more stable than the main aweXpect package, so reduce the risk of version conflicts
+between different extensions.
 
-## For existing types
+You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
 
-You can extend the functionality for existing types, by adding extension methods on `IThat<TType>`.
-
-### Example 1
+## Example
 
 You want to verify that a string corresponds to an absolute path.
 
@@ -19,13 +19,13 @@ You want to verify that a string corresponds to an absolute path.
 /// <summary>
 ///     Verifies that the <paramref name="subject"/> is an absolute path.
 /// </summary>
-public static AndOrResult<string, IThat<string>> BeAbsolutePath(
+public static AndOrResult<string, IThat<string>> IsAbsolutePath(
   this IThat<string> subject)
   => new(subject.ExpectationBuilder.AddConstraint(it
-      => new BeAbsolutePathConstraint(it)),
+      => new IsAbsolutePathConstraint(it)),
     subject);
 
-private readonly struct BeAbsolutePathConstraint(string it) : IValueConstraint<string>
+private readonly struct IsAbsolutePathConstraint(string it) : IValueConstraint<string>
 {
   public ConstraintResult IsMetBy(string actual)
   {
@@ -41,7 +41,7 @@ private readonly struct BeAbsolutePathConstraint(string it) : IValueConstraint<s
 }
 ```
 
-### Constraints
+## Constraints
 
 The basis for expectations are constraints. You can add different constraints to the `ExpectationBuilder` that is
 available for the `IThat<T>`. They differ in the input and output parameters:
@@ -55,51 +55,3 @@ available for the `IThat<T>`. They differ in the input and output parameters:
   Similar to the `IValueConstraint<T>` and `IAsyncConstraint<T>` respectively but receives an additional
   `IEvaluationContext` parameter that allows storing and receiving data between expectations.  
   *This mechanism is used for example to avoid enumerating an `IEnumerable` multiple times across multiple constraints.*
-
-## For new types
-
-You can extend the functionality to new types, by adding a `.Should()` extension methods on `IThat<TType>` and
-then the corresponding methods on `IThat<TType>`.
-
-### Example 2
-
-You want to verify that a directory is empty.
-
-First you need to enable expectations for `DirectoryInfo`:
-
-```csharp
-public static class DirectoryInfoExtensions
-{
-  public static IThat<DirectoryInfo> Should(this IThat<DirectoryInfo> subject)
-    => subject.Should(_ => {});
-}
-```
-
-Then you can add the [extension method on `IThat<DirectoryInfo>`](#for-existing-types):
-
-```csharp
-/// <summary>
-///     Verifies that the <paramref name="directory"/> is empty.
-/// </summary>
-public static AndOrResult<DirectoryInfo, IThat<DirectoryInfo>> BeEmpty(
-  this IThat<DirectoryInfo> directory)
-  => new(directory.ExpectationBuilder.AddConstraint(it
-      => new BeEmptyConstraint(it)),
-    directory);
-
-private readonly struct BeEmptyConstraint(string it) : IValueConstraint<DirectoryInfo>
-{
-  public ConstraintResult IsMetBy(DirectoryInfo actual)
-  {
-    var fileCount = actual.GetFiles().Length;
-    var directoryCount = actual.GetDirectories().Length;
-    if (fileCount + directoryCount == 0)
-    {
-      return new ConstraintResult.Success<DirectoryInfo>(actual, "be empty");
-    }
-
-    return new ConstraintResult.Failure("be empty",
-      $"{it} contained {fileCount} files and {directoryCount} directories");
-  }
-}
-```
