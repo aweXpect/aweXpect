@@ -35,7 +35,7 @@ public partial class StringEqualityOptions
 
 		#region IMatchType Members
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string})" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
@@ -94,6 +94,7 @@ public partial class StringEqualityOptions
 			return $"{prefix} which {stringDifference}";
 		}
 
+		/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
 		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
@@ -110,6 +111,7 @@ public partial class StringEqualityOptions
 			return comparer.Equals(actual, expected);
 		}
 
+		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, bool)" />
 		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
 			=> useActiveGrammaticVoice switch
 			{
@@ -118,6 +120,22 @@ public partial class StringEqualityOptions
 				false =>
 					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
+
+		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
+		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer) 
+		{
+			if (comparer != null)
+			{
+				return $" using {Formatter.Format(comparer.GetType())}";
+			}
+
+			if (ignoreCase)
+			{
+				return " ignoring case";
+			}
+
+			return "";
+		}
 
 		#endregion
 	}

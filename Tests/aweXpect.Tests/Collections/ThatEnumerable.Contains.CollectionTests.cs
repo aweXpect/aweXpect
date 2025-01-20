@@ -2510,5 +2510,80 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 		}
+
+		public sealed class StringCollectionTests
+		{
+			[Theory]
+			[InlineData("[a-f]{1}[o]*", true)]
+			[InlineData("[g-h]{1}[o]*", false)]
+			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains([regex]).AsRegex();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain collection [regex] in order as regex,
+					              but it lacked 1 of 1 expected items: "{regex}"
+					              """);
+			}
+
+			[Theory]
+			[InlineData("?oo", true)]
+			[InlineData("f??o", false)]
+			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains([wildcard]).AsWildcard();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain collection [wildcard] in order as wildcard,
+					              but it lacked 1 of 1 expected items: "{wildcard}"
+					              """);
+			}
+
+			[Theory]
+			[InlineData("foo", true)]
+			[InlineData("*oo", false)]
+			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains([match]).AsWildcard().Exactly();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain collection [match] in order,
+					              but it lacked 1 of 1 expected items: "{match}"
+					              """);
+			}
+
+			[Theory]
+			[InlineData("FOO", true)]
+			[InlineData("goo", false)]
+			public async Task WhenIgnoringCase_ShouldUseCaseInsensitiveMatch(string match, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains([match]).IgnoringCase();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain collection [match] in order ignoring case,
+					              but it lacked 1 of 1 expected items: "{match}"
+					              """);
+			}
+		}
 	}
 }

@@ -230,6 +230,72 @@ public sealed partial class ThatEnumerable
 
 		public sealed class StringItemTests
 		{
+			[Theory]
+			[InlineData("[a-f]{1}[o]*", true)]
+			[InlineData("[g-h]{1}[o]*", false)]
+			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains(regex).AsRegex();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{regex}" as regex at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("?oo", true)]
+			[InlineData("f??o", false)]
+			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains(wildcard).AsWildcard();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{wildcard}" as wildcard at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("foo", true)]
+			[InlineData("*oo", false)]
+			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
+			{
+				string[] subject = ["foo", "bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).Contains(match).Exactly();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{match}" at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
 			[Fact]
 			public async Task ShouldCompareCaseSensitive()
 			{
@@ -281,15 +347,26 @@ public sealed partial class ThatEnumerable
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact]
-			public async Task WhenIgnoringCase_ShouldSucceedForCaseSensitiveDifference()
+			[Theory]
+			[InlineData("FOO", true)]
+			[InlineData("goo", false)]
+			public async Task WhenIgnoringCase_ShouldUseCaseInsensitiveMatch(string match, bool expectSuccess)
 			{
-				string[] sut = ["green", "blue", "yellow"];
+				string[] subject = ["foo", "bar", "baz"];
 
 				async Task Act()
-					=> await That(sut).Contains("GREEN").IgnoringCase();
+					=> await That(subject).Contains(match).IgnoringCase();
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{match}" ignoring case at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
 			}
 
 			[Fact]

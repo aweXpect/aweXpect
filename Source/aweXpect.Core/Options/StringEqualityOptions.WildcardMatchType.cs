@@ -28,9 +28,9 @@ public partial class StringEqualityOptions
 			return $"^{regex}$";
 		}
 
-		#region IMatchType Members
+		#region IStringMatchType Members
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string})" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer)
@@ -44,6 +44,7 @@ public partial class StringEqualityOptions
 				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(expected.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
 		}
 
+		/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
 		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
@@ -60,6 +61,7 @@ public partial class StringEqualityOptions
 				RegexTimeout);
 		}
 
+		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, bool)" />
 		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
 			=> useActiveGrammaticVoice switch
 			{
@@ -68,6 +70,10 @@ public partial class StringEqualityOptions
 				false =>
 					$"matching {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
+
+		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
+		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer)
+			=> " as wildcard";
 
 		#endregion
 	}
