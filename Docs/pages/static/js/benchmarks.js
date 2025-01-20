@@ -46,12 +46,14 @@
 					display: true,
 					title: { display: true, text: 'time [ns]' },
 					position: 'left',
+					min: 0
 				},
 				y1: {
 					type: 'linear',
 					display: true,
 					title: { display: true, text: 'memory [bytes]' },
 					position: 'right',
+					min: 0,
 					grid: {
 						drawOnChartArea: false,
 					},
