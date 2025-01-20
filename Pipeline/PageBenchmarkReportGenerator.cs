@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Serilog;
+
 // ReSharper disable CollectionNeverQueried.Local
 // ReSharper disable UnusedMember.Local
 // ReSharper disable UnusedAutoPropertyAccessor.Local
@@ -22,6 +24,16 @@ public class PageBenchmarkReportGenerator
 
 		PageReportData pageReport =
 			JsonSerializer.Deserialize<PageReportData>(currentFileContent.Substring(prefix.Length));
+
+		if (pageReport.Values.Any(r => r.Commits.Any(c => c.Sha == commitInfo.Sha)))
+		{
+			Log.Warning(
+				$"The benchmark already has data for {commitInfo.Sha}: {commitInfo.Message} by {commitInfo.Author} on {commitInfo.Date}");
+			return null;
+		}
+
+		Log.Debug(
+			$"Updating benchmark report for {commitInfo.Sha}: {commitInfo.Message} by {commitInfo.Author} on {commitInfo.Date}");
 
 		foreach (string benchmarkReportContent in benchmarkReportsContents)
 		{
