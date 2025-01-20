@@ -15,7 +15,7 @@ public sealed partial class ThatTimeSpan
 				async Task Act()
 					=> await That(subject).IsLessThan(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be less than <null>,
@@ -32,7 +32,7 @@ public sealed partial class ThatTimeSpan
 				async Task Act()
 					=> await That(subject).IsLessThan(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be less than the maximum time span,
@@ -49,7 +49,7 @@ public sealed partial class ThatTimeSpan
 				async Task Act()
 					=> await That(subject).IsLessThan(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be less than the minimum time span,
@@ -66,7 +66,7 @@ public sealed partial class ThatTimeSpan
 				async Task Act()
 					=> await That(subject).IsLessThan(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be less than {Formatter.Format(expected)},
@@ -83,7 +83,7 @@ public sealed partial class ThatTimeSpan
 				async Task Act()
 					=> await That(subject).IsLessThan(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be less than {Formatter.Format(expected)},
@@ -100,7 +100,7 @@ public sealed partial class ThatTimeSpan
 				async Task Act()
 					=> await That(subject).IsLessThan(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -113,7 +113,7 @@ public sealed partial class ThatTimeSpan
 					=> await That(subject).IsLessThan(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be less than {Formatter.Format(expected)} ± 0:03,
@@ -131,7 +131,7 @@ public sealed partial class ThatTimeSpan
 					=> await That(subject).IsLessThan(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be less than {Formatter.Format(expected)} ± 0:03,
@@ -149,7 +149,7 @@ public sealed partial class ThatTimeSpan
 					=> await That(subject).IsLessThan(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

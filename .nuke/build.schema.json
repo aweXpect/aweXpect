@@ -27,6 +27,7 @@
         "ApiChecks",
         "BenchmarkComment",
         "BenchmarkDotNet",
+        "BenchmarkReport",
         "BenchmarkResult",
         "Benchmarks",
         "CalculateNugetVersion",
@@ -46,7 +47,6 @@
         "TestFrameworks",
         "TestingPlatformFrameworks",
         "UnitTests",
-        "UpdateReadme",
         "VsTestFrameworks",
         "XunitTestingPlatformFrameworks"
       ]

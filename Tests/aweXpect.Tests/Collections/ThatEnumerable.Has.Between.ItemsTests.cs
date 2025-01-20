@@ -24,7 +24,7 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).Has().Between(3).And(6).Items()
 							.WithCancellation(token);
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have between 3 and 6 items,
@@ -40,7 +40,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().Between(3).And(6).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -51,7 +51,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().Between(3).And(6).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have between 3 and 6 items,
@@ -67,7 +67,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().Between(3).And(6).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have between 3 and 6 items,
@@ -83,7 +83,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().Between(3).And(6).Items();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -94,7 +94,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().Between(3).And(6).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have between 3 and 6 items,
@@ -110,7 +110,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).Has().Between(3).And(6).Items();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             have between 3 and 6 items,

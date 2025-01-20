@@ -11,8 +11,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<TType, IExpectSubject<object?>> IsExactly<TType>(
-		this IExpectSubject<object?> source)
+	public static AndOrWhichResult<TType, IThat<object?>> IsExactly<TType>(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsExactlyOfTypeConstraint<TType>(it)),
 			source);
@@ -20,8 +20,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IExpectSubject<object?>> IsExactly(
-		this IExpectSubject<object?> source,
+	public static AndOrWhichResult<object?, IThat<object?>> IsExactly(
+		this IThat<object?> source,
 		Type type)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsExactlyOfTypeConstraint(it, type)),
@@ -30,8 +30,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IExpectSubject<object?>> IsNotExactly<TType>(
-		this IExpectSubject<object?> source)
+	public static AndOrWhichResult<object?, IThat<object?>> IsNotExactly<TType>(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotExactlyOfTypeConstraint<TType>(it)),
 			source);
@@ -39,8 +39,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IExpectSubject<object?>> IsNotExactly(
-		this IExpectSubject<object?> source,
+	public static AndOrWhichResult<object?, IThat<object?>> IsNotExactly(
+		this IThat<object?> source,
 		Type type)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotExactlyOfTypeConstraint(it, type)),

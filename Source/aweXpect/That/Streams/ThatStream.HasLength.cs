@@ -10,8 +10,8 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the subject <see cref="Stream" /> has the <paramref name="expected" /> length.
 	/// </summary>
-	public static AndOrResult<Stream?, IExpectSubject<Stream?>> HasLength(
-		this IExpectSubject<Stream?> source,
+	public static AndOrResult<Stream?, IThat<Stream?>> HasLength(
+		this IThat<Stream?> source,
 		long expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
@@ -25,8 +25,8 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the subject <see cref="Stream" /> has the <paramref name="expected" /> length.
 	/// </summary>
-	public static AndOrResult<Stream?, IExpectSubject<Stream?>> DoesNotHaveLength(
-		this IExpectSubject<Stream?> source,
+	public static AndOrResult<Stream?, IThat<Stream?>> DoesNotHaveLength(
+		this IThat<Stream?> source,
 		long expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(

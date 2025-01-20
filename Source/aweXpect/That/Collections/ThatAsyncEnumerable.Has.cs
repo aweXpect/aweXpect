@@ -11,7 +11,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that the <paramref name="subject" /> has…
 	/// </summary>
 	public static IThatHas<IAsyncEnumerable<TItem>> Has<TItem>(
-		this IExpectSubject<IAsyncEnumerable<TItem>> subject)
+		this IThat<IAsyncEnumerable<TItem>> subject)
 		=> subject.ThatHas();
 }
 #endif

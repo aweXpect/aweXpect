@@ -17,7 +17,7 @@ public sealed partial class QuantifiedCollectionResult
 			async Task Act()
 				=> await That(subject).All().Are<MyClass>();
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             have all items be of type MyClass,
@@ -37,7 +37,7 @@ public sealed partial class QuantifiedCollectionResult
 			async Task Act()
 				=> await That(subject).All().Are<MyClass>();
 
-			await That(Act).Does().NotThrow();
+			await That(Act).DoesNotThrow();
 		}
 	}
 }

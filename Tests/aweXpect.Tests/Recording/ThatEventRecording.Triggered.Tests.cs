@@ -21,7 +21,7 @@ public sealed partial class ThatEventRecording
 					await That(recording)
 						.Triggered(nameof(CustomEventWithParametersClass<string, int, bool, DateTime>.CustomEvent));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -38,7 +38,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.AtLeast(3.Times());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -53,7 +53,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
 						.AtLeast(3.Times());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the CustomEvent event on sut at least 3 times,
@@ -76,7 +76,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(CustomEventWithParametersClass<string>.CustomEvent))
 						.AtLeast(3.Times());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the CustomEvent event on sut at least 3 times,
@@ -95,7 +95,7 @@ public sealed partial class ThatEventRecording
 				async Task Act()
 					=> await That(subject!).Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have recorded the CustomEvent event at least once,
@@ -111,7 +111,7 @@ public sealed partial class ThatEventRecording
 				void Act() =>
 					sut.Record().Events();
 
-				await That(Act).Does().Throw<NotSupportedException>()
+				await That(Act).Throws<NotSupportedException>()
 					.WithMessage(
 						"The CustomEvent event contains too many parameters (5): [string, int?, bool, DateTime, int]");
 			}

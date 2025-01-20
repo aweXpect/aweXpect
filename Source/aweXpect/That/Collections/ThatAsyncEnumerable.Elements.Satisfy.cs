@@ -15,7 +15,7 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IAsyncEnumerable<string?>, IExpectSubject<IAsyncEnumerable<string?>>>
+		public AndOrResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>
 			Satisfy(
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
@@ -35,7 +35,7 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IAsyncEnumerable<TItem>, IExpectSubject<IAsyncEnumerable<TItem>>>
+		public AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]

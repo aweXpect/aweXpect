@@ -13,8 +13,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor <see cref="float.IsNaN" />
 	///     ).
 	/// </summary>
-	public static AndOrResult<float, IExpectSubject<float>> IsFinite(
-		this IExpectSubject<float> source)
+	public static AndOrResult<float, IThat<float>> IsFinite(
+		this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -28,8 +28,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as finite (neither <see cref="double.IsInfinity" /> nor
 	///     <see cref="double.IsNaN" />).
 	/// </summary>
-	public static AndOrResult<double, IExpectSubject<double>> IsFinite(
-		this IExpectSubject<double> source)
+	public static AndOrResult<double, IThat<double>> IsFinite(
+		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -43,8 +43,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor
 	///     <see cref="float.IsNaN" /> nor <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<float, IExpectSubject<float?>> IsFinite(
-		this IExpectSubject<float?> source)
+	public static AndOrResult<float, IThat<float?>> IsFinite(
+		this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -58,8 +58,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as finite (neither <see cref="double.IsInfinity" /> nor
 	///     <see cref="double.IsNaN" /> nor <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<double, IExpectSubject<double?>> IsFinite(
-		this IExpectSubject<double?> source)
+	public static AndOrResult<double, IThat<double?>> IsFinite(
+		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,
@@ -73,8 +73,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is not seen as finite (either <see cref="float.IsInfinity" /> or
 	///     <see cref="float.IsNaN" />).
 	/// </summary>
-	public static AndOrResult<float, IExpectSubject<float>> IsNotFinite(
-		this IExpectSubject<float> source)
+	public static AndOrResult<float, IThat<float>> IsNotFinite(
+		this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -88,8 +88,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is not seen as finite (either <see cref="double.IsInfinity" /> or
 	///     <see cref="double.IsNaN" />).
 	/// </summary>
-	public static AndOrResult<double, IExpectSubject<double>> IsNotFinite(
-		this IExpectSubject<double> source)
+	public static AndOrResult<double, IThat<double>> IsNotFinite(
+		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -103,8 +103,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is not seen as finite (either <see cref="float.IsInfinity" /> or
 	///     <see cref="float.IsNaN" /> or <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<float?, IExpectSubject<float?>> IsNotFinite(
-		this IExpectSubject<float?> source)
+	public static AndOrResult<float?, IThat<float?>> IsNotFinite(
+		this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -118,8 +118,8 @@ public static partial class ThatNumber
 	///     Verifies that the subject is not seen as finite (either <see cref="double.IsInfinity" /> or
 	///     <see cref="double.IsNaN" /> or <see langword="null" />).
 	/// </summary>
-	public static AndOrResult<double?, IExpectSubject<double?>> IsNotFinite(
-		this IExpectSubject<double?> source)
+	public static AndOrResult<double?, IThat<double?>> IsNotFinite(
+		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,

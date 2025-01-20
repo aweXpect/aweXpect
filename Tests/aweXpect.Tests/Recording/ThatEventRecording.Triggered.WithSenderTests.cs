@@ -28,7 +28,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(INotifyPropertyChanged.PropertyChanged))
 						.WithSender(s => s == sender);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected recording to
 					             have recorded the PropertyChanged event on sut with sender s => s == sender at least once,
@@ -61,7 +61,7 @@ public sealed partial class ThatEventRecording
 					await That(recording).Triggered(nameof(INotifyPropertyChanged.PropertyChanged))
 						.WithSender(s => s == sender);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

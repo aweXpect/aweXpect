@@ -10,7 +10,7 @@ public static partial class ThatBool
 	/// <summary>
 	///     Verifies that the subject implies the <paramref name="consequent" /> value.
 	/// </summary>
-	public static AndOrResult<bool, IExpectSubject<bool>> Implies(this IExpectSubject<bool> source,
+	public static AndOrResult<bool, IThat<bool>> Implies(this IThat<bool> source,
 		bool consequent)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new ImplyConstraint(it, consequent)),

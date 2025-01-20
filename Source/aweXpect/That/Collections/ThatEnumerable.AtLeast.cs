@@ -11,7 +11,7 @@ public static partial class ThatEnumerable
 	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements<TItem> AtLeast<TItem>(
-		this IExpectSubject<IEnumerable<TItem>> subject,
+		this IThat<IEnumerable<TItem>> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
 
@@ -19,17 +19,17 @@ public static partial class ThatEnumerable
 	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements AtLeast(
-		this IExpectSubject<IEnumerable<string>> subject,
+		this IThat<IEnumerable<string?>> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
 
 	/// <summary>
 	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
-	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>> AtLeast<TItem>(
+	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>> AtLeast<TItem>(
 		this IThatHas<IEnumerable<TItem>> source,
 		int minimum)
-		=> new(new AndOrResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),
 			source.ExpectSubject()));

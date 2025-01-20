@@ -20,7 +20,7 @@ public sealed partial class ThatString
 						AllowTrailingCommas = allowTrailingCommas
 					});
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!allowTrailingCommas);
+				await That(Act).Throws<XunitException>().OnlyIf(!allowTrailingCommas);
 			}
 
 			[Fact]
@@ -31,7 +31,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be valid JSON,
@@ -52,7 +52,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be valid JSON,
@@ -68,7 +68,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be valid JSON,
@@ -93,7 +93,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 
@@ -107,7 +107,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson().Which(d => d.Matches([1, 3]));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be valid JSON which should match [1, 3],
@@ -123,7 +123,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson().Which(d => d.Matches([1, 2]));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

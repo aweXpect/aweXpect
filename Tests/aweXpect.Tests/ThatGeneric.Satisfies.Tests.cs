@@ -16,7 +16,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).Satisfies(_ => predicateResult);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.OnlyIf(!predicateResult)
 					.WithMessage("""
 					             Expected subject to
@@ -40,7 +40,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).DoesNotSatisfy(_ => predicateResult);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.OnlyIf(predicateResult)
 					.WithMessage("""
 					             Expected subject to

@@ -9,7 +9,7 @@ public static partial class ThatNullableBool
 	/// <summary>
 	///     Verifies that the subject is <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<bool?, IExpectSubject<bool?>> IsNull(this IExpectSubject<bool?> source)
+	public static AndOrResult<bool?, IThat<bool?>> IsNull(this IThat<bool?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeValueConstraint(it, null)),
 			source);
@@ -17,7 +17,7 @@ public static partial class ThatNullableBool
 	/// <summary>
 	///     Verifies that the subject is not <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<bool?, IExpectSubject<bool?>> IsNotNull(this IExpectSubject<bool?> source)
+	public static AndOrResult<bool?, IThat<bool?>> IsNotNull(this IThat<bool?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotBeValueConstraint(it, null)),
 			source);

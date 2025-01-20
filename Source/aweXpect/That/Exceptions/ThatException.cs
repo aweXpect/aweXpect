@@ -10,7 +10,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatException
 {
-	internal readonly struct HasMessageValueConstraint<TException>(
+	private readonly struct HasMessageValueConstraint<TException>(
 		string it,
 		string verb,
 		string expected,
@@ -33,7 +33,7 @@ public static partial class ThatException
 			=> $"{verb} Message {options.GetExpectation(expected, false)}";
 	}
 
-	internal readonly struct HasInnerExceptionValueConstraint<TInnerException>(
+	private readonly struct HasInnerExceptionValueConstraint<TInnerException>(
 		string verb,
 		string it)
 		: IValueConstraint<Exception?>
@@ -62,7 +62,7 @@ public static partial class ThatException
 			=> $"{verb} an inner {(typeof(TInnerException) == typeof(Exception) ? "exception" : Formatter.Format(typeof(TInnerException)))}";
 	}
 
-	internal readonly struct HasInnerExceptionValueConstraint(
+	private readonly struct HasInnerExceptionValueConstraint(
 		Type innerExceptionType,
 		string verb,
 		string it)
@@ -91,7 +91,7 @@ public static partial class ThatException
 			=> $"{verb} an inner {(innerExceptionType == typeof(Exception) ? "exception" : Formatter.Format(innerExceptionType))}";
 	}
 
-	internal class InnerExceptionIsTypeConstraint<TInnerException>(string it)
+	private readonly struct InnerExceptionIsTypeConstraint<TInnerException>(string it)
 		: IValueConstraint<Exception?>
 		where TInnerException : Exception?
 	{
@@ -114,7 +114,7 @@ public static partial class ThatException
 		#endregion
 	}
 
-	internal class InnerExceptionIsTypeConstraint(string it, Type exceptionType)
+	private readonly struct InnerExceptionIsTypeConstraint(string it, Type exceptionType)
 		: IValueConstraint<Exception?>
 	{
 		#region IValueConstraint<Exception?> Members

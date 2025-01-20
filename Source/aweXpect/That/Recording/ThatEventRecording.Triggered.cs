@@ -15,7 +15,7 @@ public static partial class ThatEventRecording
 	///     This will stop the recording on the <see cref="IEventRecording{TSubject}" /> subject.
 	/// </remarks>
 	public static EventTriggerResult<TSubject> Triggered<TSubject>(
-		this IExpectSubject<IEventRecording<TSubject>> source,
+		this IThat<IEventRecording<TSubject>> source,
 		string eventName)
 		where TSubject : notnull
 	{

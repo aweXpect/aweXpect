@@ -15,7 +15,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsNaN()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -26,7 +26,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -41,7 +41,7 @@ public sealed partial class ThatNumber
 
 				async Task Act() => await That(subject).IsNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -56,7 +56,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -72,7 +72,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsNaN()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -83,7 +83,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -99,7 +99,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -114,7 +114,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -131,7 +131,7 @@ public sealed partial class ThatNumber
 					=> await That(subject).IsNaN()
 						.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -144,7 +144,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -159,7 +159,7 @@ public sealed partial class ThatNumber
 
 				async Task Act() => await That(subject).IsNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -175,7 +175,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -191,7 +191,7 @@ public sealed partial class ThatNumber
 				async Task Act() => await That(subject).IsNaN()
 					.And.Is(subject);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -203,7 +203,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,
@@ -219,7 +219,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -234,7 +234,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNaN();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be NaN,

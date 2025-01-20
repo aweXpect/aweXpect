@@ -14,7 +14,7 @@ public sealed partial class ThatEnum
 				async Task Act()
 					=> await That(subject).IsDefined();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -25,7 +25,7 @@ public sealed partial class ThatEnum
 				async Task Act()
 					=> await That(subject).IsDefined();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be defined,

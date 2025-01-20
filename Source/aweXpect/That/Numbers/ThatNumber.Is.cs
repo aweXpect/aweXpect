@@ -11,13 +11,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<byte, IExpectSubject<byte>> Is(
-		this IExpectSubject<byte> source,
+	public static NumberToleranceResult<byte, IThat<byte>> Is(
+		this IThat<byte> source,
 		byte? expected)
 	{
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<byte, IExpectSubject<byte>>(
+		return new NumberToleranceResult<byte, IThat<byte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<byte>(
 					it,
@@ -32,13 +32,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<sbyte, IExpectSubject<sbyte>> Is(
-		this IExpectSubject<sbyte> source,
+	public static NumberToleranceResult<sbyte, IThat<sbyte>> Is(
+		this IThat<sbyte> source,
 		sbyte? expected)
 	{
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<sbyte, IExpectSubject<sbyte>>(
+		return new NumberToleranceResult<sbyte, IThat<sbyte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<sbyte>(
 					it,
@@ -53,13 +53,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<short, IExpectSubject<short>> Is(
-		this IExpectSubject<short> source,
+	public static NumberToleranceResult<short, IThat<short>> Is(
+		this IThat<short> source,
 		short? expected)
 	{
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<short, IExpectSubject<short>>(
+		return new NumberToleranceResult<short, IThat<short>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<short>(
 					it,
@@ -74,13 +74,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<ushort, IExpectSubject<ushort>> Is(
-		this IExpectSubject<ushort> source,
+	public static NumberToleranceResult<ushort, IThat<ushort>> Is(
+		this IThat<ushort> source,
 		ushort? expected)
 	{
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<ushort, IExpectSubject<ushort>>(
+		return new NumberToleranceResult<ushort, IThat<ushort>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<ushort>(
 					it,
@@ -95,13 +95,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<int, IExpectSubject<int>> Is(
-		this IExpectSubject<int> source,
+	public static NumberToleranceResult<int, IThat<int>> Is(
+		this IThat<int> source,
 		int? expected)
 	{
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<int, IExpectSubject<int>>(
+		return new NumberToleranceResult<int, IThat<int>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<int>(
 					it,
@@ -116,13 +116,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<uint, IExpectSubject<uint>> Is(
-		this IExpectSubject<uint> source,
+	public static NumberToleranceResult<uint, IThat<uint>> Is(
+		this IThat<uint> source,
 		uint? expected)
 	{
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NumberToleranceResult<uint, IExpectSubject<uint>>(
+		return new NumberToleranceResult<uint, IThat<uint>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<uint>(
 					it,
@@ -137,13 +137,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<long, IExpectSubject<long>> Is(
-		this IExpectSubject<long> source,
+	public static NumberToleranceResult<long, IThat<long>> Is(
+		this IThat<long> source,
 		long? expected)
 	{
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<long, IExpectSubject<long>>(
+		return new NumberToleranceResult<long, IThat<long>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<long>(
 					it,
@@ -158,13 +158,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<ulong, IExpectSubject<ulong>> Is(
-		this IExpectSubject<ulong> source,
+	public static NumberToleranceResult<ulong, IThat<ulong>> Is(
+		this IThat<ulong> source,
 		ulong? expected)
 	{
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NumberToleranceResult<ulong, IExpectSubject<ulong>>(
+		return new NumberToleranceResult<ulong, IThat<ulong>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<ulong>(
 					it,
@@ -179,13 +179,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<float, IExpectSubject<float>> Is(
-		this IExpectSubject<float> source,
+	public static NumberToleranceResult<float, IThat<float>> Is(
+		this IThat<float> source,
 		float? expected)
 	{
 		NumberTolerance<float> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<float, IExpectSubject<float>>(
+		return new NumberToleranceResult<float, IThat<float>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -200,13 +200,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<double, IExpectSubject<double>> Is(
-		this IExpectSubject<double> source,
+	public static NumberToleranceResult<double, IThat<double>> Is(
+		this IThat<double> source,
 		double? expected)
 	{
 		NumberTolerance<double> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<double, IExpectSubject<double>>(
+		return new NumberToleranceResult<double, IThat<double>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -221,13 +221,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<decimal, IExpectSubject<decimal>> Is(
-		this IExpectSubject<decimal> source,
+	public static NumberToleranceResult<decimal, IThat<decimal>> Is(
+		this IThat<decimal> source,
 		decimal? expected)
 	{
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<decimal, IExpectSubject<decimal>>(
+		return new NumberToleranceResult<decimal, IThat<decimal>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<decimal>(
 					it,
@@ -242,13 +242,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<byte, IExpectSubject<byte?>> Is(
-		this IExpectSubject<byte?> source,
+	public static NullableNumberToleranceResult<byte, IThat<byte?>> Is(
+		this IThat<byte?> source,
 		byte? expected)
 	{
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<byte, IExpectSubject<byte?>>(
+		return new NullableNumberToleranceResult<byte, IThat<byte?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<byte>(
 					it,
@@ -263,13 +263,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<sbyte, IExpectSubject<sbyte?>> Is(
-		this IExpectSubject<sbyte?> source,
+	public static NullableNumberToleranceResult<sbyte, IThat<sbyte?>> Is(
+		this IThat<sbyte?> source,
 		sbyte? expected)
 	{
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<sbyte, IExpectSubject<sbyte?>>(
+		return new NullableNumberToleranceResult<sbyte, IThat<sbyte?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<sbyte>(
 					it,
@@ -284,13 +284,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<short, IExpectSubject<short?>> Is(
-		this IExpectSubject<short?> source,
+	public static NullableNumberToleranceResult<short, IThat<short?>> Is(
+		this IThat<short?> source,
 		short? expected)
 	{
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<short, IExpectSubject<short?>>(
+		return new NullableNumberToleranceResult<short, IThat<short?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<short>(
 					it,
@@ -305,13 +305,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<ushort, IExpectSubject<ushort?>> Is(
-		this IExpectSubject<ushort?> source,
+	public static NullableNumberToleranceResult<ushort, IThat<ushort?>> Is(
+		this IThat<ushort?> source,
 		ushort? expected)
 	{
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<ushort, IExpectSubject<ushort?>>(
+		return new NullableNumberToleranceResult<ushort, IThat<ushort?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<ushort>(
 					it,
@@ -326,13 +326,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<int, IExpectSubject<int?>> Is(
-		this IExpectSubject<int?> source,
+	public static NullableNumberToleranceResult<int, IThat<int?>> Is(
+		this IThat<int?> source,
 		int? expected)
 	{
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<int, IExpectSubject<int?>>(
+		return new NullableNumberToleranceResult<int, IThat<int?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<int>(
 					it,
@@ -347,13 +347,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<uint, IExpectSubject<uint?>> Is(
-		this IExpectSubject<uint?> source,
+	public static NullableNumberToleranceResult<uint, IThat<uint?>> Is(
+		this IThat<uint?> source,
 		uint? expected)
 	{
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NullableNumberToleranceResult<uint, IExpectSubject<uint?>>(
+		return new NullableNumberToleranceResult<uint, IThat<uint?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<uint>(
 					it,
@@ -368,13 +368,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<long, IExpectSubject<long?>> Is(
-		this IExpectSubject<long?> source,
+	public static NullableNumberToleranceResult<long, IThat<long?>> Is(
+		this IThat<long?> source,
 		long? expected)
 	{
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<long, IExpectSubject<long?>>(
+		return new NullableNumberToleranceResult<long, IThat<long?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<long>(
 					it,
@@ -389,13 +389,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<ulong, IExpectSubject<ulong?>> Is(
-		this IExpectSubject<ulong?> source,
+	public static NullableNumberToleranceResult<ulong, IThat<ulong?>> Is(
+		this IThat<ulong?> source,
 		ulong? expected)
 	{
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NullableNumberToleranceResult<ulong, IExpectSubject<ulong?>>(
+		return new NullableNumberToleranceResult<ulong, IThat<ulong?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<ulong>(
 					it,
@@ -410,13 +410,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<float, IExpectSubject<float?>> Is(
-		this IExpectSubject<float?> source,
+	public static NullableNumberToleranceResult<float, IThat<float?>> Is(
+		this IThat<float?> source,
 		float? expected)
 	{
 		NumberTolerance<float> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<float, IExpectSubject<float?>>(
+		return new NullableNumberToleranceResult<float, IThat<float?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -431,13 +431,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<double, IExpectSubject<double?>> Is(
-		this IExpectSubject<double?> source,
+	public static NullableNumberToleranceResult<double, IThat<double?>> Is(
+		this IThat<double?> source,
 		double? expected)
 	{
 		NumberTolerance<double> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<double, IExpectSubject<double?>>(
+		return new NullableNumberToleranceResult<double, IThat<double?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,
@@ -452,13 +452,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<decimal, IExpectSubject<decimal?>> Is(
-		this IExpectSubject<decimal?> source,
+	public static NullableNumberToleranceResult<decimal, IThat<decimal?>> Is(
+		this IThat<decimal?> source,
 		decimal? expected)
 	{
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<decimal, IExpectSubject<decimal?>>(
+		return new NullableNumberToleranceResult<decimal, IThat<decimal?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<decimal>(
 					it,
@@ -473,13 +473,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<byte, IExpectSubject<byte>> IsNot(
-		this IExpectSubject<byte> source,
+	public static NumberToleranceResult<byte, IThat<byte>> IsNot(
+		this IThat<byte> source,
 		byte? unexpected)
 	{
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<byte, IExpectSubject<byte>>(
+		return new NumberToleranceResult<byte, IThat<byte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<byte>(
 					it,
@@ -494,13 +494,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<sbyte, IExpectSubject<sbyte>> IsNot(
-		this IExpectSubject<sbyte> source,
+	public static NumberToleranceResult<sbyte, IThat<sbyte>> IsNot(
+		this IThat<sbyte> source,
 		sbyte? unexpected)
 	{
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<sbyte, IExpectSubject<sbyte>>(
+		return new NumberToleranceResult<sbyte, IThat<sbyte>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<sbyte>(
 					it,
@@ -515,13 +515,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<short, IExpectSubject<short>> IsNot(
-		this IExpectSubject<short> source,
+	public static NumberToleranceResult<short, IThat<short>> IsNot(
+		this IThat<short> source,
 		short? unexpected)
 	{
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<short, IExpectSubject<short>>(
+		return new NumberToleranceResult<short, IThat<short>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<short>(
 					it,
@@ -536,13 +536,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<ushort, IExpectSubject<ushort>> IsNot(
-		this IExpectSubject<ushort> source,
+	public static NumberToleranceResult<ushort, IThat<ushort>> IsNot(
+		this IThat<ushort> source,
 		ushort? unexpected)
 	{
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<ushort, IExpectSubject<ushort>>(
+		return new NumberToleranceResult<ushort, IThat<ushort>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<ushort>(
 					it,
@@ -557,13 +557,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<int, IExpectSubject<int>> IsNot(
-		this IExpectSubject<int> source,
+	public static NumberToleranceResult<int, IThat<int>> IsNot(
+		this IThat<int> source,
 		int? unexpected)
 	{
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<int, IExpectSubject<int>>(
+		return new NumberToleranceResult<int, IThat<int>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<int>(
 					it,
@@ -578,13 +578,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<uint, IExpectSubject<uint>> IsNot(
-		this IExpectSubject<uint> source,
+	public static NumberToleranceResult<uint, IThat<uint>> IsNot(
+		this IThat<uint> source,
 		uint? unexpected)
 	{
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NumberToleranceResult<uint, IExpectSubject<uint>>(
+		return new NumberToleranceResult<uint, IThat<uint>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<uint>(
 					it,
@@ -599,13 +599,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<long, IExpectSubject<long>> IsNot(
-		this IExpectSubject<long> source,
+	public static NumberToleranceResult<long, IThat<long>> IsNot(
+		this IThat<long> source,
 		long? unexpected)
 	{
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<long, IExpectSubject<long>>(
+		return new NumberToleranceResult<long, IThat<long>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<long>(
 					it,
@@ -620,13 +620,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<ulong, IExpectSubject<ulong>> IsNot(
-		this IExpectSubject<ulong> source,
+	public static NumberToleranceResult<ulong, IThat<ulong>> IsNot(
+		this IThat<ulong> source,
 		ulong? unexpected)
 	{
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NumberToleranceResult<ulong, IExpectSubject<ulong>>(
+		return new NumberToleranceResult<ulong, IThat<ulong>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<ulong>(
 					it,
@@ -641,13 +641,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<float, IExpectSubject<float>> IsNot(
-		this IExpectSubject<float> source,
+	public static NumberToleranceResult<float, IThat<float>> IsNot(
+		this IThat<float> source,
 		float? unexpected)
 	{
 		NumberTolerance<float> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<float, IExpectSubject<float>>(
+		return new NumberToleranceResult<float, IThat<float>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<float>(
 					it,
@@ -662,13 +662,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<double, IExpectSubject<double>> IsNot(
-		this IExpectSubject<double> source,
+	public static NumberToleranceResult<double, IThat<double>> IsNot(
+		this IThat<double> source,
 		double? unexpected)
 	{
 		NumberTolerance<double> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<double, IExpectSubject<double>>(
+		return new NumberToleranceResult<double, IThat<double>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<double>(
 					it,
@@ -683,13 +683,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<decimal, IExpectSubject<decimal>> IsNot(
-		this IExpectSubject<decimal> source,
+	public static NumberToleranceResult<decimal, IThat<decimal>> IsNot(
+		this IThat<decimal> source,
 		decimal? unexpected)
 	{
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<decimal, IExpectSubject<decimal>>(
+		return new NumberToleranceResult<decimal, IThat<decimal>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new GenericConstraint<decimal>(
 					it,
@@ -704,13 +704,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<byte, IExpectSubject<byte?>> IsNot(
-		this IExpectSubject<byte?> source,
+	public static NullableNumberToleranceResult<byte, IThat<byte?>> IsNot(
+		this IThat<byte?> source,
 		byte? unexpected)
 	{
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<byte, IExpectSubject<byte?>>(
+		return new NullableNumberToleranceResult<byte, IThat<byte?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<byte>(
 					it,
@@ -725,13 +725,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<sbyte, IExpectSubject<sbyte?>> IsNot(
-		this IExpectSubject<sbyte?> source,
+	public static NullableNumberToleranceResult<sbyte, IThat<sbyte?>> IsNot(
+		this IThat<sbyte?> source,
 		sbyte? unexpected)
 	{
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<sbyte, IExpectSubject<sbyte?>>(
+		return new NullableNumberToleranceResult<sbyte, IThat<sbyte?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<sbyte>(
 					it,
@@ -746,13 +746,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<short, IExpectSubject<short?>> IsNot(
-		this IExpectSubject<short?> source,
+	public static NullableNumberToleranceResult<short, IThat<short?>> IsNot(
+		this IThat<short?> source,
 		short? unexpected)
 	{
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<short, IExpectSubject<short?>>(
+		return new NullableNumberToleranceResult<short, IThat<short?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<short>(
 					it,
@@ -767,13 +767,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<ushort, IExpectSubject<ushort?>> IsNot(
-		this IExpectSubject<ushort?> source,
+	public static NullableNumberToleranceResult<ushort, IThat<ushort?>> IsNot(
+		this IThat<ushort?> source,
 		ushort? unexpected)
 	{
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<ushort, IExpectSubject<ushort?>>(
+		return new NullableNumberToleranceResult<ushort, IThat<ushort?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<ushort>(
 					it,
@@ -788,13 +788,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<int, IExpectSubject<int?>> IsNot(
-		this IExpectSubject<int?> source,
+	public static NullableNumberToleranceResult<int, IThat<int?>> IsNot(
+		this IThat<int?> source,
 		int? unexpected)
 	{
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<int, IExpectSubject<int?>>(
+		return new NullableNumberToleranceResult<int, IThat<int?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<int>(
 					it,
@@ -809,13 +809,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<uint, IExpectSubject<uint?>> IsNot(
-		this IExpectSubject<uint?> source,
+	public static NullableNumberToleranceResult<uint, IThat<uint?>> IsNot(
+		this IThat<uint?> source,
 		uint? unexpected)
 	{
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NullableNumberToleranceResult<uint, IExpectSubject<uint?>>(
+		return new NullableNumberToleranceResult<uint, IThat<uint?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<uint>(
 					it,
@@ -830,13 +830,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<long, IExpectSubject<long?>> IsNot(
-		this IExpectSubject<long?> source,
+	public static NullableNumberToleranceResult<long, IThat<long?>> IsNot(
+		this IThat<long?> source,
 		long? unexpected)
 	{
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<long, IExpectSubject<long?>>(
+		return new NullableNumberToleranceResult<long, IThat<long?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<long>(
 					it,
@@ -851,13 +851,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<ulong, IExpectSubject<ulong?>> IsNot(
-		this IExpectSubject<ulong?> source,
+	public static NullableNumberToleranceResult<ulong, IThat<ulong?>> IsNot(
+		this IThat<ulong?> source,
 		ulong? unexpected)
 	{
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
-		return new NullableNumberToleranceResult<ulong, IExpectSubject<ulong?>>(
+		return new NullableNumberToleranceResult<ulong, IThat<ulong?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<ulong>(
 					it,
@@ -872,13 +872,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<float, IExpectSubject<float?>> IsNot(
-		this IExpectSubject<float?> source,
+	public static NullableNumberToleranceResult<float, IThat<float?>> IsNot(
+		this IThat<float?> source,
 		float? unexpected)
 	{
 		NumberTolerance<float> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<float, IExpectSubject<float?>>(
+		return new NullableNumberToleranceResult<float, IThat<float?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<float>(
 					it,
@@ -893,13 +893,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<double, IExpectSubject<double?>> IsNot(
-		this IExpectSubject<double?> source,
+	public static NullableNumberToleranceResult<double, IThat<double?>> IsNot(
+		this IThat<double?> source,
 		double? unexpected)
 	{
 		NumberTolerance<double> options = new(
 			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<double, IExpectSubject<double?>>(
+		return new NullableNumberToleranceResult<double, IThat<double?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<double>(
 					it,
@@ -914,13 +914,13 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static NullableNumberToleranceResult<decimal, IExpectSubject<decimal?>> IsNot(
-		this IExpectSubject<decimal?> source,
+	public static NullableNumberToleranceResult<decimal, IThat<decimal?>> IsNot(
+		this IThat<decimal?> source,
 		decimal? unexpected)
 	{
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<decimal, IExpectSubject<decimal?>>(
+		return new NullableNumberToleranceResult<decimal, IThat<decimal?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NullableGenericConstraint<decimal>(
 					it,

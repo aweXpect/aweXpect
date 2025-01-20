@@ -16,7 +16,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).HasMinute(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have minute of <null>,
@@ -33,7 +33,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).HasMinute(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              have minute of {Formatter.Format(expected)},
@@ -50,7 +50,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).HasMinute(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -62,7 +62,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).HasMinute(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have minute of <null>,
@@ -79,7 +79,7 @@ public sealed partial class ThatNullableTimeOnly
 				async Task Act()
 					=> await That(subject).HasMinute(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             have minute of 1,

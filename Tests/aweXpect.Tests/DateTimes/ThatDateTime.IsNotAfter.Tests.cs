@@ -15,7 +15,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsNotAfter(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -27,7 +27,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsNotAfter(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -39,7 +39,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsNotAfter(unexpected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be after {Formatter.Format(unexpected)},
@@ -56,7 +56,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsNotAfter(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -68,7 +68,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsNotAfter(unexpected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -81,7 +81,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).IsNotAfter(unexpected)
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be after <null>, because we want to test the failure,
@@ -100,7 +100,7 @@ public sealed partial class ThatDateTime
 						.Within(3.Seconds())
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be after {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
@@ -118,7 +118,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).IsNotAfter(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be after {Formatter.Format(unexpected)} ± 0:03,
@@ -136,7 +136,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).IsNotAfter(unexpected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

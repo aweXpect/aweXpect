@@ -12,13 +12,13 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject contains the <paramref name="expected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeCountResult<string?, IExpectSubject<string?>> Contains(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeCountResult<string?, IThat<string?>> Contains(
+		this IThat<string?> source,
 		string expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeCountResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint(it, expected, quantifier, options)),
 			source,
@@ -29,14 +29,14 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject contains the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IExpectSubject<string?>> DoesNotContain(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeResult<string?, IThat<string?>> DoesNotContain(
+		this IThat<string?> source,
 		string unexpected)
 	{
 		Quantifier quantifier = new();
 		quantifier.Exactly(0);
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint(it, unexpected, quantifier, options)),
 			source,

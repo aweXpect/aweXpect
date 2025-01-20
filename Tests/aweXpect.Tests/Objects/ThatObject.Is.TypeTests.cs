@@ -28,7 +28,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).Is<MyClass>();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be type MyClass,
@@ -49,7 +49,7 @@ public sealed partial class ThatObject
 					=> await That(subject).Is<OtherClass>()
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be type OtherClass, because we want to test the failure,
@@ -67,7 +67,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).Is<MyBaseClass>();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -83,7 +83,7 @@ public sealed partial class ThatObject
 					=> await That(subject).Is<MyClass>()
 						.Because(reason);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be type MyClass, because {{reason}},
@@ -101,7 +101,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).Is<MyClass>();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 
@@ -129,7 +129,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).Is(typeof(MyClass));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be type MyClass,
@@ -150,7 +150,7 @@ public sealed partial class ThatObject
 					=> await That(subject).Is(typeof(OtherClass))
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be type OtherClass, because we want to test the failure,
@@ -168,7 +168,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).Is(typeof(MyBaseClass));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -184,7 +184,7 @@ public sealed partial class ThatObject
 					=> await That(subject).Is(typeof(MyClass))
 						.Because(reason);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be type MyClass, because {{reason}},
@@ -202,7 +202,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).Is(typeof(MyClass));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

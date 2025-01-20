@@ -16,7 +16,7 @@ public sealed partial class ThatBool
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)},
@@ -35,7 +35,7 @@ public sealed partial class ThatBool
 				async Task Act()
 					=> await That(subject).Is(expected).Because(reason);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)}, because {reason},
@@ -53,7 +53,7 @@ public sealed partial class ThatBool
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

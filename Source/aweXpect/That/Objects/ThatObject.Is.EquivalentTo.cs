@@ -12,7 +12,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IExpectSubject<object?>> EquivalentTo(
+	public static ObjectEqualityResult<object?, IThat<object?>> EquivalentTo(
 		this IThatIs<object?> source,
 		object? expected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
@@ -22,7 +22,7 @@ public static partial class ThatObject
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
 		ObjectEqualityOptions options = new();
 		options.Equivalent(equivalencyOptions);
-		return new ObjectEqualityResult<object?, IExpectSubject<object?>>(
+		return new ObjectEqualityResult<object?, IThat<object?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new IsEqualToConstraint(it, expected, doNotPopulateThisValue, options)),
 			source.ExpectSubject(),
@@ -32,8 +32,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IExpectSubject<object?>> NotEquivalentTo(
-		this IExpectSubject<object?> source,
+	public static ObjectEqualityResult<object?, IThat<object?>> NotEquivalentTo(
+		this IThat<object?> source,
 		object? unexpected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
 		[CallerArgumentExpression("unexpected")]
@@ -43,7 +43,7 @@ public static partial class ThatObject
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
 		ObjectEqualityOptions options = new();
 		options.Equivalent(equivalencyOptions);
-		return new ObjectEqualityResult<object?, IExpectSubject<object?>>(
+		return new ObjectEqualityResult<object?, IThat<object?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
 			source,

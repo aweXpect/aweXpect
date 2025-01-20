@@ -24,7 +24,7 @@ public sealed partial class ThatGeneric
 						.For(o => o.A, v => v.IsTrue()).And
 						.For(o => o.B, v => v.IsTrue());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
 					              for .A be True and for .B be True,
@@ -50,7 +50,7 @@ public sealed partial class ThatGeneric
 						.For(o => o.A, v => v.IsTrue()).Or
 						.For(o => o.B, v => v.IsTrue());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!expectSuccess)
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected subject to
 					             for .A be True or for .B be True,
@@ -72,7 +72,7 @@ public sealed partial class ThatGeneric
 					=> await That(subject)
 						.For(o => o.Value, v => v.Is(expectedValue));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              for .Value be equal to {Formatter.Format(expectedValue)},
@@ -92,7 +92,7 @@ public sealed partial class ThatGeneric
 				async Task Act()
 					=> await That(subject).For(o => o.Value, v => v.Is(value));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			private sealed class MyClass

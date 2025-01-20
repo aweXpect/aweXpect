@@ -95,7 +95,7 @@ Simply use `.And` or `.Or` to combine multiple expectations, e.g.
 
 ```csharp
 string subject = "something different"
-await Expect.That(subject).Should().StartWith("some").And.EndWith("text");
+await Expect.That(subject).StartsWith("some").And.EndsWith("text");
 ```
 
 > ```
@@ -114,8 +114,8 @@ e.g.
   MyClass subject = new(1, "some other content");
   
   await Expect.That(subject)
-    .For(x => x.Status, x => x.Should().BeGreaterThan(1)).And
-    .For(x => x.Content, x => x.Should().Be("some content"));
+    .For(x => x.Status, x => x.IsGreaterThan(1)).And
+    .For(x => x.Content, x => x.Is("some content"));
 ```
 
 > ```
@@ -137,8 +137,8 @@ Use the `Expect.ThatAll` or `Expect.ThatAny` syntax to combine arbitrary expecta
   string subjectB = "XYZ";
   
   await Expect.ThatAll(
-    Expect.That(subjectA).Should().Be("ABC"),
-    Expect.That(subjectB).Should().Be("DEF"));
+    Expect.That(subjectA).Is("ABC"),
+    Expect.That(subjectB).Is("DEF"));
 ```
 
 > ```

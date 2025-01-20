@@ -19,7 +19,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).Is(pattern).AsWildcard();
 
-				await That(Act).Does().ThrowException().OnlyIf(!expectMatch);
+				await That(Act).ThrowsException().OnlyIf(!expectMatch);
 			}
 
 			[Theory]
@@ -34,7 +34,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).Is(expected).IgnoringLeadingWhiteSpace();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -49,7 +49,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).Is(expected).IgnoringTrailingWhiteSpace();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -73,7 +73,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be equal to "expected other text",

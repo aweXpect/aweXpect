@@ -14,7 +14,7 @@ public sealed partial class ThatNullableGuid
 				async Task Act()
 					=> await That(subject).Is(null);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -26,7 +26,7 @@ public sealed partial class ThatNullableGuid
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {Formatter.Format(expected)},
@@ -42,7 +42,7 @@ public sealed partial class ThatNullableGuid
 				async Task Act()
 					=> await That(subject).Is(FixedGuid());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be {FixedGuid()},
@@ -59,7 +59,7 @@ public sealed partial class ThatNullableGuid
 				async Task Act()
 					=> await That(subject).Is(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

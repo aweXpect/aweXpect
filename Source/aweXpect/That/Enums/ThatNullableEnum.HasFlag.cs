@@ -10,8 +10,8 @@ public static partial class ThatNullableEnum
 	/// <summary>
 	///     Verifies that the subject has the <paramref name="expectedFlag" /> value.
 	/// </summary>
-	public static AndOrResult<TEnum?, IExpectSubject<TEnum?>> HasFlag<TEnum>(
-		this IExpectSubject<TEnum?> source,
+	public static AndOrResult<TEnum?, IThat<TEnum?>> HasFlag<TEnum>(
+		this IThat<TEnum?> source,
 		TEnum? expectedFlag)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
@@ -24,8 +24,8 @@ public static partial class ThatNullableEnum
 	/// <summary>
 	///     Verifies that the subject does not have the <paramref name="unexpectedFlag" /> value.
 	/// </summary>
-	public static AndOrResult<TEnum?, IExpectSubject<TEnum?>> DoesNotHaveFlag<TEnum>(
-		this IExpectSubject<TEnum?> source,
+	public static AndOrResult<TEnum?, IThat<TEnum?>> DoesNotHaveFlag<TEnum>(
+		this IThat<TEnum?> source,
 		TEnum? unexpectedFlag)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>

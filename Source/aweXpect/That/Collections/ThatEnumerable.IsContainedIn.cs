@@ -12,15 +12,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>
+	public static ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
 		IsContainedIn<TItem>(
-			this IExpectSubject<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
-		return new ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IExpectSubject<IEnumerable<TItem>>>(
+		return new ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
@@ -31,14 +31,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionBeContainedInResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>
-		IsContainedIn(this IExpectSubject<IEnumerable<string>> source,
+	public static StringCollectionBeContainedInResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+		IsContainedIn(this IThat<IEnumerable<string>> source,
 			IEnumerable<string> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
-		return new StringCollectionBeContainedInResult<IEnumerable<string>, IExpectSubject<IEnumerable<string>>>(
+		return new StringCollectionBeContainedInResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,

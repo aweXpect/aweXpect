@@ -4,7 +4,10 @@
 		<ProjectReference Include="..\..\Source\aweXpect.Core\aweXpect.Core.csproj"/>
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition=" '$(Configuration)' != 'Debug' ">
+		<PackageReference Include="aweXpect"/>
+	</ItemGroup>
+	<ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
 		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 

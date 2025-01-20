@@ -6,13 +6,13 @@ public sealed class AndNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
-		IExpectSubject<bool> that = That(true);
+		IThat<bool> that = That(true);
 		that.IsTrue().And.IsFalse().And.Implies(false);
 #pragma warning restore CS4014
 
 		string expectedResult = "be True and be False and imply False";
 
-		string? result = that.Should(_ => { }).ExpectationBuilder.ToString();
+		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
 		await That(result).Is(expectedResult);
 	}
@@ -23,7 +23,7 @@ public sealed class AndNodeTests
 		async Task Act()
 			=> await That(true).IsFalse().And.IsTrue();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected true to
 			             be False and be True,
@@ -37,7 +37,7 @@ public sealed class AndNodeTests
 		async Task Act()
 			=> await That(true).IsFalse().And.IsFalse().And.Implies(false);
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected true to
 			             be False and be False and imply False,
@@ -51,7 +51,7 @@ public sealed class AndNodeTests
 		async Task Act()
 			=> await That(true).IsTrue().And.IsFalse();
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected true to
 			             be True and be False,
@@ -65,6 +65,6 @@ public sealed class AndNodeTests
 		async Task Act()
 			=> await That(true).IsTrue().And.IsNot(false);
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 }

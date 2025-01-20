@@ -21,7 +21,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(expected);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected exactly,
@@ -39,7 +39,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(expected);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected exactly,
@@ -57,7 +57,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(expected);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected exactly,
@@ -75,7 +75,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(null);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match null exactly,
@@ -93,7 +93,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(expected);
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected subject to
 					              match expected exactly,
@@ -109,7 +109,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(new object());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match new object() exactly,
@@ -129,7 +129,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -141,7 +141,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              match expected exactly,
@@ -157,7 +157,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly([2, 1]);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match [2, 1] exactly,
@@ -175,7 +175,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly([1, 2, 3]);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match [1, 2, 3] exactly,
@@ -191,7 +191,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly([1, 2]);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match [1, 2] exactly,
@@ -267,7 +267,7 @@ public sealed partial class ThatNullableJsonElement
 						foo = 2
 					});
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(errorMessage != null)
+				await That(Act).Throws<XunitException>().OnlyIf(errorMessage != null)
 					.WithMessage($$"""
 					               Expected subject to
 					               match new
@@ -288,7 +288,7 @@ public sealed partial class ThatNullableJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(new object());
 
-				await That(Act).Does().Throw<XunitException>().OnlyIf(!isMatch)
+				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage("""
 					             Expected subject to
 					             match new object() exactly,
@@ -307,7 +307,7 @@ public sealed partial class ThatNullableJsonElement
 						bar = 3
 					});
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match new
@@ -329,7 +329,7 @@ public sealed partial class ThatNullableJsonElement
 						bar = 2
 					});
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             match new

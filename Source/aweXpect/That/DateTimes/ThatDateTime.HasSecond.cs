@@ -10,7 +10,7 @@ public static partial class ThatDateTime
 	/// <summary>
 	///     Verifies that the second of the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime, IExpectSubject<DateTime>> HasSecond(this IExpectSubject<DateTime> source,
+	public static AndOrResult<DateTime, IThat<DateTime>> HasSecond(this IThat<DateTime> source,
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(
@@ -23,8 +23,8 @@ public static partial class ThatDateTime
 	/// <summary>
 	///     Verifies that the second of the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<DateTime, IExpectSubject<DateTime>> DoesNotHaveSecond(
-		this IExpectSubject<DateTime> source,
+	public static AndOrResult<DateTime, IThat<DateTime>> DoesNotHaveSecond(
+		this IThat<DateTime> source,
 		int? unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new PropertyConstraint<int?>(

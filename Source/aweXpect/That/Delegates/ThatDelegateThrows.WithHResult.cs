@@ -1,16 +1,19 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Results;
 
 namespace aweXpect;
 
-public partial class ThatDelegateThrows<TException>
+public static partial class ThatDelegateThrows
 {
 	/// <summary>
 	///     Verifies that the actual <see cref="Exception" /> has an <paramref name="expected" /> HResult.
 	/// </summary>
-	public AndOrResult<TException, ThatDelegateThrows<TException>>
-		WithHResult(int expected)
-		=> new(ExpectationBuilder.AddConstraint(it
+	public static AndOrResult<TException, IThatDelegateThrows<TException>> WithHResult<TException>(
+		this IThatDelegateThrows<TException> source,
+		int expected)
+		where TException : Exception?
+		=> new(source.ExpectationBuilder.AddConstraint(it
 				=> new ThatException.HasHResultValueConstraint(it, "with", expected)),
-			this);
+			source);
 }

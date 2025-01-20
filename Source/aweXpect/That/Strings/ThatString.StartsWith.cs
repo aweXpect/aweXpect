@@ -11,12 +11,12 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject starts with the <paramref name="expected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IExpectSubject<string?>> StartsWith(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeResult<string?, IThat<string?>> StartsWith(
+		this IThat<string?> source,
 		string expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new StartWithConstraint(it, expected, options)),
 			source,
@@ -26,12 +26,12 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject does not start with the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IExpectSubject<string?>> DoesNotStartWith(
-		this IExpectSubject<string?> source,
+	public static StringEqualityTypeResult<string?, IThat<string?>> DoesNotStartWith(
+		this IThat<string?> source,
 		string unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IExpectSubject<string?>>(
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotStartWithConstraint(it, unexpected, options)),
 			source,

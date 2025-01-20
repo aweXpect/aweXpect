@@ -1,4 +1,4 @@
 {
-  "$schema": "build.schema.json",
-  "Solution": "aweXpect.sln"
+	"$schema": "build.schema.json",
+	"Solution": "aweXpect.sln"
 }

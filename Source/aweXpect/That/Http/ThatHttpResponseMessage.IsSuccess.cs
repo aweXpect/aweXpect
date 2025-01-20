@@ -11,8 +11,8 @@ public static partial class ThatHttpResponseMessage
 	/// <summary>
 	///     Verifies that the response has a success status code (2xx)
 	/// </summary>
-	public static AndOrResult<HttpResponseMessage, IExpectSubject<HttpResponseMessage?>>
-		IsSuccess(this IExpectSubject<HttpResponseMessage?> source)
+	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
+		IsSuccess(this IThat<HttpResponseMessage?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasStatusCodeRangeConstraint(
 					it,

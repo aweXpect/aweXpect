@@ -16,9 +16,9 @@ public static partial class ThatEnumerable
 	public partial class Elements
 	{
 		private readonly EnumerableQuantifier _quantifier;
-		private readonly IExpectSubject<IEnumerable<string?>> _subject;
+		private readonly IThat<IEnumerable<string?>> _subject;
 
-		internal Elements(IExpectSubject<IEnumerable<string?>> subject, EnumerableQuantifier quantifier)
+		internal Elements(IThat<IEnumerable<string?>> subject, EnumerableQuantifier quantifier)
 		{
 			_subject = subject;
 			_quantifier = quantifier;
@@ -32,9 +32,9 @@ public static partial class ThatEnumerable
 	public partial class Elements<TItem>
 	{
 		private readonly EnumerableQuantifier _quantifier;
-		private readonly IExpectSubject<IEnumerable<TItem>> _subject;
+		private readonly IThat<IEnumerable<TItem>> _subject;
 
-		internal Elements(IExpectSubject<IEnumerable<TItem>> subject, EnumerableQuantifier quantifier)
+		internal Elements(IThat<IEnumerable<TItem>> subject, EnumerableQuantifier quantifier)
 		{
 			_subject = subject;
 			_quantifier = quantifier;

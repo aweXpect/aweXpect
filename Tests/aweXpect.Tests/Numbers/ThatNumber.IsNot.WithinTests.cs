@@ -15,7 +15,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -32,7 +32,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -47,7 +47,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(new decimal(0.1));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 0.1,
@@ -67,7 +67,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(new decimal(0.1));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -79,9 +79,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(new decimal(-0.1));
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -93,7 +93,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 0.11,
@@ -110,7 +110,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -122,9 +122,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-0.1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -136,7 +136,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11F);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 0.11,
@@ -153,7 +153,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11F);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -165,9 +165,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-0.1F);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -179,7 +179,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -196,7 +196,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -208,9 +208,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -222,7 +222,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -239,7 +239,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -251,9 +251,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -265,7 +265,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -282,7 +282,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -297,7 +297,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(new decimal(0.1));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 0.1,
@@ -317,7 +317,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(new decimal(0.1));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -329,9 +329,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(new decimal(-0.1));
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -343,7 +343,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 0.11,
@@ -360,7 +360,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -372,9 +372,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-0.1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -386,7 +386,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11F);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 0.11,
@@ -403,7 +403,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(0.11F);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -415,9 +415,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-0.1F);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -429,7 +429,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -446,7 +446,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -458,9 +458,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -472,7 +472,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -489,7 +489,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -501,9 +501,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -515,7 +515,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -532,7 +532,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -544,9 +544,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -558,7 +558,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -575,7 +575,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -587,9 +587,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -601,7 +601,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -618,7 +618,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -630,7 +630,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -647,7 +647,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -659,7 +659,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -676,7 +676,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -688,7 +688,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -705,7 +705,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -717,9 +717,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -731,7 +731,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -748,7 +748,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -760,9 +760,9 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(-1);
 
-				await That(Act).Does().Throw<ArgumentOutOfRangeException>()
-					.WithParamName("tolerance").And
-					.WithMessage("*Tolerance must be non-negative*").AsWildcard();
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
+					.WithParamName("tolerance");
 			}
 
 			[Theory]
@@ -774,7 +774,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -791,7 +791,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -803,7 +803,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -820,7 +820,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -832,7 +832,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              not be equal to {Formatter.Format(unexpected)} ± 1,
@@ -849,7 +849,7 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).IsNot(unexpected).Within(1);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

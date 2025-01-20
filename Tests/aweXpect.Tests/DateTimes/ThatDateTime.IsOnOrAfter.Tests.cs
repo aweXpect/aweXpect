@@ -15,7 +15,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after <null>,
@@ -32,7 +32,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -44,7 +44,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -56,7 +56,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)},
@@ -73,7 +73,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -85,7 +85,7 @@ public sealed partial class ThatDateTime
 				async Task Act()
 					=> await That(subject).IsOnOrAfter(expected);
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -98,7 +98,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).IsOnOrAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)} ± 0:03,
@@ -116,7 +116,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).IsOnOrAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
 					              be on or after {Formatter.Format(expected)} ± 0:03,
@@ -134,7 +134,7 @@ public sealed partial class ThatDateTime
 					=> await That(subject).IsOnOrAfter(expected)
 						.Within(3.Seconds());
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -80,12 +80,12 @@ public static partial class ThatEnumerable
 
 		public SyncCollectionConstraint(string it,
 			EnumerableQuantifier quantifier,
-			Action<IExpectSubject<TItem>> expectations)
+			Action<IThat<TItem>> expectations)
 		{
 			_it = it;
 			_quantifier = quantifier;
 			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
-			expectations.Invoke(new That.Subject<TItem>(_itemExpectationBuilder));
+			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
 		public async Task<ConstraintResult> IsMetBy(

@@ -24,7 +24,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
@@ -46,7 +46,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable(o => o.IgnoringMember("Name"));
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -57,7 +57,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
@@ -74,7 +74,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -85,7 +85,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
@@ -107,7 +107,7 @@ public sealed partial class ThatObject
 							IncludeFields = includeFields
 						});
 
-					await That(Act).Does().Throw<XunitException>().OnlyIf(!includeFields)
+					await That(Act).Throws<XunitException>().OnlyIf(!includeFields)
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
@@ -123,7 +123,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as JSON,
@@ -151,7 +151,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 			}
 
@@ -169,7 +169,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable<PocoWithIgnoredProperty>();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithIgnoredProperty JSON,
@@ -192,7 +192,7 @@ public sealed partial class ThatObject
 						=> await That(subject).Is()
 							.JsonSerializable<PocoWithIgnoredProperty>(o => o.IgnoringMember("Name"));
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -203,7 +203,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable<PocoWithPrivateConstructor>();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithPrivateConstructor JSON,
@@ -221,7 +221,7 @@ public sealed partial class ThatObject
 						=> await That(subject).Is()
 							.JsonSerializable<PocoWithPrivateConstructorWithJsonConstructorAttribute>();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
@@ -232,7 +232,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable<PocoWithoutDefaultConstructor>();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithoutDefaultConstructor JSON,
@@ -255,7 +255,7 @@ public sealed partial class ThatObject
 								IncludeFields = includeFields
 							});
 
-					await That(Act).Does().Throw<XunitException>().OnlyIf(!includeFields)
+					await That(Act).Throws<XunitException>().OnlyIf(!includeFields)
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithoutDefaultFieldConstructor JSON,
@@ -271,7 +271,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable<SimplePocoWithPrimitiveTypes>();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as SimplePocoWithPrimitiveTypes JSON,
@@ -299,7 +299,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable<PocoWithIgnoredProperty>();
 
-					await That(Act).Does().Throw<XunitException>()
+					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
 						             be serializable as PocoWithIgnoredProperty JSON,
@@ -327,7 +327,7 @@ public sealed partial class ThatObject
 					async Task Act()
 						=> await That(subject).Is().JsonSerializable<SimplePocoWithPrimitiveTypes>();
 
-					await That(Act).Does().NotThrow();
+					await That(Act).DoesNotThrow();
 				}
 			}
 			

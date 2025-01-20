@@ -6,13 +6,13 @@ public sealed class OrNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
-		IExpectSubject<bool> that = That(true);
+		IThat<bool> that = That(true);
 		that.IsTrue().Or.IsFalse().Or.Implies(false);
 #pragma warning restore CS4014
 
 		string expectedResult = "be True or be False or imply False";
 
-		string? result = that.Should(_ => { }).ExpectationBuilder.ToString();
+		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
 		await That(result).Is(expectedResult);
 	}
@@ -23,7 +23,7 @@ public sealed class OrNodeTests
 		async Task Act()
 			=> await That(true).IsFalse().Or.IsTrue();
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 
 	[Fact]
@@ -32,7 +32,7 @@ public sealed class OrNodeTests
 		async Task Act()
 			=> await That(true).IsFalse().Or.IsFalse().Or.Implies(false);
 
-		await That(Act).Does().ThrowException()
+		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected true to
 			             be False or be False or imply False,
@@ -46,7 +46,7 @@ public sealed class OrNodeTests
 		async Task Act()
 			=> await That(true).IsTrue().Or.IsFalse();
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 
 	[Fact]
@@ -55,6 +55,6 @@ public sealed class OrNodeTests
 		async Task Act()
 			=> await That(true).IsTrue().Or.IsNot(false);
 
-		await That(Act).Does().NotThrow();
+		await That(Act).DoesNotThrow();
 	}
 }

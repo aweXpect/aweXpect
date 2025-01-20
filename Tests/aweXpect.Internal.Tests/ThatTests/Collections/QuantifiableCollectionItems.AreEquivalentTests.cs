@@ -35,7 +35,7 @@ public sealed partial class QuantifiableCollectionItems
 			async Task Act()
 				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
 
-			await That(Act).Does().Throw<XunitException>()
+			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected subject to
 				             have all items be equivalent to expected,
@@ -70,7 +70,7 @@ public sealed partial class QuantifiableCollectionItems
 			async Task Act()
 				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
 
-			await That(Act).Does().NotThrow();
+			await That(Act).DoesNotThrow();
 		}
 	}
 }

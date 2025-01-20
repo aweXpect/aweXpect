@@ -22,17 +22,6 @@ public sealed class ApiApprovalTests
 		await Expect.That(publicApi).Is(expectedApi);
 	}
 
-	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
-	public async Task VerifyPublicApiForAweXpectCore(string framework)
-	{
-		const string assemblyName = "aweXpect.Core";
-
-		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
-		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
-
-		await Expect.That(publicApi).Is(expectedApi);
-	}
-
 	private sealed class TargetFrameworksTheoryData : IEnumerable
 	{
 		#region IEnumerable Members

@@ -15,7 +15,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON.
 	/// </summary>
-	public static AndOrResult<object?, IExpectSubject<object?>> JsonSerializable(
+	public static AndOrResult<object?, IThat<object?>> JsonSerializable(
 		this IThatIs<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
@@ -27,7 +27,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON.
 	/// </summary>
-	public static AndOrResult<object?, IExpectSubject<object?>> JsonSerializable(
+	public static AndOrResult<object?, IThat<object?>> JsonSerializable(
 		this IThatIs<object?> source,
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
@@ -40,7 +40,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON of type <typeparamref name="T" />.
 	/// </summary>
-	public static AndOrResult<object?, IExpectSubject<object?>> JsonSerializable<T>(
+	public static AndOrResult<object?, IThat<object?>> JsonSerializable<T>(
 		this IThatIs<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
@@ -52,7 +52,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON of type <typeparamref name="T" />.
 	/// </summary>
-	public static AndOrResult<object?, IExpectSubject<object?>> JsonSerializable<T>(
+	public static AndOrResult<object?, IThat<object?>> JsonSerializable<T>(
 		this IThatIs<object?> source,
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)

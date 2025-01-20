@@ -28,7 +28,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsExactly<MyClass>();
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be exactly type MyClass,
@@ -49,7 +49,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly<OtherClass>()
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be exactly type OtherClass, because we want to test the failure,
@@ -72,7 +72,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly<MyBaseClass>()
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be exactly type MyBaseClass, because we want to test the failure,
@@ -95,7 +95,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly<MyClass>()
 						.Because(reason);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be exactly type MyClass, because {{reason}},
@@ -113,7 +113,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsExactly<MyClass>();
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 
@@ -141,7 +141,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsExactly(typeof(MyClass));
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
 					             be exactly type MyClass,
@@ -162,7 +162,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly(typeof(OtherClass))
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be exactly type OtherClass, because we want to test the failure,
@@ -185,7 +185,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly(typeof(MyBaseClass))
 						.Because("we want to test the failure");
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be exactly type MyBaseClass, because we want to test the failure,
@@ -208,7 +208,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly(typeof(MyClass))
 						.Because(reason);
 
-				await That(Act).Does().Throw<XunitException>()
+				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected subject to
 					               be exactly type MyClass, because {{reason}},
@@ -226,7 +226,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsExactly(typeof(MyClass));
 
-				await That(Act).Does().NotThrow();
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}
