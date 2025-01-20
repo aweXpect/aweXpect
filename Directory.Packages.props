@@ -14,7 +14,7 @@
 		<PackageVersion Include="Nuke.Common" Version="9.0.3"/>
 		<PackageVersion Include="Nuke.Components" Version="9.0.3"/>
 		<PackageVersion Include="LibGit2Sharp" Version="0.31.0"/>
-		<PackageVersion Include="SharpCompress" Version="0.38.0"/>
+		<PackageVersion Include="SharpCompress" Version="0.39.0"/>
 	</ItemGroup>
 	<ItemGroup>
 		<PackageVersion Include="Meziantou.Analyzer" Version="2.0.163"/>
