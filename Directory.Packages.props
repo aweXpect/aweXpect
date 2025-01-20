@@ -4,7 +4,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageVersion Include="aweXpect" Version="0.17.0"/>
-		<PackageVersion Include="aweXpect.Core" Version="0.17.0"/>
+		<PackageVersion Include="aweXpect.Core" Version="0.18.0"/>
 		<PackageVersion Include="aweXpect.Chronology" Version="0.3.0"/>
 	</ItemGroup>
 	<ItemGroup>
