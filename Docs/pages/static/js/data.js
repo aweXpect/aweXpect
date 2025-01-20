@@ -30,6 +30,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 11:28:18 2025 \u002B0100",
         "message": "chore(deps): update aweXpect.Core to v0.18.0 (#229)"
+      },
+      {
+        "sha": "a65ca3f33d06e0a712049c084956217791a1af8d",
+        "author": "Valentin",
+        "date": "Mon Jan 20 11:18:44 2025 \u002B0100",
+        "message": "chore(deps): update aweXpect.Core to v0.18.0"
       }
     ],
     "labels": [
@@ -37,7 +43,8 @@ window.BENCHMARK_DATA = {
       "e994b4dd",
       "a6022c2c",
       "ba348350",
-      "96f70d37"
+      "96f70d37",
+      "a65ca3f3"
     ],
     "datasets": [
       {
@@ -48,7 +55,8 @@ window.BENCHMARK_DATA = {
           170.8307419459025,
           170.6940963904063,
           158.4435460090637,
-          155.13557620048522
+          155.13557620048522,
+          165.76554095745087
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -60,6 +68,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -83,7 +92,8 @@ window.BENCHMARK_DATA = {
           224.86235439777374,
           222.18419427871703,
           199.29969428135797,
-          207.76855233510335
+          207.76855233510335,
+          225.15658162434895
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -95,6 +105,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -118,7 +129,8 @@ window.BENCHMARK_DATA = {
           595.9496761322022,
           578.6159603754679,
           524.8989543233599,
-          562.5271207491556
+          562.5271207491556,
+          567.452426846822
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -130,6 +142,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          1712,
           1712,
           1712,
           1712,
@@ -178,6 +191,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 11:28:18 2025 \u002B0100",
         "message": "chore(deps): update aweXpect.Core to v0.18.0 (#229)"
+      },
+      {
+        "sha": "a65ca3f33d06e0a712049c084956217791a1af8d",
+        "author": "Valentin",
+        "date": "Mon Jan 20 11:18:44 2025 \u002B0100",
+        "message": "chore(deps): update aweXpect.Core to v0.18.0"
       }
     ],
     "labels": [
@@ -185,7 +204,8 @@ window.BENCHMARK_DATA = {
       "e994b4dd",
       "a6022c2c",
       "ba348350",
-      "96f70d37"
+      "96f70d37",
+      "a65ca3f3"
     ],
     "datasets": [
       {
@@ -196,7 +216,8 @@ window.BENCHMARK_DATA = {
           351.37352555592855,
           374.3091664632162,
           337.2535416603088,
-          352.39308126156146
+          352.39308126156146,
+          381.1330859502157
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -208,6 +229,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -231,7 +253,8 @@ window.BENCHMARK_DATA = {
           460.97408453623456,
           456.0185529504503,
           406.35335045594434,
-          436.15411609013876
+          436.15411609013876,
+          457.1187669436137
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -243,6 +266,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -266,7 +290,8 @@ window.BENCHMARK_DATA = {
           15581.482432047525,
           14722.414560953775,
           14283.944193913387,
-          22458.590706380208
+          22458.590706380208,
+          14792.756424967449
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -278,6 +303,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          26616,
           26616,
           26616,
           26616,
@@ -326,6 +352,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 11:28:18 2025 \u002B0100",
         "message": "chore(deps): update aweXpect.Core to v0.18.0 (#229)"
+      },
+      {
+        "sha": "a65ca3f33d06e0a712049c084956217791a1af8d",
+        "author": "Valentin",
+        "date": "Mon Jan 20 11:18:44 2025 \u002B0100",
+        "message": "chore(deps): update aweXpect.Core to v0.18.0"
       }
     ],
     "labels": [
@@ -333,7 +365,8 @@ window.BENCHMARK_DATA = {
       "e994b4dd",
       "a6022c2c",
       "ba348350",
-      "96f70d37"
+      "96f70d37",
+      "a65ca3f3"
     ],
     "datasets": [
       {
@@ -344,7 +377,8 @@ window.BENCHMARK_DATA = {
           216.9594315801348,
           206.10692450205485,
           196.2139249581557,
-          206.1067977587382
+          206.1067977587382,
+          214.8942221959432
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -356,6 +390,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -379,7 +414,8 @@ window.BENCHMARK_DATA = {
           278.63078991572064,
           270.1289446512858,
           242.58121951421103,
-          274.3820020675659
+          274.3820020675659,
+          270.8007615974971
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -391,6 +427,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -414,7 +451,8 @@ window.BENCHMARK_DATA = {
           829.1234278996785,
           821.9613706588746,
           849.6050724983215,
-          797.4266170092991
+          797.4266170092991,
+          815.1987977981568
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -426,6 +464,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          2352,
           2352,
           2352,
           2352,
@@ -474,6 +513,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 11:28:18 2025 \u002B0100",
         "message": "chore(deps): update aweXpect.Core to v0.18.0 (#229)"
+      },
+      {
+        "sha": "a65ca3f33d06e0a712049c084956217791a1af8d",
+        "author": "Valentin",
+        "date": "Mon Jan 20 11:18:44 2025 \u002B0100",
+        "message": "chore(deps): update aweXpect.Core to v0.18.0"
       }
     ],
     "labels": [
@@ -481,7 +526,8 @@ window.BENCHMARK_DATA = {
       "e994b4dd",
       "a6022c2c",
       "ba348350",
-      "96f70d37"
+      "96f70d37",
+      "a65ca3f3"
     ],
     "datasets": [
       {
@@ -492,7 +538,8 @@ window.BENCHMARK_DATA = {
           328.66932388714383,
           306.69245314598083,
           301.3085208960942,
-          315.39779373577665
+          315.39779373577665,
+          317.1949115753174
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -504,6 +551,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -527,7 +575,8 @@ window.BENCHMARK_DATA = {
           409.45268201828003,
           351.31532487869265,
           354.7790416399638,
-          364.92660064697264
+          364.92660064697264,
+          375.06243960062665
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -539,6 +588,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -562,7 +612,8 @@ window.BENCHMARK_DATA = {
           895.92631987163,
           855.6375809351604,
           903.2392115910848,
-          844.5590480804443
+          844.5590480804443,
+          825.1556023279826
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -574,6 +625,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          2328,
           2328,
           2328,
           2328,
@@ -622,6 +674,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 11:28:18 2025 \u002B0100",
         "message": "chore(deps): update aweXpect.Core to v0.18.0 (#229)"
+      },
+      {
+        "sha": "a65ca3f33d06e0a712049c084956217791a1af8d",
+        "author": "Valentin",
+        "date": "Mon Jan 20 11:18:44 2025 \u002B0100",
+        "message": "chore(deps): update aweXpect.Core to v0.18.0"
       }
     ],
     "labels": [
@@ -629,7 +687,8 @@ window.BENCHMARK_DATA = {
       "e994b4dd",
       "a6022c2c",
       "ba348350",
-      "96f70d37"
+      "96f70d37",
+      "a65ca3f3"
     ],
     "datasets": [
       {
@@ -640,7 +699,8 @@ window.BENCHMARK_DATA = {
           1128.346786226545,
           1098.832622391837,
           1076.532111985343,
-          1181.8951923370362
+          1181.8951923370362,
+          1101.8187058766682
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -652,6 +712,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2384,
           2384,
           2384,
           2384,
@@ -675,7 +736,8 @@ window.BENCHMARK_DATA = {
           1306.7912724812825,
           1294.6244603474936,
           1156.1905431111654,
-          1206.3019789377847
+          1206.3019789377847,
+          1235.2764401753743
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -687,6 +749,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -710,7 +773,8 @@ window.BENCHMARK_DATA = {
           2126.9997182210286,
           2178.2397992060733,
           2115.8911359151202,
-          2086.3043131510417
+          2086.3043131510417,
+          2090.007182820638
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -722,6 +786,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          3216,
           3216,
           3216,
           3216,
@@ -770,6 +835,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 11:28:18 2025 \u002B0100",
         "message": "chore(deps): update aweXpect.Core to v0.18.0 (#229)"
+      },
+      {
+        "sha": "a65ca3f33d06e0a712049c084956217791a1af8d",
+        "author": "Valentin",
+        "date": "Mon Jan 20 11:18:44 2025 \u002B0100",
+        "message": "chore(deps): update aweXpect.Core to v0.18.0"
       }
     ],
     "labels": [
@@ -777,7 +848,8 @@ window.BENCHMARK_DATA = {
       "e994b4dd",
       "a6022c2c",
       "ba348350",
-      "96f70d37"
+      "96f70d37",
+      "a65ca3f3"
     ],
     "datasets": [
       {
@@ -788,7 +860,8 @@ window.BENCHMARK_DATA = {
           1179.811538441976,
           1194.3902856191,
           1128.3401187016414,
-          1133.359532220023
+          1133.359532220023,
+          1140.0626906077066
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -800,6 +873,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2408,
           2408,
           2408,
           2408,
@@ -823,7 +897,8 @@ window.BENCHMARK_DATA = {
           82148.39580829327,
           82674.91611328124,
           78198.26883370536,
-          79701.94614955357
+          79701.94614955357,
+          78199.53501674107
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -835,6 +910,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -858,7 +934,8 @@ window.BENCHMARK_DATA = {
           4182.777239118303,
           4299.858325703939,
           4055.510234069824,
-          4066.8915339152018
+          4066.8915339152018,
+          4005.5797353108724
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -870,6 +947,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          5160,
           5160,
           5160,
           5160,
