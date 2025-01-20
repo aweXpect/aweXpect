@@ -121,7 +121,6 @@ public partial class StringEqualityOptions
 					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
 
-		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
 		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer) 
 		{
 			if (comparer != null)
