@@ -1,10 +1,11 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
 
 #if NETSTANDARD2_0
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
+// ReSharper disable once CheckNamespace
 namespace System;
 
 /// <summary>Represent a type can be used to index a collection either from the start or the end.</summary>
@@ -15,6 +16,7 @@ namespace System;
 /// int lastElement = someArray[^1]; // lastElement = 5
 /// </code>
 /// </remarks>
+[ExcludeFromCodeCoverage]
 public readonly struct Index : IEquatable<Index>
 {
 	private readonly int _value;

@@ -1,4 +1,6 @@
 ﻿#if !NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+
 // ReSharper disable once CheckNamespace
 namespace System.Diagnostics;
 
@@ -11,5 +13,6 @@ namespace System.Diagnostics;
                 AttributeTargets.Constructor |
                 AttributeTargets.Struct,
 	Inherited = false)]
+[ExcludeFromCodeCoverage]
 public sealed class StackTraceHiddenAttribute : Attribute;
 #endif
