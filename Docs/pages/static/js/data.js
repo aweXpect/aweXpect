@@ -66,6 +66,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:55:02 2025 \u002B0100",
         "message": "build(deps): bump the nuke group with 2 updates (#224)"
+      },
+      {
+        "sha": "a7ed6bc73346bbd62c70d36a9a61536eb87ad8de",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 13:24:55 2025 \u002B0100",
+        "message": "fix: finalize release executed only after aweXpect push (#230)"
       }
     ],
     "labels": [
@@ -79,7 +85,8 @@ window.BENCHMARK_DATA = {
       "08ef69d9",
       "8c5638ae",
       "8111de13",
-      "8881f806"
+      "8881f806",
+      "a7ed6bc7"
     ],
     "datasets": [
       {
@@ -96,7 +103,8 @@ window.BENCHMARK_DATA = {
           160.11295573527997,
           156.0363313992818,
           151.6461879014969,
-          185.18310533251082
+          185.18310533251082,
+          151.3436605612437
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -108,6 +116,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -143,7 +152,8 @@ window.BENCHMARK_DATA = {
           206.88912995656332,
           202.32963379224142,
           205.74112950052535,
-          206.35183811187744
+          206.35183811187744,
+          208.50420352128836
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -155,6 +165,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -190,7 +201,8 @@ window.BENCHMARK_DATA = {
           522.3786952836173,
           549.5231369654338,
           568.7060990651448,
-          576.34955736307
+          576.34955736307,
+          588.3241058985392
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -210,6 +222,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752
@@ -292,6 +305,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:55:02 2025 \u002B0100",
         "message": "build(deps): bump the nuke group with 2 updates (#224)"
+      },
+      {
+        "sha": "a7ed6bc73346bbd62c70d36a9a61536eb87ad8de",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 13:24:55 2025 \u002B0100",
+        "message": "fix: finalize release executed only after aweXpect push (#230)"
       }
     ],
     "labels": [
@@ -305,7 +324,8 @@ window.BENCHMARK_DATA = {
       "08ef69d9",
       "8c5638ae",
       "8111de13",
-      "8881f806"
+      "8881f806",
+      "a7ed6bc7"
     ],
     "datasets": [
       {
@@ -322,7 +342,8 @@ window.BENCHMARK_DATA = {
           365.3181669371469,
           345.05609801610314,
           352.852764742715,
-          362.02392800649005
+          362.02392800649005,
+          361.74809068044027
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -334,6 +355,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -369,7 +391,8 @@ window.BENCHMARK_DATA = {
           442.4963041305542,
           412.4149733543396,
           473.0607053756714,
-          428.04975872039796
+          428.04975872039796,
+          424.6540211995443
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -381,6 +404,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -416,7 +440,8 @@ window.BENCHMARK_DATA = {
           20583.53896077474,
           14059.436920166016,
           17242.750053992637,
-          16893.544787597657
+          16893.544787597657,
+          14554.276959010533
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -436,6 +461,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552
@@ -518,6 +544,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:55:02 2025 \u002B0100",
         "message": "build(deps): bump the nuke group with 2 updates (#224)"
+      },
+      {
+        "sha": "a7ed6bc73346bbd62c70d36a9a61536eb87ad8de",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 13:24:55 2025 \u002B0100",
+        "message": "fix: finalize release executed only after aweXpect push (#230)"
       }
     ],
     "labels": [
@@ -531,7 +563,8 @@ window.BENCHMARK_DATA = {
       "08ef69d9",
       "8c5638ae",
       "8111de13",
-      "8881f806"
+      "8881f806",
+      "a7ed6bc7"
     ],
     "datasets": [
       {
@@ -548,7 +581,8 @@ window.BENCHMARK_DATA = {
           201.19402921994526,
           192.24772651378925,
           200.14843589918954,
-          196.2580615679423
+          196.2580615679423,
+          197.36898280779522
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -560,6 +594,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -595,7 +630,8 @@ window.BENCHMARK_DATA = {
           270.9082823912303,
           248.62949003492082,
           267.79543792284454,
-          254.42266976038616
+          254.42266976038616,
+          258.39817374547323
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -607,6 +643,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -642,7 +679,8 @@ window.BENCHMARK_DATA = {
           793.0287864685058,
           813.043058013916,
           841.1511103947958,
-          837.8089452107747
+          837.8089452107747,
+          823.1867488225301
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -662,6 +700,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240
@@ -744,6 +783,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:55:02 2025 \u002B0100",
         "message": "build(deps): bump the nuke group with 2 updates (#224)"
+      },
+      {
+        "sha": "a7ed6bc73346bbd62c70d36a9a61536eb87ad8de",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 13:24:55 2025 \u002B0100",
+        "message": "fix: finalize release executed only after aweXpect push (#230)"
       }
     ],
     "labels": [
@@ -757,7 +802,8 @@ window.BENCHMARK_DATA = {
       "08ef69d9",
       "8c5638ae",
       "8111de13",
-      "8881f806"
+      "8881f806",
+      "a7ed6bc7"
     ],
     "datasets": [
       {
@@ -774,7 +820,8 @@ window.BENCHMARK_DATA = {
           315.0062762260437,
           307.0068321961623,
           314.97997426986694,
-          304.8040408452352
+          304.8040408452352,
+          309.0778631766637
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -786,6 +833,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -821,7 +869,8 @@ window.BENCHMARK_DATA = {
           360.54308700561523,
           347.67961702346804,
           368.80354767579297,
-          347.7576244990031
+          347.7576244990031,
+          370.4904707499913
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -833,6 +882,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -868,7 +918,8 @@ window.BENCHMARK_DATA = {
           807.5309039524624,
           950.0381783167521,
           942.2038411458333,
-          939.4553424199422
+          939.4553424199422,
+          980.3985696156819
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -888,6 +939,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232
@@ -970,6 +1022,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:55:02 2025 \u002B0100",
         "message": "build(deps): bump the nuke group with 2 updates (#224)"
+      },
+      {
+        "sha": "a7ed6bc73346bbd62c70d36a9a61536eb87ad8de",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 13:24:55 2025 \u002B0100",
+        "message": "fix: finalize release executed only after aweXpect push (#230)"
       }
     ],
     "labels": [
@@ -983,7 +1041,8 @@ window.BENCHMARK_DATA = {
       "08ef69d9",
       "8c5638ae",
       "8111de13",
-      "8881f806"
+      "8881f806",
+      "a7ed6bc7"
     ],
     "datasets": [
       {
@@ -1000,7 +1059,8 @@ window.BENCHMARK_DATA = {
           1067.380584335327,
           1056.3488892873129,
           1062.4824607031685,
-          1053.444019317627
+          1053.444019317627,
+          1080.6714853559222
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1012,6 +1072,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2384,
           2384,
           2384,
           2384,
@@ -1047,7 +1108,8 @@ window.BENCHMARK_DATA = {
           1209.3633190155028,
           1204.6632853190104,
           1177.385548655192,
-          1161.8918017069498
+          1161.8918017069498,
+          1170.215314102173
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1059,6 +1121,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -1094,7 +1157,8 @@ window.BENCHMARK_DATA = {
           2082.4139742533366,
           2234.402118174235,
           2267.74205163809,
-          2184.4211016337076
+          2184.4211016337076,
+          2220.696941630046
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1114,6 +1178,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256
@@ -1196,6 +1261,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:55:02 2025 \u002B0100",
         "message": "build(deps): bump the nuke group with 2 updates (#224)"
+      },
+      {
+        "sha": "a7ed6bc73346bbd62c70d36a9a61536eb87ad8de",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 13:24:55 2025 \u002B0100",
+        "message": "fix: finalize release executed only after aweXpect push (#230)"
       }
     ],
     "labels": [
@@ -1209,7 +1280,8 @@ window.BENCHMARK_DATA = {
       "08ef69d9",
       "8c5638ae",
       "8111de13",
-      "8881f806"
+      "8881f806",
+      "a7ed6bc7"
     ],
     "datasets": [
       {
@@ -1226,7 +1298,8 @@ window.BENCHMARK_DATA = {
           1105.9909159342449,
           1085.2066505432128,
           1121.4894528706868,
-          1159.6692977632795
+          1159.6692977632795,
+          1140.622148513794
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1238,6 +1311,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2408,
           2408,
           2408,
           2408,
@@ -1273,7 +1347,8 @@ window.BENCHMARK_DATA = {
           78894.54677734376,
           77662.87524414062,
           77152.24766322544,
-          77628.22822265625
+          77628.22822265625,
+          76892.178125
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1285,6 +1360,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -1320,7 +1396,8 @@ window.BENCHMARK_DATA = {
           4168.885194905599,
           4045.5662724812823,
           4230.382392883301,
-          4082.37625579834
+          4082.37625579834,
+          4100.937807718913
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1340,6 +1417,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128
