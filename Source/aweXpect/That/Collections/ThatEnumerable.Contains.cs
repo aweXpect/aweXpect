@@ -39,17 +39,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> Contains(
+	public static StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> Contains(
 		this IThat<IEnumerable<string?>> source,
 		string? expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<string?>(
 					it,
-					q => $"contain {Formatter.Format(expected)} {q}",
+					q => $"contain {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,

@@ -69,7 +69,7 @@ public static partial class ThatEnumerable
 			=> $"{it} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
 		public override string ToString()
-			=> matchOptions.GetExpectation(expectedExpression);
+			=> $"{matchOptions.GetExpectation(expectedExpression)}{options}";
 	}
 
 	private readonly struct SyncCollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>

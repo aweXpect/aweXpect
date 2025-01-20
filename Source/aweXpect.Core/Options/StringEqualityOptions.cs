@@ -115,19 +115,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 	/// <inheritdoc />
 	public override string ToString()
-	{
-		if (_comparer != null)
-		{
-			return $" using {Formatter.Format(_comparer.GetType())}";
-		}
-
-		if (_ignoreCase)
-		{
-			return " ignoring case";
-		}
-
-		return "";
-	}
+		=> _matchType.ToString(_ignoreCase, _comparer);
 
 	/// <summary>
 	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.

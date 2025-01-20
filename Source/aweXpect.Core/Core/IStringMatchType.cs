@@ -24,4 +24,9 @@ public interface IStringMatchType
 	string GetExtendedFailure(string it, string? actual, string? expected,
 		bool ignoreCase,
 		IEqualityComparer<string> comparer);
+
+	/// <summary>
+	///     A string representation of the match type and options.
+	/// </summary>
+	string ToString(bool ignoreCase, IEqualityComparer<string>? comparer);
 }
