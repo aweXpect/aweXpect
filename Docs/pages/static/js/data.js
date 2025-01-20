@@ -42,6 +42,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:54:26 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.5.0 to 1.5.1 (#228)"
+      },
+      {
+        "sha": "08ef69d9676332d2cc040e885cf1d859ae9a0238",
+        "author": "dependabot[bot]",
+        "date": "Mon Jan 20 11:54:36 2025 \u002B0100",
+        "message": "build(deps): bump SharpCompress from 0.38.0 to 0.39.0 (#227)"
       }
     ],
     "labels": [
@@ -51,7 +57,8 @@ window.BENCHMARK_DATA = {
       "ba348350",
       "96f70d37",
       "a65ca3f3",
-      "b6626f8e"
+      "b6626f8e",
+      "08ef69d9"
     ],
     "datasets": [
       {
@@ -64,7 +71,8 @@ window.BENCHMARK_DATA = {
           158.4435460090637,
           155.13557620048522,
           165.76554095745087,
-          164.67326958974203
+          164.67326958974203,
+          160.11295573527997
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -76,6 +84,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -103,7 +112,8 @@ window.BENCHMARK_DATA = {
           199.29969428135797,
           207.76855233510335,
           225.15658162434895,
-          208.41571418444315
+          208.41571418444315,
+          206.88912995656332
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -115,6 +125,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -142,7 +153,8 @@ window.BENCHMARK_DATA = {
           524.8989543233599,
           562.5271207491556,
           567.452426846822,
-          550.8775363922119
+          550.8775363922119,
+          522.3786952836173
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -154,6 +166,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          1712,
           1712,
           1712,
           1712,
@@ -216,6 +229,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:54:26 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.5.0 to 1.5.1 (#228)"
+      },
+      {
+        "sha": "08ef69d9676332d2cc040e885cf1d859ae9a0238",
+        "author": "dependabot[bot]",
+        "date": "Mon Jan 20 11:54:36 2025 \u002B0100",
+        "message": "build(deps): bump SharpCompress from 0.38.0 to 0.39.0 (#227)"
       }
     ],
     "labels": [
@@ -225,7 +244,8 @@ window.BENCHMARK_DATA = {
       "ba348350",
       "96f70d37",
       "a65ca3f3",
-      "b6626f8e"
+      "b6626f8e",
+      "08ef69d9"
     ],
     "datasets": [
       {
@@ -238,7 +258,8 @@ window.BENCHMARK_DATA = {
           337.2535416603088,
           352.39308126156146,
           381.1330859502157,
-          336.44947052001953
+          336.44947052001953,
+          365.3181669371469
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -250,6 +271,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -277,7 +299,8 @@ window.BENCHMARK_DATA = {
           406.35335045594434,
           436.15411609013876,
           457.1187669436137,
-          424.73906723658246
+          424.73906723658246,
+          442.4963041305542
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -289,6 +312,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -316,7 +340,8 @@ window.BENCHMARK_DATA = {
           14283.944193913387,
           22458.590706380208,
           14792.756424967449,
-          15938.436789879432
+          15938.436789879432,
+          20583.53896077474
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -328,6 +353,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          26616,
           26616,
           26616,
           26616,
@@ -390,6 +416,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:54:26 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.5.0 to 1.5.1 (#228)"
+      },
+      {
+        "sha": "08ef69d9676332d2cc040e885cf1d859ae9a0238",
+        "author": "dependabot[bot]",
+        "date": "Mon Jan 20 11:54:36 2025 \u002B0100",
+        "message": "build(deps): bump SharpCompress from 0.38.0 to 0.39.0 (#227)"
       }
     ],
     "labels": [
@@ -399,7 +431,8 @@ window.BENCHMARK_DATA = {
       "ba348350",
       "96f70d37",
       "a65ca3f3",
-      "b6626f8e"
+      "b6626f8e",
+      "08ef69d9"
     ],
     "datasets": [
       {
@@ -412,7 +445,8 @@ window.BENCHMARK_DATA = {
           196.2139249581557,
           206.1067977587382,
           214.8942221959432,
-          199.87026483217875
+          199.87026483217875,
+          201.19402921994526
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -424,6 +458,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -451,7 +486,8 @@ window.BENCHMARK_DATA = {
           242.58121951421103,
           274.3820020675659,
           270.8007615974971,
-          264.8141753514608
+          264.8141753514608,
+          270.9082823912303
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -463,6 +499,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -490,7 +527,8 @@ window.BENCHMARK_DATA = {
           849.6050724983215,
           797.4266170092991,
           815.1987977981568,
-          817.5118516286215
+          817.5118516286215,
+          793.0287864685058
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -502,6 +540,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          2352,
           2352,
           2352,
           2352,
@@ -564,6 +603,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:54:26 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.5.0 to 1.5.1 (#228)"
+      },
+      {
+        "sha": "08ef69d9676332d2cc040e885cf1d859ae9a0238",
+        "author": "dependabot[bot]",
+        "date": "Mon Jan 20 11:54:36 2025 \u002B0100",
+        "message": "build(deps): bump SharpCompress from 0.38.0 to 0.39.0 (#227)"
       }
     ],
     "labels": [
@@ -573,7 +618,8 @@ window.BENCHMARK_DATA = {
       "ba348350",
       "96f70d37",
       "a65ca3f3",
-      "b6626f8e"
+      "b6626f8e",
+      "08ef69d9"
     ],
     "datasets": [
       {
@@ -586,7 +632,8 @@ window.BENCHMARK_DATA = {
           301.3085208960942,
           315.39779373577665,
           317.1949115753174,
-          301.54692827860515
+          301.54692827860515,
+          315.0062762260437
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -598,6 +645,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -625,7 +673,8 @@ window.BENCHMARK_DATA = {
           354.7790416399638,
           364.92660064697264,
           375.06243960062665,
-          370.2074193954468
+          370.2074193954468,
+          360.54308700561523
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -637,6 +686,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -664,7 +714,8 @@ window.BENCHMARK_DATA = {
           903.2392115910848,
           844.5590480804443,
           825.1556023279826,
-          838.7160714956431
+          838.7160714956431,
+          807.5309039524624
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -676,6 +727,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          2328,
           2328,
           2328,
           2328,
@@ -738,6 +790,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:54:26 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.5.0 to 1.5.1 (#228)"
+      },
+      {
+        "sha": "08ef69d9676332d2cc040e885cf1d859ae9a0238",
+        "author": "dependabot[bot]",
+        "date": "Mon Jan 20 11:54:36 2025 \u002B0100",
+        "message": "build(deps): bump SharpCompress from 0.38.0 to 0.39.0 (#227)"
       }
     ],
     "labels": [
@@ -747,7 +805,8 @@ window.BENCHMARK_DATA = {
       "ba348350",
       "96f70d37",
       "a65ca3f3",
-      "b6626f8e"
+      "b6626f8e",
+      "08ef69d9"
     ],
     "datasets": [
       {
@@ -760,7 +819,8 @@ window.BENCHMARK_DATA = {
           1076.532111985343,
           1181.8951923370362,
           1101.8187058766682,
-          1068.2992315292358
+          1068.2992315292358,
+          1067.380584335327
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -772,6 +832,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2384,
           2384,
           2384,
           2384,
@@ -799,7 +860,8 @@ window.BENCHMARK_DATA = {
           1156.1905431111654,
           1206.3019789377847,
           1235.2764401753743,
-          1188.1393574305944
+          1188.1393574305944,
+          1209.3633190155028
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -811,6 +873,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -838,7 +901,8 @@ window.BENCHMARK_DATA = {
           2115.8911359151202,
           2086.3043131510417,
           2090.007182820638,
-          2170.923581804548
+          2170.923581804548,
+          2082.4139742533366
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -850,6 +914,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          3216,
           3216,
           3216,
           3216,
@@ -912,6 +977,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Jan 20 11:54:26 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.5.0 to 1.5.1 (#228)"
+      },
+      {
+        "sha": "08ef69d9676332d2cc040e885cf1d859ae9a0238",
+        "author": "dependabot[bot]",
+        "date": "Mon Jan 20 11:54:36 2025 \u002B0100",
+        "message": "build(deps): bump SharpCompress from 0.38.0 to 0.39.0 (#227)"
       }
     ],
     "labels": [
@@ -921,7 +992,8 @@ window.BENCHMARK_DATA = {
       "ba348350",
       "96f70d37",
       "a65ca3f3",
-      "b6626f8e"
+      "b6626f8e",
+      "08ef69d9"
     ],
     "datasets": [
       {
@@ -934,7 +1006,8 @@ window.BENCHMARK_DATA = {
           1128.3401187016414,
           1133.359532220023,
           1140.0626906077066,
-          1114.837188584464
+          1114.837188584464,
+          1105.9909159342449
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -946,6 +1019,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          2408,
           2408,
           2408,
           2408,
@@ -973,7 +1047,8 @@ window.BENCHMARK_DATA = {
           78198.26883370536,
           79701.94614955357,
           78199.53501674107,
-          79218.87158203125
+          79218.87158203125,
+          78894.54677734376
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -985,6 +1060,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -1012,7 +1088,8 @@ window.BENCHMARK_DATA = {
           4055.510234069824,
           4066.8915339152018,
           4005.5797353108724,
-          4133.923426114596
+          4133.923426114596,
+          4168.885194905599
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1024,6 +1101,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          5160,
           5160,
           5160,
           5160,
