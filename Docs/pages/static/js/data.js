@@ -90,6 +90,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 17:39:26 2025 \u002B0100",
         "message": "feat: include string options in expectation (#232)"
+      },
+      {
+        "sha": "912178e4685bcae129fef70bb372d9d440b11b4a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 17:43:06 2025 \u002B0100",
+        "message": "docs: fix extension documentation (#233)"
       }
     ],
     "labels": [
@@ -107,7 +113,8 @@ window.BENCHMARK_DATA = {
       "a7ed6bc7",
       "46c2cd1d",
       "d876d089",
-      "93717d26"
+      "93717d26",
+      "912178e4"
     ],
     "datasets": [
       {
@@ -128,7 +135,8 @@ window.BENCHMARK_DATA = {
           151.3436605612437,
           162.8321444829305,
           157.37940486272177,
-          149.00918853282928
+          149.00918853282928,
+          166.17025911808014
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -140,6 +148,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -183,7 +192,8 @@ window.BENCHMARK_DATA = {
           208.50420352128836,
           216.60735592475305,
           202.64400755564373,
-          196.82847886819107
+          196.82847886819107,
+          230.56750561396282
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -195,6 +205,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -238,7 +249,8 @@ window.BENCHMARK_DATA = {
           588.3241058985392,
           569.3761840820313,
           572.5347977956136,
-          548.5670249303182
+          548.5670249303182,
+          633.745946375529
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -258,6 +270,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -368,6 +381,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 17:39:26 2025 \u002B0100",
         "message": "feat: include string options in expectation (#232)"
+      },
+      {
+        "sha": "912178e4685bcae129fef70bb372d9d440b11b4a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 17:43:06 2025 \u002B0100",
+        "message": "docs: fix extension documentation (#233)"
       }
     ],
     "labels": [
@@ -385,7 +404,8 @@ window.BENCHMARK_DATA = {
       "a7ed6bc7",
       "46c2cd1d",
       "d876d089",
-      "93717d26"
+      "93717d26",
+      "912178e4"
     ],
     "datasets": [
       {
@@ -406,7 +426,8 @@ window.BENCHMARK_DATA = {
           361.74809068044027,
           363.89608076640536,
           336.6958791528429,
-          322.89931173324584
+          322.89931173324584,
+          353.1988357861837
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -418,6 +439,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -461,7 +483,8 @@ window.BENCHMARK_DATA = {
           424.6540211995443,
           461.3379871050517,
           421.1844950993856,
-          405.45305690765383
+          405.45305690765383,
+          408.4318337440491
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -473,6 +496,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -516,7 +540,8 @@ window.BENCHMARK_DATA = {
           14554.276959010533,
           21124.68842163086,
           16876.003867013114,
-          16687.251802571616
+          16687.251802571616,
+          20411.542897542316
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -536,6 +561,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -646,6 +672,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 17:39:26 2025 \u002B0100",
         "message": "feat: include string options in expectation (#232)"
+      },
+      {
+        "sha": "912178e4685bcae129fef70bb372d9d440b11b4a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 17:43:06 2025 \u002B0100",
+        "message": "docs: fix extension documentation (#233)"
       }
     ],
     "labels": [
@@ -663,7 +695,8 @@ window.BENCHMARK_DATA = {
       "a7ed6bc7",
       "46c2cd1d",
       "d876d089",
-      "93717d26"
+      "93717d26",
+      "912178e4"
     ],
     "datasets": [
       {
@@ -684,7 +717,8 @@ window.BENCHMARK_DATA = {
           197.36898280779522,
           210.5766167300088,
           187.75454076131186,
-          189.98381028175353
+          189.98381028175353,
+          191.02975703988756
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -696,6 +730,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -739,7 +774,8 @@ window.BENCHMARK_DATA = {
           258.39817374547323,
           262.22281582014904,
           250.69699856440226,
-          249.28232040405274
+          249.28232040405274,
+          265.87900492123197
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -751,6 +787,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -794,7 +831,8 @@ window.BENCHMARK_DATA = {
           823.1867488225301,
           871.8636178970337,
           795.873888206482,
-          816.1528205871582
+          816.1528205871582,
+          874.4870620091756
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -814,6 +852,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -924,6 +963,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 17:39:26 2025 \u002B0100",
         "message": "feat: include string options in expectation (#232)"
+      },
+      {
+        "sha": "912178e4685bcae129fef70bb372d9d440b11b4a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 17:43:06 2025 \u002B0100",
+        "message": "docs: fix extension documentation (#233)"
       }
     ],
     "labels": [
@@ -941,7 +986,8 @@ window.BENCHMARK_DATA = {
       "a7ed6bc7",
       "46c2cd1d",
       "d876d089",
-      "93717d26"
+      "93717d26",
+      "912178e4"
     ],
     "datasets": [
       {
@@ -962,7 +1008,8 @@ window.BENCHMARK_DATA = {
           309.0778631766637,
           336.5508539199829,
           313.7182680130005,
-          310.73493378957113
+          310.73493378957113,
+          301.4533649172102
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -974,6 +1021,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1017,7 +1065,8 @@ window.BENCHMARK_DATA = {
           370.4904707499913,
           378.0701917330424,
           347.05598201751707,
-          350.3273480279105
+          350.3273480279105,
+          347.56763416926066
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1029,6 +1078,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -1072,7 +1122,8 @@ window.BENCHMARK_DATA = {
           980.3985696156819,
           993.3785611561367,
           903.5010955810546,
-          922.1740292231242
+          922.1740292231242,
+          1004.3796611199012
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1092,6 +1143,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -1202,6 +1254,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 17:39:26 2025 \u002B0100",
         "message": "feat: include string options in expectation (#232)"
+      },
+      {
+        "sha": "912178e4685bcae129fef70bb372d9d440b11b4a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 17:43:06 2025 \u002B0100",
+        "message": "docs: fix extension documentation (#233)"
       }
     ],
     "labels": [
@@ -1219,7 +1277,8 @@ window.BENCHMARK_DATA = {
       "a7ed6bc7",
       "46c2cd1d",
       "d876d089",
-      "93717d26"
+      "93717d26",
+      "912178e4"
     ],
     "datasets": [
       {
@@ -1240,7 +1299,8 @@ window.BENCHMARK_DATA = {
           1080.6714853559222,
           1138.7777727762857,
           1132.456537246704,
-          1169.6811229160853
+          1169.6811229160853,
+          1173.7943625816931
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1266,6 +1326,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504
         ],
         "borderColor": "#63A2AC",
@@ -1295,7 +1356,8 @@ window.BENCHMARK_DATA = {
           1170.215314102173,
           1212.6018609364828,
           1280.659209060669,
-          1124.8404919760567
+          1124.8404919760567,
+          1148.7828202928815
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1307,6 +1369,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -1350,7 +1413,8 @@ window.BENCHMARK_DATA = {
           2220.696941630046,
           2319.064328413743,
           2353.02996297983,
-          2160.9577663128193
+          2160.9577663128193,
+          2256.8567064921062
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1370,6 +1434,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -1480,6 +1545,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 20 17:39:26 2025 \u002B0100",
         "message": "feat: include string options in expectation (#232)"
+      },
+      {
+        "sha": "912178e4685bcae129fef70bb372d9d440b11b4a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 20 17:43:06 2025 \u002B0100",
+        "message": "docs: fix extension documentation (#233)"
       }
     ],
     "labels": [
@@ -1497,7 +1568,8 @@ window.BENCHMARK_DATA = {
       "a7ed6bc7",
       "46c2cd1d",
       "d876d089",
-      "93717d26"
+      "93717d26",
+      "912178e4"
     ],
     "datasets": [
       {
@@ -1518,7 +1590,8 @@ window.BENCHMARK_DATA = {
           1140.622148513794,
           1146.810167312622,
           1193.9016267140707,
-          1179.4718040738787
+          1179.4718040738787,
+          1225.8607698168073
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1544,6 +1617,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560
         ],
         "borderColor": "#63A2AC",
@@ -1573,7 +1647,8 @@ window.BENCHMARK_DATA = {
           76892.178125,
           80998.14617047991,
           79105.30245535714,
-          77341.84267578126
+          77341.84267578126,
+          77407.26136997768
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1585,6 +1660,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -1628,7 +1704,8 @@ window.BENCHMARK_DATA = {
           4100.937807718913,
           4319.206312997,
           4394.765396626791,
-          4034.916910443987
+          4034.916910443987,
+          4236.109502156575
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1648,6 +1725,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
