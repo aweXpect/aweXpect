@@ -13,8 +13,6 @@ namespace aweXpect.Core;
 /// </summary>
 public class ManualExpectationBuilder<TValue>() : ExpectationBuilder("")
 {
-	private Node? _node;
-
 	/// <summary>
 	///     Evaluate if the expectations are met by the <paramref name="value" />.
 	/// </summary>
@@ -22,10 +20,7 @@ public class ManualExpectationBuilder<TValue>() : ExpectationBuilder("")
 		TValue value,
 		IEvaluationContext context,
 		CancellationToken cancellationToken)
-	{
-		_node ??= GetRootNode();
-		return await _node.IsMetBy(value, context, cancellationToken);
-	}
+		=> await GetRootNode().IsMetBy(value, context, cancellationToken);
 
 	/// <inheritdoc />
 	internal override Task<ConstraintResult> IsMet(
