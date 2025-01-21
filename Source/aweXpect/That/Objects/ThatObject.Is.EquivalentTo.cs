@@ -10,7 +10,7 @@ namespace aweXpect;
 public static partial class ThatObject
 {
 	/// <summary>
-	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the subject is equivalent to the <paramref name="expected" /> value.
 	/// </summary>
 	public static ObjectEqualityResult<object?, IThat<object?>> EquivalentTo(
 		this IThatIs<object?> source,
@@ -30,10 +30,10 @@ public static partial class ThatObject
 	}
 
 	/// <summary>
-	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
+	///     Verifies that the subject is not equivalent to the <paramref name="unexpected" /> value.
 	/// </summary>
 	public static ObjectEqualityResult<object?, IThat<object?>> NotEquivalentTo(
-		this IThat<object?> source,
+		this IThatIs<object?> source,
 		object? unexpected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
 		[CallerArgumentExpression("unexpected")]
@@ -44,9 +44,9 @@ public static partial class ThatObject
 		ObjectEqualityOptions options = new();
 		options.Equivalent(equivalencyOptions);
 		return new ObjectEqualityResult<object?, IThat<object?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ExpectationBuilder.AddConstraint(it
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
-			source,
+			source.ExpectSubject(),
 			options);
 	}
 }

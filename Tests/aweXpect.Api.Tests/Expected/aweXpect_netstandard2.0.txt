@@ -670,7 +670,7 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> IsNotNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNull(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotEquivalentTo(this aweXpect.Core.IThat<object?> source, object? unexpected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotEquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? unexpected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatSignaler
     {
