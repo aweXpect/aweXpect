@@ -51,7 +51,7 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)
 		=> throw new NotSupportedException(
-			$"Don't specify the inner node for Expectation nodes directly. You can use {nameof(AddMapping)} instead.");
+			$"Don't specify the inner node for Expectation nodes directly. Use {nameof(AddMapping)}() instead!");
 
 	/// <summary>
 	///     Indicates, if the node is empty.
@@ -99,11 +99,6 @@ internal class ExpectationNode : Node
 			ConstraintResult innerResult = await _inner.IsMetBy(value, context, cancellationToken);
 			innerResult = _combineResults?.Invoke(result, innerResult) ?? innerResult;
 			return innerResult;
-		}
-
-		if (_combineResults != null && result != null)
-		{
-			return _combineResults.Invoke(null, result);
 		}
 
 		return result ?? throw new InvalidOperationException(

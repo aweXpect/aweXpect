@@ -44,7 +44,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TSource).Name},{Environment.NewLine}but found {value.GetType().Name}");
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}");
 		}
 
 		if (_memberAccessor.TryAccessMember(
@@ -56,7 +56,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		}
 
 		throw new InvalidOperationException(
-			$"The member type for the which node did not match.{Environment.NewLine}Expected {typeof(TTarget).Name},{Environment.NewLine}but found {matchingValue?.GetType().Name}");
+			$"The member type for the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TTarget))},{Environment.NewLine}   Found: {Formatter.Format(matchingValue?.GetType())}");
 	}
 
 	/// <inheritdoc />

@@ -1,4 +1,7 @@
-﻿namespace aweXpect.Core.Tests.Core.Nodes;
+﻿using aweXpect.Core.Nodes;
+using aweXpect.Core.Tests.TestHelpers;
+
+namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class AndNodeTests
 {
@@ -15,6 +18,16 @@ public sealed class AndNodeTests
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
 		await That(result).Is(expectedResult);
+	}
+
+	[Fact]
+	public async Task ToString_WithoutAdditionalNodes_ShouldUseFirstNode()
+	{
+		AndNode? node = new(new DummyNode("foo"));
+
+		string? result = node.ToString();
+
+		await That(result).Is("foo");
 	}
 
 	[Fact]
