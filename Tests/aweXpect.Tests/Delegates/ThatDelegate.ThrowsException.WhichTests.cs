@@ -8,6 +8,27 @@ public sealed partial class ThatDelegate
 		{
 			[Theory]
 			[AutoData]
+			public async Task ShouldResetItAfterWhichClause(int hResult)
+			{
+				int otherHResult = hResult + 1;
+				Exception exception = new HResultException(hResult);
+				void Delegate() => throw exception;
+
+				async Task Act()
+					=> await That(Delegate).ThrowsException()
+						.Which(e => e.HResult, h => h.Is(hResult)).And
+						.WithHResult(otherHResult);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected Delegate to
+					              throw an exception which .HResult should be equal to {hResult} and with HResult {otherHResult},
+					              but it had HResult {hResult}
+					              """);
+			}
+
+			[Theory]
+			[AutoData]
 			public async Task WhenMemberIsDifferent_ShouldFail(int hResult)
 			{
 				int expectedHResult = hResult + 1;
@@ -16,12 +37,13 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.Is(expectedHResult));
+						.Which(e => e.HResult, h => h.Is(expectedHResult)).And
+						.WithHResult(hResult);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected Delegate to
-					              throw an exception which .HResult should be equal to {expectedHResult},
+					              throw an exception which .HResult should be equal to {expectedHResult} and with HResult {hResult},
 					              but .HResult was {hResult}
 					              """);
 			}

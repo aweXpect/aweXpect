@@ -109,12 +109,11 @@ public abstract class ExpectationBuilder
 		MemberAccessor<TSource, TTarget?> memberAccessor,
 		Func<MemberAccessor, string, string>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((a, s, c) =>
+		new((expectationBuilderCallback, sourceConstraintCallback) =>
 		{
-			if (s is not null)
+			if (sourceConstraintCallback is not null)
 			{
-				IValueConstraint<TSource> constraint = s.Invoke(_it);
-				And(" ");
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
 				_node.AddConstraint(constraint);
 			}
 
@@ -125,12 +124,7 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			if (c is not null)
-			{
-				_node.AddConstraint(c);
-			}
-
-			a.Invoke(this);
+			expectationBuilderCallback.Invoke(this);
 			_node = root;
 			if (replaceIt)
 			{
@@ -283,17 +277,13 @@ public abstract class ExpectationBuilder
 	{
 		private readonly Func<Action<ExpectationBuilder>,
 				Func<string, IValueConstraint<TSource>>?,
-				IValueConstraint<TMember>?,
 				ExpectationBuilder>
 			_callback;
-
-		private readonly IValueConstraint<TMember>? _constraint = null;
 
 		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
 
 		internal MemberExpectationBuilder(Func<Action<ExpectationBuilder>,
 				Func<string, IValueConstraint<TSource>>?,
-				IValueConstraint<TMember>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -304,7 +294,7 @@ public abstract class ExpectationBuilder
 		///     Add expectations for the current <typeparamref name="TMember" />.
 		/// </summary>
 		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation)
-			=> _callback(expectation, _sourceConstraintBuilder, _constraint);
+			=> _callback(expectation, _sourceConstraintBuilder);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.

@@ -132,14 +132,8 @@ public static partial class ValueFormatters
 		FormattingContext context)
 	{
 		Type type = obj.GetType();
-		WriteTypeName(stringBuilder, type);
+		Formatter.Format(stringBuilder, type);
 		WriteTypeValues(obj, stringBuilder, type, options, context);
-	}
-
-	private static void WriteTypeName(StringBuilder stringBuilder, Type type)
-	{
-		string typeName = type.HasFriendlyName() ? TypeDisplayName(type) : string.Empty;
-		stringBuilder.Append(typeName);
 	}
 
 	private static void WriteTypeValues(
