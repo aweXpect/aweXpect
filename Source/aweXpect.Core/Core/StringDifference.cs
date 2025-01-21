@@ -161,22 +161,18 @@ public class StringDifference(
 			return 0;
 		}
 
-		for (int index = 0; index < Math.Max(actualValue.Length, expectedValue.Length); index++)
+		int maxCommonLength = Math.Min(actualValue.Length, expectedValue.Length);
+		for (int index = 0; index < maxCommonLength; index++)
 		{
-			string actualChar = actualValue.ElementAtOrDefault(index).ToString();
-			string expectedChar = expectedValue.ElementAtOrDefault(index).ToString();
-			if (index >= expectedValue.Length || !comparer.Equals(actualChar, expectedChar))
+			string actualChar = actualValue.ElementAt(index).ToString();
+			string expectedChar = expectedValue.ElementAt(index).ToString();
+			if (!comparer.Equals(actualChar, expectedChar))
 			{
 				return index;
 			}
 		}
 
-		if (actualValue.Length < expectedValue.Length)
-		{
-			return actualValue.Length;
-		}
-
-		return -1;
+		return maxCommonLength;
 	}
 
 	/// <summary>

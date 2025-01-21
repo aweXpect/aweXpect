@@ -1,9 +1,62 @@
-﻿using aweXpect.Core.Helpers;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Tests.Core;
 
 public class StringDifferenceTests
 {
+	[Fact]
+	public async Task ShouldCacheIndexOfFirstMismatch()
+	{
+		const string actual = "Foo";
+		const string expected = "Foo";
+		var comparer = new ExecuteOnceComparer();
+
+		StringDifference sut = new(actual, expected, comparer);
+
+		await That(sut.IndexOfFirstMismatch).Is(-1);
+		await That(sut.IndexOfFirstMismatch).Is(-1);
+	}
+
+	[Fact]
+	public async Task WhenActualValueIsLongerThanExpected_ShouldDifferAtIndexActualLength()
+	{
+		const string actual = "A text that is longer";
+		const string expected = "A text";
+
+		StringDifference sut = new(actual, expected);
+
+		await That(sut.IndexOfFirstMismatch).Is(6);
+		await That(sut.ToString()).Is(
+			"""
+			differs at index 6:
+			         ↓ (actual)
+			  "A text that is longer"
+			  "A text"
+			         ↑ (expected)
+			""");
+	}
+
+	[Fact]
+	public async Task WhenActualValueIsShorterThanExpected_ShouldDifferAtIndexExpectedLength()
+	{
+		const string actual = "A text";
+		const string expected = "A text that is longer";
+
+		StringDifference sut = new(actual, expected);
+
+		await That(sut.IndexOfFirstMismatch).Is(6);
+		await That(sut.ToString()).Is(
+			"""
+			differs at index 6:
+			         ↓ (actual)
+			  "A text"
+			  "A text that is longer"
+			         ↑ (expected)
+			""");
+	}
+
 	[Fact]
 	public async Task WhenActualValueIsNull_ShouldDifferAtIndex0()
 	{
@@ -102,6 +155,57 @@ public class StringDifferenceTests
 	}
 
 	[Fact]
+	public async Task WhenStringsDifferInCaseOnly_ShouldDefaultToCaseSensitiveComparison()
+	{
+		const string actual = "this IS a text that only differs in casing";
+		const string expected = "this is a text that only differs in casing";
+
+		StringDifference sut = new(actual, expected);
+
+		await That(sut.IndexOfFirstMismatch).Is(5);
+		await That(sut.ToString()).Is(
+			$"""
+			 differs at index 5:
+			         ↓ (actual)
+			   "this IS a text that only differs in casing"
+			   "this is a text that only differs in casing"
+			         ↑ (expected)
+			 """);
+	}
+
+	[Fact]
+	public async Task WhenStringContainsWhitespace_ShouldPositionArrowsCorrectly()
+	{
+		const string actual = "foo\rbar\nBAZ";
+		const string expected = "foo\rbar\nbaz";
+
+		StringDifference sut = new(actual, expected);
+
+		await That(sut.IndexOfFirstMismatch).Is(8);
+		await That(sut.ToString()).Is(
+			"""
+			differs on line 2 and column 1 (index 8):
+			             ↓ (actual)
+			  "foo\rbar\nBAZ"
+			  "foo\rbar\nbaz"
+			             ↑ (expected)
+			""");
+	}
+
+	[Fact]
+	public async Task WhenStringsDifferInCaseOnly_WhenUsingAComparer_ShouldCompareSubstringsWithComparer()
+	{
+		const string actual = "this IS a text that only differs in casing";
+		const string expected = "this is a text that only differs in casing";
+		var comparer = StringComparer.OrdinalIgnoreCase;
+
+		StringDifference sut = new(actual, expected, comparer);
+
+		await That(sut.IndexOfFirstMismatch).Is(-1);
+		await That(sut.ToString()).Is("differs");
+	}
+
+	[Fact]
 	public async Task WhenTextDiffers_ShouldCalculateIndexOfFirstMismatch()
 	{
 		const string actual = "this is a long text that differs in between two words";
@@ -166,5 +270,21 @@ public class StringDifferenceTests
 
 		await That(sut.IndexOfFirstMismatch).Is(-1);
 		await That(sut.ToString()).Is("differs");
+	}
+
+	private class ExecuteOnceComparer : IEqualityComparer<string>
+	{
+		private bool _wasExecuted;
+		public bool Equals(string? x, string? y)
+		{
+			if (!_wasExecuted)
+			{
+				_wasExecuted = true;
+				return string.Equals(x, y);
+			}
+
+			throw new NotSupportedException("Comparer was executed more than once");
+		}
+		public int GetHashCode([DisallowNull] string obj) => obj.GetHashCode();
 	}
 }
