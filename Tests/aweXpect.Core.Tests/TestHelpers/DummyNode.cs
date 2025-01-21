@@ -5,6 +5,7 @@ using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 
 namespace aweXpect.Core.Tests.TestHelpers;
+
 internal class DummyNode(string name) : Node
 {
 	public override string ToString()
