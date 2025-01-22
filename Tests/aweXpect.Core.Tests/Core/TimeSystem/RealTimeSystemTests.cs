@@ -30,7 +30,7 @@ public sealed class RealTimeSystemTests
 
 		await That(stopwatch.IsRunning).IsTrue();
 
-		await Task.Delay(10);
+		await Task.Delay(20.Milliseconds());
 		stopwatch.Stop();
 
 		await That(stopwatch.Elapsed).IsGreaterThan(10.Milliseconds());
