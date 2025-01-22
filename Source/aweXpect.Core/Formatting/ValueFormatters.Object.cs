@@ -53,14 +53,6 @@ public static partial class ValueFormatters
 		return str is null || str == value.GetType().ToString();
 	}
 
-	/// <summary>
-	///     Selects the name to display for <paramref name="type" />.
-	/// </summary>
-	/// <param name="type">The <see cref="Type" /> of the object being formatted.</param>
-	/// <returns>The name to be displayed for <paramref name="type" />.</returns>
-	/// <remarks>The default is <see cref="Type.FullName" />.</remarks>
-	private static string TypeDisplayName(Type type) => type.Name;
-
 	private static void WriteMemberValues(
 		object obj,
 		MemberInfo[] members,

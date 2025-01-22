@@ -287,6 +287,6 @@ public class StringDifferenceTests
 			throw new NotSupportedException("Comparer was executed more than once");
 		}
 
-		public int GetHashCode([DisallowNull] string obj) => obj.GetHashCode();
+		public int GetHashCode(string obj) => obj.GetHashCode();
 	}
 }
