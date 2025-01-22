@@ -108,6 +108,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Jan 21 16:27:47 2025 \u002B0100",
         "message": "coverage: add missing tests in aweXpect.Core (1) (#235)"
+      },
+      {
+        "sha": "09ad8c6c63abcf2655824baffd0a07ca78f6ddd9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Jan 22 07:43:05 2025 \u002B0100",
+        "message": "fix: readme links in generated nuget packages (#236)"
       }
     ],
     "labels": [
@@ -128,7 +134,8 @@ window.BENCHMARK_DATA = {
       "93717d26",
       "912178e4",
       "63f4a10e",
-      "839ca5f6"
+      "839ca5f6",
+      "09ad8c6c"
     ],
     "datasets": [
       {
@@ -152,7 +159,8 @@ window.BENCHMARK_DATA = {
           149.00918853282928,
           166.17025911808014,
           166.26486366589864,
-          167.19835128102983
+          167.19835128102983,
+          151.95335274476273
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -164,6 +172,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -213,7 +222,8 @@ window.BENCHMARK_DATA = {
           196.82847886819107,
           230.56750561396282,
           221.91163856188456,
-          217.1041637488774
+          217.1041637488774,
+          205.96931665738424
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -225,6 +235,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -274,7 +285,8 @@ window.BENCHMARK_DATA = {
           548.5670249303182,
           633.745946375529,
           621.7594512939453,
-          618.0311621348063
+          618.0311621348063,
+          564.5790872573853
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -294,6 +306,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -425,6 +438,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Jan 21 16:27:47 2025 \u002B0100",
         "message": "coverage: add missing tests in aweXpect.Core (1) (#235)"
+      },
+      {
+        "sha": "09ad8c6c63abcf2655824baffd0a07ca78f6ddd9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Jan 22 07:43:05 2025 \u002B0100",
+        "message": "fix: readme links in generated nuget packages (#236)"
       }
     ],
     "labels": [
@@ -445,7 +464,8 @@ window.BENCHMARK_DATA = {
       "93717d26",
       "912178e4",
       "63f4a10e",
-      "839ca5f6"
+      "839ca5f6",
+      "09ad8c6c"
     ],
     "datasets": [
       {
@@ -469,7 +489,8 @@ window.BENCHMARK_DATA = {
           322.89931173324584,
           353.1988357861837,
           371.04212611516317,
-          378.75749934514363
+          378.75749934514363,
+          340.8615088144938
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -481,6 +502,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -530,7 +552,8 @@ window.BENCHMARK_DATA = {
           405.45305690765383,
           408.4318337440491,
           456.8332364718119,
-          465.4332807223002
+          465.4332807223002,
+          427.9205820719401
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -542,6 +565,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -591,7 +615,8 @@ window.BENCHMARK_DATA = {
           16687.251802571616,
           20411.542897542316,
           16846.36901637486,
-          14856.443540445964
+          14856.443540445964,
+          16514.39568074544
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -611,6 +636,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -742,6 +768,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Jan 21 16:27:47 2025 \u002B0100",
         "message": "coverage: add missing tests in aweXpect.Core (1) (#235)"
+      },
+      {
+        "sha": "09ad8c6c63abcf2655824baffd0a07ca78f6ddd9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Jan 22 07:43:05 2025 \u002B0100",
+        "message": "fix: readme links in generated nuget packages (#236)"
       }
     ],
     "labels": [
@@ -762,7 +794,8 @@ window.BENCHMARK_DATA = {
       "93717d26",
       "912178e4",
       "63f4a10e",
-      "839ca5f6"
+      "839ca5f6",
+      "09ad8c6c"
     ],
     "datasets": [
       {
@@ -786,7 +819,8 @@ window.BENCHMARK_DATA = {
           189.98381028175353,
           191.02975703988756,
           217.00103077888488,
-          199.1786788191114
+          199.1786788191114,
+          191.42397924831934
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -798,6 +832,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -847,7 +882,8 @@ window.BENCHMARK_DATA = {
           249.28232040405274,
           265.87900492123197,
           281.6832201957703,
-          267.0129269917806
+          267.0129269917806,
+          257.2313754899161
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -859,6 +895,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -908,7 +945,8 @@ window.BENCHMARK_DATA = {
           816.1528205871582,
           874.4870620091756,
           911.5533535003663,
-          848.0049663543701
+          848.0049663543701,
+          825.1320535024007
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -928,6 +966,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1059,6 +1098,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Jan 21 16:27:47 2025 \u002B0100",
         "message": "coverage: add missing tests in aweXpect.Core (1) (#235)"
+      },
+      {
+        "sha": "09ad8c6c63abcf2655824baffd0a07ca78f6ddd9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Jan 22 07:43:05 2025 \u002B0100",
+        "message": "fix: readme links in generated nuget packages (#236)"
       }
     ],
     "labels": [
@@ -1079,7 +1124,8 @@ window.BENCHMARK_DATA = {
       "93717d26",
       "912178e4",
       "63f4a10e",
-      "839ca5f6"
+      "839ca5f6",
+      "09ad8c6c"
     ],
     "datasets": [
       {
@@ -1103,7 +1149,8 @@ window.BENCHMARK_DATA = {
           310.73493378957113,
           301.4533649172102,
           353.4685601506914,
-          302.6582782268524
+          302.6582782268524,
+          304.9169611249651
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1115,6 +1162,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1164,7 +1212,8 @@ window.BENCHMARK_DATA = {
           350.3273480279105,
           347.56763416926066,
           393.68461221059164,
-          363.2047135353088
+          363.2047135353088,
+          355.0443636258443
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1176,6 +1225,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -1225,7 +1275,8 @@ window.BENCHMARK_DATA = {
           922.1740292231242,
           1004.3796611199012,
           999.6868698120118,
-          963.6981424184946
+          963.6981424184946,
+          937.6667457580567
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1245,6 +1296,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -1376,6 +1428,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Jan 21 16:27:47 2025 \u002B0100",
         "message": "coverage: add missing tests in aweXpect.Core (1) (#235)"
+      },
+      {
+        "sha": "09ad8c6c63abcf2655824baffd0a07ca78f6ddd9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Jan 22 07:43:05 2025 \u002B0100",
+        "message": "fix: readme links in generated nuget packages (#236)"
       }
     ],
     "labels": [
@@ -1396,7 +1454,8 @@ window.BENCHMARK_DATA = {
       "93717d26",
       "912178e4",
       "63f4a10e",
-      "839ca5f6"
+      "839ca5f6",
+      "09ad8c6c"
     ],
     "datasets": [
       {
@@ -1420,7 +1479,8 @@ window.BENCHMARK_DATA = {
           1169.6811229160853,
           1173.7943625816931,
           1230.7474044799806,
-          1166.9965447017125
+          1166.9965447017125,
+          1184.4956657409668
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1446,6 +1506,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -1481,7 +1542,8 @@ window.BENCHMARK_DATA = {
           1124.8404919760567,
           1148.7828202928815,
           1190.6446767171224,
-          1254.1669639587403
+          1254.1669639587403,
+          1228.2751047770182
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1493,6 +1555,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -1542,7 +1605,8 @@ window.BENCHMARK_DATA = {
           2160.9577663128193,
           2256.8567064921062,
           2231.522576904297,
-          2257.488478088379
+          2257.488478088379,
+          2243.9960983821325
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1562,6 +1626,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -1693,6 +1758,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Jan 21 16:27:47 2025 \u002B0100",
         "message": "coverage: add missing tests in aweXpect.Core (1) (#235)"
+      },
+      {
+        "sha": "09ad8c6c63abcf2655824baffd0a07ca78f6ddd9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Jan 22 07:43:05 2025 \u002B0100",
+        "message": "fix: readme links in generated nuget packages (#236)"
       }
     ],
     "labels": [
@@ -1713,7 +1784,8 @@ window.BENCHMARK_DATA = {
       "93717d26",
       "912178e4",
       "63f4a10e",
-      "839ca5f6"
+      "839ca5f6",
+      "09ad8c6c"
     ],
     "datasets": [
       {
@@ -1737,7 +1809,8 @@ window.BENCHMARK_DATA = {
           1179.4718040738787,
           1225.8607698168073,
           1278.0072138468424,
-          1210.8958761850993
+          1210.8958761850993,
+          1236.5448070253644
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1763,6 +1836,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -1798,7 +1872,8 @@ window.BENCHMARK_DATA = {
           77341.84267578126,
           77407.26136997768,
           79068.51918247768,
-          77471.66960797991
+          77471.66960797991,
+          78534.23294270833
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1810,6 +1885,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -1859,7 +1935,8 @@ window.BENCHMARK_DATA = {
           4034.916910443987,
           4236.109502156575,
           4167.309255472819,
-          4186.196603502546
+          4186.196603502546,
+          4309.163225809733
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1879,6 +1956,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
