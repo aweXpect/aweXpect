@@ -96,7 +96,7 @@ partial class Build
 					.AddPair("Core", version.FileVersion)));
 
 			ClearNugetPackages(Solution.aweXpect.Directory / "bin");
-			UpdateReadme(MainVersion.FileVersion);
+			UpdateReadme(MainVersion.FileVersion, false);
 
 			DotNetBuild(s => s
 				.SetProjectFile(Solution)
@@ -108,7 +108,7 @@ partial class Build
 				.SetInformationalVersion(MainVersion.InformationalVersion));
 
 			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
-			UpdateReadme(CoreVersion.FileVersion);
+			UpdateReadme(CoreVersion.FileVersion, true);
 
 			DotNetBuild(s => s
 				.SetProjectFile(Solution.aweXpect_Core)
@@ -121,20 +121,31 @@ partial class Build
 				.SetInformationalVersion(CoreVersion.InformationalVersion));
 		});
 
-	private void UpdateReadme(string fileVersion)
+	private void UpdateReadme(string fileVersion, bool forCore)
 	{
-		string version = string.Join('.', fileVersion.Split('.').Take(3));
-		if (version.IndexOf('-') != -1)
+		string version;
+		if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
 		{
-			version = version.Substring(0, version.IndexOf('-'));
+			version = GitHubActions.Ref.Substring("refs/tags/".Length);
 		}
+		else
+		{
+			version = string.Join('.', fileVersion.Split('.').Take(3));
+			if (version.IndexOf('-') != -1)
+			{
+				version = "v" + version.Substring(0, version.IndexOf('-'));
+			}
+		}
+		
+		Log.Information("Update readme using '{Version}' as version", version);
 
 		StringBuilder sb = new();
 		string[] lines = File.ReadAllLines(Solution.Directory / "README.md");
 		sb.AppendLine(lines.First());
+		sb.AppendLine(lines.Skip(1).First());
 		sb.AppendLine(
-			$"[![Changelog](https://img.shields.io/badge/Changelog-v{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/v{version})");
-		foreach (string line in lines.Skip(1))
+			$"[![Changelog](https://img.shields.io/badge/Changelog-v{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/{version})");
+		foreach (string line in lines.Skip(2))
 		{
 			if (line.StartsWith("[![Build](https://github.com/aweXpect/aweXpect/actions/workflows/build.yml") ||
 			    line.StartsWith("[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure"))
@@ -145,15 +156,22 @@ partial class Build
 			if (line.StartsWith("[![Coverage](https://sonarcloud.io/api/project_badges/measure"))
 			{
 				sb.AppendLine(line
-					.Replace(")", $"&branch=release/v{version})"));
+					.Replace(")", $"&branch=release/{version})"));
 				continue;
 			}
 
 			if (line.StartsWith("[![Mutation testing badge](https://img.shields.io/endpoint"))
 			{
 				sb.AppendLine(line
-					.Replace("%2Fmain)", $"%2Frelease%2Fv{version})")
-					.Replace("/main)", $"/release/v{version})"));
+					.Replace("%2Fmain)", $"%2Frelease%2F{version.Replace("/", "%2F")})")
+					.Replace("/main)", $"/release/{version})"));
+				continue;
+			}
+
+			if (forCore && line.StartsWith("[![Nuget](https://img.shields.io/nuget/v/aweXpect"))
+			{
+				sb.AppendLine(line
+					.Replace("/aweXpect)", "/aweXpect.Core)"));
 				continue;
 			}
 
