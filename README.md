@@ -32,7 +32,7 @@ Assert unit tests in natural language using awesome expectations.
 By using async assertions per default, we have a consistent API and other perks:
 
 - Complete async support, e.g. `IAsyncEnumerable` `HttpResponseMessage` or similar async types
-- No need to distinguish between `action.Should().Throw()` and `await asyncAction.Should().ThrowAsync()`
+- No need to distinguish between `action.Throws()` and `await asyncAction.ThrowsAsync()`
 - The evaluation is only triggered after the complete fluent chain is loaded, which has some nice benefits:
 	- `Because` can be registered once as a general method that can be applied at the end of the expectation instead of
 	  cluttering all methods with the `because` and `becauseArgs` parameters
@@ -44,13 +44,10 @@ By using async assertions per default, we have a consistent API and other perks:
 ### Extensible
 
 We added lots of extensibility points to allow you to build custom extensions.  
-Similar to [fluentassertions](https://fluentassertions.com/extensibility/) extensibility is achieved via extension
-methods on `.Should()`:
+The [aweXpect.Core](https://www.nuget.org/packages/aweXpect.Core/) package is intended to be a stable source for extensions, so that the risk of version conflicts between different extensions can be reduced.
 
-- for new types  
-  write a new `.Should()` extension method on `IThat<TType>`
-- for existing types  
-  writing an extension method on `IThat<TType>`
+You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
+More information can be found in the [extensibility guide](https://awexpect.github.io/aweXpect/docs/category/extensibility).
 
 ### Performant
 
