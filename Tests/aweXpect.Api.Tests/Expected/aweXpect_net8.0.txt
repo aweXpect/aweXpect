@@ -352,8 +352,6 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNotSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> Satisfies<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        [System.Obsolete("TODO")]
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThatVerb<T>> Satisfy<T>(this aweXpect.Core.IThatVerb<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuid
     {

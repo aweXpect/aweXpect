@@ -230,7 +230,7 @@ public sealed partial class ThatEnumerable
 
 		public sealed class StringItemTests
 		{
-			[Theory(Skip = "Required release of aweXpect.Core")]
+			[Theory]
 			[InlineData("[a-f]{1}[o]*", true)]
 			[InlineData("[g-h]{1}[o]*", false)]
 			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
@@ -252,7 +252,7 @@ public sealed partial class ThatEnumerable
 					              """);
 			}
 
-			[Theory(Skip = "Required release of aweXpect.Core")]
+			[Theory]
 			[InlineData("?oo", true)]
 			[InlineData("f??o", false)]
 			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
