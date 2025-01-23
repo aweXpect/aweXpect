@@ -204,8 +204,6 @@ jobs:
         runs-on: macos-latest
         environment: production
         needs: [ pack, mutation-tests, static-code-analysis ]
-        permissions:
-            contents: write
         steps:
             -   name: Download packages
                 uses: actions/download-artifact@v4
@@ -224,14 +222,6 @@ jobs:
                     do
                       nuget push $entry -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
                     done
-            -   name: Create GitHub release
-                continue-on-error: true
-                uses: softprops/action-gh-release@v2
-                with:
-                    name: ${{ steps.tag.outputs.release_version }}
-                    tag_name: ${{ steps.tag.outputs.release_version }}
-                    token: ${{ secrets.GITHUB_TOKEN }}
-                    generate_release_notes: true
     
     finalize-release:
         name: "Finalize release"
