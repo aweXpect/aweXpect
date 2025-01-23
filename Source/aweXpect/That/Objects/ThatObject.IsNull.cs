@@ -38,12 +38,12 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<T, IThat<T?>> IsNotNull<T>(
-		this IThat<T?> source)
+	public static AndOrResult<object, IThat<object?>> IsNotNull(
+		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new GenericConstraint<T?>(
+				=> new GenericConstraint<object?>(
 					it,
-					default,
+					null,
 					"not be null",
 					(a, _) => a is not null,
 					(_, _, i) => $"{i} was")),
@@ -52,12 +52,12 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not <see langword="null" />.
 	/// </summary>
-	public static AndOrResult<object, IThat<object?>> IsNotNull(
-		this IThat<object?> source)
+	public static AndOrResult<T, IThat<T?>> IsNotNull<T>(
+		this IThat<T?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new GenericConstraint<object?>(
+				=> new GenericConstraint<T?>(
 					it,
-					null,
+					default,
 					"not be null",
 					(a, _) => a is not null,
 					(_, _, i) => $"{i} was")),
