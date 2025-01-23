@@ -144,7 +144,7 @@ partial class Build
 		sb.AppendLine(lines.First());
 		sb.AppendLine(lines.Skip(1).First());
 		sb.AppendLine(
-			$"[![Changelog](https://img.shields.io/badge/Changelog-v{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/{version})");
+			$"[![Changelog](https://img.shields.io/badge/Changelog-{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/{version})");
 		foreach (string line in lines.Skip(2))
 		{
 			if (line.StartsWith("[![Build](https://github.com/aweXpect/aweXpect/actions/workflows/build.yml") ||
