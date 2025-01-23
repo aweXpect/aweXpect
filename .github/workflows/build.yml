@@ -204,8 +204,6 @@ jobs:
         runs-on: macos-latest
         environment: production
         needs: [ pack, mutation-tests, static-code-analysis ]
-        permissions:
-            contents: write
         steps:
             -   name: Download packages
                 uses: actions/download-artifact@v4
