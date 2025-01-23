@@ -195,5 +195,35 @@ public sealed partial class ThatObject
 					               """);
 			}
 		}
+
+		public sealed class TypeEqualsTests
+		{
+			[Fact]
+			public async Task WhenValuesAreSame_ShouldFail()
+			{
+				Type sut = typeof(float);
+				Type unexpected = typeof(float);
+
+				async Task Act() => await That(sut).IsNot(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected sut to
+					             not be equal to unexpected,
+					             but it was float
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenValuesAreDifferent_ShouldSucceed()
+			{
+				Type sut = typeof(long);
+				Type unexpected = typeof(int);
+
+				async Task Act() => await That(sut).IsNot(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
 	}
 }
