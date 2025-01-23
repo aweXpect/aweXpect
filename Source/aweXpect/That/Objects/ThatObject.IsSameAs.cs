@@ -6,7 +6,7 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatGeneric
+public static partial class ThatObject
 {
 	/// <summary>
 	///     Expect the actual value to be the same as the <paramref name="expected" /> value.
@@ -14,6 +14,7 @@ public static partial class ThatGeneric
 	public static AndOrResult<T, IThat<T>> IsSameAs<T>(this IThat<T> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it =>
 					new BeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
@@ -25,6 +26,7 @@ public static partial class ThatGeneric
 	public static AndOrResult<T, IThat<T>> IsNotSameAs<T>(this IThat<T> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it =>
 					new NotBeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
