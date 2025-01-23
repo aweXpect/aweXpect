@@ -46,6 +46,10 @@ public static partial class ValueFormatters
 		{
 			formatter.Format(stringBuilder, stringValue, options);
 		}
+		else if (value is char charValue)
+		{
+			formatter.Format(stringBuilder, charValue, options);
+		}
 		else if (value is Type typeValue)
 		{
 			formatter.Format(stringBuilder, typeValue, options);
