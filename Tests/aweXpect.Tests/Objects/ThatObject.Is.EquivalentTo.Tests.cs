@@ -207,8 +207,8 @@ public sealed partial class ThatObject
 						.WithMessage("""
 						             Expected subject to
 						             be equivalent to expected,
-						             but it was z
-						             """);
+						             but it was*
+						             """).AsWildcard();
 				}
 
 				[Fact]
