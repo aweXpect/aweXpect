@@ -120,6 +120,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Jan 22 09:35:25 2025 \u002B0100",
         "message": "chore: update aweXpect.Core version to prepare release v0.19.0 (#237)"
+      },
+      {
+        "sha": "c94804fe602f4c5adbeb3b0b93df215c56058157",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 11:34:36 2025 \u002B0100",
+        "message": "refactor: avoid creating core release in Github (#238)"
       }
     ],
     "labels": [
@@ -142,7 +148,8 @@ window.BENCHMARK_DATA = {
       "63f4a10e",
       "839ca5f6",
       "09ad8c6c",
-      "55e8ae69"
+      "55e8ae69",
+      "c94804fe"
     ],
     "datasets": [
       {
@@ -168,7 +175,8 @@ window.BENCHMARK_DATA = {
           166.26486366589864,
           167.19835128102983,
           151.95335274476273,
-          161.96432888507843
+          161.96432888507843,
+          163.82002422014872
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -180,6 +188,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -233,7 +242,8 @@ window.BENCHMARK_DATA = {
           221.91163856188456,
           217.1041637488774,
           205.96931665738424,
-          207.38100519180298
+          207.38100519180298,
+          221.15555793444315
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -245,6 +255,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -298,7 +309,8 @@ window.BENCHMARK_DATA = {
           621.7594512939453,
           618.0311621348063,
           564.5790872573853,
-          590.703092779432
+          590.703092779432,
+          563.4419929504395
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -318,6 +330,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -463,6 +476,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Jan 22 09:35:25 2025 \u002B0100",
         "message": "chore: update aweXpect.Core version to prepare release v0.19.0 (#237)"
+      },
+      {
+        "sha": "c94804fe602f4c5adbeb3b0b93df215c56058157",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 11:34:36 2025 \u002B0100",
+        "message": "refactor: avoid creating core release in Github (#238)"
       }
     ],
     "labels": [
@@ -485,7 +504,8 @@ window.BENCHMARK_DATA = {
       "63f4a10e",
       "839ca5f6",
       "09ad8c6c",
-      "55e8ae69"
+      "55e8ae69",
+      "c94804fe"
     ],
     "datasets": [
       {
@@ -511,7 +531,8 @@ window.BENCHMARK_DATA = {
           371.04212611516317,
           378.75749934514363,
           340.8615088144938,
-          365.7484591801961
+          365.7484591801961,
+          367.9274542490641
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -523,6 +544,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -576,7 +598,8 @@ window.BENCHMARK_DATA = {
           456.8332364718119,
           465.4332807223002,
           427.9205820719401,
-          444.5204102516174
+          444.5204102516174,
+          442.0846449216207
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -588,6 +611,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -641,7 +665,8 @@ window.BENCHMARK_DATA = {
           16846.36901637486,
           14856.443540445964,
           16514.39568074544,
-          17529.77752685547
+          17529.77752685547,
+          14696.39833577474
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -661,6 +686,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -806,6 +832,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Jan 22 09:35:25 2025 \u002B0100",
         "message": "chore: update aweXpect.Core version to prepare release v0.19.0 (#237)"
+      },
+      {
+        "sha": "c94804fe602f4c5adbeb3b0b93df215c56058157",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 11:34:36 2025 \u002B0100",
+        "message": "refactor: avoid creating core release in Github (#238)"
       }
     ],
     "labels": [
@@ -828,7 +860,8 @@ window.BENCHMARK_DATA = {
       "63f4a10e",
       "839ca5f6",
       "09ad8c6c",
-      "55e8ae69"
+      "55e8ae69",
+      "c94804fe"
     ],
     "datasets": [
       {
@@ -854,7 +887,8 @@ window.BENCHMARK_DATA = {
           217.00103077888488,
           199.1786788191114,
           191.42397924831934,
-          204.6314205612455
+          204.6314205612455,
+          217.44501643180848
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -866,6 +900,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -919,7 +954,8 @@ window.BENCHMARK_DATA = {
           281.6832201957703,
           267.0129269917806,
           257.2313754899161,
-          288.8865906397502
+          288.8865906397502,
+          275.63550996780396
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -931,6 +967,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -984,7 +1021,8 @@ window.BENCHMARK_DATA = {
           911.5533535003663,
           848.0049663543701,
           825.1320535024007,
-          882.1886651992797
+          882.1886651992797,
+          855.2426484425863
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1004,6 +1042,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1149,6 +1188,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Jan 22 09:35:25 2025 \u002B0100",
         "message": "chore: update aweXpect.Core version to prepare release v0.19.0 (#237)"
+      },
+      {
+        "sha": "c94804fe602f4c5adbeb3b0b93df215c56058157",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 11:34:36 2025 \u002B0100",
+        "message": "refactor: avoid creating core release in Github (#238)"
       }
     ],
     "labels": [
@@ -1171,7 +1216,8 @@ window.BENCHMARK_DATA = {
       "63f4a10e",
       "839ca5f6",
       "09ad8c6c",
-      "55e8ae69"
+      "55e8ae69",
+      "c94804fe"
     ],
     "datasets": [
       {
@@ -1197,7 +1243,8 @@ window.BENCHMARK_DATA = {
           353.4685601506914,
           302.6582782268524,
           304.9169611249651,
-          314.4776598123404
+          314.4776598123404,
+          328.17161060969033
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1209,6 +1256,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1262,7 +1310,8 @@ window.BENCHMARK_DATA = {
           393.68461221059164,
           363.2047135353088,
           355.0443636258443,
-          399.4756405353546
+          399.4756405353546,
+          352.3239835671016
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1274,6 +1323,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -1327,7 +1377,8 @@ window.BENCHMARK_DATA = {
           999.6868698120118,
           963.6981424184946,
           937.6667457580567,
-          927.343947092692
+          927.343947092692,
+          964.4881373814175
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1347,6 +1398,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -1492,6 +1544,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Jan 22 09:35:25 2025 \u002B0100",
         "message": "chore: update aweXpect.Core version to prepare release v0.19.0 (#237)"
+      },
+      {
+        "sha": "c94804fe602f4c5adbeb3b0b93df215c56058157",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 11:34:36 2025 \u002B0100",
+        "message": "refactor: avoid creating core release in Github (#238)"
       }
     ],
     "labels": [
@@ -1514,7 +1572,8 @@ window.BENCHMARK_DATA = {
       "63f4a10e",
       "839ca5f6",
       "09ad8c6c",
-      "55e8ae69"
+      "55e8ae69",
+      "c94804fe"
     ],
     "datasets": [
       {
@@ -1540,7 +1599,8 @@ window.BENCHMARK_DATA = {
           1230.7474044799806,
           1166.9965447017125,
           1184.4956657409668,
-          1201.2330593109132
+          1201.2330593109132,
+          1243.8926986694337
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1566,6 +1626,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -1605,7 +1666,8 @@ window.BENCHMARK_DATA = {
           1190.6446767171224,
           1254.1669639587403,
           1228.2751047770182,
-          1232.5295566558839
+          1232.5295566558839,
+          1248.565466562907
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1617,6 +1679,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -1670,7 +1733,8 @@ window.BENCHMARK_DATA = {
           2231.522576904297,
           2257.488478088379,
           2243.9960983821325,
-          2245.452256011963
+          2245.452256011963,
+          2261.8441375732423
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1690,6 +1754,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -1835,6 +1900,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Jan 22 09:35:25 2025 \u002B0100",
         "message": "chore: update aweXpect.Core version to prepare release v0.19.0 (#237)"
+      },
+      {
+        "sha": "c94804fe602f4c5adbeb3b0b93df215c56058157",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 11:34:36 2025 \u002B0100",
+        "message": "refactor: avoid creating core release in Github (#238)"
       }
     ],
     "labels": [
@@ -1857,7 +1928,8 @@ window.BENCHMARK_DATA = {
       "63f4a10e",
       "839ca5f6",
       "09ad8c6c",
-      "55e8ae69"
+      "55e8ae69",
+      "c94804fe"
     ],
     "datasets": [
       {
@@ -1883,7 +1955,8 @@ window.BENCHMARK_DATA = {
           1278.0072138468424,
           1210.8958761850993,
           1236.5448070253644,
-          1188.519347635905
+          1188.519347635905,
+          1294.6498305456978
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1909,6 +1982,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -1948,7 +2022,8 @@ window.BENCHMARK_DATA = {
           79068.51918247768,
           77471.66960797991,
           78534.23294270833,
-          78640.94098772321
+          78640.94098772321,
+          80063.37339564732
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1960,6 +2035,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -2013,7 +2089,8 @@ window.BENCHMARK_DATA = {
           4167.309255472819,
           4186.196603502546,
           4309.163225809733,
-          4232.422126225063
+          4232.422126225063,
+          4421.282323710124
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -2033,6 +2110,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
