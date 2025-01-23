@@ -29,7 +29,7 @@ public sealed partial class ThatNullableEnum
 					.WithMessage("""
 					             Expected subject to
 					             not be null,
-					             but it was <null>
+					             but it was
 					             """);
 			}
 		}
