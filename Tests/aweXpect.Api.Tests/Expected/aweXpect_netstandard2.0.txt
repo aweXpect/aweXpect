@@ -248,8 +248,6 @@ namespace aweXpect
     {
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> DoesNotSatisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> For<T, TMember>(this aweXpect.Core.IThat<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNotSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> Satisfies<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuid
@@ -674,9 +672,13 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> IsNotNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source) { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsNotSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+            where T :  class { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNull(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNull<T>(this aweXpect.Core.IThat<T?> source)
             where T :  struct { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> IsSameAs<T>(this aweXpect.Core.IThat<T> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+            where T :  class { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotEquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? unexpected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatSignaler
