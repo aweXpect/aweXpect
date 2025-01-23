@@ -346,10 +346,6 @@ namespace aweXpect
             where TEnum :  struct, System.Enum { }
         public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotDefined<TEnum>(this aweXpect.Core.IThat<TEnum?> source)
             where TEnum :  struct, System.Enum { }
-        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotNull<TEnum>(this aweXpect.Core.IThat<TEnum?> source)
-            where TEnum :  struct, System.Enum { }
-        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNull<TEnum>(this aweXpect.Core.IThat<TEnum?> source)
-            where TEnum :  struct, System.Enum { }
     }
     public static class ThatNullableGuid
     {
@@ -669,7 +665,10 @@ namespace aweXpect
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> IsNotNull(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNull(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNull<T>(this aweXpect.Core.IThat<T?> source)
+            where T :  struct { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> NotEquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? unexpected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatSignaler
