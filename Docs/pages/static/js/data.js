@@ -150,6 +150,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 23 18:18:52 2025 \u002B0100",
         "message": "feat: support \u0060.Is()\u0060 with struct types (#242)"
+      },
+      {
+        "sha": "c1fd6252efc27628a26e9da3c356243023763c9f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 21:45:57 2025 \u002B0100",
+        "message": "fix: add \u0022class\u0022 constraint to \u0060IsSameAs\u0060 (#243)"
       }
     ],
     "labels": [
@@ -177,7 +183,8 @@ window.BENCHMARK_DATA = {
       "efadb67a",
       "d782eda8",
       "4ee65a13",
-      "4c351d72"
+      "4c351d72",
+      "c1fd6252"
     ],
     "datasets": [
       {
@@ -208,7 +215,8 @@ window.BENCHMARK_DATA = {
           158.25616753896077,
           156.15931699826166,
           156.1876276731491,
-          154.07698369026184
+          154.07698369026184,
+          154.5739394884843
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -220,6 +228,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -283,7 +292,8 @@ window.BENCHMARK_DATA = {
           201.34766065279643,
           205.68454429308574,
           203.7922418276469,
-          199.91072788238526
+          199.91072788238526,
+          200.60368784268698
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -295,6 +305,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          776,
           776,
           776,
           776,
@@ -358,7 +369,8 @@ window.BENCHMARK_DATA = {
           549.7656226476033,
           607.8269051143101,
           607.0959176381429,
-          548.5680850573948
+          548.5680850573948,
+          548.5642543156941
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -378,6 +390,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -558,6 +571,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 23 18:18:52 2025 \u002B0100",
         "message": "feat: support \u0060.Is()\u0060 with struct types (#242)"
+      },
+      {
+        "sha": "c1fd6252efc27628a26e9da3c356243023763c9f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 21:45:57 2025 \u002B0100",
+        "message": "fix: add \u0022class\u0022 constraint to \u0060IsSameAs\u0060 (#243)"
       }
     ],
     "labels": [
@@ -585,7 +604,8 @@ window.BENCHMARK_DATA = {
       "efadb67a",
       "d782eda8",
       "4ee65a13",
-      "4c351d72"
+      "4c351d72",
+      "c1fd6252"
     ],
     "datasets": [
       {
@@ -616,7 +636,8 @@ window.BENCHMARK_DATA = {
           341.19425906453813,
           346.404577425548,
           330.47431507110593,
-          343.1689342498779
+          343.1689342498779,
+          340.9389464378357
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -628,6 +649,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -691,7 +713,8 @@ window.BENCHMARK_DATA = {
           425.89253868375505,
           438.00118487675985,
           418.18689880371096,
-          418.2622873624166
+          418.2622873624166,
+          422.06700963974
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -703,6 +726,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1816,
           1816,
           1816,
           1816,
@@ -766,7 +790,8 @@ window.BENCHMARK_DATA = {
           18665.80941772461,
           14061.959332057408,
           13886.468606567383,
-          14806.381488506611
+          14806.381488506611,
+          17354.475563557942
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -786,6 +811,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -966,6 +992,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 23 18:18:52 2025 \u002B0100",
         "message": "feat: support \u0060.Is()\u0060 with struct types (#242)"
+      },
+      {
+        "sha": "c1fd6252efc27628a26e9da3c356243023763c9f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 21:45:57 2025 \u002B0100",
+        "message": "fix: add \u0022class\u0022 constraint to \u0060IsSameAs\u0060 (#243)"
       }
     ],
     "labels": [
@@ -993,7 +1025,8 @@ window.BENCHMARK_DATA = {
       "efadb67a",
       "d782eda8",
       "4ee65a13",
-      "4c351d72"
+      "4c351d72",
+      "c1fd6252"
     ],
     "datasets": [
       {
@@ -1024,7 +1057,8 @@ window.BENCHMARK_DATA = {
           201.33780205249786,
           199.2729436079661,
           197.9102214495341,
-          201.8995616912842
+          201.8995616912842,
+          196.53092891375223
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1036,6 +1070,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1099,7 +1134,8 @@ window.BENCHMARK_DATA = {
           252.49283946355183,
           263.61039342880247,
           254.77754929860433,
-          254.390150197347
+          254.390150197347,
+          263.7271241188049
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1111,6 +1147,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1048,
           1048,
           1048,
           1048,
@@ -1174,7 +1211,8 @@ window.BENCHMARK_DATA = {
           790.8090246640719,
           869.0072237014771,
           802.2847974640982,
-          785.3533049265544
+          785.3533049265544,
+          832.1314203898112
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1194,6 +1232,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1374,6 +1413,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 23 18:18:52 2025 \u002B0100",
         "message": "feat: support \u0060.Is()\u0060 with struct types (#242)"
+      },
+      {
+        "sha": "c1fd6252efc27628a26e9da3c356243023763c9f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 21:45:57 2025 \u002B0100",
+        "message": "fix: add \u0022class\u0022 constraint to \u0060IsSameAs\u0060 (#243)"
       }
     ],
     "labels": [
@@ -1401,7 +1446,8 @@ window.BENCHMARK_DATA = {
       "efadb67a",
       "d782eda8",
       "4ee65a13",
-      "4c351d72"
+      "4c351d72",
+      "c1fd6252"
     ],
     "datasets": [
       {
@@ -1432,7 +1478,8 @@ window.BENCHMARK_DATA = {
           307.4428845814296,
           313.79391282399496,
           309.4396237593431,
-          307.63651008605956
+          307.63651008605956,
+          321.6040688196818
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1444,6 +1491,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1507,7 +1555,8 @@ window.BENCHMARK_DATA = {
           356.52601159413655,
           372.75389159520466,
           354.195907274882,
-          342.5066101367657
+          342.5066101367657,
+          355.18453216552734
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1519,6 +1568,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          1832,
           1832,
           1832,
           1832,
@@ -1582,7 +1632,8 @@ window.BENCHMARK_DATA = {
           964.853588785444,
           962.2161443074544,
           940.2633785247803,
-          907.2267669950213
+          907.2267669950213,
+          951.002688852946
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -1602,6 +1653,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -1782,6 +1834,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 23 18:18:52 2025 \u002B0100",
         "message": "feat: support \u0060.Is()\u0060 with struct types (#242)"
+      },
+      {
+        "sha": "c1fd6252efc27628a26e9da3c356243023763c9f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 21:45:57 2025 \u002B0100",
+        "message": "fix: add \u0022class\u0022 constraint to \u0060IsSameAs\u0060 (#243)"
       }
     ],
     "labels": [
@@ -1809,7 +1867,8 @@ window.BENCHMARK_DATA = {
       "efadb67a",
       "d782eda8",
       "4ee65a13",
-      "4c351d72"
+      "4c351d72",
+      "c1fd6252"
     ],
     "datasets": [
       {
@@ -1840,7 +1899,8 @@ window.BENCHMARK_DATA = {
           1170.9835370870737,
           1262.2336720057897,
           1159.130579630534,
-          1144.1467520850044
+          1144.1467520850044,
+          1157.1552261939416
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1866,6 +1926,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -1915,7 +1976,8 @@ window.BENCHMARK_DATA = {
           1246.2254877726236,
           1293.1850360870362,
           1177.8333392510046,
-          1181.5877056121826
+          1181.5877056121826,
+          1148.807777786255
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -1927,6 +1989,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3760,
           3760,
           3760,
           3760,
@@ -1990,7 +2053,8 @@ window.BENCHMARK_DATA = {
           2287.4744954427083,
           2334.6292048863,
           2180.1739535013835,
-          2154.903387614659
+          2154.903387614659,
+          2285.8945635477703
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -2010,6 +2074,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -2190,6 +2255,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 23 18:18:52 2025 \u002B0100",
         "message": "feat: support \u0060.Is()\u0060 with struct types (#242)"
+      },
+      {
+        "sha": "c1fd6252efc27628a26e9da3c356243023763c9f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 23 21:45:57 2025 \u002B0100",
+        "message": "fix: add \u0022class\u0022 constraint to \u0060IsSameAs\u0060 (#243)"
       }
     ],
     "labels": [
@@ -2217,7 +2288,8 @@ window.BENCHMARK_DATA = {
       "efadb67a",
       "d782eda8",
       "4ee65a13",
-      "4c351d72"
+      "4c351d72",
+      "c1fd6252"
     ],
     "datasets": [
       {
@@ -2248,7 +2320,8 @@ window.BENCHMARK_DATA = {
           1284.4297837575277,
           1301.767668279012,
           1215.7959393819174,
-          1177.9051303863525
+          1177.9051303863525,
+          1189.4804040363856
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2274,6 +2347,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -2323,7 +2397,8 @@ window.BENCHMARK_DATA = {
           79947.9082406851,
           80235.62653459821,
           78150.57613699777,
-          74801.34549967448
+          74801.34549967448,
+          77413.49072265625
         ],
         "borderColor": "#ACA263",
         "backgroundColor": "#ACA263",
@@ -2335,6 +2410,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          50710,
           50710,
           50710,
           50710,
@@ -2398,7 +2474,8 @@ window.BENCHMARK_DATA = {
           4374.099996126615,
           4423.835376739502,
           4055.8859893798826,
-          3995.1265111287435
+          3995.1265111287435,
+          4132.80441066197
         ],
         "borderColor": "#AC6262",
         "backgroundColor": "#AC6262",
@@ -2418,6 +2495,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
