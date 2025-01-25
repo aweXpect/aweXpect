@@ -141,8 +141,8 @@ public class PageBenchmarkReportGenerator
 			=> type switch
 			{
 				"aweXpect" => "#63A2AC",
-				"FluentAssertions" => "#ACA263",
-				"TUnit" => "#AC6262",
+				"FluentAssertions" => "#FF671B",
+				"TUnit" => "#1A6029",
 				_ => "#e84393"
 			};
 
