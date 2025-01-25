@@ -295,8 +295,8 @@ window.BENCHMARK_DATA = {
           199.91072788238526,
           200.60368784268698
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -332,8 +332,8 @@ window.BENCHMARK_DATA = {
           776,
           776
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -372,8 +372,8 @@ window.BENCHMARK_DATA = {
           548.5680850573948,
           548.5642543156941
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -409,8 +409,8 @@ window.BENCHMARK_DATA = {
           1752,
           1752
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -716,8 +716,8 @@ window.BENCHMARK_DATA = {
           418.2622873624166,
           422.06700963974
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -753,8 +753,8 @@ window.BENCHMARK_DATA = {
           1816,
           1816
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -793,8 +793,8 @@ window.BENCHMARK_DATA = {
           14806.381488506611,
           17354.475563557942
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -830,8 +830,8 @@ window.BENCHMARK_DATA = {
           26552,
           26552
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -1137,8 +1137,8 @@ window.BENCHMARK_DATA = {
           254.390150197347,
           263.7271241188049
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -1174,8 +1174,8 @@ window.BENCHMARK_DATA = {
           1048,
           1048
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -1214,8 +1214,8 @@ window.BENCHMARK_DATA = {
           785.3533049265544,
           832.1314203898112
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -1251,8 +1251,8 @@ window.BENCHMARK_DATA = {
           2240,
           2240
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -1558,8 +1558,8 @@ window.BENCHMARK_DATA = {
           342.5066101367657,
           355.18453216552734
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -1595,8 +1595,8 @@ window.BENCHMARK_DATA = {
           1832,
           1832
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -1635,8 +1635,8 @@ window.BENCHMARK_DATA = {
           907.2267669950213,
           951.002688852946
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -1672,8 +1672,8 @@ window.BENCHMARK_DATA = {
           2232,
           2232
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -1979,8 +1979,8 @@ window.BENCHMARK_DATA = {
           1181.5877056121826,
           1148.807777786255
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -2016,8 +2016,8 @@ window.BENCHMARK_DATA = {
           3760,
           3760
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -2056,8 +2056,8 @@ window.BENCHMARK_DATA = {
           2154.903387614659,
           2285.8945635477703
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -2093,8 +2093,8 @@ window.BENCHMARK_DATA = {
           3256,
           3256
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -2400,8 +2400,8 @@ window.BENCHMARK_DATA = {
           74801.34549967448,
           77413.49072265625
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -2437,8 +2437,8 @@ window.BENCHMARK_DATA = {
           50710,
           50710
         ],
-        "borderColor": "#ACA263",
-        "backgroundColor": "#ACA263",
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
         "yAxisID": "y1",
         "borderDash": [
           5,
@@ -2477,8 +2477,8 @@ window.BENCHMARK_DATA = {
           3995.1265111287435,
           4132.80441066197
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y",
         "borderDash": [],
         "pointStyle": "circle"
@@ -2514,8 +2514,8 @@ window.BENCHMARK_DATA = {
           5128,
           5128
         ],
-        "borderColor": "#AC6262",
-        "backgroundColor": "#AC6262",
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
         "yAxisID": "y1",
         "borderDash": [
           5,
