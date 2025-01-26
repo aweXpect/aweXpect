@@ -186,6 +186,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 15:59:01 2025 \u002B0100",
         "message": "docs: add CNAME file (#249)"
+      },
+      {
+        "sha": "7f8f299c3acbcd4118cab2a7774e13b95dae1dad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 16:23:58 2025 \u002B0100",
+        "message": "feat: include options in expectation message of string collections (#247)"
       }
     ],
     "labels": [
@@ -219,7 +225,8 @@ window.BENCHMARK_DATA = {
       "680600ba",
       "24a061c3",
       "ca40146a",
-      "a14be273"
+      "a14be273",
+      "7f8f299c"
     ],
     "datasets": [
       {
@@ -256,7 +263,8 @@ window.BENCHMARK_DATA = {
           155.91339230537415,
           160.56826748847962,
           152.53954683031355,
-          165.96759253281814
+          165.96759253281814,
+          161.0345061847142
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -268,6 +276,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -343,7 +352,8 @@ window.BENCHMARK_DATA = {
           191.27750670909882,
           194.79485206604005,
           186.57820868492126,
-          186.7260476430257
+          186.7260476430257,
+          202.73949786822
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -381,6 +391,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -430,7 +441,8 @@ window.BENCHMARK_DATA = {
           542.1824054718018,
           549.9555193827703,
           533.4420089085896,
-          555.8821620941162
+          555.8821620941162,
+          588.7437077204387
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -450,6 +462,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -672,6 +685,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 15:59:01 2025 \u002B0100",
         "message": "docs: add CNAME file (#249)"
+      },
+      {
+        "sha": "7f8f299c3acbcd4118cab2a7774e13b95dae1dad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 16:23:58 2025 \u002B0100",
+        "message": "feat: include options in expectation message of string collections (#247)"
       }
     ],
     "labels": [
@@ -705,7 +724,8 @@ window.BENCHMARK_DATA = {
       "680600ba",
       "24a061c3",
       "ca40146a",
-      "a14be273"
+      "a14be273",
+      "7f8f299c"
     ],
     "datasets": [
       {
@@ -742,7 +762,8 @@ window.BENCHMARK_DATA = {
           336.76117665427074,
           336.02704896245683,
           339.599584375109,
-          333.00602436065674
+          333.00602436065674,
+          351.0798631448012
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -754,6 +775,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -829,7 +851,8 @@ window.BENCHMARK_DATA = {
           434.7980235417684,
           441.8599319458008,
           406.71305428232466,
-          406.20023918151855
+          406.20023918151855,
+          442.6722532272339
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -867,6 +890,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -916,7 +940,8 @@ window.BENCHMARK_DATA = {
           15409.815457857572,
           21404.92399698893,
           14198.92917175293,
-          14593.537686665853
+          14593.537686665853,
+          14602.659315926689
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -936,6 +961,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -1158,6 +1184,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 15:59:01 2025 \u002B0100",
         "message": "docs: add CNAME file (#249)"
+      },
+      {
+        "sha": "7f8f299c3acbcd4118cab2a7774e13b95dae1dad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 16:23:58 2025 \u002B0100",
+        "message": "feat: include options in expectation message of string collections (#247)"
       }
     ],
     "labels": [
@@ -1191,7 +1223,8 @@ window.BENCHMARK_DATA = {
       "680600ba",
       "24a061c3",
       "ca40146a",
-      "a14be273"
+      "a14be273",
+      "7f8f299c"
     ],
     "datasets": [
       {
@@ -1228,7 +1261,8 @@ window.BENCHMARK_DATA = {
           193.1419144017356,
           196.475543150535,
           193.57934385935465,
-          191.36509375572206
+          191.36509375572206,
+          209.66417351790838
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1240,6 +1274,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1315,7 +1350,8 @@ window.BENCHMARK_DATA = {
           189.67826933860778,
           197.92769596974054,
           186.3631380081177,
-          197.5383573214213
+          197.5383573214213,
+          212.13356957435607
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1353,6 +1389,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -1402,7 +1439,8 @@ window.BENCHMARK_DATA = {
           793.1486569086711,
           821.4594782315768,
           816.1938789912632,
-          819.5391736030579
+          819.5391736030579,
+          873.7245756296011
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1422,6 +1460,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1644,6 +1683,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 15:59:01 2025 \u002B0100",
         "message": "docs: add CNAME file (#249)"
+      },
+      {
+        "sha": "7f8f299c3acbcd4118cab2a7774e13b95dae1dad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 16:23:58 2025 \u002B0100",
+        "message": "feat: include options in expectation message of string collections (#247)"
       }
     ],
     "labels": [
@@ -1677,7 +1722,8 @@ window.BENCHMARK_DATA = {
       "680600ba",
       "24a061c3",
       "ca40146a",
-      "a14be273"
+      "a14be273",
+      "7f8f299c"
     ],
     "datasets": [
       {
@@ -1714,7 +1760,8 @@ window.BENCHMARK_DATA = {
           316.59784422601973,
           312.88508297602334,
           294.88878338153546,
-          299.3778176943461
+          299.3778176943461,
+          317.48860057195026
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1726,6 +1773,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1801,7 +1849,8 @@ window.BENCHMARK_DATA = {
           409.5653594652812,
           422.5815559387207,
           408.70154603322345,
-          422.1491066296895
+          422.1491066296895,
+          457.0513175646464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1839,6 +1888,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -1888,7 +1938,8 @@ window.BENCHMARK_DATA = {
           942.5623970031738,
           937.7817686716716,
           985.9655854361398,
-          922.6317602566311
+          922.6317602566311,
+          974.0039006551107
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1908,6 +1959,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -2130,6 +2182,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 15:59:01 2025 \u002B0100",
         "message": "docs: add CNAME file (#249)"
+      },
+      {
+        "sha": "7f8f299c3acbcd4118cab2a7774e13b95dae1dad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 16:23:58 2025 \u002B0100",
+        "message": "feat: include options in expectation message of string collections (#247)"
       }
     ],
     "labels": [
@@ -2163,7 +2221,8 @@ window.BENCHMARK_DATA = {
       "680600ba",
       "24a061c3",
       "ca40146a",
-      "a14be273"
+      "a14be273",
+      "7f8f299c"
     ],
     "datasets": [
       {
@@ -2200,7 +2259,8 @@ window.BENCHMARK_DATA = {
           1202.6463932037354,
           1205.3210531870525,
           1188.9954233169556,
-          1170.2736518859863
+          1170.2736518859863,
+          1223.426608022054
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2226,6 +2286,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -2287,7 +2348,8 @@ window.BENCHMARK_DATA = {
           1205.7529940287272,
           1181.517018999372,
           1245.7201058523995,
-          1234.0787826538085
+          1234.0787826538085,
+          1292.0761892954508
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2325,6 +2387,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -2374,7 +2437,8 @@ window.BENCHMARK_DATA = {
           2193.550763956706,
           2142.027173360189,
           2185.2959747314453,
-          2236.2402493794757
+          2236.2402493794757,
+          2326.204712168376
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2394,6 +2458,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -2616,6 +2681,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 15:59:01 2025 \u002B0100",
         "message": "docs: add CNAME file (#249)"
+      },
+      {
+        "sha": "7f8f299c3acbcd4118cab2a7774e13b95dae1dad",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 16:23:58 2025 \u002B0100",
+        "message": "feat: include options in expectation message of string collections (#247)"
       }
     ],
     "labels": [
@@ -2649,7 +2720,8 @@ window.BENCHMARK_DATA = {
       "680600ba",
       "24a061c3",
       "ca40146a",
-      "a14be273"
+      "a14be273",
+      "7f8f299c"
     ],
     "datasets": [
       {
@@ -2686,7 +2758,8 @@ window.BENCHMARK_DATA = {
           1215.992732365926,
           1208.6429413386754,
           1201.6996134440103,
-          1256.5969964345297
+          1256.5969964345297,
+          1255.6449375152588
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2712,6 +2785,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -2773,7 +2847,8 @@ window.BENCHMARK_DATA = {
           81613.45884486607,
           83056.7568734976,
           80751.12657752403,
-          84822.48805338542
+          84822.48805338542,
+          81697.68528645833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2814,6 +2889,7 @@ window.BENCHMARK_DATA = {
           53206,
           53212,
           53212,
+          53206,
           53206,
           53206
         ],
@@ -2860,7 +2936,8 @@ window.BENCHMARK_DATA = {
           4058.5575545174734,
           4162.296328408377,
           4017.156878789266,
-          4214.238644917806
+          4214.238644917806,
+          4216.225868225098
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2880,6 +2957,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
