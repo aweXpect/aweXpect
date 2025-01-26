@@ -60,7 +60,7 @@ namespace aweXpect.Analyzers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expectations must be awaited or verified.
+        ///   Looks up a localized string similar to Await the expectation.
         /// </summary>
         internal static string aweXpect0001CodeFixTitle {
             get {
@@ -69,7 +69,7 @@ namespace aweXpect.Analyzers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expectations must be awaited or verified..
+        ///   Looks up a localized string similar to In order to evaluate an expectation it must either be awaited or explicitly verified at the end..
         /// </summary>
         internal static string aweXpect0001Description {
             get {

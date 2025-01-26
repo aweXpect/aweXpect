@@ -24,7 +24,7 @@
 		</value>
 	</resheader>
 	<data name="aweXpect0001Description" xml:space="preserve">
-		<value>Expectations must be awaited or verified.</value>
+		<value>In order to evaluate an expectation it must either be awaited or explicitly verified at the end.</value>
 	</data>
 	<data name="aweXpect0001MessageFormat" xml:space="preserve">
 		<value>Expectations must be awaited or verified</value>
@@ -33,7 +33,7 @@
 		<value>Expectations must be awaited or verified</value>
 	</data>
 	<data name="aweXpect0001CodeFixTitle" xml:space="preserve">
-		<value>Expectations must be awaited or verified</value>
+		<value>Await the expectation</value>
 		<comment>The title of the code fix.</comment>
 	</data>
 </root>
