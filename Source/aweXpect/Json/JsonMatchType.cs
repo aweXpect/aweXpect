@@ -79,6 +79,7 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
 		=> $"be JSON equivalent to {expected}";
 
+	/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
 	public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer)
 		=> " as JSON";
 }
