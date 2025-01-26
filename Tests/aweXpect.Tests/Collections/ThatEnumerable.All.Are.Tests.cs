@@ -165,7 +165,7 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
-				[Fact]
+				[Fact(Skip="Requires Core Update")]
 				public async Task WhenItemsDiffer_ShouldShowAllConfigurationsInMessage()
 				{
 					string[] subject = ["bar"];
@@ -185,7 +185,7 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
-				[Fact]
+				[Fact(Skip="Requires Core Update")]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringCaseInMessage()
 				{
 					string[] subject = ["bar"];
@@ -201,7 +201,7 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
-				[Fact]
+				[Fact(Skip="Requires Core Update")]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringLeadingWhiteSpaceInMessage()
 				{
 					string[] subject = ["bar"];
@@ -217,7 +217,7 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
-				[Fact]
+				[Fact(Skip="Requires Core Update")]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringNewlineStyleInMessage()
 				{
 					string[] subject = ["bar"];
@@ -233,7 +233,7 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
-				[Fact]
+				[Fact(Skip="Requires Core Update")]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringTrailingWhiteSpaceInMessage()
 				{
 					string[] subject = ["bar"];
