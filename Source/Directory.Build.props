@@ -13,7 +13,6 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>Docs/logo_256x256.png</PackageIcon>
 		<PackageReadmeFile>Docs/README.md</PackageReadmeFile>
-		<MinVerTagPrefix>v</MinVerTagPrefix>
 	</PropertyGroup>
 
 	<PropertyGroup>
