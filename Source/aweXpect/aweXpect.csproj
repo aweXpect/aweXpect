@@ -13,4 +13,11 @@
 		</AssemblyAttribute>
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\aweXpect.Analyzers\aweXpect.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<None Include="$(MSBuildProjectDirectory)\..\aweXpect.Analyzers\bin\$(Configuration)\netstandard2.0\aweXpect.Analyzers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<ProjectReference Include="..\aweXpect.Analyzers.CodeFixers\aweXpect.Analyzers.CodeFixers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<None Include="$(MSBuildProjectDirectory)\..\aweXpect.Analyzers.CodeFixers\bin\$(Configuration)\netstandard2.0\aweXpect.Analyzers.CodeFixers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
+
 </Project>

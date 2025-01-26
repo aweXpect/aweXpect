@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<IsPackable>false</IsPackable>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Source\aweXpect.Analyzers\aweXpect.Analyzers.csproj"/>
+		<ProjectReference Include="..\..\Source\aweXpect.Analyzers.CodeFixers\aweXpect.Analyzers.CodeFixers.csproj"/>
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis"/>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing"/>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeFix.Testing"/>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeRefactoring.Testing"/>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces"/>
+	</ItemGroup>
+</Project>

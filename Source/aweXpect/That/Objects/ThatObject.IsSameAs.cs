@@ -11,7 +11,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Expect the actual value to be the same as the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> IsSameAs<T>(this IThat<T> source,
+	public static AndOrResult<T?, IThat<T?>> IsSameAs<T>(this IThat<T?> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		where T : class
@@ -23,7 +23,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Expect the actual value to not be the same as the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> IsNotSameAs<T>(this IThat<T> source,
+	public static AndOrResult<T?, IThat<T?>> IsNotSameAs<T>(this IThat<T?> source,
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		where T : class

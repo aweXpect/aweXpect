@@ -9,8 +9,10 @@ public sealed class AndNodeTests
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
+#pragma warning disable aweXpect0001
 		IThat<bool> that = That(true);
 		that.IsTrue().And.IsFalse().And.Implies(false);
+#pragma warning restore aweXpect0001
 #pragma warning restore CS4014
 
 		string expectedResult = "be True and be False and imply False";
