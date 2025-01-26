@@ -168,6 +168,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 07:39:08 2025 \u002B0100",
         "message": "feat: support synchronous expectations via \u0060.Verify()\u0060 (#245)"
+      },
+      {
+        "sha": "24a061c3730392b3027be69c0248b6eef8d1fd54",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 07:42:18 2025 \u002B0100",
+        "message": "docs: remove no longer used \u0060MinVer\u0060 from documentation (#246)"
       }
     ],
     "labels": [
@@ -198,7 +204,8 @@ window.BENCHMARK_DATA = {
       "4c351d72",
       "c1fd6252",
       "a878c654",
-      "680600ba"
+      "680600ba",
+      "24a061c3"
     ],
     "datasets": [
       {
@@ -232,7 +239,8 @@ window.BENCHMARK_DATA = {
           154.07698369026184,
           154.5739394884843,
           149.29692997932435,
-          155.91339230537415
+          155.91339230537415,
+          160.56826748847962
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -244,6 +252,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -313,7 +322,8 @@ window.BENCHMARK_DATA = {
           199.91072788238526,
           200.60368784268698,
           192.21684529100145,
-          191.27750670909882
+          191.27750670909882,
+          194.79485206604005
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -351,6 +361,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688
         ],
@@ -394,7 +405,8 @@ window.BENCHMARK_DATA = {
           548.5680850573948,
           548.5642543156941,
           549.3300384521484,
-          542.1824054718018
+          542.1824054718018,
+          549.9555193827703
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -414,6 +426,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -615,6 +628,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 07:39:08 2025 \u002B0100",
         "message": "feat: support synchronous expectations via \u0060.Verify()\u0060 (#245)"
+      },
+      {
+        "sha": "24a061c3730392b3027be69c0248b6eef8d1fd54",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 07:42:18 2025 \u002B0100",
+        "message": "docs: remove no longer used \u0060MinVer\u0060 from documentation (#246)"
       }
     ],
     "labels": [
@@ -645,7 +664,8 @@ window.BENCHMARK_DATA = {
       "4c351d72",
       "c1fd6252",
       "a878c654",
-      "680600ba"
+      "680600ba",
+      "24a061c3"
     ],
     "datasets": [
       {
@@ -679,7 +699,8 @@ window.BENCHMARK_DATA = {
           343.1689342498779,
           340.9389464378357,
           369.3515460650126,
-          336.76117665427074
+          336.76117665427074,
+          336.02704896245683
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -691,6 +712,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -760,7 +782,8 @@ window.BENCHMARK_DATA = {
           418.2622873624166,
           422.06700963974,
           414.94364948272704,
-          434.7980235417684
+          434.7980235417684,
+          441.8599319458008
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -798,6 +821,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744
         ],
@@ -841,7 +865,8 @@ window.BENCHMARK_DATA = {
           14806.381488506611,
           17354.475563557942,
           13876.578894551594,
-          15409.815457857572
+          15409.815457857572,
+          21404.92399698893
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -861,6 +886,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -1062,6 +1088,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 07:39:08 2025 \u002B0100",
         "message": "feat: support synchronous expectations via \u0060.Verify()\u0060 (#245)"
+      },
+      {
+        "sha": "24a061c3730392b3027be69c0248b6eef8d1fd54",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 07:42:18 2025 \u002B0100",
+        "message": "docs: remove no longer used \u0060MinVer\u0060 from documentation (#246)"
       }
     ],
     "labels": [
@@ -1092,7 +1124,8 @@ window.BENCHMARK_DATA = {
       "4c351d72",
       "c1fd6252",
       "a878c654",
-      "680600ba"
+      "680600ba",
+      "24a061c3"
     ],
     "datasets": [
       {
@@ -1126,7 +1159,8 @@ window.BENCHMARK_DATA = {
           201.8995616912842,
           196.53092891375223,
           191.83216467270483,
-          193.1419144017356
+          193.1419144017356,
+          196.475543150535
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1138,6 +1172,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1207,7 +1242,8 @@ window.BENCHMARK_DATA = {
           254.390150197347,
           263.7271241188049,
           187.78095752398173,
-          189.67826933860778
+          189.67826933860778,
+          197.92769596974054
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1245,6 +1281,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960
         ],
@@ -1288,7 +1325,8 @@ window.BENCHMARK_DATA = {
           785.3533049265544,
           832.1314203898112,
           778.3313665390015,
-          793.1486569086711
+          793.1486569086711,
+          821.4594782315768
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1308,6 +1346,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1509,6 +1548,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 07:39:08 2025 \u002B0100",
         "message": "feat: support synchronous expectations via \u0060.Verify()\u0060 (#245)"
+      },
+      {
+        "sha": "24a061c3730392b3027be69c0248b6eef8d1fd54",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 07:42:18 2025 \u002B0100",
+        "message": "docs: remove no longer used \u0060MinVer\u0060 from documentation (#246)"
       }
     ],
     "labels": [
@@ -1539,7 +1584,8 @@ window.BENCHMARK_DATA = {
       "4c351d72",
       "c1fd6252",
       "a878c654",
-      "680600ba"
+      "680600ba",
+      "24a061c3"
     ],
     "datasets": [
       {
@@ -1573,7 +1619,8 @@ window.BENCHMARK_DATA = {
           307.63651008605956,
           321.6040688196818,
           307.00577507019045,
-          316.59784422601973
+          316.59784422601973,
+          312.88508297602334
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1585,6 +1632,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1654,7 +1702,8 @@ window.BENCHMARK_DATA = {
           342.5066101367657,
           355.18453216552734,
           410.96202989986966,
-          409.5653594652812
+          409.5653594652812,
+          422.5815559387207
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1692,6 +1741,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904
         ],
@@ -1735,7 +1785,8 @@ window.BENCHMARK_DATA = {
           907.2267669950213,
           951.002688852946,
           889.0884689603533,
-          942.5623970031738
+          942.5623970031738,
+          937.7817686716716
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1755,6 +1806,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -1956,6 +2008,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 07:39:08 2025 \u002B0100",
         "message": "feat: support synchronous expectations via \u0060.Verify()\u0060 (#245)"
+      },
+      {
+        "sha": "24a061c3730392b3027be69c0248b6eef8d1fd54",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 07:42:18 2025 \u002B0100",
+        "message": "docs: remove no longer used \u0060MinVer\u0060 from documentation (#246)"
       }
     ],
     "labels": [
@@ -1986,7 +2044,8 @@ window.BENCHMARK_DATA = {
       "4c351d72",
       "c1fd6252",
       "a878c654",
-      "680600ba"
+      "680600ba",
+      "24a061c3"
     ],
     "datasets": [
       {
@@ -2020,7 +2079,8 @@ window.BENCHMARK_DATA = {
           1144.1467520850044,
           1157.1552261939416,
           1163.2354447501045,
-          1202.6463932037354
+          1202.6463932037354,
+          1205.3210531870525
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2046,6 +2106,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -2101,7 +2162,8 @@ window.BENCHMARK_DATA = {
           1181.5877056121826,
           1148.807777786255,
           1179.3441125324794,
-          1205.7529940287272
+          1205.7529940287272,
+          1181.517018999372
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2139,6 +2201,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888
         ],
@@ -2182,7 +2245,8 @@ window.BENCHMARK_DATA = {
           2154.903387614659,
           2285.8945635477703,
           2206.3519927978514,
-          2193.550763956706
+          2193.550763956706,
+          2142.027173360189
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2202,6 +2266,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -2403,6 +2468,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 07:39:08 2025 \u002B0100",
         "message": "feat: support synchronous expectations via \u0060.Verify()\u0060 (#245)"
+      },
+      {
+        "sha": "24a061c3730392b3027be69c0248b6eef8d1fd54",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Jan 26 07:42:18 2025 \u002B0100",
+        "message": "docs: remove no longer used \u0060MinVer\u0060 from documentation (#246)"
       }
     ],
     "labels": [
@@ -2433,7 +2504,8 @@ window.BENCHMARK_DATA = {
       "4c351d72",
       "c1fd6252",
       "a878c654",
-      "680600ba"
+      "680600ba",
+      "24a061c3"
     ],
     "datasets": [
       {
@@ -2467,7 +2539,8 @@ window.BENCHMARK_DATA = {
           1177.9051303863525,
           1189.4804040363856,
           1173.683147684733,
-          1215.992732365926
+          1215.992732365926,
+          1208.6429413386754
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2493,6 +2566,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -2548,7 +2622,8 @@ window.BENCHMARK_DATA = {
           74801.34549967448,
           77413.49072265625,
           81633.53120930989,
-          81613.45884486607
+          81613.45884486607,
+          83056.7568734976
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2587,6 +2662,7 @@ window.BENCHMARK_DATA = {
           50710,
           50710,
           53206,
+          53212,
           53212
         ],
         "borderColor": "#FF671B",
@@ -2629,7 +2705,8 @@ window.BENCHMARK_DATA = {
           3995.1265111287435,
           4132.80441066197,
           4136.556926981608,
-          4058.5575545174734
+          4058.5575545174734,
+          4162.296328408377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2649,6 +2726,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
