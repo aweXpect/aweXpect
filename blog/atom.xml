@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://aweXpect.github.io/aweXpect/blog</id>
+    <id>https://aweXpect.com/blog</id>
     <title>aweXpect Blog</title>
     <updated>2024-11-29T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://aweXpect.github.io/aweXpect/blog"/>
+    <link rel="alternate" href="https://aweXpect.com/blog"/>
     <subtitle>aweXpect Blog</subtitle>
-    <icon>https://aweXpect.github.io/aweXpect/img/favicon.ico</icon>
+    <icon>https://aweXpect.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Why another assertion library]]></title>
-        <id>https://aweXpect.github.io/aweXpect/blog/why-another-assertion-library</id>
-        <link href="https://aweXpect.github.io/aweXpect/blog/why-another-assertion-library"/>
+        <id>https://aweXpect.com/blog/why-another-assertion-library</id>
+        <link href="https://aweXpect.com/blog/why-another-assertion-library"/>
         <updated>2024-11-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[I am an active contributor to fluentassertions and am well aware of the great improvements it has on the readability of unit tests.]]></summary>
         <content type="html"><![CDATA[<p>I am an active contributor to <a href="https://github.com/fluentassertions/fluentassertions" target="_blank" rel="noopener noreferrer">fluentassertions</a> and am well aware of the great improvements it has on the readability of unit tests.

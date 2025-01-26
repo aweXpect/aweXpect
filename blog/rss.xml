@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>aweXpect Blog</title>
-        <link>https://aweXpect.github.io/aweXpect/blog</link>
+        <link>https://aweXpect.com/blog</link>
         <description>aweXpect Blog</description>
         <lastBuildDate>Fri, 29 Nov 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,8 +10,8 @@
         <language>en</language>
         <item>
             <title><![CDATA[Why another assertion library]]></title>
-            <link>https://aweXpect.github.io/aweXpect/blog/why-another-assertion-library</link>
-            <guid>https://aweXpect.github.io/aweXpect/blog/why-another-assertion-library</guid>
+            <link>https://aweXpect.com/blog/why-another-assertion-library</link>
+            <guid>https://aweXpect.com/blog/why-another-assertion-library</guid>
             <pubDate>Fri, 29 Nov 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[I am an active contributor to fluentassertions and am well aware of the great improvements it has on the readability of unit tests.]]></description>
             <content:encoded><![CDATA[<p>I am an active contributor to <a href="https://github.com/fluentassertions/fluentassertions" target="_blank" rel="noopener noreferrer">fluentassertions</a> and am well aware of the great improvements it has on the readability of unit tests.
