@@ -18,7 +18,3 @@ using [SonarCloud](https://sonarcloud.io/project/overview?id=aweXpect_aweXpect) 
 
 Additionally each push to the `main` branch checks the quality of the unit tests
 using [Stryker.NET](https://stryker-mutator.io/docs/stryker-net/introduction/).
-
-## Versioning
-
-This project uses [MinVer](https://github.com/adamralph/minver) for versioning.  
