@@ -63,6 +63,7 @@ public partial class StringEqualityOptions
 					$"matching regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
 
+		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
 		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer)
 			=> " as regex";
 
