@@ -14,16 +14,14 @@ using Microsoft.CodeAnalysis.Text;
 namespace aweXpect.Analyzers.CodeFixers;
 
 /// <summary>
-///     A sample code fix provider that renames classes with the company name in their definition.
-///     All code fixes must  be linked to specific analyzers.
+///     A code fix provider that makes all <c>Expect.That</c> methods that are neither async nor verified async.
 /// </summary>
-[ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AwaitAssertionCodeFixProvider))]
+[ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AwaitExpectationCodeFixProvider))]
 [Shared]
-public class AwaitAssertionCodeFixProvider : CodeFixProvider
+public class AwaitExpectationCodeFixProvider : CodeFixProvider
 {
 	/// <inheritdoc />
-	public sealed override ImmutableArray<string> FixableDiagnosticIds { get; } =
-		[Rules.AwaitExpectation.Id];
+	public sealed override ImmutableArray<string> FixableDiagnosticIds { get; } = [Rules.AwaitExpectation.Id];
 
 	/// <inheritdoc />
 	public override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
@@ -39,7 +37,7 @@ public class AwaitAssertionCodeFixProvider : CodeFixProvider
 
 		SyntaxNode? diagnosticNode = root?.FindNode(diagnosticSpan);
 
-		if (diagnosticNode is not ExpressionStatementSyntax expressionStatementSyntax)
+		if (diagnosticNode is not InvocationExpressionSyntax invocationExpressionSyntax)
 		{
 			return;
 		}
@@ -47,7 +45,7 @@ public class AwaitAssertionCodeFixProvider : CodeFixProvider
 		context.RegisterCodeFix(
 			CodeAction.Create(
 				Resources.aweXpect0001CodeFixTitle,
-				c => AwaitAssertionAsync(context.Document, expressionStatementSyntax, c),
+				c => AwaitAssertionAsync(context.Document, invocationExpressionSyntax, c),
 				nameof(Resources.aweXpect0001CodeFixTitle)),
 			diagnostic);
 	}
@@ -56,19 +54,28 @@ public class AwaitAssertionCodeFixProvider : CodeFixProvider
 	///     Executed on the quick fix action raised by the user.
 	/// </summary>
 	/// <param name="document">Affected source file.</param>
-	/// <param name="expressionStatementSyntax">Highlighted class declaration Syntax Node.</param>
+	/// <param name="invocationExpressionSyntax">Highlighted class declaration Syntax Node.</param>
 	/// <param name="cancellationToken">Any fix is cancellable by the user, so we should support the cancellation token.</param>
-	/// <returns>Clone of the solution with updates: renamed class.</returns>
 	private async Task<Document> AwaitAssertionAsync(Document document,
-		ExpressionStatementSyntax expressionStatementSyntax, CancellationToken cancellationToken)
+		InvocationExpressionSyntax invocationExpressionSyntax, CancellationToken cancellationToken)
 	{
 		DocumentEditor? editor = await DocumentEditor.CreateAsync(document, cancellationToken);
 
-		AwaitExpressionSyntax? awaitExpressionSyntax =
-			SyntaxFactory.AwaitExpression(expressionStatementSyntax.Expression);
+		SyntaxNode? parent = invocationExpressionSyntax;
+		while (parent != null)
+		{
+			if (parent is ExpressionStatementSyntax expressionStatement)
+			{
+				AwaitExpressionSyntax? awaitExpressionSyntax =
+					SyntaxFactory.AwaitExpression(expressionStatement.Expression);
 
-		editor.ReplaceNode(expressionStatementSyntax.Expression, awaitExpressionSyntax);
+				editor.ReplaceNode(expressionStatement.Expression, awaitExpressionSyntax);
 
-		return editor.GetChangedDocument();
+				return editor.GetChangedDocument();
+			}
+
+			parent = parent.Parent;
+		}
+		return document;
 	}
 }
