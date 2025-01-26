@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
+		<Description>Analyzers for aweXpect to ensure correct usage.</Description>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 		<IsRoslynComponent>true</IsRoslynComponent>
@@ -9,6 +11,7 @@
 		<EnableTrimAnalyzer>false</EnableTrimAnalyzer>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
 			<_Parameter1>aweXpect.Analyzers.Tests</_Parameter1>
@@ -17,6 +20,7 @@
 			<_Parameter1>aweXpect.Analyzers.CodeFixers</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
@@ -25,12 +29,14 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.Common"/>
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
 	</ItemGroup>
+
 	<ItemGroup>
 		<EmbeddedResource Update="Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
+
 	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -38,4 +44,5 @@
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
+	
 </Project>
