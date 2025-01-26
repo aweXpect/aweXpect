@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
-		<Nullable>enable</Nullable>
-		<LangVersion>latest</LangVersion>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 		<IsRoslynComponent>true</IsRoslynComponent>
 		<DevelopmentDependency>false</DevelopmentDependency>
@@ -11,11 +9,6 @@
 		<EnableTrimAnalyzer>false</EnableTrimAnalyzer>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
-	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>aweXpect.Analyzers.Tests</_Parameter1>
-		</AssemblyAttribute>
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
