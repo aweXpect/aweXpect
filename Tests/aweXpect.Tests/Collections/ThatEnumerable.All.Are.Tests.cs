@@ -165,6 +165,90 @@ public sealed partial class ThatEnumerable
 						             """);
 				}
 
+				[Fact]
+				public async Task WhenItemsDiffer_ShouldShowAllConfigurationsInMessage()
+				{
+					string[] subject = ["bar"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo")
+							.IgnoringCase()
+							.IgnoringNewlineStyle()
+							.IgnoringLeadingWhiteSpace()
+							.IgnoringTrailingWhiteSpace();
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo" ignoring case, white-space and newline style,
+						             but only 0 of 1 were
+						             """);
+				}
+
+				[Fact]
+				public async Task WhenItemsDiffer_ShouldShowIgnoringCaseInMessage()
+				{
+					string[] subject = ["bar"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo").IgnoringCase();
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo" ignoring case,
+						             but only 0 of 1 were
+						             """);
+				}
+
+				[Fact]
+				public async Task WhenItemsDiffer_ShouldShowIgnoringLeadingWhiteSpaceInMessage()
+				{
+					string[] subject = ["bar"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo").IgnoringLeadingWhiteSpace();
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo" ignoring leading white-space,
+						             but only 0 of 1 were
+						             """);
+				}
+
+				[Fact]
+				public async Task WhenItemsDiffer_ShouldShowIgnoringNewlineStyleInMessage()
+				{
+					string[] subject = ["bar"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo").IgnoringNewlineStyle();
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo" ignoring newline style,
+						             but only 0 of 1 were
+						             """);
+				}
+
+				[Fact]
+				public async Task WhenItemsDiffer_ShouldShowIgnoringTrailingWhiteSpaceInMessage()
+				{
+					string[] subject = ["bar"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo").IgnoringTrailingWhiteSpace();
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo" ignoring trailing white-space,
+						             but only 0 of 1 were
+						             """);
+				}
+
 				[Theory]
 				[InlineData(true)]
 				[InlineData(false)]
@@ -180,6 +264,63 @@ public sealed partial class ThatEnumerable
 						             Expected subject to
 						             have all items equal to "foo",
 						             but only 1 of 2 were
+						             """);
+				}
+
+				[Theory]
+				[InlineData(true)]
+				[InlineData(false)]
+				public async Task WhenItemsDifferInLeadingWhiteSpace_ShouldSucceedWhenIgnoringLeadingWhiteSpace(
+					bool ignoreLeadingWhiteSpace)
+				{
+					string[] subject = [" foo", "foo", "\tfoo"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo").IgnoringLeadingWhiteSpace(ignoreLeadingWhiteSpace);
+
+					await That(Act).Throws<XunitException>().OnlyIf(!ignoreLeadingWhiteSpace)
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo",
+						             but only 1 of 3 were
+						             """);
+				}
+
+				[Theory]
+				[InlineData(true)]
+				[InlineData(false)]
+				public async Task WhenItemsDifferInNewlineStyle_ShouldSucceedWhenIgnoringNewlineStyle(
+					bool ignoreNewlineStyle)
+				{
+					string[] subject = ["foo\r\nbar", "foo\nbar", "foo\rbar"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo\nbar").IgnoringNewlineStyle(ignoreNewlineStyle);
+
+					await That(Act).Throws<XunitException>().OnlyIf(!ignoreNewlineStyle)
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo\nbar",
+						             but only 1 of 3 were
+						             """);
+				}
+
+				[Theory]
+				[InlineData(true)]
+				[InlineData(false)]
+				public async Task WhenItemsDifferInTrailingWhiteSpace_ShouldSucceedWhenIgnoringTrailingWhiteSpace(
+					bool ignoreTrailingWhiteSpace)
+				{
+					string[] subject = ["foo ", "foo", "foo\t"];
+
+					async Task Act()
+						=> await That(subject).All().Are("foo").IgnoringTrailingWhiteSpace(ignoreTrailingWhiteSpace);
+
+					await That(Act).Throws<XunitException>().OnlyIf(!ignoreTrailingWhiteSpace)
+						.WithMessage("""
+						             Expected subject to
+						             have all items equal to "foo",
+						             but only 1 of 3 were
 						             """);
 				}
 
