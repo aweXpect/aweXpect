@@ -38,6 +38,22 @@ public sealed partial class ThatString
 			}
 
 			[Theory]
+			[InlineAutoData("foo\nbar", "foo\rbar")]
+			[InlineAutoData("foo\rbar", "foo\nbar")]
+			[InlineAutoData("foo\nbar", "foo\r\nbar")]
+			[InlineAutoData("foo\rbar", "foo\r\nbar")]
+			[InlineAutoData("foo\r\nbar", "foo\nbar")]
+			[InlineAutoData("foo\r\nbar", "foo\rbar")]
+			public async Task IgnoringNewlineStyle_WhenStringsDifferOnlyInNewlineStyle_ShouldSucceed(
+				string subject, string expected)
+			{
+				async Task Act()
+					=> await That(subject).Is(expected).IgnoringNewlineStyle();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
 			[InlineAutoData("foo ", "foo")]
 			[InlineAutoData("foo", "foo ")]
 			[InlineAutoData("foo\t", "foo\n")]

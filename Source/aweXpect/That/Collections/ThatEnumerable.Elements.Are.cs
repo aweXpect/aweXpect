@@ -23,7 +23,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"equal to {Formatter.Format(expected)}",
+						() => $"equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,
@@ -45,7 +45,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"equal to {Formatter.Format(expected)}",
+						() => $"equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,
@@ -79,7 +79,7 @@ public static partial class ThatEnumerable
 						it,
 						_quantifier,
 						() => $"be of type {Formatter.Format(typeof(TType))}",
-						a => typeof(TType).IsAssignableFrom(a?.GetType()),
+						a => a is TType,
 						"were")),
 				_subject,
 				options);
@@ -98,7 +98,7 @@ public static partial class ThatEnumerable
 						it,
 						_quantifier,
 						() => $"be of type {Formatter.Format(type)}",
-						a => type.IsAssignableFrom(a?.GetType()),
+						a => type.IsInstanceOfType(a),
 						"were")),
 				_subject,
 				options);

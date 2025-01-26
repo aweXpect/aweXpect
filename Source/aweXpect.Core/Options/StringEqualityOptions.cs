@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -115,7 +116,57 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 	/// <inheritdoc />
 	public override string ToString()
-		=> _matchType.ToString(_ignoreCase, _comparer);
+	{
+		if (!_ignoreLeadingWhiteSpace && !_ignoreTrailingWhiteSpace && !_ignoreNewlineStyle)
+		{
+			return _matchType.ToString(_ignoreCase, _comparer);
+		}
+
+		string? whiteSpaceToken = (_ignoreLeadingWhiteSpace, _ignoreTrailingWhiteSpace) switch
+		{
+			(true, true) => " white-space",
+			(true, false) => " leading white-space",
+			(false, true) => " trailing white-space",
+			(false, false) => null
+		};
+
+		string? newlineStyleToken = _ignoreNewlineStyle
+			? " newline style"
+			: null;
+
+		StringBuilder sb = new();
+		string? initialString = _matchType.ToString(_ignoreCase, _comparer);
+		sb.Append(initialString);
+		if (initialString.Contains("ignoring"))
+		{
+			sb.Append(whiteSpaceToken == null || newlineStyleToken == null ? " and" : ",");
+		}
+		else
+		{
+			if (sb.Length > 0)
+			{
+				sb.Append(' ');
+			}
+
+			sb.Append(" ignoring");
+		}
+
+		if (whiteSpaceToken != null)
+		{
+			sb.Append(whiteSpaceToken);
+			if (newlineStyleToken != null)
+			{
+				sb.Append(" and");
+			}
+		}
+
+		if (newlineStyleToken != null)
+		{
+			sb.Append(newlineStyleToken);
+		}
+
+		return sb.ToString();
+	}
 
 	/// <summary>
 	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
