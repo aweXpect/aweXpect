@@ -22,7 +22,7 @@ Assert unit tests in natural language using awesome expectations.
    This brings the static `Expect` class and lots of extension methods into scope.
 
 
-3. See the [documentation](https://awexpect.github.io/aweXpect/docs/getting-started#write-your-first-expectation) for
+3. See the [documentation](https://awexpect.com/docs/getting-started#write-your-first-expectation) for
    usage scenarios.
 
 ## Features
@@ -47,10 +47,10 @@ We added lots of extensibility points to allow you to build custom extensions.
 The [aweXpect.Core](https://www.nuget.org/packages/aweXpect.Core/) package is intended to be a stable source for extensions, so that the risk of version conflicts between different extensions can be reduced.
 
 You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
-More information can be found in the [extensibility guide](https://awexpect.github.io/aweXpect/docs/category/extensibility).
+More information can be found in the [extensibility guide](https://awexpect.com/docs/category/extensibility).
 
 ### Performant
 
 A focus on performance allows you to execute your tests as fast as possible.  
 Special care is taken for the happy case (succeeding tests) to be as performant as possible. See
-the [benchmarks](https://awexpect.github.io/aweXpect/benchmarks) for more details.
+the [benchmarks](https://awexpect.com/benchmarks) for more details.
