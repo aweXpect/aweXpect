@@ -56,7 +56,7 @@ public class AwaitExpectationCodeFixProvider : CodeFixProvider
 	/// <param name="document">Affected source file.</param>
 	/// <param name="invocationExpressionSyntax">Highlighted class declaration Syntax Node.</param>
 	/// <param name="cancellationToken">Any fix is cancellable by the user, so we should support the cancellation token.</param>
-	private async Task<Document> AwaitAssertionAsync(Document document,
+	private static async Task<Document> AwaitAssertionAsync(Document document,
 		InvocationExpressionSyntax invocationExpressionSyntax, CancellationToken cancellationToken)
 	{
 		DocumentEditor? editor = await DocumentEditor.CreateAsync(document, cancellationToken);

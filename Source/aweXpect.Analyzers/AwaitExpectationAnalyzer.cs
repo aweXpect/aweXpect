@@ -26,7 +26,7 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 	}
 
 
-	private void AnalyzeOperation(OperationAnalysisContext context)
+	private static void AnalyzeOperation(OperationAnalysisContext context)
 	{
 		if (context.Operation is not IInvocationOperation invocationOperation)
 		{
