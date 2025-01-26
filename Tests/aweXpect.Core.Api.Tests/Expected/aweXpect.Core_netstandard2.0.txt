@@ -838,3 +838,12 @@ namespace aweXpect.Signaling
         public aweXpect.Signaling.SignalerResult<TParameter> Wait(aweXpect.Times amount, System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
 }
+namespace aweXpect.Synchronous
+{
+    public static class SynchronousTestExecution
+    {
+        public static void Verify(this aweXpect.Results.ExpectationResult result) { }
+        public static TType Verify<TType, TSelf>(this aweXpect.Results.ExpectationResult<TType, TSelf> result)
+            where TSelf : aweXpect.Results.ExpectationResult<TType, TSelf> { }
+    }
+}
