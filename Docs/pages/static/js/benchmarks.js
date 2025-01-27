@@ -12,8 +12,12 @@
 	function renderChart(main, name, data) {
 		const div = document.createElement("div");
 		const h = document.createElement("h3");
+		const l = document.createElement("a");
+		l.setAttribute("href", "https://github.com/aweXpect/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks." + name + ".cs");
+		l.setAttribute("target", "_blank");
 		const t = document.createTextNode(name);
-		h.appendChild(t);
+		l.appendChild(t);
+		h.appendChild(l);
 		div.appendChild(h);
 		const canvas = document.createElement('canvas');
 		canvas.className = 'benchmark-chart';

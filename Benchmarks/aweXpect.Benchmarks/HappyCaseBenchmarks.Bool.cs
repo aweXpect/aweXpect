@@ -4,6 +4,9 @@ using FluentAssertions.Primitives;
 
 namespace aweXpect.Benchmarks;
 
+/// <summary>
+///     In this benchmark we verify that the subject is equal to <see langword="true" />.<br />
+/// </summary>
 public partial class HappyCaseBenchmarks
 {
 	private readonly bool _boolSubject = true;

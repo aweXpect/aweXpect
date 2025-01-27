@@ -4,6 +4,9 @@ using FluentAssertions.Collections;
 
 namespace aweXpect.Benchmarks;
 
+/// <summary>
+///     In this benchmark we verify that a collection has at least the expected number of items.<br />
+/// </summary>
 public partial class HappyCaseBenchmarks
 {
 	private readonly int _enumerableCount = 1000;
