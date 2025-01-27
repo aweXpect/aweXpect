@@ -10,7 +10,7 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed class Tests
 		{
-			[Theory(Skip="Requires Core update")]
+			[Theory]
 			[InlineData(null)]
 			[InlineData(new int[0])]
 			public async Task IsNull_ShouldBeChainableWithIsEmpty(int[]? subject)
