@@ -21,14 +21,14 @@ public abstract class Expectation
 {
 	/// <summary>
 	///     <i>Not supported!</i><br />
-	///     <see cref="object.Equals(object?)" /> is not supported. Did you mean <c>Be</c> instead?
+	///     <see cref="object.Equals(object?)" /> is not supported. Did you mean <c>Is</c> instead?
 	/// </summary>
 	/// <remarks>
 	///     Consider adding support for <see cref="EditorBrowsableAttribute" /> to hide this method from code suggestions.
 	/// </remarks>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public override bool Equals(object? obj)
-		=> throw new NotSupportedException("Equals is not supported. Did you mean Be() instead?");
+		=> throw new NotSupportedException("Equals is not supported. Did you mean Is() instead?");
 
 	/// <summary>
 	///     <i>Not supported!</i><br />
