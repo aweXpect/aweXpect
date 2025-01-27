@@ -20,9 +20,9 @@ internal static class CSharpVerifierHelper
 	private static ImmutableDictionary<string, ReportDiagnostic> GetNullableWarningsFromCompiler()
 	{
 		string[] args = ["/warnaserror:nullable", "-p:LangVersion=preview"];
-		CSharpCommandLineArguments? commandLineArguments =
+		CSharpCommandLineArguments commandLineArguments =
 			CSharpCommandLineParser.Default.Parse(args, Environment.CurrentDirectory, Environment.CurrentDirectory);
-		ImmutableDictionary<string, ReportDiagnostic>? nullableWarnings =
+		ImmutableDictionary<string, ReportDiagnostic> nullableWarnings =
 			commandLineArguments.CompilationOptions.SpecificDiagnosticOptions;
 
 		// Workaround for https://github.com/dotnet/roslyn/issues/41610

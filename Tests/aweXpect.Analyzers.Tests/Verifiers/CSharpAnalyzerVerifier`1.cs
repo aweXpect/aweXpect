@@ -27,7 +27,7 @@ public static partial class CSharpAnalyzerVerifier<TAnalyzer>
 	public static async Task VerifyAnalyzerAsync([StringSyntax("c#-test")] string source,
 		params DiagnosticResult[] expected)
 	{
-		Test? test = new()
+		Test test = new()
 		{
 			TestCode = source,
 			ReferenceAssemblies = ReferenceAssemblies.Net.Net90,

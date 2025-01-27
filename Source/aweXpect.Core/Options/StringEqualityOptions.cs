@@ -135,7 +135,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			: null;
 
 		StringBuilder sb = new();
-		string? initialString = _matchType.ToString(_ignoreCase, _comparer);
+		string initialString = _matchType.ToString(_ignoreCase, _comparer);
 		sb.Append(initialString);
 		if (initialString.Contains("ignoring"))
 		{

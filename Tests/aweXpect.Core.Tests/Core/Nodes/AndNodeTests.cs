@@ -25,7 +25,7 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task ToString_WithoutAdditionalNodes_ShouldUseFirstNode()
 	{
-		AndNode? node = new(new DummyNode("foo"));
+		AndNode node = new(new DummyNode("foo"));
 
 		string? result = node.ToString();
 

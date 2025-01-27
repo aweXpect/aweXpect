@@ -90,7 +90,7 @@ public sealed partial class StringEqualityOptionsTests
 		[Fact]
 		public async Task WhenPatternIsNull_ShouldFail()
 		{
-			string? sut = "foo";
+			string sut = "foo";
 
 			async Task Act()
 				=> await That(sut).Is(null).AsWildcard();
