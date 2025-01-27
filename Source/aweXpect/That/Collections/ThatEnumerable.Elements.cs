@@ -16,9 +16,9 @@ public static partial class ThatEnumerable
 	public partial class Elements
 	{
 		private readonly EnumerableQuantifier _quantifier;
-		private readonly IThat<IEnumerable<string?>> _subject;
+		private readonly IThat<IEnumerable<string?>?> _subject;
 
-		internal Elements(IThat<IEnumerable<string?>> subject, EnumerableQuantifier quantifier)
+		internal Elements(IThat<IEnumerable<string?>?> subject, EnumerableQuantifier quantifier)
 		{
 			_subject = subject;
 			_quantifier = quantifier;

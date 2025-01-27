@@ -14,11 +14,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> Are(
+		public StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> Are(
 			string? expected)
 		{
 			StringEqualityOptions options = new();
-			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<string?>(
 						it,

@@ -15,11 +15,11 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>> Are(
+		public StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>> Are(
 			string? expected)
 		{
 			StringEqualityOptions options = new();
-			return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>(
+			return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<string?>(
 						it,

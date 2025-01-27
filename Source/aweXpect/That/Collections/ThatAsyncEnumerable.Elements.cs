@@ -17,9 +17,9 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements
 	{
 		private readonly EnumerableQuantifier _quantifier;
-		private readonly IThat<IAsyncEnumerable<string?>> _subject;
+		private readonly IThat<IAsyncEnumerable<string?>?> _subject;
 
-		internal Elements(IThat<IAsyncEnumerable<string?>> subject, EnumerableQuantifier quantifier)
+		internal Elements(IThat<IAsyncEnumerable<string?>?> subject, EnumerableQuantifier quantifier)
 		{
 			_subject = subject;
 			_quantifier = quantifier;

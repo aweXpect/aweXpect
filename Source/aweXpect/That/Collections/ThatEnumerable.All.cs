@@ -16,6 +16,6 @@ public static partial class ThatEnumerable
 	///     Expect that all items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements All(
-		this IThat<IEnumerable<string?>> subject)
+		this IThat<IEnumerable<string?>?> subject)
 		=> new(subject, EnumerableQuantifier.All);
 }
