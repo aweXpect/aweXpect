@@ -844,11 +844,14 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.AndOrResult<object, aweXpect.Core.IThat<object?>> IsNotNull(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source) { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source)
+            where T :  class { }
+        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source)
+            where T :  struct { }
         public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNotSameAs<T>(this aweXpect.Core.IThat<T?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  class { }
-        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNull(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNull<T>(this aweXpect.Core.IThat<T?> source)
+            where T :  class { }
         public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNull<T>(this aweXpect.Core.IThat<T?> source)
             where T :  struct { }
         public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsSameAs<T>(this aweXpect.Core.IThat<T?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
