@@ -10,6 +10,7 @@ public sealed partial class ThatAsyncEnumerable
 {
 	public sealed partial class Has
 	{
+		// ReSharper disable once MemberHidesStaticFromOuterClass
 		public sealed class Between
 		{
 			public sealed class ItemsTests

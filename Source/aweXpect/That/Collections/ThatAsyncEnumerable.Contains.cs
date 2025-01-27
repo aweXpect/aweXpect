@@ -21,14 +21,14 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>?> source,
 			TItem expected)
 	{
 		Quantifier quantifier = new();
 		ObjectEqualityOptions options = new();
-		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
 					it,
@@ -65,15 +65,15 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection contains an item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
 		Quantifier quantifier = new();
-		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
 					it,
@@ -87,15 +87,15 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
-		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
@@ -125,13 +125,13 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		DoesNotContain<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>?> source,
 			TItem unexpected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotContainConstraint<TItem>(it,
 					() => $"not contain {Formatter.Format(unexpected)}{options}",
@@ -161,9 +161,9 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		DoesNotContain<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source,
+			this IThat<IAsyncEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")

@@ -12,15 +12,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		IsContainedIn<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
-		return new ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,

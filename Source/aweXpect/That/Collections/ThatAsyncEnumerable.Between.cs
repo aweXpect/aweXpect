@@ -12,7 +12,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that between <paramref name="minimum" /> and…
 	/// </summary>
 	public static BetweenResult<Elements<TItem>> Between<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> subject,
+		this IThat<IAsyncEnumerable<TItem>?> subject,
 		int minimum)
 		=> new(maximum => new Elements<TItem>(subject, EnumerableQuantifier.Between(minimum, maximum)));
 
@@ -28,13 +28,13 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection has between <paramref name="minimum" /> and…
 	/// </summary>
 	public static
-		BetweenResult<ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>>>
+		BetweenResult<ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>>
 		Between<TItem>(
-			this IThatHas<IAsyncEnumerable<TItem>> source,
+			this IThatHas<IAsyncEnumerable<TItem>?> source,
 			int minimum)
 		=> new(maximum
-			=> new ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>>(
-				new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+			=> new ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>(
+				new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 					source.ExpectationBuilder.AddConstraint(it
 						=> new AsyncCollectionCountConstraint<TItem>(it,
 							EnumerableQuantifier.Between(minimum, maximum))),

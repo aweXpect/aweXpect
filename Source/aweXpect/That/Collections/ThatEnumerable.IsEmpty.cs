@@ -14,8 +14,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> IsEmpty<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsEmpty<TItem>(
+		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it => new BeEmptyConstraint<TItem>(it)),
 			source);
@@ -23,8 +23,8 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> IsNotEmpty<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
+		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
 			source);

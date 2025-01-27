@@ -9,7 +9,7 @@ public static partial class ThatEnumerable
 	///     Expect that no items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements<TItem> None<TItem>(
-		this IThat<IEnumerable<TItem>> subject)
+		this IThat<IEnumerable<TItem>?> subject)
 		=> new(subject, EnumerableQuantifier.None);
 
 	/// <summary>

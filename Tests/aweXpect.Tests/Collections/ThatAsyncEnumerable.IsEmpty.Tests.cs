@@ -16,7 +16,7 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task CancelledEnumerable_ShouldFail()
 			{
 				using CancellationTokenSource cts = new();
-				cts.Cancel();
+				await cts.CancelAsync();
 				CancellationToken token = cts.Token;
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 

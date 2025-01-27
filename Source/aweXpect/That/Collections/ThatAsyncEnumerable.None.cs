@@ -10,7 +10,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that no items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements<TItem> None<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> subject)
+		this IThat<IAsyncEnumerable<TItem>?> subject)
 		=> new(subject, EnumerableQuantifier.None);
 
 	/// <summary>

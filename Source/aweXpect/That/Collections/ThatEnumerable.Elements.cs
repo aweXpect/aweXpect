@@ -32,9 +32,9 @@ public static partial class ThatEnumerable
 	public partial class Elements<TItem>
 	{
 		private readonly EnumerableQuantifier _quantifier;
-		private readonly IThat<IEnumerable<TItem>> _subject;
+		private readonly IThat<IEnumerable<TItem>?> _subject;
 
-		internal Elements(IThat<IEnumerable<TItem>> subject, EnumerableQuantifier quantifier)
+		internal Elements(IThat<IEnumerable<TItem>?> subject, EnumerableQuantifier quantifier)
 		{
 			_subject = subject;
 			_quantifier = quantifier;

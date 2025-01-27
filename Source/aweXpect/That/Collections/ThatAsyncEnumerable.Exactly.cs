@@ -12,7 +12,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements<TItem> Exactly<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> subject,
+		this IThat<IAsyncEnumerable<TItem>?> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
 
@@ -27,11 +27,11 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection has exactly <paramref name="expected" /> items.
 	/// </summary>
-	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>>
+	public static ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>
 		Exactly<TItem>(
-			this IThatHas<IAsyncEnumerable<TItem>> source,
+			this IThatHas<IAsyncEnumerable<TItem>?> source,
 			int expected)
-		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
+		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
 			source.ExpectSubject()));

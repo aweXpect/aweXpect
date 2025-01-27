@@ -10,7 +10,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that all items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements<TItem> All<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> subject)
+		this IThat<IAsyncEnumerable<TItem>?> subject)
 		=> new(subject, EnumerableQuantifier.All);
 
 	/// <summary>

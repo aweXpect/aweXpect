@@ -17,14 +17,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			TItem expected)
 	{
 		Quantifier quantifier = new();
 		ObjectEqualityOptions options = new();
-		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
 					it,
@@ -60,15 +60,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains an item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
 		Quantifier quantifier = new();
-		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
 					it,
@@ -82,15 +82,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
-		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
@@ -119,13 +119,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		DoesNotContain<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			TItem unexpected)
 	{
 		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotContainConstraint<TItem>(it,
 					() => $"not contain {Formatter.Format(unexpected)}",
@@ -155,9 +155,9 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		DoesNotContain<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")

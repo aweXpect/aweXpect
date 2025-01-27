@@ -11,7 +11,7 @@ public static partial class ThatEnumerable
 	///     Expect that between <paramref name="minimum" /> and…
 	/// </summary>
 	public static BetweenResult<Elements<TItem>> Between<TItem>(
-		this IThat<IEnumerable<TItem>> subject,
+		this IThat<IEnumerable<TItem>?> subject,
 		int minimum)
 		=> new(maximum => new Elements<TItem>(subject, EnumerableQuantifier.Between(minimum, maximum)));
 
@@ -26,12 +26,12 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection has between <paramref name="minimum" /> and…
 	/// </summary>
-	public static BetweenResult<ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>>>
+	public static BetweenResult<ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>>>
 		Between<TItem>(
-			this IThatHas<IEnumerable<TItem>> source,
+			this IThatHas<IEnumerable<TItem>?> source,
 			int minimum)
-		=> new(maximum => new ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>>(
-			new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+		=> new(maximum => new ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>>(
+			new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 				source.ExpectationBuilder.AddConstraint(it
 					=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum))),
 				source.ExpectSubject())));
