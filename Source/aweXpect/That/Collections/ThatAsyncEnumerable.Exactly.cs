@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements Exactly(
-		this IThat<IAsyncEnumerable<string?>> subject,
+		this IThat<IAsyncEnumerable<string?>?> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
 

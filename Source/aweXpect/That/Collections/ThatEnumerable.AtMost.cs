@@ -19,7 +19,7 @@ public static partial class ThatEnumerable
 	///     Expect that at most <paramref name="maximum" /> items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements AtMost(
-		this IThat<IEnumerable<string?>> subject,
+		this IThat<IEnumerable<string?>?> subject,
 		int maximum)
 		=> new(subject, EnumerableQuantifier.AtMost(maximum));
 

@@ -19,7 +19,7 @@ public static partial class ThatEnumerable
 	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements Exactly(
-		this IThat<IEnumerable<string?>> subject,
+		this IThat<IEnumerable<string?>?> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
 

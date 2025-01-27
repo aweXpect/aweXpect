@@ -52,16 +52,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		EndsWith(
-			this IThat<IEnumerable<string>> source,
-			IEnumerable<string> expected,
+			this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new EndsWithConstraint<string, string>(it, doNotPopulateThisValue, expected.ToArray(),
+				=> new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -70,13 +70,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection ends with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		EndsWith(
-			this IThat<IEnumerable<string>> source,
+			this IThat<IEnumerable<string?>?> source,
 			params string[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new EndsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
 			source,
@@ -122,17 +122,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		DoesNotEndWith(
-			this IThat<IEnumerable<string>> source,
-			IEnumerable<string> unexpected,
+			this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotEndsWithConstraint<string, string>(it, doNotPopulateThisValue, unexpected.ToArray(),
+				=> new NotEndsWithConstraint<string?, string?>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
 			source,
 			options);
@@ -141,13 +141,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not end with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		DoesNotEndWith(
-			this IThat<IEnumerable<string>> source,
+			this IThat<IEnumerable<string?>?> source,
 			params string[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new NotEndsWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
 					options)),

@@ -36,11 +36,11 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>> AreAllUnique(
-		this IThat<IAsyncEnumerable<string>> source)
+	public static StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>> AreAllUnique(
+		this IThat<IAsyncEnumerable<string?>?> source)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(
+		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new AreAllUniqueConstraint<string, string>(it, options)),
 			source, options

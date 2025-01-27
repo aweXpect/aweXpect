@@ -39,13 +39,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> Contains(
-		this IThat<IEnumerable<string?>> source,
+	public static StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> Contains(
+		this IThat<IEnumerable<string?>?> source,
 		string? expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<string?>(
 					it,
@@ -101,14 +101,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>
-		Contains(this IThat<IEnumerable<string?>> source,
+	public static StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
+		Contains(this IThat<IEnumerable<string?>?> source,
 			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
-		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
@@ -137,13 +137,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		DoesNotContain(
-			this IThat<IEnumerable<string?>> source,
+			this IThat<IEnumerable<string?>?> source,
 			string? unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotContainConstraint<string?>(it,
 					() => $"not contain {Formatter.Format(unexpected)}{options}",

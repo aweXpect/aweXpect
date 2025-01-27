@@ -31,11 +31,11 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>> AreAllUnique(
-		this IThat<IEnumerable<string>> source)
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> AreAllUnique(
+		this IThat<IEnumerable<string?>?> source)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new AllBeUniqueConstraint<string, string>(it, options)),
 			source, options

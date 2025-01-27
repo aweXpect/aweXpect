@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that at most <paramref name="maximum" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements AtMost(
-		this IThat<IAsyncEnumerable<string?>> subject,
+		this IThat<IAsyncEnumerable<string?>?> subject,
 		int maximum)
 		=> new(subject, EnumerableQuantifier.AtMost(maximum));
 

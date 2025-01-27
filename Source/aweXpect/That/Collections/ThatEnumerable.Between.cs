@@ -19,7 +19,7 @@ public static partial class ThatEnumerable
 	///     Expect that between <paramref name="minimum" /> and…
 	/// </summary>
 	public static BetweenResult<Elements> Between(
-		this IThat<IEnumerable<string?>> subject,
+		this IThat<IEnumerable<string?>?> subject,
 		int minimum)
 		=> new(maximum => new Elements(subject, EnumerableQuantifier.Between(minimum, maximum)));
 

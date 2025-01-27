@@ -31,16 +31,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionMatchResult<IEnumerable<string>, IThat<IEnumerable<string>>>
-		Is(this IThat<IEnumerable<string>> source,
-			IEnumerable<string> expected,
+	public static StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
+		Is(this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionMatchResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
+		return new StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				=> new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);

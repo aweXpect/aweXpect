@@ -19,7 +19,7 @@ public static partial class ThatEnumerable
 	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements AtLeast(
-		this IThat<IEnumerable<string?>> subject,
+		this IThat<IEnumerable<string?>?> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
 

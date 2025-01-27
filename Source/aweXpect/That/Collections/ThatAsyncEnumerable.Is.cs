@@ -32,17 +32,17 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionMatchResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>
+	public static StringCollectionMatchResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 		Is(
-			this IThat<IAsyncEnumerable<string>> source,
-			IEnumerable<string> expected,
+			this IThat<IAsyncEnumerable<string?>?> source,
+			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new StringCollectionMatchResult<IAsyncEnumerable<string>, IThat<IAsyncEnumerable<string>>>(
+		return new StringCollectionMatchResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<string, string>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);

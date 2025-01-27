@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerable
 	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
 	/// </summary>
 	public static Elements AtLeast(
-		this IThat<IAsyncEnumerable<string?>> subject,
+		this IThat<IAsyncEnumerable<string?>?> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
 
