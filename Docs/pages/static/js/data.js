@@ -210,6 +210,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
         "message": "feat: support chaining delegate expectations in any order (#255)"
+      },
+      {
+        "sha": "acad1c5d1ed9f0832c9530823d71e37c9b40d05d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:03:25 2025 \u002B0100",
+        "message": "refactor: cleanup \u0022Make variable type not nullable\u0022 (#256)"
       }
     ],
     "labels": [
@@ -247,7 +253,8 @@ window.BENCHMARK_DATA = {
       "7f8f299c",
       "14c3633f",
       "2979f127",
-      "27688f91"
+      "27688f91",
+      "acad1c5d"
     ],
     "datasets": [
       {
@@ -288,7 +295,8 @@ window.BENCHMARK_DATA = {
           161.0345061847142,
           152.53924149274826,
           152.3485097033637,
-          157.87377548217773
+          157.87377548217773,
+          158.78417023590632
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -300,6 +308,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -383,7 +392,8 @@ window.BENCHMARK_DATA = {
           202.73949786822,
           194.37556874752045,
           198.94300275189536,
-          206.76770504315695
+          206.76770504315695,
+          196.82224595546722
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -421,6 +431,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -478,7 +489,8 @@ window.BENCHMARK_DATA = {
           588.7437077204387,
           568.8445526531765,
           563.738433901469,
-          580.7161790847779
+          580.7161790847779,
+          560.0433004924229
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -498,6 +510,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -748,6 +761,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
         "message": "feat: support chaining delegate expectations in any order (#255)"
+      },
+      {
+        "sha": "acad1c5d1ed9f0832c9530823d71e37c9b40d05d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:03:25 2025 \u002B0100",
+        "message": "refactor: cleanup \u0022Make variable type not nullable\u0022 (#256)"
       }
     ],
     "labels": [
@@ -785,7 +804,8 @@ window.BENCHMARK_DATA = {
       "7f8f299c",
       "14c3633f",
       "2979f127",
-      "27688f91"
+      "27688f91",
+      "acad1c5d"
     ],
     "datasets": [
       {
@@ -826,7 +846,8 @@ window.BENCHMARK_DATA = {
           351.0798631448012,
           348.2538963953654,
           346.41834758122764,
-          371.09008278165544
+          371.09008278165544,
+          383.7522175470988
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -838,6 +859,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -921,7 +943,8 @@ window.BENCHMARK_DATA = {
           442.6722532272339,
           411.24305969874064,
           433.3848574956258,
-          439.3355810801188
+          439.3355810801188,
+          417.0652142933437
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -959,6 +982,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1016,7 +1040,8 @@ window.BENCHMARK_DATA = {
           14602.659315926689,
           14002.51063973563,
           14294.471884663899,
-          18050.974772862024
+          18050.974772862024,
+          22419.49800008138
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1036,6 +1061,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -1286,6 +1312,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
         "message": "feat: support chaining delegate expectations in any order (#255)"
+      },
+      {
+        "sha": "acad1c5d1ed9f0832c9530823d71e37c9b40d05d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:03:25 2025 \u002B0100",
+        "message": "refactor: cleanup \u0022Make variable type not nullable\u0022 (#256)"
       }
     ],
     "labels": [
@@ -1323,7 +1355,8 @@ window.BENCHMARK_DATA = {
       "7f8f299c",
       "14c3633f",
       "2979f127",
-      "27688f91"
+      "27688f91",
+      "acad1c5d"
     ],
     "datasets": [
       {
@@ -1364,7 +1397,8 @@ window.BENCHMARK_DATA = {
           209.66417351790838,
           200.61621794700622,
           198.42189504419053,
-          210.05153250694275
+          210.05153250694275,
+          191.60033447401864
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1376,6 +1410,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1459,7 +1494,8 @@ window.BENCHMARK_DATA = {
           212.13356957435607,
           188.25184620221455,
           191.83879289627075,
-          203.7721542517344
+          203.7721542517344,
+          194.02153292069067
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1497,6 +1533,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -1554,7 +1591,8 @@ window.BENCHMARK_DATA = {
           873.7245756296011,
           816.5716874940055,
           816.8398985862732,
-          846.1014020284017
+          846.1014020284017,
+          827.5891034444173
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1574,6 +1612,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1824,6 +1863,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
         "message": "feat: support chaining delegate expectations in any order (#255)"
+      },
+      {
+        "sha": "acad1c5d1ed9f0832c9530823d71e37c9b40d05d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:03:25 2025 \u002B0100",
+        "message": "refactor: cleanup \u0022Make variable type not nullable\u0022 (#256)"
       }
     ],
     "labels": [
@@ -1861,7 +1906,8 @@ window.BENCHMARK_DATA = {
       "7f8f299c",
       "14c3633f",
       "2979f127",
-      "27688f91"
+      "27688f91",
+      "acad1c5d"
     ],
     "datasets": [
       {
@@ -1902,7 +1948,8 @@ window.BENCHMARK_DATA = {
           317.48860057195026,
           296.75530840555825,
           291.4519522190094,
-          300.23872391382855
+          300.23872391382855,
+          309.86661259333295
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1914,6 +1961,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1997,7 +2045,8 @@ window.BENCHMARK_DATA = {
           457.0513175646464,
           407.5110998471578,
           420.3721050262451,
-          436.49057092666624
+          436.49057092666624,
+          417.69425926889693
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2035,6 +2084,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -2092,7 +2142,8 @@ window.BENCHMARK_DATA = {
           974.0039006551107,
           939.4274191538493,
           912.695204441364,
-          971.3098983764648
+          971.3098983764648,
+          968.3432444254557
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2112,6 +2163,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -2362,6 +2414,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
         "message": "feat: support chaining delegate expectations in any order (#255)"
+      },
+      {
+        "sha": "acad1c5d1ed9f0832c9530823d71e37c9b40d05d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:03:25 2025 \u002B0100",
+        "message": "refactor: cleanup \u0022Make variable type not nullable\u0022 (#256)"
       }
     ],
     "labels": [
@@ -2399,7 +2457,8 @@ window.BENCHMARK_DATA = {
       "7f8f299c",
       "14c3633f",
       "2979f127",
-      "27688f91"
+      "27688f91",
+      "acad1c5d"
     ],
     "datasets": [
       {
@@ -2440,7 +2499,8 @@ window.BENCHMARK_DATA = {
           1223.426608022054,
           1161.8742585863386,
           1167.9363388334002,
-          1216.0451708475748
+          1216.0451708475748,
+          1300.6401838938395
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2466,6 +2526,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -2535,7 +2596,8 @@ window.BENCHMARK_DATA = {
           1292.0761892954508,
           1232.4627752304077,
           1241.3908696492513,
-          1239.2258140563965
+          1239.2258140563965,
+          1207.3014738718668
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2573,6 +2635,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -2630,7 +2693,8 @@ window.BENCHMARK_DATA = {
           2326.204712168376,
           2215.8026371002197,
           2197.8543772379558,
-          2435.8718149820966
+          2435.8718149820966,
+          2393.9500022888183
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2650,6 +2714,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -2900,6 +2965,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
         "message": "feat: support chaining delegate expectations in any order (#255)"
+      },
+      {
+        "sha": "acad1c5d1ed9f0832c9530823d71e37c9b40d05d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:03:25 2025 \u002B0100",
+        "message": "refactor: cleanup \u0022Make variable type not nullable\u0022 (#256)"
       }
     ],
     "labels": [
@@ -2937,7 +3008,8 @@ window.BENCHMARK_DATA = {
       "7f8f299c",
       "14c3633f",
       "2979f127",
-      "27688f91"
+      "27688f91",
+      "acad1c5d"
     ],
     "datasets": [
       {
@@ -2978,7 +3050,8 @@ window.BENCHMARK_DATA = {
           1255.6449375152588,
           1224.0371272223335,
           1216.1771432240805,
-          1251.5042694091796
+          1251.5042694091796,
+          1283.7455701828003
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3004,6 +3077,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -3073,7 +3147,8 @@ window.BENCHMARK_DATA = {
           81697.68528645833,
           80548.87144252232,
           84202.6589704241,
-          83678.22845052084
+          83678.22845052084,
+          82347.04729352679
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3118,6 +3193,7 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53212,
+          53206,
           53206,
           53206
         ],
@@ -3168,7 +3244,8 @@ window.BENCHMARK_DATA = {
           4216.225868225098,
           4132.777864728655,
           4180.005763244629,
-          4152.941244272085
+          4152.941244272085,
+          4456.822461641752
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3188,6 +3265,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
