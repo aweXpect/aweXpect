@@ -23,7 +23,7 @@ public static partial class ThatObject
 				return new ConstraintResult.Success<T>(actual, ToString());
 			}
 
-			return new ConstraintResult.Failure(ToString(),
+			return new ConstraintResult.Failure<T>(actual, ToString(),
 				failureMessageFactory(actual, expected, it));
 		}
 

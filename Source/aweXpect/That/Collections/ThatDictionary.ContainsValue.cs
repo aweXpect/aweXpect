@@ -11,9 +11,9 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> ContainsValue<TKey,
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>> ContainsValue<TKey,
 		TValue>(
-		this IThat<IDictionary<TKey, TValue>> source,
+		this IThat<IDictionary<TKey, TValue>?> source,
 		TValue expected)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
@@ -24,9 +24,9 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>
 		DoesNotContainValue<TKey, TValue>(
-			this IThat<IDictionary<TKey, TValue>> source,
+			this IThat<IDictionary<TKey, TValue>?> source,
 			TValue unexpected)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
@@ -35,11 +35,10 @@ public static partial class ThatDictionary
 		);
 
 	private readonly struct ContainValueConstraint<TKey, TValue>(string it, TValue expected)
-		: IValueConstraint<IDictionary<TKey, TValue>>
+		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -59,11 +58,10 @@ public static partial class ThatDictionary
 	}
 
 	private readonly struct NotContainValueConstraint<TKey, TValue>(string it, TValue unexpected)
-		: IValueConstraint<IDictionary<TKey, TValue>>
+		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),

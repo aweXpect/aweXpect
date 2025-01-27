@@ -162,7 +162,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Is([]);
+					=> await That(subject).Is([]);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

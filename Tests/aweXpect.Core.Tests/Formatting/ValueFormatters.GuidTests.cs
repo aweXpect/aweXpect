@@ -42,7 +42,7 @@ public partial class ValueFormatters
 		public async Task NullableShouldUseRoundtripFormat()
 		{
 			Guid? value = Guid.NewGuid();
-			string expectedResult = value.ToString();
+			string? expectedResult = value.ToString();
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);

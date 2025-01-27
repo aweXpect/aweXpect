@@ -24,15 +24,14 @@ public static partial class ThatEnumerable
 		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (expected is null)
@@ -72,7 +71,7 @@ public static partial class ThatEnumerable
 			=> $"{matchOptions.GetExpectation(expectedExpression)}{options}";
 	}
 
-	private readonly struct SyncCollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
+	private readonly struct SyncCollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
@@ -89,15 +88,14 @@ public static partial class ThatEnumerable
 		}
 
 		public async Task<ConstraintResult> IsMetBy(
-			IEnumerable<TItem> actual,
+			IEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(
-					actual!,
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(
+					actual,
 					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 					$"{_it} was <null>");
 			}
@@ -141,7 +139,7 @@ public static partial class ThatEnumerable
 		}
 	}
 
-	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
+	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
@@ -162,19 +160,17 @@ public static partial class ThatEnumerable
 			_verb = verb;
 		}
 
-		public async Task<ConstraintResult> IsMetBy(
-			IEnumerable<TItem> actual,
+		public Task<ConstraintResult> IsMetBy(
+			IEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			await Task.Yield();
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(
-					actual!,
+				return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>?>(
+					actual,
 					_quantifier.GetExpectation(_it, _expectationText()),
-					$"{_it} was <null>");
+					$"{_it} was <null>"));
 			}
 
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
@@ -196,24 +192,36 @@ public static partial class ThatEnumerable
 
 				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
-					return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
-						totalCount, _verb);
+					return Task.FromResult(_quantifier.GetResult(
+						actual,
+						_it,
+						_expectationText(),
+						matchingCount,
+						notMatchingCount,
+						totalCount,
+						_verb));
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(
+					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
 						actual, _quantifier.GetExpectation(_it, _expectationText()),
-						"could not verify, because it was cancelled early");
+						"could not verify, because it was cancelled early"));
 				}
 			}
 
-			return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount, _verb);
+			return Task.FromResult(_quantifier.GetResult(
+				actual,
+				_it,
+				_expectationText(),
+				matchingCount,
+				notMatchingCount,
+				matchingCount + notMatchingCount,
+				_verb));
 		}
 	}
 
-	private readonly struct SyncCollectionCountConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>>
+	private readonly struct SyncCollectionCountConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
@@ -226,16 +234,15 @@ public static partial class ThatEnumerable
 		}
 
 		public Task<ConstraintResult> IsMetBy(
-			IEnumerable<TItem> actual,
+			IEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return Task.FromResult<ConstraintResult>(
-					new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual!,
+					new ConstraintResult.Failure<IEnumerable<TItem>?>(
+						actual,
 						_quantifier.GetExpectation(_it, null),
 						$"{_it} was <null>"));
 			}
@@ -285,14 +292,13 @@ public static partial class ThatEnumerable
 		SortOrder sortOrder,
 		CollectionOrderOptions<TMember> options,
 		string memberExpression)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IEnumerable<TItem> materialized = context

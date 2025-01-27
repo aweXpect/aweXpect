@@ -114,7 +114,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).IsContainedIn([]);
+					=> await That(subject).IsContainedIn([]);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

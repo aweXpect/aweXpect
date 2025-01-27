@@ -41,7 +41,7 @@ public sealed partial class ThatDictionary
 				IDictionary<string, int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).DoesNotContainKey("foo");
+					=> await That(subject).DoesNotContainKey("foo");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

@@ -18,7 +18,7 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection contains exactly one element.
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(
-		this IThat<IAsyncEnumerable<TItem>> source)
+		this IThat<IAsyncEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new HasSingleConstraint<TItem>(it)),
 			async f =>
@@ -27,11 +27,17 @@ public static partial class ThatAsyncEnumerable
 				return await enumerator.MoveNextAsync() ? enumerator.Current : default;
 			});
 
-	private readonly struct HasSingleConstraint<TItem>(string it) : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct HasSingleConstraint<TItem>(string it) : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					$"{it} was <null>");
+			}
+
 			IAsyncEnumerable<TItem> materialized =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			TItem? singleItem = default;

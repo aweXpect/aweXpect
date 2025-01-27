@@ -14,11 +14,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> Are(
+		public StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> Are(
 			string? expected)
 		{
 			StringEqualityOptions options = new();
-			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
+			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<string?>(
 						it,
@@ -36,11 +36,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			Are(TItem expected)
 		{
 			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,
@@ -55,11 +55,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that the items in the collection satisfy the <paramref name="expectations" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			Are(Action<IThat<TItem>> expectations)
 		{
 			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new SyncCollectionConstraint<TItem>(it, _quantifier, expectations)),
 				_subject,
@@ -69,11 +69,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection are of type <typeparamref name="TType" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			Are<TType>()
 		{
 			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,
@@ -88,11 +88,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     Verifies that all items in the collection are of type <paramref name="type" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			Are(Type type)
 		{
 			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,

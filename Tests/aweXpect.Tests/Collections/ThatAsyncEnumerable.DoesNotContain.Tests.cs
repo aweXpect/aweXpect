@@ -106,7 +106,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).DoesNotContain(expected);
+					=> await That(subject).DoesNotContain(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -159,7 +159,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).DoesNotContain(expected);
+					=> await That(subject).DoesNotContain(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -243,7 +243,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).DoesNotContain(_ => true);
+					=> await That(subject).DoesNotContain(_ => true);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

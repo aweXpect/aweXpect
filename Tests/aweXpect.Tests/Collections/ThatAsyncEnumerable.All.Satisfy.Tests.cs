@@ -11,6 +11,7 @@ public sealed partial class ThatAsyncEnumerable
 	{
 		public sealed class Satisfy
 		{
+			// ReSharper disable once MemberHidesStaticFromOuterClass
 			public sealed class Tests
 			{
 				[Fact]
@@ -75,7 +76,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string>? subject = null;
 
 					async Task Act()
-						=> await That(subject!).All().Satisfy(_ => true);
+						=> await That(subject).All().Satisfy(_ => true);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
