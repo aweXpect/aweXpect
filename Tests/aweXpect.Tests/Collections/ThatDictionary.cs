@@ -23,9 +23,9 @@ public partial class ThatDictionary
 		return result;
 	}
 
-	public static IDictionary<int, T> ToDictionary<T>(T[] items)
+	public static IDictionary<int, T?> ToDictionary<T>(T[] items)
 	{
-		Dictionary<int, T> result = new();
+		Dictionary<int, T?> result = new();
 		int index = 0;
 		foreach (T item in items)
 		{

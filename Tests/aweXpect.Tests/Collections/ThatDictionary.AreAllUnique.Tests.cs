@@ -87,7 +87,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "a", "a"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "a", "a"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
@@ -98,7 +98,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAllValuesAreUnique_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "b", "c"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "b", "c"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -109,7 +109,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenDiffersInCasing_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "A"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "A"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -120,7 +120,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenDiffersInCasingAndCasingIsIgnored_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "A"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "A"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().IgnoringCase();
@@ -137,7 +137,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "b", "c", "a"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "b", "c", "a"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -154,7 +154,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "b", "c", "a", "b", "x"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "b", "c", "a", "b", "x"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -172,7 +172,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IDictionary<int, string>? subject = null;
+				IDictionary<int, string?>? subject = null;
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();

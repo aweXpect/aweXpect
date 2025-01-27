@@ -38,14 +38,13 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static StringEqualityResult<IDictionary<TKey, string>, IThat<IDictionary<TKey, string>>>
-		AreAllUnique<TKey>(
-			this IThat<IDictionary<TKey, string>> source)
+	public static StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>
+		AreAllUnique<TKey>(this IThat<IDictionary<TKey, string?>?> source)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IDictionary<TKey, string>, IThat<IDictionary<TKey, string>>>(
+		return new StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AllBeUniqueConstraint<TKey, string, string>(it, options)),
+				new AllBeUniqueConstraint<TKey, string?, string?>(it, options)),
 			source, options
 		);
 	}
