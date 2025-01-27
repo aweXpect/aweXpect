@@ -119,7 +119,7 @@ public abstract class Expectation
 		internal override async Task<Result> GetResult(int index)
 		{
 			List<string> expectationTexts = new();
-			List<string>? failureTexts = new();
+			List<string> failureTexts = new();
 			foreach (Expectation? expectation in _expectations)
 			{
 				Result result = await expectation.GetResult(index);
@@ -159,7 +159,7 @@ public abstract class Expectation
 
 			if (!IsSuccess(failureTexts.Count, expectationTexts.Count))
 			{
-				ConstraintResult.Failure? result = new(expectationText,
+				ConstraintResult.Failure result = new(expectationText,
 					string.Join(
 						Environment.NewLine, failureTexts));
 				return new Result(index, GetSubjectLine(), result);

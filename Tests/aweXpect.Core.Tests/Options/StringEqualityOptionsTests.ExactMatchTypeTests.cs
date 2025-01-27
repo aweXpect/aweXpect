@@ -90,7 +90,7 @@ public sealed partial class StringEqualityOptionsTests
 		[Fact]
 		public async Task WhenExpectedIsNull_ShouldFail()
 		{
-			string? sut = "foo";
+			string sut = "foo";
 
 			async Task Act()
 				=> await That(sut).Is(null).Exactly();
@@ -106,7 +106,7 @@ public sealed partial class StringEqualityOptionsTests
 		[Fact]
 		public async Task WhenIgnoringCase_ShouldCompareCaseInsensitive()
 		{
-			string? sut = "foo";
+			string sut = "foo";
 
 			async Task Act()
 				=> await That(sut).Is("FOO").Exactly().IgnoringCase();

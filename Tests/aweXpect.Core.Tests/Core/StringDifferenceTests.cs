@@ -11,7 +11,7 @@ public class StringDifferenceTests
 	{
 		const string actual = "Foo";
 		const string expected = "Foo";
-		ExecuteOnceComparer? comparer = new();
+		ExecuteOnceComparer comparer = new();
 
 		StringDifference sut = new(actual, expected, comparer);
 
@@ -197,7 +197,7 @@ public class StringDifferenceTests
 	{
 		const string actual = "this IS a text that only differs in casing";
 		const string expected = "this is a text that only differs in casing";
-		StringComparer? comparer = StringComparer.OrdinalIgnoreCase;
+		StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
 		StringDifference sut = new(actual, expected, comparer);
 

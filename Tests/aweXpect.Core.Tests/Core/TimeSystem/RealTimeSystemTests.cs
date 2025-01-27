@@ -8,9 +8,9 @@ public sealed class RealTimeSystemTests
 	[Fact]
 	public async Task Stopwatch_New_ShouldReturnDifferentStopwatches()
 	{
-		ITimeSystem? timeSystem = RealTimeSystem.Instance;
-		IStopwatch? stopwatch1 = timeSystem.Stopwatch.New();
-		IStopwatch? stopwatch2 = timeSystem.Stopwatch.New();
+		ITimeSystem timeSystem = RealTimeSystem.Instance;
+		IStopwatch stopwatch1 = timeSystem.Stopwatch.New();
+		IStopwatch stopwatch2 = timeSystem.Stopwatch.New();
 
 		stopwatch1.Start();
 
@@ -21,8 +21,8 @@ public sealed class RealTimeSystemTests
 	[Fact]
 	public async Task Stopwatch_ShouldUseRealValues()
 	{
-		ITimeSystem? timeSystem = RealTimeSystem.Instance;
-		IStopwatch? stopwatch = timeSystem.Stopwatch.New();
+		ITimeSystem timeSystem = RealTimeSystem.Instance;
+		IStopwatch stopwatch = timeSystem.Stopwatch.New();
 
 		await That(stopwatch.IsRunning).IsFalse();
 
