@@ -4,6 +4,9 @@ using FluentAssertions.Numeric;
 
 namespace aweXpect.Benchmarks;
 
+/// <summary>
+///     In this benchmark we verify that the subject is greater than the expected minimum.<br />
+/// </summary>
 public partial class HappyCaseBenchmarks
 {
 	private readonly int _intMinimum = 20;
