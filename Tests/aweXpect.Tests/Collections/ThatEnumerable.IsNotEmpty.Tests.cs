@@ -93,7 +93,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).IsNotEmpty();
+					=> await That(subject).IsNotEmpty();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

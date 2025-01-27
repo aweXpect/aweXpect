@@ -158,7 +158,7 @@ public static partial class ThatAsyncEnumerable
 			options);
 	}
 
-	private readonly struct EndsWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct EndsWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;
@@ -178,10 +178,9 @@ public static partial class ThatAsyncEnumerable
 			_options = options;
 		}
 
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -226,7 +225,7 @@ public static partial class ThatAsyncEnumerable
 			=> $"end with {_expectedExpression}{_options}";
 	}
 
-	private readonly struct DoesNotEndWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct DoesNotEndWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;
@@ -246,10 +245,9 @@ public static partial class ThatAsyncEnumerable
 			_options = options;
 		}
 
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),

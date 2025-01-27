@@ -30,14 +30,13 @@ public static partial class ThatEnumerable
 			source);
 
 	private readonly struct BeEmptyConstraint<TItem>(string it)
-		: IValueConstraint<IEnumerable<TItem>>
+		: IValueConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (actual is ICollection<TItem> collectionOfT)
@@ -66,14 +65,13 @@ public static partial class ThatEnumerable
 	}
 
 	private readonly struct NotBeEmptyConstraint<TItem>(string it)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (actual is ICollection<TItem> collectionOfT)

@@ -71,7 +71,7 @@ public sealed partial class ThatDictionary
 				IDictionary<int, int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -175,7 +175,7 @@ public sealed partial class ThatDictionary
 				IDictionary<int, string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -252,7 +252,7 @@ public sealed partial class ThatDictionary
 				IDictionary<int, MyClass>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -357,7 +357,7 @@ public sealed partial class ThatDictionary
 				IDictionary<int, MyStringClass>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

@@ -22,10 +22,16 @@ public static partial class ThatEnumerable
 			f => f.FirstOrDefault()
 		);
 
-	private readonly struct HaveSingleConstraint<TItem>(string it) : IContextConstraint<IEnumerable<TItem>>
+	private readonly struct HaveSingleConstraint<TItem>(string it) : IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					$"{it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			TItem? singleItem = default;
 			int count = 0;

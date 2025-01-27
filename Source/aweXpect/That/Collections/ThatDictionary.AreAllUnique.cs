@@ -101,15 +101,14 @@ public static partial class ThatDictionary
 	}
 
 	private readonly struct AllBeUniqueConstraint<TKey, TValue, TMatch>(string it, IOptionsEquality<TMatch> options)
-		: IContextConstraint<IDictionary<TKey, TValue>>
+		: IContextConstraint<IDictionary<TKey, TValue>?>
 		where TValue : TMatch
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IDictionary<TKey, TValue>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			List<TValue> checkedItems = new();
@@ -146,15 +145,14 @@ public static partial class ThatDictionary
 		Func<TValue, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		: IContextConstraint<IDictionary<TKey, TValue>>
+		: IContextConstraint<IDictionary<TKey, TValue>?>
 		where TMember : TMatch
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IDictionary<TKey, TValue>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			List<TMember> checkedItems = new();

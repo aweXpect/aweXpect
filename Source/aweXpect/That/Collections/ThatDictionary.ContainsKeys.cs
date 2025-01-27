@@ -36,11 +36,10 @@ public static partial class ThatDictionary
 		);
 
 	private readonly struct ContainKeysConstraint<TKey, TValue>(string it, TKey[] expected)
-		: IValueConstraint<IDictionary<TKey, TValue>>
+		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -61,11 +60,10 @@ public static partial class ThatDictionary
 	}
 
 	private readonly struct NotContainKeysConstraint<TKey, TValue>(string it, TKey[] unexpected)
-		: IValueConstraint<IDictionary<TKey, TValue>>
+		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),

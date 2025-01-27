@@ -62,6 +62,22 @@ public sealed partial class ThatAsyncEnumerable
 					             but it was empty
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasSingle();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have a single item,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class WhichTests

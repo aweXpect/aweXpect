@@ -8,6 +8,7 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;
 
@@ -83,15 +84,14 @@ public static partial class ThatEnumerable
 	}
 
 	private readonly struct AllBeUniqueConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IEnumerable<TItem> materialized = context
@@ -130,15 +130,14 @@ public static partial class ThatEnumerable
 		Func<TItem, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 		where TMember : TMatch
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IEnumerable<TItem> materialized = context

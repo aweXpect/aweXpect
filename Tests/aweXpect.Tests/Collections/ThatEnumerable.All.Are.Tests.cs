@@ -343,7 +343,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<string>? subject = null;
 
 					async Task Act()
-						=> await That(subject!).All().Are(constantValue);
+						=> await That(subject).All().Are(constantValue);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""

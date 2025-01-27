@@ -155,7 +155,7 @@ public static partial class ThatEnumerable
 			options);
 	}
 
-	private readonly struct StartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>>
+	private readonly struct StartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;
@@ -174,9 +174,8 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -215,7 +214,7 @@ public static partial class ThatEnumerable
 			=> $"start with {_expectedExpression}{_options}";
 	}
 
-	private readonly struct NotStartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>>
+	private readonly struct NotStartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;
@@ -234,9 +233,8 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),

@@ -14,7 +14,7 @@ public sealed partial class ThatDictionary
 				IDictionary<int, string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).ContainsValue("foo");
+					=> await That(subject).ContainsValue("foo");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
