@@ -204,6 +204,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 21:17:51 2025 \u002B0100",
         "message": "docs: add explicit package descriptions (#251)"
+      },
+      {
+        "sha": "27688f91da484e4a8cd4f6139ae49ead54df35fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
+        "message": "feat: support chaining delegate expectations in any order (#255)"
       }
     ],
     "labels": [
@@ -240,7 +246,8 @@ window.BENCHMARK_DATA = {
       "a14be273",
       "7f8f299c",
       "14c3633f",
-      "2979f127"
+      "2979f127",
+      "27688f91"
     ],
     "datasets": [
       {
@@ -280,7 +287,8 @@ window.BENCHMARK_DATA = {
           165.96759253281814,
           161.0345061847142,
           152.53924149274826,
-          152.3485097033637
+          152.3485097033637,
+          157.87377548217773
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -292,6 +300,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -373,7 +382,8 @@ window.BENCHMARK_DATA = {
           186.7260476430257,
           202.73949786822,
           194.37556874752045,
-          198.94300275189536
+          198.94300275189536,
+          206.76770504315695
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -411,6 +421,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -466,7 +477,8 @@ window.BENCHMARK_DATA = {
           555.8821620941162,
           588.7437077204387,
           568.8445526531765,
-          563.738433901469
+          563.738433901469,
+          580.7161790847779
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -486,6 +498,7 @@ window.BENCHMARK_DATA = {
           1712,
           1712,
           1712,
+          1752,
           1752,
           1752,
           1752,
@@ -729,6 +742,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 21:17:51 2025 \u002B0100",
         "message": "docs: add explicit package descriptions (#251)"
+      },
+      {
+        "sha": "27688f91da484e4a8cd4f6139ae49ead54df35fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
+        "message": "feat: support chaining delegate expectations in any order (#255)"
       }
     ],
     "labels": [
@@ -765,7 +784,8 @@ window.BENCHMARK_DATA = {
       "a14be273",
       "7f8f299c",
       "14c3633f",
-      "2979f127"
+      "2979f127",
+      "27688f91"
     ],
     "datasets": [
       {
@@ -805,7 +825,8 @@ window.BENCHMARK_DATA = {
           333.00602436065674,
           351.0798631448012,
           348.2538963953654,
-          346.41834758122764
+          346.41834758122764,
+          371.09008278165544
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -817,6 +838,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -898,7 +920,8 @@ window.BENCHMARK_DATA = {
           406.20023918151855,
           442.6722532272339,
           411.24305969874064,
-          433.3848574956258
+          433.3848574956258,
+          439.3355810801188
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -936,6 +959,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -991,7 +1015,8 @@ window.BENCHMARK_DATA = {
           14593.537686665853,
           14602.659315926689,
           14002.51063973563,
-          14294.471884663899
+          14294.471884663899,
+          18050.974772862024
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1011,6 +1036,7 @@ window.BENCHMARK_DATA = {
           26616,
           26616,
           26616,
+          26552,
           26552,
           26552,
           26552,
@@ -1254,6 +1280,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 21:17:51 2025 \u002B0100",
         "message": "docs: add explicit package descriptions (#251)"
+      },
+      {
+        "sha": "27688f91da484e4a8cd4f6139ae49ead54df35fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
+        "message": "feat: support chaining delegate expectations in any order (#255)"
       }
     ],
     "labels": [
@@ -1290,7 +1322,8 @@ window.BENCHMARK_DATA = {
       "a14be273",
       "7f8f299c",
       "14c3633f",
-      "2979f127"
+      "2979f127",
+      "27688f91"
     ],
     "datasets": [
       {
@@ -1330,7 +1363,8 @@ window.BENCHMARK_DATA = {
           191.36509375572206,
           209.66417351790838,
           200.61621794700622,
-          198.42189504419053
+          198.42189504419053,
+          210.05153250694275
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1342,6 +1376,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1423,7 +1458,8 @@ window.BENCHMARK_DATA = {
           197.5383573214213,
           212.13356957435607,
           188.25184620221455,
-          191.83879289627075
+          191.83879289627075,
+          203.7721542517344
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1461,6 +1497,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -1516,7 +1553,8 @@ window.BENCHMARK_DATA = {
           819.5391736030579,
           873.7245756296011,
           816.5716874940055,
-          816.8398985862732
+          816.8398985862732,
+          846.1014020284017
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1536,6 +1574,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2240,
           2240,
           2240,
           2240,
@@ -1779,6 +1818,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 21:17:51 2025 \u002B0100",
         "message": "docs: add explicit package descriptions (#251)"
+      },
+      {
+        "sha": "27688f91da484e4a8cd4f6139ae49ead54df35fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
+        "message": "feat: support chaining delegate expectations in any order (#255)"
       }
     ],
     "labels": [
@@ -1815,7 +1860,8 @@ window.BENCHMARK_DATA = {
       "a14be273",
       "7f8f299c",
       "14c3633f",
-      "2979f127"
+      "2979f127",
+      "27688f91"
     ],
     "datasets": [
       {
@@ -1855,7 +1901,8 @@ window.BENCHMARK_DATA = {
           299.3778176943461,
           317.48860057195026,
           296.75530840555825,
-          291.4519522190094
+          291.4519522190094,
+          300.23872391382855
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1867,6 +1914,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -1948,7 +1996,8 @@ window.BENCHMARK_DATA = {
           422.1491066296895,
           457.0513175646464,
           407.5110998471578,
-          420.3721050262451
+          420.3721050262451,
+          436.49057092666624
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1986,6 +2035,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -2041,7 +2091,8 @@ window.BENCHMARK_DATA = {
           922.6317602566311,
           974.0039006551107,
           939.4274191538493,
-          912.695204441364
+          912.695204441364,
+          971.3098983764648
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2061,6 +2112,7 @@ window.BENCHMARK_DATA = {
           2328,
           2328,
           2328,
+          2232,
           2232,
           2232,
           2232,
@@ -2304,6 +2356,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 21:17:51 2025 \u002B0100",
         "message": "docs: add explicit package descriptions (#251)"
+      },
+      {
+        "sha": "27688f91da484e4a8cd4f6139ae49ead54df35fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
+        "message": "feat: support chaining delegate expectations in any order (#255)"
       }
     ],
     "labels": [
@@ -2340,7 +2398,8 @@ window.BENCHMARK_DATA = {
       "a14be273",
       "7f8f299c",
       "14c3633f",
-      "2979f127"
+      "2979f127",
+      "27688f91"
     ],
     "datasets": [
       {
@@ -2380,7 +2439,8 @@ window.BENCHMARK_DATA = {
           1170.2736518859863,
           1223.426608022054,
           1161.8742585863386,
-          1167.9363388334002
+          1167.9363388334002,
+          1216.0451708475748
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2406,6 +2466,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -2473,7 +2534,8 @@ window.BENCHMARK_DATA = {
           1234.0787826538085,
           1292.0761892954508,
           1232.4627752304077,
-          1241.3908696492513
+          1241.3908696492513,
+          1239.2258140563965
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2511,6 +2573,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -2566,7 +2629,8 @@ window.BENCHMARK_DATA = {
           2236.2402493794757,
           2326.204712168376,
           2215.8026371002197,
-          2197.8543772379558
+          2197.8543772379558,
+          2435.8718149820966
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2586,6 +2650,7 @@ window.BENCHMARK_DATA = {
           3216,
           3216,
           3216,
+          3256,
           3256,
           3256,
           3256,
@@ -2829,6 +2894,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Jan 26 21:17:51 2025 \u002B0100",
         "message": "docs: add explicit package descriptions (#251)"
+      },
+      {
+        "sha": "27688f91da484e4a8cd4f6139ae49ead54df35fb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Jan 27 08:01:04 2025 \u002B0100",
+        "message": "feat: support chaining delegate expectations in any order (#255)"
       }
     ],
     "labels": [
@@ -2865,7 +2936,8 @@ window.BENCHMARK_DATA = {
       "a14be273",
       "7f8f299c",
       "14c3633f",
-      "2979f127"
+      "2979f127",
+      "27688f91"
     ],
     "datasets": [
       {
@@ -2905,7 +2977,8 @@ window.BENCHMARK_DATA = {
           1256.5969964345297,
           1255.6449375152588,
           1224.0371272223335,
-          1216.1771432240805
+          1216.1771432240805,
+          1251.5042694091796
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2931,6 +3004,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          2560,
           2560,
           2560,
           2560,
@@ -2998,7 +3072,8 @@ window.BENCHMARK_DATA = {
           84822.48805338542,
           81697.68528645833,
           80548.87144252232,
-          84202.6589704241
+          84202.6589704241,
+          83678.22845052084
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3043,6 +3118,7 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53212,
+          53206,
           53206
         ],
         "borderColor": "#FF671B",
@@ -3091,7 +3167,8 @@ window.BENCHMARK_DATA = {
           4214.238644917806,
           4216.225868225098,
           4132.777864728655,
-          4180.005763244629
+          4180.005763244629,
+          4152.941244272085
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3111,6 +3188,7 @@ window.BENCHMARK_DATA = {
           5160,
           5160,
           5160,
+          5128,
           5128,
           5128,
           5128,
