@@ -335,7 +335,7 @@ namespace aweXpect
         public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.Task<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(System.Threading.Tasks.ValueTask<T> subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Core.IThat<T> That<T>(T subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThat<T[]> That<T>(T[] subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Core.IThat<T[]?> That<T>(T[]? subject, [System.Runtime.CompilerServices.CallerArgumentExpression("subject")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.Expectation.Combination.All ThatAll(params aweXpect.Results.Expectation[] expectations) { }
         public static aweXpect.Results.Expectation.Combination.Any ThatAny(params aweXpect.Results.Expectation[] expectations) { }
     }

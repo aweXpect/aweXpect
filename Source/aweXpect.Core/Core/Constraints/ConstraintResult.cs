@@ -145,7 +145,7 @@ public abstract class ConstraintResult
 			}
 
 			value = default;
-			return false;
+			return Value is null;
 		}
 
 		/// <inheritdoc />
