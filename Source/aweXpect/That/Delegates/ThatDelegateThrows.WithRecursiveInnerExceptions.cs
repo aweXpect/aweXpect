@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Delegates;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -16,8 +17,8 @@ public static partial class ThatDelegateThrows
 	///     Recursively applies the expectations on the <see cref="Exception.InnerException" /> (if not <see langword="null" />
 	///     and for <see cref="AggregateException" /> also on the <see cref="AggregateException.InnerExceptions" />.
 	/// </remarks>
-	public static AndOrResult<TException?, IThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(
-		this IThatDelegateThrows<TException> source,
+	public static AndOrResult<TException?, ThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(
+		this ThatDelegateThrows<TException> source,
 		Action<IThat<IEnumerable<Exception>>> expectations)
 		where TException : Exception?
 		=> new(source.ExpectationBuilder
