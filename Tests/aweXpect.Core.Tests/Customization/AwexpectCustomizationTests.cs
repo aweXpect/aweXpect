@@ -69,11 +69,11 @@ public class AwexpectCustomizationTests
 		string valueAfterLifetime1 = Customize.aweXpect.MyConfiguration().Get();
 
 		await ThatAll(
-			That(valueBeforeLifetime1).Is("foo"),
-			That(valueInLifetime1).Is("l1"),
-			That(valueInLifetime2).Is("l2"),
-			That(valueInLifetime1AfterLifetime2).Is("l1"),
-			That(valueAfterLifetime1).Is("foo")
+			That(valueBeforeLifetime1).IsEqualTo("foo"),
+			That(valueInLifetime1).IsEqualTo("l1"),
+			That(valueInLifetime2).IsEqualTo("l2"),
+			That(valueInLifetime1AfterLifetime2).IsEqualTo("l1"),
+			That(valueAfterLifetime1).IsEqualTo("foo")
 		);
 	}
 }

@@ -12,7 +12,7 @@ public static partial class ThatNullableTimeSpan
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>> Is(
+	public static TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>> IsEqualTo(
 		this IThat<TimeSpan?> source,
 		TimeSpan? expected)
 	{
@@ -27,7 +27,7 @@ public static partial class ThatNullableTimeSpan
 	/// <summary>
 	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>> IsNot(
+	public static TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>> IsNotEqualTo(
 		this IThat<TimeSpan?> source,
 		TimeSpan? unexpected)
 	{

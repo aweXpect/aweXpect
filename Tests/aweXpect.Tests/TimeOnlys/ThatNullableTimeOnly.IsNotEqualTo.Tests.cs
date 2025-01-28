@@ -3,7 +3,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatNullableTimeOnly
 {
-	public sealed class IsNot
+	public sealed class IsNotEqualTo
 	{
 		public sealed class Tests
 		{
@@ -14,7 +14,7 @@ public sealed partial class ThatNullableTimeOnly
 				TimeOnly? unexpected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -26,7 +26,7 @@ public sealed partial class ThatNullableTimeOnly
 				TimeOnly? unexpected = null;
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -38,7 +38,7 @@ public sealed partial class ThatNullableTimeOnly
 				TimeOnly? unexpected = null;
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -55,7 +55,7 @@ public sealed partial class ThatNullableTimeOnly
 				TimeOnly? unexpected = LaterTime();
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -67,7 +67,7 @@ public sealed partial class ThatNullableTimeOnly
 				TimeOnly? unexpected = subject;
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -90,7 +90,7 @@ public sealed partial class ThatNullableTimeOnly
 				TimeOnly? unexpected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected)
+					=> await That(subject).IsNotEqualTo(unexpected)
 						.Within(tolerance)
 						.Because("we want to test the failure");
 

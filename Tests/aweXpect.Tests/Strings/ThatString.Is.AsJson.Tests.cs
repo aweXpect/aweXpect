@@ -33,7 +33,7 @@ public sealed partial class ThatString
 					string expected = "{}";
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -78,7 +78,7 @@ public sealed partial class ThatString
 					string expected = "{}";
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -104,7 +104,7 @@ public sealed partial class ThatString
 					string subject = "{}";
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson(o => o.IgnoringAdditionalProperties());
+						=> await That(subject).IsEqualTo(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
@@ -128,7 +128,7 @@ public sealed partial class ThatString
 					string message)
 				{
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"*but it differed as {message}").AsWildcard();
@@ -146,7 +146,7 @@ public sealed partial class ThatString
 					string message)
 				{
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"*but it differed as {message}").AsWildcard();
@@ -167,7 +167,7 @@ public sealed partial class ThatString
 					                  """;
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -201,7 +201,7 @@ public sealed partial class ThatString
 					                  """;
 
 					async Task Act()
-						=> await That(subject).Is(expected)
+						=> await That(subject).IsEqualTo(expected)
 							.AsJson(o => o.IgnoringAdditionalProperties(ignoreAdditionalProperties));
 
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreAdditionalProperties)
@@ -225,7 +225,7 @@ public sealed partial class ThatString
 					                  """;
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson(o => o.IgnoringAdditionalProperties());
+						=> await That(subject).IsEqualTo(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -250,7 +250,7 @@ public sealed partial class ThatString
 					                  """;
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -274,7 +274,7 @@ public sealed partial class ThatString
 					string expected = "{}";
 
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson(o => o.IgnoringAdditionalProperties());
+						=> await That(subject).IsEqualTo(expected).AsJson(o => o.IgnoringAdditionalProperties());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($$"""
@@ -297,7 +297,7 @@ public sealed partial class ThatString
 					string because)
 				{
 					async Task Act()
-						=> await That(subject).Is(expected).AsJson();
+						=> await That(subject).IsEqualTo(expected).AsJson();
 
 					await That(Act).DoesNotThrow().Because(because);
 				}

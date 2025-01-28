@@ -16,7 +16,7 @@ public sealed class OrNodeTests
 
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
-		await That(result).Is(expectedResult);
+		await That(result).IsEqualTo(expectedResult);
 	}
 
 	[Fact]

@@ -2,7 +2,7 @@
 
 public sealed partial class ThatString
 {
-	public sealed partial class Is
+	public sealed class IsEqualTo
 	{
 		public sealed class Tests
 		{
@@ -17,7 +17,7 @@ public sealed partial class ThatString
 				string subject, string pattern, bool expectMatch)
 			{
 				async Task Act()
-					=> await That(subject).Is(pattern).AsWildcard();
+					=> await That(subject).IsEqualTo(pattern).AsWildcard();
 
 				await That(Act).ThrowsException().OnlyIf(!expectMatch);
 			}
@@ -32,7 +32,7 @@ public sealed partial class ThatString
 				string subject, string expected)
 			{
 				async Task Act()
-					=> await That(subject).Is(expected).IgnoringLeadingWhiteSpace();
+					=> await That(subject).IsEqualTo(expected).IgnoringLeadingWhiteSpace();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -48,7 +48,7 @@ public sealed partial class ThatString
 				string subject, string expected)
 			{
 				async Task Act()
-					=> await That(subject).Is(expected).IgnoringNewlineStyle();
+					=> await That(subject).IsEqualTo(expected).IgnoringNewlineStyle();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -63,7 +63,7 @@ public sealed partial class ThatString
 				string subject, string expected)
 			{
 				async Task Act()
-					=> await That(subject).Is(expected).IgnoringTrailingWhiteSpace();
+					=> await That(subject).IsEqualTo(expected).IgnoringTrailingWhiteSpace();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -75,7 +75,7 @@ public sealed partial class ThatString
 				string expected = subject;
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await Act();
 			}
@@ -87,7 +87,7 @@ public sealed partial class ThatString
 				string expected = "expected other text";
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

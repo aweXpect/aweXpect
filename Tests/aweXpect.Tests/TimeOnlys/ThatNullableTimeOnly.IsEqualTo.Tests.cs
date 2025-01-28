@@ -1,20 +1,20 @@
 ﻿#if NET8_0_OR_GREATER
 namespace aweXpect.Tests;
 
-public sealed partial class ThatTimeOnly
+public sealed partial class ThatNullableTimeOnly
 {
-	public sealed class Is
+	public sealed class IsEqualTo
 	{
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenExpectedIsNull_ShouldFail()
+			public async Task WhenOnlyExpectedIsNull_ShouldFail()
 			{
-				TimeOnly subject = CurrentTime();
+				TimeOnly? subject = CurrentTime();
 				TimeOnly? expected = null;
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -25,13 +25,42 @@ public sealed partial class ThatTimeOnly
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsDifferent_ShouldFail()
+			public async Task WhenOnlySubjectIsNull_ShouldFail()
 			{
-				TimeOnly subject = CurrentTime();
-				TimeOnly expected = LaterTime();
+				TimeOnly? subject = null;
+				TimeOnly? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              be {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
+			{
+				TimeOnly? subject = null;
+				TimeOnly? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsDifferent_ShouldFail()
+			{
+				TimeOnly? subject = CurrentTime();
+				TimeOnly? expected = LaterTime();
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -44,11 +73,11 @@ public sealed partial class ThatTimeOnly
 			[Fact]
 			public async Task WhenSubjectIsTheSame_ShouldSucceed()
 			{
-				TimeOnly subject = CurrentTime();
-				TimeOnly expected = subject;
+				TimeOnly? subject = CurrentTime();
+				TimeOnly? expected = subject;
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -62,11 +91,11 @@ public sealed partial class ThatTimeOnly
 				int actualDifference, int toleranceSeconds, bool expectToThrow)
 			{
 				TimeSpan tolerance = toleranceSeconds.Seconds();
-				TimeOnly subject = EarlierTime(actualDifference);
-				TimeOnly expected = CurrentTime();
+				TimeOnly? subject = EarlierTime(actualDifference);
+				TimeOnly? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Is(expected)
+					=> await That(subject).IsEqualTo(expected)
 						.Within(tolerance)
 						.Because("we want to test the failure");
 

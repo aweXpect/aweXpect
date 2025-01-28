@@ -19,7 +19,7 @@ public sealed class AndNodeTests
 
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
-		await That(result).Is(expectedResult);
+		await That(result).IsEqualTo(expectedResult);
 	}
 
 	[Fact]
@@ -29,7 +29,7 @@ public sealed class AndNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).Is("foo");
+		await That(result).IsEqualTo("foo");
 	}
 
 	[Fact]

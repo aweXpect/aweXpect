@@ -2,7 +2,7 @@
 
 public sealed partial class ThatTimeSpan
 {
-	public sealed class Is
+	public sealed class IsEqualTo
 	{
 		public sealed class Tests
 		{
@@ -13,7 +13,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan expected = TimeSpan.MaxValue;
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -25,7 +25,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan expected = TimeSpan.MinValue;
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -37,7 +37,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan? expected = LaterTime();
 
 				async Task Act()
-					=> await That(subject).Is(expected).Because("we want to test the failure");
+					=> await That(subject).IsEqualTo(expected).Because("we want to test the failure");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -54,7 +54,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan? expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -66,7 +66,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan? expected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Is(expected).Within(-1.Seconds());
+					=> await That(subject).IsEqualTo(expected).Within(-1.Seconds());
 
 				await That(Act).Throws<ArgumentOutOfRangeException>()
 					.WithMessage("*Tolerance must be non-negative*").AsWildcard().And
@@ -80,7 +80,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan? expected = LaterTime(4);
 
 				async Task Act()
-					=> await That(subject).Is(expected).Within(3.Seconds())
+					=> await That(subject).IsEqualTo(expected).Within(3.Seconds())
 						.Because("we want to test the failure");
 
 				await That(Act).Throws<XunitException>()
@@ -98,7 +98,7 @@ public sealed partial class ThatTimeSpan
 				TimeSpan? expected = LaterTime(3);
 
 				async Task Act()
-					=> await That(subject).Is(expected).Within(3.Seconds());
+					=> await That(subject).IsEqualTo(expected).Within(3.Seconds());
 
 				await That(Act).DoesNotThrow();
 			}

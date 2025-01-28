@@ -14,7 +14,7 @@ public sealed class CustomizeJsonTests
 		string jsonWithoutTrailingCommas = "[1, 2]";
 
 		async Task Act()
-			=> await That(jsonWithTrailingCommas).Is(jsonWithoutTrailingCommas).AsJson();
+			=> await That(jsonWithTrailingCommas).IsEqualTo(jsonWithoutTrailingCommas).AsJson();
 
 		using (IDisposable __ = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Set(new JsonDocumentOptions
 		       {

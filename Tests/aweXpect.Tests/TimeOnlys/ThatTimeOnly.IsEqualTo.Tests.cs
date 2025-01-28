@@ -3,65 +3,70 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatTimeOnly
 {
-	public sealed class IsNot
+	public sealed class IsEqualTo
 	{
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenSubjectIsDifferent_ShouldSucceed()
+			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				TimeOnly subject = CurrentTime();
-				TimeOnly unexpected = LaterTime();
+				TimeOnly? expected = null;
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsTheSame_ShouldFail()
-			{
-				TimeOnly subject = CurrentTime();
-				TimeOnly unexpected = subject;
-
-				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not be {Formatter.Format(unexpected)},
+					              be <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
 			[Fact]
-			public async Task WhenUnexpectedIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsDifferent_ShouldFail()
 			{
 				TimeOnly subject = CurrentTime();
-				TimeOnly? unexpected = null;
+				TimeOnly expected = LaterTime();
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              be {Formatter.Format(expected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsTheSame_ShouldSucceed()
+			{
+				TimeOnly subject = CurrentTime();
+				TimeOnly expected = subject;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
-			[InlineData(3, 2, false)]
-			[InlineData(5, 3, false)]
-			[InlineData(2, 2, true)]
-			[InlineData(0, 2, true)]
-			public async Task Within_WhenValuesAreInsideTheTolerance_ShouldFail(
+			[InlineData(3, 2, true)]
+			[InlineData(5, 3, true)]
+			[InlineData(2, 2, false)]
+			[InlineData(0, 2, false)]
+			public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldFail(
 				int actualDifference, int toleranceSeconds, bool expectToThrow)
 			{
 				TimeSpan tolerance = toleranceSeconds.Seconds();
 				TimeOnly subject = EarlierTime(actualDifference);
-				TimeOnly unexpected = CurrentTime();
+				TimeOnly expected = CurrentTime();
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected)
+					=> await That(subject).IsEqualTo(expected)
 						.Within(tolerance)
 						.Because("we want to test the failure");
 
@@ -69,7 +74,7 @@ public sealed partial class ThatTimeOnly
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
 					              Expected subject to
-					              not be {Formatter.Format(unexpected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
+					              be {Formatter.Format(expected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

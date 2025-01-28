@@ -28,7 +28,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(6);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 6:
 			         ↓ (actual)
@@ -47,7 +47,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(0);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 0:
 			  ↓ (actual)
@@ -66,7 +66,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(6);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 6:
 			         ↓ (actual)
@@ -85,7 +85,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(0);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 0:
 			  ↓ (actual)
@@ -104,7 +104,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(10);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 10:
 			             ↓ (actual)
@@ -124,7 +124,7 @@ public class StringDifferenceTests
 
 		string result = sut.ToString();
 
-		await That(result).Is(
+		await That(result).IsEqualTo(
 			"""
 			differs at index 26:
 			              ↓ (actual)
@@ -144,7 +144,7 @@ public class StringDifferenceTests
 
 		string result = sut.ToString();
 
-		await That(result).Is(
+		await That(result).IsEqualTo(
 			"""
 			differs at index 10:
 			             ↓ (actual)
@@ -163,7 +163,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(8);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs on line 2 and column 1 (index 8):
 			             ↓ (actual)
@@ -182,7 +182,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(5);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 5:
 			        ↓ (actual)
@@ -202,7 +202,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected, comparer);
 
 		await That(sut.IndexOfFirstMismatch).Is(-1);
-		await That(sut.ToString()).Is("differs");
+		await That(sut.ToString()).IsEqualTo("differs");
 	}
 
 	[Fact]
@@ -214,7 +214,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(20);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			"""
 			differs at index 20:
 			                   ↓ (actual)
@@ -251,7 +251,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, expected);
 
 		await That(sut.IndexOfFirstMismatch).Is(expectedIndex);
-		await That(sut.ToString()).Is(
+		await That(sut.ToString()).IsEqualTo(
 			$"""
 			 differs on line 4 and column 16 (index {expectedIndex}):
 			              ↓ (actual)
@@ -269,7 +269,7 @@ public class StringDifferenceTests
 		StringDifference sut = new(actual, actual);
 
 		await That(sut.IndexOfFirstMismatch).Is(-1);
-		await That(sut.ToString()).Is("differs");
+		await That(sut.ToString()).IsEqualTo("differs");
 	}
 
 	private class ExecuteOnceComparer : IEqualityComparer<string>

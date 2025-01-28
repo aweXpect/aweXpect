@@ -11,7 +11,7 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject is equal to <paramref name="expected" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> Is(
+	public static StringEqualityTypeResult<string?, IThat<string?>> IsEqualTo(
 		this IThat<string?> source,
 		string? expected)
 	{
