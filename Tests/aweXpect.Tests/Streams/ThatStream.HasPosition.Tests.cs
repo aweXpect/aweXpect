@@ -8,6 +8,20 @@ public sealed partial class ThatStream
 	{
 		public sealed class EqualToTests
 		{
+			[Fact]
+			public async Task WhenExpectedPositionIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasPosition().EqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected position must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenSubjectHasDifferentPosition_ShouldFail(long position)
@@ -54,7 +68,7 @@ public sealed partial class ThatStream
 					             """);
 			}
 		}
-		
+
 		public sealed class NotEqualToTests
 		{
 			[Theory]
@@ -96,6 +110,20 @@ public sealed partial class ThatStream
 					=> await That(subject).HasPosition().NotEqualTo(0);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenUnexpectedPositionIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasPosition().NotEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The unexpected position must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("unexpected");
 			}
 		}
 	}

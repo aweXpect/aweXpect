@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using aweXpect.Core;
 using aweXpect.Results;
 
@@ -10,5 +11,13 @@ public static partial class ThatStream
 	///     Verifies that the position of the <see cref="Stream" /> subject…
 	/// </summary>
 	public static PropertyResult.NullableLong<Stream?> HasPosition(this IThat<Stream?> source)
-		=> new(source, a => a?.Position, "position");
+		=> new(source, a => a?.Position, "position", (value, paramName) =>
+		{
+			if (value < 0)
+			{
+				throw new ArgumentOutOfRangeException(paramName, value,
+					// ReSharper disable once LocalizableElement
+					$"The {paramName} position must be greater than or equal to zero.");
+			}
+		});
 }

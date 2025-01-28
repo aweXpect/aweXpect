@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.IO;
+
 // ReSharper disable AccessToDisposedClosure
 
 namespace aweXpect.Tests;
@@ -10,6 +11,20 @@ public sealed partial class ThatBufferedStream
 	{
 		public sealed class EqualToTests
 		{
+			[Fact]
+			public async Task WhenExpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().EqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenSubjectHasDifferentBufferSize_ShouldFail(int bufferSize)
@@ -56,7 +71,7 @@ public sealed partial class ThatBufferedStream
 					             """);
 			}
 		}
-		
+
 		public sealed class NotEqualToTests
 		{
 			[Theory]
@@ -98,6 +113,20 @@ public sealed partial class ThatBufferedStream
 					=> await That(subject).HasBufferSize().NotEqualTo(0);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenUnexpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().NotEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The unexpected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("unexpected");
 			}
 		}
 	}

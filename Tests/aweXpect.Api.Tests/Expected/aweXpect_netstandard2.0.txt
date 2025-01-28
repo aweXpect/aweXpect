@@ -684,10 +684,9 @@ namespace aweXpect
         public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> Contains(this aweXpect.Core.IThat<string?> source, string expected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotContain(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotEndWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
-        public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> DoesNotHaveLength(this aweXpect.Core.IThat<string?> source, int unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotStartWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> EndsWith(this aweXpect.Core.IThat<string?> source, string expected) { }
-        public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> HasLength(this aweXpect.Core.IThat<string?> source, int expected) { }
+        public static aweXpect.Results.PropertyResult.Int<string?> HasLength(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsEmpty(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsEqualTo(this aweXpect.Core.IThat<string?> source, string? expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsLowerCased(this aweXpect.Core.IThat<string?> source) { }
@@ -789,25 +788,25 @@ namespace aweXpect.Results
         }
         public class Int<TItem>
         {
-            public Int(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression) { }
+            public Int(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression, System.Action<int?, string>? validation = null) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(int? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(int? unexpected) { }
         }
         public class Long<TItem>
         {
-            public Long(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression) { }
+            public Long(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression, System.Action<long?, string>? validation = null) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(long? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(long? unexpected) { }
         }
         public class NullableInt<TItem>
         {
-            public NullableInt(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression) { }
+            public NullableInt(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression, System.Action<int?, string>? validation = null) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(int? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(int? unexpected) { }
         }
         public class NullableLong<TItem>
         {
-            public NullableLong(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression) { }
+            public NullableLong(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression, System.Action<long?, string>? validation = null) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(long? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(long? unexpected) { }
         }
