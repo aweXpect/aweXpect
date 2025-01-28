@@ -33,7 +33,7 @@ public sealed partial class ThatEnumerable
 
 				int result = await That(subject).HasSingle();
 
-				await That(result).Is(42);
+				await That(result).IsEqualTo(42);
 			}
 
 			[Fact]
@@ -59,7 +59,7 @@ public sealed partial class ThatEnumerable
 
 				int result = await That(subject).HasSingle();
 
-				await That(result).Is(1);
+				await That(result).IsEqualTo(1);
 			}
 
 			[Fact]
@@ -105,7 +105,7 @@ public sealed partial class ThatEnumerable
 				int result = await That(subject).HasSingle().Which.IsGreaterThan(41).And
 					.IsLessThan(43);
 
-				await That(result).Is(42);
+				await That(result).IsEqualTo(42);
 			}
 
 			[Fact]

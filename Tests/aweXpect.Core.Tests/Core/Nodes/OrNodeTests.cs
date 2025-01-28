@@ -16,7 +16,7 @@ public sealed class OrNodeTests
 
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
-		await That(result).Is(expectedResult);
+		await That(result).IsEqualTo(expectedResult);
 	}
 
 	[Fact]
@@ -55,7 +55,7 @@ public sealed class OrNodeTests
 	public async Task WithTwoSuccessfulTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).IsTrue().Or.IsNot(false);
+			=> await That(true).IsTrue().Or.IsNotEqualTo(false);
 
 		await That(Act).DoesNotThrow();
 	}

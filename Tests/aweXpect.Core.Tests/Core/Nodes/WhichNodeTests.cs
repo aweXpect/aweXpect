@@ -16,7 +16,7 @@ public sealed class WhichNodeTests
 
 		async Task Act()
 			=> await That(subject).Is<Dummy>()
-				.Which(p => p.Value, e => e.Is("bar"));
+				.Which(p => p.Value, e => e.IsEqualTo("bar"));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""

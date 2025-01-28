@@ -12,7 +12,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
+				=> await That(sut).IsEqualTo("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
@@ -32,7 +32,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("bar").Exactly();
+				=> await That(sut).IsEqualTo("bar").Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -52,7 +52,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("\tsomething\r\nelse").Exactly();
+				=> await That(sut).IsEqualTo("\tsomething\r\nelse").Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -93,7 +93,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is(null).Exactly();
+				=> await That(sut).IsEqualTo(null).Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -109,7 +109,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("FOO").Exactly().IgnoringCase();
+				=> await That(sut).IsEqualTo("FOO").Exactly().IgnoringCase();
 
 			await That(Act).DoesNotThrow();
 		}
@@ -120,7 +120,7 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is(null).Exactly();
+				=> await That(sut).IsEqualTo(null).Exactly();
 
 			await That(Act).DoesNotThrow();
 		}
@@ -131,7 +131,7 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is("").Exactly();
+				=> await That(sut).IsEqualTo("").Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""

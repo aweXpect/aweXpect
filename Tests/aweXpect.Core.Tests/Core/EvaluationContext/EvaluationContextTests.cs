@@ -15,9 +15,9 @@ public class EvaluationContextTests
 		context.Store("bar", "bar-value");
 
 		context.TryReceive("foo", out string? fooResult);
-		await That(fooResult).Is("foo-value");
+		await That(fooResult).IsEqualTo("foo-value");
 		context.TryReceive("bar", out string? barResult);
-		await That(barResult).Is("bar-value");
+		await That(barResult).IsEqualTo("bar-value");
 	}
 
 	[Fact]
@@ -51,7 +51,7 @@ public class EvaluationContextTests
 
 		bool result = context.TryReceive("foo", out string? fooResult);
 		await That(result).IsTrue();
-		await That(fooResult).Is("bar");
+		await That(fooResult).IsEqualTo("bar");
 	}
 
 	private static async Task<IEvaluationContext> GetSut()

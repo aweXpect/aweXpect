@@ -13,7 +13,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 
 	[Theory]
@@ -24,7 +24,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 
 #if NET8_0_OR_GREATER
@@ -36,7 +36,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 #endif
 
@@ -49,7 +49,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 #endif
 

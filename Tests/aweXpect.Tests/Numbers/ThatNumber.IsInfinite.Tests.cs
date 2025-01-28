@@ -13,7 +13,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).IsInfinite()
-						.And.Is(subject);
+						.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -55,7 +55,7 @@ public sealed partial class ThatNumber
 				float subject = float.PositiveInfinity;
 
 				async Task Act() => await That(subject).IsInfinite()
-					.And.Is(subject);
+					.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -99,7 +99,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).IsInfinite()
-						.And.Is(subject);
+						.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -143,7 +143,7 @@ public sealed partial class ThatNumber
 				float? subject = float.PositiveInfinity;
 
 				async Task Act() => await That(subject).IsInfinite()
-					.And.Is(subject);
+					.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}

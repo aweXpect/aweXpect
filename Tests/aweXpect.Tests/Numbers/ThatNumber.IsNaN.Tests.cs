@@ -13,7 +13,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).IsNaN()
-						.And.Is(subject);
+						.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -70,7 +70,7 @@ public sealed partial class ThatNumber
 				float subject = float.NaN;
 
 				async Task Act() => await That(subject).IsNaN()
-					.And.Is(subject);
+					.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -129,7 +129,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).IsNaN()
-						.And.Is(subject);
+						.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -189,7 +189,7 @@ public sealed partial class ThatNumber
 				float? subject = float.NaN;
 
 				async Task Act() => await That(subject).IsNaN()
-					.And.Is(subject);
+					.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}

@@ -30,7 +30,7 @@ public class ExpectationNodeTests
 
 		node.AddConstraint(new DummyConstraint("bar"));
 
-		await That(node.ToString()).Is("foo with length bar");
+		await That(node.ToString()).IsEqualTo("foo with length bar");
 	}
 
 	[Fact]
@@ -54,7 +54,7 @@ public class ExpectationNodeTests
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).Is("foo, because my reason");
+		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -84,7 +84,7 @@ public class ExpectationNodeTests
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).Is("foo, because my reason");
+		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -117,9 +117,9 @@ public class ExpectationNodeTests
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
 
 		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Which(p => p.Value, v => v.Is(42))
-			.AndWhich(p => p.ExpectationText, e => e.Is("foo with mapping bar"))
-			.AndWhich(p => p.ResultText, r => r.Is("same failure"));
+			.Which(p => p.Value, v => v.IsEqualTo(42))
+			.AndWhich(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
+			.AndWhich(p => p.ResultText, r => r.IsEqualTo("same failure"));
 	}
 
 	[Fact]
@@ -135,9 +135,9 @@ public class ExpectationNodeTests
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
 
 		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Which(p => p.Value, v => v.Is(42))
-			.AndWhich(p => p.ExpectationText, e => e.Is("foo with mapping bar"))
-			.AndWhich(p => p.ResultText, r => r.Is("outer failure and inner failure"));
+			.Which(p => p.Value, v => v.IsEqualTo(42))
+			.AndWhich(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
+			.AndWhich(p => p.ResultText, r => r.IsEqualTo("outer failure and inner failure"));
 	}
 
 	[Fact]
@@ -149,7 +149,7 @@ public class ExpectationNodeTests
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).Is("foo, because my reason");
+		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -178,7 +178,7 @@ public class ExpectationNodeTests
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).Is("foo, because my reason");
+		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -218,7 +218,7 @@ public class ExpectationNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).Is("<empty>");
+		await That(result).IsEqualTo("<empty>");
 	}
 
 	[Fact]
@@ -230,7 +230,7 @@ public class ExpectationNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).Is("foo");
+		await That(result).IsEqualTo("foo");
 	}
 
 	[Fact]
@@ -243,7 +243,7 @@ public class ExpectationNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).Is("foowith length: <empty>");
+		await That(result).IsEqualTo("foowith length: <empty>");
 	}
 
 	[Fact]
@@ -255,7 +255,7 @@ public class ExpectationNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).Is("with length: <empty>");
+		await That(result).IsEqualTo("with length: <empty>");
 	}
 
 	private class UnsupportedConstraint : IConstraint;

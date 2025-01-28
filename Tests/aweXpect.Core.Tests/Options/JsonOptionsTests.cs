@@ -25,7 +25,7 @@ public class JsonOptionsTests
 			MaxDepth = maxDepth
 		});
 
-		await That(sut.DocumentOptions.MaxDepth).Is(maxDepth);
+		await That(sut.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
 	}
 
 	[Fact]
@@ -41,7 +41,7 @@ public class JsonOptionsTests
 
 		sut.WithJsonOptions(_ => documentOptions);
 
-		await That(sut.DocumentOptions.MaxDepth).Is(maxDepth);
+		await That(sut.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
 	}
 }
 #endif

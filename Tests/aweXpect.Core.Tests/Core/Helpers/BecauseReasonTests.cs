@@ -13,7 +13,7 @@ public class BecauseReasonTests
 
 		string result = sut.ToString();
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -25,6 +25,6 @@ public class BecauseReasonTests
 
 		string result = sut.ToString();
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 }
