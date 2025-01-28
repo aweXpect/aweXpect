@@ -19,8 +19,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have second of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have second equal to <null>,
+					              but it had second 12
 					              """);
 			}
 
@@ -36,8 +36,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have second of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have second equal to {Formatter.Format(expected)},
+					              but it had second 12
 					              """);
 			}
 
@@ -80,8 +80,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have second of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have second not equal to {Formatter.Format(unexpected)},
+					              but it had second 12
 					              """);
 			}
 

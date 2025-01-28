@@ -18,8 +18,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have year of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have year equal to <null>,
+					              but it had year 2010
 					              """);
 			}
 
@@ -35,7 +35,7 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have year of <null>,
+					             have year equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -52,7 +52,7 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have year of 1,
+					             have year equal to 1,
 					             but it was <null>
 					             """);
 			}
@@ -69,8 +69,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have year of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have year equal to {Formatter.Format(expected)},
+					              but it had year 2010
 					              """);
 			}
 
@@ -149,8 +149,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have year of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have year not equal to {Formatter.Format(unexpected)},
+					              but it had year 2010
 					              """);
 			}
 		}

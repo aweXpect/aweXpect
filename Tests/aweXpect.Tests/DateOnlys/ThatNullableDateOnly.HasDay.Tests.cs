@@ -19,8 +19,8 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have day of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have day equal to {Formatter.Format(expected)},
+					              but it had day 12
 					              """);
 			}
 
@@ -48,8 +48,8 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have day of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have day equal to <null>,
+					              but it had day 12
 					              """);
 			}
 
@@ -65,7 +65,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have day of <null>,
+					             have day equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -82,7 +82,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have day of 1,
+					             have day equal to 1,
 					             but it was <null>
 					             """);
 			}
@@ -114,8 +114,8 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have day of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have day not equal to {Formatter.Format(unexpected)},
+					              but it had day 12
 					              """);
 			}
 

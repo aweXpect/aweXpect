@@ -20,7 +20,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have year equal to <null>,
-					              but it was {Formatter.Format(subject)}
+					              but it had year 2010
 					              """);
 			}
 
@@ -37,7 +37,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have year equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it had year 2010
 					              """);
 			}
 
@@ -93,7 +93,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have year not equal to {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              but it had year 2010
 					              """);
 			}
 		}

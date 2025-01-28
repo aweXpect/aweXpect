@@ -18,8 +18,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have kind of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have kind equal to {Formatter.Format(expected)},
+					              but it had kind Utc
 					              """);
 			}
 
@@ -47,7 +47,7 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have kind of Utc,
+					             have kind equal to Utc,
 					             but it was <null>
 					             """);
 			}
@@ -79,8 +79,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have kind of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have kind not equal to {Formatter.Format(unexpected)},
+					              but it had kind Utc
 					              """);
 			}
 

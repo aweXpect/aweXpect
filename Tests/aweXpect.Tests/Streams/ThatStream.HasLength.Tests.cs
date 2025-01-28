@@ -6,7 +6,7 @@ public sealed partial class ThatStream
 {
 	public sealed class HasLength
 	{
-		public sealed class Tests
+		public sealed class EqualToTests
 		{
 			[Theory]
 			[AutoData]
@@ -16,12 +16,12 @@ public sealed partial class ThatStream
 				Stream subject = new MyStream(length: actualLength);
 
 				async Task Act()
-					=> await That(subject).HasLength(length);
+					=> await That(subject).HasLength().EqualTo(length);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have length {length},
+					              have length equal to {length},
 					              but it had length {actualLength}
 					              """);
 			}
@@ -33,7 +33,7 @@ public sealed partial class ThatStream
 				Stream subject = new MyStream(length: length);
 
 				async Task Act()
-					=> await That(subject).HasLength(length);
+					=> await That(subject).HasLength().EqualTo(length);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -44,14 +44,58 @@ public sealed partial class ThatStream
 				Stream? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasLength(0);
+					=> await That(subject).HasLength().EqualTo(0);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have length 0,
+					             have length equal to 0,
 					             but it was <null>
 					             """);
+			}
+		}
+		
+		public sealed class NotEqualToTests
+		{
+			[Theory]
+			[AutoData]
+			public async Task WhenSubjectHasDifferentLength_ShouldSucceed(long length)
+			{
+				long actualLength = length > 10000 ? length - 1 : length + 1;
+				Stream subject = new MyStream(length: actualLength);
+
+				async Task Act()
+					=> await That(subject).HasLength().NotEqualTo(length);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenSubjectHasSameLength_ShouldFail(long length)
+			{
+				Stream subject = new MyStream(length: length);
+
+				async Task Act()
+					=> await That(subject).HasLength().NotEqualTo(length);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length not equal to {length},
+					              but it had length {length}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				Stream? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().NotEqualTo(0);
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -20,7 +20,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have day equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it had day 12
 					              """);
 			}
 
@@ -49,7 +49,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have day equal to <null>,
-					              but it was {Formatter.Format(subject)}
+					              but it had day 12
 					              """);
 			}
 		}
@@ -81,7 +81,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have day not equal to {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              but it had day 12
 					              """);
 			}
 

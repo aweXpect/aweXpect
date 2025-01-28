@@ -19,8 +19,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have hour of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have hour equal to <null>,
+					              but it had hour 10
 					              """);
 			}
 
@@ -36,8 +36,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have hour of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have hour equal to {Formatter.Format(expected)},
+					              but it had hour 10
 					              """);
 			}
 
@@ -80,8 +80,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have hour of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have hour not equal to {Formatter.Format(unexpected)},
+					              but it had hour 10
 					              """);
 			}
 

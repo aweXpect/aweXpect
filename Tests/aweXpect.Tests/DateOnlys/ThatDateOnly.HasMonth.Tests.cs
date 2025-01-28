@@ -20,7 +20,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have month equal to <null>,
-					              but it was {Formatter.Format(subject)}
+					              but it had month 11
 					              """);
 			}
 
@@ -37,7 +37,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have month equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it had month 11
 					              """);
 			}
 
@@ -81,7 +81,7 @@ public sealed partial class ThatDateOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have month not equal to {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              but it had month 11
 					              """);
 			}
 

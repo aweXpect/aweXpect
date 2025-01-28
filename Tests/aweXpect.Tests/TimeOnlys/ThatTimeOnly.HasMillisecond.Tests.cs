@@ -19,8 +19,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have millisecond of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have millisecond equal to <null>,
+					              but it had millisecond 345
 					              """);
 			}
 
@@ -36,8 +36,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have millisecond of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have millisecond equal to {Formatter.Format(expected)},
+					              but it had millisecond 345
 					              """);
 			}
 
@@ -80,8 +80,8 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have millisecond of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have millisecond not equal to {Formatter.Format(unexpected)},
+					              but it had millisecond 345
 					              """);
 			}
 

@@ -18,8 +18,8 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have millisecond of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have millisecond equal to <null>,
+					              but it had millisecond 167
 					              """);
 			}
 
@@ -35,8 +35,8 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have millisecond of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have millisecond equal to {Formatter.Format(expected)},
+					              but it had millisecond 167
 					              """);
 			}
 
@@ -64,7 +64,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have millisecond of <null>,
+					             have millisecond equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -81,7 +81,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have millisecond of 1,
+					             have millisecond equal to 1,
 					             but it was <null>
 					             """);
 			}
@@ -113,8 +113,8 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have millisecond of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have millisecond not equal to {Formatter.Format(unexpected)},
+					              but it had millisecond 167
 					              """);
 			}
 

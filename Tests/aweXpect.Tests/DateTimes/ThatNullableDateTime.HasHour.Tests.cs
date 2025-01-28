@@ -18,8 +18,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have hour of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have hour equal to <null>,
+					              but it had hour 13
 					              """);
 			}
 
@@ -35,8 +35,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have hour of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have hour equal to {Formatter.Format(expected)},
+					              but it had hour 13
 					              """);
 			}
 
@@ -64,7 +64,7 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have hour of <null>,
+					             have hour equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -81,7 +81,7 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have hour of 1,
+					             have hour equal to 1,
 					             but it was <null>
 					             """);
 			}
@@ -113,8 +113,8 @@ public sealed partial class ThatNullableDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have hour of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have hour not equal to {Formatter.Format(unexpected)},
+					              but it had hour 13
 					              """);
 			}
 

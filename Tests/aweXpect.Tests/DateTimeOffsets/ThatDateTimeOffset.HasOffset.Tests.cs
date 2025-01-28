@@ -18,8 +18,8 @@ public sealed partial class ThatDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have offset of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have offset equal to {Formatter.Format(expected)},
+					              but it had offset 2:00:00
 					              """);
 			}
 
@@ -62,8 +62,8 @@ public sealed partial class ThatDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              not have offset of {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              have offset not equal to {Formatter.Format(unexpected)},
+					              but it had offset 2:00:00
 					              """);
 			}
 		}
