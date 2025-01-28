@@ -2,7 +2,7 @@
 
 public sealed partial class ThatEnum
 {
-	public sealed class Is
+	public sealed class IsEqualTo
 	{
 		public sealed class Tests
 		{

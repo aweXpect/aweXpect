@@ -2,7 +2,7 @@
 
 public sealed partial class ThatNullableBool
 {
-	public sealed class IsNot
+	public sealed class IsNotEqualTo
 	{
 		public sealed class Tests
 		{

@@ -2,7 +2,7 @@
 
 public sealed partial class ThatBool
 {
-	public sealed class Is
+	public sealed class IsEqualTo
 	{
 		public sealed class Tests
 		{

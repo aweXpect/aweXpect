@@ -2,7 +2,7 @@
 
 public sealed partial class ThatNullableEnum
 {
-	public sealed class IsNot
+	public sealed class IsNotEqualTo
 	{
 		public sealed class Tests
 		{

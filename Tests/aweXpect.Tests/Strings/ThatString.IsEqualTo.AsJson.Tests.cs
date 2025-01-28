@@ -5,7 +5,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatString
 {
-	public sealed partial class Is
+	public sealed partial class IsEqualTo
 	{
 		public sealed class AsJson
 		{

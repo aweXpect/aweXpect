@@ -2,7 +2,7 @@
 
 public sealed partial class ThatString
 {
-	public sealed class IsEqualTo
+	public sealed partial class IsEqualTo
 	{
 		public sealed class Tests
 		{
