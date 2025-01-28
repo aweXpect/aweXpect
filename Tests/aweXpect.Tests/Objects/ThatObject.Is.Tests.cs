@@ -2,7 +2,7 @@
 
 public sealed partial class ThatObject
 {
-	public sealed partial class Is
+	public sealed class Is
 	{
 		public sealed class GenericTests
 		{
