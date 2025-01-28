@@ -1,7 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -9,30 +8,9 @@ namespace aweXpect;
 public static partial class ThatTimeOnly
 {
 	/// <summary>
-	///     Verifies that the second of the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the second of the subject…
 	/// </summary>
-	public static AndOrResult<TimeOnly, IThat<TimeOnly>> HasSecond(this IThat<TimeOnly> source,
-		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					expected,
-					(a, e) => a.Second == e,
-					$"have second of {Formatter.Format(expected)}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the second of the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<TimeOnly, IThat<TimeOnly>> DoesNotHaveSecond(
-		this IThat<TimeOnly> source,
-		int? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					unexpected,
-					(a, e) => a.Second != e,
-					$"not have second of {Formatter.Format(unexpected)}")),
-			source);
+	public static PropertyResult.Int<TimeOnly> HasSecond(this IThat<TimeOnly> source)
+		=> new(source, a => a.Second, "second");
 }
 #endif

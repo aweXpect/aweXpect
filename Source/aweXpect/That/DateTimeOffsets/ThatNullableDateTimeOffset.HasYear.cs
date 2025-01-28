@@ -1,6 +1,5 @@
 ﻿using System;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -8,30 +7,8 @@ namespace aweXpect;
 public static partial class ThatNullableDateTimeOffset
 {
 	/// <summary>
-	///     Verifies that the year of the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the year of the subject…
 	/// </summary>
-	public static AndOrResult<DateTimeOffset?, IThat<DateTimeOffset?>> HasYear(
-		this IThat<DateTimeOffset?> source,
-		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					expected,
-					(a, e) => a.HasValue && a.Value.Year == e,
-					$"have year of {Formatter.Format(expected)}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the year of the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<DateTimeOffset?, IThat<DateTimeOffset?>> DoesNotHaveYear(
-		this IThat<DateTimeOffset?> source,
-		int? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					unexpected,
-					(a, e) => !a.HasValue || a.Value.Year != e,
-					$"not have year of {Formatter.Format(unexpected)}")),
-			source);
+	public static PropertyResult.NullableInt<DateTimeOffset?> HasYear(this IThat<DateTimeOffset?> source)
+		=> new(source, a => a?.Year, "year");
 }
