@@ -13,11 +13,11 @@ You can verify, that the `DateTime` or `DateTimeOffset` is equal to another one 
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
 
-await Expect.That(subject1).Is(new DateTime(2024, 12, 24));
+await Expect.That(subject1).IsEqualTo(new DateTime(2024, 12, 24));
 
 DateTimeOffset subject2 = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
 
-await Expect.That(subject2).Is(new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2)));
+await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2)));
 ```
 
 You can also specify a tolerance:
@@ -25,12 +25,12 @@ You can also specify a tolerance:
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
 
-await Expect.That(subject1).Is(new DateTime(2024, 12, 23)).Within(TimeSpan.FromDays(1))
+await Expect.That(subject1).IsEqualTo(new DateTime(2024, 12, 23)).Within(TimeSpan.FromDays(1))
   .Because("we accept values between 2024-12-23 and 2024-12-25");
 
 DateTimeOffset subject2 = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
 
-await Expect.That(subject2).Is(new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2))).Within(TimeSpan.FromMinutes(10))
+await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2))).Within(TimeSpan.FromMinutes(10))
   .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
 ```
 

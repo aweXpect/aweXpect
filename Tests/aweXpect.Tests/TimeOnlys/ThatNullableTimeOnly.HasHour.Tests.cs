@@ -5,7 +5,7 @@ public sealed partial class ThatNullableTimeOnly
 {
 	public sealed class HasHour
 	{
-		public sealed class Tests
+		public sealed class EqualToTests
 		{
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
@@ -14,13 +14,13 @@ public sealed partial class ThatNullableTimeOnly
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).HasHour(expected);
+					=> await That(subject).HasHour().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have hour of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have hour equal to <null>,
+					              but it had hour 10
 					              """);
 			}
 
@@ -31,13 +31,13 @@ public sealed partial class ThatNullableTimeOnly
 				int? expected = 11;
 
 				async Task Act()
-					=> await That(subject).HasHour(expected);
+					=> await That(subject).HasHour().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have hour of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have hour equal to {Formatter.Format(expected)},
+					              but it had hour 10
 					              """);
 			}
 
@@ -48,7 +48,7 @@ public sealed partial class ThatNullableTimeOnly
 				int expected = 10;
 
 				async Task Act()
-					=> await That(subject).HasHour(expected);
+					=> await That(subject).HasHour().EqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -60,12 +60,12 @@ public sealed partial class ThatNullableTimeOnly
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).HasHour(expected);
+					=> await That(subject).HasHour().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have hour of <null>,
+					             have hour equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -77,14 +77,82 @@ public sealed partial class ThatNullableTimeOnly
 				int? expected = 1;
 
 				async Task Act()
-					=> await That(subject).HasHour(expected);
+					=> await That(subject).HasHour().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have hour of 1,
+					             have hour equal to 1,
 					             but it was <null>
 					             """);
+			}
+		}
+		
+		public sealed class NotEqualToTests
+		{
+			[Fact]
+			public async Task WhenHourOfSubjectIsDifferent_ShouldSucceed()
+			{
+				TimeOnly? subject = new(10, 11, 12);
+				int? unexpected = 11;
+
+				async Task Act()
+					=> await That(subject).HasHour().NotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenHourOfSubjectIsTheSame_ShouldFail()
+			{
+				TimeOnly? subject = new(10, 11, 12);
+				int unexpected = 10;
+
+				async Task Act()
+					=> await That(subject).HasHour().NotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have hour not equal to {Formatter.Format(unexpected)},
+					              but it had hour 10
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectAndUnexpectedIsNull_ShouldSucceed()
+			{
+				TimeOnly? subject = null;
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasHour().NotEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				TimeOnly? subject = null;
+				int? expected = 1;
+
+				async Task Act()
+					=> await That(subject).HasHour().NotEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenUnexpectedIsNull_ShouldSucceed()
+			{
+				TimeOnly? subject = new(10, 11, 12);
+				int? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).HasHour().NotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

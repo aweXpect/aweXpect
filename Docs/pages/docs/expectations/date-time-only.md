@@ -13,13 +13,13 @@ You can verify, that the `DateOnly` or `TimeOnly` is equal to another one or not
 ```csharp
 DateOnly subjectA = new DateOnly(2024, 12, 24);
 
-await Expect.That(subjectA).Is(new DateOnly(2024, 12, 24));
-await Expect.That(subjectA).IsNot(new DateOnly(2024, 12, 23));
+await Expect.That(subjectA).IsEqualTo(new DateOnly(2024, 12, 24));
+await Expect.That(subjectA).IsNotEqualTo(new DateOnly(2024, 12, 23));
 
 TimeOnly subjectB = new TimeOnly(14, 15, 16);
 
-await Expect.That(subjectB).Is(new TimeOnly(14, 15, 16));
-await Expect.That(subjectB).IsNot(new TimeOnly(13, 15, 16));
+await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 16));
+await Expect.That(subjectB).IsNotEqualTo(new TimeOnly(13, 15, 16));
 ```
 
 You can also specify a tolerance:
@@ -27,12 +27,12 @@ You can also specify a tolerance:
 ```csharp
 DateOnly subjectA = new DateOnly(2024, 12, 24);
 
-await Expect.That(subjectA).Is(new DateOnly(2024, 12, 23)).Within(TimeSpan.FromDays(1))
+await Expect.That(subjectA).IsEqualTo(new DateOnly(2024, 12, 23)).Within(TimeSpan.FromDays(1))
   .Because("we accept values between 2024-12-22 and 2024-12-24");
 
 TimeOnly subjectB = new TimeOnly(14, 15, 16);
 
-await Expect.That(subjectB).Is(new TimeOnly(14, 15, 17)).Within(TimeSpan.FromSeconds(1))
+await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 17)).Within(TimeSpan.FromSeconds(1))
   .Because("we accept values between 14:15:16 and 14:15:18");
 ```
 
@@ -99,9 +99,9 @@ You can verify, the properties of the `DateTime`:
 ```csharp
 DateOnly subject = new DateOnly(2024, 12, 31);
 
-await Expect.That(subject).HasYear(2024);
-await Expect.That(subject).HasMonth(12);
-await Expect.That(subject).HasDay(31);
+await Expect.That(subject).HasYear().EqualTo(2024);
+await Expect.That(subject).HasMonth().EqualTo(12);
+await Expect.That(subject).HasDay().EqualTo(31);
 ```
 
 You can verify, the properties of the `TimeOnly`:
@@ -109,8 +109,8 @@ You can verify, the properties of the `TimeOnly`:
 ```csharp
 TimeOnly subject = new TimeOnly(15, 16, 17, 189);
 
-await Expect.That(subject).HasHour(15);
-await Expect.That(subject).HasMinute(16);
-await Expect.That(subject).HasSecond(17);
-await Expect.That(subject).HasMillisecond(189);
+await Expect.That(subject).HasHour().EqualTo(15);
+await Expect.That(subject).HasMinute().EqualTo(16);
+await Expect.That(subject).HasSecond().EqualTo(17);
+await Expect.That(subject).HasMillisecond().EqualTo(189);
 ```
