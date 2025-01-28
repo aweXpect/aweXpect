@@ -33,7 +33,7 @@ public sealed class CustomizeSettingsTests
 		DateTime time = DateTime.UtcNow;
 		DateTime otherTime = time.AddMilliseconds(10);
 		await That(Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get()).IsEqualTo(TimeSpan.Zero);
-		async Task Act() => await That(time).Is(otherTime);
+		async Task Act() => await That(time).IsEqualTo(otherTime);
 		await That(Act).ThrowsException();
 		using (IDisposable __ = Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Set(10.Milliseconds()))
 		{

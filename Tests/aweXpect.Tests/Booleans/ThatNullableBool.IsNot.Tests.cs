@@ -16,7 +16,7 @@ public sealed partial class ThatNullableBool
 			public async Task WhenSubjectIsDifferent_ShouldSucceed(bool? subject, bool? unexpected)
 			{
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -30,7 +30,7 @@ public sealed partial class ThatNullableBool
 				bool? unexpected = subject;
 
 				async Task Act()
-					=> await That(subject).IsNot(unexpected);
+					=> await That(subject).IsNotEqualTo(unexpected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""

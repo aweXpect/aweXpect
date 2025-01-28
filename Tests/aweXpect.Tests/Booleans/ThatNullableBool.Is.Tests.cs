@@ -16,7 +16,7 @@ public sealed partial class ThatNullableBool
 			public async Task WhenSubjectIsDifferent_ShouldFail(bool? subject, bool? expected)
 			{
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -35,7 +35,7 @@ public sealed partial class ThatNullableBool
 				bool? expected = subject;
 
 				async Task Act()
-					=> await That(subject).Is(expected);
+					=> await That(subject).IsEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}

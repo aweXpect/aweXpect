@@ -45,7 +45,7 @@ public class SynchronousTestExecutionTests
 			Bar = 3
 		};
 		int value = subject.Bar;
-		void Act() => That(value).Is(2).Verify();
+		void Act() => That(value).IsEqualTo(2).Verify();
 
 		That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -63,9 +63,9 @@ public class SynchronousTestExecutionTests
 			Bar = 3
 		};
 
-		int value = That(subject.Bar).Is(3).Verify();
+		int value = That(subject.Bar).IsEqualTo(3).Verify();
 
-		That(value).Is(3).Verify();
+		That(value).IsEqualTo(3).Verify();
 	}
 
 	private static void ThrowIf(bool condition, [CallerMemberName] string message = "")

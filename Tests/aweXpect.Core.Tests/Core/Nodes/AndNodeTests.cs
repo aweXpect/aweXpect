@@ -78,7 +78,7 @@ public sealed class AndNodeTests
 	public async Task WithTwoSuccessfulTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).IsTrue().And.IsNot(false);
+			=> await That(true).IsTrue().And.IsNotEqualTo(false);
 
 		await That(Act).DoesNotThrow();
 	}

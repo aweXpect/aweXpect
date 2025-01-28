@@ -55,7 +55,7 @@ public sealed class OrNodeTests
 	public async Task WithTwoSuccessfulTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).IsTrue().Or.IsNot(false);
+			=> await That(true).IsTrue().Or.IsNotEqualTo(false);
 
 		await That(Act).DoesNotThrow();
 	}

@@ -10,8 +10,8 @@ public class AwexpectCustomizationTests
 		int defaultValue1 = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		int defaultValue2 = Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems;
 
-		await That(defaultValue1).Is(10);
-		await That(defaultValue2).Is(10);
+		await That(defaultValue1).IsEqualTo(10);
+		await That(defaultValue2).IsEqualTo(10);
 	}
 
 	[Fact]
@@ -21,12 +21,12 @@ public class AwexpectCustomizationTests
 		int value = 42;
 		using (Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Set(value))
 		{
-			await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).Is(value);
-			await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).Is(value);
+			await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).IsEqualTo(value);
+			await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).IsEqualTo(value);
 		}
 
-		await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).Is(defaultValue);
-		await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).Is(defaultValue);
+		await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).IsEqualTo(defaultValue);
+		await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).IsEqualTo(defaultValue);
 	}
 
 	[Fact]
@@ -40,12 +40,12 @@ public class AwexpectCustomizationTests
 			       MaximumNumberOfCollectionItems = value
 		       }))
 		{
-			await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).Is(value);
-			await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).Is(value);
+			await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).IsEqualTo(value);
+			await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).IsEqualTo(value);
 		}
 
-		await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).Is(defaultValue);
-		await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).Is(defaultValue);
+		await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).IsEqualTo(defaultValue);
+		await That(Customize.aweXpect.Formatting().Get().MaximumNumberOfCollectionItems).IsEqualTo(defaultValue);
 	}
 
 	[Fact]
