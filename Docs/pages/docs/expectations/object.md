@@ -14,8 +14,8 @@ You can verify, that the `object` is equal to another one or not:
 record MyClass(int Value);
 MyClass subject = new(1);
 
-await Expect.That(subject).Is(new MyClass(1));
-await Expect.That(subject).IsNot(new MyClass(2));
+await Expect.That(subject).IsEqualTo(new MyClass(1));
+await Expect.That(subject).IsNotEqualTo(new MyClass(2));
 ```
 
 *Note: this uses the underlying `object.Equals(object?, object?)` method*
@@ -48,7 +48,7 @@ class MyClassComparer : IEqualityComparer<object>
 }
 MyClass subject = new(1);
 
-await Expect.That(subject).Is(new MyClass(2)).Using(new MyClassComparer());
+await Expect.That(subject).IsEqualTo(new MyClass(2)).Using(new MyClassComparer());
 ```
 
 ## Equivalence
@@ -62,8 +62,8 @@ class MyClass(int value)
 }
 MyClass subject = new(1);
 
-await Expect.That(subject).Is(new MyClass(1)).Equivalent();
-await Expect.That(subject).IsNot(new MyClass(2)).Equivalent();
+await Expect.That(subject).IsEqualTo(new MyClass(1)).Equivalent();
+await Expect.That(subject).IsNotEqualTo(new MyClass(2)).Equivalent();
 ```
 
 *Note: this compares recursively all properties on the two objects for equivalence.*

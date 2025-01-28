@@ -13,8 +13,8 @@ You can verify, that the `bool` is equal to another one or not:
 ```csharp
 bool subject = false;
 
-await Expect.That(subject).Is(false);
-await Expect.That(subject).IsNot(true);
+await Expect.That(subject).IsEqualTo(false);
+await Expect.That(subject).IsNotEqualTo(true);
 ```
 
 ## True / False

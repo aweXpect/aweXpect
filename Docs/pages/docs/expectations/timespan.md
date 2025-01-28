@@ -13,8 +13,8 @@ You can verify, that the `TimeSpan` is equal to another one or not:
 ```csharp
 TimeSpan subject = TimeSpan.FromSeconds(42);
 
-await Expect.That(subject).Is(TimeSpan.FromSeconds(42));
-await Expect.That(subject).IsNot(TimeSpan.FromSeconds(43));
+await Expect.That(subject).IsEqualTo(TimeSpan.FromSeconds(42));
+await Expect.That(subject).IsNotEqualTo(TimeSpan.FromSeconds(43));
 ```
 
 You can also specify a tolerance:
@@ -22,7 +22,7 @@ You can also specify a tolerance:
 ```csharp
 TimeSpan subject = TimeSpan.FromSeconds(42);
 
-await Expect.That(subject).Is(TimeSpan.FromSeconds(43)).Within(TimeSpan.FromSeconds(1))
+await Expect.That(subject).IsEqualTo(TimeSpan.FromSeconds(43)).Within(TimeSpan.FromSeconds(1))
   .Because("we accept values between 0:41 and 0:43");
 ```
 
