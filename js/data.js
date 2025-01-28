@@ -258,6 +258,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 15:42:30 2025 \u002B0100",
         "message": "docs: add link to benchmark definition (#266)"
+      },
+      {
+        "sha": "f9889e95e606e7815534c1baeeb6876768043efc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Jan 28 01:02:52 2025 \u002B0100",
+        "message": "chore: update Tunit to V8.0 (#267)"
       }
     ],
     "labels": [
@@ -303,7 +309,8 @@ window.BENCHMARK_DATA = {
       "5f7b8bc9",
       "d2654ced",
       "e64de71b",
-      "37d40acf"
+      "37d40acf",
+      "f9889e95"
     ],
     "datasets": [
       {
@@ -352,7 +359,8 @@ window.BENCHMARK_DATA = {
           175.74278367360432,
           153.07728044803326,
           162.6548315525055,
-          159.1937363465627
+          159.1937363465627,
+          151.94807843061594
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -364,6 +372,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -463,7 +472,8 @@ window.BENCHMARK_DATA = {
           190.89950291315714,
           191.69515231450399,
           201.1497813122613,
-          194.80860640207928
+          194.80860640207928,
+          198.4234139408384
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -501,6 +511,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -574,7 +585,8 @@ window.BENCHMARK_DATA = {
           578.6201962153117,
           548.1578453699748,
           614.4581865946452,
-          558.2051808039347
+          558.2051808039347,
+          653.1743062973022
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -628,7 +640,8 @@ window.BENCHMARK_DATA = {
           1752,
           1752,
           1752,
-          1752
+          1752,
+          1936
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -900,6 +913,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 15:42:30 2025 \u002B0100",
         "message": "docs: add link to benchmark definition (#266)"
+      },
+      {
+        "sha": "f9889e95e606e7815534c1baeeb6876768043efc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Jan 28 01:02:52 2025 \u002B0100",
+        "message": "chore: update Tunit to V8.0 (#267)"
       }
     ],
     "labels": [
@@ -945,7 +964,8 @@ window.BENCHMARK_DATA = {
       "5f7b8bc9",
       "d2654ced",
       "e64de71b",
-      "37d40acf"
+      "37d40acf",
+      "f9889e95"
     ],
     "datasets": [
       {
@@ -994,7 +1014,8 @@ window.BENCHMARK_DATA = {
           377.63444655282154,
           345.9102941513062,
           346.0037733713786,
-          360.1244749001094
+          360.1244749001094,
+          365.5585004261562
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1006,6 +1027,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1105,7 +1127,8 @@ window.BENCHMARK_DATA = {
           414.2493437698909,
           431.2583811442057,
           450.60343430836997,
-          419.91964219411216
+          419.91964219411216,
+          430.69994916234697
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1143,6 +1166,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1216,7 +1240,8 @@ window.BENCHMARK_DATA = {
           14458.36042582194,
           13961.264318847656,
           16395.23236287435,
-          20050.836517333984
+          20050.836517333984,
+          14174.733873639789
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1270,7 +1295,8 @@ window.BENCHMARK_DATA = {
           26552,
           26552,
           26552,
-          26552
+          26552,
+          27008
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1542,6 +1568,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 15:42:30 2025 \u002B0100",
         "message": "docs: add link to benchmark definition (#266)"
+      },
+      {
+        "sha": "f9889e95e606e7815534c1baeeb6876768043efc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Jan 28 01:02:52 2025 \u002B0100",
+        "message": "chore: update Tunit to V8.0 (#267)"
       }
     ],
     "labels": [
@@ -1587,7 +1619,8 @@ window.BENCHMARK_DATA = {
       "5f7b8bc9",
       "d2654ced",
       "e64de71b",
-      "37d40acf"
+      "37d40acf",
+      "f9889e95"
     ],
     "datasets": [
       {
@@ -1636,7 +1669,8 @@ window.BENCHMARK_DATA = {
           223.77144316264562,
           201.1803548336029,
           199.8094446659088,
-          200.7645127614339
+          200.7645127614339,
+          204.0301199277242
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1648,6 +1682,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1747,7 +1782,8 @@ window.BENCHMARK_DATA = {
           234.66358397801716,
           190.1001998094412,
           188.50981253385544,
-          187.19457486697607
+          187.19457486697607,
+          201.74210090637206
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1785,6 +1821,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -1858,7 +1895,8 @@ window.BENCHMARK_DATA = {
           862.410755666097,
           844.5610464731852,
           840.4382992426555,
-          872.9672763824462
+          872.9672763824462,
+          951.5597832543509
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1912,7 +1950,8 @@ window.BENCHMARK_DATA = {
           2240,
           2240,
           2240,
-          2240
+          2240,
+          2568
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2184,6 +2223,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 15:42:30 2025 \u002B0100",
         "message": "docs: add link to benchmark definition (#266)"
+      },
+      {
+        "sha": "f9889e95e606e7815534c1baeeb6876768043efc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Jan 28 01:02:52 2025 \u002B0100",
+        "message": "chore: update Tunit to V8.0 (#267)"
       }
     ],
     "labels": [
@@ -2229,7 +2274,8 @@ window.BENCHMARK_DATA = {
       "5f7b8bc9",
       "d2654ced",
       "e64de71b",
-      "37d40acf"
+      "37d40acf",
+      "f9889e95"
     ],
     "datasets": [
       {
@@ -2278,7 +2324,8 @@ window.BENCHMARK_DATA = {
           321.59086221059164,
           327.39163573582965,
           312.77659505208334,
-          293.48995269139607
+          293.48995269139607,
+          300.0718457017626
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2290,6 +2337,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -2389,7 +2437,8 @@ window.BENCHMARK_DATA = {
           524.2538003921509,
           443.078218460083,
           447.3975631640508,
-          415.69039386113485
+          415.69039386113485,
+          427.68728901545205
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2427,6 +2476,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -2500,7 +2550,8 @@ window.BENCHMARK_DATA = {
           961.2009120941162,
           1002.251514561971,
           954.0718289693197,
-          934.5109073638916
+          934.5109073638916,
+          935.5633454640706
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2554,7 +2605,8 @@ window.BENCHMARK_DATA = {
           2232,
           2232,
           2232,
-          2232
+          2232,
+          2544
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2826,6 +2878,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 15:42:30 2025 \u002B0100",
         "message": "docs: add link to benchmark definition (#266)"
+      },
+      {
+        "sha": "f9889e95e606e7815534c1baeeb6876768043efc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Jan 28 01:02:52 2025 \u002B0100",
+        "message": "chore: update Tunit to V8.0 (#267)"
       }
     ],
     "labels": [
@@ -2871,7 +2929,8 @@ window.BENCHMARK_DATA = {
       "5f7b8bc9",
       "d2654ced",
       "e64de71b",
-      "37d40acf"
+      "37d40acf",
+      "f9889e95"
     ],
     "datasets": [
       {
@@ -2920,7 +2979,8 @@ window.BENCHMARK_DATA = {
           1169.4694477961614,
           1213.9927685601372,
           1222.4065443674724,
-          1135.3230386098226
+          1135.3230386098226,
+          1168.0136779785157
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2946,6 +3006,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -3031,7 +3092,8 @@ window.BENCHMARK_DATA = {
           1213.6266394395095,
           1328.5873027801513,
           1210.068729909261,
-          1208.2293099721273
+          1208.2293099721273,
+          1201.7893142700195
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3069,6 +3131,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -3142,7 +3205,8 @@ window.BENCHMARK_DATA = {
           2189.298264058431,
           2369.1755793253583,
           2230.138035637992,
-          2276.632302965437
+          2276.632302965437,
+          2336.4270866939
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3196,7 +3260,8 @@ window.BENCHMARK_DATA = {
           3256,
           3256,
           3256,
-          3256
+          3256,
+          3760
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3468,6 +3533,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Jan 27 15:42:30 2025 \u002B0100",
         "message": "docs: add link to benchmark definition (#266)"
+      },
+      {
+        "sha": "f9889e95e606e7815534c1baeeb6876768043efc",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Jan 28 01:02:52 2025 \u002B0100",
+        "message": "chore: update Tunit to V8.0 (#267)"
       }
     ],
     "labels": [
@@ -3513,7 +3584,8 @@ window.BENCHMARK_DATA = {
       "5f7b8bc9",
       "d2654ced",
       "e64de71b",
-      "37d40acf"
+      "37d40acf",
+      "f9889e95"
     ],
     "datasets": [
       {
@@ -3562,7 +3634,8 @@ window.BENCHMARK_DATA = {
           1297.675333756667,
           1271.0046116965157,
           1259.127621105739,
-          1178.2193711598713
+          1178.2193711598713,
+          1214.3279788970947
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3616,6 +3689,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536
         ],
         "borderColor": "#63A2AC",
@@ -3673,7 +3747,8 @@ window.BENCHMARK_DATA = {
           80262.12920673077,
           84932.02866908482,
           82636.78312800481,
-          79826.59193638393
+          79826.59193638393,
+          81925.2958984375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3727,6 +3802,7 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53206,
+          53212,
           53212
         ],
         "borderColor": "#FF671B",
@@ -3784,7 +3860,8 @@ window.BENCHMARK_DATA = {
           6173.567620340983,
           6670.01025390625,
           6534.489442952474,
-          6559.131473795573
+          6559.131473795573,
+          6548.456162588937
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3838,7 +3915,8 @@ window.BENCHMARK_DATA = {
           7024,
           7024,
           7024,
-          7088
+          7088,
+          7632
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
