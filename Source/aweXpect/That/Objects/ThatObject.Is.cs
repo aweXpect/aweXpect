@@ -20,9 +20,10 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> Is(
-		this IThat<object?> source,
+	public static AndOrWhichResult<T?, IThat<T?>> Is<T>(
+		this IThat<T?> source,
 		Type type)
+		where T : class
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsOfTypeConstraint(it, type)),
 			source);
@@ -39,9 +40,10 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsNot(
-		this IThat<object?> source,
+	public static AndOrWhichResult<T?, IThat<T?>> IsNot<T>(
+		this IThat<T?> source,
 		Type type)
+		where T : class
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsNotOfTypeConstraint(it, type)),
 			source);

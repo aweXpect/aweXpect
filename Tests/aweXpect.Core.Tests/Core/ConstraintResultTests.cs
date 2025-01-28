@@ -27,7 +27,7 @@ public sealed class ConstraintResultTests
 
 		ConstraintResult.Failure<Dummy> subject = new(value, expectationText, resultText);
 
-		await That(subject.Value).Is().EquivalentTo(value);
+		await That(subject.Value).IsEquivalentTo(value);
 		await That(subject.ExpectationText).IsEqualTo(expectationText);
 		await That(subject.ResultText).IsEqualTo(resultText);
 	}
@@ -43,7 +43,7 @@ public sealed class ConstraintResultTests
 
 		ConstraintResult.Success<Dummy> subject = new(value, expectationText);
 
-		await That(subject.Value).Is().EquivalentTo(value);
+		await That(subject.Value).IsEquivalentTo(value);
 		await That(subject.ExpectationText).IsEqualTo(expectationText);
 	}
 

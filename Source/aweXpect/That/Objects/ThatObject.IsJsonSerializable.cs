@@ -15,52 +15,52 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> JsonSerializable(
-		this IThatIs<object?> source,
+	public static AndOrResult<object?, IThat<object?>> IsJsonSerializable(
+		this IThat<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<object>(it, new JsonSerializerOptions(),
 					EquivalencyOptions.FromCallback(equivalencyOptions))),
-			source.ExpectSubject());
+			source);
 
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> JsonSerializable(
-		this IThatIs<object?> source,
+	public static AndOrResult<object?, IThat<object?>> IsJsonSerializable(
+		this IThat<object?> source,
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<object>(it, serializerOptions,
 					EquivalencyOptions.FromCallback(equivalencyOptions))),
-			source.ExpectSubject());
+			source);
 
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON of type <typeparamref name="T" />.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> JsonSerializable<T>(
-		this IThatIs<object?> source,
+	public static AndOrResult<object?, IThat<object?>> IsJsonSerializable<T>(
+		this IThat<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<T>(it, new JsonSerializerOptions(),
 					EquivalencyOptions.FromCallback(equivalencyOptions))),
-			source.ExpectSubject());
+			source);
 
 	/// <summary>
 	///     Verifies that the subject can be serialized as JSON of type <typeparamref name="T" />.
 	/// </summary>
-	public static AndOrResult<object?, IThat<object?>> JsonSerializable<T>(
-		this IThatIs<object?> source,
+	public static AndOrResult<object?, IThat<object?>> IsJsonSerializable<T>(
+		this IThat<object?> source,
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<T>(it, serializerOptions,
 					EquivalencyOptions.FromCallback(equivalencyOptions))),
-			source.ExpectSubject());
+			source);
 
 	private readonly struct BeJsonSerializableConstraint<T>(
 		string it,

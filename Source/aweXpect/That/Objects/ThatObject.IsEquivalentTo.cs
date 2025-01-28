@@ -12,8 +12,8 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is equivalent to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IThat<object?>> EquivalentTo(
-		this IThatIs<object?> source,
+	public static ObjectEqualityResult<object?, IThat<object?>> IsEquivalentTo(
+		this IThat<object?> source,
 		object? expected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -23,9 +23,9 @@ public static partial class ThatObject
 		ObjectEqualityOptions options = new();
 		options.Equivalent(equivalencyOptions);
 		return new ObjectEqualityResult<object?, IThat<object?>>(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new IsEqualToConstraint(it, expected, doNotPopulateThisValue, options)),
-			source.ExpectSubject(),
+			source,
 			options);
 	}
 

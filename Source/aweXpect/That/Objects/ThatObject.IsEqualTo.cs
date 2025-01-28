@@ -11,13 +11,6 @@ namespace aweXpect;
 public static partial class ThatObject
 {
 	/// <summary>
-	///     Verifies that the subject is...
-	/// </summary>
-	public static IThatIs<object?> Is(
-		this IThat<object?> source)
-		=> source.ThatIs();
-
-	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
 	public static ObjectEqualityResult<object?, IThat<object?>> IsEqualTo(
