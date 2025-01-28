@@ -648,20 +648,21 @@ namespace aweXpect
     }
     public static class ThatObject
     {
-        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> EquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? expected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Core.IThatIs<object?> Is(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> Is(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> Is<TType>(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrWhichResult<T?, aweXpect.Core.IThat<T?>> Is<T>(this aweXpect.Core.IThat<T?> source, System.Type type)
+            where T :  class { }
         public static aweXpect.Results.ObjectEqualityResult<System.Type?, aweXpect.Core.IThat<System.Type?>> IsEqualTo(this aweXpect.Core.IThat<System.Type?> source, System.Type? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> IsEqualTo(this aweXpect.Core.IThat<object?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<T, aweXpect.Core.IThat<T>> IsEqualTo<T>(this aweXpect.Core.IThat<T> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  struct { }
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>> IsEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  struct { }
+        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> IsEquivalentTo(this aweXpect.Core.IThat<object?> source, object? expected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> IsExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNot(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNot<TType>(this aweXpect.Core.IThat<object?> source) { }
+        public static aweXpect.Results.AndOrWhichResult<T?, aweXpect.Core.IThat<T?>> IsNot<T>(this aweXpect.Core.IThat<T?> source, System.Type type)
+            where T :  class { }
         public static aweXpect.Results.ObjectEqualityResult<System.Type?, aweXpect.Core.IThat<System.Type?>> IsNotEqualTo(this aweXpect.Core.IThat<System.Type?> source, System.Type? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>> IsNotEqualTo(this aweXpect.Core.IThat<object?> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<T, aweXpect.Core.IThat<T>> IsNotEqualTo<T>(this aweXpect.Core.IThat<T> source, T? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
