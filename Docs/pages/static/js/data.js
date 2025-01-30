@@ -306,6 +306,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
         "message": "feat: support pre-release packages (#275)"
+      },
+      {
+        "sha": "87ab795e631f29410bb2a2d1deefc8dd449f8115",
+        "author": "dependabot[bot]",
+        "date": "Thu Jan 30 18:56:02 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.3.0 to 11.4.1 (#263)"
       }
     ],
     "labels": [
@@ -359,7 +365,8 @@ window.BENCHMARK_DATA = {
       "228dc625",
       "6a933f4b",
       "6ae2b5bf",
-      "ccd0a244"
+      "ccd0a244",
+      "87ab795e"
     ],
     "datasets": [
       {
@@ -416,7 +423,8 @@ window.BENCHMARK_DATA = {
           163.13209344546001,
           167.06101050376893,
           158.7659930229187,
-          159.4541298832212
+          159.4541298832212,
+          163.6336270570755
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -428,6 +436,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -543,7 +552,8 @@ window.BENCHMARK_DATA = {
           198.72006452083588,
           218.10243352254233,
           200.09317615826924,
-          193.9639451821645
+          193.9639451821645,
+          192.64240285555522
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -581,6 +591,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -670,7 +681,8 @@ window.BENCHMARK_DATA = {
           682.4111973898752,
           669.8527096430461,
           639.8229130427043,
-          681.289624786377
+          681.289624786377,
+          649.3226903279623
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -731,6 +743,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944
         ],
@@ -1052,6 +1065,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
         "message": "feat: support pre-release packages (#275)"
+      },
+      {
+        "sha": "87ab795e631f29410bb2a2d1deefc8dd449f8115",
+        "author": "dependabot[bot]",
+        "date": "Thu Jan 30 18:56:02 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.3.0 to 11.4.1 (#263)"
       }
     ],
     "labels": [
@@ -1105,7 +1124,8 @@ window.BENCHMARK_DATA = {
       "228dc625",
       "6a933f4b",
       "6ae2b5bf",
-      "ccd0a244"
+      "ccd0a244",
+      "87ab795e"
     ],
     "datasets": [
       {
@@ -1162,7 +1182,8 @@ window.BENCHMARK_DATA = {
           338.3341854731242,
           383.45109830583846,
           359.27549849237715,
-          349.29469544092814
+          349.29469544092814,
+          362.7975242614746
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1174,6 +1195,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1289,7 +1311,8 @@ window.BENCHMARK_DATA = {
           408.34155731201173,
           485.3491358757019,
           418.34248196283977,
-          430.82183567682904
+          430.82183567682904,
+          440.76767279307046
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1327,6 +1350,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1416,7 +1440,8 @@ window.BENCHMARK_DATA = {
           14210.445168631417,
           15714.958005632672,
           14565.746780395508,
-          15490.797334798177
+          15490.797334798177,
+          14845.526387532553
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1477,6 +1502,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016
         ],
@@ -1798,6 +1824,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
         "message": "feat: support pre-release packages (#275)"
+      },
+      {
+        "sha": "87ab795e631f29410bb2a2d1deefc8dd449f8115",
+        "author": "dependabot[bot]",
+        "date": "Thu Jan 30 18:56:02 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.3.0 to 11.4.1 (#263)"
       }
     ],
     "labels": [
@@ -1851,7 +1883,8 @@ window.BENCHMARK_DATA = {
       "228dc625",
       "6a933f4b",
       "6ae2b5bf",
-      "ccd0a244"
+      "ccd0a244",
+      "87ab795e"
     ],
     "datasets": [
       {
@@ -1908,7 +1941,8 @@ window.BENCHMARK_DATA = {
           197.08123793968787,
           225.6841368039449,
           202.40966653823853,
-          197.8662832260132
+          197.8662832260132,
+          191.93434449036917
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1920,6 +1954,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2035,7 +2070,8 @@ window.BENCHMARK_DATA = {
           189.84109015464782,
           237.60216999053955,
           195.34550309181213,
-          199.62347283363343
+          199.62347283363343,
+          193.70547431310018
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2073,6 +2109,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2162,7 +2199,8 @@ window.BENCHMARK_DATA = {
           916.3777967861721,
           996.1241170338222,
           928.9002404894147,
-          983.4430279050555
+          983.4430279050555,
+          950.0976389567057
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2223,6 +2261,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576
         ],
@@ -2544,6 +2583,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
         "message": "feat: support pre-release packages (#275)"
+      },
+      {
+        "sha": "87ab795e631f29410bb2a2d1deefc8dd449f8115",
+        "author": "dependabot[bot]",
+        "date": "Thu Jan 30 18:56:02 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.3.0 to 11.4.1 (#263)"
       }
     ],
     "labels": [
@@ -2597,7 +2642,8 @@ window.BENCHMARK_DATA = {
       "228dc625",
       "6a933f4b",
       "6ae2b5bf",
-      "ccd0a244"
+      "ccd0a244",
+      "87ab795e"
     ],
     "datasets": [
       {
@@ -2654,7 +2700,8 @@ window.BENCHMARK_DATA = {
           303.04374570846556,
           327.38395783106483,
           304.15941893259685,
-          304.63714729036604
+          304.63714729036604,
+          304.3760178565979
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2666,6 +2713,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -2781,7 +2829,8 @@ window.BENCHMARK_DATA = {
           455.07607151667276,
           481.79338855009814,
           437.0457924842834,
-          425.1250131607056
+          425.1250131607056,
+          416.42587032318113
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2819,6 +2868,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -2908,7 +2958,8 @@ window.BENCHMARK_DATA = {
           1035.3188302357992,
           1043.3809014638266,
           984.9704422269549,
-          1055.5025216420493
+          1055.5025216420493,
+          1019.8368648529053
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2969,6 +3020,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560
         ],
@@ -3290,6 +3342,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
         "message": "feat: support pre-release packages (#275)"
+      },
+      {
+        "sha": "87ab795e631f29410bb2a2d1deefc8dd449f8115",
+        "author": "dependabot[bot]",
+        "date": "Thu Jan 30 18:56:02 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.3.0 to 11.4.1 (#263)"
       }
     ],
     "labels": [
@@ -3343,7 +3401,8 @@ window.BENCHMARK_DATA = {
       "228dc625",
       "6a933f4b",
       "6ae2b5bf",
-      "ccd0a244"
+      "ccd0a244",
+      "87ab795e"
     ],
     "datasets": [
       {
@@ -3400,7 +3459,8 @@ window.BENCHMARK_DATA = {
           1221.1022143046062,
           1295.3636631284442,
           1152.5495427938608,
-          1260.723283513387
+          1260.723283513387,
+          1203.043154496413
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3426,6 +3486,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -3527,7 +3588,8 @@ window.BENCHMARK_DATA = {
           1204.974629720052,
           1396.248903656006,
           1234.1051052093505,
-          1278.4940237681071
+          1278.4940237681071,
+          1187.5520716447097
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3565,6 +3627,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -3654,7 +3717,8 @@ window.BENCHMARK_DATA = {
           2305.051448313395,
           2392.2518491109213,
           2324.4743108113607,
-          2385.4872194925942
+          2385.4872194925942,
+          2238.5376742226736
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3715,6 +3779,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776
         ],
@@ -4036,6 +4101,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
         "message": "feat: support pre-release packages (#275)"
+      },
+      {
+        "sha": "87ab795e631f29410bb2a2d1deefc8dd449f8115",
+        "author": "dependabot[bot]",
+        "date": "Thu Jan 30 18:56:02 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.3.0 to 11.4.1 (#263)"
       }
     ],
     "labels": [
@@ -4089,7 +4160,8 @@ window.BENCHMARK_DATA = {
       "228dc625",
       "6a933f4b",
       "6ae2b5bf",
-      "ccd0a244"
+      "ccd0a244",
+      "87ab795e"
     ],
     "datasets": [
       {
@@ -4146,7 +4218,8 @@ window.BENCHMARK_DATA = {
           1283.822209903172,
           1368.9808836716873,
           1266.3558027903239,
-          1190.357773844401
+          1190.357773844401,
+          1213.0107763926187
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4200,6 +4273,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -4273,7 +4347,8 @@ window.BENCHMARK_DATA = {
           82444.40726143973,
           84428.1072126116,
           83458.30694110577,
-          82254.59590657552
+          82254.59590657552,
+          81326.57369559152
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4335,7 +4410,8 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53206,
-          53212
+          53212,
+          53206
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4400,7 +4476,8 @@ window.BENCHMARK_DATA = {
           6591.206381734212,
           6612.52502147968,
           6445.794257609049,
-          6501.3065839494975
+          6501.3065839494975,
+          6405.5179361615865
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4461,6 +4538,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640
         ],
