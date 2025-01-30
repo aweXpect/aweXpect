@@ -840,7 +840,7 @@ namespace aweXpect.Signaling
 }
 namespace aweXpect.Synchronous
 {
-    public static class SynchronousTestExecution
+    public static class Synchronously
     {
         public static void Verify(this aweXpect.Results.ExpectationResult result) { }
         public static TType Verify<TType, TSelf>(this aweXpect.Results.ExpectationResult<TType, TSelf> result)

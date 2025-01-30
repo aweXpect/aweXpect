@@ -9,7 +9,7 @@ namespace aweXpect.Synchronous;
 ///     <b>WARNING!</b><br />
 ///     The only intended use case is to support synchronous evaluation for <c>ref struct</c>.
 /// </remarks>
-public static class SynchronousTestExecution
+public static class Synchronously
 {
 	/// <summary>
 	///     Verifies synchronously that the expectation is satisfied.

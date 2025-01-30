@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Synchronous;
+// ReSharper disable InvokeAsExtensionMethod
 
 namespace aweXpect.Core.Tests.Synchronous;
 
-public class SynchronousTestExecutionTests
+public class SynchronouslyTests
 {
 	[Fact]
 	public void WhenActionDoesNotThrow_ShouldSucceed()
@@ -15,7 +16,7 @@ public class SynchronousTestExecutionTests
 		};
 
 		int value = subject.Bar;
-		That(() => ThrowIf(value != 3)).DoesNotThrow().Verify();
+		Synchronously.Verify(That(() => ThrowIf(value != 3)).DoesNotThrow());
 	}
 
 	[Fact]
@@ -26,15 +27,15 @@ public class SynchronousTestExecutionTests
 			Bar = 3
 		};
 		int value = subject.Bar;
-		void Act() => That(() => ThrowIf(value == 3)).DoesNotThrow().Verify();
+		void Act() => Synchronously.Verify(That(() => ThrowIf(value == 3)).DoesNotThrow());
 
-		That(Act).Throws<XunitException>()
+		Synchronously.Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected () => ThrowIf(value == 3) to
 			             not throw any exception,
 			             but it did throw a MyException:
 			               WhenActionThrows_ShouldFail
-			             """).Verify();
+			             """));
 	}
 
 	[Fact]
@@ -45,14 +46,14 @@ public class SynchronousTestExecutionTests
 			Bar = 3
 		};
 		int value = subject.Bar;
-		void Act() => That(value).IsEqualTo(2).Verify();
+		void Act() => Synchronously.Verify(That(value).IsEqualTo(2));
 
-		That(Act).Throws<XunitException>()
+		Synchronously.Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected value to
 			             be equal to 2,
 			             but it was 3
-			             """).Verify();
+			             """));
 	}
 
 	[Fact]
@@ -63,9 +64,9 @@ public class SynchronousTestExecutionTests
 			Bar = 3
 		};
 
-		int value = That(subject.Bar).IsEqualTo(3).Verify();
+		int value = Synchronously.Verify(That(subject.Bar).IsEqualTo(3));
 
-		That(value).IsEqualTo(3).Verify();
+		Synchronously.Verify(That(value).IsEqualTo(3));
 	}
 
 	private static void ThrowIf(bool condition, [CallerMemberName] string message = "")
