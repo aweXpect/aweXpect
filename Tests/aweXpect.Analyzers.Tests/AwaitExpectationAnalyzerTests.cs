@@ -115,4 +115,41 @@ public class AwaitExpectationAnalyzerTests
 			}
 			"""
 		);
+
+	[Fact]
+	public async Task WhenVerifiedStatically_ShouldNotBeFlagged() => await Verifier
+		.VerifyAnalyzerAsync(
+			"""
+			using System.Threading.Tasks;
+			using aweXpect;
+			using aweXpect.Synchronous;
+
+			public class MyClass
+			{
+			    public async Task MyTest()
+			    {
+			        var subject = true;
+			        Synchronously.Verify({|#0:Expect.That(subject)|}.IsTrue());
+			    }
+			}
+			"""
+		);
+
+	[Fact]
+	public async Task WhenVerifiedStatically_WithoutReturnValue_ShouldNotBeFlagged() => await Verifier
+		.VerifyAnalyzerAsync(
+			"""
+			using System.Threading.Tasks;
+			using aweXpect;
+			using aweXpect.Synchronous;
+
+			public class MyClass
+			{
+			    public async Task MyTest()
+			    {
+			        Synchronously.Verify({|#0:Expect.That(() => {})|}.DoesNotThrow());
+			    }
+			}
+			"""
+		);
 }
