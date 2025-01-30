@@ -99,6 +99,17 @@ await Expect.That(subject).IsNullOrWhiteSpace();
 await Expect.That("foo").IsNotNullOrWhiteSpace();
 ```
 
+## Length
+
+You can verify, that the `string` has the expected length:
+
+```csharp
+string subject = "some value";
+
+await Expect.That(subject).HasLength().EqualTo(10);
+await Expect.That(subject).HasLength().NotEqualTo(9);
+```
+
 ## String start / end
 
 You can verify, that the `string` starts or ends with a given string.  
