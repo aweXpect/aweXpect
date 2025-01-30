@@ -25,10 +25,10 @@ public static class Expect
 	/// <summary>
 	///     Specify expectations for the current <paramref name="subject" />.
 	/// </summary>
-	public static IThat<T[]> That<T>(T[] subject,
+	public static IThat<T[]?> That<T>(T[]? subject,
 		[CallerArgumentExpression("subject")] string doNotPopulateThisValue = "")
-		=> new ThatSubject<T[]>(new ExpectationBuilder<T[]>(
-			new ValueSource<T[]>(subject), doNotPopulateThisValue));
+		=> new ThatSubject<T[]?>(new ExpectationBuilder<T[]?>(
+			new ValueSource<T[]?>(subject), doNotPopulateThisValue));
 
 	/// <summary>
 	///     Specify expectations for the current asynchronous <paramref name="subject" />.

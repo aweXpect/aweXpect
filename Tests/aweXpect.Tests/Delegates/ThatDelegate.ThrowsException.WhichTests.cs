@@ -16,7 +16,7 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.Is(hResult)).And
+						.Which(e => e.HResult, h => h.IsEqualTo(hResult)).And
 						.WithHResult(otherHResult);
 
 				await That(Act).Throws<XunitException>()
@@ -37,7 +37,7 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.Is(expectedHResult)).And
+						.Which(e => e.HResult, h => h.IsEqualTo(expectedHResult)).And
 						.WithHResult(hResult);
 
 				await That(Act).Throws<XunitException>()
@@ -57,7 +57,7 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.Is(hResult));
+						.Which(e => e.HResult, h => h.IsEqualTo(hResult));
 
 				await That(Act).DoesNotThrow();
 			}

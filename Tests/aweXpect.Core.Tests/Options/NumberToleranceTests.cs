@@ -23,6 +23,6 @@ public class NumberToleranceTests
 		void Act() => sut.SetTolerance(0);
 
 		await That(Act).DoesNotThrow();
-		await That(sut.Tolerance).Is(0);
+		await That(sut.Tolerance).IsEqualTo(0);
 	}
 }

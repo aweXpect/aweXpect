@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int>? subject = null;
 
 					async Task Act()
-						=> await That(subject!).All().Are(constantValue);
+						=> await That(subject).All().Are(constantValue);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -202,7 +202,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string>? subject = null;
 
 					async Task Act()
-						=> await That(subject!).All().Are(constantValue);
+						=> await That(subject).All().Are(constantValue);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""

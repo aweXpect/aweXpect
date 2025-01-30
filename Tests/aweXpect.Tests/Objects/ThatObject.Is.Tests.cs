@@ -2,159 +2,207 @@
 
 public sealed partial class ThatObject
 {
-	public sealed partial class Is
+	public sealed class Is
 	{
-		public sealed class Tests
+		public sealed class GenericTests
 		{
-			[Fact]
-			public async Task SubjectToItself_ShouldSucceed()
+			[Theory]
+			[AutoData]
+			public async Task WhenAwaited_ShouldReturnTypedResult(int value)
 			{
-				object subject = new MyClass();
+				object subject = new MyClass
+				{
+					Value = value
+				};
 
-				async Task Act()
-					=> await That(subject).Is(subject);
+				MyClass result = await That(subject).Is<MyClass>();
 
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task SubjectToSomeOtherValue_ShouldFail()
-			{
-				object subject = new MyClass();
-				object expected = new MyClass();
-
-				async Task Act()
-					=> await That(subject).Is(expected)
-						.Because("we want to test the failure");
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be equal to expected, because we want to test the failure,
-					             but it was MyClass {
-					               Value = 0
-					             }
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
-			{
-				MyClass? subject = null;
-				MyClass? expected = null;
-
-				async Task Act()
-					=> await That(subject).Is(expected);
-
-				await That(Act).DoesNotThrow();
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				MyClass? subject = null;
+				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Is(new MyClass());
+					=> await That(subject).Is<MyClass>();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             be equal to new MyClass(),
+					             be type MyClass,
 					             but it was <null>
 					             """);
 			}
-		}
 
-		public sealed class StructTests
-		{
-			[Fact]
-			public async Task SubjectToItself_ShouldSucceed()
+			[Theory]
+			[AutoData]
+			public async Task WhenTypeDoesNotMatch_ShouldFail(int value)
 			{
-				char subject = 'c';
+				object subject = new MyClass
+				{
+					Value = value
+				};
 
 				async Task Act()
-					=> await That(subject).Is(subject);
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task SubjectToSomeOtherValue_ShouldFail()
-			{
-				char subject = 'x';
-				char expected = 'y';
-
-				async Task Act()
-					=> await That(subject).Is(expected)
+					=> await That(subject).Is<OtherClass>()
 						.Because("we want to test the failure");
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be equal to expected, because we want to test the failure,
-					             but it was 'x'
-					             """);
+					.WithMessage($$"""
+					               Expected subject to
+					               be type OtherClass, because we want to test the failure,
+					               but it was MyClass {
+					                 Value = {{value}}
+					               }
+					               """);
+			}
+
+			[Fact]
+			public async Task WhenTypeIsSubtype_ShouldSucceed()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).Is<MyBaseClass>();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenTypeIsSupertype_ShouldFail(int value, string reason)
+			{
+				object subject = new MyBaseClass
+				{
+					Value = value
+				};
+
+				async Task Act()
+					=> await That(subject).Is<MyClass>()
+						.Because(reason);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($$"""
+					               Expected subject to
+					               be type MyClass, because {{reason}},
+					               but it was MyBaseClass {
+					                 Value = {{value}}
+					               }
+					               """);
+			}
+
+			[Fact]
+			public async Task WhenTypeMatches_ShouldSucceed()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).Is<MyClass>();
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 
-		public sealed class NullableStructTests
+		public sealed class TypeTests
 		{
-			[Fact]
-			public async Task SubjectToItself_ShouldSucceed()
+			[Theory]
+			[AutoData]
+			public async Task WhenAwaited_ShouldReturnTypedResult(int value)
 			{
-				char? subject = 'c';
+				object subject = new MyClass
+				{
+					Value = value
+				};
 
-				async Task Act()
-					=> await That(subject).Is(subject);
+				object? result = await That(subject).Is(typeof(MyClass));
 
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task SubjectToSomeOtherValue_ShouldFail()
-			{
-				char? subject = 'x';
-				char? expected = 'y';
-
-				async Task Act()
-					=> await That(subject).Is(expected)
-						.Because("we want to test the failure");
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             be equal to expected, because we want to test the failure,
-					             but it was 'x'
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
-			{
-				char? subject = null;
-				char? expected = null;
-
-				async Task Act()
-					=> await That(subject).Is(expected);
-
-				await That(Act).DoesNotThrow();
+				await That(result).IsSameAs(subject);
 			}
 
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				char? subject = null;
+				object? subject = null;
 
 				async Task Act()
-					=> await That(subject).Is('c');
+					=> await That(subject).Is(typeof(MyClass));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             be equal to 'c',
+					             be type MyClass,
 					             but it was <null>
 					             """);
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenTypeDoesNotMatch_ShouldFail(int value)
+			{
+				object subject = new MyClass
+				{
+					Value = value
+				};
+
+				async Task Act()
+					=> await That(subject).Is(typeof(OtherClass))
+						.Because("we want to test the failure");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($$"""
+					               Expected subject to
+					               be type OtherClass, because we want to test the failure,
+					               but it was MyClass {
+					                 Value = {{value}}
+					               }
+					               """);
+			}
+
+			[Fact]
+			public async Task WhenTypeIsSubtype_ShouldSucceed()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).Is(typeof(MyBaseClass));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task WhenTypeIsSupertype_ShouldFail(int value, string reason)
+			{
+				object subject = new MyBaseClass
+				{
+					Value = value
+				};
+
+				async Task Act()
+					=> await That(subject).Is(typeof(MyClass))
+						.Because(reason);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($$"""
+					               Expected subject to
+					               be type MyClass, because {{reason}},
+					               but it was MyBaseClass {
+					                 Value = {{value}}
+					               }
+					               """);
+			}
+
+			[Fact]
+			public async Task WhenTypeMatches_ShouldSucceed()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).Is(typeof(MyClass));
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

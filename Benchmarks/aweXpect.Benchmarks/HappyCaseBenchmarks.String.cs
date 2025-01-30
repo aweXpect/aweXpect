@@ -4,6 +4,9 @@ using FluentAssertions.Primitives;
 
 namespace aweXpect.Benchmarks;
 
+/// <summary>
+///     In this benchmark we verify that a <see cref="string" /> is equal to another one.<br />
+/// </summary>
 public partial class HappyCaseBenchmarks
 {
 	private readonly string _stringExpectation = "foo";
@@ -11,7 +14,7 @@ public partial class HappyCaseBenchmarks
 
 	[Benchmark]
 	public async Task<string?> String_aweXpect()
-		=> await Expect.That(_stringSubject).Is(_stringExpectation);
+		=> await Expect.That(_stringSubject).IsEqualTo(_stringExpectation);
 
 	[Benchmark]
 	public AndConstraint<StringAssertions> String_FluentAssertions()

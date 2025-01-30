@@ -13,11 +13,11 @@ You can verify, that the `DateTime` or `DateTimeOffset` is equal to another one 
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
 
-await Expect.That(subject1).Is(new DateTime(2024, 12, 24));
+await Expect.That(subject1).IsEqualTo(new DateTime(2024, 12, 24));
 
 DateTimeOffset subject2 = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
 
-await Expect.That(subject2).Is(new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2)));
+await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2)));
 ```
 
 You can also specify a tolerance:
@@ -25,12 +25,12 @@ You can also specify a tolerance:
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
 
-await Expect.That(subject1).Is(new DateTime(2024, 12, 23)).Within(TimeSpan.FromDays(1))
+await Expect.That(subject1).IsEqualTo(new DateTime(2024, 12, 23)).Within(TimeSpan.FromDays(1))
   .Because("we accept values between 2024-12-23 and 2024-12-25");
 
 DateTimeOffset subject2 = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
 
-await Expect.That(subject2).Is(new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2))).Within(TimeSpan.FromMinutes(10))
+await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2))).Within(TimeSpan.FromMinutes(10))
   .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
 ```
 
@@ -93,25 +93,25 @@ DateTime subject = new DateTime(2024, 12, 31, 15, 16, 17, 189, DateTimeKind.Utc)
 // or
 DateTimeOffset subject = new DateTimeOffset(2024, 12, 31, 15, 16, 17, 189, TimeSpan.FromMinutes(90));
 
-await Expect.That(subject).HasYear(2024);
-await Expect.That(subject).HasMonth(12);
-await Expect.That(subject).HasDay(31);
-await Expect.That(subject).HasHour(15);
-await Expect.That(subject).HasMinute(16);
-await Expect.That(subject).HasSecond(17);
-await Expect.That(subject).HasMillisecond(189);
+await Expect.That(subject).HasYear().EqualTo(2024);
+await Expect.That(subject).HasMonth().EqualTo(12);
+await Expect.That(subject).HasDay().EqualTo(31);
+await Expect.That(subject).HasHour().EqualTo(15);
+await Expect.That(subject).HasMinute().EqualTo(16);
+await Expect.That(subject).HasSecond().EqualTo(17);
+await Expect.That(subject).HasMillisecond().EqualTo(189);
 ```
 
 For `DateTime` you can also verify the `Kind` property:
 
 ```csharp
-await Expect.That(subject).HasKind(DateTimeKind.Utc);
+await Expect.That(subject).HasKind().EqualTo(DateTimeKind.Utc);
 ```
 
 For `DateTimeOffset` you can also verify the `Offset` property:
 
 ```csharp
-await Expect.That(subject).HasOffset(TimeSpan.FromMinutes(90));
+await Expect.That(subject).HasOffset().EqualTo(TimeSpan.FromMinutes(90));
 ```
 
 ## Default Tolerance

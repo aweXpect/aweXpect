@@ -11,8 +11,8 @@ public sealed class ConstraintResultTests
 	{
 		ConstraintResult.Failure subject = new(expectationText, resultText);
 
-		await That(subject.ExpectationText).Is(expectationText);
-		await That(subject.ResultText).Is(resultText);
+		await That(subject.ExpectationText).IsEqualTo(expectationText);
+		await That(subject.ResultText).IsEqualTo(resultText);
 	}
 
 	[Theory]
@@ -27,9 +27,9 @@ public sealed class ConstraintResultTests
 
 		ConstraintResult.Failure<Dummy> subject = new(value, expectationText, resultText);
 
-		await That(subject.Value).Is().EquivalentTo(value);
-		await That(subject.ExpectationText).Is(expectationText);
-		await That(subject.ResultText).Is(resultText);
+		await That(subject.Value).IsEquivalentTo(value);
+		await That(subject.ExpectationText).IsEqualTo(expectationText);
+		await That(subject.ResultText).IsEqualTo(resultText);
 	}
 
 	[Theory]
@@ -43,8 +43,8 @@ public sealed class ConstraintResultTests
 
 		ConstraintResult.Success<Dummy> subject = new(value, expectationText);
 
-		await That(subject.Value).Is().EquivalentTo(value);
-		await That(subject.ExpectationText).Is(expectationText);
+		await That(subject.Value).IsEquivalentTo(value);
+		await That(subject.ExpectationText).IsEqualTo(expectationText);
 	}
 
 	[Theory]
@@ -56,7 +56,7 @@ public sealed class ConstraintResultTests
 
 		string result = subject.ToString();
 
-		await That(result).Is($"FAILED {expectationText}");
+		await That(result).IsEqualTo($"FAILED {expectationText}");
 	}
 
 	[Theory]
@@ -68,7 +68,7 @@ public sealed class ConstraintResultTests
 
 		string result = subject.ToString();
 
-		await That(result).Is($"SUCCEEDED {expectationText}");
+		await That(result).IsEqualTo($"SUCCEEDED {expectationText}");
 	}
 
 	private sealed class Dummy

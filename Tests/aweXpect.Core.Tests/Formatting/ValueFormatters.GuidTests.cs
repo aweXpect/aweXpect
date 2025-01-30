@@ -17,9 +17,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Is(expectedResult);
-			await That(objectResult).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -33,25 +33,25 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Is(expectedResult);
-			await That(objectResult).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
 		public async Task NullableShouldUseRoundtripFormat()
 		{
 			Guid? value = Guid.NewGuid();
-			string expectedResult = value.ToString();
+			string? expectedResult = value.ToString();
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Is(expectedResult);
-			await That(objectResult).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -65,9 +65,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Is(expectedResult);
-			await That(objectResult).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -80,9 +80,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
 
-			await That(result).Is(ValueFormatter.NullString);
-			await That(objectResult).Is(ValueFormatter.NullString);
-			await That(sb.ToString()).Is(ValueFormatter.NullString);
+			await That(result).IsEqualTo(ValueFormatter.NullString);
+			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
+			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
 	}
 }

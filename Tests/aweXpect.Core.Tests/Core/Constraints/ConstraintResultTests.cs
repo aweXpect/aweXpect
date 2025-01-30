@@ -23,7 +23,7 @@ public class ConstraintResultTests
 		bool result = sut.TryGetValue(out string? value);
 
 		await That(result).IsTrue();
-		await That(value).Is("bar");
+		await That(value).IsEqualTo("bar");
 	}
 
 	[Fact]

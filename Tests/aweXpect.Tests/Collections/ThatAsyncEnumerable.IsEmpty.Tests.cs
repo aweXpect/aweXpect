@@ -16,7 +16,7 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task CancelledEnumerable_ShouldFail()
 			{
 				using CancellationTokenSource cts = new();
-				cts.Cancel();
+				await cts.CancelAsync();
 				CancellationToken token = cts.Token;
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
@@ -123,7 +123,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).IsEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

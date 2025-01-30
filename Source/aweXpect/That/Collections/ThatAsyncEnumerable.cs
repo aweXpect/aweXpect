@@ -21,7 +21,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatAsyncEnumerable
 {
-	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
@@ -43,15 +43,14 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual!,
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
+					actual,
 					_quantifier.GetExpectation(_it, _expectationText()),
 					$"{_it} was <null>");
 			}
@@ -92,7 +91,7 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private readonly struct AsyncCollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct AsyncCollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
@@ -109,15 +108,14 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual!,
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
+					actual,
 					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
 					$"{_it} was <null>");
 			}
@@ -163,18 +161,17 @@ public static partial class ThatAsyncEnumerable
 
 	private readonly struct AsyncCollectionCountConstraint<TItem>(
 		string it,
-		EnumerableQuantifier quantifier) : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		EnumerableQuantifier quantifier) : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual!,
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
+					actual,
 					quantifier.GetExpectation(it, null),
 					$"{it} was <null>");
 			}
@@ -214,16 +211,15 @@ public static partial class ThatAsyncEnumerable
 		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (expected is null)
@@ -303,15 +299,14 @@ public static partial class ThatAsyncEnumerable
 		SortOrder sortOrder,
 		CollectionOrderOptions<TMember> options,
 		string memberExpression)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IAsyncEnumerable<TItem> materialized = context

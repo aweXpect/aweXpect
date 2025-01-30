@@ -33,7 +33,7 @@ public sealed partial class ThatEnumerable
 
 				int result = await That(subject).HasSingle();
 
-				await That(result).Is(42);
+				await That(result).IsEqualTo(42);
 			}
 
 			[Fact]
@@ -59,7 +59,7 @@ public sealed partial class ThatEnumerable
 
 				int result = await That(subject).HasSingle();
 
-				await That(result).Is(1);
+				await That(result).IsEqualTo(1);
 			}
 
 			[Fact]
@@ -77,6 +77,22 @@ public sealed partial class ThatEnumerable
 					             but it was empty
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasSingle();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have a single item,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class WhichTests
@@ -89,7 +105,7 @@ public sealed partial class ThatEnumerable
 				int result = await That(subject).HasSingle().Which.IsGreaterThan(41).And
 					.IsLessThan(43);
 
-				await That(result).Is(42);
+				await That(result).IsEqualTo(42);
 			}
 
 			[Fact]

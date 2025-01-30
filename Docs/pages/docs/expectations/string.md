@@ -15,17 +15,17 @@ use a custom `IEqualityComparer<string>`:
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Is("some text")
+await Expect.That(subject).IsEqualTo("some text")
   .Because("it is equal");
-await Expect.That(subject).Is("SOME TEXT").IgnoringCase()
+await Expect.That(subject).IsEqualTo("SOME TEXT").IgnoringCase()
   .Because("we ignored the casing");
-await Expect.That("a\r\nb").Is("a\nb").IgnoringNewlineStyle()
+await Expect.That("a\r\nb").IsEqualTo("a\nb").IgnoringNewlineStyle()
   .Because("we ignored the newline style");
-await Expect.That(subject).Is("  some text").IgnoringLeadingWhiteSpace()
+await Expect.That(subject).IsEqualTo("  some text").IgnoringLeadingWhiteSpace()
   .Because("we ignored leading white-space");
-await Expect.That(subject).Is("some text \t").IgnoringTrailingWhiteSpace()
+await Expect.That(subject).IsEqualTo("some text \t").IgnoringTrailingWhiteSpace()
   .Because("we ignored trailing white-space");
-await Expect.That(subject).Is("SOME TEXT").Using(StringComparer.OrdinalIgnoreCase)
+await Expect.That(subject).IsEqualTo("SOME TEXT").Using(StringComparer.OrdinalIgnoreCase)
   .Because("the comparer ignored the casing");
 ```
 
@@ -36,7 +36,7 @@ You can also compare strings using wildcards:
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Is("*me tex?").AsWildcard();
+await Expect.That(subject).IsEqualTo("*me tex?").AsWildcard();
 ```
 
 When using `AsWildcard`, the following wildcard specifiers are supported:
@@ -54,7 +54,7 @@ using [regular expressions](https://learn.microsoft.com/en-us/dotnet/standard/ba
 ```csharp
 string subject = "some text";
 
-await Expect.That(subject).Is("(.*)xt").AsRegex();
+await Expect.That(subject).IsEqualTo("(.*)xt").AsRegex();
 ```
 
 The regex comparison uses the following [
@@ -97,6 +97,17 @@ await Expect.That(subject).IsNullOrEmpty();
 await Expect.That("foo").IsNotNullOrEmpty();
 await Expect.That(subject).IsNullOrWhiteSpace();
 await Expect.That("foo").IsNotNullOrWhiteSpace();
+```
+
+## Length
+
+You can verify, that the `string` has the expected length:
+
+```csharp
+string subject = "some value";
+
+await Expect.That(subject).HasLength().EqualTo(10);
+await Expect.That(subject).HasLength().NotEqualTo(9);
 ```
 
 ## String start / end

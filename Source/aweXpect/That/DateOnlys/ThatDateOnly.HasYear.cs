@@ -1,7 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -9,30 +8,9 @@ namespace aweXpect;
 public static partial class ThatDateOnly
 {
 	/// <summary>
-	///     Verifies that the year of the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the year of the subject…
 	/// </summary>
-	public static AndOrResult<DateOnly, IThat<DateOnly>> HasYear(this IThat<DateOnly> source,
-		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					expected,
-					(a, e) => a.Year == e,
-					$"have year of {Formatter.Format(expected)}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the year of the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<DateOnly, IThat<DateOnly>> DoesNotHaveYear(
-		this IThat<DateOnly> source,
-		int? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					unexpected,
-					(a, e) => a.Year != e,
-					$"not have year of {Formatter.Format(unexpected)}")),
-			source);
+	public static PropertyResult.Int<DateOnly> HasYear(this IThat<DateOnly> source)
+		=> new(source, a => a.Year, "year");
 }
 #endif

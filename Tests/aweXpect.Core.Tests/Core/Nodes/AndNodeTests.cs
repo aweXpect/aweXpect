@@ -19,7 +19,7 @@ public sealed class AndNodeTests
 
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
-		await That(result).Is(expectedResult);
+		await That(result).IsEqualTo(expectedResult);
 	}
 
 	[Fact]
@@ -29,7 +29,7 @@ public sealed class AndNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).Is("foo");
+		await That(result).IsEqualTo("foo");
 	}
 
 	[Fact]
@@ -78,7 +78,7 @@ public sealed class AndNodeTests
 	public async Task WithTwoSuccessfulTests_ShouldNotThrow()
 	{
 		async Task Act()
-			=> await That(true).IsTrue().And.IsNot(false);
+			=> await That(true).IsTrue().And.IsNotEqualTo(false);
 
 		await That(Act).DoesNotThrow();
 	}

@@ -8,7 +8,7 @@ public class TimesTests
 	{
 		Times times = new(value);
 
-		await That(times.Value).Is(value);
+		await That(times.Value).IsEqualTo(value);
 	}
 
 	[Theory]
@@ -17,7 +17,7 @@ public class TimesTests
 	{
 		Times times = value.Times();
 
-		await That(times.Value).Is(value);
+		await That(times.Value).IsEqualTo(value);
 	}
 
 	[Theory]
@@ -26,6 +26,6 @@ public class TimesTests
 	{
 		Times times = value;
 
-		await That(times.Value).Is(value);
+		await That(times.Value).IsEqualTo(value);
 	}
 }

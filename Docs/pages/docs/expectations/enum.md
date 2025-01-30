@@ -13,9 +13,9 @@ You can verify, that the `enum` is equal to another one or not:
 ```csharp
 enum Colors { Red = 1, Green = 2, Blue = 3}
 
-await Expect.That(Colors.Red).Is(Colors.Red)
+await Expect.That(Colors.Red).IsEqualTo(Colors.Red)
   .Because("it is 'Red'");
-await Expect.That(Colors.Red).IsNot(Colors.Blue)
+await Expect.That(Colors.Red).IsNotEqualTo(Colors.Blue)
   .Because("it is 'Red'");
 ```
 

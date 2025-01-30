@@ -8,29 +8,8 @@ namespace aweXpect;
 public static partial class ThatDateTime
 {
 	/// <summary>
-	///     Verifies that the month of the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the month of the subject…
 	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> HasMonth(this IThat<DateTime> source,
-		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					expected,
-					(a, e) => a.Month == e,
-					$"have month of {Formatter.Format(expected)}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the month of the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> DoesNotHaveMonth(
-		this IThat<DateTime> source,
-		int? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					unexpected,
-					(a, e) => a.Month != e,
-					$"not have month of {Formatter.Format(unexpected)}")),
-			source);
+	public static PropertyResult.Int<DateTime> HasMonth(this IThat<DateTime> source)
+		=> new(source, a => a.Month, "month");
 }

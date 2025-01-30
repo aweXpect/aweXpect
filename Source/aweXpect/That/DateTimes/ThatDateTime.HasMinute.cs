@@ -8,29 +8,8 @@ namespace aweXpect;
 public static partial class ThatDateTime
 {
 	/// <summary>
-	///     Verifies that the minute of the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the minute of the subject…
 	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> HasMinute(this IThat<DateTime> source,
-		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					expected,
-					(a, e) => a.Minute == e,
-					$"have minute of {Formatter.Format(expected)}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the minute of the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<DateTime, IThat<DateTime>> DoesNotHaveMinute(
-		this IThat<DateTime> source,
-		int? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<int?>(
-					it,
-					unexpected,
-					(a, e) => a.Minute != e,
-					$"not have minute of {Formatter.Format(unexpected)}")),
-			source);
+	public static PropertyResult.Int<DateTime> HasMinute(this IThat<DateTime> source)
+		=> new(source, a => a.Minute, "minute");
 }

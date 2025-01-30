@@ -49,7 +49,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).IsInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -130,7 +130,7 @@ public sealed partial class ThatEnumerable
 				IEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).IsInDescendingOrder();
+					=> await That(subject).IsInDescendingOrder();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

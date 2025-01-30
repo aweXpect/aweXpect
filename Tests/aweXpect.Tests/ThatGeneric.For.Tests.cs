@@ -70,7 +70,7 @@ public sealed partial class ThatGeneric
 
 				async Task Act()
 					=> await That(subject)
-						.For(o => o.Value, v => v.Is(expectedValue));
+						.For(o => o.Value, v => v.IsEqualTo(expectedValue));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -90,7 +90,7 @@ public sealed partial class ThatGeneric
 				};
 
 				async Task Act()
-					=> await That(subject).For(o => o.Value, v => v.Is(value));
+					=> await That(subject).For(o => o.Value, v => v.IsEqualTo(value));
 
 				await That(Act).DoesNotThrow();
 			}

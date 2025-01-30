@@ -4,7 +4,7 @@ public sealed partial class ThatNullableDateTimeOffset
 {
 	public sealed class HasMillisecond
 	{
-		public sealed class Tests
+		public sealed class EqualToTests
 		{
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
@@ -13,13 +13,13 @@ public sealed partial class ThatNullableDateTimeOffset
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).HasMillisecond(expected);
+					=> await That(subject).HasMillisecond().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have millisecond of <null>,
-					              but it was {Formatter.Format(subject)}
+					              have millisecond equal to <null>,
+					              but it had millisecond 167
 					              """);
 			}
 
@@ -30,13 +30,13 @@ public sealed partial class ThatNullableDateTimeOffset
 				int? expected = 15;
 
 				async Task Act()
-					=> await That(subject).HasMillisecond(expected);
+					=> await That(subject).HasMillisecond().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected subject to
-					              have millisecond of {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              have millisecond equal to {Formatter.Format(expected)},
+					              but it had millisecond 167
 					              """);
 			}
 
@@ -47,7 +47,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				int expected = 167;
 
 				async Task Act()
-					=> await That(subject).HasMillisecond(expected);
+					=> await That(subject).HasMillisecond().EqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -59,12 +59,12 @@ public sealed partial class ThatNullableDateTimeOffset
 				int? expected = null;
 
 				async Task Act()
-					=> await That(subject).HasMillisecond(expected);
+					=> await That(subject).HasMillisecond().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have millisecond of <null>,
+					             have millisecond equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -76,14 +76,82 @@ public sealed partial class ThatNullableDateTimeOffset
 				int? expected = 1;
 
 				async Task Act()
-					=> await That(subject).HasMillisecond(expected);
+					=> await That(subject).HasMillisecond().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected subject to
-					             have millisecond of 1,
+					             have millisecond equal to 1,
 					             but it was <null>
 					             """);
+			}
+		}
+
+		public sealed class NotEqualToTests
+		{
+			[Fact]
+			public async Task WhenMillisecondOfSubjectIsDifferent_ShouldSucceed()
+			{
+				DateTimeOffset? subject = 12.November(2010).At(13, 14, 15, 167).WithOffset(2.Hours());
+				int? unexpected = 15;
+
+				async Task Act()
+					=> await That(subject).HasMillisecond().NotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenMillisecondOfSubjectIsTheSame_ShouldFail()
+			{
+				DateTimeOffset? subject = 12.November(2010).At(13, 14, 15, 167).WithOffset(2.Hours());
+				int unexpected = 167;
+
+				async Task Act()
+					=> await That(subject).HasMillisecond().NotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have millisecond not equal to {Formatter.Format(unexpected)},
+					              but it had millisecond 167
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectAndUnexpectedIsNull_ShouldSucceed()
+			{
+				DateTimeOffset? subject = null;
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasMillisecond().NotEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				DateTimeOffset? subject = null;
+				int? expected = 1;
+
+				async Task Act()
+					=> await That(subject).HasMillisecond().NotEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenUnexpectedIsNull_ShouldSucceed()
+			{
+				DateTimeOffset? subject = 12.November(2010).At(13, 14, 15, 167).WithOffset(2.Hours());
+				int? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).HasMillisecond().NotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

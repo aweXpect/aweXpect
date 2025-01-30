@@ -19,7 +19,7 @@ public sealed partial class ThatDelegate
 				CustomException result =
 					await That(action).ThrowsExactly<CustomException>();
 
-				await That(result.Value).Is(value);
+				await That(result.Value).IsEqualTo(value);
 				await That(result).IsSameAs(exception);
 			}
 

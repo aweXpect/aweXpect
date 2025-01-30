@@ -13,7 +13,7 @@ You can verify, that the number is equal to another one or not:
 ```csharp
 int subject = 42;
 
-await Expect.That(subject).Is(42);
+await Expect.That(subject).IsEqualTo(42);
 ```
 
 You can also specify a tolerance:
@@ -21,7 +21,7 @@ You can also specify a tolerance:
 ```csharp
 double subject = 42.1;
 
-await Expect.That(subject).Is(42).Within(0.2)
+await Expect.That(subject).IsEqualTo(42).Within(0.2)
   .Because("we accept values between 41.8 and 42.2 (42 ± 0.2)");
 ```
 

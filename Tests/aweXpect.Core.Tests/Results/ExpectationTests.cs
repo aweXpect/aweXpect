@@ -14,7 +14,7 @@ public class ExpectationTests
 #pragma warning restore aweXpect0001
 
 		await That(Act).Throws<NotSupportedException>()
-			.WithMessage("Equals is not supported. Did you mean Be() instead?");
+			.WithMessage("Equals is not supported. Did you mean Is() instead?");
 	}
 
 	[Fact]

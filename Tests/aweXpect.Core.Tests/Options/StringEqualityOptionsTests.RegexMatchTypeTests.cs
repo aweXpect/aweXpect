@@ -12,7 +12,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("FOO\nBAR").AsRegex().IgnoringCase(ignoreCase);
+				=> await That(sut).IsEqualTo("FOO\nBAR").AsRegex().IgnoringCase(ignoreCase);
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
@@ -32,7 +32,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("bar").AsRegex();
+				=> await That(sut).IsEqualTo("bar").AsRegex();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -52,7 +52,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("\tsomething\r\nelse").AsRegex();
+				=> await That(sut).IsEqualTo("\tsomething\r\nelse").AsRegex();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -93,7 +93,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("FOO").AsRegex().IgnoringCase();
+				=> await That(sut).IsEqualTo("FOO").AsRegex().IgnoringCase();
 
 			await That(Act).DoesNotThrow();
 		}
@@ -104,7 +104,7 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is(null).AsRegex();
+				=> await That(sut).IsEqualTo(null).AsRegex();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -120,7 +120,7 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is(null).AsRegex();
+				=> await That(sut).IsEqualTo(null).AsRegex();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -136,7 +136,7 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is(".*").AsRegex();
+				=> await That(sut).IsEqualTo(".*").AsRegex();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""

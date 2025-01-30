@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -8,30 +8,16 @@ namespace aweXpect;
 public static partial class ThatStream
 {
 	/// <summary>
-	///     Verifies that the subject <see cref="Stream" /> has the <paramref name="expected" /> length.
+	///     Verifies that the length of the <see cref="Stream" /> subject…
 	/// </summary>
-	public static AndOrResult<Stream?, IThat<Stream?>> HasLength(
-		this IThat<Stream?> source,
-		long expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ValueConstraint(
-					$"have length {expected}",
-					actual => actual?.Length == expected,
-					actual => actual == null
-						? $"{it} was <null>"
-						: $"{it} had length {actual.Length}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the subject <see cref="Stream" /> has the <paramref name="expected" /> length.
-	/// </summary>
-	public static AndOrResult<Stream?, IThat<Stream?>> DoesNotHaveLength(
-		this IThat<Stream?> source,
-		long expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ValueConstraint(
-					$"not have length {expected}",
-					actual => actual != null && actual.Length != expected,
-					actual => actual == null ? $"{it} was <null>" : $"{it} had")),
-			source);
+	public static PropertyResult.NullableLong<Stream?> HasLength(this IThat<Stream?> source)
+		=> new(source, a => a?.Length, "length", (value, paramName) =>
+		{
+			if (value < 0)
+			{
+				throw new ArgumentOutOfRangeException(paramName, value,
+					// ReSharper disable once LocalizableElement
+					$"The {paramName} length must be greater than or equal to zero.");
+			}
+		});
 }
