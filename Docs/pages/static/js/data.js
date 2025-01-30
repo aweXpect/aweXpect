@@ -300,6 +300,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 16:29:50 2025 \u002B0100",
         "message": "chore: update TUnit to v0.9.0 (#274)"
+      },
+      {
+        "sha": "ccd0a244f2d145205fe5ca46d9943841c3cda61c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
+        "message": "feat: support pre-release packages (#275)"
       }
     ],
     "labels": [
@@ -352,7 +358,8 @@ window.BENCHMARK_DATA = {
       "9296e1f7",
       "228dc625",
       "6a933f4b",
-      "6ae2b5bf"
+      "6ae2b5bf",
+      "ccd0a244"
     ],
     "datasets": [
       {
@@ -408,7 +415,8 @@ window.BENCHMARK_DATA = {
           169.2909743956157,
           163.13209344546001,
           167.06101050376893,
-          158.7659930229187
+          158.7659930229187,
+          159.4541298832212
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -420,6 +428,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -533,7 +542,8 @@ window.BENCHMARK_DATA = {
           210.87708405085974,
           198.72006452083588,
           218.10243352254233,
-          200.09317615826924
+          200.09317615826924,
+          193.9639451821645
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -571,6 +581,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -658,7 +669,8 @@ window.BENCHMARK_DATA = {
           656.3537114461263,
           682.4111973898752,
           669.8527096430461,
-          639.8229130427043
+          639.8229130427043,
+          681.289624786377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -719,6 +731,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944
         ],
         "borderColor": "#1A6029",
@@ -1033,6 +1046,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 16:29:50 2025 \u002B0100",
         "message": "chore: update TUnit to v0.9.0 (#274)"
+      },
+      {
+        "sha": "ccd0a244f2d145205fe5ca46d9943841c3cda61c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
+        "message": "feat: support pre-release packages (#275)"
       }
     ],
     "labels": [
@@ -1085,7 +1104,8 @@ window.BENCHMARK_DATA = {
       "9296e1f7",
       "228dc625",
       "6a933f4b",
-      "6ae2b5bf"
+      "6ae2b5bf",
+      "ccd0a244"
     ],
     "datasets": [
       {
@@ -1141,7 +1161,8 @@ window.BENCHMARK_DATA = {
           351.7094664914267,
           338.3341854731242,
           383.45109830583846,
-          359.27549849237715
+          359.27549849237715,
+          349.29469544092814
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1153,6 +1174,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1266,7 +1288,8 @@ window.BENCHMARK_DATA = {
           450.2036566393716,
           408.34155731201173,
           485.3491358757019,
-          418.34248196283977
+          418.34248196283977,
+          430.82183567682904
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1304,6 +1327,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1391,7 +1415,8 @@ window.BENCHMARK_DATA = {
           14270.183513096401,
           14210.445168631417,
           15714.958005632672,
-          14565.746780395508
+          14565.746780395508,
+          15490.797334798177
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1452,6 +1477,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016
         ],
         "borderColor": "#1A6029",
@@ -1766,6 +1792,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 16:29:50 2025 \u002B0100",
         "message": "chore: update TUnit to v0.9.0 (#274)"
+      },
+      {
+        "sha": "ccd0a244f2d145205fe5ca46d9943841c3cda61c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
+        "message": "feat: support pre-release packages (#275)"
       }
     ],
     "labels": [
@@ -1818,7 +1850,8 @@ window.BENCHMARK_DATA = {
       "9296e1f7",
       "228dc625",
       "6a933f4b",
-      "6ae2b5bf"
+      "6ae2b5bf",
+      "ccd0a244"
     ],
     "datasets": [
       {
@@ -1874,7 +1907,8 @@ window.BENCHMARK_DATA = {
           202.75435366630555,
           197.08123793968787,
           225.6841368039449,
-          202.40966653823853
+          202.40966653823853,
+          197.8662832260132
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1886,6 +1920,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -1999,7 +2034,8 @@ window.BENCHMARK_DATA = {
           217.22107820510865,
           189.84109015464782,
           237.60216999053955,
-          195.34550309181213
+          195.34550309181213,
+          199.62347283363343
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2037,6 +2073,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2124,7 +2161,8 @@ window.BENCHMARK_DATA = {
           965.4650201797485,
           916.3777967861721,
           996.1241170338222,
-          928.9002404894147
+          928.9002404894147,
+          983.4430279050555
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2185,6 +2223,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576
         ],
         "borderColor": "#1A6029",
@@ -2499,6 +2538,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 16:29:50 2025 \u002B0100",
         "message": "chore: update TUnit to v0.9.0 (#274)"
+      },
+      {
+        "sha": "ccd0a244f2d145205fe5ca46d9943841c3cda61c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
+        "message": "feat: support pre-release packages (#275)"
       }
     ],
     "labels": [
@@ -2551,7 +2596,8 @@ window.BENCHMARK_DATA = {
       "9296e1f7",
       "228dc625",
       "6a933f4b",
-      "6ae2b5bf"
+      "6ae2b5bf",
+      "ccd0a244"
     ],
     "datasets": [
       {
@@ -2607,7 +2653,8 @@ window.BENCHMARK_DATA = {
           324.1211121082306,
           303.04374570846556,
           327.38395783106483,
-          304.15941893259685
+          304.15941893259685,
+          304.63714729036604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2619,6 +2666,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -2732,7 +2780,8 @@ window.BENCHMARK_DATA = {
           451.8464105810438,
           455.07607151667276,
           481.79338855009814,
-          437.0457924842834
+          437.0457924842834,
+          425.1250131607056
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2770,6 +2819,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -2857,7 +2907,8 @@ window.BENCHMARK_DATA = {
           1022.0101906912668,
           1035.3188302357992,
           1043.3809014638266,
-          984.9704422269549
+          984.9704422269549,
+          1055.5025216420493
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2918,6 +2969,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560
         ],
         "borderColor": "#1A6029",
@@ -3232,6 +3284,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 16:29:50 2025 \u002B0100",
         "message": "chore: update TUnit to v0.9.0 (#274)"
+      },
+      {
+        "sha": "ccd0a244f2d145205fe5ca46d9943841c3cda61c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
+        "message": "feat: support pre-release packages (#275)"
       }
     ],
     "labels": [
@@ -3284,7 +3342,8 @@ window.BENCHMARK_DATA = {
       "9296e1f7",
       "228dc625",
       "6a933f4b",
-      "6ae2b5bf"
+      "6ae2b5bf",
+      "ccd0a244"
     ],
     "datasets": [
       {
@@ -3340,7 +3399,8 @@ window.BENCHMARK_DATA = {
           1228.019203867231,
           1221.1022143046062,
           1295.3636631284442,
-          1152.5495427938608
+          1152.5495427938608,
+          1260.723283513387
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3366,6 +3426,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -3465,7 +3526,8 @@ window.BENCHMARK_DATA = {
           1276.3358738762993,
           1204.974629720052,
           1396.248903656006,
-          1234.1051052093505
+          1234.1051052093505,
+          1278.4940237681071
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3503,6 +3565,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -3590,7 +3653,8 @@ window.BENCHMARK_DATA = {
           2280.12114742824,
           2305.051448313395,
           2392.2518491109213,
-          2324.4743108113607
+          2324.4743108113607,
+          2385.4872194925942
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3651,6 +3715,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776
         ],
         "borderColor": "#1A6029",
@@ -3965,6 +4030,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Jan 30 16:29:50 2025 \u002B0100",
         "message": "chore: update TUnit to v0.9.0 (#274)"
+      },
+      {
+        "sha": "ccd0a244f2d145205fe5ca46d9943841c3cda61c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Jan 30 18:38:12 2025 \u002B0100",
+        "message": "feat: support pre-release packages (#275)"
       }
     ],
     "labels": [
@@ -4017,7 +4088,8 @@ window.BENCHMARK_DATA = {
       "9296e1f7",
       "228dc625",
       "6a933f4b",
-      "6ae2b5bf"
+      "6ae2b5bf",
+      "ccd0a244"
     ],
     "datasets": [
       {
@@ -4073,7 +4145,8 @@ window.BENCHMARK_DATA = {
           1269.6207739512126,
           1283.822209903172,
           1368.9808836716873,
-          1266.3558027903239
+          1266.3558027903239,
+          1190.357773844401
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4127,6 +4200,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -4198,7 +4272,8 @@ window.BENCHMARK_DATA = {
           82949.13994140625,
           82444.40726143973,
           84428.1072126116,
-          83458.30694110577
+          83458.30694110577,
+          82254.59590657552
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4259,7 +4334,8 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53206,
-          53206
+          53206,
+          53212
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4323,7 +4399,8 @@ window.BENCHMARK_DATA = {
           6391.745756966727,
           6591.206381734212,
           6612.52502147968,
-          6445.794257609049
+          6445.794257609049,
+          6501.3065839494975
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4384,6 +4461,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640
         ],
         "borderColor": "#1A6029",
