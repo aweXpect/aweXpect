@@ -318,6 +318,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Jan 31 09:10:38 2025 \u002B0100",
         "message": "feat: strong-named sign the assemblies (#276)"
+      },
+      {
+        "sha": "6a2e1ab7f9f401c8d0fc789a51319e216b734ddb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jan 31 09:33:54 2025 \u002B0100",
+        "message": "feat: avoid creating releases on pre-release tags (#277)"
       }
     ],
     "labels": [
@@ -373,7 +379,8 @@ window.BENCHMARK_DATA = {
       "6ae2b5bf",
       "ccd0a244",
       "87ab795e",
-      "4c1d86c1"
+      "4c1d86c1",
+      "6a2e1ab7"
     ],
     "datasets": [
       {
@@ -432,7 +439,8 @@ window.BENCHMARK_DATA = {
           158.7659930229187,
           159.4541298832212,
           163.6336270570755,
-          166.56522533098857
+          166.56522533098857,
+          164.1986580212911
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -444,6 +452,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -563,7 +572,8 @@ window.BENCHMARK_DATA = {
           200.09317615826924,
           193.9639451821645,
           192.64240285555522,
-          218.2882807413737
+          218.2882807413737,
+          193.50808350245157
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -601,6 +611,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -694,7 +705,8 @@ window.BENCHMARK_DATA = {
           639.8229130427043,
           681.289624786377,
           649.3226903279623,
-          701.042478288923
+          701.042478288923,
+          639.7063643773397
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -755,6 +767,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1090,6 +1103,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Jan 31 09:10:38 2025 \u002B0100",
         "message": "feat: strong-named sign the assemblies (#276)"
+      },
+      {
+        "sha": "6a2e1ab7f9f401c8d0fc789a51319e216b734ddb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jan 31 09:33:54 2025 \u002B0100",
+        "message": "feat: avoid creating releases on pre-release tags (#277)"
       }
     ],
     "labels": [
@@ -1145,7 +1164,8 @@ window.BENCHMARK_DATA = {
       "6ae2b5bf",
       "ccd0a244",
       "87ab795e",
-      "4c1d86c1"
+      "4c1d86c1",
+      "6a2e1ab7"
     ],
     "datasets": [
       {
@@ -1204,7 +1224,8 @@ window.BENCHMARK_DATA = {
           359.27549849237715,
           349.29469544092814,
           362.7975242614746,
-          387.9795731862386
+          387.9795731862386,
+          351.80627438227333
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1216,6 +1237,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1335,7 +1357,8 @@ window.BENCHMARK_DATA = {
           418.34248196283977,
           430.82183567682904,
           440.76767279307046,
-          463.95142705099926
+          463.95142705099926,
+          428.0987067540487
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1373,6 +1396,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1466,7 +1490,8 @@ window.BENCHMARK_DATA = {
           14565.746780395508,
           15490.797334798177,
           14845.526387532553,
-          16354.285280354818
+          16354.285280354818,
+          18467.302974446615
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1527,6 +1552,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -1862,6 +1888,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Jan 31 09:10:38 2025 \u002B0100",
         "message": "feat: strong-named sign the assemblies (#276)"
+      },
+      {
+        "sha": "6a2e1ab7f9f401c8d0fc789a51319e216b734ddb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jan 31 09:33:54 2025 \u002B0100",
+        "message": "feat: avoid creating releases on pre-release tags (#277)"
       }
     ],
     "labels": [
@@ -1917,7 +1949,8 @@ window.BENCHMARK_DATA = {
       "6ae2b5bf",
       "ccd0a244",
       "87ab795e",
-      "4c1d86c1"
+      "4c1d86c1",
+      "6a2e1ab7"
     ],
     "datasets": [
       {
@@ -1976,7 +2009,8 @@ window.BENCHMARK_DATA = {
           202.40966653823853,
           197.8662832260132,
           191.93434449036917,
-          211.89866711298626
+          211.89866711298626,
+          195.19820489202226
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1988,6 +2022,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2107,7 +2142,8 @@ window.BENCHMARK_DATA = {
           195.34550309181213,
           199.62347283363343,
           193.70547431310018,
-          238.01106204986573
+          238.01106204986573,
+          189.94679470062255
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2145,6 +2181,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2238,7 +2275,8 @@ window.BENCHMARK_DATA = {
           928.9002404894147,
           983.4430279050555,
           950.0976389567057,
-          1009.3195212046305
+          1009.3195212046305,
+          948.7984326680502
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2299,6 +2337,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -2634,6 +2673,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Jan 31 09:10:38 2025 \u002B0100",
         "message": "feat: strong-named sign the assemblies (#276)"
+      },
+      {
+        "sha": "6a2e1ab7f9f401c8d0fc789a51319e216b734ddb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jan 31 09:33:54 2025 \u002B0100",
+        "message": "feat: avoid creating releases on pre-release tags (#277)"
       }
     ],
     "labels": [
@@ -2689,7 +2734,8 @@ window.BENCHMARK_DATA = {
       "6ae2b5bf",
       "ccd0a244",
       "87ab795e",
-      "4c1d86c1"
+      "4c1d86c1",
+      "6a2e1ab7"
     ],
     "datasets": [
       {
@@ -2748,7 +2794,8 @@ window.BENCHMARK_DATA = {
           304.15941893259685,
           304.63714729036604,
           304.3760178565979,
-          325.6111857732137
+          325.6111857732137,
+          298.00174484934126
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2760,6 +2807,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -2879,7 +2927,8 @@ window.BENCHMARK_DATA = {
           437.0457924842834,
           425.1250131607056,
           416.42587032318113,
-          459.4375424385071
+          459.4375424385071,
+          411.77124344507854
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2917,6 +2966,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -3010,7 +3060,8 @@ window.BENCHMARK_DATA = {
           984.9704422269549,
           1055.5025216420493,
           1019.8368648529053,
-          1068.8528795878092
+          1068.8528795878092,
+          985.450043519338
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3071,6 +3122,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -3406,6 +3458,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Jan 31 09:10:38 2025 \u002B0100",
         "message": "feat: strong-named sign the assemblies (#276)"
+      },
+      {
+        "sha": "6a2e1ab7f9f401c8d0fc789a51319e216b734ddb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jan 31 09:33:54 2025 \u002B0100",
+        "message": "feat: avoid creating releases on pre-release tags (#277)"
       }
     ],
     "labels": [
@@ -3461,7 +3519,8 @@ window.BENCHMARK_DATA = {
       "6ae2b5bf",
       "ccd0a244",
       "87ab795e",
-      "4c1d86c1"
+      "4c1d86c1",
+      "6a2e1ab7"
     ],
     "datasets": [
       {
@@ -3520,7 +3579,8 @@ window.BENCHMARK_DATA = {
           1152.5495427938608,
           1260.723283513387,
           1203.043154496413,
-          1212.4379102161952
+          1212.4379102161952,
+          1133.5015157063801
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3546,6 +3606,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -3651,7 +3712,8 @@ window.BENCHMARK_DATA = {
           1234.1051052093505,
           1278.4940237681071,
           1187.5520716447097,
-          1276.6524943033853
+          1276.6524943033853,
+          1237.5632411638896
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3689,6 +3751,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -3782,7 +3845,8 @@ window.BENCHMARK_DATA = {
           2324.4743108113607,
           2385.4872194925942,
           2238.5376742226736,
-          2400.0297681172688
+          2400.0297681172688,
+          2330.54388478597
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3843,6 +3907,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -4178,6 +4243,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Jan 31 09:10:38 2025 \u002B0100",
         "message": "feat: strong-named sign the assemblies (#276)"
+      },
+      {
+        "sha": "6a2e1ab7f9f401c8d0fc789a51319e216b734ddb",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Jan 31 09:33:54 2025 \u002B0100",
+        "message": "feat: avoid creating releases on pre-release tags (#277)"
       }
     ],
     "labels": [
@@ -4233,7 +4304,8 @@ window.BENCHMARK_DATA = {
       "6ae2b5bf",
       "ccd0a244",
       "87ab795e",
-      "4c1d86c1"
+      "4c1d86c1",
+      "6a2e1ab7"
     ],
     "datasets": [
       {
@@ -4292,7 +4364,8 @@ window.BENCHMARK_DATA = {
           1266.3558027903239,
           1190.357773844401,
           1213.0107763926187,
-          1268.708376312256
+          1268.708376312256,
+          1176.422975393442
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4346,6 +4419,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -4423,7 +4497,8 @@ window.BENCHMARK_DATA = {
           83458.30694110577,
           82254.59590657552,
           81326.57369559152,
-          84620.7921875
+          84620.7921875,
+          80922.55803034856
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4487,7 +4562,8 @@ window.BENCHMARK_DATA = {
           53206,
           53212,
           53206,
-          53206
+          53206,
+          53212
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4554,7 +4630,8 @@ window.BENCHMARK_DATA = {
           6445.794257609049,
           6501.3065839494975,
           6405.5179361615865,
-          6444.189419555664
+          6444.189419555664,
+          6327.788306172689
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4615,6 +4692,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
