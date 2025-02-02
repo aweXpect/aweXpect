@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Tests.Core;
@@ -115,6 +114,25 @@ public class StringDifferenceTests
 	}
 
 	[Fact]
+	public async Task WhenLongTextDiffers_ShouldCalculateIndexOfFirstMismatch()
+	{
+		const string actual = "this is a long text that differs in between two words";
+		const string expected = "this is a long text which differs in between two words";
+
+		StringDifference sut = new(actual, expected);
+
+		await That(sut.IndexOfFirstMismatch).IsEqualTo(20);
+		await That(sut.ToString()).IsEqualTo(
+			"""
+			differs at index 20:
+			                   ↓ (actual)
+			  "…is a long text that differs in between two words"
+			  "…is a long text which differs in between two words"
+			                   ↑ (expected)
+			""");
+	}
+
+	[Fact]
 	public async Task WhenNoLeadingWordBoundaryExistsBetween5And15Characters_ShouldFallbackTo50Characters()
 	{
 		const string actual = "This text '_contains' a long word between 5 and 15 characters before the first mismatch";
@@ -205,23 +223,17 @@ public class StringDifferenceTests
 		await That(sut.ToString()).IsEqualTo("differs");
 	}
 
-	[Fact]
-	public async Task WhenTextDiffers_ShouldCalculateIndexOfFirstMismatch()
+	[Theory]
+	[InlineData("foo", "bar", 0)]
+	[InlineData("foo", "false", 1)]
+	[InlineData("bar", "ban", 2)]
+	[InlineData("foobar", "foo-", 3)]
+	public async Task WhenTextDiffers_ShouldCalculateIndexOfFirstMismatch(
+		string actual, string expected, int expectedIndex)
 	{
-		const string actual = "this is a long text that differs in between two words";
-		const string expected = "this is a long text which differs in between two words";
-
 		StringDifference sut = new(actual, expected);
 
-		await That(sut.IndexOfFirstMismatch).IsEqualTo(20);
-		await That(sut.ToString()).IsEqualTo(
-			"""
-			differs at index 20:
-			                   ↓ (actual)
-			  "…is a long text that differs in between two words"
-			  "…is a long text which differs in between two words"
-			                   ↑ (expected)
-			""");
+		await That(sut.IndexOfFirstMismatch).IsEqualTo(expectedIndex);
 	}
 
 	[Fact]
