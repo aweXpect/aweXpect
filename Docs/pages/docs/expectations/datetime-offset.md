@@ -114,6 +114,19 @@ For `DateTimeOffset` you can also verify the `Offset` property:
 await Expect.That(subject).HasOffset().EqualTo(TimeSpan.FromMinutes(90));
 ```
 
+All property verifications support the following comparisons:
+
+```csharp
+DateTime subject = new DateTime(2024, 12, 31, 15, 16, 17);
+
+await Expect.That(subject).HasYear().EqualTo(2024);
+await Expect.That(subject).HasYear().NotEqualTo(2020);
+await Expect.That(subject).HasYear().GreaterThan(2023);
+await Expect.That(subject).HasYear().GreaterThanOrEqualTo(2024);
+await Expect.That(subject).HasYear().LessThanOrEqualTo(2024);
+await Expect.That(subject).HasYear().LessThan(2025);
+```
+
 ## Default Tolerance
 
 In Windows the `DateTime` resolution is [about 10 to 15 milliseconds](https://stackoverflow.com/q/3140826/4003370), so

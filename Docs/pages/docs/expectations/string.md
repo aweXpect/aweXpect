@@ -108,6 +108,11 @@ string subject = "some value";
 
 await Expect.That(subject).HasLength().EqualTo(10);
 await Expect.That(subject).HasLength().NotEqualTo(9);
+
+await Expect.That(subject).HasLength().GreaterThan(8);
+await Expect.That(subject).HasLength().GreaterThanOrEqualTo(9);
+await Expect.That(subject).HasLength().LessThanOrEqualTo(11);
+await Expect.That(subject).HasLength().LessThan(12);
 ```
 
 ## String start / end
