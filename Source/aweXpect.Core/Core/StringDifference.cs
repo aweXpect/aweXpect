@@ -162,17 +162,31 @@ public class StringDifference(
 		}
 
 		int maxCommonLength = Math.Min(actualValue.Length, expectedValue.Length);
-		for (int index = 0; index < maxCommonLength; index++)
+		int min = 0;
+		int max = maxCommonLength + 1;
+		while (min <= max)
 		{
-			string actualChar = actualValue.ElementAt(index).ToString();
-			string expectedChar = expectedValue.ElementAt(index).ToString();
-			if (!comparer.Equals(actualChar, expectedChar))
+			int mid = (min + max) / 2;
+			if (mid == min)
 			{
-				return index;
+				break;
+			}
+
+			if (comparer.Equals(actualValue[..mid], expectedValue[..mid]))
+			{
+				min = mid;
+			}
+			else if (mid <= min + 1)
+			{
+				break;
+			}
+			else
+			{
+				max = mid;
 			}
 		}
 
-		return maxCommonLength;
+		return min;
 	}
 
 	/// <summary>
