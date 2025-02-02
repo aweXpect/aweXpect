@@ -66,6 +66,260 @@ public sealed partial class ThatString
 			}
 		}
 
+		public sealed class GreaterThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length greater than or equal to <null>,
+					             but it had length 3
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				string subject = "foo";
+				int? expected = 2;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = 4;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length greater than or equal to {Formatter.Format(expected)},
+					              but it had length 3
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				string subject = "foo";
+				int expected = 3;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class GreaterThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length greater than <null>,
+					             but it had length 3
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				string subject = "foo";
+				int? expected = 2;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = 4;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length greater than {Formatter.Format(expected)},
+					              but it had length 3
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				string subject = "foo";
+				int expected = 3;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length greater than {Formatter.Format(expected)},
+					              but it had length 3
+					              """);
+			}
+		}
+
+		public sealed class LessThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length less than or equal to <null>,
+					             but it had length 3
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = 2;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length less than or equal to {Formatter.Format(expected)},
+					              but it had length 3
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				string subject = "foo";
+				int? expected = 4;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				string subject = "foo";
+				int expected = 3;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class LessThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length less than <null>,
+					             but it had length 3
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				string subject = "foo";
+				int? expected = 2;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length less than {Formatter.Format(expected)},
+					              but it had length 3
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				string subject = "foo";
+				int? expected = 4;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				string subject = "foo";
+				int expected = 3;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length less than {Formatter.Format(expected)},
+					              but it had length 3
+					              """);
+			}
+		}
+
 		public sealed class NotEqualToTests
 		{
 			[Fact]

@@ -72,6 +72,260 @@ public sealed partial class ThatBufferedStream
 			}
 		}
 
+		public sealed class GreaterThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have buffer size greater than or equal to {Formatter.Format(expected)},
+					              but it had buffer size 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have buffer size greater than or equal to <null>,
+					             but it had buffer size 2010
+					             """);
+			}
+		}
+
+		public sealed class GreaterThanTests
+		{
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have buffer size greater than {Formatter.Format(expected)},
+					              but it had buffer size 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have buffer size greater than {Formatter.Format(expected)},
+					              but it had buffer size 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have buffer size greater than <null>,
+					             but it had buffer size 2010
+					             """);
+			}
+		}
+
+		public sealed class LessThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have buffer size less than or equal to {Formatter.Format(expected)},
+					              but it had buffer size 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have buffer size less than or equal to <null>,
+					             but it had buffer size 2010
+					             """);
+			}
+		}
+
+		public sealed class LessThanTests
+		{
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have buffer size less than {Formatter.Format(expected)},
+					              but it had buffer size 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenBufferSizeOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have buffer size less than {Formatter.Format(expected)},
+					              but it had buffer size 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				using BufferedStream subject = GetBufferedStream(2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have buffer size less than <null>,
+					             but it had buffer size 2010
+					             """);
+			}
+		}
+
 		public sealed class NotEqualToTests
 		{
 			[Theory]

@@ -10,25 +10,25 @@ public sealed partial class ThatTimeOnly
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				TimeOnly subject = new(10, 11, 12);
+				TimeOnly subject = new(13, 14, 15);
 				int? expected = null;
 
 				async Task Act()
 					=> await That(subject).HasSecond().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected subject to
-					              have second equal to <null>,
-					              but it had second 12
-					              """);
+					.WithMessage("""
+					             Expected subject to
+					             have second equal to <null>,
+					             but it had second 15
+					             """);
 			}
 
 			[Fact]
 			public async Task WhenSecondOfSubjectIsDifferent_ShouldFail()
 			{
-				TimeOnly subject = new(10, 11, 12);
-				int? expected = 11;
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 14;
 
 				async Task Act()
 					=> await That(subject).HasSecond().EqualTo(expected);
@@ -37,15 +37,15 @@ public sealed partial class ThatTimeOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have second equal to {Formatter.Format(expected)},
-					              but it had second 12
+					              but it had second 15
 					              """);
 			}
 
 			[Fact]
 			public async Task WhenSecondOfSubjectIsTheSame_ShouldSucceed()
 			{
-				TimeOnly subject = new(10, 11, 12);
-				int expected = 12;
+				TimeOnly subject = new(13, 14, 15);
+				int expected = 15;
 
 				async Task Act()
 					=> await That(subject).HasSecond().EqualTo(expected);
@@ -53,14 +53,268 @@ public sealed partial class ThatTimeOnly
 				await That(Act).DoesNotThrow();
 			}
 		}
-		
+
+		public sealed class GreaterThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have second greater than or equal to <null>,
+					             but it had second 15
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 14;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 16;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have second greater than or equal to {Formatter.Format(expected)},
+					              but it had second 15
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int expected = 15;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class GreaterThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have second greater than <null>,
+					             but it had second 15
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 14;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 16;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have second greater than {Formatter.Format(expected)},
+					              but it had second 15
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int expected = 15;
+
+				async Task Act()
+					=> await That(subject).HasSecond().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have second greater than {Formatter.Format(expected)},
+					              but it had second 15
+					              """);
+			}
+		}
+
+		public sealed class LessThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have second less than or equal to <null>,
+					             but it had second 15
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 14;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have second less than or equal to {Formatter.Format(expected)},
+					              but it had second 15
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 16;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int expected = 15;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class LessThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have second less than <null>,
+					             but it had second 15
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 14;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have second less than {Formatter.Format(expected)},
+					              but it had second 15
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int? expected = 16;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSecondOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				TimeOnly subject = new(13, 14, 15);
+				int expected = 15;
+
+				async Task Act()
+					=> await That(subject).HasSecond().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have second less than {Formatter.Format(expected)},
+					              but it had second 15
+					              """);
+			}
+		}
+
 		public sealed class NotEqualToTests
 		{
 			[Fact]
 			public async Task WhenSecondOfSubjectIsDifferent_ShouldSucceed()
 			{
-				TimeOnly subject = new(10, 11, 12);
-				int? unexpected = 11;
+				TimeOnly subject = new(13, 14, 15);
+				int? unexpected = 14;
 
 				async Task Act()
 					=> await That(subject).HasSecond().NotEqualTo(unexpected);
@@ -71,8 +325,8 @@ public sealed partial class ThatTimeOnly
 			[Fact]
 			public async Task WhenSecondOfSubjectIsTheSame_ShouldFail()
 			{
-				TimeOnly subject = new(10, 11, 12);
-				int unexpected = 12;
+				TimeOnly subject = new(13, 14, 15);
+				int unexpected = 15;
 
 				async Task Act()
 					=> await That(subject).HasSecond().NotEqualTo(unexpected);
@@ -81,14 +335,14 @@ public sealed partial class ThatTimeOnly
 					.WithMessage($"""
 					              Expected subject to
 					              have second not equal to {Formatter.Format(unexpected)},
-					              but it had second 12
+					              but it had second 15
 					              """);
 			}
 
 			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldSucceed()
 			{
-				TimeOnly subject = new(10, 11, 12);
+				TimeOnly subject = new(13, 14, 15);
 				int? unexpected = null;
 
 				async Task Act()

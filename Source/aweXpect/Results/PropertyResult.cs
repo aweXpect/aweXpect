@@ -54,6 +54,78 @@ public static class PropertyResult
 						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 		}
+
+		/// <summary>
+		///     … is greater than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
+			int? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, int>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a > e,
+						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is greater than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
+			int? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, int>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a >= e,
+						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is less than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThan(
+			int? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, int>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a < e,
+						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is less than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
+			int? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, int>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a <= e,
+						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+				source);
+		}
 	}
 
 	/// <summary>
@@ -100,50 +172,76 @@ public static class PropertyResult
 						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 		}
-	}
 
-	/// <summary>
-	///     Result for an <see langword="long" /> property.
-	/// </summary>
-	public class Long<TItem>(
-		IThat<TItem> source,
-		Func<TItem, long?> mapper,
-		string propertyExpression,
-		Action<long?, string>? validation = null)
-	{
 		/// <summary>
-		///     … is equal to the <paramref name="expected" /> value.
+		///     … is greater than the <paramref name="expected" /> value.
 		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> EqualTo(
-			long? expected)
+		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
+			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
 			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, long>(
+					new PropertyConstraint<TItem, int>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
-						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						(a, e) => a > e,
+						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 		}
 
 		/// <summary>
-		///     … is not equal to the <paramref name="unexpected" /> value.
+		///     … is greater than or equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
-			long? unexpected)
+		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
+			int? expected)
 		{
-			validation?.Invoke(unexpected, nameof(unexpected));
+			validation?.Invoke(expected, nameof(expected));
 			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, long>(
+					new PropertyConstraint<TItem, int>(
 						it,
-						unexpected,
+						expected,
 						mapper,
 						propertyExpression,
-						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						(a, e) => a >= e,
+						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is less than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThan(
+			int? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, int>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a < e,
+						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is less than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
+			int? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, int>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a <= e,
+						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 	}
@@ -190,6 +288,78 @@ public static class PropertyResult
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
 						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is greater than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
+			long? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, long>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a > e,
+						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is greater than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
+			long? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, long>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a >= e,
+						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is less than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThan(
+			long? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, long>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a < e,
+						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+				source);
+		}
+
+		/// <summary>
+		///     … is less than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
+			long? expected)
+		{
+			validation?.Invoke(expected, nameof(expected));
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, long>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a <= e,
+						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 	}
@@ -270,8 +440,67 @@ public static class PropertyResult
 						(a, u) => a?.Equals(u) != true,
 						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
-	}
 
+		/// <summary>
+		///     … is greater than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
+			TimeSpan? expected)
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, TimeSpan>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a > e,
+						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+				source);
+
+		/// <summary>
+		///     … is greater than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
+			TimeSpan? expected)
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, TimeSpan>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a >= e,
+						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+				source);
+
+		/// <summary>
+		///     … is less than the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThan(
+			TimeSpan? expected)
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, TimeSpan>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a < e,
+						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+				source);
+
+		/// <summary>
+		///     … is less than or equal to the <paramref name="expected" /> value.
+		/// </summary>
+		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
+			TimeSpan? expected)
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+					new PropertyConstraint<TItem, TimeSpan>(
+						it,
+						expected,
+						mapper,
+						propertyExpression,
+						(a, e) => a <= e,
+						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+				source);
+	}
 
 	private readonly struct PropertyConstraint<TItem, TProperty>(
 		string it,

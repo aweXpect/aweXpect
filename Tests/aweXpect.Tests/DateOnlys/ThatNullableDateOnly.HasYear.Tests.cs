@@ -17,11 +17,11 @@ public sealed partial class ThatNullableDateOnly
 					=> await That(subject).HasYear().EqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected subject to
-					              have year equal to <null>,
-					              but it had year 2010
-					              """);
+					.WithMessage("""
+					             Expected subject to
+					             have year equal to <null>,
+					             but it had year 2010
+					             """);
 			}
 
 			[Fact]
@@ -87,7 +87,261 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).DoesNotThrow();
 			}
 		}
-		
+
+		public sealed class GreaterThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have year greater than or equal to <null>,
+					             but it had year 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have year greater than or equal to {Formatter.Format(expected)},
+					              but it had year 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class GreaterThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have year greater than <null>,
+					             but it had year 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have year greater than {Formatter.Format(expected)},
+					              but it had year 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasYear().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have year greater than {Formatter.Format(expected)},
+					              but it had year 2010
+					              """);
+			}
+		}
+
+		public sealed class LessThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have year less than or equal to <null>,
+					             but it had year 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have year less than or equal to {Formatter.Format(expected)},
+					              but it had year 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class LessThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have year less than <null>,
+					             but it had year 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have year less than {Formatter.Format(expected)},
+					              but it had year 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenYearOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				DateOnly? subject = new(2010, 11, 12);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasYear().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have year less than {Formatter.Format(expected)},
+					              but it had year 2010
+					              """);
+			}
+		}
+
 		public sealed class NotEqualToTests
 		{
 			[Fact]

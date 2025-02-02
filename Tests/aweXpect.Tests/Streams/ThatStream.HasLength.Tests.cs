@@ -69,6 +69,260 @@ public sealed partial class ThatStream
 			}
 		}
 
+		public sealed class GreaterThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length greater than or equal to <null>,
+					             but it had length 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length greater than or equal to {Formatter.Format(expected)},
+					              but it had length 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class GreaterThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length greater than <null>,
+					             but it had length 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldSucceed()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length greater than {Formatter.Format(expected)},
+					              but it had length 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length greater than {Formatter.Format(expected)},
+					              but it had length 2010
+					              """);
+			}
+		}
+
+		public sealed class LessThanOrEqualToTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length less than or equal to <null>,
+					             but it had length 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length less than or equal to {Formatter.Format(expected)},
+					              but it had length 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldSucceed()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class LessThanTests
+		{
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have length less than <null>,
+					             but it had length 2010
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2009;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length less than {Formatter.Format(expected)},
+					              but it had length 2010
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsLessThanExpected_ShouldSucceed()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int? expected = 2011;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenLengthOfSubjectIsTheSameAsExpected_ShouldFail()
+			{
+				Stream subject = new MyStream(length: 2010);
+				int expected = 2010;
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected subject to
+					              have length less than {Formatter.Format(expected)},
+					              but it had length 2010
+					              """);
+			}
+		}
+
 		public sealed class NotEqualToTests
 		{
 			[Theory]
