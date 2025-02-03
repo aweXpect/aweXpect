@@ -35,10 +35,12 @@ public partial class StringEqualityOptions
 
 		#region IMatchType Members
 
-		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string})" />
+		/// <inheritdoc
+		///     cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
-			IEqualityComparer<string> comparer)
+			IEqualityComparer<string> comparer,
+			StringDifferenceSettings? settings)
 		{
 			if (actual == null || expected == null)
 			{
@@ -48,44 +50,39 @@ public partial class StringEqualityOptions
 			string prefix =
 				$"{it} was {Formatter.Format(actual.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}";
 			int minCommonLength = Math.Min(actual.Length, expected.Length);
-			StringDifference stringDifference = new(actual, expected, comparer);
-			if (stringDifference.IndexOfFirstMismatch == 0 &&
-			    comparer.Equals(actual.TrimStart(), expected))
+			StringDifference stringDifference = new(actual, expected, comparer, settings);
+			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Equality);
+			if (indexOfFirstMismatch == 0 && comparer.Equals(actual.TrimStart(), expected))
 			{
 				return
 					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
 			}
 
-			if (stringDifference.IndexOfFirstMismatch == 0 &&
-			    comparer.Equals(actual, expected.TrimStart()))
+			if (indexOfFirstMismatch == 0 && comparer.Equals(actual, expected.TrimStart()))
 			{
 				return
 					$"{prefix} which misses some whitespace (\"{expected.Substring(0, GetIndexOfFirstMatch(expected, actual, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
 			}
 
-			if (stringDifference.IndexOfFirstMismatch == minCommonLength &&
-			    comparer.Equals(actual.TrimEnd(), expected))
+			if (indexOfFirstMismatch == minCommonLength && comparer.Equals(actual.TrimEnd(), expected))
 			{
 				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+					$"{prefix} which has unexpected whitespace (\"{actual.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
 			}
 
-			if (stringDifference.IndexOfFirstMismatch == minCommonLength &&
-			    comparer.Equals(actual, expected.TrimEnd()))
+			if (indexOfFirstMismatch == minCommonLength && comparer.Equals(actual, expected.TrimEnd()))
 			{
 				return
-					$"{prefix} which misses some whitespace (\"{expected.Substring(stringDifference.IndexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
+					$"{prefix} which misses some whitespace (\"{expected.Substring(indexOfFirstMismatch).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the end)";
 			}
 
-			if (actual.Length < expected.Length &&
-			    stringDifference.IndexOfFirstMismatch == actual.Length)
+			if (actual.Length < expected.Length && indexOfFirstMismatch == actual.Length)
 			{
 				return
 					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {expected.Length} and misses:{Environment.NewLine}  \"{expected.Substring(actual.Length).TruncateWithEllipsis(100)}\"";
 			}
 
-			if (actual.Length > expected.Length &&
-			    stringDifference.IndexOfFirstMismatch == expected.Length)
+			if (actual.Length > expected.Length && indexOfFirstMismatch == expected.Length)
 			{
 				return
 					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {expected.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(expected.Length).TruncateWithEllipsis(100)}\"";
@@ -121,8 +118,12 @@ public partial class StringEqualityOptions
 					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
 
-		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
-		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer) 
+		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />
+		public string GetTypeString()
+			=> "";
+
+		/// <inheritdoc cref="IStringMatchType.GetOptionString(bool, IEqualityComparer{string})" />
+		public string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer)
 		{
 			if (comparer != null)
 			{

@@ -30,18 +30,19 @@ public partial class StringEqualityOptions
 
 		#region IStringMatchType Members
 
-		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string})" />
+		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
-			IEqualityComparer<string> comparer)
+			IEqualityComparer<string> comparer,
+			StringDifferenceSettings? settings)
 		{
 			if (expected is null)
 			{
 				return $"could not compare the <null> wildcard pattern with {Formatter.Format(actual)}";
 			}
 
-			return
-				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(expected.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (wildcard pattern)";
+			StringDifference stringDifference = new(actual, expected, comparer, settings.WithMatchType(StringDifference.MatchType.Wildcard));
+			return $"{it} did not match{stringDifference.ToString("")}";
 		}
 
 		/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
@@ -71,9 +72,13 @@ public partial class StringEqualityOptions
 					$"matching {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
 
-		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
-		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer)
+		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />
+		public string GetTypeString()
 			=> " as wildcard";
+
+		/// <inheritdoc cref="IStringMatchType.GetOptionString(bool, IEqualityComparer{string})" />
+		public string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer)
+			=> "";
 
 		#endregion
 	}
