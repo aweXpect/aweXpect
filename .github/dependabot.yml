@@ -31,3 +31,6 @@ updates:
       xunit:
         patterns:
           - "xunit*"
+      code-analysis:
+        patterns:
+          - "Microsoft.CodeAnalysis*"
