@@ -378,6 +378,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 11:55:50 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.9.0 to 0.10.4 in the tunit group (#287)"
+      },
+      {
+        "sha": "b630191da7acc45ce14ec7ec1cbbb7b786306a37",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 12:17:25 2025 \u002B0100",
+        "message": "refactor: rename \u0060Are(TItem)\u0060 to \u0060AreEqualTo(TItem)\u0060 (#289)"
       }
     ],
     "labels": [
@@ -443,7 +449,8 @@ window.BENCHMARK_DATA = {
       "f76cefad",
       "9a5312d9",
       "5c564abb",
-      "c709afb8"
+      "c709afb8",
+      "b630191d"
     ],
     "datasets": [
       {
@@ -512,7 +519,8 @@ window.BENCHMARK_DATA = {
           158.8692436695099,
           155.76832244946405,
           156.70897073745726,
-          156.94760268529257
+          156.94760268529257,
+          169.3690136909485
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -524,6 +532,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -663,7 +672,8 @@ window.BENCHMARK_DATA = {
           198.98447847366333,
           192.24861081441244,
           187.33439694918118,
-          193.76731901509422
+          193.76731901509422,
+          217.76958662668864
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -701,6 +711,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -814,7 +825,8 @@ window.BENCHMARK_DATA = {
           662.8800422032674,
           666.3489475886028,
           625.1613553854136,
-          663.886256804833
+          663.886256804833,
+          684.4173676808675
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -875,6 +887,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1280,6 +1293,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 11:55:50 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.9.0 to 0.10.4 in the tunit group (#287)"
+      },
+      {
+        "sha": "b630191da7acc45ce14ec7ec1cbbb7b786306a37",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 12:17:25 2025 \u002B0100",
+        "message": "refactor: rename \u0060Are(TItem)\u0060 to \u0060AreEqualTo(TItem)\u0060 (#289)"
       }
     ],
     "labels": [
@@ -1345,7 +1364,8 @@ window.BENCHMARK_DATA = {
       "f76cefad",
       "9a5312d9",
       "5c564abb",
-      "c709afb8"
+      "c709afb8",
+      "b630191d"
     ],
     "datasets": [
       {
@@ -1414,7 +1434,8 @@ window.BENCHMARK_DATA = {
           360.2032276471456,
           372.88449253354753,
           336.0833064226004,
-          340.18660742895946
+          340.18660742895946,
+          362.11123889287313
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1426,6 +1447,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1565,7 +1587,8 @@ window.BENCHMARK_DATA = {
           448.31260442733765,
           426.89499622980753,
           407.89972127278645,
-          412.87585423787436
+          412.87585423787436,
+          445.6911304678236
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1603,6 +1626,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1716,7 +1740,8 @@ window.BENCHMARK_DATA = {
           14212.946809895833,
           17123.162719726562,
           17063.48273577009,
-          14447.812927246094
+          14447.812927246094,
+          14234.300955200195
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1777,6 +1802,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2182,6 +2208,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 11:55:50 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.9.0 to 0.10.4 in the tunit group (#287)"
+      },
+      {
+        "sha": "b630191da7acc45ce14ec7ec1cbbb7b786306a37",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 12:17:25 2025 \u002B0100",
+        "message": "refactor: rename \u0060Are(TItem)\u0060 to \u0060AreEqualTo(TItem)\u0060 (#289)"
       }
     ],
     "labels": [
@@ -2247,7 +2279,8 @@ window.BENCHMARK_DATA = {
       "f76cefad",
       "9a5312d9",
       "5c564abb",
-      "c709afb8"
+      "c709afb8",
+      "b630191d"
     ],
     "datasets": [
       {
@@ -2316,7 +2349,8 @@ window.BENCHMARK_DATA = {
           207.5469716389974,
           199.69270709355672,
           191.36716537475587,
-          196.07968554129968
+          196.07968554129968,
+          227.93825697898865
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2328,6 +2362,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2467,7 +2502,8 @@ window.BENCHMARK_DATA = {
           204.0456370194753,
           190.25959047249384,
           193.78059186935425,
-          194.9167498588562
+          194.9167498588562,
+          227.61304075377328
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2505,6 +2541,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2618,7 +2655,8 @@ window.BENCHMARK_DATA = {
           990.2514855702718,
           947.7731275558472,
           924.5861426133376,
-          929.1650479861668
+          929.1650479861668,
+          1005.2956086476644
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2679,6 +2717,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -3084,6 +3123,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 11:55:50 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.9.0 to 0.10.4 in the tunit group (#287)"
+      },
+      {
+        "sha": "b630191da7acc45ce14ec7ec1cbbb7b786306a37",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 12:17:25 2025 \u002B0100",
+        "message": "refactor: rename \u0060Are(TItem)\u0060 to \u0060AreEqualTo(TItem)\u0060 (#289)"
       }
     ],
     "labels": [
@@ -3149,7 +3194,8 @@ window.BENCHMARK_DATA = {
       "f76cefad",
       "9a5312d9",
       "5c564abb",
-      "c709afb8"
+      "c709afb8",
+      "b630191d"
     ],
     "datasets": [
       {
@@ -3218,7 +3264,8 @@ window.BENCHMARK_DATA = {
           319.4534008026123,
           327.38727184931435,
           309.0163112367903,
-          302.23387893040973
+          302.23387893040973,
+          299.89982717377796
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3230,6 +3277,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -3369,7 +3417,8 @@ window.BENCHMARK_DATA = {
           450.5949158032735,
           429.21413590357855,
           405.9548151016235,
-          438.9984813054403
+          438.9984813054403,
+          409.35538145474027
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3407,6 +3456,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -3520,7 +3570,8 @@ window.BENCHMARK_DATA = {
           1003.5407689412435,
           1000.3148618062337,
           983.3785378774007,
-          1024.4547182718914
+          1024.4547182718914,
+          948.8855752263751
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3581,6 +3632,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -3986,6 +4038,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 11:55:50 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.9.0 to 0.10.4 in the tunit group (#287)"
+      },
+      {
+        "sha": "b630191da7acc45ce14ec7ec1cbbb7b786306a37",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 12:17:25 2025 \u002B0100",
+        "message": "refactor: rename \u0060Are(TItem)\u0060 to \u0060AreEqualTo(TItem)\u0060 (#289)"
       }
     ],
     "labels": [
@@ -4051,7 +4109,8 @@ window.BENCHMARK_DATA = {
       "f76cefad",
       "9a5312d9",
       "5c564abb",
-      "c709afb8"
+      "c709afb8",
+      "b630191d"
     ],
     "datasets": [
       {
@@ -4120,7 +4179,8 @@ window.BENCHMARK_DATA = {
           1217.328432973226,
           1266.504524230957,
           1167.7110981260028,
-          1157.9575112206596
+          1157.9575112206596,
+          1147.8557393210274
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4146,6 +4206,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -4271,7 +4332,8 @@ window.BENCHMARK_DATA = {
           1298.8048463185628,
           1219.430116144816,
           1239.0460549672446,
-          1235.633915456136
+          1235.633915456136,
+          1230.6896832784016
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4309,6 +4371,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -4422,7 +4485,8 @@ window.BENCHMARK_DATA = {
           2345.0780848185223,
           2360.594965526036,
           2258.7209142049155,
-          2275.8251631600515
+          2275.8251631600515,
+          2357.159083230155
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4483,6 +4547,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -4888,6 +4953,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 11:55:50 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.9.0 to 0.10.4 in the tunit group (#287)"
+      },
+      {
+        "sha": "b630191da7acc45ce14ec7ec1cbbb7b786306a37",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 12:17:25 2025 \u002B0100",
+        "message": "refactor: rename \u0060Are(TItem)\u0060 to \u0060AreEqualTo(TItem)\u0060 (#289)"
       }
     ],
     "labels": [
@@ -4953,7 +5024,8 @@ window.BENCHMARK_DATA = {
       "f76cefad",
       "9a5312d9",
       "5c564abb",
-      "c709afb8"
+      "c709afb8",
+      "b630191d"
     ],
     "datasets": [
       {
@@ -5022,7 +5094,8 @@ window.BENCHMARK_DATA = {
           1248.9937007904052,
           1254.4603382110595,
           1187.051696043748,
-          1201.5613521575929
+          1201.5613521575929,
+          1208.637138073261
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5076,6 +5149,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -5173,7 +5247,8 @@ window.BENCHMARK_DATA = {
           82762.22314453125,
           83295.82679036459,
           81694.36091496394,
-          84320.602734375
+          84320.602734375,
+          82229.38465294472
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5246,6 +5321,7 @@ window.BENCHMARK_DATA = {
           53212,
           53206,
           53212,
+          53206,
           53206,
           53206
         ],
@@ -5324,7 +5400,8 @@ window.BENCHMARK_DATA = {
           6647.937093607585,
           6471.164616511418,
           6345.118116251628,
-          6364.8331431070965
+          6364.8331431070965,
+          6454.9302580697195
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5385,6 +5462,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
