@@ -87,15 +87,15 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> StartsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public class Elements
         {
-            public aweXpect.Results.StringEqualityResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>> Are(string? expected) { }
+            public aweXpect.Results.StringEqualityResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>> AreEqualTo(string? expected) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>> Satisfy(System.Func<string?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
         public class Elements<TItem>
         {
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> Are(System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> Are(System.Type type) { }
-            public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> Are(TItem expected) { }
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> Are<TType>() { }
+            public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> AreEqualTo(TItem expected) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> Satisfy(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
     }
@@ -279,15 +279,15 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> StartsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public class Elements
         {
-            public aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> Are(string? expected) { }
+            public aweXpect.Results.StringEqualityResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> AreEqualTo(string? expected) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> Satisfy(System.Func<string?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
         public class Elements<TItem>
         {
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> Are(System.Action<aweXpect.Core.IThat<TItem>> expectations) { }
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> Are(System.Type type) { }
-            public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> Are(TItem expected) { }
             public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> Are<TType>() { }
+            public aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> AreEqualTo(TItem expected) { }
             public aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> Satisfy(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
     }
