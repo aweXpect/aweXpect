@@ -426,6 +426,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
         "message": "refactor: simplify build pipeline to push nuget packages (#297)"
+      },
+      {
+        "sha": "ab405d131c2ddfca63f7801e90686679e3c82d59",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 16:03:24 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.21.0 (#298)"
       }
     ],
     "labels": [
@@ -499,7 +505,8 @@ window.BENCHMARK_DATA = {
       "f57a0596",
       "55146670",
       "2547e016",
-      "c85f0a60"
+      "c85f0a60",
+      "ab405d13"
     ],
     "datasets": [
       {
@@ -576,7 +583,8 @@ window.BENCHMARK_DATA = {
           154.1415309735707,
           152.5719270547231,
           165.2716965675354,
-          163.7455291381249
+          163.7455291381249,
+          147.20555468705984
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -588,6 +596,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -743,7 +752,8 @@ window.BENCHMARK_DATA = {
           186.1847767829895,
           191.41327775319417,
           195.14860668182374,
-          193.97496991157533
+          193.97496991157533,
+          190.4350839138031
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -781,6 +791,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -910,7 +921,8 @@ window.BENCHMARK_DATA = {
           630.7554815156119,
           652.407822404589,
           653.414158630371,
-          657.8753077824911
+          657.8753077824911,
+          687.4457655588786
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -971,6 +983,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1432,6 +1445,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
         "message": "refactor: simplify build pipeline to push nuget packages (#297)"
+      },
+      {
+        "sha": "ab405d131c2ddfca63f7801e90686679e3c82d59",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 16:03:24 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.21.0 (#298)"
       }
     ],
     "labels": [
@@ -1505,7 +1524,8 @@ window.BENCHMARK_DATA = {
       "f57a0596",
       "55146670",
       "2547e016",
-      "c85f0a60"
+      "c85f0a60",
+      "ab405d13"
     ],
     "datasets": [
       {
@@ -1582,7 +1602,8 @@ window.BENCHMARK_DATA = {
           347.7675609929221,
           339.8790578475365,
           350.65354807036266,
-          328.1550554547991
+          328.1550554547991,
+          330.04631059510365
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1594,6 +1615,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1749,7 +1771,8 @@ window.BENCHMARK_DATA = {
           431.1258238792419,
           414.6290170124599,
           439.95192734400433,
-          405.5980042139689
+          405.5980042139689,
+          410.8260543346405
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1787,6 +1810,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1916,7 +1940,8 @@ window.BENCHMARK_DATA = {
           23174.800592041014,
           15522.319427490234,
           19028.219053141274,
-          14914.068493652343
+          14914.068493652343,
+          14259.763851710728
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1977,6 +2002,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2438,6 +2464,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
         "message": "refactor: simplify build pipeline to push nuget packages (#297)"
+      },
+      {
+        "sha": "ab405d131c2ddfca63f7801e90686679e3c82d59",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 16:03:24 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.21.0 (#298)"
       }
     ],
     "labels": [
@@ -2511,7 +2543,8 @@ window.BENCHMARK_DATA = {
       "f57a0596",
       "55146670",
       "2547e016",
-      "c85f0a60"
+      "c85f0a60",
+      "ab405d13"
     ],
     "datasets": [
       {
@@ -2588,7 +2621,8 @@ window.BENCHMARK_DATA = {
           194.2751897017161,
           192.19641167322794,
           202.77131792477198,
-          195.0295789718628
+          195.0295789718628,
+          198.15904523531597
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2600,6 +2634,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2755,7 +2790,8 @@ window.BENCHMARK_DATA = {
           185.925692097346,
           184.35749576886494,
           201.02754202255835,
-          189.91331584112984
+          189.91331584112984,
+          191.69449144999186
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2793,6 +2829,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2922,7 +2959,8 @@ window.BENCHMARK_DATA = {
           925.915651067098,
           969.5161163330079,
           941.321816889445,
-          960.8136178334554
+          960.8136178334554,
+          984.5529117584229
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2983,6 +3021,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -3444,6 +3483,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
         "message": "refactor: simplify build pipeline to push nuget packages (#297)"
+      },
+      {
+        "sha": "ab405d131c2ddfca63f7801e90686679e3c82d59",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 16:03:24 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.21.0 (#298)"
       }
     ],
     "labels": [
@@ -3517,7 +3562,8 @@ window.BENCHMARK_DATA = {
       "f57a0596",
       "55146670",
       "2547e016",
-      "c85f0a60"
+      "c85f0a60",
+      "ab405d13"
     ],
     "datasets": [
       {
@@ -3594,7 +3640,8 @@ window.BENCHMARK_DATA = {
           299.89240496499195,
           294.25802091451794,
           318.14660568237304,
-          295.48374312264576
+          295.48374312264576,
+          319.37698322931925
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3606,6 +3653,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -3761,7 +3809,8 @@ window.BENCHMARK_DATA = {
           413.07987932058484,
           417.5614389351436,
           422.94336194992064,
-          415.73135528564455
+          415.73135528564455,
+          410.66177180608116
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3799,6 +3848,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -3928,7 +3978,8 @@ window.BENCHMARK_DATA = {
           971.6782850901286,
           979.5313883463542,
           1006.4972090403239,
-          967.0298263004848
+          967.0298263004848,
+          986.0992928913662
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3989,6 +4040,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -4450,6 +4502,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
         "message": "refactor: simplify build pipeline to push nuget packages (#297)"
+      },
+      {
+        "sha": "ab405d131c2ddfca63f7801e90686679e3c82d59",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 16:03:24 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.21.0 (#298)"
       }
     ],
     "labels": [
@@ -4523,7 +4581,8 @@ window.BENCHMARK_DATA = {
       "f57a0596",
       "55146670",
       "2547e016",
-      "c85f0a60"
+      "c85f0a60",
+      "ab405d13"
     ],
     "datasets": [
       {
@@ -4600,7 +4659,8 @@ window.BENCHMARK_DATA = {
           1154.7259621253381,
           1163.6917425791423,
           1190.3349400838217,
-          1183.3554184777397
+          1183.3554184777397,
+          1170.6017426710862
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4626,6 +4686,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -4767,7 +4828,8 @@ window.BENCHMARK_DATA = {
           1232.486088480268,
           1163.3603374481202,
           1257.0655723571776,
-          1166.7286386489868
+          1166.7286386489868,
+          1248.664733759562
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4805,6 +4867,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -4934,7 +4997,8 @@ window.BENCHMARK_DATA = {
           2309.585275522868,
           2349.924735750471,
           2303.8091168721517,
-          2352.341082509359
+          2352.341082509359,
+          2339.7881695883616
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4995,6 +5059,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -5456,6 +5521,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
         "message": "refactor: simplify build pipeline to push nuget packages (#297)"
+      },
+      {
+        "sha": "ab405d131c2ddfca63f7801e90686679e3c82d59",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 16:03:24 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.21.0 (#298)"
       }
     ],
     "labels": [
@@ -5529,7 +5600,8 @@ window.BENCHMARK_DATA = {
       "f57a0596",
       "55146670",
       "2547e016",
-      "c85f0a60"
+      "c85f0a60",
+      "ab405d13"
     ],
     "datasets": [
       {
@@ -5606,7 +5678,8 @@ window.BENCHMARK_DATA = {
           1199.291757074992,
           1196.293539728437,
           1198.6168273045466,
-          1240.8022994995117
+          1240.8022994995117,
+          1202.1201378958565
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5660,6 +5733,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -5773,7 +5847,8 @@ window.BENCHMARK_DATA = {
           81818.55322265625,
           79275.55829326923,
           80755.89955357143,
-          80971.56325120192
+          80971.56325120192,
+          80546.25529597356
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5855,7 +5930,8 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53212,
-          53206
+          53206,
+          53212
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5940,7 +6016,8 @@ window.BENCHMARK_DATA = {
           6417.988477071126,
           6431.810826437814,
           6380.770196642195,
-          6358.691904703776
+          6358.691904703776,
+          6482.018528747559
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6001,6 +6078,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
