@@ -35,6 +35,8 @@ public sealed class StringDifference(
 		Wildcard
 	}
 
+	private const string ActualIndicator = " (actual)";
+
 	private readonly IEqualityComparer<string> _comparer = comparer ?? StringComparer.Ordinal;
 	private int? _indexOfFirstMismatch;
 
@@ -71,7 +73,7 @@ public sealed class StringDifference(
 		{
 			StringBuilder sb = new();
 			sb.Append(prefix).AppendLine(":");
-			sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+			sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
 			sb.AppendLine("  <null>");
 			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected!,
 				0, suffix);
@@ -83,7 +85,7 @@ public sealed class StringDifference(
 		{
 			StringBuilder sb = new();
 			sb.Append(prefix).AppendLine(":");
-			sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+			sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
 			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual!,
 				0, suffix);
 			sb.AppendLine("  <null>");
@@ -93,7 +95,7 @@ public sealed class StringDifference(
 
 		if (settings?.MatchType == MatchType.Wildcard)
 		{
-			return ToWildcardString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Wildcard), settings);
+			return ToWildcardString(prefix, actual, expected);
 		}
 
 		return ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings);
@@ -146,7 +148,7 @@ public sealed class StringDifference(
 			sb.Append(prefix).Append(" at index ").Append(indexOfFirstMismatch + column).AppendLine(":");
 		}
 
-		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(" (actual)");
+		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(ActualIndicator);
 		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual,
 			trimStart, suffix);
 		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected,
@@ -156,15 +158,14 @@ public sealed class StringDifference(
 		return sb.ToString();
 	}
 
-	private static string ToWildcardString(string prefix, string actual, string expected, int indexOfFirstMismatch,
-		StringDifferenceSettings? settings)
+	private static string ToWildcardString(string prefix, string actual, string expected)
 	{
 		const char arrowDown = '\u2193';
 		const char arrowUp = '\u2191';
 
 		StringBuilder sb = new();
-		sb.AppendLine(":");
-		sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+		sb.Append(prefix).AppendLine(":");
+		sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
 		sb.Append("  ");
 		Formatter.Format(sb, actual.DisplayWhitespace().TruncateWithEllipsisOnWord(300));
 		sb.AppendLine();
