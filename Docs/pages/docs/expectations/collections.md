@@ -72,15 +72,40 @@ IDictionary<int, int> subject = new Dictionary<int, int>
 await Expect.That(subject).AreAllUnique();
 ```
 
-## All satisfy
+## Elements
 
-You can verify, that all items in a collection satisfy a condition:
+You can add expectations that a certain number of elements must meet.
+
+### Comply with
+
+You can verify, that items in a collection comply with an expectation on the individual elements:
 
 ```csharp
-await Expect.That([1, 2, 3]).All().Satisfy(x => x < 4);
+await Expect.That([1, 2, 3]).All().ComplyWith(item => item.IsLessThan(4));
+await Expect.That([1, 2, 3]).AtLeast(2).ComplyWith(item => item.IsGreaterThanOrEqualTo(2));
+await Expect.That([1, 2, 3]).AtMost(1).ComplyWith(item => item.IsNegative());
+await Expect.That([1, 2, 3]).Between(2).And(3).ComplyWith(item => item.IsPositive());
+await Expect.That([1, 2, 3]).Exactly(1).ComplyWith(item => item.IsEqualTo(2));
+await Expect.That([1, 2, 3]).None().ComplyWith(item => item.IsNegative());
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
+### Satisfy
+
+You can verify, that items in a collection satisfy a condition:
+
+```csharp
+await Expect.That([1, 2, 3]).All().Satisfy(item => item < 4);
+await Expect.That([1, 2, 3]).AtLeast(2).Satisfy(item => item >= 2);
+await Expect.That([1, 2, 3]).AtMost(1).Satisfy(item => item < 0);
+await Expect.That([1, 2, 3]).Between(2).And(3).Satisfy(item => item > 0);
+await Expect.That([1, 2, 3]).Exactly(1).Satisfy(item => item == 2);
+await Expect.That([1, 2, 3]).None().Satisfy(item => item < 0);
+```
+
+*Note: The same expectation works also for `IAsyncEnumerable<T>`.*
+
 
 ## Sort order
 
