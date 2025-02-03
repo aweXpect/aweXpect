@@ -420,6 +420,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 13:14:11 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.10.4 to 0.10.6 in the tunit group (#293)"
+      },
+      {
+        "sha": "c85f0a6085116a62761d41842b4d93229d0c725d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
+        "message": "refactor: simplify build pipeline to push nuget packages (#297)"
       }
     ],
     "labels": [
@@ -492,7 +498,8 @@ window.BENCHMARK_DATA = {
       "80179bea",
       "f57a0596",
       "55146670",
-      "2547e016"
+      "2547e016",
+      "c85f0a60"
     ],
     "datasets": [
       {
@@ -568,7 +575,8 @@ window.BENCHMARK_DATA = {
           157.39761656125387,
           154.1415309735707,
           152.5719270547231,
-          165.2716965675354
+          165.2716965675354,
+          163.7455291381249
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -580,6 +588,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -733,7 +742,8 @@ window.BENCHMARK_DATA = {
           190.58225803375245,
           186.1847767829895,
           191.41327775319417,
-          195.14860668182374
+          195.14860668182374,
+          193.97496991157533
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -771,6 +781,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -898,7 +909,8 @@ window.BENCHMARK_DATA = {
           639.8526351292928,
           630.7554815156119,
           652.407822404589,
-          653.414158630371
+          653.414158630371,
+          657.8753077824911
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -959,6 +971,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1413,6 +1426,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 13:14:11 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.10.4 to 0.10.6 in the tunit group (#293)"
+      },
+      {
+        "sha": "c85f0a6085116a62761d41842b4d93229d0c725d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
+        "message": "refactor: simplify build pipeline to push nuget packages (#297)"
       }
     ],
     "labels": [
@@ -1485,7 +1504,8 @@ window.BENCHMARK_DATA = {
       "80179bea",
       "f57a0596",
       "55146670",
-      "2547e016"
+      "2547e016",
+      "c85f0a60"
     ],
     "datasets": [
       {
@@ -1561,7 +1581,8 @@ window.BENCHMARK_DATA = {
           373.2774693965912,
           347.7675609929221,
           339.8790578475365,
-          350.65354807036266
+          350.65354807036266,
+          328.1550554547991
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1573,6 +1594,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1726,7 +1748,8 @@ window.BENCHMARK_DATA = {
           467.9358477592468,
           431.1258238792419,
           414.6290170124599,
-          439.95192734400433
+          439.95192734400433,
+          405.5980042139689
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1764,6 +1787,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1891,7 +1915,8 @@ window.BENCHMARK_DATA = {
           14572.754266866048,
           23174.800592041014,
           15522.319427490234,
-          19028.219053141274
+          19028.219053141274,
+          14914.068493652343
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1952,6 +1977,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2406,6 +2432,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 13:14:11 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.10.4 to 0.10.6 in the tunit group (#293)"
+      },
+      {
+        "sha": "c85f0a6085116a62761d41842b4d93229d0c725d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
+        "message": "refactor: simplify build pipeline to push nuget packages (#297)"
       }
     ],
     "labels": [
@@ -2478,7 +2510,8 @@ window.BENCHMARK_DATA = {
       "80179bea",
       "f57a0596",
       "55146670",
-      "2547e016"
+      "2547e016",
+      "c85f0a60"
     ],
     "datasets": [
       {
@@ -2554,7 +2587,8 @@ window.BENCHMARK_DATA = {
           207.32073698043823,
           194.2751897017161,
           192.19641167322794,
-          202.77131792477198
+          202.77131792477198,
+          195.0295789718628
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2566,6 +2600,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2719,7 +2754,8 @@ window.BENCHMARK_DATA = {
           212.2907416979472,
           185.925692097346,
           184.35749576886494,
-          201.02754202255835
+          201.02754202255835,
+          189.91331584112984
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2757,6 +2793,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2884,7 +2921,8 @@ window.BENCHMARK_DATA = {
           961.8142932891845,
           925.915651067098,
           969.5161163330079,
-          941.321816889445
+          941.321816889445,
+          960.8136178334554
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2945,6 +2983,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -3399,6 +3438,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 13:14:11 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.10.4 to 0.10.6 in the tunit group (#293)"
+      },
+      {
+        "sha": "c85f0a6085116a62761d41842b4d93229d0c725d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
+        "message": "refactor: simplify build pipeline to push nuget packages (#297)"
       }
     ],
     "labels": [
@@ -3471,7 +3516,8 @@ window.BENCHMARK_DATA = {
       "80179bea",
       "f57a0596",
       "55146670",
-      "2547e016"
+      "2547e016",
+      "c85f0a60"
     ],
     "datasets": [
       {
@@ -3547,7 +3593,8 @@ window.BENCHMARK_DATA = {
           323.8548304875692,
           299.89240496499195,
           294.25802091451794,
-          318.14660568237304
+          318.14660568237304,
+          295.48374312264576
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3559,6 +3606,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -3712,7 +3760,8 @@ window.BENCHMARK_DATA = {
           446.82914609909056,
           413.07987932058484,
           417.5614389351436,
-          422.94336194992064
+          422.94336194992064,
+          415.73135528564455
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3750,6 +3799,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -3877,7 +3927,8 @@ window.BENCHMARK_DATA = {
           994.6728884379069,
           971.6782850901286,
           979.5313883463542,
-          1006.4972090403239
+          1006.4972090403239,
+          967.0298263004848
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3938,6 +3989,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -4392,6 +4444,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 13:14:11 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.10.4 to 0.10.6 in the tunit group (#293)"
+      },
+      {
+        "sha": "c85f0a6085116a62761d41842b4d93229d0c725d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
+        "message": "refactor: simplify build pipeline to push nuget packages (#297)"
       }
     ],
     "labels": [
@@ -4464,7 +4522,8 @@ window.BENCHMARK_DATA = {
       "80179bea",
       "f57a0596",
       "55146670",
-      "2547e016"
+      "2547e016",
+      "c85f0a60"
     ],
     "datasets": [
       {
@@ -4540,7 +4599,8 @@ window.BENCHMARK_DATA = {
           1239.0523595174154,
           1154.7259621253381,
           1163.6917425791423,
-          1190.3349400838217
+          1190.3349400838217,
+          1183.3554184777397
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4566,6 +4626,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -4705,7 +4766,8 @@ window.BENCHMARK_DATA = {
           1289.1070891789027,
           1232.486088480268,
           1163.3603374481202,
-          1257.0655723571776
+          1257.0655723571776,
+          1166.7286386489868
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4743,6 +4805,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -4870,7 +4933,8 @@ window.BENCHMARK_DATA = {
           2308.0305905659993,
           2309.585275522868,
           2349.924735750471,
-          2303.8091168721517
+          2303.8091168721517,
+          2352.341082509359
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4931,6 +4995,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -5385,6 +5450,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 3 13:14:11 2025 \u002B0100",
         "message": "build(deps): bump TUnit.Assertions from 0.10.4 to 0.10.6 in the tunit group (#293)"
+      },
+      {
+        "sha": "c85f0a6085116a62761d41842b4d93229d0c725d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:39:11 2025 \u002B0100",
+        "message": "refactor: simplify build pipeline to push nuget packages (#297)"
       }
     ],
     "labels": [
@@ -5457,7 +5528,8 @@ window.BENCHMARK_DATA = {
       "80179bea",
       "f57a0596",
       "55146670",
-      "2547e016"
+      "2547e016",
+      "c85f0a60"
     ],
     "datasets": [
       {
@@ -5533,7 +5605,8 @@ window.BENCHMARK_DATA = {
           1259.5320687611897,
           1199.291757074992,
           1196.293539728437,
-          1198.6168273045466
+          1198.6168273045466,
+          1240.8022994995117
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5587,6 +5660,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -5698,7 +5772,8 @@ window.BENCHMARK_DATA = {
           84651.1806265024,
           81818.55322265625,
           79275.55829326923,
-          80755.89955357143
+          80755.89955357143,
+          80971.56325120192
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5779,7 +5854,8 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53206,
-          53212
+          53212,
+          53206
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5863,7 +5939,8 @@ window.BENCHMARK_DATA = {
           6642.9855946858725,
           6417.988477071126,
           6431.810826437814,
-          6380.770196642195
+          6380.770196642195,
+          6358.691904703776
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5924,6 +6001,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
