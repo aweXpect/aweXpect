@@ -1,0 +1,60 @@
+﻿namespace aweXpect.Tests;
+
+public sealed partial class ThatString
+{
+	public sealed partial class IsEqualTo
+	{
+		public sealed class AsWildcardTests
+		{
+			[Theory(Skip="Temporarily disable until core update")]
+			[InlineData("some message", "*me me*", true)]
+			[InlineData("some message", "*ME ME*", false)]
+			[InlineData("some message", "some?message", true)]
+			[InlineData("some message", "some*message", true)]
+			[InlineData("some message", "some me?age", false)]
+			[InlineData("some message", "some me??age", true)]
+			public async Task ShouldDefaultToCaseSensitiveMatch(
+				string subject, string pattern, bool expectMatch)
+			{
+				async Task Act()
+					=> await That(subject).IsEqualTo(pattern).AsWildcard();
+
+				await That(Act).ThrowsException().OnlyIf(!expectMatch)
+					.WithMessage($"""
+					              Expected subject to
+					              match {Formatter.Format(pattern)},
+					              but it did not match:
+					                ↓ (actual)
+					                {Formatter.Format(subject)}
+					                {Formatter.Format(pattern)}
+					                ↑ (wildcard pattern)
+					              """);
+			}
+
+			[Theory(Skip="Temporarily disable until core update")]
+			[InlineData(true)]
+			[InlineData(false)]
+			public async Task WhenIgnoringCase_ShouldIgnoreCase(
+				bool ignoreCase)
+			{
+				string subject = "some message";
+				string pattern = "*ME ME*";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(pattern)
+						.AsWildcard().IgnoringCase(ignoreCase);
+
+				await That(Act).ThrowsException().OnlyIf(!ignoreCase)
+					.WithMessage("""
+					             Expected subject to
+					             match "*ME ME*",
+					             but it did not match:
+					               ↓ (actual)
+					               "some message"
+					               "*ME ME*"
+					               ↑ (wildcard pattern)
+					             """);
+			}
+		}
+	}
+}

@@ -11,7 +11,9 @@ public interface IStringMatchType
 	///     Returns <see langword="true" /> if the two strings <paramref name="actual" /> and <paramref name="expected" /> are
 	///     considered equal; otherwise <see langword="false" />.
 	/// </summary>
-	bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, IEqualityComparer<string> comparer);
+	bool AreConsideredEqual(string? actual, string? expected,
+		bool ignoreCase,
+		IEqualityComparer<string> comparer);
 
 	/// <summary>
 	///     Get the expectations text.
@@ -23,10 +25,16 @@ public interface IStringMatchType
 	/// </summary>
 	string GetExtendedFailure(string it, string? actual, string? expected,
 		bool ignoreCase,
-		IEqualityComparer<string> comparer);
+		IEqualityComparer<string> comparer,
+		StringDifferenceSettings? settings);
 
 	/// <summary>
-	///     A string representation of the match type and options.
+	///     A string representation of the match type.
 	/// </summary>
-	string ToString(bool ignoreCase, IEqualityComparer<string>? comparer);
+	string GetTypeString();
+
+	/// <summary>
+	///     A string representation of the options.
+	/// </summary>
+	string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer);
 }

@@ -18,7 +18,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match "FOO\nBAR",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
 				               "FOO\nBAR"
@@ -38,7 +38,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match "bar",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo"
 				               "bar"
@@ -58,7 +58,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match "\tsomething\r\nelse",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
 				               "\tsomething\r\nelse"
@@ -79,7 +79,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
 				             throw an exception with Message matching "bar",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo"
 				               "bar"
@@ -131,7 +131,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match "*",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               <null>
 				               "*"

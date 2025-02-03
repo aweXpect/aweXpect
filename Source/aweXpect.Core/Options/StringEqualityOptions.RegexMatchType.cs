@@ -21,10 +21,11 @@ public partial class StringEqualityOptions
 	{
 		#region IMatchType Members
 
-		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string})" />
+		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
-			IEqualityComparer<string> comparer)
+			IEqualityComparer<string> comparer,
+			StringDifferenceSettings? settings)
 		{
 			if (expected is null)
 			{
@@ -63,9 +64,13 @@ public partial class StringEqualityOptions
 					$"matching regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};
 
-		/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
-		public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer)
+		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />
+		public string GetTypeString()
 			=> " as regex";
+
+		/// <inheritdoc cref="IStringMatchType.GetOptionString(bool, IEqualityComparer{string})" />
+		public string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer)
+			=> "";
 
 		#endregion
 	}

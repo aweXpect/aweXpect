@@ -18,7 +18,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "FOO\nBAR",
-				             but it was "foo\nbar" which differs at index 0:
+				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
 				               "foo\nbar"
 				               "FOO\nBAR"
@@ -58,7 +58,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             be equal to "\tsomething\r\nelse",
-				             but it was "foo\nbar" which differs at index 0:
+				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
 				               "foo\nbar"
 				               "\tsomething\r\nelse"

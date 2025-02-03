@@ -127,8 +127,9 @@ namespace aweXpect.Core
     {
         bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
         string GetExpectation(string? expected, bool useActiveGrammaticVoice);
-        string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
-        string ToString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
+        string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer, aweXpect.Core.StringDifferenceSettings? settings);
+        string GetOptionString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
+        string GetTypeString();
     }
     public interface IThatDelegateThrows<out T> : aweXpect.Core.IThatVerb<T> { }
     public interface IThatDoes<out T> : aweXpect.Core.IThatVerb<T> { }
@@ -164,11 +165,28 @@ namespace aweXpect.Core
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromFunc(System.Func<TSource, TTarget> func, string name) { }
     }
-    public class StringDifference
+    public sealed class StringDifference
     {
-        public StringDifference(string? actual, string? expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null) { }
-        public int IndexOfFirstMismatch { get; }
+        public StringDifference(string? actual, string? expected, System.Collections.Generic.IEqualityComparer<string>? comparer = null, aweXpect.Core.StringDifferenceSettings? settings = null) { }
+        public int IndexOfFirstMismatch(aweXpect.Core.StringDifference.MatchType matchType) { }
         public override string ToString() { }
+        public string ToString(string prefix) { }
+        public enum MatchType
+        {
+            Equality = 0,
+            Wildcard = 1,
+        }
+    }
+    public class StringDifferenceSettings
+    {
+        public StringDifferenceSettings(int ignoredTrailingLines, int ignoredTrailingColumns) { }
+        public int IgnoredTrailingColumns { get; }
+        public int IgnoredTrailingLines { get; }
+        public aweXpect.Core.StringDifference.MatchType MatchType { get; }
+    }
+    public static class StringDifferenceSettingsExtensions
+    {
+        public static aweXpect.Core.StringDifferenceSettings WithMatchType(this aweXpect.Core.StringDifferenceSettings? settings, aweXpect.Core.StringDifference.MatchType matchType) { }
     }
     [System.Diagnostics.DebuggerDisplay("ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
     public readonly struct ThatSubject<T> : aweXpect.Core.IThatDoes<T>, aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>

@@ -59,14 +59,60 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	///     Get the expectations text.
 	/// </summary>
 	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-		=> _matchType.GetExpectation(expected, useActiveGrammaticVoice);
+		=> _matchType.GetExpectation(expected, useActiveGrammaticVoice) + GetOptionString();
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
 	public string GetExtendedFailure(string it, string? actual, string? expected)
-		=> _matchType.GetExtendedFailure(it, actual, expected, _ignoreCase,
-			_comparer ?? UseDefaultComparer(_ignoreCase));
+	{
+		StringDifferenceSettings? settings = null;
+		if (_ignoreLeadingWhiteSpace && actual is not null)
+		{
+			int ignoredLineCount = 0;
+			int ignoredColumnCount = 0;
+			foreach (char c in actual)
+			{
+				if (c == '\n')
+				{
+					ignoredLineCount++;
+					ignoredColumnCount = 0;
+				}
+				else if (char.IsWhiteSpace(c))
+				{
+					ignoredColumnCount++;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			settings = new StringDifferenceSettings(ignoredLineCount, ignoredColumnCount);
+		}
+		
+		if (_ignoreNewlineStyle)
+		{
+			actual = actual.RemoveNewlineStyle();
+			expected = expected.RemoveNewlineStyle();
+		}
+
+		if (_ignoreLeadingWhiteSpace)
+		{
+			actual = actual?.TrimStart();
+			expected = expected?.TrimStart();
+		}
+
+		if (_ignoreTrailingWhiteSpace)
+		{
+			actual = actual?.TrimEnd();
+			expected = expected?.TrimEnd();
+		}
+
+
+		return _matchType.GetExtendedFailure(it, actual, expected, _ignoreCase,
+			_comparer ?? UseDefaultComparer(_ignoreCase), settings);
+	}
 
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
@@ -117,9 +163,32 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// <inheritdoc />
 	public override string ToString()
 	{
+		return _matchType.GetTypeString() + GetOptionString();
+	}
+
+	/// <summary>
+	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
+	/// </summary>
+	/// <remarks>
+	///     If set to <see langword="null" /> (default), uses the <see cref="StringComparer.Ordinal" /> or
+	///     <see cref="StringComparer.OrdinalIgnoreCase" /> depending on whether the casing is ignored.
+	/// </remarks>
+	public StringEqualityOptions UsingComparer(IEqualityComparer<string>? comparer)
+	{
+		_comparer = comparer;
+		return this;
+	}
+
+	private static StringComparer UseDefaultComparer(bool ignoreCase)
+		=> ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
+	
+	
+
+	private string GetOptionString()
+	{
 		if (!_ignoreLeadingWhiteSpace && !_ignoreTrailingWhiteSpace && !_ignoreNewlineStyle)
 		{
-			return _matchType.ToString(_ignoreCase, _comparer);
+			return _matchType.GetOptionString(_ignoreCase, _comparer);
 		}
 
 		string? whiteSpaceToken = (_ignoreLeadingWhiteSpace, _ignoreTrailingWhiteSpace) switch
@@ -135,7 +204,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			: null;
 
 		StringBuilder sb = new();
-		string initialString = _matchType.ToString(_ignoreCase, _comparer);
+		string initialString = _matchType.GetOptionString(_ignoreCase, _comparer);
 		sb.Append(initialString);
 		if (initialString.Contains("ignoring"))
 		{
@@ -167,20 +236,4 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 		return sb.ToString();
 	}
-
-	/// <summary>
-	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
-	/// </summary>
-	/// <remarks>
-	///     If set to <see langword="null" /> (default), uses the <see cref="StringComparer.Ordinal" /> or
-	///     <see cref="StringComparer.OrdinalIgnoreCase" /> depending on whether the casing is ignored.
-	/// </remarks>
-	public StringEqualityOptions UsingComparer(IEqualityComparer<string>? comparer)
-	{
-		_comparer = comparer;
-		return this;
-	}
-
-	private static StringComparer UseDefaultComparer(bool ignoreCase)
-		=> ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
 }

@@ -13,26 +13,47 @@ namespace aweXpect.Core;
 /// <remarks>
 ///     If no <paramref name="comparer" /> is specified, uses the <see cref="StringComparer.Ordinal" /> string comparer.
 /// </remarks>
-public class StringDifference(
+public sealed class StringDifference(
 	string? actual,
 	string? expected,
-	IEqualityComparer<string>? comparer = null)
+	IEqualityComparer<string>? comparer = null,
+	StringDifferenceSettings? settings = null)
 {
+	/// <summary>
+	///     The supported match types in the <see cref="StringDifference" />.
+	/// </summary>
+	public enum MatchType
+	{
+		/// <summary>
+		///     The strings are compared for equality.
+		/// </summary>
+		Equality,
+
+		/// <summary>
+		///     The expected string is treated as a wildcard pattern.
+		/// </summary>
+		Wildcard
+	}
+
+	private const string ActualIndicator = " (actual)";
+
 	private readonly IEqualityComparer<string> _comparer = comparer ?? StringComparer.Ordinal;
 	private int? _indexOfFirstMismatch;
 
 	/// <summary>
-	///     Returns the first index at which the two values do not match.
+	///     Returns the first index at which the two values do not match exactly.
 	/// </summary>
-	public int IndexOfFirstMismatch
+	public int IndexOfFirstMismatch(MatchType matchType)
 	{
-		get
+		if (matchType == MatchType.Wildcard)
 		{
-			_indexOfFirstMismatch ??=
-				GetIndexOfFirstMismatch(actual, expected, _comparer);
-			return _indexOfFirstMismatch.Value;
+			return 0;
 		}
+
+		_indexOfFirstMismatch ??= GetIndexOfFirstMismatch(actual, expected, _comparer);
+		return _indexOfFirstMismatch.Value;
 	}
+
 
 	/// <inheritdoc />
 	public override string ToString() => ToString("differs");
@@ -41,77 +62,117 @@ public class StringDifference(
 	///     Writes a string representation of the difference, starting with the <paramref name="prefix" />.
 	/// </summary>
 	/// <param name="prefix">The prefix, e.g. <c>differs at index</c></param>
-	private string ToString(string prefix)
+	public string ToString(string prefix)
 	{
 		const char arrowDown = '\u2193';
 		const char arrowUp = '\u2191';
 		const string linePrefix = "  \"";
 		const string suffix = "\"";
 
-		int firstIndexOfMismatch = IndexOfFirstMismatch;
-		if (firstIndexOfMismatch < 0)
-		{
-			return prefix;
-		}
-
-		StringBuilder sb = new();
 		if (actual == null)
 		{
-			sb.Append(prefix).Append(" at index ").Append(firstIndexOfMismatch).AppendLine(":");
-			sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+			StringBuilder sb = new();
+			sb.Append(prefix).AppendLine(":");
+			sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
 			sb.AppendLine("  <null>");
 			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected!,
 				0, suffix);
-			sb.Append("  ").Append(arrowUp).Append(" (expected)");
+			sb.Append("  ").Append(arrowUp).Append(GetExpected(settings?.MatchType));
 			return sb.ToString();
 		}
 
 		if (expected == null)
 		{
-			sb.Append(prefix).Append(" at index ").Append(firstIndexOfMismatch).AppendLine(":");
-			sb.Append("  ").Append(arrowDown).AppendLine(" (actual)");
+			StringBuilder sb = new();
+			sb.Append(prefix).AppendLine(":");
+			sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
 			AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual!,
 				0, suffix);
 			sb.AppendLine("  <null>");
-			sb.Append("  ").Append(arrowUp).Append(" (expected)");
+			sb.Append("  ").Append(arrowUp).Append(GetExpected(settings?.MatchType));
 			return sb.ToString();
 		}
 
-		int trimStart =
-			GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actual, firstIndexOfMismatch);
+		if (settings?.MatchType == MatchType.Wildcard)
+		{
+			return ToWildcardString(prefix, actual, expected);
+		}
 
-		int whiteSpaceCountBeforeArrow = firstIndexOfMismatch - trimStart + linePrefix.Length;
+		return ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings);
+	}
+
+	private static string ToEqualityString(string prefix, string actual, string expected, int indexOfFirstMismatch,
+		StringDifferenceSettings? settings)
+	{
+		const char arrowDown = '\u2193';
+		const char arrowUp = '\u2191';
+		const string linePrefix = "  \"";
+		const string suffix = "\"";
+
+		if (indexOfFirstMismatch < 0)
+		{
+			return prefix;
+		}
+
+		int column = settings?.IgnoredTrailingColumns ?? 0;
+		StringBuilder sb = new();
+		int trimStart =
+			GetStartIndexOfPhraseToShowBeforeTheMismatchingIndex(actual, indexOfFirstMismatch);
+
+		int whiteSpaceCountBeforeArrow = indexOfFirstMismatch - trimStart + linePrefix.Length;
 
 		if (trimStart > 0)
 		{
 			whiteSpaceCountBeforeArrow++;
 		}
 
-		string visibleText = actual[trimStart..firstIndexOfMismatch];
+		string visibleText = actual[trimStart..indexOfFirstMismatch];
 		whiteSpaceCountBeforeArrow += visibleText.Count(c => c is '\r' or '\n');
 
-		string matchingString = actual[..IndexOfFirstMismatch];
+		string matchingString = actual[..indexOfFirstMismatch];
 		int lineNumber = matchingString.Count(c => c == '\n');
+		if (settings is not null)
+		{
+			lineNumber += settings.IgnoredTrailingLines;
+		}
 
-		if (lineNumber > 0)
+		if (settings?.IgnoredTrailingLines > 0 || actual.Any(c => c == '\n'))
 		{
 			int indexOfLastNewlineBeforeMismatch = matchingString.LastIndexOf('\n');
-			int column = matchingString.Length - indexOfLastNewlineBeforeMismatch;
+			column += matchingString.Length - indexOfLastNewlineBeforeMismatch;
 			sb.Append(prefix).Append(" on line ").Append(lineNumber + 1).Append(" and column ")
-				.Append(column).Append(" (index ").Append(firstIndexOfMismatch).AppendLine("):");
+				.Append(column).AppendLine(":");
 		}
 		else
 		{
-			sb.Append(prefix).Append(" at index ").Append(firstIndexOfMismatch).AppendLine(":");
+			sb.Append(prefix).Append(" at index ").Append(indexOfFirstMismatch + column).AppendLine(":");
 		}
 
-		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(" (actual)");
+		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowDown).AppendLine(ActualIndicator);
 		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, actual,
 			trimStart, suffix);
 		AppendPrefixAndEscapedPhraseToShowWithEllipsisAndSuffix(sb, linePrefix, expected,
 			trimStart, suffix);
-		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(" (expected)");
+		sb.Append(' ', whiteSpaceCountBeforeArrow).Append(arrowUp).Append(GetExpected(settings?.MatchType));
 
+		return sb.ToString();
+	}
+
+	private static string ToWildcardString(string prefix, string actual, string expected)
+	{
+		const char arrowDown = '\u2193';
+		const char arrowUp = '\u2191';
+
+		StringBuilder sb = new();
+		sb.Append(prefix).AppendLine(":");
+		sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
+		sb.Append("  ");
+		Formatter.Format(sb, actual.DisplayWhitespace().TruncateWithEllipsisOnWord(300));
+		sb.AppendLine();
+		sb.Append("  ");
+		Formatter.Format(sb, expected.DisplayWhitespace().TruncateWithEllipsisOnWord(300));
+		sb.AppendLine();
+		sb.Append("  ").Append(arrowUp).Append(" (wildcard pattern)");
 		return sb.ToString();
 	}
 
@@ -251,4 +312,11 @@ public class StringDifference(
 
 		return indexOfFirstMismatch - defaultCharactersToKeep;
 	}
+
+	private static string GetExpected(MatchType? matchType)
+		=> matchType switch
+		{
+			MatchType.Wildcard => " (wildcard pattern)",
+			_ => " (expected)"
+		};
 }
