@@ -1,8 +1,7 @@
-﻿#if !DEBUG
-using System;
+﻿using System;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Results;
 
@@ -530,4 +529,3 @@ public static class PropertyResult
 			=> expectation;
 	}
 }
-#endif
