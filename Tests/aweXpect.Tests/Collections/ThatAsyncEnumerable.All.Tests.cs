@@ -20,7 +20,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsLessThan(6)).WithCancellation(token);
+					=> await That(subject).All().ComplyWith(item => item.IsLessThan(6)).WithCancellation(token);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -48,7 +48,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsEqualTo(1));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(1));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -64,7 +64,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsEqualTo(1));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(1));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -80,7 +80,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsEqualTo(0));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(0));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -91,7 +91,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 1, 1, 1]);
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsEqualTo(1));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(1));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -102,7 +102,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsEqualTo(0));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
