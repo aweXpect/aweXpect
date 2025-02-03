@@ -13,20 +13,6 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that the items in the collection satisfy the <paramref name="expectations" />.
-		/// </summary>
-		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
-			Are(Action<IThat<TItem>> expectations)
-		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
-					=> new AsyncCollectionConstraint<TItem>(it, _quantifier, expectations)),
-				_subject,
-				options);
-		}
-
-		/// <summary>
 		///     Verifies that all items in the collection are of type <typeparamref name="TType" />.
 		/// </summary>
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>

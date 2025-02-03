@@ -33,7 +33,7 @@ public sealed partial class QuantifiableCollectionItems
 			};
 
 			async Task Act()
-				=> await That(subject).All().Are(item => item.IsEquivalentTo(expected));
+				=> await That(subject).All().ComplyWith(item => item.IsEquivalentTo(expected));
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
@@ -68,7 +68,7 @@ public sealed partial class QuantifiableCollectionItems
 			};
 
 			async Task Act()
-				=> await That(subject).All().Are(item => item.IsEquivalentTo(expected));
+				=> await That(subject).All().ComplyWith(item => item.IsEquivalentTo(expected));
 
 			await That(Act).DoesNotThrow();
 		}
