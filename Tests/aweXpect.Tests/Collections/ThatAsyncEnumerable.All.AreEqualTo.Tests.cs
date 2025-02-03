@@ -19,8 +19,8 @@ public sealed partial class ThatAsyncEnumerable
 					ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 					async Task Act()
-						=> await That(subject).All().Are(1)
-							.And.All().Are(1);
+						=> await That(subject).All().AreEqualTo(1)
+							.And.All().AreEqualTo(1);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -31,7 +31,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 					async Task Act()
-						=> await That(subject).All().Are(1);
+						=> await That(subject).All().AreEqualTo(1);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -47,7 +47,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int?> subject = Factory.GetConstantValueAsyncEnumerable<int?>(null, 20);
 
 					async Task Act()
-						=> await That(subject).All().Are((int?)null);
+						=> await That(subject).All().AreEqualTo((int?)null);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -58,7 +58,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
 
 					async Task Act()
-						=> await That(subject).All().Are(5).Using(new AllEqualComparer());
+						=> await That(subject).All().AreEqualTo(5).Using(new AllEqualComparer());
 
 					await That(Act).DoesNotThrow();
 				}
@@ -69,7 +69,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
 
 					async Task Act()
-						=> await That(subject).All().Are(5);
+						=> await That(subject).All().AreEqualTo(5);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -86,7 +86,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int> subject = Factory.GetConstantValueAsyncEnumerable(constantValue, 20);
 
 					async Task Act()
-						=> await That(subject).All().Are(constantValue);
+						=> await That(subject).All().AreEqualTo(constantValue);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int>? subject = null;
 
 					async Task Act()
-						=> await That(subject).All().Are(constantValue);
+						=> await That(subject).All().AreEqualTo(constantValue);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -117,7 +117,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string> subject = Factory.GetAsyncFibonacciNumbers(i => $"item-{i}");
 
 					async Task Act()
-						=> await That(subject).All().Are("item-1");
+						=> await That(subject).All().AreEqualTo("item-1");
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -133,7 +133,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string?> subject = Factory.GetConstantValueAsyncEnumerable<string?>(null, 20);
 
 					async Task Act()
-						=> await That(subject).All().Are(null);
+						=> await That(subject).All().AreEqualTo(null);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -144,7 +144,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string> subject = Factory.GetAsyncFibonacciNumbers(i => $"item-{i}", 20);
 
 					async Task Act()
-						=> await That(subject).All().Are("item-5").Using(new AllEqualComparer());
+						=> await That(subject).All().AreEqualTo("item-5").Using(new AllEqualComparer());
 
 					await That(Act).DoesNotThrow();
 				}
@@ -155,7 +155,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string> subject = Factory.GetAsyncFibonacciNumbers(i => $"item-{i}", 10);
 
 					async Task Act()
-						=> await That(subject).All().Are("item-5");
+						=> await That(subject).All().AreEqualTo("item-5");
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -173,7 +173,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO"]);
 
 					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringCase(ignoreCase);
+						=> await That(subject).All().AreEqualTo("foo").IgnoringCase(ignoreCase);
 
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 						.WithMessage("""
@@ -190,7 +190,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string> subject = Factory.GetConstantValueAsyncEnumerable(constantValue, 20);
 
 					async Task Act()
-						=> await That(subject).All().Are(constantValue);
+						=> await That(subject).All().AreEqualTo(constantValue);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -202,7 +202,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<string>? subject = null;
 
 					async Task Act()
-						=> await That(subject).All().Are(constantValue);
+						=> await That(subject).All().AreEqualTo(constantValue);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
