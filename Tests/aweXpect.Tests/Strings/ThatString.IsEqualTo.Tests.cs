@@ -42,7 +42,7 @@ public sealed partial class ThatString
 
 		public sealed class IgnoringLeadingWhiteSpaceTests
 		{
-			[Theory(Skip="Temporarily disable until core update")]
+			[Theory]
 			[InlineAutoData("foo", " bar", 0)]
 			[InlineAutoData(" foo", "bar", 1)]
 			[InlineAutoData(" \tfoo", "bar", 2)]
@@ -64,7 +64,7 @@ public sealed partial class ThatString
 					              """);
 			}
 
-			[Theory(Skip="Temporarily disable until core update")]
+			[Theory]
 			[InlineAutoData("foo\nbar", " \n bar", 1, 1)]
 			[InlineAutoData(" \n\n foo", "bar", 3, 2)]
 			[InlineAutoData(" \r\n \tfoo", "bar", 2, 3)]
@@ -120,7 +120,7 @@ public sealed partial class ThatString
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact(Skip="Temporarily disable until core update")]
+			[Fact]
 			public async Task ShouldIncludeCorrectIndexInMessage()
 			{
 				string subject = "foo\nbar";
@@ -144,7 +144,7 @@ public sealed partial class ThatString
 
 		public sealed class IgnoringTrailingWhiteSpaceTests
 		{
-			[Fact(Skip="Temporarily disable until core update")]
+			[Fact]
 			public async Task ShouldConsiderNewlineForSwitchingToLineColumn()
 			{
 				string subject = "foo-boo\nbaz\t";
@@ -165,7 +165,7 @@ public sealed partial class ThatString
 					             """);
 			}
 
-			[Fact(Skip="Temporarily disable until core update")]
+			[Fact]
 			public async Task ShouldIncludeCorrectIndexInMessage()
 			{
 				string subject = "foo-boo\t";
