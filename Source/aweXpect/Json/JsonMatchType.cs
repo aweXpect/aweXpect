@@ -10,7 +10,6 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	private JsonElementValidator.JsonComparisonResult? _comparisonResult;
 	private string? _deserializationError;
 
-#if DEBUG
 	/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 	public string GetExtendedFailure(
 		string it,
@@ -20,16 +19,6 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 		IEqualityComparer<string> comparer,
 		StringDifferenceSettings? settings)
 	{
-#else
-	/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string})" />
-	public string GetExtendedFailure(
-		string it,
-		string? actual,
-		string? expected,
-		bool ignoreCase,
-		IEqualityComparer<string> comparer)
-	{
-#endif
 		if (_deserializationError != null)
 		{
 			return _deserializationError;
@@ -91,7 +80,6 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
 		=> $"be JSON equivalent to {expected}";
 
-#if DEBUG
 	/// <inheritdoc cref="IStringMatchType.GetTypeString()" />
 	public string GetTypeString()
 		=> " as JSON";
@@ -99,10 +87,5 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	/// <inheritdoc cref="IStringMatchType.GetOptionString(bool, IEqualityComparer{string})" />
 	public string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer)
 		=> "";
-#else
-	/// <inheritdoc cref="IStringMatchType.ToString(bool, IEqualityComparer{string})" />
-	public string ToString(bool ignoreCase, IEqualityComparer<string>? comparer)
-		=> " as JSON";
-#endif
 }
 #endif

@@ -778,55 +778,6 @@ namespace aweXpect.Results
         public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
-    public static class PropertyResult
-    {
-        public class DateTimeKind<TItem>
-        {
-            public DateTimeKind(aweXpect.Core.IThat<TItem> source, System.Func<TItem, System.DateTimeKind?> mapper, string propertyExpression) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(System.DateTimeKind expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(System.DateTimeKind unexpected) { }
-        }
-        public class Int<TItem>
-        {
-            public Int(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression, System.Action<int?, string>? validation = null) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThan(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(int? unexpected) { }
-        }
-        public class NullableInt<TItem>
-        {
-            public NullableInt(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression, System.Action<int?, string>? validation = null) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThan(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(int? unexpected) { }
-        }
-        public class NullableLong<TItem>
-        {
-            public NullableLong(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression, System.Action<long?, string>? validation = null) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(long? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(long? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(long? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThan(long? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(long? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(long? unexpected) { }
-        }
-        public class TimeSpan<TItem>
-        {
-            public TimeSpan(aweXpect.Core.IThat<TItem> source, System.Func<TItem, System.TimeSpan?> mapper, string propertyExpression) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(System.TimeSpan? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(System.TimeSpan? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(System.TimeSpan? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThan(System.TimeSpan? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(System.TimeSpan? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(System.TimeSpan? unexpected) { }
-        }
-    }
     public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>
     {
         public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler> returnValue, aweXpect.Options.SignalerOptions options) { }
