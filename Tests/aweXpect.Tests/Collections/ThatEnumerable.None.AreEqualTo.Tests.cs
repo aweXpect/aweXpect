@@ -21,7 +21,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
 
 					async Task Act()
-						=> await That(subject).None().Are(8)
+						=> await That(subject).None().AreEqualTo(8)
 							.WithCancellation(token);
 
 					await That(Act).Throws<XunitException>()
@@ -38,8 +38,8 @@ public sealed partial class ThatEnumerable
 					ThrowWhenIteratingTwiceEnumerable subject = new();
 
 					async Task Act()
-						=> await That(subject).None().Are(15)
-							.And.None().Are(81);
+						=> await That(subject).None().AreEqualTo(15)
+							.And.None().AreEqualTo(81);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -50,7 +50,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 					async Task Act()
-						=> await That(subject).None().Are(5);
+						=> await That(subject).None().AreEqualTo(5);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 					async Task Act()
-						=> await That(subject).None().Are(1);
+						=> await That(subject).None().AreEqualTo(1);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -82,7 +82,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = ToEnumerable((int[]) []);
 
 					async Task Act()
-						=> await That(subject).None().Are(0);
+						=> await That(subject).None().AreEqualTo(0);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -93,7 +93,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 					async Task Act()
-						=> await That(subject).None().Are(42);
+						=> await That(subject).None().AreEqualTo(42);
 
 					await That(Act).DoesNotThrow();
 				}
@@ -104,7 +104,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int>? subject = null;
 
 					async Task Act()
-						=> await That(subject).None().Are(0);
+						=> await That(subject).None().AreEqualTo(0);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""

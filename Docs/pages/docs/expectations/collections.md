@@ -26,7 +26,7 @@ await Expect.That(values).IsEqualTo([3, 3, 2, 2, 1, 1]).InAnyOrder().IgnoringDup
 You can verify, that all items in the collection are equal to the `expected` value
 
 ```csharp
-await Expect.That([1, 1, 1]).All().Are(1);
+await Expect.That([1, 1, 1]).All().AreEqualTo(1);
 ```
 
 You can also use a [custom comparer](/docs/expectations/object#custom-comparer) or
@@ -36,15 +36,15 @@ configure [equivalence](/docs/expectations/object#equivalence):
 IEnumerable<MyClass> values = //...
 MyClass expected = //...
 
-await Expect.That(values).All().Are(expected).Equivalent();
-await Expect.That(values).All().Are(expected).Using(new MyClassComparer());
+await Expect.That(values).All().AreEqualTo(expected).Equivalent();
+await Expect.That(values).All().AreEqualTo(expected).Using(new MyClassComparer());
 ```
 
 For strings, you can configure this expectation to ignore case, ignore newline style, ignoring leading or trailing
 white-space, or use a custom `IEqualityComparer<string>`:
 
 ```csharp
-await Expect.That(["foo", "FOO", "Foo"]).All().Are("foo").IgnoringCase();
+await Expect.That(["foo", "FOO", "Foo"]).All().AreEqualTo("foo").IgnoringCase();
 ```
 
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*

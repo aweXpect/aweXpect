@@ -11,347 +11,96 @@ public sealed partial class ThatEnumerable
 	{
 		public sealed class Are
 		{
-			public sealed class ItemTests
+			public sealed class GenericTests
 			{
 				[Fact]
-				public async Task DoesNotEnumerateTwice()
+				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					ThrowWhenIteratingTwiceEnumerable subject = new();
+					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(_ => new MyBaseClass());
 
 					async Task Act()
-						=> await That(subject).All().Are(1)
-							.And.All().Are(1);
-
-					await That(Act).DoesNotThrow();
-				}
-
-				[Fact]
-				public async Task DoesNotMaterializeEnumerable()
-				{
-					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
-
-					async Task Act()
-						=> await That(subject).All().Are(1);
+						=> await That(subject).All().Are<MyClass>();
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
-						             have all items equal to 1,
+						             have all items be of type MyClass,
 						             but not all were
 						             """);
 				}
 
 				[Fact]
-				public async Task ShouldSupportNullableValues()
+				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
-					IEnumerable<int?> subject = Factory.GetConstantValueEnumerable<int?>(null, 20);
+					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(_ => new MyClass());
 
 					async Task Act()
-						=> await That(subject).All().Are((int?)null);
+						=> await That(subject).All().Are<MyBaseClass>();
 
 					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
-				public async Task ShouldUseCustomComparer()
+				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
+					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(_ => new MyClass());
 
 					async Task Act()
-						=> await That(subject).All().Are(5).Using(new AllEqualComparer());
+						=> await That(subject).All().Are<MyClass>();
 
 					await That(Act).DoesNotThrow();
-				}
-
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
-				{
-					int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
-
-					async Task Act()
-						=> await That(subject).All().Are(5);
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to 5,
-						             but only 1 of 20 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenNoItemsDiffer_ShouldSucceed()
-				{
-					int constantValue = 42;
-					int[] subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
-
-					async Task Act()
-						=> await That(subject).All().Are(constantValue);
-
-					await That(Act).DoesNotThrow();
-				}
-
-				[Fact]
-				public async Task WhenSubjectIsNull_ShouldFail()
-				{
-					int constantValue = 42;
-					IEnumerable<int>? subject = null!;
-
-					async Task Act()
-						=> await That(subject).All().Are(constantValue);
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to 42,
-						             but it was <null>
-						             """);
 				}
 			}
 
-			public sealed class StringItemTests
+			public sealed class TypeTests
 			{
 				[Fact]
-				public async Task DoesNotMaterializeEnumerable()
+				public async Task WhenTypeDoesNotMatch_ShouldFail()
 				{
-					IEnumerable<string> subject = Factory.GetFibonacciNumbers(i => $"item-{i}");
+					IEnumerable<MyBaseClass> subject = Enumerable.Range(1, 10).Select(_ => new MyBaseClass());
 
 					async Task Act()
-						=> await That(subject).All().Are("item-1");
+						=> await That(subject).All().Are(typeof(MyClass));
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected subject to
-						             have all items equal to "item-1",
+						             have all items be of type MyClass,
 						             but not all were
 						             """);
 				}
 
 				[Fact]
-				public async Task ShouldSupportNullableValues()
+				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
-					IEnumerable<string?> subject = Factory.GetConstantValueEnumerable<string?>(null, 20);
+					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(_ => new MyClass());
 
 					async Task Act()
-						=> await That(subject).All().Are(null);
+						=> await That(subject).All().Are(typeof(MyBaseClass));
 
 					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]
-				public async Task ShouldUseCustomComparer()
+				public async Task WhenTypeMatchesExactly_ShouldSucceed()
 				{
-					string[] subject = Factory.GetFibonacciNumbers(i => $"item-{i}", 20).ToArray();
+					IEnumerable<MyClass> subject = Enumerable.Range(1, 10).Select(_ => new MyClass());
 
 					async Task Act()
-						=> await That(subject).All().Are("item-5").Using(new AllEqualComparer());
+						=> await That(subject).All().Are(typeof(MyClass));
 
 					await That(Act).DoesNotThrow();
 				}
+			}
 
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
-				{
-					string[] subject = Factory.GetFibonacciNumbers(i => $"item-{i}", 10).ToArray();
+			public class MyClass : MyBaseClass
+			{
+				public int Bar { get; set; }
+			}
 
-					async Task Act()
-						=> await That(subject).All().Are("item-5");
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "item-5",
-						             but only 1 of 10 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldShowAllConfigurationsInMessage()
-				{
-					string[] subject = ["bar"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo")
-							.IgnoringCase()
-							.IgnoringNewlineStyle()
-							.IgnoringLeadingWhiteSpace()
-							.IgnoringTrailingWhiteSpace();
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo" ignoring case, white-space and newline style,
-						             but only 0 of 1 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldShowIgnoringCaseInMessage()
-				{
-					string[] subject = ["bar"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringCase();
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo" ignoring case,
-						             but only 0 of 1 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldShowIgnoringLeadingWhiteSpaceInMessage()
-				{
-					string[] subject = ["bar"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringLeadingWhiteSpace();
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo" ignoring leading white-space,
-						             but only 0 of 1 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldShowIgnoringNewlineStyleInMessage()
-				{
-					string[] subject = ["bar"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringNewlineStyle();
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo" ignoring newline style,
-						             but only 0 of 1 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenItemsDiffer_ShouldShowIgnoringTrailingWhiteSpaceInMessage()
-				{
-					string[] subject = ["bar"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringTrailingWhiteSpace();
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo" ignoring trailing white-space,
-						             but only 0 of 1 were
-						             """);
-				}
-
-				[Theory]
-				[InlineData(true)]
-				[InlineData(false)]
-				public async Task WhenItemsDifferInCase_ShouldSucceedWhenIgnoringCase(bool ignoreCase)
-				{
-					string[] subject = ["foo", "FOO"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringCase(ignoreCase);
-
-					await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo",
-						             but only 1 of 2 were
-						             """);
-				}
-
-				[Theory]
-				[InlineData(true)]
-				[InlineData(false)]
-				public async Task WhenItemsDifferInLeadingWhiteSpace_ShouldSucceedWhenIgnoringLeadingWhiteSpace(
-					bool ignoreLeadingWhiteSpace)
-				{
-					string[] subject = [" foo", "foo", "\tfoo"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringLeadingWhiteSpace(ignoreLeadingWhiteSpace);
-
-					await That(Act).Throws<XunitException>().OnlyIf(!ignoreLeadingWhiteSpace)
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo",
-						             but only 1 of 3 were
-						             """);
-				}
-
-				[Theory]
-				[InlineData(true)]
-				[InlineData(false)]
-				public async Task WhenItemsDifferInNewlineStyle_ShouldSucceedWhenIgnoringNewlineStyle(
-					bool ignoreNewlineStyle)
-				{
-					string[] subject = ["foo\r\nbar", "foo\nbar", "foo\rbar"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo\nbar").IgnoringNewlineStyle(ignoreNewlineStyle);
-
-					await That(Act).Throws<XunitException>().OnlyIf(!ignoreNewlineStyle)
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo\nbar",
-						             but only 1 of 3 were
-						             """);
-				}
-
-				[Theory]
-				[InlineData(true)]
-				[InlineData(false)]
-				public async Task WhenItemsDifferInTrailingWhiteSpace_ShouldSucceedWhenIgnoringTrailingWhiteSpace(
-					bool ignoreTrailingWhiteSpace)
-				{
-					string[] subject = ["foo ", "foo", "foo\t"];
-
-					async Task Act()
-						=> await That(subject).All().Are("foo").IgnoringTrailingWhiteSpace(ignoreTrailingWhiteSpace);
-
-					await That(Act).Throws<XunitException>().OnlyIf(!ignoreTrailingWhiteSpace)
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo",
-						             but only 1 of 3 were
-						             """);
-				}
-
-				[Fact]
-				public async Task WhenNoItemsDiffer_ShouldSucceed()
-				{
-					string constantValue = "foo";
-					string[] subject = Factory.GetConstantValueEnumerable(constantValue, 20).ToArray();
-
-					async Task Act()
-						=> await That(subject).All().Are(constantValue);
-
-					await That(Act).DoesNotThrow();
-				}
-
-				[Fact]
-				public async Task WhenSubjectIsNull_ShouldFail()
-				{
-					string constantValue = "foo";
-					IEnumerable<string>? subject = null;
-
-					async Task Act()
-						=> await That(subject).All().Are(constantValue);
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo",
-						             but it was <null>
-						             """);
-				}
+			public class MyBaseClass
+			{
+				public int Foo { get; set; }
 			}
 		}
 	}

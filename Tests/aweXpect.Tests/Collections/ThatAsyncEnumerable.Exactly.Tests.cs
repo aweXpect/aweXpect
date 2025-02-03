@@ -38,8 +38,8 @@ public sealed partial class ThatAsyncEnumerable
 				ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 				async Task Act()
-					=> await That(subject).Exactly(1).Are(1)
-						.And.Exactly(1).Are(1);
+					=> await That(subject).Exactly(1).AreEqualTo(1)
+						.And.Exactly(1).AreEqualTo(1);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -50,7 +50,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).Exactly(1).Are(1);
+					=> await That(subject).Exactly(1).AreEqualTo(1);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -66,7 +66,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).Exactly(4).Are(1);
+					=> await That(subject).Exactly(4).AreEqualTo(1);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -77,7 +77,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).Exactly(4).Are(2);
+					=> await That(subject).Exactly(4).AreEqualTo(2);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -93,7 +93,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).Exactly(3).Are(1);
+					=> await That(subject).Exactly(3).AreEqualTo(1);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -109,7 +109,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject).Exactly(1).Are(0);
+					=> await That(subject).Exactly(1).AreEqualTo(0);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
