@@ -396,6 +396,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 12:56:59 2025 \u002B0100",
         "message": "refactor: group \u0022Microsoft.CodeAnalysis\u0022 updates for dependabot (#291)"
+      },
+      {
+        "sha": "80179bea6a22fe75e7eaefcf72a3c38a24f80b92",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:11:48 2025 \u002B0100",
+        "message": "refactor!: move \u0060PropertyResult\u0060 to aweXpect.Core (#292)"
       }
     ],
     "labels": [
@@ -464,7 +470,8 @@ window.BENCHMARK_DATA = {
       "c709afb8",
       "b630191d",
       "0bebf245",
-      "c935463f"
+      "c935463f",
+      "80179bea"
     ],
     "datasets": [
       {
@@ -536,7 +543,8 @@ window.BENCHMARK_DATA = {
           156.94760268529257,
           169.3690136909485,
           164.1981420358022,
-          158.74964555104575
+          158.74964555104575,
+          157.39761656125387
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -548,6 +556,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -693,7 +702,8 @@ window.BENCHMARK_DATA = {
           193.76731901509422,
           217.76958662668864,
           193.31481269200643,
-          201.69666078885396
+          201.69666078885396,
+          190.58225803375245
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -731,6 +741,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -850,7 +861,8 @@ window.BENCHMARK_DATA = {
           663.886256804833,
           684.4173676808675,
           613.5188669057993,
-          671.2283148447673
+          671.2283148447673,
+          639.8526351292928
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -911,6 +923,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1337,6 +1350,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 12:56:59 2025 \u002B0100",
         "message": "refactor: group \u0022Microsoft.CodeAnalysis\u0022 updates for dependabot (#291)"
+      },
+      {
+        "sha": "80179bea6a22fe75e7eaefcf72a3c38a24f80b92",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:11:48 2025 \u002B0100",
+        "message": "refactor!: move \u0060PropertyResult\u0060 to aweXpect.Core (#292)"
       }
     ],
     "labels": [
@@ -1405,7 +1424,8 @@ window.BENCHMARK_DATA = {
       "c709afb8",
       "b630191d",
       "0bebf245",
-      "c935463f"
+      "c935463f",
+      "80179bea"
     ],
     "datasets": [
       {
@@ -1477,7 +1497,8 @@ window.BENCHMARK_DATA = {
           340.18660742895946,
           362.11123889287313,
           361.36092233657837,
-          359.31345923741657
+          359.31345923741657,
+          373.2774693965912
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1489,6 +1510,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1634,7 +1656,8 @@ window.BENCHMARK_DATA = {
           412.87585423787436,
           445.6911304678236,
           414.64246632258096,
-          415.6479868207659
+          415.6479868207659,
+          467.9358477592468
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1672,6 +1695,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -1791,7 +1815,8 @@ window.BENCHMARK_DATA = {
           14447.812927246094,
           14234.300955200195,
           14660.49343363444,
-          20274.158772786457
+          20274.158772786457,
+          14572.754266866048
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1852,6 +1877,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2278,6 +2304,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 12:56:59 2025 \u002B0100",
         "message": "refactor: group \u0022Microsoft.CodeAnalysis\u0022 updates for dependabot (#291)"
+      },
+      {
+        "sha": "80179bea6a22fe75e7eaefcf72a3c38a24f80b92",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:11:48 2025 \u002B0100",
+        "message": "refactor!: move \u0060PropertyResult\u0060 to aweXpect.Core (#292)"
       }
     ],
     "labels": [
@@ -2346,7 +2378,8 @@ window.BENCHMARK_DATA = {
       "c709afb8",
       "b630191d",
       "0bebf245",
-      "c935463f"
+      "c935463f",
+      "80179bea"
     ],
     "datasets": [
       {
@@ -2418,7 +2451,8 @@ window.BENCHMARK_DATA = {
           196.07968554129968,
           227.93825697898865,
           197.164697710673,
-          200.79601521492003
+          200.79601521492003,
+          207.32073698043823
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2430,6 +2464,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2575,7 +2610,8 @@ window.BENCHMARK_DATA = {
           194.9167498588562,
           227.61304075377328,
           202.97262288973883,
-          199.4520267168681
+          199.4520267168681,
+          212.2907416979472
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2613,6 +2649,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -2732,7 +2769,8 @@ window.BENCHMARK_DATA = {
           929.1650479861668,
           1005.2956086476644,
           935.4605159078326,
-          932.6338380813598
+          932.6338380813598,
+          961.8142932891845
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2793,6 +2831,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -3219,6 +3258,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 12:56:59 2025 \u002B0100",
         "message": "refactor: group \u0022Microsoft.CodeAnalysis\u0022 updates for dependabot (#291)"
+      },
+      {
+        "sha": "80179bea6a22fe75e7eaefcf72a3c38a24f80b92",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:11:48 2025 \u002B0100",
+        "message": "refactor!: move \u0060PropertyResult\u0060 to aweXpect.Core (#292)"
       }
     ],
     "labels": [
@@ -3287,7 +3332,8 @@ window.BENCHMARK_DATA = {
       "c709afb8",
       "b630191d",
       "0bebf245",
-      "c935463f"
+      "c935463f",
+      "80179bea"
     ],
     "datasets": [
       {
@@ -3359,7 +3405,8 @@ window.BENCHMARK_DATA = {
           302.23387893040973,
           299.89982717377796,
           302.70174352327984,
-          299.3996392885844
+          299.3996392885844,
+          323.8548304875692
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3371,6 +3418,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -3516,7 +3564,8 @@ window.BENCHMARK_DATA = {
           438.9984813054403,
           409.35538145474027,
           449.3052138941629,
-          422.91461254755654
+          422.91461254755654,
+          446.82914609909056
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3554,6 +3603,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -3673,7 +3723,8 @@ window.BENCHMARK_DATA = {
           1024.4547182718914,
           948.8855752263751,
           955.6189774733323,
-          997.14516551678
+          997.14516551678,
+          994.6728884379069
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3734,6 +3785,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -4160,6 +4212,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 12:56:59 2025 \u002B0100",
         "message": "refactor: group \u0022Microsoft.CodeAnalysis\u0022 updates for dependabot (#291)"
+      },
+      {
+        "sha": "80179bea6a22fe75e7eaefcf72a3c38a24f80b92",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:11:48 2025 \u002B0100",
+        "message": "refactor!: move \u0060PropertyResult\u0060 to aweXpect.Core (#292)"
       }
     ],
     "labels": [
@@ -4228,7 +4286,8 @@ window.BENCHMARK_DATA = {
       "c709afb8",
       "b630191d",
       "0bebf245",
-      "c935463f"
+      "c935463f",
+      "80179bea"
     ],
     "datasets": [
       {
@@ -4300,7 +4359,8 @@ window.BENCHMARK_DATA = {
           1157.9575112206596,
           1147.8557393210274,
           1156.9531517028809,
-          1206.2387764794487
+          1206.2387764794487,
+          1239.0523595174154
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4326,6 +4386,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -4457,7 +4518,8 @@ window.BENCHMARK_DATA = {
           1235.633915456136,
           1230.6896832784016,
           1288.7115893046062,
-          1171.1407291412354
+          1171.1407291412354,
+          1289.1070891789027
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4495,6 +4557,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -4614,7 +4677,8 @@ window.BENCHMARK_DATA = {
           2275.8251631600515,
           2357.159083230155,
           2377.5726860591344,
-          2263.292600778433
+          2263.292600778433,
+          2308.0305905659993
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4675,6 +4739,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -5101,6 +5166,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 3 12:56:59 2025 \u002B0100",
         "message": "refactor: group \u0022Microsoft.CodeAnalysis\u0022 updates for dependabot (#291)"
+      },
+      {
+        "sha": "80179bea6a22fe75e7eaefcf72a3c38a24f80b92",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 3 13:11:48 2025 \u002B0100",
+        "message": "refactor!: move \u0060PropertyResult\u0060 to aweXpect.Core (#292)"
       }
     ],
     "labels": [
@@ -5169,7 +5240,8 @@ window.BENCHMARK_DATA = {
       "c709afb8",
       "b630191d",
       "0bebf245",
-      "c935463f"
+      "c935463f",
+      "80179bea"
     ],
     "datasets": [
       {
@@ -5241,7 +5313,8 @@ window.BENCHMARK_DATA = {
           1201.5613521575929,
           1208.637138073261,
           1271.6040179388863,
-          1243.6427481333415
+          1243.6427481333415,
+          1259.5320687611897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5295,6 +5368,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -5398,7 +5472,8 @@ window.BENCHMARK_DATA = {
           84320.602734375,
           82229.38465294472,
           83406.90485026041,
-          81589.1427734375
+          81589.1427734375,
+          84651.1806265024
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5475,6 +5550,7 @@ window.BENCHMARK_DATA = {
           53206,
           53206,
           53212,
+          53206,
           53206
         ],
         "borderColor": "#FF671B",
@@ -5555,7 +5631,8 @@ window.BENCHMARK_DATA = {
           6364.8331431070965,
           6454.9302580697195,
           6469.931352342878,
-          6336.410717010498
+          6336.410717010498,
+          6642.9855946858725
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5616,6 +5693,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
