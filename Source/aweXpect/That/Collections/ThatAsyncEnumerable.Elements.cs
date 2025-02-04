@@ -6,9 +6,6 @@ using aweXpect.Core;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="IAsyncEnumerable{TItem}" />.
-/// </summary>
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>

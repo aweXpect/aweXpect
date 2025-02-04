@@ -12,7 +12,7 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements
 	{
 		/// <summary>
-		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
+		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>> AreEqualTo(
 			string? expected)
@@ -34,7 +34,7 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
+		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 			AreEqualTo(TItem expected)

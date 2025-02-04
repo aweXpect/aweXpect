@@ -13,7 +13,7 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that the items in the collection comply with the <paramref name="expectations" />.
+		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 			ComplyWith(Action<IThat<TItem>> expectations)

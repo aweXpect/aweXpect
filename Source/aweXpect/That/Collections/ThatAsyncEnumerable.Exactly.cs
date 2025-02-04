@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
 	public static Elements<TItem> Exactly<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject,
@@ -17,7 +17,7 @@ public static partial class ThatAsyncEnumerable
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
 
 	/// <summary>
-	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
 	public static Elements Exactly(
 		this IThat<IAsyncEnumerable<string?>?> subject,

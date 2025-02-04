@@ -29,7 +29,7 @@ public class AndOrResult<TType, TThat, TSelf>(
 	private readonly ExpectationBuilder _expectationBuilder = expectationBuilder;
 
 	/// <summary>
-	///     Combine multiple expectations with AND
+	///     … AND …
 	/// </summary>
 	public TThat And
 	{
@@ -41,7 +41,7 @@ public class AndOrResult<TType, TThat, TSelf>(
 	}
 
 	/// <summary>
-	///     Combine multiple expectations with OR
+	///     … OR …
 	/// </summary>
 	public TThat Or
 	{

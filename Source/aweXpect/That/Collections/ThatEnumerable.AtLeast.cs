@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IEnumerable{TItem}" />…
+	///     Verifies that in the collection at least <paramref name="minimum" /> items…
 	/// </summary>
 	public static Elements<TItem> AtLeast<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
 
 	/// <summary>
-	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IEnumerable{TItem}" />…
+	///     Verifies that in the collection at least <paramref name="minimum" /> items…
 	/// </summary>
 	public static Elements AtLeast(
 		this IThat<IEnumerable<string?>?> subject,

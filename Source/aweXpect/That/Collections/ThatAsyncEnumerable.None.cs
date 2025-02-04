@@ -7,14 +7,14 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Expect that no items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection no items…
 	/// </summary>
 	public static Elements<TItem> None<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject)
 		=> new(subject, EnumerableQuantifier.None);
 
 	/// <summary>
-	///     Expect that no items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection no items…
 	/// </summary>
 	public static Elements None(
 		this IThat<IAsyncEnumerable<string?>?> subject)

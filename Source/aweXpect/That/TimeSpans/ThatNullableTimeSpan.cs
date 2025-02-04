@@ -4,7 +4,7 @@ using aweXpect.Customization;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on <see cref="TimeSpan" /> values.
+///     Expectations on <see cref="TimeSpan" />? values.
 /// </summary>
 public static partial class ThatNullableTimeSpan
 {
