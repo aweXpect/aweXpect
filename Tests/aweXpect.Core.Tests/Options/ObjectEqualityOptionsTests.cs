@@ -9,7 +9,7 @@ public class ObjectEqualityOptionsTests
 	[InlineData(false)]
 	public async Task WhenToleranceIsNegative_ShouldThrowArgumentOutOfRangeException(bool isEqual)
 	{
-		ObjectEqualityOptions<object?> sut = new ObjectEqualityOptions<object?>().Equivalent(new EquivalencyOptions());
+		ObjectEqualityOptions sut = new ObjectEqualityOptions().Equivalent(new EquivalencyOptions());
 		EqualsObject a = new(isEqual);
 		EqualsObject b = new(isEqual);
 
