@@ -724,12 +724,6 @@ namespace aweXpect
 }
 namespace aweXpect.Results
 {
-    public class BetweenResult<TTarget, TExpectation>
-    {
-        public BetweenResult(System.Func<int, System.Action<TExpectation>, TTarget> callback, System.Func<int, TTarget> itemsCallback) { }
-        public aweXpect.Results.ItemsResult<TTarget> And(int maximum) { }
-        public TTarget And(int maximum, System.Action<TExpectation> expectations) { }
-    }
     public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>
         where TSubject :  notnull
     {
