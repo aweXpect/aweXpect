@@ -450,6 +450,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 4 12:45:47 2025 \u002B0100",
         "message": "refactor!: generic equality options (#301)"
+      },
+      {
+        "sha": "9f1824ce78b9e5fe1596eab0cdd476dde9207dc4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 4 13:40:01 2025 \u002B0100",
+        "message": "feat!: generic equality options (2) (#302)"
       }
     ],
     "labels": [
@@ -527,7 +533,8 @@ window.BENCHMARK_DATA = {
       "ab405d13",
       "7cf05384",
       "b56e5fca",
-      "d4b664cd"
+      "d4b664cd",
+      "9f1824ce"
     ],
     "datasets": [
       {
@@ -608,7 +615,8 @@ window.BENCHMARK_DATA = {
           147.20555468705984,
           163.61903115908305,
           151.48005975995744,
-          158.18589321204595
+          158.18589321204595,
+          160.21056696573893
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -620,6 +628,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -783,7 +792,8 @@ window.BENCHMARK_DATA = {
           190.4350839138031,
           201.34054841314043,
           187.42039469310217,
-          192.76819491386414
+          192.76819491386414,
+          202.02272664705913
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -821,6 +831,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -958,7 +969,8 @@ window.BENCHMARK_DATA = {
           687.4457655588786,
           650.0110055378506,
           675.8504469735282,
-          676.3304394404094
+          676.3304394404094,
+          689.4747102601187
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1019,6 +1031,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1508,6 +1521,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 4 12:45:47 2025 \u002B0100",
         "message": "refactor!: generic equality options (#301)"
+      },
+      {
+        "sha": "9f1824ce78b9e5fe1596eab0cdd476dde9207dc4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 4 13:40:01 2025 \u002B0100",
+        "message": "feat!: generic equality options (2) (#302)"
       }
     ],
     "labels": [
@@ -1585,7 +1604,8 @@ window.BENCHMARK_DATA = {
       "ab405d13",
       "7cf05384",
       "b56e5fca",
-      "d4b664cd"
+      "d4b664cd",
+      "9f1824ce"
     ],
     "datasets": [
       {
@@ -1666,7 +1686,8 @@ window.BENCHMARK_DATA = {
           330.04631059510365,
           356.1743255933126,
           345.0816783538231,
-          338.61987287657604
+          338.61987287657604,
+          388.4287674268087
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1678,6 +1699,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -1841,7 +1863,8 @@ window.BENCHMARK_DATA = {
           410.8260543346405,
           459.592175756182,
           399.6509541443416,
-          417.93579791386924
+          417.93579791386924,
+          475.61733525594076
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1879,6 +1902,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -2016,7 +2040,8 @@ window.BENCHMARK_DATA = {
           14259.763851710728,
           14130.471711222332,
           23456.394154866535,
-          16179.801879882812
+          16179.801879882812,
+          15134.33406270345
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2077,6 +2102,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2566,6 +2592,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 4 12:45:47 2025 \u002B0100",
         "message": "refactor!: generic equality options (#301)"
+      },
+      {
+        "sha": "9f1824ce78b9e5fe1596eab0cdd476dde9207dc4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 4 13:40:01 2025 \u002B0100",
+        "message": "feat!: generic equality options (2) (#302)"
       }
     ],
     "labels": [
@@ -2643,7 +2675,8 @@ window.BENCHMARK_DATA = {
       "ab405d13",
       "7cf05384",
       "b56e5fca",
-      "d4b664cd"
+      "d4b664cd",
+      "9f1824ce"
     ],
     "datasets": [
       {
@@ -2724,7 +2757,8 @@ window.BENCHMARK_DATA = {
           198.15904523531597,
           200.82315425872804,
           202.47756352424622,
-          202.34913900693257
+          202.34913900693257,
+          212.40559468950545
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2736,6 +2770,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -2899,7 +2934,8 @@ window.BENCHMARK_DATA = {
           191.69449144999186,
           205.8747296333313,
           193.15568645795187,
-          204.8873681227366
+          204.8873681227366,
+          217.0126761595408
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2937,6 +2973,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -3074,7 +3111,8 @@ window.BENCHMARK_DATA = {
           984.5529117584229,
           917.4145598778358,
           977.6246295928955,
-          960.8900322232928
+          960.8900322232928,
+          1005.1125238963535
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3135,6 +3173,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -3624,6 +3663,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 4 12:45:47 2025 \u002B0100",
         "message": "refactor!: generic equality options (#301)"
+      },
+      {
+        "sha": "9f1824ce78b9e5fe1596eab0cdd476dde9207dc4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 4 13:40:01 2025 \u002B0100",
+        "message": "feat!: generic equality options (2) (#302)"
       }
     ],
     "labels": [
@@ -3701,7 +3746,8 @@ window.BENCHMARK_DATA = {
       "ab405d13",
       "7cf05384",
       "b56e5fca",
-      "d4b664cd"
+      "d4b664cd",
+      "9f1824ce"
     ],
     "datasets": [
       {
@@ -3782,7 +3828,8 @@ window.BENCHMARK_DATA = {
           319.37698322931925,
           298.12826486996244,
           307.6374376501356,
-          310.9973363558451
+          310.9973363558451,
+          326.296169479688
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3794,6 +3841,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -3957,7 +4005,8 @@ window.BENCHMARK_DATA = {
           410.66177180608116,
           413.28576643126354,
           419.6401875178019,
-          422.98476972579954
+          422.98476972579954,
+          439.04478988647463
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3995,6 +4044,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -4132,7 +4182,8 @@ window.BENCHMARK_DATA = {
           986.0992928913662,
           955.9208865846906,
           1054.5061744689942,
-          1007.5777269999186
+          1007.5777269999186,
+          1012.3765527089437
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4193,6 +4244,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -4682,6 +4734,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 4 12:45:47 2025 \u002B0100",
         "message": "refactor!: generic equality options (#301)"
+      },
+      {
+        "sha": "9f1824ce78b9e5fe1596eab0cdd476dde9207dc4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 4 13:40:01 2025 \u002B0100",
+        "message": "feat!: generic equality options (2) (#302)"
       }
     ],
     "labels": [
@@ -4759,7 +4817,8 @@ window.BENCHMARK_DATA = {
       "ab405d13",
       "7cf05384",
       "b56e5fca",
-      "d4b664cd"
+      "d4b664cd",
+      "9f1824ce"
     ],
     "datasets": [
       {
@@ -4840,7 +4899,8 @@ window.BENCHMARK_DATA = {
           1170.6017426710862,
           1175.2424555460611,
           1182.94156059852,
-          1199.8451463259184
+          1199.8451463259184,
+          1208.0213132222493
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4866,6 +4926,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -5015,7 +5076,8 @@ window.BENCHMARK_DATA = {
           1248.664733759562,
           1267.4495096940261,
           1203.8612298965454,
-          1244.1122009277344
+          1244.1122009277344,
+          1262.8646752675375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5053,6 +5115,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -5190,7 +5253,8 @@ window.BENCHMARK_DATA = {
           2339.7881695883616,
           2258.8348859151206,
           2323.9446528116864,
-          2327.0527666727703
+          2327.0527666727703,
+          2280.096618906657
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5251,6 +5315,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -5740,6 +5805,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 4 12:45:47 2025 \u002B0100",
         "message": "refactor!: generic equality options (#301)"
+      },
+      {
+        "sha": "9f1824ce78b9e5fe1596eab0cdd476dde9207dc4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 4 13:40:01 2025 \u002B0100",
+        "message": "feat!: generic equality options (2) (#302)"
       }
     ],
     "labels": [
@@ -5817,7 +5888,8 @@ window.BENCHMARK_DATA = {
       "ab405d13",
       "7cf05384",
       "b56e5fca",
-      "d4b664cd"
+      "d4b664cd",
+      "9f1824ce"
     ],
     "datasets": [
       {
@@ -5898,7 +5970,8 @@ window.BENCHMARK_DATA = {
           1202.1201378958565,
           1197.6204486846923,
           1181.9167680740356,
-          1216.6673369089763
+          1216.6673369089763,
+          1261.9922471727643
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5952,6 +6025,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -6073,7 +6147,8 @@ window.BENCHMARK_DATA = {
           80546.25529597356,
           81666.36311848958,
           80973.42833533653,
-          81679.84280831473
+          81679.84280831473,
+          83016.36106770833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6159,6 +6234,7 @@ window.BENCHMARK_DATA = {
           53212,
           53212,
           53206,
+          53212,
           53212
         ],
         "borderColor": "#FF671B",
@@ -6248,7 +6324,8 @@ window.BENCHMARK_DATA = {
           6482.018528747559,
           6424.97258199056,
           6493.030389513288,
-          6647.16959177653
+          6647.16959177653,
+          6498.919297899519
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6309,6 +6386,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
