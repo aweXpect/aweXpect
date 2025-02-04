@@ -13,15 +13,15 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 {
 	private ComparisonFailure? _firstFailure;
 
-	/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual(object?, object?)" />
-	public bool AreConsideredEqual(object? actual, object? expected)
+	/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
+	public bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected)
 	{
 		if (HandleSpecialCases(actual, expected, out bool? specialCaseResult))
 		{
 			return specialCaseResult.Value;
 		}
 
-		List<ComparisonFailure> failures = Compare.CheckEquivalent(actual, expected,
+		List<ComparisonFailure> failures = Compare.CheckEquivalent<object?>(actual, expected,
 			new CompareOptions
 			{
 				MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]

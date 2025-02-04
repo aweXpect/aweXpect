@@ -12,17 +12,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsEqualTo<TItem>(
 			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
+		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				=> new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);

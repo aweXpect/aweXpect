@@ -7,14 +7,14 @@ namespace aweXpect.Results;
 ///     The result for verifying that a collection contains another collection.
 /// </summary>
 /// <remarks>
-///     <seealso cref="ObjectCollectionMatchResult{TType,TThat}" />
+///     <seealso cref="ObjectCollectionMatchResult{TType,TThat,TItem}" />
 /// </remarks>
-public class ObjectCollectionContainResult<TType, TThat>(
+public class ObjectCollectionContainResult<TType, TThat, TItem>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
-	ObjectEqualityOptions options,
+	ObjectEqualityOptions<TItem> options,
 	CollectionMatchOptions collectionMatchOptions)
-	: ObjectCollectionMatchResult<TType, TThat>(expectationBuilder, returnValue, options, collectionMatchOptions)
+	: ObjectCollectionMatchResult<TType, TThat, TItem>(expectationBuilder, returnValue, options, collectionMatchOptions)
 {
 	private readonly CollectionMatchOptions _collectionMatchOptions = collectionMatchOptions;
 
@@ -24,7 +24,7 @@ public class ObjectCollectionContainResult<TType, TThat>(
 	/// <remarks>
 	///     This means, that the expected collection is a proper subset.
 	/// </remarks>
-	public ObjectCollectionMatchResult<TType, TThat> Properly()
+	public ObjectCollectionMatchResult<TType, TThat, TItem> Properly()
 	{
 		_collectionMatchOptions.SetEquivalenceRelation(CollectionMatchOptions.EquivalenceRelations.ContainsProperly);
 		return this;

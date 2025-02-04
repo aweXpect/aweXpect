@@ -14,11 +14,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 			ComplyWith(Action<IThat<TItem>> expectations)
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new SyncCollectionConstraint<TItem>(it, _quantifier, expectations)),
 				_subject,

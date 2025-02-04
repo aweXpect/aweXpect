@@ -35,11 +35,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 			AreEqualTo(TItem expected)
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,

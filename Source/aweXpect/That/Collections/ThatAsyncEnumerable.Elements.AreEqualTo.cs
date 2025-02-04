@@ -36,11 +36,11 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 			AreEqualTo(TItem expected)
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,

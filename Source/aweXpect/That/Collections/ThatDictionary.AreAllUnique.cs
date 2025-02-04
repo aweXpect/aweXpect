@@ -19,15 +19,14 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>
-		AreAllUnique<TKey,
-			TValue>(
+	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>
+		AreAllUnique<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source)
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+		ObjectEqualityOptions<TValue> options = new();
+		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AllBeUniqueConstraint<TKey, TValue, object?>(it, options)),
+				new AllBeUniqueConstraint<TKey, TValue, TValue>(it, options)),
 			source, options
 		);
 	}
@@ -56,7 +55,7 @@ public static partial class ThatDictionary
 	/// <remarks>
 	///     This expectation completely ignores the dictionary keys, as they are unique by design.
 	/// </remarks>
-	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>
+	public static ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>
 		AreAllUnique<TKey,
 			TValue, TMember>(
 			this IThat<IDictionary<TKey, TValue>?> source,
@@ -64,10 +63,10 @@ public static partial class ThatDictionary
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
+		ObjectEqualityOptions<TMember> options = new();
+		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AllBeUniqueWithPredicateConstraint<TKey, TValue, TMember, object?>(it, memberAccessor,
+				new AllBeUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
 			source, options

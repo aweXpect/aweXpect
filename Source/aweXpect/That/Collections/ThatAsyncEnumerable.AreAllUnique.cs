@@ -21,14 +21,14 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		AreAllUnique<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source)
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AreAllUniqueConstraint<TItem, object?>(it, options)),
+				new AreAllUniqueConstraint<TItem, TItem>(it, options)),
 			source, options
 		);
 	}
@@ -51,18 +51,17 @@ public static partial class ThatAsyncEnumerable
 	///     Verifies that the collection only contains items with unique members specified by the
 	///     <paramref name="memberAccessor" />.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>> AreAllUnique<
-		TItem,
-		TMember>(
+	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>
+		AreAllUnique<TItem, TMember>(
 		this IThat<IAsyncEnumerable<TItem>?> source,
 		Func<TItem, TMember> memberAccessor,
 		[CallerArgumentExpression("memberAccessor")]
 		string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+		ObjectEqualityOptions<TMember> options = new();
+		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new AreAllUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor,
+				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
 			source, options
