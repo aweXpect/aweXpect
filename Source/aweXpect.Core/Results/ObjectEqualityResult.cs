@@ -10,12 +10,12 @@ namespace aweXpect.Results;
 ///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows specifying
 ///     options on the <see cref="ObjectEqualityOptions" />.
 /// </summary>
-public class ObjectEqualityResult<TType, TThat>(
+public class ObjectEqualityResult<TType, TThat, TElement>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
-	ObjectEqualityOptions options)
-	: ObjectEqualityResult<TType, TThat,
-		ObjectEqualityResult<TType, TThat>>(
+	ObjectEqualityOptions<TElement> options)
+	: ObjectEqualityResult<TType, TThat, TElement,
+		ObjectEqualityResult<TType, TThat, TElement>>(
 		expectationBuilder,
 		returnValue,
 		options);
@@ -26,16 +26,16 @@ public class ObjectEqualityResult<TType, TThat>(
 ///     In addition to the combinations from <see cref="AndOrResult{TType,TThat}" />, allows specifying
 ///     options on the <see cref="ObjectEqualityOptions" />.
 /// </summary>
-public class ObjectEqualityResult<TType, TThat, TSelf>(
+public class ObjectEqualityResult<TType, TThat, TElement, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
-	ObjectEqualityOptions options)
+	ObjectEqualityOptions<TElement> options)
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
-		IOptionsProvider<ObjectEqualityOptions>
-	where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
+		IOptionsProvider<ObjectEqualityOptions<TElement>>
+	where TSelf : ObjectEqualityResult<TType, TThat, TElement,TSelf>
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
-	ObjectEqualityOptions IOptionsProvider<ObjectEqualityOptions>.Options => options;
+	ObjectEqualityOptions<TElement> IOptionsProvider<ObjectEqualityOptions<TElement>>.Options => options;
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.

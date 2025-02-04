@@ -26,27 +26,33 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	private IStringMatchType _matchType = ExactMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual(string? actual, string? expected)
+	public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected)
 	{
+		if (expected is not string expectedString)
+		{
+			return _matchType.AreConsideredEqual(actual, null, _ignoreCase,
+				_comparer ?? UseDefaultComparer(_ignoreCase));
+		}
+
 		if (_ignoreNewlineStyle)
 		{
 			actual = actual.RemoveNewlineStyle();
-			expected = expected.RemoveNewlineStyle();
+			expectedString = expectedString.RemoveNewlineStyle();
 		}
 
 		if (_ignoreLeadingWhiteSpace)
 		{
 			actual = actual?.TrimStart();
-			expected = expected?.TrimStart();
+			expectedString = expectedString.TrimStart();
 		}
 
 		if (_ignoreTrailingWhiteSpace)
 		{
 			actual = actual?.TrimEnd();
-			expected = expected?.TrimEnd();
+			expectedString = expectedString.TrimEnd();
 		}
 
-		return _matchType.AreConsideredEqual(actual, expected, _ignoreCase,
+		return _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
 			_comparer ?? UseDefaultComparer(_ignoreCase));
 	}
 
@@ -90,7 +96,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 			settings = new StringDifferenceSettings(ignoredLineCount, ignoredColumnCount);
 		}
-		
+
 		if (_ignoreNewlineStyle)
 		{
 			actual = actual.RemoveNewlineStyle();
@@ -161,10 +167,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	}
 
 	/// <inheritdoc />
-	public override string ToString()
-	{
-		return _matchType.GetTypeString() + GetOptionString();
-	}
+	public override string ToString() => _matchType.GetTypeString() + GetOptionString();
 
 	/// <summary>
 	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
@@ -181,8 +184,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 	private static StringComparer UseDefaultComparer(bool ignoreCase)
 		=> ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
-	
-	
+
 
 	private string GetOptionString()
 	{

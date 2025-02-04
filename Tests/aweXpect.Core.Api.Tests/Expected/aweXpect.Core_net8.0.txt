@@ -111,13 +111,13 @@ namespace aweXpect.Core
     }
     public interface IObjectMatchType
     {
-        bool AreConsideredEqual(object? actual, object? expected);
+        bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected);
         string GetExpectation(string expected);
         string GetExtendedFailure(string it, object? actual, object? expected);
     }
-    public interface IOptionsEquality<in T>
+    public interface IOptionsEquality<in TSubject>
     {
-        bool AreConsideredEqual(T actual, T expected);
+        bool AreConsideredEqual<TExpected>(TSubject actual, TExpected expected);
     }
     public interface IOptionsProvider<out TOptions>
     {
@@ -557,16 +557,16 @@ namespace aweXpect.Options
         public void SetTolerance(TNumber tolerance) { }
         public override string ToString() { }
     }
-    public class ObjectEqualityOptions : aweXpect.Core.IOptionsEquality<object?>
+    public class ObjectEqualityOptions<TSubject> : aweXpect.Core.IOptionsEquality<TSubject>
     {
         public ObjectEqualityOptions() { }
-        public bool AreConsideredEqual(object? actual, object? expected) { }
-        public aweXpect.Options.ObjectEqualityOptions Equals() { }
+        public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected) { }
+        public aweXpect.Options.ObjectEqualityOptions<TSubject> Equals() { }
         public string GetExpectation(string expectedExpression) { }
         public string GetExtendedFailure(string it, object? actual, object? expected) { }
         public void SetMatchType(aweXpect.Core.IObjectMatchType matchType) { }
         public override string? ToString() { }
-        public aweXpect.Options.ObjectEqualityOptions Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+        public aweXpect.Options.ObjectEqualityOptions<TSubject> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class Quantifier
     {
@@ -594,7 +594,7 @@ namespace aweXpect.Options
     public class StringEqualityOptions : aweXpect.Core.IOptionsEquality<string?>
     {
         public StringEqualityOptions() { }
-        public bool AreConsideredEqual(string? actual, string? expected) { }
+        public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected) { }
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
@@ -773,14 +773,14 @@ namespace aweXpect.Results
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
         public TSelf Within(TType tolerance) { }
     }
-    public class ObjectEqualityResult<TType, TThat> : aweXpect.Results.ObjectEqualityResult<TType, TThat, aweXpect.Results.ObjectEqualityResult<TType, TThat>>
+    public class ObjectEqualityResult<TType, TThat, TElement> : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement>>
     {
-        public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
+        public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
     }
-    public class ObjectEqualityResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions>
-        where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TSelf>
+    public class ObjectEqualityResult<TType, TThat, TElement, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>, aweXpect.Core.IOptionsProvider<aweXpect.Options.ObjectEqualityOptions<TElement>>
+        where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf>
     {
-        public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions options) { }
+        public ObjectEqualityResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public static class PropertyResult

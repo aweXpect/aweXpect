@@ -2,16 +2,42 @@
 
 namespace aweXpect.Options;
 
+internal static class ObjectEqualityOptions
+{
+	internal static readonly IObjectMatchType EqualsMatch = new EqualsMatchType();
+
+	private sealed class EqualsMatchType : IObjectMatchType
+	{
+		/// <inheritdoc cref="object.ToString()" />
+		public override string? ToString() => "";
+
+		#region IEquality Members
+
+		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
+		public bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected)
+			=> Equals(actual, expected);
+
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
+		public string GetExpectation(string expected)
+			=> $"be equal to {expected}";
+
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
+		public string GetExtendedFailure(string it, object? actual, object? expected)
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+
+		#endregion
+	}
+}
+
 /// <summary>
 ///     Checks equality of objects.
 /// </summary>
-public partial class ObjectEqualityOptions : IOptionsEquality<object?>
+public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject>
 {
-	private static readonly IObjectMatchType EqualsMatch = new EqualsMatchType();
-	private IObjectMatchType _matchType = EqualsMatch;
+	private IObjectMatchType _matchType = ObjectEqualityOptions.EqualsMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual(object? actual, object? expected)
+	public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected)
 		=> _matchType.AreConsideredEqual(actual, expected);
 
 	/// <summary>
