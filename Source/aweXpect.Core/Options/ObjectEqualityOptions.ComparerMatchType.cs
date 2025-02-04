@@ -3,12 +3,12 @@ using aweXpect.Core;
 
 namespace aweXpect.Options;
 
-public partial class ObjectEqualityOptions
+public partial class ObjectEqualityOptions<TSubject>
 {
 	/// <summary>
 	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see cref="object" />s.
 	/// </summary>
-	public ObjectEqualityOptions Using(IEqualityComparer<object> comparer)
+	public ObjectEqualityOptions<TSubject> Using(IEqualityComparer<object> comparer)
 	{
 		_matchType = new ComparerMatchType(comparer);
 		return this;
@@ -18,18 +18,18 @@ public partial class ObjectEqualityOptions
 	{
 		#region IEquality Members
 
-		/// <inheritdoc />
-		public bool AreConsideredEqual(object? actual, object? expected) => comparer.Equals(actual, expected);
+		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
+		public bool AreConsideredEqual<T, TExpected>(T actual, TExpected expected) => comparer.Equals(actual, expected);
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
 		public string GetExpectation(string expected)
 			=> $"be equal to {expected}" + ToString();
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 		public string GetExtendedFailure(string it, object? actual, object? expected)
 			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="object.ToString()" />
 		public override string ToString()
 			=> $" using {Formatter.Format(comparer.GetType())}";
 
