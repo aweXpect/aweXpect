@@ -12,19 +12,19 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is equivalent to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IThat<object?>> IsEquivalentTo(
-		this IThat<object?> source,
-		object? expected,
+	public static ObjectEqualityResult<TSubject, IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(
+		this IThat<TSubject> source,
+		TExpected expected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		EquivalencyOptions equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		ObjectEqualityOptions options = new();
+		ObjectEqualityOptions<TSubject> options = new();
 		options.Equivalent(equivalencyOptions);
-		return new ObjectEqualityResult<object?, IThat<object?>>(
+		return new ObjectEqualityResult<TSubject, IThat<TSubject>, TSubject>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new IsEqualToConstraint(it, expected, doNotPopulateThisValue, options)),
+				=> new IsEqualToConstraint<TSubject, TExpected>(it, expected, doNotPopulateThisValue, options)),
 			source,
 			options);
 	}
@@ -32,7 +32,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not equivalent to the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<object?, IThat<object?>> NotEquivalentTo(
+	public static ObjectEqualityResult<object?, IThat<object?>, object?> NotEquivalentTo(
 		this IThatIs<object?> source,
 		object? unexpected,
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null,
@@ -41,9 +41,9 @@ public static partial class ThatObject
 	{
 		EquivalencyOptions equivalencyOptions =
 			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		ObjectEqualityOptions options = new();
+		ObjectEqualityOptions<object?> options = new();
 		options.Equivalent(equivalencyOptions);
-		return new ObjectEqualityResult<object?, IThat<object?>>(
+		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
 			source.ExpectationBuilder.AddConstraint(it
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
 			source.ExpectSubject(),

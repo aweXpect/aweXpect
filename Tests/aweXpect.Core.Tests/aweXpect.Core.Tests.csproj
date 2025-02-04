@@ -1,12 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\Source\aweXpect.Core\aweXpect.Core.csproj"/>
+	</ItemGroup>
+
 	<ItemGroup Condition=" '$(Configuration)' != 'Debug' ">
-		<PackageReference Include="aweXpect"/>
-		<PackageReference Include="aweXpect.Core"/>
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 	<ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<PackageReference Include="aweXpect"/>
-		<PackageReference Include="aweXpect.Core"/>
+		<ProjectReference Include="..\..\Source\aweXpect\aweXpect.csproj"/>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -15,12 +17,12 @@
 						  PrivateAssets="all"
 						  ReferenceOutputAssembly="false"
 						  OutputItemType="Analyzer"
-						  SetTargetFramework="TargetFramework=netstandard2.0" />
+						  SetTargetFramework="TargetFramework=netstandard2.0"/>
 		<ProjectReference Include="..\..\Source\aweXpect.Analyzers.CodeFixers\aweXpect.Analyzers.CodeFixers.csproj"
 						  PrivateAssets="all"
 						  ReferenceOutputAssembly="false"
 						  OutputItemType="Analyzer"
-						  SetTargetFramework="TargetFramework=netstandard2.0" />
+						  SetTargetFramework="TargetFramework=netstandard2.0"/>
 	</ItemGroup>
 
 </Project>

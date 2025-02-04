@@ -15,11 +15,11 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
-		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 			ComplyWith(Action<IThat<TItem>> expectations)
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new AsyncCollectionConstraint<TItem>(it, _quantifier, expectations)),
 				_subject,

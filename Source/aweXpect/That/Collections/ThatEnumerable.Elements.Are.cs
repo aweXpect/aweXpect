@@ -14,11 +14,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …are of type <typeparamref name="TType" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 			Are<TType>()
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,
@@ -33,11 +33,11 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …are of type <paramref name="type" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 			Are(Type type)
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,

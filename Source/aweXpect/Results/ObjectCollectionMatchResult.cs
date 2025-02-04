@@ -9,13 +9,13 @@ namespace aweXpect.Results;
 /// <remarks>
 ///     <seealso cref="ObjectEqualityResult{TType,TThat,TSelf}" />
 /// </remarks>
-public class ObjectCollectionMatchResult<TType, TThat>(
+public class ObjectCollectionMatchResult<TType, TThat, TElement>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
-	ObjectEqualityOptions options,
+	ObjectEqualityOptions<TElement> options,
 	CollectionMatchOptions collectionMatchOptions)
-	: ObjectCollectionMatchResult<TType, TThat,
-		ObjectCollectionMatchResult<TType, TThat>>(
+	: ObjectCollectionMatchResult<TType, TThat, TElement,
+		ObjectCollectionMatchResult<TType, TThat, TElement>>(
 		expectationBuilder,
 		returnValue,
 		options,
@@ -27,13 +27,13 @@ public class ObjectCollectionMatchResult<TType, TThat>(
 /// <remarks>
 ///     <seealso cref="ObjectEqualityResult{TType,TThat,TSelf}" />
 /// </remarks>
-public class ObjectCollectionMatchResult<TType, TThat, TSelf>(
+public class ObjectCollectionMatchResult<TType, TThat, TElement, TSelf>(
 	ExpectationBuilder expectationBuilder,
 	TThat returnValue,
-	ObjectEqualityOptions options,
+	ObjectEqualityOptions<TElement> options,
 	CollectionMatchOptions collectionMatchOptions)
-	: ObjectEqualityResult<TType, TThat, TSelf>(expectationBuilder, returnValue, options)
-	where TSelf : ObjectCollectionMatchResult<TType, TThat, TSelf>
+	: ObjectEqualityResult<TType, TThat, TElement, TSelf>(expectationBuilder, returnValue, options)
+	where TSelf : ObjectCollectionMatchResult<TType, TThat, TElement, TSelf>
 {
 	/// <summary>
 	///     Ignores the order in the subject and expected values.

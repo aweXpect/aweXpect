@@ -17,13 +17,13 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection only contains unique items.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> AreAllUnique<TItem>(
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem> AreAllUnique<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueConstraint<TItem, object?>(it, options)),
+				=> new AllBeUniqueConstraint<TItem, TItem>(it, options)),
 			source, options
 		);
 	}
@@ -46,17 +46,17 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection only contains items with unique members specified by the
 	///     <paramref name="memberAccessor" />.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> AreAllUnique<TItem,
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember> AreAllUnique<TItem,
 		TMember>(
 		this IThat<IEnumerable<TItem>?> source,
 		Func<TItem, TMember> memberAccessor,
 		[CallerArgumentExpression("memberAccessor")]
 		string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+		ObjectEqualityOptions<TMember> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember, object?>(it, memberAccessor,
+				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
 			source, options

@@ -15,11 +15,11 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     …are of type <typeparamref name="TType" />.
 		/// </summary>
-		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 			Are<TType>()
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,
@@ -34,11 +34,11 @@ public static partial class ThatAsyncEnumerable
 		/// <summary>
 		///     …are of type <paramref name="type" />.
 		/// </summary>
-		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 			Are(Type type)
 		{
-			ObjectEqualityOptions options = new();
-			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			ObjectEqualityOptions<TItem> options = new();
+			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
 					=> new CollectionConstraint<TItem>(
 						it,

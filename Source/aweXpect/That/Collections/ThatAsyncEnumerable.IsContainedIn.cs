@@ -13,18 +13,18 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection is contained in the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+	public static ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		IsContainedIn<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
+		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return new
-			ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+					new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 				source,
 				options,
 				matchOptions);

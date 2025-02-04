@@ -15,11 +15,11 @@ public static class EquivalencyExtensions
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public static TSelf Equivalent<TType, TThat, TSelf>(this ObjectEqualityResult<TType, TThat, TSelf> result,
+	public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this ObjectEqualityResult<TType, TThat, TElement, TSelf> result,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
-		where TSelf : ObjectEqualityResult<TType, TThat, TSelf>
+		where TSelf : ObjectEqualityResult<TType, TThat, TElement, TSelf>
 	{
-		((IOptionsProvider<ObjectEqualityOptions>)result).Options.SetMatchType(
+		((IOptionsProvider<ObjectEqualityOptions<TElement>>)result).Options.SetMatchType(
 			new EquivalencyComparer(EquivalencyOptions.FromCallback(equivalencyOptions)));
 		return (TSelf)result;
 	}
@@ -27,7 +27,7 @@ public static class EquivalencyExtensions
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public static ObjectEqualityOptions Equivalent(this ObjectEqualityOptions options,
+	public static ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this ObjectEqualityOptions<TSubject> options,
 		EquivalencyOptions equivalencyOptions)
 	{
 		options.SetMatchType(new EquivalencyComparer(equivalencyOptions));
