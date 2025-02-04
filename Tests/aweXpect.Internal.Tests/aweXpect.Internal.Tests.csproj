@@ -6,6 +6,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="aweXpect.Chronology"/>
+		<PackageReference Include="FluentAssertions"/>
 		<ProjectReference Include="..\..\Source\aweXpect.Analyzers\aweXpect.Analyzers.csproj"
 						  PrivateAssets="all"
 						  ReferenceOutputAssembly="false"

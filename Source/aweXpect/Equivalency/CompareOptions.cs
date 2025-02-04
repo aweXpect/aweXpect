@@ -5,5 +5,6 @@ namespace aweXpect.Equivalency;
 
 internal record CompareOptions
 {
+	public bool IgnoreCollectionOrder { get; set; }
 	public string[] MembersToIgnore { get; set; } = [];
 }

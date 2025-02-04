@@ -40,9 +40,8 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but Property Value did not match:
-					               Expected: "Foo"
-					               Received: <null>
+					             but it was not equivalent:
+					               Property Value was <null> instead of "Foo"
 					             """);
 			}
 
@@ -120,9 +119,8 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but EnumerableItem Inner.Inner.Collection.[3] did not match:
-					               Expected: "4"
-					               Received: <null>
+					             but it was not equivalent:
+					               Element Inner.Inner.Collection[3] was missing "4"
 					             """);
 			}
 
@@ -159,7 +157,7 @@ public sealed partial class ThatObject
 				};
 
 				async Task Act()
-					=> await That(subject).IsEquivalentTo(expected, o => o.IgnoringMember("Inner.Inner.Collection.[3]"));
+					=> await That(subject).IsEquivalentTo(expected, o => o.IgnoringMember("Inner.Inner.Collection[3]"));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -203,7 +201,12 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but it was 'z'
+					             but it was not equivalent:
+					               Element Inner.Inner.Collection[3] was missing "4"
+					             and
+					               Property Inner.Inner.Value differed:
+					                    Found: "Baz"
+					                 Expected: "Bart"
 					             """);
 			}
 
@@ -273,9 +276,8 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but Property Inner.Inner.Value did not match:
-					               Expected: "Baz"
-					               Received: <null>
+					             but it was not equivalent:
+					               Property Inner.Inner.Value was <null> instead of "Baz"
 					             """);
 			}
 		}

@@ -66,7 +66,7 @@ public static partial class ValueFormatters
 			WriteMemberValueTextFor(obj, member, stringBuilder, indentation, options, context);
 			if (options.UseLineBreaks)
 			{
-				stringBuilder.AppendLine(",");
+				stringBuilder.AppendLine(",").Append(options.Indentation);
 			}
 			else
 			{
@@ -74,7 +74,7 @@ public static partial class ValueFormatters
 			}
 		}
 
-		stringBuilder.Length -= options.UseLineBreaks ? 1 + Environment.NewLine.Length : 2;
+		stringBuilder.Length -= options.UseLineBreaks ? 1 + Environment.NewLine.Length + options.Indentation.Length : 2;
 	}
 
 	private static void WriteMemberValueTextFor(
@@ -111,7 +111,7 @@ public static partial class ValueFormatters
 		stringBuilder.Append($"{new string(' ', indentation)}{member.Name} = ");
 		if (options.UseLineBreaks)
 		{
-			formattedValue = formattedValue.Indent("  ", false);
+			formattedValue = formattedValue.Indent(options.Indentation + "  ", false);
 		}
 
 		stringBuilder.Append(formattedValue);
@@ -149,10 +149,22 @@ public static partial class ValueFormatters
 		else
 		{
 			stringBuilder.Append(" {");
-			stringBuilder.Append(options.UseLineBreaks ? Environment.NewLine : " ");
+			AppendLineWithIndentationOrBlank(stringBuilder, options);
 			WriteMemberValues(obj, members, stringBuilder, options.UseLineBreaks ? 2 : 0, options, context);
-			stringBuilder.Append(options.UseLineBreaks ? Environment.NewLine : " ");
+			AppendLineWithIndentationOrBlank(stringBuilder, options);
 			stringBuilder.Append('}');
+		}
+	}
+
+	private static void AppendLineWithIndentationOrBlank(StringBuilder stringBuilder, FormattingOptions options)
+	{
+		if (options.UseLineBreaks)
+		{
+			stringBuilder.AppendLine().Append(options.Indentation);
+		}
+		else
+		{
+			stringBuilder.Append(" ");
 		}
 	}
 }

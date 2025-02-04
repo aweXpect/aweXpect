@@ -111,7 +111,7 @@ namespace aweXpect.Core
     }
     public interface IObjectMatchType
     {
-        bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected);
+        bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
         string GetExpectation(string expected);
         string GetExtendedFailure(string it, object? actual, object? expected);
     }
@@ -400,6 +400,8 @@ namespace aweXpect.Formatting
     }
     public class FormattingOptions
     {
+        public string Indentation { get; }
+        public static aweXpect.Formatting.FormattingOptions Indented { get; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
     }
@@ -531,7 +533,9 @@ namespace aweXpect.Options
     public class EquivalencyOptions
     {
         public EquivalencyOptions() { }
+        public bool IgnoreCollectionOrder { get; }
         public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
+        public aweXpect.Options.EquivalencyOptions IgnoringCollectionOrder(bool ignoreCollectionOrder = true) { }
         public aweXpect.Options.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
         public static aweXpect.Options.EquivalencyOptions FromCallback(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? callback) { }
     }

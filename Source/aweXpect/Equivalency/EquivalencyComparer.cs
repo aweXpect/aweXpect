@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Text;
 using aweXpect.Core;
 using aweXpect.Options;
@@ -11,34 +9,23 @@ namespace aweXpect.Equivalency;
 internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	: IObjectMatchType
 {
-	private ComparisonFailure? _firstFailure;
+	private readonly StringBuilder _failureBuilder = new();
 
 	/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-	public bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected)
+	public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 	{
-		if (HandleSpecialCases(actual, expected, out bool? specialCaseResult))
+		if (HandleSpecialCases(actual, expected, _failureBuilder, out bool? specialCaseResult))
 		{
 			return specialCaseResult.Value;
 		}
 
-		List<ComparisonFailure> failures = Compare.CheckEquivalent<object?>(actual, expected,
+		return Compare.CheckEquivalent(actual, expected,
 			new CompareOptions
 			{
+				IgnoreCollectionOrder = equivalencyOptions.IgnoreCollectionOrder,
 				MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
-			}).ToList();
-
-		if (failures.FirstOrDefault() is { } firstFailure)
-		{
-			_firstFailure = firstFailure;
-			if (firstFailure.Type == MemberType.Value)
-			{
-				return false;
-			}
-
-			return false;
-		}
-
-		return true;
+			},
+			_failureBuilder);
 	}
 
 	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
@@ -47,51 +34,63 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 	public string GetExtendedFailure(string it, object? actual, object? expected)
 	{
-		if (_firstFailure == null)
+		if (actual is null != expected is null)
 		{
-			return $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+			_failureBuilder.Clear();
+			_failureBuilder.Append(it);
+			_failureBuilder.Append(" was ");
+			Formatter.Format(_failureBuilder, actual, FormattingOptions.Indented);
+			_failureBuilder.Append(" instead of ");
+			Formatter.Format(_failureBuilder, expected, FormattingOptions.Indented);
+			return _failureBuilder.ToString();
 		}
 
-		if (_firstFailure.Type == MemberType.Value)
+		if (_failureBuilder.Length > 0)
 		{
-			return $"{it} was {Formatter.Format(_firstFailure.Actual, FormattingOptions.SingleLine)}";
+			_failureBuilder.Insert(0, " was not equivalent:");
+			_failureBuilder.Insert(0, it);
+			return _failureBuilder.ToString();
 		}
 
-		StringBuilder sb = new();
-		sb.Append(_firstFailure.Type).Append(' ')
-			.Append(string.Join(".", _firstFailure.NestedMemberNames))
-			.AppendLine(" did not match:");
-
-		sb.Append("  Expected: ");
-		Formatter.Format(sb, _firstFailure.Expected);
-		sb.AppendLine();
-
-		sb.Append("  Received: ");
-		Formatter.Format(sb, _firstFailure.Actual);
-		return sb.ToString();
+		return $"{it} was considered equivalent";
 	}
 
-	private static bool HandleSpecialCases(object? a, object? b,
+	private static bool HandleSpecialCases<TActual, TExpected>(TActual actual, TExpected expected,
+		StringBuilder failureBuilder,
 		[NotNullWhen(true)] out bool? isConsideredEqual)
 	{
-		if (a is IEqualityComparer basicEqualityComparer)
+		if (actual is IEqualityComparer actualEqualityComparer)
 		{
-			isConsideredEqual = basicEqualityComparer.Equals(a, b);
+			isConsideredEqual = actualEqualityComparer.Equals(actual, expected);
+			if (isConsideredEqual == false)
+			{
+				Formatter.Format(failureBuilder, actual, FormattingOptions.Indented);
+				failureBuilder.Append(" did not equal ");
+				Formatter.Format(failureBuilder, expected, FormattingOptions.Indented);
+			}
+
 			return true;
 		}
 
-		if (b is IEqualityComparer expectedBasicEqualityComparer)
+		if (expected is IEqualityComparer expectedEqualityComparer)
 		{
-			isConsideredEqual = expectedBasicEqualityComparer.Equals(a, b);
+			isConsideredEqual = expectedEqualityComparer.Equals(actual, expected);
+			if (isConsideredEqual == false)
+			{
+				Formatter.Format(failureBuilder, actual, FormattingOptions.Indented);
+				failureBuilder.Append(" did not equal ");
+				Formatter.Format(failureBuilder, expected, FormattingOptions.Indented);
+			}
+
 			return true;
 		}
 
-		if (a is IEnumerable enumerable && b is IEnumerable enumerable2)
-		{
-			isConsideredEqual =
-				enumerable.Cast<object>().SequenceEqual(enumerable2.Cast<object>());
-			return true;
-		}
+		//if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
+		//{
+		//	isConsideredEqual =
+		//		actualEnumerable.Cast<object>().SequenceEqual(expectedEnumerable.Cast<object>());
+		//	return true;
+		//}
 
 		isConsideredEqual = null;
 		return false;

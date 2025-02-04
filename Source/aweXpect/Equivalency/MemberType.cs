@@ -8,5 +8,5 @@ internal enum MemberType
 	Property,
 	Field,
 	Value,
-	EnumerableItem
+	Element
 }

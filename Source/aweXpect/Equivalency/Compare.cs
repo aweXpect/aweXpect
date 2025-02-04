@@ -6,46 +6,108 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using aweXpect.Helpers;
 
 namespace aweXpect.Equivalency;
 
 internal static class Compare
 {
-	internal static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
-		CompareOptions options)
-		=> CheckEquivalent(actual, expected, options, [], MemberType.Value);
+	private static readonly BindingFlags BindingFlags =
+		BindingFlags.Instance
+		| BindingFlags.Static
+		| BindingFlags.Public
+		| BindingFlags.NonPublic
+		| BindingFlags.FlattenHierarchy;
 
-	internal static IEnumerable<ComparisonFailure> CheckEquivalent<T>(T actual, T expected,
-		CompareOptions options, string[] memberNames, MemberType memberType)
+	public static bool CheckEquivalent<TActual, TExpected>(
+		TActual actual,
+		TExpected expected,
+		CompareOptions options,
+		StringBuilder failureBuilder)
+		=> CheckEquivalent(actual, expected, options, failureBuilder, "", MemberType.Value,
+			new EquivalencyContext());
+
+	private static bool CheckEquivalent<TActual, TExpected>(
+		TActual actual,
+		TExpected expected,
+		CompareOptions options,
+		StringBuilder failureBuilder,
+		string memberPath,
+		MemberType memberType,
+		EquivalencyContext context)
 	{
 		if (actual is null && expected is null)
 		{
-			yield break;
+			return true;
 		}
 
 		if (actual is null || expected is null)
 		{
-			yield return new ComparisonFailure
+			failureBuilder.AppendLine();
+			if (failureBuilder.Length > 2)
 			{
-				Type = memberType,
-				Actual = actual,
-				Expected = expected,
-				NestedMemberNames = memberNames
-			};
-
-			yield break;
+				failureBuilder.AppendLine("and");
+			}
+			failureBuilder.Append("  ");
+			failureBuilder.Append(GetMemberPath(memberType, memberPath));
+			failureBuilder.Append(" was ");
+			Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
+			failureBuilder.Append(" instead of ");
+			Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
+			return false;
 		}
 
+		if (actual.GetType().IsSimpleType())
+		{
+			if (!actual.Equals(expected))
+			{
+				failureBuilder.AppendLine();
+				if (failureBuilder.Length > 2)
+				{
+					failureBuilder.AppendLine("and");
+				}
+				failureBuilder.Append("  ");
+				failureBuilder.Append(GetMemberPath(memberType, memberPath));
+				failureBuilder.AppendLine(" differed:");
+				failureBuilder.Append("       Found: ");
+				Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
+				failureBuilder.AppendLine().Append("    Expected: ");
+				Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
+				return false;
+			}
+
+			return true;
+		}
+
+		if (!context.ComparedObjects.Add(actual) || actual.Equals(expected))
+		{
+			return true;
+		}
+
+		bool result = true;
 		if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
 		{
-			object[] actualObjects = actualEnumerable.Cast<object>().ToArray();
-			object[] expectedObjects = expectedEnumerable.Cast<object>().ToArray();
+			object?[] actualObjects = actualEnumerable.Cast<object?>().ToArray();
+			object?[] expectedObjects = expectedEnumerable.Cast<object?>().ToArray();
 
-			for (int i = 0; i < Math.Max(actualObjects.Length, expectedObjects.Length); i++)
+			int[]? keys = null;
+			if (options.IgnoreCollectionOrder)
 			{
-				string?[] readOnlySpan = [..memberNames, $"[{i}]"];
+				keys = new int[actualObjects.Length];
+				for (int i = 0; i < actualObjects.Length; i++)
+				{
+					keys[i] = i;
+				}
 
-				if (options.MembersToIgnore.Contains(string.Join(".", readOnlySpan)))
+				Array.Sort(actualObjects, keys);
+				Array.Sort(expectedObjects);
+			}
+
+			for (int i = 0; i < Math.Min(actualObjects.Length, expectedObjects.Length); i++)
+			{
+				string elementMemberPath = $"{memberPath}[{(keys is null ? i : keys[i])}]";
+				if (options.MembersToIgnore.Contains(elementMemberPath))
 				{
 					continue;
 				}
@@ -53,116 +115,137 @@ internal static class Compare
 				object? actualObject = actualObjects.ElementAtOrDefault(i);
 				object? expectedObject = expectedObjects.ElementAtOrDefault(i);
 
-				foreach (ComparisonFailure comparisonFailure in CheckEquivalent(actualObject,
-					         expectedObject, options, [..memberNames, $"[{i}]"], MemberType.EnumerableItem))
+				if (!CheckEquivalent(actualObject, expectedObject, options, failureBuilder,
+					    elementMemberPath, MemberType.Element, context))
 				{
-					yield return comparisonFailure;
+					result = false;
 				}
 			}
-		}
 
-		if (actual.GetType().IsPrimitive
-		    || actual.GetType().IsEnum
-		    || actual.GetType().IsValueType
-		    || actual is string)
-		{
-			if (!actual.Equals(expected))
+			if (expectedObjects.Length > actualObjects.Length)
 			{
-				yield return new ComparisonFailure
+				for (int i = actualObjects.Length; i < expectedObjects.Length; i++)
 				{
-					Type = MemberType.Value,
-					Actual = actual,
-					Expected = expected,
-					NestedMemberNames = memberNames
-				};
+					string elementMemberPath = $"{memberPath}[{i}]";
+					if (options.MembersToIgnore.Contains(elementMemberPath))
+					{
+						continue;
+					}
+
+					object? expectedObject = expectedObjects.ElementAtOrDefault(i);
+
+					failureBuilder.AppendLine();
+					if (failureBuilder.Length > 2)
+					{
+						failureBuilder.AppendLine("and");
+					}
+					failureBuilder.Append("  ");
+					failureBuilder.Append(GetMemberPath(MemberType.Element, elementMemberPath));
+					failureBuilder.Append(" was missing ");
+					Formatter.Format(failureBuilder, expectedObject, FormattingOptions.Indented);
+					result = false;
+				}
 			}
 
-			yield break;
-		}
-
-		foreach (FieldInfo fieldInfo in actual.GetType().GetFields()
-			         .Concat(expected.GetType().GetFields()).Distinct())
-		{
-			string?[] readOnlySpan = [..memberNames, fieldInfo.Name];
-
-			if (options.MembersToIgnore.Contains(string.Join(".", readOnlySpan)))
+			if (expectedObjects.Length < actualObjects.Length)
 			{
-				continue;
-			}
-
-			object? actualFieldValue = fieldInfo.GetValue(actual);
-			object? expectedFieldValue = fieldInfo.GetValue(expected);
-
-			if (actualFieldValue?.Equals(actual) == true &&
-			    expectedFieldValue?.Equals(expected) == true)
-			{
-				// To prevent cyclical references/stackoverflow
-				continue;
-			}
-
-			if (actualFieldValue?.Equals(actual) == true ||
-			    expectedFieldValue?.Equals(expected) == true)
-			{
-				yield return new ComparisonFailure
+				for (int i = expectedObjects.Length; i < actualObjects.Length; i++)
 				{
-					Type = MemberType.Value,
-					Actual = actual,
-					Expected = expected,
-					NestedMemberNames = memberNames
-				};
+					string elementMemberPath = $"{memberPath}[{(keys is null ? i : keys[i])}]";
+					if (options.MembersToIgnore.Contains(elementMemberPath))
+					{
+						continue;
+					}
 
-				yield break;
+					object? actualObject = actualObjects.ElementAtOrDefault(i);
+
+					failureBuilder.AppendLine();
+					if (failureBuilder.Length > 2)
+					{
+						failureBuilder.AppendLine("and");
+					}
+					failureBuilder.Append("  ");
+					failureBuilder.Append(GetMemberPath(MemberType.Element, elementMemberPath));
+					failureBuilder.Append(" had superfluous ");
+					Formatter.Format(failureBuilder, actualObject, FormattingOptions.Indented);
+					result = false;
+				}
 			}
 
-			foreach (ComparisonFailure comparisonFailure in CheckEquivalent(actualFieldValue,
-				         expectedFieldValue, options, [..memberNames, fieldInfo.Name], MemberType.Field))
-			{
-				yield return comparisonFailure;
-			}
+			return result;
 		}
 
-		foreach (PropertyInfo propertyInfo in actual.GetType().GetProperties()
-			         .Concat(expected.GetType().GetProperties())
-			         .Distinct()
-			         .Where(p => p.GetIndexParameters().Length == 0))
+		foreach (string? fieldName in actual.GetType().GetFields().Concat(expected.GetType().GetFields())
+			         .Where(x => !x.Name.StartsWith('<'))
+			         .Select(x => x.Name)
+			         .Distinct())
 		{
-			string?[] readOnlySpan = [..memberNames, propertyInfo.Name];
-
-			if (options.MembersToIgnore.Contains(string.Join(".", readOnlySpan)))
+			string fieldMemberPath = ConcatMemberPath(memberPath, fieldName);
+			if (options.MembersToIgnore.Contains(fieldMemberPath))
 			{
 				continue;
 			}
 
-			object? actualPropertyValue = propertyInfo.GetValue(actual);
-			object? expectedPropertyValue = propertyInfo.GetValue(expected);
+			object? actualFieldValue = actual.GetType().GetField(fieldName, BindingFlags)?.GetValue(actual);
+			object? expectedFieldValue = expected.GetType().GetField(fieldName, BindingFlags)?.GetValue(expected);
 
-			if (actualPropertyValue?.Equals(actual) == true &&
-			    expectedPropertyValue?.Equals(expected) == true)
+			if (!CheckEquivalent(actualFieldValue, expectedFieldValue, options, failureBuilder,
+				    fieldMemberPath, MemberType.Field, context))
 			{
-				// To prevent cyclical references/stackoverflow
-				continue;
-			}
-
-			if (actualPropertyValue?.Equals(actual) == true ||
-			    actualPropertyValue?.Equals(expected) == true)
-			{
-				yield return new ComparisonFailure
-				{
-					Type = MemberType.Value,
-					Actual = actual,
-					Expected = expected,
-					NestedMemberNames = memberNames
-				};
-
-				yield break;
-			}
-
-			foreach (ComparisonFailure comparisonFailure in CheckEquivalent(actualPropertyValue,
-				         expectedPropertyValue, options, [..memberNames, propertyInfo.Name],
-				         MemberType.Property))
-			{
-				yield return comparisonFailure;
+				result = false;
 			}
 		}
+
+		foreach (string? propertyName in actual.GetType().GetProperties().Concat(expected.GetType().GetProperties())
+			         .Where(p => p.GetIndexParameters().Length == 0)
+			         .Select(x => x.Name)
+			         .Distinct())
+		{
+			string propertyMemberPath = ConcatMemberPath(memberPath, propertyName);
+			if (options.MembersToIgnore.Contains(propertyMemberPath))
+			{
+				continue;
+			}
+
+			object? actualPropertyValue = actual.GetType().GetProperty(propertyName, BindingFlags)?.GetValue(actual);
+			object? expectedPropertyValue =
+				expected.GetType().GetProperty(propertyName, BindingFlags)?.GetValue(expected);
+
+			if (!CheckEquivalent(actualPropertyValue, expectedPropertyValue, options, failureBuilder,
+				    propertyMemberPath, MemberType.Property, context))
+			{
+				result = false;
+			}
+		}
+
+		return result;
+	}
+
+	private static string ConcatMemberPath(string memberPath, string memberName)
+	{
+		if (string.IsNullOrEmpty(memberPath))
+		{
+			return memberName;
+		}
+
+		return $"{memberPath}.{memberName}";
+	}
+
+	private static string GetMemberPath(MemberType type, string memberPath)
+	{
+		if (string.IsNullOrEmpty(memberPath))
+		{
+			return "It";
+		}
+
+		return $"{type} {memberPath}";
+	}
+
+	private class EquivalencyContext
+	{
+		/// <summary>
+		///     Tracks already compared objects to catch recursions.
+		/// </summary>
+		public HashSet<object> ComparedObjects { get; } = new();
 	}
 }

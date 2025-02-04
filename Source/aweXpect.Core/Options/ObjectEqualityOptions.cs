@@ -14,7 +14,7 @@ internal static class ObjectEqualityOptions
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-		public bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected)
+		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 			=> Equals(actual, expected);
 
 		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
