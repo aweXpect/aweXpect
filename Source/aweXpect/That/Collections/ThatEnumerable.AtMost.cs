@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Expect that at most <paramref name="maximum" /> items of the <see cref="IEnumerable{TItem}" />…
+	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
 	public static Elements<TItem> AtMost<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 		=> new(subject, EnumerableQuantifier.AtMost(maximum));
 
 	/// <summary>
-	///     Expect that at most <paramref name="maximum" /> items of the <see cref="IEnumerable{TItem}" />…
+	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
 	public static Elements AtMost(
 		this IThat<IEnumerable<string?>?> subject,

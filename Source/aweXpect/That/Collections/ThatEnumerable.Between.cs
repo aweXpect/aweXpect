@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Expect that between <paramref name="minimum" /> and…
+	///     Verifies that in the collection between <paramref name="minimum" />…
 	/// </summary>
 	public static BetweenResult<Elements<TItem>> Between<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 		=> new(maximum => new Elements<TItem>(subject, EnumerableQuantifier.Between(minimum, maximum)));
 
 	/// <summary>
-	///     Expect that between <paramref name="minimum" /> and…
+	///     Verifies that in the collection between <paramref name="minimum" />…
 	/// </summary>
 	public static BetweenResult<Elements> Between(
 		this IThat<IEnumerable<string?>?> subject,
@@ -24,7 +24,7 @@ public static partial class ThatEnumerable
 		=> new(maximum => new Elements(subject, EnumerableQuantifier.Between(minimum, maximum)));
 
 	/// <summary>
-	///     Verifies that the collection has between <paramref name="minimum" /> and…
+	///     Verifies that the collection has between <paramref name="minimum" />…
 	/// </summary>
 	public static BetweenResult<ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>>>
 		Between<TItem>(

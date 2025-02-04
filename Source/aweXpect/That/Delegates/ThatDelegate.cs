@@ -1,6 +1,6 @@
 ﻿namespace aweXpect;
 
 /// <summary>
-///     Expectations on delegate values.
+///     Expectations on delegates.
 /// </summary>
 public static partial class ThatDelegate;

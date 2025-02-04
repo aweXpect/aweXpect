@@ -12,7 +12,7 @@ public static partial class ThatEnumerable
 	public partial class Elements
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
 		public AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 			Satisfy(
@@ -32,7 +32,7 @@ public static partial class ThatEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
 		public AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			Satisfy(

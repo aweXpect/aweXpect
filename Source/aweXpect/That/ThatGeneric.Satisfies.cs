@@ -10,7 +10,7 @@ namespace aweXpect;
 public static partial class ThatGeneric
 {
 	/// <summary>
-	///     Expect the actual value to satisfy the <paramref name="predicate" />.
+	///     Verifies the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>
 	public static AndOrResult<T, IThat<T>> Satisfies<T>(this IThat<T> source,
 		Func<T, bool> predicate,
@@ -22,7 +22,7 @@ public static partial class ThatGeneric
 			source);
 
 	/// <summary>
-	///     Expect the actual value to not satisfy the <paramref name="predicate" />.
+	///     Verifies the actual value to not satisfy the <paramref name="predicate" />.
 	/// </summary>
 	public static AndOrResult<T, IThat<T>> DoesNotSatisfy<T>(this IThat<T> source,
 		Func<T, bool> predicate,

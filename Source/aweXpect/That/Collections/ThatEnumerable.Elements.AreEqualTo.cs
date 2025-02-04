@@ -11,7 +11,7 @@ public static partial class ThatEnumerable
 	public partial class Elements
 	{
 		/// <summary>
-		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
+		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> AreEqualTo(
 			string? expected)
@@ -33,7 +33,7 @@ public static partial class ThatEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that the items in the collection are equal to the <paramref name="expected" /> value.
+		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			AreEqualTo(TItem expected)

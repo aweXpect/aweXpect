@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Expect that at most <paramref name="maximum" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
 	public static Elements<TItem> AtMost<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject,
@@ -17,7 +17,7 @@ public static partial class ThatAsyncEnumerable
 		=> new(subject, EnumerableQuantifier.AtMost(maximum));
 
 	/// <summary>
-	///     Expect that at most <paramref name="maximum" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
 	public static Elements AtMost(
 		this IThat<IAsyncEnumerable<string?>?> subject,

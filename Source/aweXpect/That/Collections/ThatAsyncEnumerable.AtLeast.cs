@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection at least <paramref name="minimum" /> items…
 	/// </summary>
 	public static Elements<TItem> AtLeast<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject,
@@ -17,7 +17,7 @@ public static partial class ThatAsyncEnumerable
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
 
 	/// <summary>
-	///     Expect that at least <paramref name="minimum" /> items of the <see cref="IAsyncEnumerable{TItem}" />…
+	///     Verifies that in the collection at least <paramref name="minimum" /> items…
 	/// </summary>
 	public static Elements AtLeast(
 		this IThat<IAsyncEnumerable<string?>?> subject,

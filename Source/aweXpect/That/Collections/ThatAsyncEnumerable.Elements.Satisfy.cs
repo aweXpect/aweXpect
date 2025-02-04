@@ -13,7 +13,7 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
 		public AndOrResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 			Satisfy(
@@ -33,7 +33,7 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
 		public AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 			Satisfy(

@@ -13,7 +13,7 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that all items in the collection are of type <typeparamref name="TType" />.
+		///     …are of type <typeparamref name="TType" />.
 		/// </summary>
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 			Are<TType>()
@@ -32,7 +32,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		/// <summary>
-		///     Verifies that all items in the collection are of type <paramref name="type" />.
+		///     …are of type <paramref name="type" />.
 		/// </summary>
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 			Are(Type type)
