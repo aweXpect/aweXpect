@@ -6,9 +6,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public static partial class ThatException
 {
 	/// <summary>

@@ -20,7 +20,7 @@ public static class PropertyResult
 		Action<int?, string>? validation = null)
 	{
 		/// <summary>
-		///     … is equal to the <paramref name="expected" /> value.
+		///     …is equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			int? expected)
@@ -38,7 +38,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is not equal to the <paramref name="unexpected" /> value.
+		///     …is not equal to the <paramref name="unexpected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			int? unexpected)
@@ -56,7 +56,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is greater than the <paramref name="expected" /> value.
+		///     …is greater than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
 			int? expected)
@@ -74,7 +74,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is greater than or equal to the <paramref name="expected" /> value.
+		///     …is greater than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
 			int? expected)
@@ -92,7 +92,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is less than the <paramref name="expected" /> value.
+		///     …is less than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThan(
 			int? expected)
@@ -110,7 +110,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is less than or equal to the <paramref name="expected" /> value.
+		///     …is less than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
 			int? expected)
@@ -138,7 +138,7 @@ public static class PropertyResult
 		Action<int?, string>? validation = null)
 	{
 		/// <summary>
-		///     … is equal to the <paramref name="expected" /> value.
+		///     …is equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			int? expected)
@@ -156,7 +156,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is not equal to the <paramref name="unexpected" /> value.
+		///     …is not equal to the <paramref name="unexpected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			int? unexpected)
@@ -174,7 +174,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is greater than the <paramref name="expected" /> value.
+		///     …is greater than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
 			int? expected)
@@ -192,7 +192,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is greater than or equal to the <paramref name="expected" /> value.
+		///     …is greater than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
 			int? expected)
@@ -210,7 +210,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is less than the <paramref name="expected" /> value.
+		///     …is less than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThan(
 			int? expected)
@@ -228,7 +228,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is less than or equal to the <paramref name="expected" /> value.
+		///     …is less than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
 			int? expected)
@@ -256,7 +256,7 @@ public static class PropertyResult
 		Action<long?, string>? validation = null)
 	{
 		/// <summary>
-		///     … is equal to the <paramref name="expected" /> value.
+		///     …is equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			long? expected)
@@ -274,7 +274,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is not equal to the <paramref name="unexpected" /> value.
+		///     …is not equal to the <paramref name="unexpected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			long? unexpected)
@@ -292,7 +292,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is greater than the <paramref name="expected" /> value.
+		///     …is greater than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
 			long? expected)
@@ -310,7 +310,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is greater than or equal to the <paramref name="expected" /> value.
+		///     …is greater than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
 			long? expected)
@@ -328,7 +328,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is less than the <paramref name="expected" /> value.
+		///     …is less than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThan(
 			long? expected)
@@ -346,7 +346,7 @@ public static class PropertyResult
 		}
 
 		/// <summary>
-		///     … is less than or equal to the <paramref name="expected" /> value.
+		///     …is less than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
 			long? expected)
@@ -373,7 +373,7 @@ public static class PropertyResult
 		string propertyExpression)
 	{
 		/// <summary>
-		///     … is equal to the <paramref name="expected" /> value.
+		///     …is equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			DateTimeKind expected)
@@ -388,7 +388,7 @@ public static class PropertyResult
 				source);
 
 		/// <summary>
-		///     … is not equal to the <paramref name="unexpected" /> value.
+		///     …is not equal to the <paramref name="unexpected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			DateTimeKind unexpected)
@@ -412,7 +412,7 @@ public static class PropertyResult
 		string propertyExpression)
 	{
 		/// <summary>
-		///     … is equal to the <paramref name="expected" /> value.
+		///     …is equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			TimeSpan? expected)
@@ -427,7 +427,7 @@ public static class PropertyResult
 				source);
 
 		/// <summary>
-		///     … is not equal to the <paramref name="unexpected" /> value.
+		///     …is not equal to the <paramref name="unexpected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			TimeSpan? unexpected)
@@ -442,7 +442,7 @@ public static class PropertyResult
 				source);
 
 		/// <summary>
-		///     … is greater than the <paramref name="expected" /> value.
+		///     …is greater than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
 			TimeSpan? expected)
@@ -457,7 +457,7 @@ public static class PropertyResult
 				source);
 
 		/// <summary>
-		///     … is greater than or equal to the <paramref name="expected" /> value.
+		///     …is greater than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
 			TimeSpan? expected)
@@ -472,7 +472,7 @@ public static class PropertyResult
 				source);
 
 		/// <summary>
-		///     … is less than the <paramref name="expected" /> value.
+		///     …is less than the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThan(
 			TimeSpan? expected)
@@ -487,7 +487,7 @@ public static class PropertyResult
 				source);
 
 		/// <summary>
-		///     … is less than or equal to the <paramref name="expected" /> value.
+		///     …is less than or equal to the <paramref name="expected" /> value.
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
 			TimeSpan? expected)

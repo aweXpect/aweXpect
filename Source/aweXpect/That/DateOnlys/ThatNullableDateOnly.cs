@@ -7,7 +7,7 @@ using aweXpect.Options;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on <see cref="DateOnly" /> values.
+///     Expectations on <see cref="DateOnly" />? values.
 /// </summary>
 public static partial class ThatNullableDateOnly
 {

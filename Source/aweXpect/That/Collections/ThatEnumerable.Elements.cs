@@ -5,9 +5,6 @@ using aweXpect.Core;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="IEnumerable{TItem}" />.
-/// </summary>
 public static partial class ThatEnumerable
 {
 	/// <summary>

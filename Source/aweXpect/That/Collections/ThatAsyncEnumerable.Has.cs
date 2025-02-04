@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Expect that the <paramref name="subject" /> has…
+	///     Verifies that the <paramref name="subject" /> has…
 	/// </summary>
 	public static IThatHas<IAsyncEnumerable<TItem>?> Has<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject)

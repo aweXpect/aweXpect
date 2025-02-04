@@ -8,7 +8,7 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IEnumerable{TItem}" />…
+	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
 	public static Elements<TItem> Exactly<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
 
 	/// <summary>
-	///     Expect that exactly <paramref name="expected" /> items of the <see cref="IEnumerable{TItem}" />…
+	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
 	public static Elements Exactly(
 		this IThat<IEnumerable<string?>?> subject,

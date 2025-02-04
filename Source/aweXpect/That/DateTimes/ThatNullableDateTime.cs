@@ -6,7 +6,7 @@ using aweXpect.Options;
 namespace aweXpect;
 
 /// <summary>
-///     Expectations on <see cref="DateTime" /> values.
+///     Expectations on <see cref="DateTime" />? values.
 /// </summary>
 public static partial class ThatNullableDateTime
 {

@@ -9,7 +9,7 @@ public class BetweenResult<TTarget>(
 	Func<int, TTarget> callback)
 {
 	/// <summary>
-	///     ... and <paramref name="maximum" /> items.
+	///     …and <paramref name="maximum" /> items…
 	/// </summary>
 	public TTarget And(Times maximum)
 		=> callback(maximum.Value);
