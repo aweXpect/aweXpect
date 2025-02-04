@@ -400,7 +400,6 @@ namespace aweXpect.Formatting
     }
     public class FormattingOptions
     {
-        public string Indentation { get; }
         public static aweXpect.Formatting.FormattingOptions Indented { get; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }

@@ -22,15 +22,11 @@ public class FormattingOptions
 	public static FormattingOptions Indented { get; } = new(true, "  ");
 
 	/// <summary>
-	///     Format the objects on multiple lines with an indentation of 4 blanks.
-	/// </summary>
-	public static FormattingOptions Indented2 { get; } = new(true, "    ");
-
-	/// <summary>
 	///     Format the objects on a single line.
 	/// </summary>
 	public static FormattingOptions SingleLine { get; } = new(false);
 
 	internal bool UseLineBreaks { get; }
-	public string Indentation { get; }
+	
+	internal string Indentation { get; }
 }

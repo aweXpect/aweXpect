@@ -40,7 +40,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but it was not equivalent:
+					             but it was not:
 					               Property Value was <null> instead of "Foo"
 					             """);
 			}
@@ -119,7 +119,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but it was not equivalent:
+					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
 					             """);
 			}
@@ -201,7 +201,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but it was not equivalent:
+					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
 					             and
 					               Property Inner.Inner.Value differed:
@@ -276,7 +276,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be equivalent to expected,
-					             but it was not equivalent:
+					             but it was not:
 					               Property Inner.Inner.Value was <null> instead of "Baz"
 					             """);
 			}

@@ -22,7 +22,9 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 		return Compare.CheckEquivalent(actual, expected,
 			new CompareOptions
 			{
+				#if DEBUG
 				IgnoreCollectionOrder = equivalencyOptions.IgnoreCollectionOrder,
+				#endif
 				MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
 			},
 			_failureBuilder);
@@ -39,15 +41,15 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			_failureBuilder.Clear();
 			_failureBuilder.Append(it);
 			_failureBuilder.Append(" was ");
-			Formatter.Format(_failureBuilder, actual, FormattingOptions.Indented);
+			Formatter.Format(_failureBuilder, actual, FormattingOptions.SingleLine);
 			_failureBuilder.Append(" instead of ");
-			Formatter.Format(_failureBuilder, expected, FormattingOptions.Indented);
+			Formatter.Format(_failureBuilder, expected, FormattingOptions.SingleLine);
 			return _failureBuilder.ToString();
 		}
 
 		if (_failureBuilder.Length > 0)
 		{
-			_failureBuilder.Insert(0, " was not equivalent:");
+			_failureBuilder.Insert(0, " was not:");
 			_failureBuilder.Insert(0, it);
 			return _failureBuilder.ToString();
 		}
@@ -64,9 +66,9 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			isConsideredEqual = actualEqualityComparer.Equals(actual, expected);
 			if (isConsideredEqual == false)
 			{
-				Formatter.Format(failureBuilder, actual, FormattingOptions.Indented);
+				Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
 				failureBuilder.Append(" did not equal ");
-				Formatter.Format(failureBuilder, expected, FormattingOptions.Indented);
+				Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
 			}
 
 			return true;
@@ -77,20 +79,13 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			isConsideredEqual = expectedEqualityComparer.Equals(actual, expected);
 			if (isConsideredEqual == false)
 			{
-				Formatter.Format(failureBuilder, actual, FormattingOptions.Indented);
+				Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
 				failureBuilder.Append(" did not equal ");
-				Formatter.Format(failureBuilder, expected, FormattingOptions.Indented);
+				Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
 			}
 
 			return true;
 		}
-
-		//if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
-		//{
-		//	isConsideredEqual =
-		//		actualEnumerable.Cast<object>().SequenceEqual(expectedEnumerable.Cast<object>());
-		//	return true;
-		//}
 
 		isConsideredEqual = null;
 		return false;

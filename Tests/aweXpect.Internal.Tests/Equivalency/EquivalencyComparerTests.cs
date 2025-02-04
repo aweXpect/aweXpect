@@ -44,7 +44,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was not equivalent:
+			                              it was not:
 			                                Property MyValue differed:
 			                                     Found: "foo"
 			                                  Expected: "bar"
@@ -79,10 +79,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was <null> instead of MyClass {
-			                                  MyValue = <null>,
-			                                  Nested = <null>
-			                                }
+			                              it was <null> instead of MyClass { MyValue = <null>, Nested = <null> }
 			                              """);
 		}
 
@@ -98,10 +95,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was MyClass {
-			                                  MyValue = <null>,
-			                                  Nested = <null>
-			                                } instead of <null>
+			                              it was MyClass { MyValue = <null>, Nested = <null> } instead of <null>
 			                              """);
 		}
 	}
@@ -164,7 +158,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo($"""
-			                               it was not equivalent:
+			                               it was not:
 			                                 Property MyValue was {Formatter.Format(actualValue)} instead of {Formatter.Format(expectedValue)}
 			                               """);
 		}
@@ -187,7 +181,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo($"""
-			                               it was not equivalent:
+			                               it was not:
 			                                 Property MyValue differed:
 			                                      Found: "foo"
 			                                   Expected: "bar"
@@ -236,7 +230,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo($"""
-			                               it was not equivalent:
+			                               it was not:
 			                                 Field MyValue was {Formatter.Format(actualValue)} instead of {Formatter.Format(expectedValue)}
 			                               """);
 		}
@@ -259,7 +253,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo($"""
-			                               it was not equivalent:
+			                               it was not:
 			                                 Field MyValue differed:
 			                                      Found: "foo"
 			                                   Expected: "bar"
@@ -305,7 +299,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was not equivalent:
+			                              it was not:
 			                                Element [4] was missing 5
 			                              """);
 		}
@@ -322,7 +316,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was not equivalent:
+			                              it was not:
 			                                Element [4] had superfluous 5
 			                              """);
 		}
@@ -339,7 +333,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was not equivalent:
+			                              it was not:
 			                                Element [1] differed:
 			                                     Found: 2
 			                                  Expected: 5
@@ -359,6 +353,7 @@ public class EquivalencyComparerTests
 		}
 	}
 
+	#if DEBUG
 	public sealed class CollectionInAnyOrderTests
 	{
 		[Fact]
@@ -397,7 +392,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was not equivalent:
+			                              it was not:
 			                                Element [4] was missing 5
 			                              """);
 		}
@@ -414,7 +409,7 @@ public class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was not equivalent:
+			                              it was not:
 			                                Element [1] had superfluous 5
 			                              """);
 		}
@@ -434,7 +429,7 @@ public class EquivalencyComparerTests
 			await That(result).IsEqualTo(ignoreCollectionOrder);
 		}
 	}
-
+#endif
 
 	private class MyClass
 	{

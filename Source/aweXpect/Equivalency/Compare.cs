@@ -142,7 +142,7 @@ internal static class Compare
 					failureBuilder.Append("  ");
 					failureBuilder.Append(GetMemberPath(MemberType.Element, elementMemberPath));
 					failureBuilder.Append(" was missing ");
-					Formatter.Format(failureBuilder, expectedObject, FormattingOptions.Indented);
+					Formatter.Format(failureBuilder, expectedObject, FormattingOptions.SingleLine);
 					result = false;
 				}
 			}
@@ -167,7 +167,7 @@ internal static class Compare
 					failureBuilder.Append("  ");
 					failureBuilder.Append(GetMemberPath(MemberType.Element, elementMemberPath));
 					failureBuilder.Append(" had superfluous ");
-					Formatter.Format(failureBuilder, actualObject, FormattingOptions.Indented);
+					Formatter.Format(failureBuilder, actualObject, FormattingOptions.SingleLine);
 					result = false;
 				}
 			}
