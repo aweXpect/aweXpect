@@ -19,8 +19,8 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			return specialCaseResult.Value;
 		}
 
-		return Compare.CheckEquivalent(actual, expected,
-			new CompareOptions
+		return EquivalencyComparison.Compare(actual, expected,
+			new EquivalencyComparison.CompareOptions
 			{
 				#if DEBUG
 				IgnoreCollectionOrder = equivalencyOptions.IgnoreCollectionOrder,
