@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace aweXpect.Benchmarks;
 
@@ -28,18 +29,13 @@ public partial class HappyCaseBenchmarks
 	{
 		public int A { get; set; }
 
-		public Nested B { get; set; }
+		public Nested? B { get; set; }
 
-		public Nested C { get; set; }
+		public Nested? C { get; set; }
 
 		public static Nested Create(int i, int objectCount = 1)
 		{
-			if (i < 0)
-			{
-				return null;
-			}
-
-			if (i == 0)
+			if (i <= 0)
 			{
 				return new Nested();
 			}

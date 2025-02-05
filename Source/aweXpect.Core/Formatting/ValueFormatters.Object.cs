@@ -164,7 +164,7 @@ public static partial class ValueFormatters
 		}
 		else
 		{
-			stringBuilder.Append(" ");
+			stringBuilder.Append(' ');
 		}
 	}
 }

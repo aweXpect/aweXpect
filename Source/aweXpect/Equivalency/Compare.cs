@@ -241,7 +241,7 @@ internal static class Compare
 		return $"{type} {memberPath}";
 	}
 
-	private class EquivalencyContext
+	private sealed class EquivalencyContext
 	{
 		/// <summary>
 		///     Tracks already compared objects to catch recursions.
