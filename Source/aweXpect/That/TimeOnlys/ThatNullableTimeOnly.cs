@@ -11,26 +11,6 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNullableTimeOnly
 {
-	private readonly struct PropertyConstraint<T>(
-		string it,
-		T expected,
-		Func<TimeOnly?, T, bool> condition,
-		string expectation) : IValueConstraint<TimeOnly?>
-	{
-		public ConstraintResult IsMetBy(TimeOnly? actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<TimeOnly?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-		}
-
-		public override string ToString()
-			=> expectation;
-	}
-
 	private readonly struct ConditionConstraintWithTolerance(
 		string it,
 		TimeOnly? expected,

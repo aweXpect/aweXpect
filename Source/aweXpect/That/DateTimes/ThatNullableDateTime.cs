@@ -23,26 +23,6 @@ public static partial class ThatNullableDateTime
 		       difference.Value >= tolerance.Value.Negate();
 	}
 
-	private readonly struct PropertyConstraint<T>(
-		string it,
-		T expected,
-		Func<DateTime?, T, bool> condition,
-		string expectation) : IValueConstraint<DateTime?>
-	{
-		public ConstraintResult IsMetBy(DateTime? actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<DateTime?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-		}
-
-		public override string ToString()
-			=> expectation;
-	}
-
 	private readonly struct ConditionConstraint(
 		string it,
 		DateTime? expected,

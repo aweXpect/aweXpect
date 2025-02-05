@@ -116,6 +116,20 @@ public sealed partial class ThatBufferedStream
 			}
 
 			[Fact]
+			public async Task WhenExpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThanOrEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
+			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				using BufferedStream subject = GetBufferedStream(2010);
@@ -182,6 +196,20 @@ public sealed partial class ThatBufferedStream
 			}
 
 			[Fact]
+			public async Task WhenExpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().GreaterThan(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
+			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				using BufferedStream subject = GetBufferedStream(2010);
@@ -240,6 +268,20 @@ public sealed partial class ThatBufferedStream
 					=> await That(subject).HasBufferSize().LessThanOrEqualTo(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenExpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThanOrEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
 			}
 
 			[Fact]
@@ -309,6 +351,20 @@ public sealed partial class ThatBufferedStream
 			}
 
 			[Fact]
+			public async Task WhenExpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().LessThan(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
+			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				using BufferedStream subject = GetBufferedStream(2010);
@@ -328,6 +384,20 @@ public sealed partial class ThatBufferedStream
 
 		public sealed class NotEqualToTests
 		{
+			[Fact]
+			public async Task WhenExpectedBufferSizeIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				using BufferedStream subject = GetBufferedStream(1);
+
+				async Task Act()
+					=> await That(subject).HasBufferSize().NotEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The unexpected buffer size must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("unexpected");
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenSubjectHasDifferentBufferSize_ShouldSucceed(int bufferSize)

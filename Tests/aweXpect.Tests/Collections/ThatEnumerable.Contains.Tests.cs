@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using aweXpect.Core;
+using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -280,9 +282,14 @@ public sealed partial class ThatEnumerable
 			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
 			{
 				string[] subject = ["foo", "bar", "baz"];
+#pragma warning disable aweXpect0001
+				StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> expectation =
+					That(subject).Contains(match);
+				expectation.AsWildcard();
 
 				async Task Act()
-					=> await That(subject).Contains(match).Exactly();
+					=> await expectation.Exactly();
+#pragma warning restore aweXpect0001
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
@@ -360,11 +367,37 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected subject to
-					              contain "{match}" ignoring case at least once,
+					              contain {Formatter.Format(match)} ignoring case at least once,
 					              but it contained it 0 times in [
 					                "foo",
 					                "bar",
 					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("fo\ro", true)]
+			[InlineData("go\ro", false)]
+			public async Task WhenIgnoringNewlineStyle_ShouldIgnoreNewlineStyle(string match, bool expectSuccess)
+			{
+				string nl = Environment.NewLine;
+				string[] subject = [$"fo{nl}o", $"ba{nl}r", $"ba{nl}z"];
+
+				async Task Act()
+					=> await That(subject).Contains(match).IgnoringNewlineStyle();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain {Formatter.Format(match)} ignoring newline style at least once,
+					              but it contained it 0 times in [
+					                "fo
+					                o",
+					                "ba
+					                r",
+					                "ba
+					                z"
 					              ]
 					              """);
 			}

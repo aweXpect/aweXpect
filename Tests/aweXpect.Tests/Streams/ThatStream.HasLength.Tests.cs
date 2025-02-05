@@ -89,6 +89,20 @@ public sealed partial class ThatStream
 			}
 
 			[Fact]
+			public async Task WhenExpectedLengthIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThanOrEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected length must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
+			[Fact]
 			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldSucceed()
 			{
 				Stream subject = new MyStream(length: 2010);
@@ -147,6 +161,20 @@ public sealed partial class ThatStream
 					             have length greater than <null>,
 					             but it had length 2010
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedLengthIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasLength().GreaterThan(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected length must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
 			}
 
 			[Fact]
@@ -216,6 +244,20 @@ public sealed partial class ThatStream
 			}
 
 			[Fact]
+			public async Task WhenExpectedLengthIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThanOrEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected length must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
+			[Fact]
 			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldFail()
 			{
 				Stream subject = new MyStream(length: 2010);
@@ -277,6 +319,20 @@ public sealed partial class ThatStream
 			}
 
 			[Fact]
+			public async Task WhenExpectedLengthIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasLength().LessThan(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The expected length must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("expected");
+			}
+
+			[Fact]
 			public async Task WhenLengthOfSubjectIsGreaterThanExpected_ShouldFail()
 			{
 				Stream subject = new MyStream(length: 2010);
@@ -325,6 +381,20 @@ public sealed partial class ThatStream
 
 		public sealed class NotEqualToTests
 		{
+			[Fact]
+			public async Task WhenExpectedLengthIsNegative_ShouldThrowArgumentOutOfRangeException()
+			{
+				Stream subject = new MyStream();
+
+				async Task Act()
+					=> await That(subject).HasLength().NotEqualTo(-1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithMessage("*The unexpected length must be greater than or equal to zero*")
+					.AsWildcard().And
+					.WithParamName("unexpected");
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenSubjectHasDifferentLength_ShouldSucceed(long length)

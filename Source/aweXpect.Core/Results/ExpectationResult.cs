@@ -125,21 +125,23 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result is ConstraintResult.Failure failure)
-		{
-			Fail.Test(ExpectationBuilder.FromFailure(
-				expectationBuilder.Subject, failure));
-		}
-		else if (result is ConstraintResult.Success<TType> matchingSuccess)
+		if (result is ConstraintResult.Success<TType> matchingSuccess)
 		{
 			return matchingSuccess.Value;
 		}
-		else if (result is ConstraintResult.Success success &&
-		         success.TryGetValue(out TType? value))
+
+		if (result is ConstraintResult.Success success &&
+		    success.TryGetValue(out TType? value))
 		{
 			return value;
 		}
 
-		throw new FailException("You should not be here (with value)!");
+		if (result is ConstraintResult.Failure failure)
+		{
+			Fail.Test(ExpectationBuilder.FromFailure(expectationBuilder.Subject, failure));
+		}
+
+		throw new FailException(
+			$"The value in {Formatter.Format(result.GetType())} did not match expected type {Formatter.Format(typeof(TType))}.");
 	}
 }
