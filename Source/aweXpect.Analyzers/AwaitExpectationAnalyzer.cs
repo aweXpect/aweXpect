@@ -28,15 +28,13 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 
 	private static void AnalyzeOperation(OperationAnalysisContext context)
 	{
-		if (context.Operation is not IInvocationOperation invocationOperation)
+		if (context.Operation is IInvocationOperation invocationOperation)
 		{
-			return;
-		}
-
-		IMethodSymbol methodSymbol = invocationOperation.TargetMethod;
-		if (methodSymbol.MatchesFullName("aweXpect", "Expect", "That"))
-		{
-			CheckExpectThatInvocation(context, invocationOperation);
+			IMethodSymbol methodSymbol = invocationOperation.TargetMethod;
+			if (methodSymbol.MatchesFullName("aweXpect", "Expect", "That"))
+			{
+				CheckExpectThatInvocation(context, invocationOperation);
+			}
 		}
 	}
 
@@ -59,15 +57,10 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 
 		while (parent != null)
 		{
-			if (parent is IBlockOperation or IDelegateCreationOperation)
+			if (parent is IBlockOperation or IDelegateCreationOperation &&
+			    parent.SemanticModel != null)
 			{
-				SemanticModel? semanticModel = parent.SemanticModel;
-				if (semanticModel == null)
-				{
-					return false;
-				}
-
-				ExpressionSyntaxWalker walker = new(semanticModel);
+				ExpressionSyntaxWalker walker = new(parent.SemanticModel);
 				walker.Visit(parent.Syntax);
 				return walker.IsVerifyCalled;
 			}
