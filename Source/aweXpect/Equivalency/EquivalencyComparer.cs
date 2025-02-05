@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using aweXpect.Core;
-using aweXpect.Options;
 
 namespace aweXpect.Equivalency;
 
@@ -22,9 +21,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 		return EquivalencyComparison.Compare(actual, expected,
 			new EquivalencyComparison.CompareOptions
 			{
-				#if DEBUG
 				IgnoreCollectionOrder = equivalencyOptions.IgnoreCollectionOrder,
-				#endif
 				MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
 			},
 			_failureBuilder);
