@@ -175,6 +175,7 @@ namespace aweXpect.Core
         {
             Equality = 0,
             Wildcard = 1,
+            Regex = 2,
         }
     }
     public class StringDifferenceSettings
