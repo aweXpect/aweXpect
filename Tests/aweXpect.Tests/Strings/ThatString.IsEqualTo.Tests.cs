@@ -38,8 +38,8 @@ public sealed partial class ThatString
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				string? subject = "some text";
-				string expected = null;
+				string subject = "some text";
+				string? expected = null;
 
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);

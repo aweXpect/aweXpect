@@ -49,7 +49,7 @@ public class ExpectationTests
 		Expectation sut = That(true).IsTrue();
 #pragma warning restore aweXpect0001
 
-		string result = sut.ToString();
+		string? result = sut.ToString();
 
 		await That(result)
 			.IsEqualTo("aweXpect.Results.AndOrResult`2[System.Boolean,aweXpect.Core.IThat`1[System.Boolean]]");
