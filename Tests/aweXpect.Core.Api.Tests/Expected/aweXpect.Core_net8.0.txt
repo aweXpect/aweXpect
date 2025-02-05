@@ -795,19 +795,9 @@ namespace aweXpect.Results
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(int? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(int? unexpected) { }
         }
-        public class NullableInt<TItem>
+        public class Long<TItem>
         {
-            public NullableInt(aweXpect.Core.IThat<TItem> source, System.Func<TItem, int?> mapper, string propertyExpression, System.Action<int?, string>? validation = null) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThan(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> LessThanOrEqualTo(int? expected) { }
-            public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> NotEqualTo(int? unexpected) { }
-        }
-        public class NullableLong<TItem>
-        {
-            public NullableLong(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression, System.Action<long?, string>? validation = null) { }
+            public Long(aweXpect.Core.IThat<TItem> source, System.Func<TItem, long?> mapper, string propertyExpression, System.Action<long?, string>? validation = null) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> EqualTo(long? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThan(long? expected) { }
             public aweXpect.Results.AndOrResult<TItem, aweXpect.Core.IThat<TItem>> GreaterThanOrEqualTo(long? expected) { }

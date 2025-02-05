@@ -9,6 +9,6 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the second of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateTimeOffset?> HasSecond(this IThat<DateTimeOffset?> source)
+	public static PropertyResult.Int<DateTimeOffset?> HasSecond(this IThat<DateTimeOffset?> source)
 		=> new(source, a => a?.Second, "second");
 }

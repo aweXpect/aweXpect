@@ -10,6 +10,6 @@ public static partial class ThatNullableDateTime
 	/// <summary>
 	///     Verifies that the second of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateTime?> HasSecond(this IThat<DateTime?> source)
+	public static PropertyResult.Int<DateTime?> HasSecond(this IThat<DateTime?> source)
 		=> new(source, a => a?.Second, "second");
 }

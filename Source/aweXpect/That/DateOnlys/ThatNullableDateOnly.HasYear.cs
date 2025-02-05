@@ -11,7 +11,7 @@ public static partial class ThatNullableDateOnly
 	/// <summary>
 	///     Verifies that the year of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateOnly?> HasYear(this IThat<DateOnly?> source)
+	public static PropertyResult.Int<DateOnly?> HasYear(this IThat<DateOnly?> source)
 		=> new(source, a => a?.Year, "year");
 }
 #endif

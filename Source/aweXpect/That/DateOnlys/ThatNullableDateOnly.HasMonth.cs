@@ -11,7 +11,7 @@ public static partial class ThatNullableDateOnly
 	/// <summary>
 	///     Verifies that the month of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateOnly?> HasMonth(this IThat<DateOnly?> source)
+	public static PropertyResult.Int<DateOnly?> HasMonth(this IThat<DateOnly?> source)
 		=> new(source, a => a?.Month, "month");
 }
 #endif
