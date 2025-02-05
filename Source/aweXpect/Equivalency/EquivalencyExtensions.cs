@@ -3,7 +3,6 @@ using aweXpect.Core;
 using aweXpect.Equivalency;
 using aweXpect.Options;
 using aweXpect.Results;
-using EquivalencyOptions = aweXpect.Equivalency.EquivalencyOptions;
 
 // ReSharper disable once CheckNamespace
 namespace aweXpect;

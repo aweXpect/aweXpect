@@ -7,7 +7,6 @@ using aweXpect.Equivalency;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
-using EquivalencyOptions = aweXpect.Equivalency.EquivalencyOptions;
 
 namespace aweXpect;
 

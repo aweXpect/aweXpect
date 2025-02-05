@@ -649,7 +649,6 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsSameAs<T>(this aweXpect.Core.IThat<T?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  class { }
-        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>, object?> NotEquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? unexpected, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatSignaler
     {
@@ -779,6 +778,7 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TElement, TSelf>
     {
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
+        public TSelf Equivalent(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>
