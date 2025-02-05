@@ -779,7 +779,6 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TElement, TSelf>
     {
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
-        public TSelf Equivalent(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>
