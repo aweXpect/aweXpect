@@ -19,7 +19,7 @@ public partial class ObjectEqualityOptions<TSubject>
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
-		public bool AreConsideredEqual<T, TExpected>(T actual, TExpected expected) => comparer.Equals(actual, expected);
+		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected) => comparer.Equals(actual, expected);
 
 		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
 		public string GetExpectation(string expected)

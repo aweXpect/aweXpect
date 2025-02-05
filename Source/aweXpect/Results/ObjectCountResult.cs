@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Equivalency;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -37,6 +38,7 @@ public class ObjectCountResult<TType, TThat, TElement, TSelf>(
 	: CountResult<TType, TThat, TSelf>(expectationBuilder, returnValue, quantifier)
 	where TSelf : ObjectCountResult<TType, TThat, TElement, TSelf>
 {
+#if DEBUG //TODO: Enable again after Core update
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
@@ -48,6 +50,7 @@ public class ObjectCountResult<TType, TThat, TElement, TSelf>(
 		options.Equivalent(equivalencyOptions);
 		return (TSelf)this;
 	}
+#endif
 
 	/// <summary>
 	///     Uses the provided <paramref name="comparer" /> for comparing <see langword="object" />s.

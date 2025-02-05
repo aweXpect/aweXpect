@@ -26,9 +26,8 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be serializable as JSON,
-					             but Property Name did not match:
-					               Expected: "foo"
-					               Received: <null>
+					             but it was not:
+					               Property Name was <null> instead of "foo"
 					             """);
 			}
 
@@ -171,9 +170,8 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected subject to
 					             be serializable as PocoWithIgnoredProperty JSON,
-					             but Property Name did not match:
-					               Expected: "foo"
-					               Received: <null>
+					             but it was not:
+					               Property Name was <null> instead of "foo"
 					             """);
 			}
 

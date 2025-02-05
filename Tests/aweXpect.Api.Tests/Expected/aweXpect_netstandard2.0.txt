@@ -18,8 +18,8 @@ namespace aweXpect
     }
     public static class EquivalencyExtensions
     {
-        public static aweXpect.Options.ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this aweXpect.Options.ObjectEqualityOptions<TSubject> options, aweXpect.Options.EquivalencyOptions equivalencyOptions) { }
-        public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> result, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? equivalencyOptions = null)
+        public static aweXpect.Options.ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this aweXpect.Options.ObjectEqualityOptions<TSubject> options, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions) { }
+        public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> result, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? equivalencyOptions = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> { }
     }
     public static class ThatBool
@@ -624,7 +624,7 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>, T?> IsEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  struct { }
-        public static aweXpect.Results.ObjectEqualityResult<TSubject, aweXpect.Core.IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectEqualityResult<TSubject, aweXpect.Core.IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> IsExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsNot<TType>(this aweXpect.Core.IThat<object?> source) { }
@@ -649,7 +649,7 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsSameAs<T>(this aweXpect.Core.IThat<T?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  class { }
-        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>, object?> NotEquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? unexpected, System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>, object?> NotEquivalentTo(this aweXpect.Core.IThatIs<object?> source, object? unexpected, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatSignaler
     {
@@ -720,6 +720,18 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsPositive(this aweXpect.Core.IThat<System.TimeSpan> source) { }
     }
 }
+namespace aweXpect.Equivalency
+{
+    public class EquivalencyOptions
+    {
+        public EquivalencyOptions() { }
+        public bool IgnoreCollectionOrder { get; }
+        public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
+        public aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(bool ignoreCollectionOrder = true) { }
+        public aweXpect.Equivalency.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
+        public static aweXpect.Equivalency.EquivalencyOptions FromCallback(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? callback) { }
+    }
+}
 namespace aweXpect.Results
 {
     public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>
@@ -767,7 +779,6 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.ObjectCountResult<TType, TThat, TElement, TSelf>
     {
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
-        public TSelf Equivalent(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
     }
     public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>

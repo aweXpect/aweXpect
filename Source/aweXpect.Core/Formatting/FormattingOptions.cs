@@ -5,9 +5,10 @@
 /// </summary>
 public class FormattingOptions
 {
-	private FormattingOptions(bool useLineBreaks)
+	private FormattingOptions(bool useLineBreaks, string indentation = "")
 	{
 		UseLineBreaks = useLineBreaks;
+		Indentation = indentation;
 	}
 
 	/// <summary>
@@ -16,9 +17,16 @@ public class FormattingOptions
 	public static FormattingOptions MultipleLines { get; } = new(true);
 
 	/// <summary>
+	///     Format the objects on multiple lines with an indentation of 2 blanks.
+	/// </summary>
+	public static FormattingOptions Indented { get; } = new(true, "  ");
+
+	/// <summary>
 	///     Format the objects on a single line.
 	/// </summary>
 	public static FormattingOptions SingleLine { get; } = new(false);
 
 	internal bool UseLineBreaks { get; }
+	
+	internal string Indentation { get; }
 }

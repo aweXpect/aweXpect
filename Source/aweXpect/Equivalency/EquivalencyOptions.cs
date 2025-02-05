@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace aweXpect.Options;
+namespace aweXpect.Equivalency;
 
 /// <summary>
 ///     Options for equivalency.
@@ -16,11 +16,26 @@ public class EquivalencyOptions
 	public IReadOnlyList<string> MembersToIgnore => _membersToIgnore;
 
 	/// <summary>
+	///     Ignores the order of collections when checking for equivalency.
+	/// </summary>
+	public bool IgnoreCollectionOrder { get; private set; }
+
+	/// <summary>
 	///     Ignores the <paramref name="memberToIgnore" /> when checking for equivalency.
 	/// </summary>
 	public EquivalencyOptions IgnoringMember(string memberToIgnore)
 	{
 		_membersToIgnore.Add(memberToIgnore);
+		return this;
+	}
+
+	/// <summary>
+	///     Ignores the order of collections when checking for equivalency
+	///     when <paramref name="ignoreCollectionOrder" /> is <see langword="true" />.
+	/// </summary>
+	public EquivalencyOptions IgnoringCollectionOrder(bool ignoreCollectionOrder = true)
+	{
+		IgnoreCollectionOrder = ignoreCollectionOrder;
 		return this;
 	}
 

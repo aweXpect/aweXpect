@@ -111,7 +111,7 @@ namespace aweXpect.Core
     }
     public interface IObjectMatchType
     {
-        bool AreConsideredEqual<TSubject, TExpected>(TSubject actual, TExpected expected);
+        bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
         string GetExpectation(string expected);
         string GetExtendedFailure(string it, object? actual, object? expected);
     }
@@ -405,6 +405,7 @@ namespace aweXpect.Formatting
     }
     public class FormattingOptions
     {
+        public static aweXpect.Formatting.FormattingOptions Indented { get; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
     }
@@ -540,13 +541,6 @@ namespace aweXpect.Options
         public System.Collections.Generic.IComparer<TItem> GetComparer() { }
         public void SetComparer(System.Collections.Generic.IComparer<TItem> comparer) { }
         public override string ToString() { }
-    }
-    public class EquivalencyOptions
-    {
-        public EquivalencyOptions() { }
-        public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
-        public aweXpect.Options.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
-        public static aweXpect.Options.EquivalencyOptions FromCallback(System.Func<aweXpect.Options.EquivalencyOptions, aweXpect.Options.EquivalencyOptions>? callback) { }
     }
     public class NumberTolerance<TNumber>
         where TNumber :  struct, System.IComparable<TNumber>
