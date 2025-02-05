@@ -127,7 +127,6 @@ public sealed partial class ThatEnumerable
 					              """);
 			}
 
-#if DEBUG //TODO: Enable again after Core update
 			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
@@ -145,7 +144,6 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).DoesNotThrow();
 			}
-#endif
 
 			[Theory]
 			[InlineData(1, false)]
