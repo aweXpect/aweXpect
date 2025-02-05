@@ -129,127 +129,9 @@ public static class PropertyResult
 	}
 
 	/// <summary>
-	///     Result for a nullable <see langword="int" /> property.
+	///     Result for a <see langword="long" /> property.
 	/// </summary>
-	public class NullableInt<TItem>(
-		IThat<TItem> source,
-		Func<TItem, int?> mapper,
-		string propertyExpression,
-		Action<int?, string>? validation = null)
-	{
-		/// <summary>
-		///     …is equal to the <paramref name="expected" /> value.
-		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> EqualTo(
-			int? expected)
-		{
-			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, int>(
-						it,
-						expected,
-						mapper,
-						propertyExpression,
-						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
-				source);
-		}
-
-		/// <summary>
-		///     …is not equal to the <paramref name="unexpected" /> value.
-		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
-			int? unexpected)
-		{
-			validation?.Invoke(unexpected, nameof(unexpected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, int>(
-						it,
-						unexpected,
-						mapper,
-						propertyExpression,
-						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
-				source);
-		}
-
-		/// <summary>
-		///     …is greater than the <paramref name="expected" /> value.
-		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
-			int? expected)
-		{
-			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, int>(
-						it,
-						expected,
-						mapper,
-						propertyExpression,
-						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
-				source);
-		}
-
-		/// <summary>
-		///     …is greater than or equal to the <paramref name="expected" /> value.
-		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
-			int? expected)
-		{
-			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, int>(
-						it,
-						expected,
-						mapper,
-						propertyExpression,
-						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
-				source);
-		}
-
-		/// <summary>
-		///     …is less than the <paramref name="expected" /> value.
-		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> LessThan(
-			int? expected)
-		{
-			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, int>(
-						it,
-						expected,
-						mapper,
-						propertyExpression,
-						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
-				source);
-		}
-
-		/// <summary>
-		///     …is less than or equal to the <paramref name="expected" /> value.
-		/// </summary>
-		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
-			int? expected)
-		{
-			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new PropertyConstraint<TItem, int>(
-						it,
-						expected,
-						mapper,
-						propertyExpression,
-						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
-				source);
-		}
-	}
-
-	/// <summary>
-	///     Result for a nullable <see langword="long" /> property.
-	/// </summary>
-	public class NullableLong<TItem>(
+	public class Long<TItem>(
 		IThat<TItem> source,
 		Func<TItem, long?> mapper,
 		string propertyExpression,
@@ -404,7 +286,7 @@ public static class PropertyResult
 	}
 
 	/// <summary>
-	///     Result for a <see cref="DateTimeKind" /> property.
+	///     Result for a <see cref="TimeSpan" /> property.
 	/// </summary>
 	public class TimeSpan<TItem>(
 		IThat<TItem> source,

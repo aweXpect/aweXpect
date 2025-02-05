@@ -10,6 +10,6 @@ public static partial class ThatNullableDateTime
 	/// <summary>
 	///     Verifies that the month of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateTime?> HasMonth(this IThat<DateTime?> source)
+	public static PropertyResult.Int<DateTime?> HasMonth(this IThat<DateTime?> source)
 		=> new(source, a => a?.Month, "month");
 }

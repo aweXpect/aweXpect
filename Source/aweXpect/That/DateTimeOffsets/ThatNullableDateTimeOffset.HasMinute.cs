@@ -9,6 +9,6 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the minute of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateTimeOffset?> HasMinute(this IThat<DateTimeOffset?> source)
+	public static PropertyResult.Int<DateTimeOffset?> HasMinute(this IThat<DateTimeOffset?> source)
 		=> new(source, a => a?.Minute, "minute");
 }

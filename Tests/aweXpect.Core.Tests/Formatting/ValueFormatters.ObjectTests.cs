@@ -50,6 +50,34 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task ShouldSupportIndentation()
+		{
+			Dummy value = new()
+			{
+				Inner = new InnerDummy
+				{
+					InnerValue = "foo"
+				},
+				Value = 2
+			};
+			string expectedResult = """
+			                        Dummy {
+			                            Inner = InnerDummy {
+			                              InnerValue = "foo"
+			                            },
+			                            Value = 2
+			                          }
+			                        """;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.Indented);
+			Formatter.Format(sb, value, FormattingOptions.Indented);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task ShouldUseMultipleLinesPerDefault()
 		{
 			Dummy value = new()

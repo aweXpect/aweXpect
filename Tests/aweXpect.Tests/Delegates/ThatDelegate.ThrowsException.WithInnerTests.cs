@@ -33,6 +33,28 @@ public sealed partial class ThatDelegate
 				await That(result).IsSameAs(exception);
 			}
 
+			[Fact(Skip="Temporarily skip until next Core update")]
+			public async Task ForGeneric_WhenInnerExceptionDoesNotMatchCriteria_ShouldFail()
+			{
+				string message = "bar";
+				Action action = ()
+					=> throw new OuterException(innerException: new CustomException(message));
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInner<Exception>(x => x.HasMessage("foo"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected action to
+					             throw an exception with an inner exception which should have Message equal to "foo",
+					             but it was "bar" which differs at index 0:
+					                ↓ (actual)
+					               "bar"
+					               "foo"
+					                ↑ (expected)
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task ForGeneric_WhenInnerExceptionHasSuperType_ShouldFail(string message)
@@ -69,6 +91,22 @@ public sealed partial class ThatDelegate
 					              but it was an OtherException:
 					                {message}
 					              """);
+			}
+
+			[Fact]
+			public async Task ForGeneric_WhenInnerExceptionIsNotPresent_ShouldFail()
+			{
+				Action action = () => throw new OuterException();
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInner<Exception>();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected action to
+					             throw an exception with an inner exception,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]
@@ -137,6 +175,29 @@ public sealed partial class ThatDelegate
 				await That(result).IsSameAs(exception);
 			}
 
+			[Fact(Skip="Temporarily skip until next Core update")]
+			public async Task ForType_WhenInnerExceptionDoesNotMatchCriteria_ShouldFail()
+			{
+				string message = "bar";
+				Action action = ()
+					=> throw new OuterException(innerException: new CustomException(message));
+
+				async Task Act()
+					=> await That(action).ThrowsException()
+						.WithInner(typeof(Exception), x => x.HasMessage("foo"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected action to
+					             throw an exception with an inner exception which should have Message equal to "foo",
+					             but it was "bar" which differs at index 0:
+					                ↓ (actual)
+					               "bar"
+					               "foo"
+					                ↑ (expected)
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task ForType_WhenInnerExceptionHasSuperType_ShouldFail(string message)
@@ -174,6 +235,22 @@ public sealed partial class ThatDelegate
 					              but it was an OtherException:
 					                {message}
 					              """);
+			}
+
+			[Fact]
+			public async Task ForType_WhenInnerExceptionIsNotPresent_ShouldFail()
+			{
+				Action action = () => throw new OuterException();
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInner(typeof(Exception));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected action to
+					             throw an exception with an inner exception,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]

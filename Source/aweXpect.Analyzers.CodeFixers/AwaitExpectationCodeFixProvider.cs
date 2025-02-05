@@ -34,25 +34,23 @@ public class AwaitExpectationCodeFixProvider : CodeFixProvider
 		{
 			TextSpan diagnosticSpan = diagnostic.Location.SourceSpan;
 
-			SyntaxNode? root =
-				await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
+			SyntaxNode? root = await context.Document
+				.GetSyntaxRootAsync(context.CancellationToken)
+				.ConfigureAwait(false);
 
 			SyntaxNode? diagnosticNode = root?.FindNode(diagnosticSpan);
-
-			if (diagnosticNode is not ExpressionSyntax expressionSyntax)
+			if (diagnosticNode is ExpressionSyntax expressionSyntax)
 			{
-				return;
+				ExpressionSyntax? upperMostExpression = expressionSyntax
+					.AncestorsAndSelf().OfType<ExpressionSyntax>().Last();
+
+				context.RegisterCodeFix(
+					CodeAction.Create(
+						Resources.aweXpect0001CodeFixTitle,
+						c => AwaitAssertionAsync(context.Document, upperMostExpression, c),
+						nameof(Resources.aweXpect0001CodeFixTitle)),
+					diagnostic);
 			}
-
-			ExpressionSyntax? upperMostExpression =
-				expressionSyntax.AncestorsAndSelf().OfType<ExpressionSyntax>().Last();
-
-			context.RegisterCodeFix(
-				CodeAction.Create(
-					Resources.aweXpect0001CodeFixTitle,
-					c => AwaitAssertionAsync(context.Document, upperMostExpression, c),
-					nameof(Resources.aweXpect0001CodeFixTitle)),
-				diagnostic);
 		}
 	}
 
@@ -67,20 +65,28 @@ public class AwaitExpectationCodeFixProvider : CodeFixProvider
 	{
 		DocumentEditor? editor = await DocumentEditor.CreateAsync(document, cancellationToken).ConfigureAwait(false);
 
-		// Add await to the invocation expression
-		AwaitExpressionSyntax? awaitExpression = SyntaxFactory
-			.AwaitExpression(expressionSyntax.WithLeadingTrivia(SyntaxFactory.Space))
-			.WithLeadingTrivia(expressionSyntax.GetLeadingTrivia());
-
 		// Find the containing method
 		MethodDeclarationSyntax? methodDeclaration = expressionSyntax.AncestorsAndSelf()
 			.OfType<MethodDeclarationSyntax>()
 			.FirstOrDefault();
 
-		if (methodDeclaration == null)
+		if (methodDeclaration != null)
 		{
-			return editor.GetChangedDocument();
+			MethodDeclarationSyntax newMethodDeclaration = MakeMethodAsync(methodDeclaration, expressionSyntax);
+			editor.ReplaceNode(methodDeclaration, newMethodDeclaration);
 		}
+
+		return editor.GetChangedDocument();
+	}
+
+	private static MethodDeclarationSyntax MakeMethodAsync(
+		MethodDeclarationSyntax methodDeclaration,
+		ExpressionSyntax expressionSyntax)
+	{
+		// Add await to the invocation expression
+		AwaitExpressionSyntax? awaitExpression = SyntaxFactory
+			.AwaitExpression(expressionSyntax.WithLeadingTrivia(SyntaxFactory.Space))
+			.WithLeadingTrivia(expressionSyntax.GetLeadingTrivia());
 
 		SyntaxTokenList modifiers = methodDeclaration.Modifiers;
 
@@ -115,8 +121,6 @@ public class AwaitExpectationCodeFixProvider : CodeFixProvider
 			.WithReturnType(newReturnType)
 			.WithAdditionalAnnotations(Formatter.Annotation);
 
-		editor.ReplaceNode(methodDeclaration, newMethodDeclaration);
-
-		return editor.GetChangedDocument();
+		return newMethodDeclaration;
 	}
 }

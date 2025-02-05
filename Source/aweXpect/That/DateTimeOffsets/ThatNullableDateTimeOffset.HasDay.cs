@@ -9,6 +9,6 @@ public static partial class ThatNullableDateTimeOffset
 	/// <summary>
 	///     Verifies that the day of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<DateTimeOffset?> HasDay(this IThat<DateTimeOffset?> source)
+	public static PropertyResult.Int<DateTimeOffset?> HasDay(this IThat<DateTimeOffset?> source)
 		=> new(source, a => a?.Day, "day");
 }

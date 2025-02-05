@@ -18,11 +18,11 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match regex "FOO\nBAR",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
 				               "FOO\nBAR"
-				               ↑ (regex)
+				               ↑ (regex pattern)
 				             """);
 		}
 
@@ -38,11 +38,11 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match regex "bar",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo"
 				               "bar"
-				               ↑ (regex)
+				               ↑ (regex pattern)
 				             """);
 		}
 
@@ -58,11 +58,11 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match regex "\tsomething\r\nelse",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
 				               "\tsomething\r\nelse"
-				               ↑ (regex)
+				               ↑ (regex pattern)
 				             """);
 		}
 
@@ -79,11 +79,11 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected () => Task.FromException(exception) to
 				             throw an exception with Message matching regex "bar",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               "foo"
 				               "bar"
-				               ↑ (regex)
+				               ↑ (regex pattern)
 				             """);
 		}
 
@@ -142,11 +142,11 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected sut to
 				             match regex ".*",
-				             but it did not match
+				             but it did not match:
 				               ↓ (actual)
 				               <null>
 				               ".*"
-				               ↑ (regex)
+				               ↑ (regex pattern)
 				             """);
 		}
 	}

@@ -254,14 +254,14 @@ namespace aweXpect
     }
     public static class ThatNullableDateTime
     {
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasDay(this aweXpect.Core.IThat<System.DateTime?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasHour(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasDay(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasHour(this aweXpect.Core.IThat<System.DateTime?> source) { }
         public static aweXpect.Results.PropertyResult.DateTimeKind<System.DateTime?> HasKind(this aweXpect.Core.IThat<System.DateTime?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasMillisecond(this aweXpect.Core.IThat<System.DateTime?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasMinute(this aweXpect.Core.IThat<System.DateTime?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasMonth(this aweXpect.Core.IThat<System.DateTime?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasSecond(this aweXpect.Core.IThat<System.DateTime?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTime?> HasYear(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasMillisecond(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasMinute(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasMonth(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasSecond(this aweXpect.Core.IThat<System.DateTime?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTime?> HasYear(this aweXpect.Core.IThat<System.DateTime?> source) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsAfter(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsBefore(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsEqualTo(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
@@ -275,14 +275,14 @@ namespace aweXpect
     }
     public static class ThatNullableDateTimeOffset
     {
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasDay(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasHour(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasMillisecond(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasMinute(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasMonth(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasDay(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasHour(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasMillisecond(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasMinute(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasMonth(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
         public static aweXpect.Results.PropertyResult.TimeSpan<System.DateTimeOffset?> HasOffset(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasSecond(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableInt<System.DateTimeOffset?> HasYear(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasSecond(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
+        public static aweXpect.Results.PropertyResult.Int<System.DateTimeOffset?> HasYear(this aweXpect.Core.IThat<System.DateTimeOffset?> source) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsAfter(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsBefore(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsEqualTo(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }

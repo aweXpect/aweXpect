@@ -32,7 +32,12 @@ public sealed class StringDifference(
 		/// <summary>
 		///     The expected string is treated as a wildcard pattern.
 		/// </summary>
-		Wildcard
+		Wildcard,
+
+		/// <summary>
+		///     The expected string is treated as a regex pattern.
+		/// </summary>
+		Regex
 	}
 
 	private const string ActualIndicator = " (actual)";
@@ -45,7 +50,7 @@ public sealed class StringDifference(
 	/// </summary>
 	public int IndexOfFirstMismatch(MatchType matchType)
 	{
-		if (matchType == MatchType.Wildcard)
+		if (matchType is MatchType.Wildcard or MatchType.Regex)
 		{
 			return 0;
 		}
@@ -93,12 +98,12 @@ public sealed class StringDifference(
 			return sb.ToString();
 		}
 
-		if (settings?.MatchType == MatchType.Wildcard)
+		return settings?.MatchType switch
 		{
-			return ToWildcardString(prefix, actual, expected);
-		}
-
-		return ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings);
+			MatchType.Wildcard => ToPatternString(MatchType.Wildcard, prefix, actual, expected),
+			MatchType.Regex => ToPatternString(MatchType.Regex, prefix, actual, expected),
+			_ => ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings)
+		};
 	}
 
 	private static string ToEqualityString(string prefix, string actual, string expected, int indexOfFirstMismatch,
@@ -158,7 +163,7 @@ public sealed class StringDifference(
 		return sb.ToString();
 	}
 
-	private static string ToWildcardString(string prefix, string actual, string expected)
+	private static string ToPatternString(MatchType matchType, string prefix, string actual, string expected)
 	{
 		const char arrowDown = '\u2193';
 		const char arrowUp = '\u2191';
@@ -172,7 +177,7 @@ public sealed class StringDifference(
 		sb.Append("  ");
 		Formatter.Format(sb, expected.DisplayWhitespace().TruncateWithEllipsisOnWord(300));
 		sb.AppendLine();
-		sb.Append("  ").Append(arrowUp).Append(" (wildcard pattern)");
+		sb.Append("  ").Append(arrowUp).Append(GetExpected(matchType));
 		return sb.ToString();
 	}
 
@@ -317,6 +322,7 @@ public sealed class StringDifference(
 		=> matchType switch
 		{
 			MatchType.Wildcard => " (wildcard pattern)",
+			MatchType.Regex => " (regex pattern)",
 			_ => " (expected)"
 		};
 }

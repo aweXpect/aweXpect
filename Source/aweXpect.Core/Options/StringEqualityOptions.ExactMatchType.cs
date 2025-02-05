@@ -23,8 +23,7 @@ public partial class StringEqualityOptions
 		{
 			for (int i = 0; i <= stringWithLeadingWhitespace.Length - value.Length; i++)
 			{
-				if (comparer.Equals(
-					    stringWithLeadingWhitespace.Substring(i, value.Length), value))
+				if (comparer.Equals(stringWithLeadingWhitespace.Substring(i, value.Length), value))
 				{
 					return i;
 				}

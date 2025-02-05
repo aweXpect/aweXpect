@@ -10,7 +10,7 @@ public static partial class ThatNullableTimeOnly
 	/// <summary>
 	///     Verifies that the hour of the subject…
 	/// </summary>
-	public static PropertyResult.NullableInt<TimeOnly?> HasHour(this IThat<TimeOnly?> source)
+	public static PropertyResult.Int<TimeOnly?> HasHour(this IThat<TimeOnly?> source)
 		=> new(source, a => a?.Hour, "hour");
 }
 #endif
