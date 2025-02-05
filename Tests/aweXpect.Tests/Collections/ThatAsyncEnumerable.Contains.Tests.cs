@@ -289,7 +289,7 @@ public sealed partial class ThatAsyncEnumerable
 #pragma warning disable aweXpect0001
 				StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 					expectation = That(subject).Contains(match);
-				expectation.AsWildcard();
+				_ = expectation.AsWildcard();
 
 				async Task Act()
 					=> await expectation.Exactly();

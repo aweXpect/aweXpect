@@ -38,11 +38,11 @@ public class ExpectationResultTests
 	public async Task WithCancellation_ShouldForwardTokenToExpectationBuilder()
 	{
 		MyExpectationBuilder myBuilder = new("my-subject");
-		ExpectationResult<int> sut = new(myBuilder);
 		CancellationTokenSource cts = new();
 		CancellationToken token = cts.Token;
+		ExpectationResult<int> sut = new(myBuilder);
 
-		sut.WithCancellation(token);
+		_ = sut.WithCancellation(token);
 
 		CancellationToken? receivedToken = await myBuilder.GetRegisteredCancellationToken();
 		await That(receivedToken).IsEqualTo(token);
@@ -51,7 +51,7 @@ public class ExpectationResultTests
 	private class MyExpectationBuilder(string subject, Func<ConstraintResult>? resultBuilder = null)
 		: ExpectationBuilder(subject)
 	{
-		private readonly Func<ConstraintResult>? _resultBuilder = resultBuilder ?? DefaultResultBuilder;
+		private readonly Func<ConstraintResult> _resultBuilder = resultBuilder ?? DefaultResultBuilder;
 
 		private CancellationToken? _cancellationToken;
 

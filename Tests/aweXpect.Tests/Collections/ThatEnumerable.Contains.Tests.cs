@@ -285,7 +285,7 @@ public sealed partial class ThatEnumerable
 #pragma warning disable aweXpect0001
 				StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> expectation =
 					That(subject).Contains(match);
-				expectation.AsWildcard();
+				_ = expectation.AsWildcard();
 
 				async Task Act()
 					=> await expectation.Exactly();
