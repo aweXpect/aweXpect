@@ -179,13 +179,6 @@ partial class Build
 				continue;
 			}
 
-			if (forCore && line.StartsWith("[![Nuget](https://img.shields.io/nuget/v/aweXpect"))
-			{
-				sb.AppendLine(line
-					.Replace("/aweXpect)", "/aweXpect.Core)"));
-				continue;
-			}
-
 			sb.AppendLine(line);
 		}
 
