@@ -1,6 +1,8 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using System.Linq;
+using aweXpect.Core;
+using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -234,6 +236,77 @@ public sealed partial class ThatAsyncEnumerable
 
 		public sealed class StringItemTests
 		{
+			[Theory]
+			[InlineData("[a-f]{1}[o]*", true)]
+			[InlineData("[g-h]{1}[o]*", false)]
+			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).Contains(regex).AsRegex();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{regex}" as regex at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("?oo", true)]
+			[InlineData("f??o", false)]
+			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).Contains(wildcard).AsWildcard();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{wildcard}" as wildcard at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("foo", true)]
+			[InlineData("*oo", false)]
+			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+#pragma warning disable aweXpect0001
+				StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
+					expectation = That(subject).Contains(match);
+				expectation.AsWildcard();
+
+				async Task Act()
+					=> await expectation.Exactly();
+#pragma warning restore aweXpect0001
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected subject to
+					              contain "{match}" at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
 			[Fact]
 			public async Task ShouldCompareCaseSensitive()
 			{
@@ -294,6 +367,32 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(sut).Contains("GREEN").IgnoringCase();
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData("fo\ro", true)]
+			[InlineData("go\ro", false)]
+			public async Task WhenIgnoringNewlineStyle_ShouldIgnoreNewlineStyle(string match, bool expectSuccess)
+			{
+				string nl = Environment.NewLine;
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable([$"fo{nl}o", $"ba{nl}r", $"ba{nl}z"]);
+
+				async Task Act()
+					=> await That(sut).Contains(match).IgnoringNewlineStyle();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected sut to
+					              contain {Formatter.Format(match)} ignoring newline style at least once,
+					              but it contained it 0 times in [
+					                "fo
+					                o",
+					                "ba
+					                r",
+					                "ba
+					                z"
+					              ]
+					              """);
 			}
 
 			[Fact]

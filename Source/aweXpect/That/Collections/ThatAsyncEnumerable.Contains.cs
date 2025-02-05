@@ -43,14 +43,14 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
+	public static StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 		Contains(
 			this IThat<IAsyncEnumerable<string?>?> source,
 			string? expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
+		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<string?>(
 					it,
