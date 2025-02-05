@@ -10,8 +10,13 @@ public static partial class ThatStream
 	/// <summary>
 	///     Verifies that the length of the <see cref="Stream" /> subject…
 	/// </summary>
+#if DEBUG
+	public static PropertyResult.Long<Stream?> HasLength(this IThat<Stream?> source)
+		=> new(source, a => a?.Length, "length", (value, paramName) =>
+#else
 	public static PropertyResult.NullableLong<Stream?> HasLength(this IThat<Stream?> source)
 		=> new(source, a => a?.Length, "length", (value, paramName) =>
+#endif
 		{
 			if (value < 0)
 			{

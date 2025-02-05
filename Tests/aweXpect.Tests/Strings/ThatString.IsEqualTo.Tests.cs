@@ -6,6 +6,156 @@ public sealed partial class ThatString
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenActualAndExpectedAreNull_ShouldSucceed()
+			{
+				string? subject = null;
+				string? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenActualIsNull_ShouldFail()
+			{
+				string? subject = null;
+				string expected = "some text";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to "some text",
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string? subject = "some text";
+				string expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to <null>,
+					             but it was "some text"
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringHasMissingLeadingWhitespace_ShouldFail()
+			{
+				string subject = "some text";
+				string expected = " \t some text";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to " \t some text",
+					             but it was "some text" which misses some whitespace (" \t " at the beginning)
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringHasMissingTrailingWhitespace_ShouldFail()
+			{
+				string subject = "some text";
+				string expected = "some text \t ";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to "some text \t ",
+					             but it was "some text" which misses some whitespace (" \t " at the end)
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringHasUnexpectedLeadingWhitespace_ShouldFail()
+			{
+				string subject = " \t some text";
+				string expected = "some text";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to "some text",
+					             but it was " \t some text" which has unexpected whitespace (" \t " at the beginning)
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringHasUnexpectedTrailingWhitespace_ShouldFail()
+			{
+				string subject = "some text \t ";
+				string expected = "some text";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to "some text",
+					             but it was "some text \t " which has unexpected whitespace (" \t " at the end)
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringIsLonger_ShouldFail()
+			{
+				string subject = "some text without out";
+				string expected = "some text with";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to "some text with",
+					             but it was "some text without out" with a length of 21 which is longer than the expected length of 14 and has superfluous:
+					               "out out"
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringIsShorter_ShouldFail()
+			{
+				string subject = "some text with";
+				string expected = "some text without out";
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             be equal to "some text without out",
+					             but it was "some text with" with a length of 14 which is shorter than the expected length of 21 and misses:
+					               "out out"
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenStringsAreTheSame_ShouldSucceed(string subject)
@@ -104,22 +254,6 @@ public sealed partial class ThatString
 
 		public sealed class IgnoringNewlineStyleTests
 		{
-			[Theory]
-			[InlineAutoData("foo\nbar", "foo\rbar")]
-			[InlineAutoData("foo\rbar", "foo\nbar")]
-			[InlineAutoData("foo\nbar", "foo\r\nbar")]
-			[InlineAutoData("foo\rbar", "foo\r\nbar")]
-			[InlineAutoData("foo\r\nbar", "foo\nbar")]
-			[InlineAutoData("foo\r\nbar", "foo\rbar")]
-			public async Task WhenStringsDifferOnlyInNewlineStyle_ShouldSucceed(
-				string subject, string expected)
-			{
-				async Task Act()
-					=> await That(subject).IsEqualTo(expected).IgnoringNewlineStyle();
-
-				await That(Act).DoesNotThrow();
-			}
-
 			[Fact]
 			public async Task ShouldIncludeCorrectIndexInMessage()
 			{
@@ -139,6 +273,22 @@ public sealed partial class ThatString
 					               "foo\nbaz"
 					                       ↑ (expected)
 					             """);
+			}
+
+			[Theory]
+			[InlineAutoData("foo\nbar", "foo\rbar")]
+			[InlineAutoData("foo\rbar", "foo\nbar")]
+			[InlineAutoData("foo\nbar", "foo\r\nbar")]
+			[InlineAutoData("foo\rbar", "foo\r\nbar")]
+			[InlineAutoData("foo\r\nbar", "foo\nbar")]
+			[InlineAutoData("foo\r\nbar", "foo\rbar")]
+			public async Task WhenStringsDifferOnlyInNewlineStyle_ShouldSucceed(
+				string subject, string expected)
+			{
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).IgnoringNewlineStyle();
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 
