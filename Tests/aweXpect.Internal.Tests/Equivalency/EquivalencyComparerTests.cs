@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Equivalency;
-using aweXpect.Options;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Local
 // ReSharper disable NotAccessedField.Local

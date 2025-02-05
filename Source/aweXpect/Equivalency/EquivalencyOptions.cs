@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace aweXpect.Options;
+namespace aweXpect.Equivalency;
 
 /// <summary>
 ///     Options for equivalency.

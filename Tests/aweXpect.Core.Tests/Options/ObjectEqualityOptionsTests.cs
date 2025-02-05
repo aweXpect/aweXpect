@@ -1,4 +1,5 @@
-﻿using aweXpect.Options;
+﻿using aweXpect.Equivalency;
+using aweXpect.Options;
 
 namespace aweXpect.Core.Tests.Options;
 
