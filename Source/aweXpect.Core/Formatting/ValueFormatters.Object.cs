@@ -111,7 +111,7 @@ public static partial class ValueFormatters
 		stringBuilder.Append($"{new string(' ', indentation)}{member.Name} = ");
 		if (options.UseLineBreaks)
 		{
-			formattedValue = formattedValue.Indent(options.Indentation + "  ", false);
+			formattedValue = formattedValue.Indent("  ", false);
 		}
 
 		stringBuilder.Append(formattedValue);
