@@ -14,7 +14,8 @@ public partial class ThatDelegateThrows<TException>
 		Action<IThat<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
-					"with an inner exception which should ")
+					"with an inner exception which should ",
+					false)
 				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
 			this);
 

@@ -2,7 +2,7 @@
 
 public sealed partial class ThatDelegate
 {
-	public sealed class ThrowsExactly
+	public sealed partial class ThrowsExactly
 	{
 		public sealed class GenericTests
 		{

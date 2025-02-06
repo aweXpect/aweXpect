@@ -12,7 +12,6 @@ namespace aweXpect.Options;
 public partial class StringEqualityOptions : IOptionsEquality<string?>
 {
 	private const int DefaultMaxLength = 30;
-	private const int LongMaxLength = 300;
 	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
 	private static readonly IStringMatchType RegexMatch = new RegexMatchType();
 

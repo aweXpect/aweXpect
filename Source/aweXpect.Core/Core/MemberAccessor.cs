@@ -57,10 +57,5 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 		Func<TSource, TTarget> func, string name)
 		=> new(func, name);
 
-	internal bool TryAccessMember(TSource value,
-		[NotNullWhen(true)] out TTarget? member)
-	{
-		member = _accessor.Invoke(value);
-		return member is not null;
-	}
+	internal TTarget? AccessMember(TSource value) => _accessor.Invoke(value);
 }

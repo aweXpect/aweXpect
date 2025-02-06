@@ -31,6 +31,44 @@ public sealed partial class ThatDelegate
 				await That(result).IsSameAs(exception);
 			}
 
+			[Fact(Skip = "Temporarily skip until next Core update")]
+			public async Task WhenInnerExceptionDoesNotMatchCriteria_ShouldFail()
+			{
+				string message = "bar";
+				Action action = ()
+					=> throw new OuterException(innerException: new CustomException(message));
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInnerException(x => x.HasMessage("foo"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected action to
+					             throw an exception with an inner exception which should have Message equal to "foo",
+					             but it was "bar" which differs at index 0:
+					                ↓ (actual)
+					               "bar"
+					               "foo"
+					                ↑ (expected)
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenInnerExceptionIsNotPresent_ShouldFail()
+			{
+				Action action = () => throw new OuterException();
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInnerException();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected action to
+					             throw an exception with an inner exception,
+					             but it was <null>
+					             """);
+			}
+
 			[Fact]
 			public async Task WhenInnerExceptionIsPresent_ShouldSucceed()
 			{

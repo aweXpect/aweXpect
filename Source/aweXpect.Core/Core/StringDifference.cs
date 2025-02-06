@@ -167,15 +167,16 @@ public sealed class StringDifference(
 	{
 		const char arrowDown = '\u2193';
 		const char arrowUp = '\u2191';
+		const int longMaxLength = 300;
 
 		StringBuilder sb = new();
 		sb.Append(prefix).AppendLine(":");
 		sb.Append("  ").Append(arrowDown).AppendLine(ActualIndicator);
 		sb.Append("  ");
-		Formatter.Format(sb, actual.DisplayWhitespace().TruncateWithEllipsisOnWord(300));
+		Formatter.Format(sb, actual.DisplayWhitespace().TruncateWithEllipsisOnWord(longMaxLength));
 		sb.AppendLine();
 		sb.Append("  ");
-		Formatter.Format(sb, expected.DisplayWhitespace().TruncateWithEllipsisOnWord(300));
+		Formatter.Format(sb, expected.DisplayWhitespace().TruncateWithEllipsisOnWord(longMaxLength));
 		sb.AppendLine();
 		sb.Append("  ").Append(arrowUp).Append(GetExpected(matchType));
 		return sb.ToString();

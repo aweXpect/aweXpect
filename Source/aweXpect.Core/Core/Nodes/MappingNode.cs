@@ -47,16 +47,9 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}");
 		}
 
-		if (_memberAccessor.TryAccessMember(
-			    typedValue,
-			    out TTarget? matchingValue))
-		{
-			ConstraintResult result = await base.IsMetBy(matchingValue, context, cancellationToken);
-			return result.UseValue(value);
-		}
-
-		throw new InvalidOperationException(
-			$"The member type for the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TTarget))},{Environment.NewLine}   Found: {Formatter.Format(matchingValue?.GetType())}");
+		TTarget? matchingValue = _memberAccessor.AccessMember(typedValue);
+		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
+		return memberResult.UseValue(value);
 	}
 
 	/// <inheritdoc />

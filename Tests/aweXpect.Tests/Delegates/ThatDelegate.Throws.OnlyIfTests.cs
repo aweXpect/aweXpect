@@ -2,7 +2,7 @@
 
 public sealed partial class ThatDelegate
 {
-	public sealed partial class ThrowsException
+	public sealed partial class Throws
 	{
 		public sealed class OnlyIfTests
 		{
@@ -11,7 +11,7 @@ public sealed partial class ThatDelegate
 			{
 				Action action = () => { };
 
-				await That(action).ThrowsException()
+				await That(action).Throws<Exception>()
 					.OnlyIf(false)
 					.WithMessage("foo");
 			}
@@ -21,7 +21,7 @@ public sealed partial class ThatDelegate
 			{
 				Action action = () => { };
 
-				await That(action).ThrowsException()
+				await That(action).Throws<ArgumentException>()
 					.OnlyIf(false)
 					.WithMessage("foo");
 			}
@@ -31,8 +31,8 @@ public sealed partial class ThatDelegate
 			{
 				Action action = () => { };
 
-				Exception? result =
-					await That(action).ThrowsException().OnlyIf(false);
+				CustomException? result =
+					await That(action).Throws<CustomException>().OnlyIf(false);
 
 				await That(result).IsNull();
 			}
@@ -43,8 +43,8 @@ public sealed partial class ThatDelegate
 				Exception exception = new CustomException();
 				Action action = () => throw exception;
 
-				Exception? result =
-					await That(action).ThrowsException().OnlyIf(true);
+				CustomException? result =
+					await That(action).Throws<CustomException>().OnlyIf(true);
 
 				await That(result).IsSameAs(exception);
 			}
@@ -56,7 +56,7 @@ public sealed partial class ThatDelegate
 				Action action = () => throw exception;
 
 				async Task Act()
-					=> await That(action).ThrowsException().OnlyIf(false);
+					=> await That(action).Throws<Exception>().OnlyIf(false);
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
@@ -72,7 +72,7 @@ public sealed partial class ThatDelegate
 				Action action = () => { };
 
 				async Task Act()
-					=> await That(action).ThrowsException().OnlyIf(false);
+					=> await That(action).Throws<Exception>().OnlyIf(false);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -83,12 +83,12 @@ public sealed partial class ThatDelegate
 				Action action = () => { };
 
 				async Task Act()
-					=> await That(action).ThrowsException().OnlyIf(true);
+					=> await That(action).Throws<ArgumentException>().OnlyIf(true);
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected action to
-					             throw an exception,
+					             throw an ArgumentException,
 					             but it did not throw any exception
 					             """);
 			}
@@ -100,7 +100,7 @@ public sealed partial class ThatDelegate
 				Action action = () => throw exception;
 
 				async Task Act()
-					=> await That(action).ThrowsException().OnlyIf(true);
+					=> await That(action).Throws<Exception>().OnlyIf(true);
 
 				await That(Act).DoesNotThrow();
 			}
