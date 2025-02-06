@@ -498,6 +498,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -583,7 +589,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -672,7 +679,8 @@ window.BENCHMARK_DATA = {
           166.4463167667389,
           158.93071344693502,
           155.0607133547465,
-          158.00696924527486
+          158.00696924527486,
+          149.2655921322959
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -684,6 +692,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -863,7 +872,8 @@ window.BENCHMARK_DATA = {
           213.87395140329997,
           193.85528984069825,
           197.54236507415771,
-          206.93233493169149
+          206.93233493169149,
+          187.46456054278784
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -901,6 +911,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1054,7 +1065,8 @@ window.BENCHMARK_DATA = {
           721.1287770589192,
           668.5149625142416,
           666.69840965271,
-          691.0433101018269
+          691.0433101018269,
+          621.7007412229266
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1115,6 +1127,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1660,6 +1673,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -1745,7 +1764,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -1834,7 +1854,8 @@ window.BENCHMARK_DATA = {
           381.60934626261394,
           349.7909302711487,
           394.64008750915525,
-          375.3523615519206
+          375.3523615519206,
+          353.1430130371681
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1846,6 +1867,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -2025,7 +2047,8 @@ window.BENCHMARK_DATA = {
           458.3956664630345,
           429.2228224118551,
           480.45417982737223,
-          426.6341169675191
+          426.6341169675191,
+          416.34154004317065
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2063,6 +2086,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -2216,7 +2240,8 @@ window.BENCHMARK_DATA = {
           15868.970503743489,
           14051.107728068035,
           18843.096205647787,
-          15943.782523018974
+          15943.782523018974,
+          17089.047862461633
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2277,6 +2302,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2822,6 +2848,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -2907,7 +2939,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -2996,7 +3029,8 @@ window.BENCHMARK_DATA = {
           199.43779909610748,
           196.5643083890279,
           192.42981961795263,
-          204.4458632628123
+          204.4458632628123,
+          192.4710113321032
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3008,6 +3042,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -3187,7 +3222,8 @@ window.BENCHMARK_DATA = {
           218.62021730740864,
           190.03436787923178,
           210.70688576357705,
-          221.1294139067332
+          221.1294139067332,
+          187.67587397893269
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3225,6 +3261,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -3378,7 +3415,8 @@ window.BENCHMARK_DATA = {
           1000.894692103068,
           917.5204348246257,
           908.9307737350464,
-          993.7928662618001
+          993.7928662618001,
+          925.0829722331121
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3439,6 +3477,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -3984,6 +4023,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -4069,7 +4114,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -4158,7 +4204,8 @@ window.BENCHMARK_DATA = {
           329.8992637316386,
           315.19961846669514,
           319.03796984354653,
-          336.5770201365153
+          336.5770201365153,
+          325.5628830273946
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4170,6 +4217,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -4349,7 +4397,8 @@ window.BENCHMARK_DATA = {
           462.27855043411256,
           421.06804469426476,
           420.30005400975546,
-          430.7130115372794
+          430.7130115372794,
+          415.5961516086872
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4387,6 +4436,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -4540,7 +4590,8 @@ window.BENCHMARK_DATA = {
           1048.4171227046422,
           1007.3844524111066,
           1055.9906869252522,
-          1038.746190516154
+          1038.746190516154,
+          981.4342970530192
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4601,6 +4652,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -5146,6 +5198,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -5231,7 +5289,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -5320,7 +5379,8 @@ window.BENCHMARK_DATA = {
           1290.322443825858,
           1220.6531725565592,
           1218.683905329023,
-          1336.7498410088676
+          1336.7498410088676,
+          1167.318586031596
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5346,6 +5406,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -5511,7 +5572,8 @@ window.BENCHMARK_DATA = {
           1282.5260323744553,
           1195.3219502766926,
           1265.8075747172038,
-          1220.8308667500814
+          1220.8308667500814,
+          1206.6304907480876
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5549,6 +5611,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -5702,7 +5765,8 @@ window.BENCHMARK_DATA = {
           2463.797800210806,
           2338.662480490548,
           2325.14093369704,
-          2424.1801798684255
+          2424.1801798684255,
+          2339.097605569022
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5763,6 +5827,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -6308,6 +6373,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -6393,7 +6464,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -6482,7 +6554,8 @@ window.BENCHMARK_DATA = {
           1344.2937342779976,
           1289.1042167663575,
           1275.8318576812744,
-          1362.05850315094
+          1362.05850315094,
+          1344.1908100128173
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6536,6 +6609,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -6673,7 +6747,8 @@ window.BENCHMARK_DATA = {
           90199.48649379185,
           86002.05041503906,
           86315.67183430989,
-          84578.68998209636
+          84578.68998209636,
+          87140.19967447917
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6767,6 +6842,7 @@ window.BENCHMARK_DATA = {
           54271,
           54271,
           54271,
+          54273,
           54273
         ],
         "borderColor": "#FF671B",
@@ -6864,7 +6940,8 @@ window.BENCHMARK_DATA = {
           6783.083865356445,
           6451.4334650675455,
           6545.3130079905195,
-          6570.454392496745
+          6570.454392496745,
+          7131.965752410889
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6958,6 +7035,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7640,
           7640
         ],
         "borderColor": "#1A6029",
@@ -7008,6 +7086,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
         "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
       }
     ],
     "labels": [
@@ -7016,7 +7100,8 @@ window.BENCHMARK_DATA = {
       "982c1d09",
       "8ae4321d",
       "236ea658",
-      "83affdbd"
+      "83affdbd",
+      "051f951e"
     ],
     "datasets": [
       {
@@ -7028,7 +7113,8 @@ window.BENCHMARK_DATA = {
           343547.747000558,
           343435.91119791666,
           328860.52880859375,
-          354380.75217848556
+          354380.75217848556,
+          350717.64470563614
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7040,6 +7126,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          332876,
           332876,
           332876,
           332876,
@@ -7065,7 +7152,8 @@ window.BENCHMARK_DATA = {
           2227322.3119791667,
           2097839.0229166667,
           2160920.025,
-          2123653.6588541665
+          2123653.6588541665,
+          2022293.8307291667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7077,6 +7165,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -7102,7 +7191,8 @@ window.BENCHMARK_DATA = {
           686112.0256835937,
           648761.4701450893,
           630413.2682291666,
-          711727.0952148438
+          711727.0952148438,
+          667665.3231724331
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7114,6 +7204,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          836377,
           836377,
           836377,
           836377,
