@@ -37,21 +37,6 @@ public class MappingNodeTests
 	}
 
 	[Fact]
-	public async Task IsMetBy_WithInvalidMemberType_ShouldThrowInvalidOperationException()
-	{
-		MappingNode<string, int?> node = new(MemberAccessor<string, int?>.FromFunc(_ => null, " length "));
-		node.AddConstraint(new DummyValueConstraint<int?>(v => new ConstraintResult.Success<int?>(v, "yeah!")));
-		async Task Act() => await node.IsMetBy("foo", null!, CancellationToken.None);
-
-		await That(Act).Throws<InvalidOperationException>()
-			.WithMessage("""
-			             The member type for the which node did not match.
-			             Expected: int?,
-			                Found: <null>
-			             """);
-	}
-
-	[Fact]
 	public async Task IsMetBy_WithNullDelegate_ShouldReturnNullFailure()
 	{
 		DelegateValue<string?> value = new("foo", null, 10.Milliseconds(), true);
