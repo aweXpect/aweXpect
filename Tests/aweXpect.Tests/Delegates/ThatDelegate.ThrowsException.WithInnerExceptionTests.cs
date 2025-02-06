@@ -31,7 +31,7 @@ public sealed partial class ThatDelegate
 				await That(result).IsSameAs(exception);
 			}
 
-			[Fact(Skip = "Temporarily skip until next Core update")]
+			[Fact]
 			public async Task WhenInnerExceptionDoesNotMatchCriteria_ShouldFail()
 			{
 				string message = "bar";
