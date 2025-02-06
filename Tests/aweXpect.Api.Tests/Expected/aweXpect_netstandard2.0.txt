@@ -663,8 +663,8 @@ namespace aweXpect
     }
     public static class ThatStream
     {
-        public static aweXpect.Results.PropertyResult.NullableLong<System.IO.Stream?> HasLength(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
-        public static aweXpect.Results.PropertyResult.NullableLong<System.IO.Stream?> HasPosition(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
+        public static aweXpect.Results.PropertyResult.Long<System.IO.Stream?> HasLength(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
+        public static aweXpect.Results.PropertyResult.Long<System.IO.Stream?> HasPosition(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
         public static aweXpect.Results.AndOrResult<System.IO.Stream?, aweXpect.Core.IThat<System.IO.Stream?>> IsNotReadOnly(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
         public static aweXpect.Results.AndOrResult<System.IO.Stream?, aweXpect.Core.IThat<System.IO.Stream?>> IsNotReadable(this aweXpect.Core.IThat<System.IO.Stream?> source) { }
         public static aweXpect.Results.AndOrResult<System.IO.Stream?, aweXpect.Core.IThat<System.IO.Stream?>> IsNotSeekable(this aweXpect.Core.IThat<System.IO.Stream?> source) { }

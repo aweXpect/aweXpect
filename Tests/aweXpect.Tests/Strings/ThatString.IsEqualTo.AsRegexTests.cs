@@ -6,7 +6,7 @@ public sealed partial class ThatString
 	{
 		public sealed class AsRegexTests
 		{
-			[Theory(Skip="Temporarily disable until next Core update")]
+			[Theory]
 			[InlineData("some message", ".*me me.*", true)]
 			[InlineData("some message", ".*ME ME.*", false)]
 			public async Task ShouldDefaultToCaseSensitiveMatch(
@@ -27,7 +27,7 @@ public sealed partial class ThatString
 					              """);
 			}
 
-			[Theory(Skip="Temporarily disable until next Core update")]
+			[Theory]
 			[InlineData(true)]
 			[InlineData(false)]
 			public async Task WhenIgnoringCase_ShouldIgnoreCase(

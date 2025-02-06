@@ -352,7 +352,6 @@ public class EquivalencyComparerTests
 		}
 	}
 
-	#if DEBUG
 	public sealed class CollectionInAnyOrderTests
 	{
 		[Fact]
@@ -428,7 +427,6 @@ public class EquivalencyComparerTests
 			await That(result).IsEqualTo(ignoreCollectionOrder);
 		}
 	}
-#endif
 
 	private class MyClass
 	{
