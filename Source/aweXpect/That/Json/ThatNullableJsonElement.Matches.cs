@@ -21,8 +21,10 @@ public static partial class ThatNullableJsonElement
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		JsonOptions jsonOptions = new();
-		jsonOptions.IgnoringAdditionalProperties();
+		JsonOptions jsonOptions = new()
+		{
+			IgnoreAdditionalProperties = true
+		};
 		if (options != null)
 		{
 			jsonOptions = options(jsonOptions);
@@ -43,8 +45,10 @@ public static partial class ThatNullableJsonElement
 		Func<JsonOptions, JsonOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		JsonOptions jsonOptions = new();
-		jsonOptions.IgnoringAdditionalProperties();
+		JsonOptions jsonOptions = new()
+		{
+			IgnoreAdditionalProperties = true
+		};
 		if (options != null)
 		{
 			jsonOptions = options(jsonOptions);

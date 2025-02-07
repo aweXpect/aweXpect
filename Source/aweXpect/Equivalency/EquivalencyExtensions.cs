@@ -20,7 +20,7 @@ public static class EquivalencyExtensions
 		where TSelf : ObjectEqualityResult<TType, TThat, TElement, TSelf>
 	{
 		((IOptionsProvider<ObjectEqualityOptions<TElement>>)result).Options.SetMatchType(
-			new EquivalencyComparer(EquivalencyOptions.FromCallback(equivalencyOptions)));
+			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(equivalencyOptions)));
 		return (TSelf)result;
 	}
 

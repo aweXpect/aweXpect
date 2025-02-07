@@ -6,7 +6,7 @@ namespace aweXpect.Options;
 /// <summary>
 ///     The options for specifying a <see cref="IComparer{TItem}" /> to use to compare the order of items.
 /// </summary>
-public class CollectionOrderOptions<TItem>
+public record CollectionOrderOptions<TItem>
 {
 	private IComparer<TItem>? _comparer;
 

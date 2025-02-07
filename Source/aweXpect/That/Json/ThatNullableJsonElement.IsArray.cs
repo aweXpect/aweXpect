@@ -30,8 +30,10 @@ public static partial class ThatNullableJsonElement
 		Func<IJsonArrayResult, IJsonArrayResult> expectation,
 		Func<JsonOptions, JsonOptions>? options = null)
 	{
-		JsonOptions jsonOptions = new();
-		jsonOptions.IgnoringAdditionalProperties();
+		JsonOptions jsonOptions = new()
+		{
+			IgnoreAdditionalProperties = true
+		};
 		if (options != null)
 		{
 			jsonOptions = options(jsonOptions);
