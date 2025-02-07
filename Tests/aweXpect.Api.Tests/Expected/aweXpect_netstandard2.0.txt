@@ -721,21 +721,21 @@ namespace aweXpect
 }
 namespace aweXpect.Equivalency
 {
+    public enum EquivalencyComparisonType
+    {
+        ByValue = 0,
+        ByMembers = 1,
+    }
     public static class EquivalencyDefaults
     {
-        public static aweXpect.Equivalency.EquivalencyOptions.ComparisonType DefaultTypeComparison(System.Type type) { }
+        public static aweXpect.Equivalency.EquivalencyComparisonType DefaultTypeComparison(System.Type type) { }
     }
     public class EquivalencyOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
     {
         public EquivalencyOptions() { }
         public bool IgnoreCollectionOrder { get; init; }
         public string[] MembersToIgnore { get; init; }
-        public System.Func<System.Type, aweXpect.Equivalency.EquivalencyOptions.ComparisonType> TypeComparison { get; init; }
-        public enum ComparisonType
-        {
-            ByValue = 0,
-            ByMembers = 1,
-        }
+        public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> TypeComparison { get; init; }
     }
     public static class EquivalencyOptionsExtensions
     {

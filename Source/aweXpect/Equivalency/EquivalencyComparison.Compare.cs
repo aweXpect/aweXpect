@@ -47,19 +47,22 @@ internal static partial class EquivalencyComparison
 				context);
 		}
 
-		return CompareObjects(actual, expected, failureBuilder, options, memberPath, context);
+		return CompareObjects(actual, expected, failureBuilder, options, memberType, memberPath, context);
 	}
 
 	private static bool CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,
 		[DisallowNull] TExpected expected,
-		StringBuilder failureBuilder, EquivalencyOptions options, string memberPath, EquivalencyContext context)
+		StringBuilder failureBuilder, EquivalencyOptions options, MemberType memberType, string memberPath,
+		EquivalencyContext context)
 	{
 		bool result = true;
+		int memberCount = 0;
 		foreach (string? fieldName in actual.GetType().GetFields().Concat(expected.GetType().GetFields())
 			         .Where(x => !x.Name.StartsWith('<'))
 			         .Select(x => x.Name)
 			         .Distinct())
 		{
+			memberCount++;
 			string fieldMemberPath = ConcatMemberPath(memberPath, fieldName);
 			if (options.MembersToIgnore.Contains(fieldMemberPath))
 			{
@@ -81,6 +84,7 @@ internal static partial class EquivalencyComparison
 			         .Select(x => x.Name)
 			         .Distinct())
 		{
+			memberCount++;
 			string propertyMemberPath = ConcatMemberPath(memberPath, propertyName);
 			if (options.MembersToIgnore.Contains(propertyMemberPath))
 			{
@@ -96,6 +100,24 @@ internal static partial class EquivalencyComparison
 			{
 				result = false;
 			}
+		}
+
+		if (memberCount == 0 && actual.GetType() != expected.GetType())
+		{
+			failureBuilder.AppendLine();
+			if (failureBuilder.Length > 2)
+			{
+				failureBuilder.AppendLine("and");
+			}
+
+			failureBuilder.Append("  ");
+			failureBuilder.Append(GetMemberPath(memberType, memberPath));
+			failureBuilder.AppendLine(" differed:");
+			failureBuilder.Append("       Found: ");
+			Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
+			failureBuilder.AppendLine().Append("    Expected: ");
+			Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
+			result = false;
 		}
 
 		return result;
@@ -199,8 +221,12 @@ internal static partial class EquivalencyComparison
 		return result;
 	}
 
-	private static bool CompareByValue<TActual, TExpected>([DisallowNull] TActual actual,
-		[DisallowNull] TExpected expected, StringBuilder failureBuilder, string memberPath, MemberType memberType)
+	private static bool CompareByValue<TActual, TExpected>(
+		[DisallowNull] TActual actual,
+		[DisallowNull] TExpected expected,
+		StringBuilder failureBuilder,
+		string memberPath,
+		MemberType memberType)
 	{
 		if (!actual.Equals(expected))
 		{

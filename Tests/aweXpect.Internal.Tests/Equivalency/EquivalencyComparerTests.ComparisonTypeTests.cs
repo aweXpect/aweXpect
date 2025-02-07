@@ -19,7 +19,7 @@ public sealed partial class EquivalencyComparerTests
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				TypeComparison = _ => EquivalencyOptions.ComparisonType.ByValue
+				TypeComparison = _ => EquivalencyComparisonType.ByValue
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
