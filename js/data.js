@@ -522,6 +522,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -611,7 +617,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -704,7 +711,8 @@ window.BENCHMARK_DATA = {
           149.2655921322959,
           165.00788898468016,
           174.99505362908045,
-          155.25067816461836
+          155.25067816461836,
+          160.7974572658539
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -716,6 +724,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -903,7 +912,8 @@ window.BENCHMARK_DATA = {
           187.46456054278784,
           210.41716798146567,
           225.95240330696106,
-          196.83803242047628
+          196.83803242047628,
+          189.03046261469524
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -941,6 +951,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1102,7 +1113,8 @@ window.BENCHMARK_DATA = {
           621.7007412229266,
           716.5277636210124,
           747.7352724075317,
-          669.3220853805542
+          669.3220853805542,
+          651.4250216850868
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1200,7 +1212,234 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          1944,
           1944
+        ],
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
+        "yAxisID": "y1",
+        "borderDash": [
+          5,
+          5
+        ],
+        "pointStyle": "triangle"
+      }
+    ]
+  },
+  "Equivalency": {
+    "commits": [
+      {
+        "sha": "5930c6cb87c61321d4194c1a86e87c8074b62dee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 08:37:58 2025 \u002B0100",
+        "message": "feat: improve equivalency (#304)"
+      },
+      {
+        "sha": "8b6d5c3f21970d5f1cd04c1327ae7dc8e3899bc9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 09:06:32 2025 \u002B0100",
+        "message": "docs: add core nuget badge (#305)"
+      },
+      {
+        "sha": "982c1d09f8ad0bb809a9357d1c6a1017cf0cd1c6",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 09:23:51 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.23.0 (#306)"
+      },
+      {
+        "sha": "8ae4321d9e06929c0fba8bf045724241e6a7df39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 12:23:51 2025 \u002B0100",
+        "message": "refactor: improve code coverage (#307)"
+      },
+      {
+        "sha": "236ea658dd027ff0c344b4e481a9d2e9a9b443a5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 16:45:36 2025 \u002B0100",
+        "message": "refactor: improve code coverage (2) (#308)"
+      },
+      {
+        "sha": "83affdbde5065f6d9fc9c3e667f323756aaf3e89",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
+        "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
+      },
+      {
+        "sha": "72034f95814162df71d6866ccb911ea00c49fcaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 16:46:55 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.27.0 (#311)"
+      },
+      {
+        "sha": "896aa83e1cc540b579c8c71788f3684fbf4e22e2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 08:21:10 2025 \u002B0100",
+        "message": "feat: change options to \u0060record\u0060 types (#312)"
+      },
+      {
+        "sha": "4fb38900ee7db2337f104f11364d1dd97b01141a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
+        "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
+      }
+    ],
+    "labels": [
+      "5930c6cb",
+      "8b6d5c3f",
+      "982c1d09",
+      "8ae4321d",
+      "236ea658",
+      "83affdbd",
+      "051f951e",
+      "72034f95",
+      "896aa83e",
+      "4fb38900",
+      "e21efd52"
+    ],
+    "datasets": [
+      {
+        "label": "aweXpect time",
+        "unit": "ns",
+        "data": [
+          358532.90348307294,
+          326246.10475260415,
+          343547.747000558,
+          343435.91119791666,
+          328860.52880859375,
+          354380.75217848556,
+          350717.64470563614,
+          351243.83466796874,
+          358787.7890950521,
+          396151.3222307478,
+          298256.99615885416
+        ],
+        "borderColor": "#63A2AC",
+        "backgroundColor": "#63A2AC",
+        "yAxisID": "y",
+        "borderDash": [],
+        "pointStyle": "circle"
+      },
+      {
+        "label": "aweXpect memory",
+        "unit": "b",
+        "data": [
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332820,
+          333100,
+          284892
+        ],
+        "borderColor": "#63A2AC",
+        "backgroundColor": "#63A2AC",
+        "yAxisID": "y1",
+        "borderDash": [
+          5,
+          5
+        ],
+        "pointStyle": "triangle"
+      },
+      {
+        "label": "FluentAssertions time",
+        "unit": "ns",
+        "data": [
+          2130327.415755208,
+          2006124.4127604167,
+          2227322.3119791667,
+          2097839.0229166667,
+          2160920.025,
+          2123653.6588541665,
+          2022293.8307291667,
+          2247471.496354167,
+          2351366.011393229,
+          2271435.2216145834,
+          2069286.7826450893
+        ],
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
+        "yAxisID": "y",
+        "borderDash": [],
+        "pointStyle": "circle"
+      },
+      {
+        "label": "FluentAssertions memory",
+        "unit": "b",
+        "data": [
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738
+        ],
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
+        "yAxisID": "y1",
+        "borderDash": [
+          5,
+          5
+        ],
+        "pointStyle": "triangle"
+      },
+      {
+        "label": "TUnit time",
+        "unit": "ns",
+        "data": [
+          660068.1526817909,
+          637045.501953125,
+          686112.0256835937,
+          648761.4701450893,
+          630413.2682291666,
+          711727.0952148438,
+          667665.3231724331,
+          690592.0778645833,
+          688590.0560709635,
+          656899.8244628906,
+          668890.2572544643
+        ],
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
+        "yAxisID": "y",
+        "borderDash": [],
+        "pointStyle": "circle"
+      },
+      {
+        "label": "TUnit memory",
+        "unit": "b",
+        "data": [
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1736,6 +1975,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -1825,7 +2070,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -1918,7 +2164,8 @@ window.BENCHMARK_DATA = {
           353.1430130371681,
           350.0775438944499,
           372.5627121558556,
-          369.5976272583008
+          369.5976272583008,
+          331.73314752578733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1930,6 +2177,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -2117,7 +2365,8 @@ window.BENCHMARK_DATA = {
           416.34154004317065,
           472.7326336224874,
           501.6423487296471,
-          431.736581325531
+          431.736581325531,
+          415.98997462590535
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2155,6 +2404,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -2316,7 +2566,8 @@ window.BENCHMARK_DATA = {
           17089.047862461633,
           15512.023492431641,
           24086.14760648287,
-          14309.478374226888
+          14309.478374226888,
+          18654.47786254883
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2377,6 +2628,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -2950,6 +3202,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -3039,7 +3297,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -3132,7 +3391,8 @@ window.BENCHMARK_DATA = {
           192.4710113321032,
           212.76740145683289,
           226.64747514327368,
-          201.4864379992852
+          201.4864379992852,
+          196.73841004371644
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3144,6 +3404,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -3331,7 +3592,8 @@ window.BENCHMARK_DATA = {
           187.67587397893269,
           216.17553811073304,
           244.1973889986674,
-          195.50618057250978
+          195.50618057250978,
+          193.83642535550254
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3369,6 +3631,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -3530,7 +3793,8 @@ window.BENCHMARK_DATA = {
           925.0829722331121,
           1129.4919154827412,
           1071.3575198309761,
-          948.9752232869466
+          948.9752232869466,
+          977.2565602620442
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3591,6 +3855,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -4164,6 +4429,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -4253,7 +4524,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -4346,7 +4618,8 @@ window.BENCHMARK_DATA = {
           325.5628830273946,
           343.2748657544454,
           399.3094798088074,
-          324.83393408457437
+          324.83393408457437,
+          313.51130944031934
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4358,6 +4631,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -4545,7 +4819,8 @@ window.BENCHMARK_DATA = {
           415.5961516086872,
           461.5416115760803,
           532.2080801010131,
-          441.3652965863546
+          441.3652965863546,
+          420.0080930709839
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4583,6 +4858,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -4744,7 +5020,8 @@ window.BENCHMARK_DATA = {
           981.4342970530192,
           1137.1571679433187,
           1137.2467900789702,
-          1039.7861405690512
+          1039.7861405690512,
+          990.4983881632487
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4805,6 +5082,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -5378,6 +5656,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -5467,7 +5751,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -5560,7 +5845,8 @@ window.BENCHMARK_DATA = {
           1167.318586031596,
           1288.5585553487142,
           1307.5156518496,
-          1291.392672220866
+          1291.392672220866,
+          1203.3241343180339
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5586,6 +5872,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -5759,7 +6046,8 @@ window.BENCHMARK_DATA = {
           1206.6304907480876,
           1330.3660106658936,
           1454.3738615853447,
-          1305.122022374471
+          1305.122022374471,
+          1225.392256810115
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5797,6 +6085,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -5958,7 +6247,8 @@ window.BENCHMARK_DATA = {
           2339.097605569022,
           2489.911752573649,
           2575.5991460164387,
-          2450.0950442722865
+          2450.0950442722865,
+          2378.7805399576823
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6019,6 +6309,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -6592,6 +6883,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -6681,7 +6978,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -6774,7 +7072,8 @@ window.BENCHMARK_DATA = {
           1344.1908100128173,
           1352.8707581837973,
           1420.831618499756,
-          1295.3339523587908
+          1295.3339523587908,
+          1279.0162455240886
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6828,6 +7127,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -6973,7 +7273,8 @@ window.BENCHMARK_DATA = {
           87140.19967447917,
           91567.94661865235,
           91934.29558308919,
-          88314.75494791666
+          88314.75494791666,
+          88977.90178222656
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7071,7 +7372,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7172,7 +7474,8 @@ window.BENCHMARK_DATA = {
           7131.965752410889,
           7031.292917378743,
           6939.3070430755615,
-          6491.947293795072
+          6491.947293795072,
+          6380.031244913737
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7270,220 +7573,8 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7640,
           7640
-        ],
-        "borderColor": "#1A6029",
-        "backgroundColor": "#1A6029",
-        "yAxisID": "y1",
-        "borderDash": [
-          5,
-          5
-        ],
-        "pointStyle": "triangle"
-      }
-    ]
-  },
-  "Nested": {
-    "commits": [
-      {
-        "sha": "5930c6cb87c61321d4194c1a86e87c8074b62dee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 08:37:58 2025 \u002B0100",
-        "message": "feat: improve equivalency (#304)"
-      },
-      {
-        "sha": "8b6d5c3f21970d5f1cd04c1327ae7dc8e3899bc9",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 09:06:32 2025 \u002B0100",
-        "message": "docs: add core nuget badge (#305)"
-      },
-      {
-        "sha": "982c1d09f8ad0bb809a9357d1c6a1017cf0cd1c6",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 09:23:51 2025 \u002B0100",
-        "message": "chore: update aweXpect.Core to v0.23.0 (#306)"
-      },
-      {
-        "sha": "8ae4321d9e06929c0fba8bf045724241e6a7df39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 12:23:51 2025 \u002B0100",
-        "message": "refactor: improve code coverage (#307)"
-      },
-      {
-        "sha": "236ea658dd027ff0c344b4e481a9d2e9a9b443a5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 16:45:36 2025 \u002B0100",
-        "message": "refactor: improve code coverage (2) (#308)"
-      },
-      {
-        "sha": "83affdbde5065f6d9fc9c3e667f323756aaf3e89",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
-        "message": "fix: null handling in expectations on inner exceptions (#309)"
-      },
-      {
-        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
-        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
-      },
-      {
-        "sha": "72034f95814162df71d6866ccb911ea00c49fcaa",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 6 16:46:55 2025 \u002B0100",
-        "message": "chore: update aweXpect to v0.27.0 (#311)"
-      },
-      {
-        "sha": "896aa83e1cc540b579c8c71788f3684fbf4e22e2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Feb 7 08:21:10 2025 \u002B0100",
-        "message": "feat: change options to \u0060record\u0060 types (#312)"
-      },
-      {
-        "sha": "4fb38900ee7db2337f104f11364d1dd97b01141a",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
-        "message": "feat: improve equivalency (#313)"
-      }
-    ],
-    "labels": [
-      "5930c6cb",
-      "8b6d5c3f",
-      "982c1d09",
-      "8ae4321d",
-      "236ea658",
-      "83affdbd",
-      "051f951e",
-      "72034f95",
-      "896aa83e",
-      "4fb38900"
-    ],
-    "datasets": [
-      {
-        "label": "aweXpect time",
-        "unit": "ns",
-        "data": [
-          358532.90348307294,
-          326246.10475260415,
-          343547.747000558,
-          343435.91119791666,
-          328860.52880859375,
-          354380.75217848556,
-          350717.64470563614,
-          351243.83466796874,
-          358787.7890950521,
-          396151.3222307478
-        ],
-        "borderColor": "#63A2AC",
-        "backgroundColor": "#63A2AC",
-        "yAxisID": "y",
-        "borderDash": [],
-        "pointStyle": "circle"
-      },
-      {
-        "label": "aweXpect memory",
-        "unit": "b",
-        "data": [
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332820,
-          333100
-        ],
-        "borderColor": "#63A2AC",
-        "backgroundColor": "#63A2AC",
-        "yAxisID": "y1",
-        "borderDash": [
-          5,
-          5
-        ],
-        "pointStyle": "triangle"
-      },
-      {
-        "label": "FluentAssertions time",
-        "unit": "ns",
-        "data": [
-          2130327.415755208,
-          2006124.4127604167,
-          2227322.3119791667,
-          2097839.0229166667,
-          2160920.025,
-          2123653.6588541665,
-          2022293.8307291667,
-          2247471.496354167,
-          2351366.011393229,
-          2271435.2216145834
-        ],
-        "borderColor": "#FF671B",
-        "backgroundColor": "#FF671B",
-        "yAxisID": "y",
-        "borderDash": [],
-        "pointStyle": "circle"
-      },
-      {
-        "label": "FluentAssertions memory",
-        "unit": "b",
-        "data": [
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738
-        ],
-        "borderColor": "#FF671B",
-        "backgroundColor": "#FF671B",
-        "yAxisID": "y1",
-        "borderDash": [
-          5,
-          5
-        ],
-        "pointStyle": "triangle"
-      },
-      {
-        "label": "TUnit time",
-        "unit": "ns",
-        "data": [
-          660068.1526817909,
-          637045.501953125,
-          686112.0256835937,
-          648761.4701450893,
-          630413.2682291666,
-          711727.0952148438,
-          667665.3231724331,
-          690592.0778645833,
-          688590.0560709635,
-          656899.8244628906
-        ],
-        "borderColor": "#1A6029",
-        "backgroundColor": "#1A6029",
-        "yAxisID": "y",
-        "borderDash": [],
-        "pointStyle": "circle"
-      },
-      {
-        "label": "TUnit memory",
-        "unit": "b",
-        "data": [
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
