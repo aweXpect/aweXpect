@@ -948,8 +948,18 @@ namespace aweXpect.Equivalency
     public class EquivalencyTypeOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyTypeOptions>
     {
         public EquivalencyTypeOptions() { }
+        public aweXpect.Equivalency.IncludeMembers Fields { get; init; }
         public bool IgnoreCollectionOrder { get; init; }
         public string[] MembersToIgnore { get; init; }
+        public aweXpect.Equivalency.IncludeMembers Properties { get; init; }
+    }
+    [System.Flags]
+    public enum IncludeMembers
+    {
+        None = 0,
+        Public = 2,
+        Internal = 4,
+        Private = 8,
     }
 }
 namespace aweXpect.Json

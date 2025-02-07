@@ -91,5 +91,96 @@ public sealed partial class EquivalencyComparerTests
 			                                  Expected: "bar"
 			                              """);
 		}
+
+		[Theory]
+		[InlineData(5, 5, true)]
+		[InlineData(5, 6, false)]
+		public async Task WhenIncludingInternalMembers_ShouldConsiderPublicAndInternalProperties(
+			int actualInternalValue, int expectedInternalValue, bool expectedResult)
+		{
+			MyClassWithProperties actual = new(1, actualInternalValue, 3);
+			MyClassWithProperties expected = new(2, expectedInternalValue, 4);
+			EquivalencyComparer sut = new(new EquivalencyOptions
+			{
+				Properties = IncludeMembers.Internal
+			});
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsEqualTo(expectedResult);
+			if (!expectedResult)
+			{
+				await That(sut.GetExtendedFailure("it", actual, expected))
+					.IsEqualTo($"""
+					            it was not:
+					              Property MyInternalProperty differed:
+					                   Found: {actualInternalValue}
+					                Expected: {expectedInternalValue}
+					            """);
+			}
+		}
+
+		[Theory]
+		[InlineData(5, 5, true)]
+		[InlineData(5, 6, false)]
+		public async Task WhenIncludingPrivateMembers_ShouldConsiderPublicAndInternalProperties(
+			int actualPrivateValue, int expectedPrivateValue, bool expectedResult)
+		{
+			MyClassWithProperties actual = new(1, 3, actualPrivateValue);
+			MyClassWithProperties expected = new(2, 4, expectedPrivateValue);
+			EquivalencyComparer sut = new(new EquivalencyOptions
+			{
+				Properties = IncludeMembers.Private
+			});
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsEqualTo(expectedResult);
+			if (!expectedResult)
+			{
+				await That(sut.GetExtendedFailure("it", actual, expected))
+					.IsEqualTo($"""
+					            it was not:
+					              Property MyPrivateProperty differed:
+					                   Found: {actualPrivateValue}
+					                Expected: {expectedPrivateValue}
+					            """);
+			}
+		}
+
+		[Theory]
+		[InlineData(5, 5, true)]
+		[InlineData(5, 6, false)]
+		public async Task WhenIncludingPublicMembers_ShouldConsiderPublicAndInternalProperties(
+			int actualPublicValue, int expectedPublicValue, bool expectedResult)
+		{
+			MyClassWithProperties actual = new(actualPublicValue, 1, 3);
+			MyClassWithProperties expected = new(expectedPublicValue, 2, 4);
+			EquivalencyComparer sut = new(new EquivalencyOptions
+			{
+				Properties = IncludeMembers.Public
+			});
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsEqualTo(expectedResult);
+			if (!expectedResult)
+			{
+				await That(sut.GetExtendedFailure("it", actual, expected))
+					.IsEqualTo($"""
+					            it was not:
+					              Property MyPublicProperty differed:
+					                   Found: {actualPublicValue}
+					                Expected: {expectedPublicValue}
+					            """);
+			}
+		}
+
+		private class MyClassWithProperties(int publicProperty, int internalProperty, int privateProperty)
+		{
+			internal int MyInternalProperty { get; } = internalProperty;
+			private int MyPrivateProperty { get; } = privateProperty;
+			public int MyPublicProperty { get; } = publicProperty;
+		}
 	}
 }
