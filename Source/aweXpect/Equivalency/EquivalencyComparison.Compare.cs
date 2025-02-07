@@ -24,7 +24,8 @@ internal static partial class EquivalencyComparison
 			return CompareNulls(actual, expected, failureBuilder, memberPath, memberType);
 		}
 
-		EquivalencyComparisonType comparisonType = options.TypeComparison.Invoke(actual.GetType());
+		EquivalencyComparisonType comparisonType = typeOptions.ComparisonType
+		                                           ?? options.DefaultComparisonTypeSelector.Invoke(actual.GetType());
 		if (comparisonType == EquivalencyComparisonType.ByValue)
 		{
 			return CompareByValue(actual, expected, failureBuilder, memberPath, memberType);

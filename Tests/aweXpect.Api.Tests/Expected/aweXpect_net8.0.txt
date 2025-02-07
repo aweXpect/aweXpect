@@ -928,13 +928,13 @@ namespace aweXpect.Equivalency
     }
     public static class EquivalencyDefaults
     {
-        public static aweXpect.Equivalency.EquivalencyComparisonType DefaultTypeComparison(System.Type type) { }
+        public static aweXpect.Equivalency.EquivalencyComparisonType DefaultComparisonType(System.Type type) { }
     }
     public class EquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
     {
         public EquivalencyOptions() { }
         public System.Collections.Generic.Dictionary<System.Type, aweXpect.Equivalency.EquivalencyTypeOptions> CustomOptions { get; init; }
-        public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> TypeComparison { get; init; }
+        public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> DefaultComparisonTypeSelector { get; init; }
     }
     public static class EquivalencyOptionsExtensions
     {
@@ -948,6 +948,7 @@ namespace aweXpect.Equivalency
     public class EquivalencyTypeOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyTypeOptions>
     {
         public EquivalencyTypeOptions() { }
+        public aweXpect.Equivalency.EquivalencyComparisonType? ComparisonType { get; init; }
         public aweXpect.Equivalency.IncludeMembers Fields { get; init; }
         public bool IgnoreCollectionOrder { get; init; }
         public string[] MembersToIgnore { get; init; }

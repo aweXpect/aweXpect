@@ -9,13 +9,13 @@ namespace aweXpect.Equivalency;
 public record EquivalencyOptions : EquivalencyTypeOptions
 {
 	/// <summary>
-	///     Specifies the selector how types should be compared.
+	///     Specifies the selector how types should be compared, if not overwritten in the <see cref="CustomOptions" />.
 	/// </summary>
 	/// <remarks>
-	///     Defaults to use the <see cref="EquivalencyDefaults.DefaultTypeComparison" />.
+	///     Defaults to use the <see cref="EquivalencyDefaults.DefaultComparisonType" />.
 	/// </remarks>
-	public Func<Type, EquivalencyComparisonType> TypeComparison { get; init; } =
-		EquivalencyDefaults.DefaultTypeComparison;
+	public Func<Type, EquivalencyComparisonType> DefaultComparisonTypeSelector { get; init; } =
+		EquivalencyDefaults.DefaultComparisonType;
 
 	/// <summary>
 	///     Custom type-specific equivalency options.
@@ -35,6 +35,6 @@ public record EquivalencyOptions<TExpected> : EquivalencyOptions
 	{
 		MembersToIgnore = inner.MembersToIgnore;
 		IgnoreCollectionOrder = inner.IgnoreCollectionOrder;
-		TypeComparison = inner.TypeComparison;
+		DefaultComparisonTypeSelector = inner.DefaultComparisonTypeSelector;
 	}
 }

@@ -11,7 +11,7 @@ public static class EquivalencyDefaults
 	///     The default selection of the <see cref="EquivalencyComparisonType" /> for
 	///     the given <paramref name="type" />.
 	/// </summary>
-	public static EquivalencyComparisonType DefaultTypeComparison(Type type)
+	public static EquivalencyComparisonType DefaultComparisonType(Type type)
 	{
 		if (type.IsPrimitive
 		    || type.IsEnum

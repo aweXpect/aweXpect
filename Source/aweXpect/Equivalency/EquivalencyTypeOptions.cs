@@ -6,6 +6,14 @@ namespace aweXpect.Equivalency;
 public record EquivalencyTypeOptions
 {
 	/// <summary>
+	///     The comparison type to use.<br />
+	///     If not set (<see langword="null" />), uses the
+	///     <see cref="EquivalencyOptions.DefaultComparisonTypeSelector" /> to
+	///     determine the <see cref="EquivalencyComparisonType" />.
+	/// </summary>
+	public EquivalencyComparisonType? ComparisonType { get; init; }
+
+	/// <summary>
 	///     The members that should be ignored when checking for equivalency.
 	/// </summary>
 	public string[] MembersToIgnore { get; init; } = [];
