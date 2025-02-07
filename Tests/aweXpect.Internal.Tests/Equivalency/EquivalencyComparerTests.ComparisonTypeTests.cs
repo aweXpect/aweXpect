@@ -1,5 +1,7 @@
 ﻿using aweXpect.Equivalency;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Local
+
 namespace aweXpect.Internal.Tests.Equivalency;
 
 public sealed partial class EquivalencyComparerTests
@@ -79,8 +81,8 @@ public sealed partial class EquivalencyComparerTests
 
 		private class MyClassWithDifferentProperties
 		{
-			public MyClass1 Property1 { get; set; }
-			public MyClass2 Property2 { get; set; }
+			public MyClass1? Property1 { get; set; }
+			public MyClass2? Property2 { get; set; }
 		}
 
 		private class MyClass1
