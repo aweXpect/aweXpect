@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using FluentAssertions;
 using FluentAssertions.Primitives;
+
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace aweXpect.Benchmarks;
@@ -14,15 +15,15 @@ public partial class HappyCaseBenchmarks
 	private readonly Nested _nestedSubject = Nested.Create(10);
 
 	[Benchmark]
-	public async Task<Nested> Nested_aweXpect()
+	public async Task<Nested> Equivalency_aweXpect()
 		=> await Expect.That(_nestedSubject).IsEquivalentTo(_nestedExpectation);
 
 	[Benchmark]
-	public AndConstraint<ObjectAssertions> Nested_FluentAssertions()
+	public AndConstraint<ObjectAssertions> Equivalency_FluentAssertions()
 		=> _nestedSubject.Should().BeEquivalentTo(_nestedExpectation);
 
 	[Benchmark]
-	public async Task<Nested?> Nested_TUnit()
+	public async Task<Nested?> Equivalency_TUnit()
 		=> await Assert.That(_nestedSubject).IsEquivalentTo(_nestedExpectation);
 
 	public sealed class Nested
