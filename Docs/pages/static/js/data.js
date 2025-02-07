@@ -1213,6 +1213,219 @@ window.BENCHMARK_DATA = {
       }
     ]
   },
+  "Equivalency": {
+    "commits": [
+      {
+        "sha": "5930c6cb87c61321d4194c1a86e87c8074b62dee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 08:37:58 2025 \u002B0100",
+        "message": "feat: improve equivalency (#304)"
+      },
+      {
+        "sha": "8b6d5c3f21970d5f1cd04c1327ae7dc8e3899bc9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 09:06:32 2025 \u002B0100",
+        "message": "docs: add core nuget badge (#305)"
+      },
+      {
+        "sha": "982c1d09f8ad0bb809a9357d1c6a1017cf0cd1c6",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 09:23:51 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.23.0 (#306)"
+      },
+      {
+        "sha": "8ae4321d9e06929c0fba8bf045724241e6a7df39",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 12:23:51 2025 \u002B0100",
+        "message": "refactor: improve code coverage (#307)"
+      },
+      {
+        "sha": "236ea658dd027ff0c344b4e481a9d2e9a9b443a5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 5 16:45:36 2025 \u002B0100",
+        "message": "refactor: improve code coverage (2) (#308)"
+      },
+      {
+        "sha": "83affdbde5065f6d9fc9c3e667f323756aaf3e89",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
+        "message": "fix: null handling in expectations on inner exceptions (#309)"
+      },
+      {
+        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
+      },
+      {
+        "sha": "72034f95814162df71d6866ccb911ea00c49fcaa",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 6 16:46:55 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.27.0 (#311)"
+      },
+      {
+        "sha": "896aa83e1cc540b579c8c71788f3684fbf4e22e2",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 08:21:10 2025 \u002B0100",
+        "message": "feat: change options to \u0060record\u0060 types (#312)"
+      },
+      {
+        "sha": "4fb38900ee7db2337f104f11364d1dd97b01141a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
+        "message": "feat: improve equivalency (#313)"
+      }
+    ],
+    "labels": [
+      "5930c6cb",
+      "8b6d5c3f",
+      "982c1d09",
+      "8ae4321d",
+      "236ea658",
+      "83affdbd",
+      "051f951e",
+      "72034f95",
+      "896aa83e",
+      "4fb38900"
+    ],
+    "datasets": [
+      {
+        "label": "aweXpect time",
+        "unit": "ns",
+        "data": [
+          358532.90348307294,
+          326246.10475260415,
+          343547.747000558,
+          343435.91119791666,
+          328860.52880859375,
+          354380.75217848556,
+          350717.64470563614,
+          351243.83466796874,
+          358787.7890950521,
+          396151.3222307478
+        ],
+        "borderColor": "#63A2AC",
+        "backgroundColor": "#63A2AC",
+        "yAxisID": "y",
+        "borderDash": [],
+        "pointStyle": "circle"
+      },
+      {
+        "label": "aweXpect memory",
+        "unit": "b",
+        "data": [
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332876,
+          332820,
+          333100
+        ],
+        "borderColor": "#63A2AC",
+        "backgroundColor": "#63A2AC",
+        "yAxisID": "y1",
+        "borderDash": [
+          5,
+          5
+        ],
+        "pointStyle": "triangle"
+      },
+      {
+        "label": "FluentAssertions time",
+        "unit": "ns",
+        "data": [
+          2130327.415755208,
+          2006124.4127604167,
+          2227322.3119791667,
+          2097839.0229166667,
+          2160920.025,
+          2123653.6588541665,
+          2022293.8307291667,
+          2247471.496354167,
+          2351366.011393229,
+          2271435.2216145834
+        ],
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
+        "yAxisID": "y",
+        "borderDash": [],
+        "pointStyle": "circle"
+      },
+      {
+        "label": "FluentAssertions memory",
+        "unit": "b",
+        "data": [
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738,
+          3977738
+        ],
+        "borderColor": "#FF671B",
+        "backgroundColor": "#FF671B",
+        "yAxisID": "y1",
+        "borderDash": [
+          5,
+          5
+        ],
+        "pointStyle": "triangle"
+      },
+      {
+        "label": "TUnit time",
+        "unit": "ns",
+        "data": [
+          660068.1526817909,
+          637045.501953125,
+          686112.0256835937,
+          648761.4701450893,
+          630413.2682291666,
+          711727.0952148438,
+          667665.3231724331,
+          690592.0778645833,
+          688590.0560709635,
+          656899.8244628906
+        ],
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
+        "yAxisID": "y",
+        "borderDash": [],
+        "pointStyle": "circle"
+      },
+      {
+        "label": "TUnit memory",
+        "unit": "b",
+        "data": [
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377,
+          836377
+        ],
+        "borderColor": "#1A6029",
+        "backgroundColor": "#1A6029",
+        "yAxisID": "y1",
+        "borderDash": [
+          5,
+          5
+        ],
+        "pointStyle": "triangle"
+      }
+    ]
+  },
   "ItemsCount_AtLeast": {
     "commits": [
       {
@@ -7271,219 +7484,6 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640
-        ],
-        "borderColor": "#1A6029",
-        "backgroundColor": "#1A6029",
-        "yAxisID": "y1",
-        "borderDash": [
-          5,
-          5
-        ],
-        "pointStyle": "triangle"
-      }
-    ]
-  },
-  "Nested": {
-    "commits": [
-      {
-        "sha": "5930c6cb87c61321d4194c1a86e87c8074b62dee",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 08:37:58 2025 \u002B0100",
-        "message": "feat: improve equivalency (#304)"
-      },
-      {
-        "sha": "8b6d5c3f21970d5f1cd04c1327ae7dc8e3899bc9",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 09:06:32 2025 \u002B0100",
-        "message": "docs: add core nuget badge (#305)"
-      },
-      {
-        "sha": "982c1d09f8ad0bb809a9357d1c6a1017cf0cd1c6",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 09:23:51 2025 \u002B0100",
-        "message": "chore: update aweXpect.Core to v0.23.0 (#306)"
-      },
-      {
-        "sha": "8ae4321d9e06929c0fba8bf045724241e6a7df39",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 12:23:51 2025 \u002B0100",
-        "message": "refactor: improve code coverage (#307)"
-      },
-      {
-        "sha": "236ea658dd027ff0c344b4e481a9d2e9a9b443a5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Wed Feb 5 16:45:36 2025 \u002B0100",
-        "message": "refactor: improve code coverage (2) (#308)"
-      },
-      {
-        "sha": "83affdbde5065f6d9fc9c3e667f323756aaf3e89",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 6 08:47:58 2025 \u002B0100",
-        "message": "fix: null handling in expectations on inner exceptions (#309)"
-      },
-      {
-        "sha": "051f951e84cfa145bf70e6a902f359a8f4588c17",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 6 13:11:04 2025 \u002B0100",
-        "message": "chore: update aweXpect.Core to v0.24.0 (#310)"
-      },
-      {
-        "sha": "72034f95814162df71d6866ccb911ea00c49fcaa",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 6 16:46:55 2025 \u002B0100",
-        "message": "chore: update aweXpect to v0.27.0 (#311)"
-      },
-      {
-        "sha": "896aa83e1cc540b579c8c71788f3684fbf4e22e2",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Feb 7 08:21:10 2025 \u002B0100",
-        "message": "feat: change options to \u0060record\u0060 types (#312)"
-      },
-      {
-        "sha": "4fb38900ee7db2337f104f11364d1dd97b01141a",
-        "author": "Valentin Breu\u00DF",
-        "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
-        "message": "feat: improve equivalency (#313)"
-      }
-    ],
-    "labels": [
-      "5930c6cb",
-      "8b6d5c3f",
-      "982c1d09",
-      "8ae4321d",
-      "236ea658",
-      "83affdbd",
-      "051f951e",
-      "72034f95",
-      "896aa83e",
-      "4fb38900"
-    ],
-    "datasets": [
-      {
-        "label": "aweXpect time",
-        "unit": "ns",
-        "data": [
-          358532.90348307294,
-          326246.10475260415,
-          343547.747000558,
-          343435.91119791666,
-          328860.52880859375,
-          354380.75217848556,
-          350717.64470563614,
-          351243.83466796874,
-          358787.7890950521,
-          396151.3222307478
-        ],
-        "borderColor": "#63A2AC",
-        "backgroundColor": "#63A2AC",
-        "yAxisID": "y",
-        "borderDash": [],
-        "pointStyle": "circle"
-      },
-      {
-        "label": "aweXpect memory",
-        "unit": "b",
-        "data": [
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332876,
-          332820,
-          333100
-        ],
-        "borderColor": "#63A2AC",
-        "backgroundColor": "#63A2AC",
-        "yAxisID": "y1",
-        "borderDash": [
-          5,
-          5
-        ],
-        "pointStyle": "triangle"
-      },
-      {
-        "label": "FluentAssertions time",
-        "unit": "ns",
-        "data": [
-          2130327.415755208,
-          2006124.4127604167,
-          2227322.3119791667,
-          2097839.0229166667,
-          2160920.025,
-          2123653.6588541665,
-          2022293.8307291667,
-          2247471.496354167,
-          2351366.011393229,
-          2271435.2216145834
-        ],
-        "borderColor": "#FF671B",
-        "backgroundColor": "#FF671B",
-        "yAxisID": "y",
-        "borderDash": [],
-        "pointStyle": "circle"
-      },
-      {
-        "label": "FluentAssertions memory",
-        "unit": "b",
-        "data": [
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738,
-          3977738
-        ],
-        "borderColor": "#FF671B",
-        "backgroundColor": "#FF671B",
-        "yAxisID": "y1",
-        "borderDash": [
-          5,
-          5
-        ],
-        "pointStyle": "triangle"
-      },
-      {
-        "label": "TUnit time",
-        "unit": "ns",
-        "data": [
-          660068.1526817909,
-          637045.501953125,
-          686112.0256835937,
-          648761.4701450893,
-          630413.2682291666,
-          711727.0952148438,
-          667665.3231724331,
-          690592.0778645833,
-          688590.0560709635,
-          656899.8244628906
-        ],
-        "borderColor": "#1A6029",
-        "backgroundColor": "#1A6029",
-        "yAxisID": "y",
-        "borderDash": [],
-        "pointStyle": "circle"
-      },
-      {
-        "label": "TUnit memory",
-        "unit": "b",
-        "data": [
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377,
-          836377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
