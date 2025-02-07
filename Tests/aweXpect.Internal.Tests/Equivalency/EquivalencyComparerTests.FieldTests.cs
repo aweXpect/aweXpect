@@ -24,6 +24,18 @@ public sealed partial class EquivalencyComparerTests
 			await That(result).IsTrue();
 		}
 
+		[Fact]
+		public async Task ShouldConsiderPublicFieldsOnly()
+		{
+			MyClassWithFields actual = new(1, 2, 3);
+			MyClassWithFields expected = new(1, 3, 4);
+			EquivalencyComparer sut = new(new EquivalencyOptions());
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsTrue();
+		}
+
 		[Theory]
 		[InlineData("foo", null)]
 		[InlineData(null, "bar")]
@@ -73,6 +85,97 @@ public sealed partial class EquivalencyComparerTests
 			                                     Found: "foo"
 			                                  Expected: "bar"
 			                              """);
+		}
+
+		[Theory]
+		[InlineData(5, 5, true)]
+		[InlineData(5, 6, false)]
+		public async Task WhenIncludingInternalMembers_ShouldConsiderPublicAndInternalFields(
+			int actualInternalValue, int expectedInternalValue, bool expectedResult)
+		{
+			MyClassWithFields actual = new(1, actualInternalValue, 3);
+			MyClassWithFields expected = new(2, expectedInternalValue, 4);
+			EquivalencyComparer sut = new(new EquivalencyOptions
+			{
+				Fields = IncludeMembers.Internal
+			});
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsEqualTo(expectedResult);
+			if (!expectedResult)
+			{
+				await That(sut.GetExtendedFailure("it", actual, expected))
+					.IsEqualTo($"""
+					            it was not:
+					              Field MyInternalField differed:
+					                   Found: {actualInternalValue}
+					                Expected: {expectedInternalValue}
+					            """);
+			}
+		}
+
+		[Theory]
+		[InlineData(5, 5, true)]
+		[InlineData(5, 6, false)]
+		public async Task WhenIncludingPrivateMembers_ShouldConsiderPublicAndInternalFields(
+			int actualPrivateValue, int expectedPrivateValue, bool expectedResult)
+		{
+			MyClassWithFields actual = new(1, 3, actualPrivateValue);
+			MyClassWithFields expected = new(2, 4, expectedPrivateValue);
+			EquivalencyComparer sut = new(new EquivalencyOptions
+			{
+				Fields = IncludeMembers.Private
+			});
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsEqualTo(expectedResult);
+			if (!expectedResult)
+			{
+				await That(sut.GetExtendedFailure("it", actual, expected))
+					.IsEqualTo($"""
+					            it was not:
+					              Field MyPrivateField differed:
+					                   Found: {actualPrivateValue}
+					                Expected: {expectedPrivateValue}
+					            """);
+			}
+		}
+
+		[Theory]
+		[InlineData(5, 5, true)]
+		[InlineData(5, 6, false)]
+		public async Task WhenIncludingPublicMembers_ShouldConsiderPublicAndInternalFields(
+			int actualPublicValue, int expectedPublicValue, bool expectedResult)
+		{
+			MyClassWithFields actual = new(actualPublicValue, 1, 3);
+			MyClassWithFields expected = new(expectedPublicValue, 2, 4);
+			EquivalencyComparer sut = new(new EquivalencyOptions
+			{
+				Fields = IncludeMembers.Public
+			});
+
+			bool result = sut.AreConsideredEqual(actual, expected);
+
+			await That(result).IsEqualTo(expectedResult);
+			if (!expectedResult)
+			{
+				await That(sut.GetExtendedFailure("it", actual, expected))
+					.IsEqualTo($"""
+					            it was not:
+					              Field MyPublicField differed:
+					                   Found: {actualPublicValue}
+					                Expected: {expectedPublicValue}
+					            """);
+			}
+		}
+
+		private class MyClassWithFields(int publicField, int internalField, int privateField)
+		{
+			internal int MyInternalField = internalField;
+			private int MyPrivateField = privateField;
+			public int MyPublicField = publicField;
 		}
 	}
 }

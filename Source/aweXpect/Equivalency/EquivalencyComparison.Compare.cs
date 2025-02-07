@@ -9,13 +9,6 @@ namespace aweXpect.Equivalency;
 
 internal static partial class EquivalencyComparison
 {
-	private static readonly BindingFlags BindingFlags =
-		BindingFlags.Instance
-		| BindingFlags.Static
-		| BindingFlags.Public
-		| BindingFlags.NonPublic
-		| BindingFlags.FlattenHierarchy;
-
 	private static bool Compare<TActual, TExpected>(
 		TActual actual,
 		TExpected expected,
@@ -59,50 +52,56 @@ internal static partial class EquivalencyComparison
 	{
 		bool result = true;
 		int memberCount = 0;
-		foreach (string? fieldName in expected.GetType().GetFields().Concat(expected.GetType().GetFields())
-			         .Where(x => !x.Name.StartsWith('<'))
-			         .Select(x => x.Name)
-			         .Distinct())
+		if (typeOptions.Fields != IncludeMembers.None)
 		{
-			memberCount++;
-			string fieldMemberPath = ConcatMemberPath(memberPath, fieldName);
-			if (typeOptions.MembersToIgnore.Contains(fieldMemberPath))
+			BindingFlags fieldBindingFlags = typeOptions.Fields.GetBindingFlags();
+			foreach (string fieldName in expected.GetType().GetFields(typeOptions.Fields).Select(x => x.Name))
 			{
-				continue;
-			}
+				memberCount++;
+				string fieldMemberPath = ConcatMemberPath(memberPath, fieldName);
+				if (typeOptions.MembersToIgnore.Contains(fieldMemberPath))
+				{
+					continue;
+				}
 
-			object? actualFieldValue = actual.GetType().GetField(fieldName, BindingFlags)?.GetValue(actual);
-			object? expectedFieldValue = expected.GetType().GetField(fieldName, BindingFlags)?.GetValue(expected);
+				object? actualFieldValue =
+					actual.GetType().GetField(fieldName, fieldBindingFlags)?.GetValue(actual);
+				object? expectedFieldValue =
+					expected.GetType().GetField(fieldName, fieldBindingFlags)?.GetValue(expected);
 
-			if (!Compare(actualFieldValue, expectedFieldValue,
-				    options, options.GetTypeOptions(actualFieldValue?.GetType(), typeOptions),
-				    failureBuilder, fieldMemberPath, MemberType.Field, context))
-			{
-				result = false;
+				if (!Compare(actualFieldValue, expectedFieldValue,
+					    options, options.GetTypeOptions(actualFieldValue?.GetType(), typeOptions),
+					    failureBuilder, fieldMemberPath, MemberType.Field, context))
+				{
+					result = false;
+				}
 			}
 		}
 
-		foreach (string? propertyName in expected.GetType().GetProperties().Concat(expected.GetType().GetProperties())
-			         .Where(p => p.GetIndexParameters().Length == 0)
-			         .Select(x => x.Name)
-			         .Distinct())
+		if (typeOptions.Properties != IncludeMembers.None)
 		{
-			memberCount++;
-			string propertyMemberPath = ConcatMemberPath(memberPath, propertyName);
-			if (typeOptions.MembersToIgnore.Contains(propertyMemberPath))
+			BindingFlags propertyBindingFlags = typeOptions.Properties.GetBindingFlags();
+			foreach (string propertyName in expected.GetType().GetProperties(typeOptions.Properties)
+				         .Select(x => x.Name))
 			{
-				continue;
-			}
+				memberCount++;
+				string propertyMemberPath = ConcatMemberPath(memberPath, propertyName);
+				if (typeOptions.MembersToIgnore.Contains(propertyMemberPath))
+				{
+					continue;
+				}
 
-			object? actualPropertyValue = actual.GetType().GetProperty(propertyName, BindingFlags)?.GetValue(actual);
-			object? expectedPropertyValue =
-				expected.GetType().GetProperty(propertyName, BindingFlags)?.GetValue(expected);
+				object? actualPropertyValue = actual.GetType().GetProperty(propertyName, propertyBindingFlags)
+					?.GetValue(actual);
+				object? expectedPropertyValue =
+					expected.GetType().GetProperty(propertyName, propertyBindingFlags)?.GetValue(expected);
 
-			if (!Compare(actualPropertyValue, expectedPropertyValue,
-				    options, options.GetTypeOptions(actualPropertyValue?.GetType(), typeOptions),
-				    failureBuilder, propertyMemberPath, MemberType.Property, context))
-			{
-				result = false;
+				if (!Compare(actualPropertyValue, expectedPropertyValue,
+					    options, options.GetTypeOptions(actualPropertyValue?.GetType(), typeOptions),
+					    failureBuilder, propertyMemberPath, MemberType.Property, context))
+				{
+					result = false;
+				}
 			}
 		}
 
