@@ -45,11 +45,7 @@ internal static class IncludeMembersExtensions
 			yield break;
 		}
 
-		BindingFlags bindingFlags = includeMembers switch
-		{
-			IncludeMembers.Public => BindingFlags.Public | BindingFlags.Instance,
-			_ => BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic
-		};
+		BindingFlags bindingFlags = GetBindingFlags(includeMembers);
 		foreach (PropertyInfo property in type.GetProperties(bindingFlags).Where(x => x.CanRead))
 		{
 			MethodInfo getter = property.GetAccessors(true)[0];
