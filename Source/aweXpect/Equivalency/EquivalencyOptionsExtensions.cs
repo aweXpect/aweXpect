@@ -20,6 +20,39 @@ public static class EquivalencyOptionsExtensions
 		};
 
 	/// <summary>
+	///     Includes fields according to the <paramref name="fieldsToInclude" /> parameter.
+	/// </summary>
+	/// <remarks>
+	///     If <paramref name="fieldsToInclude" /> is set to <see cref="IncludeMembers.None" />, fields are excluded from the
+	///     comparison.
+	/// </remarks>
+	public static TEquivalencyOptions IncludingFields<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		IncludeMembers fieldsToInclude)
+		where TEquivalencyOptions : EquivalencyTypeOptions
+		=> @this with
+		{
+			Fields = fieldsToInclude
+		};
+
+	/// <summary>
+	///     Includes properties according to the <paramref name="propertiesToInclude" /> parameter.
+	/// </summary>
+	/// <remarks>
+	///     If <paramref name="propertiesToInclude" /> is set to <see cref="IncludeMembers.None" />, properties are excluded
+	///     from the
+	///     comparison.
+	/// </remarks>
+	public static TEquivalencyOptions IncludingProperties<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		IncludeMembers propertiesToInclude)
+		where TEquivalencyOptions : EquivalencyTypeOptions
+		=> @this with
+		{
+			Properties = propertiesToInclude
+		};
+
+	/// <summary>
 	///     Ignores the order of collections when checking for equivalency
 	///     when <paramref name="ignoreCollectionOrder" /> is <see langword="true" />.
 	/// </summary>

@@ -943,6 +943,10 @@ namespace aweXpect.Equivalency
             where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
         public static TEquivalencyOptions IgnoringMember<TEquivalencyOptions>(this TEquivalencyOptions @this, string memberToIgnore)
             where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
+        public static TEquivalencyOptions IncludingFields<TEquivalencyOptions>(this TEquivalencyOptions @this, aweXpect.Equivalency.IncludeMembers fieldsToInclude)
+            where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
+        public static TEquivalencyOptions IncludingProperties<TEquivalencyOptions>(this TEquivalencyOptions @this, aweXpect.Equivalency.IncludeMembers propertiesToInclude)
+            where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
     }
     public class EquivalencyOptions<TExpected> : aweXpect.Equivalency.EquivalencyOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions<TExpected>>
     {
