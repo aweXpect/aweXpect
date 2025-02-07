@@ -906,14 +906,16 @@ namespace aweXpect
 }
 namespace aweXpect.Equivalency
 {
-    public class EquivalencyOptions
+    public class EquivalencyOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
     {
         public EquivalencyOptions() { }
-        public bool IgnoreCollectionOrder { get; }
-        public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
-        public aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(bool ignoreCollectionOrder = true) { }
-        public aweXpect.Equivalency.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
-        public static aweXpect.Equivalency.EquivalencyOptions FromCallback(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? callback) { }
+        public bool IgnoreCollectionOrder { get; init; }
+        public string[] MembersToIgnore { get; init; }
+    }
+    public static class EquivalencyOptionsExtensions
+    {
+        public static aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(this aweXpect.Equivalency.EquivalencyOptions @this, bool ignoreCollectionOrder = true) { }
+        public static aweXpect.Equivalency.EquivalencyOptions IgnoringMember(this aweXpect.Equivalency.EquivalencyOptions @this, string memberToIgnore) { }
     }
 }
 namespace aweXpect.Json
@@ -967,13 +969,16 @@ namespace aweXpect.Json
             public System.Text.Json.JsonSerializerOptions DefaultJsonSerializerOptions { get; init; }
         }
     }
-    public class JsonOptions
+    public class JsonOptions : System.IEquatable<aweXpect.Json.JsonOptions>
     {
         public JsonOptions() { }
-        public System.Text.Json.JsonDocumentOptions DocumentOptions { get; }
-        public bool IgnoreAdditionalProperties { get; }
-        public aweXpect.Json.JsonOptions IgnoringAdditionalProperties(bool ignoreAdditionalProperties = true) { }
-        public aweXpect.Json.JsonOptions WithJsonOptions(System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions> jsonDocumentOptions) { }
+        public System.Text.Json.JsonDocumentOptions DocumentOptions { get; init; }
+        public bool IgnoreAdditionalProperties { get; init; }
+    }
+    public static class JsonOptionsExtensions
+    {
+        public static aweXpect.Json.JsonOptions IgnoringAdditionalProperties(this aweXpect.Json.JsonOptions @this, bool ignoreAdditionalProperties = true) { }
+        public static aweXpect.Json.JsonOptions WithJsonOptions(this aweXpect.Json.JsonOptions @this, System.Func<System.Text.Json.JsonDocumentOptions, System.Text.Json.JsonDocumentOptions> jsonDocumentOptions) { }
     }
 }
 namespace aweXpect.Results

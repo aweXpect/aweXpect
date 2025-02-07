@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using aweXpect.Equivalency;
 
 namespace aweXpect.Tests;
 

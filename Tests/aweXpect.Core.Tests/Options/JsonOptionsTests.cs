@@ -20,28 +20,27 @@ public class JsonOptionsTests
 		int maxDepth = new Random().Next(1, 10);
 		JsonOptions sut = new();
 
-		sut.WithJsonOptions(o => o with
+		JsonOptions result = sut.WithJsonOptions(o => o with
 		{
 			MaxDepth = maxDepth
 		});
 
-		await That(sut.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
+		await That(result.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
 	}
 
 	[Fact]
 	public async Task WithJsonOptions_ShouldSupportProvidingFixedOptions()
 	{
 		int maxDepth = new Random().Next(1, 10);
+		JsonOptions sut = new();
 		JsonDocumentOptions documentOptions = new()
 		{
 			MaxDepth = maxDepth
 		};
 
-		JsonOptions sut = new();
+		JsonOptions result = sut.WithJsonOptions(_ => documentOptions);
 
-		sut.WithJsonOptions(_ => documentOptions);
-
-		await That(sut.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
+		await That(result.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
 	}
 }
 #endif

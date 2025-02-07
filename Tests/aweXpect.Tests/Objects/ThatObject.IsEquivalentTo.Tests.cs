@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Tests;
+﻿using aweXpect.Equivalency;
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatObject
 {

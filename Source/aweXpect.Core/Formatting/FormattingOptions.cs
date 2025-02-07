@@ -3,7 +3,7 @@
 /// <summary>
 ///     Formatting options used in the <see cref="ValueFormatter" />.
 /// </summary>
-public class FormattingOptions
+public record FormattingOptions
 {
 	private FormattingOptions(bool useLineBreaks, string indentation = "")
 	{

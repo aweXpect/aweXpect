@@ -721,14 +721,16 @@ namespace aweXpect
 }
 namespace aweXpect.Equivalency
 {
-    public class EquivalencyOptions
+    public class EquivalencyOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
     {
         public EquivalencyOptions() { }
-        public bool IgnoreCollectionOrder { get; }
-        public System.Collections.Generic.IReadOnlyList<string> MembersToIgnore { get; }
-        public aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(bool ignoreCollectionOrder = true) { }
-        public aweXpect.Equivalency.EquivalencyOptions IgnoringMember(string memberToIgnore) { }
-        public static aweXpect.Equivalency.EquivalencyOptions FromCallback(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? callback) { }
+        public bool IgnoreCollectionOrder { get; init; }
+        public string[] MembersToIgnore { get; init; }
+    }
+    public static class EquivalencyOptionsExtensions
+    {
+        public static aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(this aweXpect.Equivalency.EquivalencyOptions @this, bool ignoreCollectionOrder = true) { }
+        public static aweXpect.Equivalency.EquivalencyOptions IgnoringMember(this aweXpect.Equivalency.EquivalencyOptions @this, string memberToIgnore) { }
     }
 }
 namespace aweXpect.Results

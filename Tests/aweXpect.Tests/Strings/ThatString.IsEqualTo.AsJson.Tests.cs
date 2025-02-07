@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using aweXpect.Customization;
+using aweXpect.Json;
 
 namespace aweXpect.Tests;
 

@@ -21,7 +21,7 @@ public static partial class ThatObject
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<object>(it, new JsonSerializerOptions(),
-					EquivalencyOptions.FromCallback(equivalencyOptions))),
+					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
 	/// <summary>
@@ -34,7 +34,7 @@ public static partial class ThatObject
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<object>(it, serializerOptions,
-					EquivalencyOptions.FromCallback(equivalencyOptions))),
+					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
 	/// <summary>
@@ -46,7 +46,7 @@ public static partial class ThatObject
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<T>(it, new JsonSerializerOptions(),
-					EquivalencyOptions.FromCallback(equivalencyOptions))),
+					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
 	/// <summary>
@@ -59,7 +59,7 @@ public static partial class ThatObject
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new BeJsonSerializableConstraint<T>(it, serializerOptions,
-					EquivalencyOptions.FromCallback(equivalencyOptions))),
+					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
 	private readonly struct BeJsonSerializableConstraint<T>(

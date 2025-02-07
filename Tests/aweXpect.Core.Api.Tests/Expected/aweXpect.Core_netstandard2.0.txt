@@ -399,7 +399,7 @@ namespace aweXpect.Formatting
         public FormattingContext() { }
         public System.Collections.Generic.HashSet<object> FormattedObjects { get; }
     }
-    public class FormattingOptions
+    public class FormattingOptions : System.IEquatable<aweXpect.Formatting.FormattingOptions>
     {
         public static aweXpect.Formatting.FormattingOptions Indented { get; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
@@ -523,7 +523,7 @@ namespace aweXpect.Options
             Contains = 8,
         }
     }
-    public class CollectionOrderOptions<TItem>
+    public class CollectionOrderOptions<TItem> : System.IEquatable<aweXpect.Options.CollectionOrderOptions<TItem>>
     {
         public CollectionOrderOptions() { }
         public System.Collections.Generic.IComparer<TItem> GetComparer() { }
@@ -560,13 +560,13 @@ namespace aweXpect.Options
         public void Exactly(int expected) { }
         public override string ToString() { }
     }
-    public class SignalerOptions
+    public class SignalerOptions : System.IEquatable<aweXpect.Options.SignalerOptions>
     {
         public SignalerOptions() { }
         public System.TimeSpan? Timeout { get; set; }
         public override string ToString() { }
     }
-    public class SignalerOptions<TParameter> : aweXpect.Options.SignalerOptions
+    public class SignalerOptions<TParameter> : aweXpect.Options.SignalerOptions, System.IEquatable<aweXpect.Options.SignalerOptions<TParameter>>
     {
         public SignalerOptions() { }
         public bool Matches(TParameter parameter) { }
