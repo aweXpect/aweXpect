@@ -20,6 +20,7 @@ internal static partial class EquivalencyComparison
 		TActual actual,
 		TExpected expected,
 		EquivalencyOptions options,
+		EquivalencyTypeOptions typeOptions,
 		StringBuilder failureBuilder,
 		string memberPath,
 		MemberType memberType,
@@ -43,28 +44,29 @@ internal static partial class EquivalencyComparison
 
 		if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
 		{
-			return CompareEnumerables(actualEnumerable, expectedEnumerable, failureBuilder, memberPath, options,
-				context);
+			return CompareEnumerables(actualEnumerable, expectedEnumerable, failureBuilder, memberPath,
+				options, typeOptions, context);
 		}
 
-		return CompareObjects(actual, expected, failureBuilder, options, memberType, memberPath, context);
+		return CompareObjects(actual, expected, failureBuilder, memberType, memberPath,
+			options, typeOptions, context);
 	}
 
 	private static bool CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,
 		[DisallowNull] TExpected expected,
-		StringBuilder failureBuilder, EquivalencyOptions options, MemberType memberType, string memberPath,
-		EquivalencyContext context)
+		StringBuilder failureBuilder, MemberType memberType, string memberPath,
+		EquivalencyOptions options, EquivalencyTypeOptions typeOptions, EquivalencyContext context)
 	{
 		bool result = true;
 		int memberCount = 0;
-		foreach (string? fieldName in actual.GetType().GetFields().Concat(expected.GetType().GetFields())
+		foreach (string? fieldName in expected.GetType().GetFields().Concat(expected.GetType().GetFields())
 			         .Where(x => !x.Name.StartsWith('<'))
 			         .Select(x => x.Name)
 			         .Distinct())
 		{
 			memberCount++;
 			string fieldMemberPath = ConcatMemberPath(memberPath, fieldName);
-			if (options.MembersToIgnore.Contains(fieldMemberPath))
+			if (typeOptions.MembersToIgnore.Contains(fieldMemberPath))
 			{
 				continue;
 			}
@@ -72,21 +74,22 @@ internal static partial class EquivalencyComparison
 			object? actualFieldValue = actual.GetType().GetField(fieldName, BindingFlags)?.GetValue(actual);
 			object? expectedFieldValue = expected.GetType().GetField(fieldName, BindingFlags)?.GetValue(expected);
 
-			if (!Compare(actualFieldValue, expectedFieldValue, options, failureBuilder,
-				    fieldMemberPath, MemberType.Field, context))
+			if (!Compare(actualFieldValue, expectedFieldValue,
+				    options, options.GetTypeOptions(actualFieldValue?.GetType(), typeOptions),
+				    failureBuilder, fieldMemberPath, MemberType.Field, context))
 			{
 				result = false;
 			}
 		}
 
-		foreach (string? propertyName in actual.GetType().GetProperties().Concat(expected.GetType().GetProperties())
+		foreach (string? propertyName in expected.GetType().GetProperties().Concat(expected.GetType().GetProperties())
 			         .Where(p => p.GetIndexParameters().Length == 0)
 			         .Select(x => x.Name)
 			         .Distinct())
 		{
 			memberCount++;
 			string propertyMemberPath = ConcatMemberPath(memberPath, propertyName);
-			if (options.MembersToIgnore.Contains(propertyMemberPath))
+			if (typeOptions.MembersToIgnore.Contains(propertyMemberPath))
 			{
 				continue;
 			}
@@ -95,8 +98,9 @@ internal static partial class EquivalencyComparison
 			object? expectedPropertyValue =
 				expected.GetType().GetProperty(propertyName, BindingFlags)?.GetValue(expected);
 
-			if (!Compare(actualPropertyValue, expectedPropertyValue, options, failureBuilder,
-				    propertyMemberPath, MemberType.Property, context))
+			if (!Compare(actualPropertyValue, expectedPropertyValue,
+				    options, options.GetTypeOptions(actualPropertyValue?.GetType(), typeOptions),
+				    failureBuilder, propertyMemberPath, MemberType.Property, context))
 			{
 				result = false;
 			}
@@ -124,19 +128,20 @@ internal static partial class EquivalencyComparison
 	}
 
 	private static bool CompareEnumerables(
-		IEnumerable actualEnumerable,
-		IEnumerable expectedEnumerable,
+		IEnumerable actual,
+		IEnumerable expected,
 		StringBuilder failureBuilder,
 		string memberPath,
 		EquivalencyOptions options,
+		EquivalencyTypeOptions typeOptions,
 		EquivalencyContext context)
 	{
 		bool result = true;
-		object?[] actualObjects = actualEnumerable.Cast<object?>().ToArray();
-		object?[] expectedObjects = expectedEnumerable.Cast<object?>().ToArray();
+		object?[] actualObjects = actual.Cast<object?>().ToArray();
+		object?[] expectedObjects = expected.Cast<object?>().ToArray();
 
 		int[]? keys = null;
-		if (options.IgnoreCollectionOrder)
+		if (typeOptions.IgnoreCollectionOrder)
 		{
 			keys = new int[actualObjects.Length];
 			for (int i = 0; i < actualObjects.Length; i++)
@@ -151,7 +156,7 @@ internal static partial class EquivalencyComparison
 		for (int i = 0; i < Math.Min(actualObjects.Length, expectedObjects.Length); i++)
 		{
 			string elementMemberPath = $"{memberPath}[{(keys is null ? i : keys[i])}]";
-			if (options.MembersToIgnore.Contains(elementMemberPath))
+			if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
 			{
 				continue;
 			}
@@ -159,8 +164,9 @@ internal static partial class EquivalencyComparison
 			object? actualObject = actualObjects.ElementAtOrDefault(i);
 			object? expectedObject = expectedObjects.ElementAtOrDefault(i);
 
-			if (!Compare(actualObject, expectedObject, options, failureBuilder,
-				    elementMemberPath, MemberType.Element, context))
+			if (!Compare(actualObject, expectedObject,
+				    options, options.GetTypeOptions(actualObject?.GetType(), typeOptions),
+				    failureBuilder, elementMemberPath, MemberType.Element, context))
 			{
 				result = false;
 			}
@@ -171,7 +177,7 @@ internal static partial class EquivalencyComparison
 			for (int i = actualObjects.Length; i < expectedObjects.Length; i++)
 			{
 				string elementMemberPath = $"{memberPath}[{i}]";
-				if (options.MembersToIgnore.Contains(elementMemberPath))
+				if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
 				{
 					continue;
 				}
@@ -197,7 +203,7 @@ internal static partial class EquivalencyComparison
 			for (int i = expectedObjects.Length; i < actualObjects.Length; i++)
 			{
 				string elementMemberPath = $"{memberPath}[{(keys is null ? i : keys[i])}]";
-				if (options.MembersToIgnore.Contains(elementMemberPath))
+				if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
 				{
 					continue;
 				}

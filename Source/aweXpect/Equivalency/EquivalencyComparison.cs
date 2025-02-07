@@ -14,6 +14,7 @@ internal static partial class EquivalencyComparison
 			actual,
 			expected,
 			options,
+			options.GetTypeOptions(actual?.GetType(), options),
 			failureBuilder,
 			"",
 			MemberType.Value,
