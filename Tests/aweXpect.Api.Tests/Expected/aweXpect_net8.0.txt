@@ -787,7 +787,7 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>, T?> IsEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  struct { }
-        public static aweXpect.Results.ObjectEqualityResult<TSubject, aweXpect.Core.IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.ObjectEqualityResult<TSubject, aweXpect.Core.IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrWhichResult<object?, aweXpect.Core.IThat<object?>> IsExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhichResult<TType, aweXpect.Core.IThat<object?>> IsExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsJsonSerializable(this aweXpect.Core.IThat<object?> source, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? equivalencyOptions = null) { }
@@ -906,16 +906,50 @@ namespace aweXpect
 }
 namespace aweXpect.Equivalency
 {
-    public class EquivalencyOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
+    public static class EquivalencyAwexpectCustomizationExtensions
+    {
+        public static aweXpect.Equivalency.EquivalencyAwexpectCustomizationExtensions.EquivalencyCustomization Equivalency(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
+        public class EquivalencyCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Equivalency.EquivalencyAwexpectCustomizationExtensions.EquivalencyCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<aweXpect.Equivalency.EquivalencyOptions> DefaultEquivalencyOptions { get; }
+            public aweXpect.Equivalency.EquivalencyAwexpectCustomizationExtensions.EquivalencyCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Equivalency.EquivalencyAwexpectCustomizationExtensions.EquivalencyCustomizationValue, aweXpect.Equivalency.EquivalencyAwexpectCustomizationExtensions.EquivalencyCustomizationValue> update) { }
+        }
+        public class EquivalencyCustomizationValue : System.IEquatable<aweXpect.Equivalency.EquivalencyAwexpectCustomizationExtensions.EquivalencyCustomizationValue>
+        {
+            public EquivalencyCustomizationValue() { }
+            public aweXpect.Equivalency.EquivalencyOptions DefaultEquivalencyOptions { get; init; }
+        }
+    }
+    public enum EquivalencyComparisonType
+    {
+        ByValue = 0,
+        ByMembers = 1,
+    }
+    public static class EquivalencyDefaults
+    {
+        public static aweXpect.Equivalency.EquivalencyComparisonType DefaultTypeComparison(System.Type type) { }
+    }
+    public class EquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
     {
         public EquivalencyOptions() { }
-        public bool IgnoreCollectionOrder { get; init; }
-        public string[] MembersToIgnore { get; init; }
+        public System.Collections.Generic.Dictionary<System.Type, aweXpect.Equivalency.EquivalencyTypeOptions> CustomOptions { get; init; }
+        public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> TypeComparison { get; init; }
     }
     public static class EquivalencyOptionsExtensions
     {
         public static aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(this aweXpect.Equivalency.EquivalencyOptions @this, bool ignoreCollectionOrder = true) { }
         public static aweXpect.Equivalency.EquivalencyOptions IgnoringMember(this aweXpect.Equivalency.EquivalencyOptions @this, string memberToIgnore) { }
+    }
+    public class EquivalencyOptions<TExpected> : aweXpect.Equivalency.EquivalencyOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions<TExpected>>
+    {
+        public EquivalencyOptions(aweXpect.Equivalency.EquivalencyOptions inner) { }
+    }
+    public class EquivalencyTypeOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyTypeOptions>
+    {
+        public EquivalencyTypeOptions() { }
+        public bool IgnoreCollectionOrder { get; init; }
+        public string[] MembersToIgnore { get; init; }
     }
 }
 namespace aweXpect.Json

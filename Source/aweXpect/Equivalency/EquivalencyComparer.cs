@@ -18,13 +18,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 			return specialCaseResult.Value;
 		}
 
-		return EquivalencyComparison.Compare(actual, expected,
-			new EquivalencyComparison.CompareOptions
-			{
-				IgnoreCollectionOrder = equivalencyOptions.IgnoreCollectionOrder,
-				MembersToIgnore = [.. equivalencyOptions.MembersToIgnore]
-			},
-			_failureBuilder);
+		return EquivalencyComparison.Compare(actual, expected, equivalencyOptions, _failureBuilder);
 	}
 
 	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />

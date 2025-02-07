@@ -37,4 +37,17 @@ public static class EquivalencyOptionsExtensions
 		=> callback is null
 			? new EquivalencyOptions()
 			: callback(new EquivalencyOptions());
+
+	/// <summary>
+	///     Returns type-specific <see cref="EquivalencyTypeOptions" />.
+	/// </summary>
+	internal static EquivalencyTypeOptions GetTypeOptions(this EquivalencyOptions @this, Type? type, EquivalencyTypeOptions defaultValue)
+	{
+		if (type != null && @this.CustomOptions.TryGetValue(type, out EquivalencyTypeOptions? customOptions))
+		{
+			return customOptions;
+		}
+
+		return defaultValue;
+	}
 }
