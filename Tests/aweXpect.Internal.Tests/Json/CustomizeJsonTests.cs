@@ -3,7 +3,7 @@ using System.Text.Json;
 using aweXpect.Customization;
 using aweXpect.Json;
 
-namespace aweXpect.Internal.Tests;
+namespace aweXpect.Internal.Tests.Json;
 
 public sealed class CustomizeJsonTests
 {
