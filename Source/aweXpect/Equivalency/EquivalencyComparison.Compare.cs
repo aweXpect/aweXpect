@@ -20,7 +20,7 @@ internal static partial class EquivalencyComparison
 	private static bool Compare<TActual, TExpected>(
 		TActual actual,
 		TExpected expected,
-		CompareOptions options,
+		EquivalencyOptions options,
 		StringBuilder failureBuilder,
 		string memberPath,
 		MemberType memberType,
@@ -52,7 +52,7 @@ internal static partial class EquivalencyComparison
 
 	private static bool CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,
 		[DisallowNull] TExpected expected,
-		StringBuilder failureBuilder, CompareOptions options, string memberPath, EquivalencyContext context)
+		StringBuilder failureBuilder, EquivalencyOptions options, string memberPath, EquivalencyContext context)
 	{
 		bool result = true;
 		foreach (string? fieldName in actual.GetType().GetFields().Concat(expected.GetType().GetFields())
@@ -106,7 +106,7 @@ internal static partial class EquivalencyComparison
 		IEnumerable expectedEnumerable,
 		StringBuilder failureBuilder,
 		string memberPath,
-		CompareOptions options,
+		EquivalencyOptions options,
 		EquivalencyContext context)
 	{
 		bool result = true;

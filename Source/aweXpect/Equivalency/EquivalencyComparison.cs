@@ -8,7 +8,7 @@ internal static partial class EquivalencyComparison
 	public static bool Compare<TActual, TExpected>(
 		TActual actual,
 		TExpected expected,
-		CompareOptions options,
+		EquivalencyOptions options,
 		StringBuilder failureBuilder)
 		=> Compare(
 			actual,
@@ -18,12 +18,6 @@ internal static partial class EquivalencyComparison
 			"",
 			MemberType.Value,
 			new EquivalencyContext());
-
-	public record CompareOptions
-	{
-		public bool IgnoreCollectionOrder { get; set; }
-		public string[] MembersToIgnore { get; set; } = [];
-	}
 
 	private sealed class EquivalencyContext
 	{
