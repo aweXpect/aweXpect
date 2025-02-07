@@ -522,6 +522,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -611,7 +617,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -704,7 +711,8 @@ window.BENCHMARK_DATA = {
           149.2655921322959,
           165.00788898468016,
           174.99505362908045,
-          155.25067816461836
+          155.25067816461836,
+          160.7974572658539
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -716,6 +724,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          496,
           496,
           496,
           496,
@@ -903,7 +912,8 @@ window.BENCHMARK_DATA = {
           187.46456054278784,
           210.41716798146567,
           225.95240330696106,
-          196.83803242047628
+          196.83803242047628,
+          189.03046261469524
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -941,6 +951,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1102,7 +1113,8 @@ window.BENCHMARK_DATA = {
           621.7007412229266,
           716.5277636210124,
           747.7352724075317,
-          669.3220853805542
+          669.3220853805542,
+          651.4250216850868
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1163,6 +1175,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1274,6 +1287,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -1286,7 +1305,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -1302,7 +1322,8 @@ window.BENCHMARK_DATA = {
           350717.64470563614,
           351243.83466796874,
           358787.7890950521,
-          396151.3222307478
+          396151.3222307478,
+          298256.99615885416
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1323,7 +1344,8 @@ window.BENCHMARK_DATA = {
           332876,
           332876,
           332820,
-          333100
+          333100,
+          284892
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1347,7 +1369,8 @@ window.BENCHMARK_DATA = {
           2022293.8307291667,
           2247471.496354167,
           2351366.011393229,
-          2271435.2216145834
+          2271435.2216145834,
+          2069286.7826450893
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1359,6 +1382,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1392,7 +1416,8 @@ window.BENCHMARK_DATA = {
           667665.3231724331,
           690592.0778645833,
           688590.0560709635,
-          656899.8244628906
+          656899.8244628906,
+          668890.2572544643
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1404,6 +1429,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          836377,
           836377,
           836377,
           836377,
@@ -1949,6 +1975,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -2038,7 +2070,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -2131,7 +2164,8 @@ window.BENCHMARK_DATA = {
           353.1430130371681,
           350.0775438944499,
           372.5627121558556,
-          369.5976272583008
+          369.5976272583008,
+          331.73314752578733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2143,6 +2177,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          888,
           888,
           888,
           888,
@@ -2330,7 +2365,8 @@ window.BENCHMARK_DATA = {
           416.34154004317065,
           472.7326336224874,
           501.6423487296471,
-          431.736581325531
+          431.736581325531,
+          415.98997462590535
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2368,6 +2404,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -2529,7 +2566,8 @@ window.BENCHMARK_DATA = {
           17089.047862461633,
           15512.023492431641,
           24086.14760648287,
-          14309.478374226888
+          14309.478374226888,
+          18654.47786254883
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2590,6 +2628,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -3163,6 +3202,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -3252,7 +3297,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -3345,7 +3391,8 @@ window.BENCHMARK_DATA = {
           192.4710113321032,
           212.76740145683289,
           226.64747514327368,
-          201.4864379992852
+          201.4864379992852,
+          196.73841004371644
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3357,6 +3404,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          848,
           848,
           848,
           848,
@@ -3544,7 +3592,8 @@ window.BENCHMARK_DATA = {
           187.67587397893269,
           216.17553811073304,
           244.1973889986674,
-          195.50618057250978
+          195.50618057250978,
+          193.83642535550254
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3582,6 +3631,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -3743,7 +3793,8 @@ window.BENCHMARK_DATA = {
           925.0829722331121,
           1129.4919154827412,
           1071.3575198309761,
-          948.9752232869466
+          948.9752232869466,
+          977.2565602620442
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3804,6 +3855,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -4377,6 +4429,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -4466,7 +4524,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -4559,7 +4618,8 @@ window.BENCHMARK_DATA = {
           325.5628830273946,
           343.2748657544454,
           399.3094798088074,
-          324.83393408457437
+          324.83393408457437,
+          313.51130944031934
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4571,6 +4631,7 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
+          928,
           928,
           928,
           928,
@@ -4758,7 +4819,8 @@ window.BENCHMARK_DATA = {
           415.5961516086872,
           461.5416115760803,
           532.2080801010131,
-          441.3652965863546
+          441.3652965863546,
+          420.0080930709839
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4796,6 +4858,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -4957,7 +5020,8 @@ window.BENCHMARK_DATA = {
           981.4342970530192,
           1137.1571679433187,
           1137.2467900789702,
-          1039.7861405690512
+          1039.7861405690512,
+          990.4983881632487
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5018,6 +5082,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -5591,6 +5656,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -5680,7 +5751,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -5773,7 +5845,8 @@ window.BENCHMARK_DATA = {
           1167.318586031596,
           1288.5585553487142,
           1307.5156518496,
-          1291.392672220866
+          1291.392672220866,
+          1203.3241343180339
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5799,6 +5872,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2504,
           2504,
           2504,
           2504,
@@ -5972,7 +6046,8 @@ window.BENCHMARK_DATA = {
           1206.6304907480876,
           1330.3660106658936,
           1454.3738615853447,
-          1305.122022374471
+          1305.122022374471,
+          1225.392256810115
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6010,6 +6085,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -6171,7 +6247,8 @@ window.BENCHMARK_DATA = {
           2339.097605569022,
           2489.911752573649,
           2575.5991460164387,
-          2450.0950442722865
+          2450.0950442722865,
+          2378.7805399576823
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6232,6 +6309,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -6805,6 +6883,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Feb 7 14:27:57 2025 \u002B0100",
         "message": "feat: improve equivalency (#313)"
+      },
+      {
+        "sha": "e21efd5259231069dc353a0ed1dc031e3262939e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Feb 7 16:58:52 2025 \u002B0100",
+        "message": "feat: improve equivalency by allowing to specify the supported visibility of fields and properties (#314)"
       }
     ],
     "labels": [
@@ -6894,7 +6978,8 @@ window.BENCHMARK_DATA = {
       "051f951e",
       "72034f95",
       "896aa83e",
-      "4fb38900"
+      "4fb38900",
+      "e21efd52"
     ],
     "datasets": [
       {
@@ -6987,7 +7072,8 @@ window.BENCHMARK_DATA = {
           1344.1908100128173,
           1352.8707581837973,
           1420.831618499756,
-          1295.3339523587908
+          1295.3339523587908,
+          1279.0162455240886
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7041,6 +7127,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2536,
           2536,
           2536,
           2536,
@@ -7186,7 +7273,8 @@ window.BENCHMARK_DATA = {
           87140.19967447917,
           91567.94661865235,
           91934.29558308919,
-          88314.75494791666
+          88314.75494791666,
+          88977.90178222656
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7284,7 +7372,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7385,7 +7474,8 @@ window.BENCHMARK_DATA = {
           7131.965752410889,
           7031.292917378743,
           6939.3070430755615,
-          6491.947293795072
+          6491.947293795072,
+          6380.031244913737
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7446,6 +7536,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
