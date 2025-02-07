@@ -31,18 +31,11 @@ public sealed partial class EquivalencyComparerTests
 					Value = 1
 				}
 			};
-			EquivalencyComparer sut = new(new EquivalencyOptions
-			{
-				CustomOptions =
+			EquivalencyComparer sut = new(new EquivalencyOptions()
+				.For<MyClass2>(o => o with
 				{
-					{
-						typeof(MyClass2), new EquivalencyTypeOptions
-						{
-							ComparisonType = EquivalencyComparisonType.ByValue
-						}
-					}
-				}
-			});
+					ComparisonType = EquivalencyComparisonType.ByValue
+				}));
 
 			bool result = sut.AreConsideredEqual(actual, expected);
 			string failure = sut.GetExtendedFailure("it", actual, expected);

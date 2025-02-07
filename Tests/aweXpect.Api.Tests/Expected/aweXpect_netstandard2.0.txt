@@ -750,15 +750,19 @@ namespace aweXpect.Equivalency
         public EquivalencyOptions() { }
         public System.Collections.Generic.Dictionary<System.Type, aweXpect.Equivalency.EquivalencyTypeOptions> CustomOptions { get; init; }
         public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> DefaultComparisonTypeSelector { get; init; }
+        public aweXpect.Equivalency.EquivalencyOptions For<TMember>(System.Func<aweXpect.Equivalency.EquivalencyTypeOptions, aweXpect.Equivalency.EquivalencyTypeOptions> options) { }
     }
     public static class EquivalencyOptionsExtensions
     {
-        public static aweXpect.Equivalency.EquivalencyOptions IgnoringCollectionOrder(this aweXpect.Equivalency.EquivalencyOptions @this, bool ignoreCollectionOrder = true) { }
-        public static aweXpect.Equivalency.EquivalencyOptions IgnoringMember(this aweXpect.Equivalency.EquivalencyOptions @this, string memberToIgnore) { }
+        public static TEquivalencyOptions IgnoringCollectionOrder<TEquivalencyOptions>(this TEquivalencyOptions @this, bool ignoreCollectionOrder = true)
+            where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
+        public static TEquivalencyOptions IgnoringMember<TEquivalencyOptions>(this TEquivalencyOptions @this, string memberToIgnore)
+            where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
     }
     public class EquivalencyOptions<TExpected> : aweXpect.Equivalency.EquivalencyOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions<TExpected>>
     {
         public EquivalencyOptions(aweXpect.Equivalency.EquivalencyOptions inner) { }
+        public new aweXpect.Equivalency.EquivalencyOptions<TExpected> For<TMember>(System.Func<aweXpect.Equivalency.EquivalencyTypeOptions, aweXpect.Equivalency.EquivalencyTypeOptions> options) { }
     }
     public class EquivalencyTypeOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyTypeOptions>
     {

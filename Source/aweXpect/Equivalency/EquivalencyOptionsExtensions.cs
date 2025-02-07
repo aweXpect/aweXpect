@@ -10,7 +10,10 @@ public static class EquivalencyOptionsExtensions
 	/// <summary>
 	///     Ignores the <paramref name="memberToIgnore" /> when checking for equivalency.
 	/// </summary>
-	public static EquivalencyOptions IgnoringMember(this EquivalencyOptions @this, string memberToIgnore)
+	public static TEquivalencyOptions IgnoringMember<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
+		string memberToIgnore)
+		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
 			MembersToIgnore = [..@this.MembersToIgnore, memberToIgnore]
@@ -20,8 +23,10 @@ public static class EquivalencyOptionsExtensions
 	///     Ignores the order of collections when checking for equivalency
 	///     when <paramref name="ignoreCollectionOrder" /> is <see langword="true" />.
 	/// </summary>
-	public static EquivalencyOptions IgnoringCollectionOrder(this EquivalencyOptions @this,
+	public static TEquivalencyOptions IgnoringCollectionOrder<TEquivalencyOptions>(
+		this TEquivalencyOptions @this,
 		bool ignoreCollectionOrder = true)
+		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
 			IgnoreCollectionOrder = ignoreCollectionOrder
@@ -41,7 +46,8 @@ public static class EquivalencyOptionsExtensions
 	/// <summary>
 	///     Returns type-specific <see cref="EquivalencyTypeOptions" />.
 	/// </summary>
-	internal static EquivalencyTypeOptions GetTypeOptions(this EquivalencyOptions @this, Type? type, EquivalencyTypeOptions defaultValue)
+	internal static EquivalencyTypeOptions GetTypeOptions(this EquivalencyOptions @this, Type? type,
+		EquivalencyTypeOptions defaultValue)
 	{
 		if (type != null && @this.CustomOptions.TryGetValue(type, out EquivalencyTypeOptions? customOptions))
 		{

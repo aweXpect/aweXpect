@@ -21,6 +21,17 @@ public record EquivalencyOptions : EquivalencyTypeOptions
 	///     Custom type-specific equivalency options.
 	/// </summary>
 	public Dictionary<Type, EquivalencyTypeOptions> CustomOptions { get; init; } = new();
+
+	/// <summary>
+	///     Specifies the <paramref name="options" /> for members of type <typeparamref name="TMember" />.
+	/// </summary>
+	public EquivalencyOptions For<TMember>(
+		Func<EquivalencyTypeOptions, EquivalencyTypeOptions> options)
+	{
+		EquivalencyTypeOptions typeOptions = options(this);
+		CustomOptions.Add(typeof(TMember), typeOptions);
+		return this;
+	}
 }
 
 /// <summary>
@@ -36,5 +47,15 @@ public record EquivalencyOptions<TExpected> : EquivalencyOptions
 		MembersToIgnore = inner.MembersToIgnore;
 		IgnoreCollectionOrder = inner.IgnoreCollectionOrder;
 		DefaultComparisonTypeSelector = inner.DefaultComparisonTypeSelector;
+	}
+
+	/// <summary>
+	///     Specifies the <paramref name="options" /> for members of type <typeparamref name="TMember" />.
+	/// </summary>
+	public new EquivalencyOptions<TExpected> For<TMember>(
+		Func<EquivalencyTypeOptions, EquivalencyTypeOptions> options)
+	{
+		base.For<TMember>(options);
+		return this;
 	}
 }
