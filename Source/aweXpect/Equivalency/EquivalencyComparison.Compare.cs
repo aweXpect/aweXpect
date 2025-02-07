@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using aweXpect.Helpers;
 
 namespace aweXpect.Equivalency;
 
@@ -31,9 +30,10 @@ internal static partial class EquivalencyComparison
 			return CompareNulls(actual, expected, failureBuilder, memberPath, memberType);
 		}
 
-		if (actual.GetType().IsSimpleType())
+		EquivalencyComparisonType comparisonType = options.TypeComparison.Invoke(actual.GetType());
+		if (comparisonType == EquivalencyComparisonType.ByValue)
 		{
-			return CompareSimpleTypes(actual, expected, failureBuilder, memberPath, memberType);
+			return CompareByValue(actual, expected, failureBuilder, memberPath, memberType);
 		}
 
 		if (!context.ComparedObjects.Add(actual) || actual.Equals(expected))
@@ -199,7 +199,7 @@ internal static partial class EquivalencyComparison
 		return result;
 	}
 
-	private static bool CompareSimpleTypes<TActual, TExpected>([DisallowNull] TActual actual,
+	private static bool CompareByValue<TActual, TExpected>([DisallowNull] TActual actual,
 		[DisallowNull] TExpected expected, StringBuilder failureBuilder, string memberPath, MemberType memberType)
 	{
 		if (!actual.Equals(expected))

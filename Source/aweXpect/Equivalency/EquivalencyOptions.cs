@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Equivalency;
+﻿using System;
+
+namespace aweXpect.Equivalency;
 
 /// <summary>
 ///     Options for equivalency.
@@ -14,4 +16,12 @@ public record EquivalencyOptions
 	///     Ignores the order of collections when checking for equivalency.
 	/// </summary>
 	public bool IgnoreCollectionOrder { get; init; }
+
+	/// <summary>
+	///     Specifies the selector how types should be compared.
+	/// </summary>
+	/// <remarks>
+	///     Defaults to use the <see cref="EquivalencyDefaults.DefaultTypeComparison" />.
+	/// </remarks>
+	public Func<Type, EquivalencyComparisonType> TypeComparison { get; init; } = EquivalencyDefaults.DefaultTypeComparison;
 }
