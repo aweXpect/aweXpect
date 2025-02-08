@@ -14,8 +14,11 @@ public sealed class EquivalencyOptionsExtensionsTests
 		EquivalencyOptions result = options.For<MyClass>(o => o.IgnoringCollectionOrder(ignoreCollectionOrder));
 
 		await That(result.IgnoreCollectionOrder).IsFalse();
-		await That(result.CustomOptions).ContainsKey(typeof(MyClass));
-		await That(result.CustomOptions[typeof(MyClass)].IgnoreCollectionOrder).IsEqualTo(ignoreCollectionOrder);
+		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
+			.WhoseValue.IsEquivalentTo(new
+			{
+				IgnoreCollectionOrder = ignoreCollectionOrder
+			});
 	}
 
 	[Theory]
@@ -27,8 +30,14 @@ public sealed class EquivalencyOptionsExtensionsTests
 		EquivalencyOptions result = options.For<MyClass>(o => o.IgnoringMember(memberToIgnore));
 
 		await That(result.MembersToIgnore).IsEmpty();
-		await That(result.CustomOptions).ContainsKey(typeof(MyClass));
-		await That(result.CustomOptions[typeof(MyClass)].MembersToIgnore).HasSingle().Which.IsEqualTo(memberToIgnore);
+		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
+			.WhoseValue.IsEquivalentTo(new
+			{
+				MembersToIgnore = new[]
+				{
+					memberToIgnore
+				}
+			});
 	}
 
 	[Theory]
@@ -43,8 +52,11 @@ public sealed class EquivalencyOptionsExtensionsTests
 		EquivalencyOptions result = options.For<MyClass>(o => o.IncludingFields(fieldsToInclude));
 
 		await That(result.Fields).IsEqualTo(IncludeMembers.Public);
-		await That(result.CustomOptions).ContainsKey(typeof(MyClass));
-		await That(result.CustomOptions[typeof(MyClass)].Fields).IsEqualTo(fieldsToInclude);
+		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
+			.WhoseValue.IsEquivalentTo(new
+			{
+				Fields = fieldsToInclude
+			});
 	}
 
 	[Theory]
@@ -59,8 +71,11 @@ public sealed class EquivalencyOptionsExtensionsTests
 		EquivalencyOptions result = options.For<MyClass>(o => o.IncludingProperties(propertiesToInclude));
 
 		await That(result.Properties).IsEqualTo(IncludeMembers.Public);
-		await That(result.CustomOptions).ContainsKey(typeof(MyClass));
-		await That(result.CustomOptions[typeof(MyClass)].Properties).IsEqualTo(propertiesToInclude);
+		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
+			.WhoseValue.IsEquivalentTo(new
+			{
+				Properties = propertiesToInclude
+			});
 	}
 
 	private class MyClass;
