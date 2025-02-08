@@ -6,9 +6,9 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatHttpResponseMessage
 {
-	public sealed class HasError
+	public sealed partial class HasStatusCode
 	{
-		public sealed class Tests
+		public sealed class ErrorTests
 		{
 			[Theory]
 			[MemberData(nameof(ClientErrorStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
@@ -19,7 +19,7 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).HasError();
+					=> await That(subject).HasStatusCode().Error();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -33,10 +33,10 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).HasError();
+					=> await That(subject).HasStatusCode().Error();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*has an error (status code 4xx or 5xx)*")
+					.WithMessage("*has an error status code (4xx or 5xx)*")
 					.AsWildcard();
 			}
 
@@ -46,12 +46,12 @@ public sealed partial class ThatHttpResponseMessage
 				HttpResponseMessage? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasError();
+					=> await That(subject).HasStatusCode().Error();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has an error (status code 4xx or 5xx),
+					             has an error status code (4xx or 5xx),
 					             but it was <null>
 					             """);
 			}

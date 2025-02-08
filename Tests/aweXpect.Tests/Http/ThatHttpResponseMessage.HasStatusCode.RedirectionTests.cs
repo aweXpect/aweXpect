@@ -6,9 +6,9 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatHttpResponseMessage
 {
-	public sealed class IsRedirection
+	public sealed partial class HasStatusCode
 	{
-		public sealed class Tests
+		public sealed class RedirectionTests
 		{
 			[Theory]
 			[MemberData(nameof(RedirectStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
@@ -18,7 +18,7 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).IsRedirection();
+					=> await That(subject).HasStatusCode().Redirection();
 
 				await That(Act).DoesNotThrow();
 			}
@@ -33,10 +33,10 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).IsRedirection();
+					=> await That(subject).HasStatusCode().Redirection();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*is redirection (status code 3xx)*")
+					.WithMessage("*has a redirection status code (3xx)*")
 					.AsWildcard();
 			}
 
@@ -46,12 +46,12 @@ public sealed partial class ThatHttpResponseMessage
 				HttpResponseMessage? subject = null;
 
 				async Task Act()
-					=> await That(subject).IsRedirection();
+					=> await That(subject).HasStatusCode().Redirection();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is redirection (status code 3xx),
+					             has a redirection status code (3xx),
 					             but it was <null>
 					             """);
 			}

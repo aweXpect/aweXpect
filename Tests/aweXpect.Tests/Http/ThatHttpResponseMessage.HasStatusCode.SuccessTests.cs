@@ -6,26 +6,26 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatHttpResponseMessage
 {
-	public sealed class HasClientError
+	public sealed partial class HasStatusCode
 	{
-		public sealed class Tests
+		public sealed class SuccessTests
 		{
 			[Theory]
-			[MemberData(nameof(ClientErrorStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
+			[MemberData(nameof(SuccessStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
 			public async Task WhenStatusCodeIsExpected_ShouldSucceed(HttpStatusCode statusCode)
 			{
 				HttpResponseMessage subject = ResponseBuilder
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).HasClientError();
+					=> await That(subject).HasStatusCode().Success();
 
 				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
-			[MemberData(nameof(SuccessStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
 			[MemberData(nameof(RedirectStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
+			[MemberData(nameof(ClientErrorStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
 			[MemberData(nameof(ServerErrorStatusCodes), MemberType = typeof(ThatHttpResponseMessage))]
 			public async Task WhenStatusCodeIsUnexpected_ShouldFail(HttpStatusCode statusCode)
 			{
@@ -33,10 +33,10 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).HasClientError();
+					=> await That(subject).HasStatusCode().Success();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*has client error (status code 4xx)*")
+					.WithMessage("*a success status code (2xx)*")
 					.AsWildcard();
 			}
 
@@ -46,12 +46,12 @@ public sealed partial class ThatHttpResponseMessage
 				HttpResponseMessage? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasClientError();
+					=> await That(subject).HasStatusCode().Success();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has client error (status code 4xx),
+					             has a success status code (2xx),
 					             but it was <null>
 					             """);
 			}
