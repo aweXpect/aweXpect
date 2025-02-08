@@ -26,6 +26,11 @@ public class ContainsValueResult<TCollection, TThat, TValue>
 	/// <summary>
 	///     Further expectations on the selected value of the dictionary.
 	/// </summary>
+	#if DEBUG // TODO: Replace after Core update
 	public IThat<TValue> WhoseValue
 		=> new ThatSubject<TValue>(_expectationBuilder.ForWhich(_memberAccessor, " whose value should ", "the value"));
+	#else
+	public IThat<TValue> WhoseValue
+		=> new ThatSubject<TValue>(_expectationBuilder.ForWhich(_memberAccessor, " whose value should "));
+	#endif
 }

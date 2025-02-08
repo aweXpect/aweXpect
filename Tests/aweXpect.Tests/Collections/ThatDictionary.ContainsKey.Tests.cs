@@ -58,7 +58,7 @@ public sealed partial class ThatDictionary
 
 		public sealed class WhoseValueTests
 		{
-			[Fact]
+			[Fact(Skip="TODO: Replace after Core update")]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
 				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
@@ -69,7 +69,7 @@ public sealed partial class ThatDictionary
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact]
+			[Fact(Skip="TODO: Replace after Core update")]
 			public async Task WhenKeyExists_ButValueDoesNotMatch_ShouldFail()
 			{
 				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
@@ -109,7 +109,7 @@ public sealed partial class ThatDictionary
 					             """);
 			}
 
-			[Fact]
+			[Fact(Skip="TODO: Replace after Core update")]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IDictionary<string, string>? subject = null;

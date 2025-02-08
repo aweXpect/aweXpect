@@ -94,8 +94,8 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>, TValue> AreAllUnique<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source) { }
         public static aweXpect.Results.StringEqualityResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>> AreAllUnique<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, System.Func<TValue, string> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>, TMember> AreAllUnique<TKey, TValue, TMember>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, System.Func<TValue, TMember> memberAccessor, [System.Runtime.CompilerServices.CallerArgumentExpression("memberAccessor")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.SingleValueResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>, TValue?> ContainsKey<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, TKey expected) { }
-        public static aweXpect.Results.AndOrResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>> ContainsKeys<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, params TKey[] expected) { }
+        public static aweXpect.Results.ContainsValueResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>, TValue?> ContainsKey<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, TKey expected) { }
+        public static aweXpect.Results.ContainsValuesResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>, TValue?> ContainsKeys<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, params TKey[] expected) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>> ContainsValue<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, TValue expected) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>> ContainsValues<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, params TValue[] expected) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IDictionary<TKey, TValue>, aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?>> DoesNotContainKey<TKey, TValue>(this aweXpect.Core.IThat<System.Collections.Generic.IDictionary<TKey, TValue>?> source, TKey unexpected) { }
@@ -788,6 +788,14 @@ namespace aweXpect.Equivalency
 }
 namespace aweXpect.Results
 {
+    public class ContainsValueResult<TCollection, TThat, TValue> : aweXpect.Results.AndOrResult<TCollection, TThat>
+    {
+        public aweXpect.Core.IThat<TValue> WhoseValue { get; }
+    }
+    public class ContainsValuesResult<TCollection, TThat, TValue> : aweXpect.Results.AndOrResult<TCollection, TThat>
+    {
+        public aweXpect.ThatEnumerable.Elements<TValue> WhoseValues { get; }
+    }
     public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>
         where TSubject :  notnull
     {
@@ -854,10 +862,6 @@ namespace aweXpect.Results
         {
             public aweXpect.Core.IThat<TItem> Which { get; }
         }
-    }
-    public class SingleValueResult<TCollection, TThat, TValue> : aweXpect.Results.AndOrResult<TCollection, TThat>
-    {
-        public aweXpect.Core.IThat<TValue> WhoseValue { get; }
     }
     public class StringCollectionBeContainedInResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat>
     {
