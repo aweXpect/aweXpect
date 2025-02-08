@@ -57,5 +57,111 @@ public sealed partial class ThatDictionary
 					             """);
 			}
 		}
+
+		public sealed class WhoseValuesTests
+		{
+			[Fact(Skip="TODO: Replace after Core update")]
+			public async Task WhenKeysExist_ShouldSucceed()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ButValuesDoNotMatch_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have keys [2] whose values should have all items equal to "foo",
+					             but not all were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ButSomeValuesDoNotMatch_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys([1, 2]).WhoseValues.AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have keys [1, 2] whose values should have all items equal to "foo",
+					             but not all were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysAreMissing_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(0).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have keys [0] whose values should have all items equal to "bar",
+					             but it did not have [
+					               0
+					             ] in [
+					               1,
+					               2,
+					               3
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenOnlySomeKeysAreMissing_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(1, 0, 3).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have keys [1, 0, 3] whose values should have all items equal to "bar",
+					             but it did not have [
+					               0
+					             ] in [
+					               1,
+					               2,
+					               3
+					             ]
+					             """);
+			}
+
+			[Fact(Skip="TODO: Replace after Core update")]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<string, string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).ContainsKeys("foo").WhoseValues.AreEqualTo("");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected subject to
+					             have keys ["foo"] whose values should have all items equal to "",
+					             but it was <null>
+					             """);
+			}
+		}
 	}
 }

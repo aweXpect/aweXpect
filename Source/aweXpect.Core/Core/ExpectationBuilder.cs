@@ -183,13 +183,19 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public ExpectationBuilder ForWhich<TSource, TTarget>(
 		Func<TSource, TTarget?> memberAccessor,
-		string? separator = null)
+		string? separator = null,
+		string? replaceIt = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
 		{
 			parentNode = _node;
 			_node = new ExpectationNode();
+		}
+
+		if (replaceIt != null)
+		{
+			_it = replaceIt;
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
