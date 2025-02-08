@@ -53,7 +53,7 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be valid JSON";
+			=> "is valid JSON";
 	}
 }
 #endif

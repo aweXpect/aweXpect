@@ -20,7 +20,7 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ContainConstraint(it, expected, quantifier, options)),
+				new ContainsConstraint(it, expected, quantifier, options)),
 			source,
 			quantifier,
 			options);
@@ -38,12 +38,12 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ContainConstraint(it, unexpected, quantifier, options)),
+				new ContainsConstraint(it, unexpected, quantifier, options)),
 			source,
 			options);
 	}
 
-	private readonly struct ContainConstraint(
+	private readonly struct ContainsConstraint(
 		string it,
 		string expected,
 		Quantifier quantifier,
@@ -103,10 +103,10 @@ public static partial class ThatString
 			string quantifierString = quantifier.ToString();
 			if (quantifierString == "never")
 			{
-				return $"not contain {Formatter.Format(expected)}{options}";
+				return $"does not contain {Formatter.Format(expected)}{options}";
 			}
 
-			return $"contain {Formatter.Format(expected)} {quantifier}{options}";
+			return $"contains {Formatter.Format(expected)} {quantifier}{options}";
 		}
 	}
 }

@@ -46,7 +46,7 @@ public sealed partial class ThatString
 			[InlineData("{\"foo\":1}}", "'}' is invalid after a single JSON value. Expected end of data")]
 			[InlineData("{}{\"foo\":1}", "'{' is invalid after a single JSON value. Expected end of data")]
 			[InlineData("[",
-				"Expected that depth be zero at the end of the JSON payload. There is an open JSON object or array that should be closed")]
+				"Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed")]
 			public async Task WhenActualIsInvalidJson_ShouldFail(string subject, string errorMessage)
 			{
 				async Task Act()

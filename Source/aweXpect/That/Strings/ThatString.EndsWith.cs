@@ -18,7 +18,7 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new EndWithConstraint(it, expected, options)),
+				new EndsWithConstraint(it, expected, options)),
 			source,
 			options);
 	}
@@ -33,12 +33,12 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotEndWithConstraint(it, unexpected, options)),
+				new DoesNotEndWithConstraint(it, unexpected, options)),
 			source,
 			options);
 	}
 
-	private readonly struct EndWithConstraint(
+	private readonly struct EndsWithConstraint(
 		string it,
 		string expected,
 		StringEqualityOptions options)
@@ -71,10 +71,10 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> $"end with {Formatter.Format(expected)}{options}";
+			=> $"ends with {Formatter.Format(expected)}{options}";
 	}
 
-	private readonly struct NotEndWithConstraint(
+	private readonly struct DoesNotEndWithConstraint(
 		string it,
 		string unexpected,
 		StringEqualityOptions options)
@@ -103,6 +103,6 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> $"not end with {Formatter.Format(unexpected)}{options}";
+			=> $"does not end with {Formatter.Format(unexpected)}{options}";
 	}
 }

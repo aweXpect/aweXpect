@@ -18,7 +18,7 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new StartWithConstraint(it, expected, options)),
+				new StartsWithConstraint(it, expected, options)),
 			source,
 			options);
 	}
@@ -33,12 +33,12 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotStartWithConstraint(it, unexpected, options)),
+				new DoesNotStartWithConstraint(it, unexpected, options)),
 			source,
 			options);
 	}
 
-	private readonly struct NotStartWithConstraint(
+	private readonly struct DoesNotStartWithConstraint(
 		string it,
 		string unexpected,
 		StringEqualityOptions options)
@@ -65,10 +65,10 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> $"not start with {Formatter.Format(unexpected)}{options}";
+			=> $"does not start with {Formatter.Format(unexpected)}{options}";
 	}
 
-	private readonly struct StartWithConstraint(
+	private readonly struct StartsWithConstraint(
 		string it,
 		string expected,
 		StringEqualityOptions options)
@@ -100,6 +100,6 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> $"start with {Formatter.Format(expected)}{options}";
+			=> $"starts with {Formatter.Format(expected)}{options}";
 	}
 }

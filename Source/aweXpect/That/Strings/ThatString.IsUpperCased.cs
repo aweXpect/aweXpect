@@ -45,7 +45,7 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be upper-cased";
+			=> "is upper-cased";
 	}
 
 	private readonly struct IsNotUpperCasedConstraint(string it) : IValueConstraint<string?>
@@ -62,6 +62,6 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "not be upper-cased";
+			=> "is not upper-cased";
 	}
 }
