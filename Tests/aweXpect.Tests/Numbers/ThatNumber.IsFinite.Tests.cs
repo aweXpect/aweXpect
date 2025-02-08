@@ -30,7 +30,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be finite,
+					              is finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -74,7 +74,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be finite,
+					              is finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -119,7 +119,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be finite,
+					              is finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -164,7 +164,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be finite,
+					              is finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

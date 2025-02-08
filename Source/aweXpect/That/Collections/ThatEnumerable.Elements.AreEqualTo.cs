@@ -22,7 +22,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"equal to {Formatter.Format(expected)}{options}",
+						() => $"is equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,
@@ -44,7 +44,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"equal to {Formatter.Format(expected)}{options}",
+						() => $"is equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

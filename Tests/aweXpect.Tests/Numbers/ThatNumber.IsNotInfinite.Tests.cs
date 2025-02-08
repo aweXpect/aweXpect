@@ -28,7 +28,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be infinite,
+					              is not infinite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -71,7 +71,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be infinite,
+					              is not infinite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -115,7 +115,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be infinite,
+					              is not infinite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -161,7 +161,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be infinite,
+					              is not infinite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

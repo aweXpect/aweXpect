@@ -19,7 +19,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day equal to {Formatter.Format(expected)},
+					              has day equal to {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -48,7 +48,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have day equal to <null>,
+					             has day equal to <null>,
 					             but it had day 12
 					             """);
 			}
@@ -80,7 +80,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day greater than or equal to {Formatter.Format(expected)},
+					              has day greater than or equal to {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -109,7 +109,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have day greater than or equal to <null>,
+					             has day greater than or equal to <null>,
 					             but it had day 12
 					             """);
 			}
@@ -141,7 +141,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day greater than {Formatter.Format(expected)},
+					              has day greater than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -158,7 +158,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day greater than {Formatter.Format(expected)},
+					              has day greater than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -175,7 +175,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have day greater than <null>,
+					             has day greater than <null>,
 					             but it had day 12
 					             """);
 			}
@@ -195,7 +195,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day less than or equal to {Formatter.Format(expected)},
+					              has day less than or equal to {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -236,7 +236,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have day less than or equal to <null>,
+					             has day less than or equal to <null>,
 					             but it had day 12
 					             """);
 			}
@@ -256,7 +256,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day less than {Formatter.Format(expected)},
+					              has day less than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -285,7 +285,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day less than {Formatter.Format(expected)},
+					              has day less than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
 			}
@@ -302,7 +302,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have day less than <null>,
+					             has day less than <null>,
 					             but it had day 12
 					             """);
 			}
@@ -334,7 +334,7 @@ public sealed partial class ThatDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have day not equal to {Formatter.Format(unexpected)},
+					              has day not equal to {Formatter.Format(unexpected)},
 					              but it had day 12
 					              """);
 			}

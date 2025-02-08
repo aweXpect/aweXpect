@@ -44,7 +44,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -94,7 +94,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -110,7 +110,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be one of [NaN],
+					             is not one of [NaN],
 					             but it was NaN
 					             """);
 			}
@@ -137,7 +137,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of [{Formatter.Format(unexpected)}],
+					              is not one of [{Formatter.Format(unexpected)}],
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -177,7 +177,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -193,7 +193,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be one of [NaN],
+					             is not one of [NaN],
 					             but it was NaN
 					             """);
 			}
@@ -244,7 +244,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -285,7 +285,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -301,7 +301,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of [{Formatter.Format(unexpected)}],
+					              is not one of [{Formatter.Format(unexpected)}],
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -342,7 +342,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -370,7 +370,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -437,7 +437,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -477,7 +477,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -517,7 +517,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -545,7 +545,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -586,7 +586,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -627,7 +627,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -668,7 +668,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -709,7 +709,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -750,7 +750,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -791,7 +791,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -845,7 +845,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -886,7 +886,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -927,7 +927,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -968,7 +968,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1010,7 +1010,7 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be one of {Formatter.Format(unexpected)},
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

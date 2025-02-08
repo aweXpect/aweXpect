@@ -28,7 +28,7 @@ public sealed partial class ThatNullableEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be null,
+					             is not null,
 					             but it was
 					             """);
 			}

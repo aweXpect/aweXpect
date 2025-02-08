@@ -33,7 +33,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -51,7 +51,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 		}
 
@@ -69,7 +69,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -87,7 +87,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -105,7 +105,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -123,7 +123,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 	}
@@ -151,7 +151,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -169,7 +169,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 		}
 
@@ -187,7 +187,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -205,7 +205,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -223,7 +223,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -241,7 +241,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 	}
@@ -266,7 +266,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -281,7 +281,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 	}
 
@@ -305,7 +305,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -320,7 +320,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 
 		/// <summary>
@@ -335,7 +335,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -350,7 +350,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -365,7 +365,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -380,7 +380,7 @@ public static class PropertyResult
 						mapper,
 						propertyExpression,
 						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 	}
 

@@ -25,7 +25,7 @@ public sealed partial class ThatHttpResponseMessage
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have StatusCode 200 OK,
+					             has StatusCode 200 OK,
 					             but it was 400 BadRequest:
 					               HTTP/1.1 400 BadRequest
 					               some content
@@ -48,7 +48,7 @@ public sealed partial class ThatHttpResponseMessage
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have StatusCode 200 OK,
+					             has StatusCode 200 OK,
 					             but it was 400 BadRequest:
 					               HTTP/1.1 400 BadRequest
 					               some content
@@ -96,7 +96,7 @@ public sealed partial class ThatHttpResponseMessage
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have StatusCode 202 Accepted,
+					             has StatusCode 202 Accepted,
 					             but it was <null>
 					             """);
 			}

@@ -20,7 +20,7 @@ public static partial class ThatEnumerable
 		CollectionOrderOptions<TItem> options = new();
 		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Descending, options, "")),
+				=> new IsInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Descending, options, "")),
 			source,
 			options);
 	}
@@ -39,7 +39,7 @@ public static partial class ThatEnumerable
 		CollectionOrderOptions<TMember> options = new();
 		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Descending, options,
+				=> new IsInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Descending, options,
 					$" for {doNotPopulateThisValue}")),
 			source,
 			options);

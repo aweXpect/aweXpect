@@ -42,7 +42,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be less than {Formatter.Format(unexpected)},
+					              is not less than {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -84,7 +84,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be less than <null>, because we want to test the failure,
+					              is not less than <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -103,7 +103,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be less than {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
+					              is not less than {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -121,7 +121,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be less than {Formatter.Format(unexpected)} ± 0:03,
+					              is not less than {Formatter.Format(unexpected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

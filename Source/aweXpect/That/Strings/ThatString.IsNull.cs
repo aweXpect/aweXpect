@@ -13,7 +13,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsNull(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeNullConstraint(it)),
+				new IsNullConstraint(it)),
 			source);
 
 	/// <summary>
@@ -22,10 +22,10 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotNull(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeNullConstraint(it)),
+				new IsNotNullConstraint(it)),
 			source);
 
-	private readonly struct BeNullConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNullConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -39,10 +39,10 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be null";
+			=> "is null";
 	}
 
-	private readonly struct NotBeNullConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNotNullConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -56,6 +56,6 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "not be null";
+			=> "is not null";
 	}
 }

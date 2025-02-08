@@ -21,7 +21,7 @@ public static partial class ThatDateOnly
 					new ConditionConstraintWithTolerance(
 						it,
 						expected,
-						(e, t) => $"be {Formatter.Format(e)}{t.ToDayString()}",
+						(e, t) => $"is {Formatter.Format(e)}{t.ToDayString()}",
 						(a, e, t) => e != null &&
 						             Math.Abs(a.DayNumber - e.Value.DayNumber) <= (int)t.TotalDays,
 						(a, _, i) => $"{i} was {Formatter.Format(a)}",
@@ -43,7 +43,7 @@ public static partial class ThatDateOnly
 				new ConditionConstraintWithTolerance(
 					it,
 					unexpected,
-					(e, t) => $"not be {Formatter.Format(e)}{t.ToDayString()}",
+					(e, t) => $"is not {Formatter.Format(e)}{t.ToDayString()}",
 					(a, u, t) => u == null ||
 					             Math.Abs(a.DayNumber - u.Value.DayNumber) > (int)t.TotalDays,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",

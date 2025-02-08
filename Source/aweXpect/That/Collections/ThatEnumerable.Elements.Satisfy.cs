@@ -43,7 +43,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue}",
 						predicate,
 						"did")),
 				_subject);

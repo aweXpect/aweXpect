@@ -30,7 +30,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have values [42, 2],
+					             has values [42, 2],
 					             but it did not have [
 					               2
 					             ] in [
@@ -52,7 +52,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have values ["foo", "bar"],
+					             has values ["foo", "bar"],
 					             but it was <null>
 					             """);
 			}

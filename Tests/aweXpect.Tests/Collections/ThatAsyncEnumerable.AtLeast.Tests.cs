@@ -72,7 +72,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at least 5 items equal to 1,
+					             has at least 5 items equal to 1,
 					             but only 4 of 7 were
 					             """);
 			}
@@ -88,7 +88,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at least 5 items equal to 1,
+					             has at least 5 items equal to 1,
 					             but only 4 of 7 were
 					             """);
 			}
@@ -104,7 +104,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at least one item equal to 0,
+					             has at least one item equal to 0,
 					             but it was <null>
 					             """);
 			}

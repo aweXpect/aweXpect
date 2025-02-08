@@ -61,7 +61,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be lower-cased,
+					             is lower-cased,
 					             but it was "aBc"
 					             """);
 			}
@@ -77,7 +77,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be lower-cased,
+					              is lower-cased,
 					              but it was "{StringWith100Characters}…"
 					              """);
 			}
@@ -93,7 +93,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be lower-cased,
+					             is lower-cased,
 					             but it was <null>
 					             """);
 			}
@@ -109,7 +109,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be lower-cased,
+					             is lower-cased,
 					             but it was "ABC"
 					             """);
 			}

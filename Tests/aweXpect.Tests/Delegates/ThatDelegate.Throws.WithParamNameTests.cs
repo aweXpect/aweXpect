@@ -20,7 +20,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that Delegate
-					             throw an ArgumentException with ParamName "somethingElse",
+					             throws an ArgumentException with ParamName "somethingElse",
 					             but it had ParamName "message"
 					             """);
 			}

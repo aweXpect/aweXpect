@@ -33,7 +33,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be empty,
+					             is not empty,
 					             but it was
 					             """);
 			}
@@ -49,7 +49,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be empty,
+					             is not empty,
 					             but it was <null>
 					             """);
 			}

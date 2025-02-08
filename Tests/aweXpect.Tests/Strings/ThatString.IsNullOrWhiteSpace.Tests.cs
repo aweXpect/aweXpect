@@ -27,7 +27,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be null or white-space,
+					              is null or white-space,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -43,7 +43,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be null or white-space,
+					              is null or white-space,
 					              but it was "{StringWith100Characters}…"
 					              """);
 			}

@@ -31,7 +31,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be type MyClass,
+					             is type MyClass,
 					             but it was <null>
 					             """);
 			}
@@ -52,7 +52,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               be type OtherClass, because we want to test the failure,
+					               is type OtherClass, because we want to test the failure,
 					               but it was MyClass {
 					                 Value = {{value}}
 					               }
@@ -86,7 +86,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               be type MyClass, because {{reason}},
+					               is type MyClass, because {{reason}},
 					               but it was MyBaseClass {
 					                 Value = {{value}}
 					               }
@@ -132,7 +132,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be type MyClass,
+					             is type MyClass,
 					             but it was <null>
 					             """);
 			}
@@ -153,7 +153,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               be type OtherClass, because we want to test the failure,
+					               is type OtherClass, because we want to test the failure,
 					               but it was MyClass {
 					                 Value = {{value}}
 					               }
@@ -187,7 +187,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               be type MyClass, because {{reason}},
+					               is type MyClass, because {{reason}},
 					               but it was MyBaseClass {
 					                 Value = {{value}}
 					               }

@@ -20,7 +20,7 @@ public static partial class ThatTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeGreaterThanConstraint(it, expected, tolerance)),
+				new IsGreaterThanConstraint(it, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -35,12 +35,12 @@ public static partial class ThatTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeGreaterThanConstraint(it, unexpected, tolerance)),
+				new IsNotGreaterThanConstraint(it, unexpected, tolerance)),
 			source,
 			tolerance);
 	}
 
-	private readonly struct BeGreaterThanConstraint(
+	private readonly struct IsGreaterThanConstraint(
 		string it,
 		TimeSpan? expected,
 		TimeTolerance tolerance)
@@ -60,10 +60,10 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> $"be greater than {Formatter.Format(expected)}{tolerance}";
+			=> $"is greater than {Formatter.Format(expected)}{tolerance}";
 	}
 
-	private readonly struct NotBeGreaterThanConstraint(
+	private readonly struct IsNotGreaterThanConstraint(
 		string it,
 		TimeSpan? unexpected,
 		TimeTolerance tolerance)
@@ -83,6 +83,6 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> $"not be greater than {Formatter.Format(unexpected)}{tolerance}";
+			=> $"is not greater than {Formatter.Format(unexpected)}{tolerance}";
 	}
 }

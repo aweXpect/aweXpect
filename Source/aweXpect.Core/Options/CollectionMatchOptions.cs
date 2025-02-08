@@ -94,13 +94,13 @@ public partial class CollectionMatchOptions(
 	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression)
 		=> equivalenceRelation switch
 		{
-			EquivalenceRelations.Contains => $"contain collection {expectedExpression}",
+			EquivalenceRelations.Contains => $"contains collection {expectedExpression}",
 			EquivalenceRelations.ContainsProperly =>
-				$"contain collection {expectedExpression} and at least one additional item",
-			EquivalenceRelations.IsContainedIn => $"be contained in collection {expectedExpression}",
+				$"contains collection {expectedExpression} and at least one additional item",
+			EquivalenceRelations.IsContainedIn => $"is contained in collection {expectedExpression}",
 			EquivalenceRelations.IsContainedInProperly =>
-				$"be contained in collection {expectedExpression} which has at least one additional item",
-			_ => $"match collection {expectedExpression}"
+				$"is contained in collection {expectedExpression} which has at least one additional item",
+			_ => $"matches collection {expectedExpression}"
 		};
 
 	private static string? ReturnErrorString(string it, List<string> errors)

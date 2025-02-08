@@ -17,7 +17,7 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new BeEmptyConstraint<TItem>(it)),
+				.AddConstraint(it => new IsEmptyConstraint<TItem>(it)),
 			source);
 
 	/// <summary>
@@ -26,10 +26,10 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
+				.AddConstraint(it => new IsNotEmptyConstraint<TItem>(it)),
 			source);
 
-	private readonly struct BeEmptyConstraint<TItem>(string it)
+	private readonly struct IsEmptyConstraint<TItem>(string it)
 		: IValueConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
@@ -61,10 +61,10 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> "be empty";
+			=> "is empty";
 	}
 
-	private readonly struct NotBeEmptyConstraint<TItem>(string it)
+	private readonly struct IsNotEmptyConstraint<TItem>(string it)
 		: IContextConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
@@ -97,6 +97,6 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> "not be empty";
+			=> "is not empty";
 	}
 }

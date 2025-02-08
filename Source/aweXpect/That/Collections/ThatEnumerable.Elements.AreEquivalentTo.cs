@@ -35,7 +35,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"equivalent to {Formatter.Format(expected)}{options}",
+						() => $"is equivalent to {Formatter.Format(expected)}{options}",
 						a => equalityOptions.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

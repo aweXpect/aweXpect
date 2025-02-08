@@ -32,7 +32,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have a single item,
+					             has a single item,
 					             but it contained more than one item
 					             """);
 			}
@@ -58,7 +58,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have a single item,
+					             has a single item,
 					             but it was empty
 					             """);
 			}
@@ -74,7 +74,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have a single item,
+					             has a single item,
 					             but it was <null>
 					             """);
 			}
@@ -104,7 +104,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have a single item which should be greater than 4,
+					             has a single item which is greater than 4,
 					             but it contained more than one item
 					             """);
 			}
@@ -120,7 +120,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have a single item which should be greater than 4,
+					             has a single item which is greater than 4,
 					             but it was empty
 					             """);
 			}
@@ -136,7 +136,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have a single item which should be greater than 4,
+					             has a single item which is greater than 4,
 					             but it was 3
 					             """);
 			}

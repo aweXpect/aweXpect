@@ -22,7 +22,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order,
+					             is in ascending order,
 					             but it had 3 before 1 which is not in ascending order in [
 					               1,
 					               1,
@@ -55,7 +55,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order,
+					             is in ascending order,
 					             but it was <null>
 					             """);
 			}
@@ -74,7 +74,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order,
+					             is in ascending order,
 					             but it had "a" before "A" which is not in ascending order in [
 					               "a",
 					               "A"
@@ -104,7 +104,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order,
+					             is in ascending order,
 					             but it had "c" before "a" which is not in ascending order in [
 					               "a",
 					               "b",
@@ -136,7 +136,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order,
+					             is in ascending order,
 					             but it was <null>
 					             """);
 			}
@@ -155,7 +155,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order for x => x.Value,
+					             is in ascending order for x => x.Value,
 					             but it had 3 before 1 which is not in ascending order in [
 					               MyIntClass {
 					                 Value = 1
@@ -206,7 +206,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order for x => x.Value,
+					             is in ascending order for x => x.Value,
 					             but it had "a" before "A" which is not in ascending order in [
 					               MyStringClass {
 					                 Value = "a"
@@ -242,7 +242,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be in ascending order for x => x.Value,
+					             is in ascending order for x => x.Value,
 					             but it had "c" before "a" which is not in ascending order in [
 					               MyStringClass {
 					                 Value = "a"

@@ -19,7 +19,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second equal to <null>,
+					             has second equal to <null>,
 					             but it had second 15
 					             """);
 			}
@@ -36,7 +36,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second equal to {Formatter.Format(expected)},
+					              has second equal to {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -65,7 +65,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second equal to <null>,
+					             has second equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -82,7 +82,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second equal to 1,
+					             has second equal to 1,
 					             but it was <null>
 					             """);
 			}
@@ -102,7 +102,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second greater than or equal to <null>,
+					             has second greater than or equal to <null>,
 					             but it had second 15
 					             """);
 			}
@@ -131,7 +131,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second greater than or equal to {Formatter.Format(expected)},
+					              has second greater than or equal to {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -163,7 +163,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second greater than <null>,
+					             has second greater than <null>,
 					             but it had second 15
 					             """);
 			}
@@ -192,7 +192,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second greater than {Formatter.Format(expected)},
+					              has second greater than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -209,7 +209,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second greater than {Formatter.Format(expected)},
+					              has second greater than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -229,7 +229,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second less than or equal to <null>,
+					             has second less than or equal to <null>,
 					             but it had second 15
 					             """);
 			}
@@ -246,7 +246,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second less than or equal to {Formatter.Format(expected)},
+					              has second less than or equal to {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -290,7 +290,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have second less than <null>,
+					             has second less than <null>,
 					             but it had second 15
 					             """);
 			}
@@ -307,7 +307,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second less than {Formatter.Format(expected)},
+					              has second less than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -336,7 +336,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second less than {Formatter.Format(expected)},
+					              has second less than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
 			}
@@ -368,7 +368,7 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have second not equal to {Formatter.Format(unexpected)},
+					              has second not equal to {Formatter.Format(unexpected)},
 					              but it had second 15
 					              """);
 			}

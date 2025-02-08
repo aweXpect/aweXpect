@@ -19,7 +19,7 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be on or before <null>,
+					              is on or before <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -60,7 +60,7 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be on or before {Formatter.Format(expected)},
+					              is on or before {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -102,7 +102,7 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be on or before {Formatter.Format(expected)} ± 0:03,
+					              is on or before {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -121,7 +121,7 @@ public sealed partial class ThatTimeOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be on or before {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
+					              is on or before {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

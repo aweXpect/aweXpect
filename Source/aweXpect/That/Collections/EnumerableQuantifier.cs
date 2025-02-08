@@ -1,4 +1,5 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System;
+using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -14,9 +15,12 @@ public abstract partial class EnumerableQuantifier
 	public abstract bool IsDeterminable(int matchingCount, int notMatchingCount);
 
 	/// <summary>
-	///     Returns the expectation text.
+	///     Returns true, if the quantifier should be treated as containing a single item.
 	/// </summary>
-	public abstract string GetExpectation(string it, string? expectationExpression);
+	/// <remarks>
+	///     This means, that the expectation text can be written in singular.
+	/// </remarks>
+	public abstract bool IsSingle();
 
 	/// <summary>
 	///     Returns the result.
@@ -28,5 +32,25 @@ public abstract partial class EnumerableQuantifier
 		int matchingCount,
 		int notMatchingCount,
 		int? totalCount,
-		string? verb);
+		string? verb,
+		Func<string, string?, string>? expectationGenerator = null);
+
+
+	private string GenerateExpectation(
+		string quantifierExpectation,
+		string? expectationExpression,
+		Func<string, string?, string>? expectationGenerator = null)
+	{
+		if (expectationGenerator is not null)
+		{
+			return expectationGenerator(quantifierExpectation, expectationExpression);
+		}
+
+		if (expectationExpression is null)
+		{
+			return quantifierExpectation;
+		}
+
+		return $"{expectationExpression} for {quantifierExpectation} {(IsSingle() ? "item" : "items")}";
+	}
 }

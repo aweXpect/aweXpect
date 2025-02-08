@@ -13,7 +13,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsNullOrEmpty(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeNullOrEmptyConstraint(it)),
+				new IsNullOrEmptyConstraint(it)),
 			source);
 
 	/// <summary>
@@ -22,10 +22,10 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotNullOrEmpty(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeNullOrEmptyConstraint(it)),
+				new IsNotNullOrEmptyConstraint(it)),
 			source);
 
-	private readonly struct BeNullOrEmptyConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNullOrEmptyConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -39,10 +39,10 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be null or empty";
+			=> "is null or empty";
 	}
 
-	private readonly struct NotBeNullOrEmptyConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNotNullOrEmptyConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -56,6 +56,6 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "not be null or empty";
+			=> "is not null or empty";
 	}
 }

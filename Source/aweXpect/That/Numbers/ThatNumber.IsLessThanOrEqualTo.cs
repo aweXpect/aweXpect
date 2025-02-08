@@ -16,7 +16,7 @@ public static partial class ThatNumber
 				new GenericConstraint<byte>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -31,7 +31,7 @@ public static partial class ThatNumber
 				new GenericConstraint<sbyte>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -46,7 +46,7 @@ public static partial class ThatNumber
 				new GenericConstraint<short>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -61,7 +61,7 @@ public static partial class ThatNumber
 				new GenericConstraint<ushort>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -76,7 +76,7 @@ public static partial class ThatNumber
 				new GenericConstraint<int>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -91,7 +91,7 @@ public static partial class ThatNumber
 				new GenericConstraint<uint>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -106,7 +106,7 @@ public static partial class ThatNumber
 				new GenericConstraint<long>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -121,7 +121,7 @@ public static partial class ThatNumber
 				new GenericConstraint<ulong>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -136,7 +136,7 @@ public static partial class ThatNumber
 				new GenericConstraint<float>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -151,7 +151,7 @@ public static partial class ThatNumber
 				new GenericConstraint<double>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -166,7 +166,7 @@ public static partial class ThatNumber
 				new GenericConstraint<decimal>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -181,7 +181,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<byte>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -196,7 +196,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<sbyte>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -211,7 +211,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<short>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -226,7 +226,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<ushort>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -241,7 +241,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<int>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -256,7 +256,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<uint>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -271,7 +271,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<long>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -286,7 +286,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<ulong>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -301,7 +301,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<float>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -316,7 +316,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<double>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -331,7 +331,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<decimal>(
 					it,
 					expected,
-					e => $"be less than or equal to {Formatter.Format(e)}",
+					e => $"is less than or equal to {Formatter.Format(e)}",
 					(a, e) => a <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);

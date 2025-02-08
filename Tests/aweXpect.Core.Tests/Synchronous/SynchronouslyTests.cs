@@ -31,8 +31,8 @@ public class SynchronouslyTests
 
 		Synchronously.Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
-			             Expected () => ThrowIf(value == 3) to
-			             not throw any exception,
+			             Expected that () => ThrowIf(value == 3)
+			             does not throw any exception,
 			             but it did throw a MyException:
 			               WhenActionThrows_ShouldFail
 			             """));
@@ -51,7 +51,7 @@ public class SynchronouslyTests
 		Synchronously.Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that value
-			             be equal to 2,
+			             is equal to 2,
 			             but it was 3
 			             """));
 	}

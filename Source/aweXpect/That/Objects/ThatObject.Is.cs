@@ -62,7 +62,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be type {Formatter.Format(typeof(TType))}";
+			=> $"is type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -79,7 +79,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be type {Formatter.Format(type)}";
+			=> $"is type {Formatter.Format(type)}";
 	}
 
 	private readonly struct IsNotOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
@@ -96,7 +96,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be type {Formatter.Format(typeof(TType))}";
+			=> $"is not type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsNotOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -113,6 +113,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be type {Formatter.Format(type)}";
+			=> $"is not type {Formatter.Format(type)}";
 	}
 }

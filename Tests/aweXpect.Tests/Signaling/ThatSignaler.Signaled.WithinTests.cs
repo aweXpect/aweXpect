@@ -27,7 +27,7 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             have recorded the callback at least once within 0:00.040,
+					             has recorded the callback at least once within 0:00.040,
 					             but it was never recorded
 					             """);
 				cts.Cancel();
@@ -49,7 +49,7 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             have recorded the callback at least once within 0:00.040,
+					             has recorded the callback at least once within 0:00.040,
 					             but it was never recorded
 					             """);
 				cts.Cancel();

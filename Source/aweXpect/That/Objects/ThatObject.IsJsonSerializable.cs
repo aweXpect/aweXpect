@@ -20,7 +20,7 @@ public static partial class ThatObject
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeJsonSerializableConstraint<object>(it, new JsonSerializerOptions(),
+				=> new IsJsonSerializableConstraint<object>(it, new JsonSerializerOptions(),
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
@@ -33,7 +33,7 @@ public static partial class ThatObject
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeJsonSerializableConstraint<object>(it, serializerOptions,
+				=> new IsJsonSerializableConstraint<object>(it, serializerOptions,
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
@@ -45,7 +45,7 @@ public static partial class ThatObject
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeJsonSerializableConstraint<T>(it, new JsonSerializerOptions(),
+				=> new IsJsonSerializableConstraint<T>(it, new JsonSerializerOptions(),
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
@@ -58,11 +58,11 @@ public static partial class ThatObject
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeJsonSerializableConstraint<T>(it, serializerOptions,
+				=> new IsJsonSerializableConstraint<T>(it, serializerOptions,
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
 
-	private readonly struct BeJsonSerializableConstraint<T>(
+	private readonly struct IsJsonSerializableConstraint<T>(
 		string it,
 		JsonSerializerOptions serializerOptions,
 		EquivalencyOptions options)
@@ -107,7 +107,7 @@ public static partial class ThatObject
 			=> (typeof(T) == typeof(object)) switch
 			{
 				true => "be serializable as JSON",
-				false => $"be serializable as {Formatter.Format(typeof(T))} JSON"
+				false => $"is serializable as {Formatter.Format(typeof(T))} JSON"
 			};
 	}
 }

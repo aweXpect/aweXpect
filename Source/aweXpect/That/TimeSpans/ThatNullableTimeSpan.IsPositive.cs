@@ -14,7 +14,7 @@ public static partial class ThatNullableTimeSpan
 	public static AndOrResult<TimeSpan?, IThat<TimeSpan?>> IsPositive(this IThat<TimeSpan?> source)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BePositiveConstraint(it)),
+				new IsPositiveConstraint(it)),
 			source);
 
 	/// <summary>
@@ -24,10 +24,10 @@ public static partial class ThatNullableTimeSpan
 		this IThat<TimeSpan?> source)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBePositiveConstraint(it)),
+				new IsNotPositiveConstraint(it)),
 			source);
 
-	private readonly struct BePositiveConstraint(string it)
+	private readonly struct IsPositiveConstraint(string it)
 		: IValueConstraint<TimeSpan?>
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)
@@ -45,7 +45,7 @@ public static partial class ThatNullableTimeSpan
 			=> "be positive";
 	}
 
-	private readonly struct NotBePositiveConstraint(string it)
+	private readonly struct IsNotPositiveConstraint(string it)
 		: IValueConstraint<TimeSpan?>
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)

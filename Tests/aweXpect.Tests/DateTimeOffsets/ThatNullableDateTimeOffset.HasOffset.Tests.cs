@@ -18,7 +18,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset equal to {Formatter.Format(expected)},
+					              has offset equal to {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -47,7 +47,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have offset equal to 2:00:00,
+					             has offset equal to 2:00:00,
 					             but it was <null>
 					             """);
 			}
@@ -67,7 +67,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have offset greater than or equal to <null>,
+					             has offset greater than or equal to <null>,
 					             but it had offset 2:00:00
 					             """);
 			}
@@ -96,7 +96,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset greater than or equal to {Formatter.Format(expected)},
+					              has offset greater than or equal to {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -128,7 +128,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have offset greater than <null>,
+					             has offset greater than <null>,
 					             but it had offset 2:00:00
 					             """);
 			}
@@ -157,7 +157,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset greater than {Formatter.Format(expected)},
+					              has offset greater than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -174,7 +174,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset greater than {Formatter.Format(expected)},
+					              has offset greater than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -194,7 +194,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have offset less than or equal to <null>,
+					             has offset less than or equal to <null>,
 					             but it had offset 2:00:00
 					             """);
 			}
@@ -211,7 +211,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset less than or equal to {Formatter.Format(expected)},
+					              has offset less than or equal to {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -255,7 +255,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have offset less than <null>,
+					             has offset less than <null>,
 					             but it had offset 2:00:00
 					             """);
 			}
@@ -272,7 +272,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset less than {Formatter.Format(expected)},
+					              has offset less than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -301,7 +301,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset less than {Formatter.Format(expected)},
+					              has offset less than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
 			}
@@ -333,7 +333,7 @@ public sealed partial class ThatNullableDateTimeOffset
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              have offset not equal to {Formatter.Format(unexpected)},
+					              has offset not equal to {Formatter.Format(unexpected)},
 					              but it had offset 2:00:00
 					              """);
 			}

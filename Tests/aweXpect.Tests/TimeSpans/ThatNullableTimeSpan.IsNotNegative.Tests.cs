@@ -28,7 +28,7 @@ public sealed partial class ThatNullableTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be negative,
+					             is not negative,
 					             but it was the minimum time span
 					             """);
 			}
@@ -44,7 +44,7 @@ public sealed partial class ThatNullableTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be negative,
+					              is not negative,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

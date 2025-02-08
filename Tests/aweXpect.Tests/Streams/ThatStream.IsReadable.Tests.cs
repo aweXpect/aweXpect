@@ -19,7 +19,7 @@ public sealed partial class ThatStream
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be readable,
+					             is readable,
 					             but it was not
 					             """);
 			}
@@ -35,7 +35,7 @@ public sealed partial class ThatStream
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be readable,
+					             is readable,
 					             but it was <null>
 					             """);
 			}

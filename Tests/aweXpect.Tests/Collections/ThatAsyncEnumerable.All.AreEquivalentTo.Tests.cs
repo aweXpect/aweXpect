@@ -36,7 +36,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equivalent to 1,
+						             is equivalent to 1 for all items,
 						             but not all were
 						             """);
 				}
@@ -74,7 +74,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equivalent to 5,
+						             is equivalent to 5 for all items,
 						             but not all were
 						             """);
 				}
@@ -103,7 +103,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equivalent to 42,
+						             is equivalent to 42 for all items,
 						             but it was <null>
 						             """);
 				}

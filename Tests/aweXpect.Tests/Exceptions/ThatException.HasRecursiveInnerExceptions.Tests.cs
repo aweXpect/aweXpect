@@ -38,7 +38,7 @@ public sealed partial class ThatException
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have recursive inner exceptions which should have all items satisfy e => e.Message != "inner3A",
+					             has recursive inner exceptions which should have satisfies e => e.Message != "inner3A" for all items,
 					             but not all did
 					             """);
 			}
@@ -59,7 +59,7 @@ public sealed partial class ThatException
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have recursive inner exceptions which should have no items satisfy e => e.Message != "inner3A",
+					             has recursive inner exceptions which should have no items satisfy e => e.Message != "inner3A",
 					             but at least one did
 					             """);
 			}
@@ -75,7 +75,7 @@ public sealed partial class ThatException
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have recursive inner exceptions which should be empty,
+					             has recursive inner exceptions which should be empty,
 					             but it was <null>
 					             """);
 			}

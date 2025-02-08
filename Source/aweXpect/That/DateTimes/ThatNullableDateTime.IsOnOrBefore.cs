@@ -21,7 +21,7 @@ public static partial class ThatNullableDateTime
 				new ConditionConstraint(
 					it,
 					expected,
-					$"be on or before {Formatter.Format(expected)}",
+					$"is on or before {Formatter.Format(expected)}",
 					(a, e, t) => a - t <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -42,7 +42,7 @@ public static partial class ThatNullableDateTime
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"not be on or before {Formatter.Format(unexpected)}",
+					$"is not on or before {Formatter.Format(unexpected)}",
 					(a, e, t) => a + t > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

@@ -4,7 +4,7 @@ public sealed partial class ThatDelegate
 {
 	public sealed partial class ThrowsException
 	{
-		public class WhichTests
+		public class WhoseTests
 		{
 			[Theory]
 			[AutoData]
@@ -16,13 +16,13 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.IsEqualTo(hResult)).And
+						.Whose(e => e.HResult, h => h.IsEqualTo(hResult)).And
 						.WithHResult(otherHResult);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that Delegate
-					              throw an exception which .HResult should be equal to {hResult} and with HResult {otherHResult},
+					              throws an exception whose .HResult is equal to {hResult} and with HResult {otherHResult},
 					              but it had HResult {hResult}
 					              """);
 			}
@@ -37,13 +37,13 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.IsEqualTo(expectedHResult)).And
+						.Whose(e => e.HResult, h => h.IsEqualTo(expectedHResult)).And
 						.WithHResult(hResult);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that Delegate
-					              throw an exception which .HResult should be equal to {expectedHResult} and with HResult {hResult},
+					              throws an exception whose .HResult is equal to {expectedHResult} and with HResult {hResult},
 					              but .HResult was {hResult}
 					              """);
 			}
@@ -57,7 +57,7 @@ public sealed partial class ThatDelegate
 
 				async Task Act()
 					=> await That(Delegate).ThrowsException()
-						.Which(e => e.HResult, h => h.IsEqualTo(hResult));
+						.Whose(e => e.HResult, h => h.IsEqualTo(hResult));
 
 				await That(Act).DoesNotThrow();
 			}

@@ -31,7 +31,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that recording
-					             have recorded the PropertyChanged event on sut with sender s => s == sender at least once,
+					             has recorded the PropertyChanged event on sut with sender s => s == sender at least once,
 					             but it was never recorded in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 2

@@ -213,7 +213,7 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"end with {_expectedExpression}{_options}";
+			=> $"ends with {_expectedExpression}{_options}";
 	}
 
 	private readonly struct NotEndsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
@@ -278,6 +278,6 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"not end with {_unexpectedExpression}{_options}";
+			=> $"does not end with {_unexpectedExpression}{_options}";
 	}
 }

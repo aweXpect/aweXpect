@@ -31,7 +31,7 @@ public sealed partial class ThatException
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have Message equal to "expected other text",
+					             has Message equal to "expected other text",
 					             but it was "actual text" which differs at index 0:
 					                ↓ (actual)
 					               "actual text"
@@ -51,7 +51,7 @@ public sealed partial class ThatException
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have Message equal to "expected text",
+					             has Message equal to "expected text",
 					             but it was <null>
 					             """);
 			}

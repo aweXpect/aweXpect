@@ -45,7 +45,7 @@ public static partial class ThatJsonElement
 	}
 
 
-	private readonly struct BeValueKindConstraint(string it, JsonValueKind expected)
+	private readonly struct IsValueKindConstraint(string it, JsonValueKind expected)
 		: IValueConstraint<JsonElement>
 	{
 		public ConstraintResult IsMetBy(JsonElement actual)
@@ -60,7 +60,7 @@ public static partial class ThatJsonElement
 		}
 
 		public override string ToString()
-			=> $"be {expected}";
+			=> $"is {expected}";
 	}
 }
 #endif

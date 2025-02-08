@@ -26,7 +26,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items satisfy x => x < 6,
+						             satisfies x => x < 6 for all items,
 						             but could not verify, because it was cancelled early
 						             """);
 				}
@@ -54,7 +54,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items satisfy x => x == 1,
+						             satisfies x => x == 1 for all items,
 						             but not all did
 						             """);
 				}
@@ -70,7 +70,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items satisfy x => x == 1,
+						             satisfies x => x == 1 for all items,
 						             but only 4 of 7 did
 						             """);
 				}
@@ -108,7 +108,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items satisfy x => x == 0,
+						             satisfies x => x == 0 for all items,
 						             but it was <null>
 						             """);
 				}

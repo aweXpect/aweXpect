@@ -23,7 +23,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"be of type {Formatter.Format(typeof(TType))}",
+						() => $"is of type {Formatter.Format(typeof(TType))}",
 						a => a is TType,
 						"were")),
 				_subject,
@@ -42,7 +42,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"be of type {Formatter.Format(type)}",
+						() => $"is of type {Formatter.Format(type)}",
 						a => type.IsInstanceOfType(a),
 						"were")),
 				_subject,

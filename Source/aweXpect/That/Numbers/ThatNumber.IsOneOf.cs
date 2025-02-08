@@ -23,7 +23,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<byte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -44,7 +44,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<sbyte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -65,7 +65,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<short>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -86,7 +86,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<ushort>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -107,7 +107,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<int>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -128,7 +128,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<uint>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -149,7 +149,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<long>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -170,7 +170,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<ulong>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -191,7 +191,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<float>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -212,7 +212,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<double>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -233,7 +233,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<decimal>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -254,7 +254,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<byte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -275,7 +275,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<sbyte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -296,7 +296,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<short>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -317,7 +317,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<ushort>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -338,7 +338,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<int>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -359,7 +359,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<uint>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -380,7 +380,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<long>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -401,7 +401,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<ulong>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -422,7 +422,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<float>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -443,7 +443,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<double>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -464,7 +464,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<decimal>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -485,7 +485,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<byte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -506,7 +506,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<sbyte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -527,7 +527,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<short>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -548,7 +548,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<ushort>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -569,7 +569,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<int>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -590,7 +590,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<uint>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -611,7 +611,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<long>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -632,7 +632,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<ulong>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -653,7 +653,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<float>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -674,7 +674,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<double>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -695,7 +695,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<decimal>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -716,7 +716,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<byte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -737,7 +737,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<sbyte>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -758,7 +758,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<short>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -779,7 +779,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<ushort>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -800,7 +800,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<int>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -821,7 +821,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<uint>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -842,7 +842,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<long>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -863,7 +863,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<ulong>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -884,7 +884,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<float>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -905,7 +905,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<double>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -926,7 +926,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<decimal>(
 					it,
 					expected,
-					e => $"be one of {Formatter.Format(e)}{options}",
+					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -947,7 +947,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<byte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -968,7 +968,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<sbyte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -989,7 +989,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<short>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1010,7 +1010,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<ushort>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1031,7 +1031,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<int>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1052,7 +1052,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<uint>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1073,7 +1073,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<long>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1094,7 +1094,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<ulong>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1115,7 +1115,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<float>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1136,7 +1136,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<double>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1157,7 +1157,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraintWithNullableValues<decimal>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1178,7 +1178,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<byte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1199,7 +1199,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<sbyte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1220,7 +1220,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<short>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1241,7 +1241,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<ushort>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1262,7 +1262,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<int>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1283,7 +1283,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<uint>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1304,7 +1304,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<long>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1325,7 +1325,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<ulong>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1346,7 +1346,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<float>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1367,7 +1367,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<double>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1388,7 +1388,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraintWithNullableValues<decimal>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1409,7 +1409,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<byte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1430,7 +1430,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<sbyte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1451,7 +1451,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<short>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1472,7 +1472,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<ushort>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1493,7 +1493,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<int>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1514,7 +1514,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<uint>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1535,7 +1535,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<long>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1556,7 +1556,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<ulong>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1577,7 +1577,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<float>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1598,7 +1598,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<double>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1619,7 +1619,7 @@ public static partial class ThatNumber
 				new GenericArrayConstraint<decimal>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1640,7 +1640,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<byte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1661,7 +1661,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<sbyte>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1682,7 +1682,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<short>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1703,7 +1703,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<ushort>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1724,7 +1724,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<int>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1745,7 +1745,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<uint>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1766,7 +1766,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<long>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1787,7 +1787,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<ulong>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1808,7 +1808,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<float>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1829,7 +1829,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<double>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -1850,7 +1850,7 @@ public static partial class ThatNumber
 				new NullableGenericArrayConstraint<decimal>(
 					it,
 					unexpected,
-					u => $"not be one of {Formatter.Format(u)}{options}",
+					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,

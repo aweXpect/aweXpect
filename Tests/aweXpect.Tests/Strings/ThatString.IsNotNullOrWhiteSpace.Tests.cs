@@ -17,7 +17,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be null or white-space,
+					             is not null or white-space,
 					             but it was ""
 					             """);
 			}
@@ -43,7 +43,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be null or white-space,
+					             is not null or white-space,
 					             but it was <null>
 					             """);
 			}
@@ -59,7 +59,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be null or white-space,
+					              is not null or white-space,
 					              but it was "{new string(' ', 100)}…"
 					              """);
 			}
@@ -75,7 +75,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be null or white-space,
+					             is not null or white-space,
 					             but it was " \t "
 					             """);
 			}

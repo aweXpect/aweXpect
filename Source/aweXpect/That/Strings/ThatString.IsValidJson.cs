@@ -26,11 +26,11 @@ public static partial class ThatString
 		}
 
 		return new JsonWhichResult(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeValidJsonConstraint(it, defaultOptions)),
+				new IsValidJsonConstraint(it, defaultOptions)),
 			source, defaultOptions);
 	}
 
-	private readonly struct BeValidJsonConstraint(string it, JsonDocumentOptions options) : IValueConstraint<string?>
+	private readonly struct IsValidJsonConstraint(string it, JsonDocumentOptions options) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{

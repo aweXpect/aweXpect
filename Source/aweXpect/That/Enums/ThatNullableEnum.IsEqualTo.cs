@@ -16,7 +16,7 @@ public static partial class ThatNullableEnum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint<TEnum>(
 					it,
-					$"be {Formatter.Format(expected)}",
+					$"is {Formatter.Format(expected)}",
 					actual => actual?.Equals(expected) ?? expected == null)),
 			source);
 
@@ -30,7 +30,7 @@ public static partial class ThatNullableEnum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
 				=> new ValueConstraint<TEnum>(
 					it,
-					$"not be {Formatter.Format(unexpected)}",
+					$"is not {Formatter.Format(unexpected)}",
 					actual => !actual?.Equals(unexpected) ?? unexpected != null)),
 			source);
 }

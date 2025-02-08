@@ -17,7 +17,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be one of {Formatter.Format(expected)},
+					              is one of {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -46,7 +46,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be one of {Formatter.Format(expected)},
+					              is one of {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
 			}

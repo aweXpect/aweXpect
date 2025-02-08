@@ -24,7 +24,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected that subject
-					              match expected,
+					              matches expected,
 					              but it differed as $ was {subject} instead of {expected}
 					              """);
 			}
@@ -42,7 +42,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected that subject
-					              match expected,
+					              matches expected,
 					              but it differed as $ was {json} instead of {Formatter.Format(expected)}
 					              """);
 			}
@@ -60,7 +60,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected that subject
-					              match expected,
+					              matches expected,
 					              but it differed as $ was {json} instead of {expected}
 					              """);
 			}
@@ -78,7 +78,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected that subject
-					              match null,
+					              matches null,
 					              but it differed as $ was object {json} instead of Null
 					              """);
 			}
@@ -96,7 +96,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
 					              Expected that subject
-					              match expected,
+					              matches expected,
 					              but it differed as $ was {json} instead of "{expected}"
 					              """);
 			}
@@ -128,7 +128,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              match expected,
+					              matches expected,
 					              but it differed {errorMessage}
 					              """);
 			}
@@ -144,7 +144,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             match [2, 1],
+					             matches [2, 1],
 					             but it differed as
 					               $[0] was 1 instead of 2 and
 					               $[1] was 2 instead of 1
@@ -162,7 +162,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             match [1, 2, 3],
+					             matches [1, 2, 3],
 					             but it differed as $[2] had missing 3
 					             """);
 			}
@@ -245,7 +245,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>().OnlyIf(errorMessage != null)
 					.WithMessage($$"""
 					               Expected that subject
-					               match new
+					               matches new
 					               					{
 					               						foo = 2
 					               					},
@@ -280,7 +280,7 @@ public sealed partial class ThatJsonElement
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             match new
+					             matches new
 					             					{
 					             						bar = 3
 					             					},

@@ -22,7 +22,7 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotEmpty(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeEmptyConstraint(it)),
+				new IsNotEmptyConstraint(it)),
 			source);
 
 	private readonly struct IsEmptyConstraint(string it) : IValueConstraint<string?>
@@ -42,7 +42,7 @@ public static partial class ThatString
 			=> "is empty";
 	}
 
-	private readonly struct NotBeEmptyConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNotEmptyConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{

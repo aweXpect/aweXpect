@@ -30,7 +30,7 @@ public sealed partial class ThatEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be {Formatter.Format(unexpected)},
+					              is not {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -61,7 +61,7 @@ public sealed partial class ThatEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be {Formatter.Format(unexpected)},
+					              is not {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -91,7 +91,7 @@ public sealed partial class ThatEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not be {Formatter.Format(unexpected)},
+					              is not {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

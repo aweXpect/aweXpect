@@ -28,7 +28,7 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with Message equal to "foo",
+					             throws an exception with Message equal to "foo",
 					             but it did not throw any exception
 					             """);
 			}
@@ -56,7 +56,7 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception,
+					             throws an exception,
 					             but it did not throw any exception
 					             """);
 			}
@@ -72,7 +72,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             throw an exception,
+					             throws an exception,
 					             but it was <null>
 					             """);
 			}

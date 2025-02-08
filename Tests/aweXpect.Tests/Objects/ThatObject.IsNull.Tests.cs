@@ -29,7 +29,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be null, because we want to test the failure,
+					              is null, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -59,7 +59,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be null, because we want to test the failure,
+					              is null, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

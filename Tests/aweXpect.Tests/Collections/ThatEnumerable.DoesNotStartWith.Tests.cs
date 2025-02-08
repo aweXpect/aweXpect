@@ -44,7 +44,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not start with ["foo"] ignoring case,
+					             does not start with ["foo"] ignoring case,
 					             but it did start with [
 					               "FOO"
 					             ]
@@ -63,7 +63,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not start with unexpected equivalent,
+					             does not start with unexpected equivalent,
 					             but it did start with [
 					               MyClass {
 					                 Inner = <null>,
@@ -92,7 +92,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not start with [1, 2, 3],
+					             does not start with [1, 2, 3],
 					             but it did start with [
 					               1,
 					               2,
@@ -124,7 +124,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not start with [],
+					             does not start with [],
 					             but it was <null>
 					             """);
 			}
@@ -141,7 +141,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not start with unexpected,
+					             does not start with unexpected,
 					             but it did start with [
 					               "foo",
 					               "bar"
@@ -171,7 +171,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not start with [],
+					             does not start with [],
 					             but it was [
 					               1,
 					               2

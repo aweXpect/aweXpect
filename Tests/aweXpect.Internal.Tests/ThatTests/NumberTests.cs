@@ -12,7 +12,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -27,7 +27,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -42,7 +42,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -57,7 +57,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -72,7 +72,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -87,7 +87,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -102,7 +102,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -117,7 +117,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -132,7 +132,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -147,7 +147,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}
@@ -162,7 +162,7 @@ public sealed class NumberTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
 			              Expected that subject
-			              be equal to {Formatter.Format(expected)},
+			              is equal to {Formatter.Format(expected)},
 			              but it was {Formatter.Format(subject)}
 			              """);
 	}

@@ -21,7 +21,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be empty,
+					             is empty,
 					             but it was [
 					               1,
 					               1,
@@ -49,7 +49,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be empty,
+					             is empty,
 					             but it was [
 					               "foo"
 					             ]
@@ -78,7 +78,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be empty,
+					             is empty,
 					             but it was [
 					               1,
 					               1,
@@ -109,7 +109,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be empty,
+					             is empty,
 					             but it was <null>
 					             """);
 			}

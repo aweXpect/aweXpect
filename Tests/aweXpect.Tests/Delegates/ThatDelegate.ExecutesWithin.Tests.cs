@@ -31,8 +31,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected @delegate to
-					              execute within 0:00.500,
+					              Expected that @delegate
+					              executes within 0:00.500,
 					              but it did throw a MyException:
 					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 					              """);
@@ -49,7 +49,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             execute within 0:00.500,
+					             executes within 0:00.500,
 					             but it was <null>
 					             """);
 			}
@@ -78,8 +78,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected @delegate to
-					              execute within 0:00.500,
+					              Expected that @delegate
+					              executes within 0:00.500,
 					              but it did throw a MyException:
 					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 					              """);
@@ -96,7 +96,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             execute within 0:00.500,
+					             executes within 0:00.500,
 					             but it was <null>
 					             """);
 			}
@@ -125,8 +125,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected @delegate to
-					              execute within 0:00.500,
+					              Expected that @delegate
+					              executes within 0:00.500,
 					              but it did throw a MyException:
 					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 					              """);
@@ -143,7 +143,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             execute within 0:00.500,
+					             executes within 0:00.500,
 					             but it was <null>
 					             """);
 			}
@@ -174,7 +174,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
 						              Expected that Delegate
-						              execute within 0:00.500,
+						              executes within 0:00.500,
 						              but it did throw a MyException:
 						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 						              """);
@@ -191,7 +191,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             execute within 0:00.500,
+						             executes within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -225,7 +225,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
 						              Expected that Delegate
-						              execute within 0:00.500,
+						              executes within 0:00.500,
 						              but it did throw a MyException:
 						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 						              """);
@@ -242,7 +242,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             execute within 0:00.500,
+						             executes within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -274,7 +274,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
 						              Expected that Delegate
-						              execute within 0:00.500,
+						              executes within 0:00.500,
 						              but it did throw a MyException:
 						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 						              """);
@@ -291,7 +291,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             execute within 0:00.500,
+						             executes within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -325,7 +325,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
 						              Expected that Delegate
-						              execute within 0:00.500,
+						              executes within 0:00.500,
 						              but it did throw a MyException:
 						                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 						              """);
@@ -342,7 +342,7 @@ public sealed partial class ThatDelegate
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             execute within 0:00.500,
+						             executes within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -372,8 +372,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected @delegate to
-					              execute within 0:00.500,
+					              Expected that @delegate
+					              executes within 0:00.500,
 					              but it did throw a MyException:
 					                {nameof(WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage)}
 					              """);
@@ -390,7 +390,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             execute within 0:00.500,
+					             executes within 0:00.500,
 					             but it was <null>
 					             """);
 			}

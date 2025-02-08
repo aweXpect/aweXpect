@@ -15,7 +15,7 @@ public static partial class ThatNullableGuid
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					it,
-					$"be {Formatter.Format(expected)}",
+					$"is {Formatter.Format(expected)}",
 					actual => actual?.Equals(expected) ?? expected == null)),
 			source);
 
@@ -27,7 +27,7 @@ public static partial class ThatNullableGuid
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					it,
-					$"not be {Formatter.Format(unexpected)}",
+					$"is not {Formatter.Format(unexpected)}",
 					actual => !actual?.Equals(unexpected) ?? unexpected != null)),
 			source);
 }

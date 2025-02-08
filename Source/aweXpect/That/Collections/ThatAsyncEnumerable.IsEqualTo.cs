@@ -23,7 +23,7 @@ public static partial class ThatAsyncEnumerable
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -42,7 +42,7 @@ public static partial class ThatAsyncEnumerable
 		CollectionMatchOptions matchOptions = new();
 		return new StringCollectionMatchResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);

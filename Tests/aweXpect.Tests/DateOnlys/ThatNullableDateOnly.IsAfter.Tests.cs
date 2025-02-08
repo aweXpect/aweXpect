@@ -19,7 +19,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after <null>,
+					              is after <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -36,7 +36,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be after 9999-12-31,
+					             is after 9999-12-31,
 					             but it was 9999-12-31
 					             """);
 			}
@@ -53,7 +53,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be after 0001-01-01,
+					             is after 0001-01-01,
 					             but it was 0001-01-01
 					             """);
 			}
@@ -70,7 +70,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)},
+					              is after {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -88,7 +88,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)}, because we want to test the failure,
+					              is after {Formatter.Format(expected)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -118,7 +118,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)} ± 3 days,
+					              is after {Formatter.Format(expected)} ± 3 days,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -137,7 +137,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)} ± 3 days, because we want to test the failure,
+					              is after {Formatter.Format(expected)} ± 3 days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

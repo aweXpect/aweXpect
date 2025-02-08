@@ -16,7 +16,7 @@ public static partial class ThatObject
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"be null",
+					"is null",
 					(a, _) => a is null,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -31,7 +31,7 @@ public static partial class ThatObject
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"be null",
+					"is null",
 					(a, _) => a is null,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -46,7 +46,7 @@ public static partial class ThatObject
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"not be null",
+					"is not null",
 					(a, _) => a is not null,
 					(_, _, i) => $"{i} was")),
 			source);
@@ -61,7 +61,7 @@ public static partial class ThatObject
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"not be null",
+					"is not null",
 					(a, _) => a is not null,
 					(_, _, i) => $"{i} was")),
 			source);

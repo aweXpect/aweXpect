@@ -80,7 +80,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               not be exactly type MyClass, because {{reason}},
+					               is not exactly type MyClass, because {{reason}},
 					               but it was MyClass {
 					                 Value = {{value}}
 					               }
@@ -164,7 +164,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               not be exactly type MyClass, because {{reason}},
+					               is not exactly type MyClass, because {{reason}},
 					               but it was MyClass {
 					                 Value = {{value}}
 					               }

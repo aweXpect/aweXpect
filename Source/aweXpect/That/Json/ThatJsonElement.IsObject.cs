@@ -18,7 +18,7 @@ public static partial class ThatJsonElement
 		this IThat<JsonElement> source)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeValueKindConstraint(it, JsonValueKind.Object)),
+				new IsValueKindConstraint(it, JsonValueKind.Object)),
 			source);
 
 	/// <summary>
@@ -41,11 +41,11 @@ public static partial class ThatJsonElement
 
 		return new AndOrResult<JsonElement, IThat<JsonElement>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeObjectConstraint(it, expectation, jsonOptions)),
+				new IsObjectConstraint(it, expectation, jsonOptions)),
 			source);
 	}
 
-	private readonly struct BeObjectConstraint(
+	private readonly struct IsObjectConstraint(
 		string it,
 		Func<IJsonObjectResult, IJsonObjectResult> expectation,
 		JsonOptions options)

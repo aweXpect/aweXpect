@@ -21,7 +21,7 @@ public sealed class WhichNodeTests
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that subject
-			             be type Dummy which .Value should be equal to "bar",
+			             is type Dummy which .Value is equal to "bar",
 			             but .Value was "foo" which differs at index 0:
 			                ↓ (actual)
 			               "foo"

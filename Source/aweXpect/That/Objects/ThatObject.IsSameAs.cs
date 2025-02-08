@@ -17,7 +17,7 @@ public static partial class ThatObject
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it =>
-					new BeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
+					new IsSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
 			source);
 
 	/// <summary>
@@ -29,10 +29,10 @@ public static partial class ThatObject
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint(it =>
-					new NotBeSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
+					new IsNotSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
 			source);
 
-	private readonly struct BeSameAsConstraint<T>(
+	private readonly struct IsSameAsConstraint<T>(
 		string it,
 		object? expected,
 		string expectedExpression)
@@ -50,10 +50,10 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"refer to {expectedExpression} {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
+			=> $"refers to {expectedExpression} {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 	}
 
-	private readonly struct NotBeSameAsConstraint<T>(
+	private readonly struct IsNotSameAsConstraint<T>(
 		string it,
 		object? unexpected,
 		string expectedExpression)
@@ -71,6 +71,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not refer to {expectedExpression} {Formatter.Format(unexpected, FormattingOptions.MultipleLines)}";
+			=> $"does not refer to {expectedExpression} {Formatter.Format(unexpected, FormattingOptions.MultipleLines)}";
 	}
 }

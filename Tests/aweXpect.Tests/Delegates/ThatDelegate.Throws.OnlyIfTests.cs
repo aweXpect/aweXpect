@@ -61,7 +61,7 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             not throw any exception,
+					             does not throw any exception,
 					             but it did throw an Exception
 					             """);
 			}
@@ -88,7 +88,7 @@ public sealed partial class ThatDelegate
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throw an ArgumentException,
+					             throws an ArgumentException,
 					             but it did not throw any exception
 					             """);
 			}

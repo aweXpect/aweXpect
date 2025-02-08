@@ -27,7 +27,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at most 8 items satisfy y => y < 6,
+					             has at most 8 items satisfy y => y < 6,
 					             but could not verify, because it was cancelled early
 					             """);
 			}
@@ -55,7 +55,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at most one item equal to 1,
+					             has at most one item equal to 1,
 					             but at least 2 were
 					             """);
 			}
@@ -82,7 +82,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at most 3 items equal to 1,
+					             has at most 3 items equal to 1,
 					             but at least 4 were
 					             """);
 			}
@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have at most one item equal to 0,
+					             has at most one item equal to 0,
 					             but it was <null>
 					             """);
 			}

@@ -19,7 +19,7 @@ public static partial class ThatNullableTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint(it, expected, tolerance)),
+				new IsEqualToConstraint(it, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -34,12 +34,12 @@ public static partial class ThatNullableTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeConstraint(it, unexpected, tolerance)),
+				new IsNotEqualToConstraint(it, unexpected, tolerance)),
 			source,
 			tolerance);
 	}
 
-	private readonly struct BeConstraint(string it, TimeSpan? expected, TimeTolerance tolerance)
+	private readonly struct IsEqualToConstraint(string it, TimeSpan? expected, TimeTolerance tolerance)
 		: IValueConstraint<TimeSpan?>
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)
@@ -54,10 +54,10 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		public override string ToString()
-			=> $"be {Formatter.Format(expected)}{tolerance}";
+			=> $"is {Formatter.Format(expected)}{tolerance}";
 	}
 
-	private readonly struct NotBeConstraint(
+	private readonly struct IsNotEqualToConstraint(
 		string it,
 		TimeSpan? unexpected,
 		TimeTolerance tolerance)
@@ -75,6 +75,6 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		public override string ToString()
-			=> $"not be {Formatter.Format(unexpected)}{tolerance}";
+			=> $"is not {Formatter.Format(unexpected)}{tolerance}";
 	}
 }

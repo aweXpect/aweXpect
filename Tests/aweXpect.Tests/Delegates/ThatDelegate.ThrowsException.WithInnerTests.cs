@@ -46,7 +46,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception which should have Message equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -68,7 +68,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that action
-					              throw an exception with an inner SubCustomException,
+					              throws an exception with an inner SubCustomException,
 					              but it was a CustomException:
 					                {message}
 					              """);
@@ -87,7 +87,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that action
-					              throw an exception with an inner CustomException,
+					              throws an exception with an inner CustomException,
 					              but it was an OtherException:
 					                {message}
 					              """);
@@ -104,7 +104,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception,
+					             throws an exception with an inner exception,
 					             but it was <null>
 					             """);
 			}
@@ -143,7 +143,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner CustomException,
+					             throws an exception with an inner CustomException,
 					             but it was <null>
 					             """);
 			}
@@ -161,7 +161,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception which should have Message equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -182,7 +182,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception which should have Message equal to "foo",
 					             but it was <null>
 					             """);
 			}
@@ -228,7 +228,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception which should have Message equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -251,7 +251,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that action
-					              throw an exception with an inner SubCustomException,
+					              throws an exception with an inner SubCustomException,
 					              but it was a CustomException:
 					                {message}
 					              """);
@@ -270,7 +270,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that action
-					              throw an exception with an inner CustomException,
+					              throws an exception with an inner CustomException,
 					              but it was an OtherException:
 					                {message}
 					              """);
@@ -287,7 +287,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception,
+					             throws an exception with an inner exception,
 					             but it was <null>
 					             """);
 			}
@@ -326,7 +326,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner CustomException,
+					             throws an exception with an inner CustomException,
 					             but it was <null>
 					             """);
 			}
@@ -345,7 +345,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception which should have Message equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"

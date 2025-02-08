@@ -20,7 +20,7 @@ public static partial class ThatNullableTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeGreaterThanOrEqualToConstraint(it, expected, tolerance)),
+				new IsGreaterThanOrEqualToConstraint(it, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -35,12 +35,12 @@ public static partial class ThatNullableTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeGreaterThanOrEqualToConstraint(it, unexpected, tolerance)),
+				new IsNotGreaterThanOrEqualToConstraint(it, unexpected, tolerance)),
 			source,
 			tolerance);
 	}
 
-	private readonly struct BeGreaterThanOrEqualToConstraint(
+	private readonly struct IsGreaterThanOrEqualToConstraint(
 		string it,
 		TimeSpan? expected,
 		TimeTolerance tolerance)
@@ -60,10 +60,10 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		public override string ToString()
-			=> $"be greater than or equal to {Formatter.Format(expected)}{tolerance}";
+			=> $"is greater than or equal to {Formatter.Format(expected)}{tolerance}";
 	}
 
-	private readonly struct NotBeGreaterThanOrEqualToConstraint(
+	private readonly struct IsNotGreaterThanOrEqualToConstraint(
 		string it,
 		TimeSpan? unexpected,
 		TimeTolerance tolerance)
@@ -83,6 +83,6 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		public override string ToString()
-			=> $"not be greater than or equal to {Formatter.Format(unexpected)}{tolerance}";
+			=> $"is not greater than or equal to {Formatter.Format(unexpected)}{tolerance}";
 	}
 }

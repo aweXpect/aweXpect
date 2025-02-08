@@ -17,7 +17,7 @@ public sealed partial class ThatNullableEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not have flag <null>,
+					             has not flag <null>,
 					             but it was <null>
 					             """);
 			}
@@ -46,7 +46,7 @@ public sealed partial class ThatNullableEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not have flag {Formatter.Format(unexpected)},
+					              has not flag {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -64,7 +64,7 @@ public sealed partial class ThatNullableEnum
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              not have flag {Formatter.Format(unexpected)},
+					              has not flag {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

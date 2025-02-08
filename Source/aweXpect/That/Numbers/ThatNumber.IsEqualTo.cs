@@ -22,7 +22,7 @@ public static partial class ThatNumber
 				new GenericConstraint<byte>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -43,7 +43,7 @@ public static partial class ThatNumber
 				new GenericConstraint<sbyte>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -64,7 +64,7 @@ public static partial class ThatNumber
 				new GenericConstraint<short>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -85,7 +85,7 @@ public static partial class ThatNumber
 				new GenericConstraint<ushort>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -106,7 +106,7 @@ public static partial class ThatNumber
 				new GenericConstraint<int>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -127,7 +127,7 @@ public static partial class ThatNumber
 				new GenericConstraint<uint>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -148,7 +148,7 @@ public static partial class ThatNumber
 				new GenericConstraint<long>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -169,7 +169,7 @@ public static partial class ThatNumber
 				new GenericConstraint<ulong>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -190,7 +190,7 @@ public static partial class ThatNumber
 				new GenericConstraint<float>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -211,7 +211,7 @@ public static partial class ThatNumber
 				new GenericConstraint<double>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -232,7 +232,7 @@ public static partial class ThatNumber
 				new GenericConstraint<decimal>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -253,7 +253,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<byte>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -274,7 +274,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<sbyte>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -295,7 +295,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<short>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -316,7 +316,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<ushort>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -337,7 +337,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<int>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -358,7 +358,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<uint>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -379,7 +379,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<long>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -400,7 +400,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<ulong>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -421,7 +421,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<float>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -442,7 +442,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<double>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -463,7 +463,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<decimal>(
 					it,
 					expected,
-					e => $"be equal to {Formatter.Format(e)}{options}",
+					e => $"is equal to {Formatter.Format(e)}{options}",
 					(a, e) => options.IsWithinTolerance(a, e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -484,7 +484,7 @@ public static partial class ThatNumber
 				new GenericConstraint<byte>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -505,7 +505,7 @@ public static partial class ThatNumber
 				new GenericConstraint<sbyte>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -526,7 +526,7 @@ public static partial class ThatNumber
 				new GenericConstraint<short>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -547,7 +547,7 @@ public static partial class ThatNumber
 				new GenericConstraint<ushort>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -568,7 +568,7 @@ public static partial class ThatNumber
 				new GenericConstraint<int>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -589,7 +589,7 @@ public static partial class ThatNumber
 				new GenericConstraint<uint>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -610,7 +610,7 @@ public static partial class ThatNumber
 				new GenericConstraint<long>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -631,7 +631,7 @@ public static partial class ThatNumber
 				new GenericConstraint<ulong>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -652,7 +652,7 @@ public static partial class ThatNumber
 				new GenericConstraint<float>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -673,7 +673,7 @@ public static partial class ThatNumber
 				new GenericConstraint<double>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -694,7 +694,7 @@ public static partial class ThatNumber
 				new GenericConstraint<decimal>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -715,7 +715,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<byte>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -736,7 +736,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<sbyte>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -757,7 +757,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<short>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -778,7 +778,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<ushort>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -799,7 +799,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<int>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -820,7 +820,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<uint>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -841,7 +841,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<long>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -862,7 +862,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<ulong>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -883,7 +883,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<float>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -904,7 +904,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<double>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,
@@ -925,7 +925,7 @@ public static partial class ThatNumber
 				new NullableGenericConstraint<decimal>(
 					it,
 					unexpected,
-					u => $"not be equal to {Formatter.Format(u)}{options}",
+					u => $"is not equal to {Formatter.Format(u)}{options}",
 					(a, u) => !options.IsWithinTolerance(a, u),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source,

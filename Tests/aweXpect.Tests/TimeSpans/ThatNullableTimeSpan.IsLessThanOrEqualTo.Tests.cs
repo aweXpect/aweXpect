@@ -18,7 +18,7 @@ public sealed partial class ThatNullableTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be less than or equal to <null>,
+					              is less than or equal to <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -59,7 +59,7 @@ public sealed partial class ThatNullableTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be less than or equal to {Formatter.Format(expected)},
+					              is less than or equal to {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -101,7 +101,7 @@ public sealed partial class ThatNullableTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be less than or equal to {Formatter.Format(expected)} ± 0:03,
+					              is less than or equal to {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -119,7 +119,7 @@ public sealed partial class ThatNullableTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be less than or equal to {Formatter.Format(expected)} ± 0:03,
+					              is less than or equal to {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

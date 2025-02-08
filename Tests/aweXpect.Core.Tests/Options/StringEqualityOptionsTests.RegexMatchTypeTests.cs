@@ -17,7 +17,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
 				             Expected that sut
-				             match regex "FOO\nBAR",
+				             matches regex "FOO\nBAR",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
@@ -37,7 +37,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected that sut
-				             match regex "bar",
+				             matches regex "bar",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo"
@@ -57,7 +57,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected that sut
-				             match regex "\tsomething\r\nelse",
+				             matches regex "\tsomething\r\nelse",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
@@ -77,8 +77,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected () => Task.FromException(exception) to
-				             throw an exception with Message matching regex "bar",
+				             Expected that () => Task.FromException(exception)
+				             throws an exception with Message matching regex "bar",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo"
@@ -109,7 +109,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected that sut
-				             match regex <null>,
+				             matches regex <null>,
 				             but could not compare the <null> regex with "foo"
 				             """);
 		}
@@ -125,7 +125,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected that sut
-				             match regex <null>,
+				             matches regex <null>,
 				             but could not compare the <null> regex with <null>
 				             """);
 		}
@@ -141,7 +141,7 @@ public sealed partial class StringEqualityOptionsTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected that sut
-				             match regex ".*",
+				             matches regex ".*",
 				             but it did not match:
 				               ↓ (actual)
 				               <null>

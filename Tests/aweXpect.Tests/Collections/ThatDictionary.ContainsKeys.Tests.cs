@@ -30,7 +30,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys [0, 2],
+					             has keys [0, 2],
 					             but it did not have [
 					               0
 					             ] in [
@@ -52,7 +52,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys ["foo", "bar"],
+					             has keys ["foo", "bar"],
 					             but it was <null>
 					             """);
 			}
@@ -82,7 +82,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys [2] whose values should have all items equal to "foo",
+					             has keys [2] whose values should have all items equal to "foo",
 					             but not all were
 					             """);
 			}
@@ -98,7 +98,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys [1, 2] whose values should have all items equal to "foo",
+					             has keys [1, 2] whose values should have all items equal to "foo",
 					             but not all were
 					             """);
 			}
@@ -114,7 +114,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys [0] whose values should have all items equal to "bar",
+					             has keys [0] whose values should have all items equal to "bar",
 					             but it did not have [
 					               0
 					             ] in [
@@ -136,7 +136,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys [1, 0, 3] whose values should have all items equal to "bar",
+					             has keys [1, 0, 3] whose values should have all items equal to "bar",
 					             but it did not have [
 					               0
 					             ] in [
@@ -158,7 +158,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have keys ["foo"] whose values should have all items equal to "",
+					             has keys ["foo"] whose values should have all items equal to "",
 					             but it was <null>
 					             """);
 			}

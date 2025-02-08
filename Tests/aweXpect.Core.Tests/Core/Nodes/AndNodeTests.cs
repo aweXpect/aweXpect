@@ -15,7 +15,7 @@ public sealed class AndNodeTests
 #pragma warning restore aweXpect0001
 #pragma warning restore CS4014
 
-		string expectedResult = "be True and be False and imply False";
+		string expectedResult = "is True and is False and implies False";
 
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
@@ -41,7 +41,7 @@ public sealed class AndNodeTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that true
-			             be False and be True,
+			             is False and is True,
 			             but it was True
 			             """);
 	}
@@ -55,7 +55,7 @@ public sealed class AndNodeTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that true
-			             be False and be False and imply False,
+			             is False and is False and implies False,
 			             but it was True and it did not
 			             """);
 	}
@@ -69,7 +69,7 @@ public sealed class AndNodeTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that true
-			             be True and be False,
+			             is True and is False,
 			             but it was True
 			             """);
 	}

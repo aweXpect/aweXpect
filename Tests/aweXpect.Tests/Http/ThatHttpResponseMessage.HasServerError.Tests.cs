@@ -51,7 +51,7 @@ public sealed partial class ThatHttpResponseMessage
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             have server error (status code 5xx),
+					             has server error (status code 5xx),
 					             but it was <null>
 					             """);
 			}

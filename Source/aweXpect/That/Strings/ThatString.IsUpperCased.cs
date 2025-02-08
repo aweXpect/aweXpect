@@ -16,7 +16,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsUpperCased(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeUpperCasedConstraint(it)),
+				new IsUpperCasedConstraint(it)),
 			source);
 
 	/// <summary>
@@ -28,10 +28,10 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotUpperCased(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeUpperCasedConstraint(it)),
+				new IsNotUpperCasedConstraint(it)),
 			source);
 
-	private readonly struct BeUpperCasedConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsUpperCasedConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -48,7 +48,7 @@ public static partial class ThatString
 			=> "be upper-cased";
 	}
 
-	private readonly struct NotBeUpperCasedConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNotUpperCasedConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{

@@ -21,7 +21,7 @@ public static partial class ThatNullableDateTimeOffset
 				new ConditionConstraint(
 					it,
 					expected,
-					$"be {Formatter.Format(expected)}{tolerance}",
+					$"is {Formatter.Format(expected)}{tolerance}",
 					(a, e, t) => IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -42,7 +42,7 @@ public static partial class ThatNullableDateTimeOffset
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"not be {Formatter.Format(unexpected)}{tolerance}",
+					$"is not {Formatter.Format(unexpected)}{tolerance}",
 					(a, e, t) => !IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

@@ -84,7 +84,7 @@ public class BecauseTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that subject
-			             be True, because we only apply it to previous constraints and be False,
+			             is True, because we only apply it to previous constraints and is False,
 			             but it was True
 			             """);
 	}
@@ -115,7 +115,7 @@ public class BecauseTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that subject
-			             be False,
+			             is False,
 			             but it was True
 			             """);
 	}

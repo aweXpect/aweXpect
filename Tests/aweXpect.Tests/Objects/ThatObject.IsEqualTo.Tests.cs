@@ -30,7 +30,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be equal to expected, because we want to test the failure,
+					             is equal to expected, because we want to test the failure,
 					             but it was MyClass {
 					               Value = 0
 					             }
@@ -60,7 +60,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be equal to new MyClass(),
+					             is equal to new MyClass(),
 					             but it was <null>
 					             """);
 			}
@@ -92,7 +92,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be equal to expected, because we want to test the failure,
+					             is equal to expected, because we want to test the failure,
 					             but it was 'x'
 					             """);
 			}
@@ -124,7 +124,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be equal to expected, because we want to test the failure,
+					             is equal to expected, because we want to test the failure,
 					             but it was 'x'
 					             """);
 			}
@@ -152,7 +152,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be equal to 'c',
+					             is equal to 'c',
 					             but it was <null>
 					             """);
 			}
@@ -171,7 +171,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that sut
-					             be equal to expected,
+					             is equal to expected,
 					             but it was long
 					             """);
 			}

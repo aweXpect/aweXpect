@@ -60,7 +60,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be exactly type {Formatter.Format(typeof(TType))}";
+			=> $"is exactly type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsExactlyOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -77,7 +77,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be exactly type {Formatter.Format(type)}";
+			=> $"is exactly type {Formatter.Format(type)}";
 	}
 
 	private readonly struct IsNotExactlyOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
@@ -94,7 +94,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be exactly type {Formatter.Format(typeof(TType))}";
+			=> $"is not exactly type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsNotExactlyOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -111,6 +111,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be exactly type {Formatter.Format(type)}";
+			=> $"is not exactly type {Formatter.Format(type)}";
 	}
 }

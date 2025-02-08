@@ -22,7 +22,7 @@ public static partial class ThatNullableTimeOnly
 				new ConditionConstraintWithTolerance(
 					it,
 					expected,
-					(e, t) => $"be on or after {Formatter.Format(e)}{t}",
+					(e, t) => $"is on or after {Formatter.Format(e)}{t}",
 					(a, e, t) => a?.Add(t) >= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -43,7 +43,7 @@ public static partial class ThatNullableTimeOnly
 				new ConditionConstraintWithTolerance(
 					it,
 					unexpected,
-					(u, t) => $"not be on or after {Formatter.Format(u)}{t}",
+					(u, t) => $"is not on or after {Formatter.Format(u)}{t}",
 					(a, e, t) => a?.Add(t.Negate()) < e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

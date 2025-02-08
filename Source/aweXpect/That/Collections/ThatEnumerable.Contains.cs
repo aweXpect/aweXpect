@@ -28,7 +28,7 @@ public static partial class ThatEnumerable
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contain {Formatter.Format(expected)} {q}",
+					q => $"contains {Formatter.Format(expected)} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -49,7 +49,7 @@ public static partial class ThatEnumerable
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<string?>(
 					it,
-					q => $"contain {Formatter.Format(expected)}{options} {q}",
+					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -72,7 +72,7 @@ public static partial class ThatEnumerable
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contain item matching {doNotPopulateThisValue} {q}",
+					q => $"contains item matching {doNotPopulateThisValue} {q}",
 					predicate,
 					quantifier)),
 			source,
@@ -92,7 +92,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -110,7 +110,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -128,7 +128,7 @@ public static partial class ThatEnumerable
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotContainConstraint<TItem>(it,
-					() => $"not contain {Formatter.Format(unexpected)}",
+					() => $"does not contain {Formatter.Format(unexpected)}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -146,7 +146,7 @@ public static partial class ThatEnumerable
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotContainConstraint<string?>(it,
-					() => $"not contain {Formatter.Format(unexpected)}{options}",
+					() => $"does not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -164,7 +164,7 @@ public static partial class ThatEnumerable
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new NotContainConstraint<TItem>(it,
-					() => $"not contain item matching {doNotPopulateThisValue}",
+					() => $"does not contain item matching {doNotPopulateThisValue}",
 					predicate)),
 			source);
 

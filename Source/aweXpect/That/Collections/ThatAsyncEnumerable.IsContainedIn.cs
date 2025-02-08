@@ -24,7 +24,7 @@ public static partial class ThatAsyncEnumerable
 		return new
 			ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-					new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+					new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 				source,
 				options,
 				matchOptions);
@@ -45,7 +45,7 @@ public static partial class ThatAsyncEnumerable
 		return new StringCollectionBeContainedInResult<IAsyncEnumerable<string?>,
 			IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);

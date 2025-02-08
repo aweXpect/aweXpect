@@ -84,7 +84,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> "be empty";
+			=> "is empty";
 	}
 
 	private readonly struct NotIsEmptyConstraint<TItem>(string it)
@@ -114,7 +114,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> "not be empty";
+			=> "is not empty";
 	}
 }
 #endif

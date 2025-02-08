@@ -39,7 +39,7 @@ public sealed partial class ThatNullableGuid
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be null,
+					             is not null,
 					             but it was <null>
 					             """);
 			}

@@ -38,7 +38,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not be null,
+					             is not null,
 					             but it was
 					             """);
 			}

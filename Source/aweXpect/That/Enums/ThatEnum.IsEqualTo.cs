@@ -16,7 +16,7 @@ public static partial class ThatEnum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint<TEnum>(
 					it,
-					$"be {Formatter.Format(expected)}",
+					$"is {Formatter.Format(expected)}",
 					actual => actual.Equals(expected))),
 			source);
 
@@ -29,7 +29,7 @@ public static partial class ThatEnum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint<TEnum>(
 					it,
-					$"not be {Formatter.Format(unexpected)}",
+					$"is not {Formatter.Format(unexpected)}",
 					actual => !actual.Equals(unexpected))),
 			source);
 }

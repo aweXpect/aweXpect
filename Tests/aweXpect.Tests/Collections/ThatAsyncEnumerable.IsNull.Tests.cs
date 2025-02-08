@@ -36,7 +36,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be null,
+					             is null,
 					             but it was*
 					             """).AsWildcard();
 			}

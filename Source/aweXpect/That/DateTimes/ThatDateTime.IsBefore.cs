@@ -21,7 +21,7 @@ public static partial class ThatDateTime
 				new ConditionConstraint(
 					it,
 					expected,
-					$"be before {Formatter.Format(expected)}",
+					$"is before {Formatter.Format(expected)}",
 					(a, e, t) => a - t < e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -42,7 +42,7 @@ public static partial class ThatDateTime
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"not be before {Formatter.Format(unexpected)}",
+					$"is not before {Formatter.Format(unexpected)}",
 					(a, e, t) => a + t >= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

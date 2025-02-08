@@ -22,7 +22,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	}
 
 	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
-	public string GetExpectation(string expected) => $"be equivalent to {expected}";
+	public string GetExpectation(string expected) => $"is equivalent to {expected}";
 
 	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 	public string GetExtendedFailure(string it, object? actual, object? expected)

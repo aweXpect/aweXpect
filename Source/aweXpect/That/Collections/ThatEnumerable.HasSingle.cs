@@ -58,6 +58,6 @@ public static partial class ThatEnumerable
 			}
 		}
 
-		public override string ToString() => "have a single item";
+		public override string ToString() => "has a single item";
 	}
 }

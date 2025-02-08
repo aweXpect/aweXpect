@@ -26,7 +26,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>().OnlyIf(shouldThrow)
 					.WithMessage($"""
 					              Expected that action
-					              throw an exception with recursive inner exceptions which should have at least {minimum} items be of type CustomException,
+					              throws an exception with recursive inner exceptions where at least {minimum} are of type CustomException,
 					              but only 1 of 5 were
 					              """);
 			}
@@ -56,7 +56,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with recursive inner exceptions which should have all items satisfy _ => false,
+					             throws an exception with recursive inner exceptions where all satisfy _ => false,
 					             but not all did
 					             """);
 			}

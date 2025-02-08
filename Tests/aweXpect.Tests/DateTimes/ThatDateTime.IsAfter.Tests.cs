@@ -18,7 +18,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after <null>,
+					              is after <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -35,7 +35,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be after 9999-12-31T23:59:59.9999999,
+					             is after 9999-12-31T23:59:59.9999999,
 					             but it was 9999-12-31T23:59:59.9999999
 					             """);
 			}
@@ -52,7 +52,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             be after 0001-01-01T00:00:00.0000000,
+					             is after 0001-01-01T00:00:00.0000000,
 					             but it was 0001-01-01T00:00:00.0000000
 					             """);
 			}
@@ -69,7 +69,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)},
+					              is after {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -87,7 +87,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)}, because we want to test the failure,
+					              is after {Formatter.Format(expected)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -117,7 +117,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)} ± 0:03,
+					              is after {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -136,7 +136,7 @@ public sealed partial class ThatDateTime
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              be after {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
+					              is after {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

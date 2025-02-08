@@ -36,7 +36,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to 1,
+						             is equal to 1 for all items,
 						             but not all were
 						             """);
 				}
@@ -74,7 +74,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to 5,
+						             is equal to 5 for all items,
 						             but only 1 of 20 were
 						             """);
 				}
@@ -103,7 +103,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to 42,
+						             is equal to 42 for all items,
 						             but it was <null>
 						             """);
 				}
@@ -122,7 +122,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "item-1",
+						             is equal to "item-1" for all items,
 						             but not all were
 						             """);
 				}
@@ -160,7 +160,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "item-5",
+						             is equal to "item-5" for all items,
 						             but only 1 of 10 were
 						             """);
 				}
@@ -180,7 +180,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo" ignoring case, white-space and newline style,
+						             is equal to "foo" ignoring case, white-space and newline style for all items,
 						             but only 0 of 1 were
 						             """);
 				}
@@ -196,7 +196,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo" ignoring case,
+						             is equal to "foo" ignoring case for all items,
 						             but only 0 of 1 were
 						             """);
 				}
@@ -212,7 +212,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo" ignoring leading white-space,
+						             is equal to "foo" ignoring leading white-space for all items,
 						             but only 0 of 1 were
 						             """);
 				}
@@ -228,7 +228,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo" ignoring newline style,
+						             is equal to "foo" ignoring newline style for all items,
 						             but only 0 of 1 were
 						             """);
 				}
@@ -244,7 +244,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo" ignoring trailing white-space,
+						             is equal to "foo" ignoring trailing white-space for all items,
 						             but only 0 of 1 were
 						             """);
 				}
@@ -262,7 +262,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo",
+						             is equal to "foo" for all items,
 						             but only 1 of 2 were
 						             """);
 				}
@@ -281,7 +281,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreLeadingWhiteSpace)
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo",
+						             is equal to "foo" for all items,
 						             but only 1 of 3 were
 						             """);
 				}
@@ -300,7 +300,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreNewlineStyle)
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo\nbar",
+						             is equal to "foo\nbar" for all items,
 						             but only 1 of 3 were
 						             """);
 				}
@@ -319,7 +319,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreTrailingWhiteSpace)
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo",
+						             is equal to "foo" for all items,
 						             but only 1 of 3 were
 						             """);
 				}
@@ -348,7 +348,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             have all items equal to "foo",
+						             is equal to "foo" for all items,
 						             but it was <null>
 						             """);
 				}

@@ -14,7 +14,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsNullOrWhiteSpace(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeNullOrWhiteSpaceConstraint(it)),
+				new IsNullOrWhiteSpaceConstraint(it)),
 			source);
 
 	/// <summary>
@@ -24,10 +24,10 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotNullOrWhiteSpace(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeNullOrWhiteSpaceConstraint(it)),
+				new IsNotNullOrWhiteSpaceConstraint(it)),
 			source);
 
-	private readonly struct BeNullOrWhiteSpaceConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNullOrWhiteSpaceConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -41,10 +41,10 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be null or white-space";
+			=> "is null or white-space";
 	}
 
-	private readonly struct NotBeNullOrWhiteSpaceConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNotNullOrWhiteSpaceConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -58,6 +58,6 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "not be null or white-space";
+			=> "is not null or white-space";
 	}
 }

@@ -29,7 +29,7 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             have recorded the callback at least 2 times with p => p > 1 and with p => p < 3,
+					             has recorded the callback at least 2 times with p => p > 1 and with p => p < 3,
 					             but it was only recorded once in [
 					               1,
 					               2,
@@ -57,7 +57,7 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             have recorded the callback at least 2 times with p => p > 1,
+					             has recorded the callback at least 2 times with p => p > 1,
 					             but it was only recorded once in [
 					               1,
 					               2

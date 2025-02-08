@@ -51,7 +51,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that Delegate
-					             throw an exception with Message equal to "foo",
+					             throws an exception with Message equal to "foo",
 					             but it was "FOO" which differs at index 0:
 					                ↓ (actual)
 					               "FOO"
@@ -74,7 +74,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that Delegate
-					             throw a CustomException with Message equal to "foo",
+					             throws a CustomException with Message equal to "foo",
 					             but it was "FOO" which differs at index 0:
 					                ↓ (actual)
 					               "FOO"
@@ -110,7 +110,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throw an exception with Message equal to "expected other text",
+					             throws an exception with Message equal to "expected other text",
 					             but it was "actual text" which differs at index 0:
 					                ↓ (actual)
 					               "actual text"

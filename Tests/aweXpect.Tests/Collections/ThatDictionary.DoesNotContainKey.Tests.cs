@@ -19,7 +19,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not have key 2,
+					             has not key 2,
 					             but it did
 					             """);
 			}
@@ -46,7 +46,7 @@ public sealed partial class ThatDictionary
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             not have key "foo",
+					             has not key "foo",
 					             but it was <null>
 					             """);
 			}
