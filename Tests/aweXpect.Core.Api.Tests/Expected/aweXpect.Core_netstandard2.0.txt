@@ -657,6 +657,21 @@ namespace aweXpect.Results
             public aweXpect.Results.AndOrWhichResult<TType, TThat, TSelf>.AdditionalAndOrWhichResult AndWhich<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
         }
     }
+    public class AndOrWhoseResult<TType, TThat> : aweXpect.Results.AndOrWhoseResult<TType, TThat, aweXpect.Results.AndOrWhoseResult<TType, TThat>>
+    {
+        public AndOrWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+    }
+    public class AndOrWhoseResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+        where TSelf : aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>
+    {
+        public AndOrWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+        public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult Whose<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public class AdditionalAndOrWhoseResult : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
+        {
+            public AdditionalAndOrWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+            public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult AndWhose<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        }
+    }
     public class BetweenResult<TTarget>
     {
         public BetweenResult(System.Func<int, TTarget> callback) { }
