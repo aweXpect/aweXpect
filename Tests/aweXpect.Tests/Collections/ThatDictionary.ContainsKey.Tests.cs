@@ -81,7 +81,7 @@ public sealed partial class ThatDictionary
 					.WithMessage("""
 					             Expected subject to
 					             have key 2 whose value should be equal to "foo",
-					             but the value was "bar" which differs at index 0:
+					             but value [2] was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
 					               "foo"
