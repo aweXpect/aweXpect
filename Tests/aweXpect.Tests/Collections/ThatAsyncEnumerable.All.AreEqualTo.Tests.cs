@@ -9,7 +9,7 @@ public sealed partial class ThatAsyncEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class Are
+		public sealed class AreEqualTo
 		{
 			public sealed class ItemTests
 			{
