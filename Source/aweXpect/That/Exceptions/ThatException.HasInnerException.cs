@@ -29,6 +29,6 @@ public partial class ThatException
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<Exception>(it))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationForm.Inner),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammar.Nested),
 			source);
 }

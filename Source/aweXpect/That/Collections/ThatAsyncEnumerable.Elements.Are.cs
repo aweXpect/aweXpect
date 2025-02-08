@@ -24,7 +24,7 @@ public static partial class ThatAsyncEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form == ExpectationForm.Default
+						() => form == ExpectationGrammar.Default
 							? $"is of type {Formatter.Format(typeof(TType))}"
 							: $"are of type {Formatter.Format(typeof(TType))}",
 						a => typeof(TType).IsAssignableFrom(a?.GetType()),
@@ -45,7 +45,7 @@ public static partial class ThatAsyncEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form == ExpectationForm.Default
+						() => form == ExpectationGrammar.Default
 							? $"is of type {Formatter.Format(type)}"
 							: $"are of type {Formatter.Format(type)}",
 						a => type.IsAssignableFrom(a?.GetType()),

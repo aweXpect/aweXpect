@@ -9,9 +9,9 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches none items.
 	/// </summary>
-	public static EnumerableQuantifier None(ExpectationForm expectationForm = ExpectationForm.Default) => new NoneQuantifier(expectationForm);
+	public static EnumerableQuantifier None(ExpectationGrammar expectationGrammar = ExpectationGrammar.Default) => new NoneQuantifier(expectationGrammar);
 
-	private sealed class NoneQuantifier(ExpectationForm expectationForm) : EnumerableQuantifier
+	private sealed class NoneQuantifier(ExpectationGrammar expectationGrammar) : EnumerableQuantifier
 	{
 		public override string ToString() => "none";
 
@@ -36,7 +36,7 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount > 0)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 					totalCount.HasValue
 						? $"{matchingCount} of {totalCount} {verb}"
 						: $"at least one {(verb == "were" ? "was" : verb)}");
@@ -45,11 +45,11 @@ public abstract partial class EnumerableQuantifier
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

@@ -26,6 +26,6 @@ public static partial class ThatException
 					(property, expectation) => $"has {property}which {expectation}",
 					false)
 				.AddExpectations(e => expectations(
-					new ThatSubject<IEnumerable<Exception>>(e)), ExpectationForm.Inner),
+					new ThatSubject<IEnumerable<Exception>>(e)), ExpectationGrammar.Nested),
 			source);
 }

@@ -9,10 +9,10 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches between <paramref name="minimum" /> and <paramref name="maximum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier Between(int minimum, int maximum, ExpectationForm expectationForm = ExpectationForm.Default)
-		=> new BetweenQuantifier(minimum, maximum, expectationForm);
+	public static EnumerableQuantifier Between(int minimum, int maximum, ExpectationGrammar expectationGrammar = ExpectationGrammar.Default)
+		=> new BetweenQuantifier(minimum, maximum, expectationGrammar);
 
-	private sealed class BetweenQuantifier(int minimum, int maximum, ExpectationForm expectationForm) : EnumerableQuantifier
+	private sealed class BetweenQuantifier(int minimum, int maximum, ExpectationGrammar expectationGrammar) : EnumerableQuantifier
 	{
 		public override string ToString() => $"between {minimum} and {maximum}";
 
@@ -37,7 +37,7 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount > maximum)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 					(totalCount.HasValue, expectationExpression is null) switch
 					{
 						(true, true) => $"found {matchingCount}",
@@ -50,13 +50,13 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount >= minimum)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar));
 			}
 
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 					expectationExpression is null
 						? $"found only {matchingCount}"
 						: $"only {matchingCount} of {totalCount} {verb}"
@@ -64,7 +64,7 @@ public abstract partial class EnumerableQuantifier
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

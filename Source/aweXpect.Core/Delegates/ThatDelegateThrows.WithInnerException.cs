@@ -16,7 +16,7 @@ public partial class ThatDelegateThrows<TException>
 				.ForMember<Exception, Exception?>(e => e.InnerException,
 					"with an inner exception whose",
 					false)
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationForm.Inner),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammar.Nested),
 			this);
 
 	/// <summary>

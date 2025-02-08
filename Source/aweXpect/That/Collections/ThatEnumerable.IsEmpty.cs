@@ -29,7 +29,7 @@ public static partial class ThatEnumerable
 				.AddConstraint((it, form) => new IsNotEmptyConstraint<TItem>(it, form)),
 			source);
 
-	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationForm form)
+	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammar grammar)
 		: IValueConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
@@ -61,14 +61,14 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> form switch
+			=> grammar switch
 			{
-				ExpectationForm.Inner => "are empty",
+				ExpectationGrammar.Nested => "are empty",
 				_ => "is empty"
 			};
 	}
 
-	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationForm form)
+	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationGrammar grammar)
 		: IContextConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
@@ -101,9 +101,9 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> form switch
+			=> grammar switch
 			{
-				ExpectationForm.Inner => "are not empty",
+				ExpectationGrammar.Nested => "are not empty",
 				_ => "is not empty"
 			};
 	}
