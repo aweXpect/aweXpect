@@ -12,12 +12,11 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains all <paramref name="expected" /> keys.
 	/// </summary>
-	public static ContainsValuesResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue?> ContainsKeys<TKey,
-		TValue>(
-		this IThat<IDictionary<TKey, TValue>?> source,
-		params TKey[] expected)
-		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+	public static ContainsValuesResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue?>
+		ContainsKeys<TKey, TValue>(
+			this IThat<IDictionary<TKey, TValue>?> source,
+			params TKey[] expected)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainKeysConstraint<TKey, TValue>(it, expected)),
 			source,
 			f => expected.Select(e => f.TryGetValue(e, out TValue? value) ? value : default)

@@ -15,8 +15,7 @@ public static partial class ThatDictionary
 		ContainsKey<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TKey expected)
-		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainKeyConstraint<TKey, TValue>(it, expected)),
 			source,
 			f => f.TryGetValue(expected, out TValue? value) ? value : default
