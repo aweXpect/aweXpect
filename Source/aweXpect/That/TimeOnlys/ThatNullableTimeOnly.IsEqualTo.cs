@@ -17,11 +17,11 @@ public static partial class ThatNullableTimeOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					expected,
-					(e, t) => $"be {Formatter.Format(e)}{t}",
+					(e, t) => $"is {Formatter.Format(e)}{t}",
 					(a, e, t) => (a == null && e == null) ||
 					             (a != null && e != null &&
 					              Math.Abs(a.Value.Ticks - e.Value.Ticks) <= t.Ticks),
@@ -40,11 +40,11 @@ public static partial class ThatNullableTimeOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					unexpected,
-					(e, t) => $"not be {Formatter.Format(e)}{t}",
+					(e, t) => $"is not {Formatter.Format(e)}{t}",
 					(a, u, t) => a == null != (u == null) ||
 					             (a != null && u != null &&
 					              Math.Abs(a.Value.Ticks - u.Value.Ticks) > t.Ticks),

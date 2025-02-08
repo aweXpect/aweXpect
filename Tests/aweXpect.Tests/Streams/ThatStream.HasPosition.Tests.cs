@@ -34,8 +34,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position equal to {position},
+					              Expected that subject
+					              has position equal to {position},
 					              but it had position {actualPosition}
 					              """);
 			}
@@ -62,8 +62,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have position equal to 0,
+					             Expected that subject
+					             has position equal to 0,
 					             but it was <null>
 					             """);
 			}
@@ -82,8 +82,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have position greater than or equal to <null>,
+					             Expected that subject
+					             has position greater than or equal to <null>,
 					             but it had position 2010
 					             """);
 			}
@@ -125,8 +125,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position greater than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has position greater than or equal to {Formatter.Format(expected)},
 					              but it had position 2010
 					              """);
 			}
@@ -157,8 +157,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have position greater than <null>,
+					             Expected that subject
+					             has position greater than <null>,
 					             but it had position 2010
 					             """);
 			}
@@ -200,8 +200,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has position greater than {Formatter.Format(expected)},
 					              but it had position 2010
 					              """);
 			}
@@ -217,8 +217,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has position greater than {Formatter.Format(expected)},
 					              but it had position 2010
 					              """);
 			}
@@ -237,8 +237,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have position less than or equal to <null>,
+					             Expected that subject
+					             has position less than or equal to <null>,
 					             but it had position 2010
 					             """);
 			}
@@ -268,8 +268,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position less than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has position less than or equal to {Formatter.Format(expected)},
 					              but it had position 2010
 					              """);
 			}
@@ -312,8 +312,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have position less than <null>,
+					             Expected that subject
+					             has position less than <null>,
 					             but it had position 2010
 					             """);
 			}
@@ -343,8 +343,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has position less than {Formatter.Format(expected)},
 					              but it had position 2010
 					              """);
 			}
@@ -372,8 +372,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has position less than {Formatter.Format(expected)},
 					              but it had position 2010
 					              """);
 			}
@@ -419,8 +419,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have position not equal to {position},
+					              Expected that subject
+					              has position not equal to {position},
 					              but it had position {position}
 					              """);
 			}

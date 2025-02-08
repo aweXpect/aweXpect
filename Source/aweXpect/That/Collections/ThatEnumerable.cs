@@ -18,7 +18,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatEnumerable
 {
-	private readonly struct BeConstraint<TItem, TMatch>(
+	private readonly struct IsConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
 		IEnumerable<TItem>? expected,
@@ -96,7 +96,7 @@ public static partial class ThatEnumerable
 			{
 				return new ConstraintResult.Failure<IEnumerable<TItem>?>(
 					actual,
-					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
+					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 					$"{_it} was <null>");
 			}
 
@@ -128,7 +128,8 @@ public static partial class ThatEnumerable
 				if (cancellationToken.IsCancellationRequested)
 				{
 					return new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
+						actual,
+						$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 						"could not verify, because it was cancelled early");
 				}
 			}
@@ -169,7 +170,7 @@ public static partial class ThatEnumerable
 			{
 				return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>?>(
 					actual,
-					_quantifier.GetExpectation(_it, _expectationText()),
+					$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 					$"{_it} was <null>"));
 			}
 
@@ -205,7 +206,8 @@ public static partial class ThatEnumerable
 				if (cancellationToken.IsCancellationRequested)
 				{
 					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, _quantifier.GetExpectation(_it, _expectationText()),
+						actual,
+						$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 						"could not verify, because it was cancelled early"));
 				}
 			}
@@ -238,12 +240,13 @@ public static partial class ThatEnumerable
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			string expectationText = ToString();
 			if (actual is null)
 			{
 				return Task.FromResult<ConstraintResult>(
 					new ConstraintResult.Failure<IEnumerable<TItem>?>(
 						actual,
-						_quantifier.GetExpectation(_it, null),
+						expectationText,
 						$"{_it} was <null>"));
 			}
 
@@ -256,7 +259,7 @@ public static partial class ThatEnumerable
 				matchingCount = collectionOfT.Count;
 				totalCount = matchingCount;
 				return Task.FromResult(_quantifier.GetResult(
-					actual, _it, null, matchingCount, notMatchingCount, totalCount, null));
+					actual, _it, null, matchingCount, notMatchingCount, totalCount, null, (_, _) => expectationText));
 			}
 
 			IEnumerable<TItem> materialized =
@@ -269,24 +272,27 @@ public static partial class ThatEnumerable
 				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-						totalCount, null));
+						totalCount, null, (_, _) => expectationText));
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
 					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, _quantifier.GetExpectation(_it, null),
+						actual, expectationText,
 						"could not verify, because it was cancelled early"));
 				}
 			}
 
 			totalCount = matchingCount + notMatchingCount;
 			return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-				totalCount, null));
+				totalCount, null, (_, _) => expectationText));
 		}
+
+		public override string ToString()
+			=> $"has {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}";
 	}
 
-	private readonly struct BeInOrderConstraint<TItem, TMember>(
+	private readonly struct IsInOrderConstraint<TItem, TMember>(
 		string it,
 		Func<TItem, TMember> memberAccessor,
 		SortOrder sortOrder,
@@ -332,6 +338,6 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"be in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
+			=> $"is in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
 	}
 }

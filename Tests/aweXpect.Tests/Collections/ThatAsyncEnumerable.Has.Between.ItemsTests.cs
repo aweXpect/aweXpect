@@ -28,8 +28,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have between 3 and 6 items,
+						             Expected that subject
+						             has between 3 and 6 items,
 						             but could not verify, because it was cancelled early
 						             """);
 				}
@@ -55,8 +55,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have between 3 and 6 items,
+						             Expected that subject
+						             has between 3 and 6 items,
 						             but found only 2
 						             """);
 				}
@@ -71,8 +71,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have between 3 and 6 items,
+						             Expected that subject
+						             has between 3 and 6 items,
 						             but found at least 7
 						             """);
 				}

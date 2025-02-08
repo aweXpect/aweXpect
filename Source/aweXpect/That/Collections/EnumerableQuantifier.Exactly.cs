@@ -1,4 +1,6 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -7,25 +9,24 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches exactly <paramref name="expected" /> items.
 	/// </summary>
-	public static EnumerableQuantifier Exactly(int expected) => new ExactlyQuantifier(expected);
+	public static EnumerableQuantifier Exactly(int expected, ExpectationGrammar expectationGrammar = ExpectationGrammar.Default)
+		=> new ExactlyQuantifier(expected, expectationGrammar);
 
-	private sealed class ExactlyQuantifier(int expected) : EnumerableQuantifier
+	private sealed class ExactlyQuantifier(int expected, ExpectationGrammar expectationGrammar) : EnumerableQuantifier
 	{
-		public override string ToString() => $"exactly {expected}";
+		public override string ToString() 
+			=> expected switch
+			{
+				1 => "exactly one",
+				_ => $"exactly {expected}",
+			};
 
 		/// <inheritdoc />
 		public override bool IsDeterminable(int matchingCount, int notMatchingCount)
 			=> matchingCount > expected;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, string? expectationExpression)
-			=> (expected, expectationExpression is null) switch
-			{
-				(1, true) => "have exactly one item",
-				(1, false) => $"have exactly one item {expectationExpression}",
-				(_, true) => $"have exactly {expected} items",
-				(_, false) => $"have exactly {expected} items {expectationExpression}"
-			};
+		public override bool IsSingle() => expected == 1;
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
@@ -34,13 +35,14 @@ public abstract partial class EnumerableQuantifier
 			int matchingCount,
 			int notMatchingCount,
 			int? totalCount,
-			string? verb)
+			string? verb,
+			Func<string, string?, string>? expectationGenerator = null)
 		{
 			verb ??= "were";
 			if (matchingCount > expected)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationExpression),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 					(totalCount.HasValue, expectationExpression is null) switch
 					{
 						(true, true) => $"found {matchingCount}",
@@ -55,18 +57,18 @@ public abstract partial class EnumerableQuantifier
 				if (matchingCount == expected)
 				{
 					return new ConstraintResult.Success<TEnumerable>(actual,
-						GetExpectation(it, expectationExpression));
+						GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar));
 				}
 
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationExpression),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 					expectationExpression is null
 						? $"found only {matchingCount}"
 						: $"only {matchingCount} of {totalCount} {verb}");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GetExpectation(it, expectationExpression),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

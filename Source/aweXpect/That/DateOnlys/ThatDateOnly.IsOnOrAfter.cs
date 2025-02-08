@@ -18,11 +18,11 @@ public static partial class ThatDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					expected,
-					(e, t) => $"be on or after {Formatter.Format(e)}{t.ToDayString()}",
+					(e, t) => $"is on or after {Formatter.Format(e)}{t.ToDayString()}",
 					(a, e, t) => a.AddDays((int)t.TotalDays) >= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -39,11 +39,11 @@ public static partial class ThatDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					unexpected,
-					(u, t) => $"not be on or after {Formatter.Format(u)}{t.ToDayString()}",
+					(u, t) => $"is not on or after {Formatter.Format(u)}{t.ToDayString()}",
 					(a, e, t) => a.AddDays(-1 * (int)t.TotalDays) < e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

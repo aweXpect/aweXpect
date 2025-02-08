@@ -35,8 +35,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to 1,
+						             Expected that subject
+						             is equal to 1 for all items,
 						             but not all were
 						             """);
 				}
@@ -73,8 +73,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to 5,
+						             Expected that subject
+						             is equal to 5 for all items,
 						             but not all were
 						             """);
 				}
@@ -102,8 +102,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to 42,
+						             Expected that subject
+						             is equal to 42 for all items,
 						             but it was <null>
 						             """);
 				}
@@ -121,8 +121,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "item-1",
+						             Expected that subject
+						             is equal to "item-1" for all items,
 						             but not all were
 						             """);
 				}
@@ -159,8 +159,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "item-5",
+						             Expected that subject
+						             is equal to "item-5" for all items,
 						             but not all were
 						             """);
 				}
@@ -177,8 +177,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo",
+						             Expected that subject
+						             is equal to "foo" for all items,
 						             but not all were
 						             """);
 				}
@@ -206,8 +206,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items equal to "foo",
+						             Expected that subject
+						             is equal to "foo" for all items,
 						             but it was <null>
 						             """);
 				}

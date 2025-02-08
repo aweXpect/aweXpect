@@ -20,11 +20,11 @@ public static partial class ThatAsyncEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue}",
 						predicate,
 						"did")),
 				_subject);
@@ -40,11 +40,11 @@ public static partial class ThatAsyncEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue}",
 						predicate,
 						"did")),
 				_subject);

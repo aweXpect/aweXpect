@@ -37,8 +37,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size equal to {bufferSize},
+					              Expected that subject
+					              has buffer size equal to {bufferSize},
 					              but it had buffer size {actualBufferSize}
 					              """);
 			}
@@ -65,8 +65,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have buffer size equal to 0,
+					             Expected that subject
+					             has buffer size equal to 0,
 					             but it was <null>
 					             """);
 			}
@@ -97,8 +97,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size greater than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has buffer size greater than or equal to {Formatter.Format(expected)},
 					              but it had buffer size 2010
 					              """);
 			}
@@ -140,8 +140,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have buffer size greater than or equal to <null>,
+					             Expected that subject
+					             has buffer size greater than or equal to <null>,
 					             but it had buffer size 2010
 					             """);
 			}
@@ -172,8 +172,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has buffer size greater than {Formatter.Format(expected)},
 					              but it had buffer size 2010
 					              """);
 			}
@@ -189,8 +189,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has buffer size greater than {Formatter.Format(expected)},
 					              but it had buffer size 2010
 					              """);
 			}
@@ -220,8 +220,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have buffer size greater than <null>,
+					             Expected that subject
+					             has buffer size greater than <null>,
 					             but it had buffer size 2010
 					             """);
 			}
@@ -240,8 +240,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size less than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has buffer size less than or equal to {Formatter.Format(expected)},
 					              but it had buffer size 2010
 					              """);
 			}
@@ -295,8 +295,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have buffer size less than or equal to <null>,
+					             Expected that subject
+					             has buffer size less than or equal to <null>,
 					             but it had buffer size 2010
 					             """);
 			}
@@ -315,8 +315,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has buffer size less than {Formatter.Format(expected)},
 					              but it had buffer size 2010
 					              """);
 			}
@@ -344,8 +344,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has buffer size less than {Formatter.Format(expected)},
 					              but it had buffer size 2010
 					              """);
 			}
@@ -375,8 +375,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have buffer size less than <null>,
+					             Expected that subject
+					             has buffer size less than <null>,
 					             but it had buffer size 2010
 					             """);
 			}
@@ -422,8 +422,8 @@ public sealed partial class ThatBufferedStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have buffer size not equal to {bufferSize},
+					              Expected that subject
+					              has buffer size not equal to {bufferSize},
 					              but it had buffer size {bufferSize}
 					              """);
 			}

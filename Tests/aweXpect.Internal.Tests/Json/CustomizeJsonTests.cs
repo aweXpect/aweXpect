@@ -24,8 +24,8 @@ public sealed class CustomizeJsonTests
 		{
 			await That(Act).ThrowsException()
 				.WithMessage("""
-				             Expected jsonWithTrailingCommas to
-				             be JSON equivalent to [1, 2],
+				             Expected that jsonWithTrailingCommas
+				             is JSON equivalent to [1, 2],
 				             but could not parse subject: The JSON array contains a trailing comma at the end which is not supported in this mode. Change the reader options. LineNumber: 0 | BytePositionInLine: 6.
 				             """);
 		}

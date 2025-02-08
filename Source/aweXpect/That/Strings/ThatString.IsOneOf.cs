@@ -18,8 +18,8 @@ public static partial class ThatString
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeOneOfConstraint(it, expected, options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new IsOneOfConstraint(it, expected, options)),
 			source,
 			options);
 	}
@@ -33,13 +33,13 @@ public static partial class ThatString
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotBeOneOfConstraint(it, unexpected, options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new IsNotOneOfConstraint(it, unexpected, options)),
 			source,
 			options);
 	}
 
-	private readonly struct BeOneOfConstraint(
+	private readonly struct IsOneOfConstraint(
 		string it,
 		string?[] expectedValues,
 		StringEqualityOptions options)
@@ -66,10 +66,10 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> $"be one of {Formatter.Format(expectedValues)}{options}";
+			=> $"is one of {Formatter.Format(expectedValues)}{options}";
 	}
 
-	private readonly struct NotBeOneOfConstraint(
+	private readonly struct IsNotOneOfConstraint(
 		string it,
 		string?[] unexpectedValues,
 		StringEqualityOptions options)
@@ -97,6 +97,6 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> $"not be one of {Formatter.Format(unexpectedValues)}{options}";
+			=> $"is not one of {Formatter.Format(unexpectedValues)}{options}";
 	}
 }

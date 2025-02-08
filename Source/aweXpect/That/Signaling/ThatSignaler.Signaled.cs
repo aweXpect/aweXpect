@@ -21,7 +21,7 @@ public static partial class ThatSignaler
 		this IThat<Signaler> source)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new TriggerConstraint(it, 1, options)),
 			source,
 			options);
@@ -34,7 +34,7 @@ public static partial class ThatSignaler
 		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new TriggerConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
@@ -49,7 +49,7 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new TriggerConstraint(it, times.Value, options)),
 			source,
 			options);
@@ -64,7 +64,7 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new TriggerConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
@@ -77,7 +77,7 @@ public static partial class ThatSignaler
 		this IThat<Signaler> source)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new NotSignaledConstraint(it, 1, options)),
 			source,
 			options);
@@ -90,7 +90,7 @@ public static partial class ThatSignaler
 		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new NotSignaledConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
@@ -105,7 +105,7 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions options = new();
-		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new NotSignaledConstraint(it, times.Value, options)),
 			source,
 			options);
@@ -120,7 +120,7 @@ public static partial class ThatSignaler
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new NotSignaledConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
@@ -133,8 +133,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"have recorded the callback at least once{options}",
-				_ => $"have recorded the callback at least {count} times{options}"
+				1 => $"has recorded the callback at least once{options}",
+				_ => $"has recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -192,8 +192,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"have recorded the callback at least once{options}",
-				_ => $"have recorded the callback at least {count} times{options}"
+				1 => $"has recorded the callback at least once{options}",
+				_ => $"has recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -258,8 +258,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"not have recorded the callback{options}",
-				_ => $"not have recorded the callback at least {count} times{options}"
+				1 => $"does not have recorded the callback{options}",
+				_ => $"does not have recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -316,8 +316,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"not have recorded the callback{options}",
-				_ => $"not have recorded the callback at least {count} times{options}"
+				1 => $"does not have recorded the callback{options}",
+				_ => $"does not have recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract

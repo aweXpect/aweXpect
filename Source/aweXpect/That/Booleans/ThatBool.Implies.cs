@@ -12,11 +12,11 @@ public static partial class ThatBool
 	/// </summary>
 	public static AndOrResult<bool, IThat<bool>> Implies(this IThat<bool> source,
 		bool consequent)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new ImplyConstraint(it, consequent)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new ImpliesConstraint(it, consequent)),
 			source);
 
-	private readonly struct ImplyConstraint(string it, bool consequent) : IValueConstraint<bool>
+	private readonly struct ImpliesConstraint(string it, bool consequent) : IValueConstraint<bool>
 	{
 		public ConstraintResult IsMetBy(bool actual)
 		{
@@ -29,6 +29,6 @@ public static partial class ThatBool
 		}
 
 		public override string ToString()
-			=> $"imply {Formatter.Format(consequent)}";
+			=> $"implies {Formatter.Format(consequent)}";
 	}
 }

@@ -32,8 +32,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be read-only,
+					             Expected that subject
+					             is not read-only,
 					             but it was <null>
 					             """);
 			}
@@ -48,8 +48,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be read-only,
+					             Expected that subject
+					             is not read-only,
 					             but it was
 					             """);
 			}

@@ -49,8 +49,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain 1 at least {minimum} times,
+					              Expected that subject
+					              contains 1 at least {minimum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -80,8 +80,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
-					             Expected subject to
-					             contain 1 at most once,
+					             Expected that subject
+					             contains 1 at most once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -111,8 +111,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain 1 between {minimum} and {maximum} times,
+					              Expected that subject
+					              contains 1 between {minimum} and {maximum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -160,8 +160,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              Expected that subject
+					              contains 1 exactly {(times == 1 ? "once" : $"{times} times")},
 					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
 					                1,
 					                1,
@@ -206,8 +206,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              contain {Formatter.Format(expected)} at least once,
+					              Expected that subject
+					              contains {Formatter.Format(expected)} at least once,
 					              but it contained it 0 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 					              """);
 			}
@@ -223,8 +223,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             contain 42 at least once,
+					             Expected that subject
+					             contains 42 at least once,
 					             but it was <null>
 					             """);
 			}
@@ -244,8 +244,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain "{regex}" as regex at least once,
+					              Expected that subject
+					              contains "{regex}" as regex at least once,
 					              but it contained it 0 times in [
 					                "foo",
 					                "bar",
@@ -266,8 +266,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain "{wildcard}" as wildcard at least once,
+					              Expected that subject
+					              contains "{wildcard}" as wildcard at least once,
 					              but it contained it 0 times in [
 					                "foo",
 					                "bar",
@@ -293,8 +293,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain "{match}" at least once,
+					              Expected that subject
+					              contains "{match}" at least once,
 					              but it contained it 0 times in [
 					                "foo",
 					                "bar",
@@ -313,8 +313,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "GREEN" at least once,
+					             Expected that sut
+					             contains "GREEN" at least once,
 					             but it contained it 0 times in [
 					               "green",
 					               "blue",
@@ -333,8 +333,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "red" at least once,
+					             Expected that sut
+					             contains "red" at least once,
 					             but it contained it 0 times in [
 					               "green",
 					               "blue",
@@ -366,8 +366,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain {Formatter.Format(match)} ignoring case at least once,
+					              Expected that subject
+					              contains {Formatter.Format(match)} ignoring case at least once,
 					              but it contained it 0 times in [
 					                "foo",
 					                "bar",
@@ -389,8 +389,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain {Formatter.Format(match)} ignoring newline style at least once,
+					              Expected that subject
+					              contains {Formatter.Format(match)} ignoring newline style at least once,
 					              but it contained it 0 times in [
 					                "fo
 					                o",
@@ -413,8 +413,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             contain "foo" at least once,
+					             Expected that subject
+					             contains "foo" at least once,
 					             but it was <null>
 					             """);
 			}
@@ -429,8 +429,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "green" at least 3 times,
+					             Expected that sut
+					             contains "green" at least 3 times,
 					             but it contained it 2 times in [
 					               "green",
 					               "green",
@@ -450,8 +450,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "green" at most 2 times,
+					             Expected that sut
+					             contains "green" at most 2 times,
 					             but it contained it at least 3 times in [
 					               "green",
 					               "green",
@@ -502,8 +502,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == 1 at least {minimum} times,
+					              Expected that subject
+					              contains item matching x => x == 1 at least {minimum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -533,8 +533,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
-					             Expected subject to
-					             contain item matching x => x == 1 at most once,
+					             Expected that subject
+					             contains item matching x => x == 1 at most once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -564,8 +564,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == 1 between {minimum} and {maximum} times,
+					              Expected that subject
+					              contains item matching x => x == 1 between {minimum} and {maximum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -595,8 +595,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              Expected that subject
+					              contains item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
 					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
 					                1,
 					                1,
@@ -641,8 +641,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == expected at least once,
+					              Expected that subject
+					              contains item matching x => x == expected at least once,
 					              but it contained it 0 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 					              """);
 			}
@@ -657,8 +657,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             contain item matching _ => true at least once,
+					             Expected that subject
+					             contains item matching _ => true at least once,
 					             but it was <null>
 					             """);
 			}

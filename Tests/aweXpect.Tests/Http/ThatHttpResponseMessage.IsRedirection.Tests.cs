@@ -36,7 +36,7 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).IsRedirection();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*be redirection (status code 3xx)*")
+					.WithMessage("*is redirection (status code 3xx)*")
 					.AsWildcard();
 			}
 
@@ -50,8 +50,8 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be redirection (status code 3xx),
+					             Expected that subject
+					             is redirection (status code 3xx),
 					             but it was <null>
 					             """);
 			}

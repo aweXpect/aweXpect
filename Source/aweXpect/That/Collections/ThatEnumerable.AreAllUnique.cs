@@ -22,8 +22,8 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueConstraint<TItem, TItem>(it, options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new OnlyHasUniqueItemsConstraint<TItem, TItem>(it, options)),
 			source, options
 		);
 	}
@@ -36,8 +36,8 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueConstraint<string, string>(it, options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new OnlyHasUniqueItemsConstraint<string, string>(it, options)),
 			source, options
 		);
 	}
@@ -55,8 +55,8 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new OnlyHasUniqueItemsWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
 			source, options
@@ -75,15 +75,15 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new AllBeUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new OnlyHasUniqueItemsWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct AllBeUniqueConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
+	private readonly struct OnlyHasUniqueItemsConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
 		: IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
@@ -122,10 +122,10 @@ public static partial class ThatEnumerable
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique items{options}";
+		public override string ToString() => $"only has unique items{options}";
 	}
 
-	private readonly struct AllBeUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
+	private readonly struct OnlyHasUniqueItemsWithPredicateConstraint<TItem, TMember, TMatch>(
 		string it,
 		Func<TItem, TMember> memberAccessor,
 		string memberAccessorExpression,
@@ -169,6 +169,6 @@ public static partial class ThatEnumerable
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique items for {memberAccessorExpression}{options}";
+		public override string ToString() => $"only has unique items for {memberAccessorExpression}{options}";
 	}
 }

@@ -17,8 +17,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have minute equal to <null>,
+					             Expected that subject
+					             has minute equal to <null>,
 					             but it had minute 14
 					             """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute equal to {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -66,8 +66,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have minute greater than or equal to <null>,
+					             Expected that subject
+					             has minute greater than or equal to <null>,
 					             but it had minute 14
 					             """);
 			}
@@ -95,8 +95,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute greater than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute greater than or equal to {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -127,8 +127,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have minute greater than <null>,
+					             Expected that subject
+					             has minute greater than <null>,
 					             but it had minute 14
 					             """);
 			}
@@ -156,8 +156,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute greater than {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -173,8 +173,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute greater than {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -193,8 +193,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have minute less than or equal to <null>,
+					             Expected that subject
+					             has minute less than or equal to <null>,
 					             but it had minute 14
 					             """);
 			}
@@ -210,8 +210,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute less than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute less than or equal to {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -254,8 +254,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have minute less than <null>,
+					             Expected that subject
+					             has minute less than <null>,
 					             but it had minute 14
 					             """);
 			}
@@ -271,8 +271,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute less than {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -300,8 +300,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has minute less than {Formatter.Format(expected)},
 					              but it had minute 14
 					              """);
 			}
@@ -332,8 +332,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have minute not equal to {Formatter.Format(unexpected)},
+					              Expected that subject
+					              has minute not equal to {Formatter.Format(unexpected)},
 					              but it had minute 14
 					              """);
 			}

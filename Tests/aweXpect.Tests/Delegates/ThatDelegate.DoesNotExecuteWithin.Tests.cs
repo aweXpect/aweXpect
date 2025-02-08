@@ -20,8 +20,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected @delegate to
-					             not execute within 0:05,
+					             Expected that @delegate
+					             does not execute within 0:05,
 					             but it took only *
 					             """).AsWildcard();
 			}
@@ -47,8 +47,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not execute within 0:00.500,
+					             Expected that subject
+					             does not execute within 0:00.500,
 					             but it was <null>
 					             """);
 			}
@@ -66,8 +66,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected @delegate to
-					             not execute within 0:05,
+					             Expected that @delegate
+					             does not execute within 0:05,
 					             but it took only *
 					             """).AsWildcard();
 			}
@@ -93,8 +93,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not execute within 0:00.500,
+					             Expected that subject
+					             does not execute within 0:00.500,
 					             but it was <null>
 					             """);
 			}
@@ -112,8 +112,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected @delegate to
-					             not execute within 0:05,
+					             Expected that @delegate
+					             does not execute within 0:05,
 					             but it took only *
 					             """).AsWildcard();
 			}
@@ -139,8 +139,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not execute within 0:00.500,
+					             Expected that subject
+					             does not execute within 0:00.500,
 					             but it was <null>
 					             """);
 			}
@@ -159,8 +159,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
-						             not execute within 0:05,
+						             Expected that Delegate
+						             does not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
 				}
@@ -186,8 +186,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             not execute within 0:00.500,
+						             Expected that subject
+						             does not execute within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -208,8 +208,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
-						             not execute within 0:05,
+						             Expected that Delegate
+						             does not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
 				}
@@ -236,8 +236,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             not execute within 0:00.500,
+						             Expected that subject
+						             does not execute within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -259,8 +259,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
-						             not execute within 0:05,
+						             Expected that Delegate
+						             does not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
 				}
@@ -287,8 +287,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             not execute within 0:00.500,
+						             Expected that subject
+						             does not execute within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -309,8 +309,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
-						             not execute within 0:05,
+						             Expected that Delegate
+						             does not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
 				}
@@ -336,8 +336,8 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             not execute within 0:00.500,
+						             Expected that subject
+						             does not execute within 0:00.500,
 						             but it was <null>
 						             """);
 				}
@@ -356,8 +356,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected @delegate to
-					             not execute within 0:05,
+					             Expected that @delegate
+					             does not execute within 0:05,
 					             but it took only *
 					             """).AsWildcard();
 			}
@@ -383,8 +383,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not execute within 0:00.500,
+					             Expected that subject
+					             does not execute within 0:00.500,
 					             but it was <null>
 					             """);
 			}

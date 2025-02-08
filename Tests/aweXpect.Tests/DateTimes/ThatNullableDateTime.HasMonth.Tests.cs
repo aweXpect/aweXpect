@@ -17,8 +17,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month equal to <null>,
+					             Expected that subject
+					             has month equal to <null>,
 					             but it had month 11
 					             """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has month equal to {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -63,8 +63,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month equal to <null>,
+					             Expected that subject
+					             has month equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -80,8 +80,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month equal to 1,
+					             Expected that subject
+					             has month equal to 1,
 					             but it was <null>
 					             """);
 			}
@@ -100,8 +100,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month greater than or equal to <null>,
+					             Expected that subject
+					             has month greater than or equal to <null>,
 					             but it had month 11
 					             """);
 			}
@@ -129,8 +129,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month greater than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has month greater than or equal to {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -161,8 +161,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month greater than <null>,
+					             Expected that subject
+					             has month greater than <null>,
 					             but it had month 11
 					             """);
 			}
@@ -190,8 +190,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has month greater than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -207,8 +207,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has month greater than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -227,8 +227,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month less than or equal to <null>,
+					             Expected that subject
+					             has month less than or equal to <null>,
 					             but it had month 11
 					             """);
 			}
@@ -244,8 +244,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month less than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has month less than or equal to {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -288,8 +288,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have month less than <null>,
+					             Expected that subject
+					             has month less than <null>,
 					             but it had month 11
 					             """);
 			}
@@ -305,8 +305,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has month less than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -334,8 +334,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has month less than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
 			}
@@ -366,8 +366,8 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have month not equal to {Formatter.Format(unexpected)},
+					              Expected that subject
+					              has month not equal to {Formatter.Format(unexpected)},
 					              but it had month 11
 					              """);
 			}

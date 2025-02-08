@@ -36,8 +36,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items satisfy x => x <= 1,
+						             Expected that subject
+						             satisfies x => x <= 1 for all items,
 						             but not all did
 						             """);
 				}
@@ -52,8 +52,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items satisfy x => x is > 4 and < 6,
+						             Expected that subject
+						             satisfies x => x is > 4 and < 6 for all items,
 						             but not all did
 						             """);
 				}
@@ -80,8 +80,8 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have all items satisfy _ => true,
+						             Expected that subject
+						             satisfies _ => true for all items,
 						             but it was <null>
 						             """);
 				}

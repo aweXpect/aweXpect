@@ -29,10 +29,10 @@ public static partial class ThatAsyncEnumerable
 		Quantifier quantifier = new();
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contain {Formatter.Format(expected)}{options} {q}",
+					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -51,10 +51,10 @@ public static partial class ThatAsyncEnumerable
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ContainConstraint<string?>(
 					it,
-					q => $"contain {Formatter.Format(expected)}{options} {q}",
+					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -74,10 +74,10 @@ public static partial class ThatAsyncEnumerable
 	{
 		Quantifier quantifier = new();
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contain item matching {doNotPopulateThisValue} {q}",
+					q => $"contains item matching {doNotPopulateThisValue} {q}",
 					predicate,
 					quantifier)),
 			source,
@@ -96,8 +96,8 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -115,8 +115,8 @@ public static partial class ThatAsyncEnumerable
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -132,9 +132,9 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new NotContainConstraint<TItem>(it,
-					() => $"not contain {Formatter.Format(unexpected)}{options}",
+					() => $"does not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -150,9 +150,9 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new NotContainConstraint<string?>(it,
-					() => $"not contain {Formatter.Format(unexpected)}{options}",
+					() => $"does not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -168,9 +168,9 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new NotContainConstraint<TItem>(it,
-					() => $"not contain item matching {doNotPopulateThisValue}",
+					() => $"does not contain item matching {doNotPopulateThisValue}",
 					predicate)),
 			source);
 

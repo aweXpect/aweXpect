@@ -32,7 +32,7 @@ public static partial class ThatAsyncEnumerable
 			this IThatHas<IAsyncEnumerable<TItem>?> source,
 			int minimum)
 		=> new(new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ExpectationBuilder.AddConstraint((it, form)
 				=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),
 			source.ExpectSubject()));
 }

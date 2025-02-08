@@ -1,4 +1,6 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -7,9 +9,9 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches none items.
 	/// </summary>
-	public static EnumerableQuantifier None => new NoneQuantifier();
+	public static EnumerableQuantifier None(ExpectationGrammar expectationGrammar = ExpectationGrammar.Default) => new NoneQuantifier(expectationGrammar);
 
-	private sealed class NoneQuantifier : EnumerableQuantifier
+	private sealed class NoneQuantifier(ExpectationGrammar expectationGrammar) : EnumerableQuantifier
 	{
 		public override string ToString() => "none";
 
@@ -18,10 +20,7 @@ public abstract partial class EnumerableQuantifier
 			=> matchingCount > 0;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, string? expectationExpression)
-			=> expectationExpression is null
-				? "have no items"
-				: $"have no items {expectationExpression}";
+		public override bool IsSingle() => false;
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
@@ -30,13 +29,14 @@ public abstract partial class EnumerableQuantifier
 			int matchingCount,
 			int notMatchingCount,
 			int? totalCount,
-			string? verb)
+			string? verb,
+			Func<string, string?, string>? expectationGenerator = null)
 		{
 			verb ??= "were";
 			if (matchingCount > 0)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationExpression),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 					totalCount.HasValue
 						? $"{matchingCount} of {totalCount} {verb}"
 						: $"at least one {(verb == "were" ? "was" : verb)}");
@@ -45,11 +45,11 @@ public abstract partial class EnumerableQuantifier
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GetExpectation(it, expectationExpression));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GetExpectation(it, expectationExpression),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

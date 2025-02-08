@@ -13,7 +13,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrWhichResult<TType, IThat<object?>> Is<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsOfTypeConstraint<TType>(it)),
 			source);
 
@@ -24,7 +24,7 @@ public static partial class ThatObject
 		this IThat<T?> source,
 		Type type)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsOfTypeConstraint(it, type)),
 			source);
 
@@ -33,7 +33,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrWhichResult<object?, IThat<object?>> IsNot<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsNotOfTypeConstraint<TType>(it)),
 			source);
 
@@ -44,7 +44,7 @@ public static partial class ThatObject
 		this IThat<T?> source,
 		Type type)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsNotOfTypeConstraint(it, type)),
 			source);
 
@@ -62,7 +62,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be type {Formatter.Format(typeof(TType))}";
+			=> $"is type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -79,7 +79,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be type {Formatter.Format(type)}";
+			=> $"is type {Formatter.Format(type)}";
 	}
 
 	private readonly struct IsNotOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
@@ -96,7 +96,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be type {Formatter.Format(typeof(TType))}";
+			=> $"is not type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsNotOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -113,6 +113,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be type {Formatter.Format(type)}";
+			=> $"is not type {Formatter.Format(type)}";
 	}
 }

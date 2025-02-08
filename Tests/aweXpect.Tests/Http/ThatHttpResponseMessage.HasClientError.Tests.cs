@@ -36,7 +36,7 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).HasClientError();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*have client error (status code 4xx)*")
+					.WithMessage("*has client error (status code 4xx)*")
 					.AsWildcard();
 			}
 
@@ -50,8 +50,8 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have client error (status code 4xx),
+					             Expected that subject
+					             has client error (status code 4xx),
 					             but it was <null>
 					             """);
 			}

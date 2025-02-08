@@ -26,8 +26,8 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have no items equal to 8,
+						             Expected that subject
+						             is equal to 8 for none items,
 						             but could not verify, because it was cancelled early
 						             """);
 				}
@@ -54,8 +54,8 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have no items equal to 5,
+						             Expected that subject
+						             is equal to 5 for none items,
 						             but at least one was
 						             """);
 				}
@@ -70,8 +70,8 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have no items equal to 1,
+						             Expected that subject
+						             is equal to 1 for none items,
 						             but at least one was
 						             """);
 				}
@@ -108,8 +108,8 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
-						             have no items equal to 0,
+						             Expected that subject
+						             is equal to 0 for none items,
 						             but it was <null>
 						             """);
 				}

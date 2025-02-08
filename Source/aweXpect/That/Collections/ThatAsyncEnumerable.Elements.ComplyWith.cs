@@ -20,7 +20,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new AsyncCollectionConstraint<TItem>(it, _quantifier, expectations)),
 				_subject,
 				options);

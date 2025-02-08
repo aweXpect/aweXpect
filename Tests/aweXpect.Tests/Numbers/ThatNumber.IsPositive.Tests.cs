@@ -26,8 +26,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -52,8 +52,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -68,8 +68,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was NaN
 					             """);
 			}
@@ -84,8 +84,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was -∞
 					             """);
 			}
@@ -121,8 +121,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -137,8 +137,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was NaN
 					             """);
 			}
@@ -153,8 +153,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was -∞
 					             """);
 			}
@@ -190,8 +190,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -216,8 +216,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -248,8 +248,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -264,8 +264,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -292,8 +292,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -308,8 +308,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was NaN
 					             """);
 			}
@@ -324,8 +324,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was -∞
 					             """);
 			}
@@ -340,8 +340,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -378,8 +378,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -394,8 +394,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was NaN
 					             """);
 			}
@@ -410,8 +410,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was -∞
 					             """);
 			}
@@ -426,8 +426,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -463,8 +463,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -479,8 +479,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -505,8 +505,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -521,8 +521,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -548,8 +548,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -564,8 +564,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -591,8 +591,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -607,8 +607,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was <null>
 					             """);
 			}
@@ -633,8 +633,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -659,8 +659,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

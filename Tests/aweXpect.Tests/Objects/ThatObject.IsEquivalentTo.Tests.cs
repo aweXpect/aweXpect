@@ -40,8 +40,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equivalent to expected,
+					             Expected that subject
+					             is equivalent to expected,
 					             but it was not:
 					               Property Value was <null> instead of "Foo"
 					             """);
@@ -119,8 +119,8 @@ public sealed partial class ThatObject
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
-					             Expected subject to
-					             be equivalent to expected,
+					             Expected that subject
+					             is equivalent to expected,
 					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
 					             """);
@@ -201,8 +201,8 @@ public sealed partial class ThatObject
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
-					             Expected subject to
-					             be equivalent to expected,
+					             Expected that subject
+					             is equivalent to expected,
 					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
 					             and
@@ -276,8 +276,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equivalent to expected,
+					             Expected that subject
+					             is equivalent to expected,
 					             but it was not:
 					               Property Inner.Inner.Value was <null> instead of "Baz"
 					             """);

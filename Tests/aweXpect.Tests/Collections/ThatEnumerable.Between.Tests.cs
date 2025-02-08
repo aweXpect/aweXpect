@@ -24,8 +24,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have between 6 and 8 items satisfy y => y < 6,
+					             Expected that subject
+					             satisfies y => y < 6 for between 6 and 8 items,
 					             but could not verify, because it was cancelled early
 					             """);
 			}
@@ -52,8 +52,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have between 0 and 1 items equal to 1,
+					             Expected that subject
+					             is equal to 1 for between 0 and 1 items,
 					             but at least 2 were
 					             """);
 			}
@@ -79,8 +79,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have between 3 and 4 items equal to 2,
+					             Expected that subject
+					             is equal to 2 for between 3 and 4 items,
 					             but only 2 of 7 were
 					             """);
 			}
@@ -95,8 +95,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have between 1 and 3 items equal to 1,
+					             Expected that subject
+					             is equal to 1 for between 1 and 3 items,
 					             but at least 4 were
 					             """);
 			}
@@ -111,8 +111,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have between 0 and 1 items equal to 0,
+					             Expected that subject
+					             is equal to 0 for between 0 and 1 items,
 					             but it was <null>
 					             """);
 			}

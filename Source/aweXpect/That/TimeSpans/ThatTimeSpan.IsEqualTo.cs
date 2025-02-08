@@ -18,8 +18,8 @@ public static partial class ThatTimeSpan
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint(it, expected, tolerance)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsConstraint(it, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -33,13 +33,13 @@ public static partial class ThatTimeSpan
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeConstraint(it, unexpected, tolerance)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsNotConstraint(it, unexpected, tolerance)),
 			source,
 			tolerance);
 	}
 
-	private readonly struct BeConstraint(string it, TimeSpan? expected, TimeTolerance tolerance)
+	private readonly struct IsConstraint(string it, TimeSpan? expected, TimeTolerance tolerance)
 		: IValueConstraint<TimeSpan>
 	{
 		public ConstraintResult IsMetBy(TimeSpan actual)
@@ -55,10 +55,10 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> $"be {Formatter.Format(expected)}{tolerance}";
+			=> $"is {Formatter.Format(expected)}{tolerance}";
 	}
 
-	private readonly struct NotBeConstraint(
+	private readonly struct IsNotConstraint(
 		string it,
 		TimeSpan? unexpected,
 		TimeTolerance tolerance)
@@ -77,6 +77,6 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> $"not be {Formatter.Format(unexpected)}{tolerance}";
+			=> $"is not {Formatter.Format(unexpected)}{tolerance}";
 	}
 }

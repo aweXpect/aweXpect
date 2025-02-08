@@ -62,7 +62,7 @@ public class EvaluationContextTests
 		MyContextConstraint constraint = new();
 		await new AndOrResult<bool, IThatVerb<bool>>(
 			that.ExpectationBuilder
-				.AddConstraint(_ => constraint),
+				.AddConstraint((_,_) => constraint),
 			that);
 
 		return constraint.Context!;

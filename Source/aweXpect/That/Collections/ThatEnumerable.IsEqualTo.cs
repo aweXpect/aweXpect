@@ -21,8 +21,8 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -39,8 +39,8 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
 		return new StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);

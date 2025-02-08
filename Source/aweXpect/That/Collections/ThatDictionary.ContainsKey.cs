@@ -15,8 +15,8 @@ public static partial class ThatDictionary
 		ContainsKey<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TKey expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new ContainKeyConstraint<TKey, TValue>(it, expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new ContainsKeyConstraint<TKey, TValue>(it, expected)),
 			source,
 			expected,
 			f => f.TryGetValue(expected, out TValue? value) ? value : default
@@ -30,12 +30,12 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TKey unexpected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotContainKeyConstraint<TKey, TValue>(it, unexpected)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new DoesNotContainKeyConstraint<TKey, TValue>(it, unexpected)),
 			source
 		);
 
-	private readonly struct ContainKeyConstraint<TKey, TValue>(string it, TKey expected)
+	private readonly struct ContainsKeyConstraint<TKey, TValue>(string it, TKey expected)
 		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
@@ -55,10 +55,10 @@ public static partial class ThatDictionary
 				$"{it} contained only {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
 		}
 
-		public override string ToString() => $"have key {Formatter.Format(expected)}";
+		public override string ToString() => $"contains key {Formatter.Format(expected)}";
 	}
 
-	private readonly struct NotContainKeyConstraint<TKey, TValue>(string it, TKey unexpected)
+	private readonly struct DoesNotContainKeyConstraint<TKey, TValue>(string it, TKey unexpected)
 		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
@@ -78,6 +78,6 @@ public static partial class ThatDictionary
 			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 		}
 
-		public override string ToString() => $"not have key {Formatter.Format(unexpected)}";
+		public override string ToString() => $"does not contain key {Formatter.Format(unexpected)}";
 	}
 }

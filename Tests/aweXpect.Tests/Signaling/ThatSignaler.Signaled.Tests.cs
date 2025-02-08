@@ -5,7 +5,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatSignaler
 {
-	public sealed partial class BeSignaled
+	public sealed partial class Signaled
 	{
 		public sealed class Tests
 		{
@@ -22,8 +22,8 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
-					             have recorded the callback at least once,
+					             Expected that signaler
+					             has recorded the callback at least once,
 					             but it was never recorded
 					             """);
 			}
@@ -38,8 +38,8 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have recorded the callback at least once,
+					             Expected that subject
+					             has recorded the callback at least once,
 					             but it was <null>
 					             """);
 			}
@@ -73,8 +73,8 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
-					             have recorded the callback at least once,
+					             Expected that signaler
+					             has recorded the callback at least once,
 					             but it was never recorded
 					             """);
 			}
@@ -89,8 +89,8 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have recorded the callback at least once,
+					             Expected that subject
+					             has recorded the callback at least once,
 					             but it was <null>
 					             """);
 			}

@@ -21,9 +21,9 @@ public partial class ObjectEqualityOptions<TSubject>
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
 		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected) => comparer.Equals(actual, expected);
 
-		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
-		public string GetExpectation(string expected)
-			=> $"be equal to {expected}" + ToString();
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
+		public string GetExpectation(string expected, bool negate = false)
+			=> $"is {(negate ? "not " : "")}equal to {expected}" + ToString();
 
 		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 		public string GetExtendedFailure(string it, object? actual, object? expected)

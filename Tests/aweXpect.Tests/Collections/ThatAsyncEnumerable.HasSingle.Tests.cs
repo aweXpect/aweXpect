@@ -31,8 +31,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item,
+					             Expected that subject
+					             has a single item,
 					             but it contained more than one item
 					             """);
 			}
@@ -57,8 +57,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item,
+					             Expected that subject
+					             has a single item,
 					             but it was empty
 					             """);
 			}
@@ -73,8 +73,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item,
+					             Expected that subject
+					             has a single item,
 					             but it was <null>
 					             """);
 			}
@@ -103,8 +103,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item which should be greater than 4,
+					             Expected that subject
+					             has a single item which is greater than 4,
 					             but it contained more than one item
 					             """);
 			}
@@ -119,8 +119,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item which should be greater than 4,
+					             Expected that subject
+					             has a single item which is greater than 4,
 					             but it was empty
 					             """);
 			}
@@ -135,8 +135,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item which should be greater than 4,
+					             Expected that subject
+					             has a single item which is greater than 4,
 					             but it was 3
 					             """);
 			}

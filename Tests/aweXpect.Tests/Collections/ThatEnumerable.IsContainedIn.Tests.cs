@@ -22,8 +22,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -75,8 +75,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -102,8 +102,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it cannot compare to <null>
 					             """);
 			}
@@ -118,8 +118,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection [] in order,
+					             Expected that subject
+					             is contained in collection [] in order,
 					             but it was <null>
 					             """);
 			}
@@ -135,8 +135,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
@@ -166,8 +166,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it contained item "d" at index 3 that was not expected
 					             """);
 			}
@@ -183,8 +183,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -202,8 +202,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c"
@@ -221,8 +221,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it contained item "c" at index 0 that was not expected
 					             """);
 			}
@@ -250,8 +250,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it contained item "c" at index 3 that was not expected
 					             """);
 			}
@@ -279,8 +279,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order,
+					             Expected that subject
+					             is contained in collection expected in order,
 					             but it contained item "a" at index 0 that was not expected
 					             """);
 			}
@@ -336,8 +336,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in order ignoring duplicates,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -401,8 +401,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in order ignoring duplicates,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -428,8 +428,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
@@ -459,8 +459,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in order ignoring duplicates,
 					             but it contained item "d" at index 3 that was not expected
 					             """);
 			}
@@ -476,8 +476,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -495,8 +495,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in order ignoring duplicates,
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c"
@@ -613,8 +613,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -666,8 +666,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -693,8 +693,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -724,8 +724,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it contained item "d" at index 3 that was not expected
 					             """);
 			}
@@ -741,8 +741,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -772,8 +772,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it contained item "c" at index 3 that was not expected
 					             """);
 			}
@@ -801,8 +801,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it contained item "c" at index 3 that was not expected
 					             """);
 			}
@@ -830,8 +830,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order,
+					             Expected that subject
+					             is contained in collection expected in any order,
 					             but it contained item "a" at index 1 that was not expected
 					             """);
 			}
@@ -887,8 +887,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in any order ignoring duplicates,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -952,8 +952,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in any order ignoring duplicates,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -979,8 +979,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in any order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -1010,8 +1010,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in any order ignoring duplicates,
 					             but it contained item "d" at index 3 that was not expected
 					             """);
 			}
@@ -1027,8 +1027,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected in any order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -1157,8 +1157,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -1210,8 +1210,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -1237,8 +1237,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
@@ -1268,8 +1268,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
@@ -1287,8 +1287,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
@@ -1307,8 +1307,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c" and
@@ -1327,8 +1327,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "c" at index 0 that was not expected and
 					               contained all expected items
@@ -1358,8 +1358,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "c" at index 3 that was not expected and
 					               contained all expected items
@@ -1389,8 +1389,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it
 					               contained item "a" at index 0 that was not expected and
 					               contained all expected items
@@ -1433,8 +1433,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order,
 					             but it contained all expected items
 					             """);
 			}
@@ -1453,8 +1453,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -1518,8 +1518,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -1545,8 +1545,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 instead of "x" and
 					               contained item "e" at index 4 instead of "y"
@@ -1576,8 +1576,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
@@ -1595,8 +1595,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
@@ -1615,8 +1615,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it
 					               contained item "c" at index 1 instead of "b" and
 					               contained item "b" at index 2 instead of "c" and
@@ -1635,8 +1635,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -1652,8 +1652,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -1669,8 +1669,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -1686,8 +1686,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -1703,8 +1703,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -1744,8 +1744,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -1764,8 +1764,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -1817,8 +1817,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -1844,8 +1844,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -1875,8 +1875,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
@@ -1894,8 +1894,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
@@ -1914,8 +1914,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it contained all expected items
 					             """);
 			}
@@ -1931,8 +1931,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item "c" at index 3 that was not expected and
 					               contained all expected items
@@ -1962,8 +1962,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item "c" at index 3 that was not expected and
 					               contained all expected items
@@ -1993,8 +1993,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it
 					               contained item "a" at index 1 that was not expected and
 					               contained all expected items
@@ -2037,8 +2037,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order,
 					             but it contained all expected items
 					             """);
 			}
@@ -2058,8 +2058,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it was completely different: [
 					               1,
 					               2,
@@ -2126,8 +2126,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it
 					               contained item 1 at index 0 that was not expected and
 					               contained item 2 at index 1 that was not expected and
@@ -2154,8 +2154,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected
@@ -2187,8 +2187,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained all expected items
@@ -2207,8 +2207,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it
 					               contained item "d" at index 3 that was not expected and
 					               contained item "e" at index 4 that was not expected and
@@ -2228,8 +2228,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -2246,8 +2246,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -2264,8 +2264,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -2282,8 +2282,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -2300,8 +2300,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -2318,8 +2318,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}
@@ -2362,8 +2362,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be contained in collection expected which has at least one additional item in any order ignoring duplicates,
+					             Expected that subject
+					             is contained in collection expected which has at least one additional item in any order ignoring duplicates,
 					             but it contained all expected items
 					             """);
 			}

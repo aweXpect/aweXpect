@@ -23,9 +23,9 @@ public static partial class ThatException
 				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception?>>.FromFunc(
 						e => e.GetInnerExpectations(),
 						"recursive inner exceptions "),
-					(property, expectation) => $"have {property}which should {expectation}",
+					(property, expectation) => $"has {property}which {expectation}",
 					false)
 				.AddExpectations(e => expectations(
-					new ThatSubject<IEnumerable<Exception>>(e))),
+					new ThatSubject<IEnumerable<Exception>>(e)), ExpectationGrammar.Nested),
 			source);
 }

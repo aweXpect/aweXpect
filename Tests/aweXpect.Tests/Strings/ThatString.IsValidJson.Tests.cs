@@ -33,8 +33,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be valid JSON,
+					             Expected that subject
+					             is valid JSON,
 					             but it could not be parsed: The input does not contain any JSON tokens.*
 					             """).AsWildcard();
 			}
@@ -54,8 +54,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be valid JSON,
+					              Expected that subject
+					              is valid JSON,
 					              but it could not be parsed: {errorMessage}*
 					              """).AsWildcard();
 			}
@@ -70,8 +70,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be valid JSON,
+					             Expected that subject
+					             is valid JSON,
 					             but it was <null>
 					             """);
 			}
@@ -109,8 +109,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be valid JSON which should match [1, 3],
+					             Expected that subject
+					             is valid JSON which matches [1, 3],
 					             but it differed as $[1] was 2 instead of 3
 					             """);
 			}

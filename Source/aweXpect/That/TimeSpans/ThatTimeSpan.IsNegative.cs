@@ -13,8 +13,8 @@ public static partial class ThatTimeSpan
 	/// </summary>
 	public static AndOrResult<TimeSpan, IThat<TimeSpan>> IsNegative(this IThat<TimeSpan> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeNegativeConstraint(it)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsNegativeConstraint(it)),
 			source);
 
 	/// <summary>
@@ -22,11 +22,11 @@ public static partial class ThatTimeSpan
 	/// </summary>
 	public static AndOrResult<TimeSpan, IThat<TimeSpan>> IsNotNegative(this IThat<TimeSpan> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeNegativeConstraint(it)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsNotNegativeConstraint(it)),
 			source);
 
-	private readonly struct BeNegativeConstraint(string it)
+	private readonly struct IsNegativeConstraint(string it)
 		: IValueConstraint<TimeSpan>
 	{
 		public ConstraintResult IsMetBy(TimeSpan actual)
@@ -41,10 +41,10 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> "be negative";
+			=> "is negative";
 	}
 
-	private readonly struct NotBeNegativeConstraint(string it)
+	private readonly struct IsNotNegativeConstraint(string it)
 		: IValueConstraint<TimeSpan>
 	{
 		public ConstraintResult IsMetBy(TimeSpan actual)
@@ -59,6 +59,6 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> "not be negative";
+			=> "is not negative";
 	}
 }

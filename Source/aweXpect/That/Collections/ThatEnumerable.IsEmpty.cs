@@ -17,7 +17,7 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new BeEmptyConstraint<TItem>(it)),
+				.AddConstraint((it, form) => new IsEmptyConstraint<TItem>(it, form)),
 			source);
 
 	/// <summary>
@@ -26,10 +26,10 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
+				.AddConstraint((it, form) => new IsNotEmptyConstraint<TItem>(it, form)),
 			source);
 
-	private readonly struct BeEmptyConstraint<TItem>(string it)
+	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammar grammar)
 		: IValueConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
@@ -61,10 +61,14 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> "be empty";
+			=> grammar switch
+			{
+				ExpectationGrammar.Nested => "are empty",
+				_ => "is empty"
+			};
 	}
 
-	private readonly struct NotBeEmptyConstraint<TItem>(string it)
+	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationGrammar grammar)
 		: IContextConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
@@ -97,6 +101,10 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> "not be empty";
+			=> grammar switch
+			{
+				ExpectationGrammar.Nested => "are not empty",
+				_ => "is not empty"
+			};
 	}
 }

@@ -11,7 +11,7 @@ public class ManualExpectationBuilderTests
 	public async Task IsMet_ShouldThrowNotSupportedException()
 	{
 		ManualExpectationBuilder<int> sut = new();
-		sut.AddConstraint(_ => new DummyConstraint<int>(_ => true));
+		sut.AddConstraint((_,_) => new DummyConstraint<int>(_ => true));
 
 		async Task Act() => await sut.IsMet(new ExpectationNode(), null!, new TimeSystemMock(), CancellationToken.None);
 
@@ -23,7 +23,7 @@ public class ManualExpectationBuilderTests
 	public async Task IsMetBy_FailingConstraint_ShouldReturnFailure()
 	{
 		ManualExpectationBuilder<int> sut = new();
-		sut.AddConstraint(_ => new DummyConstraint<int>(_ => false));
+		sut.AddConstraint((_,_) => new DummyConstraint<int>(_ => false));
 
 		ConstraintResult result = await sut.IsMetBy(1, null!, CancellationToken.None);
 
@@ -34,7 +34,7 @@ public class ManualExpectationBuilderTests
 	public async Task IsMetBy_SucceedingConstraint_ShouldReturnSuccess()
 	{
 		ManualExpectationBuilder<int> sut = new();
-		sut.AddConstraint(_ => new DummyConstraint<int>(_ => true));
+		sut.AddConstraint((_,_) => new DummyConstraint<int>(_ => true));
 
 		ConstraintResult result = await sut.IsMetBy(1, null!, CancellationToken.None);
 

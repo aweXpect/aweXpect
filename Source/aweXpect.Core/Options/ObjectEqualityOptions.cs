@@ -17,9 +17,9 @@ internal static class ObjectEqualityOptions
 		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 			=> Equals(actual, expected);
 
-		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string)" />
-		public string GetExpectation(string expected)
-			=> $"be equal to {expected}";
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
+		public string GetExpectation(string expected, bool negate = false)
+			=> $"is {(negate ? "not " : "")}equal to {expected}";
 
 		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 		public string GetExtendedFailure(string it, object? actual, object? expected)
@@ -54,8 +54,8 @@ public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject
 	/// <summary>
 	///     Returns the expectation string, e.g. <c>be equal to {expectedExpression}</c>.
 	/// </summary>
-	public string GetExpectation(string expectedExpression)
-		=> _matchType.GetExpectation(expectedExpression);
+	public string GetExpectation(string expectedExpression, bool negate = false)
+		=> _matchType.GetExpectation(expectedExpression, negate);
 
 	/// <inheritdoc />
 	public override string? ToString() => _matchType.ToString();

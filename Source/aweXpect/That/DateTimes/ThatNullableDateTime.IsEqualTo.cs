@@ -17,11 +17,11 @@ public static partial class ThatNullableDateTime
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTime?, IThat<DateTime?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraint(
 					it,
 					expected,
-					$"be {Formatter.Format(expected)}{tolerance}",
+					$"is {Formatter.Format(expected)}{tolerance}",
 					(a, e, t) => AreKindCompatible(a?.Kind, e?.Kind) && IsWithinTolerance(t, a - e),
 					(a, e, i) => AreKindCompatible(a?.Kind, e?.Kind)
 						? $"{i} was {Formatter.Format(a)}"
@@ -40,11 +40,11 @@ public static partial class ThatNullableDateTime
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTime?, IThat<DateTime?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"not be {Formatter.Format(unexpected)}{tolerance}",
+					$"is not {Formatter.Format(unexpected)}{tolerance}",
 					(a, e, t) => !AreKindCompatible(a?.Kind, e?.Kind) || !IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

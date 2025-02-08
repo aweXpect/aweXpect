@@ -18,7 +18,7 @@ public static partial class ThatHttpResponseMessage
 	/// </summary>
 	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
 		HasStatusCode(this IThat<HttpResponseMessage?> source, HttpStatusCode expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new HasStatusCodeConstraint(it, expected)),
 			source);
 
@@ -28,11 +28,11 @@ public static partial class ThatHttpResponseMessage
 	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
 		DoesNotHaveStatusCode(this IThat<HttpResponseMessage?> source,
 			HttpStatusCode unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new HasStatusCodeRangeConstraint(
 					it,
 					statusCode => statusCode != (int)unexpected,
-					$"have StatusCode different to {Formatter.Format(unexpected)}")),
+					$"has StatusCode different to {Formatter.Format(unexpected)}")),
 			source);
 
 	private readonly struct HasStatusCodeConstraint(string it, HttpStatusCode expected)
@@ -60,7 +60,7 @@ public static partial class ThatHttpResponseMessage
 		}
 
 		public override string ToString()
-			=> $"have StatusCode {Formatter.Format(expected)}";
+			=> $"has StatusCode {Formatter.Format(expected)}";
 	}
 }
 #endif

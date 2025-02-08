@@ -83,25 +83,33 @@ namespace aweXpect.Core
     public abstract class ExpectationBuilder
     {
         protected ExpectationBuilder(string subjectExpression) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationGrammar ExpectationGrammar { get; }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder And(string textSeparator = " and ") { }
         public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget?> memberAccessor, System.Func<aweXpect.Core.MemberAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, System.Threading.Tasks.Task<TTarget?>> asyncMemberAccessor, string? separator = null) { }
-        public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null) { }
+        public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammar? expectationForm = default) { }
         public override string? ToString() { }
         public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public class MemberExpectationBuilder<TSource, TMember>
         {
-            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation) { }
+            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
             public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
         }
     }
     public static class ExpectationBuilderExtensions
     {
         public static aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> memberSelector, string displayName, bool replaceIt = true) { }
+    }
+    [System.Flags]
+    public enum ExpectationGrammar
+    {
+        Default = 0,
+        Nested = 1,
+        Plural = 2,
     }
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
@@ -112,7 +120,7 @@ namespace aweXpect.Core
     public interface IObjectMatchType
     {
         bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
-        string GetExpectation(string expected);
+        string GetExpectation(string expected, bool negate = false);
         string GetExtendedFailure(string it, object? actual, object? expected);
     }
     public interface IOptionsEquality<in TSubject>
@@ -323,7 +331,7 @@ namespace aweXpect.Delegates
     {
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
         public aweXpect.Delegates.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
-        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> Which<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
+        public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> Whose<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType, System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner<TInnerException>()
@@ -557,7 +565,7 @@ namespace aweXpect.Options
         public ObjectEqualityOptions() { }
         public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected) { }
         public aweXpect.Options.ObjectEqualityOptions<TSubject> Equals() { }
-        public string GetExpectation(string expectedExpression) { }
+        public string GetExpectation(string expectedExpression, bool negate = false) { }
         public string GetExtendedFailure(string it, object? actual, object? expected) { }
         public void SetMatchType(aweXpect.Core.IObjectMatchType matchType) { }
         public override string? ToString() { }

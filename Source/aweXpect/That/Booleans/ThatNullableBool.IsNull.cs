@@ -10,15 +10,15 @@ public static partial class ThatNullableBool
 	///     Verifies that the subject is <see langword="null" />.
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsNull(this IThat<bool?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeValueConstraint(it, null)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new IsEqualToConstraint(it, null)),
 			source);
 
 	/// <summary>
 	///     Verifies that the subject is not <see langword="null" />.
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsNotNull(this IThat<bool?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotBeValueConstraint(it, null)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				=> new IsNotEqualToConstraint(it, null)),
 			source);
 }

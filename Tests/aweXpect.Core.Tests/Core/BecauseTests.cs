@@ -83,8 +83,8 @@ public class BecauseTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected subject to
-			             be True, because we only apply it to previous constraints and be False,
+			             Expected that subject
+			             is True, because we only apply it to previous constraints and is False,
 			             but it was True
 			             """);
 	}
@@ -114,8 +114,8 @@ public class BecauseTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected subject to
-			             be False,
+			             Expected that subject
+			             is False,
 			             but it was True
 			             """);
 	}

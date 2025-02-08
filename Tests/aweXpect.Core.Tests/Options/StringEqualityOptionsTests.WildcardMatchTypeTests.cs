@@ -16,8 +16,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
-				             Expected sut to
-				             match "FOO\nBAR",
+				             Expected that sut
+				             matches "FOO\nBAR",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
@@ -36,8 +36,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match "bar",
+				             Expected that sut
+				             matches "bar",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo"
@@ -56,8 +56,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match "\tsomething\r\nelse",
+				             Expected that sut
+				             matches "\tsomething\r\nelse",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
@@ -77,8 +77,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected () => Task.FromException(exception) to
-				             throw an exception with Message matching "bar",
+				             Expected that () => Task.FromException(exception)
+				             throws an exception with Message matching "bar",
 				             but it did not match:
 				               ↓ (actual)
 				               "foo"
@@ -97,8 +97,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match <null>,
+				             Expected that sut
+				             matches <null>,
 				             but could not compare the <null> wildcard pattern with "foo"
 				             """);
 		}
@@ -113,8 +113,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match <null>,
+				             Expected that sut
+				             matches <null>,
 				             but could not compare the <null> wildcard pattern with <null>
 				             """);
 		}
@@ -129,8 +129,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match "*",
+				             Expected that sut
+				             matches "*",
 				             but it did not match:
 				               ↓ (actual)
 				               <null>

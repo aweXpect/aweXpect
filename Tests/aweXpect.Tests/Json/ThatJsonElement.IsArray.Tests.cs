@@ -22,8 +22,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be an object and $.foo be an array and $.foo[0] match null,
+					              Expected that subject
+					              is an object and $.foo is an array and $.foo[0] matches null,
 					              but it differed as $.foo was {kindString} instead of an array
 					              """);
 			}
@@ -41,8 +41,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be an object and $.foo be an array with 0 elements,
+					              Expected that subject
+					              is an object and $.foo is an array with 0 elements,
 					              but it differed as $.foo was {kindString} instead of an array
 					              """);
 			}
@@ -60,8 +60,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be an object and $.foo be an array,
+					              Expected that subject
+					              is an object and $.foo is an array,
 					              but it differed as $.foo was {kindString} instead of an array
 					              """);
 			}
@@ -79,8 +79,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be an array and $[0] match true,
+					              Expected that subject
+					              is an array and $[0] matches true,
 					              but it was {kindString} instead of an array
 					              """);
 			}
@@ -100,8 +100,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an object and $.foo be an array with 1 element,
+					             Expected that subject
+					             is an object and $.foo is an array with 1 element,
 					             but it differed as property $.foo did not exist
 					             """);
 			}
@@ -117,8 +117,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an array with 3 elements,
+					             Expected that subject
+					             is an array with 3 elements,
 					             but it differed as $ had 2 elements
 					             """);
 			}
@@ -153,8 +153,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an object and $.foo be an array and $.foo[0] be an array with 0 elements,
+					             Expected that subject
+					             is an object and $.foo is an array and $.foo[0] is an array with 0 elements,
 					             but it differed as property $.foo did not exist
 					             """);
 			}
@@ -170,8 +170,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an array and $[0] be an array and $[0][0] match 1 and $[2] be an array and $[2][0] match 2,
+					             Expected that subject
+					             is an array and $[0] is an array and $[0][0] matches 1 and $[2] is an array and $[2][0] matches 2,
 					             but it differed as $[2][0] was 3 instead of 2
 					             """);
 			}
@@ -197,8 +197,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an array and $[0] be an array and $[0][0] match 1 and $[1] be an array and $[1][0] match 2 and $[2] be an array and $[2][0] match 3,
+					             Expected that subject
+					             is an array and $[0] is an array and $[0][0] matches 1 and $[1] is an array and $[1][0] matches 2 and $[2] is an array and $[2][0] matches 3,
 					             but it differed as
 					               $[1][0] was 3 instead of 2 and
 					               $[2][0] was 2 instead of 3
@@ -242,8 +242,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an object and $.foo be an array and $.foo[0] match 2 and $.foo[1] match 3,
+					             Expected that subject
+					             is an object and $.foo is an array and $.foo[0] matches 2 and $.foo[1] matches 3,
 					             but it differed as property $.foo did not exist
 					             """);
 			}
@@ -263,8 +263,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an array and $[0] match 3 and $[1] match True and $[2] match Null and $[3] match 1.2 and $[4] match False and $[5] match "bar",
+					             Expected that subject
+					             is an array and $[0] matches 3 and $[1] matches True and $[2] matches Null and $[3] matches 1.2 and $[4] matches False and $[5] matches "bar",
 					             but it differed as
 					               $[1] was Null instead of True and
 					               $[2] was boolean True instead of Null
@@ -302,8 +302,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an object and $.foo be an array and $.foo[0] be an object with 0 properties,
+					             Expected that subject
+					             is an object and $.foo is an array and $.foo[0] is an object with 0 properties,
 					             but it differed as property $.foo did not exist
 					             """);
 			}
@@ -319,8 +319,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an array and $[0] be an object with 0 properties and $[2] be an object with 0 properties,
+					             Expected that subject
+					             is an array and $[0] is an object with 0 properties and $[2] is an object with 0 properties,
 					             but it differed as $[2] had 1 property
 					             """);
 			}
@@ -346,8 +346,8 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be an array and $[0] be an object and $[0].foo match 1 and $[1] be an object and $[1].bar match 2 and $[2] be an object and $[2].foo match 3,
+					             Expected that subject
+					             is an array and $[0] is an object and $[0].foo matches 1 and $[1] is an object and $[1].bar matches 2 and $[2] is an object and $[2].foo matches 3,
 					             but it differed as
 					               property $[1].bar did not exist and
 					               property $[2].foo did not exist

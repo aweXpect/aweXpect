@@ -17,8 +17,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be on or before 9999-12-31T23:59:59.9999999,
+					             Expected that subject
+					             is not on or before 9999-12-31T23:59:59.9999999,
 					             but it was 9999-12-31T23:59:59.9999999
 					             """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be on or before 0001-01-01T00:00:00.0000000,
+					             Expected that subject
+					             is not on or before 0001-01-01T00:00:00.0000000,
 					             but it was 0001-01-01T00:00:00.0000000
 					             """);
 			}
@@ -51,8 +51,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -68,8 +68,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -98,8 +98,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before <null>, because we want to test the failure,
+					              Expected that subject
+					              is not on or before <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -117,8 +117,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -135,8 +135,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)} ± 0:03,
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

@@ -16,7 +16,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint(_ => new ExecuteWithinConstraint<TValue>(duration)));
+			.AddConstraint((_,_) => new ExecutesWithinConstraint<TValue>(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
@@ -25,7 +25,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint(_ => new ExecuteWithinConstraint(duration)));
+			.AddConstraint((_,_) => new ExecutesWithinConstraint(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
@@ -34,7 +34,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint(_ => new NotExecuteWithinConstraint<TValue>(duration)));
+			.AddConstraint((_,_) => new DoesNotExecuteWithinConstraint<TValue>(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
@@ -43,9 +43,9 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint(_ => new NotExecuteWithinConstraint(duration)));
+			.AddConstraint((_,_) => new DoesNotExecuteWithinConstraint(duration)));
 
-	private readonly struct ExecuteWithinConstraint<TValue>(TimeSpan duration)
+	private readonly struct ExecutesWithinConstraint<TValue>(TimeSpan duration)
 		: IValueConstraint<DelegateValue<TValue>>
 	{
 		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
@@ -71,10 +71,10 @@ public static partial class ThatDelegate
 		}
 
 		public override string ToString()
-			=> $"execute within {Formatter.Format(duration)}";
+			=> $"executes within {Formatter.Format(duration)}";
 	}
 
-	private readonly struct ExecuteWithinConstraint(TimeSpan duration)
+	private readonly struct ExecutesWithinConstraint(TimeSpan duration)
 		: IValueConstraint<DelegateValue>
 	{
 		public ConstraintResult IsMetBy(DelegateValue actual)
@@ -100,10 +100,10 @@ public static partial class ThatDelegate
 		}
 
 		public override string ToString()
-			=> $"execute within {Formatter.Format(duration)}";
+			=> $"executes within {Formatter.Format(duration)}";
 	}
 
-	private readonly struct NotExecuteWithinConstraint<TValue>(TimeSpan duration)
+	private readonly struct DoesNotExecuteWithinConstraint<TValue>(TimeSpan duration)
 		: IValueConstraint<DelegateValue<TValue>>
 	{
 		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
@@ -123,10 +123,10 @@ public static partial class ThatDelegate
 		}
 
 		public override string ToString()
-			=> $"not execute within {Formatter.Format(duration)}";
+			=> $"does not execute within {Formatter.Format(duration)}";
 	}
 
-	private readonly struct NotExecuteWithinConstraint(TimeSpan duration)
+	private readonly struct DoesNotExecuteWithinConstraint(TimeSpan duration)
 		: IValueConstraint<DelegateValue>
 	{
 		public ConstraintResult IsMetBy(DelegateValue actual)
@@ -146,6 +146,6 @@ public static partial class ThatDelegate
 		}
 
 		public override string ToString()
-			=> $"not execute within {Formatter.Format(duration)}";
+			=> $"does not execute within {Formatter.Format(duration)}";
 	}
 }

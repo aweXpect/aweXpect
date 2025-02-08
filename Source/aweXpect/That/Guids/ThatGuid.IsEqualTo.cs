@@ -12,10 +12,10 @@ public static partial class ThatGuid
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsEqualTo(this IThat<Guid> source,
 		Guid? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ValueConstraint(
 					it,
-					$"be {Formatter.Format(expected)}",
+					$"is {Formatter.Format(expected)}",
 					actual => actual.Equals(expected))),
 			source);
 
@@ -24,10 +24,10 @@ public static partial class ThatGuid
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsNotEqualTo(this IThat<Guid> source,
 		Guid? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ValueConstraint(
 					it,
-					$"not be {Formatter.Format(unexpected)}",
+					$"is not {Formatter.Format(unexpected)}",
 					actual => !actual.Equals(unexpected))),
 			source);
 }

@@ -25,12 +25,12 @@ public static partial class ThatString
 			defaultOptions = options(defaultOptions);
 		}
 
-		return new JsonWhichResult(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeValidJsonConstraint(it, defaultOptions)),
+		return new JsonWhichResult(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new IsValidJsonConstraint(it, defaultOptions)),
 			source, defaultOptions);
 	}
 
-	private readonly struct BeValidJsonConstraint(string it, JsonDocumentOptions options) : IValueConstraint<string?>
+	private readonly struct IsValidJsonConstraint(string it, JsonDocumentOptions options) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -53,7 +53,7 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be valid JSON";
+			=> "is valid JSON";
 	}
 }
 #endif

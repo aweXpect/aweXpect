@@ -28,8 +28,8 @@ public sealed partial class ThatNullableGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be {Formatter.Format(expected)},
+					              Expected that subject
+					              is {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -44,8 +44,8 @@ public sealed partial class ThatNullableGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be {FixedGuid()},
+					              Expected that subject
+					              is {FixedGuid()},
 					              but it was <null>
 					              """);
 			}

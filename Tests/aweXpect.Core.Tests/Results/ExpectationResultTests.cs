@@ -16,7 +16,7 @@ public class ExpectationResultTests
 		Expectation.Result result = await sut.GetResult(3);
 
 		await That(result.Index).IsEqualTo(4);
-		await That(result.SubjectLine).IsEqualTo(" [04] Expected my-subject to");
+		await That(result.SubjectLine).IsEqualTo(" [04] Expected that my-subject");
 	}
 
 	[Fact]

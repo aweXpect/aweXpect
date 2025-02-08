@@ -51,7 +51,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
 					actual,
-					_quantifier.GetExpectation(_it, _expectationText()),
+					$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 					$"{_it} was <null>");
 			}
 
@@ -82,7 +82,7 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, _quantifier.GetExpectation(_it, _expectationText()),
+					actual, $"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 					"could not verify, because it was cancelled early");
 			}
 
@@ -116,7 +116,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
 					actual,
-					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
+					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 					$"{_it} was <null>");
 			}
 
@@ -149,7 +149,8 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
+					actual,
+					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
 					"could not verify, because it was cancelled early");
 			}
 
@@ -168,11 +169,12 @@ public static partial class ThatAsyncEnumerable
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			string expectationText = ToString();
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
 					actual,
-					quantifier.GetExpectation(it, null),
+					expectationText,
 					$"{it} was <null>");
 			}
 
@@ -189,23 +191,26 @@ public static partial class ThatAsyncEnumerable
 				if (quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
-						totalCount, null);
+						totalCount, null, (_, _) => expectationText);
 				}
 			}
 
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, quantifier.GetExpectation(it, null),
+					actual, expectationText,
 					"could not verify, because it was cancelled early");
 			}
 
 			return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount, null);
+				matchingCount + notMatchingCount, null, (_, _) => expectationText);
 		}
+
+		public override string ToString()
+			=> $"has {quantifier} {(quantifier.IsSingle() ? "item" : "items")}";
 	}
 
-	private readonly struct BeConstraint<TItem, TMatch>(
+	private readonly struct IsConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
 		IEnumerable<TItem>? expected,
@@ -293,7 +298,7 @@ public static partial class ThatAsyncEnumerable
 			=> matchOptions.GetExpectation(expectedExpression);
 	}
 
-	private readonly struct BeInOrderConstraint<TItem, TMember>(
+	private readonly struct IsInOrderConstraint<TItem, TMember>(
 		string it,
 		Func<TItem, TMember> memberAccessor,
 		SortOrder sortOrder,
@@ -359,7 +364,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> $"be in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
+			=> $"is in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
 	}
 }
 #endif

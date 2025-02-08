@@ -54,8 +54,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be empty,
+					             Expected that subject
+					             is not empty,
 					             but it was
 					             """);
 			}
@@ -81,8 +81,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be empty,
+					             Expected that subject
+					             is not empty,
 					             but it was
 					             """);
 			}
@@ -97,8 +97,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be empty,
+					             Expected that subject
+					             is not empty,
 					             but it was <null>
 					             """);
 			}

@@ -29,8 +29,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equal to expected, because we want to test the failure,
+					             Expected that subject
+					             is equal to expected, because we want to test the failure,
 					             but it was MyClass {
 					               Value = 0
 					             }
@@ -59,8 +59,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equal to new MyClass(),
+					             Expected that subject
+					             is equal to new MyClass(),
 					             but it was <null>
 					             """);
 			}
@@ -91,8 +91,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equal to expected, because we want to test the failure,
+					             Expected that subject
+					             is equal to expected, because we want to test the failure,
 					             but it was 'x'
 					             """);
 			}
@@ -123,8 +123,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equal to expected, because we want to test the failure,
+					             Expected that subject
+					             is equal to expected, because we want to test the failure,
 					             but it was 'x'
 					             """);
 			}
@@ -151,8 +151,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be equal to 'c',
+					             Expected that subject
+					             is equal to 'c',
 					             but it was <null>
 					             """);
 			}
@@ -170,8 +170,8 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             be equal to expected,
+					             Expected that sut
+					             is equal to expected,
 					             but it was long
 					             """);
 			}

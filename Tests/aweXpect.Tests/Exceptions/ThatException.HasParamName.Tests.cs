@@ -17,8 +17,8 @@ public sealed partial class ThatException
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have ParamName "somethingElse",
+					             Expected that subject
+					             has ParamName "somethingElse",
 					             but it had ParamName "message"
 					             """);
 			}
@@ -45,8 +45,8 @@ public sealed partial class ThatException
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have ParamName "message",
+					             Expected that subject
+					             has ParamName "message",
 					             but it was <null>
 					             """);
 			}

@@ -17,7 +17,7 @@ public static partial class ThatGeneric
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, form) =>
 					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
 			source);
 
@@ -29,7 +29,7 @@ public static partial class ThatGeneric
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, form) =>
 					new NotSatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
 			source);
 

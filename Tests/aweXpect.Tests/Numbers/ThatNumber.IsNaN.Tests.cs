@@ -28,8 +28,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -58,8 +58,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -85,8 +85,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -116,8 +116,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -146,8 +146,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -177,8 +177,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -205,8 +205,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -236,8 +236,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be NaN,
+					              Expected that subject
+					              is NaN,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

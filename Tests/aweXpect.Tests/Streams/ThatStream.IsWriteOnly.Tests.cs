@@ -21,8 +21,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be write-only,
+					             Expected that subject
+					             is write-only,
 					             but it was not
 					             """);
 			}
@@ -37,8 +37,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be write-only,
+					             Expected that subject
+					             is write-only,
 					             but it was <null>
 					             """);
 			}

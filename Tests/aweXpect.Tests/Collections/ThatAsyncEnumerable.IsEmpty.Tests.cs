@@ -25,8 +25,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but could not evaluate it, because it was already cancelled
 					             """);
 			}
@@ -44,8 +44,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was [
 					               0,
 					               1,
@@ -68,8 +68,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was [
 					               0,
 					               1,
@@ -96,8 +96,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was [
 					               1,
 					               1,
@@ -127,8 +127,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was <null>
 					             """);
 			}

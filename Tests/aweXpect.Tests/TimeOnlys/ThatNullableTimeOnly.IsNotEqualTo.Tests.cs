@@ -42,8 +42,8 @@ public sealed partial class ThatNullableTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be <null>,
+					             Expected that subject
+					             is not <null>,
 					             but it was <null>
 					             """);
 			}
@@ -71,8 +71,8 @@ public sealed partial class ThatNullableTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -97,8 +97,8 @@ public sealed partial class ThatNullableTimeOnly
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
-					              Expected subject to
-					              not be {Formatter.Format(unexpected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
+					              Expected that subject
+					              is not {Formatter.Format(unexpected)} ± {Formatter.Format(tolerance)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

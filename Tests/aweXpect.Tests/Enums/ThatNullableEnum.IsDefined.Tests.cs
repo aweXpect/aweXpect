@@ -27,8 +27,8 @@ public sealed partial class ThatNullableEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be defined,
+					              Expected that subject
+					              is defined,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -43,8 +43,8 @@ public sealed partial class ThatNullableEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be defined,
+					             Expected that subject
+					             is defined,
 					             but it was <null>
 					             """);
 			}

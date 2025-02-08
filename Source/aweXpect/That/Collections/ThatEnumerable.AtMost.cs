@@ -30,7 +30,7 @@ public static partial class ThatEnumerable
 		this IThatHas<IEnumerable<TItem>?> source,
 		int maximum)
 		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ExpectationBuilder.AddConstraint((it, form)
 				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtMost(maximum))),
 			source.ExpectSubject()));
 }

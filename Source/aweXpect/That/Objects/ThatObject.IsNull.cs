@@ -12,11 +12,11 @@ public static partial class ThatObject
 	public static AndOrResult<T?, IThat<T?>> IsNull<T>(
 		this IThat<T?> source)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"be null",
+					"is null",
 					(a, _) => a is null,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -27,11 +27,11 @@ public static partial class ThatObject
 	public static AndOrResult<T?, IThat<T?>> IsNull<T>(
 		this IThat<T?> source)
 		where T : struct
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"be null",
+					"is null",
 					(a, _) => a is null,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
 			source);
@@ -42,11 +42,11 @@ public static partial class ThatObject
 	public static AndOrResult<T, IThat<T?>> IsNotNull<T>(
 		this IThat<T?> source)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"not be null",
+					"is not null",
 					(a, _) => a is not null,
 					(_, _, i) => $"{i} was")),
 			source);
@@ -57,11 +57,11 @@ public static partial class ThatObject
 	public static AndOrResult<T, IThat<T?>> IsNotNull<T>(
 		this IThat<T?> source)
 		where T : struct
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
-					"not be null",
+					"is not null",
 					(a, _) => a is not null,
 					(_, _, i) => $"{i} was")),
 			source);

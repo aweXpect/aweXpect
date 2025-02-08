@@ -29,8 +29,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have key 0,
+					             Expected that subject
+					             contains key 0,
 					             but it contained only [
 					               1,
 					               2,
@@ -49,8 +49,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have key "foo",
+					             Expected that subject
+					             contains key "foo",
 					             but it was <null>
 					             """);
 			}
@@ -79,8 +79,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have key 2 whose value should be equal to "foo",
+					             Expected that subject
+					             contains key 2 whose value is equal to "foo",
 					             but value [2] was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -99,8 +99,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have key 0 whose value should be equal to "bar",
+					             Expected that subject
+					             contains key 0 whose value is equal to "bar",
 					             but it contained only [
 					               1,
 					               2,
@@ -119,8 +119,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have key "foo" whose value should be empty,
+					             Expected that subject
+					             contains key "foo" whose value is empty,
 					             but it was <null>
 					             """);
 			}

@@ -26,14 +26,14 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, int>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -44,14 +44,14 @@ public static class PropertyResult
 			int? unexpected)
 		{
 			validation?.Invoke(unexpected, nameof(unexpected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, int>(
 						it,
 						unexpected,
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 		}
 
@@ -62,14 +62,14 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, int>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -80,14 +80,14 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, int>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -98,14 +98,14 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, int>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -116,14 +116,14 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, int>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 	}
@@ -144,14 +144,14 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, long>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -162,14 +162,14 @@ public static class PropertyResult
 			long? unexpected)
 		{
 			validation?.Invoke(unexpected, nameof(unexpected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, long>(
 						it,
 						unexpected,
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 		}
 
@@ -180,14 +180,14 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, long>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -198,14 +198,14 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, long>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -216,14 +216,14 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, long>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than {Formatter.Format(expected)}")),
 				source);
 		}
 
@@ -234,14 +234,14 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, long>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 		}
 	}
@@ -259,14 +259,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			DateTimeKind expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, DateTimeKind>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -274,14 +274,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			DateTimeKind unexpected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, DateTimeKind>(
 						it,
 						unexpected,
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 	}
 
@@ -298,14 +298,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a?.Equals(e) == true,
-						$"have {propertyExpression} equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} equal to {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -313,14 +313,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			TimeSpan? unexpected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it,
 						unexpected,
 						mapper,
 						propertyExpression,
 						(a, u) => a?.Equals(u) != true,
-						$"have {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
+						$"has {propertyExpression} not equal to {Formatter.Format(unexpected)}")),
 				source);
 
 		/// <summary>
@@ -328,14 +328,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a > e,
-						$"have {propertyExpression} greater than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -343,14 +343,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a >= e,
-						$"have {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} greater than or equal to {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -358,14 +358,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThan(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a < e,
-						$"have {propertyExpression} less than {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than {Formatter.Format(expected)}")),
 				source);
 
 		/// <summary>
@@ -373,14 +373,14 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it,
 						expected,
 						mapper,
 						propertyExpression,
 						(a, e) => a <= e,
-						$"have {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
+						$"has {propertyExpression} less than or equal to {Formatter.Format(expected)}")),
 				source);
 	}
 

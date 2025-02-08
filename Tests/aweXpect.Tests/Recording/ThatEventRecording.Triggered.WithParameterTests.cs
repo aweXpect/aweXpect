@@ -30,8 +30,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected recording to
-					              have recorded the CustomEvent event on sut with string parameter [{position}] s => s == "p1" at least 2 times,
+					              Expected that recording
+					              has recorded the CustomEvent event on sut with string parameter [{position}] s => s == "p1" at least 2 times,
 					              but it was never recorded in [
 					                CustomEvent("p0", "p1", "p2"),
 					                CustomEvent("p0", "p1", "p2")
@@ -55,8 +55,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the CustomEvent event on sut with string parameter s => s == "foo" at least 2 times,
+					             Expected that recording
+					             has recorded the CustomEvent event on sut with string parameter s => s == "foo" at least 2 times,
 					             but it was recorded once in [
 					               CustomEvent("foo"),
 					               CustomEvent("bar")
@@ -99,8 +99,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the CustomEvent event on sut with string parameter s => s == "foo" and with int parameter i => i > 1 at least once,
+					             Expected that recording
+					             has recorded the CustomEvent event on sut with string parameter s => s == "foo" and with int parameter i => i > 1 at least once,
 					             but it was never recorded in [
 					               CustomEvent("foo", 1),
 					               CustomEvent("bar", 2)
@@ -124,8 +124,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the CustomEvent event on sut with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
+					             Expected that recording
+					             has recorded the CustomEvent event on sut with string parameter [0] s => s == "foo1" and with string parameter [1] s => s == "foo2" at least once,
 					             but it was never recorded in [
 					               CustomEvent("foo1", "bar2"),
 					               CustomEvent("bar1", "foo2")

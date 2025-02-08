@@ -24,8 +24,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the PropertyChanged event on sut for property MyValue at least once,
+					             Expected that recording
+					             has recorded the PropertyChanged event on sut for property MyValue at least once,
 					             but it was never recorded in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 2
@@ -63,8 +63,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have recorded the PropertyChanged event for property MyValue at least once,
+					             Expected that subject
+					             has recorded the PropertyChanged event for property MyValue at least once,
 					             but it was <null>
 					             """);
 			}

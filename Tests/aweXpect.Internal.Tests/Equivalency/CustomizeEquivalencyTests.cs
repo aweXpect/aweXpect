@@ -1,5 +1,4 @@
-﻿#if NET8_0_OR_GREATER
-using aweXpect.Customization;
+﻿using aweXpect.Customization;
 using aweXpect.Equivalency;
 
 namespace aweXpect.Internal.Tests.Equivalency;
@@ -25,8 +24,8 @@ public sealed class CustomizeEquivalencyTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected actual to
-			             be equivalent to expected,
+			             Expected that actual
+			             is equivalent to expected,
 			             but it was not:
 			               Element [0] differed:
 			                    Found: 1
@@ -57,4 +56,3 @@ public sealed class CustomizeEquivalencyTests
 			.IsFalse();
 	}
 }
-#endif

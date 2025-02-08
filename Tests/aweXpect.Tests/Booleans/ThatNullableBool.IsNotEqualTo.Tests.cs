@@ -34,8 +34,8 @@ public sealed partial class ThatNullableBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

@@ -17,8 +17,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have millisecond equal to <null>,
+					             Expected that subject
+					             has millisecond equal to <null>,
 					             but it had millisecond 167
 					             """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond equal to {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -66,8 +66,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have millisecond greater than or equal to <null>,
+					             Expected that subject
+					             has millisecond greater than or equal to <null>,
 					             but it had millisecond 167
 					             """);
 			}
@@ -95,8 +95,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond greater than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond greater than or equal to {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -127,8 +127,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have millisecond greater than <null>,
+					             Expected that subject
+					             has millisecond greater than <null>,
 					             but it had millisecond 167
 					             """);
 			}
@@ -156,8 +156,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond greater than {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -173,8 +173,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond greater than {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond greater than {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -193,8 +193,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have millisecond less than or equal to <null>,
+					             Expected that subject
+					             has millisecond less than or equal to <null>,
 					             but it had millisecond 167
 					             """);
 			}
@@ -210,8 +210,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond less than or equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond less than or equal to {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -254,8 +254,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have millisecond less than <null>,
+					             Expected that subject
+					             has millisecond less than <null>,
 					             but it had millisecond 167
 					             """);
 			}
@@ -271,8 +271,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond less than {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -300,8 +300,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond less than {Formatter.Format(expected)},
+					              Expected that subject
+					              has millisecond less than {Formatter.Format(expected)},
 					              but it had millisecond 167
 					              """);
 			}
@@ -332,8 +332,8 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have millisecond not equal to {Formatter.Format(unexpected)},
+					              Expected that subject
+					              has millisecond not equal to {Formatter.Format(unexpected)},
 					              but it had millisecond 167
 					              """);
 			}

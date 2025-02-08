@@ -18,7 +18,7 @@ public static partial class ThatEnumerable
 	public static SingleItemResult<IEnumerable<TItem>, TItem> HasSingle<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new HaveSingleConstraint<TItem>(it)),
+				.AddConstraint((it, form) => new HaveSingleConstraint<TItem>(it)),
 			f => f.FirstOrDefault()
 		);
 
@@ -58,6 +58,6 @@ public static partial class ThatEnumerable
 			}
 		}
 
-		public override string ToString() => "have a single item";
+		public override string ToString() => "has a single item";
 	}
 }

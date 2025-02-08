@@ -16,8 +16,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "FOO\nBAR",
+				             Expected that sut
+				             is equal to "FOO\nBAR",
 				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
 				               "foo\nbar"
@@ -36,8 +36,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "bar",
+				             Expected that sut
+				             is equal to "bar",
 				             but it was "foo" which differs at index 0:
 				                ↓ (actual)
 				               "foo"
@@ -56,8 +56,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "\tsomething\r\nelse",
+				             Expected that sut
+				             is equal to "\tsomething\r\nelse",
 				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
 				               "foo\nbar"
@@ -77,8 +77,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected () => Task.FromException(exception) to
-				             throw an exception with Message equal to "bar",
+				             Expected that () => Task.FromException(exception)
+				             throws an exception with Message equal to "bar",
 				             but it was "foo" which differs at index 0:
 				                ↓ (actual)
 				               "foo"
@@ -97,8 +97,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to <null>,
+				             Expected that sut
+				             is equal to <null>,
 				             but it was "foo"
 				             """);
 		}
@@ -135,8 +135,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "",
+				             Expected that sut
+				             is equal to "",
 				             but it was <null>
 				             """);
 		}

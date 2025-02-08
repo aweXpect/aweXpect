@@ -17,8 +17,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have kind equal to {Formatter.Format(expected)},
+					              Expected that subject
+					              has kind equal to {Formatter.Format(expected)},
 					              but it had kind Utc
 					              """);
 			}
@@ -61,8 +61,8 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have kind not equal to {Formatter.Format(unexpected)},
+					              Expected that subject
+					              has kind not equal to {Formatter.Format(unexpected)},
 					              but it had kind Utc
 					              """);
 			}

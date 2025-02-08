@@ -22,8 +22,8 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(!ignoreCase)
 					.WithMessage("""
-					             Expected subject to
-					             end with "TEXT",
+					             Expected that subject
+					             ends with "TEXT",
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -40,8 +40,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with "SOME" ignoring case,
+					             Expected that subject
+					             ends with "SOME" ignoring case,
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -59,8 +59,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with "TEXT" using IgnoreCaseForVocalsComparer,
+					             Expected that subject
+					             ends with "TEXT" using IgnoreCaseForVocalsComparer,
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -90,8 +90,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with "some",
+					             Expected that subject
+					             ends with "some",
 					             but it was "some arbitrary text"
 					             """);
 			}

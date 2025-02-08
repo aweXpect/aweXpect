@@ -28,7 +28,7 @@ public class SingleItemResult<TCollection, TItem>
 	///     Further expectations on the single <typeparamref name="TItem" />
 	/// </summary>
 	public IThat<TItem> Which
-		=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_memberAccessor, " which should "));
+		=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_memberAccessor, " which "));
 
 	/// <summary>
 	///     An <see cref="ExpectationResult" /> for a single item from an asynchronous collection.
@@ -49,6 +49,6 @@ public class SingleItemResult<TCollection, TItem>
 		///     Further expectations on the single item.
 		/// </summary>
 		public IThat<TItem> Which
-			=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_asyncMemberAccessor, " which should "));
+			=> new ThatSubject<TItem>(_expectationBuilder.ForWhich(_asyncMemberAccessor, " which "));
 	}
 }

@@ -12,7 +12,7 @@ public sealed class OrNodeTests
 #pragma warning restore aweXpect0001
 #pragma warning restore CS4014
 
-		string expectedResult = "be True or be False or imply False";
+		string expectedResult = "is True or is False or implies False";
 
 		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
 
@@ -36,8 +36,8 @@ public sealed class OrNodeTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected true to
-			             be False or be False or imply False,
+			             Expected that true
+			             is False or is False or implies False,
 			             but it was True and it did not
 			             """);
 	}

@@ -40,8 +40,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 1 duplicate:
 					               1
 					             """);
@@ -57,8 +57,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 2 duplicates:
 					               1,
 					               2
@@ -75,8 +75,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it was <null>
 					             """);
 			}
@@ -127,8 +127,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values ignoring case,
+					             Expected that subject
+					             only has unique values ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
 					             """);
@@ -144,8 +144,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 1 duplicate:
 					               "a"
 					             """);
@@ -161,8 +161,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
@@ -179,8 +179,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it was <null>
 					             """);
 			}
@@ -220,8 +220,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
 					             """);
@@ -238,8 +238,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 2 duplicates:
 					               1,
 					               2
@@ -256,8 +256,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it was <null>
 					             """);
 			}
@@ -308,8 +308,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value ignoring case,
+					             Expected that subject
+					             only has unique values for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
 					             """);
@@ -325,8 +325,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
 					             """);
@@ -343,8 +343,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
@@ -361,8 +361,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it was <null>
 					             """);
 			}

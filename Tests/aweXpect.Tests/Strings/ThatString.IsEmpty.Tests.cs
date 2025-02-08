@@ -26,8 +26,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be empty,
+					              Expected that subject
+					              is empty,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -42,8 +42,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be empty,
+					              Expected that subject
+					              is empty,
 					              but it was "{StringWith100Characters}…"
 					              """);
 			}
@@ -58,8 +58,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was <null>
 					             """);
 			}
@@ -74,8 +74,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was " \t "
 					             """);
 			}

@@ -35,7 +35,7 @@ public static partial class ThatAsyncEnumerable
 		=> new(maximum
 			=> new ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>(
 				new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-					source.ExpectationBuilder.AddConstraint(it
+					source.ExpectationBuilder.AddConstraint((it, form)
 						=> new AsyncCollectionCountConstraint<TItem>(it,
 							EnumerableQuantifier.Between(minimum, maximum))),
 					source.ExpectSubject())));

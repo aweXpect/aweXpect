@@ -18,8 +18,8 @@ public sealed partial class ThatBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected antecedent to
-					              imply {Formatter.Format(consequent)}, because we want to test the failure,
+					              Expected that antecedent
+					              implies {Formatter.Format(consequent)}, because we want to test the failure,
 					              but it did not
 					              """);
 			}

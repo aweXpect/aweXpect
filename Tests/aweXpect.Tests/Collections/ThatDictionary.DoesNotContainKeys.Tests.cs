@@ -29,9 +29,9 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not have keys [42, 2],
-					             but it did have [
+					             Expected that subject
+					             does not contain keys [42, 2],
+					             but it did contain [
 					               2
 					             ]
 					             """);
@@ -47,8 +47,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not have keys ["foo", "bar"],
+					             Expected that subject
+					             does not contain keys ["foo", "bar"],
 					             but it was <null>
 					             """);
 			}

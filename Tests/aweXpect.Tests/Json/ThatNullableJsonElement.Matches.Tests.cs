@@ -23,8 +23,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
-					              Expected subject to
-					              match expected,
+					              Expected that subject
+					              matches expected,
 					              but it differed as $ was {subject} instead of {expected}
 					              """);
 			}
@@ -41,8 +41,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
-					              Expected subject to
-					              match expected,
+					              Expected that subject
+					              matches expected,
 					              but it differed as $ was {json} instead of {Formatter.Format(expected)}
 					              """);
 			}
@@ -59,8 +59,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
-					              Expected subject to
-					              match expected,
+					              Expected that subject
+					              matches expected,
 					              but it differed as $ was {json} instead of {expected}
 					              """);
 			}
@@ -77,8 +77,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
-					              Expected subject to
-					              match null,
+					              Expected that subject
+					              matches null,
 					              but it differed as $ was object {json} instead of Null
 					              """);
 			}
@@ -95,8 +95,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
-					              Expected subject to
-					              match expected,
+					              Expected that subject
+					              matches expected,
 					              but it differed as $ was {json} instead of "{expected}"
 					              """);
 			}
@@ -111,8 +111,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             match new object(),
+					             Expected that subject
+					             matches new object(),
 					             but it was <null>
 					             """);
 			}
@@ -143,8 +143,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              match expected,
+					              Expected that subject
+					              matches expected,
 					              but it differed {errorMessage}
 					              """);
 			}
@@ -159,8 +159,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             match [2, 1],
+					             Expected that subject
+					             matches [2, 1],
 					             but it differed as
 					               $[0] was 1 instead of 2 and
 					               $[1] was 2 instead of 1
@@ -177,8 +177,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             match [1, 2, 3],
+					             Expected that subject
+					             matches [1, 2, 3],
 					             but it differed as $[2] had missing 3
 					             """);
 			}
@@ -260,8 +260,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>().OnlyIf(errorMessage != null)
 					.WithMessage($$"""
-					               Expected subject to
-					               match new
+					               Expected that subject
+					               matches new
 					               					{
 					               						foo = 2
 					               					},
@@ -295,8 +295,8 @@ public sealed partial class ThatNullableJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             match new
+					             Expected that subject
+					             matches new
 					             					{
 					             						bar = 3
 					             					},

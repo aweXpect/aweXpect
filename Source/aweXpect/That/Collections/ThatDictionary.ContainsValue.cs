@@ -16,7 +16,7 @@ public static partial class ThatDictionary
 		this IThat<IDictionary<TKey, TValue>?> source,
 		TValue expected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ContainValueConstraint<TKey, TValue>(it, expected)),
 			source
 		);
@@ -29,7 +29,7 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TValue unexpected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new NotContainValueConstraint<TKey, TValue>(it, unexpected)),
 			source
 		);
@@ -54,7 +54,7 @@ public static partial class ThatDictionary
 				$"{it} contained only {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
 		}
 
-		public override string ToString() => $"have value {Formatter.Format(expected)}";
+		public override string ToString() => $"contains value {Formatter.Format(expected)}";
 	}
 
 	private readonly struct NotContainValueConstraint<TKey, TValue>(string it, TValue unexpected)
@@ -77,6 +77,6 @@ public static partial class ThatDictionary
 			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 		}
 
-		public override string ToString() => $"not have value {Formatter.Format(unexpected)}";
+		public override string ToString() => $"does not contain value {Formatter.Format(unexpected)}";
 	}
 }

@@ -16,8 +16,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be positive,
+					             Expected that subject
+					             is not positive,
 					             but it was the maximum time span
 					             """);
 			}
@@ -54,8 +54,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be positive,
+					              Expected that subject
+					              is not positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

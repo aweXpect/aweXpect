@@ -36,7 +36,7 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).IsSuccess();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*be success (status code 2xx)*")
+					.WithMessage("*is success (status code 2xx)*")
 					.AsWildcard();
 			}
 
@@ -50,8 +50,8 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be success (status code 2xx),
+					             Expected that subject
+					             is success (status code 2xx),
 					             but it was <null>
 					             """);
 			}

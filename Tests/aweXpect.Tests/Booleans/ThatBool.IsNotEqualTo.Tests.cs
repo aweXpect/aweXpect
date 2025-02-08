@@ -31,8 +31,8 @@ public sealed partial class ThatBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -50,8 +50,8 @@ public sealed partial class ThatBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be {Formatter.Format(unexpected)}, because {reason},
+					              Expected that subject
+					              is not {Formatter.Format(unexpected)}, because {reason},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

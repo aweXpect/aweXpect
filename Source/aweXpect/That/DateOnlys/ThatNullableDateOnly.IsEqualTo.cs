@@ -17,11 +17,11 @@ public static partial class ThatNullableDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					expected,
-					(e, t) => $"be {Formatter.Format(e)}{t.ToDayString()}",
+					(e, t) => $"is {Formatter.Format(e)}{t.ToDayString()}",
 					(a, e, t) => (a == null && e == null) ||
 					             (a != null && e != null &&
 					              Math.Abs(a.Value.DayNumber - e.Value.DayNumber) <= (int)t.TotalDays),
@@ -40,11 +40,11 @@ public static partial class ThatNullableDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, form) =>
 					new ConditionConstraintWithTolerance(
 						it,
 						unexpected,
-						(e, t) => $"not be {Formatter.Format(e)}{t.ToDayString()}",
+						(e, t) => $"is not {Formatter.Format(e)}{t.ToDayString()}",
 						(a, u, t) => a == null != (u == null) ||
 						             (a != null && u != null &&
 						              Math.Abs(a.Value.DayNumber - u.Value.DayNumber) > (int)t.TotalDays),

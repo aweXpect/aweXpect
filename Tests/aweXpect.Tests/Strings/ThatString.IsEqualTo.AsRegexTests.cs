@@ -17,8 +17,8 @@ public sealed partial class ThatString
 
 				await That(Act).ThrowsException().OnlyIf(!expectMatch)
 					.WithMessage($"""
-					              Expected subject to
-					              match regex {Formatter.Format(pattern)},
+					              Expected that subject
+					              matches regex {Formatter.Format(pattern)},
 					              but it did not match:
 					                ↓ (actual)
 					                {Formatter.Format(subject)}
@@ -42,8 +42,8 @@ public sealed partial class ThatString
 
 				await That(Act).ThrowsException().OnlyIf(!ignoreCase)
 					.WithMessage("""
-					             Expected subject to
-					             match regex ".*ME ME.*",
+					             Expected that subject
+					             matches regex ".*ME ME.*",
 					             but it did not match:
 					               ↓ (actual)
 					               "some message"
