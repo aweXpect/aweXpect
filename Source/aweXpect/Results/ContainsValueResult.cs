@@ -4,18 +4,18 @@ using aweXpect.Core;
 namespace aweXpect.Results;
 
 /// <summary>
-///     The result for verifying that a collection contains a single item.
+///     The result on a single dictionary value.
 /// </summary>
 /// <remarks>
-///     <seealso cref="ExpectationResult{TType,TSelf}" />
+///     <seealso cref="AndOrResult{TCollection, TThat}" />
 /// </remarks>
-public class SingleValueResult<TCollection, TThat, TValue>
+public class ContainsValueResult<TCollection, TThat, TValue>
 	: AndOrResult<TCollection, TThat>
 {
 	private readonly ExpectationBuilder _expectationBuilder;
 	private readonly Func<TCollection, TValue> _memberAccessor;
 
-	internal SingleValueResult(ExpectationBuilder expectationBuilder, TThat returnValue,
+	internal ContainsValueResult(ExpectationBuilder expectationBuilder, TThat returnValue,
 		Func<TCollection, TValue> memberAccessor)
 		: base(expectationBuilder, returnValue)
 	{
@@ -24,7 +24,7 @@ public class SingleValueResult<TCollection, TThat, TValue>
 	}
 
 	/// <summary>
-	///     Further expectations on the value <typeparamref name="TValue" />
+	///     Further expectations on the selected value of the dictionary.
 	/// </summary>
 	public IThat<TValue> WhoseValue
 		=> new ThatSubject<TValue>(_expectationBuilder.ForWhich(_memberAccessor, " whose value should ", "the value"));

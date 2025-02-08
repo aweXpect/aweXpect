@@ -11,7 +11,7 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> key.
 	/// </summary>
-	public static SingleValueResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue?>
+	public static ContainsValueResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue?>
 		ContainsKey<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TKey expected)
@@ -19,7 +19,7 @@ public static partial class ThatDictionary
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainKeyConstraint<TKey, TValue>(it, expected)),
 			source,
-			f => f.ContainsKey(expected) ? f[expected] : default
+			f => f.TryGetValue(expected, out TValue? value) ? value : default
 		);
 
 	/// <summary>
