@@ -16,7 +16,7 @@ public static partial class ThatNullableEnum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint<TEnum>(
 					it,
-					"be defined",
+					"is defined",
 					actual => actual != null && Enum.IsDefined(typeof(TEnum), actual.Value))),
 			source);
 
@@ -29,7 +29,7 @@ public static partial class ThatNullableEnum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint<TEnum>(
 					it,
-					"not be defined",
+					"is not defined",
 					actual => actual != null && !Enum.IsDefined(typeof(TEnum), actual.Value))),
 			source);
 }

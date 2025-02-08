@@ -14,7 +14,7 @@ public static partial class ThatGuid
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					it,
-					"be empty",
+					"is empty",
 					actual => actual == Guid.Empty)),
 			source);
 
@@ -25,7 +25,7 @@ public static partial class ThatGuid
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
 					it,
-					"not be empty",
+					"is not empty",
 					actual => actual != Guid.Empty)),
 			source);
 }

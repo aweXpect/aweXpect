@@ -42,7 +42,7 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		public override string ToString()
-			=> "be negative";
+			=> "is negative";
 	}
 
 	private readonly struct IsNotNegativeConstraint(string it)
@@ -60,6 +60,6 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		public override string ToString()
-			=> "not be negative";
+			=> "is not negative";
 	}
 }

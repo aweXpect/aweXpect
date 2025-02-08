@@ -106,7 +106,7 @@ public static partial class ThatObject
 		public override string ToString()
 			=> (typeof(T) == typeof(object)) switch
 			{
-				true => "be serializable as JSON",
+				true => "is serializable as JSON",
 				false => $"is serializable as {Formatter.Format(typeof(T))} JSON"
 			};
 	}

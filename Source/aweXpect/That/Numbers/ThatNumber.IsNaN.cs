@@ -6,8 +6,8 @@ namespace aweXpect;
 
 public static partial class ThatNumber
 {
-	private const string ExpectIsNaN = "be NaN";
-	private const string ExpectIsNotNaN = "not be NaN";
+	private const string ExpectIsNaN = "is NaN";
+	private const string ExpectIsNotNaN = "is not NaN";
 
 	/// <summary>
 	///     Verifies that the subject is seen as not a number (<see cref="float.NaN" />).

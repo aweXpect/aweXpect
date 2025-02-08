@@ -195,7 +195,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> "not " + options.GetExpectation(unexpectedExpression);
+			=> options.GetExpectation(unexpectedExpression, true);
 	}
 
 	private readonly struct IsNotEqualToConstraint<T>(
@@ -217,7 +217,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> "not " + options.GetExpectation(unexpectedExpression);
+			=> options.GetExpectation(unexpectedExpression, true);
 	}
 
 	private readonly struct IsNullableNotEqualToConstraint<T>(
@@ -239,6 +239,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> "not " + options.GetExpectation(unexpectedExpression);
+			=> options.GetExpectation(unexpectedExpression, true);
 	}
 }

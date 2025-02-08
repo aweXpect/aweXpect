@@ -14,7 +14,7 @@ public static partial class ThatStream
 		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
-					"be readable",
+					"is readable",
 					actual => actual?.CanRead == true,
 					actual => actual == null ? $"{it} was <null>" : $"{it} was not")),
 			source);
@@ -26,7 +26,7 @@ public static partial class ThatStream
 		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ValueConstraint(
-					"not be readable",
+					"is not readable",
 					actual => actual?.CanRead == false,
 					actual => actual == null ? $"{it} was <null>" : $"{it} was")),
 			source);

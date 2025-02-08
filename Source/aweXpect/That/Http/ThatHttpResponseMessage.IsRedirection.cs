@@ -17,7 +17,7 @@ public static partial class ThatHttpResponseMessage
 				new HasStatusCodeRangeConstraint(
 					it,
 					statusCode => statusCode >= 300 && statusCode < 400,
-					"be redirection (status code 3xx)")),
+					"is redirection (status code 3xx)")),
 			source);
 }
 #endif

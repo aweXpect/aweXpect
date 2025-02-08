@@ -6,7 +6,7 @@ namespace aweXpect;
 
 public static partial class ThatNumber
 {
-	private const string ExpectIsNegative = "be negative";
+	private const string ExpectIsNegative = "is negative";
 
 	/// <summary>
 	///     Verifies that the subject is negative.

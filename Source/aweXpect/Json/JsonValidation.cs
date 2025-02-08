@@ -37,7 +37,7 @@ internal class JsonValidation : IJsonObjectResult,
 		_options = options;
 		_element = element;
 		_currentElements.Push(element);
-		_expectationBuilder = new StringBuilder().Append("be an ").Append(valueKind.ToString().ToLower());
+		_expectationBuilder = new StringBuilder().Append("is an ").Append(valueKind.ToString().ToLower());
 		_currentPath.Push(path);
 	}
 
@@ -100,7 +100,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 			_currentPath.Push($"[{i}]");
 
-			_expectationBuilder.Append(And).Append(CurrentPath).Append(" match ")
+			_expectationBuilder.Append(And).Append(CurrentPath).Append(" matches ")
 				.Append(expectedValue == null ? "Null" : Formatter.Format(expectedValue));
 
 			if (currentElement != null)
@@ -306,7 +306,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	IJsonArrayResult IJsonPropertyResult<IJsonArrayResult>.Matching(object? expected, string doNotPopulateThisValue)
 	{
-		_expectationBuilder.Append(And).Append(CurrentPath).Append(" match ").Append(doNotPopulateThisValue);
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(" matches ").Append(doNotPopulateThisValue);
 		JsonElement? currentElement = _currentElements.Pop();
 		if (currentElement == null)
 		{
@@ -357,7 +357,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	IJsonObjectResult IJsonPropertyResult<IJsonObjectResult>.Matching(object? expected, string doNotPopulateThisValue)
 	{
-		_expectationBuilder.Append(And).Append(CurrentPath).Append(" match ").Append(doNotPopulateThisValue);
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(" matches ").Append(doNotPopulateThisValue);
 		JsonElement? currentElement = _currentElements.Pop();
 		if (currentElement == null)
 		{
@@ -409,7 +409,7 @@ internal class JsonValidation : IJsonObjectResult,
 
 	private JsonValidation An(JsonValueKind kind)
 	{
-		_expectationBuilder.Append(And).Append(CurrentPath).Append(" be ").Append(Format(kind));
+		_expectationBuilder.Append(And).Append(CurrentPath).Append(" is ").Append(Format(kind));
 		JsonElement? currentElement = _currentElements.Pop();
 
 		if (currentElement != null && currentElement.Value.ValueKind != kind)

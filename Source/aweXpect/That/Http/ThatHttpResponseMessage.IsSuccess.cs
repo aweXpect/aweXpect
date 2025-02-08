@@ -17,7 +17,7 @@ public static partial class ThatHttpResponseMessage
 				new HasStatusCodeRangeConstraint(
 					it,
 					statusCode => statusCode >= 200 && statusCode < 300,
-					"be success (status code 2xx)")),
+					"is success (status code 2xx)")),
 			source);
 }
 #endif

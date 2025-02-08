@@ -14,7 +14,7 @@ public interface IObjectMatchType
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	string GetExpectation(string expected);
+	string GetExpectation(string expected, bool negate = false);
 
 	/// <summary>
 	///     Get an extended failure text.

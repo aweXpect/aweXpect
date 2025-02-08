@@ -6,8 +6,8 @@ namespace aweXpect;
 
 public static partial class ThatNumber
 {
-	private const string ExpectBeFinite = "be finite";
-	private const string ExpectNotBeFinite = "not be finite";
+	private const string ExpectBeFinite = "is finite";
+	private const string ExpectNotBeFinite = "is not finite";
 
 	/// <summary>
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor <see cref="float.IsNaN" />

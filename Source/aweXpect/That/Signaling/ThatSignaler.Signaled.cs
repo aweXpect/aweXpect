@@ -133,8 +133,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"have recorded the callback at least once{options}",
-				_ => $"have recorded the callback at least {count} times{options}"
+				1 => $"has recorded the callback at least once{options}",
+				_ => $"has recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -192,8 +192,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"have recorded the callback at least once{options}",
-				_ => $"have recorded the callback at least {count} times{options}"
+				1 => $"has recorded the callback at least once{options}",
+				_ => $"has recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -258,8 +258,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"not have recorded the callback{options}",
-				_ => $"not have recorded the callback at least {count} times{options}"
+				1 => $"does not have recorded the callback{options}",
+				_ => $"does not have recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -316,8 +316,8 @@ public static partial class ThatSignaler
 		{
 			string expectation = count switch
 			{
-				1 => $"not have recorded the callback{options}",
-				_ => $"not have recorded the callback at least {count} times{options}"
+				1 => $"does not have recorded the callback{options}",
+				_ => $"does not have recorded the callback at least {count} times{options}"
 			};
 
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract

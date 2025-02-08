@@ -6,8 +6,8 @@ namespace aweXpect;
 
 public static partial class ThatNumber
 {
-	private const string ExpectIsInfinite = "be infinite";
-	private const string ExpectIsNotInfinite = "not be infinite";
+	private const string ExpectIsInfinite = "is infinite";
+	private const string ExpectIsNotInfinite = "is not infinite";
 
 	/// <summary>
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
