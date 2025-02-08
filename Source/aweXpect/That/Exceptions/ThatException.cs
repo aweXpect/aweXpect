@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -12,7 +13,7 @@ public static partial class ThatException
 {
 	private readonly struct HasMessageValueConstraint<TException>(
 		string it,
-		string verb,
+		ExpectationForm form,
 		string expected,
 		StringEqualityOptions options)
 		: IValueConstraint<Exception?>
@@ -30,7 +31,11 @@ public static partial class ThatException
 		}
 
 		public override string ToString()
-			=> $"{verb} Message {options.GetExpectation(expected, false)}";
+			=> form switch
+			{
+				ExpectationForm.Inner => $" Message is {options.GetExpectation(expected, false)}",
+				_ => $"has Message {options.GetExpectation(expected, false)}"
+			};
 	}
 
 	private readonly struct HasInnerExceptionValueConstraint<TInnerException>(

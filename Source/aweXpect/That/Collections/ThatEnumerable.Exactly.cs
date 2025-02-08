@@ -30,7 +30,7 @@ public static partial class ThatEnumerable
 		this IThatHas<IEnumerable<TItem>?> source,
 		int expected)
 		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ExpectationBuilder.AddConstraint(it
+			source.ExpectationBuilder.AddConstraint((it, form)
 				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
 			source.ExpectSubject()));
 }

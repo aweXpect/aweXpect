@@ -36,7 +36,7 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).HasServerError();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*have server error (status code 5xx)*")
+					.WithMessage("*has server error (status code 5xx)*")
 					.AsWildcard();
 			}
 

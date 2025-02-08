@@ -35,6 +35,6 @@ public class ContainsValuesResult<TCollection, TThat, TKey, TValue>
 	public ThatEnumerable.Elements<TValue> WhoseValues
 		=> new(
 			new ThatSubject<IEnumerable<TValue>>(_expectationBuilder
-				.ForWhich(_memberAccessor, " whose values should ", $"values {Formatter.Format(_keys)}")),
-			EnumerableQuantifier.All);
+				.ForWhich(_memberAccessor, " whose values ", $"values {Formatter.Format(_keys)}", ExpectationForm.Plural)),
+			EnumerableQuantifier.All(_expectationBuilder.ExpectationForm));
 }

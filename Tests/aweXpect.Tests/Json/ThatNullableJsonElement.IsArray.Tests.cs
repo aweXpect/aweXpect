@@ -101,7 +101,7 @@ public sealed partial class ThatNullableJsonElement
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is an object and $.foo be is array with 1 element,
+					             is an object and $.foo is an array with 1 element,
 					             but it differed as property $.foo did not exist
 					             """);
 			}

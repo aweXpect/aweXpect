@@ -14,9 +14,9 @@ public partial class ThatDelegateThrows<TException>
 		Action<IThat<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
-					"with an inner exception which should ",
+					"with an inner exception whose",
 					false)
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationForm.Inner),
 			this);
 
 	/// <summary>
@@ -24,7 +24,7 @@ public partial class ThatDelegateThrows<TException>
 	/// </summary>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException()
 		=> new(ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, form) =>
 					new HasInnerExceptionValueConstraint<Exception>("with",
 						it)),
 			this);

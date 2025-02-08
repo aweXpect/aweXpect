@@ -22,7 +22,7 @@ public static partial class ThatEventRecording
 		Quantifier quantifier = new();
 		TriggerEventFilter filter = new();
 		return new EventTriggerResult<TSubject>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new HaveTriggeredConstraint<TSubject>(it, eventName, filter, quantifier)),
 			source,
 			filter,

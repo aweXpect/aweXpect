@@ -30,7 +30,7 @@ public sealed partial class ThatException
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has an inner exception which should have Message equal to "some other message",
+					             has an inner exception whose Message is equal to "some other message",
 					             but it was "inner" which differs at index 0:
 					                ↓ (actual)
 					               "inner"

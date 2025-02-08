@@ -36,7 +36,7 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).IsSuccess();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*be success (status code 2xx)*")
+					.WithMessage("*is success (status code 2xx)*")
 					.AsWildcard();
 			}
 

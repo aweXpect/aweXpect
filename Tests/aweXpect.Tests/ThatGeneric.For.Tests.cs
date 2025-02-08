@@ -27,7 +27,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              for .A be True and for .B be True,
+					              for .A is True and for .B is True,
 					              but {(a ? "" : ".A was False")}{(!a && !b ? " and " : "")}{(b ? "" : ".B was False")}
 					              """);
 			}
@@ -53,7 +53,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             for .A be True or for .B be True,
+					             for .A is True or for .B is True,
 					             but .A was False and .B was False
 					             """);
 			}
@@ -75,7 +75,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              for .Value be equal to {Formatter.Format(expectedValue)},
+					              for .Value is equal to {Formatter.Format(expectedValue)},
 					              but .Value was {Formatter.Format(value)}
 					              """);
 			}

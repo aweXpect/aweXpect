@@ -15,8 +15,8 @@ public static partial class ThatException
 		this IThat<TException> source,
 		string expected)
 		where TException : ArgumentException?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new HasParamNameValueConstraint<TException>(it, "have", expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new HasParamNameValueConstraint<TException>(it, "has", expected)),
 			source);
 
 	internal readonly struct HasParamNameValueConstraint<TArgumentException>(

@@ -19,11 +19,13 @@ public static partial class ThatAsyncEnumerable
 		{
 			StringEqualityOptions options = new();
 			return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"equal to {Formatter.Format(expected)}",
+						() => form == ExpectationForm.Default
+							? $"is equal to {Formatter.Format(expected)}{options}"
+							: $"are equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,
@@ -41,11 +43,13 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"equal to {Formatter.Format(expected)}",
+						() => form == ExpectationForm.Default
+							? $"is equal to {Formatter.Format(expected)}{options}"
+							: $"are equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

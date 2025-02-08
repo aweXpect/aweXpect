@@ -25,7 +25,7 @@ public static partial class ThatDictionary
 	{
 		ObjectEqualityOptions<TValue> options = new();
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AllIsUniqueConstraint<TKey, TValue, TValue>(it, options)),
 			source, options
 		);
@@ -42,7 +42,7 @@ public static partial class ThatDictionary
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AllIsUniqueConstraint<TKey, string?, string?>(it, options)),
 			source, options
 		);
@@ -65,7 +65,7 @@ public static partial class ThatDictionary
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
@@ -90,7 +90,7 @@ public static partial class ThatDictionary
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
@@ -135,7 +135,7 @@ public static partial class ThatDictionary
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique values{options}";
+		public override string ToString() => $"only has unique values{options}";
 	}
 
 	private readonly struct AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
@@ -180,6 +180,6 @@ public static partial class ThatDictionary
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique values for {memberAccessorExpression}{options}";
+		public override string ToString() => $"only has unique values for {memberAccessorExpression}{options}";
 	}
 }

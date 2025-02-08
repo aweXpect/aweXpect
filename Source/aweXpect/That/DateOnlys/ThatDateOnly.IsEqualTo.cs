@@ -17,7 +17,7 @@ public static partial class ThatDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, form) =>
 					new ConditionConstraintWithTolerance(
 						it,
 						expected,
@@ -39,7 +39,7 @@ public static partial class ThatDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					unexpected,

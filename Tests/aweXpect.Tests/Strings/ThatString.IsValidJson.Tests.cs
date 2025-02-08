@@ -110,7 +110,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is valid JSON which should match [1, 3],
+					             is valid JSON which matches [1, 3],
 					             but it differed as $[1] was 2 instead of 3
 					             """);
 			}

@@ -13,7 +13,7 @@ public static partial class ThatTimeSpan
 	/// </summary>
 	public static AndOrResult<TimeSpan, IThat<TimeSpan>> IsPositive(this IThat<TimeSpan> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new IsPositiveConstraint(it)),
 			source);
 
@@ -22,7 +22,7 @@ public static partial class ThatTimeSpan
 	/// </summary>
 	public static AndOrResult<TimeSpan, IThat<TimeSpan>> IsNotPositive(this IThat<TimeSpan> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new IsNotPositiveConstraint(it)),
 			source);
 

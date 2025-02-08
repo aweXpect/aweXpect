@@ -39,6 +39,11 @@ public abstract class ExpectationBuilder
 		Subject = subjectExpression;
 	}
 
+	/// <summary>
+	///     The expected grammatic form of the expectation text.
+	/// </summary>
+	public ExpectationForm ExpectationForm { get; private set; } = ExpectationForm.Default;
+
 	internal string Subject { get; }
 
 	/// <summary>
@@ -50,9 +55,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IValueConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationForm, IValueConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationForm));
 		return this;
 	}
 
@@ -65,9 +70,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IContextConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationForm, IContextConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationForm));
 		return this;
 	}
 
@@ -80,9 +85,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IAsyncConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationForm, IAsyncConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationForm));
 		return this;
 	}
 
@@ -95,9 +100,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IAsyncContextConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationForm, IAsyncContextConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationForm));
 		return this;
 	}
 
@@ -109,7 +114,7 @@ public abstract class ExpectationBuilder
 		MemberAccessor<TSource, TTarget?> memberAccessor,
 		Func<MemberAccessor, string, string>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((expectationBuilderCallback, sourceConstraintCallback) =>
+		new((expectationBuilderCallback, expectationForm, sourceConstraintCallback) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
@@ -124,7 +129,10 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
+			ExpectationForm previousForm = ExpectationForm;
+			ExpectationForm = expectationForm;
 			expectationBuilderCallback.Invoke(this);
+			ExpectationForm = previousForm;
 			_node = root;
 			if (replaceIt)
 			{
@@ -184,7 +192,8 @@ public abstract class ExpectationBuilder
 	public ExpectationBuilder ForWhich<TSource, TTarget>(
 		Func<TSource, TTarget?> memberAccessor,
 		string? separator = null,
-		string? replaceIt = null)
+		string? replaceIt = null,
+		ExpectationForm? expectationForm = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
@@ -196,6 +205,11 @@ public abstract class ExpectationBuilder
 		if (replaceIt != null)
 		{
 			_it = replaceIt;
+		}
+
+		if (expectationForm != null)
+		{
+			ExpectationForm = expectationForm.Value;
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
@@ -281,14 +295,18 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public class MemberExpectationBuilder<TSource, TMember>
 	{
-		private readonly Func<Action<ExpectationBuilder>,
+		private readonly Func<
+				Action<ExpectationBuilder>,
+				ExpectationForm,
 				Func<string, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			_callback;
 
 		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
 
-		internal MemberExpectationBuilder(Func<Action<ExpectationBuilder>,
+		internal MemberExpectationBuilder(Func<
+				Action<ExpectationBuilder>,
+				ExpectationForm,
 				Func<string, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			callback)
@@ -299,8 +317,10 @@ public abstract class ExpectationBuilder
 		/// <summary>
 		///     Add expectations for the current <typeparamref name="TMember" />.
 		/// </summary>
-		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation)
-			=> _callback(expectation, _sourceConstraintBuilder);
+		public ExpectationBuilder AddExpectations(
+			Action<ExpectationBuilder> expectation,
+			ExpectationForm expectationForm = ExpectationForm.Default)
+			=> _callback(expectation, expectationForm, _sourceConstraintBuilder);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.

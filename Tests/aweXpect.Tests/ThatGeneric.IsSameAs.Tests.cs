@@ -39,7 +39,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             refer to expected Other {
+					             refers to expected Other {
 					               Value = 1
 					             },
 					             but it was Other {
@@ -63,7 +63,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             refer to expected <null>,
+					             refers to expected <null>,
 					             but it was Other {
 					               Value = 1
 					             }
@@ -97,7 +97,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             refer to expected Other {
+					             refers to expected Other {
 					               Value = 1
 					             },
 					             but it was <null>

@@ -10,7 +10,7 @@ public static partial class ThatBool
 	///     Verifies that the subject is <see langword="true" />.
 	/// </summary>
 	public static AndOrResult<bool, IThat<bool>> IsTrue(this IThat<bool> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsEqualToConstraint(it, true)),
 			source);
 }

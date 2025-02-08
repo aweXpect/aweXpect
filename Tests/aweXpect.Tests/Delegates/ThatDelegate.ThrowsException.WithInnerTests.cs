@@ -46,7 +46,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception whose Message is equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -161,7 +161,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception whose Message is equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -182,7 +182,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception whose Message is equal to "foo",
 					             but it was <null>
 					             """);
 			}
@@ -228,7 +228,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception whose Message is equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"
@@ -345,7 +345,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception with an inner exception which should have Message equal to "foo",
+					             throws an exception with an inner exception whose Message is equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
 					               "bar"

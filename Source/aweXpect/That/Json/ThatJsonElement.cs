@@ -10,7 +10,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatJsonElement
 {
-	private readonly struct MatchConstraint(
+	private readonly struct MatchesConstraint(
 		string it,
 		object? expected,
 		string expectedExpression,
@@ -39,8 +39,8 @@ public static partial class ThatJsonElement
 		public override string ToString()
 			=> options.IgnoreAdditionalProperties switch
 			{
-				true => $"match {expectedExpression}",
-				false => $"match {expectedExpression} exactly"
+				true => $"matches {expectedExpression}",
+				false => $"matches {expectedExpression} exactly"
 			};
 	}
 

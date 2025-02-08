@@ -19,7 +19,7 @@ public static partial class ThatObject
 		this IThat<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsJsonSerializableConstraint<object>(it, new JsonSerializerOptions(),
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
@@ -32,7 +32,7 @@ public static partial class ThatObject
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsJsonSerializableConstraint<object>(it, serializerOptions,
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
@@ -44,7 +44,7 @@ public static partial class ThatObject
 		this IThat<object?> source,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsJsonSerializableConstraint<T>(it, new JsonSerializerOptions(),
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);
@@ -57,7 +57,7 @@ public static partial class ThatObject
 		JsonSerializerOptions serializerOptions,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsJsonSerializableConstraint<T>(it, serializerOptions,
 					EquivalencyOptionsExtensions.FromCallback(equivalencyOptions))),
 			source);

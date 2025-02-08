@@ -26,7 +26,6 @@ public static partial class ThatDelegateThrows
 					MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
 						e => e.GetInnerExpectations(), "recursive inner exceptions "),
 					(property, expectation) => $"with {property}where {expectation}")
-				.AddExpectations(e
-					=> expectations(new ThatSubject<IEnumerable<Exception>>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<IEnumerable<Exception>>(e)), ExpectationForm.Inner),
 			source);
 }

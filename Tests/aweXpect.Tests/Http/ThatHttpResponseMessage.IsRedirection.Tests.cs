@@ -36,7 +36,7 @@ public sealed partial class ThatHttpResponseMessage
 					=> await That(subject).IsRedirection();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("*be redirection (status code 3xx)*")
+					.WithMessage("*is redirection (status code 3xx)*")
 					.AsWildcard();
 			}
 

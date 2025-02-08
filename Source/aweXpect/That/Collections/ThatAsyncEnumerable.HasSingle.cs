@@ -19,7 +19,7 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new HasSingleConstraint<TItem>(it)),
 			async f =>
 			{
@@ -65,7 +65,7 @@ public static partial class ThatAsyncEnumerable
 			}
 		}
 
-		public override string ToString() => "have a single item";
+		public override string ToString() => "has a single item";
 	}
 }
 #endif

@@ -13,7 +13,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrWhichResult<TType, IThat<object?>> Is<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsOfTypeConstraint<TType>(it)),
 			source);
 
@@ -24,7 +24,7 @@ public static partial class ThatObject
 		this IThat<T?> source,
 		Type type)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsOfTypeConstraint(it, type)),
 			source);
 
@@ -33,7 +33,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrWhichResult<object?, IThat<object?>> IsNot<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsNotOfTypeConstraint<TType>(it)),
 			source);
 
@@ -44,7 +44,7 @@ public static partial class ThatObject
 		this IThat<T?> source,
 		Type type)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsNotOfTypeConstraint(it, type)),
 			source);
 

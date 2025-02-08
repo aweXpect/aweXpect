@@ -27,7 +27,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AreAllUniqueConstraint<TItem, TItem>(it, options)),
 			source, options
 		);
@@ -41,7 +41,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AreAllUniqueConstraint<string, string>(it, options)),
 			source, options
 		);
@@ -60,7 +60,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
@@ -81,7 +81,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
 					doNotPopulateThisValue,
 					options)),
@@ -129,7 +129,7 @@ public static partial class ThatAsyncEnumerable
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique items{options}";
+		public override string ToString() => $"only has unique items{options}";
 	}
 
 	private readonly struct AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
@@ -177,7 +177,7 @@ public static partial class ThatAsyncEnumerable
 				ToString());
 		}
 
-		public override string ToString() => $"only have unique items for {memberAccessorExpression}{options}";
+		public override string ToString() => $"only has unique items for {memberAccessorExpression}{options}";
 	}
 }
 #endif

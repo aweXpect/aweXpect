@@ -29,7 +29,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<TSubject> equalityOptions = new();
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new ObjectEqualityResult<TSubject, IThat<TSubject>, TSubject>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 				=> new IsEqualToConstraint<TSubject, TExpected>(it, expected, doNotPopulateThisValue, equalityOptions)),
 			source,
 			equalityOptions);

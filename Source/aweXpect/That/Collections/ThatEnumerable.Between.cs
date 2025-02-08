@@ -32,7 +32,7 @@ public static partial class ThatEnumerable
 			int minimum)
 		=> new(maximum => new ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>>(
 			new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-				source.ExpectationBuilder.AddConstraint(it
+				source.ExpectationBuilder.AddConstraint((it, form)
 					=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Between(minimum, maximum))),
 				source.ExpectSubject())));
 }

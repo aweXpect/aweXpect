@@ -19,11 +19,13 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"is of type {Formatter.Format(typeof(TType))}",
+						() => form == ExpectationForm.Default
+							? $"is of type {Formatter.Format(typeof(TType))}"
+							: $"are of type {Formatter.Format(typeof(TType))}",
 						a => a is TType,
 						"were")),
 				_subject,
@@ -38,11 +40,13 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"is of type {Formatter.Format(type)}",
+						() => form == ExpectationForm.Default
+							? $"is of type {Formatter.Format(type)}"
+							: $"are of type {Formatter.Format(type)}",
 						a => type.IsInstanceOfType(a),
 						"were")),
 				_subject,

@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -8,9 +9,9 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches all items.
 	/// </summary>
-	public static EnumerableQuantifier All => new AllQuantifier();
+	public static EnumerableQuantifier All(ExpectationForm expectationForm = ExpectationForm.Default) => new AllQuantifier(expectationForm);
 
-	private sealed class AllQuantifier : EnumerableQuantifier
+	private sealed class AllQuantifier(ExpectationForm expectationForm) : EnumerableQuantifier
 	{
 		public override string ToString() => "all";
 
@@ -35,7 +36,7 @@ public abstract partial class EnumerableQuantifier
 			if (notMatchingCount > 0)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 					totalCount.HasValue
 						? $"only {matchingCount} of {totalCount} {verb}"
 						: $"not all {verb}");
@@ -44,11 +45,11 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount == totalCount)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -8,9 +9,10 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches exactly <paramref name="expected" /> items.
 	/// </summary>
-	public static EnumerableQuantifier Exactly(int expected) => new ExactlyQuantifier(expected);
+	public static EnumerableQuantifier Exactly(int expected, ExpectationForm expectationForm = ExpectationForm.Default)
+		=> new ExactlyQuantifier(expected, expectationForm);
 
-	private sealed class ExactlyQuantifier(int expected) : EnumerableQuantifier
+	private sealed class ExactlyQuantifier(int expected, ExpectationForm expectationForm) : EnumerableQuantifier
 	{
 		public override string ToString() 
 			=> expected switch
@@ -40,7 +42,7 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount > expected)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 					(totalCount.HasValue, expectationExpression is null) switch
 					{
 						(true, true) => $"found {matchingCount}",
@@ -55,18 +57,18 @@ public abstract partial class EnumerableQuantifier
 				if (matchingCount == expected)
 				{
 					return new ConstraintResult.Success<TEnumerable>(actual,
-						GenerateExpectation(ToString(), expectationExpression, expectationGenerator));
+						GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm));
 				}
 
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 					expectationExpression is null
 						? $"found only {matchingCount}"
 						: $"only {matchingCount} of {totalCount} {verb}");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

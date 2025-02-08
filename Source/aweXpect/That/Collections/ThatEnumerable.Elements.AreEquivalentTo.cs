@@ -31,11 +31,13 @@ public static partial class ThatEnumerable
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"is equivalent to {Formatter.Format(expected)}{options}",
+						() => form == ExpectationForm.Default
+							? $"is equivalent to {Formatter.Format(expected)}{options}"
+							: $"are equivalent to {Formatter.Format(expected)}{options}",
 						a => equalityOptions.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

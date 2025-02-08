@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -8,9 +9,10 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches at least <paramref name="minimum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier AtLeast(int minimum) => new AtLeastQuantifier(minimum);
+	public static EnumerableQuantifier AtLeast(int minimum, ExpectationForm expectationForm = ExpectationForm.Default)
+		=> new AtLeastQuantifier(minimum, expectationForm);
 
-	private sealed class AtLeastQuantifier(int minimum) : EnumerableQuantifier
+	private sealed class AtLeastQuantifier(int minimum, ExpectationForm expectationForm) : EnumerableQuantifier
 	{
 		public override string ToString()
 			=> minimum switch
@@ -40,20 +42,20 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount >= minimum)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm));
 			}
 
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 					expectationExpression == null
 						? $"found only {matchingCount}"
 						: $"only {matchingCount} of {totalCount} {verb}");
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

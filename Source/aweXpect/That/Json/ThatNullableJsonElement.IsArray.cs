@@ -17,7 +17,7 @@ public static partial class ThatNullableJsonElement
 	public static AndOrResult<JsonElement?, IThat<JsonElement?>> IsArray(
 		this IThat<JsonElement?> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new IsValueKindConstraint(it, JsonValueKind.Array)),
 			source);
 
@@ -40,7 +40,7 @@ public static partial class ThatNullableJsonElement
 		}
 
 		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new IsArrayConstraint(it, expectation, jsonOptions)),
 			source);
 	}

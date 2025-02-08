@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -36,10 +37,10 @@ public abstract partial class EnumerableQuantifier
 		Func<string, string?, string>? expectationGenerator = null);
 
 
-	private string GenerateExpectation(
-		string quantifierExpectation,
+	private string GenerateExpectation(string quantifierExpectation,
 		string? expectationExpression,
-		Func<string, string?, string>? expectationGenerator = null)
+		Func<string, string?, string>? expectationGenerator,
+		ExpectationForm expectationForm)
 	{
 		if (expectationGenerator is not null)
 		{
@@ -51,6 +52,10 @@ public abstract partial class EnumerableQuantifier
 			return quantifierExpectation;
 		}
 
+		if (expectationForm == ExpectationForm.Inner)
+		{
+			return $"{quantifierExpectation} {expectationExpression}";
+		}
 		return $"{expectationExpression} for {quantifierExpectation} {(IsSingle() ? "item" : "items")}";
 	}
 }

@@ -30,8 +30,8 @@ public static partial class ThatJsonElement
 		}
 
 		return new AndOrResult<JsonElement, IThat<JsonElement>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new MatchConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new MatchesConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}
 
@@ -54,8 +54,8 @@ public static partial class ThatJsonElement
 		}
 
 		return new AndOrResult<JsonElement, IThat<JsonElement>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new MatchConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+				new MatchesConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}
 }

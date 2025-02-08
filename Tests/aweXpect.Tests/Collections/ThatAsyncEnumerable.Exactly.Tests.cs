@@ -82,7 +82,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has exactly 4 items equal to 2,
+					             is equal to 2 for exactly 4 items,
 					             but only 2 of 7 were
 					             """);
 			}
@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has exactly 3 items equal to 1,
+					             is equal to 1 for exactly 3 items,
 					             but at least 4 were
 					             """);
 			}

@@ -17,7 +17,7 @@ public static partial class ThatJsonElement
 	public static AndOrResult<JsonElement, IThat<JsonElement>> IsObject(
 		this IThat<JsonElement> source)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new IsValueKindConstraint(it, JsonValueKind.Object)),
 			source);
 
@@ -40,7 +40,7 @@ public static partial class ThatJsonElement
 		}
 
 		return new AndOrResult<JsonElement, IThat<JsonElement>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
 				new IsObjectConstraint(it, expectation, jsonOptions)),
 			source);
 	}

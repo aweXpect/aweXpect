@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -8,9 +9,10 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches at most <paramref name="maximum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier AtMost(int maximum) => new AtMostQuantifier(maximum);
+	public static EnumerableQuantifier AtMost(int maximum, ExpectationForm expectationForm = ExpectationForm.Default)
+		=> new AtMostQuantifier(maximum, expectationForm);
 
-	private sealed class AtMostQuantifier(int maximum) : EnumerableQuantifier
+	private sealed class AtMostQuantifier(int maximum, ExpectationForm expectationForm) : EnumerableQuantifier
 	{
 		public override string ToString()
 			=> maximum switch
@@ -40,7 +42,7 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount > maximum)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 					(totalCount.HasValue, expectationExpression is null) switch
 					{
 						(true, true) => $"found {matchingCount}",
@@ -53,11 +55,11 @@ public abstract partial class EnumerableQuantifier
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationForm),
 				"could not verify, because it was not enumerated completely");
 		}
 	}
