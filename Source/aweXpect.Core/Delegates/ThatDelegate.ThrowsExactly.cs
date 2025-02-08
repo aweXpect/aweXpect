@@ -15,6 +15,7 @@ public abstract partial class ThatDelegate
 	{
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<TException>(ExpectationBuilder
+				.AddConstraint(_ => new DelegateIsNotNullConstraint())
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
 				.AddConstraint(_ => new ThrowsExactlyCastConstraint<TException>(throwOptions))
 				.And(" "),
@@ -28,6 +29,7 @@ public abstract partial class ThatDelegate
 	{
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<Exception>(ExpectationBuilder
+				.AddConstraint(_ => new DelegateIsNotNullConstraint())
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
 				.AddConstraint(_ => new ThrowsExactlyCastConstraint(exceptionType, throwOptions))
 				.And(" "),

@@ -2,6 +2,7 @@
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
+using aweXpect.Core.Sources;
 
 namespace aweXpect.Delegates;
 
@@ -46,6 +47,20 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		}
 
 		return message;
+	}
+
+	private readonly struct DelegateIsNotNullConstraint : IValueConstraint<DelegateValue>
+	{
+		/// <inheritdoc />
+		public ConstraintResult IsMetBy(DelegateValue value)
+		{
+			if (value.IsNull)
+			{
+				return new ConstraintResult.Failure("", "it was <null>");
+			}
+
+			return new ConstraintResult.Success("");
+		}
 	}
 
 	internal class ThrowsOption

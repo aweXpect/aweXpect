@@ -11,14 +11,15 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains the <paramref name="expected" /> key.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>> ContainsKey<TKey,
-		TValue>(
-		this IThat<IDictionary<TKey, TValue>?> source,
-		TKey expected)
+	public static SingleValueResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue?>
+		ContainsKey<TKey, TValue>(
+			this IThat<IDictionary<TKey, TValue>?> source,
+			TKey expected)
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
 				new ContainKeyConstraint<TKey, TValue>(it, expected)),
-			source
+			source,
+			f => f.ContainsKey(expected) ? f[expected] : default
 		);
 
 	/// <summary>
