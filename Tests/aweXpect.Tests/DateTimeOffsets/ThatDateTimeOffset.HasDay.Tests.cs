@@ -17,7 +17,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day equal to {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -46,7 +46,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have day equal to <null>,
 					             but it had day 12
 					             """);
@@ -78,7 +78,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day greater than or equal to {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -107,7 +107,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have day greater than or equal to <null>,
 					             but it had day 12
 					             """);
@@ -139,7 +139,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day greater than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -156,7 +156,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day greater than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -173,7 +173,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have day greater than <null>,
 					             but it had day 12
 					             """);
@@ -193,7 +193,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day less than or equal to {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -234,7 +234,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have day less than or equal to <null>,
 					             but it had day 12
 					             """);
@@ -254,7 +254,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day less than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -283,7 +283,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day less than {Formatter.Format(expected)},
 					              but it had day 12
 					              """);
@@ -300,7 +300,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have day less than <null>,
 					             but it had day 12
 					             """);
@@ -332,7 +332,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have day not equal to {Formatter.Format(unexpected)},
 					              but it had day 12
 					              """);

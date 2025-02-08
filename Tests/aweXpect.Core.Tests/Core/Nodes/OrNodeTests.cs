@@ -36,7 +36,7 @@ public sealed class OrNodeTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected true to
+			             Expected that true
 			             be False or be False or imply False,
 			             but it was True and it did not
 			             """);

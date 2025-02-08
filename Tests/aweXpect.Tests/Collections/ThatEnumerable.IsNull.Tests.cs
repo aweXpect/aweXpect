@@ -32,7 +32,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be null,
 					             but it was []
 					             """);

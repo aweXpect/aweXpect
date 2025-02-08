@@ -226,7 +226,7 @@ public abstract class ExpectationBuilder
 	internal static string FromFailure(string subject, ConstraintResult.Failure failure)
 	{
 		StringBuilder sb = new();
-		sb.Append("Expected ").Append(subject).AppendLine(" to");
+		sb.Append("Expected that ").Append(subject).AppendLine();
 		sb.Append(failure.ExpectationText).AppendLine(",");
 		sb.Append("but ").Append(failure.ResultText);
 		return sb.ToString();

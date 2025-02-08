@@ -7,7 +7,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatBool
 {
-	private readonly struct BeValueConstraint(string it, bool expected) : IValueConstraint<bool>
+	private readonly struct IsEqualToConstraint(string it, bool expected) : IValueConstraint<bool>
 	{
 		public ConstraintResult IsMetBy(bool actual)
 		{
@@ -20,6 +20,6 @@ public static partial class ThatBool
 		}
 
 		public override string ToString()
-			=> $"be {Formatter.Format(expected)}";
+			=> $"is {Formatter.Format(expected)}";
 	}
 }

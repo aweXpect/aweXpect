@@ -29,7 +29,7 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be writable,
 					             but it was <null>
 					             """);
@@ -45,7 +45,7 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be writable,
 					             but it was
 					             """);

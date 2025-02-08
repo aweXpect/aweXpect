@@ -16,8 +16,8 @@ public sealed partial class ThatNullableBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be False, because we want to test the failure,
+					             Expected that subject
+					             is not False, because we want to test the failure,
 					             but it was False
 					             """);
 			}

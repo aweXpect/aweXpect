@@ -211,7 +211,7 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"start with {_expectedExpression}{_options}";
+			=> $"starts with {_expectedExpression}{_options}";
 	}
 
 	private readonly struct NotStartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
@@ -271,6 +271,6 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"not start with {_unexpectedExpression}{_options}";
+			=> $"does not start with {_unexpectedExpression}{_options}";
 	}
 }

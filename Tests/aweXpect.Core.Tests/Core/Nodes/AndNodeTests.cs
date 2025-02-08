@@ -40,7 +40,7 @@ public sealed class AndNodeTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected true to
+			             Expected that true
 			             be False and be True,
 			             but it was True
 			             """);
@@ -54,7 +54,7 @@ public sealed class AndNodeTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected true to
+			             Expected that true
 			             be False and be False and imply False,
 			             but it was True and it did not
 			             """);
@@ -68,7 +68,7 @@ public sealed class AndNodeTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected true to
+			             Expected that true
 			             be True and be False,
 			             but it was True
 			             """);

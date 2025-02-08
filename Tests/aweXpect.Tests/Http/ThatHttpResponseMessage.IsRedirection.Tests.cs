@@ -50,7 +50,7 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be redirection (status code 3xx),
 					             but it was <null>
 					             """);

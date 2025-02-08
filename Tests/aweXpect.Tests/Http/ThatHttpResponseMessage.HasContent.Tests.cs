@@ -21,7 +21,7 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have a string content equal to "other content",
 					             but it was "some content" which differs at index 0:
 					                ↓ (actual)
@@ -54,7 +54,7 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have a string content equal to "some content",
 					             but it was <null>
 					             """);

@@ -32,5 +32,5 @@ public class ContainsValueResult<TCollection, TThat, TKey, TValue>
 	///     Further expectations on the selected value of the dictionary.
 	/// </summary>
 	public IThat<TValue> WhoseValue
-		=> new ThatSubject<TValue>(_expectationBuilder.ForWhich(_memberAccessor, " whose value should ", $"value [{Formatter.Format(_key)}]"));
+		=> new ThatSubject<TValue>(_expectationBuilder.ForWhich(_memberAccessor, " whose value ", $"value [{Formatter.Format(_key)}]"));
 }

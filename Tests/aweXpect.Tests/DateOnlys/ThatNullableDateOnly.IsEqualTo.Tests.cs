@@ -18,7 +18,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -35,7 +35,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -64,7 +64,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -101,7 +101,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)} ± {tolerance} days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);

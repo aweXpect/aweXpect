@@ -17,7 +17,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have second equal to <null>,
 					             but it had second 15
 					             """);
@@ -34,7 +34,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second equal to {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -66,7 +66,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have second greater than or equal to <null>,
 					             but it had second 15
 					             """);
@@ -95,7 +95,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second greater than or equal to {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -127,7 +127,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have second greater than <null>,
 					             but it had second 15
 					             """);
@@ -156,7 +156,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second greater than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -173,7 +173,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second greater than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -193,7 +193,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have second less than or equal to <null>,
 					             but it had second 15
 					             """);
@@ -210,7 +210,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second less than or equal to {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -254,7 +254,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have second less than <null>,
 					             but it had second 15
 					             """);
@@ -271,7 +271,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second less than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -300,7 +300,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second less than {Formatter.Format(expected)},
 					              but it had second 15
 					              """);
@@ -332,7 +332,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have second not equal to {Formatter.Format(unexpected)},
 					              but it had second 15
 					              """);

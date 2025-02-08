@@ -16,7 +16,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have length equal to 0,
 					             but it was <null>
 					             """);
@@ -47,7 +47,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length equal to {length},
 					              but it had length {subject.Length}
 					              """);
@@ -79,7 +79,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have length greater than or equal to <null>,
 					             but it had length 3
 					             """);
@@ -108,7 +108,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length greater than or equal to {Formatter.Format(expected)},
 					              but it had length 3
 					              """);
@@ -140,7 +140,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have length greater than <null>,
 					             but it had length 3
 					             """);
@@ -169,7 +169,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length greater than {Formatter.Format(expected)},
 					              but it had length 3
 					              """);
@@ -186,7 +186,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length greater than {Formatter.Format(expected)},
 					              but it had length 3
 					              """);
@@ -206,7 +206,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have length less than or equal to <null>,
 					             but it had length 3
 					             """);
@@ -223,7 +223,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length less than or equal to {Formatter.Format(expected)},
 					              but it had length 3
 					              """);
@@ -267,7 +267,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have length less than <null>,
 					             but it had length 3
 					             """);
@@ -284,7 +284,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length less than {Formatter.Format(expected)},
 					              but it had length 3
 					              """);
@@ -313,7 +313,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length less than {Formatter.Format(expected)},
 					              but it had length 3
 					              """);
@@ -356,7 +356,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have length not equal to {length},
 					              but it had length {length}
 					              """);

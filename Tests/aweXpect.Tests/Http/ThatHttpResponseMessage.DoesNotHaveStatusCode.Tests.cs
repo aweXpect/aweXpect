@@ -52,7 +52,7 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have StatusCode different to 202 Accepted,
 					             but it was <null>
 					             """);

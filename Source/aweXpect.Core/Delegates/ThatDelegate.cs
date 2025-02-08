@@ -11,7 +11,7 @@ namespace aweXpect.Delegates;
 /// </summary>
 public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder)
 {
-	private static readonly string DoesNotThrowExpectation = "not throw any exception";
+	private static readonly string DoesNotThrowExpectation = "does not throw any exception";
 	private static readonly string ItWasNull = "it was <null>";
 
 	/// <summary>

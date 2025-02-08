@@ -18,7 +18,7 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be 9999-12-31T23:59:59.9999999, because we want to test the failure,
 					             but it was 9999-12-31T23:59:59.9999999
 					             """);
@@ -36,7 +36,7 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be 0001-01-01T00:00:00.0000000, because we want to test the failure,
 					             but it was 0001-01-01T00:00:00.0000000
 					             """);
@@ -66,7 +66,7 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be {Formatter.Format(unexpected)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -124,7 +124,7 @@ public sealed partial class ThatDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);

@@ -69,7 +69,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have at least 5 items equal to 1,
 					             but only 4 of 7 were
 					             """);
@@ -85,7 +85,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have at least one item equal to 0,
 					             but it was <null>
 					             """);

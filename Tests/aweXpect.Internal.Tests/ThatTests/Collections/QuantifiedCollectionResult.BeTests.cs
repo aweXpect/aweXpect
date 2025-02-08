@@ -19,7 +19,7 @@ public sealed partial class QuantifiedCollectionResult
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected subject to
+				             Expected that subject
 				             have all items be of type MyClass,
 				             but only 2 of 3 were
 				             """);

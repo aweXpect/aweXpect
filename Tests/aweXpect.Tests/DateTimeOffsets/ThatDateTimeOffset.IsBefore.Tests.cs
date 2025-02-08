@@ -17,7 +17,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be before <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -34,7 +34,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be before 9999-12-31T23:59:59.9999999+00:00,
 					             but it was 9999-12-31T23:59:59.9999999+00:00
 					             """);
@@ -51,7 +51,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be before 0001-01-01T00:00:00.0000000+00:00,
 					             but it was 0001-01-01T00:00:00.0000000+00:00
 					             """);
@@ -68,7 +68,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be before {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -85,7 +85,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be before {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -115,7 +115,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be before {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -133,7 +133,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be before {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);

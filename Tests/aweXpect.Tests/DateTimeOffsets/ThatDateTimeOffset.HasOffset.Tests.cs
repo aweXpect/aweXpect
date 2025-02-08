@@ -17,7 +17,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset equal to {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -49,7 +49,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have offset greater than or equal to <null>,
 					             but it had offset 2:00:00
 					             """);
@@ -78,7 +78,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset greater than or equal to {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -110,7 +110,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have offset greater than <null>,
 					             but it had offset 2:00:00
 					             """);
@@ -139,7 +139,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset greater than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -156,7 +156,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset greater than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -176,7 +176,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have offset less than or equal to <null>,
 					             but it had offset 2:00:00
 					             """);
@@ -193,7 +193,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset less than or equal to {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -237,7 +237,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have offset less than <null>,
 					             but it had offset 2:00:00
 					             """);
@@ -254,7 +254,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset less than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -283,7 +283,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset less than {Formatter.Format(expected)},
 					              but it had offset 2:00:00
 					              """);
@@ -315,7 +315,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have offset not equal to {Formatter.Format(unexpected)},
 					              but it had offset 2:00:00
 					              """);

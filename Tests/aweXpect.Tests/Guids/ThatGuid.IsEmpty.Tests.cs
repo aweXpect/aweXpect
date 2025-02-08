@@ -27,7 +27,7 @@ public sealed partial class ThatGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be empty,
 					              but it was {Formatter.Format(subject)}
 					              """);

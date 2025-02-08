@@ -43,7 +43,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected action to
+					             Expected that action
 					             throw an exception with an inner exception which should have Message equal to "foo",
 					             but it was "bar" which differs at index 0:
 					                ↓ (actual)
@@ -63,7 +63,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected action to
+					             Expected that action
 					             throw an exception with an inner exception,
 					             but it was <null>
 					             """);
@@ -90,7 +90,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected action to
+					             Expected that action
 					             throw an exception with an inner exception,
 					             but it was <null>
 					             """);

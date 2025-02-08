@@ -29,7 +29,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with "some",
 					             but it was "some text"
 					             """);
@@ -62,7 +62,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with "sOmE" using IgnoreCaseForVocalsComparer,
 					             but it was "some arbitrary text"
 					             """);
@@ -91,7 +91,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with "SOME" ignoring case,
 					             but it was "some text"
 					             """);

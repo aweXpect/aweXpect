@@ -29,7 +29,7 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);

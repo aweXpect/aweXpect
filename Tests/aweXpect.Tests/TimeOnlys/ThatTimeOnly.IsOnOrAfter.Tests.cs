@@ -18,7 +18,7 @@ public sealed partial class ThatTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -59,7 +59,7 @@ public sealed partial class ThatTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -101,7 +101,7 @@ public sealed partial class ThatTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -120,7 +120,7 @@ public sealed partial class ThatTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);

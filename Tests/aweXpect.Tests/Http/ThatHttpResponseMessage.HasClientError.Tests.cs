@@ -50,7 +50,7 @@ public sealed partial class ThatHttpResponseMessage
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have client error (status code 4xx),
 					             but it was <null>
 					             """);

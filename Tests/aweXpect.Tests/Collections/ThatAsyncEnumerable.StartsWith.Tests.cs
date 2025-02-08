@@ -82,7 +82,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             start with expected,
 					             but it contained 2 at index 1 instead of 3
 					             """);
@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             start with [1, 2, 3, 4],
 					             but it contained only 3 items and misses 1 items: [
 					               4
@@ -139,7 +139,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             start with [],
 					             but it was <null>
 					             """);

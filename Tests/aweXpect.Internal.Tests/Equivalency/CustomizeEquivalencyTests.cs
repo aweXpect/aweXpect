@@ -25,7 +25,7 @@ public sealed class CustomizeEquivalencyTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected actual to
+			             Expected that actual
 			             be equivalent to expected,
 			             but it was not:
 			               Element [0] differed:

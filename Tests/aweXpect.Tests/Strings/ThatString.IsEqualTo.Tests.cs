@@ -29,7 +29,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "some text",
 					             but it was <null>
 					             """);
@@ -46,7 +46,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to <null>,
 					             but it was "some text"
 					             """);
@@ -63,7 +63,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to " \t some text",
 					             but it was "some text" which misses some whitespace (" \t " at the beginning)
 					             """);
@@ -80,7 +80,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "some text \t ",
 					             but it was "some text" which misses some whitespace (" \t " at the end)
 					             """);
@@ -97,7 +97,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "some text",
 					             but it was " \t some text" which has unexpected whitespace (" \t " at the beginning)
 					             """);
@@ -114,7 +114,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "some text",
 					             but it was "some text \t " which has unexpected whitespace (" \t " at the end)
 					             """);
@@ -131,7 +131,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "some text with",
 					             but it was "some text without out" with a length of 21 which is longer than the expected length of 14 and has superfluous:
 					               "out out"
@@ -149,7 +149,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "some text without out",
 					             but it was "some text with" with a length of 14 which is shorter than the expected length of 21 and misses:
 					               "out out"
@@ -179,7 +179,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "expected other text",
 					             but it was "actual text" which differs at index 0:
 					                ↓ (actual)
@@ -204,7 +204,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be equal to {Formatter.Format(expected)} ignoring leading white-space,
 					              but it was {Formatter.Format(subject.TrimStart())} which differs at index {index}:
 					                 ↓ (actual)
@@ -226,7 +226,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be equal to {Formatter.Format(expected)} ignoring leading white-space,
 					              but it was {Formatter.Format(subject.TrimStart())} which differs on line {line} and column {column}:
 					                 ↓ (actual)
@@ -265,7 +265,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "foo\r\nbaz" ignoring newline style,
 					             but it was "foo\nbar" which differs on line 2 and column 3:
 					                       ↓ (actual)
@@ -305,7 +305,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "foo-bar" ignoring trailing white-space,
 					             but it was "foo-boo\nbaz" which differs on line 1 and column 6:
 					                     ↓ (actual)
@@ -326,7 +326,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to "foo-bar" ignoring trailing white-space,
 					             but it was "foo-boo" which differs at index 5:
 					                     ↓ (actual)

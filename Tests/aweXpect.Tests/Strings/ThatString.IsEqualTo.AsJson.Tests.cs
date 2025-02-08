@@ -38,7 +38,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             be JSON equivalent to {},
 						             but it differed as
 						               $.foo1 had unexpected Null and
@@ -83,7 +83,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             be JSON equivalent to {},
 						             but it differed as
 						               $.foo1 had unexpected Null and
@@ -109,7 +109,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
-						              Expected subject to
+						              Expected that subject
 						              be JSON equivalent to {expected},
 						              but could not parse expected: {errorMessage}
 						              """);
@@ -172,7 +172,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             be JSON equivalent to {
 						               "foo": 2.1,
 						               "bar": "bart",
@@ -207,7 +207,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreAdditionalProperties)
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             be JSON equivalent to {
 						               "foo": 1
 						             },
@@ -230,7 +230,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             be JSON equivalent to [1,2,3,4],
 						             but it differed as
 						               $[2] had missing 3 and
@@ -255,7 +255,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             be JSON equivalent to {"foo":[1,2]},
 						             but it differed as
 						               $.foo[2] had unexpected 3 and
@@ -279,7 +279,7 @@ public sealed partial class ThatString
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage($$"""
-						               Expected subject to
+						               Expected that subject
 						               be JSON equivalent to {},
 						               but could not parse subject: {{errorMessage}}
 						               """);

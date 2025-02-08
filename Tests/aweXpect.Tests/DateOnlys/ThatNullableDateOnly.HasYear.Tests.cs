@@ -18,7 +18,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year equal to <null>,
 					             but it had year 2010
 					             """);
@@ -35,7 +35,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year equal to <null>,
 					             but it was <null>
 					             """);
@@ -52,7 +52,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year equal to 1,
 					             but it was <null>
 					             """);
@@ -69,7 +69,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year equal to {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -101,7 +101,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year greater than or equal to <null>,
 					             but it had year 2010
 					             """);
@@ -130,7 +130,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year greater than or equal to {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -162,7 +162,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year greater than <null>,
 					             but it had year 2010
 					             """);
@@ -191,7 +191,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year greater than {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -208,7 +208,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year greater than {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -228,7 +228,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year less than or equal to <null>,
 					             but it had year 2010
 					             """);
@@ -245,7 +245,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year less than or equal to {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -289,7 +289,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have year less than <null>,
 					             but it had year 2010
 					             """);
@@ -306,7 +306,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year less than {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -335,7 +335,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year less than {Formatter.Format(expected)},
 					              but it had year 2010
 					              """);
@@ -403,7 +403,7 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have year not equal to {Formatter.Format(unexpected)},
 					              but it had year 2010
 					              """);

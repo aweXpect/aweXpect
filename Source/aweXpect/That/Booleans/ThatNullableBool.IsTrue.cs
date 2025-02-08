@@ -11,7 +11,7 @@ public static partial class ThatNullableBool
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsTrue(this IThat<bool?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeValueConstraint(it, true)),
+				=> new IsEqualToConstraint(it, true)),
 			source);
 
 	/// <summary>
@@ -19,6 +19,6 @@ public static partial class ThatNullableBool
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsNotTrue(this IThat<bool?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotBeValueConstraint(it, true)),
+				=> new IsNotEqualToConstraint(it, true)),
 			source);
 }

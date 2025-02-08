@@ -13,7 +13,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsEmpty(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeEmptyConstraint(it)),
+				new IsEmptyConstraint(it)),
 			source);
 
 	/// <summary>
@@ -25,7 +25,7 @@ public static partial class ThatString
 				new NotBeEmptyConstraint(it)),
 			source);
 
-	private readonly struct BeEmptyConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsEmptyConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -39,7 +39,7 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be empty";
+			=> "is empty";
 	}
 
 	private readonly struct NotBeEmptyConstraint(string it) : IValueConstraint<string?>
@@ -56,6 +56,6 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "not be empty";
+			=> "is not empty";
 	}
 }

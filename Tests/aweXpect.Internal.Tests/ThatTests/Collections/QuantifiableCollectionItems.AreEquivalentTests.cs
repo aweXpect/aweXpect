@@ -37,7 +37,7 @@ public sealed partial class QuantifiableCollectionItems
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected subject to
+				             Expected that subject
 				             have all items be equivalent to expected,
 				             but only 3 of 4 were
 				             """);

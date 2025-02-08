@@ -46,7 +46,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not throw any exception,
 					             but it was <null>
 					             """);
@@ -106,7 +106,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not throw any exception,
 					             but it was <null>
 					             """);

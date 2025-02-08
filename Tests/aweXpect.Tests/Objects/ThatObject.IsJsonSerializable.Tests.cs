@@ -25,7 +25,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as JSON,
 					             but it was not:
 					               Property Name was <null> instead of "foo"
@@ -57,7 +57,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as JSON,
 					             but it could not be deserialized: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'aweXpect.Tests.ThatObject+IsJsonSerializable+PocoWithPrivateConstructor'*
 					             """).AsWildcard();
@@ -85,7 +85,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as JSON,
 					             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+IsJsonSerializable+PocoWithoutDefaultConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object*
 					             """).AsWildcard();
@@ -107,7 +107,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>().OnlyIf(!includeFields)
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as JSON,
 					             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+IsJsonSerializable+PocoWithoutDefaultFieldConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled*
 					             """).AsWildcard();
@@ -123,7 +123,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as JSON,
 					             but it was <null>
 					             """);
@@ -169,7 +169,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as PocoWithIgnoredProperty JSON,
 					             but it was not:
 					               Property Name was <null> instead of "foo"
@@ -201,7 +201,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as PocoWithPrivateConstructor JSON,
 					             but it could not be deserialized: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'aweXpect.Tests.ThatObject+IsJsonSerializable+PocoWithPrivateConstructor'*
 					             """).AsWildcard();
@@ -229,7 +229,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as PocoWithoutDefaultConstructor JSON,
 					             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+IsJsonSerializable+PocoWithoutDefaultConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object*
 					             """).AsWildcard();
@@ -252,7 +252,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>().OnlyIf(!includeFields)
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as PocoWithoutDefaultFieldConstructor JSON,
 					             but it could not be deserialized: Each parameter in the deserialization constructor on type 'aweXpect.Tests.ThatObject+IsJsonSerializable+PocoWithoutDefaultFieldConstructor' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled*
 					             """).AsWildcard();
@@ -268,7 +268,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as SimplePocoWithPrimitiveTypes JSON,
 					             but it was <null>
 					             """);
@@ -296,7 +296,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be serializable as PocoWithIgnoredProperty JSON,
 					             but it was not assignable to PocoWithIgnoredProperty
 					             """);

@@ -42,7 +42,7 @@ public sealed partial class ThatDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be after {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -84,7 +84,7 @@ public sealed partial class ThatDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be after <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -103,7 +103,7 @@ public sealed partial class ThatDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be after {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -121,7 +121,7 @@ public sealed partial class ThatDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be after {Formatter.Format(unexpected)} ± 3 days,
 					              but it was {Formatter.Format(subject)}
 					              """);

@@ -33,7 +33,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be valid JSON,
 					             but it could not be parsed: The input does not contain any JSON tokens.*
 					             """).AsWildcard();
@@ -46,7 +46,7 @@ public sealed partial class ThatString
 			[InlineData("{\"foo\":1}}", "'}' is invalid after a single JSON value. Expected end of data")]
 			[InlineData("{}{\"foo\":1}", "'{' is invalid after a single JSON value. Expected end of data")]
 			[InlineData("[",
-				"Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed")]
+				"Expected that depth be zero at the end of the JSON payload. There is an open JSON object or array that should be closed")]
 			public async Task WhenActualIsInvalidJson_ShouldFail(string subject, string errorMessage)
 			{
 				async Task Act()
@@ -54,7 +54,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be valid JSON,
 					              but it could not be parsed: {errorMessage}*
 					              """).AsWildcard();
@@ -70,7 +70,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be valid JSON,
 					             but it was <null>
 					             """);
@@ -109,7 +109,7 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be valid JSON which should match [1, 3],
 					             but it differed as $[1] was 2 instead of 3
 					             """);

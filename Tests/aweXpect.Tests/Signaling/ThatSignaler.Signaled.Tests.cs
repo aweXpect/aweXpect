@@ -22,7 +22,7 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
+					             Expected that signaler
 					             have recorded the callback at least once,
 					             but it was never recorded
 					             """);
@@ -38,7 +38,7 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have recorded the callback at least once,
 					             but it was <null>
 					             """);
@@ -73,7 +73,7 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
+					             Expected that signaler
 					             have recorded the callback at least once,
 					             but it was never recorded
 					             """);
@@ -89,7 +89,7 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have recorded the callback at least once,
 					             but it was <null>
 					             """);

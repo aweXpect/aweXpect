@@ -43,7 +43,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items,
 					             but it contained 1 duplicate:
 					               1
@@ -60,7 +60,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items,
 					             but it contained 2 duplicates:
 					               1,
@@ -78,7 +78,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items,
 					             but it was <null>
 					             """);
@@ -130,7 +130,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
@@ -147,7 +147,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items,
 					             but it contained 1 duplicate:
 					               "a"
@@ -164,7 +164,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items,
 					             but it contained 2 duplicates:
 					               "a",
@@ -182,7 +182,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items,
 					             but it was <null>
 					             """);
@@ -223,7 +223,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
@@ -241,7 +241,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items for x => x.Value,
 					             but it contained 2 duplicates:
 					               1,
@@ -295,7 +295,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
@@ -313,7 +313,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
@@ -331,7 +331,7 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             only have unique items for x => x.Value,
 					             but it contained 2 duplicates:
 					               "a",

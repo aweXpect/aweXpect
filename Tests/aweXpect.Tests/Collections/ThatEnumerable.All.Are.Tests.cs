@@ -23,7 +23,7 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             have all items be of type MyClass,
 						             but not all were
 						             """);
@@ -64,7 +64,7 @@ public sealed partial class ThatEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             have all items be of type MyClass,
 						             but not all were
 						             """);

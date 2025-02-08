@@ -24,7 +24,7 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
+					             Expected that signaler
 					             have recorded the callback at least 2 times,
 					             but it was only recorded once
 					             """);
@@ -46,7 +46,7 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
+					             Expected that signaler
 					             have recorded the callback at least 3 times,
 					             but it was only recorded 2 times in [
 					               1,

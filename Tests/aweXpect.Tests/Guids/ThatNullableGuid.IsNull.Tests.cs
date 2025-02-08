@@ -16,7 +16,7 @@ public sealed partial class ThatNullableGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be null,
 					             but it was 00000000-0000-0000-0000-000000000000
 					             """);
@@ -32,7 +32,7 @@ public sealed partial class ThatNullableGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be null,
 					              but it was {Formatter.Format(subject)}
 					              """);

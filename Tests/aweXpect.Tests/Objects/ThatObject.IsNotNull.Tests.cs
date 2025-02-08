@@ -17,7 +17,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be null, because we want to test the failure,
 					             but it was
 					             """);
@@ -47,7 +47,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be null, because we want to test the failure,
 					             but it was
 					             """);

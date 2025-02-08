@@ -22,7 +22,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be an object and $.foo match true,
 					              but it was {kindString} instead of an object
 					              """);
@@ -41,7 +41,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be an object and $.foo match 2,
 					             but it differed as $.foo was 1 instead of 2
 					             """);
@@ -69,7 +69,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be an object and $.foo match 2 and $.bar match 1,
 					             but it differed as
 					               $.foo was 1 instead of 2 and
@@ -91,7 +91,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be an object and $.foo match 2 and $.bar be an object and $.bar.baz match 3 and $.bar.bat match 3,
 					             but it differed as
 					               $.foo was 1 instead of 2 and
@@ -110,7 +110,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be an object and $.bar match true,
 					             but it differed as property $.bar did not exist
 					             """);
@@ -131,7 +131,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be an object and $.foo be an object with 1 property,
 					             but it differed as property $.foo did not exist
 					             """);
@@ -148,7 +148,7 @@ public sealed partial class ThatJsonElement
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be an object with 3 properties,
 					             but it differed as $ had 2 properties
 					             """);

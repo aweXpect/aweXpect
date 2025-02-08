@@ -31,7 +31,7 @@ public sealed partial class ThatNullableEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not have value {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);

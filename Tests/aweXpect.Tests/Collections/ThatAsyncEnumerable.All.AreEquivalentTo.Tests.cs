@@ -35,7 +35,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             have all items equivalent to 1,
 						             but not all were
 						             """);
@@ -73,7 +73,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             have all items equivalent to 5,
 						             but not all were
 						             """);
@@ -102,7 +102,7 @@ public sealed partial class ThatAsyncEnumerable
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             have all items equivalent to 42,
 						             but it was <null>
 						             """);

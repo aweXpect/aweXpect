@@ -20,8 +20,8 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage($"""
 				              Expected all of the following to succeed:
-				               [01] Expected subjectA to be True
-				               [02] Expected subjectB to be True
+				               [01] Expected that subjectA be True
+				               [02] Expected that subjectB be True
 				              but
 				               [{(subjectB ? "01" : "02")}] it was False
 				              """);
@@ -43,9 +43,9 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
-				              [01] Expected subjectA to be equal to "subject A"
-				              [02] Expected subjectB to be equal to "subject B"
-				              [03] Expected subjectC to be equal to "subject C"
+				              [01] Expected that subjectA be equal to "subject A"
+				              [02] Expected that subjectB be equal to "subject B"
+				              [03] Expected that subjectC be equal to "subject C"
 				             but
 				              [02] it was "subject C" which differs at index 8:
 				                              ↓ (actual)
@@ -88,8 +88,8 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
-				              [01] Expected subjectA to be True
-				              [02] Expected subjectB to be True
+				              [01] Expected that subjectA be True
+				              [02] Expected that subjectB be True
 				             but
 				              [01] it was False
 				              [02] it was False
@@ -114,11 +114,11 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
-				              [01] Expected true to be True
+				              [01] Expected that true be True
 				               Expected all of the following to succeed:
-				                [02] Expected subjectA to be equal to "subject A"
-				                [03] Expected subjectB to be equal to "subject B"
-				                [04] Expected subjectC to be equal to "subject C"
+				                [02] Expected that subjectA be equal to "subject A"
+				                [03] Expected that subjectB be equal to "subject B"
+				                [04] Expected that subjectC be equal to "subject C"
 				             but
 				                [03] it was "some unexpected value" which differs at index 1:
 				                         ↓ (actual)
@@ -153,10 +153,10 @@ public class ExpectTests
 				.WithMessage("""
 				             Expected all of the following to succeed:
 				               Expected any of the following to succeed:
-				                [01] Expected subjectA to be True
-				                [02] Expected subjectB to be True
-				              [03] Expected subjectC to be True
-				              [04] Expected subjectD to be True
+				                [01] Expected that subjectA be True
+				                [02] Expected that subjectB be True
+				              [03] Expected that subjectC be True
+				              [04] Expected that subjectD be True
 				             but
 				                [01] it was False
 				                [02] it was False
@@ -192,8 +192,8 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
-				              [01] Expected subjectA to be True
-				              [02] Expected subjectB to be True
+				              [01] Expected that subjectA be True
+				              [02] Expected that subjectB be True
 				             but
 				              [01] it was False
 				              [02] it was False
@@ -216,9 +216,9 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
-				              [01] Expected subjectA to be equal to "subject A"
-				              [02] Expected subjectB to be equal to "subject B"
-				              [03] Expected subjectC to be equal to "subject C"
+				              [01] Expected that subjectA be equal to "subject A"
+				              [02] Expected that subjectB be equal to "subject B"
+				              [03] Expected that subjectC be equal to "subject C"
 				             but
 				              [01] it was "subject X" which differs at index 8:
 				                              ↓ (actual)
@@ -270,11 +270,11 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected any of the following to succeed:
-				              [01] Expected false to be True
+				              [01] Expected that false be True
 				               Expected any of the following to succeed:
-				                [02] Expected subjectA to be equal to "subject A"
-				                [03] Expected subjectB to be equal to "subject B"
-				                [04] Expected subjectC to be equal to "subject C"
+				                [02] Expected that subjectA be equal to "subject A"
+				                [03] Expected that subjectB be equal to "subject B"
+				                [04] Expected that subjectC be equal to "subject C"
 				             but
 				              [01] it was False
 				                [02] it was "subject X" which differs at index 8:
@@ -318,7 +318,7 @@ public class ExpectTests
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
 				             Expected all of the following to succeed:
-				              [01] Expected true to expectation
+				              [01] Expected that true expectation
 				                   over
 				                   multiple
 				                   lines
@@ -350,10 +350,10 @@ public class ExpectTests
 				.WithMessage("""
 				             Expected any of the following to succeed:
 				               Expected all of the following to succeed:
-				                [01] Expected subjectA to be True
-				                [02] Expected subjectB to be True
-				              [03] Expected subjectC to be True
-				              [04] Expected subjectD to be True
+				                [01] Expected that subjectA be True
+				                [02] Expected that subjectB be True
+				              [03] Expected that subjectC be True
+				              [04] Expected that subjectD be True
 				             but
 				                [01] it was False
 				              [03] it was False

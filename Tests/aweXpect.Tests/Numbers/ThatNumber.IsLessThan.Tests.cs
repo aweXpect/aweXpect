@@ -18,7 +18,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -35,7 +35,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -63,7 +63,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -84,7 +84,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -126,7 +126,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -142,7 +142,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -160,7 +160,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -188,7 +188,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -204,7 +204,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -222,7 +222,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -251,7 +251,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -268,7 +268,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -307,7 +307,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -324,7 +324,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -352,7 +352,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -381,7 +381,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -398,7 +398,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -419,7 +419,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -450,7 +450,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -468,7 +468,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -496,7 +496,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -514,7 +514,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -542,7 +542,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -571,7 +571,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -588,7 +588,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -617,7 +617,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -634,7 +634,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -663,7 +663,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -680,7 +680,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -709,7 +709,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -726,7 +726,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -755,7 +755,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -772,7 +772,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -801,7 +801,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -818,7 +818,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -847,7 +847,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
@@ -865,7 +865,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -882,7 +882,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -911,7 +911,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -928,7 +928,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -957,7 +957,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -974,7 +974,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -1003,7 +1003,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -1020,7 +1020,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -1049,7 +1049,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -1067,7 +1067,7 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);

@@ -67,7 +67,7 @@ public partial class StringEqualityOptions
 			=> useActiveGrammaticVoice switch
 			{
 				true =>
-					$"match {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+					$"matches {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				false =>
 					$"matching {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
 			};

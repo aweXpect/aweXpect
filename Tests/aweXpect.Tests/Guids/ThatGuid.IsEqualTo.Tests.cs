@@ -17,7 +17,7 @@ public sealed partial class ThatGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -34,7 +34,7 @@ public sealed partial class ThatGuid
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);

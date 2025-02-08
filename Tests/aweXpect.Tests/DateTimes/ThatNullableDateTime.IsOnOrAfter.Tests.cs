@@ -17,7 +17,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -58,7 +58,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -100,7 +100,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -118,7 +118,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be on or after {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);

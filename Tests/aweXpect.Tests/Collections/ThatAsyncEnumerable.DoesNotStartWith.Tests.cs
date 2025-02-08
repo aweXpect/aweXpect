@@ -44,7 +44,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with ["foo"] ignoring case,
 					             but it did start with [
 					               "FOO"
@@ -63,7 +63,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with unexpected equivalent,
 					             but it did start with [
 					               MyClass {
@@ -89,7 +89,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with [1, 2, 3],
 					             but it did start with [
 					               1,
@@ -121,7 +121,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with [],
 					             but it was <null>
 					             """);
@@ -138,7 +138,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with unexpected,
 					             but it did start with [
 					               "foo",
@@ -168,7 +168,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not start with [],
 					             but it was [
 					               1,

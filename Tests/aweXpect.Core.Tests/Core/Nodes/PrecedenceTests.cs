@@ -12,7 +12,7 @@ public sealed class PrecedenceTests
 
 			await That(Act).ThrowsException()
 				.WithMessage("""
-				             Expected true to
+				             Expected that true
 				             be False and be True or be False,
 				             but it was True
 				             """);
@@ -26,7 +26,7 @@ public sealed class PrecedenceTests
 
 			await That(Act).ThrowsException()
 				.WithMessage("""
-				             Expected true to
+				             Expected that true
 				             be False and be True or be True and be False,
 				             but it was True
 				             """);
@@ -49,7 +49,7 @@ public sealed class PrecedenceTests
 
 			await That(Act).ThrowsException()
 				.WithMessage("""
-				             Expected true to
+				             Expected that true
 				             be False or be True and be False,
 				             but it was True
 				             """);
@@ -63,7 +63,7 @@ public sealed class PrecedenceTests
 
 			await That(Act).ThrowsException()
 				.WithMessage("""
-				             Expected true to
+				             Expected that true
 				             be True and be False or be False,
 				             but it was True
 				             """);

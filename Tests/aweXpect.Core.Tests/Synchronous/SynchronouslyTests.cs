@@ -50,7 +50,7 @@ public class SynchronouslyTests
 
 		Synchronously.Verify(That(Act).Throws<XunitException>()
 			.WithMessage("""
-			             Expected value to
+			             Expected that value
 			             be equal to 2,
 			             but it was 3
 			             """));

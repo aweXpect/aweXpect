@@ -68,7 +68,7 @@ public abstract partial class ThatDelegate
 				return DoesNotThrowExpectation;
 			}
 
-			return $"throw {exceptionType.Name.PrependAOrAn()}";
+			return $"throws {exceptionType.Name.PrependAOrAn()}";
 		}
 	}
 
@@ -108,8 +108,8 @@ public abstract partial class ThatDelegate
 			}
 
 			return typeof(TException) == typeof(Exception)
-				? "throw an exception"
-				: $"throw {typeof(TException).Name.PrependAOrAn()}";
+				? "throws an exception"
+				: $"throws {typeof(TException).Name.PrependAOrAn()}";
 		}
 	}
 }

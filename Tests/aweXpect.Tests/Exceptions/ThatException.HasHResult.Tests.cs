@@ -18,7 +18,7 @@ public sealed partial class ThatException
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have HResult {expectedHResult},
 					              but it had HResult {hResult}
 					              """);
@@ -46,7 +46,7 @@ public sealed partial class ThatException
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have HResult 1,
 					             but it was <null>
 					             """);

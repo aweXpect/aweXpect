@@ -55,7 +55,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
+					             Expected that recording
 					             have recorded the CustomEvent event on sut at least 3 times,
 					             but it was recorded once in [
 					               CustomEvent()
@@ -78,7 +78,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
+					             Expected that recording
 					             have recorded the CustomEvent event on sut at least 3 times,
 					             but it was recorded 2 times in [
 					               CustomEvent("foo"),
@@ -97,7 +97,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have recorded the CustomEvent event at least once,
 					             but it was <null>
 					             """);

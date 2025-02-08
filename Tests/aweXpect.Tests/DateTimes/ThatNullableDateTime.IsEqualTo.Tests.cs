@@ -85,7 +85,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -103,7 +103,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)}, because we also test the kind property,
 					              but it differed in the Kind property
 					              """);
@@ -135,7 +135,7 @@ public sealed partial class ThatNullableDateTime
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);

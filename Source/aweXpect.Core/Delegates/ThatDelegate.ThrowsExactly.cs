@@ -69,7 +69,7 @@ public abstract partial class ThatDelegate
 				return DoesNotThrowExpectation;
 			}
 
-			return $"throw exactly {typeof(TException).Name.PrependAOrAn()}";
+			return $"throws exactly {typeof(TException).Name.PrependAOrAn()}";
 		}
 	}
 
@@ -108,7 +108,7 @@ public abstract partial class ThatDelegate
 				return DoesNotThrowExpectation;
 			}
 
-			return $"throw exactly {exceptionType.Name.PrependAOrAn()}";
+			return $"throws exactly {exceptionType.Name.PrependAOrAn()}";
 		}
 	}
 }

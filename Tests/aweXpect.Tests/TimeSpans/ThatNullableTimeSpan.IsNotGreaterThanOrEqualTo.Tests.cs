@@ -17,7 +17,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be greater than or equal to the maximum time span,
 					             but it was the maximum time span
 					             """);
@@ -34,7 +34,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be greater than or equal to the minimum time span,
 					             but it was the minimum time span
 					             """);
@@ -51,7 +51,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be greater than or equal to {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -68,7 +68,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be greater than or equal to {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -98,7 +98,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be greater than or equal to <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -117,7 +117,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be greater than or equal to {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
@@ -135,7 +135,7 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              not be greater than or equal to {Formatter.Format(unexpected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);

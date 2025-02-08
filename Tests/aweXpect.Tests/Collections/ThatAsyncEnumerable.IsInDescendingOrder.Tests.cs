@@ -21,7 +21,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order,
 					             but it had 1 before 3 which is not in descending order in [
 					               3,
@@ -54,7 +54,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order,
 					             but it was <null>
 					             """);
@@ -73,7 +73,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order,
 					             but it had "A" before "a" which is not in descending order in [
 					               "A",
@@ -103,7 +103,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order,
 					             but it had "a" before "c" which is not in descending order in [
 					               "c",
@@ -135,7 +135,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order,
 					             but it was <null>
 					             """);
@@ -154,7 +154,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order for x => x.Value,
 					             but it had 1 before 3 which is not in descending order in [
 					               MyIntClass {
@@ -205,7 +205,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order for x => x.Value,
 					             but it had "A" before "a" which is not in descending order in [
 					               MyStringClass {
@@ -241,7 +241,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be in descending order for x => x.Value,
 					             but it had "a" before "c" which is not in descending order in [
 					               MyStringClass {

@@ -18,12 +18,12 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint(it, expected, options)),
+				new IsEqualToConstraint(it, expected, options)),
 			source,
 			options);
 	}
 
-	private readonly struct BeConstraint(string it, string? expected, StringEqualityOptions options)
+	private readonly struct IsEqualToConstraint(string it, string? expected, StringEqualityOptions options)
 		: IValueConstraint<string?>
 	{
 		/// <inheritdoc />

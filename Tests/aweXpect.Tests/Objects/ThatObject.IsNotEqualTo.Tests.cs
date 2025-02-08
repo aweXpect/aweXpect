@@ -17,7 +17,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be equal to subject, because we want to test the failure,
 					             but it was MyClass {
 					               Value = 0
@@ -48,7 +48,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be equal to expected,
 					             but it was <null>
 					             """);
@@ -80,7 +80,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be equal to unexpected, because we want to test the failure,
 					             but it was 'c'
 					             """);
@@ -113,7 +113,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be equal to unexpected, because we want to test the failure,
 					             but it was 'c'
 					             """);
@@ -142,7 +142,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not be equal to expected,
 					             but it was <null>
 					             """);
@@ -172,7 +172,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
+					             Expected that sut
 					             not be equal to unexpected,
 					             but it was float
 					             """);

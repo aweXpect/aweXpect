@@ -16,7 +16,7 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
-				             Expected sut to
+				             Expected that sut
 				             be equal to "FOO\nBAR",
 				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
@@ -36,7 +36,7 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
+				             Expected that sut
 				             be equal to "bar",
 				             but it was "foo" which differs at index 0:
 				                ↓ (actual)
@@ -56,7 +56,7 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
+				             Expected that sut
 				             be equal to "\tsomething\r\nelse",
 				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
@@ -97,7 +97,7 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
+				             Expected that sut
 				             be equal to <null>,
 				             but it was "foo"
 				             """);
@@ -135,7 +135,7 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
+				             Expected that sut
 				             be equal to "",
 				             but it was <null>
 				             """);

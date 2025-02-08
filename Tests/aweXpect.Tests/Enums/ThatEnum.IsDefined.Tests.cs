@@ -27,7 +27,7 @@ public sealed partial class ThatEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              be defined,
 					              but it was {Formatter.Format(subject)}
 					              """);

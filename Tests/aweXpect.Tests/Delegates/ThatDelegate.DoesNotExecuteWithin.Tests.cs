@@ -47,7 +47,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not execute within 0:00.500,
 					             but it was <null>
 					             """);
@@ -93,7 +93,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not execute within 0:00.500,
 					             but it was <null>
 					             """);
@@ -139,7 +139,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not execute within 0:00.500,
 					             but it was <null>
 					             """);
@@ -159,7 +159,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
+						             Expected that Delegate
 						             not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
@@ -186,7 +186,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             not execute within 0:00.500,
 						             but it was <null>
 						             """);
@@ -208,7 +208,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
+						             Expected that Delegate
 						             not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
@@ -236,7 +236,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             not execute within 0:00.500,
 						             but it was <null>
 						             """);
@@ -259,7 +259,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
+						             Expected that Delegate
 						             not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
@@ -287,7 +287,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             not execute within 0:00.500,
 						             but it was <null>
 						             """);
@@ -309,7 +309,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected Delegate to
+						             Expected that Delegate
 						             not execute within 0:05,
 						             but it took only *
 						             """).AsWildcard();
@@ -336,7 +336,7 @@ public sealed partial class ThatDelegate
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
-						             Expected subject to
+						             Expected that subject
 						             not execute within 0:00.500,
 						             but it was <null>
 						             """);
@@ -383,7 +383,7 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not execute within 0:00.500,
 					             but it was <null>
 					             """);

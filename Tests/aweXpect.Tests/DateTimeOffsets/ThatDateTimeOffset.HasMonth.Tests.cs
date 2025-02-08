@@ -17,7 +17,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have month equal to <null>,
 					             but it had month 11
 					             """);
@@ -34,7 +34,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month equal to {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -66,7 +66,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have month greater than or equal to <null>,
 					             but it had month 11
 					             """);
@@ -95,7 +95,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month greater than or equal to {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -127,7 +127,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have month greater than <null>,
 					             but it had month 11
 					             """);
@@ -156,7 +156,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month greater than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -173,7 +173,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month greater than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -193,7 +193,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have month less than or equal to <null>,
 					             but it had month 11
 					             """);
@@ -210,7 +210,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month less than or equal to {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -254,7 +254,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have month less than <null>,
 					             but it had month 11
 					             """);
@@ -271,7 +271,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month less than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -300,7 +300,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month less than {Formatter.Format(expected)},
 					              but it had month 11
 					              """);
@@ -332,7 +332,7 @@ public sealed partial class ThatDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
+					              Expected that subject
 					              have month not equal to {Formatter.Format(unexpected)},
 					              but it had month 11
 					              """);

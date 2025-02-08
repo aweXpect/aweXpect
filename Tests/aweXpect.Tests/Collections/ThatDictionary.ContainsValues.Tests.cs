@@ -29,7 +29,7 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have values [42, 2],
 					             but it did not have [
 					               2
@@ -51,7 +51,7 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             have values ["foo", "bar"],
 					             but it was <null>
 					             """);

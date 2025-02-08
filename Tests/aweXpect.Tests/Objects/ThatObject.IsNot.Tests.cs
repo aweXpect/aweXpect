@@ -57,7 +57,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
-					               Expected subject to
+					               Expected that subject
 					               not be type MyBaseClass, because we want to test the failure,
 					               but it was MyClass {
 					                 Value = {{value}}
@@ -91,7 +91,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
-					               Expected subject to
+					               Expected that subject
 					               not be type MyClass, because {{reason}},
 					               but it was MyClass {
 					                 Value = {{value}}
@@ -153,7 +153,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
-					               Expected subject to
+					               Expected that subject
 					               not be type MyBaseClass, because we want to test the failure,
 					               but it was MyClass {
 					                 Value = {{value}}
@@ -187,7 +187,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
-					               Expected subject to
+					               Expected that subject
 					               not be type MyClass, because {{reason}},
 					               but it was MyClass {
 					                 Value = {{value}}

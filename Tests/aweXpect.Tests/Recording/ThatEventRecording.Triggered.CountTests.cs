@@ -28,7 +28,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected recording to
+					              Expected that recording
 					              have recorded the CustomEvent event on sut at least {(minimum == 1 ? "once" : $"{minimum} times")},
 					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 					              """).AsWildcard();
@@ -54,7 +54,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected recording to
+					              Expected that recording
 					              have recorded the CustomEvent event on sut at most {(maximum == 1 ? "once" : $"{maximum} times")},
 					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 					              """).AsWildcard();
@@ -82,7 +82,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected recording to
+					              Expected that recording
 					              have recorded the CustomEvent event on sut between {minimum} and {maximum} times,
 					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 					              """).AsWildcard();
@@ -108,7 +108,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected recording to
+					              Expected that recording
 					              have recorded the CustomEvent event on sut exactly {(expected == 1 ? "once" : $"{expected} times")},
 					              but it was recorded {(count == 1 ? "once" : $"{count} times")} in *
 					              """).AsWildcard();
@@ -130,7 +130,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
-					             Expected recording to
+					             Expected that recording
 					             have never recorded the CustomEvent event on sut,
 					             but it was recorded once in *
 					             """).AsWildcard();
@@ -153,7 +153,7 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected recording to
+					              Expected that recording
 					              have recorded the CustomEvent event on sut exactly once,
 					              but it was {(count == 0 ? "never recorded" : $"recorded {count} times")} in *
 					              """).AsWildcard();

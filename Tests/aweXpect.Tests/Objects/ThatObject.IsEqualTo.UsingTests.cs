@@ -22,7 +22,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             be equal to expected using MyComparer,
 					             but it was OuterClass {
 					               Inner = <null>,
