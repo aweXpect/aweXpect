@@ -48,7 +48,7 @@ public static partial class ThatHttpResponseMessage
 			=> expectation;
 	}
 
-	private static class HttpResponseMessageFormatter
+	internal static class HttpResponseMessageFormatter
 	{
 		public static async Task<string> Format(
 			HttpResponseMessage response,

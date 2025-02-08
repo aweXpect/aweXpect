@@ -6,9 +6,9 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatHttpResponseMessage
 {
-	public sealed class HasStatusCode
+	public sealed partial class HasStatusCode
 	{
-		public sealed class Tests
+		public sealed class EqualToTests
 		{
 			[Fact]
 			public async Task WhenFailing_ShouldIncludeRequestInMessage()
@@ -20,13 +20,13 @@ public sealed partial class ThatHttpResponseMessage
 					.WithRequestContent("request content");
 
 				async Task Act()
-					=> await That(subject).HasStatusCode(HttpStatusCode.OK);
+					=> await That(subject).HasStatusCode().EqualTo(HttpStatusCode.OK);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has StatusCode 200 OK,
-					             but it was 400 BadRequest:
+					             has status code 200 OK,
+					             but it had status code 400 BadRequest:
 					               HTTP/1.1 400 BadRequest
 					               some content
 					               The originating request was:
@@ -43,13 +43,13 @@ public sealed partial class ThatHttpResponseMessage
 					.WithContent("some content");
 
 				async Task Act()
-					=> await That(subject).HasStatusCode(HttpStatusCode.OK);
+					=> await That(subject).HasStatusCode().EqualTo(HttpStatusCode.OK);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has StatusCode 200 OK,
-					             but it was 400 BadRequest:
+					             has status code 200 OK,
+					             but it had status code 400 BadRequest:
 					               HTTP/1.1 400 BadRequest
 					               some content
 					               The originating request was <null>
@@ -63,7 +63,7 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(HttpStatusCode.BadRequest);
 
 				async Task Act()
-					=> await That(subject).HasStatusCode(HttpStatusCode.OK);
+					=> await That(subject).HasStatusCode().EqualTo(HttpStatusCode.OK);
 
 				await That(Act).Throws<XunitException>();
 			}
@@ -80,7 +80,7 @@ public sealed partial class ThatHttpResponseMessage
 					.WithStatusCode(statusCode);
 
 				async Task Act()
-					=> await That(subject).HasStatusCode(expected);
+					=> await That(subject).HasStatusCode().EqualTo(expected);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -91,12 +91,12 @@ public sealed partial class ThatHttpResponseMessage
 				HttpResponseMessage? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasStatusCode(HttpStatusCode.Accepted);
+					=> await That(subject).HasStatusCode().EqualTo(HttpStatusCode.Accepted);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has StatusCode 202 Accepted,
+					             has status code 202 Accepted,
 					             but it was <null>
 					             """);
 			}

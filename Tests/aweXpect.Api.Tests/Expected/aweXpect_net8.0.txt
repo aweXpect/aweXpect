@@ -27,6 +27,17 @@ namespace aweXpect
         public static TSelf AsJson<TType, TThat, TSelf>(this aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> result, System.Func<aweXpect.Json.JsonOptions, aweXpect.Json.JsonOptions>? options = null)
             where TSelf : aweXpect.Results.StringEqualityResult<TType, TThat, TSelf> { }
     }
+    public class StatusCodeResult
+    {
+        public StatusCodeResult(aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, System.Func<System.Net.Http.HttpResponseMessage?, System.Net.HttpStatusCode?> mapper) { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> ClientError() { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> DifferentTo(System.Net.HttpStatusCode? unexpected) { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> EqualTo(System.Net.HttpStatusCode? expected) { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> Error() { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> Redirection() { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> ServerError() { }
+        public aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage?, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> Success() { }
+    }
     public static class ThatAsyncEnumerable
     {
         public static aweXpect.ThatAsyncEnumerable.Elements All(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?> subject) { }
@@ -343,13 +354,9 @@ namespace aweXpect
     public static class ThatHttpResponseMessage
     {
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> DoesNotHaveStatusCode(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, System.Net.HttpStatusCode unexpected) { }
-        public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HasClientError(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
         public static aweXpect.Results.StringEqualityTypeResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HasContent(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, string expected) { }
-        public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HasError(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
-        public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HasServerError(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
+        public static aweXpect.StatusCodeResult HasStatusCode(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
         public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> HasStatusCode(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source, System.Net.HttpStatusCode expected) { }
-        public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> IsRedirection(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
-        public static aweXpect.Results.AndOrResult<System.Net.Http.HttpResponseMessage, aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?>> IsSuccess(this aweXpect.Core.IThat<System.Net.Http.HttpResponseMessage?> source) { }
     }
     public static class ThatJsonElement
     {
