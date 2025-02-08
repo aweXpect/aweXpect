@@ -27,17 +27,9 @@ public class ContainsValuesResult<TCollection, TThat, TValue>
 	/// <summary>
 	///     Further expectations on the selected values of the dictionary.
 	/// </summary>
-#if DEBUG // TODO: Replace after Core update
 	public ThatEnumerable.Elements<TValue> WhoseValues
 		=> new(
 			new ThatSubject<IEnumerable<TValue>>(_expectationBuilder
 				.ForWhich(_memberAccessor, " whose values should ", "the values")),
 			EnumerableQuantifier.All);
-#else
-	public ThatEnumerable.Elements<TValue> WhoseValues
-		=> new(
-			new ThatSubject<IEnumerable<TValue>>(_expectationBuilder
-				.ForWhich(_memberAccessor, " whose values should ")),
-			EnumerableQuantifier.All);
-#endif
 }
