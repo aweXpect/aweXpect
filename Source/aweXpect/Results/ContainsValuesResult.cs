@@ -10,17 +10,22 @@ namespace aweXpect.Results;
 /// <remarks>
 ///     <seealso cref="AndOrResult{TCollection, TThat}" />
 /// </remarks>
-public class ContainsValuesResult<TCollection, TThat, TValue>
+public class ContainsValuesResult<TCollection, TThat, TKey, TValue>
 	: AndOrResult<TCollection, TThat>
 {
 	private readonly ExpectationBuilder _expectationBuilder;
+	private readonly TKey[] _keys;
 	private readonly Func<TCollection, IEnumerable<TValue>> _memberAccessor;
 
-	internal ContainsValuesResult(ExpectationBuilder expectationBuilder, TThat returnValue,
+	internal ContainsValuesResult(
+		ExpectationBuilder expectationBuilder,
+		TThat returnValue,
+		TKey[] keys,
 		Func<TCollection, IEnumerable<TValue>> memberAccessor)
 		: base(expectationBuilder, returnValue)
 	{
 		_expectationBuilder = expectationBuilder;
+		_keys = keys;
 		_memberAccessor = memberAccessor;
 	}
 
@@ -30,6 +35,6 @@ public class ContainsValuesResult<TCollection, TThat, TValue>
 	public ThatEnumerable.Elements<TValue> WhoseValues
 		=> new(
 			new ThatSubject<IEnumerable<TValue>>(_expectationBuilder
-				.ForWhich(_memberAccessor, " whose values should ", "the values")),
+				.ForWhich(_memberAccessor, " whose values should ", $"values {Formatter.Format(_keys)}")),
 			EnumerableQuantifier.All);
 }
