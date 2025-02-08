@@ -576,6 +576,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -674,7 +680,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -776,7 +783,8 @@ window.BENCHMARK_DATA = {
           154.661318953832,
           153.73760930697122,
           162.45414174397786,
-          160.94222265879313
+          160.94222265879313,
+          153.79470971914438
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -883,6 +891,7 @@ window.BENCHMARK_DATA = {
           496,
           496,
           496,
+          504,
           504
         ],
         "borderColor": "#63A2AC",
@@ -993,7 +1002,8 @@ window.BENCHMARK_DATA = {
           199.53473583857217,
           202.74606437683104,
           202.8310240427653,
-          192.54370443026224
+          192.54370443026224,
+          212.89853165944416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1031,6 +1041,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1210,7 +1221,8 @@ window.BENCHMARK_DATA = {
           663.3916956583658,
           649.5010140101115,
           670.9231433232625,
-          674.6236026128133
+          674.6236026128133,
+          634.8006659825643
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1271,6 +1283,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1445,6 +1458,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -1466,7 +1485,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -1491,7 +1511,8 @@ window.BENCHMARK_DATA = {
           304603.2088448661,
           277586.92008463544,
           285851.6915039063,
-          283691.71207682294
+          283691.71207682294,
+          284740.8532017299
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1521,6 +1542,7 @@ window.BENCHMARK_DATA = {
           284900,
           284900,
           284900,
+          284908,
           284908
         ],
         "borderColor": "#63A2AC",
@@ -1554,7 +1576,8 @@ window.BENCHMARK_DATA = {
           2073854.02109375,
           2209188.254464286,
           2027375.72265625,
-          2002358.4959635416
+          2002358.4959635416,
+          2029308.1729166666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1566,6 +1589,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1617,7 +1641,8 @@ window.BENCHMARK_DATA = {
           688232.3214192708,
           707176.4744001116,
           683322.1306340144,
-          672234.544782366
+          672234.544782366,
+          628508.1697265625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1629,6 +1654,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          836377,
           836377,
           836377,
           836377,
@@ -2237,6 +2263,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -2335,7 +2367,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -2437,7 +2470,8 @@ window.BENCHMARK_DATA = {
           374.43726304372154,
           386.93885353633334,
           371.19785261154175,
-          590.5544319886428
+          590.5544319886428,
+          512.1551565170288
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2544,6 +2578,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           888,
+          1088,
           1088
         ],
         "borderColor": "#63A2AC",
@@ -2654,7 +2689,8 @@ window.BENCHMARK_DATA = {
           458.6932507832845,
           466.60972080230715,
           431.7677124341329,
-          413.9738572438558
+          413.9738572438558,
+          411.4011170182909
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2692,6 +2728,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -2871,7 +2908,8 @@ window.BENCHMARK_DATA = {
           15886.866740635463,
           14998.045378621418,
           15134.656136067708,
-          18023.774935913087
+          18023.774935913087,
+          15942.362714494977
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2932,6 +2970,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -3568,6 +3607,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -3666,7 +3711,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -3768,7 +3814,8 @@ window.BENCHMARK_DATA = {
           202.45698351860045,
           217.24443457921345,
           206.8598089536031,
-          195.53661273206984
+          195.53661273206984,
+          192.51070130666096
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3875,6 +3922,7 @@ window.BENCHMARK_DATA = {
           848,
           848,
           848,
+          856,
           856
         ],
         "borderColor": "#63A2AC",
@@ -3985,7 +4033,8 @@ window.BENCHMARK_DATA = {
           199.07772518793743,
           221.61246547698974,
           203.30073087556022,
-          250.34317324711725
+          250.34317324711725,
+          227.675555229187
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4023,6 +4072,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -4202,7 +4252,8 @@ window.BENCHMARK_DATA = {
           994.8555949529012,
           1029.8518976484027,
           988.0927816118513,
-          1020.1133197784424
+          1020.1133197784424,
+          1004.0259765897479
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4263,6 +4314,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -4899,6 +4951,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -4997,7 +5055,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -5099,7 +5158,8 @@ window.BENCHMARK_DATA = {
           345.27203534444175,
           331.4345299402873,
           333.43487313588463,
-          311.7837176640829
+          311.7837176640829,
+          316.9929438829422
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5206,6 +5266,7 @@ window.BENCHMARK_DATA = {
           928,
           928,
           928,
+          936,
           936
         ],
         "borderColor": "#63A2AC",
@@ -5316,7 +5377,8 @@ window.BENCHMARK_DATA = {
           440.76762177149453,
           480.552694384257,
           438.189592054912,
-          552.9477722304208
+          552.9477722304208,
+          417.8204117457072
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5354,6 +5416,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -5533,7 +5596,8 @@ window.BENCHMARK_DATA = {
           1055.2762859344482,
           1131.8538427352905,
           1043.9529182434082,
-          1009.6551688267634
+          1009.6551688267634,
+          1021.2678555079868
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5594,6 +5658,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -6230,6 +6295,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -6328,7 +6399,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -6430,7 +6502,8 @@ window.BENCHMARK_DATA = {
           1282.6404687336512,
           1272.8651862825666,
           1222.7439421335855,
-          1200.5403307596841
+          1200.5403307596841,
+          1195.5122802440937
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6537,6 +6610,7 @@ window.BENCHMARK_DATA = {
           2504,
           2504,
           2504,
+          2536,
           2536
         ],
         "borderColor": "#63A2AC",
@@ -6647,7 +6721,8 @@ window.BENCHMARK_DATA = {
           1312.9809714726039,
           1325.2573818206788,
           1275.8848793029786,
-          1213.7145041147867
+          1213.7145041147867,
+          1191.7710747037615
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6685,6 +6760,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -6864,7 +6940,8 @@ window.BENCHMARK_DATA = {
           2461.3456329345704,
           2426.682197570801,
           2369.6660789489747,
-          2363.285945892334
+          2363.285945892334,
+          2397.3624811808268
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6925,6 +7002,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -7561,6 +7639,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:08:45 2025 \u002B0100",
         "message": "refactor!: remove \u0022should\u0022 from expectation text (#322)"
+      },
+      {
+        "sha": "85b5ef1879e5fa2f54eb71d0a34aed62cd657344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
+        "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
       }
     ],
     "labels": [
@@ -7659,7 +7743,8 @@ window.BENCHMARK_DATA = {
       "2e5abee5",
       "c5d459a7",
       "e9072521",
-      "0fe58fe8"
+      "0fe58fe8",
+      "85b5ef18"
     ],
     "datasets": [
       {
@@ -7761,7 +7846,8 @@ window.BENCHMARK_DATA = {
           1316.186318206787,
           1335.4772897084554,
           1286.7636047090803,
-          1232.793577330453
+          1232.793577330453,
+          1325.155352274577
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7868,6 +7954,7 @@ window.BENCHMARK_DATA = {
           2536,
           2536,
           2536,
+          2568,
           2568
         ],
         "borderColor": "#63A2AC",
@@ -7978,7 +8065,8 @@ window.BENCHMARK_DATA = {
           87461.32000732422,
           88725.04125104632,
           87198.73338216146,
-          86622.75985281808
+          86622.75985281808,
+          87855.84320537861
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8085,7 +8173,8 @@ window.BENCHMARK_DATA = {
           54271,
           54275,
           54271,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8195,7 +8284,8 @@ window.BENCHMARK_DATA = {
           6510.843790181478,
           6766.397156348596,
           6652.9041086832685,
-          6842.3299077351885
+          6842.3299077351885,
+          6821.0382960001625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8256,6 +8346,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
