@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ partial class Build
 				int preReleaseIndex = GitHubActions.Ref.IndexOf('-');
 				preRelease = preReleaseIndex > 0 ? GitHubActions.Ref[preReleaseIndex..] : "";
 			}
-			
+
 			CoreVersion = AssemblyVersion.FromGitVersion(GitVersionTasks.GitVersion(s => s
 					.SetFramework("net8.0")
 					.SetNoFetch(true)
@@ -103,7 +104,6 @@ partial class Build
 		{
 			if (OnlyCore)
 			{
-				Configuration = Configuration.Debug;
 				ReportSummary(s => s
 					.WhenNotNull(CoreVersion, (summary, version) => summary
 						.AddPair("Core", version.FileVersion)));
@@ -135,15 +135,23 @@ partial class Build
 			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
 			UpdateReadme(CoreVersion.FileVersion, true);
 
-			Project[] projects = [
-				Solution.aweXpect_Core,
-				Solution.Tests.aweXpect_Core_Tests,
-				Solution.Tests.aweXpect_Core_Api_Tests];
-			foreach (var project in projects)
+			Dictionary<Project, Configuration> projects = new()
+			{
+				{
+					Solution.aweXpect_Core, Configuration
+				}
+			};
+			if (OnlyCore)
+			{
+				projects.Add(Solution.Tests.aweXpect_Core_Tests, Configuration.Debug);
+				projects.Add(Solution.Tests.aweXpect_Core_Api_Tests, Configuration.Debug);
+			}
+
+			foreach (var (project, configuration) in projects)
 			{
 				DotNetBuild(s => s
 					.SetProjectFile(project)
-					.SetConfiguration(Configuration)
+					.SetConfiguration(configuration)
 					.EnableNoLogo()
 					.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
 					.SetVersion(CoreVersion.FileVersion + CoreVersion.PreRelease)
@@ -168,7 +176,7 @@ partial class Build
 				version = "v" + version.Substring(0, version.IndexOf('-'));
 			}
 		}
-		
+
 		Log.Information("Update readme using '{Version}' as version", version);
 
 		StringBuilder sb = new();
