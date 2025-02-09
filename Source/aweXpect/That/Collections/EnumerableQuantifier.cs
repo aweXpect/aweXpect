@@ -40,7 +40,7 @@ public abstract partial class EnumerableQuantifier
 	private string GenerateExpectation(string quantifierExpectation,
 		string? expectationExpression,
 		Func<string, string?, string>? expectationGenerator,
-		ExpectationGrammar expectationGrammar)
+		ExpectationGrammars expectationGrammars)
 	{
 		if (expectationGenerator is not null)
 		{
@@ -52,7 +52,7 @@ public abstract partial class EnumerableQuantifier
 			return quantifierExpectation;
 		}
 
-		if (expectationGrammar == ExpectationGrammar.Nested)
+		if (expectationGrammars == ExpectationGrammars.Nested)
 		{
 			return $"{quantifierExpectation} {expectationExpression}";
 		}

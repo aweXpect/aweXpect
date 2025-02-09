@@ -36,7 +36,7 @@ public static partial class ThatAsyncEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form == ExpectationGrammar.Default
+						() => form == ExpectationGrammars.None
 							? $"is equivalent to {Formatter.Format(expected)}{options}"
 							: $"are equivalent to {Formatter.Format(expected)}{options}",
 						a => equalityOptions.AreConsideredEqual(a, expected),

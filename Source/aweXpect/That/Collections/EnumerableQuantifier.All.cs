@@ -9,9 +9,9 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches all items.
 	/// </summary>
-	public static EnumerableQuantifier All(ExpectationGrammar expectationGrammar = ExpectationGrammar.Default) => new AllQuantifier(expectationGrammar);
+	public static EnumerableQuantifier All(ExpectationGrammars expectationGrammars = ExpectationGrammars.None) => new AllQuantifier(expectationGrammars);
 
-	private sealed class AllQuantifier(ExpectationGrammar expectationGrammar) : EnumerableQuantifier
+	private sealed class AllQuantifier(ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{
 		public override string ToString() => "all";
 
@@ -36,7 +36,7 @@ public abstract partial class EnumerableQuantifier
 			if (notMatchingCount > 0)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 					totalCount.HasValue
 						? $"only {matchingCount} of {totalCount} {verb}"
 						: $"not all {verb}");
@@ -45,11 +45,11 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount == totalCount)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

@@ -21,7 +21,7 @@ public partial class ThatDelegateThrows<TException>
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), ExpectationGrammar.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -50,7 +50,7 @@ public partial class ThatDelegateThrows<TException>
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint(it,
 						innerExceptionType))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammar.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>

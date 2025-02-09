@@ -25,7 +25,7 @@ public static partial class ThatEnumerable
 						_quantifier,
 						() => form switch
 						{
-							ExpectationGrammar.Nested => $"satisfy {doNotPopulateThisValue}",
+							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
 							_ => $"satisfies {doNotPopulateThisValue}"
 						},
 						predicate,
@@ -49,7 +49,7 @@ public static partial class ThatEnumerable
 						_quantifier,
 						() => form switch
 						{
-							ExpectationGrammar.Nested => $"satisfy {doNotPopulateThisValue}",
+							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
 							_ => $"satisfies {doNotPopulateThisValue}"
 						},
 						predicate,

@@ -22,7 +22,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => form.HasFlag(ExpectationGrammar.Plural)
+						() => form.HasFlag(ExpectationGrammars.Plural)
 							? $"are equal to {Formatter.Format(expected)}{options}"
 							: $"is equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
@@ -46,7 +46,7 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form.HasFlag(ExpectationGrammar.Plural)
+						() => form.HasFlag(ExpectationGrammars.Plural)
 							? $"are equal to {Formatter.Format(expected)}{options}"
 							: $"is equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),

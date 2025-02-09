@@ -6,12 +6,12 @@ namespace aweXpect.Core;
 ///     The grammar to use in the expectation text.
 /// </summary>
 [Flags]
-public enum ExpectationGrammar
+public enum ExpectationGrammars
 {
 	/// <summary>
 	///     The default expectation text.
 	/// </summary>
-	Default,
+	None,
 
 	/// <summary>
 	///     The expectation is nested.
