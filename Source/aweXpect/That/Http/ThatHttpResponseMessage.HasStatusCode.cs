@@ -25,7 +25,7 @@ public static partial class ThatHttpResponseMessage
 	/// </summary>
 	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
 		HasStatusCode(this IThat<HttpResponseMessage?> source, HttpStatusCode expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new HasStatusCodeConstraint(it, expected)),
 			source);
 
@@ -35,7 +35,7 @@ public static partial class ThatHttpResponseMessage
 	public static AndOrResult<HttpResponseMessage, IThat<HttpResponseMessage?>>
 		DoesNotHaveStatusCode(this IThat<HttpResponseMessage?> source,
 			HttpStatusCode unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new HasStatusCodeRangeConstraint(
 					it,
 					statusCode => statusCode != (int)unexpected,

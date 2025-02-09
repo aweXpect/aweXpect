@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -15,7 +16,7 @@ public partial class ThatDelegateThrows<TException>
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(
-			ExpectationBuilder.AddConstraint((it, form)
+			ExpectationBuilder.AddConstraint((it, grammar)
 				=> new HasMessageValueConstraint(
 					it, "with", expected, options)),
 			this,
@@ -41,6 +42,6 @@ public partial class ThatDelegateThrows<TException>
 		}
 
 		public override string ToString()
-			=> $"{verb} Message {options.GetExpectation(expected, false)}";
+			=> $"{verb} Message {options.GetExpectation(expected, ExpectationGrammars.None)}";
 	}
 }

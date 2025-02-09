@@ -22,11 +22,13 @@ partial class Build
 	static string MutationCommentBody = "";
 
 	Target MutationTests => _ => _
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.DependsOn(MutationTestExecution)
 		.DependsOn(MutationComment);
 
 	Target MutationTestExecution => _ => _
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.Executes(() =>
 		{
 			AbsolutePath toolPath = TestResultsDirectory / "dotnet-stryker";
@@ -108,7 +110,7 @@ partial class Build
 
 	Target MutationComment => _ => _
 		.After(MutationTestExecution)
-		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
+		.OnlyWhenDynamic(() => !OnlyCore && GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
 			int? prId = GitHubActions.PullRequestNumber;

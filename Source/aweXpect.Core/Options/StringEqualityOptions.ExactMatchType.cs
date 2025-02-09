@@ -107,9 +107,9 @@ public partial class StringEqualityOptions
 			return comparer.Equals(actual, expected);
 		}
 
-		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, bool)" />
-		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-			=> useActiveGrammaticVoice switch
+		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, ExpectationGrammars)" />
+		public string GetExpectation(string? expected, ExpectationGrammars grammar)
+			=> grammar.HasFlag(ExpectationGrammars.Active) switch
 			{
 				true =>
 					$"is equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",

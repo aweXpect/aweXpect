@@ -18,11 +18,11 @@ public static partial class ThatEnumerable
 		{
 			StringEqualityOptions options = new();
 			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => form.HasFlag(ExpectationGrammar.Plural)
+						() => grammar.HasFlag(ExpectationGrammars.Plural)
 							? $"are equal to {Formatter.Format(expected)}{options}"
 							: $"is equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),
@@ -42,11 +42,11 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form.HasFlag(ExpectationGrammar.Plural)
+						() => grammar.HasFlag(ExpectationGrammars.Plural)
 							? $"are equal to {Formatter.Format(expected)}{options}"
 							: $"is equal to {Formatter.Format(expected)}{options}",
 						a => options.AreConsideredEqual(a, expected),

@@ -17,7 +17,7 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, form) => new IsEmptyConstraint<TItem>(it, form)),
+				.AddConstraint((it, grammar) => new IsEmptyConstraint<TItem>(it, grammar)),
 			source);
 
 	/// <summary>
@@ -26,10 +26,10 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, form) => new IsNotEmptyConstraint<TItem>(it, form)),
+				.AddConstraint((it, grammar) => new IsNotEmptyConstraint<TItem>(it, grammar)),
 			source);
 
-	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammar grammar)
+	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: IValueConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
@@ -61,14 +61,14 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> grammar switch
+			=> grammars switch
 			{
-				ExpectationGrammar.Nested => "are empty",
+				ExpectationGrammars.Nested => "are empty",
 				_ => "is empty"
 			};
 	}
 
-	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationGrammar grammar)
+	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: IContextConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
@@ -101,9 +101,9 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> grammar switch
+			=> grammars switch
 			{
-				ExpectationGrammar.Nested => "are not empty",
+				ExpectationGrammars.Nested => "are not empty",
 				_ => "is not empty"
 			};
 	}

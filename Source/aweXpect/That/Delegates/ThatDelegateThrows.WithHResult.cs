@@ -13,7 +13,7 @@ public static partial class ThatDelegateThrows
 		this ThatDelegateThrows<TException> source,
 		int expected)
 		where TException : Exception?
-		=> new(source.ExpectationBuilder.AddConstraint((it, form)
+		=> new(source.ExpectationBuilder.AddConstraint((it, grammar)
 				=> new ThatException.HasHResultValueConstraint(it, "with", expected)),
 			source);
 }

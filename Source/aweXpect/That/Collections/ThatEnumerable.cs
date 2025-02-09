@@ -71,75 +71,6 @@ public static partial class ThatEnumerable
 			=> $"{matchOptions.GetExpectation(expectedExpression)}{options}";
 	}
 
-	private readonly struct SyncCollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
-	{
-		private readonly string _it;
-		private readonly EnumerableQuantifier _quantifier;
-		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
-
-		public SyncCollectionConstraint(string it,
-			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
-		{
-			_it = it;
-			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
-			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
-		}
-
-		public async Task<ConstraintResult> IsMetBy(
-			IEnumerable<TItem>? actual,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
-		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(
-					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
-					$"{_it} was <null>");
-			}
-
-			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			bool cancelEarly = actual is not ICollection<TItem>;
-			int matchingCount = 0;
-			int notMatchingCount = 0;
-			int? totalCount = null;
-
-			foreach (TItem item in materialized)
-			{
-				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
-				if (isMatch is ConstraintResult.Success)
-				{
-					matchingCount++;
-				}
-				else
-				{
-					notMatchingCount++;
-				}
-
-				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
-				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-						notMatchingCount,
-						totalCount, null);
-				}
-
-				if (cancellationToken.IsCancellationRequested)
-				{
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual,
-						$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
-						"could not verify, because it was cancelled early");
-				}
-			}
-
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-				notMatchingCount,
-				matchingCount + notMatchingCount, null);
-		}
-	}
-
 	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
@@ -170,7 +101,7 @@ public static partial class ThatEnumerable
 			{
 				return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>?>(
 					actual,
-					$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					$"{_it} was <null>"));
 			}
 
@@ -207,7 +138,7 @@ public static partial class ThatEnumerable
 				{
 					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
 						actual,
-						$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+						$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 						"could not verify, because it was cancelled early"));
 				}
 			}
@@ -289,7 +220,7 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"has {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}";
+			=> $"has {_quantifier} {_quantifier.GetItemString()}";
 	}
 
 	private readonly struct IsInOrderConstraint<TItem, TMember>(

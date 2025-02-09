@@ -83,20 +83,20 @@ namespace aweXpect.Core
     public abstract class ExpectationBuilder
     {
         protected ExpectationBuilder(string subjectExpression) { }
-        public aweXpect.Core.ExpectationGrammar ExpectationGrammar { get; }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
-        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammar, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationGrammars ExpectationGrammars { get; }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
+        public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder And(string textSeparator = " and ") { }
         public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget?> memberAccessor, System.Func<aweXpect.Core.MemberAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, System.Threading.Tasks.Task<TTarget?>> asyncMemberAccessor, string? separator = null) { }
-        public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammar? expectationForm = default) { }
+        public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammars? expectationForm = default) { }
         public override string? ToString() { }
         public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public class MemberExpectationBuilder<TSource, TMember>
         {
-            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
+            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
             public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
         }
     }
@@ -105,11 +105,12 @@ namespace aweXpect.Core
         public static aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(this aweXpect.Core.ExpectationBuilder expectationBuilder, System.Func<TSource, TTarget> memberSelector, string displayName, bool replaceIt = true) { }
     }
     [System.Flags]
-    public enum ExpectationGrammar
+    public enum ExpectationGrammars
     {
-        Default = 0,
-        Nested = 1,
-        Plural = 2,
+        None = 0,
+        Nested = 2,
+        Plural = 4,
+        Active = 8,
     }
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
@@ -134,7 +135,7 @@ namespace aweXpect.Core
     public interface IStringMatchType
     {
         bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
-        string GetExpectation(string? expected, bool useActiveGrammaticVoice);
+        string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammar);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer, aweXpect.Core.StringDifferenceSettings? settings);
         string GetOptionString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
         string GetTypeString();
@@ -588,7 +589,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
-        public string GetExpectation(string? expected, bool useActiveGrammaticVoice) { }
+        public string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammar) { }
         public string GetExtendedFailure(string it, string? actual, string? expected) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }

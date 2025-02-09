@@ -17,9 +17,9 @@ public static partial class ThatException
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<Exception?, IThat<Exception?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new HasMessageValueConstraint<Exception>(
-					it, form, expected, options)),
+					it, grammar, expected, options)),
 			source,
 			options);
 	}

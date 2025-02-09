@@ -29,7 +29,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
 			source,
@@ -46,7 +46,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new EndsWithConstraint<TItem, TItem>(it, Formatter.Format(expected), expected, options)),
 			source,
 			options);
@@ -63,7 +63,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
 			source,
@@ -80,7 +80,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new EndsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
 			source,
 			options);
@@ -98,7 +98,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new DoesNotEndWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
 			source,
@@ -115,7 +115,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new DoesNotEndWithConstraint<TItem, TItem>(it, Formatter.Format(unexpected), unexpected,
 					options)),
 			source,
@@ -134,7 +134,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new DoesNotEndWithConstraint<string?, string?>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
 			source,
@@ -151,7 +151,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new DoesNotEndWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
 					options)),
 			source,

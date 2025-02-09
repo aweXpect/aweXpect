@@ -23,19 +23,19 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
-					=> new CompliesWithConstraint(it, _quantifier, expectations)),
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+					=> new ComplyWithConstraint(it, _quantifier, expectations)),
 				_subject,
 				options);
 		}
 
-	private readonly struct CompliesWithConstraint : IAsyncContextConstraint<IEnumerable<TItem>?>
+	private readonly struct ComplyWithConstraint : IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
 		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
 
-		public CompliesWithConstraint(string it,
+		public ComplyWithConstraint(string it,
 			EnumerableQuantifier quantifier,
 			Action<IThat<TItem>> expectations)
 		{

@@ -28,7 +28,7 @@ public static partial class ThatNullableJsonElement
 		}
 
 		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new MatchesConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}
@@ -49,7 +49,7 @@ public static partial class ThatNullableJsonElement
 		}
 
 		return new AndOrResult<JsonElement?, IThat<JsonElement?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new MatchesConstraint(it, expected, doNotPopulateThisValue, jsonOptions)),
 			source);
 	}

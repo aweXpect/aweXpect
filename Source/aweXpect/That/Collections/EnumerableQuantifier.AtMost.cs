@@ -9,10 +9,10 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches at most <paramref name="maximum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier AtMost(int maximum, ExpectationGrammar expectationGrammar = ExpectationGrammar.Default)
-		=> new AtMostQuantifier(maximum, expectationGrammar);
+	public static EnumerableQuantifier AtMost(int maximum, ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+		=> new AtMostQuantifier(maximum, expectationGrammars);
 
-	private sealed class AtMostQuantifier(int maximum, ExpectationGrammar expectationGrammar) : EnumerableQuantifier
+	private sealed class AtMostQuantifier(int maximum, ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{
 		public override string ToString()
 			=> maximum switch
@@ -42,7 +42,7 @@ public abstract partial class EnumerableQuantifier
 			if (matchingCount > maximum)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 					(totalCount.HasValue, expectationExpression is null) switch
 					{
 						(true, true) => $"found {matchingCount}",
@@ -55,11 +55,11 @@ public abstract partial class EnumerableQuantifier
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
 			}
 
 			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammar),
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

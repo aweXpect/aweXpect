@@ -13,7 +13,7 @@ public static partial class ThatNullableEnum
 	public static AndOrResult<TEnum?, IThat<TEnum?>> IsEqualTo<TEnum>(this IThat<TEnum?> source,
 		TEnum? expected)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint<TEnum>(
 					it,
 					$"is {Formatter.Format(expected)}",
@@ -27,7 +27,7 @@ public static partial class ThatNullableEnum
 		this IThat<TEnum?> source,
 		TEnum? unexpected)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new ValueConstraint<TEnum>(
 					it,
 					$"is not {Formatter.Format(unexpected)}",

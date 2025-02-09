@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using Nuke.Common;
 using Nuke.Common.IO;
+using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
@@ -38,7 +40,7 @@ partial class Build
 				int preReleaseIndex = GitHubActions.Ref.IndexOf('-');
 				preRelease = preReleaseIndex > 0 ? GitHubActions.Ref[preReleaseIndex..] : "";
 			}
-			
+
 			CoreVersion = AssemblyVersion.FromGitVersion(GitVersionTasks.GitVersion(s => s
 					.SetFramework("net8.0")
 					.SetNoFetch(true)
@@ -100,36 +102,63 @@ partial class Build
 		.DependsOn(CalculateNugetVersion)
 		.Executes(() =>
 		{
-			ReportSummary(s => s
-				.WhenNotNull(MainVersion, (summary, version) => summary
-					.AddPair("Version", version.FileVersion))
-				.WhenNotNull(CoreVersion, (summary, version) => summary
-					.AddPair("Core", version.FileVersion)));
+			if (OnlyCore)
+			{
+				ReportSummary(s => s
+					.WhenNotNull(CoreVersion, (summary, version) => summary
+						.AddPair("Core", version.FileVersion)));
+			}
+			else
+			{
+				ReportSummary(s => s
+					.WhenNotNull(MainVersion, (summary, version) => summary
+						.AddPair("Version", version.FileVersion))
+					.WhenNotNull(CoreVersion, (summary, version) => summary
+						.AddPair("Core", version.FileVersion)));
+			}
 
-			ClearNugetPackages(Solution.aweXpect.Directory / "bin");
-			UpdateReadme(MainVersion.FileVersion, false);
+			if (!OnlyCore)
+			{
+				ClearNugetPackages(Solution.aweXpect.Directory / "bin");
+				UpdateReadme(MainVersion.FileVersion, false);
 
-			DotNetBuild(s => s
-				.SetProjectFile(Solution)
-				.SetConfiguration(Configuration)
-				.EnableNoLogo()
-				.SetVersion(MainVersion.FileVersion + CoreVersion.PreRelease)
-				.SetAssemblyVersion(MainVersion.FileVersion)
-				.SetFileVersion(MainVersion.FileVersion)
-				.SetInformationalVersion(MainVersion.InformationalVersion));
+				DotNetBuild(s => s
+					.SetProjectFile(Solution)
+					.SetConfiguration(Configuration)
+					.EnableNoLogo()
+					.SetVersion(MainVersion.FileVersion + CoreVersion.PreRelease)
+					.SetAssemblyVersion(MainVersion.FileVersion)
+					.SetFileVersion(MainVersion.FileVersion)
+					.SetInformationalVersion(MainVersion.InformationalVersion));
+			}
 
 			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
 			UpdateReadme(CoreVersion.FileVersion, true);
 
-			DotNetBuild(s => s
-				.SetProjectFile(Solution.aweXpect_Core)
-				.SetConfiguration(Configuration)
-				.EnableNoLogo()
-				.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
-				.SetVersion(CoreVersion.FileVersion + CoreVersion.PreRelease)
-				.SetAssemblyVersion(CoreVersion.FileVersion)
-				.SetFileVersion(CoreVersion.FileVersion)
-				.SetInformationalVersion(CoreVersion.InformationalVersion));
+			Dictionary<Project, Configuration> projects = new()
+			{
+				{
+					Solution.aweXpect_Core, Configuration
+				}
+			};
+			if (OnlyCore)
+			{
+				projects.Add(Solution.Tests.aweXpect_Core_Tests, Configuration.Debug);
+				projects.Add(Solution.Tests.aweXpect_Core_Api_Tests, Configuration.Debug);
+			}
+
+			foreach (var (project, configuration) in projects)
+			{
+				DotNetBuild(s => s
+					.SetProjectFile(project)
+					.SetConfiguration(configuration)
+					.EnableNoLogo()
+					.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
+					.SetVersion(CoreVersion.FileVersion + CoreVersion.PreRelease)
+					.SetAssemblyVersion(CoreVersion.FileVersion)
+					.SetFileVersion(CoreVersion.FileVersion)
+					.SetInformationalVersion(CoreVersion.InformationalVersion));
+			}
 		});
 
 	private void UpdateReadme(string fileVersion, bool forCore)
@@ -147,7 +176,7 @@ partial class Build
 				version = "v" + version.Substring(0, version.IndexOf('-'));
 			}
 		}
-		
+
 		Log.Information("Update readme using '{Version}' as version", version);
 
 		StringBuilder sb = new();

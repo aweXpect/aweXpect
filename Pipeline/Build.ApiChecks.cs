@@ -15,14 +15,14 @@ partial class Build
 		.DependsOn(Compile)
 		.Executes(() =>
 		{
-			Project[] projects =
-			[
-				Solution.Tests.aweXpect_Api_Tests,
-				Solution.Tests.aweXpect_Core_Api_Tests
-			];
+			Project[] projects = [Solution.Tests.aweXpect_Core_Api_Tests];
+			if (!OnlyCore)
+			{
+				projects = [..projects, Solution.Tests.aweXpect_Api_Tests];
+			}
 
 			DotNetTest(s => s
-				.SetConfiguration(Configuration == Configuration.Debug ? "Debug" : "Release")
+				.SetConfiguration(Configuration == Configuration.Debug || OnlyCore ? "Debug" : "Release")
 				.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 				.EnableNoBuild()
 				.SetResultsDirectory(TestResultsDirectory)

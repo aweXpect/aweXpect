@@ -51,7 +51,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
 					actual,
-					$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					$"{_it} was <null>");
 			}
 
@@ -82,81 +82,12 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, $"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					actual, $"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					"could not verify, because it was cancelled early");
 			}
 
 			return _quantifier.GetResult(actual, _it, _expectationText(), matchingCount, notMatchingCount,
 				matchingCount + notMatchingCount, _verb);
-		}
-	}
-
-	private readonly struct AsyncCollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
-	{
-		private readonly string _it;
-		private readonly EnumerableQuantifier _quantifier;
-		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
-
-		public AsyncCollectionConstraint(string it,
-			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
-		{
-			_it = it;
-			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
-			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
-		}
-
-		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem>? actual,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
-		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
-					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
-					$"{_it} was <null>");
-			}
-
-			IAsyncEnumerable<TItem> materialized =
-				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			int matchingCount = 0;
-			int notMatchingCount = 0;
-			int? totalCount = null;
-
-			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
-			{
-				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
-				if (isMatch is ConstraintResult.Success)
-				{
-					matchingCount++;
-				}
-				else
-				{
-					notMatchingCount++;
-				}
-
-				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
-				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-						notMatchingCount,
-						totalCount, null);
-				}
-			}
-
-			if (cancellationToken.IsCancellationRequested)
-			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
-					"could not verify, because it was cancelled early");
-			}
-
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-				notMatchingCount,
-				matchingCount + notMatchingCount, null);
 		}
 	}
 
@@ -207,7 +138,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> $"has {quantifier} {(quantifier.IsSingle() ? "item" : "items")}";
+			=> $"has {quantifier} {quantifier.GetItemString()}";
 	}
 
 	private readonly struct IsConstraint<TItem, TMatch>(

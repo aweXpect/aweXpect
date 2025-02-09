@@ -19,24 +19,16 @@ partial class Build
 		.DependsOn(DotNetFrameworkUnitTests)
 		.DependsOn(DotNetUnitTests);
 
-	Project[] UnitTestProjects =>
-	[
-		Solution.Tests.aweXpect_Analyzers_Tests,
-		Solution.Tests.aweXpect_Core_Tests,
-		Solution.Tests.aweXpect_Tests,
-		Solution.Tests.aweXpect_Internal_Tests
-	];
-
 	Target DotNetFrameworkUnitTests => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
 		.OnlyWhenDynamic(() => EnvironmentInfo.IsWin)
 		.Executes(() =>
 		{
-			string[] testAssemblies = UnitTestProjects
+			string[] testAssemblies = UnitTestProjects(OnlyCore)
 				.SelectMany(project =>
 					project.Directory.GlobFiles(
-						$"bin/{(Configuration == Configuration.Debug ? "Debug" : "Release")}/net48/*.Tests.dll"))
+						$"bin/{(Configuration == Configuration.Debug || OnlyCore ? "Debug" : "Release")}/net48/*.Tests.dll"))
 				.Select(p => p.ToString())
 				.ToArray();
 
@@ -55,13 +47,13 @@ partial class Build
 		{
 			string net48 = "net48";
 			DotNetTest(s => s
-					.SetConfiguration(Configuration)
+					.SetConfiguration(OnlyCore ? Configuration.Debug : Configuration)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 					.EnableNoBuild()
 					.SetDataCollector("XPlat Code Coverage")
 					.SetResultsDirectory(TestResultsDirectory)
 					.CombineWith(
-						UnitTestProjects,
+						UnitTestProjects(OnlyCore),
 						(settings, project) => settings
 							.SetProjectFile(project)
 							.CombineWith(
@@ -73,4 +65,20 @@ partial class Build
 					), completeOnFailure: true
 			);
 		});
+
+	Project[] UnitTestProjects(bool onlyCore)
+		=> onlyCore switch
+		{
+			true =>
+			[
+				Solution.Tests.aweXpect_Core_Tests
+			],
+			_ =>
+			[
+				Solution.Tests.aweXpect_Analyzers_Tests,
+				Solution.Tests.aweXpect_Core_Tests,
+				Solution.Tests.aweXpect_Tests,
+				Solution.Tests.aweXpect_Internal_Tests
+			]
+		};
 }

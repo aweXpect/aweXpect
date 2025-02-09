@@ -42,7 +42,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     The expected grammatic form of the expectation text.
 	/// </summary>
-	public ExpectationGrammar ExpectationGrammar { get; private set; } = ExpectationGrammar.Default;
+	public ExpectationGrammars ExpectationGrammars { get; private set; } = ExpectationGrammars.None;
 
 	internal string Subject { get; }
 
@@ -55,9 +55,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, ExpectationGrammar, IValueConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IValueConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammar));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -70,9 +70,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, ExpectationGrammar, IContextConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IContextConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammar));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -85,9 +85,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, ExpectationGrammar, IAsyncConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IAsyncConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammar));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -100,9 +100,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, ExpectationGrammar, IAsyncContextConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IAsyncContextConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammar));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -129,10 +129,10 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			ExpectationGrammar previousGrammar = ExpectationGrammar;
-			ExpectationGrammar = expectationForm;
+			ExpectationGrammars previousGrammars = ExpectationGrammars;
+			ExpectationGrammars = expectationForm;
 			expectationBuilderCallback.Invoke(this);
-			ExpectationGrammar = previousGrammar;
+			ExpectationGrammars = previousGrammars;
 			_node = root;
 			if (replaceIt)
 			{
@@ -193,7 +193,7 @@ public abstract class ExpectationBuilder
 		Func<TSource, TTarget?> memberAccessor,
 		string? separator = null,
 		string? replaceIt = null,
-		ExpectationGrammar? expectationForm = null)
+		ExpectationGrammars? expectationForm = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
@@ -209,7 +209,7 @@ public abstract class ExpectationBuilder
 
 		if (expectationForm != null)
 		{
-			ExpectationGrammar = expectationForm.Value;
+			ExpectationGrammars = expectationForm.Value;
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
@@ -297,7 +297,7 @@ public abstract class ExpectationBuilder
 	{
 		private readonly Func<
 				Action<ExpectationBuilder>,
-				ExpectationGrammar,
+				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			_callback;
@@ -306,7 +306,7 @@ public abstract class ExpectationBuilder
 
 		internal MemberExpectationBuilder(Func<
 				Action<ExpectationBuilder>,
-				ExpectationGrammar,
+				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			callback)
@@ -319,8 +319,8 @@ public abstract class ExpectationBuilder
 		/// </summary>
 		public ExpectationBuilder AddExpectations(
 			Action<ExpectationBuilder> expectation,
-			ExpectationGrammar expectationGrammar = ExpectationGrammar.Default)
-			=> _callback(expectation, expectationGrammar, _sourceConstraintBuilder);
+			ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.

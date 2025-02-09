@@ -20,7 +20,7 @@ public static partial class ThatHttpResponseMessage
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<HttpResponseMessage, IThat<HttpResponseMessage?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new HasContentConstraint(it, expected, options)),
 			source,
 			options);
@@ -50,7 +50,7 @@ public static partial class ThatHttpResponseMessage
 		}
 
 		public override string ToString()
-			=> $"has a string content {options.GetExpectation(expected, false)}";
+			=> $"has a string content {options.GetExpectation(expected, ExpectationGrammars.None)}";
 	}
 }
 #endif

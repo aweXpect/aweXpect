@@ -6,20 +6,25 @@ namespace aweXpect.Core;
 ///     The grammar to use in the expectation text.
 /// </summary>
 [Flags]
-public enum ExpectationGrammar
+public enum ExpectationGrammars
 {
 	/// <summary>
 	///     The default expectation text.
 	/// </summary>
-	Default,
+	None = 0,
 
 	/// <summary>
 	///     The expectation is nested.
 	/// </summary>
-	Nested,
+	Nested = 1 << 1,
 
 	/// <summary>
 	///     The expectation should be in plural form.
 	/// </summary>
-	Plural
+	Plural = 1 << 2,
+
+	/// <summary>
+	///     The expectation should be in active voice.
+	/// </summary>
+	Active = 1 << 3,
 }

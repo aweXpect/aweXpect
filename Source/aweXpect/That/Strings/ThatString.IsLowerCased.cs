@@ -15,7 +15,7 @@ public static partial class ThatString
 	/// </remarks>
 	public static AndOrResult<string?, IThat<string?>> IsLowerCased(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new IsLowerCasedConstraint(it)),
 			source);
 
@@ -27,7 +27,7 @@ public static partial class ThatString
 	/// </remarks>
 	public static AndOrResult<string, IThat<string?>> IsNotLowerCased(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new IsNotLowerCasedConstraint(it)),
 			source);
 
