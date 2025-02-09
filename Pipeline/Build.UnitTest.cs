@@ -25,10 +25,10 @@ partial class Build
 		.OnlyWhenDynamic(() => EnvironmentInfo.IsWin)
 		.Executes(() =>
 		{
-			string[] testAssemblies = UnitTestProjects(OnlyCore)
+			string[] testAssemblies = UnitTestProjects(BuildScope)
 				.SelectMany(project =>
 					project.Directory.GlobFiles(
-						$"bin/{(Configuration == Configuration.Debug || OnlyCore ? "Debug" : "Release")}/net48/*.Tests.dll"))
+						$"bin/{(Configuration == Configuration.Debug || BuildScope != BuildScope.Default ? "Debug" : "Release")}/net48/*.Tests.dll"))
 				.Select(p => p.ToString())
 				.ToArray();
 
@@ -47,13 +47,13 @@ partial class Build
 		{
 			string net48 = "net48";
 			DotNetTest(s => s
-					.SetConfiguration(OnlyCore ? Configuration.Debug : Configuration)
+					.SetConfiguration(BuildScope != BuildScope.Default ? Configuration.Debug : Configuration)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 					.EnableNoBuild()
 					.SetDataCollector("XPlat Code Coverage")
 					.SetResultsDirectory(TestResultsDirectory)
 					.CombineWith(
-						UnitTestProjects(OnlyCore),
+						UnitTestProjects(BuildScope),
 						(settings, project) => settings
 							.SetProjectFile(project)
 							.CombineWith(
@@ -66,17 +66,20 @@ partial class Build
 			);
 		});
 
-	Project[] UnitTestProjects(bool onlyCore)
-		=> onlyCore switch
+	Project[] UnitTestProjects(BuildScope buildScope)
+		=> buildScope switch
 		{
-			true =>
+			BuildScope.CoreOnly => [Solution.Tests.aweXpect_Core_Tests],
+			BuildScope.MainOnly =>
 			[
-				Solution.Tests.aweXpect_Core_Tests
+				Solution.Tests.aweXpect_Analyzers_Tests,
+				Solution.Tests.aweXpect_Tests,
+				Solution.Tests.aweXpect_Internal_Tests
 			],
 			_ =>
 			[
-				Solution.Tests.aweXpect_Analyzers_Tests,
 				Solution.Tests.aweXpect_Core_Tests,
+				Solution.Tests.aweXpect_Analyzers_Tests,
 				Solution.Tests.aweXpect_Tests,
 				Solution.Tests.aweXpect_Internal_Tests
 			]
