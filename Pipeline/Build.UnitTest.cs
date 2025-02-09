@@ -28,7 +28,7 @@ partial class Build
 			string[] testAssemblies = UnitTestProjects(BuildScope)
 				.SelectMany(project =>
 					project.Directory.GlobFiles(
-						$"bin/{(Configuration == Configuration.Debug || BuildScope != BuildScope.Default ? "Debug" : "Release")}/net48/*.Tests.dll"))
+						$"bin/{(Configuration == Configuration.Debug || BuildScope == BuildScope.CoreOnly ? "Debug" : "Release")}/net48/*.Tests.dll"))
 				.Select(p => p.ToString())
 				.ToArray();
 
@@ -47,7 +47,7 @@ partial class Build
 		{
 			string net48 = "net48";
 			DotNetTest(s => s
-					.SetConfiguration(BuildScope != BuildScope.Default ? Configuration.Debug : Configuration)
+					.SetConfiguration(BuildScope == BuildScope.CoreOnly ? Configuration.Debug : Configuration)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 					.EnableNoBuild()
 					.SetDataCollector("XPlat Code Coverage")
