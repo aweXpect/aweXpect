@@ -56,7 +56,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
 					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					$"{_itemExpectationBuilder} for {_quantifier} {_quantifier.GetItemString()}",
 					$"{_it} was <null>");
 			}
 
@@ -90,7 +90,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
 					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					$"{_itemExpectationBuilder} for {_quantifier} {_quantifier.GetItemString()}",
 					"could not verify, because it was cancelled early");
 			}
 

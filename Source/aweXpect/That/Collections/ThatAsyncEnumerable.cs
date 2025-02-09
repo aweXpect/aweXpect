@@ -51,7 +51,7 @@ public static partial class ThatAsyncEnumerable
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
 					actual,
-					$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					$"{_it} was <null>");
 			}
 
@@ -82,7 +82,7 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, $"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					actual, $"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					"could not verify, because it was cancelled early");
 			}
 
@@ -138,7 +138,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> $"has {quantifier} {(quantifier.IsSingle() ? "item" : "items")}";
+			=> $"has {quantifier} {quantifier.GetItemString()}";
 	}
 
 	private readonly struct IsConstraint<TItem, TMatch>(

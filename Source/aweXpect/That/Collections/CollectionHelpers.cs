@@ -30,4 +30,7 @@ internal static class CollectionHelpers
 		string failure = sb.ToString();
 		return failure;
 	}
+
+	internal static string GetItemString(this EnumerableQuantifier quantifier)
+		=> quantifier.IsSingle() ? "item" : "items";
 }

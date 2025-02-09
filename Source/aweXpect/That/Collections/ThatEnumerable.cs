@@ -101,7 +101,7 @@ public static partial class ThatEnumerable
 			{
 				return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>?>(
 					actual,
-					$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+					$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					$"{_it} was <null>"));
 			}
 
@@ -138,7 +138,7 @@ public static partial class ThatEnumerable
 				{
 					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
 						actual,
-						$"{_expectationText()} for {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}",
+						$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 						"could not verify, because it was cancelled early"));
 				}
 			}
@@ -220,7 +220,7 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"has {_quantifier} {(_quantifier.IsSingle() ? "item" : "items")}";
+			=> $"has {_quantifier} {_quantifier.GetItemString()}";
 	}
 
 	private readonly struct IsInOrderConstraint<TItem, TMember>(
