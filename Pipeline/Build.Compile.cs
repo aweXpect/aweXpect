@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Nuke.Common;
 using Nuke.Common.IO;
+using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
@@ -133,15 +134,22 @@ partial class Build
 			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
 			UpdateReadme(CoreVersion.FileVersion, true);
 
-			DotNetBuild(s => s
-				.SetProjectFile(Solution.aweXpect_Core)
-				.SetConfiguration(Configuration)
-				.EnableNoLogo()
-				.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
-				.SetVersion(CoreVersion.FileVersion + CoreVersion.PreRelease)
-				.SetAssemblyVersion(CoreVersion.FileVersion)
-				.SetFileVersion(CoreVersion.FileVersion)
-				.SetInformationalVersion(CoreVersion.InformationalVersion));
+			Project[] projects = [
+				Solution.aweXpect_Core,
+				Solution.Tests.aweXpect_Core_Tests,
+				Solution.Tests.aweXpect_Core_Api_Tests];
+			foreach (var project in projects)
+			{
+				DotNetBuild(s => s
+					.SetProjectFile(project)
+					.SetConfiguration(Configuration)
+					.EnableNoLogo()
+					.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
+					.SetVersion(CoreVersion.FileVersion + CoreVersion.PreRelease)
+					.SetAssemblyVersion(CoreVersion.FileVersion)
+					.SetFileVersion(CoreVersion.FileVersion)
+					.SetInformationalVersion(CoreVersion.InformationalVersion));
+			}
 		});
 
 	private void UpdateReadme(string fileVersion, bool forCore)
