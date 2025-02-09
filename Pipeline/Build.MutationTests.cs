@@ -48,7 +48,7 @@ partial class Build
 				},
 				{
 					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests]
-				}
+				},
 			};
 
 			foreach (KeyValuePair<Project, Project[]> project in projects)

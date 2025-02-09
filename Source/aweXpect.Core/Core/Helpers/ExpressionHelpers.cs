@@ -13,9 +13,9 @@ internal static class ExpressionHelpers
 			{
 				MemberExpression body => body,
 				UnaryExpression unaryExpression => (MemberExpression)unaryExpression.Operand,
-				_ => null
+				_ => null,
 			},
-			_ => null
+			_ => null,
 		};
 
 	public static string GetMemberPath(Expression expression)

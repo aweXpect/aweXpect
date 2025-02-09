@@ -26,5 +26,5 @@ public enum ExpectationGrammars
 	/// <summary>
 	///     The expectation should be in active voice.
 	/// </summary>
-	Active = 1 << 3
+	Active = 1 << 3,
 }

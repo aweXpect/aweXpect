@@ -41,9 +41,9 @@ public static partial class CSharpCodeFixVerifier<TAnalyzer, TCodeFix>
 				AdditionalReferences =
 				{
 					typeof(Expect).Assembly.Location,
-					typeof(ThatBool).Assembly.Location
-				}
-			}
+					typeof(ThatBool).Assembly.Location,
+				},
+			},
 		};
 
 		test.ExpectedDiagnostics.AddRange(expected);
@@ -79,9 +79,9 @@ public static partial class CSharpCodeFixVerifier<TAnalyzer, TCodeFix>
 				AdditionalReferences =
 				{
 					typeof(Expect).Assembly.Location,
-					typeof(ThatBool).Assembly.Location
-				}
-			}
+					typeof(ThatBool).Assembly.Location,
+				},
+			},
 		};
 
 		test.ExpectedDiagnostics.AddRange(expected);

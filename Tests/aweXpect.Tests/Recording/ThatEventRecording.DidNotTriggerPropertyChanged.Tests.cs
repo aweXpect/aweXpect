@@ -27,7 +27,7 @@ public sealed partial class ThatEventRecording
 			{
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 422
+					MyValue = 422,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 

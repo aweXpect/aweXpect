@@ -20,10 +20,10 @@ public sealed partial class EquivalencyComparerTests
 					{
 						typeof(SomeOtherRecord), new EquivalencyTypeOptions
 						{
-							IgnoreCollectionOrder = true
+							IgnoreCollectionOrder = true,
 						}
-					}
-				}
+					},
+				},
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -80,7 +80,7 @@ public sealed partial class EquivalencyComparerTests
 			SomeRecord expected = new(new SomeCustomRecord([2, 1]), new SomeOtherRecord([2, 1]));
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				IgnoreCollectionOrder = true
+				IgnoreCollectionOrder = true,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);

@@ -31,7 +31,7 @@ public sealed partial class ThatHttpResponseMessage
 			HttpStatusCode.RequestUriTooLong,
 			HttpStatusCode.UnsupportedMediaType,
 			HttpStatusCode.RequestedRangeNotSatisfiable,
-			HttpStatusCode.ExpectationFailed
+			HttpStatusCode.ExpectationFailed,
 		];
 
 	/// <summary>
@@ -47,7 +47,7 @@ public sealed partial class ThatHttpResponseMessage
 			HttpStatusCode.NotModified,
 			HttpStatusCode.UseProxy,
 			HttpStatusCode.Unused,
-			HttpStatusCode.TemporaryRedirect
+			HttpStatusCode.TemporaryRedirect,
 		];
 
 	/// <summary>
@@ -61,7 +61,7 @@ public sealed partial class ThatHttpResponseMessage
 			HttpStatusCode.BadGateway,
 			HttpStatusCode.ServiceUnavailable,
 			HttpStatusCode.GatewayTimeout,
-			HttpStatusCode.HttpVersionNotSupported
+			HttpStatusCode.HttpVersionNotSupported,
 		];
 
 	/// <summary>
@@ -76,7 +76,7 @@ public sealed partial class ThatHttpResponseMessage
 			HttpStatusCode.NonAuthoritativeInformation,
 			HttpStatusCode.NoContent,
 			HttpStatusCode.ResetContent,
-			HttpStatusCode.PartialContent
+			HttpStatusCode.PartialContent,
 		];
 
 	private sealed class HttpResponseBuilder

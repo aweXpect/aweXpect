@@ -11,7 +11,7 @@ public sealed partial class ThatGeneric
 			{
 				Other subject = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 				Other expected = subject;
 
@@ -33,11 +33,11 @@ public sealed partial class ThatGeneric
 			{
 				Other subject = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 				Other expected = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 
 				async Task Act()
@@ -51,7 +51,7 @@ public sealed partial class ThatGeneric
 			{
 				Other subject = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 				Other? expected = null;
 
@@ -84,7 +84,7 @@ public sealed partial class ThatGeneric
 				Other? subject = null;
 				Other expected = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 
 				async Task Act()

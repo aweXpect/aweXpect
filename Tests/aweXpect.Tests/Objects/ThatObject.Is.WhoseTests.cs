@@ -11,7 +11,7 @@ public sealed partial class ThatObject
 			{
 				object subject = new MyClass
 				{
-					Value = 42
+					Value = 42,
 				};
 
 				async Task Act()
@@ -31,7 +31,7 @@ public sealed partial class ThatObject
 			{
 				object subject = new MyClass
 				{
-					Value = 42
+					Value = 42,
 				};
 
 				async Task Act()

@@ -13,11 +13,11 @@ public sealed partial class ThatObject
 			{
 				OuterClass subject = new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				};
 				OuterClass expected = new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				};
 
 				async Task Act()
@@ -32,7 +32,7 @@ public sealed partial class ThatObject
 				OuterClass subject = new();
 				OuterClass expected = new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				};
 
 				async Task Act()
@@ -59,9 +59,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"]
-						}
-					}
+							Collection = ["1", "2", "3"],
+						},
+					},
 				};
 				OuterClass expected = new()
 				{
@@ -72,9 +72,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"]
-						}
-					}
+							Collection = ["1", "2", "3"],
+						},
+					},
 				};
 
 				async Task Act()
@@ -95,9 +95,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"]
-						}
-					}
+							Collection = ["1", "2", "3"],
+						},
+					},
 				};
 
 				OuterClass expected = new()
@@ -109,9 +109,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3", "4"]
-						}
-					}
+							Collection = ["1", "2", "3", "4"],
+						},
+					},
 				};
 
 				async Task Act()
@@ -139,9 +139,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"]
-						}
-					}
+							Collection = ["1", "2", "3"],
+						},
+					},
 				};
 
 				OuterClass expected = new()
@@ -153,9 +153,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3", "4"]
-						}
-					}
+							Collection = ["1", "2", "3", "4"],
+						},
+					},
 				};
 
 				async Task Act()
@@ -177,9 +177,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"]
-						}
-					}
+							Collection = ["1", "2", "3"],
+						},
+					},
 				};
 
 				OuterClass expected = new()
@@ -191,9 +191,9 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Bart",
-							Collection = ["1", "2", "3", "4"]
-						}
-					}
+							Collection = ["1", "2", "3", "4"],
+						},
+					},
 				};
 
 				async Task Act()
@@ -224,9 +224,9 @@ public sealed partial class ThatObject
 						Value = "Bar",
 						Inner = new InnerClass
 						{
-							Value = "Baz"
-						}
-					}
+							Value = "Baz",
+						},
+					},
 				};
 				OuterClass expected = new()
 				{
@@ -236,9 +236,9 @@ public sealed partial class ThatObject
 						Value = "Bar",
 						Inner = new InnerClass
 						{
-							Value = "Baz"
-						}
-					}
+							Value = "Baz",
+						},
+					},
 				};
 
 				async Task Act()
@@ -256,8 +256,8 @@ public sealed partial class ThatObject
 					Inner = new InnerClass
 					{
 						Value = "Bar",
-						Inner = new InnerClass()
-					}
+						Inner = new InnerClass(),
+					},
 				};
 				OuterClass expected = new()
 				{
@@ -267,9 +267,9 @@ public sealed partial class ThatObject
 						Value = "Bar",
 						Inner = new InnerClass
 						{
-							Value = "Baz"
-						}
-					}
+							Value = "Baz",
+						},
+					},
 				};
 
 				async Task Act()

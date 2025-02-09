@@ -25,7 +25,7 @@ public static partial class AwexpectCustomizationExtensions
 				// ReSharper disable once WithExpressionModifiesAllMembers
 				v => Update(p => p with
 				{
-					ExcludedAssemblyPrefixes = v
+					ExcludedAssemblyPrefixes = v,
 				}));
 		}
 
@@ -68,7 +68,7 @@ public static partial class AwexpectCustomizationExtensions
 			"JetBrains",
 			"xunit",
 			"Castle",
-			"DynamicProxyGenAssembly2"
+			"DynamicProxyGenAssembly2",
 		];
 	}
 }

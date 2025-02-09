@@ -11,7 +11,7 @@ public class AssemblySetup
 	[OneTimeSetUp]
 	public void RunBeforeAnyTests() => _customizer = Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Set([
 		..Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get(),
-		"aweXpect.Core"
+		"aweXpect.Core",
 	]);
 
 	[OneTimeTearDown]

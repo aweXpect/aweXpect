@@ -13,7 +13,7 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -27,11 +27,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			MyClass expected = new()
 			{
-				MyValue = "bar"
+				MyValue = "bar",
 			};
 			actual.Nested = expected;
 			expected.Nested = actual;

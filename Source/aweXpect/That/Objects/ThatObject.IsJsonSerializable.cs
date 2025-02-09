@@ -106,7 +106,7 @@ public static partial class ThatObject
 			=> (typeof(T) == typeof(object)) switch
 			{
 				true => "is serializable as JSON",
-				false => $"is serializable as {Formatter.Format(typeof(T))} JSON"
+				false => $"is serializable as {Formatter.Format(typeof(T))} JSON",
 			};
 	}
 }

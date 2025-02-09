@@ -64,7 +64,7 @@ public static partial class ThatEnumerable
 			=> grammars switch
 			{
 				ExpectationGrammars.Nested => "are empty",
-				_ => "is empty"
+				_ => "is empty",
 			};
 	}
 
@@ -104,7 +104,7 @@ public static partial class ThatEnumerable
 			=> grammars switch
 			{
 				ExpectationGrammars.Nested => "are not empty",
-				_ => "is not empty"
+				_ => "is not empty",
 			};
 	}
 }

@@ -195,10 +195,10 @@ public sealed partial class ThatJsonElement
 					{
 						new[]
 						{
-							"foo", "bar"
+							"foo", "bar",
 						},
 						"[\"foo\", \"bar\"]"
-					}
+					},
 				};
 
 			public static TheoryData<object, string, string> NotMatchingArrayValues
@@ -217,21 +217,21 @@ public sealed partial class ThatJsonElement
 					{
 						new[]
 						{
-							"foo"
+							"foo",
 						},
 						"[]", "as $[0] had missing \"foo\""
 					},
 					{
 						new[]
 						{
-							"bar", "foo"
+							"bar", "foo",
 						},
 						"[\"foo\", \"bar\"]", """
 						                      as
 						                        $[0] was "foo" instead of "bar" and
 						                        $[1] was "bar" instead of "foo"
 						                      """
-					}
+					},
 				};
 		}
 
@@ -248,7 +248,7 @@ public sealed partial class ThatJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(new
 					{
-						foo = 2
+						foo = 2,
 					});
 
 				await That(Act).Throws<XunitException>().OnlyIf(errorMessage != null)
@@ -256,7 +256,7 @@ public sealed partial class ThatJsonElement
 					               Expected that subject
 					               matches new
 					               					{
-					               						foo = 2
+					               						foo = 2,
 					               					} exactly,
 					               but it differed as {{errorMessage}}
 					               """);
@@ -288,7 +288,7 @@ public sealed partial class ThatJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(new
 					{
-						bar = 3
+						bar = 3,
 					});
 
 				await That(Act).Throws<XunitException>()
@@ -296,7 +296,7 @@ public sealed partial class ThatJsonElement
 					             Expected that subject
 					             matches new
 					             					{
-					             						bar = 3
+					             						bar = 3,
 					             					} exactly,
 					             but it differed as $.bar was 2 instead of 3
 					             """);
@@ -310,7 +310,7 @@ public sealed partial class ThatJsonElement
 				async Task Act()
 					=> await That(subject).MatchesExactly(new
 					{
-						bar = 2
+						bar = 2,
 					});
 
 				await That(Act).Throws<XunitException>()
@@ -318,7 +318,7 @@ public sealed partial class ThatJsonElement
 					             Expected that subject
 					             matches new
 					             					{
-					             						bar = 2
+					             						bar = 2,
 					             					} exactly,
 					             but it differed as $.foo had unexpected Null
 					             """);

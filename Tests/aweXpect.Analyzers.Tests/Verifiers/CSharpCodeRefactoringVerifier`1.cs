@@ -24,7 +24,7 @@ public static partial class CSharpCodeRefactoringVerifier<TCodeRefactoring>
 		Test test = new()
 		{
 			TestCode = source,
-			FixedCode = fixedSource
+			FixedCode = fixedSource,
 		};
 
 		test.ExpectedDiagnostics.AddRange(expected);

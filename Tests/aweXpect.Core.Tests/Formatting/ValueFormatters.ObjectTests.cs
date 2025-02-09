@@ -13,9 +13,9 @@ public partial class ValueFormatters
 			{
 				Inner = new InnerDummy
 				{
-					InnerValue = "foo"
+					InnerValue = "foo",
 				},
-				Value = 2
+				Value = 2,
 			};
 			string expectedResult = """
 			                        Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
@@ -34,7 +34,7 @@ public partial class ValueFormatters
 		{
 			RecursiveDummy value = new()
 			{
-				Value = 1
+				Value = 1,
 			};
 			value.Inner = value;
 			string expectedResult = """
@@ -56,9 +56,9 @@ public partial class ValueFormatters
 			{
 				Inner = new InnerDummy
 				{
-					InnerValue = "foo"
+					InnerValue = "foo",
 				},
-				Value = 2
+				Value = 2,
 			};
 			string expectedResult = """
 			                        Dummy {
@@ -84,9 +84,9 @@ public partial class ValueFormatters
 			{
 				Inner = new InnerDummy
 				{
-					InnerValue = "foo"
+					InnerValue = "foo",
 				},
-				Value = 2
+				Value = 2,
 			};
 			string expectedResult = """
 			                        Dummy {
@@ -141,7 +141,7 @@ public partial class ValueFormatters
 		{
 			object value = new ClassWithField
 			{
-				Value = 42
+				Value = 42,
 			};
 			string expectedResult = "ClassWithField { Value = 42 }";
 			StringBuilder sb = new();

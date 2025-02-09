@@ -197,7 +197,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			(true, true) => " white-space",
 			(true, false) => " leading white-space",
 			(false, true) => " trailing white-space",
-			(false, false) => null
+			(false, false) => null,
 		};
 
 		string? newlineStyleToken = _ignoreNewlineStyle

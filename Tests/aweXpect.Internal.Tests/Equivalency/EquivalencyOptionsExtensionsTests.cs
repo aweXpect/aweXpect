@@ -17,7 +17,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
 			.WhoseValue.IsEquivalentTo(new
 			{
-				IgnoreCollectionOrder = ignoreCollectionOrder
+				IgnoreCollectionOrder = ignoreCollectionOrder,
 			});
 	}
 
@@ -35,8 +35,8 @@ public sealed class EquivalencyOptionsExtensionsTests
 			{
 				MembersToIgnore = new[]
 				{
-					memberToIgnore
-				}
+					memberToIgnore,
+				},
 			});
 	}
 
@@ -55,7 +55,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
 			.WhoseValue.IsEquivalentTo(new
 			{
-				Fields = fieldsToInclude
+				Fields = fieldsToInclude,
 			});
 	}
 
@@ -74,7 +74,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 		await That(result.CustomOptions).ContainsKey(typeof(MyClass))
 			.WhoseValue.IsEquivalentTo(new
 			{
-				Properties = propertiesToInclude
+				Properties = propertiesToInclude,
 			});
 	}
 

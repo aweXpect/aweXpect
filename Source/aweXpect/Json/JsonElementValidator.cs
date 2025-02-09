@@ -41,7 +41,7 @@ internal static class JsonElementValidator
 			JsonValueKind.Number => result.CompareJsonNumber(path, actualElement, expectedElement),
 			JsonValueKind.String => result.CompareJsonString(path, actualElement, expectedElement),
 			JsonValueKind.Object => result.CompareJsonObject(path, actualElement, expectedElement, options),
-			_ => throw new ArgumentOutOfRangeException($"Unsupported JsonValueKind: {actualElement.ValueKind}")
+			_ => throw new ArgumentOutOfRangeException($"Unsupported JsonValueKind: {actualElement.ValueKind}"),
 		};
 
 	private static JsonComparisonResult CompareJsonArray(
@@ -228,7 +228,7 @@ internal static class JsonElementValidator
 				JsonValueKind.String => "string",
 				JsonValueKind.Array => "array",
 				JsonValueKind.Object => "object",
-				_ => ""
+				_ => "",
 			};
 
 		if (jsonElement.ValueKind == JsonValueKind.Null)

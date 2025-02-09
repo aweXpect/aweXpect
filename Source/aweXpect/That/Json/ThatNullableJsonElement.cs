@@ -46,7 +46,7 @@ public static partial class ThatNullableJsonElement
 			=> options.IgnoreAdditionalProperties switch
 			{
 				true => $"matches {expectedExpression}",
-				false => $"matches {expectedExpression} exactly"
+				false => $"matches {expectedExpression} exactly",
 			};
 	}
 

@@ -32,7 +32,7 @@ public sealed class ApiApprovalTests
 			{
 				yield return new object[]
 				{
-					targetFramework
+					targetFramework,
 				};
 			}
 		}

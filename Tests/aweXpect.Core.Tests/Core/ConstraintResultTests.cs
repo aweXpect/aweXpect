@@ -22,7 +22,7 @@ public sealed class ConstraintResultTests
 	{
 		Dummy value = new()
 		{
-			Value = 1
+			Value = 1,
 		};
 
 		ConstraintResult.Failure<Dummy> subject = new(value, expectationText, resultText);
@@ -38,7 +38,7 @@ public sealed class ConstraintResultTests
 	{
 		Dummy value = new()
 		{
-			Value = 1
+			Value = 1,
 		};
 
 		ConstraintResult.Success<Dummy> subject = new(value, expectationText);

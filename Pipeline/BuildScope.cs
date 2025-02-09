@@ -4,5 +4,5 @@ enum BuildScope
 {
 	CoreOnly,
 	MainOnly,
-	Default
+	Default,
 }

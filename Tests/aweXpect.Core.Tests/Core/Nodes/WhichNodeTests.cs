@@ -10,9 +10,9 @@ public sealed class WhichNodeTests
 		{
 			Inner = new Dummy.Nested
 			{
-				Id = 1
+				Id = 1,
 			},
-			Value = "foo"
+			Value = "foo",
 		};
 
 		async Task Act()

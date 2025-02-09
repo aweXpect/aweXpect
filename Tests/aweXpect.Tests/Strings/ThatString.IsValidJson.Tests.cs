@@ -17,7 +17,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsValidJson(o => o with
 					{
-						AllowTrailingCommas = allowTrailingCommas
+						AllowTrailingCommas = allowTrailingCommas,
 					});
 
 				await That(Act).Throws<XunitException>().OnlyIf(!allowTrailingCommas);

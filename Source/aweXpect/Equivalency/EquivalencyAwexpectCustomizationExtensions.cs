@@ -40,7 +40,7 @@ public static class EquivalencyAwexpectCustomizationExtensions
 				() => Get().DefaultEquivalencyOptions,
 				v => Update(p => p with
 				{
-					DefaultEquivalencyOptions = v
+					DefaultEquivalencyOptions = v,
 				}));
 		}
 

@@ -104,7 +104,7 @@ public class PageBenchmarkReportGenerator
 					YAxisId = "y1",
 					BackgroundColor = GetColor(type),
 					BorderColor = GetColor(type),
-					Data = new List<double>()
+					Data = new List<double>(),
 				};
 				pageReport.Datasets.Add(memoryDataset);
 			}
@@ -129,7 +129,7 @@ public class PageBenchmarkReportGenerator
 					YAxisId = "y",
 					BackgroundColor = GetColor(type),
 					BorderColor = GetColor(type),
-					Data = new List<double>()
+					Data = new List<double>(),
 				};
 				pageReport.Datasets.Add(timeDataset);
 			}
@@ -143,7 +143,7 @@ public class PageBenchmarkReportGenerator
 				"aweXpect" => "#63A2AC",
 				"FluentAssertions" => "#FF671B",
 				"TUnit" => "#1A6029",
-				_ => "#e84393"
+				_ => "#e84393",
 			};
 
 		private bool ParseMethod(string method, out string name, out string type)

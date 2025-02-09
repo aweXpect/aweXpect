@@ -135,11 +135,11 @@ public sealed partial class ThatAsyncEnumerable
 			{
 				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass
 				{
-					Value = x
+					Value = x,
 				}, 20);
 				MyClass expected = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 
 				async Task Act()

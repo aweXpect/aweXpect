@@ -37,7 +37,7 @@ public sealed class StringDifference(
 		/// <summary>
 		///     The expected string is treated as a regex pattern.
 		/// </summary>
-		Regex
+		Regex,
 	}
 
 	private const string ActualIndicator = " (actual)";
@@ -102,7 +102,7 @@ public sealed class StringDifference(
 		{
 			MatchType.Wildcard => ToPatternString(MatchType.Wildcard, prefix, actual, expected),
 			MatchType.Regex => ToPatternString(MatchType.Regex, prefix, actual, expected),
-			_ => ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings)
+			_ => ToEqualityString(prefix, actual, expected, IndexOfFirstMismatch(MatchType.Equality), settings),
 		};
 	}
 
@@ -324,6 +324,6 @@ public sealed class StringDifference(
 		{
 			MatchType.Wildcard => " (wildcard pattern)",
 			MatchType.Regex => " (regex pattern)",
-			_ => " (expected)"
+			_ => " (expected)",
 		};
 }

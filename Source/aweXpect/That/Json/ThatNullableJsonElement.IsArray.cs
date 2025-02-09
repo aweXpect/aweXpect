@@ -32,7 +32,7 @@ public static partial class ThatNullableJsonElement
 	{
 		JsonOptions jsonOptions = new()
 		{
-			IgnoreAdditionalProperties = true
+			IgnoreAdditionalProperties = true,
 		};
 		if (options != null)
 		{

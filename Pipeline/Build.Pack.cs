@@ -26,7 +26,7 @@ partial class Build
 			{
 				BuildScope.CoreOnly => [Solution.aweXpect_Core],
 				BuildScope.MainOnly => [Solution.aweXpect],
-				_ => [Solution.aweXpect_Core, Solution.aweXpect]
+				_ => [Solution.aweXpect_Core, Solution.aweXpect],
 			};
 
 			List<string> packages = new();

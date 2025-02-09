@@ -46,7 +46,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass(x), 20);
 				MyClass unexpected = new()
 				{
-					Value = 5
+					Value = 5,
 				};
 
 				async Task Act()

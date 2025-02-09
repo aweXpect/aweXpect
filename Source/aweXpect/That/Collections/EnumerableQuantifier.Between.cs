@@ -45,7 +45,7 @@ public abstract partial class EnumerableQuantifier
 						(true, true) => $"found {matchingCount}",
 						(true, false) => $"{matchingCount} of {totalCount} {verb}",
 						(false, true) => $"found at least {matchingCount}",
-						(false, false) => $"at least {matchingCount} {verb}"
+						(false, false) => $"at least {matchingCount} {verb}",
 					});
 			}
 

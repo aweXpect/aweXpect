@@ -35,7 +35,7 @@ public class AndOrWhoseResultTests
 		MyClass sut = new()
 		{
 			Value1 = value1,
-			Value2 = value2
+			Value2 = value2,
 		};
 
 		async Task Act()

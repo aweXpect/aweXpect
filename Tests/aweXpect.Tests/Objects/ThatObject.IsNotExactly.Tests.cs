@@ -12,7 +12,7 @@ public sealed partial class ThatObject
 			{
 				object subject = new MyClass
 				{
-					Value = value
+					Value = value,
 				};
 
 				object? result = await That(subject).IsNotExactly<OtherClass>();
@@ -70,7 +70,7 @@ public sealed partial class ThatObject
 			{
 				object subject = new MyClass
 				{
-					Value = value
+					Value = value,
 				};
 
 				async Task Act()
@@ -96,7 +96,7 @@ public sealed partial class ThatObject
 			{
 				object subject = new MyClass
 				{
-					Value = value
+					Value = value,
 				};
 
 				object? result = await That(subject).IsNotExactly(typeof(OtherClass));
@@ -154,7 +154,7 @@ public sealed partial class ThatObject
 			{
 				object subject = new MyClass
 				{
-					Value = value
+					Value = value,
 				};
 
 				async Task Act()

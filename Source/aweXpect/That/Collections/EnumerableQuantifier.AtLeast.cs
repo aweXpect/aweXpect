@@ -19,7 +19,7 @@ public abstract partial class EnumerableQuantifier
 			=> minimum switch
 			{
 				1 => "at least one",
-				_ => $"at least {minimum}"
+				_ => $"at least {minimum}",
 			};
 
 		/// <inheritdoc />

@@ -13,7 +13,7 @@ public class SynchronouslyTests
 	{
 		Foo subject = new()
 		{
-			Bar = 3
+			Bar = 3,
 		};
 
 		int value = subject.Bar;
@@ -25,7 +25,7 @@ public class SynchronouslyTests
 	{
 		Foo subject = new()
 		{
-			Bar = 3
+			Bar = 3,
 		};
 		int value = subject.Bar;
 		void Act() => Synchronously.Verify(That(() => ThrowIf(value == 3)).DoesNotThrow());
@@ -44,7 +44,7 @@ public class SynchronouslyTests
 	{
 		Foo subject = new()
 		{
-			Bar = 3
+			Bar = 3,
 		};
 		int value = subject.Bar;
 		void Act() => Synchronously.Verify(That(value).IsEqualTo(2));
@@ -62,7 +62,7 @@ public class SynchronouslyTests
 	{
 		Foo subject = new()
 		{
-			Bar = 3
+			Bar = 3,
 		};
 
 		int value = Synchronously.Verify(That(subject.Bar).IsEqualTo(3));

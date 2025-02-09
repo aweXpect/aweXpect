@@ -13,5 +13,5 @@ public enum EquivalencyComparisonType
 	/// <summary>
 	///     Checks all members if they are considered equivalent.
 	/// </summary>
-	ByMembers
+	ByMembers,
 }

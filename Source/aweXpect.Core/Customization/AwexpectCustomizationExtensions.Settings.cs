@@ -25,13 +25,13 @@ public static partial class AwexpectCustomizationExtensions
 				() => Get().DefaultSignalerTimeout,
 				v => Update(p => p with
 				{
-					DefaultSignalerTimeout = v
+					DefaultSignalerTimeout = v,
 				}));
 			DefaultTimeComparisonTolerance = new CustomizationValue<TimeSpan>(
 				() => Get().DefaultTimeComparisonTolerance,
 				v => Update(p => p with
 				{
-					DefaultTimeComparisonTolerance = v
+					DefaultTimeComparisonTolerance = v,
 				}));
 		}
 

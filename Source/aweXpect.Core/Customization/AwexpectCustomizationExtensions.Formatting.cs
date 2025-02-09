@@ -25,7 +25,7 @@ public static partial class AwexpectCustomizationExtensions
 				// ReSharper disable once WithExpressionModifiesAllMembers
 				v => Update(p => p with
 				{
-					MaximumNumberOfCollectionItems = v
+					MaximumNumberOfCollectionItems = v,
 				}));
 		}
 

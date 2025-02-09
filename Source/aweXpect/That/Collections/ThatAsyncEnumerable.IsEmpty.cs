@@ -58,7 +58,7 @@ public static partial class ThatAsyncEnumerable
 					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 				List<TItem> items = new(maximumNumberOfCollectionItems + 1)
 				{
-					enumerator.Current
+					enumerator.Current,
 				};
 				while (await enumerator.MoveNextAsync())
 				{

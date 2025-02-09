@@ -37,7 +37,7 @@ public class AwexpectCustomizationTests
 		// ReSharper disable once WithExpressionModifiesAllMembers
 		using (Customize.aweXpect.Formatting().Update(p => p with
 		       {
-			       MaximumNumberOfCollectionItems = value
+			       MaximumNumberOfCollectionItems = value,
 		       }))
 		{
 			await That(Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()).IsEqualTo(value);

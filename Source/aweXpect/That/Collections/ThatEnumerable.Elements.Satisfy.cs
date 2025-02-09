@@ -26,7 +26,7 @@ public static partial class ThatEnumerable
 						() => grammar switch
 						{
 							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
-							_ => $"satisfies {doNotPopulateThisValue}"
+							_ => $"satisfies {doNotPopulateThisValue}",
 						},
 						predicate,
 						"did")),
@@ -50,7 +50,7 @@ public static partial class ThatEnumerable
 						() => grammar switch
 						{
 							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
-							_ => $"satisfies {doNotPopulateThisValue}"
+							_ => $"satisfies {doNotPopulateThisValue}",
 						},
 						predicate,
 						"did")),

@@ -19,7 +19,7 @@ public abstract partial class EnumerableQuantifier
 			=> maximum switch
 			{
 				1 => "at most one",
-				_ => $"at most {maximum}"
+				_ => $"at most {maximum}",
 			};
 
 		/// <inheritdoc />
@@ -49,7 +49,7 @@ public abstract partial class EnumerableQuantifier
 						(true, true) => $"found {matchingCount}",
 						(true, false) => $"{matchingCount} of {totalCount} {verb}",
 						(false, true) => $"found at least {matchingCount}",
-						(false, false) => $"at least {matchingCount} {verb}"
+						(false, false) => $"at least {matchingCount} {verb}",
 					});
 			}
 

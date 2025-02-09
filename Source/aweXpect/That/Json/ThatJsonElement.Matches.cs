@@ -22,7 +22,7 @@ public static partial class ThatJsonElement
 	{
 		JsonOptions jsonOptions = new()
 		{
-			IgnoreAdditionalProperties = true
+			IgnoreAdditionalProperties = true,
 		};
 		if (options != null)
 		{
@@ -46,7 +46,7 @@ public static partial class ThatJsonElement
 	{
 		JsonOptions jsonOptions = new()
 		{
-			IgnoreAdditionalProperties = true
+			IgnoreAdditionalProperties = true,
 		};
 		if (options != null)
 		{

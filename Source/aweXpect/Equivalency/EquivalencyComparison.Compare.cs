@@ -303,6 +303,6 @@ internal static partial class EquivalencyComparison
 		Property,
 		Field,
 		Value,
-		Element
+		Element,
 	}
 }

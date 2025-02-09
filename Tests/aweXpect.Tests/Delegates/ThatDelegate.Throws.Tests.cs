@@ -12,7 +12,7 @@ public sealed partial class ThatDelegate
 			{
 				Exception exception = new CustomException
 				{
-					Value = value
+					Value = value,
 				};
 				Action action = () => throw exception;
 
@@ -126,7 +126,7 @@ public sealed partial class ThatDelegate
 			{
 				Exception exception = new CustomException
 				{
-					Value = value
+					Value = value,
 				};
 				Action action = () => throw exception;
 

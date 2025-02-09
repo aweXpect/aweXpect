@@ -45,7 +45,7 @@ public partial class HappyCaseBenchmarks
 			{
 				A = ++objectCount,
 				B = Create(i - 1, objectCount),
-				C = Create(i - 2, objectCount)
+				C = Create(i - 2, objectCount),
 			};
 		}
 	}
