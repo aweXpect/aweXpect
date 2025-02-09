@@ -44,7 +44,7 @@ partial class Build
 				foreach (string symbolPackage in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.snupkg", SearchOption.AllDirectories))
 				{
-					File.Move(symbolPackage, packagesDirectory / Path.GetFileName(symbolPackage));
+					File.Move(symbolPackage, packagesDirectory / project.Name / Path.GetFileName(symbolPackage));
 					Debug("Found symbol package: {PackagePath}", symbolPackage);
 				}
 			}
