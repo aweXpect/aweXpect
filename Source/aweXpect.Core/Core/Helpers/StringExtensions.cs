@@ -22,7 +22,7 @@ internal static class StringExtensions
 		return (indentFirstLine ? indentation : "")
 		       + value.Replace("\n", $"\n{indentation}");
 	}
-	
+
 	public static string PrependAOrAn(this string value)
 	{
 		char[] vocals = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];

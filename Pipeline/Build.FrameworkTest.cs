@@ -19,7 +19,7 @@ partial class Build
 		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
-		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests
+		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests,
 	];
 
 	Target TestFrameworks => _ => _
@@ -42,7 +42,7 @@ partial class Build
 				select new
 				{
 					project,
-					framework
+					framework,
 				};
 
 			DotNetTest(s => s
@@ -70,7 +70,7 @@ partial class Build
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests,
 			];
 
 			var testCombinations =
@@ -80,7 +80,7 @@ partial class Build
 				select new
 				{
 					project,
-					framework
+					framework,
 				};
 
 			DotNetTest(s => s
@@ -113,7 +113,7 @@ partial class Build
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests,
 			];
 
 			var testCombinations =
@@ -123,7 +123,7 @@ partial class Build
 				select new
 				{
 					project,
-					framework
+					framework,
 				};
 
 			DotNetTest(s => s

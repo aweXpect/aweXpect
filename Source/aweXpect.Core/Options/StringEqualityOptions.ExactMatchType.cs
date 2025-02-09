@@ -114,7 +114,7 @@ public partial class StringEqualityOptions
 				true =>
 					$"is equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				false =>
-					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 			};
 
 		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />

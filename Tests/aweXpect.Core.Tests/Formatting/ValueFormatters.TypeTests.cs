@@ -220,7 +220,7 @@ public partial class ValueFormatters
 				},
 				{
 					typeof(void), "void"
-				}
+				},
 			};
 	}
 }

@@ -34,6 +34,7 @@ public sealed partial class ThatObject
 					              """);
 			}
 		}
+
 		public sealed class StructTests
 		{
 			[Fact]

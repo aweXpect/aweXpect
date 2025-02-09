@@ -34,7 +34,7 @@ public static partial class ThatException
 			=> grammar switch
 			{
 				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, grammar)}",
-				_ => $"has Message {options.GetExpectation(expected, grammar)}"
+				_ => $"has Message {options.GetExpectation(expected, grammar)}",
 			};
 	}
 

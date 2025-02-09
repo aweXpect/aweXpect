@@ -11,25 +11,25 @@ public sealed partial class QuantifiableCollectionItems
 			[
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Bar"
-				}
+					Value = "Bar",
+				},
 			];
 
 			MyClass expected = new()
 			{
-				Value = "Foo"
+				Value = "Foo",
 			};
 
 			async Task Act()
@@ -50,21 +50,21 @@ public sealed partial class QuantifiableCollectionItems
 			[
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
-				}
+					Value = "Foo",
+				},
 			];
 
 			MyClass expected = new()
 			{
-				Value = "Foo"
+				Value = "Foo",
 			};
 
 			async Task Act()

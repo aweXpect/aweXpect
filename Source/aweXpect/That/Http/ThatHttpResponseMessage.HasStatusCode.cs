@@ -13,13 +13,12 @@ namespace aweXpect;
 
 public static partial class ThatHttpResponseMessage
 {
-	
 	/// <summary>
 	///     Verifies that the status code of the <see cref="HttpResponseMessage" /> subject…
 	/// </summary>
 	public static StatusCodeResult HasStatusCode(this IThat<HttpResponseMessage?> source)
 		=> new(source, a => a?.StatusCode);
-	
+
 	/// <summary>
 	///     Verifies that the response has a status code equal to <paramref name="expected" />
 	/// </summary>

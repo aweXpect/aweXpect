@@ -13,7 +13,7 @@ public sealed partial class ThatObject
 			{
 				OuterClass subject = new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				};
 				OuterClass expected = subject;
 
@@ -36,11 +36,11 @@ public sealed partial class ThatObject
 			{
 				OuterClass subject = new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				};
 				OuterClass expected = new()
 				{
-					Value = "Bar"
+					Value = "Bar",
 				};
 
 				async Task Act()

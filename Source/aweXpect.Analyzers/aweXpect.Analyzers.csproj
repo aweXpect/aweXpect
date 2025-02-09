@@ -44,5 +44,5 @@
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
-	
+
 </Project>

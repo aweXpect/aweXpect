@@ -42,13 +42,13 @@ public static class JsonAwexpectCustomizationExtensions
 				() => Get().DefaultJsonDocumentOptions,
 				v => Update(p => p with
 				{
-					DefaultJsonDocumentOptions = v
+					DefaultJsonDocumentOptions = v,
 				}));
 			DefaultJsonSerializerOptions = new CustomizationValue<JsonSerializerOptions>(
 				() => Get().DefaultJsonSerializerOptions,
 				v => Update(p => p with
 				{
-					DefaultJsonSerializerOptions = v
+					DefaultJsonSerializerOptions = v,
 				}));
 		}
 
@@ -78,7 +78,7 @@ public static class JsonAwexpectCustomizationExtensions
 		/// </summary>
 		public JsonDocumentOptions DefaultJsonDocumentOptions { get; init; } = new()
 		{
-			AllowTrailingCommas = true
+			AllowTrailingCommas = true,
 		};
 
 		/// <summary>
@@ -86,7 +86,7 @@ public static class JsonAwexpectCustomizationExtensions
 		/// </summary>
 		public JsonSerializerOptions DefaultJsonSerializerOptions { get; init; } = new()
 		{
-			AllowTrailingCommas = true
+			AllowTrailingCommas = true,
 		};
 	}
 }

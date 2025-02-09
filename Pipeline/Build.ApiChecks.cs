@@ -20,7 +20,7 @@ partial class Build
 			{
 				BuildScope.CoreOnly => [Solution.Tests.aweXpect_Core_Api_Tests],
 				BuildScope.MainOnly => [Solution.Tests.aweXpect_Api_Tests],
-				_ => [Solution.Tests.aweXpect_Core_Api_Tests, Solution.Tests.aweXpect_Api_Tests]
+				_ => [Solution.Tests.aweXpect_Core_Api_Tests, Solution.Tests.aweXpect_Api_Tests],
 			};
 
 			DotNetTest(s => s

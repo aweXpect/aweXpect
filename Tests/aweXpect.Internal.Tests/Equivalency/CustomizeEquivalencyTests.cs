@@ -16,7 +16,7 @@ public sealed class CustomizeEquivalencyTests
 
 		using (IDisposable __ = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Set(new EquivalencyOptions
 		       {
-			       IgnoreCollectionOrder = true
+			       IgnoreCollectionOrder = true,
 		       }))
 		{
 			await That(Act).DoesNotThrow();
@@ -45,7 +45,7 @@ public sealed class CustomizeEquivalencyTests
 
 		using (Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Set(new EquivalencyOptions
 		       {
-			       IgnoreCollectionOrder = true
+			       IgnoreCollectionOrder = true,
 		       }))
 		{
 			await That(Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get().IgnoreCollectionOrder)

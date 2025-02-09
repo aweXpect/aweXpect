@@ -16,7 +16,7 @@ public static class EquivalencyOptionsExtensions
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
-			MembersToIgnore = [..@this.MembersToIgnore, memberToIgnore]
+			MembersToIgnore = [..@this.MembersToIgnore, memberToIgnore],
 		};
 
 	/// <summary>
@@ -32,7 +32,7 @@ public static class EquivalencyOptionsExtensions
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
-			Fields = fieldsToInclude
+			Fields = fieldsToInclude,
 		};
 
 	/// <summary>
@@ -49,7 +49,7 @@ public static class EquivalencyOptionsExtensions
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
-			Properties = propertiesToInclude
+			Properties = propertiesToInclude,
 		};
 
 	/// <summary>
@@ -62,7 +62,7 @@ public static class EquivalencyOptionsExtensions
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
-			IgnoreCollectionOrder = ignoreCollectionOrder
+			IgnoreCollectionOrder = ignoreCollectionOrder,
 		};
 
 	/// <summary>

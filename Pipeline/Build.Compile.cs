@@ -130,7 +130,7 @@ partial class Build
 			{
 				{
 					Solution.aweXpect_Core, Configuration
-				}
+				},
 			};
 			if (BuildScope == BuildScope.CoreOnly)
 			{

@@ -19,7 +19,7 @@ public sealed class CustomizeJsonTests
 		using (IDisposable __ = Customize.aweXpect.Json().DefaultJsonDocumentOptions.Set(new JsonDocumentOptions
 		       {
 			       // Default options set AllowTrailingCommas to true
-			       AllowTrailingCommas = false
+			       AllowTrailingCommas = false,
 		       }))
 		{
 			await That(Act).ThrowsException()
@@ -44,7 +44,7 @@ public sealed class CustomizeJsonTests
 		using (Customize.aweXpect.Json().DefaultJsonDocumentOptions.Set(new JsonDocumentOptions
 		       {
 			       // Default options set AllowTrailingCommas to true
-			       AllowTrailingCommas = false
+			       AllowTrailingCommas = false,
 		       }))
 		{
 			await That(Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas)
@@ -56,7 +56,7 @@ public sealed class CustomizeJsonTests
 		using (Customize.aweXpect.Json().DefaultJsonSerializerOptions.Set(new JsonSerializerOptions
 		       {
 			       // Default options set AllowTrailingCommas to true
-			       AllowTrailingCommas = false
+			       AllowTrailingCommas = false,
 		       }))
 		{
 			await That(Customize.aweXpect.Json().DefaultJsonDocumentOptions.Get().AllowTrailingCommas)

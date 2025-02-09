@@ -109,6 +109,7 @@ public partial class ThatDelegateThrows<TException>
 
 		#endregion
 	}
+
 	internal readonly struct HasInnerExceptionValueConstraint<TInnerException>(
 		string verb,
 		string it)

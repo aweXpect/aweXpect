@@ -9,10 +9,12 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches between <paramref name="minimum" /> and <paramref name="maximum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier Between(int minimum, int maximum, ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+	public static EnumerableQuantifier Between(int minimum, int maximum,
+		ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
 		=> new BetweenQuantifier(minimum, maximum, expectationGrammars);
 
-	private sealed class BetweenQuantifier(int minimum, int maximum, ExpectationGrammars expectationGrammars) : EnumerableQuantifier
+	private sealed class BetweenQuantifier(int minimum, int maximum, ExpectationGrammars expectationGrammars)
+		: EnumerableQuantifier
 	{
 		public override string ToString() => $"between {minimum} and {maximum}";
 
@@ -43,7 +45,7 @@ public abstract partial class EnumerableQuantifier
 						(true, true) => $"found {matchingCount}",
 						(true, false) => $"{matchingCount} of {totalCount} {verb}",
 						(false, true) => $"found at least {matchingCount}",
-						(false, false) => $"at least {matchingCount} {verb}"
+						(false, false) => $"at least {matchingCount} {verb}",
 					});
 			}
 

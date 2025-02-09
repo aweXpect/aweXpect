@@ -10,7 +10,8 @@ internal sealed class JsonMatchType(JsonOptions options) : IStringMatchType
 	private JsonElementValidator.JsonComparisonResult? _comparisonResult;
 	private string? _deserializationError;
 
-	/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
+	/// <inheritdoc
+	///     cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 	public string GetExtendedFailure(
 		string it,
 		string? actual,

@@ -47,7 +47,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int?> subject = Factory.GetConstantValueAsyncEnumerable<int?>(null, 20);
 
 					async Task Act()
-						=> await That(subject).All().AreEqualTo((int?)null);
+						=> await That(subject).All().AreEqualTo(null);
 
 					await That(Act).DoesNotThrow();
 				}

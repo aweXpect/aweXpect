@@ -1,5 +1,4 @@
 ﻿using System;
-using aweXpect.Core;
 
 namespace aweXpect.Core.Helpers;
 

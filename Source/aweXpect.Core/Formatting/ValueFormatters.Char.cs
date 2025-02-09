@@ -11,9 +11,7 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		char value,
 		FormattingOptions? options = null)
-	{
-		return $"'{value}'";
-	}
+		=> $"'{value}'";
 
 	/// <summary>
 	///     Appends the according to the <paramref name="options" /> formatted <paramref name="value" />
@@ -29,7 +27,7 @@ public static partial class ValueFormatters
 		stringBuilder.Append(value);
 		stringBuilder.Append('\'');
 	}
-	
+
 	/// <summary>
 	///     Returns the according to the <paramref name="options" /> formatted <paramref name="value" />.
 	/// </summary>

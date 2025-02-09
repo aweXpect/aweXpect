@@ -19,7 +19,7 @@ public static class JsonOptionsExtensions
 		JsonDocumentOptions options = jsonDocumentOptions(@this.DocumentOptions);
 		return @this with
 		{
-			DocumentOptions = options
+			DocumentOptions = options,
 		};
 	}
 
@@ -32,7 +32,7 @@ public static class JsonOptionsExtensions
 		bool ignoreAdditionalProperties = true)
 		=> @this with
 		{
-			IgnoreAdditionalProperties = ignoreAdditionalProperties
+			IgnoreAdditionalProperties = ignoreAdditionalProperties,
 		};
 }
 #endif

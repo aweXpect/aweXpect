@@ -3,5 +3,5 @@
 internal enum SortOrder
 {
 	Ascending,
-	Descending
+	Descending,
 }

@@ -29,7 +29,7 @@ public abstract class ConstraintResult
 		/// <summary>
 		///     Ignore the result of future constraints, but include their expectations.
 		/// </summary>
-		IgnoreResult
+		IgnoreResult,
 	}
 
 	/// <summary>

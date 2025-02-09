@@ -11,11 +11,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			MyClass expected = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -29,13 +29,13 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, new
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			});
 
 			await That(result).IsTrue();
@@ -49,11 +49,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = actualValue
+				MyValue = actualValue,
 			};
 			MyClass expected = new()
 			{
-				MyValue = expectedValue
+				MyValue = expectedValue,
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -72,11 +72,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			MyClass expected = new()
 			{
-				MyValue = "bar"
+				MyValue = "bar",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -102,7 +102,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClassWithProperties expected = new(2, expectedInternalValue, 4);
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				Properties = IncludeMembers.Internal
+				Properties = IncludeMembers.Internal,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -130,7 +130,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClassWithProperties expected = new(2, 4, expectedPrivateValue);
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				Properties = IncludeMembers.Private
+				Properties = IncludeMembers.Private,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -158,7 +158,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClassWithProperties expected = new(expectedPublicValue, 2, 4);
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				Properties = IncludeMembers.Public
+				Properties = IncludeMembers.Public,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);

@@ -9,7 +9,8 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches at least <paramref name="minimum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier AtLeast(int minimum, ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+	public static EnumerableQuantifier AtLeast(int minimum,
+		ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
 		=> new AtLeastQuantifier(minimum, expectationGrammars);
 
 	private sealed class AtLeastQuantifier(int minimum, ExpectationGrammars expectationGrammars) : EnumerableQuantifier
@@ -18,7 +19,7 @@ public abstract partial class EnumerableQuantifier
 			=> minimum switch
 			{
 				1 => "at least one",
-				_ => $"at least {minimum}"
+				_ => $"at least {minimum}",
 			};
 
 		/// <inheritdoc />

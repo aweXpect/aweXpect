@@ -8,6 +8,7 @@ using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect;

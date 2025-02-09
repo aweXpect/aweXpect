@@ -22,7 +22,7 @@ public class JsonOptionsTests
 
 		JsonOptions result = sut.WithJsonOptions(o => o with
 		{
-			MaxDepth = maxDepth
+			MaxDepth = maxDepth,
 		});
 
 		await That(result.DocumentOptions.MaxDepth).IsEqualTo(maxDepth);
@@ -35,7 +35,7 @@ public class JsonOptionsTests
 		JsonOptions sut = new();
 		JsonDocumentOptions documentOptions = new()
 		{
-			MaxDepth = maxDepth
+			MaxDepth = maxDepth,
 		};
 
 		JsonOptions result = sut.WithJsonOptions(_ => documentOptions);

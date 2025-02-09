@@ -71,7 +71,8 @@ internal class WhichNode<TSource, TMember> : Node
 		if (value is null || value is DelegateValue { IsNull: true })
 		{
 			ConstraintResult nullResult = await _inner.IsMetBy<TMember>(default, context, cancellationToken);
-			return CombineResults(parentResult, nullResult, _separator ?? "", ConstraintResult.FurtherProcessing.IgnoreResult);
+			return CombineResults(parentResult, nullResult, _separator ?? "",
+				ConstraintResult.FurtherProcessing.IgnoreResult);
 		}
 
 		if (value is not TSource typedValue)

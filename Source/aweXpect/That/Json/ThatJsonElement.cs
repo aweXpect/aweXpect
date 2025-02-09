@@ -40,7 +40,7 @@ public static partial class ThatJsonElement
 			=> options.IgnoreAdditionalProperties switch
 			{
 				true => $"matches {expectedExpression}",
-				false => $"matches {expectedExpression} exactly"
+				false => $"matches {expectedExpression} exactly",
 			};
 	}
 

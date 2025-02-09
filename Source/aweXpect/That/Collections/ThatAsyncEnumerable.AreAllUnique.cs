@@ -53,10 +53,10 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>
 		AreAllUnique<TItem, TMember>(
-		this IThat<IAsyncEnumerable<TItem>?> source,
-		Func<TItem, TMember> memberAccessor,
-		[CallerArgumentExpression("memberAccessor")]
-		string doNotPopulateThisValue = "")
+			this IThat<IAsyncEnumerable<TItem>?> source,
+			Func<TItem, TMember> memberAccessor,
+			[CallerArgumentExpression("memberAccessor")]
+			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(

@@ -57,7 +57,7 @@ public partial class ValueFormatters
 		public enum Dummy
 		{
 			Foo,
-			Bar
+			Bar,
 		}
 	}
 }

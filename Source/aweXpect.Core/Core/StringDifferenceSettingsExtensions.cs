@@ -15,7 +15,7 @@ public static class StringDifferenceSettingsExtensions
 		{
 			return new StringDifferenceSettings(0, 0)
 			{
-				MatchType = matchType
+				MatchType = matchType,
 			};
 		}
 

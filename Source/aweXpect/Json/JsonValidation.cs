@@ -456,7 +456,7 @@ internal class JsonValidation : IJsonObjectResult,
 			JsonValueKind.Object => "an object",
 			JsonValueKind.Number => "a number",
 			JsonValueKind.String => "a string",
-			_ => valueKind.ToString().ToLower()
+			_ => valueKind.ToString().ToLower(),
 		};
 }
 #endif

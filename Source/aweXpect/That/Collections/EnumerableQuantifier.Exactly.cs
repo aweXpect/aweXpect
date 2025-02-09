@@ -9,12 +9,13 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches exactly <paramref name="expected" /> items.
 	/// </summary>
-	public static EnumerableQuantifier Exactly(int expected, ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+	public static EnumerableQuantifier Exactly(int expected,
+		ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
 		=> new ExactlyQuantifier(expected, expectationGrammars);
 
 	private sealed class ExactlyQuantifier(int expected, ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{
-		public override string ToString() 
+		public override string ToString()
 			=> expected switch
 			{
 				1 => "exactly one",
@@ -48,7 +49,7 @@ public abstract partial class EnumerableQuantifier
 						(true, true) => $"found {matchingCount}",
 						(true, false) => $"{matchingCount} of {totalCount} {verb}",
 						(false, true) => $"found at least {matchingCount}",
-						(false, false) => $"at least {matchingCount} {verb}"
+						(false, false) => $"at least {matchingCount} {verb}",
 					});
 			}
 
@@ -57,7 +58,8 @@ public abstract partial class EnumerableQuantifier
 				if (matchingCount == expected)
 				{
 					return new ConstraintResult.Success<TEnumerable>(actual,
-						GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
+						GenerateExpectation(ToString(), expectationExpression, expectationGenerator,
+							expectationGrammars));
 				}
 
 				return new ConstraintResult.Failure<TEnumerable>(actual,

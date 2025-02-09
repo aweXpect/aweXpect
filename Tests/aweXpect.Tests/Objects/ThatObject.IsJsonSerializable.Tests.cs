@@ -17,7 +17,7 @@ public sealed partial class ThatObject
 				PocoWithIgnoredProperty subject = new()
 				{
 					Id = 2,
-					Name = "foo"
+					Name = "foo",
 				};
 
 				async Task Act()
@@ -38,7 +38,7 @@ public sealed partial class ThatObject
 				PocoWithIgnoredProperty subject = new()
 				{
 					Id = 2,
-					Name = "foo"
+					Name = "foo",
 				};
 
 				async Task Act()
@@ -102,7 +102,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsJsonSerializable(new JsonSerializerOptions
 					{
-						IncludeFields = includeFields
+						IncludeFields = includeFields,
 					});
 
 				await That(Act).Throws<XunitException>().OnlyIf(!includeFields)
@@ -143,7 +143,7 @@ public sealed partial class ThatObject
 					ShoeSize = 7.8f,
 					IsActive = true,
 					Image = [8, 9, 10, 11],
-					Category = 'a'
+					Category = 'a',
 				};
 
 				async Task Act()
@@ -161,7 +161,7 @@ public sealed partial class ThatObject
 				PocoWithIgnoredProperty subject = new()
 				{
 					Id = 2,
-					Name = "foo"
+					Name = "foo",
 				};
 
 				async Task Act()
@@ -182,7 +182,7 @@ public sealed partial class ThatObject
 				PocoWithIgnoredProperty subject = new()
 				{
 					Id = 2,
-					Name = "foo"
+					Name = "foo",
 				};
 
 				async Task Act()
@@ -247,7 +247,7 @@ public sealed partial class ThatObject
 					=> await That(subject).IsJsonSerializable<PocoWithoutDefaultFieldConstructor>(
 						new JsonSerializerOptions
 						{
-							IncludeFields = includeFields
+							IncludeFields = includeFields,
 						});
 
 				await That(Act).Throws<XunitException>().OnlyIf(!includeFields)
@@ -288,7 +288,7 @@ public sealed partial class ThatObject
 					ShoeSize = 7.8f,
 					IsActive = true,
 					Image = [8, 9, 10, 11],
-					Category = 'a'
+					Category = 'a',
 				};
 
 				async Task Act()
@@ -316,7 +316,7 @@ public sealed partial class ThatObject
 					ShoeSize = 7.8f,
 					IsActive = true,
 					Image = [8, 9, 10, 11],
-					Category = 'a'
+					Category = 'a',
 				};
 
 				async Task Act()
@@ -351,7 +351,7 @@ public sealed partial class ThatObject
 
 			public static PocoWithPrivateConstructor Create(int id) => new()
 			{
-				Id = id
+				Id = id,
 			};
 		}
 
@@ -364,7 +364,7 @@ public sealed partial class ThatObject
 
 			public static PocoWithPrivateConstructorWithJsonConstructorAttribute Create(int id) => new()
 			{
-				Id = id
+				Id = id,
 			};
 		}
 

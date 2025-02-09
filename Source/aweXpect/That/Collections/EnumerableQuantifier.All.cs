@@ -9,7 +9,8 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches all items.
 	/// </summary>
-	public static EnumerableQuantifier All(ExpectationGrammars expectationGrammars = ExpectationGrammars.None) => new AllQuantifier(expectationGrammars);
+	public static EnumerableQuantifier All(ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+		=> new AllQuantifier(expectationGrammars);
 
 	private sealed class AllQuantifier(ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{

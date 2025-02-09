@@ -1,6 +1,4 @@
-﻿using aweXpect.Core;
-
-namespace aweXpect.Options;
+﻿namespace aweXpect.Options;
 
 public partial class ObjectEqualityOptions<TSubject>
 {

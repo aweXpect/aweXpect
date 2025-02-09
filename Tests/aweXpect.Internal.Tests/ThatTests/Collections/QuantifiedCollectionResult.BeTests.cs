@@ -11,7 +11,7 @@ public sealed partial class QuantifiedCollectionResult
 			[
 				new MyClass(1),
 				new SubClass(1),
-				new OtherClass(1)
+				new OtherClass(1),
 			];
 
 			async Task Act()
@@ -31,7 +31,7 @@ public sealed partial class QuantifiedCollectionResult
 			object[] subject =
 			[
 				new MyClass(1),
-				new SubClass(1)
+				new SubClass(1),
 			];
 
 			async Task Act()

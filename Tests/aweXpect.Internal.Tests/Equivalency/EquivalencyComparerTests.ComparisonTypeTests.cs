@@ -15,28 +15,28 @@ public sealed partial class EquivalencyComparerTests
 			{
 				Property1 = new MyClass1
 				{
-					Value = 1
+					Value = 1,
 				},
 				Property2 = new MyClass2
 				{
-					Value = 1
-				}
+					Value = 1,
+				},
 			};
 			MyClassWithDifferentProperties expected = new()
 			{
 				Property1 = new MyClass1
 				{
-					Value = 1
+					Value = 1,
 				},
 				Property2 = new MyClass2
 				{
-					Value = 1
-				}
+					Value = 1,
+				},
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions()
 				.For<MyClass2>(o => o with
 				{
-					ComparisonType = EquivalencyComparisonType.ByValue
+					ComparisonType = EquivalencyComparisonType.ByValue,
 				}));
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -56,15 +56,15 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClass actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			MyClass expected = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				DefaultComparisonTypeSelector = _ => EquivalencyComparisonType.ByValue
+				DefaultComparisonTypeSelector = _ => EquivalencyComparisonType.ByValue,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);

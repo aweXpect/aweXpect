@@ -56,6 +56,7 @@ public abstract partial class EnumerableQuantifier
 		{
 			return $"{quantifierExpectation} {expectationExpression}";
 		}
+
 		return $"{expectationExpression} for {quantifierExpectation} {this.GetItemString()}";
 	}
 }

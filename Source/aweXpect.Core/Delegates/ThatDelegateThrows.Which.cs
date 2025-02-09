@@ -18,5 +18,4 @@ public partial class ThatDelegateThrows<TException>
 					(member, expectation) => $"whose {member}{expectation}")
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			this);
-
 }

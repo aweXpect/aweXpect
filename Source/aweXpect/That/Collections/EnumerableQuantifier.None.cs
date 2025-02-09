@@ -9,7 +9,8 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches none items.
 	/// </summary>
-	public static EnumerableQuantifier None(ExpectationGrammars expectationGrammars = ExpectationGrammars.None) => new NoneQuantifier(expectationGrammars);
+	public static EnumerableQuantifier None(ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+		=> new NoneQuantifier(expectationGrammars);
 
 	private sealed class NoneQuantifier(ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{

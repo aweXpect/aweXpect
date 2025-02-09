@@ -16,7 +16,7 @@ public sealed partial class ThatGeneric
 				MyCombinationClass subject = new()
 				{
 					A = a,
-					B = b
+					B = b,
 				};
 
 				async Task Act()
@@ -42,7 +42,7 @@ public sealed partial class ThatGeneric
 				MyCombinationClass subject = new()
 				{
 					A = a,
-					B = b
+					B = b,
 				};
 
 				async Task Act()
@@ -65,7 +65,7 @@ public sealed partial class ThatGeneric
 				int expectedValue = value + 1;
 				MyClass subject = new()
 				{
-					Value = value
+					Value = value,
 				};
 
 				async Task Act()
@@ -86,7 +86,7 @@ public sealed partial class ThatGeneric
 			{
 				MyClass subject = new()
 				{
-					Value = value
+					Value = value,
 				};
 
 				async Task Act()

@@ -14,11 +14,11 @@ public sealed partial class ThatEventRecording
 			{
 				PropertyChangedClass sender = new()
 				{
-					MyValue = 1
+					MyValue = 1,
 				};
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 2
+					MyValue = 2,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
@@ -47,11 +47,11 @@ public sealed partial class ThatEventRecording
 			{
 				PropertyChangedClass sender = new()
 				{
-					MyValue = 1
+					MyValue = 1,
 				};
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 2
+					MyValue = 2,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 

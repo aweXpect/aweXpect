@@ -16,7 +16,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((_,_) => new ExecutesWithinConstraint<TValue>(duration)));
+			.AddConstraint((_, _) => new ExecutesWithinConstraint<TValue>(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
@@ -25,7 +25,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((_,_) => new ExecutesWithinConstraint(duration)));
+			.AddConstraint((_, _) => new ExecutesWithinConstraint(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
@@ -34,7 +34,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((_,_) => new DoesNotExecuteWithinConstraint<TValue>(duration)));
+			.AddConstraint((_, _) => new DoesNotExecuteWithinConstraint<TValue>(duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
@@ -43,7 +43,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((_,_) => new DoesNotExecuteWithinConstraint(duration)));
+			.AddConstraint((_, _) => new DoesNotExecuteWithinConstraint(duration)));
 
 	private readonly struct ExecutesWithinConstraint<TValue>(TimeSpan duration)
 		: IValueConstraint<DelegateValue<TValue>>

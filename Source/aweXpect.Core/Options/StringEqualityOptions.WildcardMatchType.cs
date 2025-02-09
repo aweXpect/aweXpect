@@ -70,7 +70,7 @@ public partial class StringEqualityOptions
 				true =>
 					$"matches {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				false =>
-					$"matching {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+					$"matching {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 			};
 
 		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />

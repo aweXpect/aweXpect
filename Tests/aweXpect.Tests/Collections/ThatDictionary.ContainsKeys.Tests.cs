@@ -61,49 +61,6 @@ public sealed partial class ThatDictionary
 		public sealed class WhoseValuesTests
 		{
 			[Fact]
-			public async Task WhenKeysExist_ShouldSucceed()
-			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
-
-				async Task Act()
-					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("bar");
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task WhenKeysExist_ButValuesDoNotMatch_ShouldFail()
-			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
-
-				async Task Act()
-					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("foo");
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             contains keys [2] whose values are equal to "foo" for all items,
-					             but not all were
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenKeysExist_ButSomeValuesDoNotMatch_ShouldFail()
-			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
-
-				async Task Act()
-					=> await That(subject).ContainsKeys([1, 2]).WhoseValues.AreEqualTo("foo");
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             contains keys [1, 2] whose values are equal to "foo" for all items,
-					             but not all were
-					             """);
-			}
-
-			[Fact]
 			public async Task WhenKeysAreMissing_ShouldFail()
 			{
 				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
@@ -123,6 +80,49 @@ public sealed partial class ThatDictionary
 					               3
 					             ]
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ButSomeValuesDoNotMatch_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(1, 2).WhoseValues.AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys [1, 2] whose values are equal to "foo" for all items,
+					             but not all were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ButValuesDoNotMatch_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys [2] whose values are equal to "foo" for all items,
+					             but not all were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ShouldSucceed()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]

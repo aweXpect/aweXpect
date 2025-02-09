@@ -11,11 +11,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClassWithField actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			MyClassWithField expected = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -44,11 +44,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClassWithField actual = new()
 			{
-				MyValue = actualValue
+				MyValue = actualValue,
 			};
 			MyClassWithField expected = new()
 			{
-				MyValue = expectedValue
+				MyValue = expectedValue,
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -67,11 +67,11 @@ public sealed partial class EquivalencyComparerTests
 		{
 			MyClassWithField actual = new()
 			{
-				MyValue = "foo"
+				MyValue = "foo",
 			};
 			MyClassWithField expected = new()
 			{
-				MyValue = "bar"
+				MyValue = "bar",
 			};
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
@@ -97,7 +97,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClassWithFields expected = new(2, expectedInternalValue, 4);
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				Fields = IncludeMembers.Internal
+				Fields = IncludeMembers.Internal,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -125,7 +125,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClassWithFields expected = new(2, 4, expectedPrivateValue);
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				Fields = IncludeMembers.Private
+				Fields = IncludeMembers.Private,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -153,7 +153,7 @@ public sealed partial class EquivalencyComparerTests
 			MyClassWithFields expected = new(expectedPublicValue, 2, 4);
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
-				Fields = IncludeMembers.Public
+				Fields = IncludeMembers.Public,
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
