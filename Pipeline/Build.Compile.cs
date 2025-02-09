@@ -103,6 +103,7 @@ partial class Build
 		{
 			if (OnlyCore)
 			{
+				Configuration = Configuration.Debug;
 				ReportSummary(s => s
 					.WhenNotNull(CoreVersion, (summary, version) => summary
 						.AddPair("Core", version.FileVersion)));
