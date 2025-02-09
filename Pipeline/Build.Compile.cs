@@ -102,22 +102,13 @@ partial class Build
 		.DependsOn(CalculateNugetVersion)
 		.Executes(() =>
 		{
-			if (OnlyCore)
-			{
-				ReportSummary(s => s
-					.WhenNotNull(CoreVersion, (summary, version) => summary
-						.AddPair("Core", version.FileVersion)));
-			}
-			else
-			{
-				ReportSummary(s => s
-					.WhenNotNull(MainVersion, (summary, version) => summary
-						.AddPair("Version", version.FileVersion))
-					.WhenNotNull(CoreVersion, (summary, version) => summary
-						.AddPair("Core", version.FileVersion)));
-			}
+			ReportSummary(s => s
+				.WhenNotNull(MainVersion, (summary, version) => summary
+					.AddPair("Version", version.FileVersion))
+				.WhenNotNull(CoreVersion, (summary, version) => summary
+					.AddPair("Core", version.FileVersion)));
 
-			if (!OnlyCore)
+			if (BuildScope != BuildScope.CoreOnly)
 			{
 				ClearNugetPackages(Solution.aweXpect.Directory / "bin");
 				UpdateReadme(MainVersion.FileVersion, false);
@@ -141,7 +132,7 @@ partial class Build
 					Solution.aweXpect_Core, Configuration
 				}
 			};
-			if (OnlyCore)
+			if (BuildScope == BuildScope.CoreOnly)
 			{
 				projects.Add(Solution.Tests.aweXpect_Core_Tests, Configuration.Debug);
 				projects.Add(Solution.Tests.aweXpect_Core_Api_Tests, Configuration.Debug);

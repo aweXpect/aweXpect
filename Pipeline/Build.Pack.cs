@@ -22,11 +22,12 @@ partial class Build
 			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
 			packagesDirectory.CreateOrCleanDirectory();
 
-			Project[] projects = [Solution.aweXpect_Core];
-			if (!OnlyCore)
+			Project[] projects = BuildScope switch
 			{
-				projects = [..projects, Solution.aweXpect];
-			}
+				BuildScope.CoreOnly => [Solution.aweXpect_Core],
+				BuildScope.MainOnly => [Solution.aweXpect],
+				_ => [Solution.aweXpect_Core, Solution.aweXpect]
+			};
 
 			List<string> packages = new();
 			foreach (Project project in projects)
