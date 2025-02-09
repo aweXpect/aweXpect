@@ -30,7 +30,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInner<TInnerException>(
 		this IThat<Exception?> source)
 		where TInnerException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new HasInnerExceptionValueConstraint<TInnerException>("has",
 					it)),
 			source);
@@ -58,7 +58,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HaveInner(
 		this IThat<Exception?> source,
 		Type innerExceptionType)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new HasInnerExceptionValueConstraint(innerExceptionType,
 					"has", it)),
 			source);

@@ -19,7 +19,7 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsEqualToConstraint<object?, object?>(it, expected, doNotPopulateThisValue, options)),
 			source,
 			options);
@@ -36,7 +36,7 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNullableEqualToConstraint<T>(it, expected, doNotPopulateThisValue, options)),
 			source,
 			options);
@@ -53,7 +53,7 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsEqualToConstraint<T>(it, expected, doNotPopulateThisValue, options)),
 			source,
 			options);
@@ -70,7 +70,7 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue, options)),
 			source,
 			options);
@@ -88,7 +88,7 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNullableNotEqualToConstraint<T>(it, unexpected, doNotPopulateThisValue, options)),
 			source,
 			options);
@@ -106,7 +106,7 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotEqualToConstraint<T>(it, unexpected, doNotPopulateThisValue, options)),
 			source,
 			options);

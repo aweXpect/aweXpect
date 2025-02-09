@@ -19,11 +19,11 @@ public static partial class ThatEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => form switch
+						() => grammar switch
 						{
 							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
 							_ => $"satisfies {doNotPopulateThisValue}"
@@ -43,11 +43,11 @@ public static partial class ThatEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form switch
+						() => grammar switch
 						{
 							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
 							_ => $"satisfies {doNotPopulateThisValue}"

@@ -20,11 +20,11 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form == ExpectationGrammars.None
+						() => grammar == ExpectationGrammars.None
 							? $"is of type {Formatter.Format(typeof(TType))}"
 							: $"are of type {Formatter.Format(typeof(TType))}",
 						a => typeof(TType).IsAssignableFrom(a?.GetType()),
@@ -41,11 +41,11 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => form == ExpectationGrammars.None
+						() => grammar == ExpectationGrammars.None
 							? $"is of type {Formatter.Format(type)}"
 							: $"are of type {Formatter.Format(type)}",
 						a => type.IsAssignableFrom(a?.GetType()),

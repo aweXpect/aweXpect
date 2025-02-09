@@ -15,7 +15,7 @@ public static partial class ThatException
 		this IThat<TException> source,
 		int expected)
 		where TException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new HasHResultValueConstraint(it, "has", expected)),
 			source);
 

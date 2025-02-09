@@ -10,7 +10,7 @@ public static partial class ThatNullableBool
 	///     Verifies that the subject is <see langword="true" />.
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsTrue(this IThat<bool?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsEqualToConstraint(it, true)),
 			source);
 
@@ -18,7 +18,7 @@ public static partial class ThatNullableBool
 	///     Verifies that the subject is not <see langword="true" />.
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsNotTrue(this IThat<bool?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotEqualToConstraint(it, true)),
 			source);
 }

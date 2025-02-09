@@ -14,7 +14,7 @@ public static partial class ThatNullableEnum
 		this IThat<TEnum?> source,
 		TEnum? expectedFlag)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint<TEnum>(
 					it,
 					$"has flag {Formatter.Format(expectedFlag)}",
@@ -28,7 +28,7 @@ public static partial class ThatNullableEnum
 		this IThat<TEnum?> source,
 		TEnum? unexpectedFlag)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, form) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint<TEnum>(
 					it,
 					$"does not have flag {Formatter.Format(unexpectedFlag)}",
