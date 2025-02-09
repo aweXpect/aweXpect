@@ -582,6 +582,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -681,7 +687,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -784,7 +791,8 @@ window.BENCHMARK_DATA = {
           153.73760930697122,
           162.45414174397786,
           160.94222265879313,
-          153.79470971914438
+          153.79470971914438,
+          160.43552434444427
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -891,6 +899,7 @@ window.BENCHMARK_DATA = {
           496,
           496,
           496,
+          504,
           504,
           504
         ],
@@ -1003,7 +1012,8 @@ window.BENCHMARK_DATA = {
           202.74606437683104,
           202.8310240427653,
           192.54370443026224,
-          212.89853165944416
+          212.89853165944416,
+          200.2250495751699
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1041,6 +1051,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1222,7 +1233,8 @@ window.BENCHMARK_DATA = {
           649.5010140101115,
           670.9231433232625,
           674.6236026128133,
-          634.8006659825643
+          634.8006659825643,
+          672.9844445546468
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1283,6 +1295,7 @@ window.BENCHMARK_DATA = {
           1936,
           1936,
           1936,
+          1944,
           1944,
           1944,
           1944,
@@ -1464,6 +1477,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -1486,7 +1505,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -1512,7 +1532,8 @@ window.BENCHMARK_DATA = {
           277586.92008463544,
           285851.6915039063,
           283691.71207682294,
-          284740.8532017299
+          284740.8532017299,
+          281782.21966145834
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1542,6 +1563,7 @@ window.BENCHMARK_DATA = {
           284900,
           284900,
           284900,
+          284908,
           284908,
           284908
         ],
@@ -1577,7 +1599,8 @@ window.BENCHMARK_DATA = {
           2209188.254464286,
           2027375.72265625,
           2002358.4959635416,
-          2029308.1729166666
+          2029308.1729166666,
+          2117562.9627403845
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1589,6 +1612,7 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1642,7 +1666,8 @@ window.BENCHMARK_DATA = {
           707176.4744001116,
           683322.1306340144,
           672234.544782366,
-          628508.1697265625
+          628508.1697265625,
+          661016.8538736979
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1654,6 +1679,7 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
+          836377,
           836377,
           836377,
           836377,
@@ -2269,6 +2295,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -2368,7 +2400,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -2471,7 +2504,8 @@ window.BENCHMARK_DATA = {
           386.93885353633334,
           371.19785261154175,
           590.5544319886428,
-          512.1551565170288
+          512.1551565170288,
+          523.2576548031399
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2578,6 +2612,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           888,
+          1088,
           1088,
           1088
         ],
@@ -2690,7 +2725,8 @@ window.BENCHMARK_DATA = {
           466.60972080230715,
           431.7677124341329,
           413.9738572438558,
-          411.4011170182909
+          411.4011170182909,
+          414.64233354421765
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2728,6 +2764,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -2909,7 +2946,8 @@ window.BENCHMARK_DATA = {
           14998.045378621418,
           15134.656136067708,
           18023.774935913087,
-          15942.362714494977
+          15942.362714494977,
+          14491.400018310547
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2970,6 +3008,7 @@ window.BENCHMARK_DATA = {
           27008,
           27008,
           27008,
+          27016,
           27016,
           27016,
           27016,
@@ -3613,6 +3652,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -3712,7 +3757,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -3815,7 +3861,8 @@ window.BENCHMARK_DATA = {
           217.24443457921345,
           206.8598089536031,
           195.53661273206984,
-          192.51070130666096
+          192.51070130666096,
+          192.38145688374837
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3922,6 +3969,7 @@ window.BENCHMARK_DATA = {
           848,
           848,
           848,
+          856,
           856,
           856
         ],
@@ -4034,7 +4082,8 @@ window.BENCHMARK_DATA = {
           221.61246547698974,
           203.30073087556022,
           250.34317324711725,
-          227.675555229187
+          227.675555229187,
+          219.6363655237051
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4072,6 +4121,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -4253,7 +4303,8 @@ window.BENCHMARK_DATA = {
           1029.8518976484027,
           988.0927816118513,
           1020.1133197784424,
-          1004.0259765897479
+          1004.0259765897479,
+          944.3012178284781
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4314,6 +4365,7 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
+          2576,
           2576,
           2576,
           2576,
@@ -4957,6 +5009,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -5056,7 +5114,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -5159,7 +5218,8 @@ window.BENCHMARK_DATA = {
           331.4345299402873,
           333.43487313588463,
           311.7837176640829,
-          316.9929438829422
+          316.9929438829422,
+          312.6925959587097
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5266,6 +5326,7 @@ window.BENCHMARK_DATA = {
           928,
           928,
           928,
+          936,
           936,
           936
         ],
@@ -5378,7 +5439,8 @@ window.BENCHMARK_DATA = {
           480.552694384257,
           438.189592054912,
           552.9477722304208,
-          417.8204117457072
+          417.8204117457072,
+          440.5437582560948
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5416,6 +5478,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -5597,7 +5660,8 @@ window.BENCHMARK_DATA = {
           1131.8538427352905,
           1043.9529182434082,
           1009.6551688267634,
-          1021.2678555079868
+          1021.2678555079868,
+          978.5671928405761
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5658,6 +5722,7 @@ window.BENCHMARK_DATA = {
           2544,
           2544,
           2544,
+          2560,
           2560,
           2560,
           2560,
@@ -6301,6 +6366,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -6400,7 +6471,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -6503,7 +6575,8 @@ window.BENCHMARK_DATA = {
           1272.8651862825666,
           1222.7439421335855,
           1200.5403307596841,
-          1195.5122802440937
+          1195.5122802440937,
+          1175.077733484904
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6610,6 +6683,7 @@ window.BENCHMARK_DATA = {
           2504,
           2504,
           2504,
+          2536,
           2536,
           2536
         ],
@@ -6722,7 +6796,8 @@ window.BENCHMARK_DATA = {
           1325.2573818206788,
           1275.8848793029786,
           1213.7145041147867,
-          1191.7710747037615
+          1191.7710747037615,
+          1184.6886122567314
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6760,6 +6835,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -6941,7 +7017,8 @@ window.BENCHMARK_DATA = {
           2426.682197570801,
           2369.6660789489747,
           2363.285945892334,
-          2397.3624811808268
+          2397.3624811808268,
+          2422.4247281392413
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7002,6 +7079,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3776,
           3776,
           3776,
           3776,
@@ -7645,6 +7723,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 8 23:59:26 2025 \u002B0100",
         "message": "feat: simplify \u0060HasStatusCode\u0060 expectation on \u0060HttpResponseMessage\u0060 (#323)"
+      },
+      {
+        "sha": "853f31c84db0e8a44a8628f7e6cc1544fdfebd4e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 9 10:04:51 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.30.0 (#328)"
       }
     ],
     "labels": [
@@ -7744,7 +7828,8 @@ window.BENCHMARK_DATA = {
       "c5d459a7",
       "e9072521",
       "0fe58fe8",
-      "85b5ef18"
+      "85b5ef18",
+      "853f31c8"
     ],
     "datasets": [
       {
@@ -7847,7 +7932,8 @@ window.BENCHMARK_DATA = {
           1335.4772897084554,
           1286.7636047090803,
           1232.793577330453,
-          1325.155352274577
+          1325.155352274577,
+          1299.4542348044258
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7954,6 +8040,7 @@ window.BENCHMARK_DATA = {
           2536,
           2536,
           2536,
+          2568,
           2568,
           2568
         ],
@@ -8066,7 +8153,8 @@ window.BENCHMARK_DATA = {
           88725.04125104632,
           87198.73338216146,
           86622.75985281808,
-          87855.84320537861
+          87855.84320537861,
+          85739.82422814003
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8174,7 +8262,8 @@ window.BENCHMARK_DATA = {
           54275,
           54271,
           54273,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8285,7 +8374,8 @@ window.BENCHMARK_DATA = {
           6766.397156348596,
           6652.9041086832685,
           6842.3299077351885,
-          6821.0382960001625
+          6821.0382960001625,
+          6565.021527426584
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8346,6 +8436,7 @@ window.BENCHMARK_DATA = {
           7632,
           7632,
           7632,
+          7640,
           7640,
           7640,
           7640,
