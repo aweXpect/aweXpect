@@ -9,12 +9,12 @@ namespace aweXpect
         public abstract aweXpect.Core.Constraints.ConstraintResult GetResult<TEnumerable>(TEnumerable actual, string it, string? expectationExpression, int matchingCount, int notMatchingCount, int? totalCount, string? verb, System.Func<string, string?, string>? expectationGenerator = null);
         public abstract bool IsDeterminable(int matchingCount, int notMatchingCount);
         public abstract bool IsSingle();
-        public static aweXpect.EnumerableQuantifier All(aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
-        public static aweXpect.EnumerableQuantifier AtLeast(int minimum, aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
-        public static aweXpect.EnumerableQuantifier AtMost(int maximum, aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
-        public static aweXpect.EnumerableQuantifier Between(int minimum, int maximum, aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
-        public static aweXpect.EnumerableQuantifier Exactly(int expected, aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
-        public static aweXpect.EnumerableQuantifier None(aweXpect.Core.ExpectationGrammar expectationGrammar = 0) { }
+        public static aweXpect.EnumerableQuantifier All(aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier AtLeast(int minimum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier AtMost(int maximum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier Between(int minimum, int maximum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier Exactly(int expected, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier None(aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
     }
     public static class EquivalencyExtensions
     {
