@@ -11,7 +11,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<TType, IThat<object?>> IsExactly<TType>(
+	public static AndOrWhoseResult<TType, IThat<object?>> IsExactly<TType>(
 		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsExactlyOfTypeConstraint<TType>(it)),
@@ -20,7 +20,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsExactly(
+	public static AndOrResult<object?, IThat<object?>> IsExactly(
 		this IThat<object?> source,
 		Type type)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
@@ -30,7 +30,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsNotExactly<TType>(
+	public static AndOrResult<object?, IThat<object?>> IsNotExactly<TType>(
 		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotExactlyOfTypeConstraint<TType>(it)),
@@ -39,7 +39,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsNotExactly(
+	public static AndOrResult<object?, IThat<object?>> IsNotExactly(
 		this IThat<object?> source,
 		Type type)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)

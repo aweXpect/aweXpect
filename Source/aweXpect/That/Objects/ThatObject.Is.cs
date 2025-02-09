@@ -11,7 +11,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<TType, IThat<object?>> Is<TType>(
+	public static AndOrWhoseResult<TType, IThat<object?>> Is<TType>(
 		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsOfTypeConstraint<TType>(it)),
@@ -20,7 +20,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<T?, IThat<T?>> Is<T>(
+	public static AndOrResult<T?, IThat<T?>> Is<T>(
 		this IThat<T?> source,
 		Type type)
 		where T : class
@@ -31,7 +31,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsNot<TType>(
+	public static AndOrResult<object?, IThat<object?>> IsNot<TType>(
 		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotOfTypeConstraint<TType>(it)),
@@ -40,7 +40,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is not of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<T?, IThat<T?>> IsNot<T>(
+	public static AndOrResult<T?, IThat<T?>> IsNot<T>(
 		this IThat<T?> source,
 		Type type)
 		where T : class
