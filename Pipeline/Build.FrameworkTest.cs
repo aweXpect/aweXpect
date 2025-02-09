@@ -25,11 +25,13 @@ partial class Build
 	Target TestFrameworks => _ => _
 		.DependsOn(VsTestFrameworks)
 		.DependsOn(TestingPlatformFrameworks)
-		.DependsOn(XunitTestingPlatformFrameworks);
+		.DependsOn(XunitTestingPlatformFrameworks)
+		.OnlyWhenDynamic(() => !OnlyCore);
 
 	Target VsTestFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.Executes(() =>
 		{
 			var testCombinations =
@@ -63,6 +65,7 @@ partial class Build
 	Target TestingPlatformFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.Executes(() =>
 		{
 			Project[] projects =
@@ -105,6 +108,7 @@ partial class Build
 	Target XunitTestingPlatformFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.Executes(() =>
 		{
 			Project[] projects =

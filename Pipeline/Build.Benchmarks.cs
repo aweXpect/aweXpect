@@ -27,11 +27,12 @@ partial class Build
 	private const string BenchmarkBranch = "benchmarks";
 
 	Target BenchmarkDotNet => _ => _
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.Executes(() =>
 		{
 			AbsolutePath benchmarkDirectory = ArtifactsDirectory / "Benchmarks";
 			benchmarkDirectory.CreateOrCleanDirectory();
-
+			
 			DotNetBuild(s => s
 				.SetProjectFile(Solution.Benchmarks.aweXpect_Benchmarks)
 				.SetConfiguration(Configuration.Release)
@@ -44,6 +45,7 @@ partial class Build
 
 	Target BenchmarkResult => _ => _
 		.After(BenchmarkDotNet)
+		.OnlyWhenDynamic(() => !OnlyCore)
 		.Executes(async () =>
 		{
 			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
@@ -53,7 +55,7 @@ partial class Build
 
 	Target BenchmarkComment => _ => _
 		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => GitHubActions?.IsPullRequest == true)
+		.OnlyWhenDynamic(() => !OnlyCore && GitHubActions?.IsPullRequest == true)
 		.Executes(async () =>
 		{
 			string body = CreateBenchmarkCommentBody();

@@ -100,23 +100,35 @@ partial class Build
 		.DependsOn(CalculateNugetVersion)
 		.Executes(() =>
 		{
-			ReportSummary(s => s
-				.WhenNotNull(MainVersion, (summary, version) => summary
-					.AddPair("Version", version.FileVersion))
-				.WhenNotNull(CoreVersion, (summary, version) => summary
-					.AddPair("Core", version.FileVersion)));
+			if (OnlyCore)
+			{
+				ReportSummary(s => s
+					.WhenNotNull(CoreVersion, (summary, version) => summary
+						.AddPair("Core", version.FileVersion)));
+			}
+			else
+			{
+				ReportSummary(s => s
+					.WhenNotNull(MainVersion, (summary, version) => summary
+						.AddPair("Version", version.FileVersion))
+					.WhenNotNull(CoreVersion, (summary, version) => summary
+						.AddPair("Core", version.FileVersion)));
+			}
 
-			ClearNugetPackages(Solution.aweXpect.Directory / "bin");
-			UpdateReadme(MainVersion.FileVersion, false);
+			if (!OnlyCore)
+			{
+				ClearNugetPackages(Solution.aweXpect.Directory / "bin");
+				UpdateReadme(MainVersion.FileVersion, false);
 
-			DotNetBuild(s => s
-				.SetProjectFile(Solution)
-				.SetConfiguration(Configuration)
-				.EnableNoLogo()
-				.SetVersion(MainVersion.FileVersion + CoreVersion.PreRelease)
-				.SetAssemblyVersion(MainVersion.FileVersion)
-				.SetFileVersion(MainVersion.FileVersion)
-				.SetInformationalVersion(MainVersion.InformationalVersion));
+				DotNetBuild(s => s
+					.SetProjectFile(Solution)
+					.SetConfiguration(Configuration)
+					.EnableNoLogo()
+					.SetVersion(MainVersion.FileVersion + CoreVersion.PreRelease)
+					.SetAssemblyVersion(MainVersion.FileVersion)
+					.SetFileVersion(MainVersion.FileVersion)
+					.SetInformationalVersion(MainVersion.InformationalVersion));
+			}
 
 			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
 			UpdateReadme(CoreVersion.FileVersion, true);

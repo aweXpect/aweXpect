@@ -13,12 +13,21 @@ namespace Build;
 )]
 partial class Build : NukeBuild
 {
-	[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-	Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
-
 	[Parameter("Github Token")] readonly string GithubToken;
 
+
+	/// <summary>
+	///     Set this flag temporarily to <see langword="true" /> when you introduce breaking changes in the core library.
+	///     This will change the build pipeline to only build and publish the aweXpect.Core package.
+	///     <para />
+	///     Afterward you can update the package reference in `Directory.Packages.props` and reset this flag.
+	/// </summary>
+	readonly bool OnlyCore = true;
+
 	[Solution(GenerateProjects = true)] readonly Solution Solution;
+
+	[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
+	Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
 	AbsolutePath ArtifactsDirectory => RootDirectory / "Artifacts";
 	AbsolutePath TestResultsDirectory => RootDirectory / "TestResults";

@@ -22,11 +22,14 @@ partial class Build
 			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
 			packagesDirectory.CreateOrCleanDirectory();
 
+			Project[] projects = [Solution.aweXpect_Core];
+			if (!OnlyCore)
+			{
+				projects = [..projects, Solution.aweXpect];
+			}
+
 			List<string> packages = new();
-			foreach (Project project in new[]
-			         {
-				         Solution.aweXpect, Solution.aweXpect_Core
-			         })
+			foreach (Project project in projects)
 			{
 				foreach (string package in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.nupkg", SearchOption.AllDirectories))
