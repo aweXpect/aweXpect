@@ -40,6 +40,6 @@ public static partial class ThatString
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> options.GetExpectation(expected, true);
+			=> options.GetExpectation(expected, ExpectationGrammars.Active);
 	}
 }

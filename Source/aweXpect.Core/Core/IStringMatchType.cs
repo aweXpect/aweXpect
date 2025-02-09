@@ -18,7 +18,7 @@ public interface IStringMatchType
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	string GetExpectation(string? expected, bool useActiveGrammaticVoice);
+	string GetExpectation(string? expected, ExpectationGrammars grammar);
 
 	/// <summary>
 	///     Get an extended failure text.

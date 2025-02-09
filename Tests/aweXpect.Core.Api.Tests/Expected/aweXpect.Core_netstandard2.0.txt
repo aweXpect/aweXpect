@@ -110,6 +110,7 @@ namespace aweXpect.Core
         None = 0,
         Nested = 1,
         Plural = 2,
+        Active = 3,
     }
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
@@ -134,7 +135,7 @@ namespace aweXpect.Core
     public interface IStringMatchType
     {
         bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
-        string GetExpectation(string? expected, bool useActiveGrammaticVoice);
+        string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammar);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer, aweXpect.Core.StringDifferenceSettings? settings);
         string GetOptionString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
         string GetTypeString();
@@ -588,7 +589,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
-        public string GetExpectation(string? expected, bool useActiveGrammaticVoice) { }
+        public string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammar) { }
         public string GetExtendedFailure(string it, string? actual, string? expected) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }

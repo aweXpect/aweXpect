@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
@@ -30,7 +29,8 @@ public partial class StringEqualityOptions
 
 		#region IStringMatchType Members
 
-		/// <inheritdoc cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
+		/// <inheritdoc
+		///     cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
 			IEqualityComparer<string> comparer,
@@ -41,7 +41,8 @@ public partial class StringEqualityOptions
 				return $"could not compare the <null> wildcard pattern with {Formatter.Format(actual)}";
 			}
 
-			StringDifference stringDifference = new(actual, expected, comparer, settings.WithMatchType(StringDifference.MatchType.Wildcard));
+			StringDifference stringDifference = new(actual, expected, comparer,
+				settings.WithMatchType(StringDifference.MatchType.Wildcard));
 			return $"{it} did not match{stringDifference.ToString("")}";
 		}
 
@@ -62,9 +63,9 @@ public partial class StringEqualityOptions
 				RegexTimeout);
 		}
 
-		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, bool)" />
-		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-			=> useActiveGrammaticVoice switch
+		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, ExpectationGrammars)" />
+		public string GetExpectation(string? expected, ExpectationGrammars grammar)
+			=> grammar.HasFlag(ExpectationGrammars.Active) switch
 			{
 				true =>
 					$"matches {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",

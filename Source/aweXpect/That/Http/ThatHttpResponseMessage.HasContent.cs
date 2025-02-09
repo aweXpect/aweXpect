@@ -50,7 +50,7 @@ public static partial class ThatHttpResponseMessage
 		}
 
 		public override string ToString()
-			=> $"has a string content {options.GetExpectation(expected, false)}";
+			=> $"has a string content {options.GetExpectation(expected, ExpectationGrammars.None)}";
 	}
 }
 #endif

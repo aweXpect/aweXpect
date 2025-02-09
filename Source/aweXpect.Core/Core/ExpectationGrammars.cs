@@ -21,5 +21,10 @@ public enum ExpectationGrammars
 	/// <summary>
 	///     The expectation should be in plural form.
 	/// </summary>
-	Plural
+	Plural,
+
+	/// <summary>
+	///     The expectation should be in active voice.
+	/// </summary>
+	Active
 }

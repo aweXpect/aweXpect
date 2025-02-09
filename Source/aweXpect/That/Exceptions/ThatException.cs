@@ -33,8 +33,8 @@ public static partial class ThatException
 		public override string ToString()
 			=> grammar switch
 			{
-				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, false)}",
-				_ => $"has Message {options.GetExpectation(expected, false)}"
+				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, grammar)}",
+				_ => $"has Message {options.GetExpectation(expected, grammar)}"
 			};
 	}
 
