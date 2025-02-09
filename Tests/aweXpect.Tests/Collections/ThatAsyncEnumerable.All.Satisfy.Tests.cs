@@ -11,7 +11,6 @@ public sealed partial class ThatAsyncEnumerable
 	{
 		public sealed class Satisfy
 		{
-			// ReSharper disable once MemberHidesStaticFromOuterClass
 			public sealed class Tests
 			{
 				[Fact]
@@ -86,6 +85,7 @@ public sealed partial class ThatAsyncEnumerable
 						             """);
 				}
 			}
+			// ReSharper disable once MemberHidesStaticFromOuterClass
 		}
 	}
 }

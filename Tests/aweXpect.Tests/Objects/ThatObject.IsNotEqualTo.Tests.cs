@@ -163,6 +163,17 @@ public sealed partial class ThatObject
 		public sealed class TypeEqualsTests
 		{
 			[Fact]
+			public async Task WhenValuesAreDifferent_ShouldSucceed()
+			{
+				Type sut = typeof(long);
+				Type unexpected = typeof(int);
+
+				async Task Act() => await That(sut).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task WhenValuesAreSame_ShouldFail()
 			{
 				Type sut = typeof(float);
@@ -176,17 +187,6 @@ public sealed partial class ThatObject
 					             is not equal to unexpected,
 					             but it was float
 					             """);
-			}
-
-			[Fact]
-			public async Task WhenValuesAreDifferent_ShouldSucceed()
-			{
-				Type sut = typeof(long);
-				Type unexpected = typeof(int);
-
-				async Task Act() => await That(sut).IsNotEqualTo(unexpected);
-
-				await That(Act).DoesNotThrow();
 			}
 		}
 	}

@@ -34,6 +34,7 @@ public sealed partial class ThatObject
 				await That(Act).DoesNotThrow();
 			}
 		}
+
 		public sealed class StructTests
 		{
 			[Fact]

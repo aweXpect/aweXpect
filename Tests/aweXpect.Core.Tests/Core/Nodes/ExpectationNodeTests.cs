@@ -104,44 +104,6 @@ public class ExpectationNodeTests
 			             """);
 	}
 
-#if DEBUG // TODO Re-Enable after next core update
-	[Fact]
-	public async Task IsMetBy_WhenConstraintAndInnerFailAndWhenBothFailureMessagesAreIdentical_ShouldOnlyPrintOnce()
-	{
-		ExpectationNode node = new();
-		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "same failure")));
-		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
-		node.AddConstraint(new DummyValueConstraint<int>(v
-			=> new ConstraintResult.Failure<int>(2 * v, "bar", "same failure")));
-
-		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
-
-		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Whose(p => p.Value, v => v.IsEqualTo(42))
-			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
-			.AndWhose(p => p.ResultText, r => r.IsEqualTo("same failure"));
-	}
-
-	[Fact]
-	public async Task IsMetBy_WhenConstraintAndInnerFail_ShouldCombineFailureMessage()
-	{
-		ExpectationNode node = new();
-		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "outer failure")));
-		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
-		node.AddConstraint(new DummyValueConstraint<int>(v
-			=> new ConstraintResult.Failure<int>(2 * v, "bar", "inner failure")));
-
-		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
-
-		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Whose(p => p.Value, v => v.IsEqualTo(42))
-			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
-			.AndWhose(p => p.ResultText, r => r.IsEqualTo("outer failure and inner failure"));
-	}
-#endif
-	
 	[Fact]
 	public async Task IsMetBy_WhenContextConstraintReturns_ShouldApplyBecauseReason()
 	{
@@ -261,4 +223,42 @@ public class ExpectationNodeTests
 	}
 
 	private class UnsupportedConstraint : IConstraint;
+
+#if DEBUG // TODO Re-Enable after next core update
+	[Fact]
+	public async Task IsMetBy_WhenConstraintAndInnerFailAndWhenBothFailureMessagesAreIdentical_ShouldOnlyPrintOnce()
+	{
+		ExpectationNode node = new();
+		node.AddConstraint(
+			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "same failure")));
+		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
+		node.AddConstraint(new DummyValueConstraint<int>(v
+			=> new ConstraintResult.Failure<int>(2 * v, "bar", "same failure")));
+
+		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
+
+		await That(result).Is<ConstraintResult.Failure<int>>()
+			.Whose(p => p.Value, v => v.IsEqualTo(42))
+			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
+			.AndWhose(p => p.ResultText, r => r.IsEqualTo("same failure"));
+	}
+
+	[Fact]
+	public async Task IsMetBy_WhenConstraintAndInnerFail_ShouldCombineFailureMessage()
+	{
+		ExpectationNode node = new();
+		node.AddConstraint(
+			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "outer failure")));
+		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
+		node.AddConstraint(new DummyValueConstraint<int>(v
+			=> new ConstraintResult.Failure<int>(2 * v, "bar", "inner failure")));
+
+		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
+
+		await That(result).Is<ConstraintResult.Failure<int>>()
+			.Whose(p => p.Value, v => v.IsEqualTo(42))
+			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
+			.AndWhose(p => p.ResultText, r => r.IsEqualTo("outer failure and inner failure"));
+	}
+#endif
 }

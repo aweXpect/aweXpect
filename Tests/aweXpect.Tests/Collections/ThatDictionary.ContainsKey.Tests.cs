@@ -59,17 +59,6 @@ public sealed partial class ThatDictionary
 		public sealed class WhoseValueTests
 		{
 			[Fact]
-			public async Task WhenKeyExists_ShouldSucceed()
-			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
-
-				async Task Act()
-					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("bar");
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
 			public async Task WhenKeyExists_ButValueDoesNotMatch_ShouldFail()
 			{
 				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
@@ -87,6 +76,17 @@ public sealed partial class ThatDictionary
 					               "foo"
 					                ↑ (expected)
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeyExists_ShouldSucceed()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("bar");
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]

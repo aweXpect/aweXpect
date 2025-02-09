@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Synchronous;
+
 // ReSharper disable InvokeAsExtensionMethod
 
 namespace aweXpect.Core.Tests.Synchronous;

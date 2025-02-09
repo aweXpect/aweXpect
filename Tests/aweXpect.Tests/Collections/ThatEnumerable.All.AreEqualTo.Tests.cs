@@ -276,7 +276,8 @@ public sealed partial class ThatEnumerable
 					string[] subject = [" foo", "foo", "\tfoo"];
 
 					async Task Act()
-						=> await That(subject).All().AreEqualTo("foo").IgnoringLeadingWhiteSpace(ignoreLeadingWhiteSpace);
+						=> await That(subject).All().AreEqualTo("foo")
+							.IgnoringLeadingWhiteSpace(ignoreLeadingWhiteSpace);
 
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreLeadingWhiteSpace)
 						.WithMessage("""
@@ -314,7 +315,8 @@ public sealed partial class ThatEnumerable
 					string[] subject = ["foo ", "foo", "foo\t"];
 
 					async Task Act()
-						=> await That(subject).All().AreEqualTo("foo").IgnoringTrailingWhiteSpace(ignoreTrailingWhiteSpace);
+						=> await That(subject).All().AreEqualTo("foo")
+							.IgnoringTrailingWhiteSpace(ignoreTrailingWhiteSpace);
 
 					await That(Act).Throws<XunitException>().OnlyIf(!ignoreTrailingWhiteSpace)
 						.WithMessage("""
