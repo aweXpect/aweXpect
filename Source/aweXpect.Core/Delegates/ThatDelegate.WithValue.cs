@@ -21,7 +21,7 @@ public abstract partial class ThatDelegate
 		///     Verifies that the delegate does not throw any exception.
 		/// </summary>
 		public ExpectationResult<TValue> DoesNotThrow()
-			=> new(ExpectationBuilder.AddConstraint((_,_) => new DoesNotThrowConstraint()));
+			=> new(ExpectationBuilder.AddConstraint((_, _) => new DoesNotThrowConstraint()));
 
 		private readonly struct DoesNotThrowConstraint : IValueConstraint<DelegateValue<TValue>>
 		{

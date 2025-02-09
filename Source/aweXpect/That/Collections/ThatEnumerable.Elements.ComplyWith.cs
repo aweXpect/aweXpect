@@ -29,74 +29,74 @@ public static partial class ThatEnumerable
 				options);
 		}
 
-	private readonly struct ComplyWithConstraint : IAsyncContextConstraint<IEnumerable<TItem>?>
-	{
-		private readonly string _it;
-		private readonly EnumerableQuantifier _quantifier;
-		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
-
-		public ComplyWithConstraint(string it,
-			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
+		private readonly struct ComplyWithConstraint : IAsyncContextConstraint<IEnumerable<TItem>?>
 		{
-			_it = it;
-			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
-			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
-		}
+			private readonly string _it;
+			private readonly EnumerableQuantifier _quantifier;
+			private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
 
-		public async Task<ConstraintResult> IsMetBy(
-			IEnumerable<TItem>? actual,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
-		{
-			if (actual is null)
+			public ComplyWithConstraint(string it,
+				EnumerableQuantifier quantifier,
+				Action<IThat<TItem>> expectations)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(
-					actual,
-					$"{_itemExpectationBuilder} for {_quantifier} items",
-					$"{_it} was <null>");
+				_it = it;
+				_quantifier = quantifier;
+				_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
+				expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 			}
 
-			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			bool cancelEarly = actual is not ICollection<TItem>;
-			int matchingCount = 0;
-			int notMatchingCount = 0;
-			int? totalCount = null;
-
-			foreach (TItem item in materialized)
+			public async Task<ConstraintResult> IsMetBy(
+				IEnumerable<TItem>? actual,
+				IEvaluationContext context,
+				CancellationToken cancellationToken)
 			{
-				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
-				if (isMatch is ConstraintResult.Success)
+				if (actual is null)
 				{
-					matchingCount++;
-				}
-				else
-				{
-					notMatchingCount++;
+					return new ConstraintResult.Failure<IEnumerable<TItem>?>(
+						actual,
+						$"{_itemExpectationBuilder} for {_quantifier} items",
+						$"{_it} was <null>");
 				}
 
-				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
+				bool cancelEarly = actual is not ICollection<TItem>;
+				int matchingCount = 0;
+				int notMatchingCount = 0;
+				int? totalCount = null;
+
+				foreach (TItem item in materialized)
 				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-						notMatchingCount,
-						totalCount, null,
-						(expectation, quantifier) => $"{quantifier} for {expectation} items");
+					ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
+					if (isMatch is ConstraintResult.Success)
+					{
+						matchingCount++;
+					}
+					else
+					{
+						notMatchingCount++;
+					}
+
+					if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
+					{
+						return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
+							notMatchingCount,
+							totalCount, null,
+							(expectation, quantifier) => $"{quantifier} for {expectation} items");
+					}
+
+					if (cancellationToken.IsCancellationRequested)
+					{
+						return new ConstraintResult.Failure<IEnumerable<TItem>>(
+							actual, $"{_itemExpectationBuilder} for {_quantifier} items",
+							"could not verify, because it was cancelled early");
+					}
 				}
 
-				if (cancellationToken.IsCancellationRequested)
-				{
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, $"{_itemExpectationBuilder} for {_quantifier} items",
-						"could not verify, because it was cancelled early");
-				}
+				return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
+					notMatchingCount,
+					matchingCount + notMatchingCount, null,
+					(expectation, quantifier) => $"{quantifier} for {expectation} items");
 			}
-
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-				notMatchingCount,
-				matchingCount + notMatchingCount, null,
-				(expectation, quantifier) => $"{quantifier} for {expectation} items");
 		}
-	}
 	}
 }

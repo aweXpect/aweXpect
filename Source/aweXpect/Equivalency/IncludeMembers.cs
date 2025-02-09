@@ -26,5 +26,5 @@ public enum IncludeMembers
 	/// <summary>
 	///     Private members should be included in the object comparison.
 	/// </summary>
-	Private = 1 << 3,
+	Private = 1 << 3
 }

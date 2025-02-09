@@ -15,7 +15,8 @@ public static class EquivalencyExtensions
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this ObjectEqualityResult<TType, TThat, TElement, TSelf> result,
+	public static TSelf Equivalent<TType, TThat, TElement, TSelf>(
+		this ObjectEqualityResult<TType, TThat, TElement, TSelf> result,
 		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
 		where TSelf : ObjectEqualityResult<TType, TThat, TElement, TSelf>
 	{

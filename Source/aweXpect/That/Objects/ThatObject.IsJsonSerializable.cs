@@ -5,7 +5,6 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Equivalency;
 using aweXpect.Helpers;
-using aweXpect.Options;
 using aweXpect.Results;
 
 namespace aweXpect;

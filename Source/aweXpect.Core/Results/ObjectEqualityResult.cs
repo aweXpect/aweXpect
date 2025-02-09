@@ -32,7 +32,7 @@ public class ObjectEqualityResult<TType, TThat, TElement, TSelf>(
 	ObjectEqualityOptions<TElement> options)
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue),
 		IOptionsProvider<ObjectEqualityOptions<TElement>>
-	where TSelf : ObjectEqualityResult<TType, TThat, TElement,TSelf>
+	where TSelf : ObjectEqualityResult<TType, TThat, TElement, TSelf>
 {
 	/// <inheritdoc cref="IOptionsProvider{TOptions}.Options" />
 	ObjectEqualityOptions<TElement> IOptionsProvider<ObjectEqualityOptions<TElement>>.Options => options;

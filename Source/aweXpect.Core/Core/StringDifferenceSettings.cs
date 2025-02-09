@@ -18,7 +18,7 @@ public class StringDifferenceSettings(int ignoredTrailingLines, int ignoredTrail
 		=> ignoredTrailingColumns;
 
 	/// <summary>
-	/// The match type used to display the <see cref="StringDifference" />.
+	///     The match type used to display the <see cref="StringDifference" />.
 	/// </summary>
 	public StringDifference.MatchType MatchType { get; internal set; } = StringDifference.MatchType.Equality;
 }

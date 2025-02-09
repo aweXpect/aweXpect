@@ -220,7 +220,8 @@ public static partial class ThatAsyncEnumerable
 			=> $"starts with {_expectedExpression}{_options}";
 	}
 
-	private readonly struct DoesNotStartWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	private readonly struct
+		DoesNotStartWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;

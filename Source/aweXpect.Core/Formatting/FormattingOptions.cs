@@ -27,6 +27,6 @@ public record FormattingOptions
 	public static FormattingOptions SingleLine { get; } = new(false);
 
 	internal bool UseLineBreaks { get; }
-	
+
 	internal string Indentation { get; }
 }
