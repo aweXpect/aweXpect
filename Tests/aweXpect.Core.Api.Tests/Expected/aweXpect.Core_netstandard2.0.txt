@@ -108,9 +108,9 @@ namespace aweXpect.Core
     public enum ExpectationGrammars
     {
         None = 0,
-        Nested = 1,
-        Plural = 2,
-        Active = 3,
+        Nested = 2,
+        Plural = 4,
+        Active = 8,
     }
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2

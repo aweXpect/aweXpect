@@ -22,7 +22,7 @@ partial class Build
 			}
 
 			DotNetTest(s => s
-				.SetConfiguration(Configuration == Configuration.Debug ? "Debug" : "Release")
+				.SetConfiguration(Configuration == Configuration.Debug || OnlyCore ? "Debug" : "Release")
 				.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 				.EnableNoBuild()
 				.SetResultsDirectory(TestResultsDirectory)

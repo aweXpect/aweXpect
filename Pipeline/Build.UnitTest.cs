@@ -28,7 +28,7 @@ partial class Build
 			string[] testAssemblies = UnitTestProjects(OnlyCore)
 				.SelectMany(project =>
 					project.Directory.GlobFiles(
-						$"bin/{(Configuration == Configuration.Debug ? "Debug" : "Release")}/net48/*.Tests.dll"))
+						$"bin/{(Configuration == Configuration.Debug || OnlyCore ? "Debug" : "Release")}/net48/*.Tests.dll"))
 				.Select(p => p.ToString())
 				.ToArray();
 
@@ -47,7 +47,7 @@ partial class Build
 		{
 			string net48 = "net48";
 			DotNetTest(s => s
-					.SetConfiguration(Configuration)
+					.SetConfiguration(OnlyCore ? Configuration.Debug : Configuration)
 					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
 					.EnableNoBuild()
 					.SetDataCollector("XPlat Code Coverage")
