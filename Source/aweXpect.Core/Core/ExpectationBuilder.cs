@@ -114,7 +114,7 @@ public abstract class ExpectationBuilder
 		MemberAccessor<TSource, TTarget?> memberAccessor,
 		Func<MemberAccessor, string, string>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((expectationBuilderCallback, expectationForm, sourceConstraintCallback) =>
+		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
@@ -130,7 +130,7 @@ public abstract class ExpectationBuilder
 			}
 
 			ExpectationGrammars previousGrammars = ExpectationGrammars;
-			ExpectationGrammars = expectationForm;
+			ExpectationGrammars = expectationGrammar;
 			expectationBuilderCallback.Invoke(this);
 			ExpectationGrammars = previousGrammars;
 			_node = root;
@@ -193,7 +193,7 @@ public abstract class ExpectationBuilder
 		Func<TSource, TTarget?> memberAccessor,
 		string? separator = null,
 		string? replaceIt = null,
-		ExpectationGrammars? expectationForm = null)
+		ExpectationGrammars? expectationGrammar = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
@@ -207,9 +207,9 @@ public abstract class ExpectationBuilder
 			_it = replaceIt;
 		}
 
-		if (expectationForm != null)
+		if (expectationGrammar != null)
 		{
-			ExpectationGrammars = expectationForm.Value;
+			ExpectationGrammars = expectationGrammar.Value;
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);

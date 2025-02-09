@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatSignaler
 {
-	public sealed partial class BeSignaled
+	public sealed partial class Signaled
 	{
 		public sealed class WithinTests
 		{

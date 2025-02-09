@@ -30,11 +30,11 @@ public static partial class ThatSignaler
 	/// <summary>
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled at least once.
 	/// </summary>
-	public static SignalCountResult<TParameter> Signaled<TParameter>(
+	public static SignalCountWhoseResult<TParameter> Signaled<TParameter>(
 		this IThat<Signaler<TParameter>> source)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		return new SignalCountWhoseResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new TriggerConstraint<TParameter>(it, 1, options)),
 			source,
 			options);
@@ -59,12 +59,12 @@ public static partial class ThatSignaler
 	///     Verifies that the expected callback with <typeparamref name="TParameter" /> was signaled
 	///     at least the given number of <paramref name="times" />.
 	/// </summary>
-	public static SignalCountResult<TParameter> Signaled<TParameter>(
+	public static SignalCountWhoseResult<TParameter> Signaled<TParameter>(
 		this IThat<Signaler<TParameter>> source,
 		Times times)
 	{
 		SignalerOptions<TParameter> options = new();
-		return new SignalCountResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		return new SignalCountWhoseResult<TParameter>(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new TriggerConstraint<TParameter>(it, times.Value, options)),
 			source,
 			options);
