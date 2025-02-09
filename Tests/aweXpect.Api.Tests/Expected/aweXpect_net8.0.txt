@@ -838,8 +838,8 @@ namespace aweXpect
         public static aweXpect.Results.SignalCountResult<TParameter> DidNotSignal<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
         public static aweXpect.Results.SignalCountResult Signaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source) { }
         public static aweXpect.Results.SignalCountResult Signaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Times times) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
+        public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
     }
     public static class ThatStream
     {
@@ -1115,11 +1115,21 @@ namespace aweXpect.Results
         public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler> returnValue, aweXpect.Options.SignalerOptions options) { }
         public aweXpect.Results.SignalCountResult Within(System.TimeSpan timeout) { }
     }
-    public class SignalCountResult<TParameter> : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult<TParameter>, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>>>
+    public class SignalCountResult<TParameter> : aweXpect.Results.SignalCountResult<TParameter, aweXpect.Results.SignalCountResult<TParameter>>
     {
         public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
-        public aweXpect.Results.SignalCountResult<TParameter> With(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public aweXpect.Results.SignalCountResult<TParameter> Within(System.TimeSpan timeout) { }
+    }
+    public class SignalCountResult<TParameter, TSelf> : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult<TParameter>, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>>>
+        where TSelf : aweXpect.Results.SignalCountResult<TParameter, TSelf>
+    {
+        public SignalCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
+        public TSelf With(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public TSelf Within(System.TimeSpan timeout) { }
+    }
+    public class SignalCountWhoseResult<TParameter> : aweXpect.Results.SignalCountResult<TParameter, aweXpect.Results.SignalCountWhoseResult<TParameter>>
+    {
+        public SignalCountWhoseResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> returnValue, aweXpect.Options.SignalerOptions<TParameter> options) { }
+        public aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TParameter>> WhoseParameters { get; }
     }
     public class SingleItemResult<TCollection, TItem> : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>>
     {

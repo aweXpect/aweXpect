@@ -5,7 +5,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatSignaler
 {
-	public sealed class Signaled
+	public sealed partial class Signaled
 	{
 		public sealed class Tests
 		{
