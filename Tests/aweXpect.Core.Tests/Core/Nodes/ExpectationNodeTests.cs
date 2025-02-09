@@ -117,9 +117,9 @@ public class ExpectationNodeTests
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
 
 		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Which(p => p.Value, v => v.IsEqualTo(42))
-			.AndWhich(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
-			.AndWhich(p => p.ResultText, r => r.IsEqualTo("same failure"));
+			.Whose(p => p.Value, v => v.IsEqualTo(42))
+			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
+			.AndWhose(p => p.ResultText, r => r.IsEqualTo("same failure"));
 	}
 
 	[Fact]
@@ -135,9 +135,9 @@ public class ExpectationNodeTests
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
 
 		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Which(p => p.Value, v => v.IsEqualTo(42))
-			.AndWhich(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
-			.AndWhich(p => p.ResultText, r => r.IsEqualTo("outer failure and inner failure"));
+			.Whose(p => p.Value, v => v.IsEqualTo(42))
+			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
+			.AndWhose(p => p.ResultText, r => r.IsEqualTo("outer failure and inner failure"));
 	}
 
 	[Fact]

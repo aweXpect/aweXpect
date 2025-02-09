@@ -625,7 +625,7 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>, T?> IsEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  struct { }
-        public static aweXpect.Results.ObjectEqualityResult<TSubject, aweXpect.Core.IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.AndOrResult<TSubject, aweXpect.Core.IThat<TSubject>> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<object?>> IsExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNot<TType>(this aweXpect.Core.IThat<object?> source) { }

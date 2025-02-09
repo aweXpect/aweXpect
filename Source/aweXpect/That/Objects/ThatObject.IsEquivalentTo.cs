@@ -14,7 +14,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is equivalent to the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<TSubject, IThat<TSubject>, TSubject> IsEquivalentTo<TSubject, TExpected>(
+	public static AndOrResult<TSubject, IThat<TSubject>> IsEquivalentTo<TSubject, TExpected>(
 		this IThat<TSubject> source,
 		TExpected expected,
 		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
@@ -28,10 +28,9 @@ public static partial class ThatObject
 
 		ObjectEqualityOptions<TSubject> equalityOptions = new();
 		equalityOptions.Equivalent(equivalencyOptions);
-		return new ObjectEqualityResult<TSubject, IThat<TSubject>, TSubject>(
+		return new AndOrResult<TSubject, IThat<TSubject>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsEqualToConstraint<TSubject, TExpected>(it, expected, doNotPopulateThisValue, equalityOptions)),
-			source,
-			equalityOptions);
+			source);
 	}
 }
