@@ -22,7 +22,7 @@ partial class Build : NukeBuild
 	///     <para />
 	///     Afterward you can update the package reference in `Directory.Packages.props` and reset this flag.
 	/// </summary>
-	readonly BuildScope BuildScope = BuildScope.CoreOnly;
+	readonly BuildScope BuildScope = BuildScope.MainOnly;
 
 	[Solution(GenerateProjects = true)] readonly Solution Solution;
 
