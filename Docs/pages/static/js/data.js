@@ -618,6 +618,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -723,7 +729,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -832,7 +839,8 @@ window.BENCHMARK_DATA = {
           146.76445724566778,
           156.82889786133399,
           168.64159862200418,
-          155.80716988245646
+          155.80716988245646,
+          158.36351675253647
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -939,6 +947,7 @@ window.BENCHMARK_DATA = {
           496,
           496,
           496,
+          504,
           504,
           504,
           504,
@@ -1063,7 +1072,8 @@ window.BENCHMARK_DATA = {
           200.21038002627236,
           207.8907189687093,
           204.65390124320984,
-          193.00443409283955
+          193.00443409283955,
+          196.65667889912922
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1101,6 +1111,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1294,7 +1305,8 @@ window.BENCHMARK_DATA = {
           643.1752400031456,
           650.7811103548322,
           791.2082206090291,
-          763.864727292742
+          763.864727292742,
+          784.6434197743733
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1407,6 +1419,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216
         ],
@@ -1578,6 +1591,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -1606,7 +1625,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -1638,7 +1658,8 @@ window.BENCHMARK_DATA = {
           283552.80538504466,
           282509.43118489586,
           293477.1961388221,
-          282277.9459751674
+          282277.9459751674,
+          288079.5066964286
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1671,6 +1692,7 @@ window.BENCHMARK_DATA = {
           284908,
           284908,
           284908,
+          284900,
           284900,
           284900,
           284900,
@@ -1715,7 +1737,8 @@ window.BENCHMARK_DATA = {
           2046483.7622767857,
           2073286.773158482,
           1993383.0979166667,
-          2054861.9891927084
+          2054861.9891927084,
+          2078818.3953125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1749,6 +1772,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1792,7 +1816,8 @@ window.BENCHMARK_DATA = {
           676228.4595424107,
           637901.8543619792,
           679531.9175130208,
-          674011.6395786831
+          674011.6395786831,
+          668776.7788411458
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1828,6 +1853,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713
         ],
@@ -2461,6 +2487,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -2566,7 +2598,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -2675,7 +2708,8 @@ window.BENCHMARK_DATA = {
           528.1722724621112,
           516.3310871124268,
           558.6295332227435,
-          518.6488916397095
+          518.6488916397095,
+          546.2712798436482
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2782,6 +2816,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           888,
+          1088,
           1088,
           1088,
           1088,
@@ -2906,7 +2941,8 @@ window.BENCHMARK_DATA = {
           407.78142426808677,
           406.5294674873352,
           448.7201038769313,
-          430.61284427642823
+          430.61284427642823,
+          431.34143144743786
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2944,6 +2980,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3137,7 +3174,8 @@ window.BENCHMARK_DATA = {
           14389.844233194986,
           18415.133771623885,
           15472.653063964844,
-          15861.341029866537
+          15861.341029866537,
+          14593.24577331543
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3250,6 +3288,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288
         ],
@@ -3883,6 +3922,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -3988,7 +4033,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -4097,7 +4143,8 @@ window.BENCHMARK_DATA = {
           200.60294357935587,
           190.22039112022944,
           203.47271436055502,
-          196.28285353978475
+          196.28285353978475,
+          197.12967403729758
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4204,6 +4251,7 @@ window.BENCHMARK_DATA = {
           848,
           848,
           848,
+          856,
           856,
           856,
           856,
@@ -4328,7 +4376,8 @@ window.BENCHMARK_DATA = {
           196.6634284655253,
           196.16072753497534,
           210.80747583707173,
-          191.6322481950124
+          191.6322481950124,
+          194.9774925549825
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4366,6 +4415,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -4559,7 +4609,8 @@ window.BENCHMARK_DATA = {
           953.3822917938232,
           950.9279899597168,
           1100.3640633991786,
-          1079.1705893107824
+          1079.1705893107824,
+          1057.999342918396
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4672,6 +4723,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848
         ],
@@ -5305,6 +5357,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -5410,7 +5468,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -5519,7 +5578,8 @@ window.BENCHMARK_DATA = {
           323.36700425829207,
           310.60553410847984,
           325.3907588322957,
-          310.20801000595094
+          310.20801000595094,
+          326.65651318232216
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5626,6 +5686,7 @@ window.BENCHMARK_DATA = {
           928,
           928,
           928,
+          936,
           936,
           936,
           936,
@@ -5750,7 +5811,8 @@ window.BENCHMARK_DATA = {
           420.45587536493935,
           432.20756081172397,
           433.5679268836975,
-          412.53609495162965
+          412.53609495162965,
+          437.4341393709183
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5788,6 +5850,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -5981,7 +6044,8 @@ window.BENCHMARK_DATA = {
           1028.7520179748535,
           1001.4720724423727,
           1135.819866434733,
-          1144.9553657531737
+          1144.9553657531737,
+          1216.7778825124105
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6094,6 +6158,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896
         ],
@@ -6727,6 +6792,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -6832,7 +6903,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -6941,7 +7013,8 @@ window.BENCHMARK_DATA = {
           1205.1555449167888,
           1228.6675163269042,
           1217.8485837300618,
-          1316.5012627919516
+          1316.5012627919516,
+          1269.5339554377965
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7048,6 +7121,7 @@ window.BENCHMARK_DATA = {
           2504,
           2504,
           2504,
+          2536,
           2536,
           2536,
           2536,
@@ -7172,7 +7246,8 @@ window.BENCHMARK_DATA = {
           1172.1701968056816,
           1266.0472885131835,
           1271.2275978968694,
-          1202.526193891253
+          1202.526193891253,
+          1252.117607243856
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7210,6 +7285,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -7403,7 +7479,8 @@ window.BENCHMARK_DATA = {
           2346.4338098253525,
           2431.9160784403484,
           2524.5732563563756,
-          2530.6089309692384
+          2530.6089309692384,
+          2561.061629231771
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7516,6 +7593,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112
         ],
@@ -8149,6 +8227,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:07 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 4 updates (#336)"
+      },
+      {
+        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
       }
     ],
     "labels": [
@@ -8254,7 +8338,8 @@ window.BENCHMARK_DATA = {
       "27d29c96",
       "55e7e4fc",
       "b0e47762",
-      "36644484"
+      "36644484",
+      "f8f7d0ad"
     ],
     "datasets": [
       {
@@ -8363,7 +8448,8 @@ window.BENCHMARK_DATA = {
           1279.9057153065999,
           1352.2574152946472,
           1269.5871156545786,
-          1345.3328666687012
+          1345.3328666687012,
+          1258.5622177124023
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8470,6 +8556,7 @@ window.BENCHMARK_DATA = {
           2536,
           2536,
           2536,
+          2568,
           2568,
           2568,
           2568,
@@ -8594,7 +8681,8 @@ window.BENCHMARK_DATA = {
           86808.41269155648,
           87902.7473470052,
           87482.22587076823,
-          85237.0762532552
+          85237.0762532552,
+          86992.76948242188
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8708,7 +8796,8 @@ window.BENCHMARK_DATA = {
           54271,
           54271,
           53762,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8825,7 +8914,8 @@ window.BENCHMARK_DATA = {
           6582.368810017903,
           6424.587176731655,
           6871.097214253744,
-          6769.187674302321
+          6769.187674302321,
+          6643.489694722493
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8938,6 +9028,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912
         ],
