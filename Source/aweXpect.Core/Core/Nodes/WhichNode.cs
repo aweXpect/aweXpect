@@ -97,7 +97,7 @@ internal class WhichNode<TSource, TMember> : Node
 		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult, matchingValue);
 	}
 
-	private class WhichConstraintResult(
+	private sealed class WhichConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		string separator,

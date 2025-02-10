@@ -11,13 +11,18 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Nodes;
 
-internal class AndNode(Node node) : Node
+internal class AndNode : Node
 {
 	private const string DefaultSeparator = " and ";
 	private readonly List<(string, Node)> _nodes = new();
 	private string? _currentSeparator;
 
-	private Node Current { get; set; } = node;
+	public AndNode(Node node)
+	{
+		Current = node;
+	}
+
+	private Node Current { get; set; }
 
 	/// <inheritdoc />
 	public override void AddConstraint(IConstraint constraint)
@@ -95,7 +100,7 @@ internal class AndNode(Node node) : Node
 			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
-	private class AndConstraintResult(
+	private sealed class AndConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		string separator,

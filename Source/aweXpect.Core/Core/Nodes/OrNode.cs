@@ -11,13 +11,18 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Nodes;
 
-internal class OrNode(Node node) : Node
+internal class OrNode : Node
 {
 	private const string DefaultSeparator = " or ";
 	private readonly List<(string, Node)> _nodes = new();
 	private string? _currentSeparator;
 
-	internal Node Current { get; set; } = node;
+	public OrNode(Node node)
+	{
+		Current = node;
+	}
+
+	internal Node Current { get; set; }
 
 	/// <inheritdoc />
 	public override void AddConstraint(IConstraint constraint)
@@ -90,7 +95,7 @@ internal class OrNode(Node node) : Node
 			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
-	private class OrConstraintResult(
+	private sealed class OrConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		string separator,

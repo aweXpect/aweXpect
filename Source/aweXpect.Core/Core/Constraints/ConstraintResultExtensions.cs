@@ -24,7 +24,7 @@ public static class ConstraintResultExtensions
 	public static ConstraintResult Fail<T>(this ConstraintResult inner, string failure, T value)
 		=> new ConstraintResultFailure<T>(inner, failure, true, value);
 
-	private class ConstraintResultWrapper<T>(ConstraintResult inner, T value)
+	private sealed class ConstraintResultWrapper<T>(ConstraintResult inner, T value)
 		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
 	{
 		private readonly T _value = value;
@@ -53,7 +53,7 @@ public static class ConstraintResultExtensions
 		}
 	}
 
-	private class ConstraintResultFailure<T>(ConstraintResult inner, string failure, bool useValue, T value)
+	private sealed class ConstraintResultFailure<T>(ConstraintResult inner, string failure, bool useValue, T value)
 		: ConstraintResult(Outcome.Failure, inner.FurtherProcessingStrategy)
 	{
 		private readonly T _value = value;

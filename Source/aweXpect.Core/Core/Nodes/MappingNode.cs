@@ -77,7 +77,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		StringBuilder expectation)
 		=> expectation.Append(memberAccessor);
 
-	private class MappingConstraintResult(
+	private sealed class MappingConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		Action<MemberAccessor<TSource, TTarget?>, StringBuilder>? expectationTextGenerator,
