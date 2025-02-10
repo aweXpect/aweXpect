@@ -45,8 +45,10 @@ public static partial class ThatHttpResponseMessage
 				return new ConstraintResult.Success<HttpResponseMessage?>(actual, ToString());
 			}
 
+			string formattedResponse =
+				await HttpResponseMessageFormatter.Format(actual, "  ", cancellationToken);
 			return new ConstraintResult.Failure<HttpResponseMessage?>(actual, ToString(),
-				options.GetExtendedFailure(it, message, expected));
+				options.GetExtendedFailure(it, message, expected)).WithContext("HTTP-Request", formattedResponse);
 		}
 
 		public override string ToString()

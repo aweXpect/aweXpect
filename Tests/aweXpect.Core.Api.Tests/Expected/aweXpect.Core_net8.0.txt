@@ -21,6 +21,14 @@ namespace aweXpect.Core.Constraints
         public aweXpect.Core.Constraints.Outcome Outcome { get; }
         public virtual void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
         public virtual void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        public virtual System.Collections.Generic.IEnumerable<aweXpect.Core.Constraints.ConstraintResult.Context> GetContexts() { }
+        public class Context : System.IEquatable<aweXpect.Core.Constraints.ConstraintResult.Context>
+        {
+            public Context(string Title, string Content) { }
+            public string Content { get; init; }
+            public string Title { get; init; }
+            public static System.Collections.Generic.IEqualityComparer<aweXpect.Core.Constraints.ConstraintResult.Context> Comparer { get; }
+        }
         public class Failure : aweXpect.Core.Constraints.ConstraintResult
         {
             public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
@@ -45,6 +53,8 @@ namespace aweXpect.Core.Constraints
     {
         public static aweXpect.Core.Constraints.ConstraintResult Fail<T>(this aweXpect.Core.Constraints.ConstraintResult inner, string failure, T value) { }
         public static aweXpect.Core.Constraints.ConstraintResult UseValue<T>(this aweXpect.Core.Constraints.ConstraintResult inner, T value) { }
+        public static aweXpect.Core.Constraints.ConstraintResult WithContext(this aweXpect.Core.Constraints.ConstraintResult inner, string title, string content) { }
+        public static aweXpect.Core.Constraints.ConstraintResult WithContexts(this aweXpect.Core.Constraints.ConstraintResult inner, params aweXpect.Core.Constraints.ConstraintResult.Context[] contexts) { }
     }
     public enum FurtherProcessingStrategy
     {

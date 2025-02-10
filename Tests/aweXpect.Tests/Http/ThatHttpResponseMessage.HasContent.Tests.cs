@@ -28,6 +28,11 @@ public sealed partial class ThatHttpResponseMessage
 					               "some content"
 					               "other content"
 					                ↑ (expected)
+					             
+					             HTTP-Request:
+					               HTTP/1.1 200 OK
+					               some content
+					               The originating request was <null>
 					             """);
 			}
 

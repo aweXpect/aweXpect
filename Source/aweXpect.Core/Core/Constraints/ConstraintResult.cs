@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using aweXpect.Core.Helpers;
@@ -10,7 +11,6 @@ namespace aweXpect.Core.Constraints;
 /// </summary>
 public abstract class ConstraintResult
 {
-
 	private readonly string? _expectationText;
 
 	private Action<StringBuilder>? _appendExpectationText;
@@ -68,6 +68,14 @@ public abstract class ConstraintResult
 		// Do nothing
 	}
 
+	/// <summary>
+	///     Gets the contexts for the result.
+	/// </summary>
+	public virtual IEnumerable<Context> GetContexts()
+	{
+		yield break;
+	}
+
 	internal virtual string GetResultText()
 	{
 		StringBuilder? sb = new();
@@ -90,6 +98,47 @@ public abstract class ConstraintResult
 	{
 		_prependExpectationText = prependExpectationText ?? _prependExpectationText;
 		_appendExpectationText = appendExpectationText ?? _appendExpectationText;
+	}
+
+	/// <summary>
+	///     A result context that is appended to a result error.
+	/// </summary>
+	public record Context(string Title, string Content)
+	{
+		/// <summary>
+		///     The comparer for contexts that only considers the title.
+		/// </summary>
+		public static IEqualityComparer<Context> Comparer { get; } = new ContextComparer();
+
+		private sealed class ContextComparer : IEqualityComparer<Context>
+		{
+			public bool Equals(Context? x, Context? y)
+			{
+				if (ReferenceEquals(x, y))
+				{
+					return true;
+				}
+
+				if (x is null)
+				{
+					return false;
+				}
+
+				if (y is null)
+				{
+					return false;
+				}
+
+				if (x.GetType() != y.GetType())
+				{
+					return false;
+				}
+
+				return x.Title == y.Title;
+			}
+
+			public int GetHashCode(Context obj) => obj.Title.GetHashCode();
+		}
 	}
 
 	/// <summary>
@@ -154,6 +203,8 @@ public abstract class ConstraintResult
 	/// </summary>
 	public class Failure : ConstraintResult
 	{
+		private readonly string _resultText;
+
 		/// <summary>
 		///     Initializes a new instance of <see cref="ConstraintResult.Failure" />.
 		/// </summary>
@@ -168,8 +219,6 @@ public abstract class ConstraintResult
 		{
 			_resultText = resultText;
 		}
-
-		private readonly string _resultText;
 
 		/// <inheritdoc />
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
