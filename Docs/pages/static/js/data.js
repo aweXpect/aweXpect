@@ -624,6 +624,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -730,7 +736,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -840,7 +847,8 @@ window.BENCHMARK_DATA = {
           156.82889786133399,
           168.64159862200418,
           155.80716988245646,
-          158.36351675253647
+          158.36351675253647,
+          157.08012223243713
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -955,7 +963,8 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504
+          504,
+          528
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1073,7 +1082,8 @@ window.BENCHMARK_DATA = {
           207.8907189687093,
           204.65390124320984,
           193.00443409283955,
-          196.65667889912922
+          196.65667889912922,
+          199.4210939884186
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1111,6 +1121,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1306,7 +1317,8 @@ window.BENCHMARK_DATA = {
           650.7811103548322,
           791.2082206090291,
           763.864727292742,
-          784.6434197743733
+          784.6434197743733,
+          790.0726822535197
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1419,6 +1431,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216
@@ -1597,6 +1610,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -1626,7 +1645,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -1659,7 +1679,8 @@ window.BENCHMARK_DATA = {
           282509.43118489586,
           293477.1961388221,
           282277.9459751674,
-          288079.5066964286
+          288079.5066964286,
+          292179.41909179685
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1697,7 +1718,8 @@ window.BENCHMARK_DATA = {
           284900,
           284900,
           284900,
-          284900
+          284900,
+          284916
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1738,7 +1760,8 @@ window.BENCHMARK_DATA = {
           2073286.773158482,
           1993383.0979166667,
           2054861.9891927084,
-          2078818.3953125
+          2078818.3953125,
+          2132509.10390625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1772,6 +1795,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1817,7 +1841,8 @@ window.BENCHMARK_DATA = {
           637901.8543619792,
           679531.9175130208,
           674011.6395786831,
-          668776.7788411458
+          668776.7788411458,
+          679510.9164663461
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1853,6 +1878,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713
@@ -2493,6 +2519,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -2599,7 +2631,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -2709,7 +2742,8 @@ window.BENCHMARK_DATA = {
           516.3310871124268,
           558.6295332227435,
           518.6488916397095,
-          546.2712798436482
+          546.2712798436482,
+          564.499910899571
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2824,7 +2858,8 @@ window.BENCHMARK_DATA = {
           1088,
           1088,
           1088,
-          1088
+          1088,
+          1104
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2942,7 +2977,8 @@ window.BENCHMARK_DATA = {
           406.5294674873352,
           448.7201038769313,
           430.61284427642823,
-          431.34143144743786
+          431.34143144743786,
+          428.2251853261675
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2980,6 +3016,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3175,7 +3212,8 @@ window.BENCHMARK_DATA = {
           18415.133771623885,
           15472.653063964844,
           15861.341029866537,
-          14593.24577331543
+          14593.24577331543,
+          18972.468404134113
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3288,6 +3326,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288
@@ -3928,6 +3967,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -4034,7 +4079,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -4144,7 +4190,8 @@ window.BENCHMARK_DATA = {
           190.22039112022944,
           203.47271436055502,
           196.28285353978475,
-          197.12967403729758
+          197.12967403729758,
+          204.0335646042457
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4259,7 +4306,8 @@ window.BENCHMARK_DATA = {
           856,
           856,
           856,
-          856
+          856,
+          880
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4377,7 +4425,8 @@ window.BENCHMARK_DATA = {
           196.16072753497534,
           210.80747583707173,
           191.6322481950124,
-          194.9774925549825
+          194.9774925549825,
+          195.2167596022288
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4415,6 +4464,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -4610,7 +4660,8 @@ window.BENCHMARK_DATA = {
           950.9279899597168,
           1100.3640633991786,
           1079.1705893107824,
-          1057.999342918396
+          1057.999342918396,
+          1071.7153171539308
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4723,6 +4774,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848
@@ -5363,6 +5415,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -5469,7 +5527,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -5579,7 +5638,8 @@ window.BENCHMARK_DATA = {
           310.60553410847984,
           325.3907588322957,
           310.20801000595094,
-          326.65651318232216
+          326.65651318232216,
+          340.94956933535065
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5694,7 +5754,8 @@ window.BENCHMARK_DATA = {
           936,
           936,
           936,
-          936
+          936,
+          952
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5812,7 +5873,8 @@ window.BENCHMARK_DATA = {
           432.20756081172397,
           433.5679268836975,
           412.53609495162965,
-          437.4341393709183
+          437.4341393709183,
+          432.31234077306897
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5850,6 +5912,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -6045,7 +6108,8 @@ window.BENCHMARK_DATA = {
           1001.4720724423727,
           1135.819866434733,
           1144.9553657531737,
-          1216.7778825124105
+          1216.7778825124105,
+          1204.4584290822347
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6158,6 +6222,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896
@@ -6798,6 +6863,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -6904,7 +6975,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -7014,7 +7086,8 @@ window.BENCHMARK_DATA = {
           1228.6675163269042,
           1217.8485837300618,
           1316.5012627919516,
-          1269.5339554377965
+          1269.5339554377965,
+          1274.5225147519793
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7129,7 +7202,8 @@ window.BENCHMARK_DATA = {
           2536,
           2536,
           2536,
-          2536
+          2536,
+          2552
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7247,7 +7321,8 @@ window.BENCHMARK_DATA = {
           1266.0472885131835,
           1271.2275978968694,
           1202.526193891253,
-          1252.117607243856
+          1252.117607243856,
+          1252.3678704775298
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7285,6 +7360,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -7480,7 +7556,8 @@ window.BENCHMARK_DATA = {
           2431.9160784403484,
           2524.5732563563756,
           2530.6089309692384,
-          2561.061629231771
+          2561.061629231771,
+          2540.1210103352864
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7593,6 +7670,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112
@@ -8233,6 +8311,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
+      },
+      {
+        "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
+        "message": "chore: update aweXpect to v0.31.0 (#341)"
       }
     ],
     "labels": [
@@ -8339,7 +8423,8 @@ window.BENCHMARK_DATA = {
       "55e7e4fc",
       "b0e47762",
       "36644484",
-      "f8f7d0ad"
+      "f8f7d0ad",
+      "eac7f2d2"
     ],
     "datasets": [
       {
@@ -8449,7 +8534,8 @@ window.BENCHMARK_DATA = {
           1352.2574152946472,
           1269.5871156545786,
           1345.3328666687012,
-          1258.5622177124023
+          1258.5622177124023,
+          1349.0961196081978
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8564,7 +8650,8 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568
+          2568,
+          2584
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8682,7 +8769,8 @@ window.BENCHMARK_DATA = {
           87902.7473470052,
           87482.22587076823,
           85237.0762532552,
-          86992.76948242188
+          86992.76948242188,
+          88857.92723670372
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8797,7 +8885,8 @@ window.BENCHMARK_DATA = {
           54271,
           53762,
           54273,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8915,7 +9004,8 @@ window.BENCHMARK_DATA = {
           6424.587176731655,
           6871.097214253744,
           6769.187674302321,
-          6643.489694722493
+          6643.489694722493,
+          6769.136675008138
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9028,6 +9118,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912
