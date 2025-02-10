@@ -233,7 +233,6 @@ public class ExpectationNodeTests
 
 	private class UnsupportedConstraint : IConstraint;
 
-#if DEBUG // TODO Re-Enable after next core update
 	[Fact]
 	public async Task IsMetBy_WhenConstraintAndInnerFailAndWhenBothFailureMessagesAreIdentical_ShouldOnlyPrintOnce()
 	{
@@ -273,5 +272,4 @@ public class ExpectationNodeTests
 		await That(sb.ToString()).IsEqualTo("foo with mapping bar");
 		await That(result.GetResultText()).IsEqualTo("outer failure and inner failure");
 	}
-#endif
 }

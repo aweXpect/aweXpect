@@ -1,5 +1,4 @@
-﻿#if DEBUG // TODO Re-Enable after next core update
-namespace aweXpect.Core.Tests.Results;
+﻿namespace aweXpect.Core.Tests.Results;
 
 public class AndOrWhoseResultTests
 {
@@ -57,4 +56,3 @@ public class AndOrWhoseResultTests
 		public bool Value2 { get; set; }
 	}
 }
-#endif

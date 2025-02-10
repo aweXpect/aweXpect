@@ -1,5 +1,4 @@
-﻿#if DEBUG // TODO Re-Enable after next core update
-using System.Text;
+﻿using System.Text;
 using System.Threading;
 using aweXpect.Chronology;
 using aweXpect.Core.Constraints;
@@ -73,4 +72,3 @@ public class MappingNodeTests
 		await That(result.GetResultText()).IsEqualTo("it was <null>");
 	}
 }
-#endif
