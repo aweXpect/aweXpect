@@ -69,7 +69,7 @@ public static partial class ThatAsyncEnumerable
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
 				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
-				if (isMatch is ConstraintResult.Success)
+				if (isMatch.Outcome == Outcome.Success)
 				{
 					matchingCount++;
 				}

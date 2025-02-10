@@ -1,4 +1,5 @@
 ﻿#if DEBUG // TODO Re-Enable after next core update
+using System.Text;
 using System.Threading;
 using aweXpect.Chronology;
 using aweXpect.Core.Constraints;
@@ -15,11 +16,15 @@ public class MappingNodeTests
 	{
 		MappingNode<string, int> node = new(MemberAccessor<string, int>.FromFunc(s => s.Length, " length "));
 		node.AddConstraint(new DummyValueConstraint<int>(v => new ConstraintResult.Success<int>(v, $"yeah: {v}")));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy("foobar", null!, CancellationToken.None);
 
-		await That(result.ExpectationText).IsEqualTo("yeah: 6");
-		await That(result).Is<ConstraintResult.Success<string>>().Whose(r => r.Value, v => v.IsEqualTo("foobar"));
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("yeah: 6");
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(result.TryGetValue(out string? value)).IsTrue();
+		await That(value).IsEqualTo("foobar");
 	}
 
 	[Fact]
@@ -43,11 +48,14 @@ public class MappingNodeTests
 		DelegateValue<string?> value = new("foo", null, 10.Milliseconds(), true);
 		MappingNode<string?, int?> node = new(MemberAccessor<string?, int?>.FromFunc(s => s?.Length, " length "));
 		node.AddConstraint(new DummyValueConstraint<int?>(v => new ConstraintResult.Success<int?>(v, "yeah!")));
+		StringBuilder sb = new();
+
 		ConstraintResult result = await node.IsMetBy(value, null!, CancellationToken.None);
 
-		await That(result).Is<ConstraintResult.Failure<DelegateValue<string?>>>()
-			.Whose(r => r.ExpectationText, r => r.IsEqualTo("yeah!"))
-			.AndWhose(r => r.ResultText, r => r.IsEqualTo("it was <null>"));
+		result.AppendExpectation(sb);
+		await That(result.Outcome).IsEqualTo(Outcome.Failure);
+		await That(sb.ToString()).IsEqualTo("yeah!");
+		await That(result.GetResultText()).IsEqualTo("it was <null>");
 	}
 
 	[Fact]
@@ -55,11 +63,14 @@ public class MappingNodeTests
 	{
 		MappingNode<string?, int?> node = new(MemberAccessor<string?, int?>.FromFunc(s => s?.Length, " length "));
 		node.AddConstraint(new DummyValueConstraint<int?>(v => new ConstraintResult.Success<int?>(v, "yeah!")));
+		StringBuilder sb = new();
+
 		ConstraintResult result = await node.IsMetBy<string?>(null, null!, CancellationToken.None);
 
-		await That(result).Is<ConstraintResult.Failure<string?>>()
-			.Whose(r => r.ExpectationText, r => r.IsEqualTo("yeah!"))
-			.AndWhose(r => r.ResultText, r => r.IsEqualTo("it was <null>"));
+		result.AppendExpectation(sb);
+		await That(result.Outcome).IsEqualTo(Outcome.Failure);
+		await That(sb.ToString()).IsEqualTo("yeah!");
+		await That(result.GetResultText()).IsEqualTo("it was <null>");
 	}
 }
 #endif

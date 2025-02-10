@@ -11,7 +11,7 @@ internal static class StringExtensions
 		value?.Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t");
 
 	[return: NotNullIfNotNull(nameof(value))]
-	public static string? Indent(this string? value, string indentation = "  ",
+	public static string? Indent(this string? value, string? indentation = "  ",
 		bool indentFirstLine = true)
 	{
 		if (value == null || string.IsNullOrEmpty(indentation))

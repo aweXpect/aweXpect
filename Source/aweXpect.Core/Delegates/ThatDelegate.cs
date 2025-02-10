@@ -26,11 +26,11 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		{
 			return new ConstraintResult.Failure<Exception?>(exception, DoesNotThrowExpectation,
 				$"it did throw {FormatForMessage(exception)}",
-				ConstraintResult.FurtherProcessing.IgnoreCompletely);
+				FurtherProcessingStrategy.IgnoreCompletely);
 		}
 
 		return new ConstraintResult.Success<TException?>(default, DoesNotThrowExpectation,
-			ConstraintResult.FurtherProcessing.IgnoreCompletely);
+			FurtherProcessingStrategy.IgnoreCompletely);
 	}
 
 	internal static string FormatForMessage(Exception? exception)

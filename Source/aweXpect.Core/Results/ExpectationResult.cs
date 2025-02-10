@@ -53,10 +53,10 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result is ConstraintResult.Failure failure)
+		if (result.Outcome == Outcome.Failure)
 		{
 			Fail.Test(ExpectationBuilder.FromFailure(
-				expectationBuilder.Subject, failure));
+				expectationBuilder.Subject, result));
 		}
 	}
 }
@@ -125,20 +125,15 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result is ConstraintResult.Success<TType> matchingSuccess)
-		{
-			return matchingSuccess.Value;
-		}
-
-		if (result is ConstraintResult.Success success &&
-		    success.TryGetValue(out TType? value))
+		if (result.Outcome == Outcome.Success &&
+		    result.TryGetValue(out TType? value))
 		{
 			return value;
 		}
 
-		if (result is ConstraintResult.Failure failure)
+		if (result.Outcome == Outcome.Failure)
 		{
-			Fail.Test(ExpectationBuilder.FromFailure(expectationBuilder.Subject, failure));
+			Fail.Test(ExpectationBuilder.FromFailure(expectationBuilder.Subject, result));
 		}
 
 		throw new FailException(

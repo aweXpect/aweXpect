@@ -43,7 +43,7 @@ public class AndOrWhoseResult<TType, TThat, TSelf>(
 		=> new(
 			_expectationBuilder
 				.ForMember(MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
-					(member, expectation) => $" whose {member}{expectation}")
+					(member, stringBuilder) => stringBuilder.Append(" whose ").Append(member))
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			_returnValue);
 
@@ -75,7 +75,7 @@ public class AndOrWhoseResult<TType, TThat, TSelf>(
 				_expectationBuilder
 					.ForMember(
 						MemberAccessor<TType, TMember?>.FromExpression(memberSelector),
-						(member, expectation) => $" whose {member}{expectation}")
+						(member, stringBuilder) => stringBuilder.Append(" whose ").Append(member))
 					.AddExpectations(e
 						=> expectations(new ThatSubject<TMember?>(e))),
 				_returnValue);

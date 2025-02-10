@@ -16,41 +16,41 @@ namespace aweXpect.Core.Constraints
 {
     public abstract class ConstraintResult
     {
-        protected ConstraintResult(string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy) { }
-        public string ExpectationText { get; }
-        public aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing FurtherProcessingStrategy { get; }
-        public abstract aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText);
+        protected ConstraintResult(aweXpect.Core.Constraints.Outcome outcome, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy) { }
+        public aweXpect.Core.Constraints.FurtherProcessingStrategy FurtherProcessingStrategy { get; }
+        public aweXpect.Core.Constraints.Outcome Outcome { get; }
+        public virtual void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        public virtual void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
         public class Failure : aweXpect.Core.Constraints.ConstraintResult
         {
-            public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
-            public string ResultText { get; }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-            public override string ToString() { }
+            public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
         }
         public class Failure<T> : aweXpect.Core.Constraints.ConstraintResult.Failure
         {
-            public Failure(T value, string expectationText, string resultText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
+            public Failure(T value, string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
             public T Value { get; }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-        }
-        public enum FurtherProcessing
-        {
-            Continue = 0,
-            IgnoreCompletely = 1,
-            IgnoreResult = 2,
         }
         public class Success : aweXpect.Core.Constraints.ConstraintResult
         {
-            public Success(string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
-            public override string ToString() { }
+            public Success(string expectationText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
         }
         public class Success<T> : aweXpect.Core.Constraints.ConstraintResult.Success
         {
-            public Success(T value, string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
+            public Success(T value, string expectationText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
             public T Value { get; }
-            public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
         }
+    }
+    public static class ConstraintResultExtensions
+    {
+        public static aweXpect.Core.Constraints.ConstraintResult Fail<T>(this aweXpect.Core.Constraints.ConstraintResult inner, string failure, T value) { }
+        public static aweXpect.Core.Constraints.ConstraintResult UseValue<T>(this aweXpect.Core.Constraints.ConstraintResult inner, T value) { }
+    }
+    public enum FurtherProcessingStrategy
+    {
+        Continue = 0,
+        IgnoreCompletely = 1,
+        IgnoreResult = 2,
     }
     public interface IAsyncConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
     {
@@ -68,6 +68,12 @@ namespace aweXpect.Core.Constraints
     public interface IValueConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
     {
         aweXpect.Core.Constraints.ConstraintResult IsMetBy(TValue actual);
+    }
+    public enum Outcome
+    {
+        Success = 0,
+        Failure = 1,
+        Undecided = 2,
     }
 }
 namespace aweXpect.Core.EvaluationContext
@@ -89,7 +95,7 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder And(string textSeparator = " and ") { }
-        public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget?> memberAccessor, System.Func<aweXpect.Core.MemberAccessor, string, string>? expectationTextGenerator = null, bool replaceIt = true) { }
+        public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget?> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, System.Threading.Tasks.Task<TTarget?>> asyncMemberAccessor, string? separator = null) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammars? expectationGrammar = default) { }
         public override string? ToString() { }
@@ -730,20 +736,20 @@ namespace aweXpect.Results
         public abstract class Combination : aweXpect.Results.Expectation
         {
             protected Combination(aweXpect.Results.Expectation[] expectations) { }
+            protected abstract aweXpect.Core.Constraints.Outcome CheckOutcome(aweXpect.Core.Constraints.Outcome? previous, aweXpect.Core.Constraints.Outcome current);
             public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
             protected abstract string GetSubjectLine();
-            protected abstract bool IsSuccess(int failureCount, int totalCount);
             public class All : aweXpect.Results.Expectation.Combination
             {
                 public All(aweXpect.Results.Expectation[] expectations) { }
+                protected override aweXpect.Core.Constraints.Outcome CheckOutcome(aweXpect.Core.Constraints.Outcome? previous, aweXpect.Core.Constraints.Outcome current) { }
                 protected override string GetSubjectLine() { }
-                protected override bool IsSuccess(int failureCount, int totalCount) { }
             }
             public class Any : aweXpect.Results.Expectation.Combination
             {
                 public Any(aweXpect.Results.Expectation[] expectations) { }
+                protected override aweXpect.Core.Constraints.Outcome CheckOutcome(aweXpect.Core.Constraints.Outcome? previous, aweXpect.Core.Constraints.Outcome current) { }
                 protected override string GetSubjectLine() { }
-                protected override bool IsSuccess(int failureCount, int totalCount) { }
             }
         }
     }

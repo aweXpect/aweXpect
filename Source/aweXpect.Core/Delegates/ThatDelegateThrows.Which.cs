@@ -15,7 +15,7 @@ public partial class ThatDelegateThrows<TException>
 		Action<IThat<TMember?>> expectations)
 		=> new(ExpectationBuilder.ForMember(
 					MemberAccessor<TException, TMember?>.FromExpression(memberSelector),
-					(member, expectation) => $"whose {member}{expectation}")
+					(member, expectation) => expectation.Append("whose ").Append(member))
 				.AddExpectations(e => expectations(new ThatSubject<TMember?>(e))),
 			this);
 }
