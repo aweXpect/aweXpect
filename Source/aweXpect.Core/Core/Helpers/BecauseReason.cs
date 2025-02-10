@@ -23,6 +23,7 @@ internal readonly struct BecauseReason(string reason)
 	public ConstraintResult ApplyTo(ConstraintResult result)
 	{
 		string message = _message.Value;
-		return result.UpdateExpectationText(null, e => e.Append(message));
+		result.UpdateExpectationText(null, e => e.Append(message));
+		return result;
 	}
 }

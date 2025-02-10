@@ -74,7 +74,7 @@ internal class WhichNode<TSource, TMember> : Node
 		{
 			ConstraintResult nullResult = await _inner.IsMetBy<TMember>(default, context, cancellationToken);
 			return CombineResults(parentResult, nullResult, _separator ?? "",
-				ConstraintResult.FurtherProcessing.IgnoreResult);
+				FurtherProcessingStrategy.IgnoreResult, default);
 		}
 
 		if (value is not TSource typedValue)
@@ -94,18 +94,19 @@ internal class WhichNode<TSource, TMember> : Node
 		}
 
 		ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
-		return CombineResults(parentResult, result, _separator ?? "", ConstraintResult.FurtherProcessing.IgnoreResult)
-			.UseValue(matchingValue);
+		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult, matchingValue);
 	}
 
 	private class WhichConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		string separator,
-		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
+		FurtherProcessingStrategy furtherProcessingStrategy,
+		TMember? value)
 		: ConstraintResult(And(left.Outcome, right.Outcome), furtherProcessingStrategy)
 	{
-		private readonly FurtherProcessing _furtherProcessingStrategy = furtherProcessingStrategy;
+		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
+		private readonly TMember? _value = value;
 
 		private static Outcome And(Outcome left, Outcome right)
 			=> (left, right) switch
@@ -129,7 +130,7 @@ internal class WhichNode<TSource, TMember> : Node
 			{
 				left.AppendResult(stringBuilder, indentation);
 				if (right.Outcome == Outcome.Failure &&
-				    _furtherProcessingStrategy != FurtherProcessing.IgnoreResult &&
+				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
 				    left.GetResultText() != right.GetResultText())
 				{
 					stringBuilder.Append(" and ");
@@ -145,6 +146,12 @@ internal class WhichNode<TSource, TMember> : Node
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
+			if (_value is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+			
 			if (left.TryGetValue<TValue>(out var leftValue))
 			{
 				value = leftValue;
@@ -162,11 +169,11 @@ internal class WhichNode<TSource, TMember> : Node
 		}
 	}
 
-	private static ConstraintResult CombineResults(
-		ConstraintResult? leftResult,
+	private static ConstraintResult CombineResults(ConstraintResult? leftResult,
 		ConstraintResult rightResult,
 		string separator,
-		ConstraintResult.FurtherProcessing? furtherProcessingStrategy)
+		FurtherProcessingStrategy? furtherProcessingStrategy,
+		TMember? value)
 	{
 		if (leftResult == null)
 		{
@@ -174,7 +181,8 @@ internal class WhichNode<TSource, TMember> : Node
 		}
 
 		return new WhichConstraintResult(leftResult, rightResult, separator,
-			furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue);
+			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue,
+			value);
 	}
 
 	/// <inheritdoc />

@@ -40,7 +40,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		if (value is null || value is DelegateValue { IsNull: true })
 		{
 			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
-			return new ConstraintResult.Failure<TValue?>(value, result.ExpectationText, "it was <null>");
+			return result.Fail("it was <null>", value);
 		}
 
 		if (value is not TSource typedValue)
@@ -58,26 +58,31 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 	public override string ToString()
 		=> _memberAccessor + base.ToString();
 
-	// TODO VAB: Rework
 	internal ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
 		ConstraintResult result)
 	{
 		if (combinedResult == null)
 		{
-			return result.UpdateExpectationText(
+			result.UpdateExpectationText(
 				e => _expectationTextGenerator(_memberAccessor, e));
+			return result;
 		}
 
 		return new MappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
 	}
+
+	private static void DefaultExpectationTextGenerator(
+		MemberAccessor<TSource, TTarget?> memberAccessor,
+		StringBuilder expectation)
+		=> expectation.Append(memberAccessor);
 
 	private class MappingConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		Action<MemberAccessor<TSource, TTarget?>, StringBuilder>? expectationTextGenerator,
 		MemberAccessor<TSource, TTarget?> memberAccessor)
-		: ConstraintResult(And(left.Outcome, right.Outcome), FurtherProcessing.Continue)
+		: ConstraintResult(And(left.Outcome, right.Outcome), FurtherProcessingStrategy.Continue)
 	{
 		private static Outcome And(Outcome left, Outcome right)
 			=> (left, right) switch
@@ -95,6 +100,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			{
 				expectationTextGenerator(memberAccessor, stringBuilder);
 			}
+
 			right.AppendExpectation(stringBuilder);
 		}
 
@@ -119,13 +125,13 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue<TValue>(out var leftValue))
+			if (left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue<TValue>(out var rightValue))
+			if (right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
@@ -134,12 +140,5 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			value = default;
 			return false;
 		}
-	}
-
-	private static void DefaultExpectationTextGenerator(
-		MemberAccessor<TSource, TTarget?> memberAccessor,
-		StringBuilder expectation)
-	{
-		expectation.Append(memberAccessor);
 	}
 }

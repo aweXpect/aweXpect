@@ -5,54 +5,24 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Constraints;
 
-public enum Outcome
-{
-	Success,
-	Failure,
-	Undecided
-}
 /// <summary>
 ///     The result of the check if an expectation is met.
 /// </summary>
 public abstract class ConstraintResult
 {
-	public Outcome Outcome { get; }
 
-	/// <summary>
-	///     The strategy how to continue processing after the current result.
-	/// </summary>
-	public enum FurtherProcessing
-	{
-		/// <summary>
-		///     Continue processing.
-		/// </summary>
-		/// <remarks>
-		///     This is the default behaviour.
-		/// </remarks>
-		Continue,
+	private readonly string? _expectationText;
 
-		/// <summary>
-		///     Completely ignore all future constraints.
-		/// </summary>
-		IgnoreCompletely,
-
-		/// <summary>
-		///     Ignore the result of future constraints, but include their expectations.
-		/// </summary>
-		IgnoreResult,
-	}
-
-	private string? _expectationText;
-	private Action<StringBuilder>? _prependExpectationText;
 	private Action<StringBuilder>? _appendExpectationText;
+	private Action<StringBuilder>? _prependExpectationText;
 
 	/// <summary>
 	///     Initializes a new instance of <see cref="ConstraintResult" />.
 	/// </summary>
-	protected ConstraintResult(
+	private ConstraintResult(
 		Outcome outcome,
 		string expectationText,
-		FurtherProcessing furtherProcessingStrategy)
+		FurtherProcessingStrategy furtherProcessingStrategy)
 	{
 		Outcome = outcome;
 		_expectationText = expectationText;
@@ -64,12 +34,25 @@ public abstract class ConstraintResult
 	/// </summary>
 	protected ConstraintResult(
 		Outcome outcome,
-		FurtherProcessing furtherProcessingStrategy)
+		FurtherProcessingStrategy furtherProcessingStrategy)
 	{
 		Outcome = outcome;
 		FurtherProcessingStrategy = furtherProcessingStrategy;
 	}
 
+	/// <summary>
+	///     The outcome of the <see cref="ConstraintResult" />.
+	/// </summary>
+	public Outcome Outcome { get; }
+
+	/// <summary>
+	///     Specifies if further processing of chained constraints should be ignored.
+	/// </summary>
+	public FurtherProcessingStrategy FurtherProcessingStrategy { get; }
+
+	/// <summary>
+	///     Appends the expectation text to the <paramref name="stringBuilder" />.
+	/// </summary>
 	public virtual void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
 		_prependExpectationText?.Invoke(stringBuilder);
@@ -77,6 +60,9 @@ public abstract class ConstraintResult
 		_appendExpectationText?.Invoke(stringBuilder);
 	}
 
+	/// <summary>
+	///     Appends the result text to the <paramref name="stringBuilder" />.
+	/// </summary>
 	public virtual void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 	{
 		// Do nothing
@@ -84,10 +70,11 @@ public abstract class ConstraintResult
 
 	internal virtual string GetResultText()
 	{
-		var sb = new StringBuilder();
+		StringBuilder? sb = new();
 		AppendResult(sb);
 		return sb.ToString();
 	}
+
 	internal virtual bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 	{
 		value = default;
@@ -95,36 +82,15 @@ public abstract class ConstraintResult
 	}
 
 	/// <summary>
-	///     A human-readable representation of the expectation.
-	/// </summary>
-	public string ExpectationText => _expectationText ?? throw new NotImplementedException();
-
-	/// <summary>
-	///     Specifies if further processing of chained constraints should be ignored.
-	/// </summary>
-	public FurtherProcessing FurtherProcessingStrategy { get; }
-
-	/// <summary>
-	///     Combines the result with the provided <paramref name="expectationText" /> and <paramref name="resultText" />.
-	/// </summary>
-	// TODO VAB: Remove
-	public virtual ConstraintResult CombineWith(string expectationText, string resultText) { return this;}
-
-	/// <summary>
 	///     Updates the expectation text of the current <see cref="ConstraintResult" />.
 	/// </summary>
-	// TODO VAB: Remove
-	internal virtual ConstraintResult UpdateExpectationText(
+	internal virtual void UpdateExpectationText(
 		Action<StringBuilder>? prependExpectationText = null,
 		Action<StringBuilder>? appendExpectationText = null)
 	{
 		_prependExpectationText = prependExpectationText ?? _prependExpectationText;
 		_appendExpectationText = appendExpectationText ?? _appendExpectationText;
-		return this;
 	}
-
-	// TODO VAB: Remove
-	internal virtual ConstraintResult UseValue<T>(T value) { return this;}
 
 	/// <summary>
 	///     The actual value met the expectation.
@@ -136,25 +102,13 @@ public abstract class ConstraintResult
 		/// </summary>
 		public Success(
 			string expectationText,
-			FurtherProcessing furtherProcessingStrategy = FurtherProcessing.Continue)
+			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
 			: base(
 				Outcome.Success,
 				expectationText,
 				furtherProcessingStrategy)
 		{
 		}
-
-		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
-		public override ConstraintResult CombineWith(string expectationText, string resultText)
-			=> new Success(expectationText);
-
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"SUCCEEDED {ExpectationText}";
-
-		/// <inheritdoc />
-		internal override ConstraintResult UseValue<T>(T value)
-			=> new Success<T>(value, ExpectationText, FurtherProcessingStrategy);
 	}
 
 	/// <summary>
@@ -168,7 +122,7 @@ public abstract class ConstraintResult
 		public Success(
 			T value,
 			string expectationText,
-			FurtherProcessing furtherProcessingStrategy = FurtherProcessing.Continue)
+			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
 			: base(
 				expectationText,
 				furtherProcessingStrategy)
@@ -180,10 +134,6 @@ public abstract class ConstraintResult
 		///     A value for further processing.
 		/// </summary>
 		public T Value { get; }
-
-		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
-		public override ConstraintResult CombineWith(string expectationText, string resultText)
-			=> new Success<T>(Value, expectationText);
 
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
@@ -210,38 +160,22 @@ public abstract class ConstraintResult
 		public Failure(
 			string expectationText,
 			string resultText,
-			FurtherProcessing furtherProcessingStrategy = FurtherProcessing.Continue)
+			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
 			: base(
 				Outcome.Failure,
 				expectationText,
 				furtherProcessingStrategy)
 		{
-			ResultText = resultText;
+			_resultText = resultText;
 		}
 
-		/// <summary>
-		///     A human-readable representation of the reason for the failure.
-		/// </summary>
-		public string ResultText { get; }
+		private readonly string _resultText;
 
+		/// <inheritdoc />
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(ResultText.Indent(indentation, false));
-		}
+			=> stringBuilder.Append(_resultText.Indent(indentation, false));
 
-		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
-		public override ConstraintResult CombineWith(string expectationText, string resultText)
-			=> new Failure(expectationText, resultText);
-
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"FAILED {ExpectationText}";
-
-		/// <inheritdoc />
-		internal override ConstraintResult UseValue<T>(T value)
-			=> new Failure<T>(value, ExpectationText, ResultText, FurtherProcessingStrategy);
-
-		internal override string GetResultText() => ResultText;
+		internal override string GetResultText() => _resultText;
 	}
 
 	/// <summary>
@@ -256,7 +190,7 @@ public abstract class ConstraintResult
 			T value,
 			string expectationText,
 			string resultText,
-			FurtherProcessing furtherProcessingStrategy = FurtherProcessing.Continue)
+			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
 			: base(
 				expectationText,
 				resultText,
@@ -269,10 +203,6 @@ public abstract class ConstraintResult
 		///     A value for further processing.
 		/// </summary>
 		public T Value { get; }
-
-		/// <inheritdoc cref="ConstraintResult.CombineWith(string, string)" />
-		public override ConstraintResult CombineWith(string expectationText, string resultText)
-			=> new Failure<T>(Value, expectationText, resultText);
 
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default

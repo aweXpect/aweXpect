@@ -93,7 +93,7 @@ public abstract partial class ThatDelegate
 			{
 				return new ConstraintResult.Failure<TException?>(null, ToString(),
 					"it did not throw any exception",
-					ConstraintResult.FurtherProcessing.IgnoreResult);
+					FurtherProcessingStrategy.IgnoreResult);
 			}
 
 			return new ConstraintResult.Failure<TException?>(null, ToString(),

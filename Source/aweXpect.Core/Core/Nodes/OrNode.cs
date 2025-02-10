@@ -50,7 +50,7 @@ internal class OrNode(Node node) : Node
 			combinedResult = CombineResults(combinedResult, result, separator,
 				combinedResult?.FurtherProcessingStrategy);
 			if (result.FurtherProcessingStrategy ==
-			    ConstraintResult.FurtherProcessing.IgnoreCompletely)
+			    FurtherProcessingStrategy.IgnoreCompletely)
 			{
 				return combinedResult;
 			}
@@ -79,7 +79,7 @@ internal class OrNode(Node node) : Node
 		ConstraintResult? combinedResult,
 		ConstraintResult result,
 		string separator,
-		ConstraintResult.FurtherProcessing? furtherProcessingStrategy)
+		FurtherProcessingStrategy? furtherProcessingStrategy)
 	{
 		if (combinedResult == null)
 		{
@@ -87,17 +87,17 @@ internal class OrNode(Node node) : Node
 		}
 
 		return new OrConstraintResult(combinedResult, result, separator,
-			furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue);
+			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
 	private class OrConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		string separator,
-		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
+		FurtherProcessingStrategy furtherProcessingStrategy)
 		: ConstraintResult(Or(left.Outcome, right.Outcome), furtherProcessingStrategy)
 	{
-		private readonly FurtherProcessing _furtherProcessingStrategy = furtherProcessingStrategy;
+		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
 
 		private static Outcome Or(Outcome left, Outcome right)
 			=> (left, right) switch
@@ -121,7 +121,7 @@ internal class OrNode(Node node) : Node
 			{
 				left.AppendResult(stringBuilder, indentation);
 				if (right.Outcome == Outcome.Failure &&
-				    _furtherProcessingStrategy != FurtherProcessing.IgnoreResult &&
+				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
 				    left.GetResultText() != right.GetResultText())
 				{
 					stringBuilder.Append(" and ");

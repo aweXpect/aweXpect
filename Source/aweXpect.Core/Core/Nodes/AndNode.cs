@@ -55,7 +55,7 @@ internal class AndNode(Node node) : Node
 			combinedResult = CombineResults(combinedResult, result, separator,
 				combinedResult?.FurtherProcessingStrategy);
 			if (result.FurtherProcessingStrategy ==
-			    ConstraintResult.FurtherProcessing.IgnoreCompletely)
+			    FurtherProcessingStrategy.IgnoreCompletely)
 			{
 				return combinedResult;
 			}
@@ -84,7 +84,7 @@ internal class AndNode(Node node) : Node
 		ConstraintResult? combinedResult,
 		ConstraintResult result,
 		string separator,
-		ConstraintResult.FurtherProcessing? furtherProcessingStrategy)
+		FurtherProcessingStrategy? furtherProcessingStrategy)
 	{
 		if (combinedResult == null)
 		{
@@ -92,17 +92,17 @@ internal class AndNode(Node node) : Node
 		}
 
 		return new AndConstraintResult(combinedResult, result, separator,
-			furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue);
+			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
 	private class AndConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
 		string separator,
-		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
+		FurtherProcessingStrategy furtherProcessingStrategy)
 		: ConstraintResult(And(left.Outcome, right.Outcome), furtherProcessingStrategy)
 	{
-		private readonly FurtherProcessing _furtherProcessingStrategy = furtherProcessingStrategy;
+		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
 
 		private static Outcome And(Outcome left, Outcome right)
 			=> (left, right) switch
@@ -126,7 +126,7 @@ internal class AndNode(Node node) : Node
 			{
 				left.AppendResult(stringBuilder, indentation);
 				if (right.Outcome == Outcome.Failure &&
-				    _furtherProcessingStrategy != FurtherProcessing.IgnoreResult &&
+				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
 				    left.GetResultText() != right.GetResultText())
 				{
 					stringBuilder.Append(" and ");
