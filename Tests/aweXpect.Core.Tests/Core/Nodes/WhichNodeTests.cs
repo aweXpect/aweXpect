@@ -1,5 +1,4 @@
-﻿#if DEBUG // TODO Re-Enable after next core update
-namespace aweXpect.Core.Tests.Core.Nodes;
+﻿namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class WhichNodeTests
 {
@@ -47,4 +46,3 @@ public sealed class WhichNodeTests
 		}
 	}
 }
-#endif
