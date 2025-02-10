@@ -67,7 +67,7 @@ public static partial class ThatEnumerable
 				foreach (TItem item in materialized)
 				{
 					ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
-					if (isMatch is ConstraintResult.Success)
+					if (isMatch.Outcome == Outcome.Success)
 					{
 						matchingCount++;
 					}

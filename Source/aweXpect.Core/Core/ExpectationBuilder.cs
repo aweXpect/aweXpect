@@ -237,12 +237,14 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
-	internal static string FromFailure(string subject, ConstraintResult.Failure failure)
+	internal static string FromFailure(string subject, ConstraintResult failure)
 	{
 		StringBuilder sb = new();
 		sb.Append("Expected that ").Append(subject).AppendLine();
-		sb.Append(failure.ExpectationText).AppendLine(",");
-		sb.Append("but ").Append(failure.ResultText);
+		failure.AppendExpectation(sb);
+		sb.AppendLine(",");
+		sb.Append("but ");
+		failure.AppendResult(sb);
 		return sb.ToString();
 	}
 

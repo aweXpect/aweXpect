@@ -16,14 +16,19 @@ namespace aweXpect.Core.Constraints
 {
     public abstract class ConstraintResult
     {
-        protected ConstraintResult(string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy) { }
+        protected ConstraintResult(aweXpect.Core.Constraints.Outcome outcome, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy) { }
+        protected ConstraintResult(aweXpect.Core.Constraints.Outcome outcome, string expectationText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy) { }
         public string ExpectationText { get; }
         public aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing FurtherProcessingStrategy { get; }
-        public abstract aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText);
+        public aweXpect.Core.Constraints.Outcome Outcome { get; }
+        public virtual void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        public virtual void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        public virtual aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
         public class Failure : aweXpect.Core.Constraints.ConstraintResult
         {
             public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.ConstraintResult.FurtherProcessing furtherProcessingStrategy = 0) { }
             public string ResultText { get; }
+            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult CombineWith(string expectationText, string resultText) { }
             public override string ToString() { }
         }
@@ -68,6 +73,12 @@ namespace aweXpect.Core.Constraints
     public interface IValueConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
     {
         aweXpect.Core.Constraints.ConstraintResult IsMetBy(TValue actual);
+    }
+    public enum Outcome
+    {
+        Success = 0,
+        Failure = 1,
+        Undecided = 2,
     }
 }
 namespace aweXpect.Core.EvaluationContext
@@ -730,20 +741,20 @@ namespace aweXpect.Results
         public abstract class Combination : aweXpect.Results.Expectation
         {
             protected Combination(aweXpect.Results.Expectation[] expectations) { }
+            protected abstract aweXpect.Core.Constraints.Outcome CheckOutcome(aweXpect.Core.Constraints.Outcome? previous, aweXpect.Core.Constraints.Outcome current);
             public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
             protected abstract string GetSubjectLine();
-            protected abstract bool IsSuccess(int failureCount, int totalCount);
             public class All : aweXpect.Results.Expectation.Combination
             {
                 public All(aweXpect.Results.Expectation[] expectations) { }
+                protected override aweXpect.Core.Constraints.Outcome CheckOutcome(aweXpect.Core.Constraints.Outcome? previous, aweXpect.Core.Constraints.Outcome current) { }
                 protected override string GetSubjectLine() { }
-                protected override bool IsSuccess(int failureCount, int totalCount) { }
             }
             public class Any : aweXpect.Results.Expectation.Combination
             {
                 public Any(aweXpect.Results.Expectation[] expectations) { }
+                protected override aweXpect.Core.Constraints.Outcome CheckOutcome(aweXpect.Core.Constraints.Outcome? previous, aweXpect.Core.Constraints.Outcome current) { }
                 protected override string GetSubjectLine() { }
-                protected override bool IsSuccess(int failureCount, int totalCount) { }
             }
         }
     }

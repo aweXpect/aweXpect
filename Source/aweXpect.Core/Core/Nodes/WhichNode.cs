@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
@@ -96,6 +98,70 @@ internal class WhichNode<TSource, TMember> : Node
 			.UseValue(matchingValue);
 	}
 
+	private class WhichConstraintResult(
+		ConstraintResult left,
+		ConstraintResult right,
+		string separator,
+		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
+		: ConstraintResult(And(left.Outcome, right.Outcome), furtherProcessingStrategy)
+	{
+		private readonly FurtherProcessing _furtherProcessingStrategy = furtherProcessingStrategy;
+
+		private static Outcome And(Outcome left, Outcome right)
+			=> (left, right) switch
+			{
+				(Outcome.Success, Outcome.Success) => Outcome.Success,
+				(_, Outcome.Failure) => Outcome.Failure,
+				(Outcome.Failure, _) => Outcome.Failure,
+				(_, _) => Outcome.Undecided,
+			};
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			left.AppendExpectation(stringBuilder);
+			stringBuilder.Append(separator);
+			right.AppendExpectation(stringBuilder);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (left.Outcome == Outcome.Failure)
+			{
+				left.AppendResult(stringBuilder, indentation);
+				if (right.Outcome == Outcome.Failure &&
+				    _furtherProcessingStrategy != FurtherProcessing.IgnoreResult &&
+				    left.GetResultText() != right.GetResultText())
+				{
+					stringBuilder.Append(" and ");
+					right.AppendResult(stringBuilder, indentation);
+				}
+			}
+			else if (right.Outcome == Outcome.Failure)
+			{
+				right.AppendResult(stringBuilder, indentation);
+			}
+		}
+
+		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+			where TValue : default
+		{
+			if (left.TryGetValue<TValue>(out var leftValue))
+			{
+				value = leftValue;
+				return true;
+			}
+
+			if (right.TryGetValue<TValue>(out var rightValue))
+			{
+				value = rightValue;
+				return true;
+			}
+
+			value = default;
+			return false;
+		}
+	}
+
 	private static ConstraintResult CombineResults(
 		ConstraintResult? leftResult,
 		ConstraintResult rightResult,
@@ -107,49 +173,8 @@ internal class WhichNode<TSource, TMember> : Node
 			return rightResult;
 		}
 
-		string combinedExpectation =
-			$"{leftResult.ExpectationText}{separator}{rightResult.ExpectationText}";
-
-		if (leftResult is ConstraintResult.Failure leftFailure &&
-		    rightResult is ConstraintResult.Failure rightFailure)
-		{
-			return leftFailure.CombineWith(
-				combinedExpectation,
-				CombineResultTexts(
-					leftFailure.ResultText,
-					rightFailure.ResultText,
-					furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue));
-		}
-
-		if (leftResult is ConstraintResult.Failure onlyLeftFailure)
-		{
-			return onlyLeftFailure.CombineWith(
-				combinedExpectation,
-				onlyLeftFailure.ResultText);
-		}
-
-		if (rightResult is ConstraintResult.Failure onlyRightFailure)
-		{
-			return onlyRightFailure.CombineWith(
-				combinedExpectation,
-				onlyRightFailure.ResultText);
-		}
-
-		return leftResult.CombineWith(combinedExpectation, "");
-	}
-
-	private static string CombineResultTexts(
-		string leftResultText,
-		string rightResultText,
-		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
-	{
-		if (furtherProcessingStrategy == ConstraintResult.FurtherProcessing.IgnoreResult ||
-		    leftResultText == rightResultText)
-		{
-			return leftResultText;
-		}
-
-		return $"{leftResultText} and {rightResultText}";
+		return new WhichConstraintResult(leftResult, rightResult, separator,
+			furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue);
 	}
 
 	/// <inheritdoc />
