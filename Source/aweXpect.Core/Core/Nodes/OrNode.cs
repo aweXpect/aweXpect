@@ -139,16 +139,29 @@ internal class OrNode : Node
 			}
 		}
 
+		public override IEnumerable<Context> GetContexts()
+		{
+			foreach (Context context in left.GetContexts())
+			{
+				yield return context;
+			}
+
+			foreach (Context context in right.GetContexts())
+			{
+				yield return context;
+			}
+		}
+
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue<TValue>(out var leftValue))
+			if (left.TryGetValue<TValue>(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue<TValue>(out var rightValue))
+			if (right.TryGetValue<TValue>(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;

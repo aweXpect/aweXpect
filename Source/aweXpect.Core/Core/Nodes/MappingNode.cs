@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading;
@@ -119,6 +120,19 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			else if (right.Outcome == Outcome.Failure)
 			{
 				right.AppendResult(stringBuilder, indentation);
+			}
+		}
+
+		public override IEnumerable<Context> GetContexts()
+		{
+			foreach (Context context in left.GetContexts())
+			{
+				yield return context;
+			}
+
+			foreach (Context context in right.GetContexts())
+			{
+				yield return context;
 			}
 		}
 

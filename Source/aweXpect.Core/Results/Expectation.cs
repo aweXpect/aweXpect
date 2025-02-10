@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +121,7 @@ public abstract class Expectation
 			StringBuilder expectationTexts = new();
 			StringBuilder failureTexts = new();
 			Outcome? outcome = null;
+			List<ConstraintResult.Context> contexts = new();
 			foreach (Expectation? expectation in _expectations)
 			{
 				Result result = await expectation.GetResult(index);
@@ -139,6 +142,7 @@ public abstract class Expectation
 
 				if (result.ConstraintResult.Outcome == Outcome.Failure)
 				{
+					contexts.AddRange(result.ConstraintResult.GetContexts());
 					if (expectation is Combination)
 					{
 						failureTexts.Append("  ");
@@ -168,7 +172,7 @@ public abstract class Expectation
 			if (outcome != Outcome.Success)
 			{
 				ConstraintResult.Failure result = new(expectationTexts.ToString(), failureTexts.ToString());
-				return new Result(index, GetSubjectLine(), result);
+				return new Result(index, GetSubjectLine(), result.WithContexts(contexts.ToArray()));
 			}
 
 			return new Result(index, GetSubjectLine(),
@@ -186,6 +190,14 @@ public abstract class Expectation
 				sb.AppendLine();
 				sb.AppendLine("but");
 				result.ConstraintResult.AppendResult(sb);
+				foreach (ConstraintResult.Context context in result.ConstraintResult.GetContexts()
+					         .Distinct(ConstraintResult.Context.Comparer))
+				{
+					sb.AppendLine().AppendLine();
+					sb.Append(context.Title).Append(':').AppendLine();
+					sb.Append(context.Content);
+				}
+
 				Fail.Test(sb.ToString());
 			}
 		}

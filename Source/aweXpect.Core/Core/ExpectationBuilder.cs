@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -245,6 +246,14 @@ public abstract class ExpectationBuilder
 		sb.AppendLine(",");
 		sb.Append("but ");
 		failure.AppendResult(sb);
+		foreach (ConstraintResult.Context context in failure.GetContexts()
+			         .Distinct(ConstraintResult.Context.Comparer))
+		{
+			sb.AppendLine().AppendLine();
+			sb.Append(context.Title).Append(':').AppendLine();
+			sb.Append(context.Content);
+		}
+
 		return sb.ToString();
 	}
 
