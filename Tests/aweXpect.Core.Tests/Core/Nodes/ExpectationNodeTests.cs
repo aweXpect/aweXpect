@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Text;
+using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
@@ -51,10 +52,12 @@ public class ExpectationNodeTests
 		node.AddConstraint(new DummyAsyncConstraint<int>(_
 			=> Task.FromResult<ConstraintResult>(new ConstraintResult.Success("foo"))));
 		node.SetReason(new BecauseReason("my reason"));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -81,10 +84,12 @@ public class ExpectationNodeTests
 		node.AddConstraint(new DummyAsyncContextConstraint<int>(_
 			=> Task.FromResult<ConstraintResult>(new ConstraintResult.Success("foo"))));
 		node.SetReason(new BecauseReason("my reason"));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -110,10 +115,12 @@ public class ExpectationNodeTests
 		ExpectationNode node = new();
 		node.AddConstraint(new DummyContextConstraint<int>(_ => new ConstraintResult.Success("foo")));
 		node.SetReason(new BecauseReason("my reason"));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -139,10 +146,12 @@ public class ExpectationNodeTests
 		ExpectationNode node = new();
 		node.AddConstraint(new DummyValueConstraint<int>(_ => new ConstraintResult.Success("foo")));
 		node.SetReason(new BecauseReason("my reason"));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(44, null!, CancellationToken.None);
 
-		await That(result.ExpectationText).IsEqualTo("foo, because my reason");
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo, because my reason");
 	}
 
 	[Fact]
@@ -234,13 +243,15 @@ public class ExpectationNodeTests
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
 			=> new ConstraintResult.Failure<int>(2 * v, "bar", "same failure")));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
 
-		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Whose(p => p.Value, v => v.IsEqualTo(42))
-			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
-			.AndWhose(p => p.ResultText, r => r.IsEqualTo("same failure"));
+		result.AppendExpectation(sb);
+		await That(result.TryGetValue(out int value)).IsTrue();
+		await That(value).IsEqualTo(42);
+		await That(sb.ToString()).IsEqualTo("foo with mapping bar");
+		await That(result.GetResultText()).IsEqualTo("same failure");
 	}
 
 	[Fact]
@@ -252,13 +263,15 @@ public class ExpectationNodeTests
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
 			=> new ConstraintResult.Failure<int>(2 * v, "bar", "inner failure")));
+		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
 
-		await That(result).Is<ConstraintResult.Failure<int>>()
-			.Whose(p => p.Value, v => v.IsEqualTo(42))
-			.AndWhose(p => p.ExpectationText, e => e.IsEqualTo("foo with mapping bar"))
-			.AndWhose(p => p.ResultText, r => r.IsEqualTo("outer failure and inner failure"));
+		result.AppendExpectation(sb);
+		await That(result.TryGetValue(out int value)).IsTrue();
+		await That(value).IsEqualTo(42);
+		await That(sb.ToString()).IsEqualTo("foo with mapping bar");
+		await That(result.GetResultText()).IsEqualTo("outer failure and inner failure");
 	}
 #endif
 }

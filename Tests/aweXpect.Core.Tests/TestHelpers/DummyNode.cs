@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Text;
+using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Core.Helpers;
@@ -16,7 +17,7 @@ internal class DummyNode(string name) : Node
 
 	public override Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> throw new NotSupportedException();
 

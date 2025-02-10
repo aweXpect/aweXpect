@@ -32,7 +32,7 @@ public class JsonWhichResult(
 					using JsonDocument jsonDocument = JsonDocument.Parse(s, options);
 					return jsonDocument.RootElement.Clone();
 				}, "it"),
-				(_, expectation) => $" which {expectation}")
+				(_, stringBuilder) => stringBuilder.Append(" which "))
 			.AddExpectations(e => expectations(new ThatSubject<JsonElement?>(e)));
 		return this;
 	}

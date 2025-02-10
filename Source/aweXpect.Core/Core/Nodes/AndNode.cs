@@ -11,18 +11,13 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Nodes;
 
-internal class AndNode : Node
+internal class AndNode(Node node) : Node
 {
 	private const string DefaultSeparator = " and ";
 	private readonly List<(string, Node)> _nodes = new();
 	private string? _currentSeparator;
 
-	public AndNode(Node node)
-	{
-		Current = node;
-	}
-
-	private Node Current { get; set; }
+	private Node Current { get; set; } = node;
 
 	/// <inheritdoc />
 	public override void AddConstraint(IConstraint constraint)
@@ -31,7 +26,7 @@ internal class AndNode : Node
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> Current.AddMapping(memberAccessor, expectationTextGenerator);
 

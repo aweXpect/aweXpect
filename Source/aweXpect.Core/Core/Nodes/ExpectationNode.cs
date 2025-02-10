@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
@@ -37,7 +38,7 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 	{
 		MappingNode<TValue, TTarget> mappingNode =

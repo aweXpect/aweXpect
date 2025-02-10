@@ -45,7 +45,7 @@ internal class WhichNode<TSource, TMember> : Node
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> _inner?.AddMapping(memberAccessor, expectationTextGenerator);
 

@@ -43,6 +43,8 @@ public abstract class ConstraintResult
 	}
 
 	private string? _expectationText;
+	private Action<StringBuilder>? _prependExpectationText;
+	private Action<StringBuilder>? _appendExpectationText;
 
 	/// <summary>
 	///     Initializes a new instance of <see cref="ConstraintResult" />.
@@ -70,7 +72,9 @@ public abstract class ConstraintResult
 
 	public virtual void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
+		_prependExpectationText?.Invoke(stringBuilder);
 		stringBuilder.Append(_expectationText.Indent(indentation, false));
+		_appendExpectationText?.Invoke(stringBuilder);
 	}
 
 	public virtual void AppendResult(StringBuilder stringBuilder, string? indentation = null)
@@ -111,8 +115,11 @@ public abstract class ConstraintResult
 	/// </summary>
 	// TODO VAB: Remove
 	internal virtual ConstraintResult UpdateExpectationText(
-		Func<ConstraintResult, string> expectationText)
+		Action<StringBuilder>? prependExpectationText = null,
+		Action<StringBuilder>? appendExpectationText = null)
 	{
+		_prependExpectationText = prependExpectationText ?? _prependExpectationText;
+		_appendExpectationText = appendExpectationText ?? _appendExpectationText;
 		return this;
 	}
 
@@ -144,11 +151,6 @@ public abstract class ConstraintResult
 		/// <inheritdoc />
 		public override string ToString()
 			=> $"SUCCEEDED {ExpectationText}";
-
-		/// <inheritdoc />
-		internal override ConstraintResult UpdateExpectationText(
-			Func<ConstraintResult, string> expectationText)
-			=> new Success(expectationText.Invoke(this));
 
 		/// <inheritdoc />
 		internal override ConstraintResult UseValue<T>(T value)
@@ -195,11 +197,6 @@ public abstract class ConstraintResult
 			value = default;
 			return Value is null;
 		}
-
-		/// <inheritdoc />
-		internal override ConstraintResult UpdateExpectationText(
-			Func<ConstraintResult, string> expectationText)
-			=> new Success<T>(Value, expectationText.Invoke(this));
 	}
 
 	/// <summary>
@@ -241,11 +238,6 @@ public abstract class ConstraintResult
 			=> $"FAILED {ExpectationText}";
 
 		/// <inheritdoc />
-		internal override ConstraintResult UpdateExpectationText(
-			Func<ConstraintResult, string> expectationText)
-			=> new Failure(expectationText.Invoke(this), ResultText);
-
-		/// <inheritdoc />
 		internal override ConstraintResult UseValue<T>(T value)
 			=> new Failure<T>(value, ExpectationText, ResultText, FurtherProcessingStrategy);
 
@@ -282,9 +274,17 @@ public abstract class ConstraintResult
 		public override ConstraintResult CombineWith(string expectationText, string resultText)
 			=> new Failure<T>(Value, expectationText, resultText);
 
-		/// <inheritdoc />
-		internal override ConstraintResult UpdateExpectationText(
-			Func<ConstraintResult, string> expectationText)
-			=> new Failure<T>(Value, expectationText.Invoke(this), ResultText);
+		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+			where TValue : default
+		{
+			if (Value is TValue v)
+			{
+				value = v;
+				return true;
+			}
+
+			value = default;
+			return Value is null;
+		}
 	}
 }

@@ -112,7 +112,7 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(
 		MemberAccessor<TSource, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
 		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
