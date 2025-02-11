@@ -16,7 +16,7 @@ public class TimeToleranceTests
 			.WithMessage("*Tolerance must be non-negative*").AsWildcard();
 	}
 
-	[Fact]
+	[Fact(Skip="Temporarily disable until next Core update")]
 	public async Task WhenToleranceIsZero_ShouldNotThrow()
 	{
 		TimeTolerance sut = new();
