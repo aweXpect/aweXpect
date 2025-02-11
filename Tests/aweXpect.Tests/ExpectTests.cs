@@ -1,7 +1,4 @@
-﻿#if NET8_0_OR_GREATER
-#endif
-
-namespace aweXpect.Tests;
+﻿namespace aweXpect.Tests;
 
 public class ExpectTests
 {

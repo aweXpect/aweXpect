@@ -127,46 +127,41 @@ public abstract class Expectation
 				Result result = await expectation.GetResult(index);
 				outcome = CheckOutcome(outcome, result.ConstraintResult.Outcome);
 				index = result.Index;
+				if (expectationTexts.Length > 0)
+				{
+					expectationTexts.AppendLine();
+				}
+
 				if (expectation is Combination)
 				{
 					expectationTexts.Append("  ").Append(result.SubjectLine).AppendLine().Append("  ");
 					result.ConstraintResult.AppendExpectation(expectationTexts, "  ");
-					expectationTexts.AppendLine();
 				}
 				else
 				{
 					expectationTexts.Append(result.SubjectLine).Append(' ');
 					result.ConstraintResult.AppendExpectation(expectationTexts, "      ");
-					expectationTexts.AppendLine();
 				}
 
 				if (result.ConstraintResult.Outcome == Outcome.Failure)
 				{
 					contexts.AddRange(result.ConstraintResult.GetContexts());
+					if (failureTexts.Length > 0)
+					{
+						failureTexts.AppendLine();
+					}
+
 					if (expectation is Combination)
 					{
 						failureTexts.Append("  ");
 						result.ConstraintResult.AppendResult(failureTexts, "  ");
-						failureTexts.AppendLine();
 					}
 					else
 					{
 						failureTexts.Append(" [").Append(index.ToString("00")).Append("] ");
 						result.ConstraintResult.AppendResult(failureTexts, "      ");
-						failureTexts.AppendLine();
 					}
 				}
-			}
-
-			int newlineLength = Environment.NewLine.Length;
-			if (expectationTexts.Length > newlineLength)
-			{
-				expectationTexts.Length -= newlineLength;
-			}
-
-			if (failureTexts.Length > newlineLength)
-			{
-				failureTexts.Length -= newlineLength;
 			}
 
 			if (outcome != Outcome.Success)

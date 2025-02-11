@@ -14,6 +14,7 @@ namespace aweXpect.Adapters;
 ///     <see href="https://github.com/thomhurst/TUnit" />
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
+[ExcludeFromCodeCoverage]
 internal class TUnitAdapter : ITestFrameworkAdapter
 {
 	private Assembly? _assertionsAssembly;
