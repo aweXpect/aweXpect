@@ -26,7 +26,7 @@ public class ManualExpectationBuilder<TValue>() : ExpectationBuilder("")
 	internal override Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
-		CancellationToken cancellationToken,
-		TimeSpan? timeout)
+		TimeSpan? timeout,
+		CancellationToken cancellationToken)
 		=> throw new NotSupportedException($"Use {nameof(IsMetBy)} for ManualExpectationBuilder!");
 }

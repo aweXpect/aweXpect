@@ -63,12 +63,11 @@ public class ExpectationResultTests
 			return _cancellationToken;
 		}
 
-		internal override Task<ConstraintResult> IsMet(
-			Node rootNode,
+		internal override Task<ConstraintResult> IsMet(Node rootNode,
 			EvaluationContext.EvaluationContext context,
 			ITimeSystem timeSystem,
-			CancellationToken cancellationToken,
-			TimeSpan? timeout)
+			TimeSpan? timeout,
+			CancellationToken cancellationToken)
 		{
 			_cancellationToken = cancellationToken;
 			ConstraintResult result = _resultBuilder();

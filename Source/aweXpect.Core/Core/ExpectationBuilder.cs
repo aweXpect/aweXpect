@@ -276,14 +276,14 @@ public abstract class ExpectationBuilder
 		ITimeSystem timeSystem = _timeSystem ?? RealTimeSystem.Instance;
 		TestCancellation? testCancellation = Customize.aweXpect.Settings().TestCancellation.Get();
 		_cancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ?? CancellationToken.None;
-		return IsMet(GetRootNode(), context, timeSystem, _cancellationToken.Value, testCancellation?.Timeout);
+		return IsMet(GetRootNode(), context, timeSystem, testCancellation?.Timeout, _cancellationToken.Value);
 	}
 
 	internal abstract Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
-		CancellationToken cancellationToken,
-		TimeSpan? timeout);
+		TimeSpan? timeout,
+		CancellationToken cancellationToken);
 
 	internal void Or(string textSeparator = " or ")
 	{
@@ -371,8 +371,8 @@ internal class ExpectationBuilder<TValue> : ExpectationBuilder
 	internal override async Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
-		CancellationToken cancellationToken,
-		TimeSpan? timeout)
+		TimeSpan? timeout,
+		CancellationToken cancellationToken)
 	{
 		if (timeout != null)
 		{
