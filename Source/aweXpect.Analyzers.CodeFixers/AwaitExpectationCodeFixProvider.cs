@@ -22,7 +22,7 @@ namespace aweXpect.Analyzers.CodeFixers;
 public class AwaitExpectationCodeFixProvider : CodeFixProvider
 {
 	/// <inheritdoc />
-	public sealed override ImmutableArray<string> FixableDiagnosticIds { get; } = [Rules.AwaitExpectation.Id];
+	public sealed override ImmutableArray<string> FixableDiagnosticIds { get; } = [Rules.AwaitExpectationRule.Id];
 
 	/// <inheritdoc />
 	public override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;

@@ -6,8 +6,11 @@ internal static class Rules
 {
 	private const string UsageCategory = "Usage";
 
-	public static readonly DiagnosticDescriptor AwaitExpectation =
+	public static readonly DiagnosticDescriptor AwaitExpectationRule =
 		CreateDescriptor("aweXpect0001", UsageCategory, DiagnosticSeverity.Error);
+
+	public static readonly DiagnosticDescriptor EqualsRule =
+		CreateDescriptor("aweXpect0002", UsageCategory, DiagnosticSeverity.Error);
 
 
 	private static DiagnosticDescriptor CreateDescriptor(string diagnosticId, string category,

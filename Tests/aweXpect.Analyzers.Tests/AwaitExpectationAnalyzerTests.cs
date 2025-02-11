@@ -56,7 +56,7 @@ public class AwaitExpectationAnalyzerTests
 			    }
 			}
 			""",
-			Verifier.Diagnostic(Rules.AwaitExpectation)
+			Verifier.Diagnostic(Rules.AwaitExpectationRule)
 				.WithLocation(0)
 		);
 
@@ -75,7 +75,7 @@ public class AwaitExpectationAnalyzerTests
 			    }
 			}
 			""",
-			Verifier.Diagnostic(Rules.AwaitExpectation)
+			Verifier.Diagnostic(Rules.AwaitExpectationRule)
 				.WithLocation(0)
 		);
 
