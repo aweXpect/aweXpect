@@ -654,6 +654,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -765,7 +771,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -880,7 +887,8 @@ window.BENCHMARK_DATA = {
           172.87147050244468,
           166.68167635599772,
           153.47985679308573,
-          249.59638799939836
+          249.59638799939836,
+          268.1378795305888
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1000,6 +1008,7 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
+          1056,
           1056
         ],
         "borderColor": "#63A2AC",
@@ -1123,7 +1132,8 @@ window.BENCHMARK_DATA = {
           198.7462346871694,
           190.61797188123066,
           185.18408788953508,
-          194.32103378432137
+          194.32103378432137,
+          195.33656125068666
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1161,6 +1171,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1366,7 +1377,8 @@ window.BENCHMARK_DATA = {
           796.8158716201782,
           741.3678713480632,
           719.0498398372105,
-          754.8078313555036
+          754.8078313555036,
+          800.7984811919076
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1479,6 +1491,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -1692,6 +1705,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -1726,7 +1745,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -1764,7 +1784,8 @@ window.BENCHMARK_DATA = {
           305817.2132286659,
           311278.28086635045,
           289418.3037109375,
-          298876.42994791665
+          298876.42994791665,
+          289525.7874474159
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1807,6 +1828,7 @@ window.BENCHMARK_DATA = {
           284916,
           284916,
           284916,
+          285444,
           285444
         ],
         "borderColor": "#63A2AC",
@@ -1853,7 +1875,8 @@ window.BENCHMARK_DATA = {
           2030551.81484375,
           2012320.45234375,
           1982417.1041666667,
-          2093691.233173077
+          2093691.233173077,
+          2058982.3739583334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1887,6 +1910,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1942,7 +1966,8 @@ window.BENCHMARK_DATA = {
           679587.2981445312,
           687975.7615685096,
           682929.0158854167,
-          678107.8340494792
+          678107.8340494792,
+          665456.4264787947
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1978,6 +2003,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -2653,6 +2679,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -2764,7 +2796,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -2879,7 +2912,8 @@ window.BENCHMARK_DATA = {
           537.7653591292245,
           551.4546936353048,
           542.0078271457127,
-          679.3181798299154
+          679.3181798299154,
+          683.3322679519654
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2999,6 +3033,7 @@ window.BENCHMARK_DATA = {
           1104,
           1104,
           1104,
+          1632,
           1632
         ],
         "borderColor": "#63A2AC",
@@ -3122,7 +3157,8 @@ window.BENCHMARK_DATA = {
           420.2525250571115,
           404.0883953230722,
           416.75484606197904,
-          414.19137835502625
+          414.19137835502625,
+          427.2311992009481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3160,6 +3196,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3365,7 +3402,8 @@ window.BENCHMARK_DATA = {
           14919.112753295898,
           14446.262187412807,
           18637.100064791164,
-          15898.81435139974
+          15898.81435139974,
+          14999.368274395283
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3478,6 +3516,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -4153,6 +4192,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -4264,7 +4309,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -4379,7 +4425,8 @@ window.BENCHMARK_DATA = {
           215.43137308529444,
           202.66772307668413,
           194.4575510819753,
-          306.9392196337382
+          306.9392196337382,
+          287.7829290798732
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4499,6 +4546,7 @@ window.BENCHMARK_DATA = {
           880,
           880,
           880,
+          1408,
           1408
         ],
         "borderColor": "#63A2AC",
@@ -4622,7 +4670,8 @@ window.BENCHMARK_DATA = {
           199.41395609719413,
           192.91100786526997,
           186.7030240535736,
-          198.69864099366325
+          198.69864099366325,
+          202.7875678539276
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4660,6 +4709,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -4865,7 +4915,8 @@ window.BENCHMARK_DATA = {
           1096.8245007832845,
           1061.7351771036783,
           1040.302343913487,
-          1047.140616783729
+          1047.140616783729,
+          1075.9112929026285
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4978,6 +5029,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -5653,6 +5705,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -5764,7 +5822,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -5879,7 +5938,8 @@ window.BENCHMARK_DATA = {
           335.98969347136364,
           329.22149163026074,
           320.7075046221415,
-          429.9304851849874
+          429.9304851849874,
+          439.06155958175657
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5999,6 +6059,7 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
+          1480,
           1480
         ],
         "borderColor": "#63A2AC",
@@ -6122,7 +6183,8 @@ window.BENCHMARK_DATA = {
           421.87431132793427,
           415.84040892918904,
           407.35540272394815,
-          433.3582371075948
+          433.3582371075948,
+          420.9524370340201
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6160,6 +6222,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -6365,7 +6428,8 @@ window.BENCHMARK_DATA = {
           1146.9706423623222,
           1086.2252753121513,
           1120.5798367818197,
-          1164.7304098946709
+          1164.7304098946709,
+          1172.8218849727086
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6478,6 +6542,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -7153,6 +7218,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -7264,7 +7335,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -7379,7 +7451,8 @@ window.BENCHMARK_DATA = {
           1233.0054644071138,
           1204.974359512329,
           1220.6434086163838,
-          1401.5844449361166
+          1401.5844449361166,
+          1330.3292388916016
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7499,6 +7572,7 @@ window.BENCHMARK_DATA = {
           2552,
           2552,
           2552,
+          3056,
           3056
         ],
         "borderColor": "#63A2AC",
@@ -7622,7 +7696,8 @@ window.BENCHMARK_DATA = {
           1212.122128423055,
           1176.9008397420248,
           1204.4500342149001,
-          1232.4721028645833
+          1232.4721028645833,
+          1219.8660055796306
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7660,6 +7735,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -7865,7 +7941,8 @@ window.BENCHMARK_DATA = {
           2544.865813936506,
           2431.896064440409,
           2526.3836634318036,
-          2602.388949530465
+          2602.388949530465,
+          2491.4833506266277
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7978,6 +8055,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -8653,6 +8731,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:10:38 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v0.29.0 (#345)"
+      },
+      {
+        "sha": "2c41be542bbcdf7bb9c8643813e9a84ad61d624d",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
+        "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
       }
     ],
     "labels": [
@@ -8764,7 +8848,8 @@ window.BENCHMARK_DATA = {
       "e70deb86",
       "0ec04dd4",
       "7c2a7584",
-      "e9022782"
+      "e9022782",
+      "2c41be54"
     ],
     "datasets": [
       {
@@ -8879,7 +8964,8 @@ window.BENCHMARK_DATA = {
           1293.445287851187,
           1287.378454208374,
           1267.0107089996338,
-          1466.299263734084
+          1466.299263734084,
+          1416.1689160664876
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8999,6 +9085,7 @@ window.BENCHMARK_DATA = {
           2584,
           2584,
           2584,
+          3088,
           3088
         ],
         "borderColor": "#63A2AC",
@@ -9122,7 +9209,8 @@ window.BENCHMARK_DATA = {
           85583.75079345703,
           88102.04478236607,
           87622.45448655348,
-          86135.44353027343
+          86135.44353027343,
+          87583.99718424478
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9242,7 +9330,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9365,7 +9454,8 @@ window.BENCHMARK_DATA = {
           6593.8003336588545,
           6781.241619873047,
           6641.703311157226,
-          7329.432145799909
+          7329.432145799909,
+          6697.825472513835
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9478,6 +9568,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
