@@ -37,4 +37,13 @@
 		<value>Await the expectation</value>
 		<comment>The title of the code fix.</comment>
 	</data>
+	<data name="aweXpect0002Description" xml:space="preserve">
+		<value>The method object.Equals is not supported for the expectations. You should use "IsEqualTo" instead!</value>
+	</data>
+	<data name="aweXpect0002MessageFormat" xml:space="preserve">
+		<value>Replace "Equals" with "IsEqualTo"</value>
+	</data>
+	<data name="aweXpect0002Title" xml:space="preserve">
+		<value>Replace "Equals" with "IsEqualTo"</value>
+	</data>
 </root>

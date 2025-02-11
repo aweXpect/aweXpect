@@ -94,5 +94,32 @@ namespace aweXpect.Analyzers {
                 return ResourceManager.GetString("aweXpect0001Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The method object.Equals is not supported for the expectations. You should use &quot;IsEqualTo&quot; instead!.
+        /// </summary>
+        internal static string aweXpect0002Description {
+            get {
+                return ResourceManager.GetString("aweXpect0002Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace &quot;Equals&quot; with &quot;IsEqualTo&quot;.
+        /// </summary>
+        internal static string aweXpect0002MessageFormat {
+            get {
+                return ResourceManager.GetString("aweXpect0002MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace &quot;Equals&quot; with &quot;IsEqualTo&quot;.
+        /// </summary>
+        internal static string aweXpect0002Title {
+            get {
+                return ResourceManager.GetString("aweXpect0002Title", resourceCulture);
+            }
+        }
     }
 }

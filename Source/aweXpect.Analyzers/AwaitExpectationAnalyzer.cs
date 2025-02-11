@@ -14,7 +14,7 @@ namespace aweXpect.Analyzers;
 public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 {
 	/// <inheritdoc />
-	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [Rules.AwaitExpectation];
+	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [Rules.AwaitExpectationRule];
 
 	/// <inheritdoc />
 	public override void Initialize(AnalysisContext context)
@@ -47,7 +47,7 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 		}
 
 		context.ReportDiagnostic(
-			Diagnostic.Create(Rules.AwaitExpectation, context.Operation.Syntax.GetLocation())
+			Diagnostic.Create(Rules.AwaitExpectationRule, context.Operation.Syntax.GetLocation())
 		);
 	}
 
