@@ -4,7 +4,7 @@ using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Adapters;
 
-public class TestFrameworkAdapterTests
+public sealed class TestFrameworkAdapterTests
 {
 	[Fact]
 	public async Task FromType_WhenNameDoesNotExist_ShouldReturnNull()
@@ -20,7 +20,7 @@ public class TestFrameworkAdapterTests
 	[Fact]
 	public async Task MissingAssemblyName_ShouldNotBeAvailable()
 	{
-		MyTestFrameworkAdapter adapter = new("foo-bar");
+		MyTestFrameworkAdapter adapter = new(MissingAssembly);
 		_ = adapter.IsAvailable;
 
 		await That(adapter.IsAvailable).IsFalse();
@@ -29,7 +29,7 @@ public class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Skip_MissingAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new("foo-bar");
+		MyTestFrameworkAdapter adapter = new(MissingAssembly);
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Skip("foo")).Throws<NotSupportedException>()
@@ -39,7 +39,7 @@ public class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Skip_ValidAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new();
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly);
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Skip("foo")).Throws<NotSupportedException>()
@@ -50,7 +50,7 @@ public class TestFrameworkAdapterTests
 	public async Task Skip_ValidAssemblyName_WithException_ShouldThrowProvidedException()
 	{
 		MyException exception = new("my-message");
-		MyTestFrameworkAdapter adapter = new(skipException: exception);
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly, skipException: exception);
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Skip("foo")).Throws<MyException>()
@@ -60,7 +60,7 @@ public class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Throw_MissingAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new("foo-bar");
+		MyTestFrameworkAdapter adapter = new(MissingAssembly);
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Throw("foo")).Throws<NotSupportedException>()
@@ -70,7 +70,7 @@ public class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Throw_ValidAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new();
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly);
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Throw("foo")).Throws<NotSupportedException>()
@@ -81,7 +81,7 @@ public class TestFrameworkAdapterTests
 	public async Task Throw_ValidAssemblyName_WithException_ShouldThrowProvidedException()
 	{
 		MyException exception = new("my-message");
-		MyTestFrameworkAdapter adapter = new(failException: exception);
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly, exception);
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Throw("foo")).Throws<MyException>()
@@ -91,23 +91,26 @@ public class TestFrameworkAdapterTests
 	[Fact]
 	public async Task ValidAssemblyName_ShouldBeAvailable()
 	{
-		MyTestFrameworkAdapter adapter = new();
+		MyTestFrameworkAdapter adapter = new(ExistingAssembly);
 		_ = adapter.IsAvailable;
 
 		await That(adapter.IsAvailable).IsTrue();
 	}
 
+	public static string ExistingAssembly { get; } = typeof(TestFrameworkAdapterTests).Assembly.FullName[..20];
+	public static string MissingAssembly { get; } = "this-assembly-does-not-exist";
+
 	private sealed class MyTestFrameworkAdapter : TestFrameworkAdapter
 	{
-		public MyTestFrameworkAdapter() : this(null)
+		public MyTestFrameworkAdapter() : this(MissingAssembly)
 		{
 			// An empty constructor is required in order to avoid an exception in the ambient initialization "DetectFramework" method!
 		}
 
-		public MyTestFrameworkAdapter(string? assemblyName = null,
+		public MyTestFrameworkAdapter(string assemblyName,
 			Exception? failException = null,
 			Exception? skipException = null)
-			: base(assemblyName ?? typeof(TestFrameworkAdapterTests).Assembly.FullName[..20],
+			: base(assemblyName,
 				(_, _) => failException,
 				(_, _) => skipException)
 		{
