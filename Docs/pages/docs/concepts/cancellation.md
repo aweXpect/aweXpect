@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+# Cancellation
+
 You can add cancellation support on the expectations, so that they can't run indefinitely:
 
 ## Global settings
@@ -18,7 +20,7 @@ Customize.aweXpect.Settings().TestCancellation.Set(() => TestContext.Current.Can
 
 ### `CancellationToken`
 
-You can set a global factory for getting a `CancellationToken` that is applied for all expectations:
+You can set a global provider for getting a `CancellationToken` that is applied for all expectations:
 ```csharp
 // Uses the CancellationToken from the test context
 Customize.aweXpect.Settings().TestCancellation
