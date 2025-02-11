@@ -1,4 +1,5 @@
-﻿#if NET8_0_OR_GREATER
+﻿using aweXpect.Results;
+#if NET8_0_OR_GREATER
 #endif
 
 namespace aweXpect.Tests;
