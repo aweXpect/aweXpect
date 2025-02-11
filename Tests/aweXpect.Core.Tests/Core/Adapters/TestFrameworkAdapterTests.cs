@@ -12,7 +12,7 @@ public sealed class TestFrameworkAdapterTests
 		string typeName = "type-that-does-not-exist";
 		Assembly assembly = typeof(TestFrameworkAdapterTests).Assembly;
 
-		Exception? exception = MyTestFrameworkAdapter.FromType(typeName, assembly, "foo");
+		Exception? exception = MyTestFrameworkAdapter.FromTypeWrapper(typeName, assembly, "foo");
 
 		await That(exception).IsNull();
 	}
@@ -97,8 +97,8 @@ public sealed class TestFrameworkAdapterTests
 		await That(adapter.IsAvailable).IsTrue();
 	}
 
-	public static string ExistingAssembly { get; } = typeof(TestFrameworkAdapterTests).Assembly.FullName[..20];
-	public static string MissingAssembly { get; } = "this-assembly-does-not-exist";
+	private const string ExistingAssembly = "aweXpect.Core.Tests";
+	private const string MissingAssembly = "this-assembly-does-not-exist";
 
 	private sealed class MyTestFrameworkAdapter : TestFrameworkAdapter
 	{
@@ -116,7 +116,7 @@ public sealed class TestFrameworkAdapterTests
 		{
 		}
 
-		public static Exception? FromType(string typeName, Assembly assembly, string message)
-			=> TestFrameworkAdapter.FromType(typeName, assembly, message);
+		public static Exception? FromTypeWrapper(string typeName, Assembly assembly, string message)
+			=> FromType(typeName, assembly, message);
 	}
 }
