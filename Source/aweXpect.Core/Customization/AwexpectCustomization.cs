@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -6,10 +7,11 @@ namespace aweXpect.Customization;
 /// <summary>
 ///     Customize the global behaviour of aweXpect.
 /// </summary>
-public class AwexpectCustomization : IAwexpectCustomization
+public partial class AwexpectCustomization : IAwexpectCustomization
 {
 	private readonly AsyncLocal<CustomizationStore> _store = new();
 
+	/// <inheritdoc cref="IAwexpectCustomization.Get{TValue}(string, TValue)" />
 	TValue IAwexpectCustomization.Get<TValue>(string key, TValue defaultValue)
 	{
 		if (_store.Value == null)
@@ -20,6 +22,7 @@ public class AwexpectCustomization : IAwexpectCustomization
 		return _store.Value.Get(key, defaultValue);
 	}
 
+	/// <inheritdoc cref="IAwexpectCustomization.Set{TValue}(string, TValue)" />
 	CustomizationLifetime IAwexpectCustomization.Set<TValue>(string key, TValue value)
 	{
 		if (_store.Value == null)
@@ -28,6 +31,18 @@ public class AwexpectCustomization : IAwexpectCustomization
 		}
 
 		return _store.Value.Set(key, value);
+	}
+
+	private sealed class CustomizationValue<TValue>(
+		Func<TValue> getter,
+		Func<TValue, CustomizationLifetime> setter)
+		: ICustomizationValueSetter<TValue>
+	{
+		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Get()" />
+		public TValue Get() => getter();
+
+		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Set(TValue)" />
+		public CustomizationLifetime Set(TValue value) => setter(value);
 	}
 
 	private sealed class CustomizationStore
