@@ -8,6 +8,7 @@ using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Sources;
 using aweXpect.Core.TimeSystem;
+using aweXpect.Customization;
 
 namespace aweXpect.Core;
 
@@ -272,14 +273,16 @@ public abstract class ExpectationBuilder
 	internal Task<ConstraintResult> IsMet()
 	{
 		EvaluationContext.EvaluationContext context = new();
-		return IsMet(GetRootNode(), context, _timeSystem ?? RealTimeSystem.Instance,
-			_cancellationToken ?? CancellationToken.None);
+		ITimeSystem timeSystem = _timeSystem ?? RealTimeSystem.Instance;
+		TestCancellation? testCancellation = Customize.aweXpect.Settings().TestCancellation.Get();
+		_cancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ?? CancellationToken.None;
+		return IsMet(GetRootNode(), context, timeSystem, testCancellation?.Timeout, _cancellationToken.Value);
 	}
 
-	internal abstract Task<ConstraintResult> IsMet(
-		Node rootNode,
+	internal abstract Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
+		TimeSpan? timeout,
 		CancellationToken cancellationToken);
 
 	internal void Or(string textSeparator = " or ")
@@ -365,13 +368,23 @@ internal class ExpectationBuilder<TValue> : ExpectationBuilder
 	}
 
 	/// <inheritdoc />
-	internal override async Task<ConstraintResult> IsMet(
-		Node rootNode,
+	internal override async Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
+		TimeSpan? timeout,
 		CancellationToken cancellationToken)
 	{
-		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken);
-		return await rootNode.IsMetBy(data, context, cancellationToken);
+		if (timeout != null)
+		{
+			using CancellationTokenSource timeoutCts = CancellationTokenSource
+				.CreateLinkedTokenSource(cancellationToken);
+			timeoutCts.CancelAfter(timeout.Value);
+			CancellationToken token = timeoutCts.Token;
+			TValue dataWithTimeout = await _subjectSource.GetValue(timeSystem, token).ConfigureAwait(false);
+			return await rootNode.IsMetBy(dataWithTimeout, context, token).ConfigureAwait(false);
+		}
+
+		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken).ConfigureAwait(false);
+		return await rootNode.IsMetBy(data, context, cancellationToken).ConfigureAwait(false);
 	}
 }

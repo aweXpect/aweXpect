@@ -2,22 +2,23 @@ using System;
 
 namespace aweXpect.Customization;
 
-public static partial class AwexpectCustomizationExtensions
+public partial class AwexpectCustomization
 {
+	private FormattingCustomizationValue _formattingCustomizationValue = new();
+
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
-	public static FormattingCustomization Formatting(this AwexpectCustomization awexpectCustomization)
-		=> new(awexpectCustomization);
+	public FormattingCustomization Formatting() => new(this);
 
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
 	public class FormattingCustomization : ICustomizationValueUpdater<FormattingCustomizationValue>
 	{
-		private readonly IAwexpectCustomization _awexpectCustomization;
+		private readonly AwexpectCustomization _awexpectCustomization;
 
-		internal FormattingCustomization(IAwexpectCustomization awexpectCustomization)
+		internal FormattingCustomization(AwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			MaximumNumberOfCollectionItems = new CustomizationValue<int>(
@@ -34,12 +35,19 @@ public static partial class AwexpectCustomizationExtensions
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Get()" />
 		public FormattingCustomizationValue Get()
-			=> _awexpectCustomization.Get(nameof(Formatting), new FormattingCustomizationValue());
+			=> _awexpectCustomization._formattingCustomizationValue;
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Update(Func{FormattingCustomizationValue,FormattingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<FormattingCustomizationValue, FormattingCustomizationValue> update)
-			=> _awexpectCustomization.Set(nameof(Formatting), update(Get()));
+		{
+			FormattingCustomizationValue previousValue = _awexpectCustomization._formattingCustomizationValue;
+			CustomizationLifetime lifetime = new(() =>
+				_awexpectCustomization._formattingCustomizationValue = previousValue);
+
+			_awexpectCustomization._formattingCustomizationValue = update(previousValue);
+			return lifetime;
+		}
 	}
 
 	/// <summary>

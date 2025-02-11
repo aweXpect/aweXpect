@@ -2,22 +2,23 @@ using System;
 
 namespace aweXpect.Customization;
 
-public static partial class AwexpectCustomizationExtensions
+public partial class AwexpectCustomization
 {
+	private ReflectionCustomizationValue _reflectionCustomizationValue = new();
+
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
-	public static ReflectionCustomization Reflection(this AwexpectCustomization awexpectCustomization)
-		=> new(awexpectCustomization);
+	public ReflectionCustomization Reflection() => new(this);
 
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
 	public class ReflectionCustomization : ICustomizationValueUpdater<ReflectionCustomizationValue>
 	{
-		private readonly IAwexpectCustomization _awexpectCustomization;
+		private readonly AwexpectCustomization _awexpectCustomization;
 
-		internal ReflectionCustomization(IAwexpectCustomization awexpectCustomization)
+		internal ReflectionCustomization(AwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			ExcludedAssemblyPrefixes = new CustomizationValue<string[]>(
@@ -34,12 +35,19 @@ public static partial class AwexpectCustomizationExtensions
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Get()" />
 		public ReflectionCustomizationValue Get()
-			=> _awexpectCustomization.Get(nameof(Reflection), new ReflectionCustomizationValue());
+			=> _awexpectCustomization._reflectionCustomizationValue;
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Update(Func{ReflectionCustomizationValue,ReflectionCustomizationValue})" />
 		public CustomizationLifetime Update(Func<ReflectionCustomizationValue, ReflectionCustomizationValue> update)
-			=> _awexpectCustomization.Set(nameof(Reflection), update(Get()));
+		{
+			ReflectionCustomizationValue previousValue = _awexpectCustomization._reflectionCustomizationValue;
+			CustomizationLifetime lifetime = new(() =>
+				_awexpectCustomization._reflectionCustomizationValue = previousValue);
+
+			_awexpectCustomization._reflectionCustomizationValue = update(previousValue);
+			return lifetime;
+		}
 	}
 
 	/// <summary>

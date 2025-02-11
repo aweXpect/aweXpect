@@ -252,46 +252,45 @@ namespace aweXpect.Customization
     public class AwexpectCustomization : aweXpect.Customization.IAwexpectCustomization
     {
         public AwexpectCustomization() { }
-    }
-    public static class AwexpectCustomizationExtensions
-    {
-        public static aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomization Formatting(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
-        public static aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomization Reflection(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
-        public static aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomization Settings(this aweXpect.Customization.AwexpectCustomization awexpectCustomization) { }
-        public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
+        public aweXpect.Customization.AwexpectCustomization.FormattingCustomization Formatting() { }
+        public aweXpect.Customization.AwexpectCustomization.ReflectionCustomization Reflection() { }
+        public aweXpect.Customization.AwexpectCustomization.SettingsCustomization Settings() { }
+        public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
-            public aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue> update) { }
+            public aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue, aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue> update) { }
         }
-        public class FormattingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.FormattingCustomizationValue>
+        public class FormattingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue>
         {
             public FormattingCustomizationValue() { }
             public int MaximumNumberOfCollectionItems { get; set; }
         }
-        public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
+        public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<string[]> ExcludedAssemblyPrefixes { get; }
-            public aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue> update) { }
+            public aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue, aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue> update) { }
         }
-        public class ReflectionCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.ReflectionCustomizationValue>
+        public class ReflectionCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue>
         {
             public ReflectionCustomizationValue() { }
             public string[] ExcludedAssemblyPrefixes { get; set; }
         }
-        public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
+        public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultSignalerTimeout { get; }
             public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeComparisonTolerance { get; }
-            public aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue Get() { }
-            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue, aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue> update) { }
+            public aweXpect.Customization.ICustomizationValueSetter<aweXpect.Customization.TestCancellation?> TestCancellation { get; }
+            public aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue, aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue> update) { }
         }
-        public class SettingsCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomizationExtensions.SettingsCustomizationValue>
+        public class SettingsCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue>
         {
             public SettingsCustomizationValue() { }
             public System.TimeSpan DefaultSignalerTimeout { get; set; }
             public System.TimeSpan DefaultTimeComparisonTolerance { get; set; }
+            public aweXpect.Customization.TestCancellation? TestCancellation { get; set; }
         }
     }
     public sealed class CustomizationLifetime : System.IDisposable
@@ -317,6 +316,12 @@ namespace aweXpect.Customization
     {
         TValue Get();
         aweXpect.Customization.CustomizationLifetime Update(System.Func<TValue, TValue> update);
+    }
+    public class TestCancellation
+    {
+        public static aweXpect.Customization.TestCancellation FromCancellationToken(System.Func<System.Threading.CancellationToken> cancellationTokenFactory) { }
+        public static aweXpect.Customization.TestCancellation FromTimeout(System.TimeSpan timeout) { }
+        public static aweXpect.Customization.TestCancellation None() { }
     }
 }
 namespace aweXpect.Delegates

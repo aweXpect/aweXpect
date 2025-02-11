@@ -21,6 +21,7 @@ internal class TUnitAdapter : ITestFrameworkAdapter
 
 	#region ITestFrameworkAdapter Members
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 	public bool IsAvailable
 	{
 		get
@@ -39,6 +40,7 @@ internal class TUnitAdapter : ITestFrameworkAdapter
 		}
 	}
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
 	public void Skip(string message)
@@ -50,6 +52,7 @@ internal class TUnitAdapter : ITestFrameworkAdapter
 		throw (Exception)Activator.CreateInstance(exceptionType, message)!;
 	}
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.Throw(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
 	public void Throw(string message)

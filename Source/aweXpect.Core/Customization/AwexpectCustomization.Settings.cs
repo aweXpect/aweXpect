@@ -1,24 +1,27 @@
 using System;
+using aweXpect.Results;
 using aweXpect.Signaling;
 
 namespace aweXpect.Customization;
 
-public static partial class AwexpectCustomizationExtensions
+public partial class AwexpectCustomization
 {
+	private SettingsCustomizationValue _settingsCustomizationValue = new();
+
 	/// <summary>
 	///     Customize the settings.
 	/// </summary>
-	public static SettingsCustomization Settings(this AwexpectCustomization awexpectCustomization)
-		=> new(awexpectCustomization);
+	public SettingsCustomization Settings()
+		=> new(this);
 
 	/// <summary>
 	///     Customize the settings.
 	/// </summary>
 	public class SettingsCustomization : ICustomizationValueUpdater<SettingsCustomizationValue>
 	{
-		private readonly IAwexpectCustomization _awexpectCustomization;
+		private readonly AwexpectCustomization _awexpectCustomization;
 
-		internal SettingsCustomization(IAwexpectCustomization awexpectCustomization)
+		internal SettingsCustomization(AwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			DefaultSignalerTimeout = new CustomizationValue<TimeSpan>(
@@ -33,6 +36,12 @@ public static partial class AwexpectCustomizationExtensions
 				{
 					DefaultTimeComparisonTolerance = v,
 				}));
+			TestCancellation = new CustomizationValue<TestCancellation?>(
+				() => Get().TestCancellation,
+				v => Update(p => p with
+				{
+					TestCancellation = v,
+				}));
 		}
 
 		/// <inheritdoc cref="SettingsCustomizationValue.DefaultSignalerTimeout" />
@@ -41,14 +50,24 @@ public static partial class AwexpectCustomizationExtensions
 		/// <inheritdoc cref="SettingsCustomizationValue.DefaultTimeComparisonTolerance" />
 		public ICustomizationValueSetter<TimeSpan> DefaultTimeComparisonTolerance { get; }
 
+		/// <inheritdoc cref="SettingsCustomizationValue.TestCancellation" />
+		public ICustomizationValueSetter<TestCancellation?> TestCancellation { get; }
+
 		/// <inheritdoc cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Get()" />
 		public SettingsCustomizationValue Get()
-			=> _awexpectCustomization.Get(nameof(Settings), new SettingsCustomizationValue());
+			=> _awexpectCustomization._settingsCustomizationValue;
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Update(Func{SettingsCustomizationValue,SettingsCustomizationValue})" />
 		public CustomizationLifetime Update(Func<SettingsCustomizationValue, SettingsCustomizationValue> update)
-			=> _awexpectCustomization.Set(nameof(Settings), update(Get()));
+		{
+			SettingsCustomizationValue previousValue = _awexpectCustomization._settingsCustomizationValue;
+			CustomizationLifetime lifetime = new(() =>
+				_awexpectCustomization._settingsCustomizationValue = previousValue);
+
+			_awexpectCustomization._settingsCustomizationValue = update(previousValue);
+			return lifetime;
+		}
 	}
 
 	/// <summary>
@@ -56,6 +75,11 @@ public static partial class AwexpectCustomizationExtensions
 	/// </summary>
 	public record SettingsCustomizationValue
 	{
+		/// <summary>
+		///     If set, applies the cancellation logic for all test.
+		/// </summary>
+		public TestCancellation? TestCancellation { get; set; } = null;
+
 		/// <summary>
 		///     The default timeout for the <see cref="Signaler" />.
 		/// </summary>
