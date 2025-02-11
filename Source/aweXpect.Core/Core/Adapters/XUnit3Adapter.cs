@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace aweXpect.Adapters;
 
@@ -9,6 +10,7 @@ namespace aweXpect.Adapters;
 ///     <see href="https://github.com/xunit/xunit" />
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
+[ExcludeFromCodeCoverage]
 internal class XUnit3Adapter() : TestFrameworkAdapter(
 	"xunit.v3.assert",
 	(a, m) => FromType("Xunit.Sdk.XunitException", a, m),
