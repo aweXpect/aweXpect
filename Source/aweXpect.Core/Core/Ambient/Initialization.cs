@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using aweXpect.Core.Adapters;
 using aweXpect.Customization;
 
@@ -46,25 +47,25 @@ internal static class Initialization
 		return new InitializationState(testFramework);
 	}
 
-	internal class InitializationState
+	internal class InitializationState(ITestFrameworkAdapter testFramework)
 	{
-		private readonly ITestFrameworkAdapter _testFramework;
+		public ValueFormatter Formatter { get; } = new();
 
-		public InitializationState(ITestFrameworkAdapter testFramework)
-		{
-			_testFramework = testFramework;
-			Formatter = new ValueFormatter();
-		}
-
-		public ValueFormatter Formatter { get; }
-
+		/// <summary>
+		///     Throws a framework-specific exception to indicate a skipped unit test.
+		/// </summary>
 		[DoesNotReturn]
 		[StackTraceHidden]
-		public void Skip(string message) => _testFramework.Skip(message);
+		public void Skip(string message)
+			=> testFramework.Skip(message);
 
+		/// <summary>
+		///     Throws a framework-specific exception to indicate a failing unit test.
+		/// </summary>
 		[DoesNotReturn]
 		[StackTraceHidden]
-		public void Throw(string message) => _testFramework.Throw(message);
+		public void Throw(string message)
+			=> testFramework.Throw(message);
 	}
 
 	private sealed class FallbackTestFramework : ITestFrameworkAdapter

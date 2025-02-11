@@ -1,4 +1,5 @@
 using System;
+using aweXpect.Results;
 using aweXpect.Signaling;
 
 namespace aweXpect.Customization;
@@ -35,6 +36,12 @@ public partial class AwexpectCustomization
 				{
 					DefaultTimeComparisonTolerance = v,
 				}));
+			TestCancellation = new CustomizationValue<TestCancellation?>(
+				() => Get().TestCancellation,
+				v => Update(p => p with
+				{
+					TestCancellation = v,
+				}));
 		}
 
 		/// <inheritdoc cref="SettingsCustomizationValue.DefaultSignalerTimeout" />
@@ -42,6 +49,9 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="SettingsCustomizationValue.DefaultTimeComparisonTolerance" />
 		public ICustomizationValueSetter<TimeSpan> DefaultTimeComparisonTolerance { get; }
+
+		/// <inheritdoc cref="SettingsCustomizationValue.TestCancellation" />
+		public ICustomizationValueSetter<TestCancellation?> TestCancellation { get; }
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Get()" />
 		public SettingsCustomizationValue Get()
@@ -65,6 +75,11 @@ public partial class AwexpectCustomization
 	/// </summary>
 	public record SettingsCustomizationValue
 	{
+		/// <summary>
+		///     If set, applies the cancellation logic for all test.
+		/// </summary>
+		public TestCancellation? TestCancellation { get; set; } = null;
+
 		/// <summary>
 		///     The default timeout for the <see cref="Signaler" />.
 		/// </summary>

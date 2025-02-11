@@ -15,8 +15,20 @@ internal abstract class TestFrameworkAdapter(
 {
 	private Assembly? _assembly;
 
+	protected static Exception? FromType(string typeName, Assembly assembly, string message)
+	{
+		Type? exceptionType = assembly.GetType(typeName);
+		if (exceptionType is null)
+		{
+			return null;
+		}
+
+		return (Exception?)Activator.CreateInstance(exceptionType, message);
+	}
+
 	#region ITestFrameworkAdapter Members
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
 	public bool IsAvailable
 	{
 		get
@@ -36,17 +48,7 @@ internal abstract class TestFrameworkAdapter(
 		}
 	}
 
-	protected static Exception? FromType(string typeName, Assembly assembly, string message)
-	{
-		Type? exceptionType = assembly.GetType(typeName);
-		if (exceptionType is null)
-		{
-			return null;
-		}
-
-		return (Exception?)Activator.CreateInstance(exceptionType, message);
-	}
-
+	/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
 	public void Skip(string message)
@@ -60,6 +62,7 @@ internal abstract class TestFrameworkAdapter(
 		      ?? new NotSupportedException("Failed to create the skip assertion type");
 	}
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.Throw(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
 	public void Throw(string message)
