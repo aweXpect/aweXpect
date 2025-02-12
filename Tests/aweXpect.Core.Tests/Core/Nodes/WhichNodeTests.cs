@@ -29,7 +29,7 @@ public sealed class WhichNodeTests
 	}
 
 	[Fact]
-	public async Task GetResult_WhenBothFailed_ShouldCombineWithAnd()
+	public async Task GetResult_WhenBothFailed_ShouldUseOnlyFirst()
 	{
 		DummyNode node1 = new("", () => new ConstraintResult.Failure("1", "r1"));
 		DummyNode node2 = new("", () => new ConstraintResult.Failure("2", "r2"));
@@ -37,7 +37,7 @@ public sealed class WhichNodeTests
 		whichNode.AddNode(node2);
 		ConstraintResult constraintResult = await whichNode.IsMetBy("", null!, CancellationToken.None);
 
-		await That(constraintResult.GetResultText()).IsEqualTo("r1 and r2");
+		await That(constraintResult.GetResultText()).IsEqualTo("r1");
 	}
 
 	[Fact]
