@@ -80,9 +80,7 @@ public partial class ThatDelegateThrows<TException>
 			}
 
 			return new ConstraintResult.Failure<Exception?>(actual, "",
-				actual == null
-					? $"{it} was <null>"
-					: $"{it} was {ThatDelegate.FormatForMessage(actual.InnerException)}");
+				$"{it} was {ThatDelegate.FormatForMessage(actual?.InnerException)}");
 		}
 
 		#endregion
@@ -102,9 +100,7 @@ public partial class ThatDelegateThrows<TException>
 			}
 
 			return new ConstraintResult.Failure<Exception?>(actual, "",
-				actual == null
-					? $"{it} was <null>"
-					: $"{it} was {ThatDelegate.FormatForMessage(actual)}");
+				$"{it} was {ThatDelegate.FormatForMessage(actual)}");
 		}
 
 		#endregion
