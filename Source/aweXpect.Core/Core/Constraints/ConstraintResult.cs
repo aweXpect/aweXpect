@@ -114,22 +114,7 @@ public abstract class ConstraintResult
 		{
 			public bool Equals(Context? x, Context? y)
 			{
-				if (ReferenceEquals(x, y))
-				{
-					return true;
-				}
-
-				if (x is null)
-				{
-					return false;
-				}
-
-				if (y is null)
-				{
-					return false;
-				}
-
-				if (x.GetType() != y.GetType())
+				if (x is null || y is null)
 				{
 					return false;
 				}

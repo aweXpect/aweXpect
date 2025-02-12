@@ -1,10 +1,34 @@
-﻿using aweXpect.Core.Nodes;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Nodes;
 using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class AndNodeTests
 {
+	[Fact]
+	public async Task GetContexts_ShouldIncludeContextsFromLeftAndRight()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success("").WithContext("t1", "c1"));
+		DummyNode node2 = new("", () => new ConstraintResult.Success("").WithContext("t2", "c2"));
+		AndNode andNode = new(node1);
+		andNode.AddNode(node2);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+
+		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
+
+		await That(contexts)
+			.IsEqualTo([
+				new ConstraintResult.Context("t1", "c1"),
+				new ConstraintResult.Context("t2", "c2"),
+			])
+			.InAnyOrder();
+	}
+
 	[Fact]
 	public async Task ToString_ShouldCombineAllNodes()
 	{
@@ -33,6 +57,64 @@ public sealed class AndNodeTests
 	}
 
 	[Fact]
+	public async Task TryGetValue_WhenLeftHasValue_ShouldReturnLeftValue()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<int>(1, ""));
+		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
+		AndNode andNode = new(node1);
+		andNode.AddNode(node2);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+
+		bool result = constraintResult.TryGetValue(out int value);
+
+		await That(result).IsTrue();
+		await That(value).IsEqualTo(1);
+	}
+
+	[Fact]
+	public async Task TryGetValue_WhenNoneHasValue_ShouldReturnFalse()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success(""));
+		DummyNode node2 = new("", () => new ConstraintResult.Success(""));
+		AndNode andNode = new(node1);
+		andNode.AddNode(node2);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+
+		bool result = constraintResult.TryGetValue(out int? value);
+
+		await That(result).IsFalse();
+		await That(value).IsNull();
+	}
+
+	[Fact]
+	public async Task TryGetValue_WhenOnlyRightHasValue_ShouldReturnRightValue()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success(""));
+		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
+		AndNode andNode = new(node1);
+		andNode.AddNode(node2);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+
+		bool result = constraintResult.TryGetValue(out int value);
+
+		await That(result).IsTrue();
+		await That(value).IsEqualTo(2);
+	}
+
+	[Fact]
+	public async Task WithCustomSeparator_ShouldUseItInsteadOfOr()
+	{
+		AndNode node = new(new DummyNode("", () => new ConstraintResult.Failure("foo", "-")));
+		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
+		StringBuilder sb = new();
+
+		ConstraintResult result = await node.IsMetBy(0, null, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo my bar");
+	}
+
+	[Fact]
 	public async Task WithFirstFailedTests_ShouldIncludeSingleFailureInMessage()
 	{
 		async Task Act()
@@ -58,6 +140,24 @@ public sealed class AndNodeTests
 			             is False and is False and implies False,
 			             but it was True and it did not
 			             """);
+	}
+
+	[Fact]
+	public async Task WithProcessingStrategy_ShouldConsiderIgnoreCompletely()
+	{
+		AndNode node = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo")));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Success("bar", FurtherProcessingStrategy.IgnoreCompletely)));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("baz", "-")));
+		StringBuilder sb = new();
+
+		ConstraintResult result = await node.IsMetBy(0, null, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo and bar");
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
 	}
 
 	[Fact]

@@ -46,6 +46,15 @@ public sealed class CustomizeSettingsTests
 	}
 
 	[Fact]
+	public async Task Settings_ShouldReturnSameInstance()
+	{
+		AwexpectCustomization.SettingsCustomization settings1 = Customize.aweXpect.Settings();
+		AwexpectCustomization.SettingsCustomization settings2 = Customize.aweXpect.Settings();
+
+		await That(settings1).IsSameAs(settings2);
+	}
+
+	[Fact]
 	public async Task TestCancellation_FromCancellationToken_ShouldBeApplied()
 	{
 		Stopwatch stopwatch = new();
