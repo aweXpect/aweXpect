@@ -54,7 +54,7 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<TException?>(null, ToString(), "it did not");
+				return new ConstraintResult.Failure<TException?>(null, ToString(), "it did not throw any exception");
 			}
 
 			return new ConstraintResult.Failure<TException?>(null, ToString(),
@@ -63,14 +63,7 @@ public abstract partial class ThatDelegate
 
 		/// <inheritdoc />
 		public override string ToString()
-		{
-			if (!throwOptions.DoCheckThrow)
-			{
-				return DoesNotThrowExpectation;
-			}
-
-			return $"throws exactly {typeof(TException).Name.PrependAOrAn()}";
-		}
+			=> $"throws exactly {typeof(TException).Name.PrependAOrAn()}";
 	}
 
 	private readonly struct ThrowsExactlyCastConstraint(
@@ -93,7 +86,7 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<Exception?>(null, ToString(), "it did not");
+				return new ConstraintResult.Failure<Exception?>(null, ToString(), "it did not throw any exception");
 			}
 
 			return new ConstraintResult.Failure<Exception?>(null, ToString(),
@@ -102,13 +95,6 @@ public abstract partial class ThatDelegate
 
 		/// <inheritdoc />
 		public override string ToString()
-		{
-			if (!throwOptions.DoCheckThrow)
-			{
-				return DoesNotThrowExpectation;
-			}
-
-			return $"throws exactly {exceptionType.Name.PrependAOrAn()}";
-		}
+			=> $"throws exactly {exceptionType.Name.PrependAOrAn()}";
 	}
 }
