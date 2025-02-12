@@ -264,7 +264,7 @@ namespace aweXpect.Customization
         public class FormattingCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue>
         {
             public FormattingCustomizationValue() { }
-            public int MaximumNumberOfCollectionItems { get; set; }
+            public int MaximumNumberOfCollectionItems { get; init; }
         }
         public class ReflectionCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue>
         {
@@ -275,7 +275,7 @@ namespace aweXpect.Customization
         public class ReflectionCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.ReflectionCustomizationValue>
         {
             public ReflectionCustomizationValue() { }
-            public string[] ExcludedAssemblyPrefixes { get; set; }
+            public string[] ExcludedAssemblyPrefixes { get; init; }
         }
         public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue>
         {
@@ -288,9 +288,9 @@ namespace aweXpect.Customization
         public class SettingsCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue>
         {
             public SettingsCustomizationValue() { }
-            public System.TimeSpan DefaultSignalerTimeout { get; set; }
-            public System.TimeSpan DefaultTimeComparisonTolerance { get; set; }
-            public aweXpect.Customization.TestCancellation? TestCancellation { get; set; }
+            public System.TimeSpan DefaultSignalerTimeout { get; init; }
+            public System.TimeSpan DefaultTimeComparisonTolerance { get; init; }
+            public aweXpect.Customization.TestCancellation? TestCancellation { get; init; }
         }
     }
     public sealed class CustomizationLifetime : System.IDisposable
