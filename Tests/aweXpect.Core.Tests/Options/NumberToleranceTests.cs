@@ -15,7 +15,7 @@ public class NumberToleranceTests
 			.WithMessage("*Tolerance must be non-negative*").AsWildcard();
 	}
 
-	[Fact(Skip="Temporarily disable until next Core update")]
+	[Fact]
 	public async Task WhenToleranceIsZero_ShouldNotThrow()
 	{
 		NumberTolerance<int> sut = new((_, _, _) => false);
