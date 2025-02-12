@@ -1,4 +1,6 @@
-﻿#if NET8_0_OR_GREATER
+﻿using System.Diagnostics;
+using System.Threading;
+#if NET8_0_OR_GREATER
 using System.Threading;
 #endif
 
@@ -393,6 +395,86 @@ public sealed partial class ThatDelegate
 					             executes within 0:00.500,
 					             but it was <null>
 					             """);
+			}
+		}
+
+		public sealed class WithTimeoutTests
+		{
+			[Fact]
+			public async Task WithoutReturnValue_WhenTimeoutIsApplied_ShouldCancelTheCancellationToken()
+			{
+				Func<CancellationToken, Task> @delegate = token => Task.Delay(6.Seconds(), token);
+				Stopwatch sw = new();
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(50.Milliseconds()).WithTimeout(50.Milliseconds());
+
+				sw.Start();
+				await That(Act).Throws<XunitException>();
+				sw.Stop();
+
+				await That(sw.Elapsed).IsLessThan(1.Seconds());
+			}
+
+			[Fact]
+			public async Task WithReturnValue_WhenTimeoutIsApplied_ShouldCancelTheCancellationToken()
+			{
+				Func<CancellationToken, Task<int>> @delegate = async token =>
+				{
+					await Task.Delay(6.Seconds(), token);
+					return 1;
+				};
+				Stopwatch sw = new();
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(50.Milliseconds()).WithTimeout(50.Milliseconds());
+
+				sw.Start();
+				await That(Act).Throws<XunitException>();
+				sw.Stop();
+
+				await That(sw.Elapsed).IsLessThan(1.Seconds());
+			}
+		}
+
+		public sealed class WithCancellationTests
+		{
+			[Fact]
+			public async Task WithoutReturnValue_WhenTimeoutIsApplied_ShouldCancelTheCancellationToken()
+			{
+				Func<CancellationToken, Task> @delegate = token => Task.Delay(6.Seconds(), token);
+				CancellationToken cancelledToken = new(true);
+				Stopwatch sw = new();
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(50.Milliseconds()).WithCancellation(cancelledToken);
+
+				sw.Start();
+				await That(Act).Throws<XunitException>();
+				sw.Stop();
+
+				await That(sw.Elapsed).IsLessThan(1.Seconds());
+			}
+
+			[Fact]
+			public async Task WithReturnValue_WhenTimeoutIsApplied_ShouldCancelTheCancellationToken()
+			{
+				Func<CancellationToken, Task<int>> @delegate = async token =>
+				{
+					await Task.Delay(6.Seconds(), token);
+					return 1;
+				};
+				CancellationToken cancelledToken = new(true);
+				Stopwatch sw = new();
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(50.Milliseconds()).WithCancellation(cancelledToken);
+
+				sw.Start();
+				await That(Act).Throws<XunitException>();
+				sw.Stop();
+
+				await That(sw.Elapsed).IsLessThan(1.Seconds());
 			}
 		}
 	}
