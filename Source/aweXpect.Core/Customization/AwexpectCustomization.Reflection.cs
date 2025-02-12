@@ -4,10 +4,16 @@ namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
+	private ReflectionCustomization? _reflection;
+
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
-	public ReflectionCustomization Reflection() => new(this);
+	public ReflectionCustomization Reflection()
+	{
+		_reflection ??= new ReflectionCustomization(this);
+		return _reflection;
+	}
 
 	/// <summary>
 	///     Customize the reflection settings.

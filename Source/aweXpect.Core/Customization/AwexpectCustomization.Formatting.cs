@@ -4,10 +4,16 @@ namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
+	private FormattingCustomization? _formatting;
+
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
-	public FormattingCustomization Formatting() => new(this);
+	public FormattingCustomization Formatting()
+	{
+		_formatting ??= new FormattingCustomization(this);
+		return _formatting;
+	}
 
 	/// <summary>
 	///     Customize the formatting settings.

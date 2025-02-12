@@ -5,11 +5,16 @@ namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
+	private SettingsCustomization? _settings;
+
 	/// <summary>
 	///     Customize the settings.
 	/// </summary>
 	public SettingsCustomization Settings()
-		=> new(this);
+	{
+		_settings ??= new SettingsCustomization(this);
+		return _settings;
+	}
 
 	/// <summary>
 	///     Customize the settings.
