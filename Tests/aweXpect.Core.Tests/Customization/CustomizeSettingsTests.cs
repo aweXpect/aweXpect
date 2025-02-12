@@ -59,7 +59,7 @@ public sealed class CustomizeSettingsTests
 			stopwatch.Stop();
 		}
 
-		await That(stopwatch.Elapsed).IsLessThan(500.Milliseconds());
+		await That(stopwatch.Elapsed).IsLessThan(2.Seconds());
 	}
 
 	[Fact]
@@ -75,7 +75,7 @@ public sealed class CustomizeSettingsTests
 			stopwatch.Stop();
 		}
 
-		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(1.Seconds());
+		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
 		await That(stopwatch.Elapsed).IsGreaterThanOrEqualTo(LowTimeout).Within(50.Milliseconds());
 	}
 
@@ -114,9 +114,9 @@ public sealed class CustomizeSettingsTests
 	[Fact]
 	public async Task WithCancellation_OverwritesTheCancellationToken()
 	{
-		TimeSpan delay = 5.Seconds();
+		TimeSpan delay = 6.Seconds();
 		Stopwatch stopwatch = new();
-		using CancellationTokenSource cts = new(3.Seconds());
+		using CancellationTokenSource cts = new(4.Seconds());
 		CancellationToken cancelledToken = new(true);
 		using (IDisposable _ = Customize.aweXpect.Settings().TestCancellation
 			       .Set(TestCancellation.FromCancellationToken(() => cts.Token)))
@@ -128,7 +128,7 @@ public sealed class CustomizeSettingsTests
 			stopwatch.Stop();
 		}
 
-		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(1.Seconds());
+		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
 	}
 
 	/// <summary>

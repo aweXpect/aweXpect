@@ -26,7 +26,9 @@ internal class XUnit3Adapter() : TestFrameworkAdapter(
 		/// </summary>
 		private interface IAssertionException;
 
+#pragma warning disable S3871 // Exception types should be "public"
 		private sealed class XunitException(string message)
 			: Exception(message), IAssertionException;
+#pragma warning restore S3871 // Exception types should be "public"
 	}
 }

@@ -10,6 +10,7 @@ namespace aweXpect.Core;
 ///     All implementations are also expected to implement at least <see cref="IThatVerb{T}" />!
 /// </remarks>
 // ReSharper disable once UnusedTypeParameter
+#pragma warning disable S2326 // 'T' is not used in the interface
 public interface IThat<out T>
 {
 	/// <summary>
@@ -52,3 +53,4 @@ public interface IThat<out T>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	string? ToString();
 }
+#pragma warning restore S2326 // 'T' is not used in the interface

@@ -7,6 +7,7 @@ namespace aweXpect.Core;
 ///     Base class for expectations, containing an <see cref="ExpectationBuilder" />.
 /// </summary>
 // ReSharper disable once UnusedTypeParameter
+#pragma warning disable S2326 // 'T' is not used in the interface
 public interface IThatVerb<out T>
 {
 	/// <summary>
@@ -60,3 +61,4 @@ public interface IThatVerb<out T>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	string? ToString();
 }
+#pragma warning restore S2326 // 'T' is not used in the interface
