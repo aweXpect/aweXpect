@@ -12,7 +12,7 @@ public class ConstraintResultTests
 	{
 		ConstraintResult.Context context = new("foo", "baz");
 
-		bool result = ConstraintResult.Context.Comparer.Equals(null, context);
+		bool result = ConstraintResult.Context.Comparer.Equals(null!, context);
 
 		await That(result).IsFalse();
 	}
@@ -22,7 +22,7 @@ public class ConstraintResultTests
 	{
 		ConstraintResult.Context context = new("foo", "baz");
 
-		bool result = ConstraintResult.Context.Comparer.Equals(context, null);
+		bool result = ConstraintResult.Context.Comparer.Equals(context, null!);
 
 		await That(result).IsFalse();
 	}

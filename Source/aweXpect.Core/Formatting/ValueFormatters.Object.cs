@@ -15,7 +15,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append($"System.Object (HashCode={value.GetHashCode()})");
 		}
-		else if (HasCompilerGeneratedToStringImplementation(value))
+		else if (HasDefaultToStringImplementation(value))
 		{
 			context ??= new FormattingContext();
 			WriteTypeAndMemberValues(value, stringBuilder, options, context);
@@ -31,13 +31,6 @@ public static partial class ValueFormatters
 	}
 
 	private static MemberInfo[] GetMembers(Type type) => [..type.GetFields(), ..type.GetProperties()];
-
-	private static bool HasCompilerGeneratedToStringImplementation(object value)
-	{
-		Type type = value.GetType();
-
-		return HasDefaultToStringImplementation(value);
-	}
 
 	private static bool HasDefaultToStringImplementation(object value)
 	{
