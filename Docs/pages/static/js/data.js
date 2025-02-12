@@ -660,6 +660,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -772,7 +778,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -888,7 +895,8 @@ window.BENCHMARK_DATA = {
           166.68167635599772,
           153.47985679308573,
           249.59638799939836,
-          268.1378795305888
+          268.1378795305888,
+          249.74475656236922
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1008,6 +1016,7 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
+          1056,
           1056,
           1056
         ],
@@ -1133,7 +1142,8 @@ window.BENCHMARK_DATA = {
           190.61797188123066,
           185.18408788953508,
           194.32103378432137,
-          195.33656125068666
+          195.33656125068666,
+          189.42332892758506
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1171,6 +1181,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1378,7 +1389,8 @@ window.BENCHMARK_DATA = {
           741.3678713480632,
           719.0498398372105,
           754.8078313555036,
-          800.7984811919076
+          800.7984811919076,
+          777.926127243042
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1491,6 +1503,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -1711,6 +1724,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -1746,7 +1765,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -1785,7 +1805,8 @@ window.BENCHMARK_DATA = {
           311278.28086635045,
           289418.3037109375,
           298876.42994791665,
-          289525.7874474159
+          289525.7874474159,
+          299375.8301757813
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1828,6 +1849,7 @@ window.BENCHMARK_DATA = {
           284916,
           284916,
           284916,
+          285444,
           285444,
           285444
         ],
@@ -1876,7 +1898,8 @@ window.BENCHMARK_DATA = {
           2012320.45234375,
           1982417.1041666667,
           2093691.233173077,
-          2058982.3739583334
+          2058982.3739583334,
+          2067294.4421875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1910,6 +1933,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1967,7 +1991,8 @@ window.BENCHMARK_DATA = {
           687975.7615685096,
           682929.0158854167,
           678107.8340494792,
-          665456.4264787947
+          665456.4264787947,
+          643020.0110677084
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2003,6 +2028,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -2685,6 +2711,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -2797,7 +2829,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -2913,7 +2946,8 @@ window.BENCHMARK_DATA = {
           551.4546936353048,
           542.0078271457127,
           679.3181798299154,
-          683.3322679519654
+          683.3322679519654,
+          677.6040403366089
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3033,6 +3067,7 @@ window.BENCHMARK_DATA = {
           1104,
           1104,
           1104,
+          1632,
           1632,
           1632
         ],
@@ -3158,7 +3193,8 @@ window.BENCHMARK_DATA = {
           404.0883953230722,
           416.75484606197904,
           414.19137835502625,
-          427.2311992009481
+          427.2311992009481,
+          423.55621423040117
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3196,6 +3232,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3403,7 +3440,8 @@ window.BENCHMARK_DATA = {
           14446.262187412807,
           18637.100064791164,
           15898.81435139974,
-          14999.368274395283
+          14999.368274395283,
+          16155.884235088643
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3516,6 +3554,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -4198,6 +4237,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -4310,7 +4355,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -4426,7 +4472,8 @@ window.BENCHMARK_DATA = {
           202.66772307668413,
           194.4575510819753,
           306.9392196337382,
-          287.7829290798732
+          287.7829290798732,
+          307.8849603335063
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4546,6 +4593,7 @@ window.BENCHMARK_DATA = {
           880,
           880,
           880,
+          1408,
           1408,
           1408
         ],
@@ -4671,7 +4719,8 @@ window.BENCHMARK_DATA = {
           192.91100786526997,
           186.7030240535736,
           198.69864099366325,
-          202.7875678539276
+          202.7875678539276,
+          196.42110872268677
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4709,6 +4758,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -4916,7 +4966,8 @@ window.BENCHMARK_DATA = {
           1061.7351771036783,
           1040.302343913487,
           1047.140616783729,
-          1075.9112929026285
+          1075.9112929026285,
+          1057.0379321234566
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5029,6 +5080,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -5711,6 +5763,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -5823,7 +5881,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -5939,7 +5998,8 @@ window.BENCHMARK_DATA = {
           329.22149163026074,
           320.7075046221415,
           429.9304851849874,
-          439.06155958175657
+          439.06155958175657,
+          442.5496834119161
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6059,6 +6119,7 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
+          1480,
           1480,
           1480
         ],
@@ -6184,7 +6245,8 @@ window.BENCHMARK_DATA = {
           415.84040892918904,
           407.35540272394815,
           433.3582371075948,
-          420.9524370340201
+          420.9524370340201,
+          425.49004691441854
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6222,6 +6284,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -6429,7 +6492,8 @@ window.BENCHMARK_DATA = {
           1086.2252753121513,
           1120.5798367818197,
           1164.7304098946709,
-          1172.8218849727086
+          1172.8218849727086,
+          1075.4943323135376
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6542,6 +6606,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -7224,6 +7289,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -7336,7 +7407,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -7452,7 +7524,8 @@ window.BENCHMARK_DATA = {
           1204.974359512329,
           1220.6434086163838,
           1401.5844449361166,
-          1330.3292388916016
+          1330.3292388916016,
+          1400.749732698713
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7572,6 +7645,7 @@ window.BENCHMARK_DATA = {
           2552,
           2552,
           2552,
+          3056,
           3056,
           3056
         ],
@@ -7697,7 +7771,8 @@ window.BENCHMARK_DATA = {
           1176.9008397420248,
           1204.4500342149001,
           1232.4721028645833,
-          1219.8660055796306
+          1219.8660055796306,
+          1214.6345872243246
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7735,6 +7810,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -7942,7 +8018,8 @@ window.BENCHMARK_DATA = {
           2431.896064440409,
           2526.3836634318036,
           2602.388949530465,
-          2491.4833506266277
+          2491.4833506266277,
+          2522.286033357893
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8055,6 +8132,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -8737,6 +8815,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 11 21:31:51 2025 \u002B0100",
         "message": "feat: add analyzer when object.Equals is used on \u0060IThat\u003CT\u003E\u0060 (#346)"
+      },
+      {
+        "sha": "afa882ee430a10d4a663a546018cda5edf808479",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 01:23:00 2025 \u002B0100",
+        "message": "fix: customizations are \u0022AsyncLocal\u0022 (#347)"
       }
     ],
     "labels": [
@@ -8849,7 +8933,8 @@ window.BENCHMARK_DATA = {
       "0ec04dd4",
       "7c2a7584",
       "e9022782",
-      "2c41be54"
+      "2c41be54",
+      "afa882ee"
     ],
     "datasets": [
       {
@@ -8965,7 +9050,8 @@ window.BENCHMARK_DATA = {
           1287.378454208374,
           1267.0107089996338,
           1466.299263734084,
-          1416.1689160664876
+          1416.1689160664876,
+          1456.2239092418126
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9085,6 +9171,7 @@ window.BENCHMARK_DATA = {
           2584,
           2584,
           2584,
+          3088,
           3088,
           3088
         ],
@@ -9210,7 +9297,8 @@ window.BENCHMARK_DATA = {
           88102.04478236607,
           87622.45448655348,
           86135.44353027343,
-          87583.99718424478
+          87583.99718424478,
+          88402.59974772135
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9331,6 +9419,7 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54271,
+          54273,
           54273
         ],
         "borderColor": "#FF671B",
@@ -9455,7 +9544,8 @@ window.BENCHMARK_DATA = {
           6781.241619873047,
           6641.703311157226,
           7329.432145799909,
-          6697.825472513835
+          6697.825472513835,
+          6698.716571044922
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9568,6 +9658,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
