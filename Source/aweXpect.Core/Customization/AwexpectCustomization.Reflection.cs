@@ -60,7 +60,7 @@ public partial class AwexpectCustomization
 		///     - Castle<br />
 		///     - DynamicProxyGenAssembly2
 		/// </remarks>
-		public string[] ExcludedAssemblyPrefixes { get; set; } =
+		public string[] ExcludedAssemblyPrefixes { get; init; } =
 		[
 			"mscorlib",
 			"System",

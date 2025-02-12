@@ -69,12 +69,12 @@ public partial class AwexpectCustomization
 		/// <summary>
 		///     If set, applies the cancellation logic for all test.
 		/// </summary>
-		public TestCancellation? TestCancellation { get; set; }
+		public TestCancellation? TestCancellation { get; init; }
 
 		/// <summary>
 		///     The default timeout for the <see cref="Signaler" />.
 		/// </summary>
-		public TimeSpan DefaultSignalerTimeout { get; set; } = TimeSpan.FromSeconds(30);
+		public TimeSpan DefaultSignalerTimeout { get; init; } = TimeSpan.FromSeconds(30);
 
 #if NET8_0_OR_GREATER
 		/// <summary>
@@ -101,6 +101,6 @@ public partial class AwexpectCustomization
 		///     (unless an explicit tolerance is given).
 		/// </remarks>
 #endif
-		public TimeSpan DefaultTimeComparisonTolerance { get; set; } = TimeSpan.Zero;
+		public TimeSpan DefaultTimeComparisonTolerance { get; init; } = TimeSpan.Zero;
 	}
 }

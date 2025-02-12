@@ -50,6 +50,6 @@ public partial class AwexpectCustomization
 		/// <summary>
 		///     The maximum number of displayed items in a collection.
 		/// </summary>
-		public int MaximumNumberOfCollectionItems { get; set; } = 10;
+		public int MaximumNumberOfCollectionItems { get; init; } = 10;
 	}
 }
