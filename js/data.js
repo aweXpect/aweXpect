@@ -690,6 +690,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -807,7 +813,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -928,7 +935,8 @@ window.BENCHMARK_DATA = {
           267.74436528342113,
           248.62485717137653,
           171.05010062853495,
-          171.45730854670208
+          171.45730854670208,
+          172.01652031285423
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1053,6 +1061,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          528,
           528,
           528
         ],
@@ -1183,7 +1192,8 @@ window.BENCHMARK_DATA = {
           213.7009569644928,
           189.60385177816664,
           186.84216283048903,
-          197.66823086738586
+          197.66823086738586,
+          192.5083475296314
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1221,6 +1231,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1438,7 +1449,8 @@ window.BENCHMARK_DATA = {
           782.7474695205689,
           808.9288292725881,
           765.1299001148769,
-          794.7103484698704
+          794.7103484698704,
+          767.5851884841919
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1551,6 +1563,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -1806,6 +1819,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -1846,7 +1865,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -1890,7 +1910,8 @@ window.BENCHMARK_DATA = {
           290689.04924128606,
           286234.95242745534,
           291750.08001302084,
-          291218.61223958334
+          291218.61223958334,
+          274955.08825683594
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1938,6 +1959,7 @@ window.BENCHMARK_DATA = {
           285444,
           285444,
           285444,
+          284916,
           284916,
           284916
         ],
@@ -1991,7 +2013,8 @@ window.BENCHMARK_DATA = {
           2055363.7049479166,
           2006131.671595982,
           2128469.9833333334,
-          1971336.1963541666
+          1971336.1963541666,
+          2000295.679408482
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2025,6 +2048,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -2092,7 +2116,8 @@ window.BENCHMARK_DATA = {
           656160.0179966518,
           674012.79296875,
           669703.956655649,
-          663224.8540039062
+          663224.8540039062,
+          646684.5244838169
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2128,6 +2153,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -2845,6 +2871,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -2962,7 +2994,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -3083,7 +3116,8 @@ window.BENCHMARK_DATA = {
           730.6732122557504,
           693.5943918909345,
           573.9945353780474,
-          610.9029697009495
+          610.9029697009495,
+          582.6304099400838
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3208,6 +3242,7 @@ window.BENCHMARK_DATA = {
           1632,
           1632,
           1632,
+          1104,
           1104,
           1104
         ],
@@ -3338,7 +3373,8 @@ window.BENCHMARK_DATA = {
           459.3204551060995,
           407.8810762405395,
           413.7714576039995,
-          416.68140103022256
+          416.68140103022256,
+          415.2910747845968
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3376,6 +3412,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3593,7 +3630,8 @@ window.BENCHMARK_DATA = {
           14919.139520263672,
           15455.06490434919,
           16694.389538574218,
-          14827.396607462566
+          14827.396607462566,
+          22314.056610107422
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3706,6 +3744,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -4423,6 +4462,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -4540,7 +4585,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -4661,7 +4707,8 @@ window.BENCHMARK_DATA = {
           298.0856464930943,
           299.6597079208919,
           213.86616892814635,
-          215.76408382824488
+          215.76408382824488,
+          228.14424284866877
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4786,6 +4833,7 @@ window.BENCHMARK_DATA = {
           1408,
           1408,
           1408,
+          880,
           880,
           880
         ],
@@ -4916,7 +4964,8 @@ window.BENCHMARK_DATA = {
           235.8747854743685,
           191.31220048268636,
           193.85043114026388,
-          193.8676564534505
+          193.8676564534505,
+          186.26152203877766
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4954,6 +5003,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -5171,7 +5221,8 @@ window.BENCHMARK_DATA = {
           1121.847864786784,
           1104.854625829061,
           1053.135024388631,
-          1030.4589773813884
+          1030.4589773813884,
+          1020.3075709709755
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5284,6 +5335,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -6001,6 +6053,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -6118,7 +6176,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -6239,7 +6298,8 @@ window.BENCHMARK_DATA = {
           474.82763818105065,
           426.4658273379008,
           363.82479899724325,
-          356.8363218307495
+          356.8363218307495,
+          357.7305053642818
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6364,6 +6424,7 @@ window.BENCHMARK_DATA = {
           1480,
           1480,
           1480,
+          952,
           952,
           952
         ],
@@ -6494,7 +6555,8 @@ window.BENCHMARK_DATA = {
           416.2859706878662,
           407.91362778345746,
           419.3358166558402,
-          414.8054381052653
+          414.8054381052653,
+          405.13646023614064
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6532,6 +6594,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -6749,7 +6812,8 @@ window.BENCHMARK_DATA = {
           1088.47130762736,
           1221.5012302398682,
           1068.3766278584799,
-          1087.4716827392579
+          1087.4716827392579,
+          1133.7500699361165
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6862,6 +6926,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -7579,6 +7644,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -7696,7 +7767,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -7817,7 +7889,8 @@ window.BENCHMARK_DATA = {
           1390.3402591705321,
           1355.4141684940882,
           1230.5188978830972,
-          1230.837197113037
+          1230.837197113037,
+          1240.600087738037
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7942,6 +8015,7 @@ window.BENCHMARK_DATA = {
           3056,
           3056,
           3056,
+          2336,
           2336,
           2336
         ],
@@ -8072,7 +8146,8 @@ window.BENCHMARK_DATA = {
           1328.152537282308,
           1227.9458408355713,
           1190.1829043070475,
-          1187.308096822103
+          1187.308096822103,
+          1184.5159256274883
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8110,6 +8185,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -8327,7 +8403,8 @@ window.BENCHMARK_DATA = {
           2597.9654373168946,
           2643.3754908243814,
           2499.901850382487,
-          2506.5409461975096
+          2506.5409461975096,
+          2540.3219698588055
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8440,6 +8517,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -9157,6 +9235,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Feb 12 09:03:49 2025 \u002B0100",
         "message": "refactor: improve resilience of tests (#351)"
+      },
+      {
+        "sha": "b04edcf8a2afce90907358fae72a74e8e7829d6e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Feb 12 10:22:17 2025 \u002B0100",
+        "message": "feat: add overwriting the global timeout locally (#352)"
       }
     ],
     "labels": [
@@ -9274,7 +9358,8 @@ window.BENCHMARK_DATA = {
       "969e0652",
       "60eb6303",
       "3a485751",
-      "3983116d"
+      "3983116d",
+      "b04edcf8"
     ],
     "datasets": [
       {
@@ -9395,7 +9480,8 @@ window.BENCHMARK_DATA = {
           1522.5262318929038,
           1416.5536103929792,
           1293.5231095631918,
-          1301.1288132985433
+          1301.1288132985433,
+          1276.5935549418132
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9520,6 +9606,7 @@ window.BENCHMARK_DATA = {
           3088,
           3088,
           3088,
+          2368,
           2368,
           2368
         ],
@@ -9650,7 +9737,8 @@ window.BENCHMARK_DATA = {
           89039.38228352864,
           88283.33175223214,
           86466.24855143229,
-          86885.14387613932
+          86885.14387613932,
+          85619.29018729074
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9773,6 +9861,7 @@ window.BENCHMARK_DATA = {
           54271,
           54273,
           54273,
+          54271,
           54271,
           54271,
           54271,
@@ -9905,7 +9994,8 @@ window.BENCHMARK_DATA = {
           6624.023536682129,
           6889.894100189209,
           6557.280276707241,
-          6652.983626810709
+          6652.983626810709,
+          6806.321149190267
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10018,6 +10108,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
