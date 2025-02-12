@@ -1,8 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-#if NET8_0_OR_GREATER
-using System.Threading;
-#endif
 
 namespace aweXpect.Tests;
 
@@ -398,6 +395,7 @@ public sealed partial class ThatDelegate
 			}
 		}
 
+#if DEBUG // TODO Enable after next Core update
 		public sealed class WithTimeoutTests
 		{
 			[Fact]
@@ -477,5 +475,6 @@ public sealed partial class ThatDelegate
 				await That(sw.Elapsed).IsLessThan(1.Seconds());
 			}
 		}
+#endif
 	}
 }

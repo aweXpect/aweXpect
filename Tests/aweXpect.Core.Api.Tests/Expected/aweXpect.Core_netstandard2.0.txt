@@ -110,6 +110,7 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammars? expectationGrammar = default) { }
         public override string? ToString() { }
         public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
+        public void WithTimeout(System.TimeSpan timeout) { }
         public class MemberExpectationBuilder<TSource, TMember>
         {
             public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
@@ -761,6 +762,8 @@ namespace aweXpect.Results
         public ExpectationResult(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Results.ExpectationResult Because(string reason) { }
         public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { }
+        public aweXpect.Results.ExpectationResult WithCancellation(System.Threading.CancellationToken cancellationToken) { }
+        public aweXpect.Results.ExpectationResult WithTimeout(System.TimeSpan timeout) { }
     }
     public class ExpectationResult<TType> : aweXpect.Results.ExpectationResult<TType, aweXpect.Results.ExpectationResult<TType>>
     {
@@ -775,6 +778,7 @@ namespace aweXpect.Results
         [System.Diagnostics.StackTraceHidden]
         public System.Runtime.CompilerServices.TaskAwaiter<TType> GetAwaiter() { }
         public TSelf WithCancellation(System.Threading.CancellationToken cancellationToken) { }
+        public TSelf WithTimeout(System.TimeSpan timeout) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>
         where TType :  struct, System.IComparable<TType>
