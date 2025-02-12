@@ -15,7 +15,6 @@ partial class Build : NukeBuild
 {
 	[Parameter("Github Token")] readonly string GithubToken;
 
-
 	/// <summary>
 	///     Set this flag temporarily when you introduce breaking changes in the core library.
 	///     This will change the build pipeline to only build and publish the aweXpect.Core or aweXpect package.

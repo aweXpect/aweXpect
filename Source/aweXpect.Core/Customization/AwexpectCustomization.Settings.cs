@@ -1,28 +1,30 @@
 using System;
-using System.Threading;
-using aweXpect.Results;
 using aweXpect.Signaling;
 
 namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private readonly AsyncLocal<SettingsCustomizationValue> _settingsCustomizationValue = new();
+	private SettingsCustomization? _settings;
 
 	/// <summary>
 	///     Customize the settings.
 	/// </summary>
 	public SettingsCustomization Settings()
-		=> new(this);
+	{
+		_settings ??= new SettingsCustomization(this);
+		return _settings;
+	}
 
 	/// <summary>
 	///     Customize the settings.
 	/// </summary>
 	public class SettingsCustomization : ICustomizationValueUpdater<SettingsCustomizationValue>
 	{
-		private readonly AwexpectCustomization _awexpectCustomization;
+		private static readonly SettingsCustomizationValue EmptyValue = new();
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal SettingsCustomization(AwexpectCustomization awexpectCustomization)
+		internal SettingsCustomization(IAwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			DefaultSignalerTimeout = new CustomizationValue<TimeSpan>(
@@ -56,19 +58,12 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Get()" />
 		public SettingsCustomizationValue Get()
-			=> _awexpectCustomization._settingsCustomizationValue.Value ?? new SettingsCustomizationValue();
+			=> _awexpectCustomization.Get(nameof(Settings), EmptyValue);
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Update(Func{SettingsCustomizationValue,SettingsCustomizationValue})" />
 		public CustomizationLifetime Update(Func<SettingsCustomizationValue, SettingsCustomizationValue> update)
-		{
-			SettingsCustomizationValue previousValue = Get();
-			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._settingsCustomizationValue.Value = previousValue);
-
-			_awexpectCustomization._settingsCustomizationValue.Value = update(previousValue);
-			return lifetime;
-		}
+			=> _awexpectCustomization.Set(nameof(Settings), update(Get()));
 	}
 
 	/// <summary>
@@ -79,12 +74,12 @@ public partial class AwexpectCustomization
 		/// <summary>
 		///     If set, applies the cancellation logic for all test.
 		/// </summary>
-		public TestCancellation? TestCancellation { get; set; } = null;
+		public TestCancellation? TestCancellation { get; init; }
 
 		/// <summary>
 		///     The default timeout for the <see cref="Signaler" />.
 		/// </summary>
-		public TimeSpan DefaultSignalerTimeout { get; set; } = TimeSpan.FromSeconds(30);
+		public TimeSpan DefaultSignalerTimeout { get; init; } = TimeSpan.FromSeconds(30);
 
 #if NET8_0_OR_GREATER
 		/// <summary>
@@ -111,6 +106,6 @@ public partial class AwexpectCustomization
 		///     (unless an explicit tolerance is given).
 		/// </remarks>
 #endif
-		public TimeSpan DefaultTimeComparisonTolerance { get; set; } = TimeSpan.Zero;
+		public TimeSpan DefaultTimeComparisonTolerance { get; init; } = TimeSpan.Zero;
 	}
 }
