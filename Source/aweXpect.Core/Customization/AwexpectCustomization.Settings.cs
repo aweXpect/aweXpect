@@ -1,14 +1,10 @@
 using System;
-using System.Threading;
-using aweXpect.Results;
 using aweXpect.Signaling;
 
 namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private readonly AsyncLocal<SettingsCustomizationValue> _settingsCustomizationValue = new();
-
 	/// <summary>
 	///     Customize the settings.
 	/// </summary>
@@ -20,9 +16,10 @@ public partial class AwexpectCustomization
 	/// </summary>
 	public class SettingsCustomization : ICustomizationValueUpdater<SettingsCustomizationValue>
 	{
-		private readonly AwexpectCustomization _awexpectCustomization;
+		private static readonly SettingsCustomizationValue EmptyValue = new();
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal SettingsCustomization(AwexpectCustomization awexpectCustomization)
+		internal SettingsCustomization(IAwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			DefaultSignalerTimeout = new CustomizationValue<TimeSpan>(
@@ -56,19 +53,12 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Get()" />
 		public SettingsCustomizationValue Get()
-			=> _awexpectCustomization._settingsCustomizationValue.Value ?? new SettingsCustomizationValue();
+			=> _awexpectCustomization.Get(nameof(Settings), EmptyValue);
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Update(Func{SettingsCustomizationValue,SettingsCustomizationValue})" />
 		public CustomizationLifetime Update(Func<SettingsCustomizationValue, SettingsCustomizationValue> update)
-		{
-			SettingsCustomizationValue previousValue = Get();
-			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._settingsCustomizationValue.Value = previousValue);
-
-			_awexpectCustomization._settingsCustomizationValue.Value = update(previousValue);
-			return lifetime;
-		}
+			=> _awexpectCustomization.Set(nameof(Settings), update(Get()));
 	}
 
 	/// <summary>
@@ -79,7 +69,7 @@ public partial class AwexpectCustomization
 		/// <summary>
 		///     If set, applies the cancellation logic for all test.
 		/// </summary>
-		public TestCancellation? TestCancellation { get; set; } = null;
+		public TestCancellation? TestCancellation { get; set; }
 
 		/// <summary>
 		///     The default timeout for the <see cref="Signaler" />.

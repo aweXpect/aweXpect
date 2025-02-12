@@ -1,12 +1,9 @@
 using System;
-using System.Threading;
 
 namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private readonly AsyncLocal<FormattingCustomizationValue> _formattingCustomizationValue = new();
-
 	/// <summary>
 	///     Customize the formatting settings.
 	/// </summary>
@@ -17,9 +14,10 @@ public partial class AwexpectCustomization
 	/// </summary>
 	public class FormattingCustomization : ICustomizationValueUpdater<FormattingCustomizationValue>
 	{
-		private readonly AwexpectCustomization _awexpectCustomization;
+		private static readonly FormattingCustomizationValue EmptyValue = new();
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal FormattingCustomization(AwexpectCustomization awexpectCustomization)
+		internal FormattingCustomization(IAwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			MaximumNumberOfCollectionItems = new CustomizationValue<int>(
@@ -36,19 +34,12 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Get()" />
 		public FormattingCustomizationValue Get()
-			=> _awexpectCustomization._formattingCustomizationValue.Value ?? new FormattingCustomizationValue();
+			=> _awexpectCustomization.Get(nameof(Formatting), EmptyValue);
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Update(Func{FormattingCustomizationValue,FormattingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<FormattingCustomizationValue, FormattingCustomizationValue> update)
-		{
-			FormattingCustomizationValue previousValue = Get();
-			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._formattingCustomizationValue.Value = previousValue);
-
-			_awexpectCustomization._formattingCustomizationValue.Value = update(previousValue);
-			return lifetime;
-		}
+			=> _awexpectCustomization.Set(nameof(Formatting), update(Get()));
 	}
 
 	/// <summary>

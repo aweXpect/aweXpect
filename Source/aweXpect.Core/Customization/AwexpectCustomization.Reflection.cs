@@ -1,12 +1,9 @@
 using System;
-using System.Threading;
 
 namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private readonly AsyncLocal<ReflectionCustomizationValue> _reflectionCustomizationValue = new();
-
 	/// <summary>
 	///     Customize the reflection settings.
 	/// </summary>
@@ -17,9 +14,10 @@ public partial class AwexpectCustomization
 	/// </summary>
 	public class ReflectionCustomization : ICustomizationValueUpdater<ReflectionCustomizationValue>
 	{
-		private readonly AwexpectCustomization _awexpectCustomization;
+		private static readonly ReflectionCustomizationValue EmptyValue = new();
+		private readonly IAwexpectCustomization _awexpectCustomization;
 
-		internal ReflectionCustomization(AwexpectCustomization awexpectCustomization)
+		internal ReflectionCustomization(IAwexpectCustomization awexpectCustomization)
 		{
 			_awexpectCustomization = awexpectCustomization;
 			ExcludedAssemblyPrefixes = new CustomizationValue<string[]>(
@@ -36,19 +34,12 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Get()" />
 		public ReflectionCustomizationValue Get()
-			=> _awexpectCustomization._reflectionCustomizationValue.Value ?? new ReflectionCustomizationValue();
+			=> _awexpectCustomization.Get(nameof(Reflection), EmptyValue);
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Update(Func{ReflectionCustomizationValue,ReflectionCustomizationValue})" />
 		public CustomizationLifetime Update(Func<ReflectionCustomizationValue, ReflectionCustomizationValue> update)
-		{
-			ReflectionCustomizationValue previousValue = Get();
-			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._reflectionCustomizationValue.Value = previousValue);
-
-			_awexpectCustomization._reflectionCustomizationValue.Value = update(previousValue);
-			return lifetime;
-		}
+			=> _awexpectCustomization.Set(nameof(Reflection), update(Get()));
 	}
 
 	/// <summary>
