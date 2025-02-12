@@ -131,6 +131,24 @@ public sealed class CustomizeSettingsTests
 		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
 	}
 
+	[Fact]
+	public async Task WithTimeout_OverwritesTheCancellationToken()
+	{
+		TimeSpan delay = 6.Seconds();
+		Stopwatch stopwatch = new();
+		using (IDisposable _ = Customize.aweXpect.Settings().TestCancellation
+			       .Set(TestCancellation.FromTimeout(4.Seconds())))
+		{
+			stopwatch.Start();
+			await That(cancellationToken => Task.Delay(delay, cancellationToken))
+				.Throws<TaskCanceledException>()
+				.WithTimeout(20.Milliseconds());
+			stopwatch.Stop();
+		}
+
+		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
+	}
+
 	/// <summary>
 	///     The minimal timeout for tests, that have to await this long.
 	/// </summary>

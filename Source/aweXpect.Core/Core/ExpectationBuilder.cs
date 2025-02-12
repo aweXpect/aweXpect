@@ -20,6 +20,7 @@ public abstract class ExpectationBuilder
 	private const string DefaultCurrentSubject = "it";
 
 	private CancellationToken? _cancellationToken;
+	private TimeSpan? _timeout;
 
 	/// <summary>
 	///     The current name for the subject (defaults to <see cref="DefaultCurrentSubject" />).
@@ -155,6 +156,12 @@ public abstract class ExpectationBuilder
 		=> _cancellationToken = cancellationToken;
 
 	/// <summary>
+	///     Adds a <paramref name="timeout" /> to be used by the constraints.
+	/// </summary>
+	public void WithTimeout(TimeSpan timeout)
+		=> _timeout = timeout;
+
+	/// <summary>
 	///     Adds a <paramref name="reason" /> to the current expectation constraint.
 	/// </summary>
 	internal void AddReason(string reason)
@@ -276,7 +283,7 @@ public abstract class ExpectationBuilder
 		ITimeSystem timeSystem = _timeSystem ?? RealTimeSystem.Instance;
 		TestCancellation? testCancellation = Customize.aweXpect.Settings().TestCancellation.Get();
 		_cancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ?? CancellationToken.None;
-		return IsMet(GetRootNode(), context, timeSystem, testCancellation?.Timeout, _cancellationToken.Value);
+		return IsMet(GetRootNode(), context, timeSystem, _timeout ?? testCancellation?.Timeout, _cancellationToken.Value);
 	}
 
 	internal abstract Task<ConstraintResult> IsMet(Node rootNode,

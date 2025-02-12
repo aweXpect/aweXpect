@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,40 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 	public ExpectationResult Because(string reason)
 	{
 		expectationBuilder.AddReason(reason);
+		return this;
+	}
+
+	/// <summary>
+	///     Sets the <see cref="CancellationToken" /> to be passed to expectations.
+	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromCancellationToken(() => cancellationToken))
+	///     </c>
+	///     to apply the <paramref name="cancellationToken" /> globally.
+	/// </remarks>
+	public ExpectationResult WithCancellation(CancellationToken cancellationToken)
+	{
+		expectationBuilder.WithCancellation(cancellationToken);
+		return this;
+	}
+
+	/// <summary>
+	///     Sets the <paramref name="timeout" /> to be passed to expectations.
+	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromTimeout(timeout))
+	///     </c>
+	///     to apply the <paramref name="timeout" /> globally.
+	/// </remarks>
+	public ExpectationResult WithTimeout(TimeSpan timeout)
+	{
+		expectationBuilder.WithTimeout(timeout);
 		return this;
 	}
 
@@ -98,11 +133,36 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	}
 
 	/// <summary>
-	///     Sets the <see cref="CancellationToken" /> to be passed to expectations.
+	///     Sets the <paramref name="cancellationToken" /> to be passed to expectations.
 	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromCancellationToken(() => cancellationToken))
+	///     </c>
+	///     to apply the <paramref name="cancellationToken" /> globally.
+	/// </remarks>
 	public TSelf WithCancellation(CancellationToken cancellationToken)
 	{
 		expectationBuilder.WithCancellation(cancellationToken);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Sets the <paramref name="timeout" /> to be passed to expectations.
+	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromTimeout(timeout))
+	///     </c>
+	///     to apply the <paramref name="timeout" /> globally.
+	/// </remarks>
+	public TSelf WithTimeout(TimeSpan timeout)
+	{
+		expectationBuilder.WithTimeout(timeout);
 		return (TSelf)this;
 	}
 
