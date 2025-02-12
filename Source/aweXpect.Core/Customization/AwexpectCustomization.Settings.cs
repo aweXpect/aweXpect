@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using aweXpect.Results;
 using aweXpect.Signaling;
 
@@ -6,7 +7,7 @@ namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private SettingsCustomizationValue _settingsCustomizationValue = new();
+	private readonly AsyncLocal<SettingsCustomizationValue> _settingsCustomizationValue = new();
 
 	/// <summary>
 	///     Customize the settings.
@@ -55,17 +56,17 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Get()" />
 		public SettingsCustomizationValue Get()
-			=> _awexpectCustomization._settingsCustomizationValue;
+			=> _awexpectCustomization._settingsCustomizationValue.Value ?? new SettingsCustomizationValue();
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{SettingsCustomizationValue}.Update(Func{SettingsCustomizationValue,SettingsCustomizationValue})" />
 		public CustomizationLifetime Update(Func<SettingsCustomizationValue, SettingsCustomizationValue> update)
 		{
-			SettingsCustomizationValue previousValue = _awexpectCustomization._settingsCustomizationValue;
+			SettingsCustomizationValue previousValue = Get();
 			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._settingsCustomizationValue = previousValue);
+				_awexpectCustomization._settingsCustomizationValue.Value = previousValue);
 
-			_awexpectCustomization._settingsCustomizationValue = update(previousValue);
+			_awexpectCustomization._settingsCustomizationValue.Value = update(previousValue);
 			return lifetime;
 		}
 	}

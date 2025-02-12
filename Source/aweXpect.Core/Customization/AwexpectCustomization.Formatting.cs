@@ -1,10 +1,11 @@
 using System;
+using System.Threading;
 
 namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private FormattingCustomizationValue _formattingCustomizationValue = new();
+	private readonly AsyncLocal<FormattingCustomizationValue> _formattingCustomizationValue = new();
 
 	/// <summary>
 	///     Customize the formatting settings.
@@ -35,17 +36,17 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Get()" />
 		public FormattingCustomizationValue Get()
-			=> _awexpectCustomization._formattingCustomizationValue;
+			=> _awexpectCustomization._formattingCustomizationValue.Value ?? new FormattingCustomizationValue();
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Update(Func{FormattingCustomizationValue,FormattingCustomizationValue})" />
 		public CustomizationLifetime Update(Func<FormattingCustomizationValue, FormattingCustomizationValue> update)
 		{
-			FormattingCustomizationValue previousValue = _awexpectCustomization._formattingCustomizationValue;
+			FormattingCustomizationValue previousValue = Get();
 			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._formattingCustomizationValue = previousValue);
+				_awexpectCustomization._formattingCustomizationValue.Value = previousValue);
 
-			_awexpectCustomization._formattingCustomizationValue = update(previousValue);
+			_awexpectCustomization._formattingCustomizationValue.Value = update(previousValue);
 			return lifetime;
 		}
 	}

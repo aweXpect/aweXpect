@@ -1,10 +1,11 @@
 using System;
+using System.Threading;
 
 namespace aweXpect.Customization;
 
 public partial class AwexpectCustomization
 {
-	private ReflectionCustomizationValue _reflectionCustomizationValue = new();
+	private readonly AsyncLocal<ReflectionCustomizationValue> _reflectionCustomizationValue = new();
 
 	/// <summary>
 	///     Customize the reflection settings.
@@ -35,17 +36,17 @@ public partial class AwexpectCustomization
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Get()" />
 		public ReflectionCustomizationValue Get()
-			=> _awexpectCustomization._reflectionCustomizationValue;
+			=> _awexpectCustomization._reflectionCustomizationValue.Value ?? new ReflectionCustomizationValue();
 
 		/// <inheritdoc
 		///     cref="ICustomizationValueUpdater{ReflectionCustomizationValue}.Update(Func{ReflectionCustomizationValue,ReflectionCustomizationValue})" />
 		public CustomizationLifetime Update(Func<ReflectionCustomizationValue, ReflectionCustomizationValue> update)
 		{
-			ReflectionCustomizationValue previousValue = _awexpectCustomization._reflectionCustomizationValue;
+			ReflectionCustomizationValue previousValue = Get();
 			CustomizationLifetime lifetime = new(() =>
-				_awexpectCustomization._reflectionCustomizationValue = previousValue);
+				_awexpectCustomization._reflectionCustomizationValue.Value = previousValue);
 
-			_awexpectCustomization._reflectionCustomizationValue = update(previousValue);
+			_awexpectCustomization._reflectionCustomizationValue.Value = update(previousValue);
 			return lifetime;
 		}
 	}
