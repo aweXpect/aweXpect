@@ -2,8 +2,13 @@
 
 namespace aweXpect.Core.Tests.TestHelpers;
 
-internal class DummyConstraint(string expectationText) : IValueConstraint<int>
+internal class DummyConstraint(string expectationText, Func<ConstraintResult>? constraintResult = null)
+	: IValueConstraint<int>
 {
-	public ConstraintResult IsMetBy(int actual) => new ConstraintResult.Success(expectationText);
+	public ConstraintResult IsMetBy(int actual)
+		=> constraintResult == null
+			? new ConstraintResult.Success(expectationText)
+			: constraintResult();
+
 	public override string ToString() => expectationText;
 }

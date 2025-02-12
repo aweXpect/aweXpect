@@ -17,7 +17,7 @@ public sealed class AndNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success("").WithContext("t2", "c2"));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
-		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
 
 		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
 
@@ -63,7 +63,7 @@ public sealed class AndNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
-		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
 
 		bool result = constraintResult.TryGetValue(out int value);
 
@@ -78,7 +78,7 @@ public sealed class AndNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success(""));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
-		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
 
 		bool result = constraintResult.TryGetValue(out int? value);
 
@@ -93,7 +93,7 @@ public sealed class AndNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
-		ConstraintResult constraintResult = await andNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
 
 		bool result = constraintResult.TryGetValue(out int value);
 
@@ -108,7 +108,7 @@ public sealed class AndNodeTests
 		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
 		StringBuilder sb = new();
 
-		ConstraintResult result = await node.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
 
 		result.AppendExpectation(sb);
 		await That(sb.ToString()).IsEqualTo("foo my bar");
@@ -153,7 +153,7 @@ public sealed class AndNodeTests
 			() => new ConstraintResult.Failure("baz", "-")));
 		StringBuilder sb = new();
 
-		ConstraintResult result = await node.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
 
 		result.AppendExpectation(sb);
 		await That(sb.ToString()).IsEqualTo("foo and bar");

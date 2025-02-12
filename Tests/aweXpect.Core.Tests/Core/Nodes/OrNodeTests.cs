@@ -17,7 +17,7 @@ public sealed class OrNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success("").WithContext("t2", "c2"));
 		OrNode orNode = new(node1);
 		orNode.AddNode(node2);
-		ConstraintResult constraintResult = await orNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await orNode.IsMetBy(0, null!, CancellationToken.None);
 
 		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
 
@@ -63,7 +63,7 @@ public sealed class OrNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
 		OrNode orNode = new(node1);
 		orNode.AddNode(node2);
-		ConstraintResult constraintResult = await orNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await orNode.IsMetBy(0, null!, CancellationToken.None);
 
 		bool result = constraintResult.TryGetValue(out int value);
 
@@ -78,7 +78,7 @@ public sealed class OrNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success(""));
 		OrNode orNode = new(node1);
 		orNode.AddNode(node2);
-		ConstraintResult constraintResult = await orNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await orNode.IsMetBy(0, null!, CancellationToken.None);
 
 		bool result = constraintResult.TryGetValue(out int? value);
 
@@ -93,7 +93,7 @@ public sealed class OrNodeTests
 		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
 		OrNode orNode = new(node1);
 		orNode.AddNode(node2);
-		ConstraintResult constraintResult = await orNode.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult constraintResult = await orNode.IsMetBy(0, null!, CancellationToken.None);
 
 		bool result = constraintResult.TryGetValue(out int value);
 
@@ -108,7 +108,7 @@ public sealed class OrNodeTests
 		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
 		StringBuilder sb = new();
 
-		ConstraintResult result = await node.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
 
 		result.AppendExpectation(sb);
 		await That(sb.ToString()).IsEqualTo("foo my bar");
@@ -148,7 +148,7 @@ public sealed class OrNodeTests
 			() => new ConstraintResult.Success("baz")));
 		StringBuilder sb = new();
 
-		ConstraintResult result = await node.IsMetBy(0, null, CancellationToken.None);
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
 
 		result.AppendExpectation(sb);
 		await That(sb.ToString()).IsEqualTo("foo or bar");
