@@ -387,11 +387,11 @@ internal class ExpectationBuilder<TValue> : ExpectationBuilder
 				.CreateLinkedTokenSource(cancellationToken);
 			timeoutCts.CancelAfter(timeout.Value);
 			CancellationToken token = timeoutCts.Token;
-			TValue dataWithTimeout = await _subjectSource.GetValue(timeSystem, token).ConfigureAwait(false);
-			return await rootNode.IsMetBy(dataWithTimeout, context, token).ConfigureAwait(false);
+			TValue dataWithTimeout = await _subjectSource.GetValue(timeSystem, token);
+			return await rootNode.IsMetBy(dataWithTimeout, context, token);
 		}
 
-		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken).ConfigureAwait(false);
-		return await rootNode.IsMetBy(data, context, cancellationToken).ConfigureAwait(false);
+		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken);
+		return await rootNode.IsMetBy(data, context, cancellationToken);
 	}
 }

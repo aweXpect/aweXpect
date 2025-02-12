@@ -23,7 +23,7 @@ public static class ConstraintResultExtensions
 	///     the <paramref name="inner" /> using the given <paramref name="value" />.
 	/// </summary>
 	public static ConstraintResult Fail<T>(this ConstraintResult inner, string failure, T value)
-		=> new ConstraintResultFailure<T>(inner, failure, true, value);
+		=> new ConstraintResultFailure<T>(inner, failure, value);
 
 	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> with a context with
@@ -39,24 +39,31 @@ public static class ConstraintResultExtensions
 		params ConstraintResult.Context[] contexts)
 		=> new ConstraintResultContextWrapper(inner, contexts);
 
-	private sealed class ConstraintResultWrapper<T>(ConstraintResult inner, T value)
-		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
+	private sealed class ConstraintResultWrapper<T> : ConstraintResult
 	{
-		private readonly T _value = value;
+		private readonly T _value;
+		private readonly ConstraintResult _inner;
+
+		public ConstraintResultWrapper(ConstraintResult inner, T value)
+			: base(inner.Outcome, inner.FurtherProcessingStrategy)
+		{
+			_inner = inner;
+			_value = value;
+		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendExpectation(stringBuilder, indentation);
+			=> _inner.AppendExpectation(stringBuilder, indentation);
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendResult(stringBuilder, indentation);
+			=> _inner.AppendResult(stringBuilder, indentation);
 
 		public override IEnumerable<Context> GetContexts()
-			=> inner.GetContexts();
+			=> _inner.GetContexts();
 
 		internal override void UpdateExpectationText(
 			Action<StringBuilder>? prependExpectationText = null,
 			Action<StringBuilder>? appendExpectationText = null)
-			=> inner.UpdateExpectationText(prependExpectationText, appendExpectationText);
+			=> _inner.UpdateExpectationText(prependExpectationText, appendExpectationText);
 
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
@@ -67,7 +74,7 @@ public static class ConstraintResultExtensions
 			}
 
 			value = default;
-			return false;
+			return _value is null;
 		}
 	}
 
@@ -104,7 +111,7 @@ public static class ConstraintResultExtensions
 			=> inner.TryGetValue(out value);
 	}
 
-	private sealed class ConstraintResultFailure<T>(ConstraintResult inner, string failure, bool useValue, T value)
+	private sealed class ConstraintResultFailure<T>(ConstraintResult inner, string failure, T value)
 		: ConstraintResult(Outcome.Failure, inner.FurtherProcessingStrategy)
 	{
 		private readonly T _value = value;
@@ -125,11 +132,6 @@ public static class ConstraintResultExtensions
 
 		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
-			if (!useValue)
-			{
-				return inner.TryGetValue(out value);
-			}
-
 			if (_value is TValue typedValue)
 			{
 				value = typedValue;
@@ -137,7 +139,7 @@ public static class ConstraintResultExtensions
 			}
 
 			value = default;
-			return false;
+			return _value is null;
 		}
 	}
 }

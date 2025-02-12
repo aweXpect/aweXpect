@@ -3,7 +3,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using aweXpect.Core.Helpers;
-using MemberVisibilities = aweXpect.Core.Helpers.MemberVisibilities;
 
 namespace aweXpect.Formatting;
 
@@ -16,7 +15,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append($"System.Object (HashCode={value.GetHashCode()})");
 		}
-		else if (HasCompilerGeneratedToStringImplementation(value))
+		else if (HasDefaultToStringImplementation(value))
 		{
 			context ??= new FormattingContext();
 			WriteTypeAndMemberValues(value, stringBuilder, options, context);
@@ -31,20 +30,7 @@ public static partial class ValueFormatters
 		}
 	}
 
-	/// <summary>
-	///     Selects which members of <paramref name="type" /> to format.
-	/// </summary>
-	/// <param name="type">The <see cref="Type" /> of the object being formatted.</param>
-	/// <returns>The members of <paramref name="type" /> that will be included when formatting this object.</returns>
-	/// <remarks>The default is all non-private members.</remarks>
-	private static MemberInfo[] GetMembers(Type type) => type.GetMembers(MemberVisibilities.Public);
-
-	private static bool HasCompilerGeneratedToStringImplementation(object value)
-	{
-		Type type = value.GetType();
-
-		return HasDefaultToStringImplementation(value) || type.IsCompilerGenerated();
-	}
+	private static MemberInfo[] GetMembers(Type type) => [..type.GetFields(), ..type.GetProperties()];
 
 	private static bool HasDefaultToStringImplementation(object value)
 	{

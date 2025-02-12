@@ -7,7 +7,7 @@ using aweXpect.Core.Nodes;
 
 namespace aweXpect.Core.Tests.TestHelpers;
 
-internal class DummyNode(string name) : Node
+internal class DummyNode(string name, Func<ConstraintResult>? result = null) : Node
 {
 	public override string ToString()
 		=> name;
@@ -29,7 +29,7 @@ internal class DummyNode(string name) : Node
 		IEvaluationContext context,
 		CancellationToken cancellationToken)
 		where TValue : default
-		=> throw new NotSupportedException();
+		=> result == null ? throw new NotSupportedException() : Task.FromResult(result());
 
 	public override void SetReason(BecauseReason becauseReason)
 		=> throw new NotSupportedException();

@@ -29,7 +29,7 @@ public sealed class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Skip_MissingAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new(MissingAssembly);
+		MyTestFrameworkAdapter adapter = new(MissingAssembly, skipException: new MyException());
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Skip("foo")).Throws<NotSupportedException>()
@@ -60,7 +60,7 @@ public sealed class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Throw_MissingAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new(MissingAssembly);
+		MyTestFrameworkAdapter adapter = new(MissingAssembly, failException: new MyException());
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Throw("foo")).Throws<NotSupportedException>()
