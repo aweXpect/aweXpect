@@ -47,7 +47,7 @@ public sealed partial class ThatDelegate
 					.WithMessage("""
 					             Expected that action
 					             throws exactly a CustomException,
-					             but it did not
+					             but it did not throw any exception
 					             """);
 			}
 
@@ -148,7 +148,7 @@ public sealed partial class ThatDelegate
 					.WithMessage("""
 					             Expected that action
 					             throws exactly a CustomException,
-					             but it did not
+					             but it did not throw any exception
 					             """);
 			}
 

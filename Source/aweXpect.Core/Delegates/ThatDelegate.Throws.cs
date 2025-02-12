@@ -54,7 +54,7 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<Exception?>(null, ToString(), "it did not");
+				return new ConstraintResult.Failure<Exception?>(null, ToString(), "it did not throw any exception");
 			}
 
 			return new ConstraintResult.Failure<Exception?>(null, ToString(),
@@ -62,14 +62,9 @@ public abstract partial class ThatDelegate
 		}
 
 		public override string ToString()
-		{
-			if (!throwOptions.DoCheckThrow)
-			{
-				return DoesNotThrowExpectation;
-			}
-
-			return $"throws {exceptionType.Name.PrependAOrAn()}";
-		}
+			=> exceptionType == typeof(Exception)
+				? "throws an exception"
+				: $"throws {exceptionType.Name.PrependAOrAn()}";
 	}
 
 	private readonly struct ThrowExceptionOfTypeConstraint<TException>(ThrowsOption throwOptions)
@@ -101,15 +96,8 @@ public abstract partial class ThatDelegate
 		}
 
 		public override string ToString()
-		{
-			if (!throwOptions.DoCheckThrow)
-			{
-				return DoesNotThrowExpectation;
-			}
-
-			return typeof(TException) == typeof(Exception)
+			=> typeof(TException) == typeof(Exception)
 				? "throws an exception"
 				: $"throws {typeof(TException).Name.PrependAOrAn()}";
-		}
 	}
 }
