@@ -18,7 +18,7 @@ public sealed class RealTimeSystemTests
 		await That(stopwatch2.IsRunning).IsFalse();
 	}
 
-	[Fact(Skip="Temporarily disable until next Core update")]
+	[Fact]
 	public async Task Stopwatch_ShouldUseRealValues()
 	{
 		ITimeSystem timeSystem = RealTimeSystem.Instance;
