@@ -90,6 +90,30 @@ public sealed partial class ThatNullableTimeSpan
 			}
 
 			[Fact]
+			public async Task Within_WhenValuesAreEarlierWithinTheTolerance_ShouldSucceed()
+			{
+				TimeSpan? subject = CurrentTime();
+				TimeSpan? expected = EarlierTime(3);
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).Within(3.Seconds());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task Within_WhenValuesAreLaterWithinTheTolerance_ShouldSucceed()
+			{
+				TimeSpan? subject = CurrentTime();
+				TimeSpan? expected = LaterTime(3);
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected).Within(3.Seconds());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task Within_WhenValuesAreOutsideTheTolerance_ShouldFail()
 			{
 				TimeSpan? subject = CurrentTime();
@@ -105,18 +129,6 @@ public sealed partial class ThatNullableTimeSpan
 					              is equal to {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
-			}
-
-			[Fact]
-			public async Task Within_WhenValuesAreWithinTheTolerance_ShouldSucceed()
-			{
-				TimeSpan? subject = CurrentTime();
-				TimeSpan? expected = LaterTime(3);
-
-				async Task Act()
-					=> await That(subject).IsEqualTo(expected).Within(3.Seconds());
-
-				await That(Act).DoesNotThrow();
 			}
 		}
 	}
