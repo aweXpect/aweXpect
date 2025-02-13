@@ -395,7 +395,6 @@ public sealed partial class ThatDelegate
 			}
 		}
 
-#if DEBUG // TODO Enable after next Core update
 		public sealed class WithTimeoutTests
 		{
 			[Fact]
@@ -475,6 +474,5 @@ public sealed partial class ThatDelegate
 				await That(sw.Elapsed).IsLessThan(1.Seconds());
 			}
 		}
-#endif
 	}
 }
