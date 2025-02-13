@@ -1,7 +1,3 @@
----
-sidebar_position: 8
----
-
 # DateOnly / TimeOnly
 
 Describes the possible expectations for `DateOnly` and `TimeOnly`.

@@ -1,12 +1,62 @@
----
-sidebar_position: 2
----
+# Write your own extension
 
-# Customization
+This library will never be able to cope with all ideas and use cases. Therefore, it is possible to use the [
+`aweXpect.Core`](https://www.nuget.org/packages/aweXpect.Core/) package and write your own extensions.
+Goal of this package is to be more stable than the main aweXpect package, so reduce the risk of version conflicts
+between different extensions.
 
-You can add you own customizations on top of the `AwexpectCustomization` class by adding extension methods.
+You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
 
-## Add a simple customization value
+## Example
+
+You want to verify that a string corresponds to an absolute path.
+
+```csharp
+/// <summary>
+///     Verifies that the <paramref name="subject"/> is an absolute path.
+/// </summary>
+public static AndOrResult<string, IThat<string>> IsAbsolutePath(
+  this IThat<string> subject)
+  => new(subject.ExpectationBuilder.AddConstraint(it
+      => new IsAbsolutePathConstraint(it)),
+    subject);
+
+private readonly struct IsAbsolutePathConstraint(string it) : IValueConstraint<string>
+{
+  public ConstraintResult IsMetBy(string actual)
+  {
+    var absolutePath = Path.GetFullPath(actual);
+    if (absolutePath == actual)
+    {
+      return new ConstraintResult.Success<string>(actual, "be an absolute path");
+    }
+
+    return new ConstraintResult.Failure("be an absolute path",
+      $"{it} found {Formatter.Format(actual)}");
+  }
+}
+```
+
+## Constraints
+
+The basis for expectations are constraints. You can add different constraints to the `ExpectationBuilder` that is
+available for the `IThat<T>`. They differ in the input and output parameters:
+
+- `IValueConstraint<T>`   
+  It receives the actual value `T` and returns a `ConstraintResult`.
+- `IAsyncConstraint<T>`  
+  It receives the actual value `T` and a `CancellationToken` and returns the `ConstraintResult` asynchronously.  
+  *Use it when you need asynchronous functionality or access to the timeout `CancellationToken`.*
+- `IContextConstraint<T>` / `IAsyncContextConstraint<T>`  
+  Similar to the `IValueConstraint<T>` and `IAsyncConstraint<T>` respectively but receives an additional
+  `IEvaluationContext` parameter that allows storing and receiving data between expectations.  
+  *This mechanism is used for example to avoid enumerating an `IEnumerable` multiple times across multiple constraints.*
+
+## Customization
+
+You can add you own [customizations](/docs/expectations/advanced/customization) on top of the `AwexpectCustomization` class by adding extension methods.
+
+### Add a simple customization value
 
 You can add a simple customizable value (e.g. an `int`):
 
@@ -50,7 +100,7 @@ _ = Customize.aweXpect.MyCustomization().Get();
 *Note: you can also use this mechanism for complex objects like classes, but they can only be changed as a whole (and
 not individual properties)*
 
-## Add a customization group
+### Add a customization group
 
 You can also add a group of customization values, that can be changed individually or as a whole
 

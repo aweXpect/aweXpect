@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # Number
 
 Describes the possible expectations for numbers.

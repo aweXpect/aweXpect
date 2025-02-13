@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # Boolean
 
 Describes the possible expectations for boolean values.

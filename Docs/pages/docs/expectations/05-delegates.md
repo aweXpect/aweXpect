@@ -1,7 +1,3 @@
----
-sidebar_position: 14
----
-
 # Delegates
 
 Describes the possible expectations for delegates and exceptions.

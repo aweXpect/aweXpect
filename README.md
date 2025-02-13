@@ -23,7 +23,7 @@ Assert unit tests in natural language using awesome expectations.
    This brings the static `Expect` class and lots of extension methods into scope.
 
 
-3. See the [documentation](https://awexpect.com/docs/getting-started#write-your-first-expectation) for
+3. See the [documentation](https://awexpect.com/docs/expectations/getting-started#write-your-first-expectation) for
    usage scenarios.
 
 ## Features

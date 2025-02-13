@@ -1,7 +1,3 @@
----
-sidebar_position: 5
----
-
 # Enum
 
 Describes the possible expectations for `enum` values.

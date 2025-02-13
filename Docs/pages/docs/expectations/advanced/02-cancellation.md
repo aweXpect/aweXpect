@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # Cancellation
 
 You can add cancellation support on the expectations, so that they don't run indefinitely:

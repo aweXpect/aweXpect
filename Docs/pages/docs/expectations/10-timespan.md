@@ -1,7 +1,3 @@
----
-sidebar_position: 6
----
-
 # TimeSpan
 
 Describes the possible expectations for `TimeSpan`.

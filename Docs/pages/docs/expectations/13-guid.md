@@ -1,7 +1,3 @@
----
-sidebar_position: 9
----
-
 # Guid
 
 Describes the possible expectations for `Guid` values.

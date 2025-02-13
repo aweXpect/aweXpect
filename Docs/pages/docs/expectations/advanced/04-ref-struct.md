@@ -1,7 +1,3 @@
----
-sidebar_position: 18
----
-
 # Ref struct types
 
 Describes how you can work with `ref` structure types
