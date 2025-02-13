@@ -81,7 +81,7 @@ internal class WhichNode<TSource, TMember> : Node
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected {typeof(TValue).Name},{Environment.NewLine}but found {value.GetType().Name}");
+				$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}");
 		}
 
 		TMember? matchingValue;
@@ -118,10 +118,6 @@ internal class WhichNode<TSource, TMember> : Node
 	/// <inheritdoc />
 	public override void SetReason(BecauseReason becauseReason)
 		=> _inner?.SetReason(becauseReason);
-
-	/// <inheritdoc />
-	public override string ToString()
-		=> _memberAccessor + base.ToString();
 
 	private sealed class WhichConstraintResult(
 		ConstraintResult left,

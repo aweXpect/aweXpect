@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Tests.TestHelpers;
 
@@ -9,6 +11,29 @@ namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class WhichNodeTests
 {
+	[Fact]
+	public async Task AddConstraint_WithoutInnerNode_ShouldNotThrow()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+
+		void Act() => whichNode.AddConstraint(
+			new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
+
+		await That(Act).DoesNotThrow();
+	}
+
+	[Fact]
+	public async Task AddMapping_WithoutInnerNode_ShouldNotThrow()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+
+		void Act() => whichNode.AddMapping(MemberAccessor<string, int>.FromExpression(s => s.Length));
+
+		await That(Act).DoesNotThrow();
+	}
+
 	[Fact]
 	public async Task GetContexts_ShouldIncludeContextsFromLeftAndRight()
 	{
@@ -63,6 +88,134 @@ public sealed class WhichNodeTests
 		ConstraintResult constraintResult = await whichNode.IsMetBy("", null!, CancellationToken.None);
 
 		await That(constraintResult.GetResultText()).IsEqualTo("r1");
+	}
+
+	[Fact]
+	public async Task IsMetBy_EmptyExpectationNode_ShouldThrowInvalidOperationException()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		Task<ConstraintResult> Act() => whichNode.IsMetBy("foo", null!, CancellationToken.None);
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("The expectation node does not support int with value 3");
+	}
+
+	[Fact]
+	public async Task IsMetBy_ExpectationNodeWithConstraint_ShouldApplyConstraint()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", "e1"));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
+		StringBuilder sb = new();
+
+		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(sb.ToString()).IsEqualTo("e1e2");
+	}
+
+	[Fact]
+	public async Task IsMetBy_ExpectationNodeWithMapping_ShouldApplyConstraint()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddMapping(MemberAccessor<int, int>.FromFunc(i => 2 * i, "doubled:"));
+		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
+		StringBuilder sb = new();
+
+		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(sb.ToString()).IsEqualTo("doubled:e2");
+	}
+
+	[Fact]
+	public async Task IsMetBy_WhenTypeDoesNotMatch_ShouldThrowInvalidOperationException()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
+		StringBuilder sb = new();
+
+		async Task Act()
+			=> await whichNode.IsMetBy(DateTime.Now, null!, CancellationToken.None);
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("""
+			             The member type for the actual value in the which node did not match.
+			                  Found: DateTime
+			               Expected: string
+			             """);
+	}
+
+	[Fact]
+	public async Task IsMetBy_WithoutInnerNode_ShouldThrowInvalidOperationException()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		Task<ConstraintResult> Act() => whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(Act).Throws<InvalidOperationException>()
+			.WithMessage("No inner node specified for the which node.");
+	}
+
+	[Fact]
+	public async Task IsMetBy_WithoutParent_ShouldUseNodeResult()
+	{
+		WhichNode<string, int> whichNode = new(null, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
+		StringBuilder sb = new();
+
+		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(sb.ToString()).IsEqualTo("e2");
+	}
+
+	[Theory]
+	[InlineData(Outcome.Success, Outcome.Success, Outcome.Success)]
+	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Failure)]
+	[InlineData(Outcome.Success, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Undecided, Outcome.Failure)]
+	[InlineData(Outcome.Undecided, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Undecided, Outcome.Undecided, Outcome.Undecided)]
+	public async Task Outcome_ShouldBeExpected(Outcome node1, Outcome node2, Outcome expectedOutcome)
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("", () => new DummyConstraintResult(node1)),
+			s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddConstraint(new DummyConstraint("", () => new DummyConstraintResult(node2)));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(expectedOutcome);
+	}
+
+	[Fact]
+	public async Task SetReason_ShouldBeForwardedToInnerNode()
+	{
+		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", "e1"));
+		WhichNode<string, int> whichNode = new(node1, s => s.Length);
+		whichNode.AddNode(new ExpectationNode());
+		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
+		whichNode.SetReason(new BecauseReason("bc"));
+		StringBuilder sb = new();
+
+		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(result.Outcome).IsEqualTo(Outcome.Success);
+		await That(sb.ToString()).IsEqualTo("e1e2, because bc");
 	}
 
 	[Fact]

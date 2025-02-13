@@ -90,6 +90,18 @@ public class ConstraintResultTests
 	}
 
 	[Fact]
+	public async Task Success_AppendResult_ShouldDoNothing()
+	{
+		ConstraintResult.Success<int> sut = new(1, "foo");
+		StringBuilder sb = new();
+
+		sut.AppendResult(sb);
+
+		await That(sb.ToString()).IsEmpty();
+		await That(sut.GetResultText()).IsEmpty();
+	}
+
+	[Fact]
 	public async Task Success_GetContexts_ShouldBeEmpty()
 	{
 		ConstraintResult.Success<int> sut = new(1, "foo");

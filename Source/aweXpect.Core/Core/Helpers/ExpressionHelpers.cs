@@ -5,14 +5,14 @@ namespace aweXpect.Core.Helpers;
 
 internal static class ExpressionHelpers
 {
-	public static MemberExpression? GetMemberExpression(Expression? expression)
+	public static MemberExpression? GetMemberExpression(this Expression? expression)
 		=> expression switch
 		{
 			MemberExpression memberExpression => memberExpression,
 			LambdaExpression lambdaExpression => lambdaExpression.Body switch
 			{
 				MemberExpression body => body,
-				UnaryExpression unaryExpression => (MemberExpression)unaryExpression.Operand,
+				UnaryExpression { Operand: MemberExpression m } => m,
 				_ => null,
 			},
 			_ => null,
