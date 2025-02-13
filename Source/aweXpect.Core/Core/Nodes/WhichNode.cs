@@ -131,7 +131,6 @@ internal class WhichNode<TSource, TMember> : Node
 		TMember? value)
 		: ConstraintResult(And(left.Outcome, right.Outcome), furtherProcessingStrategy)
 	{
-		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
 		// ReSharper disable once ReplaceWithPrimaryConstructorParameter
 		private readonly TMember? _value = value;
 
