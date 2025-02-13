@@ -5,6 +5,20 @@ namespace aweXpect.Core.Tests.Core;
 
 public class StringDifferenceTests
 {
+	[Theory]
+	[InlineData(StringDifference.MatchType.Wildcard)]
+	[InlineData(StringDifference.MatchType.Regex)]
+	public async Task IndexOfFirstMismatch_ForWildcardOrRegex_ShouldBeZero(StringDifference.MatchType matchType)
+	{
+		const string actual = "Foo";
+		const string expected = "Foo";
+		StringDifference sut = new(actual, expected);
+
+		int result = sut.IndexOfFirstMismatch(matchType);
+
+		await That(result).IsEqualTo(0);
+	}
+
 	[Fact]
 	public async Task ShouldCacheIndexOfFirstMismatch()
 	{
@@ -155,9 +169,9 @@ public class StringDifferenceTests
 	[Fact]
 	public async Task WhenNoTrailingWordBoundaryExistsBetween45And60Characters_ShouldFallbackTo50Characters()
 	{
-		const string actual = "This text contains a lot of words and is used for testing the WordBoundaryAlgorithm";
+		const string actual = "This text contains lot of words and is used for testing the WordBoundaryAlgorithm";
 		const string expected =
-			"This text is used to verify when between 45 'and60characters' no word boundary exists";
+			"This text is used to verify when  between  45 and60characters_no word boundary exists";
 		StringDifference sut = new(actual, expected);
 
 		string result = sut.ToString();
@@ -166,8 +180,8 @@ public class StringDifferenceTests
 			"""
 			differs at index 10:
 			             ↓ (actual)
-			  "This text contains a lot of words and is used for testing…"
-			  "This text is used to verify when between 45 'and60…"
+			  "This text contains lot of words and is used for testing the…"
+			  "This text is used to verify when  between  45 and6…"
 			             ↑ (expected)
 			""");
 	}
