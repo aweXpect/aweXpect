@@ -15,10 +15,25 @@ public class EventTriggerResult<TSubject>(
 	IThat<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
 	Quantifier quantifier)
-	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(expectationBuilder, returnValue,
-		quantifier)
+	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(
+			expectationBuilder, returnValue, quantifier),
+		EventTriggerResult<TSubject>.IExtensions
 	where TSubject : notnull
 {
+	/// <inheritdoc cref="IExtensions.WithParameter{TParameter}(string, int?, Func{TParameter, bool})" />
+	EventTriggerResult<TSubject> IExtensions.WithParameter<TParameter>(
+		string expression,
+		int? position,
+		Func<TParameter, bool> predicate)
+	{
+		filter.AddPredicate(
+			o => position == null
+				? o.Any(x => x is TParameter p && predicate(p))
+				: o.Length > position && o[position.Value] is TParameter m && predicate(m),
+			expression);
+		return this;
+	}
+
 	/// <summary>
 	///     Adds a predicate for the sender of the event.
 	/// </summary>
@@ -88,23 +103,21 @@ public class EventTriggerResult<TSubject>(
 	}
 
 	/// <summary>
-	///     Adds a parameter predicate on the parameter at the given zero-based <paramref name="position" /> of type
-	///     <typeparamref name="TParameter" /> and the <paramref name="expression" /> for extension methods.
+	///     Gives access to additional methods for extensions.
 	/// </summary>
-	/// <remarks>
-	///     This method is mainly intended for extension methods, as it allows overriding the default
-	///     <paramref name="expression" />.
-	/// </remarks>
-	public EventTriggerResult<TSubject> WithParameter<TParameter>(
-		string expression,
-		int? position,
-		Func<TParameter, bool> predicate)
+	public interface IExtensions
 	{
-		filter.AddPredicate(
-			o => position == null
-				? o.Any(x => x is TParameter p && predicate(p))
-				: o.Length > position && o[position.Value] is TParameter m && predicate(m),
-			expression);
-		return this;
+		/// <summary>
+		///     Adds a parameter predicate on the parameter at the given zero-based <paramref name="position" /> of type
+		///     <typeparamref name="TParameter" /> and the <paramref name="expression" /> for extension methods.
+		/// </summary>
+		/// <remarks>
+		///     This method is mainly intended for extension methods, as it allows overriding the default
+		///     <paramref name="expression" />.
+		/// </remarks>
+		EventTriggerResult<TSubject> WithParameter<TParameter>(
+			string expression,
+			int? position,
+			Func<TParameter, bool> predicate);
 	}
 }

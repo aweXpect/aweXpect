@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
+using aweXpect.Equivalency;
 using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -32,6 +33,42 @@ public sealed partial class ThatEnumerable
 
 				async Task Act()
 					=> await That(subject).Contains(5);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task Equivalent_InDifferentOrder_ShouldFail()
+			{
+				IEnumerable<int[]> subject = [[1, 2], [1, 3]];
+
+				async Task Act()
+					=> await That(subject).Contains([2, 1]).AtLeast(1).Equivalent();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains [2, 1] equivalent at least once,
+					             but it contained it 0 times in [
+					               [
+					                 1,
+					                 2
+					               ],
+					               [
+					                 1,
+					                 3
+					               ]
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task Equivalent_InDifferentOrder_WhenIgnoringCollectionOrder_ShouldSucceed()
+			{
+				IEnumerable<int[]> subject = [[1, 2], [1, 3]];
+
+				async Task Act()
+					=> await That(subject).Contains([2, 1]).AtLeast(1).Equivalent(o => o.IgnoringCollectionOrder());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -176,6 +213,45 @@ public sealed partial class ThatEnumerable
 					                …
 					              ]
 					              """);
+			}
+
+			[Fact]
+			public async Task Using_WithAllDifferentComparer_ShouldFail()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).AtLeast(1).Using(new AllDifferentComparer());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains 1 using AllDifferentComparer at least once,
+					             but it contained it 0 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task Using_WithAllEqualComparer_ShouldSucceed()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).AtLeast(4).Using(new AllEqualComparer());
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]

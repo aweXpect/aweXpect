@@ -28,7 +28,7 @@ public static partial class ThatEnumerable
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contains {Formatter.Format(expected)} {q}",
+					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -215,8 +215,7 @@ public static partial class ThatEnumerable
 				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
 		}
 
-		public override string ToString()
-			=> expectationText(quantifier);
+		public override string ToString() => expectationText(quantifier);
 	}
 
 	private readonly struct NotContainConstraint<TItem>(

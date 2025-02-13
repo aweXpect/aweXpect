@@ -1055,7 +1055,7 @@ namespace aweXpect.Results
     {
         public aweXpect.ThatEnumerable.Elements<TValue> WhoseValues { get; }
     }
-    public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>
+    public class EventTriggerResult<TSubject> : aweXpect.Results.CountResult<aweXpect.Recording.IEventRecording<TSubject>, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>>>, aweXpect.Results.EventTriggerResult<TSubject>.IExtensions
         where TSubject :  notnull
     {
         public EventTriggerResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<aweXpect.Recording.IEventRecording<TSubject>> returnValue, aweXpect.Options.TriggerEventFilter filter, aweXpect.Options.Quantifier quantifier) { }
@@ -1063,8 +1063,11 @@ namespace aweXpect.Results
             where TEventArgs : System.EventArgs { }
         public aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(int position, System.Func<TParameter, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
-        public aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate) { }
         public aweXpect.Results.EventTriggerResult<TSubject> WithSender(System.Func<object?, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public interface IExtensions
+        {
+            aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate);
+        }
     }
     public class JsonWhichResult : aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>>
     {

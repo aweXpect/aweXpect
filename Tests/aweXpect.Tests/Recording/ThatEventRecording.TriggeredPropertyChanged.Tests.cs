@@ -5,7 +5,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEventRecording
 {
-	public sealed class HasTriggeredPropertyChanged
+	public sealed class TriggeredPropertyChanged
 	{
 		public sealed class Tests
 		{
