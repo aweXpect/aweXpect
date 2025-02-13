@@ -48,8 +48,7 @@ public partial class ThatDelegateThrows<TException>
 					$"with an inner {(innerExceptionType == typeof(Exception) ? ExceptionString : Formatter.Format(innerExceptionType))} whose",
 					false)
 				.Validate(it
-					=> new InnerExceptionIsTypeConstraint(it,
-						innerExceptionType))
+					=> new InnerExceptionIsTypeConstraint(it, innerExceptionType))
 				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
 			this);
 
@@ -100,7 +99,7 @@ public partial class ThatDelegateThrows<TException>
 			}
 
 			return new ConstraintResult.Failure<Exception?>(actual, "",
-				$"{it} was {ThatDelegate.FormatForMessage(actual)}");
+				$"{it} was {ThatDelegate.FormatForMessage(actual?.InnerException)}");
 		}
 
 		#endregion

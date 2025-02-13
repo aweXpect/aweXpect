@@ -6,6 +6,22 @@ public sealed partial class ThatDelegate
 	{
 		public sealed class GenericTests
 		{
+			[Fact]
+			public async Task ShouldSupportChainedConstraints()
+			{
+				Action action = () => { };
+
+				async Task Act()
+					=> await That(action).Throws<ArgumentException>().WithMessage("foo");
+
+				await That(Act).ThrowsException()
+					.WithMessage("""
+					             Expected that action
+					             throws an ArgumentException with Message equal to "foo",
+					             but it did not throw any exception
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenAwaited_ShouldReturnThrownException(string value)
@@ -120,6 +136,22 @@ public sealed partial class ThatDelegate
 
 		public sealed class TypeTests
 		{
+			[Fact]
+			public async Task ShouldSupportChainedConstraints()
+			{
+				Action action = () => { };
+
+				async Task Act()
+					=> await That(action).Throws(typeof(ArgumentException)).WithMessage("foo");
+
+				await That(Act).ThrowsException()
+					.WithMessage("""
+					             Expected that action
+					             throws an ArgumentException with Message equal to "foo",
+					             but it did not throw any exception
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenAwaited_ShouldReturnThrownException(string value)
@@ -148,7 +180,7 @@ public sealed partial class ThatDelegate
 				await That(Act).DoesNotThrow();
 			}
 
-			[Fact(Skip="Wait for next core update")]
+			[Fact(Skip = "Wait for next core update")]
 			public async Task WhenNoExceptionIsThrown_ShouldFail()
 			{
 				Action action = () => { };

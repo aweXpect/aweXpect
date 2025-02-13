@@ -54,7 +54,9 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<TException?>(null, ToString(), "it did not throw any exception");
+				return new ConstraintResult.Failure<TException?>(null, ToString(),
+					"it did not throw any exception",
+					FurtherProcessingStrategy.IgnoreResult);
 			}
 
 			return new ConstraintResult.Failure<TException?>(null, ToString(),
@@ -86,7 +88,9 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<Exception?>(null, ToString(), "it did not throw any exception");
+				return new ConstraintResult.Failure<Exception?>(null, ToString(),
+					"it did not throw any exception",
+					FurtherProcessingStrategy.IgnoreResult);
 			}
 
 			return new ConstraintResult.Failure<Exception?>(null, ToString(),
