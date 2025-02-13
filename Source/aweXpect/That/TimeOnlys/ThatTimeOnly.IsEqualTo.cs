@@ -21,7 +21,7 @@ public static partial class ThatTimeOnly
 				new ConditionConstraintWithTolerance(
 					it,
 					expected,
-					(e, t) => $"is {Formatter.Format(e)}{t}",
+					(e, t) => $"is equal to {Formatter.Format(e)}{t}",
 					(a, e, t) => e != null &&
 					             Math.Abs(a.Ticks - e.Value.Ticks) <= t.Ticks,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
@@ -43,7 +43,7 @@ public static partial class ThatTimeOnly
 				new ConditionConstraintWithTolerance(
 					it,
 					unexpected,
-					(e, t) => $"is not {Formatter.Format(e)}{t}",
+					(e, t) => $"is not equal to {Formatter.Format(e)}{t}",
 					(a, u, t) => u == null ||
 					             Math.Abs(a.Ticks - u.Value.Ticks) > t.Ticks,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",

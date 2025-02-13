@@ -66,6 +66,23 @@ public sealed partial class ThatNullableTimeOnly
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeOnly? expected = CurrentTime();
+				TimeOnly? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsOnOrAfter(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is on or after {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsSame_ShouldSucceed()
 			{
 				TimeOnly? subject = CurrentTime();

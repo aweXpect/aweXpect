@@ -43,7 +43,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not <null>,
+					             is not equal to <null>,
 					             but it was <null>
 					             """);
 			}
@@ -53,6 +53,18 @@ public sealed partial class ThatNullableDateOnly
 			{
 				DateOnly? subject = CurrentTime();
 				DateOnly? unexpected = LaterTime();
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldSucceed()
+			{
+				DateOnly? unexpected = CurrentTime();
+				DateOnly? subject = null;
 
 				async Task Act()
 					=> await That(subject).IsNotEqualTo(unexpected);
@@ -72,7 +84,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is not {Formatter.Format(unexpected)},
+					              is not equal to {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -97,7 +109,7 @@ public sealed partial class ThatNullableDateOnly
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
 					              Expected that subject
-					              is not {Formatter.Format(unexpected)} ± {tolerance} days, because we want to test the failure,
+					              is not equal to {Formatter.Format(unexpected)} ± {tolerance} days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
