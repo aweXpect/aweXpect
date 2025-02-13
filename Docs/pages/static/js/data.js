@@ -738,6 +738,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -863,7 +869,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -992,7 +999,8 @@ window.BENCHMARK_DATA = {
           178.0339856147766,
           170.28117113847,
           174.05377616882325,
-          196.87058803240458
+          196.87058803240458,
+          176.73430627187093
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1125,6 +1133,7 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
+          544,
           544,
           544
         ],
@@ -1263,7 +1272,8 @@ window.BENCHMARK_DATA = {
           200.2021369252886,
           188.11170870917184,
           206.77397718429566,
-          212.54392513862024
+          212.54392513862024,
+          194.60945496956506
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1301,6 +1311,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1534,7 +1545,8 @@ window.BENCHMARK_DATA = {
           775.117163848877,
           738.0114419643695,
           776.6693364461263,
-          807.5548131306966
+          807.5548131306966,
+          757.2604296548026
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1647,6 +1659,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -1958,6 +1971,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -2006,7 +2025,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -2058,7 +2078,8 @@ window.BENCHMARK_DATA = {
           292158.472265625,
           294814.52478841145,
           271266.3828473772,
-          285633.4642615685
+          285633.4642615685,
+          298408.5787434896
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2114,6 +2135,7 @@ window.BENCHMARK_DATA = {
           284916,
           284916,
           284916,
+          284932,
           284932,
           284932
         ],
@@ -2175,7 +2197,8 @@ window.BENCHMARK_DATA = {
           2233468.3645833335,
           2033809.1944754464,
           2006468.9693509615,
-          2114452.323958333
+          2114452.323958333,
+          2144544.677604167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2229,6 +2252,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -2292,7 +2316,8 @@ window.BENCHMARK_DATA = {
           664927.1174479167,
           641750.7931640625,
           654917.6427734375,
-          689730.762109375
+          689730.762109375,
+          692384.1087239584
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2328,6 +2353,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -3101,6 +3127,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -3226,7 +3258,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -3355,7 +3388,8 @@ window.BENCHMARK_DATA = {
           592.481364440918,
           594.8287737919734,
           597.6794773737589,
-          648.9983086585999
+          648.9983086585999,
+          609.3531529562814
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3489,6 +3523,7 @@ window.BENCHMARK_DATA = {
           1104,
           1104,
           1120,
+          1208,
           1208
         ],
         "borderColor": "#63A2AC",
@@ -3626,7 +3661,8 @@ window.BENCHMARK_DATA = {
           406.19767321859086,
           414.53680096353804,
           445.5438549859183,
-          450.3885138585017
+          450.3885138585017,
+          450.26926205952964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3664,6 +3700,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3897,7 +3934,8 @@ window.BENCHMARK_DATA = {
           14946.447854178292,
           17217.2260945638,
           14312.62519124349,
-          15644.45141366812
+          15644.45141366812,
+          14710.83975016276
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4010,6 +4048,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -4783,6 +4822,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -4908,7 +4953,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -5037,7 +5083,8 @@ window.BENCHMARK_DATA = {
           222.00144244829815,
           216.4648744889668,
           229.75723773638407,
-          253.85494944254557
+          253.85494944254557,
+          233.30983392397562
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5170,6 +5217,7 @@ window.BENCHMARK_DATA = {
           880,
           880,
           880,
+          896,
           896,
           896
         ],
@@ -5308,7 +5356,8 @@ window.BENCHMARK_DATA = {
           193.19473416010538,
           189.74837619463602,
           201.57412662506104,
-          211.72507139841716
+          211.72507139841716,
+          200.32528573671976
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5346,6 +5395,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -5579,7 +5629,8 @@ window.BENCHMARK_DATA = {
           1082.6892944063459,
           997.1562457451454,
           1074.75599416097,
-          1097.6561378751483
+          1097.6561378751483,
+          1099.7748179117839
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5692,6 +5743,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -6465,6 +6517,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -6590,7 +6648,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -6719,7 +6778,8 @@ window.BENCHMARK_DATA = {
           359.2368490854899,
           358.1057454622709,
           338.962934085301,
-          368.92051388422647
+          368.92051388422647,
+          366.0841347058614
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6852,6 +6912,7 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
+          968,
           968,
           968
         ],
@@ -6990,7 +7051,8 @@ window.BENCHMARK_DATA = {
           419.6120225906372,
           416.76894216537477,
           428.82164611816404,
-          491.16524443259607
+          491.16524443259607,
+          444.8376623471578
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7028,6 +7090,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -7261,7 +7324,8 @@ window.BENCHMARK_DATA = {
           1121.823627608163,
           1077.9951404571534,
           1163.417354447501,
-          1235.3576904296874
+          1235.3576904296874,
+          1169.0851674397786
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7374,6 +7438,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -8147,6 +8212,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -8272,7 +8343,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -8401,7 +8473,8 @@ window.BENCHMARK_DATA = {
           1242.7144643238612,
           1224.0007543563843,
           1267.6007118225098,
-          1287.2316630045573
+          1287.2316630045573,
+          1314.819841257731
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8534,6 +8607,7 @@ window.BENCHMARK_DATA = {
           2336,
           2336,
           2336,
+          2352,
           2352,
           2352
         ],
@@ -8672,7 +8746,8 @@ window.BENCHMARK_DATA = {
           1229.8049171447753,
           1181.5711085001628,
           1239.1139979044597,
-          1275.5652097555308
+          1275.5652097555308,
+          1275.6486924489338
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8710,6 +8785,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -8943,7 +9019,8 @@ window.BENCHMARK_DATA = {
           2529.89643233163,
           2445.2616073608397,
           2455.611414082845,
-          2564.6114008585614
+          2564.6114008585614,
+          2552.365816497803
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9056,6 +9133,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -9829,6 +9907,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 05:52:32 2025 \u002B0100",
         "message": "feat!: use \u0022HasCount\u0022 for counting items in a collection (#358)"
+      },
+      {
+        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
+        "message": "refactor: delete unused code in Http expectations (#360)"
       }
     ],
     "labels": [
@@ -9954,7 +10038,8 @@ window.BENCHMARK_DATA = {
       "e5efbb97",
       "51c034fd",
       "106df424",
-      "a24ae441"
+      "a24ae441",
+      "93221aa4"
     ],
     "datasets": [
       {
@@ -10083,7 +10168,8 @@ window.BENCHMARK_DATA = {
           1371.4044619968959,
           1293.1289684295655,
           1288.8603921254476,
-          1405.45053952535
+          1405.45053952535,
+          1379.4260054270426
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10216,6 +10302,7 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
+          2384,
           2384,
           2384
         ],
@@ -10354,7 +10441,8 @@ window.BENCHMARK_DATA = {
           86635.85285832331,
           83996.25630405972,
           85838.40566580636,
-          90059.95966796875
+          90059.95966796875,
+          88842.3300694057
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10488,7 +10576,8 @@ window.BENCHMARK_DATA = {
           54271,
           54273,
           54273,
-          54275
+          54275,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10625,7 +10714,8 @@ window.BENCHMARK_DATA = {
           6907.411977640788,
           6449.763290405273,
           6494.160666402181,
-          7390.592564719064
+          7390.592564719064,
+          6899.990771702358
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10738,6 +10828,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
