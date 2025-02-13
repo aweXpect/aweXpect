@@ -4,7 +4,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEventRecording
 {
-	public sealed partial class HasTriggered
+	public sealed partial class Triggered
 	{
 		public sealed class Tests
 		{

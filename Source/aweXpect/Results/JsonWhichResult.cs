@@ -22,14 +22,9 @@ public class JsonWhichResult(
 	public AndOrResult<string?, IThat<string?>> Which(Action<IThat<JsonElement?>> expectations)
 	{
 		_expectationBuilder
-			.ForMember(MemberAccessor<string?, JsonElement?>.FromFunc(s =>
+			.ForMember(MemberAccessor<string, JsonElement?>.FromFunc(jsonString =>
 				{
-					if (s is null)
-					{
-						return null;
-					}
-
-					using JsonDocument jsonDocument = JsonDocument.Parse(s, options);
+					using JsonDocument jsonDocument = JsonDocument.Parse(jsonString, options);
 					return jsonDocument.RootElement.Clone();
 				}, "it"),
 				(_, stringBuilder) => stringBuilder.Append(" which "))

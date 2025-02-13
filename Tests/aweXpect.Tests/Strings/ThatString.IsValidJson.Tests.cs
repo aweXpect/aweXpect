@@ -100,6 +100,22 @@ public sealed partial class ThatString
 		public sealed class WhichTests
 		{
 			[Fact]
+			public async Task WhenActualIsNull_ShouldFail()
+			{
+				string? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsValidJson().Which(d => d.Matches([1, 2]));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is valid JSON which matches [1, 2],
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenExpectationInWhichFails_ShouldFail()
 			{
 				string subject = "[1, 2]";
