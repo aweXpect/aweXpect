@@ -98,7 +98,11 @@ public class ConstraintResultExtensionsTests
 
 			List<ConstraintResult.Context> result = sut.GetContexts().ToList();
 
+#if DEBUG // TODO: replace after next awexpect update
+			await That(result).HasCount().EqualTo(2);
+#else
 			await That(result).Has().Exactly(2).Items();
+#endif
 		}
 	}
 }

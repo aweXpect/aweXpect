@@ -14,7 +14,7 @@ public partial class HappyCaseBenchmarks
 
 	[Benchmark]
 	public async Task ItemsCount_AtLeast_aweXpect()
-		=> await Expect.That(_enumerableSubject).Has().AtLeast(_enumerableCount).Items();
+		=> await Expect.That(_enumerableSubject).HasCount().AtLeast(_enumerableCount);
 
 	[Benchmark]
 	public AndConstraint<GenericCollectionAssertions<int>> ItemsCount_AtLeast_FluentAssertions()

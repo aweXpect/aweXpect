@@ -23,21 +23,5 @@ public static partial class ThatAsyncEnumerable
 		this IThat<IAsyncEnumerable<string?>?> subject,
 		int minimum)
 		=> new(maximum => new Elements(subject, EnumerableQuantifier.Between(minimum, maximum)));
-
-	/// <summary>
-	///     Verifies that the collection has between <paramref name="minimum" />…
-	/// </summary>
-	public static
-		BetweenResult<ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>>
-		Between<TItem>(
-			this IThatHas<IAsyncEnumerable<TItem>?> source,
-			int minimum)
-		=> new(maximum
-			=> new ItemsResult<AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>>(
-				new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-					source.ExpectationBuilder.AddConstraint((it, grammar)
-						=> new AsyncCollectionCountConstraint<TItem>(it,
-							EnumerableQuantifier.Between(minimum, maximum))),
-					source.ExpectSubject())));
 }
 #endif

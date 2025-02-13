@@ -34,7 +34,7 @@ public sealed partial class ThatSignaler
 				Signaler<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Signaled().WhoseParameters.Has().Exactly(0).Items();
+					=> await That(subject!).Signaled().WhoseParameters.HasCount().EqualTo(0);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
