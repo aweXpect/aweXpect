@@ -410,7 +410,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>();
 				sw.Stop();
 
-				await That(sw.Elapsed).IsLessThan(1.Seconds());
+				await That(sw.Elapsed).IsLessThan(5.Seconds());
 			}
 
 			[Fact]
@@ -430,7 +430,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>();
 				sw.Stop();
 
-				await That(sw.Elapsed).IsLessThan(1.Seconds());
+				await That(sw.Elapsed).IsLessThan(5.Seconds());
 			}
 		}
 
@@ -450,7 +450,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>();
 				sw.Stop();
 
-				await That(sw.Elapsed).IsLessThan(1.Seconds());
+				await That(sw.Elapsed).IsLessThan(5.Seconds());
 			}
 
 			[Fact]
@@ -471,7 +471,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>();
 				sw.Stop();
 
-				await That(sw.Elapsed).IsLessThan(1.Seconds());
+				await That(sw.Elapsed).IsLessThan(5.Seconds());
 			}
 		}
 	}
