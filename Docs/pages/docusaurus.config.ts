@@ -107,7 +107,7 @@ const config: Config = {
           items: [
             {
               label: 'Documentation',
-              to: '/docs/getting-started',
+              to: '/docs/expectations/getting-started',
             },
             {
               label: 'Benchmarks',
