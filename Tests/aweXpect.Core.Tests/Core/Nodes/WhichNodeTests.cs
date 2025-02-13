@@ -126,6 +126,71 @@ public sealed class WhichNodeTests
 	}
 
 	[Fact]
+	public async Task WhenBothAreFailure_ShouldOnlyIncludeLeftResult()
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("",
+			() => new ConstraintResult.Failure("foo", "r1")), _ => 3);
+		whichNode.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2")));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo("r1");
+	}
+
+	[Fact]
+	public async Task WhenBothAreSuccess_ShouldHaveEmptyResultText()
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo")), _ => 3);
+		whichNode.AddNode(new DummyNode("",
+			() => new ConstraintResult.Success("bar")));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEmpty();
+	}
+
+	[Fact]
+	public async Task WhenLeftIsFailureAndHasIgnoreResultFurtherProcessingStrategy_ShouldExcludeRightResultText()
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("",
+			() => new ConstraintResult.Failure("foo", "r1", FurtherProcessingStrategy.IgnoreResult)), _ => 3);
+		whichNode.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo("r1");
+	}
+
+	[Fact]
+	public async Task WhenLeftIsSuccessAndHasIgnoreResultFurtherProcessingStrategy_ShouldStillIncludeRightResultText()
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo", FurtherProcessingStrategy.IgnoreResult)), _ => 3);
+		whichNode.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo("r2");
+	}
+
+	[Fact]
+	public async Task WhenOnlyRightHasFailure_ShouldIncludeRightResultText()
+	{
+		WhichNode<string, int> whichNode = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo")), _ => 3);
+		whichNode.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2")));
+
+		ConstraintResult result = await whichNode.IsMetBy("", null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo("r2");
+	}
+
+	[Fact]
 	public async Task WhichCreatesGoodMessage()
 	{
 		Dummy subject = new()
