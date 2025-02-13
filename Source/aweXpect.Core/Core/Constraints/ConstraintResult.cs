@@ -78,7 +78,7 @@ public abstract class ConstraintResult
 
 	internal virtual string GetResultText()
 	{
-		StringBuilder? sb = new();
+		StringBuilder sb = new();
 		AppendResult(sb);
 		return sb.ToString();
 	}
