@@ -720,6 +720,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -842,7 +848,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -968,7 +975,8 @@ window.BENCHMARK_DATA = {
           182.5799789269765,
           178.41369315556116,
           174.59407121794564,
-          178.0339856147766
+          178.0339856147766,
+          170.28117113847
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1093,6 +1101,7 @@ window.BENCHMARK_DATA = {
           1056,
           1056,
           1056,
+          528,
           528,
           528,
           528,
@@ -1233,7 +1242,8 @@ window.BENCHMARK_DATA = {
           210.8284287929535,
           191.00170027414958,
           193.7461038430532,
-          200.2021369252886
+          200.2021369252886,
+          188.11170870917184
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1271,6 +1281,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1498,7 +1509,8 @@ window.BENCHMARK_DATA = {
           795.0702617645263,
           758.6447310129802,
           780.5341249612661,
-          775.117163848877
+          775.117163848877,
+          738.0114419643695
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1611,6 +1623,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -1901,6 +1914,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -1946,7 +1965,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -1995,7 +2015,8 @@ window.BENCHMARK_DATA = {
           312722.1990792411,
           288187.59833984374,
           300001.1583007813,
-          292158.472265625
+          292158.472265625,
+          294814.52478841145
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2043,6 +2064,7 @@ window.BENCHMARK_DATA = {
           285444,
           285444,
           285444,
+          284916,
           284916,
           284916,
           284916,
@@ -2106,7 +2128,8 @@ window.BENCHMARK_DATA = {
           2142307.800390625,
           2102617.4514508927,
           1977229.8684430805,
-          2233468.3645833335
+          2233468.3645833335,
+          2033809.1944754464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2160,6 +2183,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738
         ],
         "borderColor": "#FF671B",
@@ -2217,7 +2241,8 @@ window.BENCHMARK_DATA = {
           676101.3653846154,
           653354.5809849331,
           659774.4427584135,
-          664927.1174479167
+          664927.1174479167,
+          641750.7931640625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2253,6 +2278,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -3005,6 +3031,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -3127,7 +3159,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -3253,7 +3286,8 @@ window.BENCHMARK_DATA = {
           595.4836566107614,
           618.7825667063395,
           579.7380790074666,
-          592.481364440918
+          592.481364440918,
+          594.8287737919734
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3378,6 +3412,7 @@ window.BENCHMARK_DATA = {
           1632,
           1632,
           1632,
+          1104,
           1104,
           1104,
           1104,
@@ -3518,7 +3553,8 @@ window.BENCHMARK_DATA = {
           427.5610297407423,
           438.05813530513217,
           426.1576013882955,
-          406.19767321859086
+          406.19767321859086,
+          414.53680096353804
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3556,6 +3592,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -3783,7 +3820,8 @@ window.BENCHMARK_DATA = {
           21844.7519144694,
           14826.383477347237,
           16924.961837768555,
-          14946.447854178292
+          14946.447854178292,
+          17217.2260945638
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3896,6 +3934,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -4648,6 +4687,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -4770,7 +4815,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -4896,7 +4942,8 @@ window.BENCHMARK_DATA = {
           222.3152695619143,
           225.85000602404276,
           229.93227894306182,
-          222.00144244829815
+          222.00144244829815,
+          216.4648744889668
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5021,6 +5068,7 @@ window.BENCHMARK_DATA = {
           1408,
           1408,
           1408,
+          880,
           880,
           880,
           880,
@@ -5161,7 +5209,8 @@ window.BENCHMARK_DATA = {
           197.10654095503,
           192.59635068972906,
           194.36590695381165,
-          193.19473416010538
+          193.19473416010538,
+          189.74837619463602
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5199,6 +5248,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -5426,7 +5476,8 @@ window.BENCHMARK_DATA = {
           1098.7334863026938,
           1080.9179793993633,
           1076.3543752034504,
-          1082.6892944063459
+          1082.6892944063459,
+          997.1562457451454
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5539,6 +5590,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -6291,6 +6343,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -6413,7 +6471,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -6539,7 +6598,8 @@ window.BENCHMARK_DATA = {
           373.51889893213905,
           367.9986436843872,
           350.1298258304596,
-          359.2368490854899
+          359.2368490854899,
+          358.1057454622709
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6664,6 +6724,7 @@ window.BENCHMARK_DATA = {
           1480,
           1480,
           1480,
+          952,
           952,
           952,
           952,
@@ -6804,7 +6865,8 @@ window.BENCHMARK_DATA = {
           429.2879702568054,
           441.7760039329529,
           418.6946670668466,
-          419.6120225906372
+          419.6120225906372,
+          416.76894216537477
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6842,6 +6904,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -7069,7 +7132,8 @@ window.BENCHMARK_DATA = {
           1170.5524973188128,
           1265.9405741010394,
           1168.2571520487468,
-          1121.823627608163
+          1121.823627608163,
+          1077.9951404571534
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7182,6 +7246,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -7934,6 +7999,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -8056,7 +8127,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -8182,7 +8254,8 @@ window.BENCHMARK_DATA = {
           1259.5038602193197,
           1326.1575024922688,
           1276.7244334902082,
-          1242.7144643238612
+          1242.7144643238612,
+          1224.0007543563843
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8307,6 +8380,7 @@ window.BENCHMARK_DATA = {
           3056,
           3056,
           3056,
+          2336,
           2336,
           2336,
           2336,
@@ -8447,7 +8521,8 @@ window.BENCHMARK_DATA = {
           1222.2564605712892,
           1241.3547398885091,
           1179.603597768148,
-          1229.8049171447753
+          1229.8049171447753,
+          1181.5711085001628
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8485,6 +8560,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -8712,7 +8788,8 @@ window.BENCHMARK_DATA = {
           2520.1457735697427,
           2553.9640650431315,
           2431.413727079119,
-          2529.89643233163
+          2529.89643233163,
+          2445.2616073608397
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8825,6 +8902,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -9577,6 +9655,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 04:06:34 2025 \u002B0100",
         "message": "refactor: consolidate error messages for delegates (#356)"
+      },
+      {
+        "sha": "51c034fd65adef7d72b2711dff7f61b2cf117ee4",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 13 05:38:30 2025 \u002B0100",
+        "message": "docs: refactor the documentation structure (#357)"
       }
     ],
     "labels": [
@@ -9699,7 +9783,8 @@ window.BENCHMARK_DATA = {
       "4e57b02c",
       "23b59cb4",
       "40cc54fa",
-      "e5efbb97"
+      "e5efbb97",
+      "51c034fd"
     ],
     "datasets": [
       {
@@ -9825,7 +9910,8 @@ window.BENCHMARK_DATA = {
           1333.2265822546822,
           1358.8052841186523,
           1313.9447441101074,
-          1371.4044619968959
+          1371.4044619968959,
+          1293.1289684295655
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9950,6 +10036,7 @@ window.BENCHMARK_DATA = {
           3088,
           3088,
           3088,
+          2368,
           2368,
           2368,
           2368,
@@ -10090,7 +10177,8 @@ window.BENCHMARK_DATA = {
           88921.09566086989,
           88323.08199869792,
           86376.91046142578,
-          86635.85285832331
+          86635.85285832331,
+          83996.25630405972
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10221,7 +10309,8 @@ window.BENCHMARK_DATA = {
           54273,
           54275,
           54271,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10355,7 +10444,8 @@ window.BENCHMARK_DATA = {
           6908.706645711263,
           6817.051599230085,
           6475.143795013428,
-          6907.411977640788
+          6907.411977640788,
+          6449.763290405273
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10468,6 +10558,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
