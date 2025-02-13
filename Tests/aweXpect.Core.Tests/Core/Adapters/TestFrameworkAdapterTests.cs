@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using aweXpect.Adapters;
+using aweXpect.Core.Adapters;
 using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Adapters;

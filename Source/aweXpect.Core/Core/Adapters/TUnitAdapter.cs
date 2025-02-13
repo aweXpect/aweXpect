@@ -3,9 +3,9 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using aweXpect.Core.Adapters;
+// ReSharper disable UnusedType.Global
 
-namespace aweXpect.Adapters;
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Implements the TUnit test framework adapter.
@@ -13,7 +13,6 @@ namespace aweXpect.Adapters;
 /// <remarks>
 ///     <see href="https://github.com/thomhurst/TUnit" />
 /// </remarks>
-// ReSharper disable once UnusedMember.Global
 [ExcludeFromCodeCoverage]
 internal class TUnitAdapter : ITestFrameworkAdapter
 {
