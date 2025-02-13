@@ -54,8 +54,7 @@ internal class OrNode : Node
 			ConstraintResult result = await node.IsMetBy(value, context, cancellationToken);
 			combinedResult = CombineResults(combinedResult, result, separator,
 				combinedResult?.FurtherProcessingStrategy);
-			if (result.FurtherProcessingStrategy ==
-			    FurtherProcessingStrategy.IgnoreCompletely)
+			if (result.FurtherProcessingStrategy == FurtherProcessingStrategy.IgnoreCompletely)
 			{
 				return combinedResult;
 			}
@@ -133,7 +132,8 @@ internal class OrNode : Node
 					right.AppendResult(stringBuilder, indentation);
 				}
 			}
-			else if (right.Outcome == Outcome.Failure)
+			else if (right.Outcome == Outcome.Failure &&
+			         _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult)
 			{
 				right.AppendResult(stringBuilder, indentation);
 			}

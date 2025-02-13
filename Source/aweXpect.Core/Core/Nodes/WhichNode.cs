@@ -95,8 +95,33 @@ internal class WhichNode<TSource, TMember> : Node
 		}
 
 		ConstraintResult result = await _inner.IsMetBy(matchingValue, context, cancellationToken);
-		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult, matchingValue);
+		return CombineResults(parentResult, result, _separator ?? "", FurtherProcessingStrategy.IgnoreResult,
+			matchingValue);
 	}
+
+	private static ConstraintResult CombineResults(ConstraintResult? leftResult,
+		ConstraintResult rightResult,
+		string separator,
+		FurtherProcessingStrategy? furtherProcessingStrategy,
+		TMember? value)
+	{
+		if (leftResult == null)
+		{
+			return rightResult;
+		}
+
+		return new WhichConstraintResult(leftResult, rightResult, separator,
+			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue,
+			value);
+	}
+
+	/// <inheritdoc />
+	public override void SetReason(BecauseReason becauseReason)
+		=> _inner?.SetReason(becauseReason);
+
+	/// <inheritdoc />
+	public override string ToString()
+		=> _memberAccessor + base.ToString();
 
 	private sealed class WhichConstraintResult(
 		ConstraintResult left,
@@ -106,7 +131,7 @@ internal class WhichNode<TSource, TMember> : Node
 		TMember? value)
 		: ConstraintResult(And(left.Outcome, right.Outcome), furtherProcessingStrategy)
 	{
-		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
+		// ReSharper disable once ReplaceWithPrimaryConstructorParameter
 		private readonly TMember? _value = value;
 
 		private static Outcome And(Outcome left, Outcome right)
@@ -130,13 +155,6 @@ internal class WhichNode<TSource, TMember> : Node
 			if (left.Outcome == Outcome.Failure)
 			{
 				left.AppendResult(stringBuilder, indentation);
-				if (right.Outcome == Outcome.Failure &&
-				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
-				    left.GetResultText() != right.GetResultText())
-				{
-					stringBuilder.Append(" and ");
-					right.AppendResult(stringBuilder, indentation);
-				}
 			}
 			else if (right.Outcome == Outcome.Failure)
 			{
@@ -165,14 +183,14 @@ internal class WhichNode<TSource, TMember> : Node
 				value = typedValue;
 				return true;
 			}
-			
-			if (left.TryGetValue<TValue>(out var leftValue))
+
+			if (left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue<TValue>(out var rightValue))
+			if (right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
@@ -182,28 +200,4 @@ internal class WhichNode<TSource, TMember> : Node
 			return false;
 		}
 	}
-
-	private static ConstraintResult CombineResults(ConstraintResult? leftResult,
-		ConstraintResult rightResult,
-		string separator,
-		FurtherProcessingStrategy? furtherProcessingStrategy,
-		TMember? value)
-	{
-		if (leftResult == null)
-		{
-			return rightResult;
-		}
-
-		return new WhichConstraintResult(leftResult, rightResult, separator,
-			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue,
-			value);
-	}
-
-	/// <inheritdoc />
-	public override void SetReason(BecauseReason becauseReason)
-		=> _inner?.SetReason(becauseReason);
-
-	/// <inheritdoc />
-	public override string ToString()
-		=> _memberAccessor + base.ToString();
 }

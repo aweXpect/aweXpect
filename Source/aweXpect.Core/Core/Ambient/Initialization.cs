@@ -43,7 +43,7 @@ internal static class Initialization
 		ITestFrameworkAdapter testFramework = DetectFramework(AppDomain.CurrentDomain.GetAssemblies()
 			.Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
 				.All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
-			.SelectMany(assembly => assembly.GetTypes().Where(x => x.IsVisible || x.IsPublic || !x.IsNested || !x.IsNestedPrivate)));
+			.SelectMany(assembly => assembly.GetTypes().Where(x => !x.IsNestedPrivate)));
 		return new InitializationState(testFramework);
 	}
 

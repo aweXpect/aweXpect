@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+// ReSharper disable UnusedType.Global
 
-namespace aweXpect.Adapters;
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Implements the XUnit v3 test framework adapter.
@@ -9,7 +10,6 @@ namespace aweXpect.Adapters;
 /// <remarks>
 ///     <see href="https://github.com/xunit/xunit" />
 /// </remarks>
-// ReSharper disable once UnusedMember.Global
 [ExcludeFromCodeCoverage]
 internal class XUnit3Adapter() : TestFrameworkAdapter(
 	"xunit.v3.assert",

@@ -30,6 +30,23 @@ public sealed class AndNodeTests
 	}
 
 	[Fact]
+	public async Task ShouldConsiderFurtherProcessingStrategy()
+	{
+		AndNode node = new(new DummyNode("",
+			() => new ConstraintResult.Failure("foo", "-")));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "-", FurtherProcessingStrategy.IgnoreCompletely)), " my ");
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("baz", "-")), " is ");
+		StringBuilder sb = new();
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo my bar");
+	}
+
+	[Fact]
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
@@ -112,6 +129,20 @@ public sealed class AndNodeTests
 
 		result.AppendExpectation(sb);
 		await That(sb.ToString()).IsEqualTo("foo my bar");
+	}
+
+	[Fact]
+	public async Task WithCustomSeparators_ShouldUseItInsteadOfOr()
+	{
+		AndNode node = new(new DummyNode("", () => new ConstraintResult.Failure("foo", "-")));
+		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
+		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("baz", "-")), " is ");
+		StringBuilder sb = new();
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo my bar is baz");
 	}
 
 	[Fact]

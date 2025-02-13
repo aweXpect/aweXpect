@@ -68,6 +68,19 @@ public class StringExtensionsTests
 		await That(result).IsNull();
 	}
 
+	[Theory]
+	[InlineData("", "a ")]
+	[InlineData("apple", "an apple")]
+	[InlineData("bee", "a bee")]
+	[InlineData("Exception", "an Exception")]
+	[InlineData("NotSupportedException", "a NotSupportedException")]
+	public async Task PrependAOrAn(string input, string expected)
+	{
+		string result = input.PrependAOrAn();
+
+		await That(result).IsEqualTo(expected);
+	}
+
 	[Fact]
 	public async Task RemoveNewlineStyle_ShouldReplaceNewlinesWithSlashN()
 	{
@@ -79,13 +92,12 @@ public class StringExtensionsTests
 		await That(result).IsEqualTo(expected);
 	}
 
-
 	[Fact]
 	public async Task RemoveNewlineStyle_WhenNull_ShouldReturnNull()
 	{
 		string? input = null;
 
-		string? result = input.Indent();
+		string? result = input.RemoveNewlineStyle();
 
 		await That(result).IsNull();
 	}

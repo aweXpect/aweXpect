@@ -141,6 +141,56 @@ public class ConstraintResultTests
 	}
 
 	[Fact]
+	public async Task UpdateExpectationText_ShouldKeepPrefixWhenNull()
+	{
+		ConstraintResult.Success sut = new("foo");
+		StringBuilder sb = new();
+		sut.UpdateExpectationText(s => s.Append("prefix-foo\n"), s => s.Append("\nsuffix-foo"));
+
+		sut.UpdateExpectationText(null, s => s.Append("\nsuffix-foo2"));
+
+		sut.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("prefix-foo\nfoo\nsuffix-foo2");
+	}
+
+	[Fact]
+	public async Task UpdateExpectationText_ShouldKeepSuffixWhenNull()
+	{
+		ConstraintResult.Success sut = new("foo");
+		StringBuilder sb = new();
+		sut.UpdateExpectationText(s => s.Append("prefix-foo\n"), s => s.Append("\nsuffix-foo"));
+
+		sut.UpdateExpectationText(s => s.Append("prefix-foo2\n"));
+
+		sut.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("prefix-foo2\nfoo\nsuffix-foo");
+	}
+
+	[Fact]
+	public async Task UpdateExpectationText_ShouldSupportPrefixOnly()
+	{
+		ConstraintResult.Success sut = new("foo");
+		StringBuilder sb = new();
+
+		sut.UpdateExpectationText(s => s.Append("prefix-foo\n"));
+
+		sut.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("prefix-foo\nfoo");
+	}
+
+	[Fact]
+	public async Task UpdateExpectationText_ShouldSupportSuffixOnly()
+	{
+		ConstraintResult.Success sut = new("foo");
+		StringBuilder sb = new();
+
+		sut.UpdateExpectationText(null, s => s.Append("\nsuffix-foo"));
+
+		sut.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo\nsuffix-foo");
+	}
+
+	[Fact]
 	public async Task UpdateExpectationText_ShouldUsePrefixAndSuffixForAppendExpectation()
 	{
 		ConstraintResult.Success sut = new("foo");

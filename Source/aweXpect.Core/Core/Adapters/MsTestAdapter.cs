@@ -1,4 +1,5 @@
-﻿namespace aweXpect.Adapters;
+﻿// ReSharper disable UnusedType.Global
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Implements the MS test framework adapter.

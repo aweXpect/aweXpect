@@ -30,6 +30,23 @@ public sealed class OrNodeTests
 	}
 
 	[Fact]
+	public async Task ShouldConsiderFurtherProcessingStrategy()
+	{
+		OrNode node = new(new DummyNode("",
+			() => new ConstraintResult.Failure("foo", "-")));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "-", FurtherProcessingStrategy.IgnoreCompletely)), " my ");
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("baz", "-")), " is ");
+		StringBuilder sb = new();
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo my bar");
+	}
+
+	[Fact]
 	public async Task ToString_ShouldCombineAllNodes()
 	{
 #pragma warning disable CS4014
@@ -102,6 +119,58 @@ public sealed class OrNodeTests
 	}
 
 	[Fact]
+	public async Task WhenBothAreSuccess_ShouldHaveEmptyResultText()
+	{
+		OrNode node = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo")));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Success("bar")));
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEmpty();
+	}
+
+	[Fact]
+	public async Task WhenLeftIsFailureAndHasIgnoreResultFurtherProcessingStrategy_ShouldExcludeRightResultText()
+	{
+		OrNode node = new(new DummyNode("",
+			() => new ConstraintResult.Failure("foo", "r1", FurtherProcessingStrategy.IgnoreResult)));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo("r1");
+	}
+
+	[Fact]
+	public async Task WhenLeftIsSuccessAndHasIgnoreResultFurtherProcessingStrategy_ShouldExcludeRightResultText()
+	{
+		OrNode node = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo", FurtherProcessingStrategy.IgnoreResult)));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEmpty();
+	}
+
+	[Fact]
+	public async Task WhenOnlyRightHasFailure_ShouldIncludeRightResultText()
+	{
+		OrNode node = new(new DummyNode("",
+			() => new ConstraintResult.Success("foo")));
+		node.AddNode(new DummyNode("",
+			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo("r2");
+	}
+
+	[Fact]
 	public async Task WithCustomSeparator_ShouldUseItInsteadOfOr()
 	{
 		OrNode node = new(new DummyNode("", () => new ConstraintResult.Failure("foo", "-")));
@@ -112,6 +181,20 @@ public sealed class OrNodeTests
 
 		result.AppendExpectation(sb);
 		await That(sb.ToString()).IsEqualTo("foo my bar");
+	}
+
+	[Fact]
+	public async Task WithCustomSeparators_ShouldUseItInsteadOfOr()
+	{
+		OrNode node = new(new DummyNode("", () => new ConstraintResult.Failure("foo", "-")));
+		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
+		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("baz", "-")), " is ");
+		StringBuilder sb = new();
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		result.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foo my bar is baz");
 	}
 
 	[Fact]

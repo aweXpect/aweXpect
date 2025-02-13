@@ -56,13 +56,13 @@ public sealed partial class ThatDelegate
 			{
 				Action action = () => { };
 
-				async Task<CustomException> Act()
-					=> await That(action).Throws<CustomException>();
+				async Task<Exception> Act()
+					=> await That(action).Throws<Exception>();
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throws a CustomException,
+					             throws an exception,
 					             but it did not throw any exception
 					             """);
 			}
@@ -186,12 +186,12 @@ public sealed partial class ThatDelegate
 				Action action = () => { };
 
 				async Task<Exception> Act()
-					=> await That(action).Throws(typeof(CustomException));
+					=> await That(action).Throws(typeof(Exception));
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that action
-					             throws a CustomException,
+					             throws an exception,
 					             but it did not throw any exception
 					             """);
 			}

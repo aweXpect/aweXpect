@@ -328,5 +328,22 @@ public class ExpectationNodeTests
 		await That(value).IsEqualTo(1);
 	}
 
+	[Fact]
+	public async Task TryGetValue_WhenNeitherLeftNorRightHasValue_ShouldReturnFalse()
+	{
+		DummyConstraint constraint1 = new("", () => new ConstraintResult.Success(""));
+		DummyConstraint constraint2 = new("", () => new ConstraintResult.Success(""));
+		ExpectationNode node = new();
+		node.AddConstraint(constraint1);
+		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
+		node.AddConstraint(constraint2);
+		ConstraintResult constraintResult = await node.IsMetBy(3, null!, CancellationToken.None);
+
+		bool result = constraintResult.TryGetValue(out string? value);
+
+		await That(result).IsFalse();
+		await That(value).IsNull();
+	}
+
 	private class UnsupportedConstraint : IConstraint;
 }

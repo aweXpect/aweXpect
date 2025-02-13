@@ -47,6 +47,7 @@ public class StringExtensionsTests
 	}
 
 	[Theory]
+	[InlineData("", "a ")]
 	[InlineData("apple", "an apple")]
 	[InlineData("bee", "a bee")]
 	[InlineData("Exception", "an Exception")]

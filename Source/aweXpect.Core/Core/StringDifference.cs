@@ -231,7 +231,7 @@ public sealed class StringDifference(
 		int maxCommonLength = Math.Min(actualValue.Length, expectedValue.Length);
 		int min = 0;
 		int max = maxCommonLength + 1;
-		while (min <= max)
+		while (min < max)
 		{
 			int mid = (min + max) / 2;
 			if (mid == min)
@@ -242,10 +242,6 @@ public sealed class StringDifference(
 			if (comparer.Equals(actualValue[..mid], expectedValue[..mid]))
 			{
 				min = mid;
-			}
-			else if (mid <= min + 1)
-			{
-				break;
 			}
 			else
 			{
@@ -272,7 +268,7 @@ public sealed class StringDifference(
 		int indexOfWordBoundary = value
 			.LastIndexOf(' ', Math.Min(maxLength + lengthOfWhitespace, value.Length) - 1);
 
-		if (indexOfWordBoundary >= minLength)
+		if (indexOfWordBoundary > minLength)
 		{
 			return indexOfWordBoundary;
 		}

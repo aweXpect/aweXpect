@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Adapters;
+﻿// ReSharper disable UnusedType.Global
+
+namespace aweXpect.Core.Adapters;
 
 /// <summary>
 ///     Implements the XUnit v2 test framework adapter.
@@ -6,7 +8,6 @@
 /// <remarks>
 ///     <see href="https://github.com/xunit/xunit" />
 /// </remarks>
-// ReSharper disable once UnusedMember.Global
 internal class XUnit2Adapter() : TestFrameworkAdapter(
 	"xunit.assert",
 	(a, m) => FromType("Xunit.Sdk.XunitException", a, m),
