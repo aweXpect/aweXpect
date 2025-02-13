@@ -55,10 +55,6 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		return memberResult.UseValue(value);
 	}
 
-	/// <inheritdoc />
-	public override string ToString()
-		=> _memberAccessor + base.ToString();
-
 	internal ConstraintResult CombineResults(
 		ConstraintResult? combinedResult,
 		ConstraintResult result)

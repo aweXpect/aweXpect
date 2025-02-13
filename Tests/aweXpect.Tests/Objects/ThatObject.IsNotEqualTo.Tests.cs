@@ -2,7 +2,7 @@
 
 public sealed partial class ThatObject
 {
-	public sealed class IsNotEqualTo
+	public sealed partial class IsNotEqualTo
 	{
 		public sealed class Tests
 		{

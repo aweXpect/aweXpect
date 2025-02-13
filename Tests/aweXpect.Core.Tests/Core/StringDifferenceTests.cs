@@ -70,6 +70,28 @@ public class StringDifferenceTests
 			""");
 	}
 
+	[Theory]
+	[InlineData(StringDifference.MatchType.Wildcard, "wildcard pattern")]
+	[InlineData(StringDifference.MatchType.Regex, "regex pattern")]
+	public async Task WhenActualValueIsNull_ShouldUsePatternName(StringDifference.MatchType matchType,
+		string patternName)
+	{
+		const string? actual = null;
+		const string expected = "This is a text";
+
+		StringDifference sut = new(actual, expected,
+			settings: new StringDifferenceSettings(0, 0).WithMatchType(matchType));
+
+		await That(sut.ToString()).IsEqualTo(
+			$"""
+			 differs:
+			   ↓ (actual)
+			   <null>
+			   "This is a text"
+			   ↑ ({patternName})
+			 """);
+	}
+
 	[Fact]
 	public async Task WhenActualValueIsShorterThanExpected_ShouldDifferAtIndexExpectedLength()
 	{
@@ -106,6 +128,28 @@ public class StringDifferenceTests
 			  <null>
 			  ↑ (expected)
 			""");
+	}
+
+	[Theory]
+	[InlineData(StringDifference.MatchType.Wildcard, "wildcard pattern")]
+	[InlineData(StringDifference.MatchType.Regex, "regex pattern")]
+	public async Task WhenExpectedValueIsNull_ShouldUsePatternName(StringDifference.MatchType matchType,
+		string patternName)
+	{
+		const string actual = "This is a text";
+		const string? expected = null;
+
+		StringDifference sut = new(actual, expected,
+			settings: new StringDifferenceSettings(0, 0).WithMatchType(matchType));
+
+		await That(sut.ToString()).IsEqualTo(
+			$"""
+			 differs:
+			   ↓ (actual)
+			   "This is a text"
+			   <null>
+			   ↑ ({patternName})
+			 """);
 	}
 
 	[Fact]

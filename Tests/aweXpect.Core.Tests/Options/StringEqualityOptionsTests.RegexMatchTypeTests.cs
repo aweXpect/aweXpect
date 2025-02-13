@@ -1,9 +1,21 @@
-﻿namespace aweXpect.Core.Tests.Options;
+﻿using aweXpect.Options;
+
+namespace aweXpect.Core.Tests.Options;
 
 public sealed partial class StringEqualityOptionsTests
 {
 	public sealed class RegexMatchTypeTests
 	{
+		[Fact]
+		public async Task AsRegex_ShouldReturnSameInstance()
+		{
+			StringEqualityOptions sut = new();
+
+			StringEqualityOptions result = sut.AsRegex();
+
+			await That(result).IsSameAs(sut);
+		}
+
 		[Theory]
 		[InlineData(false)]
 		[InlineData(true)]

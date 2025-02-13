@@ -33,7 +33,7 @@ public class ExpectationNodeTests
 
 		node.AddConstraint(new DummyConstraint("bar"));
 
-		await That(node.ToString()).IsEqualTo("foo with length bar");
+		await That(node.ToString()).IsEqualTo("foobar");
 	}
 
 	[Fact]
@@ -247,6 +247,28 @@ public class ExpectationNodeTests
 			.WithMessage("The expectation node does not support string with value \"42\"");
 	}
 
+	[Theory]
+	[InlineData(Outcome.Success, Outcome.Success, Outcome.Success)]
+	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Failure)]
+	[InlineData(Outcome.Success, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Undecided, Outcome.Failure)]
+	[InlineData(Outcome.Undecided, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Undecided, Outcome.Undecided, Outcome.Undecided)]
+	public async Task Outcome_ShouldBeExpected(Outcome node1, Outcome node2, Outcome expectedOutcome)
+	{
+		DummyConstraint constraint1 = new("", () => new DummyConstraintResult(node1));
+		DummyConstraint constraint2 = new("", () => new DummyConstraintResult(node2));
+		ExpectationNode node = new();
+		node.AddConstraint(constraint1);
+		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
+		node.AddConstraint(constraint2);
+
+		ConstraintResult result = await node.IsMetBy(3, null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(expectedOutcome);
+	}
+
 	[Fact]
 	public async Task ToString_Empty_ShouldReturnEmptyText()
 	{
@@ -279,7 +301,7 @@ public class ExpectationNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).IsEqualTo("foowith length: <empty>");
+		await That(result).IsEqualTo("foo<empty>");
 	}
 
 	[Fact]
@@ -291,7 +313,7 @@ public class ExpectationNodeTests
 
 		string? result = node.ToString();
 
-		await That(result).IsEqualTo("with length: <empty>");
+		await That(result).IsEqualTo("<empty>");
 	}
 
 	[Fact]

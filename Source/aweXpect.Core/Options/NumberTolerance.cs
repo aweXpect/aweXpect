@@ -45,7 +45,11 @@ public class NumberTolerance<TNumber>(
 	///     <paramref name="expected" /> number.
 	/// </summary>
 	public bool IsWithinTolerance(TNumber? actual, TNumber? expected)
-		=> (expected == null && actual == null) ||
-		   (expected != null && actual != null &&
-		    isWithinTolerance(actual.Value, expected.Value, Tolerance));
+		=> (actual, expected) switch
+		{
+			(null, null) => true,
+			(_, null) => false,
+			(null, _) => false,
+			(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance),
+		};
 }

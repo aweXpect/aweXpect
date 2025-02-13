@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect.Core.Tests.Core.Constraints;
 
-public class ConstraintResultExtensionsTests
+public sealed class ConstraintResultExtensionsTests
 {
 	public sealed class FailTests
 	{
@@ -103,6 +104,31 @@ public class ConstraintResultExtensionsTests
 #else
 			await That(result).Has().Exactly(2).Items();
 #endif
+		}
+
+		[Fact]
+		public async Task TryGetValue_ShouldForwardToWrappedConstraintResult()
+		{
+			ConstraintResult sut = new ConstraintResult.Failure<string>("value1", "foo", "bar");
+			sut = sut.WithContext("t1", "c1");
+
+			bool result = sut.TryGetValue(out string? value);
+
+			await That(result).IsTrue();
+			await That(value).IsEqualTo("value1");
+		}
+
+		[Fact]
+		public async Task UpdateExpectationText_ShouldForwardToWrappedConstraintResult()
+		{
+			ConstraintResult sut = new ConstraintResult.Failure<string>("value1", "foo", "bar");
+			sut = sut.WithContext("t1", "c1");
+			StringBuilder sb = new();
+
+			sut.UpdateExpectationText(s => s.Append("PRE-"), s => s.Append("-POST"));
+
+			sut.AppendExpectation(sb);
+			await That(sb.ToString()).IsEqualTo("PRE-foo-POST");
 		}
 	}
 }

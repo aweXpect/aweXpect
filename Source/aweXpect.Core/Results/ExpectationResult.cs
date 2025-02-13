@@ -88,11 +88,13 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result.Outcome == Outcome.Failure)
+		if (result.Outcome == Outcome.Success)
 		{
-			Fail.Test(ExpectationBuilder.FromFailure(
-				expectationBuilder.Subject, result));
+			return;
 		}
+
+		Fail.Test(ExpectationBuilder.FromFailure(
+			expectationBuilder.Subject, result));
 	}
 }
 

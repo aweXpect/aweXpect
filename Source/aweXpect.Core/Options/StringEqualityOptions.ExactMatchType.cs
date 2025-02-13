@@ -21,15 +21,18 @@ public partial class StringEqualityOptions
 		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
 			IEqualityComparer<string> comparer)
 		{
-			for (int i = 0; i <= stringWithLeadingWhitespace.Length - value.Length; i++)
+			int indexOfFirstMatch;
+			for (indexOfFirstMatch = 0;
+			     indexOfFirstMatch <= stringWithLeadingWhitespace.Length - value.Length;
+			     indexOfFirstMatch++)
 			{
-				if (comparer.Equals(stringWithLeadingWhitespace.Substring(i, value.Length), value))
+				if (comparer.Equals(stringWithLeadingWhitespace.Substring(indexOfFirstMatch, value.Length), value))
 				{
-					return i;
+					break;
 				}
 			}
 
-			return 0;
+			return indexOfFirstMatch;
 		}
 
 		#region IMatchType Members

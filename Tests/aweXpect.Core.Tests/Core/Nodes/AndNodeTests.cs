@@ -29,6 +29,24 @@ public sealed class AndNodeTests
 			.InAnyOrder();
 	}
 
+	[Theory]
+	[InlineData(Outcome.Success, Outcome.Success, Outcome.Success)]
+	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Failure)]
+	[InlineData(Outcome.Success, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Failure, Outcome.Undecided, Outcome.Failure)]
+	[InlineData(Outcome.Undecided, Outcome.Failure, Outcome.Failure)]
+	[InlineData(Outcome.Undecided, Outcome.Undecided, Outcome.Undecided)]
+	public async Task Outcome_ShouldBeExpected(Outcome node1, Outcome node2, Outcome expectedOutcome)
+	{
+		AndNode node = new(new DummyNode("", () => new DummyConstraintResult(node1)));
+		node.AddNode(new DummyNode("", () => new DummyConstraintResult(node2)));
+
+		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
+
+		await That(result.Outcome).IsEqualTo(expectedOutcome);
+	}
+
 	[Fact]
 	public async Task ShouldConsiderFurtherProcessingStrategy()
 	{

@@ -177,24 +177,26 @@ public abstract class Expectation
 		private async Task GetResultOrThrow()
 		{
 			Result result = await GetResult(0);
-			if (result.ConstraintResult.Outcome == Outcome.Failure)
+			if (result.ConstraintResult.Outcome == Outcome.Success)
 			{
-				StringBuilder sb = new();
-				sb.AppendLine(GetSubjectLine());
-				result.ConstraintResult.AppendExpectation(sb);
-				sb.AppendLine();
-				sb.AppendLine("but");
-				result.ConstraintResult.AppendResult(sb);
-				foreach (ConstraintResult.Context context in result.ConstraintResult.GetContexts()
-					         .Distinct(ConstraintResult.Context.Comparer))
-				{
-					sb.AppendLine().AppendLine();
-					sb.Append(context.Title).Append(':').AppendLine();
-					sb.Append(context.Content);
-				}
-
-				Fail.Test(sb.ToString());
+				return;
 			}
+
+			StringBuilder sb = new();
+			sb.AppendLine(GetSubjectLine());
+			result.ConstraintResult.AppendExpectation(sb);
+			sb.AppendLine();
+			sb.AppendLine("but");
+			result.ConstraintResult.AppendResult(sb);
+			foreach (ConstraintResult.Context context in result.ConstraintResult.GetContexts()
+				         .Distinct(ConstraintResult.Context.Comparer))
+			{
+				sb.AppendLine().AppendLine();
+				sb.Append(context.Title).Append(':').AppendLine();
+				sb.Append(context.Content);
+			}
+
+			Fail.Test(sb.ToString());
 		}
 
 		/// <summary>
