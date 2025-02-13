@@ -98,7 +98,7 @@ public class ConstraintResultExtensionsTests
 
 			List<ConstraintResult.Context> result = sut.GetContexts().ToList();
 
-			await That(result).Has().Exactly(2).Items();
+			await That(result).HasCount().EqualTo(2);
 		}
 	}
 }

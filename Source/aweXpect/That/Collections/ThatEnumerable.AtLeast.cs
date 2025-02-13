@@ -22,15 +22,4 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<string?>?> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));
-
-	/// <summary>
-	///     Verifies that the collection has at least <paramref name="minimum" /> items.
-	/// </summary>
-	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>> AtLeast<TItem>(
-		this IThatHas<IEnumerable<TItem>?> source,
-		int minimum)
-		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ExpectationBuilder.AddConstraint((it, grammar)
-				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.AtLeast(minimum))),
-			source.ExpectSubject()));
 }

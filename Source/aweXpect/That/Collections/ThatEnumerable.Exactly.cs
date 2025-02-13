@@ -22,15 +22,4 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<string?>?> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
-
-	/// <summary>
-	///     Verifies that the collection has exactly <paramref name="expected" /> items.
-	/// </summary>
-	public static ItemsResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>> Exactly<TItem>(
-		this IThatHas<IEnumerable<TItem>?> source,
-		int expected)
-		=> new(new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ExpectationBuilder.AddConstraint((it, grammar)
-				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
-			source.ExpectSubject()));
 }
