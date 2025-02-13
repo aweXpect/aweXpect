@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading;
 using aweXpect.Core.Adapters;
 using aweXpect.Customization;
 
@@ -12,13 +12,10 @@ internal static class Initialization
 {
 	public static Lazy<InitializationState> State { get; } = new(Initialize);
 
-	private static ITestFrameworkAdapter DetectFramework()
+	internal static ITestFrameworkAdapter DetectFramework(IEnumerable<Type> types)
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
-		foreach (Type frameworkType in AppDomain.CurrentDomain.GetAssemblies()
-			         .Where(a => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
-				         .All(x => !a.FullName!.StartsWith(x)))
-			         .SelectMany(a => a.GetTypes())
+		foreach (Type frameworkType in types
 			         .Where(x => x is { IsClass: true, IsAbstract: false })
 			         .Where(frameworkInterface.IsAssignableFrom))
 		{
@@ -43,7 +40,10 @@ internal static class Initialization
 
 	private static InitializationState Initialize()
 	{
-		ITestFrameworkAdapter testFramework = DetectFramework();
+		ITestFrameworkAdapter testFramework = DetectFramework(AppDomain.CurrentDomain.GetAssemblies()
+			.Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
+				.All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
+			.SelectMany(assembly => assembly.GetTypes().Where(x => x.IsVisible || x.IsPublic || !x.IsNested || !x.IsNestedPrivate)));
 		return new InitializationState(testFramework);
 	}
 
