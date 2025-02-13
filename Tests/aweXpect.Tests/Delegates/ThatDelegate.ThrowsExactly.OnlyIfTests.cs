@@ -19,16 +19,6 @@ public sealed partial class ThatDelegate
 				}
 
 				[Fact]
-				public async Task ShouldSupportChainedConstraintsForTypedException()
-				{
-					Action action = () => { };
-
-					await That(action).ThrowsExactly<ArgumentException>()
-						.OnlyIf(false)
-						.WithMessage("foo");
-				}
-
-				[Fact]
 				public async Task WhenAwaited_OnlyIfFalse_ShouldReturnNull()
 				{
 					Action action = () => { };
@@ -116,16 +106,6 @@ public sealed partial class ThatDelegate
 					Action action = () => { };
 
 					await That(action).ThrowsExactly(typeof(Exception))
-						.OnlyIf(false)
-						.WithMessage("foo");
-				}
-
-				[Fact]
-				public async Task ShouldSupportChainedConstraintsForTypedException()
-				{
-					Action action = () => { };
-
-					await That(action).ThrowsExactly(typeof(ArgumentException))
 						.OnlyIf(false)
 						.WithMessage("foo");
 				}
