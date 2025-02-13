@@ -19,7 +19,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not the maximum time span, because we want to test the failure,
+					             is not equal to the maximum time span, because we want to test the failure,
 					             but it was the maximum time span
 					             """);
 			}
@@ -37,7 +37,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not the minimum time span, because we want to test the failure,
+					             is not equal to the minimum time span, because we want to test the failure,
 					             but it was the minimum time span
 					             """);
 			}
@@ -67,9 +67,21 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is not {Formatter.Format(unexpected)}, because we want to test the failure,
+					              is not equal to {Formatter.Format(unexpected)}, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+
+			[Fact]
+			public async Task WhenUnexpectedIsNull_ShouldSucceed()
+			{
+				TimeSpan subject = CurrentTime();
+				TimeSpan? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
@@ -112,7 +124,7 @@ public sealed partial class ThatTimeSpan
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is not {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
+					              is not equal to {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

@@ -55,7 +55,7 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> $"is {Formatter.Format(expected)}{tolerance}";
+			=> $"is equal to {Formatter.Format(expected)}{tolerance}";
 	}
 
 	private readonly struct IsNotConstraint(
@@ -77,6 +77,6 @@ public static partial class ThatTimeSpan
 		}
 
 		public override string ToString()
-			=> $"is not {Formatter.Format(unexpected)}{tolerance}";
+			=> $"is not equal to {Formatter.Format(unexpected)}{tolerance}";
 	}
 }

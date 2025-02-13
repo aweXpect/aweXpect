@@ -50,6 +50,22 @@ public sealed partial class ThatNullableTimeSpan
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeSpan? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsPositive();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is positive,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsPositive_ShouldSucceed()
 			{
 				TimeSpan? subject = 1.Seconds();
