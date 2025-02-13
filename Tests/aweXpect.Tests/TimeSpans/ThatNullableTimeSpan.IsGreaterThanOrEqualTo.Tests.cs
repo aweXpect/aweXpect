@@ -7,6 +7,21 @@ public sealed partial class ThatNullableTimeSpan
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeSpan? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsGreaterThanOrEqualTo(TimeSpan.Zero);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is greater than or equal to 0:00,
+					             but it was <null>
+					             """);
+			}
+			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
 				TimeSpan? subject = CurrentTime();
