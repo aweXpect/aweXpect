@@ -19,7 +19,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is <null>,
+					              is equal to <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -36,7 +36,7 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is {Formatter.Format(expected)},
+					              is equal to {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
 			}
@@ -65,8 +65,25 @@ public sealed partial class ThatNullableDateOnly
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is {Formatter.Format(expected)},
+					              is equal to {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateOnly? expected = CurrentTime();
+				DateOnly? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
@@ -102,7 +119,7 @@ public sealed partial class ThatNullableDateOnly
 					.OnlyIf(expectToThrow)
 					.WithMessage($"""
 					              Expected that subject
-					              is {Formatter.Format(expected)} ± {tolerance} days, because we want to test the failure,
+					              is equal to {Formatter.Format(expected)} ± {tolerance} days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
