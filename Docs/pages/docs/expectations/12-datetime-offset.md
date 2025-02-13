@@ -1,7 +1,3 @@
----
-sidebar_position: 7
----
-
 # DateTime / DateTimeOffset
 
 Describes the possible expectations for `DateTime` and `DateTimeOffset`.

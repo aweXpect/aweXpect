@@ -1,7 +1,3 @@
----
-sidebar_position: 3
----
-
 # String
 
 Describes the possible expectations for strings.

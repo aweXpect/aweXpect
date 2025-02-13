@@ -1,7 +1,3 @@
----
-sidebar_position: 17
----
-
 # JSON
 
 Describes the possible expectations for working

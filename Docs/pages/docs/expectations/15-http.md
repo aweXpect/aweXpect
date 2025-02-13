@@ -1,7 +1,3 @@
----
-sidebar_position: 11
----
-
 # HTTP
 
 Describes the possible expectations for `HttpResponseMessage` values.

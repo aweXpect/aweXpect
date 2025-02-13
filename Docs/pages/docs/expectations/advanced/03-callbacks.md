@@ -1,7 +1,3 @@
----
-sidebar_position: 16
----
-
 # Callbacks
 
 Describes the possible expectations for working with callbacks.

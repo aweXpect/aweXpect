@@ -1,7 +1,3 @@
----
-sidebar_position: 13
----
-
 # Collections
 
 Describes the possible expectations for collections.

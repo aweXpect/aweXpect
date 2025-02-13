@@ -1,7 +1,3 @@
----
-sidebar_position: 15
----
-
 # Events
 
 Describes the possible expectations for verifying events.

@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # Object
 
 Describes the possible expectations for objects.
