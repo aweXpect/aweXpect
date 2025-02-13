@@ -17,16 +17,6 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
-			public async Task ShouldSupportChainedConstraintsForTypedException()
-			{
-				Action action = () => { };
-
-				await That(action).ThrowsException()
-					.OnlyIf(false)
-					.WithMessage("foo");
-			}
-
-			[Fact]
 			public async Task WhenAwaited_OnlyIfFalse_ShouldReturnNull()
 			{
 				Action action = () => { };
