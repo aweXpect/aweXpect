@@ -3,18 +3,29 @@
 public class FormattingOptionsTests
 {
 	[Fact]
+	public async Task Indented_ShouldUseLineBreaks()
+	{
+		FormattingOptions options = FormattingOptions.Indented;
+
+		await That(options.UseLineBreaks).IsTrue();
+		await That(options.Indentation).IsEqualTo("  ");
+	}
+
+	[Fact]
 	public async Task MultipleLines_ShouldUseLineBreaks()
 	{
-		FormattingOptions multipleLines = FormattingOptions.MultipleLines;
+		FormattingOptions options = FormattingOptions.MultipleLines;
 
-		await That(multipleLines.UseLineBreaks).IsTrue();
+		await That(options.UseLineBreaks).IsTrue();
+		await That(options.Indentation).IsEmpty();
 	}
 
 	[Fact]
 	public async Task SingleLine_ShouldNotUseLineBreaks()
 	{
-		FormattingOptions multipleLines = FormattingOptions.SingleLine;
+		FormattingOptions options = FormattingOptions.SingleLine;
 
-		await That(multipleLines.UseLineBreaks).IsFalse();
+		await That(options.UseLineBreaks).IsFalse();
+		await That(options.Indentation).IsEmpty();
 	}
 }
