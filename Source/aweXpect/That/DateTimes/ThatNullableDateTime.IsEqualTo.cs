@@ -21,7 +21,7 @@ public static partial class ThatNullableDateTime
 				new ConditionConstraint(
 					it,
 					expected,
-					$"is {Formatter.Format(expected)}{tolerance}",
+					$"is equal to {Formatter.Format(expected)}{tolerance}",
 					(a, e, t) => AreKindCompatible(a?.Kind, e?.Kind) && IsWithinTolerance(t, a - e),
 					(a, e, i) => AreKindCompatible(a?.Kind, e?.Kind)
 						? $"{i} was {Formatter.Format(a)}"
@@ -44,7 +44,7 @@ public static partial class ThatNullableDateTime
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"is not {Formatter.Format(unexpected)}{tolerance}",
+					$"is not equal to {Formatter.Format(unexpected)}{tolerance}",
 					(a, e, t) => !AreKindCompatible(a?.Kind, e?.Kind) || !IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

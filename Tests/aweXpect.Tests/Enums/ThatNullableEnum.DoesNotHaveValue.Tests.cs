@@ -38,6 +38,22 @@ public sealed partial class ThatNullableEnum
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				MyNumbers? subject = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotHaveValue(1L);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not have value 1,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldSucceed()
 			{
 				MyColors? subject = MyColors.Yellow;

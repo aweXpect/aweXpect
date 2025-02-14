@@ -58,6 +58,23 @@ public sealed partial class ThatNullableDateTime
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateTime? subject = null;
+				DateTime? expected = CurrentTime();
+
+				async Task Act()
+					=> await That(subject).IsNotOnOrAfter(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not on or after {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsSame_ShouldFail()
 			{
 				DateTime? subject = CurrentTime();

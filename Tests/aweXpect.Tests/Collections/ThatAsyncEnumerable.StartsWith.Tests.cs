@@ -35,17 +35,6 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
-			public async Task ShouldSupportCaseInsensitiveComparison()
-			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["FOO", "BAR"]);
-
-				async Task Act()
-					=> await That(subject).StartsWith("foo").IgnoringCase();
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
 				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass(x), 20);
@@ -143,6 +132,36 @@ public sealed partial class ThatAsyncEnumerable
 					             starts with [],
 					             but it was <null>
 					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task ShouldIncludeOptionsInFailureMessage()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).StartsWith("FOO", "BAZ").IgnoringCase();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             starts with ["FOO", "BAZ"] ignoring case,
+					             but it contained "bar" at index 1 instead of "BAZ"
+					             """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportIgnoringCase()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).StartsWith("FOO", "BAR").IgnoringCase();
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]

@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
 using System.Threading;
 
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests;
 
-public sealed partial class ThatEnumerable
+public sealed partial class ThatAsyncEnumerable
 {
 	public sealed partial class None
 	{
@@ -18,7 +19,7 @@ public sealed partial class ThatEnumerable
 				{
 					using CancellationTokenSource cts = new();
 					CancellationToken token = cts.Token;
-					IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
+					IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item < 0)
@@ -35,7 +36,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotEnumerateTwice()
 				{
-					ThrowWhenIteratingTwiceEnumerable subject = new();
+					ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 15)
@@ -47,7 +48,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotMaterializeEnumerable()
 				{
-					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 5);
@@ -63,7 +64,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 1);
@@ -79,7 +80,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable((int[]) []);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable((int[]) []);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 0);
@@ -90,7 +91,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 42);
@@ -101,7 +102,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenSubjectIsNull_ShouldFail()
 				{
-					IEnumerable<int>? subject = null;
+					IAsyncEnumerable<int>? subject = null;
 
 					async Task Act()
 						=> await That(subject).None().Satisfy(item => item == 0);
@@ -117,3 +118,4 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
+#endif

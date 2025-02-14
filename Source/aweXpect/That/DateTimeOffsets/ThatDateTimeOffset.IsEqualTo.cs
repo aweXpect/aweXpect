@@ -21,7 +21,7 @@ public static partial class ThatDateTimeOffset
 				new ConditionConstraint(
 					it,
 					expected,
-					$"is {Formatter.Format(expected)}{tolerance}",
+					$"is equal to {Formatter.Format(expected)}{tolerance}",
 					(a, e, t) => IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -42,7 +42,7 @@ public static partial class ThatDateTimeOffset
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"is not {Formatter.Format(unexpected)}{tolerance}",
+					$"is not equal to {Formatter.Format(unexpected)}{tolerance}",
 					(a, e, t) => !IsWithinTolerance(t, a - e),
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

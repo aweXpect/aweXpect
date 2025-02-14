@@ -52,7 +52,7 @@ public abstract partial class EnumerableQuantifier
 			return quantifierExpectation;
 		}
 
-		if (expectationGrammars == ExpectationGrammars.Nested)
+		if (expectationGrammars.HasFlag(ExpectationGrammars.Nested))
 		{
 			return $"{quantifierExpectation} {expectationExpression}";
 		}

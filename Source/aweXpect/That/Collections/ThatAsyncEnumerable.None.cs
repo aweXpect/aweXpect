@@ -12,13 +12,13 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public static Elements<TItem> None<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject)
-		=> new(subject, EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars));
+		=> new(subject, EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars | ExpectationGrammars.Plural));
 
 	/// <summary>
 	///     Verifies that in the collection no items…
 	/// </summary>
 	public static Elements None(
 		this IThat<IAsyncEnumerable<string?>?> subject)
-		=> new(subject, EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars));
+		=> new(subject, EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars | ExpectationGrammars.Plural));
 }
 #endif

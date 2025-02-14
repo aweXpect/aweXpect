@@ -46,6 +46,6 @@ public static partial class ThatDateTime
 		}
 
 		public override string ToString()
-			=> expectation + tolerance;
+			=> $"{expectation}{tolerance}";
 	}
 }

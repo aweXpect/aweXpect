@@ -12,15 +12,10 @@ public static partial class ThatNullableDateTime
 {
 	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan? difference)
 	{
-		if (difference == null)
-		{
-			return false;
-		}
-
 		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 
-		return difference.Value <= tolerance.Value &&
-		       difference.Value >= tolerance.Value.Negate();
+		return difference <= tolerance.Value &&
+		       difference >= tolerance.Value.Negate();
 	}
 
 	private readonly struct ConditionConstraint(
@@ -44,6 +39,6 @@ public static partial class ThatNullableDateTime
 		}
 
 		public override string ToString()
-			=> expectation + tolerance;
+			=> $"{expectation}{tolerance}";
 	}
 }
