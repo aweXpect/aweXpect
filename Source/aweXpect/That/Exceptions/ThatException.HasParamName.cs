@@ -28,12 +28,6 @@ public static partial class ThatException
 	{
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
-			if (actual == null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
-			}
-
 			if (actual is TArgumentException argumentException)
 			{
 				if (argumentException.ParamName == expected)
@@ -47,7 +41,7 @@ public static partial class ThatException
 			}
 
 			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {actual.GetType().Name.PrependAOrAn()}");
+				$"{it} was {Formatter.Format(actual)}");
 		}
 
 		public override string ToString()

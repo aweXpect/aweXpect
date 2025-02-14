@@ -45,7 +45,8 @@ public static partial class ThatException
 		Action<IThat<Exception?>> expectations)
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
-					$"has an inner {innerExceptionType.Name} whose")
+					$"has an inner {innerExceptionType.Name} whose",
+					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint(it,
 						innerExceptionType))
@@ -55,7 +56,7 @@ public static partial class ThatException
 	/// <summary>
 	///     Verifies that the actual exception has an inner exception of type <paramref name="innerExceptionType" />.
 	/// </summary>
-	public static AndOrResult<Exception?, IThat<Exception?>> HaveInner(
+	public static AndOrResult<Exception?, IThat<Exception?>> HasInner(
 		this IThat<Exception?> source,
 		Type innerExceptionType)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)

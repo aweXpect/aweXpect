@@ -135,7 +135,7 @@ public static partial class ThatException
 			return new ConstraintResult.Failure<Exception?>(actual, "",
 				actual == null
 					? $"{it} was <null>"
-					: $"{it} was {actual.FormatForMessage()}");
+					: $"{it} was {actual.InnerException?.FormatForMessage()}");
 		}
 
 		#endregion

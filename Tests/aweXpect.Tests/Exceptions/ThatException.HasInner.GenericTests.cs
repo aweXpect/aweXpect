@@ -2,9 +2,9 @@
 
 public sealed partial class ThatException
 {
-	public sealed class HasInner
+	public sealed partial class HasInner
 	{
-		public sealed class Tests
+		public sealed class GenericTests
 		{
 			[Fact]
 			public async Task WhenInnerExceptionHasCorrectMessageButUnexpectedType_ShouldFail()
