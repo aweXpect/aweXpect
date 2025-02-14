@@ -19,6 +19,19 @@ public static class ConstraintResultExtensions
 		=> new ConstraintResultWrapper<T>(inner, value);
 
 	/// <summary>
+	///     Creates a new <see cref="ConstraintResult" /> where the expectation is prepended with the
+	///     <paramref name="prefix" />
+	/// </summary>
+	public static ConstraintResult PrependExpectationText(this ConstraintResult inner, Action<StringBuilder>? prefix)
+		=> new ConstraintResultExpectationWrapper(inner, prefix, null);
+
+	/// <summary>
+	///     Creates a new <see cref="ConstraintResult" /> where the expectation is appended with the <paramref name="suffix" />
+	/// </summary>
+	public static ConstraintResult AppendExpectationText(this ConstraintResult inner, Action<StringBuilder>? suffix)
+		=> new ConstraintResultExpectationWrapper(inner, null, suffix);
+
+	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> with <see cref="Outcome.Failure" /> from
 	///     the <paramref name="inner" /> using the given <paramref name="value" />.
 	/// </summary>
@@ -39,10 +52,28 @@ public static class ConstraintResultExtensions
 		params ConstraintResult.Context[] contexts)
 		=> new ConstraintResultContextWrapper(inner, contexts);
 
+	/// <summary>
+	///     Checks if the two <see cref="ConstraintResult" />s have the same result text.
+	/// </summary>
+	public static bool HasSameResultTextAs(this ConstraintResult left, ConstraintResult right)
+		=> left.GetResultText() == right.GetResultText();
+
+	private static string GetResultText(this ConstraintResult result)
+	{
+		if (result is ConstraintResult.Failure failure)
+		{
+			return failure.ResultText;
+		}
+
+		StringBuilder sb = new();
+		result.AppendResult(sb);
+		return sb.ToString();
+	}
+
 	private sealed class ConstraintResultWrapper<T> : ConstraintResult
 	{
-		private readonly T _value;
 		private readonly ConstraintResult _inner;
+		private readonly T _value;
 
 		public ConstraintResultWrapper(ConstraintResult inner, T value)
 			: base(inner.Outcome, inner.FurtherProcessingStrategy)
@@ -60,12 +91,7 @@ public static class ConstraintResultExtensions
 		public override IEnumerable<Context> GetContexts()
 			=> _inner.GetContexts();
 
-		internal override void UpdateExpectationText(
-			Action<StringBuilder>? prependExpectationText = null,
-			Action<StringBuilder>? appendExpectationText = null)
-			=> _inner.UpdateExpectationText(prependExpectationText, appendExpectationText);
-
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
 			if (_value is TValue typedValue)
 			{
@@ -102,12 +128,7 @@ public static class ConstraintResultExtensions
 			}
 		}
 
-		internal override void UpdateExpectationText(
-			Action<StringBuilder>? prependExpectationText = null,
-			Action<StringBuilder>? appendExpectationText = null)
-			=> inner.UpdateExpectationText(prependExpectationText, appendExpectationText);
-
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 			=> inner.TryGetValue(out value);
 	}
 
@@ -125,12 +146,7 @@ public static class ConstraintResultExtensions
 		public override IEnumerable<Context> GetContexts()
 			=> inner.GetContexts();
 
-		internal override void UpdateExpectationText(
-			Action<StringBuilder>? prependExpectationText = null,
-			Action<StringBuilder>? appendExpectationText = null)
-			=> inner.UpdateExpectationText(prependExpectationText, appendExpectationText);
-
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
 			if (_value is TValue typedValue)
 			{
@@ -141,5 +157,28 @@ public static class ConstraintResultExtensions
 			value = default;
 			return _value is null;
 		}
+	}
+
+	private sealed class ConstraintResultExpectationWrapper(
+		ConstraintResult inner,
+		Action<StringBuilder>? prefix,
+		Action<StringBuilder>? suffix)
+		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
+	{
+		public override IEnumerable<Context> GetContexts()
+			=> inner.GetContexts();
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+			=> inner.TryGetValue(out value);
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			prefix?.Invoke(stringBuilder);
+			inner.AppendExpectation(stringBuilder, indentation);
+			suffix?.Invoke(stringBuilder);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			=> inner.AppendResult(stringBuilder, indentation);
 	}
 }

@@ -126,7 +126,7 @@ internal class OrNode : Node
 				left.AppendResult(stringBuilder, indentation);
 				if (right.Outcome == Outcome.Failure &&
 				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
-				    left.GetResultText() != right.GetResultText())
+				    !left.HasSameResultTextAs(right))
 				{
 					stringBuilder.Append(" and ");
 					right.AppendResult(stringBuilder, indentation);
@@ -152,7 +152,7 @@ internal class OrNode : Node
 			}
 		}
 
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
 			if (left.TryGetValue<TValue>(out TValue? leftValue))
