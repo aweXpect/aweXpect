@@ -105,6 +105,22 @@ public sealed partial class ThatEnumerable
 					             but found at least 3
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasCount().AtMost(2);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has at most 2 items,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

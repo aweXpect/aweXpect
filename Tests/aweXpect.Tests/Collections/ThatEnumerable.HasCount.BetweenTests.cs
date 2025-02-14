@@ -115,6 +115,22 @@ public sealed partial class ThatEnumerable
 					             but found at least 7
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasCount().Between(2).And(4);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has between 2 and 4 items,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }

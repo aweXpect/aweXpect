@@ -213,11 +213,6 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 		}
 		else
 		{
-			if (sb.Length > 0)
-			{
-				sb.Append(' ');
-			}
-
 			sb.Append(" ignoring");
 		}
 

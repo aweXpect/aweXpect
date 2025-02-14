@@ -11,7 +11,7 @@ public sealed partial class ThatAsyncEnumerable
 	{
 		public sealed class Satisfy
 		{
-			public sealed class Tests
+			public sealed class ItemsTests
 			{
 				[Fact]
 				public async Task DoesNotEnumerateTwice()
@@ -85,7 +85,63 @@ public sealed partial class ThatAsyncEnumerable
 						             """);
 				}
 			}
-			// ReSharper disable once MemberHidesStaticFromOuterClass
+
+			public sealed class StringTests
+			{
+				[Fact]
+				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
+				{
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+					async Task Act()
+						=> await That(subject).All().Satisfy(x => x?.StartsWith("ba") == true);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             satisfies x => x?.StartsWith("ba") == true for all items,
+						             but not all did
+						             """);
+				}
+
+				[Fact]
+				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
+				{
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable((string[]) []);
+
+					async Task Act()
+						=> await That(subject).All().Satisfy(x => x == "");
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
+				public async Task WhenEnumerableOnlyContainsMatchingValues_ShouldSucceed()
+				{
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+					async Task Act()
+						=> await That(subject).All().Satisfy(x => x?.Length == 3);
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					IAsyncEnumerable<string>? subject = null;
+
+					async Task Act()
+						=> await That(subject).All().Satisfy(x => x == "");
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             satisfies x => x == "" for all items,
+						             but it was <null>
+						             """);
+				}
+			}
 		}
 	}
 }
