@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
+using aweXpect.Json;
 
 namespace aweXpect.Tests;
 
@@ -91,7 +92,7 @@ public sealed partial class ThatJsonElement
 				JsonElement subject = FromString(json);
 
 				async Task Act()
-					=> await That(subject).Matches(expected);
+					=> await That(subject).Matches(expected, o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Throws<XunitException>().OnlyIf(!isMatch)
 					.WithMessage($"""
@@ -173,9 +174,25 @@ public sealed partial class ThatJsonElement
 				JsonElement subject = FromString("[1, 2, 3]");
 
 				async Task Act()
-					=> await That(subject).Matches([1, 2]);
+					=> await That(subject).Matches([1, 2], o => o.IgnoringAdditionalProperties());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectContainsAdditionalElements_WhenNotIgnoringAdditionalProperties_ShouldFail()
+			{
+				JsonElement subject = FromString("[1, 2, 3]");
+
+				async Task Act()
+					=> await That(subject).MatchesExactly([1, 2], o => o.IgnoringAdditionalProperties(false));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             matches [1, 2] exactly,
+					             but it differed as $[2] had unexpected 3
+					             """);
 			}
 
 			public static TheoryData<object, string> MatchingArrayValues
@@ -297,9 +314,31 @@ public sealed partial class ThatJsonElement
 					=> await That(subject).Matches(new
 					{
 						bar = 2,
-					});
+					}, o => o.IgnoringAdditionalProperties());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasAdditionalProperties_WhenNotIgnoringAdditionalProperties_ShouldFail()
+			{
+				JsonElement subject = FromString("{\"foo\": null, \"bar\": 2}");
+
+				async Task Act()
+					=> await That(subject).Matches(new
+					{
+						bar = 2,
+					}, o => o.IgnoringAdditionalProperties(false));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             matches new
+					             					{
+					             						bar = 2,
+					             					} exactly,
+					             but it differed as $.foo had unexpected Null
+					             """);
 			}
 		}
 	}

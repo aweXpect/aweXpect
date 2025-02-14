@@ -171,6 +171,22 @@ public sealed partial class ThatAsyncEnumerable
 					               "b"
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AreAllUnique();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             only has unique items,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class MemberTests
@@ -230,6 +246,22 @@ public sealed partial class ThatAsyncEnumerable
 					             but it contained 2 duplicates:
 					               1,
 					               2
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<MyClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AreAllUnique(x => x.Value);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             only has unique items for x => x.Value,
+					             but it was <null>
 					             """);
 			}
 		}
@@ -326,15 +358,15 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IAsyncEnumerable<string>? subject = null;
+				IAsyncEnumerable<MyStringClass>? subject = null;
 
 				async Task Act()
-					=> await That(subject).AreAllUnique();
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             only has unique items,
+					             only has unique items for x => x.Value,
 					             but it was <null>
 					             """);
 			}

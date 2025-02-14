@@ -449,7 +449,7 @@ internal class JsonValidation : IJsonObjectResult,
 		return string.Join(failureSeparator, _failures);
 	}
 
-	private static string Format(JsonValueKind valueKind)
+	internal static string Format(JsonValueKind valueKind)
 		=> valueKind switch
 		{
 			JsonValueKind.Array => "an array",

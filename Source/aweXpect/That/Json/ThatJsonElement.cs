@@ -53,14 +53,14 @@ public static partial class ThatJsonElement
 			if (actual.ValueKind != expected)
 			{
 				return new ConstraintResult.Failure<JsonElement>(actual, ToString(),
-					$"{it} was {actual.ValueKind}");
+					$"{it} was {JsonValidation.Format(actual.ValueKind)} instead of {JsonValidation.Format(expected)}");
 			}
 
 			return new ConstraintResult.Success<JsonElement>(actual, ToString());
 		}
 
 		public override string ToString()
-			=> $"is {expected}";
+			=> $"is {JsonValidation.Format(expected)}";
 	}
 }
 #endif

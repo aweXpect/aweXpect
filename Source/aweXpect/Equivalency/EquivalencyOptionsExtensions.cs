@@ -28,7 +28,7 @@ public static class EquivalencyOptionsExtensions
 	/// </remarks>
 	public static TEquivalencyOptions IncludingFields<TEquivalencyOptions>(
 		this TEquivalencyOptions @this,
-		IncludeMembers fieldsToInclude)
+		IncludeMembers fieldsToInclude = IncludeMembers.Public)
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
@@ -45,7 +45,7 @@ public static class EquivalencyOptionsExtensions
 	/// </remarks>
 	public static TEquivalencyOptions IncludingProperties<TEquivalencyOptions>(
 		this TEquivalencyOptions @this,
-		IncludeMembers propertiesToInclude)
+		IncludeMembers propertiesToInclude = IncludeMembers.Public)
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{

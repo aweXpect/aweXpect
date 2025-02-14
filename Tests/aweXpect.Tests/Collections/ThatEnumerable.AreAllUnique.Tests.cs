@@ -248,6 +248,22 @@ public sealed partial class ThatEnumerable
 					               2
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<MyClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AreAllUnique(x => x.Value);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             only has unique items for x => x.Value,
+					             but it was <null>
+					             """);
+			}
 		}
 
 		public sealed class StringMemberTests
@@ -336,6 +352,22 @@ public sealed partial class ThatEnumerable
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<MyStringClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AreAllUnique(x => x.Value);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             only has unique items for x => x.Value,
+					             but it was <null>
 					             """);
 			}
 

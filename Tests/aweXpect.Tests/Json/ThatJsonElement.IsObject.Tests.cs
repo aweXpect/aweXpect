@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
+using aweXpect.Json;
 
 namespace aweXpect.Tests;
 
@@ -10,10 +11,42 @@ public sealed partial class ThatJsonElement
 		public sealed class Tests
 		{
 			[Theory]
+			[InlineData("{}")]
+			[InlineData("{\"foo\": 1}")]
+			public async Task WhenJsonIsAnObject_ShouldSucceed(string json)
+			{
+				JsonElement subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsObject();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
 			[InlineData("[]", "an array")]
 			[InlineData("2", "a number")]
 			[InlineData("\"foo\"", "a string")]
 			public async Task WhenJsonIsNoObject_ShouldFail(string json, string kindString)
+			{
+				JsonElement subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsObject();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is an object,
+					              but it was {kindString} instead of an object
+					              """);
+			}
+
+			[Theory]
+			[InlineData("[]", "an array")]
+			[InlineData("2", "a number")]
+			[InlineData("\"foo\"", "a string")]
+			public async Task WhenJsonIsNoObject_WithExpectations_ShouldFail(string json, string kindString)
 			{
 				JsonElement subject = FromString(json);
 
@@ -37,7 +70,9 @@ public sealed partial class ThatJsonElement
 				JsonElement subject = FromString("{\"foo\": 1}");
 
 				async Task Act()
-					=> await That(subject).IsObject(o => o.With("foo").Matching(2));
+					=> await That(subject).IsObject(
+						o => o.With("foo").Matching(2),
+						o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

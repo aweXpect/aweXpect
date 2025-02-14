@@ -67,10 +67,42 @@ public sealed partial class ThatJsonElement
 			}
 
 			[Theory]
+			[InlineData("[]")]
+			[InlineData("[1, 2]")]
+			public async Task WhenJsonIsAnArray_ShouldSucceed(string json)
+			{
+				JsonElement subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsArray();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
 			[InlineData("{}", "an object")]
 			[InlineData("2", "a number")]
 			[InlineData("\"foo\"", "a string")]
 			public async Task WhenJsonIsNoArray_ShouldFail(string json, string kindString)
+			{
+				JsonElement subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsArray();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is an array,
+					              but it was {kindString} instead of an array
+					              """);
+			}
+
+			[Theory]
+			[InlineData("{}", "an object")]
+			[InlineData("2", "a number")]
+			[InlineData("\"foo\"", "a string")]
+			public async Task WhenJsonIsNoArray_WithExpectations_ShouldFail(string json, string kindString)
 			{
 				JsonElement subject = FromString(json);
 

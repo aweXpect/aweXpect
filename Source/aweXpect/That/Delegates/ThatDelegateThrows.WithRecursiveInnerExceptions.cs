@@ -25,7 +25,7 @@ public static partial class ThatDelegateThrows
 				.ForMember(
 					MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
 						e => e.GetInnerExpectations(), "recursive inner exceptions "),
-					(property, stringBuilder) => stringBuilder.Append("with ").Append(property).Append("where "))
+					(property, stringBuilder) => stringBuilder.Append("with ").Append(property).Append("which "))
 				.AddExpectations(e => expectations(new ThatSubject<IEnumerable<Exception>>(e)),
 					ExpectationGrammars.Nested),
 			source);

@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed class AtLeast
 	{
-		public sealed class Tests
+		public sealed class ItemsTests
 		{
 			[Fact]
 			public async Task ConsidersCancellationToken()
@@ -87,6 +87,68 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 0 for at least one item,
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task ShouldSupportIgnoringCase()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar"]);
+
+				async Task Act()
+					=> await That(subject).AtLeast(3).AreEqualTo("foo").IgnoringCase();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" ignoring case for at least 3 items,
+					             but only 2 of 3 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).AtLeast(2).AreEqualTo("foo");
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).AtLeast(3).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for at least 3 items,
+					             but only 2 of 4 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AtLeast(1).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for at least one item,
 					             but it was <null>
 					             """);
 			}

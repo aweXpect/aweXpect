@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
+using aweXpect.Json;
 
 namespace aweXpect.Tests;
 
@@ -10,6 +11,19 @@ public sealed partial class ThatNullableJsonElement
 		public sealed class Tests
 		{
 			[Theory]
+			[InlineData("{}")]
+			[InlineData("{\"foo\": 1}")]
+			public async Task WhenJsonIsAnObject_ShouldSucceed(string json)
+			{
+				JsonElement? subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsObject();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
 			[InlineData("[]", "an array")]
 			[InlineData("2", "a number")]
 			[InlineData("\"foo\"", "a string")]
@@ -18,7 +32,28 @@ public sealed partial class ThatNullableJsonElement
 				JsonElement? subject = FromString(json);
 
 				async Task Act()
-					=> await That(subject).IsObject(o => o.With("foo").Matching(true));
+					=> await That(subject).IsObject();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is an object,
+					              but it was {kindString} instead of an object
+					              """);
+			}
+
+			[Theory]
+			[InlineData("[]", "an array")]
+			[InlineData("2", "a number")]
+			[InlineData("\"foo\"", "a string")]
+			public async Task WhenJsonIsNoObject_WithExpectations_ShouldFail(string json, string kindString)
+			{
+				JsonElement? subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsObject(
+						o => o.With("foo").Matching(true),
+						o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
@@ -26,6 +61,38 @@ public sealed partial class ThatNullableJsonElement
 					              is an object and $.foo matches true,
 					              but it was {kindString} instead of an object
 					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				JsonElement? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsObject();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is an object,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_WithExpectations_ShouldFail()
+			{
+				JsonElement? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsObject(o => o.With("foo").Matching(true));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is an object and $.foo matches true,
+					             but it was <null>
+					             """);
 			}
 		}
 

@@ -67,10 +67,42 @@ public sealed partial class ThatNullableJsonElement
 			}
 
 			[Theory]
+			[InlineData("[]")]
+			[InlineData("[1, 2]")]
+			public async Task WhenJsonIsAnArray_ShouldSucceed(string json)
+			{
+				JsonElement? subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsArray();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
 			[InlineData("{}", "an object")]
 			[InlineData("2", "a number")]
 			[InlineData("\"foo\"", "a string")]
 			public async Task WhenJsonIsNoArray_ShouldFail(string json, string kindString)
+			{
+				JsonElement? subject = FromString(json);
+
+				async Task Act()
+					=> await That(subject).IsArray();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is an array,
+					              but it was {kindString} instead of an array
+					              """);
+			}
+
+			[Theory]
+			[InlineData("{}", "an object")]
+			[InlineData("2", "a number")]
+			[InlineData("\"foo\"", "a string")]
+			public async Task WhenJsonIsNoArray_WithExpectations_ShouldFail(string json, string kindString)
 			{
 				JsonElement? subject = FromString(json);
 
@@ -83,6 +115,38 @@ public sealed partial class ThatNullableJsonElement
 					              is an array and $[0] matches true,
 					              but it was {kindString} instead of an array
 					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				JsonElement? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsArray();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is an array,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_WithExpectations_ShouldFail()
+			{
+				JsonElement? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsArray(o => o.At(0).Matching(true));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is an array and $[0] matches true,
+					             but it was <null>
+					             """);
 			}
 		}
 
