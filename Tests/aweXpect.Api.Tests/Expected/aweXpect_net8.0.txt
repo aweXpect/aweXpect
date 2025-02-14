@@ -321,6 +321,7 @@ namespace aweXpect
     {
         public static aweXpect.Results.AndOrResult<TException, aweXpect.Core.IThat<TException>> HasHResult<TException>(this aweXpect.Core.IThat<TException> source, int expected)
             where TException : System.Exception? { }
+        public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasInner(this aweXpect.Core.IThat<System.Exception?> source, System.Type innerExceptionType) { }
         public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasInner(this aweXpect.Core.IThat<System.Exception?> source, System.Type innerExceptionType, System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
         public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasInner<TInnerException>(this aweXpect.Core.IThat<System.Exception?> source)
             where TInnerException : System.Exception? { }
@@ -332,7 +333,6 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<TException, aweXpect.Core.IThat<TException>> HasParamName<TException>(this aweXpect.Core.IThat<TException> source, string expected)
             where TException : System.ArgumentException? { }
         public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HasRecursiveInnerExceptions(this aweXpect.Core.IThat<System.Exception?> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations) { }
-        public static aweXpect.Results.AndOrResult<System.Exception?, aweXpect.Core.IThat<System.Exception?>> HaveInner(this aweXpect.Core.IThat<System.Exception?> source, System.Type innerExceptionType) { }
     }
     public static class ThatGeneric
     {
