@@ -16,7 +16,7 @@ namespace aweXpect;
 /// </summary>
 public class StatusCodeResult(
 	IThat<HttpResponseMessage?> source,
-	Func<HttpResponseMessage?, HttpStatusCode?> mapper)
+	Func<HttpResponseMessage, HttpStatusCode> mapper)
 {
 	/// <summary>
 	///     …is equal to the <paramref name="expected" /> value.
@@ -28,7 +28,7 @@ public class StatusCodeResult(
 					it,
 					expected,
 					mapper,
-					(a, e) => a?.Equals(e) == true,
+					(a, e) => a.Equals(e),
 					$"has status code {Formatter.Format(expected)}")),
 			source);
 
@@ -42,7 +42,7 @@ public class StatusCodeResult(
 					it,
 					unexpected,
 					mapper,
-					(a, u) => a?.Equals(u) != true,
+					(a, u) => !a.Equals(u),
 					$"has status code different to {Formatter.Format(unexpected)}")),
 			source);
 
@@ -55,7 +55,7 @@ public class StatusCodeResult(
 					it,
 					null,
 					mapper,
-					(a, _) => a != null && (int)a.Value is >= 200 and < 300,
+					(a, _) => (int)a is >= 200 and < 300,
 					"has a success status code (2xx)")),
 			source);
 
@@ -68,7 +68,7 @@ public class StatusCodeResult(
 					it,
 					null,
 					mapper,
-					(a, _) => a != null && (int)a.Value is >= 300 and < 400,
+					(a, _) => (int)a is >= 300 and < 400,
 					"has a redirection status code (3xx)")),
 			source);
 
@@ -81,7 +81,7 @@ public class StatusCodeResult(
 					it,
 					null,
 					mapper,
-					(a, _) => a != null && (int)a.Value is >= 400 and < 500,
+					(a, _) => (int)a is >= 400 and < 500,
 					"has a client error status code (4xx)")),
 			source);
 
@@ -94,7 +94,7 @@ public class StatusCodeResult(
 					it,
 					null,
 					mapper,
-					(a, _) => a != null && (int)a.Value is >= 500 and < 600,
+					(a, _) => (int)a is >= 500 and < 600,
 					"has a server error status code (5xx)")),
 			source);
 
@@ -107,18 +107,18 @@ public class StatusCodeResult(
 					it,
 					null,
 					mapper,
-					(a, _) => a != null && (int)a.Value is >= 400 and < 600,
+					(a, _) => (int)a is >= 400 and < 600,
 					"has an error status code (4xx or 5xx)")),
 			source);
 
 	private readonly struct PropertyConstraint(
 		string it,
 		HttpStatusCode? expected,
-		Func<HttpResponseMessage, HttpStatusCode?> mapper,
-		Func<HttpStatusCode?, HttpStatusCode?, bool> condition,
-		string expectation) : IAsyncConstraint<HttpResponseMessage>
+		Func<HttpResponseMessage, HttpStatusCode> mapper,
+		Func<HttpStatusCode, HttpStatusCode?, bool> condition,
+		string expectation) : IAsyncConstraint<HttpResponseMessage?>
 	{
-		public async Task<ConstraintResult> IsMetBy(HttpResponseMessage actual, CancellationToken cancellationToken)
+		public async Task<ConstraintResult> IsMetBy(HttpResponseMessage? actual, CancellationToken cancellationToken)
 		{
 			if (actual == null)
 			{
@@ -126,7 +126,7 @@ public class StatusCodeResult(
 					$"{it} was <null>");
 			}
 
-			HttpStatusCode? value = mapper(actual);
+			HttpStatusCode value = mapper(actual);
 			if (condition(value, expected))
 			{
 				return new ConstraintResult.Success<HttpResponseMessage>(actual, ToString());

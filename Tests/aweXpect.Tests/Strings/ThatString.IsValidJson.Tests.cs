@@ -60,22 +60,6 @@ public sealed partial class ThatString
 					              """).AsWildcard();
 			}
 
-			[Fact]
-			public async Task WhenActualIsNull_ShouldFail()
-			{
-				string? subject = null;
-
-				async Task Act()
-					=> await That(subject).IsValidJson();
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             is valid JSON,
-					             but it was <null>
-					             """);
-			}
-
 			[Theory]
 			[InlineData("42")]
 			[InlineData("\"foo\"")]
@@ -94,6 +78,22 @@ public sealed partial class ThatString
 					=> await That(subject).IsValidJson();
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsValidJson();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is valid JSON,
+					             but it was <null>
+					             """);
 			}
 		}
 

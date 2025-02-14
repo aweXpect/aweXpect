@@ -10,7 +10,7 @@ public sealed partial class ThatEventRecording
 		public sealed class WithSenderTests
 		{
 			[Fact]
-			public async Task WithSender_WhenEventIsTriggeredBySomethingElse_ShouldFail()
+			public async Task WhenEventIsTriggeredBySomethingElse_ShouldFail()
 			{
 				PropertyChangedClass sender = new()
 				{
@@ -43,7 +43,7 @@ public sealed partial class ThatEventRecording
 			}
 
 			[Fact]
-			public async Task WithSender_WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
+			public async Task WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
 			{
 				PropertyChangedClass sender = new()
 				{
@@ -60,6 +60,21 @@ public sealed partial class ThatEventRecording
 				async Task Act() =>
 					await That(recording).Triggered(nameof(INotifyPropertyChanged.PropertyChanged))
 						.WithSender(s => s == sender);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithCustomEvent_WhenSenderIsTheOnlyParameter_ShouldSucceed()
+			{
+				CustomEventWithParametersClass<EventArgs> sut = new();
+				IEventRecording<CustomEventWithParametersClass<EventArgs>> recording = sut.Record().Events();
+
+				sut.NotifyCustomEvent(new PropertyChangedEventArgs("foo"));
+
+				async Task Act() =>
+					await That(recording).Triggered(nameof(CustomEventWithParametersClass<EventArgs>.CustomEvent))
+						.WithSender(_ => true);
 
 				await That(Act).DoesNotThrow();
 			}
