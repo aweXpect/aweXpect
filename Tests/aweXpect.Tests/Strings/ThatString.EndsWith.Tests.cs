@@ -82,11 +82,11 @@ public sealed partial class ThatString
 			[Fact]
 			public async Task WhenExpectedIsNull_ShouldFail()
 			{
-				string? subject = "text";
-				string expected = null;
+				string subject = "text";
+				string? expected = null;
 
 				async Task Act()
-					=> await That(subject).EndsWith(expected);
+					=> await That(subject).EndsWith(expected!);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""

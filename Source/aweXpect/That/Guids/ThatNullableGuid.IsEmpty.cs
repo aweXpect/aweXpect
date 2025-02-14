@@ -15,7 +15,7 @@ public static partial class ThatNullableGuid
 				new ValueConstraint(
 					it,
 					"is empty",
-					actual => actual != null && actual == Guid.Empty)),
+					actual => actual == Guid.Empty)),
 			source);
 
 	/// <summary>
