@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Helpers;
 
 namespace aweXpect;
 
@@ -58,5 +60,39 @@ public abstract partial class EnumerableQuantifier
 		}
 
 		return $"{expectationExpression} for {quantifierExpectation} {this.GetItemString()}";
+	}
+
+	/// <summary>
+	///     The collection result could not be evaluated.
+	/// </summary>
+	private sealed class UndecidedResult<T> : ConstraintResult
+	{
+		private readonly string _expectationText;
+		private readonly string _resultText;
+
+		/// <summary>
+		///     Initializes a new instance of <see cref="UndecidedResult{T}" />.
+		/// </summary>
+		public UndecidedResult(
+			T value,
+			string expectationText,
+			string resultText,
+			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
+			: base(Outcome.Undecided, furtherProcessingStrategy)
+		{
+			_ = value;
+			_expectationText = expectationText;
+			_resultText = resultText;
+		}
+
+		/// <inheritdoc />
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(_expectationText.Indent(indentation, false));
+		}
+
+		/// <inheritdoc />
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(_resultText.Indent(indentation, false));
 	}
 }

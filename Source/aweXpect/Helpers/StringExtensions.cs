@@ -6,12 +6,17 @@ namespace aweXpect.Helpers;
 internal static class StringExtensions
 {
 	[return: NotNullIfNotNull(nameof(value))]
-	public static string? Indent(this string? value, string indentation = "  ",
+	public static string? Indent(this string? value, string? indentation = "  ",
 		bool indentFirstLine = true)
 	{
 		if (value == null)
 		{
 			return null;
+		}
+
+		if (string.IsNullOrEmpty(indentation))
+		{
+			return value;
 		}
 
 		return (indentFirstLine ? indentation : "")
