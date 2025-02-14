@@ -69,6 +69,22 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).DoesNotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasCount().AtLeast(2);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has at least 2 items,
+					             but it was <null>
+					             """);
+			}
 		}
 	}
 }
