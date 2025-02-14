@@ -55,7 +55,7 @@ public abstract partial class EnumerableQuantifier
 						: $"only {matchingCount} of {totalCount} {verb}");
 			}
 
-			return new ConstraintResult.Failure<TEnumerable>(actual,
+			return new UndecidedResult<TEnumerable>(actual,
 				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 				"could not verify, because it was not enumerated completely");
 		}

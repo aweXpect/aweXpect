@@ -49,7 +49,7 @@ public abstract partial class EnumerableQuantifier
 					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
 			}
 
-			return new ConstraintResult.Failure<TEnumerable>(actual,
+			return new UndecidedResult<TEnumerable>(actual,
 				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 				"could not verify, because it was not enumerated completely");
 		}
