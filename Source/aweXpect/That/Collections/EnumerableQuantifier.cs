@@ -87,9 +87,7 @@ public abstract partial class EnumerableQuantifier
 
 		/// <inheritdoc />
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(_expectationText.Indent(indentation, false));
-		}
+			=> stringBuilder.Append(_expectationText.Indent(indentation, false));
 
 		/// <inheritdoc />
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)

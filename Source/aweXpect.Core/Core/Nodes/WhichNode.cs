@@ -171,7 +171,7 @@ internal class WhichNode<TSource, TMember> : Node
 			}
 		}
 
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
 			if (_value is TValue typedValue)

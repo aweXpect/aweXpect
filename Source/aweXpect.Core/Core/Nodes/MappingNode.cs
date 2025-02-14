@@ -61,9 +61,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 	{
 		if (combinedResult == null)
 		{
-			result.UpdateExpectationText(
-				e => _expectationTextGenerator(_memberAccessor, e));
-			return result;
+			return result.PrependExpectationText(e => _expectationTextGenerator(_memberAccessor, e));
 		}
 
 		return new MappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
@@ -107,7 +105,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			{
 				left.AppendResult(stringBuilder, indentation);
 				if (right.Outcome == Outcome.Failure &&
-				    left.GetResultText() != right.GetResultText())
+				    !left.HasSameResultTextAs(right))
 				{
 					stringBuilder.Append(" and ");
 					right.AppendResult(stringBuilder, indentation);
@@ -132,7 +130,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			}
 		}
 
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
 			if (left.TryGetValue(out TValue? leftValue))

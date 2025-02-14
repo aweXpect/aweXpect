@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using aweXpect.Core.Helpers;
@@ -11,24 +10,6 @@ namespace aweXpect.Core.Constraints;
 /// </summary>
 public abstract class ConstraintResult
 {
-	private readonly string? _expectationText;
-
-	private Action<StringBuilder>? _appendExpectationText;
-	private Action<StringBuilder>? _prependExpectationText;
-
-	/// <summary>
-	///     Initializes a new instance of <see cref="ConstraintResult" />.
-	/// </summary>
-	private ConstraintResult(
-		Outcome outcome,
-		string expectationText,
-		FurtherProcessingStrategy furtherProcessingStrategy)
-	{
-		Outcome = outcome;
-		_expectationText = expectationText;
-		FurtherProcessingStrategy = furtherProcessingStrategy;
-	}
-
 	/// <summary>
 	///     Initializes a new instance of <see cref="ConstraintResult" />.
 	/// </summary>
@@ -51,22 +32,14 @@ public abstract class ConstraintResult
 	public FurtherProcessingStrategy FurtherProcessingStrategy { get; }
 
 	/// <summary>
-	///     Appends the expectation text to the <paramref name="stringBuilder" />.
+	///     Appends the expectation to the <paramref name="stringBuilder" />.
 	/// </summary>
-	public virtual void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-	{
-		_prependExpectationText?.Invoke(stringBuilder);
-		stringBuilder.Append(_expectationText.Indent(indentation, false));
-		_appendExpectationText?.Invoke(stringBuilder);
-	}
+	public abstract void AppendExpectation(StringBuilder stringBuilder, string? indentation = null);
 
 	/// <summary>
 	///     Appends the result text to the <paramref name="stringBuilder" />.
 	/// </summary>
-	public virtual void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-	{
-		// Do nothing
-	}
+	public abstract void AppendResult(StringBuilder stringBuilder, string? indentation = null);
 
 	/// <summary>
 	///     Gets the contexts for the result.
@@ -76,28 +49,49 @@ public abstract class ConstraintResult
 		yield break;
 	}
 
-	internal virtual string GetResultText()
-	{
-		StringBuilder sb = new();
-		AppendResult(sb);
-		return sb.ToString();
-	}
-
-	internal virtual bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+	/// <summary>
+	///     Tries to extract the <paramref name="value" /> that is stored in the constraint result.
+	/// </summary>
+	public virtual bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 	{
 		value = default;
 		return false;
 	}
 
 	/// <summary>
-	///     Updates the expectation text of the current <see cref="ConstraintResult" />.
+	///     A <see cref="ConstraintResult" /> with a text-based expectation.
 	/// </summary>
-	internal virtual void UpdateExpectationText(
-		Action<StringBuilder>? prependExpectationText = null,
-		Action<StringBuilder>? appendExpectationText = null)
+	public class TextBasedConstraintResult : ConstraintResult
 	{
-		_prependExpectationText = prependExpectationText ?? _prependExpectationText;
-		_appendExpectationText = appendExpectationText ?? _appendExpectationText;
+		private readonly string? _expectationText;
+
+		/// <summary>
+		///     Initializes a new instance of <see cref="ConstraintResult" />.
+		/// </summary>
+		protected TextBasedConstraintResult(
+			Outcome outcome,
+			string expectationText,
+			FurtherProcessingStrategy furtherProcessingStrategy)
+			: base(outcome, furtherProcessingStrategy)
+		{
+			_expectationText = expectationText;
+		}
+
+		/// <inheritdoc />
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(_expectationText.Indent(indentation, false));
+
+		/// <inheritdoc />
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			// Do nothing
+		}
+
+		/// <inheritdoc />
+		public override IEnumerable<Context> GetContexts()
+		{
+			yield break;
+		}
 	}
 
 	/// <summary>
@@ -129,7 +123,7 @@ public abstract class ConstraintResult
 	/// <summary>
 	///     The actual value met the expectation.
 	/// </summary>
-	public class Success : ConstraintResult
+	public class Success : TextBasedConstraintResult
 	{
 		/// <summary>
 		///     Initializes a new instance of <see cref="ConstraintResult.Success" />.
@@ -169,7 +163,8 @@ public abstract class ConstraintResult
 		/// </summary>
 		public T Value { get; }
 
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+		/// <inheritdoc />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
 			if (Value is TValue v)
@@ -186,10 +181,8 @@ public abstract class ConstraintResult
 	/// <summary>
 	///     The actual value did not meet the expectation.
 	/// </summary>
-	public class Failure : ConstraintResult
+	public class Failure : TextBasedConstraintResult
 	{
-		private readonly string _resultText;
-
 		/// <summary>
 		///     Initializes a new instance of <see cref="ConstraintResult.Failure" />.
 		/// </summary>
@@ -202,14 +195,17 @@ public abstract class ConstraintResult
 				expectationText,
 				furtherProcessingStrategy)
 		{
-			_resultText = resultText;
+			ResultText = resultText;
 		}
+
+		/// <summary>
+		///     The result text.
+		/// </summary>
+		public string ResultText { get; }
 
 		/// <inheritdoc />
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(_resultText.Indent(indentation, false));
-
-		internal override string GetResultText() => _resultText;
+			=> stringBuilder.Append(ResultText.Indent(indentation, false));
 	}
 
 	/// <summary>
@@ -238,7 +234,8 @@ public abstract class ConstraintResult
 		/// </summary>
 		public T Value { get; }
 
-		internal override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+		/// <inheritdoc />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
 			if (Value is TValue v)
