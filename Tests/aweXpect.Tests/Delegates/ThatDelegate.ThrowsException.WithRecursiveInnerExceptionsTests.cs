@@ -26,7 +26,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>().OnlyIf(shouldThrow)
 					.WithMessage($"""
 					              Expected that action
-					              throws an exception with recursive inner exceptions where at least {minimum} are of type CustomException,
+					              throws an exception with recursive inner exceptions which at least {minimum} are of type CustomException,
 					              but only 1 of 5 were
 					              """);
 			}
@@ -56,8 +56,27 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that action
-					             throws an exception with recursive inner exceptions where all satisfy _ => false,
+					             throws an exception with recursive inner exceptions which all satisfy _ => false,
 					             but not all did
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectingInnerExceptionsToBeEmpty_ShouldFail()
+			{
+				Action action = () => throw new OuterException(innerException: new CustomException());
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithRecursiveInnerExceptions(
+						innerExceptions => innerExceptions.IsEmpty());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that action
+					             throws an exception with recursive inner exceptions which are empty,
+					             but recursive inner exceptions was [
+					               aweXpect.Tests.ThatDelegate+CustomException: WhenExpectingInnerExceptionsToBeEmpty_ShouldFail
+					             ]
 					             """);
 			}
 

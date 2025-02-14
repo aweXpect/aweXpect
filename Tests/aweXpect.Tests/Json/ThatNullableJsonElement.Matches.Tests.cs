@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
+using aweXpect.Json;
 
 namespace aweXpect.Tests;
 
@@ -107,7 +108,7 @@ public sealed partial class ThatNullableJsonElement
 				JsonElement? subject = null;
 
 				async Task Act()
-					=> await That(subject).Matches(new object());
+					=> await That(subject).Matches(new object(), o => o.IgnoringAdditionalProperties());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -189,9 +190,25 @@ public sealed partial class ThatNullableJsonElement
 				JsonElement? subject = FromString("[1, 2, 3]");
 
 				async Task Act()
-					=> await That(subject).Matches([1, 2]);
+					=> await That(subject).Matches([1, 2], o => o.IgnoringAdditionalProperties());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectContainsAdditionalElements_WhenNotIgnoringAdditionalProperties_ShouldFail()
+			{
+				JsonElement? subject = FromString("[1, 2, 3]");
+
+				async Task Act()
+					=> await That(subject).MatchesExactly([1, 2], o => o.IgnoringAdditionalProperties(false));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             matches [1, 2] exactly,
+					             but it differed as $[2] had unexpected 3
+					             """);
 			}
 
 			public static TheoryData<object, string> MatchingArrayValues
@@ -316,6 +333,28 @@ public sealed partial class ThatNullableJsonElement
 					});
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasAdditionalProperties_WhenNotIgnoringAdditionalProperties_ShouldFail()
+			{
+				JsonElement? subject = FromString("{\"foo\": null, \"bar\": 2}");
+
+				async Task Act()
+					=> await That(subject).Matches(new
+					{
+						bar = 2,
+					}, o => o.IgnoringAdditionalProperties(false));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             matches new
+					             					{
+					             						bar = 2,
+					             					} exactly,
+					             but it differed as $.foo had unexpected Null
+					             """);
 			}
 		}
 	}

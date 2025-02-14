@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
+using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -69,7 +70,7 @@ public sealed partial class ThatAsyncEnumerable
 					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
 
 					async Task Act()
-						=> await That(subject).All().AreEquivalentTo(5);
+						=> await That(subject).All().AreEquivalentTo(5, o => o.IncludingFields());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""

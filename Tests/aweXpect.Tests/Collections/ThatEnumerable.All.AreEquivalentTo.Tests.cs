@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -31,7 +32,7 @@ public sealed partial class ThatEnumerable
 					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
 
 					async Task Act()
-						=> await That(subject).All().AreEquivalentTo(1);
+						=> await That(subject).All().AreEquivalentTo(1, o => o.IncludingFields());
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""

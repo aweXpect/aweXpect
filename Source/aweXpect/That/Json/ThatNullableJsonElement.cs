@@ -65,14 +65,14 @@ public static partial class ThatNullableJsonElement
 			if (actual.Value.ValueKind != expected)
 			{
 				return new ConstraintResult.Failure<JsonElement?>(actual, ToString(),
-					$"{it} was {actual.Value.ValueKind}");
+					$"{it} was {JsonValidation.Format(actual.Value.ValueKind)} instead of {JsonValidation.Format(expected)}");
 			}
 
 			return new ConstraintResult.Success<JsonElement?>(actual, ToString());
 		}
 
 		public override string ToString()
-			=> $"is {expected}";
+			=> $"is {JsonValidation.Format(expected)}";
 	}
 }
 #endif

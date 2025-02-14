@@ -946,9 +946,9 @@ namespace aweXpect.Equivalency
             where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
         public static TEquivalencyOptions IgnoringMember<TEquivalencyOptions>(this TEquivalencyOptions @this, string memberToIgnore)
             where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
-        public static TEquivalencyOptions IncludingFields<TEquivalencyOptions>(this TEquivalencyOptions @this, aweXpect.Equivalency.IncludeMembers fieldsToInclude)
+        public static TEquivalencyOptions IncludingFields<TEquivalencyOptions>(this TEquivalencyOptions @this, aweXpect.Equivalency.IncludeMembers fieldsToInclude = 2)
             where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
-        public static TEquivalencyOptions IncludingProperties<TEquivalencyOptions>(this TEquivalencyOptions @this, aweXpect.Equivalency.IncludeMembers propertiesToInclude)
+        public static TEquivalencyOptions IncludingProperties<TEquivalencyOptions>(this TEquivalencyOptions @this, aweXpect.Equivalency.IncludeMembers propertiesToInclude = 2)
             where TEquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions { }
     }
     public class EquivalencyOptions<TExpected> : aweXpect.Equivalency.EquivalencyOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions<TExpected>>

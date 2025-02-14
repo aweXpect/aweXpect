@@ -9,7 +9,7 @@ public sealed partial class ThatEnumerable
 {
 	public sealed class Between
 	{
-		public sealed class Tests
+		public sealed class ItemsTests
 		{
 			[Fact]
 			public async Task ConsidersCancellationToken()
@@ -113,6 +113,84 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 0 for between 0 and 1 items,
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task ShouldSupportIgnoringCase()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar"]);
+
+				async Task Act()
+					=> await That(subject).Between(0).And(1).AreEqualTo("foo").IgnoringCase();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" ignoring case for between 0 and 1 items,
+					             but at least 2 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).Between(2).And(3).AreEqualTo("foo");
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).Between(3).And(4).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for between 3 and 4 items,
+					             but only 2 of 4 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).Between(0).And(1).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for between 0 and 1 items,
+					             but at least 2 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).Between(1).And(3).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for between 1 and 3 items,
 					             but it was <null>
 					             """);
 			}

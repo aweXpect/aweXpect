@@ -1,5 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Text.Json;
+using aweXpect.Json;
 
 namespace aweXpect.Tests;
 
@@ -199,6 +200,17 @@ public sealed partial class ThatNullableJsonElement
 					             """);
 			}
 
+			[Fact]
+			public async Task WhenSubjectContainsAdditionalElements_WhenIgnoringAdditionalProperties_ShouldSucceed()
+			{
+				JsonElement? subject = FromString("[1, 2, 3]");
+
+				async Task Act()
+					=> await That(subject).MatchesExactly([1, 2], o => o.IgnoringAdditionalProperties());
+
+				await That(Act).DoesNotThrow();
+			}
+
 			public static TheoryData<object, string> MatchingArrayValues
 				=> new()
 				{
@@ -338,6 +350,20 @@ public sealed partial class ThatNullableJsonElement
 					             					} exactly,
 					             but it differed as $.foo had unexpected Null
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectHasAdditionalProperties_WhenIgnoringAdditionalProperties_ShouldSucceed()
+			{
+				JsonElement? subject = FromString("{\"foo\": null, \"bar\": 2}");
+
+				async Task Act()
+					=> await That(subject).MatchesExactly(new
+					{
+						bar = 2,
+					}, o => o.IgnoringAdditionalProperties());
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

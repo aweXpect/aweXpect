@@ -37,8 +37,8 @@ public static partial class ThatAsyncEnumerable
 						it,
 						_quantifier,
 						() => grammar == ExpectationGrammars.None
-							? $"is equivalent to {Formatter.Format(expected)}{options}"
-							: $"are equivalent to {Formatter.Format(expected)}{options}",
+							? $"is equivalent to {Formatter.Format(expected)}"
+							: $"are equivalent to {Formatter.Format(expected)}",
 						a => equalityOptions.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

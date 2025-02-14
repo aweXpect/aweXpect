@@ -10,7 +10,7 @@ public sealed partial class ThatAsyncEnumerable
 {
 	public sealed class AtMost
 	{
-		public sealed class Tests
+		public sealed class ItemsTests
 		{
 			[Fact]
 			public async Task ConsidersCancellationToken()
@@ -99,6 +99,68 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 0 for at most one item,
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task ShouldSupportIgnoringCase()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar"]);
+
+				async Task Act()
+					=> await That(subject).AtMost(1).AreEqualTo("foo").IgnoringCase();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" ignoring case for at most one item,
+					             but at least 2 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).AtMost(2).AreEqualTo("foo");
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+
+				async Task Act()
+					=> await That(subject).AtMost(1).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for at most one item,
+					             but at least 2 were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AtMost(1).AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equal to "foo" for at most one item,
 					             but it was <null>
 					             """);
 			}
