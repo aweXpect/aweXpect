@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public sealed class None
+	public sealed partial class None
 	{
 		public sealed class Tests
 		{
@@ -27,7 +27,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             satisfies y => y < 0 for none items,
+					             satisfies y => y < 0 for no items,
 					             but could not verify, because it was cancelled early
 					             """);
 			}
@@ -55,7 +55,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to 5 for none items,
+					             is equal to 5 for no items,
 					             but at least one was
 					             """);
 			}
@@ -71,7 +71,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to 1 for none items,
+					             is equal to 1 for no items,
 					             but at least one was
 					             """);
 			}
@@ -98,7 +98,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to 0 for none items,
+					             is equal to 0 for no items,
 					             but it was <null>
 					             """);
 			}

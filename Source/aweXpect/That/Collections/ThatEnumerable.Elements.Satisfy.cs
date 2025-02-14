@@ -23,9 +23,9 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => grammar switch
+						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
 						{
-							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
+							true => $"satisfy {doNotPopulateThisValue}",
 							_ => $"satisfies {doNotPopulateThisValue}",
 						},
 						predicate,
@@ -47,9 +47,9 @@ public static partial class ThatEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => grammar switch
+						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
 						{
-							ExpectationGrammars.Nested => $"satisfy {doNotPopulateThisValue}",
+							true => $"satisfy {doNotPopulateThisValue}",
 							_ => $"satisfies {doNotPopulateThisValue}",
 						},
 						predicate,

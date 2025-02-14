@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
 using System.Threading;
 
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests;
 
-public sealed partial class ThatEnumerable
+public sealed partial class ThatAsyncEnumerable
 {
 	public sealed partial class None
 	{
@@ -18,7 +19,7 @@ public sealed partial class ThatEnumerable
 				{
 					using CancellationTokenSource cts = new();
 					CancellationToken token = cts.Token;
-					IEnumerable<int> subject = GetCancellingEnumerable(6, cts);
+					IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(8)
@@ -35,7 +36,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotEnumerateTwice()
 				{
-					ThrowWhenIteratingTwiceEnumerable subject = new();
+					ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(15)
@@ -47,7 +48,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task DoesNotMaterializeEnumerable()
 				{
-					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(5);
@@ -63,7 +64,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(1);
@@ -79,7 +80,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable((int[]) []);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable((int[]) []);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(0);
@@ -90,7 +91,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(42);
@@ -101,7 +102,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenSubjectIsNull_ShouldFail()
 				{
-					IEnumerable<int>? subject = null;
+					IAsyncEnumerable<int>? subject = null;
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(0);
@@ -120,7 +121,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task ShouldSupportIgnoringCase()
 				{
-					IEnumerable<string> subject = ToEnumerable(["FOO", "BAR", "BAZ"]);
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["FOO", "BAR", "BAZ"]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("bar").IgnoringCase();
@@ -136,7 +137,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("bar");
@@ -152,7 +153,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableIsEmpty_ShouldSucceed()
 				{
-					IEnumerable<string> subject = [];
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(Array.Empty<string>());
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("foo");
@@ -163,7 +164,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IEnumerable<string> subject = ToEnumerable(["FOO", "BAR", "BAZ"]);
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["FOO", "BAR", "BAZ"]);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("bar");
@@ -174,7 +175,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenSubjectIsNull_ShouldFail()
 				{
-					IEnumerable<string>? subject = null;
+					IAsyncEnumerable<string>? subject = null;
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo("");
@@ -190,3 +191,4 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
+#endif

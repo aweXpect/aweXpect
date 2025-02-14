@@ -24,17 +24,6 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task ShouldSupportCaseInsensitiveComparison()
-			{
-				IEnumerable<string> subject = ToEnumerable(["FOO", "BAR"]);
-
-				async Task Act()
-					=> await That(subject).EndsWith("bar").IgnoringCase();
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
 				IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(x => new MyClass(x), 6);
@@ -120,18 +109,6 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task WhenSubjectEndsWithExpectedValues_ShouldSucceed()
-			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> expected = ["bar", "baz"];
-
-				async Task Act()
-					=> await That(subject).EndsWith(expected);
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IEnumerable<int>? subject = null;
@@ -145,6 +122,48 @@ public sealed partial class ThatEnumerable
 					             ends with [],
 					             but it was <null>
 					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task ShouldIncludeOptionsInFailureMessage()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).EndsWith("FOO", "BAZ").IgnoringCase();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with ["FOO", "BAZ"] ignoring case,
+					             but it contained "bar" at index 1 instead of "FOO"
+					             """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportIgnoringCase()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).EndsWith("BAR", "BAZ").IgnoringCase();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectEndsWithExpectedValues_ShouldSucceed()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+				IEnumerable<string> expected = ["bar", "baz"];
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

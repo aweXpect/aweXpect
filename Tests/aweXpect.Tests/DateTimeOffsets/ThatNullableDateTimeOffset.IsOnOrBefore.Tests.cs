@@ -65,6 +65,23 @@ public sealed partial class ThatNullableDateTimeOffset
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateTimeOffset? subject = null;
+				DateTimeOffset? expected = CurrentTime();
+
+				async Task Act()
+					=> await That(subject).IsOnOrBefore(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is on or before {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsSame_ShouldSucceed()
 			{
 				DateTimeOffset? subject = CurrentTime();

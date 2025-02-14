@@ -21,6 +21,22 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				Action @delegate = () => { Thread.Sleep(50); };
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that @delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
+			}
+
+			[Fact]
 			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
 			{
 				Action @delegate = () => throw new MyException();
@@ -65,6 +81,22 @@ public sealed partial class ThatDelegate
 					=> await That(@delegate).ExecutesWithin(5000.Milliseconds());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				Func<Task> @delegate = () => Task.Delay(50.Milliseconds());
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that @delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
 			}
 
 			[Fact]
@@ -115,6 +147,22 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				Func<Task<int>> @delegate = () => Task.Delay(50.Milliseconds()).ContinueWith(_ => 1);
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that @delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
+			}
+
+			[Fact]
 			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
 			{
 				Func<Task<int>> @delegate = () => Task.FromException<int>(new MyException());
@@ -160,6 +208,22 @@ public sealed partial class ThatDelegate
 					=> await That(Delegate).ExecutesWithin(5000.Milliseconds());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				ValueTask Delegate() => new(Task.Delay(50.Milliseconds()));
+
+				async Task Act()
+					=> await That(Delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that Delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
 			}
 
 			[Fact]
@@ -213,6 +277,22 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				ValueTask Delegate(CancellationToken token) => new(Task.Delay(50.Milliseconds(), token));
+
+				async Task Act()
+					=> await That(Delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that Delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
+			}
+
+			[Fact]
 			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
 			{
 				ValueTask Delegate(CancellationToken _)
@@ -260,6 +340,22 @@ public sealed partial class ThatDelegate
 					=> await That(Delegate).ExecutesWithin(5000.Milliseconds());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				ValueTask<int> Delegate() => new(Task.Delay(50.Milliseconds()).ContinueWith(_ => 1));
+
+				async Task Act()
+					=> await That(Delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that Delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
 			}
 
 			[Fact]
@@ -313,6 +409,23 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				ValueTask<int> Delegate(CancellationToken token)
+					=> new(Task.Delay(50.Milliseconds(), token).ContinueWith(_ => 1, token));
+
+				async Task Act()
+					=> await That(Delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that Delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
+			}
+
+			[Fact]
 			public async Task WhenDelegateThrowsAnException_ShouldFailWithDescriptiveMessage()
 			{
 				ValueTask<int> Delegate(CancellationToken _)
@@ -359,6 +472,26 @@ public sealed partial class ThatDelegate
 					=> await That(@delegate).ExecutesWithin(5000.Milliseconds());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenDelegateTakesLonger_ShouldFail()
+			{
+				Func<int> @delegate = () =>
+				{
+					Thread.Sleep(50);
+					return 0;
+				};
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(10.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that @delegate
+					             executes within 0:00.010,
+					             but it took 0:*
+					             """).AsWildcard();
 			}
 
 			[Fact]
