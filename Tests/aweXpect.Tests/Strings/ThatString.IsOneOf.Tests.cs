@@ -6,6 +6,22 @@ public sealed partial class ThatString
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsOneOf("foo", "bar");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is one of ["foo", "bar"],
+					             but it was <null>
+					             """);
+			}
+
 			[Theory]
 			[InlineData("foo", "bar", "baz")]
 			public async Task WhenValueIsDifferentToAllExpected_ShouldFail(
