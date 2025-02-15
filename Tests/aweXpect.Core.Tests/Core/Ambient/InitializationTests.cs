@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using aweXpect.Core.Adapters;
 using aweXpect.Core.Ambient;
-using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Ambient;
 
@@ -29,21 +28,25 @@ public sealed class InitializationTests
 	{
 		public bool IsAvailable => false;
 
+#pragma warning disable CS0436
 		[DoesNotReturn]
 		public void Skip(string message) => throw new NotSupportedException();
 
 		[DoesNotReturn]
 		public void Throw(string message) => throw new NotSupportedException();
+#pragma warning restore CS0436
 	}
 
 	private sealed class IncorrectFrameworkAdapter : ITestFrameworkAdapter
 	{
 		public bool IsAvailable => throw new NotSupportedException("Could not load the IncorrectFrameworkAdapter");
 
+#pragma warning disable CS0436
 		[DoesNotReturn]
 		public void Skip(string message) => throw new NotSupportedException();
 
 		[DoesNotReturn]
 		public void Throw(string message) => throw new NotSupportedException();
+#pragma warning restore CS0436
 	}
 }
