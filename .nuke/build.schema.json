@@ -43,6 +43,7 @@
         "MutationTestExecution",
         "MutationTests",
         "Pack",
+        "Pages",
         "Restore",
         "TestFrameworks",
         "TestingPlatformFrameworks",
