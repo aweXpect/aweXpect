@@ -846,6 +846,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -989,7 +995,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -1136,7 +1143,8 @@ window.BENCHMARK_DATA = {
           173.28741099284247,
           182.53310524500333,
           169.6628590742747,
-          175.14546832671533
+          175.14546832671533,
+          177.29154222806295
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1283,6 +1291,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1443,7 +1452,8 @@ window.BENCHMARK_DATA = {
           196.85218702043807,
           194.92164397239685,
           200.71075496673583,
-          187.26639924049377
+          187.26639924049377,
+          192.08625297546388
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1481,6 +1491,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1750,7 +1761,8 @@ window.BENCHMARK_DATA = {
           734.4116453757653,
           764.7533355440412,
           753.3070744832356,
-          753.2436855951945
+          753.2436855951945,
+          797.6635966618855
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1863,6 +1875,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -2300,6 +2313,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -2366,7 +2385,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -2436,7 +2456,8 @@ window.BENCHMARK_DATA = {
           286834.71037946426,
           291839.6708635603,
           273441.09012276784,
-          281912.22239583335
+          281912.22239583335,
+          286711.9208635603
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2506,6 +2527,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2589,7 +2611,8 @@ window.BENCHMARK_DATA = {
           2073512.614955357,
           2057938.6786458334,
           2035662.0341796875,
-          2088522.0908854166
+          2088522.0908854166,
+          2035642.0755208333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2643,6 +2666,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -2742,7 +2766,8 @@ window.BENCHMARK_DATA = {
           671700.1368489583,
           666370.7121744792,
           654776.5223214285,
-          655973.9303152902
+          655973.9303152902,
+          706164.5739583333
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2778,6 +2803,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -3677,6 +3703,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -3820,7 +3852,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -3967,7 +4000,8 @@ window.BENCHMARK_DATA = {
           583.9800422032674,
           581.0528086821238,
           592.9470985276358,
-          591.1330007712046
+          591.1330007712046,
+          595.5652925491333
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4114,6 +4148,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4274,7 +4309,8 @@ window.BENCHMARK_DATA = {
           410.9239528973897,
           439.34596687952677,
           423.12928873697916,
-          420.13100739887784
+          420.13100739887784,
+          422.00289414723716
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4312,6 +4348,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4581,7 +4618,8 @@ window.BENCHMARK_DATA = {
           14484.249741690499,
           15758.355651855469,
           15792.64008585612,
-          14296.464766366142
+          14296.464766366142,
+          17459.05538736979
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4694,6 +4732,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -5593,6 +5632,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -5736,7 +5781,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -5883,7 +5929,8 @@ window.BENCHMARK_DATA = {
           225.71027229626972,
           224.11004406611124,
           224.60964151791163,
-          223.97930095990498
+          223.97930095990498,
+          243.5355607509613
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6030,6 +6077,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6190,7 +6238,8 @@ window.BENCHMARK_DATA = {
           192.2248605887095,
           197.20173495610555,
           198.48603370984395,
-          189.4258601298699
+          189.4258601298699,
+          206.3274233977
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6228,6 +6277,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -6497,7 +6547,8 @@ window.BENCHMARK_DATA = {
           1028.2741472880045,
           1088.488287226359,
           1056.343430519104,
-          1032.077123778207
+          1032.077123778207,
+          1086.7516090393067
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6610,6 +6661,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -7509,6 +7561,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -7652,7 +7710,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -7799,7 +7858,8 @@ window.BENCHMARK_DATA = {
           360.205733367375,
           345.76703269141063,
           336.8282773835318,
-          332.7059574860793
+          332.7059574860793,
+          346.1113056818644
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7946,6 +8006,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8106,7 +8167,8 @@ window.BENCHMARK_DATA = {
           427.81383498509723,
           436.74862009684244,
           419.61893234934126,
-          417.6162357966105
+          417.6162357966105,
+          429.3557568868001
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8144,6 +8206,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -8413,7 +8476,8 @@ window.BENCHMARK_DATA = {
           1133.3615421567645,
           1172.5682556152344,
           1082.4938897450766,
-          1084.3970548189604
+          1084.3970548189604,
+          1123.0915534973144
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8526,6 +8590,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -9425,6 +9490,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -9568,7 +9639,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -9715,7 +9787,8 @@ window.BENCHMARK_DATA = {
           1243.6965127672468,
           1233.4621602376303,
           1195.2053229992207,
-          1180.2425022125244
+          1180.2425022125244,
+          1229.7892965952556
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9862,6 +9935,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -10022,7 +10096,8 @@ window.BENCHMARK_DATA = {
           1232.0127981821695,
           1305.7888694763183,
           1174.6949152946472,
-          1250.3417900630407
+          1250.3417900630407,
+          1204.3439136505126
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10060,6 +10135,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -10329,7 +10405,8 @@ window.BENCHMARK_DATA = {
           2433.328255244664,
           2467.858017985026,
           2451.161515045166,
-          2384.0196060180665
+          2384.0196060180665,
+          2512.7467631022137
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10442,6 +10519,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -11341,6 +11419,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
         "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
+      },
+      {
+        "sha": "07843f7f35cffea48197c86ff295104aa393761c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 22:43:16 2025 \u002B0100",
+        "message": "refactor: use the \u0022InternalsVisibleTo\u0022 attribute in csproj (#381)"
       }
     ],
     "labels": [
@@ -11484,7 +11568,8 @@ window.BENCHMARK_DATA = {
       "fdc0aaae",
       "6e4441e1",
       "12c76593",
-      "b2959468"
+      "b2959468",
+      "07843f7f"
     ],
     "datasets": [
       {
@@ -11631,7 +11716,8 @@ window.BENCHMARK_DATA = {
           1350.597009931292,
           1321.8876079559327,
           1332.8758734189546,
-          1256.7335456848145
+          1256.7335456848145,
+          1336.4578235332783
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11778,6 +11864,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -11938,7 +12025,8 @@ window.BENCHMARK_DATA = {
           86023.86368815105,
           86757.14467075893,
           87393.13723958333,
-          85774.96432059152
+          85774.96432059152,
+          87558.49938557943
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12090,6 +12178,7 @@ window.BENCHMARK_DATA = {
           54271,
           54275,
           54273,
+          54271,
           54271
         ],
         "borderColor": "#FF671B",
@@ -12245,7 +12334,8 @@ window.BENCHMARK_DATA = {
           6589.79360144479,
           6886.1578918457035,
           7174.545727539063,
-          6509.206927998861
+          6509.206927998861,
+          6950.305025736491
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12358,6 +12448,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
