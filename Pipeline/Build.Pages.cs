@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Serilog;
+// ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;
 
@@ -58,7 +59,7 @@ partial class Build
 			JsonDocument jsonDocument = JsonDocument.Parse(responseContent);
 			foreach (JsonElement file in jsonDocument.RootElement.EnumerateArray())
 			{
-				string name = file.GetProperty("name").GetString();
+				string name = file.GetProperty("name").GetString()!;
 				string filePath = Path.Combine(baseDirectory, name);
 				HttpResponseMessage fileResponse =
 					await client.GetAsync(
