@@ -281,6 +281,8 @@ jobs:
                     git merge origin/benchmarks --no-edit
             -   name: Get documentation from extensions
                 run: ./build.sh Pages
+                env:
+                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
             -   uses: actions/setup-node@v4
                 with:
                     node-version: 18
