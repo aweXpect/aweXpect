@@ -268,12 +268,21 @@ jobs:
             -   uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
+            -   name: Setup .NET SDKs
+                uses: actions/setup-dotnet@v4
+                with:
+                    dotnet-version: |
+                        8.0.x
             -   name: Merge benchmarks branch
                 run: |
                     git config --global user.email "benchmarks@testably.org"
                     git config --global user.name "Benchmark User"
                     git fetch origin
                     git merge origin/benchmarks --no-edit
+            -   name: Get documentation from extensions
+                run: ./build.sh Pages
+                env:
+                    GithubToken: ${{ secrets.GITHUB_TOKEN }}
             -   uses: actions/setup-node@v4
                 with:
                     node-version: 18
