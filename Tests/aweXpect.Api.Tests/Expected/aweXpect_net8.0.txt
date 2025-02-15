@@ -962,11 +962,6 @@ namespace aweXpect.Results
             aweXpect.Results.EventTriggerResult<TSubject> WithParameter<TParameter>(string expression, int? position, System.Func<TParameter, bool> predicate);
         }
     }
-    public class JsonWhichResult : aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>>
-    {
-        public JsonWhichResult(aweXpect.Core.ExpectationBuilder expectationBuilder, aweXpect.Core.IThat<string?> returnValue, System.Text.Json.JsonDocumentOptions options) { }
-        public aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> Which(System.Action<aweXpect.Core.IThat<System.Text.Json.JsonElement?>> expectations) { }
-    }
     public class ObjectCollectionBeContainedInResult<TType, TThat, TItem> : aweXpect.Results.ObjectCollectionMatchResult<TType, TThat, TItem>
     {
         public ObjectCollectionBeContainedInResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.ObjectEqualityOptions<TItem> options, aweXpect.Options.CollectionMatchOptions collectionMatchOptions) { }
