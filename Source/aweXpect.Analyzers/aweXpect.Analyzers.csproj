@@ -13,12 +13,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>aweXpect.Analyzers.Tests, PublicKey=$(PublicKey)</_Parameter1>
-		</AssemblyAttribute>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>aweXpect.Analyzers.CodeFixers, PublicKey=$(PublicKey)</_Parameter1>
-		</AssemblyAttribute>
+		<InternalsVisibleTo Include="aweXpect.Analyzers.Tests" PublicKey="$(PublicKey)" />
+		<InternalsVisibleTo Include="aweXpect.Analyzers.CodeFixers" PublicKey="$(PublicKey)" />
 	</ItemGroup>
 
 	<ItemGroup>
