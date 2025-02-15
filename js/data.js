@@ -840,6 +840,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -982,7 +988,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -1128,7 +1135,8 @@ window.BENCHMARK_DATA = {
           172.1485471555165,
           173.28741099284247,
           182.53310524500333,
-          169.6628590742747
+          169.6628590742747,
+          175.14546832671533
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1275,6 +1283,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1433,7 +1442,8 @@ window.BENCHMARK_DATA = {
           196.7794174194336,
           196.85218702043807,
           194.92164397239685,
-          200.71075496673583
+          200.71075496673583,
+          187.26639924049377
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1471,6 +1481,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1738,7 +1749,8 @@ window.BENCHMARK_DATA = {
           742.4608261744181,
           734.4116453757653,
           764.7533355440412,
-          753.3070744832356
+          753.3070744832356,
+          753.2436855951945
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1851,6 +1863,7 @@ window.BENCHMARK_DATA = {
           1944,
           1944,
           1944,
+          2216,
           2216,
           2216,
           2216,
@@ -2281,6 +2294,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -2346,7 +2365,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -2415,7 +2435,8 @@ window.BENCHMARK_DATA = {
           285103.1030436198,
           286834.71037946426,
           291839.6708635603,
-          273441.09012276784
+          273441.09012276784,
+          281912.22239583335
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2485,6 +2506,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2566,7 +2588,8 @@ window.BENCHMARK_DATA = {
           2167395.242447917,
           2073512.614955357,
           2057938.6786458334,
-          2035662.0341796875
+          2035662.0341796875,
+          2088522.0908854166
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2620,6 +2643,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -2717,7 +2741,8 @@ window.BENCHMARK_DATA = {
           643888.8782087053,
           671700.1368489583,
           666370.7121744792,
-          654776.5223214285
+          654776.5223214285,
+          655973.9303152902
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2753,6 +2778,7 @@ window.BENCHMARK_DATA = {
           836377,
           836377,
           836377,
+          836713,
           836713,
           836713,
           836713,
@@ -3645,6 +3671,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -3787,7 +3819,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -3933,7 +3966,8 @@ window.BENCHMARK_DATA = {
           580.9610392025539,
           583.9800422032674,
           581.0528086821238,
-          592.9470985276358
+          592.9470985276358,
+          591.1330007712046
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4080,6 +4114,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4238,7 +4273,8 @@ window.BENCHMARK_DATA = {
           414.64969893864225,
           410.9239528973897,
           439.34596687952677,
-          423.12928873697916
+          423.12928873697916,
+          420.13100739887784
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4276,6 +4312,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4543,7 +4580,8 @@ window.BENCHMARK_DATA = {
           15679.732196044923,
           14484.249741690499,
           15758.355651855469,
-          15792.64008585612
+          15792.64008585612,
+          14296.464766366142
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4656,6 +4694,7 @@ window.BENCHMARK_DATA = {
           27016,
           27016,
           27016,
+          27288,
           27288,
           27288,
           27288,
@@ -5548,6 +5587,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -5690,7 +5735,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -5836,7 +5882,8 @@ window.BENCHMARK_DATA = {
           224.68000505765278,
           225.71027229626972,
           224.11004406611124,
-          224.60964151791163
+          224.60964151791163,
+          223.97930095990498
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5983,6 +6030,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6141,7 +6189,8 @@ window.BENCHMARK_DATA = {
           191.74120332400005,
           192.2248605887095,
           197.20173495610555,
-          198.48603370984395
+          198.48603370984395,
+          189.4258601298699
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6179,6 +6228,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -6446,7 +6496,8 @@ window.BENCHMARK_DATA = {
           1031.9156429290772,
           1028.2741472880045,
           1088.488287226359,
-          1056.343430519104
+          1056.343430519104,
+          1032.077123778207
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6559,6 +6610,7 @@ window.BENCHMARK_DATA = {
           2576,
           2576,
           2576,
+          2848,
           2848,
           2848,
           2848,
@@ -7451,6 +7503,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -7593,7 +7651,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -7739,7 +7798,8 @@ window.BENCHMARK_DATA = {
           345.75040568624223,
           360.205733367375,
           345.76703269141063,
-          336.8282773835318
+          336.8282773835318,
+          332.7059574860793
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7886,6 +7946,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8044,7 +8105,8 @@ window.BENCHMARK_DATA = {
           409.0935947418213,
           427.81383498509723,
           436.74862009684244,
-          419.61893234934126
+          419.61893234934126,
+          417.6162357966105
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8082,6 +8144,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -8349,7 +8412,8 @@ window.BENCHMARK_DATA = {
           1108.1084491729737,
           1133.3615421567645,
           1172.5682556152344,
-          1082.4938897450766
+          1082.4938897450766,
+          1084.3970548189604
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8462,6 +8526,7 @@ window.BENCHMARK_DATA = {
           2560,
           2560,
           2560,
+          2896,
           2896,
           2896,
           2896,
@@ -9354,6 +9419,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -9496,7 +9567,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -9642,7 +9714,8 @@ window.BENCHMARK_DATA = {
           1246.1207154591877,
           1243.6965127672468,
           1233.4621602376303,
-          1195.2053229992207
+          1195.2053229992207,
+          1180.2425022125244
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9789,6 +9862,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -9947,7 +10021,8 @@ window.BENCHMARK_DATA = {
           1309.055589167277,
           1232.0127981821695,
           1305.7888694763183,
-          1174.6949152946472
+          1174.6949152946472,
+          1250.3417900630407
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9985,6 +10060,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -10252,7 +10328,8 @@ window.BENCHMARK_DATA = {
           2449.591770935059,
           2433.328255244664,
           2467.858017985026,
-          2451.161515045166
+          2451.161515045166,
+          2384.0196060180665
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10365,6 +10442,7 @@ window.BENCHMARK_DATA = {
           3776,
           3776,
           3776,
+          4112,
           4112,
           4112,
           4112,
@@ -11257,6 +11335,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 15 21:06:28 2025 \u002B0100",
         "message": "docs: include documentation from extensions (#379)"
+      },
+      {
+        "sha": "b2959468330f7657c88caec2d68758ad54689183",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 15 21:19:16 2025 \u002B0100",
+        "message": "chore: add \u0022repository_dispatch\u0022 to build.yml (#380)"
       }
     ],
     "labels": [
@@ -11399,7 +11483,8 @@ window.BENCHMARK_DATA = {
       "42f921a4",
       "fdc0aaae",
       "6e4441e1",
-      "12c76593"
+      "12c76593",
+      "b2959468"
     ],
     "datasets": [
       {
@@ -11545,7 +11630,8 @@ window.BENCHMARK_DATA = {
           1293.1033732096355,
           1350.597009931292,
           1321.8876079559327,
-          1332.8758734189546
+          1332.8758734189546,
+          1256.7335456848145
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11692,6 +11778,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -11850,7 +11937,8 @@ window.BENCHMARK_DATA = {
           88356.45629882812,
           86023.86368815105,
           86757.14467075893,
-          87393.13723958333
+          87393.13723958333,
+          85774.96432059152
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12001,7 +12089,8 @@ window.BENCHMARK_DATA = {
           54273,
           54271,
           54275,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12155,7 +12244,8 @@ window.BENCHMARK_DATA = {
           6813.325163269043,
           6589.79360144479,
           6886.1578918457035,
-          7174.545727539063
+          7174.545727539063,
+          6509.206927998861
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12268,6 +12358,7 @@ window.BENCHMARK_DATA = {
           7640,
           7640,
           7640,
+          7912,
           7912,
           7912,
           7912,
