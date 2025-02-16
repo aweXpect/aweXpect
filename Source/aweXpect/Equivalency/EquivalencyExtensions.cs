@@ -17,18 +17,18 @@ public static class EquivalencyExtensions
 	/// </summary>
 	public static TSelf Equivalent<TType, TThat, TElement, TSelf>(
 		this ObjectEqualityResult<TType, TThat, TElement, TSelf> result,
-		Func<EquivalencyOptions, EquivalencyOptions>? equivalencyOptions = null)
+		Func<EquivalencyOptions, EquivalencyOptions>? options = null)
 		where TSelf : ObjectEqualityResult<TType, TThat, TElement, TSelf>
 	{
 		((IOptionsProvider<ObjectEqualityOptions<TElement>>)result).Options.SetMatchType(
-			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(equivalencyOptions)));
+			new EquivalencyComparer(EquivalencyOptionsExtensions.FromCallback(options)));
 		return (TSelf)result;
 	}
 
 	/// <summary>
 	///     Use equivalency to compare objects.
 	/// </summary>
-	public static ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this ObjectEqualityOptions<TSubject> options,
+	internal static ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this ObjectEqualityOptions<TSubject> options,
 		EquivalencyOptions equivalencyOptions)
 	{
 		options.SetMatchType(new EquivalencyComparer(equivalencyOptions));
