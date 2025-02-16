@@ -876,6 +876,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -1024,7 +1030,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -1176,7 +1183,8 @@ window.BENCHMARK_DATA = {
           171.39480076517378,
           174.4086271127065,
           172.57819016774496,
-          175.42724615732828
+          175.42724615732828,
+          180.41888100760323
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1323,6 +1331,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1493,7 +1502,8 @@ window.BENCHMARK_DATA = {
           187.4921813805898,
           195.93506077357702,
           200.5145127773285,
-          199.90454050472803
+          199.90454050472803,
+          201.3770623366038
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1531,6 +1541,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1810,7 +1821,8 @@ window.BENCHMARK_DATA = {
           850.6571072798508,
           856.7023104349772,
           883.081023089091,
-          872.5474846913264
+          872.5474846913264,
+          879.251939535141
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1964,6 +1976,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2395,6 +2408,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -2466,7 +2485,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -2541,7 +2561,8 @@ window.BENCHMARK_DATA = {
           283452.5561899039,
           283193.7769042969,
           285241.1458458534,
-          278671.3909505208
+          278671.3909505208,
+          292223.569140625
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2611,6 +2632,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2704,7 +2726,8 @@ window.BENCHMARK_DATA = {
           2039569.595703125,
           1921541.68046875,
           1965817.1479166667,
-          2118765.4526041667
+          2118765.4526041667,
+          2006031.6380208333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2783,6 +2806,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738
         ],
@@ -2867,7 +2891,8 @@ window.BENCHMARK_DATA = {
           694925.7700846355,
           627531.4439871652,
           655100.5123697916,
-          709312.7
+          709312.7,
+          685509.7103841145
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2944,6 +2969,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -3837,6 +3863,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -3985,7 +4017,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -4137,7 +4170,8 @@ window.BENCHMARK_DATA = {
           592.4628366742816,
           585.9565873827253,
           606.5437218802316,
-          599.5421620686849
+          599.5421620686849,
+          596.4154771804809
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4284,6 +4318,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4454,7 +4489,8 @@ window.BENCHMARK_DATA = {
           417.7492156982422,
           408.1910690307617,
           415.9311241785685,
-          428.45452372233075
+          428.45452372233075,
+          442.8068414415632
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4492,6 +4528,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4771,7 +4808,8 @@ window.BENCHMARK_DATA = {
           14530.966874186199,
           14198.330862426757,
           14993.537576802571,
-          15344.382548014322
+          15344.382548014322,
+          14976.781010945639
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4925,6 +4963,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -5818,6 +5857,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -5966,7 +6011,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -6118,7 +6164,8 @@ window.BENCHMARK_DATA = {
           218.29143880094801,
           217.2662386383329,
           228.62260478337606,
-          237.79446763992308
+          237.79446763992308,
+          227.5623372077942
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6265,6 +6312,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6435,7 +6483,8 @@ window.BENCHMARK_DATA = {
           197.94542695681255,
           189.117862256368,
           194.36071962576645,
-          205.4211270014445
+          205.4211270014445,
+          194.32610540390016
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6473,6 +6522,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -6752,7 +6802,8 @@ window.BENCHMARK_DATA = {
           1169.0910301208496,
           1161.04303250994,
           1231.0674718221028,
-          1193.9729545299824
+          1193.9729545299824,
+          1178.7683030446372
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6906,6 +6957,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -7799,6 +7851,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -7947,7 +8005,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -8099,7 +8158,8 @@ window.BENCHMARK_DATA = {
           343.7549833615621,
           345.63378025690713,
           355.2077462832133,
-          343.50774869918826
+          343.50774869918826,
+          353.7673026402791
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8246,6 +8306,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8416,7 +8477,8 @@ window.BENCHMARK_DATA = {
           421.3166163444519,
           417.2386638777597,
           437.0633897145589,
-          409.3698238690694
+          409.3698238690694,
+          421.43677520751953
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8454,6 +8516,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -8733,7 +8796,8 @@ window.BENCHMARK_DATA = {
           1194.9090049743652,
           1226.2943860371909,
           1307.3983030954996,
-          1262.5931977589926
+          1262.5931977589926,
+          1328.4310878753663
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8887,6 +8951,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -9780,6 +9845,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -9928,7 +9999,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -10080,7 +10152,8 @@ window.BENCHMARK_DATA = {
           1160.7693789555476,
           1185.6329675038655,
           1225.1622986112322,
-          1206.0888084411622
+          1206.0888084411622,
+          1222.5329284667969
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10227,6 +10300,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -10397,7 +10471,8 @@ window.BENCHMARK_DATA = {
           1179.2887406349182,
           1181.5666632334392,
           1208.039221827189,
-          1229.6265884399413
+          1229.6265884399413,
+          1271.409934588841
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10435,6 +10510,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -10714,7 +10790,8 @@ window.BENCHMARK_DATA = {
           2758.1383440835134,
           2705.6514710017614,
           2908.4450841267903,
-          2698.1780131203786
+          2698.1780131203786,
+          2808.0843467712402
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10868,6 +10945,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -11761,6 +11839,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:37:44 2025 \u002B0100",
         "message": "feat: support canceled tasks (#386)"
+      },
+      {
+        "sha": "4c5d53b031cc8be55d6cf8138307aef411807a73",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
+        "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
       }
     ],
     "labels": [
@@ -11909,7 +11993,8 @@ window.BENCHMARK_DATA = {
       "84eb74e0",
       "da1f968c",
       "3cefc147",
-      "b9fe159b"
+      "b9fe159b",
+      "4c5d53b0"
     ],
     "datasets": [
       {
@@ -12061,7 +12146,8 @@ window.BENCHMARK_DATA = {
           1292.3768703460694,
           1271.804393181434,
           1288.066806411743,
-          1267.3540017445882
+          1267.3540017445882,
+          1295.485548700605
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12208,6 +12294,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -12378,7 +12465,8 @@ window.BENCHMARK_DATA = {
           87915.97680664062,
           84799.45596313477,
           87112.87911783854,
-          87935.09279785157
+          87935.09279785157,
+          88921.98263346354
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12533,6 +12621,7 @@ window.BENCHMARK_DATA = {
           54271,
           54271,
           54271,
+          54273,
           54273,
           54273,
           54273
@@ -12695,7 +12784,8 @@ window.BENCHMARK_DATA = {
           7325.4052281697595,
           6838.678946903774,
           7137.010752360026,
-          7006.270159040178
+          7006.270159040178,
+          7204.302993774414
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12849,6 +12939,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
