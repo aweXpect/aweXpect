@@ -59,7 +59,7 @@ extensions, so that the risk of version conflicts between different extensions c
 You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
 More information can be found in the [extensibility guide](https://awexpect.com/docs/extensions/write-extensions).
 
-**Extension packages**
+**Extension projects**
 
 - [aweXpect.Json](https://github.com/aweXpect/aweXpect.Json)  
   [![Nuget](https://img.shields.io/nuget/v/aweXpect.Json)](https://www.nuget.org/packages/aweXpect.Json)  
