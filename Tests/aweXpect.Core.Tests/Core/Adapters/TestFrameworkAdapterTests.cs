@@ -60,7 +60,7 @@ public sealed class TestFrameworkAdapterTests
 	[Fact]
 	public async Task Throw_MissingAssemblyName_ShouldThrowNotSupportedException()
 	{
-		MyTestFrameworkAdapter adapter = new(MissingAssembly, failException: new MyException());
+		MyTestFrameworkAdapter adapter = new(MissingAssembly, new MyException());
 		_ = adapter.IsAvailable;
 
 		await That(() => adapter.Throw("foo")).Throws<NotSupportedException>()

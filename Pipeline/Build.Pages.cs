@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Serilog;
+
 // ReSharper disable AllUnderscoreLocalParameterName
 
 namespace Build;

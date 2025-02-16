@@ -157,7 +157,10 @@ partial class Build
 		.DependsOn(BenchmarkComment)
 		.DependsOn(BenchmarkReport);
 
-	async Task UploadBenchmarkFile(string filename, PageBenchmarkReportGenerator.CommitInfo commitInfo, BenchmarkFile currentFile,
+	async Task UploadBenchmarkFile(
+		string filename,
+		PageBenchmarkReportGenerator.CommitInfo commitInfo,
+		BenchmarkFile currentFile,
 		string updatedFileContent)
 	{
 		using HttpClient client = new();

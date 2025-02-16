@@ -1,4 +1,5 @@
 ﻿// ReSharper disable UnusedType.Global
+
 namespace aweXpect.Core.Adapters;
 
 /// <summary>

@@ -17,7 +17,7 @@ partial class Build
 		.Executes(() =>
 		{
 			Configuration = Configuration.Debug;
-			
+
 			SonarScannerTasks.SonarScannerBegin(s => s
 				.SetOrganization("awexpect")
 				.SetProjectKey("aweXpect_aweXpect")

@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+
 // ReSharper disable UnusedType.Global
 
 namespace aweXpect.Core.Adapters;

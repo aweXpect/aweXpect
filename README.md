@@ -45,7 +45,8 @@ By using async assertions per default, we have a consistent API and other perks:
 ### Extensible
 
 We added lots of extensibility points to allow you to build custom extensions.  
-The [aweXpect.Core](https://www.nuget.org/packages/aweXpect.Core/) package is intended to be a stable source for extensions, so that the risk of version conflicts between different extensions can be reduced.
+The [aweXpect.Core](https://www.nuget.org/packages/aweXpect.Core/) package is intended to be a stable source for
+extensions, so that the risk of version conflicts between different extensions can be reduced.
 
 You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
 More information can be found in the [extensibility guide](https://awexpect.com/docs/category/extensibility).

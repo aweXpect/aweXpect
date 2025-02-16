@@ -45,23 +45,6 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
-			public async Task WhenInnerExceptionDoesNotMatch_ShouldFail()
-			{
-				Action action = () => throw new OuterException(innerException: new CustomException());
-
-				async Task Act()
-					=> await That(action).ThrowsException().WithRecursiveInnerExceptions(
-						e => e.All().Satisfy(_ => false));
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that action
-					             throws an exception with recursive inner exceptions which all satisfy _ => false,
-					             but not all did
-					             """);
-			}
-
-			[Fact]
 			public async Task WhenExpectingInnerExceptionsToBeEmpty_ShouldFail()
 			{
 				Action action = () => throw new OuterException(innerException: new CustomException());
@@ -77,6 +60,23 @@ public sealed partial class ThatDelegate
 					             but recursive inner exceptions was [
 					               aweXpect.Tests.ThatDelegate+CustomException: WhenExpectingInnerExceptionsToBeEmpty_ShouldFail
 					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenInnerExceptionDoesNotMatch_ShouldFail()
+			{
+				Action action = () => throw new OuterException(innerException: new CustomException());
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithRecursiveInnerExceptions(
+						e => e.All().Satisfy(_ => false));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that action
+					             throws an exception with recursive inner exceptions which all satisfy _ => false,
+					             but not all did
 					             """);
 			}
 

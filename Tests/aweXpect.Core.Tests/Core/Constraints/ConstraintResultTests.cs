@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Constraints;
 

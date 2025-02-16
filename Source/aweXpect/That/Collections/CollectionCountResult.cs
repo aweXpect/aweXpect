@@ -12,19 +12,19 @@ public class CollectionCountResult<TReturn>(Func<EnumerableQuantifier, TReturn> 
 	/// </summary>
 	public TReturn EqualTo(int expected)
 		=> factory(EnumerableQuantifier.Exactly(expected));
-	
+
 	/// <summary>
 	///     Verifies that the collection has at least <paramref name="minimum" /> items.
 	/// </summary>
 	public TReturn AtLeast(int minimum)
 		=> factory(EnumerableQuantifier.AtLeast(minimum));
-	
+
 	/// <summary>
 	///     Verifies that the collection has at most <paramref name="maximum" /> items.
 	/// </summary>
 	public TReturn AtMost(int maximum)
 		=> factory(EnumerableQuantifier.AtMost(maximum));
-	
+
 	/// <summary>
 	///     Verifies that the collection has between <paramref name="minimum" />…
 	/// </summary>

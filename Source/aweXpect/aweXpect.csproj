@@ -12,7 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="aweXpect.Internal.Tests" PublicKey="$(PublicKey)" />
+		<InternalsVisibleTo Include="aweXpect.Internal.Tests" PublicKey="$(PublicKey)"/>
 	</ItemGroup>
 
 	<ItemGroup>

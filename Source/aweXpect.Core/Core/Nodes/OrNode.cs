@@ -155,13 +155,13 @@ internal class OrNode : Node
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue<TValue>(out TValue? leftValue))
+			if (left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue<TValue>(out TValue? rightValue))
+			if (right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
