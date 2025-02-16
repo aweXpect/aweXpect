@@ -864,6 +864,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -1010,7 +1016,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -1160,7 +1167,8 @@ window.BENCHMARK_DATA = {
           175.14546832671533,
           177.29154222806295,
           171.39480076517378,
-          174.4086271127065
+          174.4086271127065,
+          172.57819016774496
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1307,6 +1315,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1473,7 +1482,8 @@ window.BENCHMARK_DATA = {
           187.26639924049377,
           192.08625297546388,
           187.4921813805898,
-          195.93506077357702
+          195.93506077357702,
+          200.5145127773285
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1511,6 +1521,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1786,7 +1797,8 @@ window.BENCHMARK_DATA = {
           753.2436855951945,
           797.6635966618855,
           850.6571072798508,
-          856.7023104349772
+          856.7023104349772,
+          883.081023089091
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1940,6 +1952,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384
         ],
@@ -2357,6 +2370,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -2426,7 +2445,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -2499,7 +2519,8 @@ window.BENCHMARK_DATA = {
           281912.22239583335,
           286711.9208635603,
           283452.5561899039,
-          283193.7769042969
+          283193.7769042969,
+          285241.1458458534
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2569,6 +2590,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2658,7 +2680,8 @@ window.BENCHMARK_DATA = {
           2088522.0908854166,
           2035642.0755208333,
           2039569.595703125,
-          1921541.68046875
+          1921541.68046875,
+          1965817.1479166667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2736,7 +2759,8 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
-          3977736
+          3977736,
+          3977738
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2817,7 +2841,8 @@ window.BENCHMARK_DATA = {
           655973.9303152902,
           706164.5739583333,
           694925.7700846355,
-          627531.4439871652
+          627531.4439871652,
+          655100.5123697916
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2894,6 +2919,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721
         ],
@@ -3773,6 +3799,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -3919,7 +3951,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -4069,7 +4102,8 @@ window.BENCHMARK_DATA = {
           591.1330007712046,
           595.5652925491333,
           592.4628366742816,
-          585.9565873827253
+          585.9565873827253,
+          606.5437218802316
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4216,6 +4250,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4382,7 +4417,8 @@ window.BENCHMARK_DATA = {
           420.13100739887784,
           422.00289414723716,
           417.7492156982422,
-          408.1910690307617
+          408.1910690307617,
+          415.9311241785685
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4420,6 +4456,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4695,7 +4732,8 @@ window.BENCHMARK_DATA = {
           14296.464766366142,
           17459.05538736979,
           14530.966874186199,
-          14198.330862426757
+          14198.330862426757,
+          14993.537576802571
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4849,6 +4887,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456
         ],
@@ -5728,6 +5767,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -5874,7 +5919,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -6024,7 +6070,8 @@ window.BENCHMARK_DATA = {
           223.97930095990498,
           243.5355607509613,
           218.29143880094801,
-          217.2662386383329
+          217.2662386383329,
+          228.62260478337606
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6171,6 +6218,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6337,7 +6385,8 @@ window.BENCHMARK_DATA = {
           189.4258601298699,
           206.3274233977,
           197.94542695681255,
-          189.117862256368
+          189.117862256368,
+          194.36071962576645
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6375,6 +6424,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -6650,7 +6700,8 @@ window.BENCHMARK_DATA = {
           1032.077123778207,
           1086.7516090393067,
           1169.0910301208496,
-          1161.04303250994
+          1161.04303250994,
+          1231.0674718221028
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6804,6 +6855,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952
         ],
@@ -7683,6 +7735,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -7829,7 +7887,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -7979,7 +8038,8 @@ window.BENCHMARK_DATA = {
           332.7059574860793,
           346.1113056818644,
           343.7549833615621,
-          345.63378025690713
+          345.63378025690713,
+          355.2077462832133
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8126,6 +8186,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8292,7 +8353,8 @@ window.BENCHMARK_DATA = {
           417.6162357966105,
           429.3557568868001,
           421.3166163444519,
-          417.2386638777597
+          417.2386638777597,
+          437.0633897145589
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8330,6 +8392,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -8605,7 +8668,8 @@ window.BENCHMARK_DATA = {
           1084.3970548189604,
           1123.0915534973144,
           1194.9090049743652,
-          1226.2943860371909
+          1226.2943860371909,
+          1307.3983030954996
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8759,6 +8823,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064
         ],
@@ -9638,6 +9703,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -9784,7 +9855,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -9934,7 +10006,8 @@ window.BENCHMARK_DATA = {
           1180.2425022125244,
           1229.7892965952556,
           1160.7693789555476,
-          1185.6329675038655
+          1185.6329675038655,
+          1225.1622986112322
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10081,6 +10154,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -10247,7 +10321,8 @@ window.BENCHMARK_DATA = {
           1250.3417900630407,
           1204.3439136505126,
           1179.2887406349182,
-          1181.5666632334392
+          1181.5666632334392,
+          1208.039221827189
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10285,6 +10360,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -10560,7 +10636,8 @@ window.BENCHMARK_DATA = {
           2384.0196060180665,
           2512.7467631022137,
           2758.1383440835134,
-          2705.6514710017614
+          2705.6514710017614,
+          2908.4450841267903
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10714,6 +10791,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520
         ],
@@ -11593,6 +11671,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 04:48:16 2025 \u002B0100",
         "message": "docs: add \u0022Getting started\u0022 button to home page (#383)"
+      },
+      {
+        "sha": "3cefc147bae2ebe6cf8ed6e465ecd75df017ee6a",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 06:06:00 2025 \u002B0100",
+        "message": "docs: limit benchmark data per default (#385)"
       }
     ],
     "labels": [
@@ -11739,7 +11823,8 @@ window.BENCHMARK_DATA = {
       "b2959468",
       "07843f7f",
       "84eb74e0",
-      "da1f968c"
+      "da1f968c",
+      "3cefc147"
     ],
     "datasets": [
       {
@@ -11889,7 +11974,8 @@ window.BENCHMARK_DATA = {
           1256.7335456848145,
           1336.4578235332783,
           1292.3768703460694,
-          1271.804393181434
+          1271.804393181434,
+          1288.066806411743
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12036,6 +12122,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -12202,7 +12289,8 @@ window.BENCHMARK_DATA = {
           85774.96432059152,
           87558.49938557943,
           87915.97680664062,
-          84799.45596313477
+          84799.45596313477,
+          87112.87911783854
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12357,6 +12445,7 @@ window.BENCHMARK_DATA = {
           54271,
           54271,
           54271,
+          54273,
           54273
         ],
         "borderColor": "#FF671B",
@@ -12515,7 +12604,8 @@ window.BENCHMARK_DATA = {
           6509.206927998861,
           6950.305025736491,
           7325.4052281697595,
-          6838.678946903774
+          6838.678946903774,
+          7137.010752360026
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12669,6 +12759,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800
         ],
