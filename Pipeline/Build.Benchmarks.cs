@@ -146,8 +146,8 @@ partial class Build
 				.Append(commitInfo, currentFile.Content, benchmarkReports, 50);
 			if (!string.IsNullOrWhiteSpace(updatedFileContent))
 			{
-				await UploadBenchmarkFile(commitInfo, currentFile, updatedFileContent);
-				await UploadBenchmarkFile(commitInfo, limitedFile, limitedFileContent);
+				await UploadBenchmarkFile("data.js", commitInfo, currentFile, updatedFileContent);
+				await UploadBenchmarkFile("limited-data.js", commitInfo, limitedFile, limitedFileContent);
 			}
 		});
 
@@ -157,7 +157,7 @@ partial class Build
 		.DependsOn(BenchmarkComment)
 		.DependsOn(BenchmarkReport);
 
-	async Task UploadBenchmarkFile(PageBenchmarkReportGenerator.CommitInfo commitInfo, BenchmarkFile currentFile,
+	async Task UploadBenchmarkFile(string filename, PageBenchmarkReportGenerator.CommitInfo commitInfo, BenchmarkFile currentFile,
 		string updatedFileContent)
 	{
 		using HttpClient client = new();
@@ -169,7 +169,7 @@ partial class Build
 			currentFile?.Sha,
 			BenchmarkBranch);
 		HttpResponseMessage response = await client.PutAsync(
-			"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js",
+			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/{filename}",
 			new StringContent(JsonSerializer.Serialize(content), Encoding.UTF8, "application/json"));
 		if (response.IsSuccessStatusCode)
 		{
