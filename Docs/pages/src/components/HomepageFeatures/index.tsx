@@ -19,20 +19,20 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Extensible',
-    Svg: require('@site/static/img/extensibility.svg').default,
-    description: (
-      <>
-        We added lots of extensibility points to allow you to build custom extensions.
-      </>
-    ),
-  },
-  {
     title: 'Performant',
     Svg: require('@site/static/img/speed.svg').default,
     description: (
       <>
         A focus on performance allows you to execute your tests as fast as possible.
+      </>
+    ),
+  },
+  {
+    title: 'Extensible',
+    Svg: require('@site/static/img/extensibility.svg').default,
+    description: (
+      <>
+        We added lots of extensibility points to allow you to build custom extensions.
       </>
     ),
   },
