@@ -44,9 +44,7 @@ public class ObjectCountResult<TType, TThat, TElement, TSelf>(
 	public TSelf Equivalent(
 		Func<EquivalencyOptions, EquivalencyOptions>? optionsCallback = null)
 	{
-		EquivalencyOptions equivalencyOptions =
-			optionsCallback?.Invoke(new EquivalencyOptions()) ?? new EquivalencyOptions();
-		options.Equivalent(equivalencyOptions);
+		options.Equivalent(EquivalencyOptionsExtensions.FromCallback(optionsCallback));
 		return (TSelf)this;
 	}
 

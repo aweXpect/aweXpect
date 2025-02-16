@@ -1,7 +1,7 @@
 ﻿using aweXpect.Equivalency;
 using aweXpect.Options;
 
-namespace aweXpect.Core.Tests.Options;
+namespace aweXpect.Internal.Tests.Helpers;
 
 public class ObjectEqualityOptionsTests
 {

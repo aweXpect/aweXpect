@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Customization;
 
 namespace aweXpect.Equivalency;
 
@@ -73,8 +74,8 @@ public static class EquivalencyOptionsExtensions
 	/// </remarks>
 	internal static EquivalencyOptions FromCallback(Func<EquivalencyOptions, EquivalencyOptions>? callback)
 		=> callback is null
-			? new EquivalencyOptions()
-			: callback(new EquivalencyOptions());
+			? Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get()
+			: callback(Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get());
 
 	/// <summary>
 	///     Returns type-specific <see cref="EquivalencyTypeOptions" />.
