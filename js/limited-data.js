@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
-      {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Feb 10 20:39:45 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          158.36351675253647,
           157.08012223243713,
           172.87147050244468,
           166.68167635599772,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           173.80375008923667,
           177.02655234336854,
           168.956604830424,
-          181.7518288918904
+          181.7518288918904,
+          167.9433664908776
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -420,7 +420,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          504,
           528,
           528,
           528,
@@ -452,6 +451,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          196.65667889912922,
           199.4210939884186,
           198.7462346871694,
           190.61797188123066,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           209.0858525911967,
           197.16769075393677,
           186.27382834752402,
-          194.8697292621319
+          194.8697292621319,
+          191.07316716512045
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          784.6434197743733,
           790.0726822535197,
           796.8158716201782,
           741.3678713480632,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           865.6806670702421,
           892.3951431683132,
           862.8693533579509,
-          1317.8601283391317
+          1317.8601283391317,
+          901.804033279419
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -708,7 +708,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
-          2216,
+          2384,
           2384,
           2384,
           2384,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
       {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          288079.5066964286,
           292179.41909179685,
           305817.2132286659,
           311278.28086635045,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           297285.31696965144,
           275957.61178152903,
           280698.54560546874,
-          285669.0477539062
+          285669.0477539062,
+          290733.7574986049
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          284900,
           284916,
           284916,
           284916,
@@ -1185,6 +1184,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2078818.3953125,
           2132509.10390625,
           2030551.81484375,
           2012320.45234375,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2045083.6671316964,
           2000499.4600260416,
           1902132.283482143,
-          2114869.402901786
+          2114869.402901786,
+          2053437.7658854167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1292,7 +1292,6 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
-          3977738,
           3977736,
           3977738,
           3977738,
@@ -1327,6 +1326,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738
         ],
         "borderColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          668776.7788411458,
           679510.9164663461,
           679587.2981445312,
           687975.7615685096,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           686372.9731770833,
           690741.969163161,
           631215.2228515625,
-          654988.8837193081
+          654988.8837193081,
+          659648.3072265625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1441,7 +1441,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
-          836713,
+          866721,
           866721,
           866721,
           866721,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
       {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          546.2712798436482,
           564.499910899571,
           537.7653591292245,
           551.4546936353048,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           593.0269682747977,
           595.0385335286459,
           574.0587482452393,
-          593.3588637034098
+          593.3588637034098,
+          590.4595533098493
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1886,7 +1886,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1088,
           1104,
           1104,
           1104,
@@ -1935,6 +1934,7 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
+          1192,
           1192
         ],
         "borderColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          431.34143144743786,
           428.2251853261675,
           420.2525250571115,
           404.0883953230722,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           425.51550877888997,
           423.95703926086424,
           410.2725615183512,
-          422.5835122426351
+          422.5835122426351,
+          422.0607046127319
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          14593.24577331543,
           18972.468404134113,
           14919.112753295898,
           14446.262187412807,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           18079.033945719402,
           14159.64556993757,
           14641.178318277995,
-          15008.982607014974
+          15008.982607014974,
+          15428.535354614258
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2174,7 +2174,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
-          27288,
+          27456,
           27456,
           27456,
           27456,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
       {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          197.12967403729758,
           204.0335646042457,
           215.43137308529444,
           202.66772307668413,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           225.4867568174998,
           232.87055753072102,
           217.67506305376688,
-          239.5079508940379
+          239.5079508940379,
+          213.47624916689736
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2619,7 +2619,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          856,
           880,
           880,
           880,
@@ -2651,6 +2650,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          194.9774925549825,
           195.2167596022288,
           199.41395609719413,
           192.91100786526997,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           192.65585330327352,
           191.89932157595953,
           184.76557386716206,
-          195.54911555846533
+          195.54911555846533,
+          189.78662632192885
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1057.999342918396,
           1071.7153171539308,
           1096.8245007832845,
           1061.7351771036783,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1188.3442956288657,
           1202.1472836812338,
           1152.625266456604,
-          1157.5352917989096
+          1157.5352917989096,
+          1177.5525391896565
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2907,7 +2907,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
-          2848,
+          2952,
           2952,
           2952,
           2952,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
       {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          326.65651318232216,
           340.94956933535065,
           335.98969347136364,
           329.22149163026074,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           352.41244071324667,
           346.6699796676636,
           327.23792594273885,
-          349.86260458628334
+          349.86260458628334,
+          332.9062349115099
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3352,7 +3352,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          936,
           952,
           952,
           952,
@@ -3384,6 +3383,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          437.4341393709183,
           432.31234077306897,
           421.87431132793427,
           415.84040892918904,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           439.9285873685564,
           414.64030381611417,
           413.3505523999532,
-          417.97452425956726
+          417.97452425956726,
+          412.93423722585044
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1216.7778825124105,
           1204.4584290822347,
           1146.9706423623222,
           1086.2252753121513,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1339.0757784525554,
           1292.709694035848,
           1227.4395554860432,
-          1267.477118219648
+          1267.477118219648,
+          1250.979700978597
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3640,7 +3640,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
-          2896,
+          3064,
           3064,
           3064,
           3064,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
       {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1269.5339554377965,
           1274.5225147519793,
           1233.0054644071138,
           1204.974359512329,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1239.4899383272443,
           1246.9822279612224,
           1200.3347723642985,
-          1235.6281406402588
+          1235.6281406402588,
+          1258.4862521035332
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4085,7 +4085,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2536,
           2552,
           2552,
           2552,
@@ -4117,6 +4116,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1252.117607243856,
           1252.3678704775298,
           1212.122128423055,
           1176.9008397420248,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1205.6180573781332,
           1220.3730564117432,
           1190.5406812940325,
-          1206.4140895843507
+          1206.4140895843507,
+          1216.4824661254884
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2561.061629231771,
           2540.1210103352864,
           2544.865813936506,
           2431.896064440409,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2660.251335144043,
           2858.903769938151,
           2660.99796778361,
-          2689.551872253418
+          2689.551872253418,
+          2718.762555531093
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4373,7 +4373,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
-          4112,
+          4520,
           4520,
           4520,
           4520,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "f8f7d0ad3c52b6fd2f17380105e5526f0a7056ae",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 10 16:48:20 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.NET.Test.Sdk and Microsoft.NETFramework.ReferenceAssemblies (#337)"
-      },
       {
         "sha": "eac7f2d29e73e96407f2239af62ed6565dcd1a67",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
         "message": "docs: add nuget badge to extension documentation page (#393)"
+      },
+      {
+        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
+        "message": "docs: fix link in README (#394)"
       }
     ],
     "labels": [
-      "f8f7d0ad",
       "eac7f2d2",
       "e70deb86",
       "0ec04dd4",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "c6b3a8d5",
       "c6992a92",
       "0c336223",
-      "dd480312"
+      "dd480312",
+      "f6640b2f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1258.5622177124023,
           1349.0961196081978,
           1293.445287851187,
           1287.378454208374,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1335.4850083759852,
           1321.292514928182,
           1352.502392832438,
-          1345.4889954158239
+          1345.4889954158239,
+          1253.4246359605056
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4818,7 +4818,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          2568,
           2584,
           2584,
           2584,
@@ -4850,6 +4849,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          86992.76948242188,
           88857.92723670372,
           85583.75079345703,
           88102.04478236607,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           89304.56641564003,
           85597.53951322116,
           81827.07164713541,
-          87469.1875813802
+          87469.1875813802,
+          84987.55909830729
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54271,
           54273,
           54273,
           54273,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
+          54273,
           54273
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          6643.489694722493,
           6769.136675008138,
           6593.8003336588545,
           6781.241619873047,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           7360.980094401041,
           7130.856218973796,
           6933.4205486591045,
-          7246.210503133138
+          7246.210503133138,
+          6981.408885701498
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5106,7 +5106,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
-          7912,
+          8800,
           8800,
           8800,
           8800,
