@@ -73,6 +73,23 @@ public sealed partial class ThatDelegate
 		public sealed class FuncTaskTests
 		{
 			[Fact]
+			public async Task WhenDelegateIsCanceled_ShouldFail()
+			{
+				CancellationToken canceledToken = new(true);
+				Func<Task> @delegate = () => Task.FromCanceled(canceledToken);
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(5000.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that @delegate
+					             executes within 0:05,
+					             but it was canceled within 0:*
+					             """).AsWildcard();
+			}
+
+			[Fact]
 			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
 			{
 				Func<Task> @delegate = () => Task.CompletedTask;
@@ -135,6 +152,23 @@ public sealed partial class ThatDelegate
 
 		public sealed class FuncTaskValueTests
 		{
+			[Fact]
+			public async Task WhenDelegateIsCanceled_ShouldFail()
+			{
+				CancellationToken canceledToken = new(true);
+				Func<Task<int>> @delegate = () => Task.FromCanceled<int>(canceledToken);
+
+				async Task Act()
+					=> await That(@delegate).ExecutesWithin(5000.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that @delegate
+					             executes within 0:05,
+					             but it was canceled within 0:*
+					             """).AsWildcard();
+			}
+
 			[Fact]
 			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
 			{
@@ -264,6 +298,25 @@ public sealed partial class ThatDelegate
 #if NET8_0_OR_GREATER
 		public sealed class FuncCancellationTokenValueTaskTests
 		{
+			[Fact]
+			public async Task WhenDelegateIsCanceled_ShouldFail()
+			{
+				CancellationToken canceledToken = new(true);
+
+				ValueTask Delegate(CancellationToken _)
+					=> new(Task.FromCanceled(canceledToken));
+
+				async Task Act()
+					=> await That(Delegate).ExecutesWithin(5000.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that Delegate
+					             executes within 0:05,
+					             but it was canceled within 0:*
+					             """).AsWildcard();
+			}
+
 			[Fact]
 			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
 			{
@@ -396,6 +449,25 @@ public sealed partial class ThatDelegate
 #if NET8_0_OR_GREATER
 		public sealed class FuncCancellationTokenValueTaskValueTests
 		{
+			[Fact]
+			public async Task WhenDelegateIsCanceled_ShouldFail()
+			{
+				CancellationToken canceledToken = new(true);
+
+				ValueTask<int> Delegate(CancellationToken _)
+					=> new(Task.FromCanceled<int>(canceledToken));
+
+				async Task Act()
+					=> await That(Delegate).ExecutesWithin(5000.Milliseconds());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that Delegate
+					             executes within 0:05,
+					             but it was canceled within 0:*
+					             """).AsWildcard();
+			}
+
 			[Fact]
 			public async Task WhenDelegateIsFastEnough_ShouldSucceed()
 			{
