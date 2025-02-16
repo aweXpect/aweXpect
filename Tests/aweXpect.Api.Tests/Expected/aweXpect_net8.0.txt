@@ -18,8 +18,7 @@ namespace aweXpect
     }
     public static class EquivalencyExtensions
     {
-        public static aweXpect.Options.ObjectEqualityOptions<TSubject> Equivalent<TSubject>(this aweXpect.Options.ObjectEqualityOptions<TSubject> options, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions) { }
-        public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> result, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? equivalencyOptions = null)
+        public static TSelf Equivalent<TType, TThat, TElement, TSelf>(this aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> result, System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? options = null)
             where TSelf : aweXpect.Results.ObjectEqualityResult<TType, TThat, TElement, TSelf> { }
     }
     public static class ThatAsyncEnumerable
