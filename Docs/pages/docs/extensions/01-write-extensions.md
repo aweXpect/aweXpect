@@ -17,7 +17,7 @@ You want to verify that a string corresponds to an absolute path.
 /// </summary>
 public static AndOrResult<string, IThat<string>> IsAbsolutePath(
   this IThat<string> subject)
-  => new(subject.ExpectationBuilder.AddConstraint(it
+  => new(subject.ThatIs().ExpectationBuilder.AddConstraint((it, _)
       => new IsAbsolutePathConstraint(it)),
     subject);
 
@@ -25,15 +25,16 @@ private readonly struct IsAbsolutePathConstraint(string it) : IValueConstraint<s
 {
   public ConstraintResult IsMetBy(string actual)
   {
-    var absolutePath = Path.GetFullPath(actual);
-    if (absolutePath == actual)
+    if (Path.IsPathRooted(actual))
     {
-      return new ConstraintResult.Success<string>(actual, "be an absolute path");
+      return new ConstraintResult.Success<string>(actual, ToString());
     }
 
-    return new ConstraintResult.Failure("be an absolute path",
-      $"{it} found {Formatter.Format(actual)}");
+    return new ConstraintResult.Failure(ToString(),
+      $"{it} was {Formatter.Format(actual)}");
   }
+
+  public override string ToString() => "is an absolute path";
 }
 ```
 
