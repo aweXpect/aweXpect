@@ -39,7 +39,7 @@ partial class Build
 
 	async Task DownloadDocsPagesDirectory(string projectName, string directoryName)
 	{
-		AbsolutePath baseDirectory = RootDirectory / "Docs" / "pages" / "docs" / "extensions" / directoryName;
+		AbsolutePath baseDirectory = RootDirectory / "Docs" / "pages" / "docs" / "extensions" / "project" / directoryName;
 		Log.Information($"Store documentation from {projectName} under {baseDirectory}:");
 
 		using HttpClient client = new();
