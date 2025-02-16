@@ -882,6 +882,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -1031,7 +1037,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -1184,7 +1191,8 @@ window.BENCHMARK_DATA = {
           174.4086271127065,
           172.57819016774496,
           175.42724615732828,
-          180.41888100760323
+          180.41888100760323,
+          183.40196212132773
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1331,6 +1339,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1503,7 +1512,8 @@ window.BENCHMARK_DATA = {
           195.93506077357702,
           200.5145127773285,
           199.90454050472803,
-          201.3770623366038
+          201.3770623366038,
+          194.61258354187012
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1541,6 +1551,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1822,7 +1833,8 @@ window.BENCHMARK_DATA = {
           856.7023104349772,
           883.081023089091,
           872.5474846913264,
-          879.251939535141
+          879.251939535141,
+          863.0143522262573
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1976,6 +1988,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2414,6 +2427,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -2486,7 +2505,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -2562,7 +2582,8 @@ window.BENCHMARK_DATA = {
           283193.7769042969,
           285241.1458458534,
           278671.3909505208,
-          292223.569140625
+          292223.569140625,
+          289036.0944824219
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2632,6 +2653,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2727,7 +2749,8 @@ window.BENCHMARK_DATA = {
           1921541.68046875,
           1965817.1479166667,
           2118765.4526041667,
-          2006031.6380208333
+          2006031.6380208333,
+          2061511.5661458333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2806,6 +2829,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738
@@ -2892,7 +2916,8 @@ window.BENCHMARK_DATA = {
           627531.4439871652,
           655100.5123697916,
           709312.7,
-          685509.7103841145
+          685509.7103841145,
+          661930.8372721354
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2969,6 +2994,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -3869,6 +3895,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -4018,7 +4050,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -4171,7 +4204,8 @@ window.BENCHMARK_DATA = {
           585.9565873827253,
           606.5437218802316,
           599.5421620686849,
-          596.4154771804809
+          596.4154771804809,
+          618.0771576563517
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4318,6 +4352,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4490,7 +4525,8 @@ window.BENCHMARK_DATA = {
           408.1910690307617,
           415.9311241785685,
           428.45452372233075,
-          442.8068414415632
+          442.8068414415632,
+          421.36529439290365
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4528,6 +4564,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4809,7 +4846,8 @@ window.BENCHMARK_DATA = {
           14198.330862426757,
           14993.537576802571,
           15344.382548014322,
-          14976.781010945639
+          14976.781010945639,
+          14871.63218470982
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4963,6 +5001,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -5863,6 +5902,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -6012,7 +6057,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -6165,7 +6211,8 @@ window.BENCHMARK_DATA = {
           217.2662386383329,
           228.62260478337606,
           237.79446763992308,
-          227.5623372077942
+          227.5623372077942,
+          228.1731351852417
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6312,6 +6359,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6484,7 +6532,8 @@ window.BENCHMARK_DATA = {
           189.117862256368,
           194.36071962576645,
           205.4211270014445,
-          194.32610540390016
+          194.32610540390016,
+          195.3410727183024
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6522,6 +6571,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -6803,7 +6853,8 @@ window.BENCHMARK_DATA = {
           1161.04303250994,
           1231.0674718221028,
           1193.9729545299824,
-          1178.7683030446372
+          1178.7683030446372,
+          1174.6980532237462
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6957,6 +7008,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -7857,6 +7909,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -8006,7 +8064,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -8159,7 +8218,8 @@ window.BENCHMARK_DATA = {
           345.63378025690713,
           355.2077462832133,
           343.50774869918826,
-          353.7673026402791
+          353.7673026402791,
+          362.0175166130066
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8306,6 +8366,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8478,7 +8539,8 @@ window.BENCHMARK_DATA = {
           417.2386638777597,
           437.0633897145589,
           409.3698238690694,
-          421.43677520751953
+          421.43677520751953,
+          419.16175044377644
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8516,6 +8578,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -8797,7 +8860,8 @@ window.BENCHMARK_DATA = {
           1226.2943860371909,
           1307.3983030954996,
           1262.5931977589926,
-          1328.4310878753663
+          1328.4310878753663,
+          1217.7407925469536
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8951,6 +9015,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -9851,6 +9916,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -10000,7 +10071,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -10153,7 +10225,8 @@ window.BENCHMARK_DATA = {
           1185.6329675038655,
           1225.1622986112322,
           1206.0888084411622,
-          1222.5329284667969
+          1222.5329284667969,
+          1241.461775716146
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10300,6 +10373,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -10472,7 +10546,8 @@ window.BENCHMARK_DATA = {
           1181.5666632334392,
           1208.039221827189,
           1229.6265884399413,
-          1271.409934588841
+          1271.409934588841,
+          1273.6358014424643
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10510,6 +10585,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -10791,7 +10867,8 @@ window.BENCHMARK_DATA = {
           2705.6514710017614,
           2908.4450841267903,
           2698.1780131203786,
-          2808.0843467712402
+          2808.0843467712402,
+          2691.792657852173
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10945,6 +11022,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -11845,6 +11923,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 06:52:13 2025 \u002B0100",
         "message": "docs: limited-data cannot be uploaded in build pipeline (#387)"
+      },
+      {
+        "sha": "79078484225c9b8b539f61b139746ac568bb095e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:22:39 2025 \u002B0100",
+        "message": "refactor: consolidate use of EquivalencyOptions (#388)"
       }
     ],
     "labels": [
@@ -11994,7 +12078,8 @@ window.BENCHMARK_DATA = {
       "da1f968c",
       "3cefc147",
       "b9fe159b",
-      "4c5d53b0"
+      "4c5d53b0",
+      "79078484"
     ],
     "datasets": [
       {
@@ -12147,7 +12232,8 @@ window.BENCHMARK_DATA = {
           1271.804393181434,
           1288.066806411743,
           1267.3540017445882,
-          1295.485548700605
+          1295.485548700605,
+          1290.3841726938883
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12294,6 +12380,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -12466,7 +12553,8 @@ window.BENCHMARK_DATA = {
           84799.45596313477,
           87112.87911783854,
           87935.09279785157,
-          88921.98263346354
+          88921.98263346354,
+          88841.71936035156
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12621,6 +12709,7 @@ window.BENCHMARK_DATA = {
           54271,
           54271,
           54271,
+          54273,
           54273,
           54273,
           54273,
@@ -12785,7 +12874,8 @@ window.BENCHMARK_DATA = {
           6838.678946903774,
           7137.010752360026,
           7006.270159040178,
-          7204.302993774414
+          7204.302993774414,
+          7111.371630532401
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12939,6 +13029,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
