@@ -42,6 +42,14 @@ By using async assertions per default, we have a consistent API and other perks:
 	- Expectations can be combined directly (via `Expect.ThatAll`) instead of relying on global state (
 	  e.g. [assertion scopes](https://fluentassertions.com/introduction#assertion-scopes))
 
+
+### Performant
+
+A focus on performance allows you to execute your tests as fast as possible.  
+Special care is taken for the happy case (succeeding tests) to be as performant as possible. See
+the [benchmarks](https://awexpect.com/benchmarks) for more details.
+
+
 ### Extensible
 
 We added lots of extensibility points to allow you to build custom extensions.  
@@ -49,10 +57,18 @@ The [aweXpect.Core](https://www.nuget.org/packages/aweXpect.Core/) package is in
 extensions, so that the risk of version conflicts between different extensions can be reduced.
 
 You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
-More information can be found in the [extensibility guide](https://awexpect.com/docs/category/extensibility).
+More information can be found in the [extensibility guide](https://awexpect.com/docs/extensions/write-extensions).
 
-### Performant
+**Extension packages**
 
-A focus on performance allows you to execute your tests as fast as possible.  
-Special care is taken for the happy case (succeeding tests) to be as performant as possible. See
-the [benchmarks](https://awexpect.com/benchmarks) for more details.
+- [aweXpect.Json](https://github.com/aweXpect/aweXpect.Json)  
+  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Json)](https://www.nuget.org/packages/aweXpect.Json)  
+  Expectations for the System.Text.Json namespace.
+
+- [aweXpect.Web](https://github.com/aweXpect/aweXpect.Web)  
+  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Web)](https://www.nuget.org/packages/aweXpect.Web)  
+  Expectations for HttpClient.
+
+- [aweXpect.Testably](https://github.com/aweXpect/aweXpect.Testably)  
+  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Testably)](https://www.nuget.org/packages/aweXpect.Testably)
+  Expectations for the file and time system from [Testably.Abstractions](https://github.com/Testably/Testably.Abstractions).
