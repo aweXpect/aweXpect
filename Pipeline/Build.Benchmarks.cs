@@ -32,7 +32,7 @@ partial class Build
 		{
 			AbsolutePath benchmarkDirectory = ArtifactsDirectory / "Benchmarks";
 			benchmarkDirectory.CreateOrCleanDirectory();
-			
+
 			DotNetBuild(s => s
 				.SetProjectFile(Solution.Benchmarks.aweXpect_Benchmarks)
 				.SetConfiguration(Configuration.Release)
@@ -97,7 +97,8 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default && GitHubActions?.IsPullRequest == false)
 		.Executes(async () =>
 		{
-			BenchmarkFile currentFile = await DownloadBenchmarkFile();
+			BenchmarkFile currentFile = await DownloadBenchmarkFile("data.js");
+			BenchmarkFile limitedFile = await DownloadBenchmarkFile("limited-data.js");
 			List<string> benchmarkReports = new();
 			foreach (string file in Directory.GetFiles(ArtifactsDirectory / "Benchmarks" / "results",
 				         "*full-compressed.json"))
@@ -141,12 +142,12 @@ partial class Build
 			}
 
 			PageBenchmarkReportGenerator.CommitInfo commitInfo = new(commitId, author, date, message);
-			string updatedFileContent =
-				PageBenchmarkReportGenerator.Append(commitInfo, currentFile.Content, benchmarkReports);
-
+			var (updatedFileContent, limitedFileContent) = PageBenchmarkReportGenerator
+				.Append(commitInfo, currentFile.Content, benchmarkReports, 50);
 			if (!string.IsNullOrWhiteSpace(updatedFileContent))
 			{
 				await UploadBenchmarkFile(commitInfo, currentFile, updatedFileContent);
+				await UploadBenchmarkFile(commitInfo, limitedFile, limitedFileContent);
 			}
 		});
 
@@ -165,7 +166,7 @@ partial class Build
 		GithubUpdateFile content = new(
 			$"Update benchmark for {commitInfo.Sha.Substring(0, 8)}: {commitInfo.Message} by {commitInfo.Author}",
 			Base64Encode(updatedFileContent),
-			currentFile.Sha,
+			currentFile?.Sha,
 			BenchmarkBranch);
 		HttpResponseMessage response = await client.PutAsync(
 			"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js",
@@ -181,18 +182,17 @@ partial class Build
 		}
 	}
 
-	async Task<BenchmarkFile> DownloadBenchmarkFile()
+	async Task<BenchmarkFile> DownloadBenchmarkFile(string filename)
 	{
 		using HttpClient client = new();
 		client.DefaultRequestHeaders.UserAgent.ParseAdd("aweXpect");
 		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GithubToken);
 		HttpResponseMessage response = await client.GetAsync(
-			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/data.js?ref={BenchmarkBranch}");
+			$"https://api.github.com/repos/aweXpect/aweXpect/contents/Docs/pages/static/js/{filename}?ref={BenchmarkBranch}");
 		string responseContent = await response.Content.ReadAsStringAsync();
 		if (!response.IsSuccessStatusCode)
 		{
-			throw new InvalidOperationException(
-				$"Could not find 'Docs/pages/static/js/data.js' in branch '{BenchmarkBranch}': {responseContent}");
+			return null;
 		}
 
 		using JsonDocument document = JsonDocument.Parse(responseContent);

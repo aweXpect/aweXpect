@@ -14,7 +14,13 @@ namespace Build;
 
 public class PageBenchmarkReportGenerator
 {
-	public static string Append(CommitInfo commitInfo, string currentFileContent, List<string> benchmarkReportsContents)
+	private static readonly JsonSerializerOptions BenchmarkSerializerOptions = new()
+	{
+		WriteIndented = true,
+	};
+
+	public static (string, string) Append(CommitInfo commitInfo, string currentFileContent,
+		List<string> benchmarkReportsContents, int limit)
 	{
 		string prefix = "window.BENCHMARK_DATA = ";
 		if (!currentFileContent.StartsWith(prefix))
@@ -29,7 +35,7 @@ public class PageBenchmarkReportGenerator
 		{
 			Log.Warning(
 				$"The benchmark already has data for {commitInfo.Sha}: {commitInfo.Message} by {commitInfo.Author} on {commitInfo.Date}");
-			return null;
+			return (null, null);
 		}
 
 		Log.Debug(
@@ -45,8 +51,10 @@ public class PageBenchmarkReportGenerator
 		}
 
 		string newFileContent =
-			$"{prefix}{JsonSerializer.Serialize(pageReport, new JsonSerializerOptions { WriteIndented = true })}";
-		return newFileContent;
+			$"{prefix}{JsonSerializer.Serialize(pageReport, BenchmarkSerializerOptions)}";
+		string limitedFileContent =
+			$"{prefix}{JsonSerializer.Serialize(pageReport.Limit(limit), BenchmarkSerializerOptions)}";
+		return (newFileContent, limitedFileContent);
 	}
 
 	private class PageReportData : Dictionary<string, PageReport>
@@ -160,6 +168,17 @@ public class PageBenchmarkReportGenerator
 			type = method.Substring(index + 1);
 			return true;
 		}
+
+		public PageReportData Limit(int limit)
+		{
+			PageReportData pageReportData = new();
+			foreach (var (key, pageReport) in this)
+			{
+				pageReportData[key] = pageReport.Limit(limit);
+			}
+
+			return pageReportData;
+		}
 	}
 
 	public class CommitInfo(string sha, string author, string date, string message)
@@ -177,6 +196,14 @@ public class PageBenchmarkReportGenerator
 
 		[JsonPropertyName("datasets")] public List<Dataset> Datasets { get; init; } = new();
 
+		public PageReport Limit(int limit)
+			=> new()
+			{
+				Commits = Commits.TakeLast(limit).ToList(),
+				Labels = Labels.TakeLast(limit).ToList(),
+				Datasets = Datasets.Select(dataset => dataset.Limit(limit)).ToList(),
+			};
+
 		public class Dataset
 		{
 			[JsonPropertyName("label")] public string Label { get; init; }
@@ -193,6 +220,19 @@ public class PageBenchmarkReportGenerator
 			[JsonPropertyName("borderDash")] public int[] BorderDash { get; set; } = [];
 
 			[JsonPropertyName("pointStyle")] public string PointStyle { get; set; }
+
+			public Dataset Limit(int limit)
+				=> new()
+				{
+					Label = Label,
+					Unit = Unit,
+					Data = Data.TakeLast(limit).ToList(),
+					BorderColor = BorderColor,
+					BackgroundColor = BackgroundColor,
+					YAxisId = YAxisId,
+					BorderDash = BorderDash,
+					PointStyle = PointStyle,
+				};
 		}
 	}
 
