@@ -70,5 +70,5 @@ More information can be found in the [extensibility guide](https://awexpect.com/
   Expectations for HttpClient.
 
 - [aweXpect.Testably](https://github.com/aweXpect/aweXpect.Testably)  
-  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Testably)](https://www.nuget.org/packages/aweXpect.Testably)
+  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Testably)](https://www.nuget.org/packages/aweXpect.Testably)  
   Expectations for the file and time system from [Testably.Abstractions](https://github.com/Testably/Testably.Abstractions).
