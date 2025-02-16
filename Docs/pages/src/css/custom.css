@@ -65,3 +65,9 @@
 #index-logo {
 	margin-top: -30px;
 }
+
+#view-full-benchmarks {
+	font-style: italic;
+	text-align: center;
+	margin: 30px;
+}
