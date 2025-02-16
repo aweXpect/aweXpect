@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
-      {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
         "date": "Mon Feb 10 16:47:53 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          156.82889786133399,
           168.64159862200418,
           155.80716988245646,
           158.36351675253647,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           180.41888100760323,
           183.40196212132773,
           171.4904273668925,
-          173.80375008923667
+          173.80375008923667,
+          177.02655234336854
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -423,7 +423,6 @@ window.BENCHMARK_DATA = {
           504,
           504,
           504,
-          504,
           528,
           528,
           528,
@@ -455,6 +454,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          207.8907189687093,
           204.65390124320984,
           193.00443409283955,
           196.65667889912922,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           201.3770623366038,
           194.61258354187012,
           187.8588693993432,
-          209.0858525911967
+          209.0858525911967,
+          197.16769075393677
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          650.7811103548322,
           791.2082206090291,
           763.864727292742,
           784.6434197743733,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           879.251939535141,
           863.0143522262573,
           864.4629727091108,
-          865.6806670702421
+          865.6806670702421,
+          892.3951431683132
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -670,7 +670,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          1944,
           2216,
           2216,
           2216,
@@ -712,6 +711,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
       {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          282509.43118489586,
           293477.1961388221,
           282277.9459751674,
           288079.5066964286,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           292223.569140625,
           289036.0944824219,
           289817.4801595052,
-          297285.31696965144
+          297285.31696965144,
+          275957.61178152903
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1156,7 +1156,6 @@ window.BENCHMARK_DATA = {
           284900,
           284900,
           284900,
-          284900,
           284916,
           284916,
           284916,
@@ -1188,6 +1187,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2073286.773158482,
           1993383.0979166667,
           2054861.9891927084,
           2078818.3953125,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2006031.6380208333,
           2061511.5661458333,
           2022130.8888020834,
-          2045083.6671316964
+          2045083.6671316964,
+          2000499.4600260416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1295,7 +1295,6 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
-          3977738,
           3977736,
           3977738,
           3977738,
@@ -1322,6 +1321,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          637901.8543619792,
           679531.9175130208,
           674011.6395786831,
           668776.7788411458,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           685509.7103841145,
           661930.8372721354,
           671513.0948567708,
-          686372.9731770833
+          686372.9731770833,
+          690741.969163161
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1403,7 +1403,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          836377,
           836713,
           836713,
           836713,
@@ -1445,6 +1444,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
       {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          516.3310871124268,
           558.6295332227435,
           518.6488916397095,
           546.2712798436482,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           596.4154771804809,
           618.0771576563517,
           590.9768114089966,
-          593.0269682747977
+          593.0269682747977,
+          595.0385335286459
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1886,7 +1886,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          1088,
           1088,
           1088,
           1088,
@@ -1935,6 +1934,7 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
+          1192,
           1192
         ],
         "borderColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          406.5294674873352,
           448.7201038769313,
           430.61284427642823,
           431.34143144743786,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           442.8068414415632,
           421.36529439290365,
           416.23647141456604,
-          425.51550877888997
+          425.51550877888997,
+          423.95703926086424
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          18415.133771623885,
           15472.653063964844,
           15861.341029866537,
           14593.24577331543,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14976.781010945639,
           14871.63218470982,
           14407.34646097819,
-          18079.033945719402
+          18079.033945719402,
+          14159.64556993757
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2136,7 +2136,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          27016,
           27288,
           27288,
           27288,
@@ -2178,6 +2177,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
       {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          190.22039112022944,
           203.47271436055502,
           196.28285353978475,
           197.12967403729758,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           227.5623372077942,
           228.1731351852417,
           211.868314520518,
-          225.4867568174998
+          225.4867568174998,
+          232.87055753072102
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2622,7 +2622,6 @@ window.BENCHMARK_DATA = {
           856,
           856,
           856,
-          856,
           880,
           880,
           880,
@@ -2654,6 +2653,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          196.16072753497534,
           210.80747583707173,
           191.6322481950124,
           194.9774925549825,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           194.32610540390016,
           195.3410727183024,
           188.97841210365294,
-          192.65585330327352
+          192.65585330327352,
+          191.89932157595953
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          950.9279899597168,
           1100.3640633991786,
           1079.1705893107824,
           1057.999342918396,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1178.7683030446372,
           1174.6980532237462,
           1157.7750286102296,
-          1188.3442956288657
+          1188.3442956288657,
+          1202.1472836812338
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2869,7 +2869,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          2576,
           2848,
           2848,
           2848,
@@ -2911,6 +2910,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
       {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          310.60553410847984,
           325.3907588322957,
           310.20801000595094,
           326.65651318232216,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           353.7673026402791,
           362.0175166130066,
           337.81743675867716,
-          352.41244071324667
+          352.41244071324667,
+          346.6699796676636
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3355,7 +3355,6 @@ window.BENCHMARK_DATA = {
           936,
           936,
           936,
-          936,
           952,
           952,
           952,
@@ -3387,6 +3386,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          432.20756081172397,
           433.5679268836975,
           412.53609495162965,
           437.4341393709183,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           421.43677520751953,
           419.16175044377644,
           413.08958504750177,
-          439.9285873685564
+          439.9285873685564,
+          414.64030381611417
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1001.4720724423727,
           1135.819866434733,
           1144.9553657531737,
           1216.7778825124105,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1328.4310878753663,
           1217.7407925469536,
           1274.5627329690117,
-          1339.0757784525554
+          1339.0757784525554,
+          1292.709694035848
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3602,7 +3602,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          2560,
           2896,
           2896,
           2896,
@@ -3644,6 +3643,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
       {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1228.6675163269042,
           1217.8485837300618,
           1316.5012627919516,
           1269.5339554377965,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1222.5329284667969,
           1241.461775716146,
           1218.9957813535418,
-          1239.4899383272443
+          1239.4899383272443,
+          1246.9822279612224
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4088,7 +4088,6 @@ window.BENCHMARK_DATA = {
           2536,
           2536,
           2536,
-          2536,
           2552,
           2552,
           2552,
@@ -4120,6 +4119,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1266.0472885131835,
           1271.2275978968694,
           1202.526193891253,
           1252.117607243856,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1271.409934588841,
           1273.6358014424643,
           1207.1707303365072,
-          1205.6180573781332
+          1205.6180573781332,
+          1220.3730564117432
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2431.9160784403484,
           2524.5732563563756,
           2530.6089309692384,
           2561.061629231771,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2808.0843467712402,
           2691.792657852173,
           2718.188194020589,
-          2660.251335144043
+          2660.251335144043,
+          2858.903769938151
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4335,7 +4335,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          3776,
           4112,
           4112,
           4112,
@@ -4377,6 +4376,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "55e7e4fc36e520ffdfda00f473cafa7b2007c4d5",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 9 19:18:55 2025 \u002B0100",
-        "message": "feat: add \u0060WhoseParameters\u0060 for \u0060Signaler\u0060 (#333)"
-      },
       {
         "sha": "b0e47762b9dff9411b49c7dfce5d9531fe782826",
         "author": "dependabot[bot]",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
         "message": "docs: move extension projects under separate folder (#390)"
+      },
+      {
+        "sha": "c6992a9248a8b854e479c8c58de852013b73a89b",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
+        "message": "docs: fix example for writing a custom extension (#391)"
       }
     ],
     "labels": [
-      "55e7e4fc",
       "b0e47762",
       "36644484",
       "f8f7d0ad",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "4c5d53b0",
       "79078484",
       "eeee1391",
-      "c6b3a8d5"
+      "c6b3a8d5",
+      "c6992a92"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1352.2574152946472,
           1269.5871156545786,
           1345.3328666687012,
           1258.5622177124023,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1295.485548700605,
           1290.3841726938883,
           1274.65290629069,
-          1335.4850083759852
+          1335.4850083759852,
+          1321.292514928182
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4821,7 +4821,6 @@ window.BENCHMARK_DATA = {
           2568,
           2568,
           2568,
-          2568,
           2584,
           2584,
           2584,
@@ -4853,6 +4852,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          87902.7473470052,
           87482.22587076823,
           85237.0762532552,
           86992.76948242188,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           88921.98263346354,
           88841.71936035156,
           87459.30186360677,
-          89304.56641564003
+          89304.56641564003,
+          85597.53951322116
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54271,
           53762,
           54273,
           54271,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54271,
+          54273,
           54273
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          6424.587176731655,
           6871.097214253744,
           6769.187674302321,
           6643.489694722493,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           7204.302993774414,
           7111.371630532401,
           7020.276578267415,
-          7360.980094401041
+          7360.980094401041,
+          7130.856218973796
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5068,7 +5068,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          7640,
           7912,
           7912,
           7912,
@@ -5110,6 +5109,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
