@@ -1,4 +1,5 @@
 # Write your own extension
+[![Nuget](https://img.shields.io/nuget/v/aweXpect.Core?label=aweXpect.Core)](https://www.nuget.org/packages/aweXpect.Core)
 
 This library will never be able to cope with all ideas and use cases. Therefore, it is possible to use the [
 `aweXpect.Core`](https://www.nuget.org/packages/aweXpect.Core/) package and write your own extensions.
