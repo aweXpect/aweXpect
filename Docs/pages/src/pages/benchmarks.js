@@ -17,7 +17,7 @@ export default function Benchmarks() {
 		<Layout title="Benchmarks" description="Benchmarks Page">
 			<div id="benchmarks-container">
 			</div>
-			<a id="view-full-benchmarks" href="/benchmarks-full">View full benchmarks</a>
+			<a id="benchmarks-view-link" href="/benchmarks-full">View full benchmarks</a>
 		</Layout>
 	);
 }
