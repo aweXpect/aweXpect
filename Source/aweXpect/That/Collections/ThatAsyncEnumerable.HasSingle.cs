@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if NET8_0_OR_GREATER
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -9,7 +10,6 @@ using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-#if NET8_0_OR_GREATER
 namespace aweXpect;
 
 public static partial class ThatAsyncEnumerable

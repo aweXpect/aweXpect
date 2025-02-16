@@ -15,12 +15,13 @@ public abstract partial class EnumerableQuantifier
 	private sealed class NoneQuantifier(ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{
 		public override string ToString()
-			=> (expectationGrammars.HasFlag(ExpectationGrammars.Nested), expectationGrammars.HasFlag(ExpectationGrammars.Plural)) switch
-			{
-				(true, _) => "none",
-				(_, true) => "no",
-				_ => "none",
-			};
+			=> (expectationGrammars.HasFlag(ExpectationGrammars.Nested),
+					expectationGrammars.HasFlag(ExpectationGrammars.Plural)) switch
+				{
+					(true, _) => "none",
+					(_, true) => "no",
+					_ => "none",
+				};
 
 		/// <inheritdoc />
 		public override bool IsDeterminable(int matchingCount, int notMatchingCount)

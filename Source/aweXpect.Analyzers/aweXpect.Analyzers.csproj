@@ -13,8 +13,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="aweXpect.Analyzers.Tests" PublicKey="$(PublicKey)" />
-		<InternalsVisibleTo Include="aweXpect.Analyzers.CodeFixers" PublicKey="$(PublicKey)" />
+		<InternalsVisibleTo Include="aweXpect.Analyzers.Tests" PublicKey="$(PublicKey)"/>
+		<InternalsVisibleTo Include="aweXpect.Analyzers.CodeFixers" PublicKey="$(PublicKey)"/>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+
 // ReSharper disable UnusedType.Global
 
 namespace aweXpect.Core.Adapters;

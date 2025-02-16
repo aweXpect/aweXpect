@@ -7,23 +7,6 @@ public sealed partial class ThatNullableTimeOnly
 	{
 		public sealed class Tests
 		{
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				TimeOnly? expected = CurrentTime();
-				TimeOnly? subject = null;
-
-				async Task Act()
-					=> await That(subject).IsEqualTo(expected);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is equal to {Formatter.Format(expected)},
-					              but it was <null>
-					              """);
-			}
 			[Fact]
 			public async Task WhenOnlyExpectedIsNull_ShouldFail()
 			{
@@ -84,6 +67,23 @@ public sealed partial class ThatNullableTimeOnly
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeOnly? expected = CurrentTime();
+				TimeOnly? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
