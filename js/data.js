@@ -894,6 +894,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -1045,7 +1051,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -1200,7 +1207,8 @@ window.BENCHMARK_DATA = {
           175.42724615732828,
           180.41888100760323,
           183.40196212132773,
-          171.4904273668925
+          171.4904273668925,
+          173.80375008923667
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1347,6 +1355,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1523,7 +1532,8 @@ window.BENCHMARK_DATA = {
           199.90454050472803,
           201.3770623366038,
           194.61258354187012,
-          187.8588693993432
+          187.8588693993432,
+          209.0858525911967
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1561,6 +1571,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1846,7 +1857,8 @@ window.BENCHMARK_DATA = {
           872.5474846913264,
           879.251939535141,
           863.0143522262573,
-          864.4629727091108
+          864.4629727091108,
+          865.6806670702421
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2000,6 +2012,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2452,6 +2465,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -2526,7 +2545,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -2604,7 +2624,8 @@ window.BENCHMARK_DATA = {
           278671.3909505208,
           292223.569140625,
           289036.0944824219,
-          289817.4801595052
+          289817.4801595052,
+          297285.31696965144
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2674,6 +2695,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2773,7 +2795,8 @@ window.BENCHMARK_DATA = {
           2118765.4526041667,
           2006031.6380208333,
           2061511.5661458333,
-          2022130.8888020834
+          2022130.8888020834,
+          2045083.6671316964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2852,6 +2875,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -2942,7 +2966,8 @@ window.BENCHMARK_DATA = {
           709312.7,
           685509.7103841145,
           661930.8372721354,
-          671513.0948567708
+          671513.0948567708,
+          686372.9731770833
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3019,6 +3044,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -3933,6 +3959,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -4084,7 +4116,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -4239,7 +4272,8 @@ window.BENCHMARK_DATA = {
           599.5421620686849,
           596.4154771804809,
           618.0771576563517,
-          590.9768114089966
+          590.9768114089966,
+          593.0269682747977
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4386,6 +4420,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4562,7 +4597,8 @@ window.BENCHMARK_DATA = {
           428.45452372233075,
           442.8068414415632,
           421.36529439290365,
-          416.23647141456604
+          416.23647141456604,
+          425.51550877888997
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4600,6 +4636,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4885,7 +4922,8 @@ window.BENCHMARK_DATA = {
           15344.382548014322,
           14976.781010945639,
           14871.63218470982,
-          14407.34646097819
+          14407.34646097819,
+          18079.033945719402
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5039,6 +5077,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -5953,6 +5992,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -6104,7 +6149,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -6259,7 +6305,8 @@ window.BENCHMARK_DATA = {
           237.79446763992308,
           227.5623372077942,
           228.1731351852417,
-          211.868314520518
+          211.868314520518,
+          225.4867568174998
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6406,6 +6453,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6582,7 +6630,8 @@ window.BENCHMARK_DATA = {
           205.4211270014445,
           194.32610540390016,
           195.3410727183024,
-          188.97841210365294
+          188.97841210365294,
+          192.65585330327352
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6620,6 +6669,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -6905,7 +6955,8 @@ window.BENCHMARK_DATA = {
           1193.9729545299824,
           1178.7683030446372,
           1174.6980532237462,
-          1157.7750286102296
+          1157.7750286102296,
+          1188.3442956288657
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7059,6 +7110,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -7973,6 +8025,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -8124,7 +8182,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -8279,7 +8338,8 @@ window.BENCHMARK_DATA = {
           343.50774869918826,
           353.7673026402791,
           362.0175166130066,
-          337.81743675867716
+          337.81743675867716,
+          352.41244071324667
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8426,6 +8486,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8602,7 +8663,8 @@ window.BENCHMARK_DATA = {
           409.3698238690694,
           421.43677520751953,
           419.16175044377644,
-          413.08958504750177
+          413.08958504750177,
+          439.9285873685564
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8640,6 +8702,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -8925,7 +8988,8 @@ window.BENCHMARK_DATA = {
           1262.5931977589926,
           1328.4310878753663,
           1217.7407925469536,
-          1274.5627329690117
+          1274.5627329690117,
+          1339.0757784525554
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9079,6 +9143,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -9993,6 +10058,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -10144,7 +10215,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -10299,7 +10371,8 @@ window.BENCHMARK_DATA = {
           1206.0888084411622,
           1222.5329284667969,
           1241.461775716146,
-          1218.9957813535418
+          1218.9957813535418,
+          1239.4899383272443
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10446,6 +10519,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -10622,7 +10696,8 @@ window.BENCHMARK_DATA = {
           1229.6265884399413,
           1271.409934588841,
           1273.6358014424643,
-          1207.1707303365072
+          1207.1707303365072,
+          1205.6180573781332
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10660,6 +10735,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -10945,7 +11021,8 @@ window.BENCHMARK_DATA = {
           2698.1780131203786,
           2808.0843467712402,
           2691.792657852173,
-          2718.188194020589
+          2718.188194020589,
+          2660.251335144043
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11099,6 +11176,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -12013,6 +12091,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 07:47:10 2025 \u002B0100",
         "message": "refactor: execute code cleanup (#389)"
+      },
+      {
+        "sha": "c6b3a8d5a2ab29c4796438c4ac19538c1b84b025",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 07:55:29 2025 \u002B0100",
+        "message": "docs: move extension projects under separate folder (#390)"
       }
     ],
     "labels": [
@@ -12164,7 +12248,8 @@ window.BENCHMARK_DATA = {
       "b9fe159b",
       "4c5d53b0",
       "79078484",
-      "eeee1391"
+      "eeee1391",
+      "c6b3a8d5"
     ],
     "datasets": [
       {
@@ -12319,7 +12404,8 @@ window.BENCHMARK_DATA = {
           1267.3540017445882,
           1295.485548700605,
           1290.3841726938883,
-          1274.65290629069
+          1274.65290629069,
+          1335.4850083759852
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12466,6 +12552,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -12642,7 +12729,8 @@ window.BENCHMARK_DATA = {
           87935.09279785157,
           88921.98263346354,
           88841.71936035156,
-          87459.30186360677
+          87459.30186360677,
+          89304.56641564003
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12802,7 +12890,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12965,7 +13054,8 @@ window.BENCHMARK_DATA = {
           7006.270159040178,
           7204.302993774414,
           7111.371630532401,
-          7020.276578267415
+          7020.276578267415,
+          7360.980094401041
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13119,6 +13209,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
