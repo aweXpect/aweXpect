@@ -2,24 +2,40 @@
 
 public sealed partial class ThatDelegate
 {
-	public sealed class ThrowsExactly
+	public sealed partial class ThrowsExactly
 	{
 		public sealed class GenericTests
 		{
+			[Fact]
+			public async Task ShouldSupportChainedConstraints()
+			{
+				Action action = () => { };
+
+				async Task Act()
+					=> await That(action).ThrowsExactly<Exception>().WithMessage("foo");
+
+				await That(Act).ThrowsException()
+					.WithMessage("""
+					             Expected that action
+					             throws exactly an Exception with Message equal to "foo",
+					             but it did not throw any exception
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenAwaited_ShouldReturnThrownException(string value)
 			{
 				Exception exception = new CustomException
 				{
-					Value = value
+					Value = value,
 				};
 				Action action = () => throw exception;
 
 				CustomException result =
 					await That(action).ThrowsExactly<CustomException>();
 
-				await That(result.Value).Is(value);
+				await That(result.Value).IsEqualTo(value);
 				await That(result).IsSameAs(exception);
 			}
 
@@ -45,9 +61,9 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
-					             Expected action to
-					             throw exactly a CustomException,
-					             but it did not
+					             Expected that action
+					             throws exactly a CustomException,
+					             but it did not throw any exception
 					             """);
 			}
 
@@ -63,8 +79,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage($"""
-					              Expected action to
-					              throw exactly a CustomException,
+					              Expected that action
+					              throws exactly a CustomException,
 					              but it did throw an OtherException:
 					                {message}
 					              """);
@@ -82,8 +98,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage($"""
-					              Expected action to
-					              throw exactly a CustomException,
+					              Expected that action
+					              throws exactly a CustomException,
 					              but it did throw a SubCustomException:
 					                {message}
 					              """);
@@ -99,8 +115,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             throw exactly a CustomException,
+					             Expected that subject
+					             throws exactly a CustomException,
 					             but it was <null>
 					             """);
 			}
@@ -108,13 +124,29 @@ public sealed partial class ThatDelegate
 
 		public sealed class TypeTests
 		{
+			[Fact]
+			public async Task ShouldSupportChainedConstraints()
+			{
+				Action action = () => { };
+
+				async Task Act()
+					=> await That(action).ThrowsExactly(typeof(Exception)).WithMessage("foo");
+
+				await That(Act).ThrowsException()
+					.WithMessage("""
+					             Expected that action
+					             throws exactly an Exception with Message equal to "foo",
+					             but it did not throw any exception
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenAwaited_ShouldReturnThrownException(string value)
 			{
 				Exception exception = new CustomException
 				{
-					Value = value
+					Value = value,
 				};
 				Action action = () => throw exception;
 
@@ -146,9 +178,9 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
-					             Expected action to
-					             throw exactly a CustomException,
-					             but it did not
+					             Expected that action
+					             throws exactly a CustomException,
+					             but it did not throw any exception
 					             """);
 			}
 
@@ -164,8 +196,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage($"""
-					              Expected action to
-					              throw exactly a CustomException,
+					              Expected that action
+					              throws exactly a CustomException,
 					              but it did throw an OtherException:
 					                {message}
 					              """);
@@ -183,8 +215,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage($"""
-					              Expected action to
-					              throw exactly a CustomException,
+					              Expected that action
+					              throws exactly a CustomException,
 					              but it did throw a SubCustomException:
 					                {message}
 					              """);
@@ -200,8 +232,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             throw exactly a CustomException,
+					             Expected that subject
+					             throws exactly a CustomException,
 					             but it was <null>
 					             """);
 			}

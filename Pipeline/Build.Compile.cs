@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using Nuke.Common;
 using Nuke.Common.IO;
+using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
@@ -28,6 +30,17 @@ partial class Build
 		.Unlisted()
 		.Executes(() =>
 		{
+			string preRelease = "-CI";
+			if (GitHubActions == null)
+			{
+				preRelease = "-DEV";
+			}
+			else if (GitHubActions.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase))
+			{
+				int preReleaseIndex = GitHubActions.Ref.IndexOf('-');
+				preRelease = preReleaseIndex > 0 ? GitHubActions.Ref[preReleaseIndex..] : "";
+			}
+
 			CoreVersion = AssemblyVersion.FromGitVersion(GitVersionTasks.GitVersion(s => s
 					.SetFramework("net8.0")
 					.SetNoFetch(true)
@@ -35,7 +48,7 @@ partial class Build
 					.DisableProcessOutputLogging()
 					.SetUpdateAssemblyInfo(false)
 					.AddProcessAdditionalArguments("/overrideconfig", "tag-prefix=core/v"))
-				.Result);
+				.Result, preRelease);
 
 			GitVersion gitVersion = GitVersionTasks.GitVersion(s => s
 					.SetFramework("net8.0")
@@ -45,7 +58,7 @@ partial class Build
 					.SetUpdateAssemblyInfo(false))
 				.Result;
 
-			MainVersion = AssemblyVersion.FromGitVersion(gitVersion);
+			MainVersion = AssemblyVersion.FromGitVersion(gitVersion, preRelease);
 			SemVer = gitVersion.SemVer;
 			BranchName = gitVersion.BranchName;
 
@@ -95,46 +108,75 @@ partial class Build
 				.WhenNotNull(CoreVersion, (summary, version) => summary
 					.AddPair("Core", version.FileVersion)));
 
-			ClearNugetPackages(Solution.aweXpect.Directory / "bin");
-			UpdateReadme(MainVersion.FileVersion);
+			if (BuildScope != BuildScope.CoreOnly)
+			{
+				ClearNugetPackages(Solution.aweXpect.Directory / "bin");
+				UpdateReadme(MainVersion.FileVersion, false);
 
-			DotNetBuild(s => s
-				.SetProjectFile(Solution)
-				.SetConfiguration(Configuration)
-				.EnableNoLogo()
-				.SetVersion(MainVersion.FileVersion)
-				.SetAssemblyVersion(MainVersion.FileVersion)
-				.SetFileVersion(MainVersion.FileVersion)
-				.SetInformationalVersion(MainVersion.InformationalVersion));
+				DotNetBuild(s => s
+					.SetProjectFile(Solution)
+					.SetConfiguration(Configuration)
+					.EnableNoLogo()
+					.SetVersion(MainVersion.FileVersion + CoreVersion.PreRelease)
+					.SetAssemblyVersion(MainVersion.FileVersion)
+					.SetFileVersion(MainVersion.FileVersion)
+					.SetInformationalVersion(MainVersion.InformationalVersion));
+			}
 
 			ClearNugetPackages(Solution.aweXpect_Core.Directory / "bin");
-			UpdateReadme(CoreVersion.FileVersion);
+			UpdateReadme(CoreVersion.FileVersion, true);
 
-			DotNetBuild(s => s
-				.SetProjectFile(Solution.aweXpect_Core)
-				.SetConfiguration(Configuration)
-				.EnableNoLogo()
-				.SetVersion(CoreVersion.FileVersion)
-				.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
-				.SetAssemblyVersion(CoreVersion.FileVersion)
-				.SetFileVersion(CoreVersion.FileVersion)
-				.SetInformationalVersion(CoreVersion.InformationalVersion));
+			Dictionary<Project, Configuration> projects = new()
+			{
+				{
+					Solution.aweXpect_Core, Configuration
+				},
+			};
+			if (BuildScope == BuildScope.CoreOnly)
+			{
+				projects.Add(Solution.Tests.aweXpect_Core_Tests, Configuration.Debug);
+				projects.Add(Solution.Tests.aweXpect_Core_Api_Tests, Configuration.Debug);
+			}
+
+			foreach (var (project, configuration) in projects)
+			{
+				DotNetBuild(s => s
+					.SetProjectFile(project)
+					.SetConfiguration(configuration)
+					.EnableNoLogo()
+					.SetProcessAdditionalArguments($"/p:SolutionDir={RootDirectory}")
+					.SetVersion(CoreVersion.FileVersion + CoreVersion.PreRelease)
+					.SetAssemblyVersion(CoreVersion.FileVersion)
+					.SetFileVersion(CoreVersion.FileVersion)
+					.SetInformationalVersion(CoreVersion.InformationalVersion));
+			}
 		});
 
-	private void UpdateReadme(string fileVersion)
+	private void UpdateReadme(string fileVersion, bool forCore)
 	{
-		string version = string.Join('.', fileVersion.Split('.').Take(3));
-		if (version.IndexOf('-') != -1)
+		string version;
+		if (GitHubActions?.Ref.StartsWith("refs/tags/", StringComparison.OrdinalIgnoreCase) == true)
 		{
-			version = version.Substring(0, version.IndexOf('-'));
+			version = GitHubActions.Ref.Substring("refs/tags/".Length);
 		}
+		else
+		{
+			version = string.Join('.', fileVersion.Split('.').Take(3));
+			if (version.IndexOf('-') != -1)
+			{
+				version = "v" + version.Substring(0, version.IndexOf('-'));
+			}
+		}
+
+		Log.Information("Update readme using '{Version}' as version", version);
 
 		StringBuilder sb = new();
 		string[] lines = File.ReadAllLines(Solution.Directory / "README.md");
 		sb.AppendLine(lines.First());
+		sb.AppendLine(lines.Skip(1).First());
 		sb.AppendLine(
-			$"[![Changelog](https://img.shields.io/badge/Changelog-v{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/v{version})");
-		foreach (string line in lines.Skip(1))
+			$"[![Changelog](https://img.shields.io/badge/Changelog-{version}-blue)](https://github.com/aweXpect/aweXpect/releases/tag/{version})");
+		foreach (string line in lines.Skip(2))
 		{
 			if (line.StartsWith("[![Build](https://github.com/aweXpect/aweXpect/actions/workflows/build.yml") ||
 			    line.StartsWith("[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure"))
@@ -145,15 +187,15 @@ partial class Build
 			if (line.StartsWith("[![Coverage](https://sonarcloud.io/api/project_badges/measure"))
 			{
 				sb.AppendLine(line
-					.Replace(")", $"&branch=release/v{version})"));
+					.Replace(")", $"&branch=release/{version})"));
 				continue;
 			}
 
 			if (line.StartsWith("[![Mutation testing badge](https://img.shields.io/endpoint"))
 			{
 				sb.AppendLine(line
-					.Replace("%2Fmain)", $"%2Frelease%2Fv{version})")
-					.Replace("/main)", $"/release/v{version})"));
+					.Replace("%2Fmain)", $"%2Frelease%2F{version.Replace("/", "%2F")})")
+					.Replace("/main)", $"/release/{version})"));
 				continue;
 			}
 
@@ -174,16 +216,16 @@ partial class Build
 		}
 	}
 
-	public record AssemblyVersion(string FileVersion, string InformationalVersion)
+	public record AssemblyVersion(string FileVersion, string InformationalVersion, string PreRelease)
 	{
-		public static AssemblyVersion FromGitVersion(GitVersion gitVersion)
+		public static AssemblyVersion FromGitVersion(GitVersion gitVersion, string preRelease)
 		{
 			if (gitVersion is null)
 			{
 				return null;
 			}
 
-			return new AssemblyVersion(gitVersion.AssemblySemVer, gitVersion.InformationalVersion);
+			return new AssemblyVersion(gitVersion.AssemblySemVer, gitVersion.InformationalVersion, preRelease);
 		}
 	}
 }

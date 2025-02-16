@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<PropertyGroup>
+		<Description>Assert unit tests in natural language using awesome expectations.</Description>
+	</PropertyGroup>
+
 	<ItemGroup Condition=" '$(Configuration)' != 'Debug' ">
 		<PackageReference Include="aweXpect.Core"/>
 	</ItemGroup>
@@ -8,9 +12,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>aweXpect.Internal.Tests</_Parameter1>
-		</AssemblyAttribute>
+		<InternalsVisibleTo Include="aweXpect.Internal.Tests" PublicKey="$(PublicKey)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\aweXpect.Analyzers\aweXpect.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+		<None Include="$(MSBuildProjectDirectory)\..\aweXpect.Analyzers\bin\$(Configuration)\netstandard2.0\aweXpect.Analyzers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+		<ProjectReference Include="..\aweXpect.Analyzers.CodeFixers\aweXpect.Analyzers.CodeFixers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+		<None Include="$(MSBuildProjectDirectory)\..\aweXpect.Analyzers.CodeFixers\bin\$(Configuration)\netstandard2.0\aweXpect.Analyzers.CodeFixers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
 	</ItemGroup>
 
 </Project>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
@@ -29,7 +31,7 @@ internal class OrNode : Node
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> Current.AddMapping(memberAccessor, expectationTextGenerator);
 
@@ -52,8 +54,7 @@ internal class OrNode : Node
 			ConstraintResult result = await node.IsMetBy(value, context, cancellationToken);
 			combinedResult = CombineResults(combinedResult, result, separator,
 				combinedResult?.FurtherProcessingStrategy);
-			if (result.FurtherProcessingStrategy ==
-			    ConstraintResult.FurtherProcessing.IgnoreCompletely)
+			if (result.FurtherProcessingStrategy == FurtherProcessingStrategy.IgnoreCompletely)
 			{
 				return combinedResult;
 			}
@@ -82,46 +83,92 @@ internal class OrNode : Node
 		ConstraintResult? combinedResult,
 		ConstraintResult result,
 		string separator,
-		ConstraintResult.FurtherProcessing? furtherProcessingStrategy)
+		FurtherProcessingStrategy? furtherProcessingStrategy)
 	{
 		if (combinedResult == null)
 		{
 			return result;
 		}
 
-		string combinedExpectation =
-			$"{combinedResult.ExpectationText}{separator}{result.ExpectationText}";
-
-		if (combinedResult is ConstraintResult.Failure leftFailure &&
-		    result is ConstraintResult.Failure rightFailure)
-		{
-			return leftFailure.CombineWith(
-				combinedExpectation,
-				CombineResultTexts(
-					leftFailure.ResultText,
-					rightFailure.ResultText,
-					furtherProcessingStrategy ?? ConstraintResult.FurtherProcessing.Continue));
-		}
-
-		if (combinedResult is ConstraintResult.Failure)
-		{
-			return result.CombineWith(combinedExpectation, "");
-		}
-
-		return combinedResult.CombineWith(combinedExpectation, "");
+		return new OrConstraintResult(combinedResult, result, separator,
+			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
-	private static string CombineResultTexts(
-		string leftResultText,
-		string rightResultText,
-		ConstraintResult.FurtherProcessing furtherProcessingStrategy)
+	private sealed class OrConstraintResult(
+		ConstraintResult left,
+		ConstraintResult right,
+		string separator,
+		FurtherProcessingStrategy furtherProcessingStrategy)
+		: ConstraintResult(Or(left.Outcome, right.Outcome), furtherProcessingStrategy)
 	{
-		if (furtherProcessingStrategy == ConstraintResult.FurtherProcessing.IgnoreResult ||
-		    leftResultText == rightResultText)
+		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
+
+		private static Outcome Or(Outcome left, Outcome right)
+			=> (left, right) switch
+			{
+				(Outcome.Failure, Outcome.Failure) => Outcome.Failure,
+				(_, Outcome.Undecided) => Outcome.Undecided,
+				(Outcome.Undecided, _) => Outcome.Undecided,
+				(_, _) => Outcome.Success,
+			};
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			return leftResultText;
+			left.AppendExpectation(stringBuilder);
+			stringBuilder.Append(separator);
+			right.AppendExpectation(stringBuilder);
 		}
 
-		return $"{leftResultText} and {rightResultText}";
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (left.Outcome == Outcome.Failure)
+			{
+				left.AppendResult(stringBuilder, indentation);
+				if (right.Outcome == Outcome.Failure &&
+				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
+				    !left.HasSameResultTextAs(right))
+				{
+					stringBuilder.Append(" and ");
+					right.AppendResult(stringBuilder, indentation);
+				}
+			}
+			else if (right.Outcome == Outcome.Failure &&
+			         _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult)
+			{
+				right.AppendResult(stringBuilder, indentation);
+			}
+		}
+
+		public override IEnumerable<Context> GetContexts()
+		{
+			foreach (Context context in left.GetContexts())
+			{
+				yield return context;
+			}
+
+			foreach (Context context in right.GetContexts())
+			{
+				yield return context;
+			}
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
+			where TValue : default
+		{
+			if (left.TryGetValue<TValue>(out TValue? leftValue))
+			{
+				value = leftValue;
+				return true;
+			}
+
+			if (right.TryGetValue<TValue>(out TValue? rightValue))
+			{
+				value = rightValue;
+				return true;
+			}
+
+			value = default;
+			return false;
+		}
 	}
 }

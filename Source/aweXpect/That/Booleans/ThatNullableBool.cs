@@ -7,7 +7,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNullableBool
 {
-	private readonly struct BeValueConstraint(string it, bool? expected) : IValueConstraint<bool?>
+	private readonly struct IsEqualToConstraint(string it, bool? expected) : IValueConstraint<bool?>
 	{
 		public ConstraintResult IsMetBy(bool? actual)
 		{
@@ -20,10 +20,10 @@ public static partial class ThatNullableBool
 		}
 
 		public override string ToString()
-			=> $"be {Formatter.Format(expected)}";
+			=> $"is {Formatter.Format(expected)}";
 	}
 
-	private readonly struct NotBeValueConstraint(string it, bool? unexpected)
+	private readonly struct IsNotEqualToConstraint(string it, bool? unexpected)
 		: IValueConstraint<bool?>
 	{
 		public ConstraintResult IsMetBy(bool? actual)
@@ -37,6 +37,6 @@ public static partial class ThatNullableBool
 		}
 
 		public override string ToString()
-			=> $"not be {Formatter.Format(unexpected)}";
+			=> $"is not {Formatter.Format(unexpected)}";
 	}
 }

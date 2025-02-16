@@ -17,6 +17,20 @@ public sealed class EventRecordingTests
 	}
 
 	[Fact]
+	public async Task WhenNoFilterIsApplied_ShouldCountAllRecordings()
+	{
+		CustomEventClass subject = new();
+
+		IEventRecording<CustomEventClass> recording = subject.Record().Events();
+		subject.NotifyCustomEvent(1);
+		subject.NotifyCustomEvent(2);
+		IEventRecordingResult result = recording.Stop();
+		subject.NotifyCustomEvent(3);
+
+		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent))).IsEqualTo(2);
+	}
+
+	[Fact]
 	public async Task WhenStopIsCalled_ShouldStopListening()
 	{
 		CustomEventClass subject = new();
@@ -29,7 +43,7 @@ public sealed class EventRecordingTests
 
 		subject.NotifyCustomEvent(3);
 
-		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent), _ => true)).Is(2);
+		await That(result.GetEventCount(nameof(CustomEventClass.CustomEvent), _ => true)).IsEqualTo(2);
 	}
 
 	[Fact]

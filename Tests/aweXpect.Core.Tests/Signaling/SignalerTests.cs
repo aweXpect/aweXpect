@@ -6,7 +6,7 @@ using aweXpect.Signaling;
 
 namespace aweXpect.Core.Tests.Signaling;
 
-public class SignalerTests
+public sealed class SignalerTests
 {
 	public sealed class Tests
 	{
@@ -18,7 +18,10 @@ public class SignalerTests
 		[InlineData(2, 2, true)]
 		[InlineData(2, 3, false)]
 		[InlineData(2, 5, false)]
-		public async Task IsSignaled_ShouldCompareToSignalCount(int signalCount, int amount, bool expectedResult)
+		[InlineData(0, null, false)]
+		[InlineData(1, null, true)]
+		[InlineData(2, null, true)]
+		public async Task IsSignaled_ShouldCompareToSignalCount(int signalCount, int? amount, bool expectedResult)
 		{
 			Signaler signaler = new();
 
@@ -27,9 +30,9 @@ public class SignalerTests
 				signaler.Signal();
 			}
 
-			bool result = signaler.IsSignaled(amount.Times());
+			bool result = signaler.IsSignaled(amount?.Times());
 
-			await That(result).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
 		}
 
 		[Theory]
@@ -206,7 +209,10 @@ public class SignalerTests
 		[InlineData(2, 2, true)]
 		[InlineData(2, 3, false)]
 		[InlineData(2, 5, false)]
-		public async Task IsSignaled_ShouldCompareToSignalCount(int signalCount, int amount, bool expectedResult)
+		[InlineData(0, null, false)]
+		[InlineData(1, null, true)]
+		[InlineData(2, null, true)]
+		public async Task IsSignaled_ShouldCompareToSignalCount(int signalCount, int? amount, bool expectedResult)
 		{
 			Signaler<int> signaler = new();
 
@@ -215,9 +221,9 @@ public class SignalerTests
 				signaler.Signal(i);
 			}
 
-			bool result = signaler.IsSignaled(amount.Times());
+			bool result = signaler.IsSignaled(amount?.Times());
 
-			await That(result).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
 		}
 
 		[Theory]
@@ -234,7 +240,7 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait(amount);
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Is([4, 5, 6]).InAnyOrder();
+			await That(result.Parameters).IsEqualTo([4, 5, 6]).InAnyOrder();
 		}
 
 		[Fact]
@@ -276,7 +282,7 @@ public class SignalerTests
 			sw.Stop();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Is(Enumerable.Range(0, 100)).InAnyOrder();
+			await That(result.Parameters).IsEqualTo(Enumerable.Range(0, 100)).InAnyOrder();
 			await That(sw.Elapsed).IsLessThan(5000.Milliseconds());
 		}
 
@@ -309,7 +315,7 @@ public class SignalerTests
 			SignalerResult<int> result = signaler.Wait();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).Is([4, 5, 6]).InAnyOrder();
+			await That(result.Parameters).IsEqualTo([4, 5, 6]).InAnyOrder();
 		}
 
 		[Fact]

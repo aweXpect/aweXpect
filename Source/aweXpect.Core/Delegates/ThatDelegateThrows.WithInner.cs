@@ -17,10 +17,11 @@ public partial class ThatDelegateThrows<TException>
 		where TInnerException : Exception
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
-					$"with an inner {typeof(TInnerException).Name} which should ")
+					$"with an inner {(typeof(TInnerException) == typeof(Exception) ? ExceptionString : Formatter.Format(typeof(TInnerException)))} whose",
+					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -30,7 +31,7 @@ public partial class ThatDelegateThrows<TException>
 		TInnerException>()
 		where TInnerException : Exception?
 		=> new(ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, grammar) =>
 					new HasInnerExceptionValueConstraint<TInnerException>(
 						"with", it)),
 			this);
@@ -44,11 +45,11 @@ public partial class ThatDelegateThrows<TException>
 		Action<IThat<Exception?>> expectations)
 		=> new(ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
-					$"with an inner {innerExceptionType.Name} which should ")
+					$"with an inner {(innerExceptionType == typeof(Exception) ? ExceptionString : Formatter.Format(innerExceptionType))} whose",
+					false)
 				.Validate(it
-					=> new InnerExceptionIsTypeConstraint(it,
-						innerExceptionType))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
+					=> new InnerExceptionIsTypeConstraint(it, innerExceptionType))
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -57,7 +58,7 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInner(
 		Type innerExceptionType)
 		=> new(ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, grammar) =>
 					new HasInnerExceptionValueConstraint(innerExceptionType,
 						"with", it)),
 			this);
@@ -78,9 +79,7 @@ public partial class ThatDelegateThrows<TException>
 			}
 
 			return new ConstraintResult.Failure<Exception?>(actual, "",
-				actual == null
-					? $"{it} was <null>"
-					: $"{it} was {ThatDelegate.FormatForMessage(actual.InnerException)}");
+				$"{it} was {ThatDelegate.FormatForMessage(actual?.InnerException)}");
 		}
 
 		#endregion
@@ -100,13 +99,12 @@ public partial class ThatDelegateThrows<TException>
 			}
 
 			return new ConstraintResult.Failure<Exception?>(actual, "",
-				actual == null
-					? $"{it} was <null>"
-					: $"{it} was {ThatDelegate.FormatForMessage(actual)}");
+				$"{it} was {ThatDelegate.FormatForMessage(actual?.InnerException)}");
 		}
 
 		#endregion
 	}
+
 	internal readonly struct HasInnerExceptionValueConstraint<TInnerException>(
 		string verb,
 		string it)
@@ -133,7 +131,7 @@ public partial class ThatDelegateThrows<TException>
 		}
 
 		public override string ToString()
-			=> $"{verb} an inner {(typeof(TInnerException) == typeof(Exception) ? "exception" : Formatter.Format(typeof(TInnerException)))}";
+			=> $"{verb} an inner {(typeof(TInnerException) == typeof(Exception) ? ExceptionString : Formatter.Format(typeof(TInnerException)))}";
 	}
 
 	internal readonly struct HasInnerExceptionValueConstraint(
@@ -162,6 +160,6 @@ public partial class ThatDelegateThrows<TException>
 		}
 
 		public override string ToString()
-			=> $"{verb} an inner {(innerExceptionType == typeof(Exception) ? "exception" : Formatter.Format(innerExceptionType))}";
+			=> $"{verb} an inner {(innerExceptionType == typeof(Exception) ? ExceptionString : Formatter.Format(innerExceptionType))}";
 	}
 }

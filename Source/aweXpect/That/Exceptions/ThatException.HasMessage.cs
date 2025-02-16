@@ -6,9 +6,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public static partial class ThatException
 {
 	/// <summary>
@@ -20,9 +17,9 @@ public static partial class ThatException
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<Exception?, IThat<Exception?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new HasMessageValueConstraint<Exception>(
-					it, "have", expected, options)),
+					it, grammar, expected, options)),
 			source,
 			options);
 	}

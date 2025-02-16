@@ -21,7 +21,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatAsyncEnumerable
 {
-	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
@@ -43,16 +43,15 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual!,
-					_quantifier.GetExpectation(_it, _expectationText()),
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
+					actual,
+					$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					$"{_it} was <null>");
 			}
 
@@ -83,7 +82,7 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, _quantifier.GetExpectation(_it, _expectationText()),
+					actual, $"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
 					"could not verify, because it was cancelled early");
 			}
 
@@ -92,90 +91,21 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private readonly struct AsyncCollectionConstraint<TItem> : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
-	{
-		private readonly string _it;
-		private readonly EnumerableQuantifier _quantifier;
-		private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
-
-		public AsyncCollectionConstraint(string it,
-			EnumerableQuantifier quantifier,
-			Action<IThat<TItem>> expectations)
-		{
-			_it = it;
-			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
-			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
-		}
-
-		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
-		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual!,
-					_quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
-					$"{_it} was <null>");
-			}
-
-			IAsyncEnumerable<TItem> materialized =
-				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			int matchingCount = 0;
-			int notMatchingCount = 0;
-			int? totalCount = null;
-
-			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
-			{
-				ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(item, context, cancellationToken);
-				if (isMatch is ConstraintResult.Success)
-				{
-					matchingCount++;
-				}
-				else
-				{
-					notMatchingCount++;
-				}
-
-				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
-				{
-					return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-						notMatchingCount,
-						totalCount, null);
-				}
-			}
-
-			if (cancellationToken.IsCancellationRequested)
-			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, _quantifier.GetExpectation(_it, _itemExpectationBuilder.ToString()),
-					"could not verify, because it was cancelled early");
-			}
-
-			return _quantifier.GetResult(actual, _it, _itemExpectationBuilder.ToString(), matchingCount,
-				notMatchingCount,
-				matchingCount + notMatchingCount, null);
-		}
-	}
-
 	private readonly struct AsyncCollectionCountConstraint<TItem>(
 		string it,
-		EnumerableQuantifier quantifier) : IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		EnumerableQuantifier quantifier) : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			string expectationText = ToString();
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual!,
-					quantifier.GetExpectation(it, null),
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(
+					actual,
+					expectationText,
 					$"{it} was <null>");
 			}
 
@@ -192,38 +122,40 @@ public static partial class ThatAsyncEnumerable
 				if (quantifier.IsDeterminable(matchingCount, notMatchingCount))
 				{
 					return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
-						totalCount, null);
+						totalCount, null, (_, _) => expectationText);
 				}
 			}
 
 			if (cancellationToken.IsCancellationRequested)
 			{
 				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(
-					actual, quantifier.GetExpectation(it, null),
+					actual, expectationText,
 					"could not verify, because it was cancelled early");
 			}
 
 			return quantifier.GetResult(actual, it, null, matchingCount, notMatchingCount,
-				matchingCount + notMatchingCount, null);
+				matchingCount + notMatchingCount, null, (_, _) => expectationText);
 		}
+
+		public override string ToString()
+			=> $"has {quantifier} {quantifier.GetItemString()}";
 	}
 
-	private readonly struct BeConstraint<TItem, TMatch>(
+	private readonly struct IsConstraint<TItem, TMatch>(
 		string it,
 		string expectedExpression,
 		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (expected is null)
@@ -297,21 +229,20 @@ public static partial class ThatAsyncEnumerable
 			=> matchOptions.GetExpectation(expectedExpression);
 	}
 
-	private readonly struct BeInOrderConstraint<TItem, TMember>(
+	private readonly struct IsInOrderConstraint<TItem, TMember>(
 		string it,
 		Func<TItem, TMember> memberAccessor,
 		SortOrder sortOrder,
 		CollectionOrderOptions<TMember> options,
 		string memberExpression)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem> actual, IEvaluationContext context,
+		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IAsyncEnumerable<TItem> materialized = context
@@ -364,7 +295,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> $"be in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
+			=> $"is in {sortOrder.ToString().ToLower()} order{options}{memberExpression}";
 	}
 }
 #endif

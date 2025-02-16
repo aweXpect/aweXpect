@@ -34,7 +34,7 @@ public partial class ThatAsyncEnumerable
 		}
 	}
 
-	public static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(int[] items, Func<int, T> mapper)
+	public static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(IEnumerable<int> items, Func<int, T> mapper)
 	{
 		foreach (int item in items)
 		{

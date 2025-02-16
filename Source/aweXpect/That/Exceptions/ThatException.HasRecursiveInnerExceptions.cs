@@ -6,9 +6,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public static partial class ThatException
 {
 	/// <summary>
@@ -26,9 +23,12 @@ public static partial class ThatException
 				.ForMember(MemberAccessor<Exception?, IEnumerable<Exception?>>.FromFunc(
 						e => e.GetInnerExpectations(),
 						"recursive inner exceptions "),
-					(property, expectation) => $"have {property}which should {expectation}",
+					(property, stringBuilder) =>
+					{
+						stringBuilder.Append("has ").Append(property).Append("which ");
+					},
 					false)
 				.AddExpectations(e => expectations(
-					new ThatSubject<IEnumerable<Exception>>(e))),
+					new ThatSubject<IEnumerable<Exception>>(e)), ExpectationGrammars.Nested),
 			source);
 }

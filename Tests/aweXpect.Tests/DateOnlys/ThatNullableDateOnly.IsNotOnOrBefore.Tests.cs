@@ -18,8 +18,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -35,8 +35,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -52,9 +52,26 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateOnly? expected = CurrentTime();
+				DateOnly? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNotOnOrBefore(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not on or before {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
@@ -69,8 +86,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -99,8 +116,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before <null>, because we want to test the failure,
+					              Expected that subject
+					              is not on or before <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -118,8 +135,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -136,8 +153,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be on or before {Formatter.Format(unexpected)} ± 3 days,
+					              Expected that subject
+					              is not on or before {Formatter.Format(unexpected)} ± 3 days,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

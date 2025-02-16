@@ -6,7 +6,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEventRecording
 {
-	public sealed class DoesNotHaveTriggeredPropertyChangedFor
+	public sealed class DidNotTriggerPropertyChangedFor
 	{
 		public sealed class Tests
 		{
@@ -27,7 +27,7 @@ public sealed partial class ThatEventRecording
 			{
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 421
+					MyValue = 421,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
@@ -38,8 +38,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have never recorded the PropertyChanged event on sut for property MyValue,
+					             Expected that recording
+					             has never recorded the PropertyChanged event on sut for property MyValue,
 					             but it was recorded once in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 421
@@ -74,8 +74,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have never recorded the PropertyChanged event for property MyValue,
+					             Expected that subject
+					             has never recorded the PropertyChanged event for property MyValue,
 					             but it was <null>
 					             """);
 			}

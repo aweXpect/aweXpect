@@ -16,7 +16,7 @@ public sealed partial class ThatGeneric
 				MyCombinationClass subject = new()
 				{
 					A = a,
-					B = b
+					B = b,
 				};
 
 				async Task Act()
@@ -26,8 +26,8 @@ public sealed partial class ThatGeneric
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              for .A be True and for .B be True,
+					              Expected that subject
+					              for .A is True and for .B is True,
 					              but {(a ? "" : ".A was False")}{(!a && !b ? " and " : "")}{(b ? "" : ".B was False")}
 					              """);
 			}
@@ -42,7 +42,7 @@ public sealed partial class ThatGeneric
 				MyCombinationClass subject = new()
 				{
 					A = a,
-					B = b
+					B = b,
 				};
 
 				async Task Act()
@@ -52,8 +52,8 @@ public sealed partial class ThatGeneric
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
-					             Expected subject to
-					             for .A be True or for .B be True,
+					             Expected that subject
+					             for .A is True or for .B is True,
 					             but .A was False and .B was False
 					             """);
 			}
@@ -65,17 +65,17 @@ public sealed partial class ThatGeneric
 				int expectedValue = value + 1;
 				MyClass subject = new()
 				{
-					Value = value
+					Value = value,
 				};
 
 				async Task Act()
 					=> await That(subject)
-						.For(o => o.Value, v => v.Is(expectedValue));
+						.For(o => o.Value, v => v.IsEqualTo(expectedValue));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              for .Value be equal to {Formatter.Format(expectedValue)},
+					              Expected that subject
+					              for .Value is equal to {Formatter.Format(expectedValue)},
 					              but .Value was {Formatter.Format(value)}
 					              """);
 			}
@@ -86,11 +86,11 @@ public sealed partial class ThatGeneric
 			{
 				MyClass subject = new()
 				{
-					Value = value
+					Value = value,
 				};
 
 				async Task Act()
-					=> await That(subject).For(o => o.Value, v => v.Is(value));
+					=> await That(subject).For(o => o.Value, v => v.IsEqualTo(value));
 
 				await That(Act).DoesNotThrow();
 			}

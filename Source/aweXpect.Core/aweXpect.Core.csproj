@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<Description>Core package for writing extensions for aweXpect.</Description>
 		<RootNamespace>aweXpect</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>aweXpect.Core.Tests</_Parameter1>
-		</AssemblyAttribute>
+		<InternalsVisibleTo Include="aweXpect.Core.Tests" PublicKey="$(PublicKey)" />
 	</ItemGroup>
 
 </Project>

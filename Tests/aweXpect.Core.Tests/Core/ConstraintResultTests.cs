@@ -1,4 +1,6 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System.Text;
+using aweXpect.Core.Constraints;
+using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core;
 
@@ -9,10 +11,12 @@ public sealed class ConstraintResultTests
 	public async Task Failure_WithoutValue_ShouldStoreTexts(string expectationText,
 		string resultText)
 	{
+		StringBuilder sb = new();
 		ConstraintResult.Failure subject = new(expectationText, resultText);
 
-		await That(subject.ExpectationText).Is(expectationText);
-		await That(subject.ResultText).Is(resultText);
+		subject.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo(expectationText);
+		await That(subject.GetResultText()).IsEqualTo(resultText);
 	}
 
 	[Theory]
@@ -22,14 +26,16 @@ public sealed class ConstraintResultTests
 	{
 		Dummy value = new()
 		{
-			Value = 1
+			Value = 1,
 		};
+		StringBuilder sb = new();
 
 		ConstraintResult.Failure<Dummy> subject = new(value, expectationText, resultText);
 
-		await That(subject.Value).Is().EquivalentTo(value);
-		await That(subject.ExpectationText).Is(expectationText);
-		await That(subject.ResultText).Is(resultText);
+		subject.AppendExpectation(sb);
+		await That(subject.Value).IsEquivalentTo(value);
+		await That(sb.ToString()).IsEqualTo(expectationText);
+		await That(subject.GetResultText()).IsEqualTo(resultText);
 	}
 
 	[Theory]
@@ -38,37 +44,15 @@ public sealed class ConstraintResultTests
 	{
 		Dummy value = new()
 		{
-			Value = 1
+			Value = 1,
 		};
+		StringBuilder sb = new();
 
 		ConstraintResult.Success<Dummy> subject = new(value, expectationText);
 
-		await That(subject.Value).Is().EquivalentTo(value);
-		await That(subject.ExpectationText).Is(expectationText);
-	}
-
-	[Theory]
-	[AutoData]
-	public async Task ToString_Failure_ShouldBeExpectationTextWithPrependedFailed(
-		string expectationText)
-	{
-		ConstraintResult.Failure subject = new(expectationText, "result text");
-
-		string result = subject.ToString();
-
-		await That(result).Is($"FAILED {expectationText}");
-	}
-
-	[Theory]
-	[AutoData]
-	public async Task ToString_Success_ShouldBeExpectationTextWithPrependedSucceeded(
-		string expectationText)
-	{
-		ConstraintResult.Success subject = new(expectationText);
-
-		string result = subject.ToString();
-
-		await That(result).Is($"SUCCEEDED {expectationText}");
+		subject.AppendExpectation(sb);
+		await That(subject.Value).IsEquivalentTo(value);
+		await That(sb.ToString()).IsEqualTo(expectationText);
 	}
 
 	private sealed class Dummy

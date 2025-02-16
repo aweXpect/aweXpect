@@ -6,6 +6,22 @@ public sealed partial class ThatString
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf("foo", "bar");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not one of ["foo", "bar"],
+					             but it was <null>
+					             """);
+			}
+
 			[Theory]
 			[AutoData]
 			public async Task WhenUnexpectedIsNull_ShouldSucceed(
@@ -40,8 +56,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be one of {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not one of {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

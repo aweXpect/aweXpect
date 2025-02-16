@@ -6,9 +6,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public static partial class ThatException
 {
 	/// <summary>
@@ -18,8 +15,8 @@ public static partial class ThatException
 		this IThat<TException> source,
 		int expected)
 		where TException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new HasHResultValueConstraint(it, "have", expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new HasHResultValueConstraint(it, "has", expected)),
 			source);
 
 	internal readonly struct HasHResultValueConstraint(

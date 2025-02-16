@@ -14,30 +14,29 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> IsEmpty<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsEmpty<TItem>(
+		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new BeEmptyConstraint<TItem>(it)),
+				.AddConstraint((it, grammar) => new IsEmptyConstraint<TItem>(it, grammar)),
 			source);
 
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>> IsNotEmpty<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
+		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new NotBeEmptyConstraint<TItem>(it)),
+				.AddConstraint((it, grammar) => new IsNotEmptyConstraint<TItem>(it, grammar)),
 			source);
 
-	private readonly struct BeEmptyConstraint<TItem>(string it)
-		: IValueConstraint<IEnumerable<TItem>>
+	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
+		: IValueConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (actual is ICollection<TItem> collectionOfT)
@@ -62,18 +61,21 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> "be empty";
+			=> grammars switch
+			{
+				ExpectationGrammars.Nested => "are empty",
+				_ => "is empty",
+			};
 	}
 
-	private readonly struct NotBeEmptyConstraint<TItem>(string it)
-		: IContextConstraint<IEnumerable<TItem>>
+	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
+		: IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			if (actual is ICollection<TItem> collectionOfT)
@@ -99,6 +101,10 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> "not be empty";
+			=> grammars switch
+			{
+				ExpectationGrammars.Nested => "are not empty",
+				_ => "is not empty",
+			};
 	}
 }

@@ -27,8 +27,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be positive,
+					             Expected that subject
+					             is positive,
 					             but it was the minimum time span
 					             """);
 			}
@@ -43,10 +43,26 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeSpan? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsPositive();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is positive,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]
@@ -70,8 +86,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be positive,
+					              Expected that subject
+					              is positive,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

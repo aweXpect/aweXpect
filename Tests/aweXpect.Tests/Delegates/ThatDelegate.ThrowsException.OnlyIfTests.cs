@@ -17,22 +17,12 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
-			public async Task ShouldSupportChainedConstraintsForTypedException()
-			{
-				Action action = () => { };
-
-				await That(action).Throws<ArgumentException>()
-					.OnlyIf(false)
-					.WithMessage("foo");
-			}
-
-			[Fact]
 			public async Task WhenAwaited_OnlyIfFalse_ShouldReturnNull()
 			{
 				Action action = () => { };
 
-				CustomException? result =
-					await That(action).Throws<CustomException>().OnlyIf(false);
+				Exception? result =
+					await That(action).ThrowsException().OnlyIf(false);
 
 				await That(result).IsNull();
 			}
@@ -43,8 +33,8 @@ public sealed partial class ThatDelegate
 				Exception exception = new CustomException();
 				Action action = () => throw exception;
 
-				CustomException? result =
-					await That(action).Throws<CustomException>().OnlyIf(true);
+				Exception? result =
+					await That(action).ThrowsException().OnlyIf(true);
 
 				await That(result).IsSameAs(exception);
 			}
@@ -60,8 +50,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
-					             Expected action to
-					             not throw any exception,
+					             Expected that action
+					             does not throw any exception,
 					             but it did throw an Exception
 					             """);
 			}
@@ -87,8 +77,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage("""
-					             Expected action to
-					             throw an exception,
+					             Expected that action
+					             throws an exception,
 					             but it did not throw any exception
 					             """);
 			}

@@ -18,8 +18,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not contain "INVESTIGATOR" ignoring case,
+					             Expected that subject
+					             does not contain "INVESTIGATOR" ignoring case,
 					             but it contained it 1 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
@@ -37,8 +37,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not contain "InvEstIgAtOr" using IgnoreCaseForVocalsComparer,
+					             Expected that subject
+					             does not contain "InvEstIgAtOr" using IgnoreCaseForVocalsComparer,
 					             but it contained it 1 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
@@ -54,8 +54,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not contain "me",
+					             Expected that subject
+					             does not contain "me",
 					             but it contained it 1 times in "some text"
 					             """);
 			}

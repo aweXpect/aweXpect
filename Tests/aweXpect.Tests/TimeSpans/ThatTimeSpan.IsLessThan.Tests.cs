@@ -17,8 +17,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be less than <null>,
+					              Expected that subject
+					              is less than <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be less than the maximum time span,
+					             Expected that subject
+					             is less than the maximum time span,
 					             but it was the maximum time span
 					             """);
 			}
@@ -51,8 +51,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be less than the minimum time span,
+					             Expected that subject
+					             is less than the minimum time span,
 					             but it was the minimum time span
 					             """);
 			}
@@ -68,8 +68,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be less than {Formatter.Format(expected)},
+					              Expected that subject
+					              is less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -85,8 +85,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be less than {Formatter.Format(expected)},
+					              Expected that subject
+					              is less than {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -115,8 +115,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be less than {Formatter.Format(expected)} ± 0:03,
+					              Expected that subject
+					              is less than {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -133,8 +133,8 @@ public sealed partial class ThatTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be less than {Formatter.Format(expected)} ± 0:03,
+					              Expected that subject
+					              is less than {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

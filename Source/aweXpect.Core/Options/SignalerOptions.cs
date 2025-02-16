@@ -9,7 +9,7 @@ namespace aweXpect.Options;
 /// <summary>
 ///     Options for <see cref="Signaler" />
 /// </summary>
-public class SignalerOptions
+public record SignalerOptions
 {
 	/// <summary>
 	///     The timeout to use for the recording.
@@ -31,7 +31,7 @@ public class SignalerOptions
 /// <summary>
 ///     Options for <see cref="Signaler{TParameter}" />
 /// </summary>
-public class SignalerOptions<TParameter> : SignalerOptions
+public record SignalerOptions<TParameter> : SignalerOptions
 {
 	private StringBuilder? _builder;
 	private List<Func<TParameter, bool>>? _predicates;
@@ -76,6 +76,6 @@ public class SignalerOptions<TParameter> : SignalerOptions
 			(null, null) => "",
 			(null, _) => $" within {Formatter.Format(Timeout.Value)}",
 			(_, null) => _builder.ToString(),
-			(_, _) => _builder.Append($" within {Formatter.Format(Timeout.Value)}").ToString()
+			(_, _) => _builder.Append($" within {Formatter.Format(Timeout.Value)}").ToString(),
 		};
 }

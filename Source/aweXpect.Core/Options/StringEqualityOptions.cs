@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
 
@@ -11,7 +12,6 @@ namespace aweXpect.Options;
 public partial class StringEqualityOptions : IOptionsEquality<string?>
 {
 	private const int DefaultMaxLength = 30;
-	private const int LongMaxLength = 300;
 	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
 	private static readonly IStringMatchType RegexMatch = new RegexMatchType();
 
@@ -25,8 +25,77 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	private IStringMatchType _matchType = ExactMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual(string? actual, string? expected)
+	public bool AreConsideredEqual<TExpected>(string? actual, TExpected expected)
 	{
+		if (expected is not string expectedString)
+		{
+			return _matchType.AreConsideredEqual(actual, null, _ignoreCase,
+				_comparer ?? UseDefaultComparer(_ignoreCase));
+		}
+
+		if (_ignoreNewlineStyle)
+		{
+			actual = actual.RemoveNewlineStyle();
+			expectedString = expectedString.RemoveNewlineStyle();
+		}
+
+		if (_ignoreLeadingWhiteSpace)
+		{
+			actual = actual?.TrimStart();
+			expectedString = expectedString.TrimStart();
+		}
+
+		if (_ignoreTrailingWhiteSpace)
+		{
+			actual = actual?.TrimEnd();
+			expectedString = expectedString.TrimEnd();
+		}
+
+		return _matchType.AreConsideredEqual(actual, expectedString, _ignoreCase,
+			_comparer ?? UseDefaultComparer(_ignoreCase));
+	}
+
+	/// <summary>
+	///     Specifies a new <see cref="IStringMatchType" /> to use for matching two strings.
+	/// </summary>
+	public void SetMatchType(IStringMatchType matchType) => _matchType = matchType;
+
+	/// <summary>
+	///     Get the expectations text.
+	/// </summary>
+	public string GetExpectation(string? expected, ExpectationGrammars grammar)
+		=> _matchType.GetExpectation(expected, grammar) + GetOptionString();
+
+	/// <summary>
+	///     Get an extended failure text.
+	/// </summary>
+	public string GetExtendedFailure(string it, string? actual, string? expected)
+	{
+		StringDifferenceSettings? settings = null;
+		if (_ignoreLeadingWhiteSpace && actual is not null)
+		{
+			int ignoredLineCount = 0;
+			int ignoredColumnCount = 0;
+			foreach (char c in actual)
+			{
+				if (c == '\n')
+				{
+					ignoredLineCount++;
+					ignoredColumnCount = 0;
+				}
+				else if (char.IsWhiteSpace(c))
+				{
+					ignoredColumnCount++;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			settings = new StringDifferenceSettings(ignoredLineCount, ignoredColumnCount);
+		}
+
 		if (_ignoreNewlineStyle)
 		{
 			actual = actual.RemoveNewlineStyle();
@@ -45,27 +114,10 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 			expected = expected?.TrimEnd();
 		}
 
-		return _matchType.AreConsideredEqual(actual, expected, _ignoreCase,
-			_comparer ?? UseDefaultComparer(_ignoreCase));
+
+		return _matchType.GetExtendedFailure(it, actual, expected, _ignoreCase,
+			_comparer ?? UseDefaultComparer(_ignoreCase), settings);
 	}
-
-	/// <summary>
-	///     Specifies a new <see cref="IStringMatchType" /> to use for matching two strings.
-	/// </summary>
-	public void SetMatchType(IStringMatchType matchType) => _matchType = matchType;
-
-	/// <summary>
-	///     Get the expectations text.
-	/// </summary>
-	public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-		=> _matchType.GetExpectation(expected, useActiveGrammaticVoice);
-
-	/// <summary>
-	///     Get an extended failure text.
-	/// </summary>
-	public string GetExtendedFailure(string it, string? actual, string? expected)
-		=> _matchType.GetExtendedFailure(it, actual, expected, _ignoreCase,
-			_comparer ?? UseDefaultComparer(_ignoreCase));
 
 	/// <summary>
 	///     Ignores casing when comparing the <see langword="string" />s.
@@ -114,20 +166,7 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	}
 
 	/// <inheritdoc />
-	public override string ToString()
-	{
-		if (_comparer != null)
-		{
-			return $" using {Formatter.Format(_comparer.GetType())}";
-		}
-
-		if (_ignoreCase)
-		{
-			return " ignoring case";
-		}
-
-		return "";
-	}
+	public override string ToString() => _matchType.GetTypeString() + GetOptionString();
 
 	/// <summary>
 	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see langword="string" />s.
@@ -144,4 +183,53 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 
 	private static StringComparer UseDefaultComparer(bool ignoreCase)
 		=> ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
+
+
+	private string GetOptionString()
+	{
+		if (!_ignoreLeadingWhiteSpace && !_ignoreTrailingWhiteSpace && !_ignoreNewlineStyle)
+		{
+			return _matchType.GetOptionString(_ignoreCase, _comparer);
+		}
+
+		string? whiteSpaceToken = (_ignoreLeadingWhiteSpace, _ignoreTrailingWhiteSpace) switch
+		{
+			(true, true) => " white-space",
+			(true, false) => " leading white-space",
+			(false, true) => " trailing white-space",
+			(false, false) => null,
+		};
+
+		string? newlineStyleToken = _ignoreNewlineStyle
+			? " newline style"
+			: null;
+
+		StringBuilder sb = new();
+		string initialString = _matchType.GetOptionString(_ignoreCase, _comparer);
+		sb.Append(initialString);
+		if (initialString.Contains("ignoring"))
+		{
+			sb.Append(whiteSpaceToken == null || newlineStyleToken == null ? " and" : ",");
+		}
+		else
+		{
+			sb.Append(" ignoring");
+		}
+
+		if (whiteSpaceToken != null)
+		{
+			sb.Append(whiteSpaceToken);
+			if (newlineStyleToken != null)
+			{
+				sb.Append(" and");
+			}
+		}
+
+		if (newlineStyleToken != null)
+		{
+			sb.Append(newlineStyleToken);
+		}
+
+		return sb.ToString();
+	}
 }

@@ -1,9 +1,21 @@
-﻿namespace aweXpect.Core.Tests.Options;
+﻿using aweXpect.Options;
+
+namespace aweXpect.Core.Tests.Options;
 
 public sealed partial class StringEqualityOptionsTests
 {
 	public sealed class ExactMatchTypeTests
 	{
+		[Fact]
+		public async Task Exactly_ShouldReturnSameInstance()
+		{
+			StringEqualityOptions sut = new();
+
+			StringEqualityOptions result = sut.Exactly();
+
+			await That(result).IsSameAs(sut);
+		}
+
 		[Theory]
 		[InlineData(false)]
 		[InlineData(true)]
@@ -12,13 +24,13 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
+				=> await That(sut).IsEqualTo("FOO\nBAR").Exactly().IgnoringCase(ignoreCase);
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "FOO\nBAR",
-				             but it was "foo\nbar" which differs at index 0:
+				             Expected that sut
+				             is equal to "FOO\nBAR",
+				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
 				               "foo\nbar"
 				               "FOO\nBAR"
@@ -32,12 +44,12 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("bar").Exactly();
+				=> await That(sut).IsEqualTo("bar").Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "bar",
+				             Expected that sut
+				             is equal to "bar",
 				             but it was "foo" which differs at index 0:
 				                ↓ (actual)
 				               "foo"
@@ -52,13 +64,13 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("\tsomething\r\nelse").Exactly();
+				=> await That(sut).IsEqualTo("\tsomething\r\nelse").Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "\tsomething\r\nelse",
-				             but it was "foo\nbar" which differs at index 0:
+				             Expected that sut
+				             is equal to "\tsomething\r\nelse",
+				             but it was "foo\nbar" which differs on line 1 and column 1:
 				                ↓ (actual)
 				               "foo\nbar"
 				               "\tsomething\r\nelse"
@@ -77,8 +89,8 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected () => Task.FromException(exception) to
-				             throw an exception with Message equal to "bar",
+				             Expected that () => Task.FromException(exception)
+				             throws an exception with Message equal to "bar",
 				             but it was "foo" which differs at index 0:
 				                ↓ (actual)
 				               "foo"
@@ -90,15 +102,15 @@ public sealed partial class StringEqualityOptionsTests
 		[Fact]
 		public async Task WhenExpectedIsNull_ShouldFail()
 		{
-			string? sut = "foo";
+			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is(null).Exactly();
+				=> await That(sut).IsEqualTo(null).Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to <null>,
+				             Expected that sut
+				             is equal to <null>,
 				             but it was "foo"
 				             """);
 		}
@@ -106,10 +118,10 @@ public sealed partial class StringEqualityOptionsTests
 		[Fact]
 		public async Task WhenIgnoringCase_ShouldCompareCaseInsensitive()
 		{
-			string? sut = "foo";
+			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("FOO").Exactly().IgnoringCase();
+				=> await That(sut).IsEqualTo("FOO").Exactly().IgnoringCase();
 
 			await That(Act).DoesNotThrow();
 		}
@@ -120,7 +132,7 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is(null).Exactly();
+				=> await That(sut).IsEqualTo(null).Exactly();
 
 			await That(Act).DoesNotThrow();
 		}
@@ -131,12 +143,12 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is("").Exactly();
+				=> await That(sut).IsEqualTo("").Exactly();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             be equal to "",
+				             Expected that sut
+				             is equal to "",
 				             but it was <null>
 				             """);
 		}

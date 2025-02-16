@@ -29,8 +29,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage($"""
-					              Expected @delegate to
-					              not throw any exception,
+					              Expected that @delegate
+					              does not throw any exception,
 					              but it did throw a CustomException:
 					                {message}
 					              """);
@@ -46,8 +46,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not throw any exception,
+					             Expected that subject
+					             does not throw any exception,
 					             but it was <null>
 					             """);
 			}
@@ -63,7 +63,7 @@ public sealed partial class ThatDelegate
 
 				int result = await That(@delegate).DoesNotThrow();
 
-				await That(result).Is(value);
+				await That(result).IsEqualTo(value);
 			}
 
 			[Fact]
@@ -89,8 +89,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).ThrowsException()
 					.WithMessage($"""
-					              Expected @delegate to
-					              not throw any exception,
+					              Expected that @delegate
+					              does not throw any exception,
 					              but it did throw a CustomException:
 					                {message}
 					              """);
@@ -106,8 +106,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not throw any exception,
+					             Expected that subject
+					             does not throw any exception,
 					             but it was <null>
 					             """);
 			}

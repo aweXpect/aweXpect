@@ -1,22 +1,27 @@
-﻿namespace aweXpect.Core.Tests.Results;
+﻿using aweXpect.Core.Helpers;
+using aweXpect.Core.Tests.TestHelpers;
+using aweXpect.Results;
+
+namespace aweXpect.Core.Tests.Results;
 
 public class AndOrWhichResultTests
 {
 	[Fact]
-	public async Task MultipleWhich_ShouldAllowChaining()
+	public async Task MultipleWhose_ShouldAllowChaining()
 	{
-		MyClass sut = new();
+		MyClass subject = new();
+		AndOrWhichResult<MyClass, IThat<MyClass>> sut = CreateSut(subject);
 
 		async Task Act()
-			=> await That(sut).Is<MyClass>()
+			=> await sut
 				.Which(f => f.Value1, f => f.IsTrue())
 				.AndWhich(f => f.Value2, f => f.IsTrue())
-				.And.IsSameAs(sut);
+				.And.IsSameAs(subject);
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected sut to
-			             be type MyClass which .Value1 should be True and which .Value2 should be True and refer to sut MyClass {
+			             Expected that subject
+			              which .Value1 is True and which .Value2 is True and refers to subject MyClass {
 			               Value1 = False,
 			               Value2 = False
 			             },
@@ -29,30 +34,41 @@ public class AndOrWhichResultTests
 	[InlineData(true, false, false)]
 	[InlineData(false, true, false)]
 	[InlineData(false, false, false)]
-	public async Task MultipleWhich_ShouldVerifyAll(bool value1, bool value2, bool expectSuccess)
+	public async Task MultipleWhose_ShouldVerifyAll(bool value1, bool value2, bool expectSuccess)
 	{
-		MyClass sut = new()
+		MyClass subject = new()
 		{
 			Value1 = value1,
-			Value2 = value2
+			Value2 = value2,
 		};
+		AndOrWhichResult<MyClass, IThat<MyClass>> sut = CreateSut(subject);
 
 		async Task Act()
-			=> await That(sut).Is<MyClass>()
+			=> await sut
 				.Which(f => f.Value1, f => f.IsTrue())
 				.AndWhich(f => f.Value2, f => f.IsTrue());
 
 		await That(Act).ThrowsException().OnlyIf(!expectSuccess)
 			.WithMessage($"""
-			              Expected sut to
-			              be type MyClass which .Value1 should be True and which .Value2 should be True,
+			              Expected that subject
+			               which .Value1 is True and which .Value2 is True,
 			              but {(value1 ? "" : ".Value1 was False")}{(!value1 && !value2 ? " and " : "")}{(value2 ? "" : ".Value2 was False")}
 			              """);
 	}
 
 	private sealed class MyClass
 	{
-		public bool Value1 { get; set; }
-		public bool Value2 { get; set; }
+		public bool Value1 { get; init; }
+		public bool Value2 { get; init; }
+	}
+
+	private static AndOrWhichResult<T, IThat<T>> CreateSut<T>(T subject)
+	{
+#pragma warning disable aweXpect0001
+		IThat<T> source = That(subject);
+#pragma warning restore aweXpect0001
+		return new AndOrWhichResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, _)
+				=> new DummyConstraint(it)),
+			source);
 	}
 }

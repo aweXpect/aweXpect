@@ -11,7 +11,7 @@ public sealed partial class ThatGeneric
 			{
 				Other subject = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 				Other expected = subject;
 
@@ -20,8 +20,8 @@ public sealed partial class ThatGeneric
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not refer to expected Other {
+					             Expected that subject
+					             does not refer to expected Other {
 					               Value = 1
 					             },
 					             but it did
@@ -33,11 +33,11 @@ public sealed partial class ThatGeneric
 			{
 				Other subject = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 				Other expected = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 
 				async Task Act()
@@ -51,7 +51,7 @@ public sealed partial class ThatGeneric
 			{
 				Other subject = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 				Other? expected = null;
 
@@ -72,8 +72,8 @@ public sealed partial class ThatGeneric
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not refer to expected <null>,
+					             Expected that subject
+					             does not refer to expected <null>,
 					             but it did
 					             """);
 			}
@@ -84,7 +84,7 @@ public sealed partial class ThatGeneric
 				Other? subject = null;
 				Other expected = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 
 				async Task Act()

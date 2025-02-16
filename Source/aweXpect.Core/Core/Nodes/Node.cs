@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
@@ -20,7 +21,7 @@ internal abstract class Node
 	/// </summary>
 	public abstract Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null);
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null);
 
 	/// <summary>
 	///     Add a node as inner node.

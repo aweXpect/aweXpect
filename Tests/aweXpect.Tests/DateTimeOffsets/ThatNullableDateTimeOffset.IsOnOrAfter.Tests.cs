@@ -17,8 +17,8 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or after <null>,
+					              Expected that subject
+					              is on or after <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -58,9 +58,26 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or after {Formatter.Format(expected)},
+					              Expected that subject
+					              is on or after {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateTimeOffset? subject = null;
+				DateTimeOffset? expected = CurrentTime();
+
+				async Task Act()
+					=> await That(subject).IsOnOrAfter(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is on or after {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
@@ -100,8 +117,8 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or after {Formatter.Format(expected)} ± 0:03,
+					              Expected that subject
+					              is on or after {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -118,8 +135,8 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or after {Formatter.Format(expected)} ± 0:03,
+					              Expected that subject
+					              is on or after {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

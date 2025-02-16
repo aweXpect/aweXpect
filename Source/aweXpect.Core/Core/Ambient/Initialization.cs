@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -11,13 +12,10 @@ internal static class Initialization
 {
 	public static Lazy<InitializationState> State { get; } = new(Initialize);
 
-	private static ITestFrameworkAdapter DetectFramework()
+	internal static ITestFrameworkAdapter DetectFramework(IEnumerable<Type> types)
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
-		foreach (Type frameworkType in AppDomain.CurrentDomain.GetAssemblies()
-			         .Where(a => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
-				         .All(x => !a.FullName!.StartsWith(x)))
-			         .SelectMany(a => a.GetTypes())
+		foreach (Type frameworkType in types
 			         .Where(x => x is { IsClass: true, IsAbstract: false })
 			         .Where(frameworkInterface.IsAssignableFrom))
 		{
@@ -42,29 +40,32 @@ internal static class Initialization
 
 	private static InitializationState Initialize()
 	{
-		ITestFrameworkAdapter testFramework = DetectFramework();
+		ITestFrameworkAdapter testFramework = DetectFramework(AppDomain.CurrentDomain.GetAssemblies()
+			.Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
+				.All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
+			.SelectMany(assembly => assembly.GetTypes().Where(x => !x.IsNestedPrivate)));
 		return new InitializationState(testFramework);
 	}
 
-	internal class InitializationState
+	internal class InitializationState(ITestFrameworkAdapter testFramework)
 	{
-		private readonly ITestFrameworkAdapter _testFramework;
+		public ValueFormatter Formatter { get; } = new();
 
-		public InitializationState(ITestFrameworkAdapter testFramework)
-		{
-			_testFramework = testFramework;
-			Formatter = new ValueFormatter();
-		}
-
-		public ValueFormatter Formatter { get; }
-
+		/// <summary>
+		///     Throws a framework-specific exception to indicate a skipped unit test.
+		/// </summary>
 		[DoesNotReturn]
 		[StackTraceHidden]
-		public void Skip(string message) => _testFramework.Skip(message);
+		public void Skip(string message)
+			=> testFramework.Skip(message);
 
+		/// <summary>
+		///     Throws a framework-specific exception to indicate a failing unit test.
+		/// </summary>
 		[DoesNotReturn]
 		[StackTraceHidden]
-		public void Throw(string message) => _testFramework.Throw(message);
+		public void Throw(string message)
+			=> testFramework.Throw(message);
 	}
 
 	private sealed class FallbackTestFramework : ITestFrameworkAdapter

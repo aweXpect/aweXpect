@@ -19,17 +19,19 @@ partial class Build
 		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit4_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_NUnit3_Tests,
 		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit2_Tests,
-		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests
+		Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Core_Tests,
 	];
 
 	Target TestFrameworks => _ => _
 		.DependsOn(VsTestFrameworks)
 		.DependsOn(TestingPlatformFrameworks)
-		.DependsOn(XunitTestingPlatformFrameworks);
+		.DependsOn(XunitTestingPlatformFrameworks)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default);
 
 	Target VsTestFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
 			var testCombinations =
@@ -40,7 +42,7 @@ partial class Build
 				select new
 				{
 					project,
-					framework
+					framework,
 				};
 
 			DotNetTest(s => s
@@ -63,11 +65,12 @@ partial class Build
 	Target TestingPlatformFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_TUnit_Tests,
 			];
 
 			var testCombinations =
@@ -77,7 +80,7 @@ partial class Build
 				select new
 				{
 					project,
-					framework
+					framework,
 				};
 
 			DotNetTest(s => s
@@ -105,11 +108,12 @@ partial class Build
 	Target XunitTestingPlatformFrameworks => _ => _
 		.Unlisted()
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
 			Project[] projects =
 			[
-				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests
+				Solution.Tests.Frameworks.aweXpect_Frameworks_XUnit3_Tests,
 			];
 
 			var testCombinations =
@@ -119,7 +123,7 @@ partial class Build
 				select new
 				{
 					project,
-					framework
+					framework,
 				};
 
 			DotNetTest(s => s

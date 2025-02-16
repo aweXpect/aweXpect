@@ -41,10 +41,26 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be less than {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not less than {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeSpan? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNotLessThan(TimeSpan.Zero);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not less than 0:00,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]
@@ -83,8 +99,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be less than <null>, because we want to test the failure,
+					              Expected that subject
+					              is not less than <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -102,8 +118,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be less than {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
+					              Expected that subject
+					              is not less than {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -120,8 +136,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be less than {Formatter.Format(unexpected)} ± 0:03,
+					              Expected that subject
+					              is not less than {Formatter.Format(unexpected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

@@ -18,35 +18,34 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection is empty.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		IsEmpty<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			this IThat<IAsyncEnumerable<TItem>?> source)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new IsEmptyConstraint<TItem>(it)),
 			source);
 
 	/// <summary>
 	///     Verifies that the collection is not empty.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		IsNotEmpty<TItem>(
-			this IThat<IAsyncEnumerable<TItem>> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			this IThat<IAsyncEnumerable<TItem>?> source)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NotIsEmptyConstraint<TItem>(it)),
 			source);
 
 	private readonly struct IsEmptyConstraint<TItem>(string it)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IAsyncEnumerable<TItem> materializedEnumerable =
@@ -59,7 +58,7 @@ public static partial class ThatAsyncEnumerable
 					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 				List<TItem> items = new(maximumNumberOfCollectionItems + 1)
 				{
-					enumerator.Current
+					enumerator.Current,
 				};
 				while (await enumerator.MoveNextAsync())
 				{
@@ -85,21 +84,20 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> "be empty";
+			=> "is empty";
 	}
 
 	private readonly struct NotIsEmptyConstraint<TItem>(string it)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>>
+		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem> actual,
+			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IAsyncEnumerable<TItem> materializedEnumerable =
@@ -116,7 +114,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		public override string ToString()
-			=> "not be empty";
+			=> "is not empty";
 	}
 }
 #endif

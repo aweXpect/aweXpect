@@ -14,12 +14,12 @@ public sealed partial class ThatDictionary
 				IDictionary<int, string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).DoesNotContainValue("foo");
+					=> await That(subject).DoesNotContainValue("foo");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not have value "foo",
+					             Expected that subject
+					             does not contain value "foo",
 					             but it was <null>
 					             """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not have value 42,
+					             Expected that subject
+					             does not contain value 42,
 					             but it did
 					             """);
 			}

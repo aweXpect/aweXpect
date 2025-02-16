@@ -17,18 +17,18 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		Contains<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			TItem expected)
 	{
 		Quantifier quantifier = new();
-		ObjectEqualityOptions options = new();
-		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contain {Formatter.Format(expected)} {q}",
+					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -39,17 +39,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the <paramref name="expected" /> value.
 	/// </summary>
-	public static StringCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>> Contains(
-		this IThat<IEnumerable<string?>> source,
+	public static StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> Contains(
+		this IThat<IEnumerable<string?>?> source,
 		string? expected)
 	{
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ContainConstraint<string?>(
 					it,
-					q => $"contain {Formatter.Format(expected)} {q}",
+					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -60,19 +60,19 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains an item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		Contains<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
 		Quantifier quantifier = new();
-		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contain item matching {doNotPopulateThisValue} {q}",
+					q => $"contains item matching {doNotPopulateThisValue} {q}",
 					predicate,
 					quantifier)),
 			source,
@@ -82,17 +82,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		Contains<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
+		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
-		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<TItem, object?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -101,16 +101,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>
-		Contains(this IThat<IEnumerable<string?>> source,
+	public static StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
+		Contains(this IThat<IEnumerable<string?>?> source,
 			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
-		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -119,16 +119,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		DoesNotContain<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			TItem unexpected)
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NotContainConstraint<TItem>(it,
-					() => $"not contain {Formatter.Format(unexpected)}",
+					() => $"does not contain {Formatter.Format(unexpected)}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -137,16 +137,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		DoesNotContain(
-			this IThat<IEnumerable<string?>> source,
+			this IThat<IEnumerable<string?>?> source,
 			string? unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NotContainConstraint<string?>(it,
-					() => $"not contain {Formatter.Format(unexpected)}{options}",
+					() => $"does not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected))),
 			source,
 			options);
@@ -155,16 +155,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		DoesNotContain<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NotContainConstraint<TItem>(it,
-					() => $"not contain item matching {doNotPopulateThisValue}",
+					() => $"does not contain item matching {doNotPopulateThisValue}",
 					predicate)),
 			source);
 
@@ -173,14 +173,13 @@ public static partial class ThatEnumerable
 		Func<Quantifier, string> expectationText,
 		Func<TItem, bool> predicate,
 		Quantifier quantifier)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IEnumerable<TItem> materializedEnumerable =
@@ -216,22 +215,20 @@ public static partial class ThatEnumerable
 				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
 		}
 
-		public override string ToString()
-			=> expectationText(quantifier);
+		public override string ToString() => expectationText(quantifier);
 	}
 
 	private readonly struct NotContainConstraint<TItem>(
 		string it,
 		Func<string> expectationText,
 		Func<TItem, bool> predicate)
-		: IContextConstraint<IEnumerable<TItem>>
+		: IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual!, ToString(), $"{it} was <null>");
+				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
 			}
 
 			IEnumerable<TItem> materializedEnumerable =

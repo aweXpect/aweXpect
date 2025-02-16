@@ -18,8 +18,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be readable,
+					             Expected that subject
+					             is readable,
 					             but it was not
 					             """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be readable,
+					             Expected that subject
+					             is readable,
 					             but it was <null>
 					             """);
 			}

@@ -11,10 +11,10 @@ public static partial class ThatGuid
 	///     Verifies that the subject is empty.
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsEmpty(this IThat<Guid> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint(
 					it,
-					"be empty",
+					"is empty",
 					actual => actual == Guid.Empty)),
 			source);
 
@@ -22,10 +22,10 @@ public static partial class ThatGuid
 	///     Verifies that the subject is not empty.
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsNotEmpty(this IThat<Guid> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint(
 					it,
-					"not be empty",
+					"is not empty",
 					actual => actual != Guid.Empty)),
 			source);
 }

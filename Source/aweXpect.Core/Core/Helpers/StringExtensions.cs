@@ -11,7 +11,7 @@ internal static class StringExtensions
 		value?.Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t");
 
 	[return: NotNullIfNotNull(nameof(value))]
-	public static string? Indent(this string? value, string indentation = "  ",
+	public static string? Indent(this string? value, string? indentation = "  ",
 		bool indentFirstLine = true)
 	{
 		if (value == null || string.IsNullOrEmpty(indentation))
@@ -22,7 +22,7 @@ internal static class StringExtensions
 		return (indentFirstLine ? indentation : "")
 		       + value.Replace("\n", $"\n{indentation}");
 	}
-	
+
 	public static string PrependAOrAn(this string value)
 	{
 		char[] vocals = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];

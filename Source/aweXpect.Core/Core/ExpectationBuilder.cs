@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Sources;
 using aweXpect.Core.TimeSystem;
+using aweXpect.Customization;
 
 namespace aweXpect.Core;
 
@@ -18,6 +20,7 @@ public abstract class ExpectationBuilder
 	private const string DefaultCurrentSubject = "it";
 
 	private CancellationToken? _cancellationToken;
+	private TimeSpan? _timeout;
 
 	/// <summary>
 	///     The current name for the subject (defaults to <see cref="DefaultCurrentSubject" />).
@@ -39,6 +42,11 @@ public abstract class ExpectationBuilder
 		Subject = subjectExpression;
 	}
 
+	/// <summary>
+	///     The expected grammatic form of the expectation text.
+	/// </summary>
+	public ExpectationGrammars ExpectationGrammars { get; private set; } = ExpectationGrammars.None;
+
 	internal string Subject { get; }
 
 	/// <summary>
@@ -50,9 +58,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IValueConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IValueConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -65,9 +73,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IContextConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IContextConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -80,9 +88,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IAsyncConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IAsyncConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -95,9 +103,9 @@ public abstract class ExpectationBuilder
 	///     "it").
 	/// </remarks>
 	public ExpectationBuilder AddConstraint<TValue>(
-		Func<string, IAsyncContextConstraint<TValue>> constraintBuilder)
+		Func<string, ExpectationGrammars, IAsyncContextConstraint<TValue>> constraintBuilder)
 	{
-		_node.AddConstraint(constraintBuilder(_it));
+		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
 		return this;
 	}
 
@@ -107,14 +115,13 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(
 		MemberAccessor<TSource, TTarget?> memberAccessor,
-		Func<MemberAccessor, string, string>? expectationTextGenerator = null,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((a, s, c) =>
+		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
-			if (s is not null)
+			if (sourceConstraintCallback is not null)
 			{
-				IValueConstraint<TSource> constraint = s.Invoke(_it);
-				And(" ");
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
 				_node.AddConstraint(constraint);
 			}
 
@@ -125,12 +132,10 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			if (c is not null)
-			{
-				_node.AddConstraint(c);
-			}
-
-			a.Invoke(this);
+			ExpectationGrammars previousGrammars = ExpectationGrammars;
+			ExpectationGrammars = expectationGrammar;
+			expectationBuilderCallback.Invoke(this);
+			ExpectationGrammars = previousGrammars;
 			_node = root;
 			if (replaceIt)
 			{
@@ -149,6 +154,12 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public void WithCancellation(CancellationToken cancellationToken)
 		=> _cancellationToken = cancellationToken;
+
+	/// <summary>
+	///     Adds a <paramref name="timeout" /> to be used by the constraints.
+	/// </summary>
+	public void WithTimeout(TimeSpan timeout)
+		=> _timeout = timeout;
 
 	/// <summary>
 	///     Adds a <paramref name="reason" /> to the current expectation constraint.
@@ -189,13 +200,25 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public ExpectationBuilder ForWhich<TSource, TTarget>(
 		Func<TSource, TTarget?> memberAccessor,
-		string? separator = null)
+		string? separator = null,
+		string? replaceIt = null,
+		ExpectationGrammars? expectationGrammar = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
 		{
 			parentNode = _node;
 			_node = new ExpectationNode();
+		}
+
+		if (replaceIt != null)
+		{
+			_it = replaceIt;
+		}
+
+		if (expectationGrammar != null)
+		{
+			ExpectationGrammars = expectationGrammar.Value;
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
@@ -223,12 +246,22 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
-	internal static string FromFailure(string subject, ConstraintResult.Failure failure)
+	internal static string FromFailure(string subject, ConstraintResult failure)
 	{
 		StringBuilder sb = new();
-		sb.Append("Expected ").Append(subject).AppendLine(" to");
-		sb.Append(failure.ExpectationText).AppendLine(",");
-		sb.Append("but ").Append(failure.ResultText);
+		sb.Append("Expected that ").Append(subject).AppendLine();
+		failure.AppendExpectation(sb);
+		sb.AppendLine(",");
+		sb.Append("but ");
+		failure.AppendResult(sb);
+		foreach (ConstraintResult.Context context in failure.GetContexts()
+			         .Distinct(ConstraintResult.Context.Comparer))
+		{
+			sb.AppendLine().AppendLine();
+			sb.Append(context.Title).Append(':').AppendLine();
+			sb.Append(context.Content);
+		}
+
 		return sb.ToString();
 	}
 
@@ -247,14 +280,16 @@ public abstract class ExpectationBuilder
 	internal Task<ConstraintResult> IsMet()
 	{
 		EvaluationContext.EvaluationContext context = new();
-		return IsMet(GetRootNode(), context, _timeSystem ?? RealTimeSystem.Instance,
-			_cancellationToken ?? CancellationToken.None);
+		ITimeSystem timeSystem = _timeSystem ?? RealTimeSystem.Instance;
+		TestCancellation? testCancellation = Customize.aweXpect.Settings().TestCancellation.Get();
+		_cancellationToken ??= testCancellation?.CancellationTokenFactory?.Invoke() ?? CancellationToken.None;
+		return IsMet(GetRootNode(), context, timeSystem, _timeout ?? testCancellation?.Timeout, _cancellationToken.Value);
 	}
 
-	internal abstract Task<ConstraintResult> IsMet(
-		Node rootNode,
+	internal abstract Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
+		TimeSpan? timeout,
 		CancellationToken cancellationToken);
 
 	internal void Or(string textSeparator = " or ")
@@ -281,19 +316,19 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public class MemberExpectationBuilder<TSource, TMember>
 	{
-		private readonly Func<Action<ExpectationBuilder>,
+		private readonly Func<
+				Action<ExpectationBuilder>,
+				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
-				IValueConstraint<TMember>?,
 				ExpectationBuilder>
 			_callback;
 
-		private readonly IValueConstraint<TMember>? _constraint = null;
-
 		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
 
-		internal MemberExpectationBuilder(Func<Action<ExpectationBuilder>,
+		internal MemberExpectationBuilder(Func<
+				Action<ExpectationBuilder>,
+				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
-				IValueConstraint<TMember>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -303,8 +338,10 @@ public abstract class ExpectationBuilder
 		/// <summary>
 		///     Add expectations for the current <typeparamref name="TMember" />.
 		/// </summary>
-		public ExpectationBuilder AddExpectations(Action<ExpectationBuilder> expectation)
-			=> _callback(expectation, _sourceConstraintBuilder, _constraint);
+		public ExpectationBuilder AddExpectations(
+			Action<ExpectationBuilder> expectation,
+			ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.
@@ -338,12 +375,22 @@ internal class ExpectationBuilder<TValue> : ExpectationBuilder
 	}
 
 	/// <inheritdoc />
-	internal override async Task<ConstraintResult> IsMet(
-		Node rootNode,
+	internal override async Task<ConstraintResult> IsMet(Node rootNode,
 		EvaluationContext.EvaluationContext context,
 		ITimeSystem timeSystem,
+		TimeSpan? timeout,
 		CancellationToken cancellationToken)
 	{
+		if (timeout != null)
+		{
+			using CancellationTokenSource timeoutCts = CancellationTokenSource
+				.CreateLinkedTokenSource(cancellationToken);
+			timeoutCts.CancelAfter(timeout.Value);
+			CancellationToken token = timeoutCts.Token;
+			TValue dataWithTimeout = await _subjectSource.GetValue(timeSystem, token);
+			return await rootNode.IsMetBy(dataWithTimeout, context, token);
+		}
+
 		TValue data = await _subjectSource.GetValue(timeSystem, cancellationToken);
 		return await rootNode.IsMetBy(data, context, cancellationToken);
 	}

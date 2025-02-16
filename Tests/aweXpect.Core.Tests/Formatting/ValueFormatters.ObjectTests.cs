@@ -13,9 +13,9 @@ public partial class ValueFormatters
 			{
 				Inner = new InnerDummy
 				{
-					InnerValue = "foo"
+					InnerValue = "foo",
 				},
-				Value = 2
+				Value = 2,
 			};
 			string expectedResult = """
 			                        Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
@@ -25,8 +25,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -34,7 +34,7 @@ public partial class ValueFormatters
 		{
 			RecursiveDummy value = new()
 			{
-				Value = 1
+				Value = 1,
 			};
 			value.Inner = value;
 			string expectedResult = """
@@ -45,8 +45,36 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportIndentation()
+		{
+			Dummy value = new()
+			{
+				Inner = new InnerDummy
+				{
+					InnerValue = "foo",
+				},
+				Value = 2,
+			};
+			string expectedResult = """
+			                        Dummy {
+			                            Inner = InnerDummy {
+			                              InnerValue = "foo"
+			                            },
+			                            Value = 2
+			                          }
+			                        """;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.Indented);
+			Formatter.Format(sb, value, FormattingOptions.Indented);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -56,9 +84,9 @@ public partial class ValueFormatters
 			{
 				Inner = new InnerDummy
 				{
-					InnerValue = "foo"
+					InnerValue = "foo",
 				},
-				Value = 2
+				Value = 2,
 			};
 			string expectedResult = """
 			                        Dummy {
@@ -73,8 +101,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.MultipleLines);
 			Formatter.Format(sb, value, FormattingOptions.MultipleLines);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Theory]
@@ -89,8 +117,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(subject, FormattingOptions.MultipleLines);
 			Formatter.Format(sb, subject, FormattingOptions.MultipleLines);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Theory]
@@ -104,8 +132,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(subject, FormattingOptions.SingleLine);
 			Formatter.Format(sb, subject, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -113,7 +141,7 @@ public partial class ValueFormatters
 		{
 			object value = new ClassWithField
 			{
-				Value = 42
+				Value = 42,
 			};
 			string expectedResult = "ClassWithField { Value = 42 }";
 			StringBuilder sb = new();
@@ -121,8 +149,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -135,8 +163,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -150,8 +178,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult);
-			await That(sb.ToString()).Is(expectedResult);
+			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		[Fact]
@@ -164,9 +192,9 @@ public partial class ValueFormatters
 			string objectResult = Formatter.Format(value);
 			Formatter.Format(sb, value);
 
-			await That(result).Is(ValueFormatter.NullString);
-			await That(objectResult).Is(ValueFormatter.NullString);
-			await That(sb.ToString()).Is(ValueFormatter.NullString);
+			await That(result).IsEqualTo(ValueFormatter.NullString);
+			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
+			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
 
 		[Fact]
@@ -179,8 +207,8 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
 			Formatter.Format(sb, value, FormattingOptions.SingleLine);
 
-			await That(result).Is(expectedResult).AsWildcard();
-			await That(sb.ToString()).Is(expectedResult).AsWildcard();
+			await That(result).IsEqualTo(expectedResult).AsWildcard();
+			await That(sb.ToString()).IsEqualTo(expectedResult).AsWildcard();
 		}
 
 		private sealed class ClassWithExceptionProperty(Exception exception)

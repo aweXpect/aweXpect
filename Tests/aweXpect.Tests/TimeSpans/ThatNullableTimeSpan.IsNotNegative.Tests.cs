@@ -7,6 +7,21 @@ public sealed partial class ThatNullableTimeSpan
 		public sealed class Tests
 		{
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeSpan? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNotNegative();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not negative,
+					             but it was <null>
+					             """);
+			}
+			[Fact]
 			public async Task WhenSubjectIsMaxValue_ShouldSucceed()
 			{
 				TimeSpan? subject = TimeSpan.MaxValue;
@@ -27,8 +42,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be negative,
+					             Expected that subject
+					             is not negative,
 					             but it was the minimum time span
 					             """);
 			}
@@ -43,8 +58,8 @@ public sealed partial class ThatNullableTimeSpan
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be negative,
+					              Expected that subject
+					              is not negative,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

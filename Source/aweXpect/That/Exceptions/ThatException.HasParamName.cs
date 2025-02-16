@@ -6,9 +6,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public static partial class ThatException
 {
 	/// <summary>
@@ -18,8 +15,8 @@ public static partial class ThatException
 		this IThat<TException> source,
 		string expected)
 		where TException : ArgumentException?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new HasParamNameValueConstraint<TException>(it, "have", expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new HasParamNameValueConstraint<TException>(it, "has", expected)),
 			source);
 
 	internal readonly struct HasParamNameValueConstraint<TArgumentException>(
@@ -31,12 +28,6 @@ public static partial class ThatException
 	{
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
-			if (actual == null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
-			}
-
 			if (actual is TArgumentException argumentException)
 			{
 				if (argumentException.ParamName == expected)
@@ -50,7 +41,7 @@ public static partial class ThatException
 			}
 
 			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {actual.GetType().Name.PrependAOrAn()}");
+				$"{it} was {Formatter.Format(actual)}");
 		}
 
 		public override string ToString()

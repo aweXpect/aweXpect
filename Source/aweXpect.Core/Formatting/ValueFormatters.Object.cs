@@ -3,7 +3,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using aweXpect.Core.Helpers;
-using MemberVisibilities = aweXpect.Core.Helpers.MemberVisibilities;
 
 namespace aweXpect.Formatting;
 
@@ -16,7 +15,7 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append($"System.Object (HashCode={value.GetHashCode()})");
 		}
-		else if (HasCompilerGeneratedToStringImplementation(value))
+		else if (HasDefaultToStringImplementation(value))
 		{
 			context ??= new FormattingContext();
 			WriteTypeAndMemberValues(value, stringBuilder, options, context);
@@ -31,20 +30,7 @@ public static partial class ValueFormatters
 		}
 	}
 
-	/// <summary>
-	///     Selects which members of <paramref name="type" /> to format.
-	/// </summary>
-	/// <param name="type">The <see cref="Type" /> of the object being formatted.</param>
-	/// <returns>The members of <paramref name="type" /> that will be included when formatting this object.</returns>
-	/// <remarks>The default is all non-private members.</remarks>
-	private static MemberInfo[] GetMembers(Type type) => type.GetMembers(MemberVisibilities.Public);
-
-	private static bool HasCompilerGeneratedToStringImplementation(object value)
-	{
-		Type type = value.GetType();
-
-		return HasDefaultToStringImplementation(value) || type.IsCompilerGenerated();
-	}
+	private static MemberInfo[] GetMembers(Type type) => [..type.GetFields(), ..type.GetProperties()];
 
 	private static bool HasDefaultToStringImplementation(object value)
 	{
@@ -52,14 +38,6 @@ public static partial class ValueFormatters
 
 		return str is null || str == value.GetType().ToString();
 	}
-
-	/// <summary>
-	///     Selects the name to display for <paramref name="type" />.
-	/// </summary>
-	/// <param name="type">The <see cref="Type" /> of the object being formatted.</param>
-	/// <returns>The name to be displayed for <paramref name="type" />.</returns>
-	/// <remarks>The default is <see cref="Type.FullName" />.</remarks>
-	private static string TypeDisplayName(Type type) => type.Name;
 
 	private static void WriteMemberValues(
 		object obj,
@@ -74,7 +52,7 @@ public static partial class ValueFormatters
 			WriteMemberValueTextFor(obj, member, stringBuilder, indentation, options, context);
 			if (options.UseLineBreaks)
 			{
-				stringBuilder.AppendLine(",");
+				stringBuilder.AppendLine(",").Append(options.Indentation);
 			}
 			else
 			{
@@ -82,7 +60,7 @@ public static partial class ValueFormatters
 			}
 		}
 
-		stringBuilder.Length -= options.UseLineBreaks ? 1 + Environment.NewLine.Length : 2;
+		stringBuilder.Length -= options.UseLineBreaks ? 1 + Environment.NewLine.Length + options.Indentation.Length : 2;
 	}
 
 	private static void WriteMemberValueTextFor(
@@ -132,14 +110,8 @@ public static partial class ValueFormatters
 		FormattingContext context)
 	{
 		Type type = obj.GetType();
-		WriteTypeName(stringBuilder, type);
+		Formatter.Format(stringBuilder, type);
 		WriteTypeValues(obj, stringBuilder, type, options, context);
-	}
-
-	private static void WriteTypeName(StringBuilder stringBuilder, Type type)
-	{
-		string typeName = type.HasFriendlyName() ? TypeDisplayName(type) : string.Empty;
-		stringBuilder.Append(typeName);
 	}
 
 	private static void WriteTypeValues(
@@ -163,10 +135,22 @@ public static partial class ValueFormatters
 		else
 		{
 			stringBuilder.Append(" {");
-			stringBuilder.Append(options.UseLineBreaks ? Environment.NewLine : " ");
+			AppendLineWithIndentationOrBlank(stringBuilder, options);
 			WriteMemberValues(obj, members, stringBuilder, options.UseLineBreaks ? 2 : 0, options, context);
-			stringBuilder.Append(options.UseLineBreaks ? Environment.NewLine : " ");
+			AppendLineWithIndentationOrBlank(stringBuilder, options);
 			stringBuilder.Append('}');
+		}
+	}
+
+	private static void AppendLineWithIndentationOrBlank(StringBuilder stringBuilder, FormattingOptions options)
+	{
+		if (options.UseLineBreaks)
+		{
+			stringBuilder.AppendLine().Append(options.Indentation);
+		}
+		else
+		{
+			stringBuilder.Append(' ');
 		}
 	}
 }

@@ -19,8 +19,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected Delegate to
-					             throw an ArgumentException with ParamName "somethingElse",
+					             Expected that Delegate
+					             throws an ArgumentException with ParamName "somethingElse",
 					             but it had ParamName "message"
 					             """);
 			}

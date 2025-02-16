@@ -20,12 +20,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = GetCancellingAsyncEnumerable(6, cts, CancellationToken.None);
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.IsLessThan(6)).WithCancellation(token);
+					=> await That(subject).All().ComplyWith(item => item.IsLessThan(6)).WithCancellation(token);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have all items be less than 6,
+					             Expected that subject
+					             is less than 6 for all items,
 					             but could not verify, because it was cancelled early
 					             """);
 			}
@@ -48,12 +48,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.Is(1));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(1));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have all items be equal to 1,
+					             Expected that subject
+					             is equal to 1 for all items,
 					             but not all were
 					             """);
 			}
@@ -64,12 +64,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.Is(1));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(1));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have all items be equal to 1,
+					             Expected that subject
+					             is equal to 1 for all items,
 					             but not all were
 					             """);
 			}
@@ -80,7 +80,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.Is(0));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(0));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -91,7 +91,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 1, 1, 1]);
 
 				async Task Act()
-					=> await That(subject).All().Are(item => item.Is(1));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(1));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -102,12 +102,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).All().Are(item => item.Is(0));
+					=> await That(subject).All().ComplyWith(item => item.IsEqualTo(0));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have all items be equal to 0,
+					             Expected that subject
+					             is equal to 0 for all items,
 					             but it was <null>
 					             """);
 			}

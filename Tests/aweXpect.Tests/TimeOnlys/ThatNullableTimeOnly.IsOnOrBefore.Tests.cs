@@ -18,8 +18,8 @@ public sealed partial class ThatNullableTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or before <null>,
+					              Expected that subject
+					              is on or before <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -59,9 +59,26 @@ public sealed partial class ThatNullableTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or before {Formatter.Format(expected)},
+					              Expected that subject
+					              is on or before {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				TimeOnly? expected = CurrentTime();
+				TimeOnly? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsOnOrBefore(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is on or before {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
@@ -101,8 +118,8 @@ public sealed partial class ThatNullableTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or before {Formatter.Format(expected)} ± 0:03,
+					              Expected that subject
+					              is on or before {Formatter.Format(expected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -120,8 +137,8 @@ public sealed partial class ThatNullableTimeOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              be on or before {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
+					              Expected that subject
+					              is on or before {Formatter.Format(expected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

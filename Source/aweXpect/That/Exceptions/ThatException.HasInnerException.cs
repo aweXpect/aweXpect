@@ -5,9 +5,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public partial class ThatException
 {
 	/// <summary>
@@ -15,8 +12,8 @@ public partial class ThatException
 	/// </summary>
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInnerException(
 		this IThat<Exception?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new HasInnerExceptionValueConstraint<Exception?>("have",
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new HasInnerExceptionValueConstraint<Exception?>("has",
 					it)),
 			source);
 
@@ -28,10 +25,10 @@ public partial class ThatException
 		Action<IThat<Exception?>> expectations)
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember<Exception, Exception?>(e => e.InnerException,
-					"have an inner exception which should ",
+					"has an inner exception whose",
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<Exception>(it))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
 			source);
 }

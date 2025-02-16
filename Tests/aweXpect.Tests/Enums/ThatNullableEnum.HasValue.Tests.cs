@@ -16,8 +16,8 @@ public sealed partial class ThatNullableEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have value <null>,
+					              Expected that subject
+					              has value <null>,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -34,8 +34,8 @@ public sealed partial class ThatNullableEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              have value {Formatter.Format(expected)},
+					              Expected that subject
+					              has value {Formatter.Format(expected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -51,6 +51,22 @@ public sealed partial class ThatNullableEnum
 					=> await That(subject).HasValue(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				MyNumbers? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasValue(1L);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has value 1,
+					             but it was <null>
+					             """);
 			}
 		}
 	}

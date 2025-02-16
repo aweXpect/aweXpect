@@ -5,7 +5,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatSignaler
 {
-	public sealed partial class BeSignaled
+	public sealed partial class Signaled
 	{
 		public sealed class TimesTests
 		{
@@ -18,15 +18,16 @@ public sealed partial class ThatSignaler
 				CancellationToken token = cts.Token;
 
 				signaler.Signal();
+				signaler.Signal();
 
 				async Task Act() =>
-					await That(signaler).Signaled(2.Times()).WithCancellation(token);
+					await That(signaler).Signaled(3.Times()).WithCancellation(token);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
-					             have recorded the callback at least 2 times,
-					             but it was only recorded once
+					             Expected that signaler
+					             has recorded the callback at least 3 times,
+					             but it was only recorded 2 times
 					             """);
 			}
 
@@ -46,8 +47,8 @@ public sealed partial class ThatSignaler
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected signaler to
-					             have recorded the callback at least 3 times,
+					             Expected that signaler
+					             has recorded the callback at least 3 times,
 					             but it was only recorded 2 times in [
 					               1,
 					               2
@@ -90,6 +91,27 @@ public sealed partial class ThatSignaler
 					await That(signaler).Signaled(2.Times());
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenTriggeredOnlyOnce_ShouldFail()
+			{
+				Signaler signaler = new();
+				using CancellationTokenSource cts = new();
+				cts.CancelAfter(50.Milliseconds());
+				CancellationToken token = cts.Token;
+
+				signaler.Signal();
+
+				async Task Act() =>
+					await That(signaler).Signaled(2.Times()).WithCancellation(token);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that signaler
+					             has recorded the callback at least 2 times,
+					             but it was only recorded once
+					             """);
 			}
 
 			[Fact]

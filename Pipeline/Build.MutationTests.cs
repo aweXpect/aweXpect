@@ -22,11 +22,13 @@ partial class Build
 	static string MutationCommentBody = "";
 
 	Target MutationTests => _ => _
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.DependsOn(MutationTestExecution)
 		.DependsOn(MutationComment);
 
 	Target MutationTestExecution => _ => _
 		.DependsOn(Compile)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
 			AbsolutePath toolPath = TestResultsDirectory / "dotnet-stryker";
@@ -46,7 +48,7 @@ partial class Build
 				},
 				{
 					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests]
-				}
+				},
 			};
 
 			foreach (KeyValuePair<Project, Project[]> project in projects)
@@ -108,7 +110,7 @@ partial class Build
 
 	Target MutationComment => _ => _
 		.After(MutationTestExecution)
-		.OnlyWhenDynamic(() => GitHubActions.IsPullRequest)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default && GitHubActions.IsPullRequest)
 		.Executes(async () =>
 		{
 			int? prId = GitHubActions.PullRequestNumber;

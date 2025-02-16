@@ -24,17 +24,6 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
-			public async Task ShouldSupportCaseInsensitiveComparison()
-			{
-				IEnumerable<string> subject = ToEnumerable(["FOO", "BAR"]);
-
-				async Task Act()
-					=> await That(subject).EndsWith("bar").IgnoringCase();
-
-				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
 				IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(x => new MyClass(x), 6);
@@ -71,8 +60,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with expected,
+					             Expected that subject
+					             ends with expected,
 					             but it contained 2 at index 3 instead of 1
 					             """);
 			}
@@ -87,8 +76,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with [0, 0, 1, 2, 3],
+					             Expected that subject
+					             ends with [0, 0, 1, 2, 3],
 					             but it contained only 3 items and misses 2 items: [
 					               0,
 					               0
@@ -120,6 +109,52 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<int>? subject = null;
+
+				async Task Act()
+					=> await That(subject).EndsWith();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with [],
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class StringTests
+		{
+			[Fact]
+			public async Task ShouldIncludeOptionsInFailureMessage()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).EndsWith("FOO", "BAZ").IgnoringCase();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with ["FOO", "BAZ"] ignoring case,
+					             but it contained "bar" at index 1 instead of "FOO"
+					             """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportIgnoringCase()
+			{
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).EndsWith("BAR", "BAZ").IgnoringCase();
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task WhenSubjectEndsWithExpectedValues_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
@@ -129,22 +164,6 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).EndsWith(expected);
 
 				await That(Act).DoesNotThrow();
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
-			{
-				IEnumerable<int>? subject = null;
-
-				async Task Act()
-					=> await That(subject!).EndsWith();
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected subject to
-					             end with [],
-					             but it was <null>
-					             """);
 			}
 		}
 	}

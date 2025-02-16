@@ -5,7 +5,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEventRecording
 {
-	public sealed class HasTriggeredPropertyChanged
+	public sealed class TriggeredPropertyChanged
 	{
 		public sealed class Tests
 		{
@@ -32,7 +32,7 @@ public sealed partial class ThatEventRecording
 			{
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 42
+					MyValue = 42,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
@@ -44,8 +44,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the PropertyChanged event on sut at least 2 times,
+					             Expected that recording
+					             has recorded the PropertyChanged event on sut at least 2 times,
 					             but it was recorded once in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 42
@@ -90,8 +90,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least 2 times,
+					             Expected that recording
+					             has recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least 2 times,
 					             but it was recorded once in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 0
@@ -117,8 +117,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have recorded the PropertyChanged event at least once,
+					             Expected that subject
+					             has recorded the PropertyChanged event at least once,
 					             but it was <null>
 					             """);
 			}

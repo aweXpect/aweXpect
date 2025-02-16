@@ -1,19 +1,21 @@
 (function () {
-	const benchmarkData = window.BENCHMARK_DATA;
 	function init() {
-		
+
 		const main = document.getElementById('benchmarks-container');
-		for (const name in benchmarkData) {
-			renderChart(main, name, benchmarkData[name]);
+		for (const name in window.BENCHMARK_DATA) {
+			renderChart(main, name, window.BENCHMARK_DATA[name]);
 		}
 	}
 
-	
 	function renderChart(main, name, data) {
 		const div = document.createElement("div");
 		const h = document.createElement("h3");
+		const l = document.createElement("a");
+		l.setAttribute("href", "https://github.com/aweXpect/aweXpect/blob/main/Benchmarks/aweXpect.Benchmarks/HappyCaseBenchmarks." + name + ".cs");
+		l.setAttribute("target", "_blank");
 		const t = document.createTextNode(name);
-		h.appendChild(t);
+		l.appendChild(t);
+		h.appendChild(l);
 		div.appendChild(h);
 		const canvas = document.createElement('canvas');
 		canvas.className = 'benchmark-chart';
@@ -68,7 +70,9 @@
 	}
 
 	function waitForScripts() {
-		if (typeof Chart !== 'undefined' && window.BENCHMARK_DATA !== 'undefined') {
+		if (typeof Chart !== 'undefined' &&
+			typeof window.BENCHMARK_DATA !== 'undefined' &&
+			window.BENCHMARK_DATA != null) {
 			init();
 		} else {
 			setTimeout(waitForScripts, 100);

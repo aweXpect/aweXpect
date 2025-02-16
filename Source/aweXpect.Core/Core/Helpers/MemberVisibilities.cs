@@ -27,5 +27,5 @@ public enum MemberVisibilities
 	/// <summary>
 	///     Explicitely implemented.
 	/// </summary>
-	ExplicitlyImplemented = 4
+	ExplicitlyImplemented = 4,
 }

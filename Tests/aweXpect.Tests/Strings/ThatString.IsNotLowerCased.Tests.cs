@@ -16,8 +16,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be lower-cased,
+					             Expected that subject
+					             is not lower-cased,
 					             but it was ""
 					             """);
 			}
@@ -32,8 +32,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be lower-cased,
+					             Expected that subject
+					             is not lower-cased,
 					             but it was "abc"
 					             """);
 			}
@@ -48,8 +48,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be lower-cased,
+					             Expected that subject
+					             is not lower-cased,
 					             but it was "a漢字b"
 					             """);
 			}
@@ -64,8 +64,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be lower-cased,
+					             Expected that subject
+					             is not lower-cased,
 					             but it was "a-b-c!"
 					             """);
 			}
@@ -91,8 +91,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be lower-cased,
+					              Expected that subject
+					              is not lower-cased,
 					              but it was "{StringWith100Characters.ToLowerInvariant()}…"
 					              """);
 			}
@@ -129,8 +129,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be lower-cased,
+					             Expected that subject
+					             is not lower-cased,
 					             but it was " \t "
 					             """);
 			}

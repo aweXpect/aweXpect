@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -12,7 +13,7 @@ public static partial class ThatException
 {
 	private readonly struct HasMessageValueConstraint<TException>(
 		string it,
-		string verb,
+		ExpectationGrammars grammar,
 		string expected,
 		StringEqualityOptions options)
 		: IValueConstraint<Exception?>
@@ -30,7 +31,11 @@ public static partial class ThatException
 		}
 
 		public override string ToString()
-			=> $"{verb} Message {options.GetExpectation(expected, false)}";
+			=> grammar switch
+			{
+				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, grammar)}",
+				_ => $"has Message {options.GetExpectation(expected, grammar)}",
+			};
 	}
 
 	private readonly struct HasInnerExceptionValueConstraint<TInnerException>(
@@ -130,7 +135,7 @@ public static partial class ThatException
 			return new ConstraintResult.Failure<Exception?>(actual, "",
 				actual == null
 					? $"{it} was <null>"
-					: $"{it} was {actual.FormatForMessage()}");
+					: $"{it} was {actual.InnerException?.FormatForMessage()}");
 		}
 
 		#endregion

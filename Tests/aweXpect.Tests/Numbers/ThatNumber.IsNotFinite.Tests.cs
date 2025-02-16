@@ -13,7 +13,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).IsNotFinite()
-						.And.Is(subject);
+						.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -43,8 +43,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be finite,
+					              Expected that subject
+					              is not finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -55,7 +55,7 @@ public sealed partial class ThatNumber
 				float subject = float.PositiveInfinity;
 
 				async Task Act() => await That(subject).IsNotFinite()
-					.And.Is(subject);
+					.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -86,8 +86,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be finite,
+					              Expected that subject
+					              is not finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -99,7 +99,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).IsNotFinite()
-						.And.Is(subject);
+						.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -131,8 +131,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be finite,
+					              Expected that subject
+					              is not finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -143,7 +143,7 @@ public sealed partial class ThatNumber
 				float? subject = float.PositiveInfinity;
 
 				async Task Act() => await That(subject).IsNotFinite()
-					.And.Is(subject);
+					.And.IsEqualTo(subject);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -176,8 +176,8 @@ public sealed partial class ThatNumber
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be finite,
+					              Expected that subject
+					              is not finite,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

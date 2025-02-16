@@ -3,9 +3,8 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
-using aweXpect.Core.Adapters;
 
-namespace aweXpect.Adapters;
+namespace aweXpect.Core.Adapters;
 
 internal abstract class TestFrameworkAdapter(
 	string assemblyName,
@@ -14,27 +13,6 @@ internal abstract class TestFrameworkAdapter(
 	: ITestFrameworkAdapter
 {
 	private Assembly? _assembly;
-
-	#region ITestFrameworkAdapter Members
-
-	public bool IsAvailable
-	{
-		get
-		{
-			try
-			{
-				// For netfx the assembly is not in AppDomain by default, so we can't just scan AppDomain.CurrentDomain
-				_assembly = AppDomain.CurrentDomain.GetAssemblies()
-					.FirstOrDefault(a
-						=> a.FullName?.StartsWith(assemblyName, StringComparison.OrdinalIgnoreCase) == true);
-				return _assembly is not null;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-	}
 
 	protected static Exception? FromType(string typeName, Assembly assembly, string message)
 	{
@@ -47,6 +25,29 @@ internal abstract class TestFrameworkAdapter(
 		return (Exception?)Activator.CreateInstance(exceptionType, message);
 	}
 
+	#region ITestFrameworkAdapter Members
+
+	/// <inheritdoc cref="ITestFrameworkAdapter.IsAvailable" />
+	public bool IsAvailable
+	{
+		get
+		{
+			try
+			{
+				// For netfx the assembly is not in AppDomain by default, so we can't just scan AppDomain.CurrentDomain
+				_assembly = AppDomain.CurrentDomain.GetAssemblies()
+					.First(a => a.FullName?.StartsWith(assemblyName, StringComparison.OrdinalIgnoreCase) == true);
+			}
+			catch
+			{
+				// Ignore any exception while trying to load the assembly
+			}
+
+			return _assembly is not null;
+		}
+	}
+
+	/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
 	public void Skip(string message)
@@ -60,6 +61,7 @@ internal abstract class TestFrameworkAdapter(
 		      ?? new NotSupportedException("Failed to create the skip assertion type");
 	}
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.Throw(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
 	public void Throw(string message)

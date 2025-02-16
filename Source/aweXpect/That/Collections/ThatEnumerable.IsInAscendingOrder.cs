@@ -13,14 +13,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		IsInAscendingOrder<TItem>(
-			this IThat<IEnumerable<TItem>> source)
+			this IThat<IEnumerable<TItem>?> source)
 	{
 		CollectionOrderOptions<TItem> options = new();
-		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Ascending, options, "")),
+		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new IsInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Ascending, options, "")),
 			source,
 			options);
 	}
@@ -28,18 +28,18 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection is in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 		IsInAscendingOrder<
 			TItem, TMember>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			Func<TItem, TMember> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
 		CollectionOrderOptions<TMember> options = new();
-		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new BeInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Ascending, options,
+		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new IsInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Ascending, options,
 					$" for {doNotPopulateThisValue}")),
 			source,
 			options);

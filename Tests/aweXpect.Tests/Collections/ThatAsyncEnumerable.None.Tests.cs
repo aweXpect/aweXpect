@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public sealed class None
+	public sealed partial class None
 	{
 		public sealed class Tests
 		{
@@ -26,8 +26,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have no items satisfy y => y < 0,
+					             Expected that subject
+					             satisfies y => y < 0 for no items,
 					             but could not verify, because it was cancelled early
 					             """);
 			}
@@ -38,8 +38,8 @@ public sealed partial class ThatAsyncEnumerable
 				ThrowWhenIteratingTwiceAsyncEnumerable subject = new();
 
 				async Task Act()
-					=> await That(subject).None().Are(15)
-						.And.None().Are(81);
+					=> await That(subject).None().AreEqualTo(15)
+						.And.None().AreEqualTo(81);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -50,12 +50,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
 
 				async Task Act()
-					=> await That(subject).None().Are(5);
+					=> await That(subject).None().AreEqualTo(5);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have no items equal to 5,
+					             Expected that subject
+					             is equal to 5 for no items,
 					             but at least one was
 					             """);
 			}
@@ -66,12 +66,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).None().Are(1);
+					=> await That(subject).None().AreEqualTo(1);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have no items equal to 1,
+					             Expected that subject
+					             is equal to 1 for no items,
 					             but at least one was
 					             """);
 			}
@@ -82,7 +82,7 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
 
 				async Task Act()
-					=> await That(subject).None().Are(42);
+					=> await That(subject).None().AreEqualTo(42);
 
 				await That(Act).DoesNotThrow();
 			}
@@ -93,12 +93,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).None().Are(0);
+					=> await That(subject).None().AreEqualTo(0);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have no items equal to 0,
+					             Expected that subject
+					             is equal to 0 for no items,
 					             but it was <null>
 					             """);
 			}

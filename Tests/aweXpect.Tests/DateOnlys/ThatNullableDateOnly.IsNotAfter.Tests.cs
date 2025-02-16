@@ -42,9 +42,26 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be after {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not after {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateOnly? expected = CurrentTime();
+				DateOnly? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNotAfter(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not after {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
@@ -84,8 +101,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be after <null>, because we want to test the failure,
+					              Expected that subject
+					              is not after <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -103,8 +120,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be after {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
+					              Expected that subject
+					              is not after {Formatter.Format(unexpected)} ± 3 days, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -121,8 +138,8 @@ public sealed partial class ThatNullableDateOnly
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be after {Formatter.Format(unexpected)} ± 3 days,
+					              Expected that subject
+					              is not after {Formatter.Format(unexpected)} ± 3 days,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

@@ -17,12 +17,12 @@ public abstract partial class ThatDelegate
 			IThatHas<WithoutValue>,
 			IThatIs<WithoutValue>
 	{
-		
 		/// <summary>
 		///     Verifies that the delegate does not throw any exception.
 		/// </summary>
 		public ExpectationResult DoesNotThrow()
-			=> new(ExpectationBuilder.AddConstraint(_ => new DoesNotThrowConstraint()));
+			=> new(ExpectationBuilder.AddConstraint((_, _) => new DoesNotThrowConstraint()));
+
 		private readonly struct DoesNotThrowConstraint : IValueConstraint<DelegateValue>
 		{
 			public ConstraintResult IsMetBy(DelegateValue actual)

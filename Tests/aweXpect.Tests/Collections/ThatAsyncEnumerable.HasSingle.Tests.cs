@@ -18,7 +18,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				int result = await That(subject).HasSingle();
 
-				await That(result).Is(42);
+				await That(result).IsEqualTo(42);
 			}
 
 			[Fact]
@@ -31,8 +31,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item,
+					             Expected that subject
+					             has a single item,
 					             but it contained more than one item
 					             """);
 			}
@@ -44,7 +44,7 @@ public sealed partial class ThatAsyncEnumerable
 
 				int result = await That(subject).HasSingle();
 
-				await That(result).Is(1);
+				await That(result).IsEqualTo(1);
 			}
 
 			[Fact]
@@ -57,9 +57,25 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item,
+					             Expected that subject
+					             has a single item,
 					             but it was empty
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IAsyncEnumerable<string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).HasSingle();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has a single item,
+					             but it was <null>
 					             """);
 			}
 		}
@@ -74,7 +90,7 @@ public sealed partial class ThatAsyncEnumerable
 				int result = await That(subject).HasSingle().Which.IsGreaterThan(41).And
 					.IsLessThan(43);
 
-				await That(result).Is(42);
+				await That(result).IsEqualTo(42);
 			}
 
 			[Fact]
@@ -87,8 +103,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item which should be greater than 4,
+					             Expected that subject
+					             has a single item which is greater than 4,
 					             but it contained more than one item
 					             """);
 			}
@@ -103,8 +119,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item which should be greater than 4,
+					             Expected that subject
+					             has a single item which is greater than 4,
 					             but it was empty
 					             """);
 			}
@@ -119,8 +135,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have a single item which should be greater than 4,
+					             Expected that subject
+					             has a single item which is greater than 4,
 					             but it was 3
 					             """);
 			}

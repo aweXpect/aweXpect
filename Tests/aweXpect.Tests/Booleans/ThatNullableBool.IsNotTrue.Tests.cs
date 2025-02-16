@@ -2,7 +2,7 @@
 
 public sealed partial class ThatNullableBool
 {
-	public sealed class NotBeTrue
+	public sealed class IsNotTrue
 	{
 		public sealed class Tests
 		{
@@ -27,8 +27,8 @@ public sealed partial class ThatNullableBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be True, because we want to test the failure,
+					             Expected that subject
+					             is not True, because we want to test the failure,
 					             but it was True
 					             """);
 			}

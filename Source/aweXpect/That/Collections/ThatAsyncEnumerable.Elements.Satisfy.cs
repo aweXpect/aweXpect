@@ -13,18 +13,18 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>>>
+		public AndOrResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 			Satisfy(
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue}",
 						predicate,
 						"did")),
 				_subject);
@@ -33,18 +33,18 @@ public static partial class ThatAsyncEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
+		public AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue}",
 						predicate,
 						"did")),
 				_subject);

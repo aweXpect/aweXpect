@@ -6,8 +6,8 @@ namespace aweXpect;
 
 public static partial class ThatNumber
 {
-	private const string ExpectBeFinite = "be finite";
-	private const string ExpectNotBeFinite = "not be finite";
+	private const string ExpectBeFinite = "is finite";
+	private const string ExpectNotBeFinite = "is not finite";
 
 	/// <summary>
 	///     Verifies that the subject is seen as finite (neither <see cref="float.IsInfinity" /> nor <see cref="float.IsNaN" />
@@ -15,7 +15,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsFinite(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new GenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
@@ -30,7 +30,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsFinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new GenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
@@ -45,7 +45,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float?>> IsFinite(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NullableGenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
@@ -60,7 +60,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double?>> IsFinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NullableGenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
@@ -75,7 +75,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsNotFinite(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new GenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
@@ -90,7 +90,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsNotFinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new GenericConstraint<double>(
 					it,
 					double.PositiveInfinity,
@@ -105,7 +105,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsNotFinite(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NullableGenericConstraint<float>(
 					it,
 					float.PositiveInfinity,
@@ -120,7 +120,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsNotFinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NullableGenericConstraint<double>(
 					it,
 					double.PositiveInfinity,

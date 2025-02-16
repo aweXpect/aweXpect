@@ -10,10 +10,10 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://aweXpect.github.io',
+  url: 'https://aweXpect.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/aweXpect/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -77,9 +77,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'documentationSidebar',
           position: 'left',
           label: 'Documentation',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'extensionsSidebar',
+          position: 'left',
+          label: 'Extensions',
         },
         {
           to: '/benchmarks',
@@ -101,7 +107,7 @@ const config: Config = {
           items: [
             {
               label: 'Documentation',
-              to: '/docs/getting-started',
+              to: '/docs/expectations/getting-started',
             },
             {
               label: 'Benchmarks',

@@ -1,6 +1,8 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using System.Linq;
+using aweXpect.Core;
+using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -48,8 +50,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain 1 at least {minimum} times,
+					              Expected that subject
+					              contains 1 at least {minimum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -79,8 +81,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
-					             Expected subject to
-					             contain 1 at most once,
+					             Expected that subject
+					             contains 1 at most once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -110,8 +112,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain 1 between {minimum} and {maximum} times,
+					              Expected that subject
+					              contains 1 between {minimum} and {maximum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -133,11 +135,11 @@ public sealed partial class ThatAsyncEnumerable
 			{
 				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass
 				{
-					Value = x
+					Value = x,
 				}, 20);
 				MyClass expected = new()
 				{
-					Value = 1
+					Value = 1,
 				};
 
 				async Task Act()
@@ -159,8 +161,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              Expected that subject
+					              contains 1 exactly {(times == 1 ? "once" : $"{times} times")},
 					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
 					                1,
 					                1,
@@ -208,8 +210,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              contain {Formatter.Format(expected)} at least once,
+					              Expected that subject
+					              contains {Formatter.Format(expected)} at least once,
 					              but it contained it 0 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
 					              """);
 			}
@@ -221,12 +223,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Contains(expected);
+					=> await That(subject).Contains(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             contain 42 at least once,
+					             Expected that subject
+					             contains 42 at least once,
 					             but it was <null>
 					             """);
 			}
@@ -234,6 +236,77 @@ public sealed partial class ThatAsyncEnumerable
 
 		public sealed class StringItemTests
 		{
+			[Theory]
+			[InlineData("[a-f]{1}[o]*", true)]
+			[InlineData("[g-h]{1}[o]*", false)]
+			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).Contains(regex).AsRegex();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "{regex}" as regex at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("?oo", true)]
+			[InlineData("f??o", false)]
+			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).Contains(wildcard).AsWildcard();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "{wildcard}" as wildcard at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData("foo", true)]
+			[InlineData("*oo", false)]
+			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+#pragma warning disable aweXpect0001
+				StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
+					expectation = That(subject).Contains(match);
+				_ = expectation.AsWildcard();
+
+				async Task Act()
+					=> await expectation.Exactly();
+#pragma warning restore aweXpect0001
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "{match}" at least once,
+					              but it contained it 0 times in [
+					                "foo",
+					                "bar",
+					                "baz"
+					              ]
+					              """);
+			}
+
 			[Fact]
 			public async Task ShouldCompareCaseSensitive()
 			{
@@ -244,8 +317,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "GREEN" at least once,
+					             Expected that sut
+					             contains "GREEN" at least once,
 					             but it contained it 0 times in [
 					               "green",
 					               "blue",
@@ -264,8 +337,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "red" at least once,
+					             Expected that sut
+					             contains "red" at least once,
 					             but it contained it 0 times in [
 					               "green",
 					               "blue",
@@ -296,6 +369,32 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).DoesNotThrow();
 			}
 
+			[Theory]
+			[InlineData("fo\ro", true)]
+			[InlineData("go\ro", false)]
+			public async Task WhenIgnoringNewlineStyle_ShouldIgnoreNewlineStyle(string match, bool expectSuccess)
+			{
+				string nl = Environment.NewLine;
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable([$"fo{nl}o", $"ba{nl}r", $"ba{nl}z"]);
+
+				async Task Act()
+					=> await That(sut).Contains(match).IgnoringNewlineStyle();
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that sut
+					              contains {Formatter.Format(match)} ignoring newline style at least once,
+					              but it contained it 0 times in [
+					                "fo
+					                o",
+					                "ba
+					                r",
+					                "ba
+					                z"
+					              ]
+					              """);
+			}
+
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
@@ -303,12 +402,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Contains(expected);
+					=> await That(subject).Contains(expected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             contain "foo" at least once,
+					             Expected that subject
+					             contains "foo" at least once,
 					             but it was <null>
 					             """);
 			}
@@ -323,8 +422,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "green" at least 3 times,
+					             Expected that sut
+					             contains "green" at least 3 times,
 					             but it contained it 2 times in [
 					               "green",
 					               "green",
@@ -345,8 +444,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected sut to
-					             contain "green" at most 2 times,
+					             Expected that sut
+					             contains "green" at most 2 times,
 					             but it contained it 4 times in [
 					               "green",
 					               "green",
@@ -397,8 +496,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == 1 at least {minimum} times,
+					              Expected that subject
+					              contains item matching x => x == 1 at least {minimum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -428,8 +527,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
-					             Expected subject to
-					             contain item matching x => x == 1 at most once,
+					             Expected that subject
+					             contains item matching x => x == 1 at most once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -459,8 +558,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == 1 between {minimum} and {maximum} times,
+					              Expected that subject
+					              contains item matching x => x == 1 between {minimum} and {maximum} times,
 					              but it contained it 2 times in [
 					                1,
 					                1,
@@ -490,8 +589,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              Expected that subject
+					              contains item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
 					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
 					                1,
 					                1,
@@ -539,8 +638,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              contain item matching x => x == expected at least once,
+					              Expected that subject
+					              contains item matching x => x == expected at least once,
 					              but it contained it 0 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
 					              """);
 			}
@@ -551,12 +650,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).Contains(_ => true);
+					=> await That(subject).Contains(_ => true);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             contain item matching _ => true at least once,
+					             Expected that subject
+					             contains item matching _ => true at least once,
 					             but it was <null>
 					             """);
 			}

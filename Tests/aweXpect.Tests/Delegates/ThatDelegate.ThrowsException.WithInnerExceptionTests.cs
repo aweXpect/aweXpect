@@ -32,6 +32,44 @@ public sealed partial class ThatDelegate
 			}
 
 			[Fact]
+			public async Task WhenInnerExceptionDoesNotMatchCriteria_ShouldFail()
+			{
+				string message = "bar";
+				Action action = ()
+					=> throw new OuterException(innerException: new CustomException(message));
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInnerException(x => x.HasMessage("foo"));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that action
+					             throws an exception with an inner exception whose Message is equal to "foo",
+					             but it was "bar" which differs at index 0:
+					                ↓ (actual)
+					               "bar"
+					               "foo"
+					                ↑ (expected)
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenInnerExceptionIsNotPresent_ShouldFail()
+			{
+				Action action = () => throw new OuterException();
+
+				async Task Act()
+					=> await That(action).ThrowsException().WithInnerException();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that action
+					             throws an exception with an inner exception,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenInnerExceptionIsPresent_ShouldSucceed()
 			{
 				Action action = () => throw new OuterException(innerException: new Exception());
@@ -52,8 +90,8 @@ public sealed partial class ThatDelegate
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected action to
-					             throw an exception with an inner exception,
+					             Expected that action
+					             throws an exception with an inner exception,
 					             but it was <null>
 					             """);
 			}

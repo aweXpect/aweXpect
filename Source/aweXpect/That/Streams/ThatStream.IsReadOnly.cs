@@ -12,9 +12,9 @@ public static partial class ThatStream
 	/// </summary>
 	public static AndOrResult<Stream?, IThat<Stream?>> IsReadOnly(
 		this IThat<Stream?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint(
-					"be read-only",
+					"is read-only",
 					actual => actual is { CanWrite: false, CanRead: true },
 					actual => actual == null ? $"{it} was <null>" : $"{it} was not")),
 			source);
@@ -24,9 +24,9 @@ public static partial class ThatStream
 	/// </summary>
 	public static AndOrResult<Stream?, IThat<Stream?>> IsNotReadOnly(
 		this IThat<Stream?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ValueConstraint(
-					"not be read-only",
+					"is not read-only",
 					actual => actual != null && !(actual is { CanWrite: false, CanRead: true }),
 					actual => actual == null ? $"{it} was <null>" : $"{it} was")),
 			source);

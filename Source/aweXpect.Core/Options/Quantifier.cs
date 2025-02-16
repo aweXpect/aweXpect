@@ -116,7 +116,7 @@ public class Quantifier
 			(_, 0) => "never",
 			(1, 1) => "exactly once",
 			(null, 1) => "at most once",
-			(_, _) => null
+			(_, _) => null,
 		};
 		if (specialCases != null)
 		{

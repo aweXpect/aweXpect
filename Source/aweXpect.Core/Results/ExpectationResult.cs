@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,6 +26,40 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 	}
 
 	/// <summary>
+	///     Sets the <see cref="CancellationToken" /> to be passed to expectations.
+	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromCancellationToken(() => cancellationToken))
+	///     </c>
+	///     to apply the <paramref name="cancellationToken" /> globally.
+	/// </remarks>
+	public ExpectationResult WithCancellation(CancellationToken cancellationToken)
+	{
+		expectationBuilder.WithCancellation(cancellationToken);
+		return this;
+	}
+
+	/// <summary>
+	///     Sets the <paramref name="timeout" /> to be passed to expectations.
+	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromTimeout(timeout))
+	///     </c>
+	///     to apply the <paramref name="timeout" /> globally.
+	/// </remarks>
+	public ExpectationResult WithTimeout(TimeSpan timeout)
+	{
+		expectationBuilder.WithTimeout(timeout);
+		return this;
+	}
+
+	/// <summary>
 	///     By awaiting the result, the expectations are verified.
 	///     <para />
 	///     Will throw an exception, when the expectations are not met.
@@ -37,7 +72,7 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 
 	/// <inheritdoc />
 	internal override async Task<Result> GetResult(int index)
-		=> new(++index, $" [{index:00}] Expected {expectationBuilder.Subject} to",
+		=> new(++index, $" [{index:00}] Expected that {expectationBuilder.Subject}",
 			await expectationBuilder.IsMet());
 
 	/// <summary>
@@ -53,11 +88,13 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result is ConstraintResult.Failure failure)
+		if (result.Outcome == Outcome.Success)
 		{
-			Fail.Test(ExpectationBuilder.FromFailure(
-				expectationBuilder.Subject, failure));
+			return;
 		}
+
+		Fail.Test(ExpectationBuilder.FromFailure(
+			expectationBuilder.Subject, result));
 	}
 }
 
@@ -98,17 +135,42 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	}
 
 	/// <summary>
-	///     Sets the <see cref="CancellationToken" /> to be passed to expectations.
+	///     Sets the <paramref name="cancellationToken" /> to be passed to expectations.
 	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromCancellationToken(() => cancellationToken))
+	///     </c>
+	///     to apply the <paramref name="cancellationToken" /> globally.
+	/// </remarks>
 	public TSelf WithCancellation(CancellationToken cancellationToken)
 	{
 		expectationBuilder.WithCancellation(cancellationToken);
 		return (TSelf)this;
 	}
 
+	/// <summary>
+	///     Sets the <paramref name="timeout" /> to be passed to expectations.
+	/// </summary>
+	/// <remarks>
+	///     Use
+	///     <c>
+	///         Customize.aweXpect.Settings().TestCancellation
+	///         .Set(TestCancellation.FromTimeout(timeout))
+	///     </c>
+	///     to apply the <paramref name="timeout" /> globally.
+	/// </remarks>
+	public TSelf WithTimeout(TimeSpan timeout)
+	{
+		expectationBuilder.WithTimeout(timeout);
+		return (TSelf)this;
+	}
+
 	/// <inheritdoc />
 	internal override async Task<Result> GetResult(int index)
-		=> new(++index, $" [{index:00}] Expected {expectationBuilder.Subject} to",
+		=> new(++index, $" [{index:00}] Expected that {expectationBuilder.Subject}",
 			await expectationBuilder.IsMet());
 
 	/// <summary>
@@ -125,21 +187,18 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result is ConstraintResult.Failure failure)
-		{
-			Fail.Test(ExpectationBuilder.FromFailure(
-				expectationBuilder.Subject, failure));
-		}
-		else if (result is ConstraintResult.Success<TType> matchingSuccess)
-		{
-			return matchingSuccess.Value;
-		}
-		else if (result is ConstraintResult.Success success &&
-		         success.TryGetValue(out TType? value))
+		if (result.Outcome == Outcome.Success &&
+		    result.TryGetValue(out TType? value))
 		{
 			return value;
 		}
 
-		throw new FailException("You should not be here (with value)!");
+		if (result.Outcome == Outcome.Failure)
+		{
+			Fail.Test(ExpectationBuilder.FromFailure(expectationBuilder.Subject, result));
+		}
+
+		throw new FailException(
+			$"The value in {Formatter.Format(result.GetType())} did not match expected type {Formatter.Format(typeof(TType))}.");
 	}
 }

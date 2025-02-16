@@ -33,8 +33,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not end with ["bar"] ignoring case,
+					             Expected that subject
+					             does not end with ["bar"] ignoring case,
 					             but it did in [
 					               "FOO",
 					               "BAR"
@@ -56,8 +56,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not end with [MyClass { Value = 3 }, MyClass { Value = 5 }, MyClass { Value = 8 }] equivalent,
+					             Expected that subject
+					             does not end with [MyClass { Value = 3 }, MyClass { Value = 5 }, MyClass { Value = 8 }] equivalent,
 					             but it did in [
 					               MyClass {
 					                 Value = 1
@@ -91,8 +91,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not end with [1, 2, 3],
+					             Expected that subject
+					             does not end with [1, 2, 3],
 					             but it did in [
 					               1,
 					               2,
@@ -124,8 +124,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not end with unexpected,
+					             Expected that subject
+					             does not end with unexpected,
 					             but it did in [
 					               "foo",
 					               "bar",
@@ -140,12 +140,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).DoesNotEndWith();
+					=> await That(subject).DoesNotEndWith();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not end with [],
+					             Expected that subject
+					             does not end with [],
 					             but it was <null>
 					             """);
 			}
@@ -171,8 +171,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not end with [],
+					             Expected that subject
+					             does not end with [],
 					             but it did in [
 					               1,
 					               2

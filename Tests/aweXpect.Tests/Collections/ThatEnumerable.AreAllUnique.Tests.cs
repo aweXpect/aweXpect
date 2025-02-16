@@ -43,8 +43,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items,
+					             Expected that subject
+					             only has unique items,
 					             but it contained 1 duplicate:
 					               1
 					             """);
@@ -60,8 +60,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items,
+					             Expected that subject
+					             only has unique items,
 					             but it contained 2 duplicates:
 					               1,
 					               2
@@ -74,12 +74,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items,
+					             Expected that subject
+					             only has unique items,
 					             but it was <null>
 					             """);
 			}
@@ -130,8 +130,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items ignoring case,
+					             Expected that subject
+					             only has unique items ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
 					             """);
@@ -147,8 +147,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items,
+					             Expected that subject
+					             only has unique items,
 					             but it contained 1 duplicate:
 					               "a"
 					             """);
@@ -164,8 +164,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items,
+					             Expected that subject
+					             only has unique items,
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
@@ -178,12 +178,12 @@ public sealed partial class ThatEnumerable
 				IEnumerable<int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items,
+					             Expected that subject
+					             only has unique items,
 					             but it was <null>
 					             """);
 			}
@@ -223,8 +223,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items for x => x.Value,
+					             Expected that subject
+					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
 					             """);
@@ -241,11 +241,27 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items for x => x.Value,
+					             Expected that subject
+					             only has unique items for x => x.Value,
 					             but it contained 2 duplicates:
 					               1,
 					               2
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<MyClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AreAllUnique(x => x.Value);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             only has unique items for x => x.Value,
+					             but it was <null>
 					             """);
 			}
 		}
@@ -295,8 +311,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items for x => x.Value ignoring case,
+					             Expected that subject
+					             only has unique items for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
 					             """);
@@ -313,8 +329,8 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items for x => x.Value,
+					             Expected that subject
+					             only has unique items for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
 					             """);
@@ -331,11 +347,27 @@ public sealed partial class ThatEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique items for x => x.Value,
+					             Expected that subject
+					             only has unique items for x => x.Value,
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IEnumerable<MyStringClass>? subject = null;
+
+				async Task Act()
+					=> await That(subject).AreAllUnique(x => x.Value);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             only has unique items for x => x.Value,
+					             but it was <null>
 					             """);
 			}
 

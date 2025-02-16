@@ -43,7 +43,7 @@ public partial class CollectionMatchOptions(
 		/// <summary>
 		///     The subject collection contains the expected collection.
 		/// </summary>
-		Contains = 8
+		Contains = 8,
 	}
 
 	private EquivalenceRelations _equivalenceRelations = equivalenceRelations;
@@ -76,7 +76,7 @@ public partial class CollectionMatchOptions(
 			(true, true) => new AnyOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected),
 			(true, false) => new AnyOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected),
 			(false, true) => new SameOrderIgnoreDuplicatesCollectionMatcher<T, T2>(_equivalenceRelations, expected),
-			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected)
+			(false, false) => new SameOrderCollectionMatcher<T, T2>(_equivalenceRelations, expected),
 		};
 
 	/// <summary>
@@ -88,19 +88,19 @@ public partial class CollectionMatchOptions(
 			(true, true) => ToString(_equivalenceRelations, expectedExpression) + " in any order ignoring duplicates",
 			(true, false) => ToString(_equivalenceRelations, expectedExpression) + " in any order",
 			(false, true) => ToString(_equivalenceRelations, expectedExpression) + " in order ignoring duplicates",
-			(false, false) => ToString(_equivalenceRelations, expectedExpression) + " in order"
+			(false, false) => ToString(_equivalenceRelations, expectedExpression) + " in order",
 		};
 
 	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression)
 		=> equivalenceRelation switch
 		{
-			EquivalenceRelations.Contains => $"contain collection {expectedExpression}",
+			EquivalenceRelations.Contains => $"contains collection {expectedExpression}",
 			EquivalenceRelations.ContainsProperly =>
-				$"contain collection {expectedExpression} and at least one additional item",
-			EquivalenceRelations.IsContainedIn => $"be contained in collection {expectedExpression}",
+				$"contains collection {expectedExpression} and at least one additional item",
+			EquivalenceRelations.IsContainedIn => $"is contained in collection {expectedExpression}",
 			EquivalenceRelations.IsContainedInProperly =>
-				$"be contained in collection {expectedExpression} which has at least one additional item",
-			_ => $"match collection {expectedExpression}"
+				$"is contained in collection {expectedExpression} which has at least one additional item",
+			_ => $"matches collection {expectedExpression}",
 		};
 
 	private static string? ReturnErrorString(string it, List<string> errors)

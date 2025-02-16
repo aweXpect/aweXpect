@@ -20,7 +20,7 @@ public static partial class ThatGeneric
 		expectationBuilder
 			.ForMember(
 				MemberAccessor<T, TMember?>.FromExpression(memberSelector),
-				(member, expectation) => $"for {member}{expectation}")
+				(member, stringBuilder) => stringBuilder.Append("for ").Append(member))
 			.AddExpectations(e => expectations(new ThatSubject<TMember?>(e)));
 		return new AndOrResult<T, IThat<T>>(expectationBuilder, source);
 	}

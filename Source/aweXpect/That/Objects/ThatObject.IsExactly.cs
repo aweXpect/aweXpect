@@ -11,38 +11,38 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies that the subject is exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<TType, IThat<object?>> IsExactly<TType>(
+	public static AndOrWhoseResult<TType, IThat<object?>> IsExactly<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsExactlyOfTypeConstraint<TType>(it)),
 			source);
 
 	/// <summary>
 	///     Verifies that the subject is exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsExactly(
+	public static AndOrResult<object?, IThat<object?>> IsExactly(
 		this IThat<object?> source,
 		Type type)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsExactlyOfTypeConstraint(it, type)),
 			source);
 
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <typeparamref name="TType" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsNotExactly<TType>(
+	public static AndOrResult<object?, IThat<object?>> IsNotExactly<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotExactlyOfTypeConstraint<TType>(it)),
 			source);
 
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <paramref name="type" />.
 	/// </summary>
-	public static AndOrWhichResult<object?, IThat<object?>> IsNotExactly(
+	public static AndOrResult<object?, IThat<object?>> IsNotExactly(
 		this IThat<object?> source,
 		Type type)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsNotExactlyOfTypeConstraint(it, type)),
 			source);
 
@@ -60,7 +60,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be exactly type {Formatter.Format(typeof(TType))}";
+			=> $"is exactly type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsExactlyOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -77,7 +77,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"be exactly type {Formatter.Format(type)}";
+			=> $"is exactly type {Formatter.Format(type)}";
 	}
 
 	private readonly struct IsNotExactlyOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
@@ -94,7 +94,7 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be exactly type {Formatter.Format(typeof(TType))}";
+			=> $"is not exactly type {Formatter.Format(typeof(TType))}";
 	}
 
 	private readonly struct IsNotExactlyOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
@@ -111,6 +111,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> $"not be exactly type {Formatter.Format(type)}";
+			=> $"is not exactly type {Formatter.Format(type)}";
 	}
 }

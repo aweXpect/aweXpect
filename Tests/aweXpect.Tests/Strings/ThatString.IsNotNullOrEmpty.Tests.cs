@@ -16,8 +16,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be null or empty,
+					             Expected that subject
+					             is not null or empty,
 					             but it was ""
 					             """);
 			}
@@ -42,8 +42,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be null or empty,
+					             Expected that subject
+					             is not null or empty,
 					             but it was <null>
 					             """);
 			}

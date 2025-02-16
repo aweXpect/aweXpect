@@ -41,9 +41,26 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be before {Formatter.Format(unexpected)},
+					              Expected that subject
+					              is not before {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				DateTimeOffset? subject = null;
+				DateTimeOffset? expected = CurrentTime();
+
+				async Task Act()
+					=> await That(subject).IsNotBefore(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not before {Formatter.Format(expected)},
+					              but it was <null>
 					              """);
 			}
 
@@ -83,8 +100,8 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be before <null>, because we want to test the failure,
+					              Expected that subject
+					              is not before <null>, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -102,8 +119,8 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be before {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
+					              Expected that subject
+					              is not before {Formatter.Format(unexpected)} ± 0:03, because we want to test the failure,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -120,8 +137,8 @@ public sealed partial class ThatNullableDateTimeOffset
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be before {Formatter.Format(unexpected)} ± 0:03,
+					              Expected that subject
+					              is not before {Formatter.Format(unexpected)} ± 0:03,
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

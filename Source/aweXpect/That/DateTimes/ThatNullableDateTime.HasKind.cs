@@ -1,6 +1,5 @@
 ﻿using System;
 using aweXpect.Core;
-using aweXpect.Helpers;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -8,29 +7,8 @@ namespace aweXpect;
 public static partial class ThatNullableDateTime
 {
 	/// <summary>
-	///     Verifies that the kind of the subject is equal to the <paramref name="expected" /> value.
+	///     Verifies that the kind of the subject…
 	/// </summary>
-	public static AndOrResult<DateTime?, IThat<DateTime?>> HasKind(this IThat<DateTime?> source,
-		DateTimeKind expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<DateTimeKind>(
-					it,
-					expected,
-					(a, e) => a.HasValue && a.Value.Kind == e,
-					$"have kind of {Formatter.Format(expected)}")),
-			source);
-
-	/// <summary>
-	///     Verifies that the kind of the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static AndOrResult<DateTime?, IThat<DateTime?>> DoesNotHaveKind(
-		this IThat<DateTime?> source,
-		DateTimeKind unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new PropertyConstraint<DateTimeKind>(
-					it,
-					unexpected,
-					(a, e) => !a.HasValue || a.Value.Kind != e,
-					$"not have kind of {Formatter.Format(unexpected)}")),
-			source);
+	public static PropertyResult.DateTimeKind<DateTime?> HasKind(this IThat<DateTime?> source)
+		=> new(source, a => a?.Kind, "kind");
 }

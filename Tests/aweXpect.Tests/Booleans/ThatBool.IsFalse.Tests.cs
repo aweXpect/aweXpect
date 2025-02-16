@@ -27,8 +27,8 @@ public sealed partial class ThatBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be False,
+					             Expected that subject
+					             is False,
 					             but it was True
 					             """);
 			}
@@ -43,8 +43,8 @@ public sealed partial class ThatBool
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be False, because we want to test the failure,
+					             Expected that subject
+					             is False, because we want to test the failure,
 					             but it was True
 					             """);
 			}

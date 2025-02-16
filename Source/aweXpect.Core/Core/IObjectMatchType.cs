@@ -9,12 +9,12 @@ public interface IObjectMatchType
 	///     Returns <see langword="true" /> if the two objects <paramref name="actual" /> and <paramref name="expected" /> are
 	///     considered equal; otherwise <see langword="false" />.
 	/// </summary>
-	bool AreConsideredEqual(object? actual, object? expected);
+	bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
 
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	string GetExpectation(string expected);
+	string GetExpectation(string expected, bool negate = false);
 
 	/// <summary>
 	///     Get an extended failure text.

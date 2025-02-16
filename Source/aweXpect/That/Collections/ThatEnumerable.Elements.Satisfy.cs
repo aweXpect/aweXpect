@@ -12,18 +12,22 @@ public static partial class ThatEnumerable
 	public partial class Elements
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>>>
+		public AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 			Satisfy(
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
+						{
+							true => $"satisfy {doNotPopulateThisValue}",
+							_ => $"satisfies {doNotPopulateThisValue}",
+						},
 						predicate,
 						"did")),
 				_subject);
@@ -32,18 +36,22 @@ public static partial class ThatEnumerable
 	public partial class Elements<TItem>
 	{
 		/// <summary>
-		///     Verifies that all items in the collection satisfy the <paramref name="predicate" />.
+		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+		public AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint(it
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"satisfy {doNotPopulateThisValue}",
+						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
+						{
+							true => $"satisfy {doNotPopulateThisValue}",
+							_ => $"satisfies {doNotPopulateThisValue}",
+						},
 						predicate,
 						"did")),
 				_subject);

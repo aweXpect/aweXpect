@@ -29,9 +29,9 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have keys [0, 2],
-					             but it did not have [
+					             Expected that subject
+					             contains keys [0, 2],
+					             but it did not contain [
 					               0
 					             ] in [
 					               1,
@@ -47,12 +47,118 @@ public sealed partial class ThatDictionary
 				IDictionary<string, int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).ContainsKeys("foo", "bar");
+					=> await That(subject).ContainsKeys("foo", "bar");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             have keys ["foo", "bar"],
+					             Expected that subject
+					             contains keys ["foo", "bar"],
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class WhoseValuesTests
+		{
+			[Fact]
+			public async Task WhenKeysAreMissing_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(0).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys [0] whose values are equal to "bar" for all items,
+					             but it did not contain [
+					               0
+					             ] in [
+					               1,
+					               2,
+					               3
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ButSomeValuesDoNotMatch_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(1, 2).WhoseValues.AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys [1, 2] whose values are equal to "foo" for all items,
+					             but not all were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ButValuesDoNotMatch_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys [2] whose values are equal to "foo" for all items,
+					             but not all were
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenKeysExist_ShouldSucceed()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(2).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenOnlySomeKeysAreMissing_ShouldFail()
+			{
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+
+				async Task Act()
+					=> await That(subject).ContainsKeys(1, 0, 3).WhoseValues.AreEqualTo("bar");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys [1, 0, 3] whose values are equal to "bar" for all items,
+					             but it did not contain [
+					               0
+					             ] in [
+					               1,
+					               2,
+					               3
+					             ]
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				IDictionary<string, string>? subject = null;
+
+				async Task Act()
+					=> await That(subject).ContainsKeys("foo").WhoseValues.AreEqualTo("");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains keys ["foo"] whose values are equal to "" for all items,
 					             but it was <null>
 					             """);
 			}

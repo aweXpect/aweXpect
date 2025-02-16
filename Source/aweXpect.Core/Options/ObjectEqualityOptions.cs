@@ -2,16 +2,42 @@
 
 namespace aweXpect.Options;
 
+internal static class ObjectEqualityOptions
+{
+	internal static readonly IObjectMatchType EqualsMatch = new EqualsMatchType();
+
+	private sealed class EqualsMatchType : IObjectMatchType
+	{
+		/// <inheritdoc cref="object.ToString()" />
+		public override string? ToString() => "";
+
+		#region IEquality Members
+
+		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
+		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
+			=> Equals(actual, expected);
+
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
+		public string GetExpectation(string expected, bool negate = false)
+			=> $"is {(negate ? "not " : "")}equal to {expected}";
+
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
+		public string GetExtendedFailure(string it, object? actual, object? expected)
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+
+		#endregion
+	}
+}
+
 /// <summary>
 ///     Checks equality of objects.
 /// </summary>
-public partial class ObjectEqualityOptions : IOptionsEquality<object?>
+public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject>
 {
-	private static readonly IObjectMatchType EqualsMatch = new EqualsMatchType();
-	private IObjectMatchType _matchType = EqualsMatch;
+	private IObjectMatchType _matchType = ObjectEqualityOptions.EqualsMatch;
 
 	/// <inheritdoc />
-	public bool AreConsideredEqual(object? actual, object? expected)
+	public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected)
 		=> _matchType.AreConsideredEqual(actual, expected);
 
 	/// <summary>
@@ -28,8 +54,8 @@ public partial class ObjectEqualityOptions : IOptionsEquality<object?>
 	/// <summary>
 	///     Returns the expectation string, e.g. <c>be equal to {expectedExpression}</c>.
 	/// </summary>
-	public string GetExpectation(string expectedExpression)
-		=> _matchType.GetExpectation(expectedExpression);
+	public string GetExpectation(string expectedExpression, bool negate = false)
+		=> _matchType.GetExpectation(expectedExpression, negate);
 
 	/// <inheritdoc />
 	public override string? ToString() => _matchType.ToString();

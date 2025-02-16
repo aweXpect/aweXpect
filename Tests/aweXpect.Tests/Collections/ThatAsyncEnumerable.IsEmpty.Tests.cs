@@ -16,7 +16,7 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task CancelledEnumerable_ShouldFail()
 			{
 				using CancellationTokenSource cts = new();
-				cts.Cancel();
+				await cts.CancelAsync();
 				CancellationToken token = cts.Token;
 				IAsyncEnumerable<int> subject = ToAsyncEnumerable(Array.Empty<int>());
 
@@ -25,8 +25,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but could not evaluate it, because it was already cancelled
 					             """);
 			}
@@ -44,8 +44,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was [
 					               0,
 					               1,
@@ -68,8 +68,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was [
 					               0,
 					               1,
@@ -96,8 +96,8 @@ public sealed partial class ThatAsyncEnumerable
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was [
 					               1,
 					               1,
@@ -123,12 +123,12 @@ public sealed partial class ThatAsyncEnumerable
 				IAsyncEnumerable<string>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).IsEmpty();
+					=> await That(subject).IsEmpty();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             be empty,
+					             Expected that subject
+					             is empty,
 					             but it was <null>
 					             """);
 			}

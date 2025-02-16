@@ -16,13 +16,13 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection is in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<TItem, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
-		IsInAscendingOrder<TItem>(this IThat<IAsyncEnumerable<TItem>> source)
+	public static CollectionOrderResult<TItem, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		IsInAscendingOrder<TItem>(this IThat<IAsyncEnumerable<TItem>?> source)
 	{
 		CollectionOrderOptions<TItem> options = new();
-		return new CollectionOrderResult<TItem, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Ascending, options, "")),
+		return new CollectionOrderResult<TItem, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new IsInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Ascending, options, "")),
 			source,
 			options);
 	}
@@ -30,16 +30,16 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection is in ascending order.
 	/// </summary>
-	public static CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>
-		IsInAscendingOrder<TItem, TMember>(this IThat<IAsyncEnumerable<TItem>> source,
+	public static CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		IsInAscendingOrder<TItem, TMember>(this IThat<IAsyncEnumerable<TItem>?> source,
 			Func<TItem, TMember> memberAccessor,
 			[CallerArgumentExpression("memberAccessor")]
 			string doNotPopulateThisValue = "")
 	{
 		CollectionOrderOptions<TMember> options = new();
-		return new CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Ascending, options,
+		return new CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new IsInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Ascending, options,
 					$" for {doNotPopulateThisValue}")),
 			source,
 			options);

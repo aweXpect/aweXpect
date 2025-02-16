@@ -456,7 +456,7 @@ public static partial class ValueFormatters
 		{
 			float.NegativeInfinity => "-\u221e",
 			float.PositiveInfinity => "+\u221e",
-			_ => value.ToString(CultureInfo.InvariantCulture)
+			_ => value.ToString(CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
@@ -516,7 +516,7 @@ public static partial class ValueFormatters
 		{
 			double.NegativeInfinity => "-\u221e",
 			double.PositiveInfinity => "+\u221e",
-			_ => value.ToString(CultureInfo.InvariantCulture)
+			_ => value.ToString(CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>

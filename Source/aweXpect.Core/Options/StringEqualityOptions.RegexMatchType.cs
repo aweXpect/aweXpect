@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using aweXpect.Core;
 using aweXpect.Core.Helpers;
@@ -21,20 +20,24 @@ public partial class StringEqualityOptions
 	{
 		#region IMatchType Members
 
-		/// <inheritdoc />
+		/// <inheritdoc
+		///     cref="IStringMatchType.GetExtendedFailure(string, string?, string?, bool, IEqualityComparer{string}, StringDifferenceSettings?)" />
 		public string GetExtendedFailure(string it, string? actual, string? expected,
 			bool ignoreCase,
-			IEqualityComparer<string> comparer)
+			IEqualityComparer<string> comparer,
+			StringDifferenceSettings? settings)
 		{
 			if (expected is null)
 			{
 				return $"could not compare the <null> regex with {Formatter.Format(actual)}";
 			}
 
-			return
-				$"{it} did not match{Environment.NewLine}  \u2193 (actual){Environment.NewLine}  {Formatter.Format(actual.DisplayWhitespace().TruncateWithEllipsisOnWord(LongMaxLength))}{Environment.NewLine}  {Formatter.Format(expected.DisplayWhitespace().TruncateWithEllipsis(LongMaxLength))}{Environment.NewLine}  \u2191 (regex)";
+			StringDifference stringDifference = new(actual, expected, comparer,
+				settings.WithMatchType(StringDifference.MatchType.Regex));
+			return $"{it} did not match{stringDifference.ToString("")}";
 		}
 
+		/// <inheritdoc cref="IStringMatchType.AreConsideredEqual(string?, string?, bool, IEqualityComparer{string})" />
 		public bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase,
 			IEqualityComparer<string> comparer)
 		{
@@ -52,14 +55,23 @@ public partial class StringEqualityOptions
 			return Regex.IsMatch(actual, expected, options, RegexTimeout);
 		}
 
-		public string GetExpectation(string? expected, bool useActiveGrammaticVoice)
-			=> useActiveGrammaticVoice switch
+		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, ExpectationGrammars)" />
+		public string GetExpectation(string? expected, ExpectationGrammars grammar)
+			=> grammar.HasFlag(ExpectationGrammars.Active) switch
 			{
 				true =>
-					$"match regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+					$"matches regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				false =>
-					$"matching regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}"
+					$"matching regex {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 			};
+
+		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />
+		public string GetTypeString()
+			=> " as regex";
+
+		/// <inheritdoc cref="IStringMatchType.GetOptionString(bool, IEqualityComparer{string})" />
+		public string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer)
+			=> "";
 
 		#endregion
 	}

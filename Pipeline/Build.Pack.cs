@@ -22,11 +22,15 @@ partial class Build
 			AbsolutePath packagesDirectory = ArtifactsDirectory / "Packages";
 			packagesDirectory.CreateOrCleanDirectory();
 
+			Project[] projects = BuildScope switch
+			{
+				BuildScope.CoreOnly => [Solution.aweXpect_Core],
+				BuildScope.MainOnly => [Solution.aweXpect],
+				_ => [Solution.aweXpect_Core, Solution.aweXpect],
+			};
+
 			List<string> packages = new();
-			foreach (Project project in new[]
-			         {
-				         Solution.aweXpect, Solution.aweXpect_Core
-			         })
+			foreach (Project project in projects)
 			{
 				foreach (string package in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.nupkg", SearchOption.AllDirectories))
@@ -40,7 +44,7 @@ partial class Build
 				foreach (string symbolPackage in
 				         Directory.EnumerateFiles(project.Directory / "bin", "*.snupkg", SearchOption.AllDirectories))
 				{
-					File.Move(symbolPackage, packagesDirectory / Path.GetFileName(symbolPackage));
+					File.Move(symbolPackage, packagesDirectory / project.Name / Path.GetFileName(symbolPackage));
 					Debug("Found symbol package: {PackagePath}", symbolPackage);
 				}
 			}

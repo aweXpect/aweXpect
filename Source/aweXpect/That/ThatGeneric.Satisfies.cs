@@ -10,40 +10,26 @@ namespace aweXpect;
 public static partial class ThatGeneric
 {
 	/// <summary>
-	///     Expect the actual value to satisfy the <paramref name="predicate" />.
-	/// </summary>
-	[Obsolete("TODO")]
-	public static AndOrResult<T, IThatVerb<T>> Satisfy<T>(this IThatVerb<T> source,
-		Func<T, bool> predicate,
-		[CallerArgumentExpression("predicate")]
-		string doNotPopulateThisValue = "")
-		=> new(source.ExpectationBuilder
-				.AddConstraint(it =>
-					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
-			source);
-
-
-	/// <summary>
-	///     Expect the actual value to satisfy the <paramref name="predicate" />.
+	///     Verifies the actual value to satisfy the <paramref name="predicate" />.
 	/// </summary>
 	public static AndOrResult<T, IThat<T>> Satisfies<T>(this IThat<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, grammar) =>
 					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
 			source);
 
 	/// <summary>
-	///     Expect the actual value to not satisfy the <paramref name="predicate" />.
+	///     Verifies the actual value to not satisfy the <paramref name="predicate" />.
 	/// </summary>
 	public static AndOrResult<T, IThat<T>> DoesNotSatisfy<T>(this IThat<T> source,
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it =>
+				.AddConstraint((it, grammar) =>
 					new NotSatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
 			source);
 

@@ -1,4 +1,6 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
 
 namespace aweXpect;
 
@@ -7,25 +9,25 @@ public abstract partial class EnumerableQuantifier
 	/// <summary>
 	///     Matches at least <paramref name="minimum" /> items.
 	/// </summary>
-	public static EnumerableQuantifier AtLeast(int minimum) => new AtLeastQuantifier(minimum);
+	public static EnumerableQuantifier AtLeast(int minimum,
+		ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+		=> new AtLeastQuantifier(minimum, expectationGrammars);
 
-	private sealed class AtLeastQuantifier(int minimum) : EnumerableQuantifier
+	private sealed class AtLeastQuantifier(int minimum, ExpectationGrammars expectationGrammars) : EnumerableQuantifier
 	{
-		public override string ToString() => $"at least {minimum}";
+		public override string ToString()
+			=> minimum switch
+			{
+				1 => "at least one",
+				_ => $"at least {minimum}",
+			};
 
 		/// <inheritdoc />
 		public override bool IsDeterminable(int matchingCount, int notMatchingCount)
 			=> matchingCount >= minimum;
 
 		/// <inheritdoc />
-		public override string GetExpectation(string it, string? expectationExpression)
-			=> (minimum, expectationExpression is null) switch
-			{
-				(1, true) => "have at least one item",
-				(1, false) => $"have at least one item {expectationExpression}",
-				(_, true) => $"have at least {minimum} items",
-				(_, false) => $"have at least {minimum} items {expectationExpression}"
-			};
+		public override bool IsSingle() => minimum == 1;
 
 		/// <inheritdoc />
 		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
@@ -34,26 +36,27 @@ public abstract partial class EnumerableQuantifier
 			int matchingCount,
 			int notMatchingCount,
 			int? totalCount,
-			string? verb)
+			string? verb,
+			Func<string, string?, string>? expectationGenerator = null)
 		{
 			verb ??= "were";
 			if (matchingCount >= minimum)
 			{
 				return new ConstraintResult.Success<TEnumerable>(actual,
-					GetExpectation(it, expectationExpression));
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
 			}
 
 			if (totalCount.HasValue)
 			{
 				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GetExpectation(it, expectationExpression),
+					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 					expectationExpression == null
 						? $"found only {matchingCount}"
 						: $"only {matchingCount} of {totalCount} {verb}");
 			}
 
-			return new ConstraintResult.Failure<TEnumerable>(actual,
-				GetExpectation(it, expectationExpression),
+			return new UndecidedResult<TEnumerable>(actual,
+				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 				"could not verify, because it was not enumerated completely");
 		}
 	}

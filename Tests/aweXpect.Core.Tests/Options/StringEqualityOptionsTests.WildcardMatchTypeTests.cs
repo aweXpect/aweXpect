@@ -1,9 +1,21 @@
-﻿namespace aweXpect.Core.Tests.Options;
+﻿using aweXpect.Options;
+
+namespace aweXpect.Core.Tests.Options;
 
 public sealed partial class StringEqualityOptionsTests
 {
 	public sealed class WildcardMatchTypeTests
 	{
+		[Fact]
+		public async Task AsWildcard_ShouldReturnSameInstance()
+		{
+			StringEqualityOptions sut = new();
+
+			StringEqualityOptions result = sut.AsWildcard();
+
+			await That(result).IsSameAs(sut);
+		}
+
 		[Theory]
 		[InlineData(false)]
 		[InlineData(true)]
@@ -12,13 +24,13 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("FOO\nBAR").AsWildcard().IgnoringCase(ignoreCase);
+				=> await That(sut).IsEqualTo("FOO\nBAR").AsWildcard().IgnoringCase(ignoreCase);
 
 			await That(Act).Throws<XunitException>().OnlyIf(!ignoreCase)
 				.WithMessage("""
-				             Expected sut to
-				             match "FOO\nBAR",
-				             but it did not match
+				             Expected that sut
+				             matches "FOO\nBAR",
+				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
 				               "FOO\nBAR"
@@ -32,13 +44,13 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is("bar").AsWildcard();
+				=> await That(sut).IsEqualTo("bar").AsWildcard();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match "bar",
-				             but it did not match
+				             Expected that sut
+				             matches "bar",
+				             but it did not match:
 				               ↓ (actual)
 				               "foo"
 				               "bar"
@@ -52,13 +64,13 @@ public sealed partial class StringEqualityOptionsTests
 			string sut = "foo\nbar";
 
 			async Task Act()
-				=> await That(sut).Is("\tsomething\r\nelse").AsWildcard();
+				=> await That(sut).IsEqualTo("\tsomething\r\nelse").AsWildcard();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match "\tsomething\r\nelse",
-				             but it did not match
+				             Expected that sut
+				             matches "\tsomething\r\nelse",
+				             but it did not match:
 				               ↓ (actual)
 				               "foo\nbar"
 				               "\tsomething\r\nelse"
@@ -77,9 +89,9 @@ public sealed partial class StringEqualityOptionsTests
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected () => Task.FromException(exception) to
-				             throw an exception with Message matching "bar",
-				             but it did not match
+				             Expected that () => Task.FromException(exception)
+				             throws an exception with Message matching "bar",
+				             but it did not match:
 				               ↓ (actual)
 				               "foo"
 				               "bar"
@@ -90,15 +102,15 @@ public sealed partial class StringEqualityOptionsTests
 		[Fact]
 		public async Task WhenPatternIsNull_ShouldFail()
 		{
-			string? sut = "foo";
+			string sut = "foo";
 
 			async Task Act()
-				=> await That(sut).Is(null).AsWildcard();
+				=> await That(sut).IsEqualTo(null).AsWildcard();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match <null>,
+				             Expected that sut
+				             matches <null>,
 				             but could not compare the <null> wildcard pattern with "foo"
 				             """);
 		}
@@ -109,12 +121,12 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is(null).AsWildcard();
+				=> await That(sut).IsEqualTo(null).AsWildcard();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match <null>,
+				             Expected that sut
+				             matches <null>,
 				             but could not compare the <null> wildcard pattern with <null>
 				             """);
 		}
@@ -125,13 +137,13 @@ public sealed partial class StringEqualityOptionsTests
 			string? sut = null;
 
 			async Task Act()
-				=> await That(sut).Is("*").AsWildcard();
+				=> await That(sut).IsEqualTo("*").AsWildcard();
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected sut to
-				             match "*",
-				             but it did not match
+				             Expected that sut
+				             matches "*",
+				             but it did not match:
 				               ↓ (actual)
 				               <null>
 				               "*"

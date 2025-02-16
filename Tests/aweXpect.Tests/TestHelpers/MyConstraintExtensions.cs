@@ -9,7 +9,7 @@ public static class MyConstraintExtensions
 	public static AndOrResult<bool, IThat<bool>> IsMyConstraint(this IThat<bool> subject,
 		string expectation,
 		Func<bool, bool> isSuccess, string failureMessage)
-		=> new(((IThatVerb<bool>)subject).ExpectationBuilder.AddConstraint(_
+		=> new(((IThatVerb<bool>)subject).ExpectationBuilder.AddConstraint((_, _)
 				=> new MyConstraint(expectation, isSuccess, failureMessage)),
 			subject);
 

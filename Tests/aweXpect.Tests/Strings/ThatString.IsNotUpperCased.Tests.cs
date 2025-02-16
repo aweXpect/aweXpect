@@ -16,8 +16,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be upper-cased,
+					             Expected that subject
+					             is not upper-cased,
 					             but it was ""
 					             """);
 			}
@@ -54,8 +54,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not be upper-cased,
+					              Expected that subject
+					              is not upper-cased,
 					              but it was "{StringWith100Characters.ToUpperInvariant()}…"
 					              """);
 			}
@@ -81,8 +81,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be upper-cased,
+					             Expected that subject
+					             is not upper-cased,
 					             but it was "ABC"
 					             """);
 			}
@@ -97,8 +97,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be upper-cased,
+					             Expected that subject
+					             is not upper-cased,
 					             but it was "A漢字B"
 					             """);
 			}
@@ -113,8 +113,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be upper-cased,
+					             Expected that subject
+					             is not upper-cased,
 					             but it was "A-B-C!"
 					             """);
 			}
@@ -129,8 +129,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be upper-cased,
+					             Expected that subject
+					             is not upper-cased,
 					             but it was " \t "
 					             """);
 			}

@@ -13,7 +13,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 
 	[Theory]
@@ -24,7 +24,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 
 #if NET8_0_OR_GREATER
@@ -36,7 +36,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 #endif
 
@@ -49,7 +49,7 @@ public sealed class DelegateTests
 
 		int result = await That(Delegate).DoesNotThrow();
 
-		await That(result).Is(value);
+		await That(result).IsEqualTo(value);
 	}
 #endif
 
@@ -63,8 +63,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -79,8 +79,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_Action_WhenThrown)}
 			              """);
@@ -111,8 +111,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -127,8 +127,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_Action_WithCancellationToken_WhenThrown)}
 			              """);
@@ -144,8 +144,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -160,8 +160,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_FuncTask_WhenThrown)}
 			              """);
@@ -192,8 +192,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -208,8 +208,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_FuncTask_WithCancellationToken_WhenThrown)}
 			              """);
@@ -225,8 +225,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -241,8 +241,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_FuncTaskValue_WhenThrown)}
 			              """);
@@ -273,8 +273,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -290,8 +290,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_FuncTaskValue_WithCancellationToken_WhenThrown)}
 			              """);
@@ -307,8 +307,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -323,8 +323,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_FuncValue_WhenThrown)}
 			              """);
@@ -358,8 +358,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
-			             Expected @delegate to
-			             throw an exception,
+			             Expected that @delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -374,8 +374,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected @delegate to
-			              not throw any exception,
+			              Expected that @delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_FuncValue_WithCancellationToken_WhenThrown)}
 			              """);
@@ -392,8 +392,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected Delegate to
-			             throw an exception,
+			             Expected that Delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -411,8 +411,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected Delegate to
-			             throw an exception,
+			             Expected that Delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -429,8 +429,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected Delegate to
-			              not throw any exception,
+			              Expected that Delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_ValueTask_WhenThrown)}
 			              """);
@@ -448,8 +448,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected Delegate to
-			              not throw any exception,
+			              Expected that Delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_ValueTask_WithCancellationToken_WhenThrown)}
 			              """);
@@ -467,8 +467,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected Delegate to
-			             throw an exception,
+			             Expected that Delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -485,8 +485,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected Delegate to
-			              not throw any exception,
+			              Expected that Delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_ValueTaskValue_WhenThrown)}
 			              """);
@@ -504,8 +504,8 @@ public sealed class DelegateTests
 
 		await That(Act).ThrowsException()
 			.WithMessage("""
-			             Expected Delegate to
-			             throw an exception,
+			             Expected that Delegate
+			             throws an exception,
 			             but it did not throw any exception
 			             """);
 	}
@@ -522,8 +522,8 @@ public sealed class DelegateTests
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage($"""
-			              Expected Delegate to
-			              not throw any exception,
+			              Expected that Delegate
+			              does not throw any exception,
 			              but it did throw a MyException:
 			                {nameof(ShouldSupportDelegate_ValueTaskValue_WithCancellationToken_WhenThrown)}
 			              """);

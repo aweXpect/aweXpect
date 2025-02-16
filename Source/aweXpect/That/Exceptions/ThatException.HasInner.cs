@@ -5,9 +5,6 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-/// <summary>
-///     Expectations on <see cref="Exception" /> values.
-/// </summary>
 public static partial class ThatException
 {
 	/// <summary>
@@ -20,11 +17,11 @@ public static partial class ThatException
 		where TInnerException : Exception?
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
-					$"have an inner {typeof(TInnerException).Name} which should ",
+					$"has an inner {typeof(TInnerException).Name} whose",
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), ExpectationGrammars.Nested),
 			source);
 
 	/// <summary>
@@ -33,8 +30,8 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInner<TInnerException>(
 		this IThat<Exception?> source)
 		where TInnerException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new HasInnerExceptionValueConstraint<TInnerException>("have",
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new HasInnerExceptionValueConstraint<TInnerException>("has",
 					it)),
 			source);
 
@@ -48,21 +45,22 @@ public static partial class ThatException
 		Action<IThat<Exception?>> expectations)
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
-					$"have an inner {innerExceptionType.Name} which should ")
+					$"has an inner {innerExceptionType.Name} whose",
+					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint(it,
 						innerExceptionType))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e))),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
 			source);
 
 	/// <summary>
 	///     Verifies that the actual exception has an inner exception of type <paramref name="innerExceptionType" />.
 	/// </summary>
-	public static AndOrResult<Exception?, IThat<Exception?>> HaveInner(
+	public static AndOrResult<Exception?, IThat<Exception?>> HasInner(
 		this IThat<Exception?> source,
 		Type innerExceptionType)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new HasInnerExceptionValueConstraint(innerExceptionType,
-					"have", it)),
+					"has", it)),
 			source);
 }

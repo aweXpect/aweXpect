@@ -17,7 +17,8 @@ public static class Skip
 	/// </summary>
 	/// <param name="reason">The reason why the test was skipped</param>
 	[DoesNotReturn]
-	public static void Test(string reason) => Initialization.State.Value.Skip(reason);
+	public static void Test(string reason)
+		=> SkipIf(true, reason);
 
 	/// <summary>
 	///     Dynamically skips the current test when the <paramref name="condition" /> is <c>false</c>.
@@ -25,12 +26,7 @@ public static class Skip
 	/// <param name="condition">When <c>false</c>, the test will be skipped; otherwise it will continue to run</param>
 	/// <param name="reason">The reason why the test was skipped</param>
 	public static void Unless([DoesNotReturnIf(false)] bool condition, string reason)
-	{
-		if (!condition)
-		{
-			Test(reason);
-		}
-	}
+		=> SkipIf(!condition, reason);
 
 	/// <summary>
 	///     Dynamically skips the current test when the <paramref name="condition" /> is <c>true</c>.
@@ -38,10 +34,15 @@ public static class Skip
 	/// <param name="condition">When <c>true</c>, the test will be skipped; otherwise it will continue to run</param>
 	/// <param name="reason">The reason why the test was skipped</param>
 	public static void When([DoesNotReturnIf(true)] bool condition, string reason)
+		=> SkipIf(condition, reason);
+
+	private static void SkipIf([DoesNotReturnIf(true)] bool condition, string reason)
 	{
-		if (condition)
+		if (!condition)
 		{
-			Test(reason);
+			return;
 		}
+
+		Initialization.State.Value.Skip(reason);
 	}
 }

@@ -16,16 +16,22 @@ public static partial class ThatEnumerable
 	///     Verifies that the collection contains exactly one element.
 	/// </summary>
 	public static SingleItemResult<IEnumerable<TItem>, TItem> HasSingle<TItem>(
-		this IThat<IEnumerable<TItem>> source)
+		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint(it => new HaveSingleConstraint<TItem>(it)),
+				.AddConstraint((it, grammar) => new HaveSingleConstraint<TItem>(it)),
 			f => f.FirstOrDefault()
 		);
 
-	private readonly struct HaveSingleConstraint<TItem>(string it) : IContextConstraint<IEnumerable<TItem>>
+	private readonly struct HaveSingleConstraint<TItem>(string it) : IContextConstraint<IEnumerable<TItem>?>
 	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			if (actual is null)
+			{
+				return new ConstraintResult.Failure(ToString(),
+					$"{it} was <null>");
+			}
+
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			TItem? singleItem = default;
 			int count = 0;
@@ -52,6 +58,6 @@ public static partial class ThatEnumerable
 			}
 		}
 
-		public override string ToString() => "have a single item";
+		public override string ToString() => "has a single item";
 	}
 }

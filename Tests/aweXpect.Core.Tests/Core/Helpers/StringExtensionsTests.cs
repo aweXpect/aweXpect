@@ -12,7 +12,7 @@ public class StringExtensionsTests
 
 		string result = input.DisplayWhitespace();
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -33,7 +33,7 @@ public class StringExtensionsTests
 
 		string result = input.Indent("");
 
-		await That(result).Is(input);
+		await That(result).IsEqualTo(input);
 	}
 
 	[Fact]
@@ -44,7 +44,7 @@ public class StringExtensionsTests
 
 		string result = input.Indent("   ");
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -55,7 +55,7 @@ public class StringExtensionsTests
 
 		string result = input.Indent("   ", false);
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -68,6 +68,19 @@ public class StringExtensionsTests
 		await That(result).IsNull();
 	}
 
+	[Theory]
+	[InlineData("", "a ")]
+	[InlineData("apple", "an apple")]
+	[InlineData("bee", "a bee")]
+	[InlineData("Exception", "an Exception")]
+	[InlineData("NotSupportedException", "a NotSupportedException")]
+	public async Task PrependAOrAn(string input, string expected)
+	{
+		string result = input.PrependAOrAn();
+
+		await That(result).IsEqualTo(expected);
+	}
+
 	[Fact]
 	public async Task RemoveNewlineStyle_ShouldReplaceNewlinesWithSlashN()
 	{
@@ -76,16 +89,15 @@ public class StringExtensionsTests
 
 		string result = input.RemoveNewlineStyle();
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
-
 
 	[Fact]
 	public async Task RemoveNewlineStyle_WhenNull_ShouldReturnNull()
 	{
 		string? input = null;
 
-		string? result = input.Indent();
+		string? result = input.RemoveNewlineStyle();
 
 		await That(result).IsNull();
 	}
@@ -97,7 +109,7 @@ public class StringExtensionsTests
 
 		string result = input.SubstringUntilFirst('a');
 
-		await That(result).Is("");
+		await That(result).IsEqualTo("");
 	}
 
 
@@ -108,7 +120,7 @@ public class StringExtensionsTests
 
 		string result = input.SubstringUntilFirst('X');
 
-		await That(result).Is(input);
+		await That(result).IsEqualTo(input);
 	}
 
 	[Fact]
@@ -118,7 +130,7 @@ public class StringExtensionsTests
 
 		string result = input.SubstringUntilFirst(',');
 
-		await That(result).Is("a");
+		await That(result).IsEqualTo("a");
 	}
 
 
@@ -130,7 +142,7 @@ public class StringExtensionsTests
 
 		string result = input.ToSingleLine();
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -151,7 +163,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsis(10);
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 
@@ -172,7 +184,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsis(10);
 
-		await That(result).Is(input);
+		await That(result).IsEqualTo(input);
 	}
 
 	[Fact]
@@ -183,7 +195,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsisOnWord(11);
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -194,7 +206,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 
 	[Fact]
@@ -214,7 +226,7 @@ public class StringExtensionsTests
 
 		string result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Is(input);
+		await That(result).IsEqualTo(input);
 	}
 
 	[Theory]
@@ -225,6 +237,6 @@ public class StringExtensionsTests
 	{
 		string result = input.TruncateWithEllipsisOnWord(10);
 
-		await That(result).Is(expected);
+		await That(result).IsEqualTo(expected);
 	}
 }

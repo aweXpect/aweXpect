@@ -11,17 +11,30 @@ public interface IStringMatchType
 	///     Returns <see langword="true" /> if the two strings <paramref name="actual" /> and <paramref name="expected" /> are
 	///     considered equal; otherwise <see langword="false" />.
 	/// </summary>
-	bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, IEqualityComparer<string> comparer);
+	bool AreConsideredEqual(string? actual, string? expected,
+		bool ignoreCase,
+		IEqualityComparer<string> comparer);
 
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	string GetExpectation(string? expected, bool useActiveGrammaticVoice);
+	string GetExpectation(string? expected, ExpectationGrammars grammar);
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
 	string GetExtendedFailure(string it, string? actual, string? expected,
 		bool ignoreCase,
-		IEqualityComparer<string> comparer);
+		IEqualityComparer<string> comparer,
+		StringDifferenceSettings? settings);
+
+	/// <summary>
+	///     A string representation of the match type.
+	/// </summary>
+	string GetTypeString();
+
+	/// <summary>
+	///     A string representation of the options.
+	/// </summary>
+	string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer);
 }

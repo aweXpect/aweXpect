@@ -15,8 +15,9 @@ public abstract partial class ThatDelegate
 	{
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<TException>(ExpectationBuilder
+				.AddConstraint((_, _) => new DelegateIsNotNullConstraint())
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
-				.AddConstraint(_ => new ThrowsExactlyCastConstraint<TException>(throwOptions))
+				.AddConstraint((_, _) => new ThrowsExactlyCastConstraint<TException>(throwOptions))
 				.And(" "),
 			throwOptions);
 	}
@@ -28,8 +29,9 @@ public abstract partial class ThatDelegate
 	{
 		ThrowsOption throwOptions = new();
 		return new ThatDelegateThrows<Exception>(ExpectationBuilder
+				.AddConstraint((_, _) => new DelegateIsNotNullConstraint())
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
-				.AddConstraint(_ => new ThrowsExactlyCastConstraint(exceptionType, throwOptions))
+				.AddConstraint((_, _) => new ThrowsExactlyCastConstraint(exceptionType, throwOptions))
 				.And(" "),
 			throwOptions);
 	}
@@ -52,7 +54,9 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<TException?>(null, ToString(), "it did not");
+				return new ConstraintResult.Failure<TException?>(null, ToString(),
+					"it did not throw any exception",
+					FurtherProcessingStrategy.IgnoreResult);
 			}
 
 			return new ConstraintResult.Failure<TException?>(null, ToString(),
@@ -61,14 +65,7 @@ public abstract partial class ThatDelegate
 
 		/// <inheritdoc />
 		public override string ToString()
-		{
-			if (!throwOptions.DoCheckThrow)
-			{
-				return DoesNotThrowExpectation;
-			}
-
-			return $"throw exactly {typeof(TException).Name.PrependAOrAn()}";
-		}
+			=> $"throws exactly {typeof(TException).Name.PrependAOrAn()}";
 	}
 
 	private readonly struct ThrowsExactlyCastConstraint(
@@ -91,7 +88,9 @@ public abstract partial class ThatDelegate
 
 			if (value is null)
 			{
-				return new ConstraintResult.Failure<Exception?>(null, ToString(), "it did not");
+				return new ConstraintResult.Failure<Exception?>(null, ToString(),
+					"it did not throw any exception",
+					FurtherProcessingStrategy.IgnoreResult);
 			}
 
 			return new ConstraintResult.Failure<Exception?>(null, ToString(),
@@ -100,13 +99,6 @@ public abstract partial class ThatDelegate
 
 		/// <inheritdoc />
 		public override string ToString()
-		{
-			if (!throwOptions.DoCheckThrow)
-			{
-				return DoesNotThrowExpectation;
-			}
-
-			return $"throw exactly {exceptionType.Name.PrependAOrAn()}";
-		}
+			=> $"throws exactly {exceptionType.Name.PrependAOrAn()}";
 	}
 }

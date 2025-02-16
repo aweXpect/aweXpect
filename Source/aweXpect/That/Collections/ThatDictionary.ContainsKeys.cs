@@ -12,35 +12,35 @@ public static partial class ThatDictionary
 	/// <summary>
 	///     Verifies that the dictionary contains all <paramref name="expected" /> keys.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>> ContainsKeys<TKey,
-		TValue>(
-		this IThat<IDictionary<TKey, TValue>> source,
-		params TKey[] expected)
-		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+	public static ContainsValuesResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TKey, TValue?>
+		ContainsKeys<TKey, TValue>(
+			this IThat<IDictionary<TKey, TValue>?> source,
+			params TKey[] expected)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ContainKeysConstraint<TKey, TValue>(it, expected)),
-			source
+			source,
+			expected,
+			f => expected.Select(e => f.TryGetValue(e, out TValue? value) ? value : default)
 		);
 
 	/// <summary>
 	///     Verifies that the dictionary contains none of the <paramref name="unexpected" /> keys.
 	/// </summary>
-	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>>>
+	public static AndOrResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>
 		DoesNotContainKeys<TKey, TValue>(
-			this IThat<IDictionary<TKey, TValue>> source,
+			this IThat<IDictionary<TKey, TValue>?> source,
 			params TKey[] unexpected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NotContainKeysConstraint<TKey, TValue>(it, unexpected)),
 			source
 		);
 
 	private readonly struct ContainKeysConstraint<TKey, TValue>(string it, TKey[] expected)
-		: IValueConstraint<IDictionary<TKey, TValue>>
+		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -51,21 +51,20 @@ public static partial class ThatDictionary
 			if (missingKeys.Any())
 			{
 				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did not have {Formatter.Format(missingKeys, FormattingOptions.MultipleLines)} in {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
+					$"{it} did not contain {Formatter.Format(missingKeys, FormattingOptions.MultipleLines)} in {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
 			}
 
 			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 		}
 
-		public override string ToString() => $"have keys {Formatter.Format(expected)}";
+		public override string ToString() => $"contains keys {Formatter.Format(expected)}";
 	}
 
 	private readonly struct NotContainKeysConstraint<TKey, TValue>(string it, TKey[] unexpected)
-		: IValueConstraint<IDictionary<TKey, TValue>>
+		: IValueConstraint<IDictionary<TKey, TValue>?>
 	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue> actual)
+		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -76,12 +75,12 @@ public static partial class ThatDictionary
 			if (existingKeys.Any())
 			{
 				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did have {Formatter.Format(existingKeys, FormattingOptions.MultipleLines)}");
+					$"{it} did contain {Formatter.Format(existingKeys, FormattingOptions.MultipleLines)}");
 			}
 
 			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
 		}
 
-		public override string ToString() => $"not have keys {Formatter.Format(unexpected)}";
+		public override string ToString() => $"does not contain keys {Formatter.Format(unexpected)}";
 	}
 }

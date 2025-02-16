@@ -29,8 +29,8 @@ public sealed partial class ThatEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not have flag {Formatter.Format(unexpected)},
+					              Expected that subject
+					              does not have flag {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -47,8 +47,8 @@ public sealed partial class ThatEnum
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
-					              Expected subject to
-					              not have flag {Formatter.Format(unexpected)},
+					              Expected that subject
+					              does not have flag {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}

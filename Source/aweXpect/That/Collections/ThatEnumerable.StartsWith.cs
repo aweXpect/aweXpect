@@ -18,16 +18,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		StartsWith<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new StartsWithConstraint<TItem, object?>(it, doNotPopulateThisValue, expected.ToArray(),
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new StartsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -36,15 +36,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		StartsWith<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			params TItem[] expected)
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new StartsWithConstraint<TItem, object?>(it, Formatter.Format(expected), expected, options)),
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new StartsWithConstraint<TItem, TItem>(it, Formatter.Format(expected), expected, options)),
 			source,
 			options);
 	}
@@ -52,16 +52,16 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		StartsWith(
-			this IThat<IEnumerable<string>> source,
-			IEnumerable<string> expected,
+			this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new StartsWithConstraint<string, string>(it, doNotPopulateThisValue, expected.ToArray(),
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new StartsWithConstraint<string?, string?>(it, doNotPopulateThisValue, expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -70,14 +70,14 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection starts with the provided <paramref name="expected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		StartsWith(
-			this IThat<IEnumerable<string>> source,
+			this IThat<IEnumerable<string?>?> source,
 			params string[] expected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new StartsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
 			source,
 			options);
@@ -86,17 +86,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		DoesNotStartWith<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			IEnumerable<TItem> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotStartsWithConstraint<TItem, object?>(it, doNotPopulateThisValue, unexpected.ToArray(),
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new NotStartsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
 			source,
 			options);
@@ -105,15 +105,15 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>
+	public static ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		DoesNotStartWith<TItem>(
-			this IThat<IEnumerable<TItem>> source,
+			this IThat<IEnumerable<TItem>?> source,
 			params TItem[] unexpected)
 	{
-		ObjectEqualityOptions options = new();
-		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotStartsWithConstraint<TItem, object?>(it, Formatter.Format(unexpected), unexpected,
+		ObjectEqualityOptions<TItem> options = new();
+		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new NotStartsWithConstraint<TItem, TItem>(it, Formatter.Format(unexpected), unexpected,
 					options)),
 			source,
 			options);
@@ -122,17 +122,17 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		DoesNotStartWith(
-			this IThat<IEnumerable<string>> source,
-			IEnumerable<string> unexpected,
+			this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> unexpected,
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
-				=> new NotStartsWithConstraint<string, string>(it, doNotPopulateThisValue, unexpected.ToArray(),
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new NotStartsWithConstraint<string?, string?>(it, doNotPopulateThisValue, unexpected.ToArray(),
 					options)),
 			source,
 			options);
@@ -141,21 +141,21 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that the collection does not start with the provided <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>
+	public static StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		DoesNotStartWith(
-			this IThat<IEnumerable<string>> source,
+			this IThat<IEnumerable<string?>?> source,
 			params string[] unexpected)
 	{
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IEnumerable<string>, IThat<IEnumerable<string>>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it
+		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new NotStartsWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
 					options)),
 			source,
 			options);
 	}
 
-	private readonly struct StartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>>
+	private readonly struct StartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;
@@ -174,9 +174,8 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -212,10 +211,10 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"start with {_expectedExpression}{_options}";
+			=> $"starts with {_expectedExpression}{_options}";
 	}
 
-	private readonly struct NotStartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>>
+	private readonly struct NotStartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
 		private readonly string _it;
@@ -234,9 +233,8 @@ public static partial class ThatEnumerable
 			_options = options;
 		}
 
-		public ConstraintResult IsMetBy(IEnumerable<TItem> actual, IEvaluationContext context)
+		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
-			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 			if (actual is null)
 			{
 				return new ConstraintResult.Failure(ToString(),
@@ -273,6 +271,6 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> $"not start with {_unexpectedExpression}{_options}";
+			=> $"does not start with {_unexpectedExpression}{_options}";
 	}
 }

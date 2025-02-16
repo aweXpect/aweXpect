@@ -17,11 +17,11 @@ public static partial class ThatDateTime
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTime, IThat<DateTime>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ConditionConstraint(
 					it,
 					expected,
-					$"be after {Formatter.Format(expected)}",
+					$"is after {Formatter.Format(expected)}",
 					(a, e, t) => a + t > e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),
@@ -38,11 +38,11 @@ public static partial class ThatDateTime
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTime, IThat<DateTime>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint(it =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ConditionConstraint(
 					it,
 					unexpected,
-					$"not be after {Formatter.Format(unexpected)}",
+					$"is not after {Formatter.Format(unexpected)}",
 					(a, e, t) => a - t <= e,
 					(a, _, i) => $"{i} was {Formatter.Format(a)}",
 					tolerance)),

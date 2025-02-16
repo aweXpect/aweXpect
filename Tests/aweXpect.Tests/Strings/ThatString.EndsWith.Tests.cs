@@ -22,8 +22,8 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(!ignoreCase)
 					.WithMessage("""
-					             Expected subject to
-					             end with "TEXT",
+					             Expected that subject
+					             ends with "TEXT",
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -40,8 +40,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with "SOME" ignoring case,
+					             Expected that subject
+					             ends with "SOME" ignoring case,
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -59,8 +59,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with "TEXT" using IgnoreCaseForVocalsComparer,
+					             Expected that subject
+					             ends with "TEXT" using IgnoreCaseForVocalsComparer,
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -80,6 +80,23 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string subject = "text";
+				string? expected = null;
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected!);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with <null>,
+					             but "text" cannot be validated against <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectDoesNotEndWithExpected_ShouldFail()
 			{
 				string subject = "some arbitrary text";
@@ -90,8 +107,8 @@ public sealed partial class ThatString
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             end with "some",
+					             Expected that subject
+					             ends with "some",
 					             but it was "some arbitrary text"
 					             """);
 			}
@@ -106,6 +123,52 @@ public sealed partial class ThatString
 					=> await That(subject).EndsWith(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsEqualToExpected_ShouldSucceed()
+			{
+				string subject = "some text";
+				string expected = subject;
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				string? subject = null;
+				string expected = "text";
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with "text",
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsShorterThanExpected_ShouldFail()
+			{
+				string subject = "text";
+				string expected = "text and more";
+
+				async Task Act()
+					=> await That(subject).EndsWith(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             ends with "text and more",
+					             but it was "text" and with length 4 is shorter than the expected length of 13
+					             """);
 			}
 		}
 	}

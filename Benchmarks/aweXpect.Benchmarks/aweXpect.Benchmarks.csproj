@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<GenerateProgramFile>false</GenerateProgramFile>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<SignAssembly>False</SignAssembly>
 	</PropertyGroup>
 
 	<ItemGroup>

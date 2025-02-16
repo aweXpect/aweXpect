@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
-using aweXpect.Core.Helpers;
 
 namespace aweXpect.Results;
 
@@ -21,14 +21,14 @@ public abstract class Expectation
 {
 	/// <summary>
 	///     <i>Not supported!</i><br />
-	///     <see cref="object.Equals(object?)" /> is not supported. Did you mean <c>Be</c> instead?
+	///     <see cref="object.Equals(object?)" /> is not supported. Did you mean <c>IsEqualTo</c> instead?
 	/// </summary>
 	/// <remarks>
 	///     Consider adding support for <see cref="EditorBrowsableAttribute" /> to hide this method from code suggestions.
 	/// </remarks>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public override bool Equals(object? obj)
-		=> throw new NotSupportedException("Equals is not supported. Did you mean Be() instead?");
+		=> throw new NotSupportedException("Equals is not supported. Did you mean Is() instead?");
 
 	/// <summary>
 	///     <i>Not supported!</i><br />
@@ -113,79 +113,90 @@ public abstract class Expectation
 		///     Specifies, if the combination should be treated as
 		///     <see cref="ConstraintResult.Success" /> or <see cref="ConstraintResult.Failure" />
 		/// </summary>
-		protected abstract bool IsSuccess(int failureCount, int totalCount);
+		protected abstract Outcome CheckOutcome(Outcome? previous, Outcome current);
 
 		/// <inheritdoc />
 		internal override async Task<Result> GetResult(int index)
 		{
-			List<string> expectationTexts = new();
-			List<string>? failureTexts = new();
+			StringBuilder expectationTexts = new();
+			StringBuilder failureTexts = new();
+			Outcome? outcome = null;
+			List<ConstraintResult.Context> contexts = new();
 			foreach (Expectation? expectation in _expectations)
 			{
 				Result result = await expectation.GetResult(index);
+				outcome = CheckOutcome(outcome, result.ConstraintResult.Outcome);
 				index = result.Index;
+				if (expectationTexts.Length > 0)
+				{
+					expectationTexts.AppendLine();
+				}
+
 				if (expectation is Combination)
 				{
-					expectationTexts.Add(
-						$"{result.SubjectLine}{Environment.NewLine}{result.ConstraintResult.ExpectationText
-						}".Indent());
+					expectationTexts.Append("  ").Append(result.SubjectLine).AppendLine().Append("  ");
+					result.ConstraintResult.AppendExpectation(expectationTexts, "  ");
 				}
 				else
 				{
-					expectationTexts.Add(
-						$"{result.SubjectLine} {result.ConstraintResult.ExpectationText
-							.Indent("      ", false)}");
+					expectationTexts.Append(result.SubjectLine).Append(' ');
+					result.ConstraintResult.AppendExpectation(expectationTexts, "      ");
 				}
 
-				if (result.ConstraintResult is ConstraintResult.Failure failure)
+				if (result.ConstraintResult.Outcome == Outcome.Failure)
 				{
-					string failureText;
+					contexts.AddRange(result.ConstraintResult.GetContexts());
+					if (failureTexts.Length > 0)
+					{
+						failureTexts.AppendLine();
+					}
+
 					if (expectation is Combination)
 					{
-						failureText =
-							$"{failure.ResultText.Indent()}";
+						failureTexts.Append("  ");
+						result.ConstraintResult.AppendResult(failureTexts, "  ");
 					}
 					else
 					{
-						failureText =
-							$" [{index:00}] {failure.ResultText.Indent("      ", false)}";
+						failureTexts.Append(" [").Append(index.ToString("00")).Append("] ");
+						result.ConstraintResult.AppendResult(failureTexts, "      ");
 					}
-
-					failureTexts.Add(failureText);
 				}
 			}
 
-			string expectationText = string.Join(Environment.NewLine, expectationTexts);
-
-			if (!IsSuccess(failureTexts.Count, expectationTexts.Count))
+			if (outcome != Outcome.Success)
 			{
-				ConstraintResult.Failure? result = new(expectationText,
-					string.Join(
-						Environment.NewLine, failureTexts));
-				return new Result(index, GetSubjectLine(), result);
+				ConstraintResult.Failure result = new(expectationTexts.ToString(), failureTexts.ToString());
+				return new Result(index, GetSubjectLine(), result.WithContexts(contexts.ToArray()));
 			}
 
 			return new Result(index, GetSubjectLine(),
-				new ConstraintResult.Success(expectationText));
-		}
-
-		private string CreateFailureMessage(ConstraintResult.Failure failure)
-		{
-			StringBuilder sb = new();
-			sb.AppendLine(GetSubjectLine());
-			sb.AppendLine(failure.ExpectationText);
-			sb.AppendLine("but");
-			sb.Append(failure.ResultText);
-			return sb.ToString();
+				new ConstraintResult.Success(expectationTexts.ToString()));
 		}
 
 		private async Task GetResultOrThrow()
 		{
 			Result result = await GetResult(0);
-			if (result.ConstraintResult is ConstraintResult.Failure failure)
+			if (result.ConstraintResult.Outcome == Outcome.Success)
 			{
-				Fail.Test(CreateFailureMessage(failure));
+				return;
 			}
+
+			StringBuilder sb = new();
+			sb.AppendLine(GetSubjectLine());
+			result.ConstraintResult.AppendExpectation(sb);
+			sb.AppendLine();
+			sb.AppendLine("but");
+			result.ConstraintResult.AppendResult(sb);
+			foreach (ConstraintResult.Context context in result.ConstraintResult.GetContexts()
+				         .Distinct(ConstraintResult.Context.Comparer))
+			{
+				sb.AppendLine().AppendLine();
+				sb.Append(context.Title).Append(':').AppendLine();
+				sb.Append(context.Content);
+			}
+
+			Fail.Test(sb.ToString());
 		}
 
 		/// <summary>
@@ -198,8 +209,12 @@ public abstract class Expectation
 				=> "Expected all of the following to succeed:";
 
 			/// <inheritdoc />
-			protected override bool IsSuccess(int failureCount, int totalCount)
-				=> failureCount == 0;
+			protected override Outcome CheckOutcome(Outcome? previous, Outcome current)
+				=> previous switch
+				{
+					Outcome.Failure => Outcome.Failure,
+					_ => current,
+				};
 		}
 
 		/// <summary>
@@ -212,8 +227,12 @@ public abstract class Expectation
 				=> "Expected any of the following to succeed:";
 
 			/// <inheritdoc />
-			protected override bool IsSuccess(int failureCount, int totalCount)
-				=> failureCount < totalCount;
+			protected override Outcome CheckOutcome(Outcome? previous, Outcome current)
+				=> previous switch
+				{
+					Outcome.Success => Outcome.Success,
+					_ => current,
+				};
 		}
 	}
 }

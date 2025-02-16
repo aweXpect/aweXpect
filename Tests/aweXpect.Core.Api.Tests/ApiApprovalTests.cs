@@ -19,7 +19,7 @@ public sealed class ApiApprovalTests
 		string publicApi = Helper.CreatePublicApi(framework, assemblyName);
 		string expectedApi = Helper.GetExpectedApi(framework, assemblyName);
 
-		await Expect.That(publicApi).Is(expectedApi);
+		await Expect.That(publicApi).IsEqualTo(expectedApi);
 	}
 
 	private sealed class TargetFrameworksTheoryData : IEnumerable
@@ -32,7 +32,7 @@ public sealed class ApiApprovalTests
 			{
 				yield return new object[]
 				{
-					targetFramework
+					targetFramework,
 				};
 			}
 		}

@@ -11,7 +11,7 @@ public sealed partial class QuantifiedCollectionResult
 			[
 				new MyClass(1),
 				new SubClass(1),
-				new OtherClass(1)
+				new OtherClass(1),
 			];
 
 			async Task Act()
@@ -19,8 +19,8 @@ public sealed partial class QuantifiedCollectionResult
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected subject to
-				             have all items be of type MyClass,
+				             Expected that subject
+				             is of type MyClass for all items,
 				             but only 2 of 3 were
 				             """);
 		}
@@ -31,7 +31,7 @@ public sealed partial class QuantifiedCollectionResult
 			object[] subject =
 			[
 				new MyClass(1),
-				new SubClass(1)
+				new SubClass(1),
 			];
 
 			async Task Act()

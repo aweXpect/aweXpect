@@ -29,8 +29,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be seekable,
+					             Expected that subject
+					             is not seekable,
 					             but it was <null>
 					             """);
 			}
@@ -45,8 +45,8 @@ public sealed partial class ThatStream
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             not be seekable,
+					             Expected that subject
+					             is not seekable,
 					             but it was
 					             """);
 			}

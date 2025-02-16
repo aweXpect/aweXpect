@@ -11,34 +11,34 @@ public sealed partial class QuantifiableCollectionItems
 			[
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Bar"
-				}
+					Value = "Bar",
+				},
 			];
 
 			MyClass expected = new()
 			{
-				Value = "Foo"
+				Value = "Foo",
 			};
 
 			async Task Act()
-				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
+				=> await That(subject).All().ComplyWith(item => item.IsEquivalentTo(expected));
 
 			await That(Act).Throws<XunitException>()
 				.WithMessage("""
-				             Expected subject to
-				             have all items be equivalent to expected,
+				             Expected that subject
+				             is equivalent to expected for all items,
 				             but only 3 of 4 were
 				             """);
 		}
@@ -50,25 +50,25 @@ public sealed partial class QuantifiableCollectionItems
 			[
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
+					Value = "Foo",
 				},
 				new()
 				{
-					Value = "Foo"
-				}
+					Value = "Foo",
+				},
 			];
 
 			MyClass expected = new()
 			{
-				Value = "Foo"
+				Value = "Foo",
 			};
 
 			async Task Act()
-				=> await That(subject).All().Are(item => item.Is().EquivalentTo(expected));
+				=> await That(subject).All().ComplyWith(item => item.IsEquivalentTo(expected));
 
 			await That(Act).DoesNotThrow();
 		}

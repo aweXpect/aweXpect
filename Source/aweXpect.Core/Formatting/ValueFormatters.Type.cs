@@ -63,7 +63,7 @@ public static partial class ValueFormatters
 		},
 		{
 			typeof(nuint), "nuint"
-		}
+		},
 	};
 
 	/// <summary>

@@ -18,26 +18,6 @@ public static partial class ThatDateTimeOffset
 		       difference >= tolerance.Value.Negate();
 	}
 
-	private readonly struct PropertyConstraint<T>(
-		string it,
-		T expected,
-		Func<DateTimeOffset, T, bool> condition,
-		string expectation) : IValueConstraint<DateTimeOffset>
-	{
-		public ConstraintResult IsMetBy(DateTimeOffset actual)
-		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<DateTimeOffset>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-		}
-
-		public override string ToString()
-			=> expectation;
-	}
-
 	private readonly struct ConditionConstraint(
 		string it,
 		DateTimeOffset? expected,

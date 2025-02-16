@@ -15,8 +15,8 @@ public static partial class ThatString
 	/// </remarks>
 	public static AndOrResult<string?, IThat<string?>> IsUpperCased(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new BeUpperCasedConstraint(it)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new IsUpperCasedConstraint(it)),
 			source);
 
 	/// <summary>
@@ -27,11 +27,11 @@ public static partial class ThatString
 	/// </remarks>
 	public static AndOrResult<string, IThat<string?>> IsNotUpperCased(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint(it =>
-				new NotBeUpperCasedConstraint(it)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				new IsNotUpperCasedConstraint(it)),
 			source);
 
-	private readonly struct BeUpperCasedConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsUpperCasedConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -45,10 +45,10 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "be upper-cased";
+			=> "is upper-cased";
 	}
 
-	private readonly struct NotBeUpperCasedConstraint(string it) : IValueConstraint<string?>
+	private readonly struct IsNotUpperCasedConstraint(string it) : IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
@@ -62,6 +62,6 @@ public static partial class ThatString
 		}
 
 		public override string ToString()
-			=> "not be upper-cased";
+			=> "is not upper-cased";
 	}
 }

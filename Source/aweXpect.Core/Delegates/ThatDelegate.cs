@@ -2,6 +2,7 @@
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
+using aweXpect.Core.Sources;
 
 namespace aweXpect.Delegates;
 
@@ -10,7 +11,7 @@ namespace aweXpect.Delegates;
 /// </summary>
 public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder)
 {
-	private static readonly string DoesNotThrowExpectation = "not throw any exception";
+	private static readonly string DoesNotThrowExpectation = "does not throw any exception";
 	private static readonly string ItWasNull = "it was <null>";
 
 	/// <summary>
@@ -25,11 +26,11 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		{
 			return new ConstraintResult.Failure<Exception?>(exception, DoesNotThrowExpectation,
 				$"it did throw {FormatForMessage(exception)}",
-				ConstraintResult.FurtherProcessing.IgnoreCompletely);
+				FurtherProcessingStrategy.IgnoreCompletely);
 		}
 
 		return new ConstraintResult.Success<TException?>(default, DoesNotThrowExpectation,
-			ConstraintResult.FurtherProcessing.IgnoreCompletely);
+			FurtherProcessingStrategy.IgnoreCompletely);
 	}
 
 	internal static string FormatForMessage(Exception? exception)
@@ -46,6 +47,20 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		}
 
 		return message;
+	}
+
+	private readonly struct DelegateIsNotNullConstraint : IValueConstraint<DelegateValue>
+	{
+		/// <inheritdoc />
+		public ConstraintResult IsMetBy(DelegateValue value)
+		{
+			if (value.IsNull)
+			{
+				return new ConstraintResult.Failure("", "it was <null>");
+			}
+
+			return new ConstraintResult.Success("");
+		}
 	}
 
 	internal class ThrowsOption

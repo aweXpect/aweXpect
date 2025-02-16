@@ -19,7 +19,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(!predicateResult)
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             satisfy _ => predicateResult,
 					             but it was Other {
 					               Value = 0
@@ -43,7 +43,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(predicateResult)
 					.WithMessage("""
-					             Expected subject to
+					             Expected that subject
 					             not satisfy _ => predicateResult,
 					             but it was Other {
 					               Value = 0

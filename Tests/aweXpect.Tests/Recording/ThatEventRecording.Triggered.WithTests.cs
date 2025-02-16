@@ -5,16 +5,16 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEventRecording
 {
-	public sealed partial class HasTriggered
+	public sealed partial class Triggered
 	{
 		public sealed class WithTests
 		{
 			[Fact]
-			public async Task WithEventArgs_WhenEventIsTriggeredBySomethingElse_ShouldFail()
+			public async Task WhenEventIsTriggeredBySomethingElse_ShouldFail()
 			{
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 2
+					MyValue = 2,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
@@ -26,8 +26,8 @@ public sealed partial class ThatEventRecording
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected recording to
-					             have recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "SomethingElse" at least once,
+					             Expected that recording
+					             has recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "SomethingElse" at least once,
 					             but it was never recorded in [
 					               PropertyChanged(PropertyChangedClass {
 					                   MyValue = 2
@@ -39,11 +39,11 @@ public sealed partial class ThatEventRecording
 			}
 
 			[Fact]
-			public async Task WithEventArgs_WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
+			public async Task WhenEventIsTriggeredByTheExpectedSender_ShouldSucceed()
 			{
 				PropertyChangedClass sut = new()
 				{
-					MyValue = 2
+					MyValue = 2,
 				};
 				IEventRecording<PropertyChangedClass> recording = sut.Record().Events();
 
@@ -54,6 +54,30 @@ public sealed partial class ThatEventRecording
 						.With<PropertyChangedEventArgs>(e => e.PropertyName == "MyValue");
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithCustomEvent_WhenEventArgsAreFirstParameter_ShouldFail()
+			{
+				CustomEventWithParametersClass<EventArgs> sut = new();
+				IEventRecording<CustomEventWithParametersClass<EventArgs>> recording = sut.Record().Events();
+
+				sut.NotifyCustomEvent(new PropertyChangedEventArgs("foo"));
+
+				async Task Act() =>
+					await That(recording).Triggered(nameof(CustomEventWithParametersClass<EventArgs>.CustomEvent))
+						.With<PropertyChangedEventArgs>(e => e.PropertyName == "foo");
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least once,
+					             but it was never recorded in [
+					               CustomEvent(PropertyChangedEventArgs {
+					                   PropertyName = "foo"
+					                 })
+					             ]
+					             """);
 			}
 		}
 	}

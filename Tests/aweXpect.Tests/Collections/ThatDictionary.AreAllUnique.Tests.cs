@@ -40,8 +40,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 1 duplicate:
 					               1
 					             """);
@@ -57,8 +57,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 2 duplicates:
 					               1,
 					               2
@@ -71,12 +71,12 @@ public sealed partial class ThatDictionary
 				IDictionary<int, int>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it was <null>
 					             """);
 			}
@@ -87,7 +87,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task ShouldUseCustomComparer()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "a", "a"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "a", "a"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().Using(new AllDifferentComparer());
@@ -98,7 +98,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAllValuesAreUnique_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "b", "c"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "b", "c"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -109,7 +109,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenDiffersInCasing_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "A"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "A"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
@@ -120,15 +120,15 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenDiffersInCasingAndCasingIsIgnored_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "A"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "A"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique().IgnoringCase();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values ignoring case,
+					             Expected that subject
+					             only has unique values ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
 					             """);
@@ -137,15 +137,15 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenItContainsDuplicates_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "b", "c", "a"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "b", "c", "a"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 1 duplicate:
 					               "a"
 					             """);
@@ -154,15 +154,15 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenItContainsMultipleDuplicates_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary(["a", "b", "c", "a", "b", "x"]);
+				IDictionary<int, string?> subject = ToDictionary(["a", "b", "c", "a", "b", "x"]);
 
 				async Task Act()
 					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
@@ -172,15 +172,15 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
-				IDictionary<int, string>? subject = null;
+				IDictionary<int, string?>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique();
+					=> await That(subject).AreAllUnique();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values,
+					             Expected that subject
+					             only has unique values,
 					             but it was <null>
 					             """);
 			}
@@ -220,8 +220,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               1
 					             """);
@@ -238,8 +238,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 2 duplicates:
 					               1,
 					               2
@@ -252,12 +252,12 @@ public sealed partial class ThatDictionary
 				IDictionary<int, MyClass>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it was <null>
 					             """);
 			}
@@ -308,8 +308,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value ignoring case,
+					             Expected that subject
+					             only has unique values for x => x.Value ignoring case,
 					             but it contained 1 duplicate:
 					               "A"
 					             """);
@@ -325,8 +325,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 1 duplicate:
 					               "a"
 					             """);
@@ -343,8 +343,8 @@ public sealed partial class ThatDictionary
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it contained 2 duplicates:
 					               "a",
 					               "b"
@@ -357,12 +357,12 @@ public sealed partial class ThatDictionary
 				IDictionary<int, MyStringClass>? subject = null;
 
 				async Task Act()
-					=> await That(subject!).AreAllUnique(x => x.Value);
+					=> await That(subject).AreAllUnique(x => x.Value);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
-					             Expected subject to
-					             only have unique values for x => x.Value,
+					             Expected that subject
+					             only has unique values for x => x.Value,
 					             but it was <null>
 					             """);
 			}
