@@ -906,6 +906,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -1059,7 +1065,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -1216,7 +1223,8 @@ window.BENCHMARK_DATA = {
           183.40196212132773,
           171.4904273668925,
           173.80375008923667,
-          177.02655234336854
+          177.02655234336854,
+          168.956604830424
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1363,6 +1371,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1543,7 +1552,8 @@ window.BENCHMARK_DATA = {
           194.61258354187012,
           187.8588693993432,
           209.0858525911967,
-          197.16769075393677
+          197.16769075393677,
+          186.27382834752402
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1581,6 +1591,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1870,7 +1881,8 @@ window.BENCHMARK_DATA = {
           863.0143522262573,
           864.4629727091108,
           865.6806670702421,
-          892.3951431683132
+          892.3951431683132,
+          862.8693533579509
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2024,6 +2036,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2490,6 +2503,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -2566,7 +2585,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -2646,7 +2666,8 @@ window.BENCHMARK_DATA = {
           289036.0944824219,
           289817.4801595052,
           297285.31696965144,
-          275957.61178152903
+          275957.61178152903,
+          280698.54560546874
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2716,6 +2737,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2819,7 +2841,8 @@ window.BENCHMARK_DATA = {
           2061511.5661458333,
           2022130.8888020834,
           2045083.6671316964,
-          2000499.4600260416
+          2000499.4600260416,
+          1902132.283482143
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2904,7 +2927,8 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
-          3977738
+          3977738,
+          3977736
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2992,7 +3016,8 @@ window.BENCHMARK_DATA = {
           661930.8372721354,
           671513.0948567708,
           686372.9731770833,
-          690741.969163161
+          690741.969163161,
+          631215.2228515625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3069,6 +3094,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -3997,6 +4023,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -4150,7 +4182,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -4307,7 +4340,8 @@ window.BENCHMARK_DATA = {
           618.0771576563517,
           590.9768114089966,
           593.0269682747977,
-          595.0385335286459
+          595.0385335286459,
+          574.0587482452393
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4454,6 +4488,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4634,7 +4669,8 @@ window.BENCHMARK_DATA = {
           421.36529439290365,
           416.23647141456604,
           425.51550877888997,
-          423.95703926086424
+          423.95703926086424,
+          410.2725615183512
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4672,6 +4708,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -4961,7 +4998,8 @@ window.BENCHMARK_DATA = {
           14871.63218470982,
           14407.34646097819,
           18079.033945719402,
-          14159.64556993757
+          14159.64556993757,
+          14641.178318277995
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5115,6 +5153,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6043,6 +6082,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -6196,7 +6241,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -6353,7 +6399,8 @@ window.BENCHMARK_DATA = {
           228.1731351852417,
           211.868314520518,
           225.4867568174998,
-          232.87055753072102
+          232.87055753072102,
+          217.67506305376688
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6500,6 +6547,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6680,7 +6728,8 @@ window.BENCHMARK_DATA = {
           195.3410727183024,
           188.97841210365294,
           192.65585330327352,
-          191.89932157595953
+          191.89932157595953,
+          184.76557386716206
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6718,6 +6767,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7007,7 +7057,8 @@ window.BENCHMARK_DATA = {
           1174.6980532237462,
           1157.7750286102296,
           1188.3442956288657,
-          1202.1472836812338
+          1202.1472836812338,
+          1152.625266456604
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7161,6 +7212,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -8089,6 +8141,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -8242,7 +8300,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -8399,7 +8458,8 @@ window.BENCHMARK_DATA = {
           362.0175166130066,
           337.81743675867716,
           352.41244071324667,
-          346.6699796676636
+          346.6699796676636,
+          327.23792594273885
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8546,6 +8606,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8726,7 +8787,8 @@ window.BENCHMARK_DATA = {
           419.16175044377644,
           413.08958504750177,
           439.9285873685564,
-          414.64030381611417
+          414.64030381611417,
+          413.3505523999532
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8764,6 +8826,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -9053,7 +9116,8 @@ window.BENCHMARK_DATA = {
           1217.7407925469536,
           1274.5627329690117,
           1339.0757784525554,
-          1292.709694035848
+          1292.709694035848,
+          1227.4395554860432
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9207,6 +9271,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -10135,6 +10200,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -10288,7 +10359,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -10445,7 +10517,8 @@ window.BENCHMARK_DATA = {
           1241.461775716146,
           1218.9957813535418,
           1239.4899383272443,
-          1246.9822279612224
+          1246.9822279612224,
+          1200.3347723642985
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10592,6 +10665,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -10772,7 +10846,8 @@ window.BENCHMARK_DATA = {
           1273.6358014424643,
           1207.1707303365072,
           1205.6180573781332,
-          1220.3730564117432
+          1220.3730564117432,
+          1190.5406812940325
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10810,6 +10885,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -11099,7 +11175,8 @@ window.BENCHMARK_DATA = {
           2691.792657852173,
           2718.188194020589,
           2660.251335144043,
-          2858.903769938151
+          2858.903769938151,
+          2660.99796778361
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11253,6 +11330,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -12181,6 +12259,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 08:15:39 2025 \u002B0100",
         "message": "docs: fix example for writing a custom extension (#391)"
+      },
+      {
+        "sha": "0c336223308e044cfae772e0564e64e494a07228",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 16 08:39:04 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.0 (#392)"
       }
     ],
     "labels": [
@@ -12334,7 +12418,8 @@ window.BENCHMARK_DATA = {
       "79078484",
       "eeee1391",
       "c6b3a8d5",
-      "c6992a92"
+      "c6992a92",
+      "0c336223"
     ],
     "datasets": [
       {
@@ -12491,7 +12576,8 @@ window.BENCHMARK_DATA = {
           1290.3841726938883,
           1274.65290629069,
           1335.4850083759852,
-          1321.292514928182
+          1321.292514928182,
+          1352.502392832438
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12638,6 +12724,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -12818,7 +12905,8 @@ window.BENCHMARK_DATA = {
           88841.71936035156,
           87459.30186360677,
           89304.56641564003,
-          85597.53951322116
+          85597.53951322116,
+          81827.07164713541
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12979,6 +13067,7 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54271,
+          54273,
           54273,
           54273
         ],
@@ -13145,7 +13234,8 @@ window.BENCHMARK_DATA = {
           7111.371630532401,
           7020.276578267415,
           7360.980094401041,
-          7130.856218973796
+          7130.856218973796,
+          6933.4205486591045
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13299,6 +13389,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
