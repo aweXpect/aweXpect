@@ -154,6 +154,27 @@ const config: Config = {
       additionalLanguages: ['csharp']
     },
   } satisfies Preset.ThemeConfig,
+  plugins:[
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/docs/extensions/project/Json/index',
+            from: '/aweXpect.Json',
+          },
+          {
+            to: '/docs/extensions/project/Web/index',
+            from: '/aweXpect.Web',
+          },
+          {
+            to: '/docs/extensions/project/Testably/index',
+            from: '/aweXpect.Testably',
+          },
+        ],
+      },
+    ],
+  ],
 };
 
 export default config;
