@@ -930,6 +930,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -1087,7 +1093,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -1248,7 +1255,8 @@ window.BENCHMARK_DATA = {
           168.956604830424,
           181.7518288918904,
           167.9433664908776,
-          172.06123638153076
+          172.06123638153076,
+          178.79297504425048
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1395,6 +1403,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1583,7 +1592,8 @@ window.BENCHMARK_DATA = {
           186.27382834752402,
           194.8697292621319,
           191.07316716512045,
-          186.67972442081995
+          186.67972442081995,
+          199.183309674263
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1621,6 +1631,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1918,7 +1929,8 @@ window.BENCHMARK_DATA = {
           862.8693533579509,
           1317.8601283391317,
           901.804033279419,
-          853.6182649612426
+          853.6182649612426,
+          891.5863506453378
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2072,6 +2084,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2566,6 +2579,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -2646,7 +2665,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -2730,7 +2750,8 @@ window.BENCHMARK_DATA = {
           280698.54560546874,
           285669.0477539062,
           290733.7574986049,
-          281619.6502604167
+          281619.6502604167,
+          281975.97007533483
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2800,6 +2821,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2911,7 +2933,8 @@ window.BENCHMARK_DATA = {
           1902132.283482143,
           2114869.402901786,
           2053437.7658854167,
-          2098761.8587740385
+          2098761.8587740385,
+          2042218.8045572916
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2998,6 +3021,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738
@@ -3092,7 +3116,8 @@ window.BENCHMARK_DATA = {
           631215.2228515625,
           654988.8837193081,
           659648.3072265625,
-          659636.8208007812
+          659636.8208007812,
+          678343.0311197917
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3169,6 +3194,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4125,6 +4151,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -4282,7 +4314,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -4443,7 +4476,8 @@ window.BENCHMARK_DATA = {
           574.0587482452393,
           593.3588637034098,
           590.4595533098493,
-          575.9046996661594
+          575.9046996661594,
+          572.834473101298
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4590,6 +4624,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4778,7 +4813,8 @@ window.BENCHMARK_DATA = {
           410.2725615183512,
           422.5835122426351,
           422.0607046127319,
-          400.0867781956991
+          400.0867781956991,
+          419.7947309176127
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4816,6 +4852,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5113,7 +5150,8 @@ window.BENCHMARK_DATA = {
           14641.178318277995,
           15008.982607014974,
           15428.535354614258,
-          16402.207141113282
+          16402.207141113282,
+          15287.155989583332
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5267,6 +5305,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6223,6 +6262,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -6380,7 +6425,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -6541,7 +6587,8 @@ window.BENCHMARK_DATA = {
           217.67506305376688,
           239.5079508940379,
           213.47624916689736,
-          215.9380817583629
+          215.9380817583629,
+          218.38870809872944
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6688,6 +6735,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6876,7 +6924,8 @@ window.BENCHMARK_DATA = {
           184.76557386716206,
           195.54911555846533,
           189.78662632192885,
-          192.6749353726705
+          192.6749353726705,
+          185.41719624201457
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6914,6 +6963,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7211,7 +7261,8 @@ window.BENCHMARK_DATA = {
           1152.625266456604,
           1157.5352917989096,
           1177.5525391896565,
-          1138.007636896769
+          1138.007636896769,
+          1160.1968612670898
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7365,6 +7416,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -8321,6 +8373,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -8478,7 +8536,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -8639,7 +8698,8 @@ window.BENCHMARK_DATA = {
           327.23792594273885,
           349.86260458628334,
           332.9062349115099,
-          348.0253969192505
+          348.0253969192505,
+          333.7147529919942
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8786,6 +8846,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -8974,7 +9035,8 @@ window.BENCHMARK_DATA = {
           413.3505523999532,
           417.97452425956726,
           412.93423722585044,
-          407.07984895706176
+          407.07984895706176,
+          411.0302793820699
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9012,6 +9074,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -9309,7 +9372,8 @@ window.BENCHMARK_DATA = {
           1227.4395554860432,
           1267.477118219648,
           1250.979700978597,
-          1231.04967212677
+          1231.04967212677,
+          1215.4984794616698
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9463,6 +9527,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -10419,6 +10484,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -10576,7 +10647,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -10737,7 +10809,8 @@ window.BENCHMARK_DATA = {
           1200.3347723642985,
           1235.6281406402588,
           1258.4862521035332,
-          1185.3442564646402
+          1185.3442564646402,
+          1175.9756165822348
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10884,6 +10957,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -11072,7 +11146,8 @@ window.BENCHMARK_DATA = {
           1190.5406812940325,
           1206.4140895843507,
           1216.4824661254884,
-          1164.1131950378417
+          1164.1131950378417,
+          1253.9695091247559
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11110,6 +11185,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -11407,7 +11483,8 @@ window.BENCHMARK_DATA = {
           2660.99796778361,
           2689.551872253418,
           2718.762555531093,
-          2709.8235127766925
+          2709.8235127766925,
+          2590.2343086242677
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11561,6 +11638,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -12517,6 +12595,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
         "message": "docs: fix incorrect line break in README (#395)"
+      },
+      {
+        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
+        "message": "docs: add redirects for extensions (#399)"
       }
     ],
     "labels": [
@@ -12674,7 +12758,8 @@ window.BENCHMARK_DATA = {
       "0c336223",
       "dd480312",
       "f6640b2f",
-      "d8aaae48"
+      "d8aaae48",
+      "e0d78b97"
     ],
     "datasets": [
       {
@@ -12835,7 +12920,8 @@ window.BENCHMARK_DATA = {
           1352.502392832438,
           1345.4889954158239,
           1253.4246359605056,
-          1258.740214892796
+          1258.740214892796,
+          1228.2627910614015
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12982,6 +13068,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -13170,7 +13257,8 @@ window.BENCHMARK_DATA = {
           81827.07164713541,
           87469.1875813802,
           84987.55909830729,
-          85550.67788085938
+          85550.67788085938,
+          84579.75254313152
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13331,6 +13419,7 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54271,
+          54273,
           54273,
           54273,
           54273,
@@ -13505,7 +13594,8 @@ window.BENCHMARK_DATA = {
           6933.4205486591045,
           7246.210503133138,
           6981.408885701498,
-          6952.934167044504
+          6952.934167044504,
+          7154.258612496512
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13659,6 +13749,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
