@@ -954,6 +954,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -1115,7 +1121,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -1280,7 +1287,8 @@ window.BENCHMARK_DATA = {
           178.79297504425048,
           182.56371884686607,
           178.10221670071283,
-          173.66952892712183
+          173.66952892712183,
+          169.06662611961366
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1427,6 +1435,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1623,7 +1632,8 @@ window.BENCHMARK_DATA = {
           199.183309674263,
           231.6946769396464,
           186.79948214122228,
-          190.04389559427898
+          190.04389559427898,
+          187.8506058546213
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1661,6 +1671,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1966,7 +1977,8 @@ window.BENCHMARK_DATA = {
           891.5863506453378,
           890.5650809605917,
           863.3809864861624,
-          874.2524589538574
+          874.2524589538574,
+          944.7614302635193
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2120,6 +2132,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2642,6 +2655,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -2726,7 +2745,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -2814,7 +2834,8 @@ window.BENCHMARK_DATA = {
           281975.97007533483,
           298649.4815499442,
           284053.9682992789,
-          290605.1613420759
+          290605.1613420759,
+          280393.9402901786
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2884,6 +2905,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -3003,7 +3025,8 @@ window.BENCHMARK_DATA = {
           2042218.8045572916,
           2147836.0474759615,
           2019867.22421875,
-          2063046.751674107
+          2063046.751674107,
+          2028100.8235677083
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3090,6 +3113,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -3192,7 +3216,8 @@ window.BENCHMARK_DATA = {
           678343.0311197917,
           690813.5706705729,
           670203.4954101562,
-          690081.5088541667
+          690081.5088541667,
+          660908.7457682291
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3269,6 +3294,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4253,6 +4279,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -4414,7 +4446,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -4579,7 +4612,8 @@ window.BENCHMARK_DATA = {
           572.834473101298,
           595.1413941065471,
           625.1195526123047,
-          575.013306753976
+          575.013306753976,
+          585.0146118310781
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4726,6 +4760,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4922,7 +4957,8 @@ window.BENCHMARK_DATA = {
           419.7947309176127,
           450.0644242922465,
           410.4526568821498,
-          414.1491769790649
+          414.1491769790649,
+          415.26807280949185
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4960,6 +4996,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5265,7 +5302,8 @@ window.BENCHMARK_DATA = {
           15287.155989583332,
           15003.299413408551,
           16510.67483317057,
-          14931.850549316407
+          14931.850549316407,
+          15000.908245849609
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5419,6 +5457,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6403,6 +6442,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -6564,7 +6609,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -6729,7 +6775,8 @@ window.BENCHMARK_DATA = {
           218.38870809872944,
           231.23179208437602,
           225.35320029939925,
-          229.8542181934629
+          229.8542181934629,
+          216.35018209310678
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6876,6 +6923,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -7072,7 +7120,8 @@ window.BENCHMARK_DATA = {
           185.41719624201457,
           228.7781462351481,
           193.40501196043832,
-          190.69795659383138
+          190.69795659383138,
+          188.05856484633225
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7110,6 +7159,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7415,7 +7465,8 @@ window.BENCHMARK_DATA = {
           1160.1968612670898,
           1200.4025933401924,
           1156.0381518143874,
-          1217.9535160064697
+          1217.9535160064697,
+          1218.6417766298566
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7569,6 +7620,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -8553,6 +8605,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -8714,7 +8772,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -8879,7 +8938,8 @@ window.BENCHMARK_DATA = {
           333.7147529919942,
           355.70023959477743,
           344.400312937223,
-          341.82775629483734
+          341.82775629483734,
+          347.3814981324332
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9026,6 +9086,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9222,7 +9283,8 @@ window.BENCHMARK_DATA = {
           411.0302793820699,
           467.19529029301236,
           408.16460307439166,
-          426.5458315531413
+          426.5458315531413,
+          429.81826060612997
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9260,6 +9322,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -9565,7 +9628,8 @@ window.BENCHMARK_DATA = {
           1215.4984794616698,
           1270.6808133125305,
           1268.836889775594,
-          1256.0316761561803
+          1256.0316761561803,
+          1318.848485438029
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9719,6 +9783,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -10703,6 +10768,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -10864,7 +10935,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -11029,7 +11101,8 @@ window.BENCHMARK_DATA = {
           1175.9756165822348,
           1254.718436901386,
           1240.073859914144,
-          1208.147041193644
+          1208.147041193644,
+          1290.181001027425
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11176,6 +11249,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -11372,7 +11446,8 @@ window.BENCHMARK_DATA = {
           1253.9695091247559,
           1245.1175818125407,
           1254.9389784886287,
-          1169.2599378313337
+          1169.2599378313337,
+          1345.4473163604737
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11410,6 +11485,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -11715,7 +11791,8 @@ window.BENCHMARK_DATA = {
           2590.2343086242677,
           2770.376335961478,
           2704.6743069966633,
-          2836.385721588135
+          2836.385721588135,
+          2849.1908790588377
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11869,6 +11946,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -12853,6 +12931,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Feb 22 11:19:12 2025 \u002B0100",
         "message": "fix: consider \u0060FurtherProcessingStrategy\u0060 in \u0060MappingNode\u0060 (#400)"
+      },
+      {
+        "sha": "128a061836f52b92c8bfa4b43f00ce18fc3377aa",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:48:50 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.13.0 to 0.14.0 in the tunit group across 1 directory (#402)"
       }
     ],
     "labels": [
@@ -13014,7 +13098,8 @@ window.BENCHMARK_DATA = {
       "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
-      "c5103c0c"
+      "c5103c0c",
+      "128a0618"
     ],
     "datasets": [
       {
@@ -13179,7 +13264,8 @@ window.BENCHMARK_DATA = {
           1228.2627910614015,
           1316.4008160909018,
           1282.0749186197916,
-          1300.001635823931
+          1300.001635823931,
+          1333.191593170166
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13326,6 +13412,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -13522,7 +13609,8 @@ window.BENCHMARK_DATA = {
           84579.75254313152,
           86110.58205566407,
           87871.03189290364,
-          86335.90899251302
+          86335.90899251302,
+          88924.40099283853
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13692,7 +13780,8 @@ window.BENCHMARK_DATA = {
           54273,
           54271,
           54273,
-          54271
+          54271,
+          54275
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13865,7 +13954,8 @@ window.BENCHMARK_DATA = {
           7154.258612496512,
           7268.1919593811035,
           7104.996159362793,
-          7369.830386352539
+          7369.830386352539,
+          3244.1662228902183
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14035,7 +14125,8 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
-          8800
+          8800,
+          5680
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
