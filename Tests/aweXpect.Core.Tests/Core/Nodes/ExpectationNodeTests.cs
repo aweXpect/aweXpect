@@ -248,6 +248,27 @@ public class ExpectationNodeTests
 	}
 
 	[Theory]
+	[InlineData(FurtherProcessingStrategy.Continue, "failure1 and failure2")]
+	[InlineData(FurtherProcessingStrategy.IgnoreResult, "failure1")]
+	[InlineData(FurtherProcessingStrategy.IgnoreCompletely, "failure1")]
+	public async Task MultipleFailures_ShouldIncludeBothOnlyWhenFurtherProcessingStrategyIsContinue(
+		FurtherProcessingStrategy furtherProcessingStrategy, string expectedFailureText)
+	{
+		DummyConstraint constraint1 = new("",
+			() => new DummyConstraintResult(Outcome.Failure, furtherProcessingStrategy, failureText: "failure1"));
+		DummyConstraint constraint2 =
+			new("", () => new DummyConstraintResult(Outcome.Failure, failureText: "failure2"));
+		ExpectationNode node = new();
+		node.AddConstraint(constraint1);
+		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
+		node.AddConstraint(constraint2);
+
+		ConstraintResult result = await node.IsMetBy(3, null!, CancellationToken.None);
+
+		await That(result.GetResultText()).IsEqualTo(expectedFailureText);
+	}
+
+	[Theory]
 	[InlineData(Outcome.Success, Outcome.Success, Outcome.Success)]
 	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Failure)]
 	[InlineData(Outcome.Success, Outcome.Failure, Outcome.Failure)]

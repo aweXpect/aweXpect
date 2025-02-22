@@ -105,6 +105,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			{
 				left.AppendResult(stringBuilder, indentation);
 				if (right.Outcome == Outcome.Failure &&
+				    left.FurtherProcessingStrategy == FurtherProcessingStrategy.Continue &&
 				    !left.HasSameResultTextAs(right))
 				{
 					stringBuilder.Append(" and ");
