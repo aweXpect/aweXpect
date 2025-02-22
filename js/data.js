@@ -936,6 +936,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -1094,7 +1100,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -1256,7 +1263,8 @@ window.BENCHMARK_DATA = {
           181.7518288918904,
           167.9433664908776,
           172.06123638153076,
-          178.79297504425048
+          178.79297504425048,
+          182.56371884686607
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1403,6 +1411,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1593,7 +1602,8 @@ window.BENCHMARK_DATA = {
           194.8697292621319,
           191.07316716512045,
           186.67972442081995,
-          199.183309674263
+          199.183309674263,
+          231.6946769396464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1631,6 +1641,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1930,7 +1941,8 @@ window.BENCHMARK_DATA = {
           1317.8601283391317,
           901.804033279419,
           853.6182649612426,
-          891.5863506453378
+          891.5863506453378,
+          890.5650809605917
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2084,6 +2096,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2585,6 +2598,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -2666,7 +2685,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -2751,7 +2771,8 @@ window.BENCHMARK_DATA = {
           285669.0477539062,
           290733.7574986049,
           281619.6502604167,
-          281975.97007533483
+          281975.97007533483,
+          298649.4815499442
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2821,6 +2842,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -2934,7 +2956,8 @@ window.BENCHMARK_DATA = {
           2114869.402901786,
           2053437.7658854167,
           2098761.8587740385,
-          2042218.8045572916
+          2042218.8045572916,
+          2147836.0474759615
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3021,6 +3044,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -3117,7 +3141,8 @@ window.BENCHMARK_DATA = {
           654988.8837193081,
           659648.3072265625,
           659636.8208007812,
-          678343.0311197917
+          678343.0311197917,
+          690813.5706705729
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3194,6 +3219,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4157,6 +4183,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -4315,7 +4347,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -4477,7 +4510,8 @@ window.BENCHMARK_DATA = {
           593.3588637034098,
           590.4595533098493,
           575.9046996661594,
-          572.834473101298
+          572.834473101298,
+          595.1413941065471
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4624,6 +4658,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4814,7 +4849,8 @@ window.BENCHMARK_DATA = {
           422.5835122426351,
           422.0607046127319,
           400.0867781956991,
-          419.7947309176127
+          419.7947309176127,
+          450.0644242922465
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4852,6 +4888,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5151,7 +5188,8 @@ window.BENCHMARK_DATA = {
           15008.982607014974,
           15428.535354614258,
           16402.207141113282,
-          15287.155989583332
+          15287.155989583332,
+          15003.299413408551
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5305,6 +5343,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6268,6 +6307,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -6426,7 +6471,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -6588,7 +6634,8 @@ window.BENCHMARK_DATA = {
           239.5079508940379,
           213.47624916689736,
           215.9380817583629,
-          218.38870809872944
+          218.38870809872944,
+          231.23179208437602
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6735,6 +6782,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -6925,7 +6973,8 @@ window.BENCHMARK_DATA = {
           195.54911555846533,
           189.78662632192885,
           192.6749353726705,
-          185.41719624201457
+          185.41719624201457,
+          228.7781462351481
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6963,6 +7012,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7262,7 +7312,8 @@ window.BENCHMARK_DATA = {
           1157.5352917989096,
           1177.5525391896565,
           1138.007636896769,
-          1160.1968612670898
+          1160.1968612670898,
+          1200.4025933401924
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7416,6 +7467,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -8379,6 +8431,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -8537,7 +8595,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -8699,7 +8758,8 @@ window.BENCHMARK_DATA = {
           349.86260458628334,
           332.9062349115099,
           348.0253969192505,
-          333.7147529919942
+          333.7147529919942,
+          355.70023959477743
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8846,6 +8906,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9036,7 +9097,8 @@ window.BENCHMARK_DATA = {
           417.97452425956726,
           412.93423722585044,
           407.07984895706176,
-          411.0302793820699
+          411.0302793820699,
+          467.19529029301236
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9074,6 +9136,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -9373,7 +9436,8 @@ window.BENCHMARK_DATA = {
           1267.477118219648,
           1250.979700978597,
           1231.04967212677,
-          1215.4984794616698
+          1215.4984794616698,
+          1270.6808133125305
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9527,6 +9591,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -10490,6 +10555,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -10648,7 +10719,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -10810,7 +10882,8 @@ window.BENCHMARK_DATA = {
           1235.6281406402588,
           1258.4862521035332,
           1185.3442564646402,
-          1175.9756165822348
+          1175.9756165822348,
+          1254.718436901386
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10957,6 +11030,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -11147,7 +11221,8 @@ window.BENCHMARK_DATA = {
           1206.4140895843507,
           1216.4824661254884,
           1164.1131950378417,
-          1253.9695091247559
+          1253.9695091247559,
+          1245.1175818125407
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11185,6 +11260,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -11484,7 +11560,8 @@ window.BENCHMARK_DATA = {
           2689.551872253418,
           2718.762555531093,
           2709.8235127766925,
-          2590.2343086242677
+          2590.2343086242677,
+          2770.376335961478
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11638,6 +11715,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -12601,6 +12679,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
         "message": "docs: add redirects for extensions (#399)"
+      },
+      {
+        "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
+        "author": "dependabot[bot]",
+        "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
+        "message": "build(deps): bump the mstest group with 2 updates (#396)"
       }
     ],
     "labels": [
@@ -12759,7 +12843,8 @@ window.BENCHMARK_DATA = {
       "dd480312",
       "f6640b2f",
       "d8aaae48",
-      "e0d78b97"
+      "e0d78b97",
+      "bf2c3932"
     ],
     "datasets": [
       {
@@ -12921,7 +13006,8 @@ window.BENCHMARK_DATA = {
           1345.4889954158239,
           1253.4246359605056,
           1258.740214892796,
-          1228.2627910614015
+          1228.2627910614015,
+          1316.4008160909018
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13068,6 +13154,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -13258,7 +13345,8 @@ window.BENCHMARK_DATA = {
           87469.1875813802,
           84987.55909830729,
           85550.67788085938,
-          84579.75254313152
+          84579.75254313152,
+          86110.58205566407
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13425,7 +13513,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13595,7 +13684,8 @@ window.BENCHMARK_DATA = {
           7246.210503133138,
           6981.408885701498,
           6952.934167044504,
-          7154.258612496512
+          7154.258612496512,
+          7268.1919593811035
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13749,6 +13839,7 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
+          8800,
           8800,
           8800,
           8800,
