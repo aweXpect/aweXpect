@@ -966,6 +966,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -1129,7 +1135,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -1296,7 +1303,8 @@ window.BENCHMARK_DATA = {
           178.10221670071283,
           173.66952892712183,
           169.06662611961366,
-          177.89339673519135
+          177.89339673519135,
+          190.17886086872645
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1443,6 +1451,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1643,7 +1652,8 @@ window.BENCHMARK_DATA = {
           186.79948214122228,
           190.04389559427898,
           187.8506058546213,
-          194.3404757817586
+          194.3404757817586,
+          212.02943887710572
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1681,6 +1691,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -1990,7 +2001,8 @@ window.BENCHMARK_DATA = {
           863.3809864861624,
           874.2524589538574,
           944.7614302635193,
-          866.830303255717
+          866.830303255717,
+          922.4860708872477
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2144,6 +2156,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2680,6 +2693,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -2766,7 +2785,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -2856,7 +2876,8 @@ window.BENCHMARK_DATA = {
           284053.9682992789,
           290605.1613420759,
           280393.9402901786,
-          281292.6522391183
+          281292.6522391183,
+          299856.7323521205
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2926,6 +2947,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -3049,7 +3071,8 @@ window.BENCHMARK_DATA = {
           2019867.22421875,
           2063046.751674107,
           2028100.8235677083,
-          1987114.3861607143
+          1987114.3861607143,
+          2173087.9679129464
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3136,6 +3159,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -3242,7 +3266,8 @@ window.BENCHMARK_DATA = {
           670203.4954101562,
           690081.5088541667,
           660908.7457682291,
-          679965.6944661458
+          679965.6944661458,
+          695961.6893028846
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3319,6 +3344,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4317,6 +4343,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -4480,7 +4512,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -4647,7 +4680,8 @@ window.BENCHMARK_DATA = {
           625.1195526123047,
           575.013306753976,
           585.0146118310781,
-          581.0243513743083
+          581.0243513743083,
+          624.2207873889378
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4794,6 +4828,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -4994,7 +5029,8 @@ window.BENCHMARK_DATA = {
           410.4526568821498,
           414.1491769790649,
           415.26807280949185,
-          412.4805447260539
+          412.4805447260539,
+          463.3835614408766
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5032,6 +5068,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5341,7 +5378,8 @@ window.BENCHMARK_DATA = {
           16510.67483317057,
           14931.850549316407,
           15000.908245849609,
-          15105.760925292969
+          15105.760925292969,
+          15520.722469075521
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5495,6 +5533,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6493,6 +6532,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -6656,7 +6701,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -6823,7 +6869,8 @@ window.BENCHMARK_DATA = {
           225.35320029939925,
           229.8542181934629,
           216.35018209310678,
-          218.86630444526674
+          218.86630444526674,
+          243.91066128412882
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6970,6 +7017,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -7170,7 +7218,8 @@ window.BENCHMARK_DATA = {
           193.40501196043832,
           190.69795659383138,
           188.05856484633225,
-          197.0809690952301
+          197.0809690952301,
+          221.55132273265295
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7208,6 +7257,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7517,7 +7567,8 @@ window.BENCHMARK_DATA = {
           1156.0381518143874,
           1217.9535160064697,
           1218.6417766298566,
-          1169.802849706014
+          1169.802849706014,
+          1268.2730155944823
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7671,6 +7722,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -8669,6 +8721,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -8832,7 +8890,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -8999,7 +9058,8 @@ window.BENCHMARK_DATA = {
           344.400312937223,
           341.82775629483734,
           347.3814981324332,
-          349.7785401662191
+          349.7785401662191,
+          381.7512897763933
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9146,6 +9206,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9346,7 +9407,8 @@ window.BENCHMARK_DATA = {
           408.16460307439166,
           426.5458315531413,
           429.81826060612997,
-          420.6568264620645
+          420.6568264620645,
+          478.3635486602783
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9384,6 +9446,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -9693,7 +9756,8 @@ window.BENCHMARK_DATA = {
           1268.836889775594,
           1256.0316761561803,
           1318.848485438029,
-          1269.9260267893474
+          1269.9260267893474,
+          1401.1793912740854
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9847,6 +9911,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -10845,6 +10910,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -11008,7 +11079,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -11175,7 +11247,8 @@ window.BENCHMARK_DATA = {
           1240.073859914144,
           1208.147041193644,
           1290.181001027425,
-          1230.119121142796
+          1230.119121142796,
+          1296.7066986083985
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11322,6 +11395,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -11522,7 +11596,8 @@ window.BENCHMARK_DATA = {
           1254.9389784886287,
           1169.2599378313337,
           1345.4473163604737,
-          1211.7718964894614
+          1211.7718964894614,
+          1281.5484807332357
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11560,6 +11635,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -11869,7 +11945,8 @@ window.BENCHMARK_DATA = {
           2704.6743069966633,
           2836.385721588135,
           2849.1908790588377,
-          2842.7853070576984
+          2842.7853070576984,
+          2918.0741406758625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12023,6 +12100,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -13021,6 +13099,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:49:03 2025 \u002B0100",
         "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.0 to 1.6.2 (#401)"
+      },
+      {
+        "sha": "36cef1bf146d5445aa873af21bb6168f88e777ee",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Feb 22 12:19:35 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.0.1 (#403)"
       }
     ],
     "labels": [
@@ -13184,7 +13268,8 @@ window.BENCHMARK_DATA = {
       "fa4ce4f4",
       "c5103c0c",
       "128a0618",
-      "0097e896"
+      "0097e896",
+      "36cef1bf"
     ],
     "datasets": [
       {
@@ -13351,7 +13436,8 @@ window.BENCHMARK_DATA = {
           1282.0749186197916,
           1300.001635823931,
           1333.191593170166,
-          1315.5006589253744
+          1315.5006589253744,
+          1370.8064390818279
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13498,6 +13584,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -13698,7 +13785,8 @@ window.BENCHMARK_DATA = {
           87871.03189290364,
           86335.90899251302,
           88924.40099283853,
-          86377.46498616536
+          86377.46498616536,
+          91702.31418863933
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13870,7 +13958,8 @@ window.BENCHMARK_DATA = {
           54273,
           54271,
           54275,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14045,7 +14134,8 @@ window.BENCHMARK_DATA = {
           7104.996159362793,
           7369.830386352539,
           3244.1662228902183,
-          3295.7838877360027
+          3295.7838877360027,
+          3412.5329840523855
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14216,6 +14306,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680
         ],
