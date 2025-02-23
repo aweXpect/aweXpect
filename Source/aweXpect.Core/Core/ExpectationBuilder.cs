@@ -114,7 +114,7 @@ public abstract class ExpectationBuilder
 	///     by the <paramref name="memberAccessor" />.
 	/// </summary>
 	public MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(
-		MemberAccessor<TSource, TTarget?> memberAccessor,
+		MemberAccessor<TSource, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
 		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
@@ -127,6 +127,42 @@ public abstract class ExpectationBuilder
 
 			Node root = _node;
 			_node = _node.AddMapping(memberAccessor, expectationTextGenerator) ?? _node;
+			if (replaceIt)
+			{
+				_it = memberAccessor.ToString().Trim();
+			}
+
+			ExpectationGrammars previousGrammars = ExpectationGrammars;
+			ExpectationGrammars = expectationGrammar;
+			expectationBuilderCallback.Invoke(this);
+			ExpectationGrammars = previousGrammars;
+			_node = root;
+			if (replaceIt)
+			{
+				_it = DefaultCurrentSubject;
+			}
+
+			return this;
+		});
+
+	/// <summary>
+	///     Specifies a constraint that applies to the member selected asynchronously
+	///     by the <paramref name="memberAccessor" />.
+	/// </summary>
+	public MemberExpectationBuilder<TSource, TTarget> ForAsyncMember<TSource, TTarget>(
+		MemberAccessor<TSource, Task<TTarget?>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
+		bool replaceIt = true) =>
+		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
+		{
+			if (sourceConstraintCallback is not null)
+			{
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
+				_node.AddConstraint(constraint);
+			}
+
+			Node root = _node;
+			_node = _node.AddAsyncMapping(memberAccessor, expectationTextGenerator) ?? _node;
 			if (replaceIt)
 			{
 				_it = memberAccessor.ToString().Trim();

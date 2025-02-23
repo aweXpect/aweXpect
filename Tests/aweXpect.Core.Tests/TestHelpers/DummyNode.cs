@@ -16,7 +16,13 @@ internal class DummyNode(string name, Func<ConstraintResult>? result = null) : N
 		=> throw new NotSupportedException();
 
 	public override Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+		MemberAccessor<TValue, TTarget> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TTarget : default
+		=> throw new NotSupportedException();
+
+	public override Node? AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> throw new NotSupportedException();

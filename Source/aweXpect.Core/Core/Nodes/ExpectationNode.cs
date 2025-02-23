@@ -37,11 +37,25 @@ internal class ExpectationNode : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+		MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 	{
 		MappingNode<TValue, TTarget> mappingNode =
+			new(memberAccessor,
+				expectationTextGenerator);
+		_inner = mappingNode;
+		_combineResults = mappingNode.CombineResults;
+		return mappingNode;
+	}
+
+	/// <inheritdoc />
+	public override Node? AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TTarget : default
+	{
+		AsyncMappingNode<TValue, TTarget> mappingNode =
 			new(memberAccessor,
 				expectationTextGenerator);
 		_inner = mappingNode;

@@ -119,7 +119,8 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IContextConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IValueConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder And(string textSeparator = " and ") { }
-        public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget?> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
+        public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForAsyncMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, System.Threading.Tasks.Task<TTarget?>> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
+        public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, System.Threading.Tasks.Task<TTarget?>> asyncMemberAccessor, string? separator = null) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammars? expectationGrammar = default) { }
         public override string? ToString() { }
@@ -203,7 +204,7 @@ namespace aweXpect.Core
     public class MemberAccessor<TSource, TTarget> : aweXpect.Core.MemberAccessor
     {
         public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromExpression(System.Linq.Expressions.Expression<System.Func<TSource, TTarget?>> expression) { }
-        public static aweXpect.Core.MemberAccessor<TSource, TTarget?> FromFunc(System.Func<TSource, TTarget> func, string name) { }
+        public static aweXpect.Core.MemberAccessor<TSource, TTarget> FromFunc(System.Func<TSource, TTarget> func, string name) { }
     }
     public sealed class StringDifference
     {
