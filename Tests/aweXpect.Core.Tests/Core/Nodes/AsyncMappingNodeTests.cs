@@ -82,7 +82,7 @@ public class AsyncMappingNodeTests
 		AsyncMappingNode<string, int> node = new(
 			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "),
 			null,
-			s => Task.FromResult(new ConstraintResult.Context("context", s)));
+			s => Task.FromResult(new ConstraintResult.Context("context", s!)));
 		node.AddConstraint(new DummyValueConstraint<int>(v => new ConstraintResult.Success<int>(v, $"yeah: {v}")));
 		StringBuilder sb = new();
 
