@@ -17,13 +17,17 @@ internal class DummyNode(string name, Func<ConstraintResult>? result = null) : N
 
 	public override Node? AddMapping<TValue, TTarget>(
 		MemberAccessor<TValue, TTarget> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
+		Func<TValue?, Task<ConstraintResult.Context>>? context = null)
+		where TValue : default
 		where TTarget : default
 		=> throw new NotSupportedException();
 
 	public override Node? AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
+		Func<TValue?, Task<ConstraintResult.Context>>? context = null)
+		where TValue : default
 		where TTarget : default
 		=> throw new NotSupportedException();
 

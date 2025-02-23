@@ -16,12 +16,14 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		_expectationTextGenerator;
 
 	private readonly MemberAccessor<TSource, TTarget> _memberAccessor;
+	private readonly Func<TSource?, Task<ConstraintResult.Context>>? _context;
 
-	public MappingNode(
-		MemberAccessor<TSource, TTarget> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+	public MappingNode(MemberAccessor<TSource, TTarget> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
+		Func<TSource?, Task<ConstraintResult.Context>>? context = null)
 	{
 		_memberAccessor = memberAccessor;
+		_context = context;
 		if (expectationTextGenerator == null)
 		{
 			_expectationTextGenerator = DefaultExpectationTextGenerator;
@@ -41,7 +43,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		if (value is null || value is DelegateValue { IsNull: true })
 		{
 			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
-			return result.Fail("it was <null>", value);
+			return await AddContext(result.Fail("it was <null>", value), default, _context);
 		}
 
 		if (value is not TSource typedValue)
@@ -52,7 +54,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 
 		TTarget matchingValue = _memberAccessor.AccessMember(typedValue);
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
-		return memberResult.UseValue(value);
+		return await AddContext(memberResult.UseValue(value), typedValue, _context);
 	}
 
 	internal ConstraintResult CombineResults(
@@ -65,6 +67,18 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		}
 
 		return new MappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
+	}
+
+	private static async Task<ConstraintResult> AddContext(ConstraintResult result, TSource? value,
+		Func<TSource?, Task<ConstraintResult.Context>>? context)
+	{
+		if (context is null)
+		{
+			return result;
+		}
+
+		ConstraintResult.Context? usedContext = await context(value);
+		return result.WithContext(usedContext.Title, usedContext.Content);
 	}
 
 	private static void DefaultExpectationTextGenerator(

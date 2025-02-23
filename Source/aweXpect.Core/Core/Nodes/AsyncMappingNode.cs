@@ -12,16 +12,19 @@ namespace aweXpect.Core.Nodes;
 
 internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 {
+	private readonly Func<TSource?, Task<ConstraintResult.Context>>? _context;
+
 	private readonly Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>
 		_expectationTextGenerator;
 
 	private readonly MemberAccessor<TSource, Task<TTarget>> _memberAccessor;
 
-	public AsyncMappingNode(
-		MemberAccessor<TSource, Task<TTarget>> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+	public AsyncMappingNode(MemberAccessor<TSource, Task<TTarget>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
+		Func<TSource?, Task<ConstraintResult.Context>>? context = null)
 	{
 		_memberAccessor = memberAccessor;
+		_context = context;
 		if (expectationTextGenerator == null)
 		{
 			_expectationTextGenerator = DefaultExpectationTextGenerator;
@@ -38,10 +41,10 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 		IEvaluationContext context,
 		CancellationToken cancellationToken) where TValue : default
 	{
-		if (value is null || value is DelegateValue { IsNull: true })
+		if (value is null || value is DelegateValue { IsNull: true, })
 		{
 			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
-			return result.Fail("it was <null>", value);
+			return await AddContext(result.Fail("it was <null>", value), default, _context);
 		}
 
 		if (value is not TSource typedValue)
@@ -52,7 +55,7 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 
 		TTarget matchingValue = await _memberAccessor.AccessMember(typedValue);
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
-		return memberResult.UseValue(value);
+		return await AddContext(memberResult.UseValue(value), typedValue, _context);
 	}
 
 	internal ConstraintResult CombineResults(
@@ -65,6 +68,18 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 		}
 
 		return new AsyncMappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
+	}
+
+	private static async Task<ConstraintResult> AddContext(ConstraintResult result, TSource? value,
+		Func<TSource?, Task<ConstraintResult.Context>>? context)
+	{
+		if (context is null)
+		{
+			return result;
+		}
+
+		ConstraintResult.Context? usedContext = await context(value);
+		return result.WithContext(usedContext.Title, usedContext.Content);
 	}
 
 	private static void DefaultExpectationTextGenerator(
