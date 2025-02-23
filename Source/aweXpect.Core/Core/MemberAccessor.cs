@@ -52,9 +52,9 @@ public class MemberAccessor<TSource, TTarget> : MemberAccessor
 	/// <summary>
 	///     Creates a member accessor from the given <paramref name="func" />.
 	/// </summary>
-	public static MemberAccessor<TSource, TTarget?> FromFunc(
+	public static MemberAccessor<TSource, TTarget> FromFunc(
 		Func<TSource, TTarget> func, string name)
 		=> new(func, name);
 
-	internal TTarget? AccessMember(TSource value) => _accessor.Invoke(value);
+	internal TTarget AccessMember(TSource value) => _accessor.Invoke(value);
 }

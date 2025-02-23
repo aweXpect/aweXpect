@@ -10,15 +10,15 @@ using aweXpect.Core.Sources;
 
 namespace aweXpect.Core.Nodes;
 
-internal class MappingNode<TSource, TTarget> : ExpectationNode
+internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 {
-	private readonly Action<MemberAccessor<TSource, TTarget>, StringBuilder>
+	private readonly Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>
 		_expectationTextGenerator;
 
-	private readonly MemberAccessor<TSource, TTarget> _memberAccessor;
+	private readonly MemberAccessor<TSource, Task<TTarget>> _memberAccessor;
 
-	public MappingNode(
-		MemberAccessor<TSource, TTarget> memberAccessor,
+	public AsyncMappingNode(
+		MemberAccessor<TSource, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 	{
 		_memberAccessor = memberAccessor;
@@ -50,7 +50,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}");
 		}
 
-		TTarget? matchingValue = _memberAccessor.AccessMember(typedValue);
+		TTarget? matchingValue = await _memberAccessor.AccessMember(typedValue);
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
 		return memberResult.UseValue(value);
 	}
@@ -64,19 +64,19 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			return result.PrependExpectationText(e => _expectationTextGenerator(_memberAccessor, e));
 		}
 
-		return new MappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
+		return new AsyncMappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
 	}
 
 	private static void DefaultExpectationTextGenerator(
-		MemberAccessor<TSource, TTarget> memberAccessor,
+		MemberAccessor<TSource, Task<TTarget>> memberAccessor,
 		StringBuilder expectation)
 		=> expectation.Append(memberAccessor);
 
-	private sealed class MappingConstraintResult(
+	private sealed class AsyncMappingConstraintResult(
 		ConstraintResult left,
 		ConstraintResult right,
-		Action<MemberAccessor<TSource, TTarget>, StringBuilder>? expectationTextGenerator,
-		MemberAccessor<TSource, TTarget> memberAccessor)
+		Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>? expectationTextGenerator,
+		MemberAccessor<TSource, Task<TTarget>> memberAccessor)
 		: ConstraintResult(And(left.Outcome, right.Outcome), FurtherProcessingStrategy.Continue)
 	{
 		private static Outcome And(Outcome left, Outcome right)

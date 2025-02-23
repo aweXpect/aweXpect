@@ -30,10 +30,17 @@ internal class AndNode : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+		MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> Current.AddMapping(memberAccessor, expectationTextGenerator);
+
+	/// <inheritdoc />
+	public override Node? AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TTarget : default
+		=> Current.AddAsyncMapping(memberAccessor, expectationTextGenerator);
 
 	public override void AddNode(Node node, string? separator = null)
 	{

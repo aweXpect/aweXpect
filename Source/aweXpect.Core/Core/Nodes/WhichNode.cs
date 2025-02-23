@@ -45,10 +45,17 @@ internal class WhichNode<TSource, TMember> : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(
-		MemberAccessor<TValue, TTarget?> memberAccessor,
+		MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TTarget : default
 		=> _inner?.AddMapping(memberAccessor, expectationTextGenerator);
+
+	/// <inheritdoc />
+	public override Node? AddAsyncMapping<TValue, TTarget>(
+		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
+		where TTarget : default
+		=> _inner?.AddAsyncMapping(memberAccessor, expectationTextGenerator);
 
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)
