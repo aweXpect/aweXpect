@@ -124,7 +124,8 @@ public sealed class WhichNodeTests
 		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
-		whichNode.AddMapping(MemberAccessor<int, int>.FromFunc(i => 2 * i, "doubled:"));
+		whichNode.AddMapping(MemberAccessor<int, int>.FromFunc(i => 2 * i, "doubled:"),
+			context: i => Task.FromResult(new ConstraintResult.Context("context", i.ToString())));
 		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
 		StringBuilder sb = new();
 
@@ -133,6 +134,7 @@ public sealed class WhichNodeTests
 		result.AppendExpectation(sb);
 		await That(result.Outcome).IsEqualTo(Outcome.Success);
 		await That(sb.ToString()).IsEqualTo("doubled:e2");
+		await That(result.GetContexts()).Contains(x => x is { Title: "context", Content: "3", });
 	}
 
 	[Fact]

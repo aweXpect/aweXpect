@@ -128,6 +128,7 @@ namespace aweXpect.Core
         public void WithTimeout(System.TimeSpan timeout) { }
         public class MemberExpectationBuilder<TSource, TMember>
         {
+            public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> AddContext(System.Func<TSource?, System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult.Context>> context) { }
             public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
             public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
         }
