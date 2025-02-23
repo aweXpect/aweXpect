@@ -984,6 +984,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -1150,7 +1156,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -1320,7 +1327,8 @@ window.BENCHMARK_DATA = {
           177.89339673519135,
           190.17886086872645,
           173.46102288564046,
-          172.64803570111593
+          172.64803570111593,
+          173.47221284253257
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1467,6 +1475,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1673,7 +1682,8 @@ window.BENCHMARK_DATA = {
           194.3404757817586,
           212.02943887710572,
           192.15097641944885,
-          189.34927344322205
+          189.34927344322205,
+          192.150825770696
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1711,6 +1721,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -2026,7 +2037,8 @@ window.BENCHMARK_DATA = {
           866.830303255717,
           922.4860708872477,
           923.2082426071167,
-          858.4947442327227
+          858.4947442327227,
+          889.8392345428467
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2180,6 +2192,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2737,6 +2750,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -2826,7 +2845,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -2919,7 +2939,8 @@ window.BENCHMARK_DATA = {
           281292.6522391183,
           299856.7323521205,
           282970.81024639425,
-          281720.5221470424
+          281720.5221470424,
+          281851.20856584824
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2989,6 +3010,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -3118,7 +3140,8 @@ window.BENCHMARK_DATA = {
           1987114.3861607143,
           2173087.9679129464,
           1923409.2359375,
-          2062497.4736979166
+          2062497.4736979166,
+          2063289.204799107
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3216,6 +3239,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738
         ],
         "borderColor": "#FF671B",
@@ -3317,7 +3341,8 @@ window.BENCHMARK_DATA = {
           679965.6944661458,
           695961.6893028846,
           694869.6949869791,
-          664676.2387695312
+          664676.2387695312,
+          661482.3131510416
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3394,6 +3419,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4413,6 +4439,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -4579,7 +4611,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -4749,7 +4782,8 @@ window.BENCHMARK_DATA = {
           581.0243513743083,
           624.2207873889378,
           566.90557883336,
-          574.909608909062
+          574.909608909062,
+          572.8782802990505
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4896,6 +4930,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -5102,7 +5137,8 @@ window.BENCHMARK_DATA = {
           412.4805447260539,
           463.3835614408766,
           405.4121044476827,
-          448.4075046221415
+          448.4075046221415,
+          428.4490516662598
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5140,6 +5176,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5455,7 +5492,8 @@ window.BENCHMARK_DATA = {
           15105.760925292969,
           15520.722469075521,
           14893.698969159808,
-          14640.968423025948
+          14640.968423025948,
+          15219.48473903111
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5609,6 +5647,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6628,6 +6667,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -6794,7 +6839,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -6964,7 +7010,8 @@ window.BENCHMARK_DATA = {
           218.86630444526674,
           243.91066128412882,
           225.70752132733662,
-          223.71914882319314
+          223.71914882319314,
+          223.48004978497823
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7111,6 +7158,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -7317,7 +7365,8 @@ window.BENCHMARK_DATA = {
           197.0809690952301,
           221.55132273265295,
           191.4220441977183,
-          190.3678261722837
+          190.3678261722837,
+          197.64513012568156
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7355,6 +7404,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7670,7 +7720,8 @@ window.BENCHMARK_DATA = {
           1169.802849706014,
           1268.2730155944823,
           1216.3045836228591,
-          1182.2763317653112
+          1182.2763317653112,
+          1231.3930648803712
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7824,6 +7875,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -8843,6 +8895,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -9009,7 +9067,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -9179,7 +9238,8 @@ window.BENCHMARK_DATA = {
           349.7785401662191,
           381.7512897763933,
           336.7437336104257,
-          351.1178954442342
+          351.1178954442342,
+          340.26833197275795
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9326,6 +9386,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9532,7 +9593,8 @@ window.BENCHMARK_DATA = {
           420.6568264620645,
           478.3635486602783,
           409.93663011278426,
-          415.0427648862203
+          415.0427648862203,
+          501.2262914657593
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9570,6 +9632,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -9885,7 +9948,8 @@ window.BENCHMARK_DATA = {
           1269.9260267893474,
           1401.1793912740854,
           1258.7416618892125,
-          1210.056265422276
+          1210.056265422276,
+          1286.5097356942983
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10039,6 +10103,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -11058,6 +11123,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -11224,7 +11295,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -11394,7 +11466,8 @@ window.BENCHMARK_DATA = {
           1230.119121142796,
           1296.7066986083985,
           1215.3611574172974,
-          1203.284512247358
+          1203.284512247358,
+          1241.6561150868733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11541,6 +11614,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -11747,7 +11821,8 @@ window.BENCHMARK_DATA = {
           1211.7718964894614,
           1281.5484807332357,
           1200.2363016764323,
-          1192.2478160858154
+          1192.2478160858154,
+          1194.4991613115583
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11785,6 +11860,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -12100,7 +12176,8 @@ window.BENCHMARK_DATA = {
           2842.7853070576984,
           2918.0741406758625,
           2767.2321008954727,
-          2741.2618494669596
+          2741.2618494669596,
+          2684.3439524514333
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12254,6 +12331,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -13273,6 +13351,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 09:38:30 2025 \u002B0100",
         "message": "feat: support async mapping nodes (#405)"
+      },
+      {
+        "sha": "a6090881eab7fbdfcbeb87935425d0bb6fbc4f88",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Feb 23 10:28:23 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v1.1.0 (#406)"
       }
     ],
     "labels": [
@@ -13439,7 +13523,8 @@ window.BENCHMARK_DATA = {
       "0097e896",
       "36cef1bf",
       "b07b0834",
-      "3065034c"
+      "3065034c",
+      "a6090881"
     ],
     "datasets": [
       {
@@ -13609,7 +13694,8 @@ window.BENCHMARK_DATA = {
           1315.5006589253744,
           1370.8064390818279,
           1270.7228670756022,
-          1296.4645659582955
+          1296.4645659582955,
+          1289.6200808116369
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13756,6 +13842,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -13962,7 +14049,8 @@ window.BENCHMARK_DATA = {
           86377.46498616536,
           91702.31418863933,
           86810.87440592448,
-          88106.37176106771
+          88106.37176106771,
+          87236.53071812222
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14137,7 +14225,8 @@ window.BENCHMARK_DATA = {
           54271,
           54273,
           54273,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14315,7 +14404,8 @@ window.BENCHMARK_DATA = {
           3295.7838877360027,
           3412.5329840523855,
           3185.0348251342775,
-          3289.383748372396
+          3289.383748372396,
+          3254.5692024230957
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14486,6 +14576,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
