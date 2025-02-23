@@ -50,7 +50,7 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 				$"The member type for the actual value in the which node did not match.{Environment.NewLine}Expected: {Formatter.Format(typeof(TSource))},{Environment.NewLine}   Found: {Formatter.Format(value.GetType())}");
 		}
 
-		TTarget? matchingValue = await _memberAccessor.AccessMember(typedValue);
+		TTarget matchingValue = await _memberAccessor.AccessMember(typedValue);
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
 		return memberResult.UseValue(value);
 	}
