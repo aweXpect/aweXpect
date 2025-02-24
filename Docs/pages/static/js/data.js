@@ -1002,6 +1002,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -1171,7 +1177,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -1344,7 +1351,8 @@ window.BENCHMARK_DATA = {
           172.64803570111593,
           173.47221284253257,
           178.72929636069708,
-          182.09599515107962
+          182.09599515107962,
+          183.03493776321412
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1491,6 +1499,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1703,7 +1712,8 @@ window.BENCHMARK_DATA = {
           189.34927344322205,
           192.150825770696,
           201.94063482284545,
-          197.04335303306578
+          197.04335303306578,
+          194.55252879460653
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1741,6 +1751,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -2062,7 +2073,8 @@ window.BENCHMARK_DATA = {
           858.4947442327227,
           889.8392345428467,
           921.0946389516195,
-          907.5491203894982
+          907.5491203894982,
+          922.2297602335613
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2216,6 +2228,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2794,6 +2807,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -2886,7 +2905,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -2982,7 +3002,8 @@ window.BENCHMARK_DATA = {
           281720.5221470424,
           281851.20856584824,
           287038.4432466947,
-          284652.9926106771
+          284652.9926106771,
+          292797.6131766183
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3052,6 +3073,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -3187,7 +3209,8 @@ window.BENCHMARK_DATA = {
           2062497.4736979166,
           2063289.204799107,
           2073355.9049479167,
-          2008429.28359375
+          2008429.28359375,
+          2117136.2260416667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3285,6 +3308,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -3392,7 +3416,8 @@ window.BENCHMARK_DATA = {
           664676.2387695312,
           661482.3131510416,
           676510.5888020833,
-          696054.0864257812
+          696054.0864257812,
+          684462.5043945312
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3469,6 +3494,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4509,6 +4535,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -4678,7 +4710,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -4851,7 +4884,8 @@ window.BENCHMARK_DATA = {
           574.909608909062,
           572.8782802990505,
           593.8342116900852,
-          597.8777432441711
+          597.8777432441711,
+          619.2218229293824
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4998,6 +5032,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -5210,7 +5245,8 @@ window.BENCHMARK_DATA = {
           448.4075046221415,
           428.4490516662598,
           427.19484586715697,
-          419.7050150235494
+          419.7050150235494,
+          480.7912103017171
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5248,6 +5284,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5569,7 +5606,8 @@ window.BENCHMARK_DATA = {
           14640.968423025948,
           15219.48473903111,
           15776.629307047526,
-          14670.937704233023
+          14670.937704233023,
+          15348.9453125
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5723,6 +5761,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6763,6 +6802,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -6932,7 +6977,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -7105,7 +7151,8 @@ window.BENCHMARK_DATA = {
           223.71914882319314,
           223.48004978497823,
           228.4451059182485,
-          224.4047178030014
+          224.4047178030014,
+          247.66958737373352
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7252,6 +7299,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -7464,7 +7512,8 @@ window.BENCHMARK_DATA = {
           190.3678261722837,
           197.64513012568156,
           191.09099217823572,
-          194.20816189050674
+          194.20816189050674,
+          236.8888242562612
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7502,6 +7551,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7823,7 +7873,8 @@ window.BENCHMARK_DATA = {
           1182.2763317653112,
           1231.3930648803712,
           1157.8188234056745,
-          1300.1598808582012
+          1300.1598808582012,
+          1233.0145332336426
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7977,6 +8028,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -9017,6 +9069,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -9186,7 +9244,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -9359,7 +9418,8 @@ window.BENCHMARK_DATA = {
           351.1178954442342,
           340.26833197275795,
           360.7692256314414,
-          348.31151987711587
+          348.31151987711587,
+          378.8276767412821
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9506,6 +9566,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9718,7 +9779,8 @@ window.BENCHMARK_DATA = {
           415.0427648862203,
           501.2262914657593,
           436.8153597831726,
-          416.94818172454836
+          416.94818172454836,
+          461.9652804647173
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9756,6 +9818,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -10077,7 +10140,8 @@ window.BENCHMARK_DATA = {
           1210.056265422276,
           1286.5097356942983,
           1245.6106277193342,
-          1343.3330799983098
+          1343.3330799983098,
+          1335.2321887383093
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10231,6 +10295,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -11271,6 +11336,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -11440,7 +11511,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -11613,7 +11685,8 @@ window.BENCHMARK_DATA = {
           1203.284512247358,
           1241.6561150868733,
           1295.504610824585,
-          1256.8871546427408
+          1256.8871546427408,
+          1309.4071862147405
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11760,6 +11833,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -11972,7 +12046,8 @@ window.BENCHMARK_DATA = {
           1192.2478160858154,
           1194.4991613115583,
           1257.059605662028,
-          1215.5173990885417
+          1215.5173990885417,
+          1312.46263478597
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12010,6 +12085,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -12331,7 +12407,8 @@ window.BENCHMARK_DATA = {
           2741.2618494669596,
           2684.3439524514333,
           2745.484650538518,
-          2883.3802967071533
+          2883.3802967071533,
+          2845.336651102702
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12485,6 +12562,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -13525,6 +13603,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 23 13:11:09 2025 \u002B0100",
         "message": "chore: update aweXpect.Core to v1.2.0 (#408)"
+      },
+      {
+        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
+        "author": "dependabot[bot]",
+        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
+        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
       }
     ],
     "labels": [
@@ -13694,7 +13778,8 @@ window.BENCHMARK_DATA = {
       "3065034c",
       "a6090881",
       "11eb9576",
-      "6da1bdd9"
+      "6da1bdd9",
+      "e74b96fb"
     ],
     "datasets": [
       {
@@ -13867,7 +13952,8 @@ window.BENCHMARK_DATA = {
           1296.4645659582955,
           1289.6200808116369,
           1273.0233478546143,
-          1356.6624691009522
+          1356.6624691009522,
+          1348.150994237264
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14014,6 +14100,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -14226,7 +14313,8 @@ window.BENCHMARK_DATA = {
           88106.37176106771,
           87236.53071812222,
           87654.25128173828,
-          88199.52890625
+          88199.52890625,
+          89223.75324358259
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14404,7 +14492,8 @@ window.BENCHMARK_DATA = {
           54273,
           54271,
           54273,
-          54271
+          54271,
+          54273
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14585,7 +14674,8 @@ window.BENCHMARK_DATA = {
           3289.383748372396,
           3254.5692024230957,
           3273.3985382080077,
-          3361.9180987675986
+          3361.9180987675986,
+          3331.5351066589355
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14756,6 +14846,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
