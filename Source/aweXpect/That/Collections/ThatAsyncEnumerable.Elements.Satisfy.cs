@@ -24,7 +24,7 @@ public static partial class ThatAsyncEnumerable
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => $"satisfies {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						predicate,
 						"did")),
 				_subject);
@@ -44,7 +44,7 @@ public static partial class ThatAsyncEnumerable
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => $"satisfies {doNotPopulateThisValue}",
+						() => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						predicate,
 						"did")),
 				_subject);

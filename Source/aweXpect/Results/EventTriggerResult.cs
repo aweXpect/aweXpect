@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Recording;
 
@@ -47,7 +48,7 @@ public class EventTriggerResult<TSubject>(
 	{
 		filter.AddPredicate(
 			o => o.Length > 0 && predicate(o[0]),
-			$" with sender {doNotPopulateThisValue}");
+			$" with sender {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 
@@ -65,7 +66,7 @@ public class EventTriggerResult<TSubject>(
 	{
 		filter.AddPredicate(
 			o => o.Length > 1 && o[1] is TEventArgs m && predicate(m),
-			$" with {Formatter.Format(typeof(TEventArgs))} {doNotPopulateThisValue}");
+			$" with {Formatter.Format(typeof(TEventArgs))} {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 
@@ -81,7 +82,7 @@ public class EventTriggerResult<TSubject>(
 	{
 		filter.AddPredicate(
 			o => o.Any(x => x is TParameter m && predicate(m)),
-			$" with {Formatter.Format(typeof(TParameter))} parameter {doNotPopulateThisValue}");
+			$" with {Formatter.Format(typeof(TParameter))} parameter {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 
@@ -98,7 +99,7 @@ public class EventTriggerResult<TSubject>(
 	{
 		filter.AddPredicate(
 			o => o.Length > position && o[position] is TParameter m && predicate(m),
-			$" with {Formatter.Format(typeof(TParameter))} parameter [{position}] {doNotPopulateThisValue}");
+			$" with {Formatter.Format(typeof(TParameter))} parameter [{position}] {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
 		return this;
 	}
 

@@ -40,7 +40,7 @@ public static partial class ThatEnumerable
 		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new IsInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Descending, options,
-					$" for {doNotPopulateThisValue}")),
+					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
 			options);
 	}

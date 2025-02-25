@@ -29,9 +29,9 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             is equivalent to new
-					             					{
-					             						Value = expectedValue,
-					             					},
+					             {
+					             	Value = expectedValue,
+					             },
 					             but it was Other {
 					               Value = 1
 					             }
@@ -56,9 +56,9 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             is equivalent to new
-					             					{
-					             						HasWaitedEnough = true,
-					             					} within 0:30,
+					             {
+					             	HasWaitedEnough = true,
+					             } within 0:30,
 					             but it was MyChangingClass {
 					               HasWaitedEnough = False
 					             }
@@ -131,9 +131,9 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             is equivalent to new
-					             					{
-					             						HasWaitedEnough = true,
-					             					} within 0:00.050,
+					             {
+					             	HasWaitedEnough = true,
+					             } within 0:00.050,
 					             but it was MyChangingClass {
 					               HasWaitedEnough = False
 					             }

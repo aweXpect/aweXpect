@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Signaling;
 
@@ -61,7 +62,7 @@ public class SignalCountResult<TParameter, TSelf>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
-		options.WithPredicate(predicate, doNotPopulateThisValue);
+		options.WithPredicate(predicate, doNotPopulateThisValue.TrimCommonWhiteSpace());
 		return (TSelf)this;
 	}
 }

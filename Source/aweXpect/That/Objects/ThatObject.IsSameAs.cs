@@ -17,7 +17,7 @@ public static partial class ThatObject
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammar) =>
-					new IsSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
+					new IsSameAsConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
 			source);
 
 	/// <summary>
@@ -29,7 +29,7 @@ public static partial class ThatObject
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammar) =>
-					new IsNotSameAsConstraint<T>(it, expected, doNotPopulateThisValue)),
+					new IsNotSameAsConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
 			source);
 
 	private readonly struct IsSameAsConstraint<T>(

@@ -104,7 +104,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is equivalent to 42 for all items,
+						             is equivalent to constantValue for all items,
 						             but it was <null>
 						             """);
 				}

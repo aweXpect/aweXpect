@@ -36,8 +36,8 @@ public static partial class ThatEnumerable
 						it,
 						_quantifier,
 						() => grammar == ExpectationGrammars.None
-							? $"is equivalent to {Formatter.Format(expected)}"
-							: $"are equivalent to {Formatter.Format(expected)}",
+							? $"is equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+							: $"are equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						a => equalityOptions.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

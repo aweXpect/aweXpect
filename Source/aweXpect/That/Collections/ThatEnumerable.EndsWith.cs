@@ -27,7 +27,7 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected.ToArray(),
+				=> new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -61,7 +61,7 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue, expected.ToArray(),
+				=> new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -96,7 +96,7 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new NotEndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, unexpected.ToArray(),
+				=> new NotEndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
 					options)),
 			source,
 			options);
@@ -132,7 +132,7 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new NotEndsWithConstraint<string?, string?>(it, doNotPopulateThisValue, unexpected.ToArray(),
+				=> new NotEndsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
 					options)),
 			source,
 			options);

@@ -62,7 +62,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
-					doNotPopulateThisValue,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
@@ -83,7 +83,7 @@ public static partial class ThatAsyncEnumerable
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
-					doNotPopulateThisValue,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);

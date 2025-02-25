@@ -58,7 +58,7 @@ public static partial class ThatEnumerable
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new OnlyHasUniqueItemsWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
-					doNotPopulateThisValue,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
@@ -78,7 +78,7 @@ public static partial class ThatEnumerable
 		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new OnlyHasUniqueItemsWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
-					doNotPopulateThisValue,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
