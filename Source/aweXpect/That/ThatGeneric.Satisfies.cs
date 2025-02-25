@@ -24,7 +24,7 @@ public static partial class ThatGeneric
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammar) =>
-					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue, options)),
+					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -38,7 +38,7 @@ public static partial class ThatGeneric
 		string doNotPopulateThisValue = "")
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammar) =>
-					new NotSatisfyConstraint<T>(it, predicate, doNotPopulateThisValue)),
+					new NotSatisfyConstraint<T>(it, predicate, doNotPopulateThisValue.TrimCommonWhiteSpace())),
 			source);
 
 	private readonly struct SatisfyConstraint<T>(
@@ -82,7 +82,7 @@ public static partial class ThatGeneric
 		}
 
 		public override string ToString()
-			=> $"satisfy {predicateExpression}{options}";
+			=> $"satisfy {predicateExpression.TrimCommonWhiteSpace()}{options}";
 	}
 
 	private readonly struct NotSatisfyConstraint<T>(

@@ -72,7 +72,7 @@ public static partial class ThatEnumerable
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new ContainConstraint<TItem>(
 					it,
-					q => $"contains item matching {doNotPopulateThisValue} {q}",
+					q => $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
 					predicate,
 					quantifier)),
 			source,
@@ -92,7 +92,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -110,7 +110,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -164,7 +164,7 @@ public static partial class ThatEnumerable
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new NotContainConstraint<TItem>(it,
-					() => $"does not contain item matching {doNotPopulateThisValue}",
+					() => $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 					predicate)),
 			source);
 

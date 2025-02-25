@@ -25,8 +25,8 @@ public static partial class ThatEnumerable
 						_quantifier,
 						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
 						{
-							true => $"satisfy {doNotPopulateThisValue}",
-							_ => $"satisfies {doNotPopulateThisValue}",
+							true => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							_ => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						},
 						predicate,
 						"did")),
@@ -49,8 +49,8 @@ public static partial class ThatEnumerable
 						_quantifier,
 						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
 						{
-							true => $"satisfy {doNotPopulateThisValue}",
-							_ => $"satisfies {doNotPopulateThisValue}",
+							true => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							_ => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						},
 						predicate,
 						"did")),

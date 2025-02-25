@@ -43,7 +43,7 @@ public static partial class ThatAsyncEnumerable
 		return new CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new IsInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Descending, options,
-					$" for {doNotPopulateThisValue}")),
+					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
 			options);
 	}

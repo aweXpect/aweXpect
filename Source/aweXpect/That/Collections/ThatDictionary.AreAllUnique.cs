@@ -67,7 +67,7 @@ public static partial class ThatDictionary
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(it, memberAccessor,
-					doNotPopulateThisValue,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
@@ -92,7 +92,7 @@ public static partial class ThatDictionary
 		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(it, memberAccessor,
-					doNotPopulateThisValue,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);

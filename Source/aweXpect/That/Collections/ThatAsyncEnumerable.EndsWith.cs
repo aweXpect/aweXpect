@@ -30,7 +30,7 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected.ToArray(),
+				new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -64,7 +64,7 @@ public static partial class ThatAsyncEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue, expected.ToArray(),
+				new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -99,7 +99,7 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new DoesNotEndWithConstraint<TItem, TItem>(it, doNotPopulateThisValue, unexpected.ToArray(),
+				new DoesNotEndWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
 					options)),
 			source,
 			options);
@@ -135,7 +135,7 @@ public static partial class ThatAsyncEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new DoesNotEndWithConstraint<string?, string?>(it, doNotPopulateThisValue, unexpected.ToArray(),
+				new DoesNotEndWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
 					options)),
 			source,
 			options);

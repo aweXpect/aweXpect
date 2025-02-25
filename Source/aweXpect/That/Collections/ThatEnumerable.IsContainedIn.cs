@@ -22,7 +22,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return new ObjectCollectionBeContainedInResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -40,7 +40,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return new StringCollectionBeContainedInResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsConstraint<string?, string?>(it, doNotPopulateThisValue, expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
