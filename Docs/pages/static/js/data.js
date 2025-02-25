@@ -1026,6 +1026,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -1199,7 +1205,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -1376,7 +1383,8 @@ window.BENCHMARK_DATA = {
           183.03493776321412,
           177.03573072751362,
           200.66352038383485,
-          177.48725737844194
+          177.48725737844194,
+          168.87460500853402
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1523,6 +1531,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1743,7 +1752,8 @@ window.BENCHMARK_DATA = {
           194.55252879460653,
           187.79813311650202,
           203.44081190427144,
-          190.81489157676697
+          190.81489157676697,
+          186.61269454956056
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1781,6 +1791,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -2110,7 +2121,8 @@ window.BENCHMARK_DATA = {
           922.2297602335613,
           902.2438252766927,
           909.2683493750436,
-          927.8644832611084
+          927.8644832611084,
+          854.515723841531
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2264,6 +2276,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2870,6 +2883,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -2966,7 +2985,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -3066,7 +3086,8 @@ window.BENCHMARK_DATA = {
           292797.6131766183,
           295842.3683035714,
           289367.9005208333,
-          293767.01881510415
+          293767.01881510415,
+          280685.55419921875
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3136,6 +3157,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -3279,7 +3301,8 @@ window.BENCHMARK_DATA = {
           2117136.2260416667,
           2004428.314732143,
           2156013.5640625,
-          2220208.1515066964
+          2220208.1515066964,
+          1967808.021484375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3377,6 +3400,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -3492,7 +3516,8 @@ window.BENCHMARK_DATA = {
           684462.5043945312,
           656558.4916015625,
           722873.0350911458,
-          685143.1132161458
+          685143.1132161458,
+          655718.0032784598
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3569,6 +3594,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4637,6 +4663,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -4810,7 +4842,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -4987,7 +5020,8 @@ window.BENCHMARK_DATA = {
           619.2218229293824,
           595.3874572118124,
           611.1879355748495,
-          612.951800664266
+          612.951800664266,
+          562.7183212280273
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5134,6 +5168,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -5354,7 +5389,8 @@ window.BENCHMARK_DATA = {
           480.7912103017171,
           431.4810540335519,
           426.0770240851811,
-          430.17569850041315
+          430.17569850041315,
+          410.30408692359924
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5392,6 +5428,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5721,7 +5758,8 @@ window.BENCHMARK_DATA = {
           15348.9453125,
           14922.130297851563,
           14700.490827120268,
-          15772.640808105469
+          15772.640808105469,
+          14279.947695922852
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5875,6 +5913,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6943,6 +6982,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -7116,7 +7161,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -7293,7 +7339,8 @@ window.BENCHMARK_DATA = {
           247.66958737373352,
           219.3735548019409,
           242.91908044081467,
-          250.77408463160197
+          250.77408463160197,
+          215.5157785097758
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7440,6 +7487,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -7660,7 +7708,8 @@ window.BENCHMARK_DATA = {
           236.8888242562612,
           195.19265469482966,
           213.346586672465,
-          197.96642166773478
+          197.96642166773478,
+          187.69992005030315
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7698,6 +7747,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -8027,7 +8077,8 @@ window.BENCHMARK_DATA = {
           1233.0145332336426,
           1170.859646987915,
           1249.3803084237236,
-          1212.0548372268677
+          1212.0548372268677,
+          1139.2192077636719
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8181,6 +8232,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -9249,6 +9301,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -9422,7 +9480,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -9599,7 +9658,8 @@ window.BENCHMARK_DATA = {
           378.8276767412821,
           344.6333299416762,
           369.10111042658485,
-          341.05374489511763
+          341.05374489511763,
+          351.072160414287
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9746,6 +9806,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9966,7 +10027,8 @@ window.BENCHMARK_DATA = {
           461.9652804647173,
           434.73349113464354,
           443.058380762736,
-          425.1323392050607
+          425.1323392050607,
+          408.2790579114641
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10004,6 +10066,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -10333,7 +10396,8 @@ window.BENCHMARK_DATA = {
           1335.2321887383093,
           1238.1949005126953,
           1265.3086311340332,
-          1308.7605392456055
+          1308.7605392456055,
+          1216.4561419169108
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10487,6 +10551,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -11555,6 +11620,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -11728,7 +11799,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -11905,7 +11977,8 @@ window.BENCHMARK_DATA = {
           1309.4071862147405,
           1203.0499405494104,
           1276.887897237142,
-          1211.28622341156
+          1211.28622341156,
+          1189.4122442881267
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12052,6 +12125,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -12272,7 +12346,8 @@ window.BENCHMARK_DATA = {
           1312.46263478597,
           1223.2447832743326,
           1281.6934903462727,
-          1214.9134709676107
+          1214.9134709676107,
+          1264.4160370459924
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12310,6 +12385,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -12639,7 +12715,8 @@ window.BENCHMARK_DATA = {
           2845.336651102702,
           2713.892446899414,
           2837.940751647949,
-          2786.307632991246
+          2786.307632991246,
+          2638.2648038228353
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12793,6 +12870,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -13861,6 +13939,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
         "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
+      },
+      {
+        "sha": "4d0029040776fbbeb889dec42c5ae7dd5fe2ab3f",
+        "author": "dependabot[bot]",
+        "date": "Tue Feb 25 21:09:12 2025 \u002B0000",
+        "message": "build(deps): bump PublicApiGenerator from 11.4.1 to 11.4.2 (#411)"
       }
     ],
     "labels": [
@@ -14034,7 +14118,8 @@ window.BENCHMARK_DATA = {
       "e74b96fb",
       "ad717ef7",
       "977afeac",
-      "485d524c"
+      "485d524c",
+      "4d002904"
     ],
     "datasets": [
       {
@@ -14211,7 +14296,8 @@ window.BENCHMARK_DATA = {
           1348.150994237264,
           1327.1830154418944,
           1377.70715675354,
-          1369.8687587738036
+          1369.8687587738036,
+          1280.4868218558174
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14358,6 +14444,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -14578,7 +14665,8 @@ window.BENCHMARK_DATA = {
           89223.75324358259,
           87719.32002476284,
           88058.01293945312,
-          89844.2961344401
+          89844.2961344401,
+          87091.09428710937
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14760,7 +14848,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54273,
-          54273
+          54273,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14945,7 +15034,8 @@ window.BENCHMARK_DATA = {
           3331.5351066589355,
           3188.171901702881,
           3311.208043507167,
-          3327.511433919271
+          3327.511433919271,
+          3134.9119099208287
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15116,6 +15206,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
