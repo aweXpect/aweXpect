@@ -1,28 +1,39 @@
-﻿namespace aweXpect.Tests;
+﻿// ReSharper disable UnusedMember.Local
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatGeneric
 {
-	public sealed class Satisfies
+	public sealed class CompliesWith
 	{
 		public sealed class Tests
 		{
 			[Theory]
-			[InlineData(true)]
-			[InlineData(false)]
-			public async Task ShouldFailWhenPredicateResultIsFalse(bool predicateResult)
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			public async Task WhenValueIsDifferent_ShouldFail(int expectedValue, bool expectSuccess)
 			{
-				Other subject = new();
+				Other subject = new()
+				{
+					Value = 1,
+				};
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => predicateResult);
+					=> await That(subject).CompliesWith(x => x.IsEquivalentTo(new
+					{
+						Value = expectedValue,
+					}));
 
 				await That(Act).Throws<XunitException>()
-					.OnlyIf(!predicateResult)
+					.OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             satisfy _ => predicateResult,
+					             is equivalent to new
+					             					{
+					             						Value = expectedValue,
+					             					},
 					             but it was Other {
-					               Value = 0
+					               Value = 1
 					             }
 					             """);
 			}
@@ -33,19 +44,23 @@ public sealed partial class ThatGeneric
 			[Fact]
 			public async Task WhenGlobalTimeoutIsApplied_ShouldFail()
 			{
-				int count = 0;
-				Other subject = new();
+				MyChangingClass subject = new(42);
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => ++count > 42).Within(30.Seconds())
-						.WithTimeout(50.Milliseconds());
+					=> await That(subject).CompliesWith(x => x.IsEquivalentTo(new
+					{
+						HasWaitedEnough = true,
+					})).Within(30.Seconds()).WithTimeout(50.Milliseconds());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             satisfy _ => ++count > 42 within 0:30,
-					             but it was Other {
-					               Value = 0
+					             is equivalent to new
+					             					{
+					             						HasWaitedEnough = true,
+					             					} within 0:30,
+					             but it was MyChangingClass {
+					               HasWaitedEnough = False
 					             }
 					             """);
 			}
@@ -60,7 +75,7 @@ public sealed partial class ThatGeneric
 				Other subject = new();
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => true).Within(1.Seconds())
+					=> await That(subject).CompliesWith(x => x.IsNotNull()).Within(1.Seconds())
 						.CheckEvery(intervalSeconds.Seconds());
 
 				await That(Act).Throws<ArgumentOutOfRangeException>()
@@ -72,11 +87,13 @@ public sealed partial class ThatGeneric
 			[Fact]
 			public async Task WhenPredicateResultTurnsTrueLaterOn_ShouldSucceed()
 			{
-				int count = 0;
-				Other subject = new();
+				MyChangingClass subject = new(2);
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => ++count > 2).Within(5.Seconds());
+					=> await That(subject).CompliesWith(x => x.IsEquivalentTo(new
+					{
+						HasWaitedEnough = true,
+					})).Within(5.Seconds());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -91,7 +108,7 @@ public sealed partial class ThatGeneric
 				Other subject = new();
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => true).Within(timeoutSeconds.Seconds());
+					=> await That(subject).CompliesWith(x => x.IsNotNull()).Within(timeoutSeconds.Seconds());
 
 				await That(Act).Throws<ArgumentOutOfRangeException>()
 					.OnlyIf(shouldThrow)
@@ -102,20 +119,31 @@ public sealed partial class ThatGeneric
 			[Fact]
 			public async Task WhenTimeoutIsTooShort_ShouldFail()
 			{
-				int count = 0;
-				Other subject = new();
+				MyChangingClass subject = new(42);
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => ++count > 42).Within(50.Milliseconds());
+					=> await That(subject).CompliesWith(x => x.IsEquivalentTo(new
+					{
+						HasWaitedEnough = true,
+					})).Within(50.Milliseconds());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             satisfy _ => ++count > 42 within 0:00.050,
-					             but it was Other {
-					               Value = 0
+					             is equivalent to new
+					             					{
+					             						HasWaitedEnough = true,
+					             					} within 0:00.050,
+					             but it was MyChangingClass {
+					               HasWaitedEnough = False
 					             }
 					             """);
+			}
+
+			private class MyChangingClass(int numberOfChanges)
+			{
+				private int _iterations;
+				public bool HasWaitedEnough => _iterations++ >= numberOfChanges;
 			}
 		}
 	}
