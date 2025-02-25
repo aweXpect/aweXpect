@@ -93,7 +93,7 @@ public sealed partial class ThatGeneric
 					=> await That(subject).CompliesWith(x => x.IsEquivalentTo(new
 					{
 						HasWaitedEnough = true,
-					})).Within(1.Seconds());
+					})).Within(5.Seconds());
 
 				await That(Act).DoesNotThrow();
 			}

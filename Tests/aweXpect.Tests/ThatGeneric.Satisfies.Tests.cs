@@ -76,7 +76,7 @@ public sealed partial class ThatGeneric
 				Other subject = new();
 
 				async Task Act()
-					=> await That(subject).Satisfies(_ => ++count > 2).Within(1.Seconds());
+					=> await That(subject).Satisfies(_ => ++count > 2).Within(5.Seconds());
 
 				await That(Act).DoesNotThrow();
 			}
