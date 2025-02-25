@@ -44,7 +44,6 @@ public sealed partial class ThatGeneric
 			[Fact]
 			public async Task WhenGlobalTimeoutIsApplied_ShouldFail()
 			{
-				int count = 0;
 				MyChangingClass subject = new(42);
 
 				async Task Act()
@@ -88,7 +87,6 @@ public sealed partial class ThatGeneric
 			[Fact]
 			public async Task WhenPredicateResultTurnsTrueLaterOn_ShouldSucceed()
 			{
-				int count = 0;
 				MyChangingClass subject = new(2);
 
 				async Task Act()
@@ -121,7 +119,6 @@ public sealed partial class ThatGeneric
 			[Fact]
 			public async Task WhenTimeoutIsTooShort_ShouldFail()
 			{
-				int count = 0;
 				MyChangingClass subject = new(42);
 
 				async Task Act()
