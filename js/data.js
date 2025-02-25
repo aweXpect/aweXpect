@@ -1020,6 +1020,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -1192,7 +1198,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -1368,7 +1375,8 @@ window.BENCHMARK_DATA = {
           182.09599515107962,
           183.03493776321412,
           177.03573072751362,
-          200.66352038383485
+          200.66352038383485,
+          177.48725737844194
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1515,6 +1523,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
+          528,
           528,
           528,
           528,
@@ -1733,7 +1742,8 @@ window.BENCHMARK_DATA = {
           197.04335303306578,
           194.55252879460653,
           187.79813311650202,
-          203.44081190427144
+          203.44081190427144,
+          190.81489157676697
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1771,6 +1781,7 @@ window.BENCHMARK_DATA = {
           776,
           776,
           776,
+          688,
           688,
           688,
           688,
@@ -2098,7 +2109,8 @@ window.BENCHMARK_DATA = {
           907.5491203894982,
           922.2297602335613,
           902.2438252766927,
-          909.2683493750436
+          909.2683493750436,
+          927.8644832611084
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2252,6 +2264,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -2851,6 +2864,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -2946,7 +2965,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -3045,7 +3065,8 @@ window.BENCHMARK_DATA = {
           284652.9926106771,
           292797.6131766183,
           295842.3683035714,
-          289367.9005208333
+          289367.9005208333,
+          293767.01881510415
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3115,6 +3136,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284916,
           284916,
           284916,
           284916,
@@ -3256,7 +3278,8 @@ window.BENCHMARK_DATA = {
           2008429.28359375,
           2117136.2260416667,
           2004428.314732143,
-          2156013.5640625
+          2156013.5640625,
+          2220208.1515066964
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3354,6 +3377,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -3467,7 +3491,8 @@ window.BENCHMARK_DATA = {
           696054.0864257812,
           684462.5043945312,
           656558.4916015625,
-          722873.0350911458
+          722873.0350911458,
+          685143.1132161458
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3544,6 +3569,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4605,6 +4631,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -4777,7 +4809,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -4953,7 +4986,8 @@ window.BENCHMARK_DATA = {
           597.8777432441711,
           619.2218229293824,
           595.3874572118124,
-          611.1879355748495
+          611.1879355748495,
+          612.951800664266
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5100,6 +5134,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
+          1192,
           1192,
           1192,
           1192,
@@ -5318,7 +5353,8 @@ window.BENCHMARK_DATA = {
           419.7050150235494,
           480.7912103017171,
           431.4810540335519,
-          426.0770240851811
+          426.0770240851811,
+          430.17569850041315
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5356,6 +5392,7 @@ window.BENCHMARK_DATA = {
           1816,
           1816,
           1816,
+          1744,
           1744,
           1744,
           1744,
@@ -5683,7 +5720,8 @@ window.BENCHMARK_DATA = {
           14670.937704233023,
           15348.9453125,
           14922.130297851563,
-          14700.490827120268
+          14700.490827120268,
+          15772.640808105469
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5837,6 +5875,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -6898,6 +6937,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -7070,7 +7115,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -7246,7 +7292,8 @@ window.BENCHMARK_DATA = {
           224.4047178030014,
           247.66958737373352,
           219.3735548019409,
-          242.91908044081467
+          242.91908044081467,
+          250.77408463160197
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7393,6 +7440,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          880,
           880,
           880,
           880,
@@ -7611,7 +7659,8 @@ window.BENCHMARK_DATA = {
           194.20816189050674,
           236.8888242562612,
           195.19265469482966,
-          213.346586672465
+          213.346586672465,
+          197.96642166773478
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7649,6 +7698,7 @@ window.BENCHMARK_DATA = {
           1048,
           1048,
           1048,
+          960,
           960,
           960,
           960,
@@ -7976,7 +8026,8 @@ window.BENCHMARK_DATA = {
           1300.1598808582012,
           1233.0145332336426,
           1170.859646987915,
-          1249.3803084237236
+          1249.3803084237236,
+          1212.0548372268677
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8130,6 +8181,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -9191,6 +9243,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -9363,7 +9421,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -9539,7 +9598,8 @@ window.BENCHMARK_DATA = {
           348.31151987711587,
           378.8276767412821,
           344.6333299416762,
-          369.10111042658485
+          369.10111042658485,
+          341.05374489511763
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9686,6 +9746,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
+          952,
           952,
           952,
           952,
@@ -9904,7 +9965,8 @@ window.BENCHMARK_DATA = {
           416.94818172454836,
           461.9652804647173,
           434.73349113464354,
-          443.058380762736
+          443.058380762736,
+          425.1323392050607
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9942,6 +10004,7 @@ window.BENCHMARK_DATA = {
           1832,
           1832,
           1832,
+          1904,
           1904,
           1904,
           1904,
@@ -10269,7 +10332,8 @@ window.BENCHMARK_DATA = {
           1343.3330799983098,
           1335.2321887383093,
           1238.1949005126953,
-          1265.3086311340332
+          1265.3086311340332,
+          1308.7605392456055
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10423,6 +10487,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -11484,6 +11549,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -11656,7 +11727,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -11832,7 +11904,8 @@ window.BENCHMARK_DATA = {
           1256.8871546427408,
           1309.4071862147405,
           1203.0499405494104,
-          1276.887897237142
+          1276.887897237142,
+          1211.28622341156
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11979,6 +12052,7 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
+          2336,
           2336,
           2336,
           2336,
@@ -12197,7 +12271,8 @@ window.BENCHMARK_DATA = {
           1215.5173990885417,
           1312.46263478597,
           1223.2447832743326,
-          1281.6934903462727
+          1281.6934903462727,
+          1214.9134709676107
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12235,6 +12310,7 @@ window.BENCHMARK_DATA = {
           3760,
           3760,
           3760,
+          3888,
           3888,
           3888,
           3888,
@@ -12562,7 +12638,8 @@ window.BENCHMARK_DATA = {
           2883.3802967071533,
           2845.336651102702,
           2713.892446899414,
-          2837.940751647949
+          2837.940751647949,
+          2786.307632991246
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12716,6 +12793,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -13777,6 +13855,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 20:40:41 2025 \u002B0100",
         "message": "feat: add \u0060CompliesWith\u0060 as generic expectation (#412)"
+      },
+      {
+        "sha": "485d524cbdd18473b0d2c69f120e80a1ba1d45ac",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Feb 25 21:22:00 2025 \u002B0100",
+        "message": "feat: add \u0060Within\u0060 repeated check for \u0060Satisfies\u0060 and \u0060CompliesWith\u0060 (#413)"
       }
     ],
     "labels": [
@@ -13949,7 +14033,8 @@ window.BENCHMARK_DATA = {
       "6da1bdd9",
       "e74b96fb",
       "ad717ef7",
-      "977afeac"
+      "977afeac",
+      "485d524c"
     ],
     "datasets": [
       {
@@ -14125,7 +14210,8 @@ window.BENCHMARK_DATA = {
           1356.6624691009522,
           1348.150994237264,
           1327.1830154418944,
-          1377.70715675354
+          1377.70715675354,
+          1369.8687587738036
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14272,6 +14358,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2368,
           2368,
           2368,
           2368,
@@ -14490,7 +14577,8 @@ window.BENCHMARK_DATA = {
           88199.52890625,
           89223.75324358259,
           87719.32002476284,
-          88058.01293945312
+          88058.01293945312,
+          89844.2961344401
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14669,6 +14757,7 @@ window.BENCHMARK_DATA = {
           54271,
           54273,
           54271,
+          54273,
           54273,
           54273,
           54273
@@ -14855,7 +14944,8 @@ window.BENCHMARK_DATA = {
           3361.9180987675986,
           3331.5351066589355,
           3188.171901702881,
-          3311.208043507167
+          3311.208043507167,
+          3327.511433919271
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15026,6 +15116,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
