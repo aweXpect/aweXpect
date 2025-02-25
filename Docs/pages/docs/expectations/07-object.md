@@ -116,7 +116,7 @@ period:
 
 ```csharp
 MyClass subject = new() {
-	IsTriggered = false;
+	IsTriggered = false
 };
 // Start a background task that sets `IsTriggered` to true
 
