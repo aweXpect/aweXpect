@@ -319,10 +319,10 @@ namespace aweXpect
     }
     public static class ThatGeneric
     {
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> CompliesWith<T>(this aweXpect.Core.IThat<T> source, System.Action<aweXpect.Core.IThat<T>> expectations) { }
+        public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> CompliesWith<T>(this aweXpect.Core.IThat<T> source, System.Action<aweXpect.Core.IThat<T>> expectations) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> DoesNotSatisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> For<T, TMember>(this aweXpect.Core.IThat<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
-        public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> Satisfies<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> Satisfies<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
     }
     public static class ThatGuid
     {
@@ -930,6 +930,28 @@ namespace aweXpect.Equivalency
         Private = 8,
     }
 }
+namespace aweXpect.Options
+{
+    public class FixedCheckInterval : aweXpect.Options.ICheckInterval
+    {
+        public FixedCheckInterval(System.TimeSpan interval) { }
+        public System.TimeSpan NextCheckInterval() { }
+    }
+    public interface ICheckInterval
+    {
+        System.TimeSpan NextCheckInterval();
+    }
+    public class RepeatedCheckOptions
+    {
+        public static readonly System.TimeSpan DefaultInterval;
+        public RepeatedCheckOptions() { }
+        public aweXpect.Options.ICheckInterval Interval { get; }
+        public System.TimeSpan Timeout { get; }
+        public void CheckEvery(System.TimeSpan interval) { }
+        public override string ToString() { }
+        public void Within(System.TimeSpan timeout) { }
+    }
+}
 namespace aweXpect.Results
 {
     public class CollectionCountResult<TReturn>
@@ -993,6 +1015,16 @@ namespace aweXpect.Results
         public ObjectCountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier, aweXpect.Options.ObjectEqualityOptions<TElement> options) { }
         public TSelf Equivalent(System.Func<aweXpect.Equivalency.EquivalencyOptions, aweXpect.Equivalency.EquivalencyOptions>? optionsCallback = null) { }
         public TSelf Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
+    }
+    public class RepeatedCheckResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
+    {
+        public RepeatedCheckResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.RepeatedCheckOptions options) { }
+        public aweXpect.Results.RepeatedCheckResult<TType, TThat>.WithRepetition Within(System.TimeSpan timeout) { }
+        public class WithRepetition : aweXpect.Results.AndOrResult<TType, TThat>
+        {
+            public WithRepetition(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.RepeatedCheckOptions options) { }
+            public aweXpect.Results.AndOrResult<TType, TThat> CheckEvery(System.TimeSpan interval) { }
+        }
     }
     public class SignalCountResult : aweXpect.Results.AndOrResult<aweXpect.Signaling.SignalerResult, aweXpect.Core.IThat<aweXpect.Signaling.Signaler>>
     {
