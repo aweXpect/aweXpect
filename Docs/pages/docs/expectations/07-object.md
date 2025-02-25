@@ -100,3 +100,47 @@ object? subject = null;
 await Expect.That(subject).IsNull();
 await Expect.That(new object()).IsNotNull();
 ```
+
+## Satisfy
+
+You can verify, that any object satisfies a given predicate:
+
+```csharp
+object? subject = null;
+
+await Expect.That(subject).Satisfies(x => x == null);
+```
+
+When the object changes in the background, you can also verify, that it satisfies a condition within a given time
+period:
+
+```csharp
+MyClass subject = new() {
+	IsTriggered = false;
+};
+// Start a background task that sets `IsTriggered` to true
+
+await Expect.That(subject).Satisfies(x => x.IsTriggered == true).Within(2.Seconds());
+// using aweXpect.Chronology
+```
+
+## Comply with
+
+You can verify, that any object complies with an expectation:
+
+```csharp
+List<int> values = new();
+
+await Expect.That(values).CompliesWith(x => x.IsEmpty());
+```
+
+When the object changes in the background, you can also verify, that it complies with an expectation within a given time
+period:
+
+```csharp
+List<int> values = new();
+// Start a background task that adds items to `values`
+
+await Expect.That(values).CompliesWith(x => x.HasCount().AtLeast(4)).Within(2.Seconds());
+// using aweXpect.Chronology
+```
