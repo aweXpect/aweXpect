@@ -28,7 +28,7 @@ public static partial class ThatException
 
 			return new ConstraintResult.Failure(ToString(),
 					options.GetExtendedFailure(it, actual?.Message, expected))
-				.WithContext("Message", actual?.Message!);
+				.WithContext("Message", actual?.Message);
 		}
 
 		public override string ToString()
