@@ -31,19 +31,19 @@ internal class OrNode : Node
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context>>? context = null)
+		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null)
 		where TValue : default
 		where TTarget : default
-		=> Current.AddMapping(memberAccessor, expectationTextGenerator, context);
+		=> Current.AddMapping(memberAccessor, expectationTextGenerator, contexts);
 
 	/// <inheritdoc />
 	public override Node? AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context>>? context = null)
+		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null)
 		where TValue : default
 		where TTarget : default
-		=> Current.AddAsyncMapping(memberAccessor, expectationTextGenerator, context);
+		=> Current.AddAsyncMapping(memberAccessor, expectationTextGenerator, contexts);
 
 	public override void AddNode(Node node, string? separator = null)
 	{

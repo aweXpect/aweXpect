@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -49,7 +50,7 @@ public static class ConstraintResultExtensions
 	///     Creates a new <see cref="ConstraintResult" /> with <paramref name="contexts" />.
 	/// </summary>
 	public static ConstraintResult WithContexts(this ConstraintResult inner,
-		params ConstraintResult.Context[] contexts)
+		params ConstraintResult.Context?[] contexts)
 		=> new ConstraintResultContextWrapper(inner, contexts);
 
 	/// <summary>
@@ -106,7 +107,7 @@ public static class ConstraintResultExtensions
 
 	private sealed class ConstraintResultContextWrapper(
 		ConstraintResult inner,
-		ConstraintResult.Context[] contexts)
+		ConstraintResult.Context?[] contexts)
 		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
 	{
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
@@ -117,9 +118,9 @@ public static class ConstraintResultExtensions
 
 		public override IEnumerable<Context> GetContexts()
 		{
-			foreach (Context c in contexts)
+			foreach (Context? c in contexts.Where(x => x != null))
 			{
-				yield return c;
+				yield return c!;
 			}
 
 			foreach (Context c in inner.GetContexts())

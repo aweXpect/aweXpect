@@ -125,7 +125,9 @@ public sealed class WhichNodeTests
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
 		whichNode.AddMapping(MemberAccessor<int, int>.FromFunc(i => 2 * i, "doubled:"),
-			context: i => Task.FromResult(new ConstraintResult.Context("context", i.ToString())));
+			contexts: i => Task.FromResult<ConstraintResult.Context?[]>([
+				new ConstraintResult.Context("context", i.ToString()),
+			]));
 		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
 		StringBuilder sb = new();
 

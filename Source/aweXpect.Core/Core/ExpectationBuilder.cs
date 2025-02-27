@@ -117,7 +117,7 @@ public abstract class ExpectationBuilder
 		MemberAccessor<TSource, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback, context) =>
+		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback, contexts) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
@@ -126,7 +126,7 @@ public abstract class ExpectationBuilder
 			}
 
 			Node root = _node;
-			_node = _node.AddMapping(memberAccessor, expectationTextGenerator, context) ?? _node;
+			_node = _node.AddMapping(memberAccessor, expectationTextGenerator, contexts) ?? _node;
 			if (replaceIt)
 			{
 				_it = memberAccessor.ToString().Trim();
@@ -357,18 +357,18 @@ public abstract class ExpectationBuilder
 				Action<ExpectationBuilder>,
 				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
-				Func<TSource?, Task<ConstraintResult.Context>>?,
+				Func<TSource?, Task<ConstraintResult.Context?[]>>?,
 				ExpectationBuilder>
 			_callback;
 
 		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
-		private Func<TSource?, Task<ConstraintResult.Context>>? _context;
+		private Func<TSource?, Task<ConstraintResult.Context?[]>>? _contexts;
 
 		internal MemberExpectationBuilder(Func<
 				Action<ExpectationBuilder>,
 				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
-				Func<TSource?, Task<ConstraintResult.Context>>?,
+				Func<TSource?, Task<ConstraintResult.Context?[]>>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -381,7 +381,7 @@ public abstract class ExpectationBuilder
 		public ExpectationBuilder AddExpectations(
 			Action<ExpectationBuilder> expectation,
 			ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
-			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder, _context);
+			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder, _contexts);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.
@@ -403,7 +403,16 @@ public abstract class ExpectationBuilder
 		public MemberExpectationBuilder<TSource, TMember> AddContext(
 			Func<TSource?, Task<ConstraintResult.Context>> context)
 		{
-			_context = context;
+			return AddContexts(async s => [await context(s),]);
+		}
+
+		/// <summary>
+		///     Add a <paramref name="contexts"/> for the current <typeparamref name="TSource" />.
+		/// </summary>
+		public MemberExpectationBuilder<TSource, TMember> AddContexts(
+			Func<TSource?, Task<ConstraintResult.Context?[]>> contexts)
+		{
+			_contexts = contexts;
 			return this;
 		}
 	}
