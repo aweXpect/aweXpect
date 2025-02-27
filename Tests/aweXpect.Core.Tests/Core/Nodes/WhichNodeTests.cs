@@ -372,6 +372,9 @@ public sealed class WhichNodeTests
 			               "foo"
 			               "bar"
 			                ↑ (expected)
+			             
+			             Actual:
+			             foo
 			             """);
 	}
 

@@ -37,6 +37,9 @@ public sealed partial class ThatException
 					               "actual text"
 					               "expected other text"
 					                ↑ (expected)
+					             
+					             Message:
+					             actual text
 					             """);
 			}
 

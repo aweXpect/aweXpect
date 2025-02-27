@@ -35,7 +35,8 @@ public static partial class ThatString
 			}
 
 			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				options.GetExtendedFailure(it, actual, expected));
+					options.GetExtendedFailure(it, actual, expected))
+				.WithContext("Actual", actual);
 		}
 
 		/// <inheritdoc />
