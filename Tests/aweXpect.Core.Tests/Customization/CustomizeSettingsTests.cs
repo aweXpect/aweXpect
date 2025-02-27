@@ -15,7 +15,7 @@ public sealed class CustomizeSettingsTests
 #if DEBUG
 		TimeSpan timeout = 500.Milliseconds();
 #else
-		TimeSpan timeout = 5.Seconds();
+		TimeSpan timeout = 3.Seconds();
 #endif
 		List<int> list = new();
 		Stopwatch sw = new();
