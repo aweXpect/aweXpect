@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using aweXpect.Chronology;
 using aweXpect.Customization;
@@ -12,26 +11,16 @@ public sealed class CustomizeSettingsTests
 	[Fact]
 	public async Task DefaultCheckInterval_ShouldBeUsedInTimeComparisons()
 	{
-		TimeSpan timeout = 2.Seconds();
-		List<int> list = new();
-		Stopwatch sw = new();
-		sw.Start();
-		_ = Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
+		TimeSpan timeout = 1.Seconds();
+		ChangingClass sut1 = new();
+		ChangingClass sut2 = new();
 
-		await That(list).Satisfies(l => l.Count > 0).Within(30.Seconds());
-		sw.Stop();
-		await That(sw.Elapsed).IsGreaterThanOrEqualTo(100.Milliseconds()).And.IsLessThan(timeout);
-
+		await That(sut1).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
+		await That(sut1.Interval).IsGreaterThanOrEqualTo(100.Milliseconds()).And.IsLessThan(timeout);
 		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(timeout))
 		{
-			list.Clear();
-			sw.Reset();
-			sw.Start();
-			_ = Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
-
-			await That(list).Satisfies(l => l.Count > 0).Within(30.Seconds());
-			sw.Stop();
-			await That(sw.Elapsed).IsGreaterThanOrEqualTo(timeout).And.IsLessThan(20.Seconds());
+			await That(sut2).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
+			await That(sut2.Interval).IsGreaterThanOrEqualTo(timeout).And.IsLessThan(20.Seconds());
 		}
 	}
 
@@ -183,6 +172,28 @@ public sealed class CustomizeSettingsTests
 		}
 
 		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
+	}
+
+	private class ChangingClass
+	{
+		private readonly Stopwatch _stopwatch = new();
+
+		public bool HasMeasuredInterval
+		{
+			get
+			{
+				if (!_stopwatch.IsRunning)
+				{
+					_stopwatch.Start();
+					return false;
+				}
+
+				_stopwatch.Stop();
+				return true;
+			}
+		}
+
+		public TimeSpan Interval => _stopwatch.Elapsed;
 	}
 
 	/// <summary>
