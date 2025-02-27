@@ -30,4 +30,45 @@ public sealed class CustomizeFormattingTests
 
 		await That(Formatter.Format(items)).IsEqualTo("[1, 2, 3, 4, 5, 6]");
 	}
+
+	[Fact]
+	public async Task MinimumNumberOfCharactersAfterStringDifference_ShouldBeUsedInStringDifference()
+	{
+		string actual =
+			"this is some text with lots of words after the first difference to verify the customization setting";
+		string expected =
+			"this is another text with lots of words after the first difference to verify the customization setting";
+
+		async Task Act() => await That(actual).IsEqualTo(expected);
+		using (IDisposable _ = Customize.aweXpect.Formatting().MinimumNumberOfCharactersAfterStringDifference.Set(3))
+		{
+			await That(Act).ThrowsException()
+				.WithMessage("""
+				             Expected that actual
+				             is equal to "this is another text with…",
+				             but it was "this is some text with lots…" which differs at index 8:
+				                        ↓ (actual)
+				               "this is some text…"
+				               "this is another…"
+				                        ↑ (expected)
+
+				             Actual:
+				             this is some text with lots of words after the first difference to verify the customization setting
+				             """);
+		}
+
+		await That(Act).ThrowsException()
+			.WithMessage("""
+			             Expected that actual
+			             is equal to "this is another text with…",
+			             but it was "this is some text with lots…" which differs at index 8:
+			                        ↓ (actual)
+			               "this is some text with lots of words after the first…"
+			               "this is another text with lots of words after the first…"
+			                        ↑ (expected)
+
+			             Actual:
+			             this is some text with lots of words after the first difference to verify the customization setting
+			             """);
+	}
 }

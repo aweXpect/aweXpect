@@ -14,6 +14,9 @@ Under `Customize.aweXpect.Formatting()` you have:
 - **MaximumNumberOfCollectionItems**  
   The maximum number of displayed items in a collection.
 
+- **MinimumNumberOfCharactersAfterStringDifference**  
+  The minimum number of characters included after the first mismatch in the string difference.
+
 
 ## Json
 
