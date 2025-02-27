@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using aweXpect.Core.Helpers;
+using aweXpect.Customization;
 
 namespace aweXpect.Core;
 
@@ -260,9 +261,9 @@ public sealed class StringDifference(
 	/// </remarks>
 	private static int GetLengthOfPhraseToShowOrDefaultLength(string value)
 	{
-		const int defaultLength = 50;
-		const int minLength = 45;
-		const int maxLength = 60;
+		int minLength = Customize.aweXpect.Formatting().MinimumNumberOfCharactersAfterStringDifference.Get();
+		int defaultLength  = minLength + 5;
+		int maxLength = minLength + 15;
 		const int lengthOfWhitespace = 1;
 
 		int indexOfWordBoundary = value

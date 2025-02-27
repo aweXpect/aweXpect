@@ -28,15 +28,23 @@ public partial class AwexpectCustomization
 			_awexpectCustomization = awexpectCustomization;
 			MaximumNumberOfCollectionItems = new CustomizationValue<int>(
 				() => Get().MaximumNumberOfCollectionItems,
-				// ReSharper disable once WithExpressionModifiesAllMembers
 				v => Update(p => p with
 				{
 					MaximumNumberOfCollectionItems = v,
+				}));
+			MinimumNumberOfCharactersAfterStringDifference = new CustomizationValue<int>(
+				() => Get().MinimumNumberOfCharactersAfterStringDifference,
+				v => Update(p => p with
+				{
+					MinimumNumberOfCharactersAfterStringDifference = v,
 				}));
 		}
 
 		/// <inheritdoc cref="FormattingCustomizationValue.MaximumNumberOfCollectionItems" />
 		public ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
+
+		/// <inheritdoc cref="FormattingCustomizationValue.MinimumNumberOfCharactersAfterStringDifference" />
+		public ICustomizationValueSetter<int> MinimumNumberOfCharactersAfterStringDifference { get; }
 
 		/// <inheritdoc cref="ICustomizationValueUpdater{FormattingCustomizationValue}.Get()" />
 		public FormattingCustomizationValue Get()
@@ -57,5 +65,10 @@ public partial class AwexpectCustomization
 		///     The maximum number of displayed items in a collection.
 		/// </summary>
 		public int MaximumNumberOfCollectionItems { get; init; } = 10;
+
+		/// <summary>
+		///     The minimum number of characters included after the first mismatch in the string difference.
+		/// </summary>
+		public int MinimumNumberOfCharactersAfterStringDifference { get; init; } = 45;
 	}
 }
