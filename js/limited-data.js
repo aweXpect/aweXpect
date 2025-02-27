@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
-      {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
         "date": "Thu Feb 13 08:57:34 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          176.73430627187093,
           192.9747345814338,
           187.0468496935708,
           185.84021813074747,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           200.66352038383485,
           177.48725737844194,
           168.87460500853402,
-          181.52975522677104
+          181.52975522677104,
+          187.02644417967116
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -431,7 +431,7 @@ window.BENCHMARK_DATA = {
           544,
           544,
           544,
-          544,
+          528,
           528,
           528,
           528,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          194.60945496956506,
           222.99037095705668,
           202.2163393497467,
           207.07722973823547,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           203.44081190427144,
           190.81489157676697,
           186.61269454956056,
-          219.4247747319085
+          219.4247747319085,
+          203.20851535063522
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          757.2604296548026,
           875.8334082921345,
           812.5592786153157,
           800.5419008255005,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           909.2683493750436,
           927.8644832611084,
           854.515723841531,
-          918.7201261520386
+          918.7201261520386,
+          899.2737314360483
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -688,7 +688,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
-          2216,
+          2384,
           2384,
           2384,
           2384,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
       {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          298408.5787434896,
           310202.2943033854,
           285244.27263532364,
           293922.3828473772,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           289367.9005208333,
           293767.01881510415,
           280685.55419921875,
-          317870.32965959824
+          317870.32965959824,
+          280693.27509765624
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1164,7 +1164,6 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
-          284932,
           284916,
           284916,
           284916,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           284916,
           284916,
           284916,
+          284980,
           284980
         ],
         "borderColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2144544.677604167,
           2274881.129166667,
           2186284.4671875,
           2135826.2760416665,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2156013.5640625,
           2220208.1515066964,
           1967808.021484375,
-          2138700.3502604165
+          2138700.3502604165,
+          2002175.1576450893
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1297,7 +1297,6 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
-          3977738,
           3977736,
           3977738,
           3977738,
@@ -1318,6 +1317,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977736,
+          3977738,
           3977738,
           3977738,
           3977738,
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          692384.1087239584,
           758609.1934895833,
           659997.9190104167,
           688619.8978515625,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           722873.0350911458,
           685143.1132161458,
           655718.0032784598,
-          676956.3013020833
+          676956.3013020833,
+          669764.2930338542
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1421,7 +1421,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
-          836713,
+          866721,
           866721,
           866721,
           866721,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
       {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          609.3531529562814,
           644.5288238525391,
           600.4426268850054,
           638.5518394878933,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           611.1879355748495,
           612.951800664266,
           562.7183212280273,
-          591.5102313359579
+          591.5102313359579,
+          585.5782612482707
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1897,7 +1897,7 @@ window.BENCHMARK_DATA = {
           1208,
           1208,
           1208,
-          1208,
+          1192,
           1192,
           1192,
           1192,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          450.26926205952964,
           458.77003892262775,
           425.0667804400126,
           462.57474950381686,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           426.0770240851811,
           430.17569850041315,
           410.30408692359924,
-          438.692910524515
+          438.692910524515,
+          427.328862730662
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          14710.83975016276,
           21074.43031616211,
           14797.590892537435,
           18367.74256310096,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14700.490827120268,
           15772.640808105469,
           14279.947695922852,
-          16040.506648472377
+          16040.506648472377,
+          15071.974369303385
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2154,7 +2154,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
-          27288,
+          27456,
           27456,
           27456,
           27456,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
       {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          233.30983392397562,
           266.13600902557374,
           225.87888051668804,
           245.8861156463623,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           242.91908044081467,
           250.77408463160197,
           215.5157785097758,
-          231.53221961657206
+          231.53221961657206,
+          236.22491381963093
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2630,7 +2630,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
-          896,
+          880,
           880,
           880,
           880,
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          200.32528573671976,
           204.84882958118732,
           199.67918985684713,
           224.27951471010843,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           213.346586672465,
           197.96642166773478,
           187.69992005030315,
-          197.43152051705582
+          197.43152051705582,
+          189.19193908373515
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1099.7748179117839,
           1138.5352062225343,
           1065.2794673102242,
           1116.870597076416,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1249.3803084237236,
           1212.0548372268677,
           1139.2192077636719,
-          1224.55414797465
+          1224.55414797465,
+          1153.0126303354898
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2887,7 +2887,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
-          2848,
+          2952,
           2952,
           2952,
           2952,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
       {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          366.0841347058614,
           390.830265712738,
           335.9811173439026,
           391.53565440859114,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           369.10111042658485,
           341.05374489511763,
           351.072160414287,
-          352.15367952982587
+          352.15367952982587,
+          350.36364625295005
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3363,7 +3363,7 @@ window.BENCHMARK_DATA = {
           968,
           968,
           968,
-          968,
+          952,
           952,
           952,
           952,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          444.8376623471578,
           499.4384692509969,
           432.0619774500529,
           483.3669633547465,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           443.058380762736,
           425.1323392050607,
           408.2790579114641,
-          436.9684745788574
+          436.9684745788574,
+          416.31424036026
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1169.0851674397786,
           1279.502974573771,
           1141.3213776906332,
           1202.8155633381434,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1265.3086311340332,
           1308.7605392456055,
           1216.4561419169108,
-          1250.2715150197348
+          1250.2715150197348,
+          1254.7288321177164
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3620,7 +3620,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
-          2896,
+          3064,
           3064,
           3064,
           3064,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
       {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1314.819841257731,
           1389.4386366526285,
           1233.640109761556,
           1359.3767735799154,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1276.887897237142,
           1211.28622341156,
           1189.4122442881267,
-          1308.4180557250977
+          1308.4180557250977,
+          1279.2071016947427
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4096,7 +4096,6 @@ window.BENCHMARK_DATA = {
           2352,
           2352,
           2352,
-          2352,
           2336,
           2336,
           2336,
@@ -4134,6 +4133,7 @@ window.BENCHMARK_DATA = {
           2336,
           2336,
           2336,
+          2368,
           2368
         ],
         "borderColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1275.6486924489338,
           1327.7080047607421,
           1267.4233563286919,
           1377.9816042582195,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1281.6934903462727,
           1214.9134709676107,
           1264.4160370459924,
-          1309.2952336629232
+          1309.2952336629232,
+          1270.8802322387696
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2552.365816497803,
           2659.023208109538,
           2645.6589281899587,
           2616.067726135254,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2837.940751647949,
           2786.307632991246,
           2638.2648038228353,
-          3072.5783177693684
+          3072.5783177693684,
+          2837.022371164958
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4353,7 +4353,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
-          4112,
+          4520,
           4520,
           4520,
           4520,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "93221aa4249061be5d94da1cf166d1f7abf28ee3",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Feb 13 08:15:05 2025 \u002B0100",
-        "message": "refactor: delete unused code in Http expectations (#360)"
-      },
       {
         "sha": "a6a923e2a0e99d3701ef58e9dc7c14db7533d879",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Feb 25 22:09:58 2025 \u002B0100",
         "message": "feat: trim common whitespace from expectation expressions (#414)"
+      },
+      {
+        "sha": "e2eba3a908c1897d4681cda369724c968ea8efa5",
+        "author": "Valentin Breu\u00DF",
+        "date": "Thu Feb 27 10:46:15 2025 \u002B0100",
+        "message": "feat: allow specifying multiple contexts in \u0060MemberExpectationBuilder\u0060 (#415)"
       }
     ],
     "labels": [
-      "93221aa4",
       "a6a923e2",
       "4c2a7876",
       "e108e728",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "977afeac",
       "485d524c",
       "4d002904",
-      "13732eac"
+      "13732eac",
+      "e2eba3a9"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1379.4260054270426,
           1416.7489929199219,
           1310.6956831614177,
           1407.8310276667278,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1377.70715675354,
           1369.8687587738036,
           1280.4868218558174,
-          1482.1432376861571
+          1482.1432376861571,
+          1371.5912411029522
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4829,7 +4829,6 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
-          2384,
           2368,
           2368,
           2368,
@@ -4867,6 +4866,7 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
+          2400,
           2400
         ],
         "borderColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          88842.3300694057,
           91016.63916015625,
           89616.97262369792,
           89134.73421805246,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           88058.01293945312,
           89844.2961344401,
           87091.09428710937,
-          90732.8606201172
+          90732.8606201172,
+          86555.94328613281
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54271,
           54275,
           54271,
           54271,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54271,
-          54275
+          54275,
+          54271
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          6899.990771702358,
           7084.790120806013,
           6786.310389200847,
           6924.5713795253205,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           3311.208043507167,
           3327.511433919271,
           3134.9119099208287,
-          3300.7656757648174
+          3300.7656757648174,
+          3347.2747731526692
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5086,7 +5086,6 @@ window.BENCHMARK_DATA = {
           7912,
           7912,
           7912,
-          7912,
           8800,
           8800,
           8800,
@@ -5104,6 +5103,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
