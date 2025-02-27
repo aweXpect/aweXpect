@@ -15,7 +15,7 @@ public sealed class CustomizeSettingsTests
 		List<int> list = new();
 		Stopwatch sw = new();
 		sw.Start();
-		Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
+		_ = Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
 
 		await That(list).Satisfies(l => l.Count > 0).Within(5.Seconds());
 		sw.Stop();
@@ -26,7 +26,7 @@ public sealed class CustomizeSettingsTests
 			list.Clear();
 			sw.Reset();
 			sw.Start();
-			Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
+			_ = Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
 
 			await That(list).Satisfies(l => l.Count > 0).Within(5.Seconds());
 			sw.Stop();
