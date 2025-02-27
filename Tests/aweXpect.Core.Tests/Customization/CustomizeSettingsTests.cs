@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using aweXpect.Chronology;
 using aweXpect.Customization;
@@ -8,6 +9,31 @@ namespace aweXpect.Core.Tests.Customization;
 
 public sealed class CustomizeSettingsTests
 {
+	[Fact]
+	public async Task DefaultCheckInterval_ShouldBeUsedInTimeComparisons()
+	{
+		List<int> list = new();
+		Stopwatch sw = new();
+		sw.Start();
+		Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
+
+		await That(list).Satisfies(l => l.Count > 0).Within(5.Seconds());
+		sw.Stop();
+		await That(sw.Elapsed).IsGreaterThanOrEqualTo(100.Milliseconds()).And.IsLessThan(1.Seconds());
+
+		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(1.Seconds()))
+		{
+			list.Clear();
+			sw.Reset();
+			sw.Start();
+			Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
+
+			await That(list).Satisfies(l => l.Count > 0).Within(5.Seconds());
+			sw.Stop();
+			await That(sw.Elapsed).IsGreaterThanOrEqualTo(1.Seconds()).And.IsLessThan(5.Seconds());
+		}
+	}
+
 	[Fact]
 	public async Task DefaultSignalerTimeout_ShouldBeUsedInSignaler()
 	{

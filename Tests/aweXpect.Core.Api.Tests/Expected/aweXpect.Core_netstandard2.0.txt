@@ -297,6 +297,7 @@ namespace aweXpect.Customization
         }
         public class SettingsCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue>
         {
+            public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultCheckInterval { get; }
             public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultSignalerTimeout { get; }
             public aweXpect.Customization.ICustomizationValueSetter<System.TimeSpan> DefaultTimeComparisonTolerance { get; }
             public aweXpect.Customization.ICustomizationValueSetter<aweXpect.Customization.TestCancellation?> TestCancellation { get; }
@@ -306,6 +307,7 @@ namespace aweXpect.Customization
         public class SettingsCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.SettingsCustomizationValue>
         {
             public SettingsCustomizationValue() { }
+            public System.TimeSpan DefaultCheckInterval { get; init; }
             public System.TimeSpan DefaultSignalerTimeout { get; init; }
             public System.TimeSpan DefaultTimeComparisonTolerance { get; init; }
             public aweXpect.Customization.TestCancellation? TestCancellation { get; init; }
