@@ -21,7 +21,7 @@ internal abstract class Node
 	/// </summary>
 	public abstract Node? AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context>>? context = null);
+		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null);
 
 	/// <summary>
 	///     Add a mapping constraint which maps the value according to the <paramref name="memberAccessor" /> asynchronously
@@ -30,7 +30,7 @@ internal abstract class Node
 	public abstract Node? AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context>>? context = null);
+		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null);
 
 	/// <summary>
 	///     Add a node as inner node.

@@ -68,7 +68,7 @@ namespace aweXpect.Core.Constraints
         public static aweXpect.Core.Constraints.ConstraintResult PrependExpectationText(this aweXpect.Core.Constraints.ConstraintResult inner, System.Action<System.Text.StringBuilder>? prefix) { }
         public static aweXpect.Core.Constraints.ConstraintResult UseValue<T>(this aweXpect.Core.Constraints.ConstraintResult inner, T value) { }
         public static aweXpect.Core.Constraints.ConstraintResult WithContext(this aweXpect.Core.Constraints.ConstraintResult inner, string title, string content) { }
-        public static aweXpect.Core.Constraints.ConstraintResult WithContexts(this aweXpect.Core.Constraints.ConstraintResult inner, params aweXpect.Core.Constraints.ConstraintResult.Context[] contexts) { }
+        public static aweXpect.Core.Constraints.ConstraintResult WithContexts(this aweXpect.Core.Constraints.ConstraintResult inner, params aweXpect.Core.Constraints.ConstraintResult.Context?[] contexts) { }
     }
     public enum FurtherProcessingStrategy
     {
@@ -129,6 +129,7 @@ namespace aweXpect.Core
         public class MemberExpectationBuilder<TSource, TMember>
         {
             public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> AddContext(System.Func<TSource?, System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult.Context>> context) { }
+            public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> AddContexts(System.Func<TSource?, System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult.Context?[]>> contexts) { }
             public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
             public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
         }
