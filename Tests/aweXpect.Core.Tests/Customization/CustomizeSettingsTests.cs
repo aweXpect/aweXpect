@@ -12,11 +12,7 @@ public sealed class CustomizeSettingsTests
 	[Fact]
 	public async Task DefaultCheckInterval_ShouldBeUsedInTimeComparisons()
 	{
-#if DEBUG
-		TimeSpan timeout = 500.Milliseconds();
-#else
-		TimeSpan timeout = 3.Seconds();
-#endif
+		TimeSpan timeout = 2.Seconds();
 		List<int> list = new();
 		Stopwatch sw = new();
 		sw.Start();
