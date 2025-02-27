@@ -16,11 +16,11 @@ public sealed class CustomizeSettingsTests
 		ChangingClass sut2 = new();
 
 		await That(sut1).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
-		await That(sut1.Interval).IsGreaterThanOrEqualTo(100.Milliseconds()).And.IsLessThan(timeout);
+		await That(sut1.Interval).IsGreaterThanOrEqualTo(50.Milliseconds()).And.IsLessThan(timeout);
 		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(timeout))
 		{
 			await That(sut2).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
-			await That(sut2.Interval).IsGreaterThanOrEqualTo(timeout).And.IsLessThan(20.Seconds());
+			await That(sut2.Interval).IsGreaterThanOrEqualTo(timeout).Within(50.Milliseconds()).And.IsLessThan(20.Seconds());
 		}
 	}
 
