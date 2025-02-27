@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Customization;
 using aweXpect.Results;
 
 namespace aweXpect.Options;
@@ -13,10 +14,20 @@ public class RepeatedCheckOptions
 	/// </summary>
 	public static readonly TimeSpan DefaultInterval = TimeSpan.FromMilliseconds(100);
 
+	private ICheckInterval? _interval;
+
 	/// <summary>
 	///     The interval in which the condition should be checked.
 	/// </summary>
-	public ICheckInterval Interval { get; private set; } = new FixedCheckInterval(DefaultInterval);
+	public ICheckInterval Interval
+	{
+		get
+		{
+			_interval ??= new FixedCheckInterval(Customize.aweXpect.Settings().DefaultCheckInterval.Get());
+			return _interval;
+		}
+		private set => _interval = value;
+	}
 
 	/// <summary>
 	///     The timeout until the condition must be met.

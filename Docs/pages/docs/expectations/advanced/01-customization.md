@@ -42,6 +42,9 @@ Under `Customize.aweXpect.Settings()` you have:
   - `FromCancellationToken(Func<CancellationToken> cancellationTokenFactory)`  
     This will use the returned `CancellationToken` internally and also forward it to the [delegates](/docs/expectations/delegates).
 
+- **DefaultCheckInterval**  
+  The default interval for repeatedly checking the condition on an object.
+
 - **DefaultSignalerTimeout**  
   The default timeout for the [`Signaler`](/docs/expectations/advanced/callbacks).
 
