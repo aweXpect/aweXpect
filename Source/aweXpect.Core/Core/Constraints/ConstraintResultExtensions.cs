@@ -43,8 +43,15 @@ public static class ConstraintResultExtensions
 	///     Creates a new <see cref="ConstraintResult" /> with a context with
 	///     <paramref name="title" /> and <paramref name="content" />.
 	/// </summary>
-	public static ConstraintResult WithContext(this ConstraintResult inner, string title, string content)
-		=> new ConstraintResultContextWrapper(inner, [new ConstraintResult.Context(title, content)]);
+	public static ConstraintResult WithContext(this ConstraintResult inner, string title, string? content)
+	{
+		if (content == null)
+		{
+			return inner;
+		}
+
+		return new ConstraintResultContextWrapper(inner, [new ConstraintResult.Context(title, content),]);
+	}
 
 	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> with <paramref name="contexts" />.

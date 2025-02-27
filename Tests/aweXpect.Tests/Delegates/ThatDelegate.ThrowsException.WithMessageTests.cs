@@ -57,6 +57,9 @@ public sealed partial class ThatDelegate
 					               "FOO"
 					               "foo"
 					                ↑ (expected)
+					             
+					             Message:
+					             FOO
 					             """);
 			}
 
@@ -80,6 +83,9 @@ public sealed partial class ThatDelegate
 					               "FOO"
 					               "foo"
 					                ↑ (expected)
+					             
+					             Message:
+					             FOO
 					             """);
 			}
 
@@ -116,6 +122,9 @@ public sealed partial class ThatDelegate
 					               "actual text"
 					               "expected other text"
 					                ↑ (expected)
+					             
+					             Message:
+					             actual text
 					             """);
 			}
 		}

@@ -54,6 +54,9 @@ public class ExpectTests
 				                     "subject B"
 				                     "subject C"
 				                              ↑ (expected)
+				             
+				             Actual:
+				             subject C
 				             """);
 		}
 
@@ -127,6 +130,9 @@ public class ExpectTests
 				                       "subject B"
 				                       "subject C"
 				                                ↑ (expected)
+				             
+				             Actual:
+				             some unexpected value
 				             """);
 		}
 
@@ -232,6 +238,9 @@ public class ExpectTests
 				                     "subject Z"
 				                     "subject C"
 				                              ↑ (expected)
+				             
+				             Actual:
+				             subject X
 				             """);
 		}
 
@@ -289,6 +298,9 @@ public class ExpectTests
 				                       "subject Z"
 				                       "subject C"
 				                                ↑ (expected)
+				             
+				             Actual:
+				             subject X
 				             """);
 		}
 

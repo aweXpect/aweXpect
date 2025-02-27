@@ -38,7 +38,8 @@ public partial class ThatDelegateThrows<TException>
 			}
 
 			return new ConstraintResult.Failure(ToString(),
-				options.GetExtendedFailure(it, actual?.Message, expected));
+					options.GetExtendedFailure(it, actual?.Message, expected))
+				.WithContext("Message", actual?.Message);
 		}
 
 		public override string ToString()
