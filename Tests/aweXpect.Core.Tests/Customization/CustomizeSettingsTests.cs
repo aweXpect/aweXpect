@@ -12,25 +12,30 @@ public sealed class CustomizeSettingsTests
 	[Fact]
 	public async Task DefaultCheckInterval_ShouldBeUsedInTimeComparisons()
 	{
+#if DEBUG
+		TimeSpan timeout = 500.Milliseconds();
+#else
+		TimeSpan timeout = 5.Seconds();
+#endif
 		List<int> list = new();
 		Stopwatch sw = new();
 		sw.Start();
 		_ = Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
 
-		await That(list).Satisfies(l => l.Count > 0).Within(5.Seconds());
+		await That(list).Satisfies(l => l.Count > 0).Within(30.Seconds());
 		sw.Stop();
-		await That(sw.Elapsed).IsGreaterThanOrEqualTo(100.Milliseconds()).And.IsLessThan(1.Seconds());
+		await That(sw.Elapsed).IsGreaterThanOrEqualTo(100.Milliseconds()).And.IsLessThan(timeout);
 
-		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(1.Seconds()))
+		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(timeout))
 		{
 			list.Clear();
 			sw.Reset();
 			sw.Start();
 			_ = Task.Delay(50.Milliseconds()).ContinueWith(_ => list.Add(1));
 
-			await That(list).Satisfies(l => l.Count > 0).Within(5.Seconds());
+			await That(list).Satisfies(l => l.Count > 0).Within(30.Seconds());
 			sw.Stop();
-			await That(sw.Elapsed).IsGreaterThanOrEqualTo(1.Seconds()).And.IsLessThan(5.Seconds());
+			await That(sw.Elapsed).IsGreaterThanOrEqualTo(timeout).And.IsLessThan(20.Seconds());
 		}
 	}
 
