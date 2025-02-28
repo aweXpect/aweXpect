@@ -10,7 +10,7 @@ namespace aweXpect.Core;
 public class ResultContexts : IEnumerable<ResultContext>
 {
 	private readonly List<ResultContext> _results = new();
-	private bool _isClosed;
+	private bool _isOpen = true;
 
 	/// <inheritdoc cref="IEnumerable{ResultContext}.GetEnumerator()" />
 	public IEnumerator<ResultContext> GetEnumerator() => _results.GetEnumerator();
@@ -23,7 +23,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Close()
 	{
-		_isClosed = true;
+		_isOpen = false;
 		return this;
 	}
 
@@ -32,7 +32,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Open()
 	{
-		_isClosed = false;
+		_isOpen = true;
 		return this;
 	}
 
@@ -41,7 +41,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Add(ResultContext context)
 	{
-		if (!_isClosed)
+		if (_isOpen)
 		{
 			_results.Add(context);
 		}
@@ -54,7 +54,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Clear()
 	{
-		if (!_isClosed)
+		if (_isOpen)
 		{
 			_results.Clear();
 		}
@@ -67,7 +67,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Remove(string title, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)
 	{
-		if (!_isClosed)
+		if (_isOpen)
 		{
 			_results.RemoveAll(x => x.Title.Equals(title, stringComparison));
 		}
@@ -80,7 +80,7 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Remove(Predicate<ResultContext> predicate)
 	{
-		if (!_isClosed)
+		if (_isOpen)
 		{
 			_results.RemoveAll(predicate);
 		}
