@@ -344,10 +344,11 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Update the list of <see cref="ResultContext" /> that is included in the failure message.
 	/// </summary>
-	public void UpdateContexts(Action<ResultContexts> callback)
+	public ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
 	{
 		_contexts ??= new();
 		callback(_contexts);
+		return this;
 	}
 
 	/// <summary>

@@ -117,7 +117,7 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, System.Threading.Tasks.Task<TTarget?>> asyncMemberAccessor, string? separator = null) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammars? expectationGrammar = default) { }
         public override string? ToString() { }
-        public void UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
+        public aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
         public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public void WithTimeout(System.TimeSpan timeout) { }
         public class MemberExpectationBuilder<TSource, TMember>
@@ -212,7 +212,9 @@ namespace aweXpect.Core
         public ResultContexts() { }
         public aweXpect.Core.ResultContexts Add(aweXpect.Core.ResultContext context) { }
         public aweXpect.Core.ResultContexts Clear() { }
+        public aweXpect.Core.ResultContexts Close() { }
         public System.Collections.Generic.IEnumerator<aweXpect.Core.ResultContext> GetEnumerator() { }
+        public aweXpect.Core.ResultContexts Open() { }
         public aweXpect.Core.ResultContexts Remove(System.Predicate<aweXpect.Core.ResultContext> predicate) { }
         public aweXpect.Core.ResultContexts Remove(string title, System.StringComparison stringComparison = 5) { }
     }
