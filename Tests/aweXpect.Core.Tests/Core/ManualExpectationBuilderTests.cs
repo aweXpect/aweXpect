@@ -8,6 +8,73 @@ namespace aweXpect.Core.Tests.Core;
 public class ManualExpectationBuilderTests
 {
 	[Fact]
+	public async Task AddAsyncContextValueConstraint_ShouldAllowGettingExpectationBuilder()
+	{
+		ManualExpectationBuilder<int> sut = new();
+		ExpectationBuilder? expectationBuilder = null;
+		sut.AddConstraint((e, _, _) =>
+		{
+			expectationBuilder = e;
+			return new DummyAsyncContextConstraint<int>(_
+				=> Task.FromResult<ConstraintResult>(new ConstraintResult.Success("")));
+		});
+
+		await sut.IsMetBy(1, null!, CancellationToken.None);
+
+		await That(expectationBuilder).IsSameAs(sut);
+	}
+
+	[Fact]
+	public async Task AddAsyncValueConstraint_ShouldAllowGettingExpectationBuilder()
+	{
+		ManualExpectationBuilder<int> sut = new();
+		ExpectationBuilder? expectationBuilder = null;
+		sut.AddConstraint((e, _, _) =>
+		{
+			expectationBuilder = e;
+			return new DummyAsyncConstraint<int>(_
+				=> Task.FromResult<ConstraintResult>(new ConstraintResult.Success("")));
+		});
+
+		await sut.IsMetBy(1, null!, CancellationToken.None);
+
+		await That(expectationBuilder).IsSameAs(sut);
+	}
+
+	[Fact]
+	public async Task AddContextValueConstraint_ShouldAllowGettingExpectationBuilder()
+	{
+		ManualExpectationBuilder<int> sut = new();
+		ExpectationBuilder? expectationBuilder = null;
+		sut.AddConstraint((e, _, _) =>
+		{
+			expectationBuilder = e;
+			return new DummyContextConstraint<int>(_ => new ConstraintResult.Success(""));
+		});
+
+		await sut.IsMetBy(1, null!, CancellationToken.None);
+
+		await That(expectationBuilder).IsSameAs(sut);
+	}
+
+	[Fact]
+	public async Task AddValueConstraint_ShouldAllowGettingExpectationBuilder()
+	{
+		ManualExpectationBuilder<int> sut = new();
+		ExpectationBuilder? expectationBuilder = null;
+		sut.AddConstraint((e, _, _) =>
+		{
+			expectationBuilder = e;
+			return new DummyConstraint("");
+		});
+
+		await sut.IsMetBy(1, null!, CancellationToken.None);
+
+		await That(expectationBuilder).IsSameAs(sut);
+	}
+
+
+	[Fact]
 	public async Task IsMet_ShouldThrowNotSupportedException()
 	{
 		ManualExpectationBuilder<int> sut = new();

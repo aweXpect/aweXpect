@@ -17,13 +17,17 @@ public static partial class ThatString
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsEqualToConstraint(it, expected, options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammar) =>
+				new IsEqualToConstraint(expectationBuilder, it, expected, options)),
 			source,
 			options);
 	}
 
-	private readonly struct IsEqualToConstraint(string it, string? expected, StringEqualityOptions options)
+	private readonly struct IsEqualToConstraint(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		string? expected,
+		StringEqualityOptions options)
 		: IValueConstraint<string?>
 	{
 		/// <inheritdoc />
@@ -34,9 +38,10 @@ public static partial class ThatString
 				return new ConstraintResult.Success<string?>(actual, ToString());
 			}
 
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Actual", actual)));
 			return new ConstraintResult.Failure<string?>(actual, ToString(),
-					options.GetExtendedFailure(it, actual, expected))
-				.WithContext("Actual", actual);
+					options.GetExtendedFailure(it, actual, expected));
 		}
 
 		/// <inheritdoc />

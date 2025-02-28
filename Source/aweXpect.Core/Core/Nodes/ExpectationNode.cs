@@ -37,13 +37,12 @@ internal class ExpectationNode : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
 	{
 		MappingNode<TValue, TTarget> mappingNode =
-			new(memberAccessor, expectationTextGenerator, contexts);
+			new(memberAccessor, expectationTextGenerator);
 		_inner = mappingNode;
 		_combineResults = mappingNode.CombineResults;
 		return mappingNode;
@@ -52,13 +51,12 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override Node? AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
 	{
 		AsyncMappingNode<TValue, TTarget> mappingNode =
-			new(memberAccessor, expectationTextGenerator, contexts);
+			new(memberAccessor, expectationTextGenerator);
 		_inner = mappingNode;
 		_combineResults = mappingNode.CombineResults;
 		return mappingNode;

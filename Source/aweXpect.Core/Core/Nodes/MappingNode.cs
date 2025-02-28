@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading;
@@ -16,14 +15,11 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		_expectationTextGenerator;
 
 	private readonly MemberAccessor<TSource, TTarget> _memberAccessor;
-	private readonly Func<TSource?, Task<ConstraintResult.Context?[]>>? _contexts;
 
 	public MappingNode(MemberAccessor<TSource, TTarget> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TSource?, Task<ConstraintResult.Context?[]>>? contexts = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 	{
 		_memberAccessor = memberAccessor;
-		_contexts = contexts;
 		if (expectationTextGenerator == null)
 		{
 			_expectationTextGenerator = DefaultExpectationTextGenerator;
@@ -40,10 +36,10 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		IEvaluationContext context,
 		CancellationToken cancellationToken) where TValue : default
 	{
-		if (value is null || value is DelegateValue { IsNull: true })
+		if (value is null || value is DelegateValue { IsNull: true, })
 		{
 			ConstraintResult result = await base.IsMetBy<TTarget>(default, context, cancellationToken);
-			return await AddContexts(result.Fail("it was <null>", value), default, _contexts);
+			return result.Fail("it was <null>", value);
 		}
 
 		if (value is not TSource typedValue)
@@ -54,7 +50,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 
 		TTarget matchingValue = _memberAccessor.AccessMember(typedValue);
 		ConstraintResult memberResult = await base.IsMetBy(matchingValue, context, cancellationToken);
-		return await AddContexts(memberResult.UseValue(value), typedValue, _contexts);
+		return memberResult.UseValue(value);
 	}
 
 	internal ConstraintResult CombineResults(
@@ -67,18 +63,6 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 		}
 
 		return new MappingConstraintResult(combinedResult, result, _expectationTextGenerator, _memberAccessor);
-	}
-
-	private static async Task<ConstraintResult> AddContexts(ConstraintResult result, TSource? value,
-		Func<TSource?, Task<ConstraintResult.Context?[]>>? contexts)
-	{
-		if (contexts is null)
-		{
-			return result;
-		}
-
-		ConstraintResult.Context?[] usedContexts = await contexts(value);
-		return result.WithContexts(usedContexts);
 	}
 
 	private static void DefaultExpectationTextGenerator(
@@ -129,19 +113,6 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 			else if (right.Outcome == Outcome.Failure)
 			{
 				right.AppendResult(stringBuilder, indentation);
-			}
-		}
-
-		public override IEnumerable<Context> GetContexts()
-		{
-			foreach (Context context in left.GetContexts())
-			{
-				yield return context;
-			}
-
-			foreach (Context context in right.GetContexts())
-			{
-				yield return context;
 			}
 		}
 

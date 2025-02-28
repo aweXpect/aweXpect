@@ -30,20 +30,18 @@ internal class AndNode : Node
 
 	/// <inheritdoc />
 	public override Node? AddMapping<TValue, TTarget>(MemberAccessor<TValue, TTarget> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
-		=> Current.AddMapping(memberAccessor, expectationTextGenerator, contexts);
+		=> Current.AddMapping(memberAccessor, expectationTextGenerator);
 
 	/// <inheritdoc />
 	public override Node? AddAsyncMapping<TValue, TTarget>(
 		MemberAccessor<TValue, Task<TTarget>> memberAccessor,
-		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
-		Func<TValue?, Task<ConstraintResult.Context?[]>>? contexts = null)
+		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null)
 		where TValue : default
 		where TTarget : default
-		=> Current.AddAsyncMapping(memberAccessor, expectationTextGenerator, contexts);
+		=> Current.AddAsyncMapping(memberAccessor, expectationTextGenerator);
 
 	public override void AddNode(Node node, string? separator = null)
 	{
@@ -151,19 +149,6 @@ internal class AndNode : Node
 			else if (right.Outcome == Outcome.Failure)
 			{
 				right.AppendResult(stringBuilder, indentation);
-			}
-		}
-
-		public override IEnumerable<Context> GetContexts()
-		{
-			foreach (Context context in left.GetContexts())
-			{
-				yield return context;
-			}
-
-			foreach (Context context in right.GetContexts())
-			{
-				yield return context;
 			}
 		}
 

@@ -88,33 +88,6 @@ public sealed class ConstraintResultExtensionsTests
 		}
 	}
 
-	public sealed class WithContextTests
-	{
-		[Fact]
-		public async Task NestedContexts_ShouldIncludeBoth()
-		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
-			sut = sut.WithContext("t1", "c1");
-			sut = sut.WithContext("t2", "c2");
-
-			List<ConstraintResult.Context> result = sut.GetContexts().ToList();
-
-			await That(result).HasCount().EqualTo(2);
-		}
-
-		[Fact]
-		public async Task TryGetValue_ShouldForwardToWrappedConstraintResult()
-		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value1", "foo", "bar");
-			sut = sut.WithContext("t1", "c1");
-
-			bool result = sut.TryGetValue(out string? value);
-
-			await That(result).IsTrue();
-			await That(value).IsEqualTo("value1");
-		}
-	}
-
 	public sealed class AppendExpectationTextTests
 	{
 		[Fact]

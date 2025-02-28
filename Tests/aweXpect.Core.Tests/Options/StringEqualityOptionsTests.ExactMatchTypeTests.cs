@@ -90,7 +90,7 @@ public sealed partial class StringEqualityOptionsTests
 		}
 
 		[Fact]
-		public async Task ShouldSupportPassiveGrammaticVoice()
+		public async Task ShouldSupportPassiveGrammaticalVoice()
 		{
 			Exception exception = new("foo");
 

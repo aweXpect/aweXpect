@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -42,14 +41,6 @@ public abstract class ConstraintResult
 	public abstract void AppendResult(StringBuilder stringBuilder, string? indentation = null);
 
 	/// <summary>
-	///     Gets the contexts for the result.
-	/// </summary>
-	public virtual IEnumerable<Context> GetContexts()
-	{
-		yield break;
-	}
-
-	/// <summary>
 	///     Tries to extract the <paramref name="value" /> that is stored in the constraint result.
 	/// </summary>
 	public virtual bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
@@ -85,38 +76,6 @@ public abstract class ConstraintResult
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			// Do nothing
-		}
-
-		/// <inheritdoc />
-		public override IEnumerable<Context> GetContexts()
-		{
-			yield break;
-		}
-	}
-
-	/// <summary>
-	///     A result context that is appended to a result error.
-	/// </summary>
-	public record Context(string Title, string Content)
-	{
-		/// <summary>
-		///     The comparer for contexts that only considers the title.
-		/// </summary>
-		public static IEqualityComparer<Context> Comparer { get; } = new ContextComparer();
-
-		private sealed class ContextComparer : IEqualityComparer<Context>
-		{
-			public bool Equals(Context? x, Context? y)
-			{
-				if (x is null || y is null)
-				{
-					return false;
-				}
-
-				return x.Title == y.Title;
-			}
-
-			public int GetHashCode(Context obj) => obj.Title.GetHashCode();
 		}
 	}
 

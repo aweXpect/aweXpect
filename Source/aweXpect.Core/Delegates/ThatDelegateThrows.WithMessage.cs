@@ -18,12 +18,13 @@ public partial class ThatDelegateThrows<TException>
 		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(
 			ExpectationBuilder.AddConstraint((it, grammar)
 				=> new HasMessageValueConstraint(
-					it, "with", expected, options)),
+					ExpectationBuilder, it, "with", expected, options)),
 			this,
 			options);
 	}
 
 	internal readonly struct HasMessageValueConstraint(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		string verb,
 		string expected,
@@ -37,9 +38,10 @@ public partial class ThatDelegateThrows<TException>
 				return new ConstraintResult.Success<TException?>(actual as TException, ToString());
 			}
 
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Message", actual?.Message)));
 			return new ConstraintResult.Failure(ToString(),
-					options.GetExtendedFailure(it, actual?.Message, expected))
-				.WithContext("Message", actual?.Message);
+					options.GetExtendedFailure(it, actual?.Message, expected));
 		}
 
 		public override string ToString()

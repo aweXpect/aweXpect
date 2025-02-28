@@ -1,4 +1,5 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System.Collections.Generic;
+using aweXpect.Core.Constraints;
 using aweXpect.Results;
 
 namespace aweXpect.Core.Tests;
@@ -8,13 +9,13 @@ public class ExpectTests
 	[Fact]
 	public async Task Context_FromSuccess_ShouldNotBeIncludedInMessage()
 	{
-		Expectation.Result result1 = new(1, "foo1", new ConstraintResult.Failure("expectation1", "result1")
-			.WithContext("context-title1", "contest-content1"));
-		Expectation.Result result2 = new(1, "foo2", new ConstraintResult.Success("expectation2")
-			.WithContext("context-title2", "contest-content2"));
+		Expectation.Result result1 = new(1, "foo1", new ConstraintResult.Failure("expectation1", "result1"));
+		Expectation.Result result2 = new(1, "foo2", new ConstraintResult.Success("expectation2"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result1), new MyExpectation(result2));
+			=> await ThatAll(
+				new MyExpectation(result1, [new ResultContext("context-title1", "contest-content1"),]),
+				new MyExpectation(result2, [new ResultContext("context-title2", "contest-content2"),]));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -23,22 +24,26 @@ public class ExpectTests
 			             foo2 expectation2
 			             but
 			              [01] result1
-
-			             context-title1:
+			             
+			             [01] context-title1:
 			             contest-content1
+			             
+			             [02] context-title2:
+			             contest-content2
 			             """);
 	}
 
 	[Fact]
 	public async Task Context_Multiple_ShouldBeIncludedInMessage()
 	{
-		Expectation.Result result = new(1, "foo", new ConstraintResult.Failure("expectation", "result")
-			.WithContexts(new ConstraintResult.Context("t1", "c1"),
-				new ConstraintResult.Context("t2", "c2"),
-				new ConstraintResult.Context("t3", "c3")));
+		Expectation.Result result = new(1, "foo", new ConstraintResult.Failure("expectation", "result"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result));
+			=> await ThatAll(new MyExpectation(result, [
+				new ResultContext("t1", "c1"),
+				new ResultContext("t2", "c2"),
+				new ResultContext("t3", "c3"),
+			]));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -47,13 +52,13 @@ public class ExpectTests
 			             but
 			              [01] result
 
-			             t1:
+			             [01] t1:
 			             c1
 
-			             t2:
+			             [01] t2:
 			             c2
 
-			             t3:
+			             [01] t3:
 			             c3
 			             """);
 	}
@@ -61,11 +66,10 @@ public class ExpectTests
 	[Fact]
 	public async Task Context_ShouldBeIncludedInMessage()
 	{
-		Expectation.Result result = new(1, "foo", new ConstraintResult.Failure("expectation", "result")
-			.WithContext("context-title", "contest-content"));
+		Expectation.Result result = new(1, "foo", new ConstraintResult.Failure("expectation", "result"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result));
+			=> await ThatAll(new MyExpectation(result, [new ResultContext("context-title", "contest-content"),]));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -74,7 +78,7 @@ public class ExpectTests
 			             but
 			              [01] result
 
-			             context-title:
+			             [01] context-title:
 			             contest-content
 			             """);
 	}
@@ -83,7 +87,7 @@ public class ExpectTests
 	public async Task ShouldSupportCollectionExpressionsAsSubject()
 	{
 		async Task Act()
-			=> await That([1, 2, 3]).IsInAscendingOrder();
+			=> await That([1, 2, 3,]).IsInAscendingOrder();
 
 		await That(Act).DoesNotThrow();
 	}
@@ -111,8 +115,9 @@ public class ExpectTests
 		await That(Act).DoesNotThrow();
 	}
 #endif
-	private class MyExpectation(Expectation.Result result) : Expectation
+	private class MyExpectation(Expectation.Result result, params ResultContext[] contexts) : Expectation
 	{
 		internal override Task<Result> GetResult(int index) => Task.FromResult(result);
+		internal override IEnumerable<ResultContext> GetContexts(int index) => contexts;
 	}
 }

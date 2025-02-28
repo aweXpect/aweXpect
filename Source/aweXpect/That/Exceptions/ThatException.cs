@@ -12,6 +12,7 @@ namespace aweXpect;
 public static partial class ThatException
 {
 	private readonly struct HasMessageValueConstraint<TException>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammar,
 		string expected,
@@ -26,9 +27,10 @@ public static partial class ThatException
 				return new ConstraintResult.Success<TException?>(actual as TException, ToString());
 			}
 
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Message", actual?.Message)));
 			return new ConstraintResult.Failure(ToString(),
-					options.GetExtendedFailure(it, actual?.Message, expected))
-				.WithContext("Message", actual?.Message);
+					options.GetExtendedFailure(it, actual?.Message, expected));
 		}
 
 		public override string ToString()
