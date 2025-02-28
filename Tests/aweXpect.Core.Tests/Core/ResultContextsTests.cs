@@ -44,6 +44,118 @@ public sealed class ResultContextsTests
 	}
 
 	[Fact]
+	public async Task Close_ShouldRestrictAdd()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+
+		sut.Close();
+
+		sut.Add(new ResultContext("bar", "2"));
+		await That(sut).HasSingle().Which.IsEquivalentTo(new
+		{
+			Title = "foo",
+		});
+	}
+
+	[Fact]
+	public async Task Close_ShouldRestrictClear()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+
+		sut.Close();
+
+		sut.Clear();
+		await That(sut).HasSingle().Which.IsEquivalentTo(new
+		{
+			Title = "foo",
+		});
+	}
+
+	[Fact]
+	public async Task Close_ShouldRestrictRemoveWithPredicate()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+
+		sut.Close();
+
+		sut.Remove(_ => true);
+		await That(sut).HasSingle().Which.IsEquivalentTo(new
+		{
+			Title = "foo",
+		});
+	}
+
+	[Fact]
+	public async Task Close_ShouldRestrictRemoveWithTitle()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+
+		sut.Close();
+
+		sut.Remove("foo");
+		await That(sut).HasSingle().Which.IsEquivalentTo(new
+		{
+			Title = "foo",
+		});
+	}
+
+	[Fact]
+	public async Task Open_ShouldRestrictAdd()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+		sut.Close();
+
+		sut.Open();
+
+		sut.Add(new ResultContext("bar", "2"));
+		await That(sut).HasCount().EqualTo(2);
+	}
+
+	[Fact]
+	public async Task Open_ShouldRestrictClear()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+		sut.Close();
+
+		sut.Open();
+
+		sut.Clear();
+		await That(sut).IsEmpty();
+	}
+
+	[Fact]
+	public async Task Open_ShouldRestrictRemoveWithPredicate()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+		sut.Close();
+
+		sut.Open();
+
+		sut.Remove(_ => true);
+		await That(sut).IsEmpty();
+	}
+
+	[Fact]
+	public async Task Open_ShouldRestrictRemoveWithTitle()
+	{
+		ResultContexts sut = new();
+		sut.Add(new ResultContext("foo", "1"));
+		sut.Close();
+
+		sut.Open();
+
+		sut.Remove("foo");
+		await That(sut).IsEmpty();
+	}
+
+	[Fact]
 	public async Task Remove_WithPredicate_ShouldRemoveAllMatchingContexts()
 	{
 		ResultContexts sut =

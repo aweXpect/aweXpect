@@ -10,6 +10,7 @@ namespace aweXpect.Core;
 public class ResultContexts : IEnumerable<ResultContext>
 {
 	private readonly List<ResultContext> _results = new();
+	private bool _isOpen = true;
 
 	/// <inheritdoc cref="IEnumerable{ResultContext}.GetEnumerator()" />
 	public IEnumerator<ResultContext> GetEnumerator() => _results.GetEnumerator();
@@ -18,11 +19,33 @@ public class ResultContexts : IEnumerable<ResultContext>
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
 	/// <summary>
+	///     Closes the context list for further modifications.
+	/// </summary>
+	public ResultContexts Close()
+	{
+		_isOpen = false;
+		return this;
+	}
+
+	/// <summary>
+	///     Opens the context list for further modifications.
+	/// </summary>
+	public ResultContexts Open()
+	{
+		_isOpen = true;
+		return this;
+	}
+
+	/// <summary>
 	///     Adds the <paramref name="context" /> to the context list.
 	/// </summary>
 	public ResultContexts Add(ResultContext context)
 	{
-		_results.Add(context);
+		if (_isOpen)
+		{
+			_results.Add(context);
+		}
+
 		return this;
 	}
 
@@ -31,7 +54,11 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Clear()
 	{
-		_results.Clear();
+		if (_isOpen)
+		{
+			_results.Clear();
+		}
+
 		return this;
 	}
 
@@ -40,7 +67,11 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Remove(string title, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)
 	{
-		_results.RemoveAll(x => x.Title.Equals(title, stringComparison));
+		if (_isOpen)
+		{
+			_results.RemoveAll(x => x.Title.Equals(title, stringComparison));
+		}
+
 		return this;
 	}
 
@@ -49,7 +80,11 @@ public class ResultContexts : IEnumerable<ResultContext>
 	/// </summary>
 	public ResultContexts Remove(Predicate<ResultContext> predicate)
 	{
-		_results.RemoveAll(predicate);
+		if (_isOpen)
+		{
+			_results.RemoveAll(predicate);
+		}
+
 		return this;
 	}
 }
