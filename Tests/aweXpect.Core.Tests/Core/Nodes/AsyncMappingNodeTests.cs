@@ -75,23 +75,4 @@ public class AsyncMappingNodeTests
 		await That(sb.ToString()).IsEqualTo("yeah!");
 		await That(result.GetResultText()).IsEqualTo("it was <null>");
 	}
-
-	[Fact]
-	public async Task WithContext_ShouldAddContext()
-	{
-		AsyncMappingNode<string, int> node = new(
-			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "),
-			null,
-			s => Task.FromResult<ConstraintResult.Context?[]>([
-				new ConstraintResult.Context("context", s!),
-			]));
-		node.AddConstraint(new DummyValueConstraint<int>(v => new ConstraintResult.Success<int>(v, $"yeah: {v}")));
-		StringBuilder sb = new();
-
-		ConstraintResult result = await node.IsMetBy("foobar", null!, CancellationToken.None);
-
-		result.AppendExpectation(sb);
-		await That(sb.ToString()).IsEqualTo("yeah: 6");
-		await That(result.GetContexts()).Contains(x => x is { Title: "context", Content: "foobar", });
-	}
 }

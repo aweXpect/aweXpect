@@ -10,25 +10,6 @@ namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class AndNodeTests
 {
-	[Fact]
-	public async Task GetContexts_ShouldIncludeContextsFromLeftAndRight()
-	{
-		DummyNode node1 = new("", () => new ConstraintResult.Success("").WithContext("t1", "c1"));
-		DummyNode node2 = new("", () => new ConstraintResult.Success("").WithContext("t2", "c2"));
-		AndNode andNode = new(node1);
-		andNode.AddNode(node2);
-		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
-
-		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
-
-		await That(contexts)
-			.IsEqualTo([
-				new ConstraintResult.Context("t1", "c1"),
-				new ConstraintResult.Context("t2", "c2"),
-			])
-			.InAnyOrder();
-	}
-
 	[Theory]
 	[InlineData(Outcome.Success, Outcome.Success, Outcome.Success)]
 	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Failure)]

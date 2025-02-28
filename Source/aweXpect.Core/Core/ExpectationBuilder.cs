@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +20,8 @@ public abstract class ExpectationBuilder
 	private const string DefaultCurrentSubject = "it";
 
 	private CancellationToken? _cancellationToken;
+
+	private ResultContexts? _contexts;
 
 	/// <summary>
 	///     The current name for the subject (defaults to <see cref="DefaultCurrentSubject" />).
@@ -43,7 +45,7 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
-	///     The expected grammatic form of the expectation text.
+	///     The expected grammatical form of the expectation text.
 	/// </summary>
 	public ExpectationGrammars ExpectationGrammars { get; private set; } = ExpectationGrammars.None;
 
@@ -65,6 +67,21 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Adds the <see cref="IValueConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which verifies the
+	///     underlying value.
+	/// </summary>
+	/// <remarks>
+	///     The parameter passed to the <paramref name="constraintBuilder" /> is the current name for the subject (mostly
+	///     "it").
+	/// </remarks>
+	public ExpectationBuilder AddConstraint<TValue>(
+		Func<ExpectationBuilder, string, ExpectationGrammars, IValueConstraint<TValue>> constraintBuilder)
+	{
+		_node.AddConstraint(constraintBuilder(this, _it, ExpectationGrammars));
+		return this;
+	}
+
+	/// <summary>
 	///     Adds the <see cref="IContextConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which verifies
 	///     the underlying value.
 	/// </summary>
@@ -76,6 +93,21 @@ public abstract class ExpectationBuilder
 		Func<string, ExpectationGrammars, IContextConstraint<TValue>> constraintBuilder)
 	{
 		_node.AddConstraint(constraintBuilder(_it, ExpectationGrammars));
+		return this;
+	}
+
+	/// <summary>
+	///     Adds the <see cref="IContextConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which verifies
+	///     the underlying value.
+	/// </summary>
+	/// <remarks>
+	///     The parameter passed to the <paramref name="constraintBuilder" /> is the current name for the subject (mostly
+	///     "it").
+	/// </remarks>
+	public ExpectationBuilder AddConstraint<TValue>(
+		Func<ExpectationBuilder, string, ExpectationGrammars, IContextConstraint<TValue>> constraintBuilder)
+	{
+		_node.AddConstraint(constraintBuilder(this, _it, ExpectationGrammars));
 		return this;
 	}
 
@@ -95,6 +127,21 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Adds the <see cref="IAsyncConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which verifies the
+	///     underlying value.
+	/// </summary>
+	/// <remarks>
+	///     The parameter passed to the <paramref name="constraintBuilder" /> is the current name for the subject (mostly
+	///     "it").
+	/// </remarks>
+	public ExpectationBuilder AddConstraint<TValue>(
+		Func<ExpectationBuilder, string, ExpectationGrammars, IAsyncConstraint<TValue>> constraintBuilder)
+	{
+		_node.AddConstraint(constraintBuilder(this, _it, ExpectationGrammars));
+		return this;
+	}
+
+	/// <summary>
 	///     Adds the <see cref="IAsyncContextConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which
 	///     verifies the underlying value.
 	/// </summary>
@@ -110,6 +157,21 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Adds the <see cref="IAsyncContextConstraint{TValue}" /> from the <paramref name="constraintBuilder" /> which
+	///     verifies the underlying value.
+	/// </summary>
+	/// <remarks>
+	///     The parameter passed to the <paramref name="constraintBuilder" /> is the current name for the subject (mostly
+	///     "it").
+	/// </remarks>
+	public ExpectationBuilder AddConstraint<TValue>(
+		Func<ExpectationBuilder, string, ExpectationGrammars, IAsyncContextConstraint<TValue>> constraintBuilder)
+	{
+		_node.AddConstraint(constraintBuilder(this, _it, ExpectationGrammars));
+		return this;
+	}
+
+	/// <summary>
 	///     Specifies a constraint that applies to the member selected
 	///     by the <paramref name="memberAccessor" />.
 	/// </summary>
@@ -117,7 +179,7 @@ public abstract class ExpectationBuilder
 		MemberAccessor<TSource, TTarget> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback, contexts) =>
+		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
@@ -126,7 +188,7 @@ public abstract class ExpectationBuilder
 			}
 
 			Node root = _node;
-			_node = _node.AddMapping(memberAccessor, expectationTextGenerator, contexts) ?? _node;
+			_node = _node.AddMapping(memberAccessor, expectationTextGenerator) ?? _node;
 			if (replaceIt)
 			{
 				_it = memberAccessor.ToString().Trim();
@@ -153,7 +215,7 @@ public abstract class ExpectationBuilder
 		MemberAccessor<TSource, Task<TTarget?>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
-		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback, context) =>
+		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
@@ -162,7 +224,7 @@ public abstract class ExpectationBuilder
 			}
 
 			Node root = _node;
-			_node = _node.AddAsyncMapping(memberAccessor, expectationTextGenerator, context) ?? _node;
+			_node = _node.AddAsyncMapping(memberAccessor, expectationTextGenerator) ?? _node;
 			if (replaceIt)
 			{
 				_it = memberAccessor.ToString().Trim();
@@ -280,9 +342,33 @@ public abstract class ExpectationBuilder
 	}
 
 	/// <summary>
+	///     Update the list of <see cref="ResultContext" /> that is included in the failure message.
+	/// </summary>
+	public void UpdateContexts(Action<ResultContexts> callback)
+	{
+		_contexts ??= new();
+		callback(_contexts);
+	}
+
+	/// <summary>
+	///     Gets the list of <see cref="ResultContext" />.
+	/// </summary>
+	internal IEnumerable<ResultContext> GetContexts() => _contexts ?? [];
+
+	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.
 	/// </summary>
-	internal static string FromFailure(string subject, ConstraintResult failure)
+	internal Task<string> FromFailure(ConstraintResult failure)
+		=> FromFailure(Subject, failure, _contexts, _cancellationToken ?? CancellationToken.None);
+
+	/// <summary>
+	///     Creates the exception message from the <paramref name="failure" />.
+	/// </summary>
+	private static async Task<string> FromFailure(
+		string subject,
+		ConstraintResult failure,
+		ResultContexts? contexts,
+		CancellationToken cancellationToken)
 	{
 		StringBuilder sb = new();
 		sb.Append("Expected that ").Append(subject).AppendLine();
@@ -290,12 +376,20 @@ public abstract class ExpectationBuilder
 		sb.AppendLine(",");
 		sb.Append("but ");
 		failure.AppendResult(sb);
-		foreach (ConstraintResult.Context context in failure.GetContexts()
-			         .Distinct(ConstraintResult.Context.Comparer))
+		if (contexts is not null)
 		{
-			sb.AppendLine().AppendLine();
-			sb.Append(context.Title).Append(':').AppendLine();
-			sb.Append(context.Content);
+			foreach (ResultContext context in contexts)
+			{
+				string? content = await context.GetContent(cancellationToken);
+				if (content is null)
+				{
+					continue;
+				}
+
+				sb.AppendLine().AppendLine();
+				sb.Append(context.Title).Append(':').AppendLine();
+				sb.Append(content);
+			}
 		}
 
 		return sb.ToString();
@@ -357,18 +451,15 @@ public abstract class ExpectationBuilder
 				Action<ExpectationBuilder>,
 				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
-				Func<TSource?, Task<ConstraintResult.Context?[]>>?,
 				ExpectationBuilder>
 			_callback;
 
 		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
-		private Func<TSource?, Task<ConstraintResult.Context?[]>>? _contexts;
 
 		internal MemberExpectationBuilder(Func<
 				Action<ExpectationBuilder>,
 				ExpectationGrammars,
 				Func<string, IValueConstraint<TSource>>?,
-				Func<TSource?, Task<ConstraintResult.Context?[]>>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -381,7 +472,7 @@ public abstract class ExpectationBuilder
 		public ExpectationBuilder AddExpectations(
 			Action<ExpectationBuilder> expectation,
 			ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
-			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder, _contexts);
+			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder);
 
 		/// <summary>
 		///     Add a validation constraint for the current <typeparamref name="TSource" />.
@@ -394,25 +485,6 @@ public abstract class ExpectationBuilder
 			Func<string, IValueConstraint<TSource>> constraintBuilder)
 		{
 			_sourceConstraintBuilder = constraintBuilder;
-			return this;
-		}
-
-		/// <summary>
-		///     Add a <paramref name="context"/> for the current <typeparamref name="TSource" />.
-		/// </summary>
-		public MemberExpectationBuilder<TSource, TMember> AddContext(
-			Func<TSource?, Task<ConstraintResult.Context>> context)
-		{
-			return AddContexts(async s => [await context(s),]);
-		}
-
-		/// <summary>
-		///     Add a <paramref name="contexts"/> for the current <typeparamref name="TSource" />.
-		/// </summary>
-		public MemberExpectationBuilder<TSource, TMember> AddContexts(
-			Func<TSource?, Task<ConstraintResult.Context?[]>> contexts)
-		{
-			_contexts = contexts;
 			return this;
 		}
 	}

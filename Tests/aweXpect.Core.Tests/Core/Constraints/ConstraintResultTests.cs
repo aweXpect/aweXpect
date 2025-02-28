@@ -8,47 +8,6 @@ namespace aweXpect.Core.Tests.Core.Constraints;
 public class ConstraintResultTests
 {
 	[Fact]
-	public async Task Context_Comparer_WhenItem1IsNull_ShouldReturnFalse()
-	{
-		ConstraintResult.Context context = new("foo", "baz");
-
-		bool result = ConstraintResult.Context.Comparer.Equals(null!, context);
-
-		await That(result).IsFalse();
-	}
-
-	[Fact]
-	public async Task Context_Comparer_WhenItem2IsNull_ShouldReturnFalse()
-	{
-		ConstraintResult.Context context = new("foo", "baz");
-
-		bool result = ConstraintResult.Context.Comparer.Equals(context, null!);
-
-		await That(result).IsFalse();
-	}
-
-	[Fact]
-	public async Task Context_Comparer_WhenTitleIsEqual_ShouldReturnTrue()
-	{
-		ConstraintResult.Context context1 = new("foo", "bar");
-		ConstraintResult.Context context2 = new("foo", "baz");
-
-		bool result = ConstraintResult.Context.Comparer.Equals(context1, context2);
-
-		await That(result).IsTrue();
-	}
-
-	[Fact]
-	public async Task Failure_GetContexts_ShouldBeEmpty()
-	{
-		ConstraintResult.Failure<int> sut = new(1, "foo", "bar");
-
-		List<ConstraintResult.Context> contexts = sut.GetContexts().ToList();
-
-		await That(contexts).IsEmpty();
-	}
-
-	[Fact]
 	public async Task Failure_ShouldHaveFailureOutcome()
 	{
 		ConstraintResult.Failure<int> sut = new(1, "foo", "bar");
@@ -98,16 +57,6 @@ public class ConstraintResultTests
 		sut.AppendResult(sb);
 
 		await That(sb.ToString()).IsEmpty();
-	}
-
-	[Fact]
-	public async Task Success_GetContexts_ShouldBeEmpty()
-	{
-		ConstraintResult.Success<int> sut = new(1, "foo");
-
-		List<ConstraintResult.Context> contexts = sut.GetContexts().ToList();
-
-		await That(contexts).IsEmpty();
 	}
 
 	[Fact]

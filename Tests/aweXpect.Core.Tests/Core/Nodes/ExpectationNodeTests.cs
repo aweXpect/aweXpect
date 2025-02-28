@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
@@ -58,48 +56,6 @@ public class ExpectationNodeTests
 
 		await That(Act).Throws<NotSupportedException>()
 			.WithMessage("Don't specify the inner node for Expectation nodes directly. Use AddMapping() instead!");
-	}
-
-	[Fact]
-	public async Task GetContexts_WithAsyncMapping_ShouldIncludeContextsFromLeftAndRight()
-	{
-		DummyConstraint constraint1 = new("", () => new ConstraintResult.Success("").WithContext("t1", "c1"));
-		DummyConstraint constraint2 = new("", () => new ConstraintResult.Success<int>(2, "").WithContext("t2", "c2"));
-		ExpectationNode node = new();
-		node.AddConstraint(constraint1);
-		node.AddAsyncMapping(MemberAccessor<int, Task<int>>.FromFunc(_ => Task.FromResult(0), "length"));
-		node.AddConstraint(constraint2);
-		ConstraintResult constraintResult = await node.IsMetBy(3, null!, CancellationToken.None);
-
-		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
-
-		await That(contexts)
-			.IsEqualTo([
-				new ConstraintResult.Context("t1", "c1"),
-				new ConstraintResult.Context("t2", "c2"),
-			])
-			.InAnyOrder();
-	}
-
-	[Fact]
-	public async Task GetContexts_WithMapping_ShouldIncludeContextsFromLeftAndRight()
-	{
-		DummyConstraint constraint1 = new("", () => new ConstraintResult.Success("").WithContext("t1", "c1"));
-		DummyConstraint constraint2 = new("", () => new ConstraintResult.Success<int>(2, "").WithContext("t2", "c2"));
-		ExpectationNode node = new();
-		node.AddConstraint(constraint1);
-		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
-		node.AddConstraint(constraint2);
-		ConstraintResult constraintResult = await node.IsMetBy(3, null!, CancellationToken.None);
-
-		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
-
-		await That(contexts)
-			.IsEqualTo([
-				new ConstraintResult.Context("t1", "c1"),
-				new ConstraintResult.Context("t2", "c2"),
-			])
-			.InAnyOrder();
 	}
 
 	[Fact]

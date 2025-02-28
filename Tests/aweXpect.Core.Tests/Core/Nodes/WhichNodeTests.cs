@@ -35,25 +35,6 @@ public sealed class WhichNodeTests
 	}
 
 	[Fact]
-	public async Task GetContexts_ShouldIncludeContextsFromLeftAndRight()
-	{
-		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", "").WithContext("t1", "c1"));
-		DummyNode node2 = new("", () => new ConstraintResult.Success<string?>("2", "").WithContext("t2", "c2"));
-		WhichNode<string, int> whichNode = new(node1, s => s.Length);
-		whichNode.AddNode(node2);
-		ConstraintResult constraintResult = await whichNode.IsMetBy("", null!, CancellationToken.None);
-
-		List<ConstraintResult.Context> contexts = constraintResult.GetContexts().ToList();
-
-		await That(contexts)
-			.IsEqualTo([
-				new ConstraintResult.Context("t1", "c1"),
-				new ConstraintResult.Context("t2", "c2"),
-			])
-			.InAnyOrder();
-	}
-
-	[Fact]
 	public async Task GetResult_WhenBothFailed_ShouldUseOnlyFirst()
 	{
 		DummyNode node1 = new("", () => new ConstraintResult.Failure("1", "r1"));
@@ -116,27 +97,6 @@ public sealed class WhichNodeTests
 		result.AppendExpectation(sb);
 		await That(result.Outcome).IsEqualTo(Outcome.Success);
 		await That(sb.ToString()).IsEqualTo("e1e2");
-	}
-
-	[Fact]
-	public async Task IsMetBy_ExpectationNodeWithMapping_ShouldApplyConstraint()
-	{
-		DummyNode node1 = new("", () => new ConstraintResult.Success<string?>("1", ""));
-		WhichNode<string, int> whichNode = new(node1, s => s.Length);
-		whichNode.AddNode(new ExpectationNode());
-		whichNode.AddMapping(MemberAccessor<int, int>.FromFunc(i => 2 * i, "doubled:"),
-			contexts: i => Task.FromResult<ConstraintResult.Context?[]>([
-				new ConstraintResult.Context("context", i.ToString()),
-			]));
-		whichNode.AddConstraint(new DummyConstraint("c2", () => new ConstraintResult.Success<int>(4, "e2")));
-		StringBuilder sb = new();
-
-		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
-
-		result.AppendExpectation(sb);
-		await That(result.Outcome).IsEqualTo(Outcome.Success);
-		await That(sb.ToString()).IsEqualTo("doubled:e2");
-		await That(result.GetContexts()).Contains(x => x is { Title: "context", Content: "3", });
 	}
 
 	[Fact]

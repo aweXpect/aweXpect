@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -75,6 +76,10 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 		=> new(++index, $" [{index:00}] Expected that {expectationBuilder.Subject}",
 			await expectationBuilder.IsMet());
 
+	/// <inheritdoc />
+	internal override IEnumerable<ResultContext> GetContexts(int index)
+		=> expectationBuilder.GetContexts();
+
 	/// <summary>
 	///     Specifies a <see cref="ITimeSystem" /> to use for the expectation.
 	/// </summary>
@@ -93,8 +98,7 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 			return;
 		}
 
-		Fail.Test(ExpectationBuilder.FromFailure(
-			expectationBuilder.Subject, result));
+		Fail.Test(await expectationBuilder.FromFailure(result));
 	}
 }
 
@@ -173,6 +177,10 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 		=> new(++index, $" [{index:00}] Expected that {expectationBuilder.Subject}",
 			await expectationBuilder.IsMet());
 
+	/// <inheritdoc />
+	internal override IEnumerable<ResultContext> GetContexts(int index)
+		=> expectationBuilder.GetContexts();
+
 	/// <summary>
 	///     Specifies a <see cref="ITimeSystem" /> to use for the expectation.
 	/// </summary>
@@ -195,7 +203,7 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 
 		if (result.Outcome == Outcome.Failure)
 		{
-			Fail.Test(ExpectationBuilder.FromFailure(expectationBuilder.Subject, result));
+			Fail.Test(await expectationBuilder.FromFailure(result));
 		}
 
 		throw new FailException(

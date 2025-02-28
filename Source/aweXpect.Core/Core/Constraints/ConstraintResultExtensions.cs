@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -40,27 +38,6 @@ public static class ConstraintResultExtensions
 		=> new ConstraintResultFailure<T>(inner, failure, value);
 
 	/// <summary>
-	///     Creates a new <see cref="ConstraintResult" /> with a context with
-	///     <paramref name="title" /> and <paramref name="content" />.
-	/// </summary>
-	public static ConstraintResult WithContext(this ConstraintResult inner, string title, string? content)
-	{
-		if (content == null)
-		{
-			return inner;
-		}
-
-		return new ConstraintResultContextWrapper(inner, [new ConstraintResult.Context(title, content),]);
-	}
-
-	/// <summary>
-	///     Creates a new <see cref="ConstraintResult" /> with <paramref name="contexts" />.
-	/// </summary>
-	public static ConstraintResult WithContexts(this ConstraintResult inner,
-		params ConstraintResult.Context?[] contexts)
-		=> new ConstraintResultContextWrapper(inner, contexts);
-
-	/// <summary>
 	///     Checks if the two <see cref="ConstraintResult" />s have the same result text.
 	/// </summary>
 	public static bool HasSameResultTextAs(this ConstraintResult left, ConstraintResult right)
@@ -96,9 +73,6 @@ public static class ConstraintResultExtensions
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 			=> _inner.AppendResult(stringBuilder, indentation);
 
-		public override IEnumerable<Context> GetContexts()
-			=> _inner.GetContexts();
-
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
 			if (_value is TValue typedValue)
@@ -112,34 +86,6 @@ public static class ConstraintResultExtensions
 		}
 	}
 
-	private sealed class ConstraintResultContextWrapper(
-		ConstraintResult inner,
-		ConstraintResult.Context?[] contexts)
-		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
-	{
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendExpectation(stringBuilder, indentation);
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendResult(stringBuilder, indentation);
-
-		public override IEnumerable<Context> GetContexts()
-		{
-			foreach (Context? c in contexts.Where(x => x != null))
-			{
-				yield return c!;
-			}
-
-			foreach (Context c in inner.GetContexts())
-			{
-				yield return c;
-			}
-		}
-
-		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> inner.TryGetValue(out value);
-	}
-
 	private sealed class ConstraintResultFailure<T>(ConstraintResult inner, string failure, T value)
 		: ConstraintResult(Outcome.Failure, inner.FurtherProcessingStrategy)
 	{
@@ -150,9 +96,6 @@ public static class ConstraintResultExtensions
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(failure.Indent(indentation));
-
-		public override IEnumerable<Context> GetContexts()
-			=> inner.GetContexts();
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
@@ -173,9 +116,6 @@ public static class ConstraintResultExtensions
 		Action<StringBuilder>? suffix)
 		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
 	{
-		public override IEnumerable<Context> GetContexts()
-			=> inner.GetContexts();
-
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 			=> inner.TryGetValue(out value);
 

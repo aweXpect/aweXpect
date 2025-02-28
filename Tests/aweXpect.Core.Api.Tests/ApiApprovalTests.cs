@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
+using aweXpect.Customization;
 using NUnit.Framework;
 
 namespace aweXpect.Core.Api.Tests;
@@ -9,8 +11,13 @@ namespace aweXpect.Core.Api.Tests;
 ///     If the change was intentional, execute the <see cref="ApiAcceptance.AcceptApiChanges()" /> test to take over the
 ///     current public API surface. The changes will become part of the pull request and will be reviewed accordingly.
 /// </summary>
-public sealed class ApiApprovalTests
+public sealed class ApiApprovalTests : IDisposable
 {
+	private readonly CustomizationLifetime _settings = Customize.aweXpect
+		.Formatting().MinimumNumberOfCharactersAfterStringDifference.Set(200);
+
+	public void Dispose() => _settings.Dispose();
+
 	[TestCaseSource(typeof(TargetFrameworksTheoryData))]
 	public async Task VerifyPublicApiForAweXpectCore(string framework)
 	{
