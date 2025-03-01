@@ -32,7 +32,7 @@ partial class Build
 		.Unlisted()
 		.DependsOn(Compile)
 		.DependsOn(CodeCoverage)
-		.OnlyWhenDynamic(() => IsServerBuild)
+		.OnlyWhenDynamic(() => IsServerBuild && BuildScope == BuildScope.Default)
 		.Executes(() =>
 		{
 			SonarScannerTasks.SonarScannerEnd(s => s
