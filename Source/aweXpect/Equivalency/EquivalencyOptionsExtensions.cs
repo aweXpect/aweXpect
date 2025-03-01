@@ -17,7 +17,7 @@ public static class EquivalencyOptionsExtensions
 		where TEquivalencyOptions : EquivalencyTypeOptions
 		=> @this with
 		{
-			MembersToIgnore = [..@this.MembersToIgnore, memberToIgnore],
+			MembersToIgnore = [..@this.MembersToIgnore, memberToIgnore,],
 		};
 
 	/// <summary>
@@ -76,18 +76,4 @@ public static class EquivalencyOptionsExtensions
 		=> callback is null
 			? Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get()
 			: callback(Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get());
-
-	/// <summary>
-	///     Returns type-specific <see cref="EquivalencyTypeOptions" />.
-	/// </summary>
-	internal static EquivalencyTypeOptions GetTypeOptions(this EquivalencyOptions @this, Type? type,
-		EquivalencyTypeOptions defaultValue)
-	{
-		if (type != null && @this.CustomOptions.TryGetValue(type, out EquivalencyTypeOptions? customOptions))
-		{
-			return customOptions;
-		}
-
-		return defaultValue;
-	}
 }

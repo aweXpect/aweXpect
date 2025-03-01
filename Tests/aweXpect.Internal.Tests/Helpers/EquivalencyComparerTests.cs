@@ -2,7 +2,7 @@
 
 // ReSharper disable UnusedAutoPropertyAccessor.Local
 // ReSharper disable NotAccessedField.Local
-namespace aweXpect.Internal.Tests.Equivalency;
+namespace aweXpect.Internal.Tests.Helpers;
 
 public sealed partial class EquivalencyComparerTests
 {

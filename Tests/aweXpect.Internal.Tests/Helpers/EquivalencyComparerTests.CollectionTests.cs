@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Equivalency;
 
-namespace aweXpect.Internal.Tests.Equivalency;
+namespace aweXpect.Internal.Tests.Helpers;
 
 public sealed partial class EquivalencyComparerTests
 {

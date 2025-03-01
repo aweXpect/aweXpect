@@ -1,7 +1,7 @@
 ﻿using aweXpect.Customization;
 using aweXpect.Equivalency;
 
-namespace aweXpect.Internal.Tests.Equivalency;
+namespace aweXpect.Core.Tests.Customization;
 
 public sealed class CustomizeEquivalencyTests
 {

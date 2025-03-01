@@ -1,29 +1,19 @@
 using System;
-using aweXpect.Customization;
+using aweXpect.Equivalency;
 
-namespace aweXpect.Equivalency;
+namespace aweXpect.Customization;
 
-/// <summary>
-///     Extension methods on <see cref="AwexpectCustomization" /> for equivalency.
-/// </summary>
-public static class EquivalencyAwexpectCustomizationExtensions
+public partial class AwexpectCustomization
 {
+	private EquivalencyCustomization? _equivalency;
+
 	/// <summary>
 	///     Customize the equivalency settings.
 	/// </summary>
-	public static EquivalencyCustomization Equivalency(this AwexpectCustomization awexpectCustomization)
-		=> new(awexpectCustomization);
-
-	private sealed class CustomizationValue<TValue>(
-		Func<TValue> getter,
-		Func<TValue, CustomizationLifetime> setter)
-		: ICustomizationValueSetter<TValue>
+	public EquivalencyCustomization Equivalency()
 	{
-		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Get()" />
-		public TValue Get() => getter();
-
-		/// <inheritdoc cref="ICustomizationValueSetter{TValue}.Set(TValue)" />
-		public CustomizationLifetime Set(TValue value) => setter(value);
+		_equivalency ??= new EquivalencyCustomization(this);
+		return _equivalency;
 	}
 
 	/// <summary>
