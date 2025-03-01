@@ -24,7 +24,10 @@ You can verify the number of items in a collection:
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 10);
 
+await Expect.That(values).HasCount(10);
+// or more explicit
 await Expect.That(values).HasCount().EqualTo(10);
+
 await Expect.That(values).HasCount().AtLeast(9);
 await Expect.That(values).HasCount().AtMost(11);
 await Expect.That(values).HasCount().Between(8).And(12);

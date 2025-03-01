@@ -16,4 +16,14 @@ public static partial class ThatEnumerable
 			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
 				=> new SyncCollectionCountConstraint<TItem>(it, quantifier)),
 			subject));
+
+	/// <summary>
+	///     Verifies that the <paramref name="subject" /> has exactly <paramref name="expected" /> items.
+	/// </summary>
+	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> HasCount<TItem>(
+		this IThat<IEnumerable<TItem>?> subject, int expected)
+		=> new(
+			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
+			subject);
 }
