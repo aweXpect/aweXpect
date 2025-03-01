@@ -280,9 +280,21 @@ namespace aweXpect.Customization
     public class AwexpectCustomization : aweXpect.Customization.IAwexpectCustomization
     {
         public AwexpectCustomization() { }
+        public aweXpect.Customization.AwexpectCustomization.EquivalencyCustomization Equivalency() { }
         public aweXpect.Customization.AwexpectCustomization.FormattingCustomization Formatting() { }
         public aweXpect.Customization.AwexpectCustomization.ReflectionCustomization Reflection() { }
         public aweXpect.Customization.AwexpectCustomization.SettingsCustomization Settings() { }
+        public class EquivalencyCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.EquivalencyCustomizationValue>
+        {
+            public aweXpect.Customization.ICustomizationValueSetter<aweXpect.Equivalency.EquivalencyOptions> DefaultEquivalencyOptions { get; }
+            public aweXpect.Customization.AwexpectCustomization.EquivalencyCustomizationValue Get() { }
+            public aweXpect.Customization.CustomizationLifetime Update(System.Func<aweXpect.Customization.AwexpectCustomization.EquivalencyCustomizationValue, aweXpect.Customization.AwexpectCustomization.EquivalencyCustomizationValue> update) { }
+        }
+        public class EquivalencyCustomizationValue : System.IEquatable<aweXpect.Customization.AwexpectCustomization.EquivalencyCustomizationValue>
+        {
+            public EquivalencyCustomizationValue() { }
+            public aweXpect.Equivalency.EquivalencyOptions DefaultEquivalencyOptions { get; init; }
+        }
         public class FormattingCustomization : aweXpect.Customization.ICustomizationValueUpdater<aweXpect.Customization.AwexpectCustomization.FormattingCustomizationValue>
         {
             public aweXpect.Customization.ICustomizationValueSetter<int> MaximumNumberOfCollectionItems { get; }
@@ -395,6 +407,51 @@ namespace aweXpect.Delegates
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInnerException() { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInnerException(System.Action<aweXpect.Core.IThat<System.Exception?>> expectations) { }
         public aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithMessage(string expected) { }
+    }
+}
+namespace aweXpect.Equivalency
+{
+    public static class EquivalencyComparison
+    {
+        public static bool Compare<TActual, TExpected>(TActual actual, TExpected expected, aweXpect.Equivalency.EquivalencyOptions equivalencyOptions, System.Text.StringBuilder failureBuilder) { }
+    }
+    public enum EquivalencyComparisonType
+    {
+        ByValue = 0,
+        ByMembers = 1,
+    }
+    public static class EquivalencyDefaults
+    {
+        public static aweXpect.Equivalency.EquivalencyComparisonType DefaultComparisonType(System.Type type) { }
+    }
+    public class EquivalencyOptions : aweXpect.Equivalency.EquivalencyTypeOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions>
+    {
+        public EquivalencyOptions() { }
+        public System.Collections.Generic.Dictionary<System.Type, aweXpect.Equivalency.EquivalencyTypeOptions> CustomOptions { get; init; }
+        public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> DefaultComparisonTypeSelector { get; init; }
+        public aweXpect.Equivalency.EquivalencyOptions For<TMember>(System.Func<aweXpect.Equivalency.EquivalencyTypeOptions, aweXpect.Equivalency.EquivalencyTypeOptions> options) { }
+    }
+    public class EquivalencyOptions<TExpected> : aweXpect.Equivalency.EquivalencyOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions<TExpected>>
+    {
+        public EquivalencyOptions(aweXpect.Equivalency.EquivalencyOptions inner) { }
+        public new aweXpect.Equivalency.EquivalencyOptions<TExpected> For<TMember>(System.Func<aweXpect.Equivalency.EquivalencyTypeOptions, aweXpect.Equivalency.EquivalencyTypeOptions> options) { }
+    }
+    public class EquivalencyTypeOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyTypeOptions>
+    {
+        public EquivalencyTypeOptions() { }
+        public aweXpect.Equivalency.EquivalencyComparisonType? ComparisonType { get; init; }
+        public aweXpect.Equivalency.IncludeMembers Fields { get; init; }
+        public bool IgnoreCollectionOrder { get; init; }
+        public string[] MembersToIgnore { get; init; }
+        public aweXpect.Equivalency.IncludeMembers Properties { get; init; }
+    }
+    [System.Flags]
+    public enum IncludeMembers
+    {
+        None = 0,
+        Public = 2,
+        Internal = 4,
+        Private = 8,
     }
 }
 namespace aweXpect

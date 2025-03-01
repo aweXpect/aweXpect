@@ -7,12 +7,12 @@ using System.Text;
 
 namespace aweXpect.Equivalency;
 
-internal static partial class EquivalencyComparison
+public static partial class EquivalencyComparison
 {
 	private static bool Compare<TActual, TExpected>(
 		TActual actual,
 		TExpected expected,
-		EquivalencyOptions options,
+		EquivalencyOptions equivalencyOptions,
 		EquivalencyTypeOptions typeOptions,
 		StringBuilder failureBuilder,
 		string memberPath,
@@ -25,7 +25,7 @@ internal static partial class EquivalencyComparison
 		}
 
 		EquivalencyComparisonType comparisonType = typeOptions.ComparisonType
-		                                           ?? options.DefaultComparisonTypeSelector.Invoke(actual.GetType());
+		                                           ?? equivalencyOptions.DefaultComparisonTypeSelector.Invoke(actual.GetType());
 		if (comparisonType == EquivalencyComparisonType.ByValue)
 		{
 			return CompareByValue(actual, expected, failureBuilder, memberPath, memberType);
@@ -39,11 +39,11 @@ internal static partial class EquivalencyComparison
 		if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
 		{
 			return CompareEnumerables(actualEnumerable, expectedEnumerable, failureBuilder, memberPath,
-				options, typeOptions, context);
+				equivalencyOptions, typeOptions, context);
 		}
 
 		return CompareObjects(actual, expected, failureBuilder, memberType, memberPath,
-			options, typeOptions, context);
+			equivalencyOptions, typeOptions, context);
 	}
 
 	private static bool CompareObjects<TActual, TExpected>([DisallowNull] TActual actual,

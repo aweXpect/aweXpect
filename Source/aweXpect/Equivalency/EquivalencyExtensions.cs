@@ -1,11 +1,9 @@
 ﻿using System;
 using aweXpect.Core;
-using aweXpect.Equivalency;
 using aweXpect.Options;
 using aweXpect.Results;
 
-// ReSharper disable once CheckNamespace
-namespace aweXpect;
+namespace aweXpect.Equivalency;
 
 /// <summary>
 ///     Extension methods for equivalency.
