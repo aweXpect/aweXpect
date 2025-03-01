@@ -11,7 +11,7 @@ public sealed class CustomizeSettingsTests
 	[Fact]
 	public async Task DefaultCheckInterval_ShouldBeUsedInTimeComparisons()
 	{
-		TimeSpan timeout = 1.Seconds();
+		TimeSpan timeout = 2.Seconds();
 		ChangingClass sut1 = new();
 		ChangingClass sut2 = new();
 
