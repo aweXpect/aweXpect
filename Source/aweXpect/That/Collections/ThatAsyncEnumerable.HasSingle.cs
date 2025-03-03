@@ -19,7 +19,7 @@ public static partial class ThatAsyncEnumerable
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new HasSingleConstraint<TItem>(it)),
 			async f =>
 			{

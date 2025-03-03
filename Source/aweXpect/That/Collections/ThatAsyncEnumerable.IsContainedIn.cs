@@ -23,7 +23,7 @@ public static partial class ThatAsyncEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return new
 			ObjectCollectionBeContainedInResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+				source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 				source,
 				options,
@@ -44,7 +44,7 @@ public static partial class ThatAsyncEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.IsContainedIn);
 		return new StringCollectionBeContainedInResult<IAsyncEnumerable<string?>,
 			IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,

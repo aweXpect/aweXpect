@@ -16,7 +16,7 @@ public static partial class ThatDictionary
 		this IThat<IDictionary<TKey, TValue>?> source,
 		TValue expected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValueConstraint<TKey, TValue>(it, expected)),
 			source
 		);
@@ -29,7 +29,7 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source,
 			TValue unexpected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NotContainValueConstraint<TKey, TValue>(it, unexpected)),
 			source
 		);

@@ -186,7 +186,7 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
 
-				await Act();
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]

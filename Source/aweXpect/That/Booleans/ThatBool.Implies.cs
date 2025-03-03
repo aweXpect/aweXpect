@@ -12,7 +12,7 @@ public static partial class ThatBool
 	/// </summary>
 	public static AndOrResult<bool, IThat<bool>> Implies(this IThat<bool> source,
 		bool consequent)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new ImpliesConstraint(it, consequent)),
 			source);
 

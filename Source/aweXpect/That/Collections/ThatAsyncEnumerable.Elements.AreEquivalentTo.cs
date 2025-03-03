@@ -32,11 +32,11 @@ public static partial class ThatAsyncEnumerable
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
+						() => grammars == ExpectationGrammars.None
 							? $"is equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
 							: $"are equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 						a => equalityOptions.AreConsideredEqual(a, expected),

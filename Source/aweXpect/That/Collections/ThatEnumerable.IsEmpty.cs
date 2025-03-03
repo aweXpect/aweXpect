@@ -17,7 +17,7 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) => new IsEmptyConstraint<TItem>(it, grammar)),
+				.AddConstraint((it, grammars) => new IsEmptyConstraint<TItem>(it, grammars)),
 			source);
 
 	/// <summary>
@@ -26,7 +26,7 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) => new IsNotEmptyConstraint<TItem>(it, grammar)),
+				.AddConstraint((it, grammars) => new IsNotEmptyConstraint<TItem>(it, grammars)),
 			source);
 
 	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)

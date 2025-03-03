@@ -27,6 +27,6 @@ public static partial class ThatDelegateThrows
 						e => e.GetInnerExpectations(), "recursive inner exceptions "),
 					(property, stringBuilder) => stringBuilder.Append("with ").Append(property).Append("which "))
 				.AddExpectations(e => expectations(new ThatSubject<IEnumerable<Exception>>(e)),
-					ExpectationGrammars.Nested),
+					grammars => grammars | ExpectationGrammars.Nested),
 			source);
 }

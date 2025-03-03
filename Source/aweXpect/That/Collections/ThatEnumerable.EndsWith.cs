@@ -26,7 +26,7 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
 					options)),
 			source,
@@ -43,7 +43,7 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<TItem, TItem>(it, Formatter.Format(expected), expected, options)),
 			source,
 			options);
@@ -60,7 +60,7 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
 					options)),
 			source,
@@ -77,7 +77,7 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new EndsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
 			source,
 			options);
@@ -95,7 +95,7 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new NotEndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
 					options)),
 			source,
@@ -112,7 +112,7 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new NotEndsWithConstraint<TItem, TItem>(it, Formatter.Format(unexpected), unexpected,
 					options)),
 			source,
@@ -131,7 +131,7 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new NotEndsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
 					options)),
 			source,
@@ -148,7 +148,7 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new NotEndsWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
 					options)),
 			source,

@@ -21,9 +21,9 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 		return EquivalencyComparison.Compare(actual, expected, equivalencyOptions, _failureBuilder);
 	}
 
-	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
-	public string GetExpectation(string expected, bool negate = false)
-		=> $"is {(negate ? "not " : "")}equivalent to {expected}";
+	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
+	public string GetExpectation(string expected, ExpectationGrammars grammars)
+		=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equivalent to {expected}";
 
 	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
 	public string GetExtendedFailure(string it, object? actual, object? expected)

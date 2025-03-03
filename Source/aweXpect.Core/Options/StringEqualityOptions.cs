@@ -63,8 +63,8 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	public string GetExpectation(string? expected, ExpectationGrammars grammar)
-		=> _matchType.GetExpectation(expected, grammar) + GetOptionString();
+	public string GetExpectation(string? expected, ExpectationGrammars grammars)
+		=> _matchType.GetExpectation(expected, grammars) + GetOptionString();
 
 	/// <summary>
 	///     Get an extended failure text.

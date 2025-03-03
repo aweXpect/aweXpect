@@ -21,7 +21,7 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
@@ -39,7 +39,7 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
 		return new StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,

@@ -29,6 +29,7 @@ public static partial class ThatException
 					},
 					false)
 				.AddExpectations(e => expectations(
-					new ThatSubject<IEnumerable<Exception>>(e)), ExpectationGrammars.Nested),
+					new ThatSubject<IEnumerable<Exception>>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			source);
 }

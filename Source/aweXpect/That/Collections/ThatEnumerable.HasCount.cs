@@ -13,7 +13,7 @@ public static partial class ThatEnumerable
 	public static CollectionCountResult<AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>> HasCount<TItem>(
 		this IThat<IEnumerable<TItem>?> subject)
 		=> new(quantifier => new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new SyncCollectionCountConstraint<TItem>(it, quantifier)),
 			subject));
 
@@ -23,7 +23,7 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> HasCount<TItem>(
 		this IThat<IEnumerable<TItem>?> subject, int expected)
 		=> new(
-			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
 			subject);
 }

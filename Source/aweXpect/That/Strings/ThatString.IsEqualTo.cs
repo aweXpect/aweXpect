@@ -17,8 +17,23 @@ public static partial class ThatString
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammar) =>
-				new IsEqualToConstraint(expectationBuilder, it, expected, options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new IsEqualToConstraint(expectationBuilder, it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not equal to <paramref name="unexpected" />.
+	/// </summary>
+	public static StringEqualityTypeResult<string?, IThat<string?>> IsNotEqualTo(
+		this IThat<string?> source,
+		string? unexpected)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
+			source.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
+				new IsNotEqualToConstraint(expectationBuilder, it, grammars, unexpected, options)),
 			source,
 			options);
 	}
@@ -26,6 +41,7 @@ public static partial class ThatString
 	private readonly struct IsEqualToConstraint(
 		ExpectationBuilder expectationBuilder,
 		string it,
+		ExpectationGrammars grammars,
 		string? expected,
 		StringEqualityOptions options)
 		: IValueConstraint<string?>
@@ -41,11 +57,38 @@ public static partial class ThatString
 			expectationBuilder.UpdateContexts(contexts => contexts
 				.Add(new ResultContext("Actual", actual)));
 			return new ConstraintResult.Failure<string?>(actual, ToString(),
-					options.GetExtendedFailure(it, actual, expected));
+				options.GetExtendedFailure(it, actual, expected));
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
-			=> options.GetExpectation(expected, ExpectationGrammars.Active);
+			=> options.GetExpectation(expected, grammars | ExpectationGrammars.Active);
+	}
+
+	private readonly struct IsNotEqualToConstraint(
+		ExpectationBuilder expectationBuilder,
+		string it,
+		ExpectationGrammars grammars,
+		string? unexpected,
+		StringEqualityOptions options)
+		: IValueConstraint<string?>
+	{
+		/// <inheritdoc />
+		public ConstraintResult IsMetBy(string? actual)
+		{
+			if (!options.AreConsideredEqual(actual, unexpected))
+			{
+				return new ConstraintResult.Success<string?>(actual, ToString());
+			}
+
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Actual", actual)));
+			return new ConstraintResult.Failure<string?>(actual, ToString(),
+				$"{it} did match");
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+			=> options.GetExpectation(unexpected, grammars.Negate() | ExpectationGrammars.Active);
 	}
 }

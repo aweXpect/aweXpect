@@ -19,8 +19,8 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsEqualToConstraint<object?, object?>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<object?, object?>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -36,8 +36,8 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNullableEqualToConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsNullableEqualToConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -53,8 +53,8 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsEqualToConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -70,8 +70,8 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsNotEqualToConstraint(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -88,8 +88,8 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNullableNotEqualToConstraint<T>(it, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsNullableNotEqualToConstraint<T>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -106,14 +106,15 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNotEqualToConstraint<T>(it, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsNotEqualToConstraint<T>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
 
 	private readonly struct IsEqualToConstraint<TSubject, TExpected>(
 		string it,
+		ExpectationGrammars grammars,
 		TExpected expected,
 		string expectedExpression,
 		ObjectEqualityOptions<TSubject> options)
@@ -130,11 +131,12 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> options.GetExpectation(expectedExpression.TrimCommonWhiteSpace());
+			=> options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), grammars);
 	}
 
 	private readonly struct IsEqualToConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? expected,
 		string expectedExpression,
 		ObjectEqualityOptions<T> options)
@@ -152,11 +154,12 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> options.GetExpectation(expectedExpression);
+			=> options.GetExpectation(expectedExpression, grammars);
 	}
 
 	private readonly struct IsNullableEqualToConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? expected,
 		string expectedExpression,
 		ObjectEqualityOptions<T?> options)
@@ -174,11 +177,12 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> options.GetExpectation(expectedExpression);
+			=> options.GetExpectation(expectedExpression, grammars);
 	}
 
 	private readonly struct IsNotEqualToConstraint(
 		string it,
+		ExpectationGrammars grammars,
 		object? unexpected,
 		string unexpectedExpression,
 		ObjectEqualityOptions<object?> options)
@@ -195,11 +199,12 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> options.GetExpectation(unexpectedExpression, true);
+			=> options.GetExpectation(unexpectedExpression, grammars.Negate());
 	}
 
 	private readonly struct IsNotEqualToConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? unexpected,
 		string unexpectedExpression,
 		ObjectEqualityOptions<T> options)
@@ -217,11 +222,12 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> options.GetExpectation(unexpectedExpression, true);
+			=> options.GetExpectation(unexpectedExpression, grammars.Negate());
 	}
 
 	private readonly struct IsNullableNotEqualToConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? unexpected,
 		string unexpectedExpression,
 		ObjectEqualityOptions<T?> options)
@@ -239,6 +245,6 @@ public static partial class ThatObject
 		}
 
 		public override string ToString()
-			=> options.GetExpectation(unexpectedExpression, true);
+			=> options.GetExpectation(unexpectedExpression, grammars.Negate());
 	}
 }

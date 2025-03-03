@@ -12,7 +12,7 @@ public static partial class ThatBool
 	/// </summary>
 	public static AndOrResult<bool, IThat<bool>> IsEqualTo(this IThat<bool> source,
 		bool expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint(it, expected)),
 			source);
 
@@ -21,7 +21,7 @@ public static partial class ThatBool
 	/// </summary>
 	public static AndOrResult<bool, IThat<bool>> IsNotEqualTo(this IThat<bool> source,
 		bool unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsNotEqualToConstraint(it, unexpected)),
 			source);
 

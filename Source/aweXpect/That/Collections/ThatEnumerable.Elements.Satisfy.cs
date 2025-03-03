@@ -19,11 +19,11 @@ public static partial class ThatEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
 						it,
 						_quantifier,
-						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
+						() => grammars.HasFlag(ExpectationGrammars.Nested) switch
 						{
 							true => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 							_ => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
@@ -43,11 +43,11 @@ public static partial class ThatEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => grammar.HasFlag(ExpectationGrammars.Nested) switch
+						() => grammars.HasFlag(ExpectationGrammars.Nested) switch
 						{
 							true => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 							_ => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",

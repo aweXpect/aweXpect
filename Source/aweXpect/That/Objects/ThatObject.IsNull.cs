@@ -12,7 +12,7 @@ public static partial class ThatObject
 	public static AndOrResult<T?, IThat<T?>> IsNull<T>(
 		this IThat<T?> source)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
@@ -27,7 +27,7 @@ public static partial class ThatObject
 	public static AndOrResult<T?, IThat<T?>> IsNull<T>(
 		this IThat<T?> source)
 		where T : struct
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
@@ -42,7 +42,7 @@ public static partial class ThatObject
 	public static AndOrResult<T, IThat<T?>> IsNotNull<T>(
 		this IThat<T?> source)
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new GenericConstraint<T?>(
 					it,
 					null,
@@ -57,7 +57,7 @@ public static partial class ThatObject
 	public static AndOrResult<T, IThat<T?>> IsNotNull<T>(
 		this IThat<T?> source)
 		where T : struct
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new GenericConstraint<T?>(
 					it,
 					null,

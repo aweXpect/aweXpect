@@ -18,7 +18,7 @@ public static partial class ThatNullableTimeSpan
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint(it, expected, tolerance)),
 			source,
 			tolerance);
@@ -33,7 +33,7 @@ public static partial class ThatNullableTimeSpan
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNotEqualToConstraint(it, unexpected, tolerance)),
 			source,
 			tolerance);

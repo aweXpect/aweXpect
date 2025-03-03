@@ -11,7 +11,7 @@ namespace aweXpect.Core;
 /// <summary>
 ///     A manual expectation builder can be used for manually evaluating inner expectations.
 /// </summary>
-public class ManualExpectationBuilder<TValue>() : ExpectationBuilder("")
+public class ManualExpectationBuilder<TValue>(ExpectationGrammars grammars = ExpectationGrammars.None) : ExpectationBuilder("", grammars)
 {
 	/// <summary>
 	///     Evaluate if the expectations are met by the <paramref name="value" />.

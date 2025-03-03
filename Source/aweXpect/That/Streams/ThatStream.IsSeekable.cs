@@ -12,7 +12,7 @@ public static partial class ThatStream
 	/// </summary>
 	public static AndOrResult<Stream?, IThat<Stream?>> IsSeekable(
 		this IThat<Stream?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ValueConstraint(
 					"is seekable",
 					actual => actual?.CanSeek == true,
@@ -24,7 +24,7 @@ public static partial class ThatStream
 	/// </summary>
 	public static AndOrResult<Stream?, IThat<Stream?>> IsNotSeekable(
 		this IThat<Stream?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ValueConstraint(
 					"is not seekable",
 					actual => actual?.CanSeek == false,

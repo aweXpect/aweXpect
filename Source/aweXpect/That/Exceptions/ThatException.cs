@@ -14,7 +14,7 @@ public static partial class ThatException
 	private readonly struct HasMessageValueConstraint<TException>(
 		ExpectationBuilder expectationBuilder,
 		string it,
-		ExpectationGrammars grammar,
+		ExpectationGrammars grammars,
 		string expected,
 		StringEqualityOptions options)
 		: IValueConstraint<Exception?>
@@ -34,10 +34,10 @@ public static partial class ThatException
 		}
 
 		public override string ToString()
-			=> grammar switch
+			=> grammars switch
 			{
-				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, grammar)}",
-				_ => $"has Message {options.GetExpectation(expected, grammar)}",
+				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, grammars)}",
+				_ => $"has Message {options.GetExpectation(expected, grammars)}",
 			};
 	}
 

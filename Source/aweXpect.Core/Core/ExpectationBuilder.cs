@@ -39,15 +39,16 @@ public abstract class ExpectationBuilder
 	///     Initializes the <see cref="ExpectationBuilder" /> with the <paramref name="subjectExpression" />
 	///     for the statement builder.
 	/// </summary>
-	protected ExpectationBuilder(string subjectExpression)
+	protected ExpectationBuilder(string subjectExpression, ExpectationGrammars grammars = ExpectationGrammars.None)
 	{
 		Subject = subjectExpression;
+		ExpectationGrammars = grammars;
 	}
 
 	/// <summary>
 	///     The expected grammatical form of the expectation text.
 	/// </summary>
-	public ExpectationGrammars ExpectationGrammars { get; private set; } = ExpectationGrammars.None;
+	public ExpectationGrammars ExpectationGrammars { get; private set; }
 
 	internal string Subject { get; }
 
@@ -194,10 +195,18 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			ExpectationGrammars previousGrammars = ExpectationGrammars;
-			ExpectationGrammars = expectationGrammar;
-			expectationBuilderCallback.Invoke(this);
-			ExpectationGrammars = previousGrammars;
+			if (expectationGrammar != null)
+			{
+				ExpectationGrammars previousGrammars = ExpectationGrammars;
+				ExpectationGrammars = expectationGrammar(ExpectationGrammars);
+				expectationBuilderCallback.Invoke(this);
+				ExpectationGrammars = previousGrammars;
+			}
+			else
+			{
+				expectationBuilderCallback.Invoke(this);
+			}
+
 			_node = root;
 			if (replaceIt)
 			{
@@ -230,10 +239,18 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			ExpectationGrammars previousGrammars = ExpectationGrammars;
-			ExpectationGrammars = expectationGrammar;
-			expectationBuilderCallback.Invoke(this);
-			ExpectationGrammars = previousGrammars;
+			if (expectationGrammar != null)
+			{
+				ExpectationGrammars previousGrammars = ExpectationGrammars;
+				ExpectationGrammars = expectationGrammar(ExpectationGrammars);
+				expectationBuilderCallback.Invoke(this);
+				ExpectationGrammars = previousGrammars;
+			}
+			else
+			{
+				expectationBuilderCallback.Invoke(this);
+			}
+
 			_node = root;
 			if (replaceIt)
 			{
@@ -300,7 +317,7 @@ public abstract class ExpectationBuilder
 		Func<TSource, TTarget?> memberAccessor,
 		string? separator = null,
 		string? replaceIt = null,
-		ExpectationGrammars? expectationGrammar = null)
+		Func<ExpectationGrammars, ExpectationGrammars>? expectationGrammar = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
@@ -316,7 +333,7 @@ public abstract class ExpectationBuilder
 
 		if (expectationGrammar != null)
 		{
-			ExpectationGrammars = expectationGrammar.Value;
+			ExpectationGrammars = expectationGrammar(ExpectationGrammars);
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
@@ -346,7 +363,7 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
 	{
-		_contexts ??= new();
+		_contexts ??= new ResultContexts();
 		callback(_contexts);
 		return this;
 	}
@@ -450,7 +467,7 @@ public abstract class ExpectationBuilder
 	{
 		private readonly Func<
 				Action<ExpectationBuilder>,
-				ExpectationGrammars,
+				Func<ExpectationGrammars, ExpectationGrammars>?,
 				Func<string, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			_callback;
@@ -459,7 +476,7 @@ public abstract class ExpectationBuilder
 
 		internal MemberExpectationBuilder(Func<
 				Action<ExpectationBuilder>,
-				ExpectationGrammars,
+				Func<ExpectationGrammars, ExpectationGrammars>?,
 				Func<string, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			callback)
@@ -472,7 +489,7 @@ public abstract class ExpectationBuilder
 		/// </summary>
 		public ExpectationBuilder AddExpectations(
 			Action<ExpectationBuilder> expectation,
-			ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+			Func<ExpectationGrammars, ExpectationGrammars>? expectationGrammars = null)
 			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder);
 
 		/// <summary>

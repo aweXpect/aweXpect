@@ -19,7 +19,7 @@ public static partial class ThatString
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainsConstraint(it, expected, quantifier, options)),
 			source,
 			quantifier,
@@ -37,7 +37,7 @@ public static partial class ThatString
 		quantifier.Exactly(0);
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainsConstraint(it, unexpected, quantifier, options)),
 			source,
 			options);

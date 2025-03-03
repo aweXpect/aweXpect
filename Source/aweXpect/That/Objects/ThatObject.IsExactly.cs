@@ -13,7 +13,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrWhoseResult<TType, IThat<object?>> IsExactly<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsExactlyOfTypeConstraint<TType>(it)),
 			source);
 
@@ -23,7 +23,7 @@ public static partial class ThatObject
 	public static AndOrResult<object?, IThat<object?>> IsExactly(
 		this IThat<object?> source,
 		Type type)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsExactlyOfTypeConstraint(it, type)),
 			source);
 
@@ -32,7 +32,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<object?, IThat<object?>> IsNotExactly<TType>(
 		this IThat<object?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsNotExactlyOfTypeConstraint<TType>(it)),
 			source);
 
@@ -42,7 +42,7 @@ public static partial class ThatObject
 	public static AndOrResult<object?, IThat<object?>> IsNotExactly(
 		this IThat<object?> source,
 		Type type)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsNotExactlyOfTypeConstraint(it, type)),
 			source);
 

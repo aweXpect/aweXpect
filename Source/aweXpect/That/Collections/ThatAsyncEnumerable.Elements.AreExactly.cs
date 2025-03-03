@@ -20,11 +20,11 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
+						() => grammars == ExpectationGrammars.None
 							? $"is exactly of type {Formatter.Format(typeof(TType))}"
 							: $"are exactly of type {Formatter.Format(typeof(TType))}",
 						a => a?.GetType() == typeof(TType),
@@ -41,11 +41,11 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
+						() => grammars == ExpectationGrammars.None
 							? $"is exactly of type {Formatter.Format(type)}"
 							: $"are exactly of type {Formatter.Format(type)}",
 						a => a?.GetType() == type,

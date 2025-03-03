@@ -101,7 +101,7 @@ namespace aweXpect.Core
 {
     public abstract class ExpectationBuilder
     {
-        protected ExpectationBuilder(string subjectExpression) { }
+        protected ExpectationBuilder(string subjectExpression, aweXpect.Core.ExpectationGrammars grammars = 0) { }
         public aweXpect.Core.ExpectationGrammars ExpectationGrammars { get; }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncConstraint<TValue>> constraintBuilder) { }
         public aweXpect.Core.ExpectationBuilder AddConstraint<TValue>(System.Func<string, aweXpect.Core.ExpectationGrammars, aweXpect.Core.Constraints.IAsyncContextConstraint<TValue>> constraintBuilder) { }
@@ -115,14 +115,14 @@ namespace aweXpect.Core
         public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForAsyncMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, System.Threading.Tasks.Task<TTarget?>> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TTarget> ForMember<TSource, TTarget>(aweXpect.Core.MemberAccessor<TSource, TTarget> memberAccessor, System.Action<aweXpect.Core.MemberAccessor, System.Text.StringBuilder>? expectationTextGenerator = null, bool replaceIt = true) { }
         public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, System.Threading.Tasks.Task<TTarget?>> asyncMemberAccessor, string? separator = null) { }
-        public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, aweXpect.Core.ExpectationGrammars? expectationGrammar = default) { }
+        public aweXpect.Core.ExpectationBuilder ForWhich<TSource, TTarget>(System.Func<TSource, TTarget?> memberAccessor, string? separator = null, string? replaceIt = null, System.Func<aweXpect.Core.ExpectationGrammars, aweXpect.Core.ExpectationGrammars>? expectationGrammar = null) { }
         public override string? ToString() { }
         public aweXpect.Core.ExpectationBuilder UpdateContexts(System.Action<aweXpect.Core.ResultContexts> callback) { }
         public void WithCancellation(System.Threading.CancellationToken cancellationToken) { }
         public void WithTimeout(System.TimeSpan timeout) { }
         public class MemberExpectationBuilder<TSource, TMember>
         {
-            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+            public aweXpect.Core.ExpectationBuilder AddExpectations(System.Action<aweXpect.Core.ExpectationBuilder> expectation, System.Func<aweXpect.Core.ExpectationGrammars, aweXpect.Core.ExpectationGrammars>? expectationGrammars = null) { }
             public aweXpect.Core.ExpectationBuilder.MemberExpectationBuilder<TSource, TMember> Validate(System.Func<string, aweXpect.Core.Constraints.IValueConstraint<TSource>> constraintBuilder) { }
         }
     }
@@ -137,6 +137,11 @@ namespace aweXpect.Core
         Nested = 2,
         Plural = 4,
         Active = 8,
+        Negated = 16,
+    }
+    public static class ExpectationGrammarsExtensions
+    {
+        public static aweXpect.Core.ExpectationGrammars Negate(this aweXpect.Core.ExpectationGrammars grammars) { }
     }
     public interface ICollectionMatcher<in T, out T2>
         where in T : T2
@@ -147,7 +152,7 @@ namespace aweXpect.Core
     public interface IObjectMatchType
     {
         bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
-        string GetExpectation(string expected, bool negate = false);
+        string GetExpectation(string expected, aweXpect.Core.ExpectationGrammars grammars);
         string GetExtendedFailure(string it, object? actual, object? expected);
     }
     public interface IOptionsEquality<in TSubject>
@@ -161,7 +166,7 @@ namespace aweXpect.Core
     public interface IStringMatchType
     {
         bool AreConsideredEqual(string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer);
-        string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammar);
+        string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammars);
         string GetExtendedFailure(string it, string? actual, string? expected, bool ignoreCase, System.Collections.Generic.IEqualityComparer<string> comparer, aweXpect.Core.StringDifferenceSettings? settings);
         string GetOptionString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
         string GetTypeString();
@@ -187,7 +192,7 @@ namespace aweXpect.Core
     }
     public class ManualExpectationBuilder<TValue> : aweXpect.Core.ExpectationBuilder
     {
-        public ManualExpectationBuilder() { }
+        public ManualExpectationBuilder(aweXpect.Core.ExpectationGrammars grammars = 0) { }
         public System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue value, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken) { }
     }
     public abstract class MemberAccessor
@@ -676,7 +681,7 @@ namespace aweXpect.Options
         public ObjectEqualityOptions() { }
         public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected) { }
         public aweXpect.Options.ObjectEqualityOptions<TSubject> Equals() { }
-        public string GetExpectation(string expectedExpression, bool negate = false) { }
+        public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
         public string GetExtendedFailure(string it, object? actual, object? expected) { }
         public void SetMatchType(aweXpect.Core.IObjectMatchType matchType) { }
         public override string? ToString() { }
@@ -712,7 +717,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsRegex() { }
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
-        public string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammar) { }
+        public string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammars) { }
         public string GetExtendedFailure(string it, string? actual, string? expected) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }

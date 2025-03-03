@@ -25,7 +25,7 @@ public static partial class ThatDictionary
 	{
 		ObjectEqualityOptions<TValue> options = new();
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AllIsUniqueConstraint<TKey, TValue, TValue>(it, options)),
 			source, options
 		);
@@ -42,7 +42,7 @@ public static partial class ThatDictionary
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AllIsUniqueConstraint<TKey, string?, string?>(it, options)),
 			source, options
 		);
@@ -65,7 +65,7 @@ public static partial class ThatDictionary
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(it, memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
@@ -90,7 +90,7 @@ public static partial class ThatDictionary
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(it, memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),

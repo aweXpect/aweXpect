@@ -21,7 +21,8 @@ public static partial class ThatException
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), ExpectationGrammars.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			source);
 
 	/// <summary>
@@ -30,7 +31,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInner<TInnerException>(
 		this IThat<Exception?> source)
 		where TInnerException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new HasInnerExceptionValueConstraint<TInnerException>("has",
 					it)),
 			source);
@@ -50,7 +51,8 @@ public static partial class ThatException
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint(it,
 						innerExceptionType))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			source);
 
 	/// <summary>
@@ -59,7 +61,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInner(
 		this IThat<Exception?> source,
 		Type innerExceptionType)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HasInnerExceptionValueConstraint(innerExceptionType,
 					"has", it)),
 			source);

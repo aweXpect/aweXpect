@@ -12,7 +12,7 @@ public static partial class ThatGuid
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsEqualTo(this IThat<Guid> source,
 		Guid? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ValueConstraint(
 					it,
 					$"is {Formatter.Format(expected)}",
@@ -24,7 +24,7 @@ public static partial class ThatGuid
 	/// </summary>
 	public static AndOrResult<Guid, IThat<Guid>> IsNotEqualTo(this IThat<Guid> source,
 		Guid? unexpected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ValueConstraint(
 					it,
 					$"is not {Formatter.Format(unexpected)}",

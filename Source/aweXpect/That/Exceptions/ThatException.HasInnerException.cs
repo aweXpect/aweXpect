@@ -12,7 +12,7 @@ public partial class ThatException
 	/// </summary>
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInnerException(
 		this IThat<Exception?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new HasInnerExceptionValueConstraint<Exception?>("has",
 					it)),
 			source);
@@ -29,6 +29,7 @@ public partial class ThatException
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<Exception>(it))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			source);
 }

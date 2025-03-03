@@ -16,9 +16,9 @@ public partial class ThatDelegateThrows<TException>
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<TException, ThatDelegateThrows<TException>>(
-			ExpectationBuilder.AddConstraint((it, grammar)
+			ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HasMessageValueConstraint(
-					ExpectationBuilder, it, "with", expected, options)),
+					ExpectationBuilder, it, grammars, "with", expected, options)),
 			this,
 			options);
 	}
@@ -26,6 +26,7 @@ public partial class ThatDelegateThrows<TException>
 	internal readonly struct HasMessageValueConstraint(
 		ExpectationBuilder expectationBuilder,
 		string it,
+		ExpectationGrammars grammars,
 		string verb,
 		string expected,
 		StringEqualityOptions options)
@@ -45,6 +46,6 @@ public partial class ThatDelegateThrows<TException>
 		}
 
 		public override string ToString()
-			=> $"{verb} Message {options.GetExpectation(expected, ExpectationGrammars.None)}";
+			=> $"{verb} Message {options.GetExpectation(expected, grammars)}";
 	}
 }

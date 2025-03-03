@@ -21,7 +21,7 @@ public partial class ThatDelegateThrows<TException>
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint<TInnerException>(it))
-				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), ExpectationGrammars.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), grammars => grammars | ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -31,7 +31,7 @@ public partial class ThatDelegateThrows<TException>
 		TInnerException>()
 		where TInnerException : Exception?
 		=> new(ExpectationBuilder
-				.AddConstraint((it, grammar) =>
+				.AddConstraint((it, grammars) =>
 					new HasInnerExceptionValueConstraint<TInnerException>(
 						"with", it)),
 			this);
@@ -49,7 +49,7 @@ public partial class ThatDelegateThrows<TException>
 					false)
 				.Validate(it
 					=> new InnerExceptionIsTypeConstraint(it, innerExceptionType))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), ExpectationGrammars.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), grammars => grammars | ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -58,7 +58,7 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInner(
 		Type innerExceptionType)
 		=> new(ExpectationBuilder
-				.AddConstraint((it, grammar) =>
+				.AddConstraint((it, grammars) =>
 					new HasInnerExceptionValueConstraint(innerExceptionType,
 						"with", it)),
 			this);
