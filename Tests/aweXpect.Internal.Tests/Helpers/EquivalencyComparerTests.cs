@@ -1,4 +1,5 @@
-﻿using aweXpect.Equivalency;
+﻿using aweXpect.Core;
+using aweXpect.Equivalency;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Local
 // ReSharper disable NotAccessedField.Local
@@ -38,7 +39,7 @@ public sealed partial class EquivalencyComparerTests
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -73,7 +74,7 @@ public sealed partial class EquivalencyComparerTests
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -89,7 +90,7 @@ public sealed partial class EquivalencyComparerTests
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""

@@ -42,7 +42,7 @@ public partial class ThatDelegateThrows<TException>
 			expectationBuilder.UpdateContexts(contexts => contexts
 				.Add(new ResultContext("Message", actual?.Message)));
 			return new ConstraintResult.Failure(ToString(),
-					options.GetExtendedFailure(it, actual?.Message, expected));
+					options.GetExtendedFailure(it, grammars, actual?.Message, expected));
 		}
 
 		public override string ToString()

@@ -124,10 +124,14 @@ public static partial class ThatObject
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				return new ConstraintResult.Success<TSubject>(actual, ToString());
+				var o = options;
+				var i = it;
+				var g = grammars;
+				var e = expected;
+				return new ConstraintResult.Success<TSubject>(actual, ToString(), () => o.GetExtendedFailure(i, g, actual, e));
 			}
 
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
+			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, grammars, actual, expected));
 		}
 
 		public override string ToString()
@@ -147,10 +151,14 @@ public static partial class ThatObject
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				return new ConstraintResult.Success<T>(actual, ToString());
+				var o = options;
+				var i = it;
+				var g = grammars;
+				var e = expected;
+				return new ConstraintResult.Success<T>(actual, ToString(), () => o.GetExtendedFailure(i, g, actual, e));
 			}
 
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
+			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, grammars, actual, expected));
 		}
 
 		public override string ToString()
@@ -170,10 +178,14 @@ public static partial class ThatObject
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
+				var o = options;
+				var i = it;
+				var g = grammars;
+				var e = expected;
+				return new ConstraintResult.Success<T?>(actual, ToString(), () => o.GetExtendedFailure(i, g, actual, e));
 			}
 
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
+			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, grammars, actual, expected));
 		}
 
 		public override string ToString()

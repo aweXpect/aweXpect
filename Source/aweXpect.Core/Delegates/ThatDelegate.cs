@@ -29,7 +29,7 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 				FurtherProcessingStrategy.IgnoreCompletely);
 		}
 
-		return new ConstraintResult.Success<TException?>(default, DoesNotThrowExpectation,
+		return new ConstraintResult.Success<TException?>(default, DoesNotThrowExpectation, null,
 			FurtherProcessingStrategy.IgnoreCompletely);
 	}
 

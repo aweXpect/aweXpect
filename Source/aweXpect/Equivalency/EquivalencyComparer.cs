@@ -25,9 +25,14 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	public string GetExpectation(string expected, ExpectationGrammars grammars)
 		=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equivalent to {expected}";
 
-	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
-	public string GetExtendedFailure(string it, object? actual, object? expected)
+	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
+	public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
 	{
+		if (grammars.HasFlag(ExpectationGrammars.Negated))
+		{
+			return $"{it} was considered equivalent";
+		}
+
 		if (actual is null != expected is null)
 		{
 			_failureBuilder.Clear();

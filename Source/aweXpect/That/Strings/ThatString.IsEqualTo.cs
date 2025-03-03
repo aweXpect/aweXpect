@@ -51,13 +51,18 @@ public static partial class ThatString
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
+				StringEqualityOptions? o = options;
+				string? i = it;
+				ExpectationGrammars g = grammars;
+				string? e = expected;
+				return new ConstraintResult.Success<string?>(actual, ToString(),
+					() => o.GetExtendedFailure(i, g, actual, e));
 			}
 
 			expectationBuilder.UpdateContexts(contexts => contexts
 				.Add(new ResultContext("Actual", actual)));
 			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				options.GetExtendedFailure(it, actual, expected));
+				options.GetExtendedFailure(it, grammars, actual, expected));
 		}
 
 		/// <inheritdoc />

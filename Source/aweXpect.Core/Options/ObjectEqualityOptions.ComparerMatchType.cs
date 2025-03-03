@@ -26,9 +26,13 @@ public partial class ObjectEqualityOptions<TSubject>
 		public string GetExpectation(string expected, ExpectationGrammars grammars)
 			=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equal to {expected}" + ToString();
 
-		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
-		public string GetExtendedFailure(string it, object? actual, object? expected)
-			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
+		public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
+			=> grammars.HasFlag(ExpectationGrammars.Negated) switch
+			{
+				true => $"{it} was",
+				false => $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}",
+			};
 
 		/// <inheritdoc cref="object.ToString()" />
 		public override string ToString()

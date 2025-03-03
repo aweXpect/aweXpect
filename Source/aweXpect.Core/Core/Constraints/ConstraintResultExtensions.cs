@@ -38,6 +38,13 @@ public static class ConstraintResultExtensions
 		=> new ConstraintResultFailure<T>(inner, failure, value);
 
 	/// <summary>
+	///     Creates a new <see cref="ConstraintResult" /> with the given <paramref name="outcome" /> from
+	///     the <paramref name="inner" /> constraint result.
+	/// </summary>
+	public static ConstraintResult WithOutcome(this ConstraintResult inner, Outcome outcome, string? expectation = null)
+		=> new ConstraintWithOutcome(inner, outcome, expectation);
+
+	/// <summary>
 	///     Checks if the two <see cref="ConstraintResult" />s have the same result text.
 	/// </summary>
 	public static bool HasSameResultTextAs(this ConstraintResult left, ConstraintResult right)
@@ -108,6 +115,54 @@ public static class ConstraintResultExtensions
 			value = default;
 			return _value is null;
 		}
+	}
+
+	private sealed class ConstraintWithOutcome(
+		ConstraintResult inner,
+		Outcome outcome,
+		string? expectation = null,
+		string? result = null)
+		: ConstraintResult(outcome, inner.FurtherProcessingStrategy)
+	{
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (expectation == null)
+			{
+				inner.AppendExpectation(stringBuilder, indentation);
+			}
+			else
+			{
+				stringBuilder.Append(expectation.Indent(indentation));
+			}
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (result == null)
+			{
+				inner.AppendResult(stringBuilder, indentation);
+			}
+			else
+			{
+				stringBuilder.Append(result.Indent(indentation));
+			}
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+			=> inner.TryGetValue(out value);
+	}
+
+	private sealed class ConstraintResultFailure(ConstraintResult inner)
+		: ConstraintResult(Outcome.Failure, inner.FurtherProcessingStrategy)
+	{
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> inner.AppendExpectation(stringBuilder, indentation);
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			=> inner.AppendResult(stringBuilder, indentation);
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+			=> inner.TryGetValue(out value);
 	}
 
 	private sealed class ConstraintResultExpectationWrapper(

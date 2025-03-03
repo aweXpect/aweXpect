@@ -48,9 +48,7 @@ public sealed partial class ThatGeneric
 					             {
 					             	HasWaitedEnough = false,
 					             } within 0:30,
-					             but it was MyChangingClass {
-					               HasWaitedEnough = False
-					             }
+					             but it was considered equivalent
 					             """);
 			}
 
@@ -123,9 +121,7 @@ public sealed partial class ThatGeneric
 					             {
 					             	HasWaitedEnough = false,
 					             } within 0:00.050,
-					             but it was MyChangingClass {
-					               HasWaitedEnough = False
-					             }
+					             but it was considered equivalent
 					             """);
 			}
 

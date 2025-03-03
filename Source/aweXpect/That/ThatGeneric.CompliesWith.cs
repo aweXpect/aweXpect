@@ -147,8 +147,7 @@ public static partial class ThatGeneric
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{_it} was {Formatter.Format(actual)}");
+			return isMatch.WithOutcome(Outcome.Failure, ToString());
 		}
 
 		public override string ToString()

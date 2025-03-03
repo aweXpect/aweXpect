@@ -36,11 +36,12 @@ namespace aweXpect.Core.Constraints
         }
         public class Success : aweXpect.Core.Constraints.ConstraintResult.TextBasedConstraintResult
         {
-            public Success(string expectationText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+            public Success(string expectationText, System.Func<string>? resultText = null, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
         }
         public class Success<T> : aweXpect.Core.Constraints.ConstraintResult.Success
         {
-            public Success(T value, string expectationText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+            public Success(T value, string expectationText, System.Func<string>? resultText = null, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
             public T Value { get; }
             public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
         }
@@ -58,6 +59,7 @@ namespace aweXpect.Core.Constraints
         public static bool HasSameResultTextAs(this aweXpect.Core.Constraints.ConstraintResult left, aweXpect.Core.Constraints.ConstraintResult right) { }
         public static aweXpect.Core.Constraints.ConstraintResult PrependExpectationText(this aweXpect.Core.Constraints.ConstraintResult inner, System.Action<System.Text.StringBuilder>? prefix) { }
         public static aweXpect.Core.Constraints.ConstraintResult UseValue<T>(this aweXpect.Core.Constraints.ConstraintResult inner, T value) { }
+        public static aweXpect.Core.Constraints.ConstraintResult WithOutcome(this aweXpect.Core.Constraints.ConstraintResult inner, aweXpect.Core.Constraints.Outcome outcome, string? expectation = null) { }
     }
     public enum FurtherProcessingStrategy
     {
@@ -153,7 +155,7 @@ namespace aweXpect.Core
     {
         bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
         string GetExpectation(string expected, aweXpect.Core.ExpectationGrammars grammars);
-        string GetExtendedFailure(string it, object? actual, object? expected);
+        string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, object? actual, object? expected);
     }
     public interface IOptionsEquality<in TSubject>
     {
@@ -669,7 +671,7 @@ namespace aweXpect.Options
         public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected) { }
         public aweXpect.Options.ObjectEqualityOptions<TSubject> Equals() { }
         public string GetExpectation(string expectedExpression, aweXpect.Core.ExpectationGrammars grammars) { }
-        public string GetExtendedFailure(string it, object? actual, object? expected) { }
+        public string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, object? actual, object? expected) { }
         public void SetMatchType(aweXpect.Core.IObjectMatchType matchType) { }
         public override string? ToString() { }
         public aweXpect.Options.ObjectEqualityOptions<TSubject> Using(System.Collections.Generic.IEqualityComparer<object> comparer) { }
@@ -705,7 +707,7 @@ namespace aweXpect.Options
         public aweXpect.Options.StringEqualityOptions AsWildcard() { }
         public aweXpect.Options.StringEqualityOptions Exactly() { }
         public string GetExpectation(string? expected, aweXpect.Core.ExpectationGrammars grammars) { }
-        public string GetExtendedFailure(string it, string? actual, string? expected) { }
+        public string GetExtendedFailure(string it, aweXpect.Core.ExpectationGrammars grammars, string? actual, string? expected) { }
         public aweXpect.Options.StringEqualityOptions IgnoringCase(bool ignoreCase = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringLeadingWhiteSpace(bool ignoreLeadingWhiteSpace = true) { }
         public aweXpect.Options.StringEqualityOptions IgnoringNewlineStyle(bool ignoreNewlineStyle = true) { }

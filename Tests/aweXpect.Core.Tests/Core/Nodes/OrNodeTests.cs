@@ -147,7 +147,7 @@ public sealed class OrNodeTests
 	public async Task WhenLeftIsSuccessAndHasIgnoreResultFurtherProcessingStrategy_ShouldExcludeRightResultText()
 	{
 		OrNode node = new(new DummyNode("",
-			() => new ConstraintResult.Success("foo", FurtherProcessingStrategy.IgnoreResult)));
+			() => new ConstraintResult.Success("foo", null, FurtherProcessingStrategy.IgnoreResult)));
 		node.AddNode(new DummyNode("",
 			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
 

@@ -178,7 +178,7 @@ public sealed class AndNodeTests
 		AndNode node = new(new DummyNode("",
 			() => new ConstraintResult.Success("foo")));
 		node.AddNode(new DummyNode("",
-			() => new ConstraintResult.Success("bar", FurtherProcessingStrategy.IgnoreCompletely)));
+			() => new ConstraintResult.Success("bar", null, FurtherProcessingStrategy.IgnoreCompletely)));
 		node.AddNode(new DummyNode("",
 			() => new ConstraintResult.Failure("baz", "-")));
 		StringBuilder sb = new();

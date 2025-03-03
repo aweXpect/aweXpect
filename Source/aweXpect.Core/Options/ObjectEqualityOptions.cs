@@ -21,9 +21,13 @@ internal static class ObjectEqualityOptions
 		public string GetExpectation(string expected, ExpectationGrammars grammars)
 			=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equal to {expected}";
 
-		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
-		public string GetExtendedFailure(string it, object? actual, object? expected)
-			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
+		public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
+			=> grammars.HasFlag(ExpectationGrammars.Negated) switch
+			{
+				true => $"{it} was",
+				false => $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}",
+			};
 
 		#endregion
 	}
@@ -48,8 +52,8 @@ public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
-	public string GetExtendedFailure(string it, object? actual, object? expected)
-		=> _matchType.GetExtendedFailure(it, actual, expected);
+	public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
+		=> _matchType.GetExtendedFailure(it, grammars, actual, expected);
 
 	/// <summary>
 	///     Returns the expectation string, e.g. <c>be equal to {expectedExpression}</c>.

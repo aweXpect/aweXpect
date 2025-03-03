@@ -13,22 +13,28 @@ public static partial class ThatBool
 	public static AndOrResult<bool, IThat<bool>> Implies(this IThat<bool> source,
 		bool consequent)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new ImpliesConstraint(it, consequent)),
+				=> new ImpliesConstraint(it, grammars, consequent)),
 			source);
 
-	private readonly struct ImpliesConstraint(string it, bool consequent) : IValueConstraint<bool>
+	private readonly struct ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
+		: IValueConstraint<bool>
 	{
 		public ConstraintResult IsMetBy(bool actual)
 		{
 			if (!actual || consequent)
 			{
-				return new ConstraintResult.Success<bool>(actual, ToString());
+				string? i = it;
+				return new ConstraintResult.Success<bool>(actual, ToString(), () => $"{i} did");
 			}
 
 			return new ConstraintResult.Failure(ToString(), $"{it} did not");
 		}
 
 		public override string ToString()
-			=> $"implies {Formatter.Format(consequent)}";
+			=> grammars.HasFlag(ExpectationGrammars.Negated) switch
+			{
+				false => $"implies {Formatter.Format(consequent)}",
+				true => $"does not imply {Formatter.Format(consequent)}",
+			};
 	}
 }

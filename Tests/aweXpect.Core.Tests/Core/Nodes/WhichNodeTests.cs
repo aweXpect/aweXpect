@@ -285,7 +285,7 @@ public sealed class WhichNodeTests
 	public async Task WhenLeftIsSuccessAndHasIgnoreResultFurtherProcessingStrategy_ShouldStillIncludeRightResultText()
 	{
 		WhichNode<string, int> whichNode = new(new DummyNode("",
-			() => new ConstraintResult.Success("foo", FurtherProcessingStrategy.IgnoreResult)), _ => 3);
+			() => new ConstraintResult.Success("foo", null, FurtherProcessingStrategy.IgnoreResult)), _ => 3);
 		whichNode.AddNode(new DummyNode("",
 			() => new ConstraintResult.Failure("bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
 

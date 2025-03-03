@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -89,12 +90,28 @@ public abstract class ConstraintResult
 		/// </summary>
 		public Success(
 			string expectationText,
+			Func<string>? resultText = null,
 			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
 			: base(
 				Outcome.Success,
 				expectationText,
 				furtherProcessingStrategy)
 		{
+			_resultText = resultText;
+		}
+
+		/// <summary>
+		///     The result text.
+		/// </summary>
+		private readonly Func<string>? _resultText;
+
+		/// <inheritdoc />
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_resultText != null)
+			{
+				stringBuilder.Append(_resultText().Indent(indentation, false));
+			}
 		}
 	}
 
@@ -109,9 +126,11 @@ public abstract class ConstraintResult
 		public Success(
 			T value,
 			string expectationText,
+			Func<string>? resultText = null,
 			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
 			: base(
 				expectationText,
+				resultText,
 				furtherProcessingStrategy)
 		{
 			Value = value;
