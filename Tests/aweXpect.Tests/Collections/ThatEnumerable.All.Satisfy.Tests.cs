@@ -23,7 +23,7 @@ public sealed partial class ThatEnumerable
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x < 6).WithCancellation(token);
 
-					await That(Act).Throws<XunitException>()
+					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
 						             satisfies x => x < 6 for all items,

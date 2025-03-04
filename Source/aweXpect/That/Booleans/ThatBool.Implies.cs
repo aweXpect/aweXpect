@@ -16,25 +16,39 @@ public static partial class ThatBool
 				=> new ImpliesConstraint(it, grammars, consequent)),
 			source);
 
-	private readonly struct ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
-		: IValueConstraint<bool>
+	private class ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
+		: ConstraintResult<bool>(grammars), 
+			IValueConstraint<bool>
 	{
 		public ConstraintResult IsMetBy(bool actual)
 		{
-			if (!actual || consequent)
-			{
-				string? i = it;
-				return new ConstraintResult.Success<bool>(actual, ToString(), () => $"{i} did");
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} did not");
+			Actual = actual;
+			Outcome = !actual || consequent ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> grammars.HasFlag(ExpectationGrammars.Negated) switch
-			{
-				false => $"implies {Formatter.Format(consequent)}",
-				true => $"does not imply {Formatter.Format(consequent)}",
-			};
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("implies ");
+			Formatter.Format(stringBuilder, consequent, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it);
+			stringBuilder.Append(" did not");
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not imply ");
+			Formatter.Format(stringBuilder, consequent, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it);
+			stringBuilder.Append(" did");
+		}
 	}
 }

@@ -24,7 +24,7 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).None().AreEqualTo(8)
 							.WithCancellation(token);
 
-					await That(Act).Throws<XunitException>()
+					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
 						             is equal to 8 for no items,

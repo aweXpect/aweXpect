@@ -24,7 +24,7 @@ public sealed partial class ThatAsyncEnumerable
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsLessThan(6)).WithCancellation(token);
 
-					await That(Act).Throws<XunitException>()
+					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
 						             is less than 6 for all items,

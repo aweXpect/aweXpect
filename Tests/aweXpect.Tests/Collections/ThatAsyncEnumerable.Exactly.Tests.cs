@@ -24,7 +24,7 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).Exactly(6).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             satisfies y => y < 6 for exactly 6 items,

@@ -15,7 +15,7 @@ public static partial class ThatAsyncEnumerable
 		HasCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject)
 		=> new(quantifier => new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AsyncCollectionCountConstraint<TItem>(it, quantifier)),
+				=> new AsyncCollectionCountConstraint<TItem>(it, grammars, quantifier)),
 			subject));
 
 	/// <summary>
@@ -24,7 +24,7 @@ public static partial class ThatAsyncEnumerable
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		HasCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject, int expected)
 		=> new(subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AsyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
+				=> new AsyncCollectionCountConstraint<TItem>(it, grammars, EnumerableQuantifier.Exactly(expected))),
 			subject);
 }
 #endif

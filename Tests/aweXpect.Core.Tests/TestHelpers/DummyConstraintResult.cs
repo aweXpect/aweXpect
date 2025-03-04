@@ -12,8 +12,9 @@ public class DummyConstraintResult : ConstraintResult
 		FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue,
 		string? expectationText = null,
 		string? failureText = null)
-		: base(outcome, furtherProcessingStrategy)
+		: base(furtherProcessingStrategy)
 	{
+		Outcome = outcome;
 		_expectationText = expectationText;
 		_failureText = failureText;
 	}
@@ -32,5 +33,16 @@ public class DummyConstraintResult : ConstraintResult
 		{
 			stringBuilder.Append(_failureText);
 		}
+	}
+
+	public override ConstraintResult Negate()
+	{
+		Outcome = Outcome switch
+		{
+			Outcome.Failure => Outcome.Success,
+			Outcome.Success => Outcome.Failure,
+			_ => Outcome,
+		};
+		return this;
 	}
 }

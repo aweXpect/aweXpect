@@ -22,7 +22,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).HasCount().AtMost(6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             has at most 6 items,

@@ -11,11 +11,25 @@ namespace aweXpect.Core.Constraints;
 public static class ConstraintResultExtensions
 {
 	/// <summary>
+	///     Creates a new <see cref="ConstraintResult" /> from the <paramref name="inner" /> constraint result
+	///     with the <paramref name="expectationSuffix" />.
+	/// </summary>
+	public static ConstraintResult SuffixExpectation(this ConstraintResult inner, string expectationSuffix)
+	{
+		if (string.IsNullOrEmpty(expectationSuffix))
+		{
+			return inner;
+		}
+
+		return new ConstraintResultWrapper(inner, expectationSuffix: expectationSuffix);
+	}
+
+	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> from the <paramref name="inner" /> using the given
 	///     <paramref name="value" />.
 	/// </summary>
 	public static ConstraintResult UseValue<T>(this ConstraintResult inner, T value)
-		=> new ConstraintResultWrapper<T>(inner, value);
+		=> new ConstraintResultValueWrapper<T>(inner, value);
 
 	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> where the expectation is prepended with the
@@ -62,14 +76,48 @@ public static class ConstraintResultExtensions
 		return sb.ToString();
 	}
 
-	private sealed class ConstraintResultWrapper<T> : ConstraintResult
+
+	private sealed class ConstraintResultWrapper : ConstraintResult
+	{
+		private readonly string? _expectationSuffix;
+		private readonly ConstraintResult _inner;
+
+		public ConstraintResultWrapper(ConstraintResult inner,
+			string? expectationSuffix = null)
+			: base(inner.FurtherProcessingStrategy)
+		{
+			Outcome = inner.Outcome;
+			_inner = inner;
+			_expectationSuffix = expectationSuffix;
+		}
+
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			_inner.AppendExpectation(stringBuilder, indentation);
+			if (_expectationSuffix != null)
+			{
+				stringBuilder.Append(_expectationSuffix);
+			}
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			=> _inner.AppendResult(stringBuilder, indentation);
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+			=> _inner.TryGetValue(out value);
+
+		public override ConstraintResult Negate() => _inner.Negate();
+	}
+
+	private sealed class ConstraintResultValueWrapper<T> : ConstraintResult
 	{
 		private readonly ConstraintResult _inner;
 		private readonly T _value;
 
-		public ConstraintResultWrapper(ConstraintResult inner, T value)
-			: base(inner.Outcome, inner.FurtherProcessingStrategy)
+		public ConstraintResultValueWrapper(ConstraintResult inner, T value)
+			: base(inner.FurtherProcessingStrategy)
 		{
+			Outcome = inner.Outcome;
 			_inner = inner;
 			_value = value;
 		}
@@ -91,18 +139,30 @@ public static class ConstraintResultExtensions
 			value = default;
 			return _value is null;
 		}
+
+		public override ConstraintResult Negate() => _inner.Negate();
 	}
 
-	private sealed class ConstraintResultFailure<T>(ConstraintResult inner, string failure, T value)
-		: ConstraintResult(Outcome.Failure, inner.FurtherProcessingStrategy)
+	private sealed class ConstraintResultFailure<T> : ConstraintResult
 	{
-		private readonly T _value = value;
+		private readonly string _failure;
+		private readonly ConstraintResult _inner;
+		private readonly T _value;
+
+		public ConstraintResultFailure(ConstraintResult inner, string failure, T value) : base(
+			inner.FurtherProcessingStrategy)
+		{
+			Outcome = Outcome.Failure;
+			_inner = inner;
+			_failure = failure;
+			_value = value;
+		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendExpectation(stringBuilder, indentation);
+			=> _inner.AppendExpectation(stringBuilder, indentation);
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(failure.Indent(indentation));
+			=> stringBuilder.Append(_failure.Indent(indentation));
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
@@ -115,73 +175,108 @@ public static class ConstraintResultExtensions
 			value = default;
 			return _value is null;
 		}
+
+		public override ConstraintResult Negate() => _inner.Negate();
 	}
 
-	private sealed class ConstraintWithOutcome(
-		ConstraintResult inner,
-		Outcome outcome,
-		string? expectation = null,
-		string? result = null)
-		: ConstraintResult(outcome, inner.FurtherProcessingStrategy)
+	private sealed class ConstraintWithOutcome : ConstraintResult
 	{
+		private readonly string? _expectation;
+		private readonly ConstraintResult _inner;
+		private readonly string? _result;
+
+		public ConstraintWithOutcome(ConstraintResult inner,
+			Outcome outcome,
+			string? expectation = null,
+			string? result = null) : base(inner.FurtherProcessingStrategy)
+		{
+			Outcome = outcome;
+			_inner = inner;
+			_expectation = expectation;
+			_result = result;
+		}
+
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (expectation == null)
+			if (_expectation == null)
 			{
-				inner.AppendExpectation(stringBuilder, indentation);
+				_inner.AppendExpectation(stringBuilder, indentation);
 			}
 			else
 			{
-				stringBuilder.Append(expectation.Indent(indentation));
+				stringBuilder.Append(_expectation.Indent(indentation));
 			}
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (result == null)
+			if (_result == null)
 			{
-				inner.AppendResult(stringBuilder, indentation);
+				_inner.AppendResult(stringBuilder, indentation);
 			}
 			else
 			{
-				stringBuilder.Append(result.Indent(indentation));
+				stringBuilder.Append(_result.Indent(indentation));
 			}
 		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> inner.TryGetValue(out value);
+			=> _inner.TryGetValue(out value);
+
+		public override ConstraintResult Negate() => _inner.Negate();
 	}
 
-	private sealed class ConstraintResultFailure(ConstraintResult inner)
-		: ConstraintResult(Outcome.Failure, inner.FurtherProcessingStrategy)
+	private sealed class ConstraintResultFailure : ConstraintResult
 	{
+		private readonly ConstraintResult _inner;
+
+		public ConstraintResultFailure(ConstraintResult inner) : base(inner.FurtherProcessingStrategy)
+		{
+			Outcome = Outcome.Failure;
+			_inner = inner;
+		}
+
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendExpectation(stringBuilder, indentation);
+			=> _inner.AppendExpectation(stringBuilder, indentation);
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendResult(stringBuilder, indentation);
+			=> _inner.AppendResult(stringBuilder, indentation);
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> inner.TryGetValue(out value);
+			=> _inner.TryGetValue(out value);
+
+		public override ConstraintResult Negate() => _inner.Negate();
 	}
 
-	private sealed class ConstraintResultExpectationWrapper(
-		ConstraintResult inner,
-		Action<StringBuilder>? prefix,
-		Action<StringBuilder>? suffix)
-		: ConstraintResult(inner.Outcome, inner.FurtherProcessingStrategy)
+	private sealed class ConstraintResultExpectationWrapper : ConstraintResult
 	{
+		private readonly ConstraintResult _inner;
+		private readonly Action<StringBuilder>? _prefix;
+		private readonly Action<StringBuilder>? _suffix;
+
+		public ConstraintResultExpectationWrapper(ConstraintResult inner,
+			Action<StringBuilder>? prefix,
+			Action<StringBuilder>? suffix) : base(inner.FurtherProcessingStrategy)
+		{
+			_inner = inner;
+			Outcome = _inner.Outcome;
+			_prefix = prefix;
+			_suffix = suffix;
+		}
+
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> inner.TryGetValue(out value);
+			=> _inner.TryGetValue(out value);
+
+		public override ConstraintResult Negate() => _inner.Negate();
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			prefix?.Invoke(stringBuilder);
-			inner.AppendExpectation(stringBuilder, indentation);
-			suffix?.Invoke(stringBuilder);
+			_prefix?.Invoke(stringBuilder);
+			_inner.AppendExpectation(stringBuilder, indentation);
+			_suffix?.Invoke(stringBuilder);
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> inner.AppendResult(stringBuilder, indentation);
+			=> _inner.AppendResult(stringBuilder, indentation);
 	}
 }

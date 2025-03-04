@@ -21,9 +21,44 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.OnlyIf(!expectSuccess)
 					.WithMessage($"""
+					              Expected that subject
+					              is not equal to "{expectedValue}",
+					              but it was "foo"
+					              """);
+			}
+		}
+
+		public sealed class CombinationTests
+		{
+			[Fact]
+			public async Task NotAAndB_ShouldTranslateToNotAOrNotB()
+			{
+				bool subject = true;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(x => x.IsTrue().And.IsTrue());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
 					             Expected that subject
-					             is not equal to "{expectedValue}",
-					             but it was "foo"
+					             is not True or is not True,
+					             but it was
+					             """);
+			}
+
+			[Fact]
+			public async Task NotAOrB_ShouldTranslateToNotAAndNotB()
+			{
+				bool subject = true;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(x => x.IsTrue().Or.IsTrue());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not True and is not True,
+					             but it was
 					             """);
 			}
 		}

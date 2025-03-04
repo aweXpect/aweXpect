@@ -16,25 +16,29 @@ public abstract class ConstraintResult<T>(ExpectationGrammars grammars) : Constr
 	protected T? Actual { get; set; }
 
 	/// <summary>
-	///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are not negated.
+	///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
+	///     not negated.
 	/// </summary>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	protected abstract void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null);
 
 	/// <summary>
-	///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are not negated.
+	///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are not
+	///     negated.
 	/// </summary>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	protected abstract void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null);
 
 	/// <summary>
-	///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are negated.
+	///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
+	///     negated.
 	/// </summary>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	protected abstract void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null);
 
 	/// <summary>
-	///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are negated.
+	///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
+	///     negated.
 	/// </summary>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
@@ -43,7 +47,7 @@ public abstract class ConstraintResult<T>(ExpectationGrammars grammars) : Constr
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (grammars.HasFlag(ExpectationGrammars.Negated))
+		if (grammars.IsNegated())
 		{
 			AppendNegatedExpectation(stringBuilder, indentation);
 		}
@@ -57,7 +61,7 @@ public abstract class ConstraintResult<T>(ExpectationGrammars grammars) : Constr
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (grammars.HasFlag(ExpectationGrammars.Negated))
+		if (grammars.IsNegated())
 		{
 			AppendNegatedResult(stringBuilder, indentation);
 		}
@@ -79,6 +83,18 @@ public abstract class ConstraintResult<T>(ExpectationGrammars grammars) : Constr
 		value = default;
 		return typeof(TValue).IsAssignableFrom(typeof(T));
 	}
+
+	/// <inheritdoc cref="ConstraintResult.Negate()" />
+	public override ConstraintResult Negate()
+	{
+		Outcome = Outcome switch
+		{
+			Outcome.Failure => Outcome.Success,
+			Outcome.Success => Outcome.Failure,
+			_ => Outcome,
+		};
+		return this;
+	}
 }
 
 /// <summary>
@@ -89,11 +105,9 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     Initializes a new instance of <see cref="ConstraintResult" />.
 	/// </summary>
-	protected ConstraintResult(
-		Outcome outcome,
-		FurtherProcessingStrategy furtherProcessingStrategy)
+	protected ConstraintResult(FurtherProcessingStrategy furtherProcessingStrategy)
 	{
-		Outcome = outcome;
+		Outcome = Outcome.Undecided;
 		FurtherProcessingStrategy = furtherProcessingStrategy;
 	}
 
@@ -136,6 +150,11 @@ public abstract partial class ConstraintResult
 	}
 
 	/// <summary>
+	///     Negate the current <see cref="ConstraintResult" />.
+	/// </summary>
+	public abstract ConstraintResult Negate();
+
+	/// <summary>
 	///     A <see cref="ConstraintResult" /> with a text-based expectation.
 	/// </summary>
 	public class TextBasedConstraintResult : ConstraintResult
@@ -149,8 +168,9 @@ public abstract partial class ConstraintResult
 			Outcome outcome,
 			string expectationText,
 			FurtherProcessingStrategy furtherProcessingStrategy)
-			: base(outcome, furtherProcessingStrategy)
+			: base(furtherProcessingStrategy)
 		{
+			Outcome = outcome;
 			_expectationText = expectationText;
 		}
 
@@ -162,6 +182,18 @@ public abstract partial class ConstraintResult
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			// Do nothing
+		}
+
+		/// <inheritdoc />
+		public override ConstraintResult Negate()
+		{
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
 		}
 	}
 }

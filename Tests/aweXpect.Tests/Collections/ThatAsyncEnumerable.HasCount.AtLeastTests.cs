@@ -24,7 +24,7 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).HasCount().AtLeast(6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             has at least 6 items,

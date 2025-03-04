@@ -12,9 +12,9 @@ public abstract partial class EnumerableQuantifier
 	/// </summary>
 	public static EnumerableQuantifier AtMost(int maximum,
 		ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
-		=> new AtMostQuantifier(maximum, expectationGrammars);
+		=> new AtMostQuantifier(maximum);
 
-	private sealed class AtMostQuantifier(int maximum, ExpectationGrammars expectationGrammars) : EnumerableQuantifier
+	private sealed class AtMostQuantifier(int maximum) : EnumerableQuantifier
 	{
 		public override string ToString()
 			=> maximum switch
@@ -29,41 +29,6 @@ public abstract partial class EnumerableQuantifier
 
 		/// <inheritdoc />
 		public override bool IsSingle() => maximum == 1;
-
-		/// <inheritdoc />
-		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
-			string it,
-			string? expectationExpression,
-			int matchingCount,
-			int notMatchingCount,
-			int? totalCount,
-			string? verb,
-			Func<string, string?, string>? expectationGenerator = null)
-		{
-			verb ??= "were";
-			if (matchingCount > maximum)
-			{
-				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
-					(totalCount.HasValue, expectationExpression is null) switch
-					{
-						(true, true) => $"found {matchingCount}",
-						(true, false) => $"{matchingCount} of {totalCount} {verb}",
-						(false, true) => $"found at least {matchingCount}",
-						(false, false) => $"at least {matchingCount} {verb}",
-					});
-			}
-
-			if (totalCount.HasValue)
-			{
-				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
-			}
-
-			return new UndecidedResult<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
-				"could not verify, because it was not enumerated completely");
-		}
 
 		/// <inheritdoc />
 		public override Outcome GetOutcome(int matchingCount, int notMatchingCount, int? totalCount)
@@ -86,15 +51,32 @@ public abstract partial class EnumerableQuantifier
 			ExpectationGrammars grammars,
 			int matchingCount,
 			int notMatchingCount,
-			int? totalCount)
+			int? totalCount,
+			string? verb = null)
 		{
 			if (totalCount.HasValue)
 			{
-				stringBuilder.Append("found ").Append(matchingCount);
+				if (verb != null)
+				{
+					stringBuilder.Append(matchingCount).Append(" of ").Append(totalCount.Value)
+						.Append(' ').Append(verb);
+				}
+				else
+				{
+					stringBuilder.Append("found ").Append(matchingCount);
+				}
 			}
 			else
 			{
-				stringBuilder.Append("found at least ").Append(matchingCount);
+				if (verb != null)
+				{
+					stringBuilder.Append("at least ").Append(matchingCount)
+						.Append(' ').Append(verb);
+				}
+				else
+				{
+					stringBuilder.Append("found at least ").Append(matchingCount);
+				}
 			}
 		}
 	}

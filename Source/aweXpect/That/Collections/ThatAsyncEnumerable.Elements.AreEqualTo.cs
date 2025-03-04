@@ -21,11 +21,16 @@ public static partial class ThatAsyncEnumerable
 			return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammars == ExpectationGrammars.None
-							? $"is equal to {Formatter.Format(expected)}{options}"
-							: $"are equal to {Formatter.Format(expected)}{options}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+								(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+								(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+								(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+							},
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,
@@ -45,11 +50,16 @@ public static partial class ThatAsyncEnumerable
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammars == ExpectationGrammars.None
-							? $"is equal to {Formatter.Format(expected)}{options}"
-							: $"are equal to {Formatter.Format(expected)}{options}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+								(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+								(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+								(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+							},
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

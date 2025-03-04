@@ -24,7 +24,7 @@ public sealed partial class ThatEnumerable
 						=> await That(subject).None().Satisfy(item => item < 0)
 							.WithCancellation(token);
 
-					await That(Act).Throws<XunitException>()
+					await That(Act).Throws<InconclusiveException>()
 						.WithMessage("""
 						             Expected that subject
 						             satisfies item => item < 0 for no items,

@@ -11,9 +11,9 @@ public abstract partial class EnumerableQuantifier
 	///     Matches all items.
 	/// </summary>
 	public static EnumerableQuantifier All(ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
-		=> new AllQuantifier(expectationGrammars);
+		=> new AllQuantifier();
 
-	private sealed class AllQuantifier(ExpectationGrammars expectationGrammars) : EnumerableQuantifier
+	private sealed class AllQuantifier : EnumerableQuantifier
 	{
 		public override string ToString() => "all";
 
@@ -23,37 +23,6 @@ public abstract partial class EnumerableQuantifier
 
 		/// <inheritdoc />
 		public override bool IsSingle() => false;
-
-		/// <inheritdoc />
-		public override ConstraintResult GetResult<TEnumerable>(TEnumerable actual,
-			string it,
-			string? expectationExpression,
-			int matchingCount,
-			int notMatchingCount,
-			int? totalCount,
-			string? verb,
-			Func<string, string?, string>? expectationGenerator = null)
-		{
-			verb ??= "were";
-			if (notMatchingCount > 0)
-			{
-				return new ConstraintResult.Failure<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
-					totalCount.HasValue
-						? $"only {matchingCount} of {totalCount} {verb}"
-						: $"not all {verb}");
-			}
-
-			if (matchingCount == totalCount)
-			{
-				return new ConstraintResult.Success<TEnumerable>(actual,
-					GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars));
-			}
-
-			return new UndecidedResult<TEnumerable>(actual,
-				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
-				"could not verify, because it was not enumerated completely");
-		}
 
 		/// <inheritdoc />
 		public override Outcome GetOutcome(int matchingCount, int notMatchingCount, int? totalCount)
@@ -75,9 +44,19 @@ public abstract partial class EnumerableQuantifier
 		public override void AppendResult(StringBuilder stringBuilder,
 			ExpectationGrammars grammars,
 			int matchingCount,
-			int notMatchingCount, int? totalCount)
+			int notMatchingCount,
+			int? totalCount,
+			string? verb = null)
 		{
-			stringBuilder.Append($"not all were");
+			verb ??= "were";
+			if (totalCount.HasValue)
+			{
+				stringBuilder.Append("only ").Append(matchingCount).Append(" of ").Append(totalCount.Value).Append(' ').Append(verb);
+			}
+			else
+			{
+				stringBuilder.Append("not all ").Append(verb);
+			}
 		}
 	}
 }

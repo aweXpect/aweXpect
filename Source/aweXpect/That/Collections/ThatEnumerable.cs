@@ -72,21 +72,29 @@ public static partial class ThatEnumerable
 			=> $"{matchOptions.GetExpectation(expectedExpression)}{options}";
 	}
 
-	private readonly struct CollectionConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
+	private class CollectionConstraint<TItem>
+		: ConstraintResult<IEnumerable<TItem>?>,
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
+		private readonly ExpectationGrammars _grammars;
 		private readonly EnumerableQuantifier _quantifier;
-		private readonly Func<string> _expectationText;
+		private readonly Func<ExpectationGrammars, string> _expectationText;
 		private readonly Func<TItem, bool> _predicate;
 		private readonly string _verb;
+		private int _matchingCount;
+		private int _notMatchingCount;
+		private int? _totalCount;
 
 		public CollectionConstraint(string it,
+			ExpectationGrammars grammars,
 			EnumerableQuantifier quantifier,
-			Func<string> expectationText,
+			Func<ExpectationGrammars, string> expectationText,
 			Func<TItem, bool> predicate,
-			string verb)
+			string verb) : base(grammars)
 		{
 			_it = it;
+			_grammars = grammars;
 			_quantifier = quantifier;
 			_expectationText = expectationText;
 			_predicate = predicate;
@@ -98,63 +106,122 @@ public static partial class ThatEnumerable
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>?>(
-					actual,
-					$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
-					$"{_it} was <null>"));
+				Outcome = Outcome.Failure;
+				return Task.FromResult<ConstraintResult>(this);
 			}
 
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			bool cancelEarly = actual is not ICollection<TItem>;
-			int matchingCount = 0;
-			int notMatchingCount = 0;
+			_matchingCount = 0;
+			_notMatchingCount = 0;
 
 			foreach (TItem item in materialized)
 			{
 				if (_predicate(item))
 				{
-					matchingCount++;
+					_matchingCount++;
 				}
 				else
 				{
-					notMatchingCount++;
+					_notMatchingCount++;
 				}
 
-				if (cancelEarly && _quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				if (cancelEarly && _quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
 				{
-					return Task.FromResult(_quantifier.GetResult(
-						actual,
-						_it,
-						_expectationText(),
-						matchingCount,
-						notMatchingCount,
-						null,
-						_verb));
+					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					return Task.FromResult<ConstraintResult>(this);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
-					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual,
-						$"{_expectationText()} for {_quantifier} {_quantifier.GetItemString()}",
-						"could not verify, because it was cancelled early"));
+					Outcome = Outcome.Undecided;
+					return Task.FromResult<ConstraintResult>(this);
 				}
 			}
 
-			return Task.FromResult(_quantifier.GetResult(
-				actual,
-				_it,
-				_expectationText(),
-				matchingCount,
-				notMatchingCount,
-				matchingCount + notMatchingCount,
-				_verb));
+			_totalCount = _matchingCount + _notMatchingCount;
+			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			return Task.FromResult<ConstraintResult>(this);
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_expectationText(_grammars));
+			}
+			else
+			{
+				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(" for ");
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
+			}
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.Append(_it);
+				stringBuilder.Append(" was <null>");
+			}
+			else if (Outcome == Outcome.Undecided)
+			{
+				stringBuilder.Append("could not verify, because it was cancelled early");
+			}
+			else
+			{
+				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("not ");
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_expectationText(_grammars));
+			}
+			else
+			{
+				stringBuilder.Append(_expectationText(_grammars.Negate()));
+				stringBuilder.Append(" for ");
+				stringBuilder.Append(_quantifier);
+				stringBuilder.Append(' ');
+				stringBuilder.Append(_quantifier.GetItemString());
+			}
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.Append(_it);
+				stringBuilder.Append(" was <null>");
+			}
+			else if (Outcome == Outcome.Undecided)
+			{
+				stringBuilder.Append("could not verify, because it was cancelled early");
+			}
+			else
+			{
+				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount, _verb);
+			}
 		}
 	}
 
-	private class SyncCollectionCountConstraint<TItem>: ConstraintResult<IEnumerable<TItem>?>, IAsyncContextConstraint<IEnumerable<TItem>?>
+	private class SyncCollectionCountConstraint<TItem>
+		: ConstraintResult<IEnumerable<TItem>?>,
+			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
 		private readonly ExpectationGrammars _grammars;
@@ -163,8 +230,8 @@ public static partial class ThatEnumerable
 		private int _notMatchingCount;
 		private int? _totalCount;
 
-		public SyncCollectionCountConstraint(string it, ExpectationGrammars grammars,
-			EnumerableQuantifier quantifier) : base(grammars)
+		public SyncCollectionCountConstraint(string it, ExpectationGrammars grammars, EnumerableQuantifier quantifier)
+			: base(grammars)
 		{
 			_it = it;
 			_grammars = grammars;
@@ -265,6 +332,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
+				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount);
 			}
 		}
 	}

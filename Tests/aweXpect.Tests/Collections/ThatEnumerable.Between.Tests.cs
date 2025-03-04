@@ -22,7 +22,7 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Between(6).And(8).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             satisfies y => y < 6 for between 6 and 8 items,

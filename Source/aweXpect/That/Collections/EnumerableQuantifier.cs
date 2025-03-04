@@ -2,7 +2,6 @@
 using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
 
 namespace aweXpect;
 
@@ -26,19 +25,6 @@ public abstract partial class EnumerableQuantifier
 	public abstract bool IsSingle();
 
 	/// <summary>
-	///     Returns the result.
-	/// </summary>
-	public abstract ConstraintResult GetResult<TEnumerable>(
-		TEnumerable actual,
-		string it,
-		string? expectationExpression,
-		int matchingCount,
-		int notMatchingCount,
-		int? totalCount,
-		string? verb,
-		Func<string, string?, string>? expectationGenerator = null);
-
-	/// <summary>
 	///     Returns the outcome.
 	/// </summary>
 	public abstract Outcome GetOutcome(
@@ -53,7 +39,8 @@ public abstract partial class EnumerableQuantifier
 		ExpectationGrammars grammars,
 		int matchingCount,
 		int notMatchingCount,
-		int? totalCount);
+		int? totalCount,
+		string? verb = null);
 
 
 	private string GenerateExpectation(string quantifierExpectation,
@@ -77,37 +64,5 @@ public abstract partial class EnumerableQuantifier
 		}
 
 		return $"{expectationExpression} for {quantifierExpectation} {this.GetItemString()}";
-	}
-
-	/// <summary>
-	///     The collection result could not be evaluated.
-	/// </summary>
-	private sealed class UndecidedResult<T> : ConstraintResult
-	{
-		private readonly string _expectationText;
-		private readonly string _resultText;
-
-		/// <summary>
-		///     Initializes a new instance of <see cref="UndecidedResult{T}" />.
-		/// </summary>
-		public UndecidedResult(
-			T value,
-			string expectationText,
-			string resultText,
-			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
-			: base(Outcome.Undecided, furtherProcessingStrategy)
-		{
-			_ = value;
-			_expectationText = expectationText;
-			_resultText = resultText;
-		}
-
-		/// <inheritdoc />
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(_expectationText.Indent(indentation, false));
-
-		/// <inheritdoc />
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(_resultText.Indent(indentation, false));
 	}
 }

@@ -121,7 +121,7 @@ public static partial class ThatGeneric
 			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 			if (isMatch.Outcome != Outcome.Success)
 			{
-				return new ConstraintResult.Success<T>(actual, ToString());
+				return isMatch.Negate();
 			}
 
 			if (_options.Timeout > TimeSpan.Zero)
@@ -142,12 +142,12 @@ public static partial class ThatGeneric
 					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 					if (isMatch.Outcome != Outcome.Success)
 					{
-						return new ConstraintResult.Success<T>(actual, ToString());
+						return isMatch.Negate().SuffixExpectation(_options.ToString());
 					}
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return isMatch.WithOutcome(Outcome.Failure, ToString());
+			return isMatch.Negate().SuffixExpectation(_options.ToString());
 		}
 
 		public override string ToString()
