@@ -11,8 +11,21 @@ public sealed class NUnit4TestFrameworkTests
 		void Act()
 			=> Fail.Test("my message");
 
-		await Expect.That(Act).Throws<AssertionException>();
+		await Expect.That(Act).Throws<AssertionException>()
+			.WithMessage("my message");
 	}
+
+#if DEBUG // TODO remove after next core update
+	[Test]
+	public async Task OnInconclusive_WhenUsingNUnit3AsTestFramework_ShouldThrowAssertionException()
+	{
+		void Act()
+			=> Fail.Inconclusive("my message");
+
+		await Expect.That(Act).Throws<NUnit.Framework.InconclusiveException>()
+			.WithMessage("my message");
+	}
+#endif
 
 	[Test]
 	public async Task OnSkip_WhenUsingNUnit4AsTestFramework_ShouldThrowIgnoreException()
@@ -20,6 +33,7 @@ public sealed class NUnit4TestFrameworkTests
 		void Act()
 			=> Skip.Test("my message");
 
-		await Expect.That(Act).Throws<IgnoreException>();
+		await Expect.That(Act).Throws<IgnoreException>()
+			.WithMessage("my message");
 	}
 }

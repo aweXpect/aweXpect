@@ -14,6 +14,18 @@ public sealed class FallbackTests
 		Assert.That(exception!.Message, Is.EqualTo("my message"));
 	}
 
+#if DEBUG // TODO remove after next core update
+	[Test]
+	public void OnInconclusive_WhenNotSpecifyingAnyTestFramework_ShouldFallbackToThrowingAnInconclusiveException()
+	{
+		void Act()
+			=> Fail.Inconclusive("my message");
+
+		InconclusiveException? exception = Assert.Throws<InconclusiveException>(Act);
+		Assert.That(exception!.Message, Is.EqualTo("my message"));
+	}
+#endif
+
 	[Test]
 	public void OnSkip_WhenNotSpecifyingAnyTestFramework_ShouldFallbackToThrowingASkipException()
 	{

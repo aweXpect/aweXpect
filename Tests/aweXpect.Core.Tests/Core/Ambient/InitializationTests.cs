@@ -9,7 +9,7 @@ public sealed class InitializationTests
 	[Fact]
 	public async Task DetectFramework_WhenAllFrameworksAreNotAvailable_ShouldUseFallbackAdapter()
 	{
-		ITestFrameworkAdapter result = Initialization.DetectFramework([typeof(UnavailableFrameworkAdapter)]);
+		ITestFrameworkAdapter result = Initialization.DetectFramework([typeof(UnavailableFrameworkAdapter),]);
 
 		await That(result.IsAvailable).IsFalse();
 		await That(result.GetType().Name).IsEqualTo("FallbackTestFramework");
@@ -18,7 +18,7 @@ public sealed class InitializationTests
 	[Fact]
 	public async Task DetectFramework_WhenFrameworkAdapterThrows_ShouldThrowInvalidOperationException()
 	{
-		void Act() => Initialization.DetectFramework([typeof(IncorrectFrameworkAdapter)]);
+		void Act() => Initialization.DetectFramework([typeof(IncorrectFrameworkAdapter),]);
 
 		await That(Act).Throws<InvalidOperationException>()
 			.WithMessage($"Could not instantiate test framework '{nameof(IncorrectFrameworkAdapter)}'!");
@@ -30,10 +30,13 @@ public sealed class InitializationTests
 
 #pragma warning disable CS0436
 		[DoesNotReturn]
-		public void Skip(string message) => throw new NotSupportedException();
+		public void Fail(string message) => throw new NotSupportedException();
 
 		[DoesNotReturn]
-		public void Throw(string message) => throw new NotSupportedException();
+		public void Inconclusive(string message) => throw new NotSupportedException();
+
+		[DoesNotReturn]
+		public void Skip(string message) => throw new NotSupportedException();
 #pragma warning restore CS0436
 	}
 
@@ -43,10 +46,13 @@ public sealed class InitializationTests
 
 #pragma warning disable CS0436
 		[DoesNotReturn]
-		public void Skip(string message) => throw new NotSupportedException();
+		public void Fail(string message) => throw new NotSupportedException();
 
 		[DoesNotReturn]
-		public void Throw(string message) => throw new NotSupportedException();
+		public void Inconclusive(string message) => throw new NotSupportedException();
+
+		[DoesNotReturn]
+		public void Skip(string message) => throw new NotSupportedException();
 #pragma warning restore CS0436
 	}
 }

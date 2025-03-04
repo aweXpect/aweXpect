@@ -7,9 +7,11 @@ namespace aweXpect.Core.Adapters
     {
         bool IsAvailable { get; }
         [System.Diagnostics.CodeAnalysis.DoesNotReturn]
-        void Skip(string message);
+        void Fail(string message);
         [System.Diagnostics.CodeAnalysis.DoesNotReturn]
-        void Throw(string message);
+        void Inconclusive(string message);
+        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        void Skip(string message);
     }
 }
 namespace aweXpect.Core.Constraints
@@ -502,6 +504,8 @@ namespace aweXpect
     public static class Fail
     {
         [System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        public static void Inconclusive(string reason) { }
+        [System.Diagnostics.CodeAnalysis.DoesNotReturn]
         public static void Test(string reason) { }
         public static void Unless([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(false)] bool condition, string reason) { }
         public static void When([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(true)] bool condition, string reason) { }
@@ -509,6 +513,10 @@ namespace aweXpect
     public class FailException : System.Exception
     {
         public FailException(string message) { }
+    }
+    public class InconclusiveException : System.Exception
+    {
+        public InconclusiveException(string message) { }
     }
     [System.Diagnostics.StackTraceHidden]
     public static class Skip

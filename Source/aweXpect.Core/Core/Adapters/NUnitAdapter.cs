@@ -11,5 +11,6 @@ namespace aweXpect.Core.Adapters;
 internal class NUnitAdapter() : TestFrameworkAdapter(
 	"nunit.framework,",
 	(a, m) => FromType("NUnit.Framework.AssertionException", a, m),
-	(a, m) => FromType("NUnit.Framework.IgnoreException", a, m)
+	(a, m) => FromType("NUnit.Framework.IgnoreException", a, m),
+	(a, m) => FromType("NUnit.Framework.InconclusiveException", a, m)
 );

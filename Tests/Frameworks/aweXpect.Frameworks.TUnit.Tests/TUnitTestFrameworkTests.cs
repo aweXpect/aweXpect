@@ -12,8 +12,21 @@ public sealed class TUnitTestFrameworkTests
 		void Act()
 			=> Fail.Test("my message");
 
-		await Expect.That(Act).Throws<AssertionException>();
+		await Expect.That(Act).Throws<AssertionException>()
+			.WithMessage("my message");
 	}
+
+#if DEBUG // TODO remove after next core update
+	[Test]
+	public async Task OnInconclusive_WhenUsingXunit2AsTestFramework_ShouldThrowXunitException()
+	{
+		void Act()
+			=> Fail.Inconclusive("my message");
+
+		await Expect.That(Act).Throws<InconclusiveTestException>()
+			.WithMessage("my message");
+	}
+#endif
 
 	[Test]
 	public async Task OnSkip_WhenUsingXunit2AsTestFramework_ShouldThrowSkipException()
@@ -21,6 +34,7 @@ public sealed class TUnitTestFrameworkTests
 		void Act()
 			=> Skip.Test("my message");
 
-		await Expect.That(Act).Throws<SkipTestException>();
+		await Expect.That(Act).Throws<SkipTestException>()
+			.Whose(e => e.Reason, r => r.IsEqualTo("my message"));
 	}
 }

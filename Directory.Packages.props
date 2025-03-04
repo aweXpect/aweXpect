@@ -35,15 +35,15 @@
 		<PackageVersion Include="NUnit" Version="4.3.2"/>
 		<PackageVersion Include="NUnit3TestAdapter" Version="4.6.0"/>
 		<PackageVersion Include="NUnit.Analyzers" Version="4.6.0"/>
-		<PackageVersion Include="TUnit" Version="0.14.0"/>
-		<PackageVersion Include="TUnit.Assertions" Version="0.14.6"/>
+		<PackageVersion Include="TUnit" Version="0.16.3"/>
+		<PackageVersion Include="TUnit.Assertions" Version="0.16.4"/>
 		<PackageVersion Include="xunit" Version="2.9.3"/>
-		<PackageVersion Include="xunit.v3" Version="1.1.0"/>
-		<PackageVersion Include="xunit.v3.core" Version="1.1.0"/>
+		<PackageVersion Include="xunit.v3" Version="2.0.0"/>
+		<PackageVersion Include="xunit.v3.core" Version="2.0.0"/>
 		<PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2"/>
 		<PackageVersion Include="AutoFixture.Xunit2" Version="4.18.1"/>
 		<PackageVersion Include="coverlet.collector" Version="6.0.4"/>
-		<PackageVersion Include="FluentAssertions" Version="8.0.1"/>
+		<PackageVersion Include="FluentAssertions" Version="8.1.1"/>
 		<PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="1.6.2"/>
 		<PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.13.1"/>
 		<PackageVersion Include="PublicApiGenerator" Version="11.4.2"/>
