@@ -1092,6 +1092,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -1276,7 +1282,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -1464,7 +1471,8 @@ window.BENCHMARK_DATA = {
           181.29005618095397,
           171.54681151253837,
           183.56633501052858,
-          173.69618018468222
+          173.69618018468222,
+          168.2654207263674
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1653,6 +1661,7 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
+          536,
           536,
           536,
           536,
@@ -1853,7 +1862,8 @@ window.BENCHMARK_DATA = {
           192.74699669224876,
           190.22198325792948,
           188.87429242134095,
-          237.62443008422852
+          237.62443008422852,
+          239.20520447095234
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2046,6 +2056,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952
         ],
         "borderColor": "#FF671B",
@@ -2242,7 +2253,8 @@ window.BENCHMARK_DATA = {
           903.1145071665446,
           864.4126622517904,
           903.6536175182888,
-          851.1558710244985
+          851.1558710244985,
+          858.5084951945713
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2396,6 +2408,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3079,6 +3092,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -3186,7 +3205,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -3297,7 +3317,8 @@ window.BENCHMARK_DATA = {
           297403.01907552086,
           276867.96990094864,
           296832.73782784597,
-          289128.71858723956
+          289128.71858723956,
+          278073.4334960937
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3410,6 +3431,7 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284988,
+          284796,
           284796,
           284796,
           284796,
@@ -3532,7 +3554,8 @@ window.BENCHMARK_DATA = {
           2085838.6782924107,
           2008032.5908854166,
           2081069.8685825893,
-          2115592.642447917
+          2115592.642447917,
+          2113901.516183036
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3648,6 +3671,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416
         ],
         "borderColor": "#FF671B",
@@ -3767,7 +3791,8 @@ window.BENCHMARK_DATA = {
           672032.4752371652,
           675463.828515625,
           722017.1429268973,
-          686753.953515625
+          686753.953515625,
+          672613.6637834822
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3844,6 +3869,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -4989,6 +5015,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -5173,7 +5205,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -5361,7 +5394,8 @@ window.BENCHMARK_DATA = {
           602.6366093317667,
           587.3454969269889,
           614.0317229588826,
-          597.5750592549642
+          597.5750592549642,
+          608.6763963063557
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5550,6 +5584,7 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
+          1200,
           1200,
           1200,
           1200,
@@ -5750,7 +5785,8 @@ window.BENCHMARK_DATA = {
           438.4754691441854,
           409.4196905771891,
           415.4028848012288,
-          484.9907749039786
+          484.9907749039786,
+          459.64790402925934
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5943,6 +5979,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008
         ],
         "borderColor": "#FF671B",
@@ -6139,7 +6176,8 @@ window.BENCHMARK_DATA = {
           14359.007994588215,
           15343.575655619303,
           14887.769664219448,
-          14510.48108455113
+          14510.48108455113,
+          14870.746408315805
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6293,6 +6331,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -7438,6 +7477,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -7622,7 +7667,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -7810,7 +7856,8 @@ window.BENCHMARK_DATA = {
           228.65393902460735,
           232.76018914154596,
           227.87851854960124,
-          230.8690607731159
+          230.8690607731159,
+          225.54175645510355
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7999,6 +8046,7 @@ window.BENCHMARK_DATA = {
           880,
           880,
           880,
+          888,
           888,
           888,
           888,
@@ -8199,7 +8247,8 @@ window.BENCHMARK_DATA = {
           193.43885815938313,
           188.8867773214976,
           187.9419527212779,
-          242.93717343012491
+          242.93717343012491,
+          232.50726308822632
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8392,6 +8441,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224
         ],
         "borderColor": "#FF671B",
@@ -8588,7 +8638,8 @@ window.BENCHMARK_DATA = {
           1193.9414630889892,
           1184.3981236049108,
           1299.482372724093,
-          1238.4115753173828
+          1238.4115753173828,
+          1204.0861206054688
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8742,6 +8793,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -9887,6 +9939,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -10071,7 +10129,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -10259,7 +10318,8 @@ window.BENCHMARK_DATA = {
           357.23730884279524,
           355.1486850466047,
           361.08979349136354,
-          385.5733520825704
+          385.5733520825704,
+          362.89561853408816
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10448,6 +10508,7 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
+          992,
           992,
           992,
           992,
@@ -10648,7 +10709,8 @@ window.BENCHMARK_DATA = {
           425.95115058762684,
           408.47902362687245,
           427.4617662747701,
-          471.8195525487264
+          471.8195525487264,
+          459.46896031697594
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10841,6 +10903,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168
         ],
         "borderColor": "#FF671B",
@@ -11037,7 +11100,8 @@ window.BENCHMARK_DATA = {
           1254.4070156097412,
           1277.1121269226073,
           1275.5034381321498,
-          1251.611459187099
+          1251.611459187099,
+          1265.0706071217855
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11191,6 +11255,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -12336,6 +12401,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -12520,7 +12591,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -12708,7 +12780,8 @@ window.BENCHMARK_DATA = {
           1294.6010954720634,
           1237.9322574615478,
           1260.8275195757549,
-          1288.3729685465494
+          1288.3729685465494,
+          1254.0057444254558
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12897,6 +12970,7 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
+          2376,
           2376,
           2376,
           2376,
@@ -13097,7 +13171,8 @@ window.BENCHMARK_DATA = {
           1322.5114024026054,
           1208.3844462076822,
           1203.8119869232178,
-          1309.6961647914006
+          1309.6961647914006,
+          1275.3307777132306
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13290,6 +13365,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152
         ],
         "borderColor": "#FF671B",
@@ -13486,7 +13562,8 @@ window.BENCHMARK_DATA = {
           2746.577687944685,
           2720.119975789388,
           2793.2210238138837,
-          2710.8960502624514
+          2710.8960502624514,
+          2736.6767807006836
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13640,6 +13717,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -14785,6 +14863,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Tue Mar 4 13:11:50 2025 \u002B0100",
         "message": "build(deps): bump the xunit group with 2 updates (#435)"
+      },
+      {
+        "sha": "73699f2ce05bd23be059df3f8b91fde0c94749f8",
+        "author": "Valentin Breu\u00DF",
+        "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
+        "message": "feat: add support for inconclusive tests (#440)"
       }
     ],
     "labels": [
@@ -14969,7 +15053,8 @@ window.BENCHMARK_DATA = {
       "7012cf9f",
       "10f1052e",
       "75dd39e7",
-      "ab75babf"
+      "ab75babf",
+      "73699f2c"
     ],
     "datasets": [
       {
@@ -15157,7 +15242,8 @@ window.BENCHMARK_DATA = {
           1379.3481248219807,
           1335.3071844918388,
           1407.1330056508382,
-          1323.9663009643555
+          1323.9663009643555,
+          1363.4367474873861
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15346,6 +15432,7 @@ window.BENCHMARK_DATA = {
           2400,
           2400,
           2400,
+          2408,
           2408,
           2408,
           2408,
@@ -15546,7 +15633,8 @@ window.BENCHMARK_DATA = {
           87697.04774827223,
           85819.94818522135,
           86942.26736653646,
-          152275.1486328125
+          152275.1486328125,
+          149264.7859375
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15739,7 +15827,8 @@ window.BENCHMARK_DATA = {
           54273,
           54273,
           54271,
-          64012
+          64012,
+          63485
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15935,7 +16024,8 @@ window.BENCHMARK_DATA = {
           3287.3167778015136,
           3118.234434400286,
           3233.5305570874893,
-          3102.598887252808
+          3102.598887252808,
+          3151.8277659098308
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16106,6 +16196,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
