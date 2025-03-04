@@ -15,6 +15,18 @@ public sealed class XUnit2TestFrameworkTests
 		await Expect.That(Act).Throws<XunitException>();
 	}
 
+#if DEBUG // TODO remove after next core update
+	[Fact]
+	public async Task OnInconclusive_WhenUsingXunit2AsTestFramework_ShouldThrowInconclusiveException()
+	{
+		void Act()
+			=> Fail.Inconclusive("my message");
+
+		await Expect.That(Act).Throws<InconclusiveException>()
+			.WithMessage("INCONCLUSIVE: my message (xunit v2 does not support inconclusive tests)");
+	}
+#endif
+
 	[Fact]
 	public async Task OnSkip_WhenUsingXunit2AsTestFramework_ShouldThrowSkipException()
 	{

@@ -33,6 +33,14 @@ public static class Fail
 	/// <param name="reason">The reason why the test was failed</param>
 	public static void When([DoesNotReturnIf(true)] bool condition, string reason)
 		=> FailIf(condition, reason);
+	
+	/// <summary>
+	///     Explicitly fails the current test as inconclusive.
+	/// </summary>
+	/// <param name="reason">The reason why the test failed</param>
+	[DoesNotReturn]
+	public static void Inconclusive(string reason)
+		=> Initialization.State.Value.Inconclusive(reason);
 
 	private static void FailIf([DoesNotReturnIf(true)] bool condition, string reason)
 	{
@@ -41,6 +49,6 @@ public static class Fail
 			return;
 		}
 
-		Initialization.State.Value.Throw(reason);
+		Initialization.State.Value.Fail(reason);
 	}
 }

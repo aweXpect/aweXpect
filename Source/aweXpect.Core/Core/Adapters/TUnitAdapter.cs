@@ -41,22 +41,10 @@ internal class TUnitAdapter : ITestFrameworkAdapter
 		}
 	}
 
-	/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
+	/// <inheritdoc cref="ITestFrameworkAdapter.Fail" />
 	[DoesNotReturn]
 	[StackTraceHidden]
-	public void Skip(string message)
-	{
-		Type exceptionType = _coreAssembly?.GetType("TUnit.Core.Exceptions.SkipTestException")
-		                     ?? throw new NotSupportedException(
-			                     "Failed to create the TUnit skip assertion type");
-
-		throw (Exception)Activator.CreateInstance(exceptionType, message)!;
-	}
-
-	/// <inheritdoc cref="ITestFrameworkAdapter.Throw(string)" />
-	[DoesNotReturn]
-	[StackTraceHidden]
-	public void Throw(string message)
+	public void Fail(string message)
 	{
 		if (_assertionsAssembly == null)
 		{
@@ -68,6 +56,30 @@ internal class TUnitAdapter : ITestFrameworkAdapter
 			_assertionsAssembly.GetType("TUnit.Assertions.Exceptions.AssertionException")
 			?? throw new NotSupportedException(
 				"Failed to create the TUnit fail assertion type");
+
+		throw (Exception)Activator.CreateInstance(exceptionType, message)!;
+	}
+
+	/// <inheritdoc cref="ITestFrameworkAdapter.Inconclusive(string)" />
+	[DoesNotReturn]
+	[StackTraceHidden]
+	public void Inconclusive(string message)
+	{
+		Type exceptionType = _coreAssembly?.GetType("TUnit.Core.Exceptions.InconclusiveTestException")
+		                     ?? throw new NotSupportedException(
+			                     "Failed to create the TUnit inconclusive assertion type");
+
+		throw (Exception)Activator.CreateInstance(exceptionType, message, null)!;
+	}
+
+	/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
+	[DoesNotReturn]
+	[StackTraceHidden]
+	public void Skip(string message)
+	{
+		Type exceptionType = _coreAssembly?.GetType("TUnit.Core.Exceptions.SkipTestException")
+		                     ?? throw new NotSupportedException(
+			                     "Failed to create the TUnit skip assertion type");
 
 		throw (Exception)Activator.CreateInstance(exceptionType, message)!;
 	}

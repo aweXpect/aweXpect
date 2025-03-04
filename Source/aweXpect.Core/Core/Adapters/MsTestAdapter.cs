@@ -12,5 +12,6 @@ namespace aweXpect.Core.Adapters;
 internal class MsTestAdapter() : TestFrameworkAdapter(
 	"Microsoft.VisualStudio.TestPlatform.TestFramework,",
 	(a, m) => FromType("Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException", a, m),
+	(a, m) => FromType("Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException", a, m),
 	(a, m) => FromType("Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException", a, m)
 );
