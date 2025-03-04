@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
@@ -62,6 +63,39 @@ public abstract partial class EnumerableQuantifier
 			return new UndecidedResult<TEnumerable>(actual,
 				GenerateExpectation(ToString(), expectationExpression, expectationGenerator, expectationGrammars),
 				"could not verify, because it was not enumerated completely");
+		}
+
+		/// <inheritdoc />
+		public override Outcome GetOutcome(int matchingCount, int notMatchingCount, int? totalCount)
+		{
+			if (matchingCount > maximum)
+			{
+				return Outcome.Failure;
+			}
+
+			if (totalCount.HasValue)
+			{
+				return Outcome.Success;
+			}
+
+			return Outcome.Undecided;
+		}
+
+		/// <inheritdoc />
+		public override void AppendResult(StringBuilder stringBuilder,
+			ExpectationGrammars grammars,
+			int matchingCount,
+			int notMatchingCount,
+			int? totalCount)
+		{
+			if (totalCount.HasValue)
+			{
+				stringBuilder.Append("found ").Append(matchingCount);
+			}
+			else
+			{
+				stringBuilder.Append("found at least ").Append(matchingCount);
+			}
 		}
 	}
 }

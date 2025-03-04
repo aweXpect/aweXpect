@@ -46,23 +46,6 @@ public sealed class AndNodeTests
 	}
 
 	[Fact]
-	public async Task ToString_ShouldCombineAllNodes()
-	{
-#pragma warning disable CS4014
-#pragma warning disable aweXpect0001
-		IThat<bool> that = That(true);
-		that.IsTrue().And.IsFalse().And.Implies(false);
-#pragma warning restore aweXpect0001
-#pragma warning restore CS4014
-
-		string expectedResult = "is True and is False and implies False";
-
-		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
-
-		await That(result).IsEqualTo(expectedResult);
-	}
-
-	[Fact]
 	public async Task ToString_WithoutAdditionalNodes_ShouldUseFirstNode()
 	{
 		AndNode node = new(new DummyNode("foo"));

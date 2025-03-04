@@ -14,7 +14,7 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<TItem>?> subject)
 		=> new(quantifier => new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new SyncCollectionCountConstraint<TItem>(it, quantifier)),
+				=> new SyncCollectionCountConstraint<TItem>(it, grammars, quantifier)),
 			subject));
 
 	/// <summary>
@@ -24,6 +24,6 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<TItem>?> subject, int expected)
 		=> new(
 			subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new SyncCollectionCountConstraint<TItem>(it, EnumerableQuantifier.Exactly(expected))),
+				=> new SyncCollectionCountConstraint<TItem>(it, grammars, EnumerableQuantifier.Exactly(expected))),
 			subject);
 }

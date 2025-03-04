@@ -16,12 +16,19 @@ namespace aweXpect.Core.Constraints
 {
     public abstract class ConstraintResult
     {
+        protected ConstraintResult() { }
         protected ConstraintResult(aweXpect.Core.Constraints.Outcome outcome, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy) { }
-        public aweXpect.Core.Constraints.FurtherProcessingStrategy FurtherProcessingStrategy { get; }
-        public aweXpect.Core.Constraints.Outcome Outcome { get; }
+        public aweXpect.Core.Constraints.FurtherProcessingStrategy FurtherProcessingStrategy { get; protected set; }
+        public aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
         public abstract void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public virtual bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
+        public static aweXpect.Core.Constraints.ConstraintResult Create<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+        public static aweXpect.Core.Constraints.ConstraintResult Create<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<aweXpect.Core.ExpectationGrammars, TExpected, string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+        public static aweXpect.Core.Constraints.ConstraintResult CreateWithObjects<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, object?, object?, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+        public static aweXpect.Core.Constraints.ConstraintResult CreateWithObjects<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<aweXpect.Core.ExpectationGrammars, TExpected, string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, object?, object?, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+        public static aweXpect.Core.Constraints.ConstraintResult FromOutcome<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> failureResultBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> successResultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
+        public static aweXpect.Core.Constraints.ConstraintResult FromOutcome<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<aweXpect.Core.ExpectationGrammars, TExpected, string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> failureResultBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> successResultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
         public class Failure : aweXpect.Core.Constraints.ConstraintResult.TextBasedConstraintResult
         {
             public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
@@ -60,6 +67,18 @@ namespace aweXpect.Core.Constraints
         public static aweXpect.Core.Constraints.ConstraintResult PrependExpectationText(this aweXpect.Core.Constraints.ConstraintResult inner, System.Action<System.Text.StringBuilder>? prefix) { }
         public static aweXpect.Core.Constraints.ConstraintResult UseValue<T>(this aweXpect.Core.Constraints.ConstraintResult inner, T value) { }
         public static aweXpect.Core.Constraints.ConstraintResult WithOutcome(this aweXpect.Core.Constraints.ConstraintResult inner, aweXpect.Core.Constraints.Outcome outcome, string? expectation = null) { }
+    }
+    public abstract class ConstraintResult<T> : aweXpect.Core.Constraints.ConstraintResult
+    {
+        protected ConstraintResult(aweXpect.Core.ExpectationGrammars grammars) { }
+        protected T Actual { get; set; }
+        public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+        protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+        protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+        protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+        public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+        public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
     }
     public enum FurtherProcessingStrategy
     {
@@ -527,9 +546,9 @@ namespace aweXpect.Formatting
     }
     public class FormattingOptions : System.IEquatable<aweXpect.Formatting.FormattingOptions>
     {
-        public static aweXpect.Formatting.FormattingOptions Indented { get; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
+        public static aweXpect.Formatting.FormattingOptions Indented(string? indentation = null) { }
     }
     public class ValueFormatter
     {

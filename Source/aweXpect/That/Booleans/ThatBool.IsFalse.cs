@@ -11,6 +11,6 @@ public static partial class ThatBool
 	/// </summary>
 	public static AndOrResult<bool, IThat<bool>> IsFalse(this IThat<bool> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint(it, false)),
+				=> new IsEqualToConstraint(it, grammars, false)),
 			source);
 }

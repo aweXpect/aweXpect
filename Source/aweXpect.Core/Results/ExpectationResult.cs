@@ -201,6 +201,12 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 			return value;
 		}
 
+		if (result.Outcome == Outcome.Undecided)
+		{
+			//TODO: Add support for undecided
+			Fail.Test(await expectationBuilder.FromFailure(result));
+		}
+
 		if (result.Outcome == Outcome.Failure)
 		{
 			Fail.Test(await expectationBuilder.FromFailure(result));

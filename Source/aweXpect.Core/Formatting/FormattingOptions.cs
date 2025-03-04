@@ -17,11 +17,6 @@ public record FormattingOptions
 	public static FormattingOptions MultipleLines { get; } = new(true);
 
 	/// <summary>
-	///     Format the objects on multiple lines with an indentation of 2 blanks.
-	/// </summary>
-	public static FormattingOptions Indented { get; } = new(true, "  ");
-
-	/// <summary>
 	///     Format the objects on a single line.
 	/// </summary>
 	public static FormattingOptions SingleLine { get; } = new(false);
@@ -29,4 +24,12 @@ public record FormattingOptions
 	internal bool UseLineBreaks { get; }
 
 	internal string Indentation { get; }
+
+	/// <summary>
+	///     Format the objects on multiple lines with the given <paramref name="indentation" />.
+	/// </summary>
+	/// <remarks>
+	///     Use an indentation of 2 blanks, if the <paramref name="indentation" /> is <see langword="null" />.
+	/// </remarks>
+	public static FormattingOptions Indented(string? indentation = null) => new(true, indentation ?? "  ");
 }

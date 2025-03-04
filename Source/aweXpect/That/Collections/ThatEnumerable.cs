@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -109,7 +110,6 @@ public static partial class ThatEnumerable
 			bool cancelEarly = actual is not ICollection<TItem>;
 			int matchingCount = 0;
 			int notMatchingCount = 0;
-			int? totalCount = null;
 
 			foreach (TItem item in materialized)
 			{
@@ -130,7 +130,7 @@ public static partial class ThatEnumerable
 						_expectationText(),
 						matchingCount,
 						notMatchingCount,
-						totalCount,
+						null,
 						_verb));
 				}
 
@@ -154,15 +154,20 @@ public static partial class ThatEnumerable
 		}
 	}
 
-	private readonly struct SyncCollectionCountConstraint<TItem> : IAsyncContextConstraint<IEnumerable<TItem>?>
+	private class SyncCollectionCountConstraint<TItem>: ConstraintResult<IEnumerable<TItem>?>, IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
+		private readonly ExpectationGrammars _grammars;
 		private readonly EnumerableQuantifier _quantifier;
+		private int _matchingCount;
+		private int _notMatchingCount;
+		private int? _totalCount;
 
-		public SyncCollectionCountConstraint(string it,
-			EnumerableQuantifier quantifier)
+		public SyncCollectionCountConstraint(string it, ExpectationGrammars grammars,
+			EnumerableQuantifier quantifier) : base(grammars)
 		{
 			_it = it;
+			_grammars = grammars;
 			_quantifier = quantifier;
 		}
 
@@ -171,26 +176,22 @@ public static partial class ThatEnumerable
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			string expectationText = ToString();
+			Actual = actual;
 			if (actual is null)
 			{
-				return Task.FromResult<ConstraintResult>(
-					new ConstraintResult.Failure<IEnumerable<TItem>?>(
-						actual,
-						expectationText,
-						$"{_it} was <null>"));
+				Outcome = Outcome.Failure;
+				return Task.FromResult<ConstraintResult>(this);
 			}
 
-			int matchingCount = 0;
-			int notMatchingCount = 0;
-			int? totalCount = null;
+			_matchingCount = 0;
+			_notMatchingCount = 0;
 
 			if (actual is ICollection<TItem> collectionOfT)
 			{
-				matchingCount = collectionOfT.Count;
-				totalCount = matchingCount;
-				return Task.FromResult(_quantifier.GetResult(
-					actual, _it, null, matchingCount, notMatchingCount, totalCount, null, (_, _) => expectationText));
+				_matchingCount = collectionOfT.Count;
+				_totalCount = _matchingCount;
+				Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+				return Task.FromResult<ConstraintResult>(this);
 			}
 
 			IEnumerable<TItem> materialized =
@@ -198,29 +199,74 @@ public static partial class ThatEnumerable
 
 			foreach (TItem _ in materialized)
 			{
-				matchingCount++;
+				_matchingCount++;
 
-				if (_quantifier.IsDeterminable(matchingCount, notMatchingCount))
+				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
 				{
-					return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-						totalCount, null, (_, _) => expectationText));
+					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					return Task.FromResult<ConstraintResult>(this);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
-					return Task.FromResult<ConstraintResult>(new ConstraintResult.Failure<IEnumerable<TItem>>(
-						actual, expectationText,
-						"could not verify, because it was cancelled early"));
+					Outcome = Outcome.Undecided;
+					return Task.FromResult<ConstraintResult>(this);
 				}
 			}
 
-			totalCount = matchingCount + notMatchingCount;
-			return Task.FromResult(_quantifier.GetResult(actual, _it, null, matchingCount, notMatchingCount,
-				totalCount, null, (_, _) => expectationText));
+			_totalCount = _matchingCount + _notMatchingCount;
+			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			return Task.FromResult<ConstraintResult>(this);
 		}
 
-		public override string ToString()
-			=> $"has {_quantifier} {_quantifier.GetItemString()}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has ");
+			stringBuilder.Append(_quantifier);
+			stringBuilder.Append(' ');
+			stringBuilder.Append(_quantifier.GetItemString());
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.Append(_it);
+				stringBuilder.Append(" was <null>");
+			}
+			else if (Outcome == Outcome.Undecided)
+			{
+				stringBuilder.Append("could not verify, because it was cancelled early");
+			}
+			else
+			{
+				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not have ");
+			stringBuilder.Append(_quantifier);
+			stringBuilder.Append(' ');
+			stringBuilder.Append(_quantifier.GetItemString());
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is null)
+			{
+				stringBuilder.Append(_it);
+				stringBuilder.Append(" was <null>");
+			}
+			else if (Outcome == Outcome.Undecided)
+			{
+				stringBuilder.Append("could not verify, because it was cancelled early");
+			}
+			else
+			{
+			}
+		}
 	}
 
 	private readonly struct IsInOrderConstraint<TItem, TMember>(

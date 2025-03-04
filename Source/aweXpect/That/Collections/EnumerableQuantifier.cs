@@ -38,6 +38,23 @@ public abstract partial class EnumerableQuantifier
 		string? verb,
 		Func<string, string?, string>? expectationGenerator = null);
 
+	/// <summary>
+	///     Returns the outcome.
+	/// </summary>
+	public abstract Outcome GetOutcome(
+		int matchingCount,
+		int notMatchingCount,
+		int? totalCount);
+
+	/// <summary>
+	///     Appends the result text to the <paramref name="stringBuilder" />.
+	/// </summary>
+	public abstract void AppendResult(StringBuilder stringBuilder,
+		ExpectationGrammars grammars,
+		int matchingCount,
+		int notMatchingCount,
+		int? totalCount);
+
 
 	private string GenerateExpectation(string quantifierExpectation,
 		string? expectationExpression,

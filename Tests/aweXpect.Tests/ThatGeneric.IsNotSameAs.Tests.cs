@@ -62,6 +62,33 @@ public sealed partial class ThatGeneric
 			}
 
 			[Fact]
+			public async Task WhenNegated_ShouldHaveCorrectResultString()
+			{
+				Other subject = new()
+				{
+					Value = 1,
+				};
+				Other expected = new()
+				{
+					Value = 1,
+				};
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it.IsNotSameAs(expected));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             refers to expected Other {
+					               Value = 1
+					             },
+					             but it was Other {
+					               Value = 1
+					             }
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectAndExpectedIsNull_ShouldFail()
 			{
 				Other? subject = null;

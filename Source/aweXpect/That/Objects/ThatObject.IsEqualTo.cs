@@ -124,14 +124,12 @@ public static partial class ThatObject
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				var o = options;
-				var i = it;
-				var g = grammars;
-				var e = expected;
-				return new ConstraintResult.Success<TSubject>(actual, ToString(), () => o.GetExtendedFailure(i, g, actual, e));
+				return ConstraintResult.CreateWithObjects(Outcome.Success, actual, expected, it, grammars, ToString,
+					options.GetExtendedFailure);
 			}
 
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, grammars, actual, expected));
+			return ConstraintResult.CreateWithObjects(Outcome.Failure, actual, expected, it, grammars, ToString,
+				options.GetExtendedFailure);
 		}
 
 		public override string ToString()
@@ -151,14 +149,12 @@ public static partial class ThatObject
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				var o = options;
-				var i = it;
-				var g = grammars;
-				var e = expected;
-				return new ConstraintResult.Success<T>(actual, ToString(), () => o.GetExtendedFailure(i, g, actual, e));
+				return ConstraintResult.CreateWithObjects(Outcome.Success, actual, expected, it, grammars, ToString,
+					options.GetExtendedFailure);
 			}
 
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, grammars, actual, expected));
+			return ConstraintResult.CreateWithObjects(Outcome.Failure, actual, expected, it, grammars, ToString,
+				options.GetExtendedFailure);
 		}
 
 		public override string ToString()
@@ -178,14 +174,12 @@ public static partial class ThatObject
 		{
 			if (options.AreConsideredEqual(actual, expected))
 			{
-				var o = options;
-				var i = it;
-				var g = grammars;
-				var e = expected;
-				return new ConstraintResult.Success<T?>(actual, ToString(), () => o.GetExtendedFailure(i, g, actual, e));
+				return ConstraintResult.CreateWithObjects(Outcome.Success, actual, expected, it, grammars, ToString,
+					options.GetExtendedFailure);
 			}
 
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, grammars, actual, expected));
+			return ConstraintResult.CreateWithObjects(Outcome.Failure, actual, expected, it, grammars, ToString,
+				options.GetExtendedFailure);
 		}
 
 		public override string ToString()

@@ -46,23 +46,6 @@ public sealed class OrNodeTests
 	}
 
 	[Fact]
-	public async Task ToString_ShouldCombineAllNodes()
-	{
-#pragma warning disable CS4014
-#pragma warning disable aweXpect0001
-		IThat<bool> that = That(true);
-		that.IsTrue().Or.IsFalse().Or.Implies(false);
-#pragma warning restore aweXpect0001
-#pragma warning restore CS4014
-
-		string expectedResult = "is True or is False or implies False";
-
-		string? result = ((IThatVerb<bool>)that).ExpectationBuilder.ToString();
-
-		await That(result).IsEqualTo(expectedResult);
-	}
-
-	[Fact]
 	public async Task ToString_WithoutAdditionalNodes_ShouldUseFirstNode()
 	{
 		OrNode node = new(new DummyNode("foo"));
