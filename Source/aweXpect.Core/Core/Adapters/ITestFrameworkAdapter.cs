@@ -22,5 +22,15 @@ public interface ITestFrameworkAdapter
 	///     Throws a framework-specific exception to indicate a failing unit test.
 	/// </summary>
 	[DoesNotReturn]
-	void Throw(string message);
+	void Fail(string message);
+
+	/// <summary>
+	///     Throws a framework-specific exception to indicate an inconclusive unit test.
+	/// </summary>
+	/// <remarks>
+	///     It should be used in situations where another run with different data or a different environment might run to
+	///     completion, with either a success or failure outcome.
+	/// </remarks>
+	[DoesNotReturn]
+	void Inconclusive(string message);
 }

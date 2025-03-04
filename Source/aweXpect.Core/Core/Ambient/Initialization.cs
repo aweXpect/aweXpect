@@ -16,7 +16,7 @@ internal static class Initialization
 	{
 		Type frameworkInterface = typeof(ITestFrameworkAdapter);
 		foreach (Type frameworkType in types
-			         .Where(x => x is { IsClass: true, IsAbstract: false })
+			         .Where(x => x is { IsClass: true, IsAbstract: false, })
 			         .Where(frameworkInterface.IsAssignableFrom))
 		{
 			try
@@ -64,8 +64,16 @@ internal static class Initialization
 		/// </summary>
 		[DoesNotReturn]
 		[StackTraceHidden]
-		public void Throw(string message)
-			=> testFramework.Throw(message);
+		public void Fail(string message)
+			=> testFramework.Fail(message);
+
+		/// <summary>
+		///     Throws a framework-specific exception to indicate an inconclusive unit test.
+		/// </summary>
+		[DoesNotReturn]
+		[StackTraceHidden]
+		public void Inconclusive(string message)
+			=> testFramework.Inconclusive(message);
 	}
 
 	private sealed class FallbackTestFramework : ITestFrameworkAdapter
@@ -76,13 +84,18 @@ internal static class Initialization
 
 		[DoesNotReturn]
 		[StackTraceHidden]
+		public void Fail(string message)
+			=> throw new FailException(message);
+
+		[DoesNotReturn]
+		[StackTraceHidden]
 		public void Skip(string message)
 			=> throw new SkipException(message);
 
 		[DoesNotReturn]
 		[StackTraceHidden]
-		public void Throw(string message)
-			=> throw new FailException(message);
+		public void Inconclusive(string message)
+			=> throw new InconclusiveException(message);
 
 		#endregion
 	}

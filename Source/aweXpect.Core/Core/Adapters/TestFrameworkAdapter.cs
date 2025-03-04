@@ -9,7 +9,8 @@ namespace aweXpect.Core.Adapters;
 internal abstract class TestFrameworkAdapter(
 	string assemblyName,
 	Func<Assembly, string, Exception?> failException,
-	Func<Assembly, string, Exception?> skipException)
+	Func<Assembly, string, Exception?> skipException,
+	Func<Assembly, string, Exception?> inconclusiveException)
 	: ITestFrameworkAdapter
 {
 	private Assembly? _assembly;
@@ -47,6 +48,20 @@ internal abstract class TestFrameworkAdapter(
 		}
 	}
 
+	/// <inheritdoc cref="ITestFrameworkAdapter.Fail" />
+	[DoesNotReturn]
+	[StackTraceHidden]
+	public void Fail(string message)
+	{
+		if (_assembly is null)
+		{
+			throw new NotSupportedException("Failed to create the fail assertion type");
+		}
+
+		throw failException(_assembly, message)
+		      ?? new NotSupportedException("Failed to create the fail assertion type");
+	}
+
 	/// <inheritdoc cref="ITestFrameworkAdapter.Skip(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
@@ -61,18 +76,18 @@ internal abstract class TestFrameworkAdapter(
 		      ?? new NotSupportedException("Failed to create the skip assertion type");
 	}
 
-	/// <inheritdoc cref="ITestFrameworkAdapter.Throw(string)" />
+	/// <inheritdoc cref="ITestFrameworkAdapter.Inconclusive(string)" />
 	[DoesNotReturn]
 	[StackTraceHidden]
-	public void Throw(string message)
+	public void Inconclusive(string message)
 	{
 		if (_assembly is null)
 		{
-			throw new NotSupportedException("Failed to create the fail assertion type");
+			throw new NotSupportedException("Failed to create the inconclusive assertion type");
 		}
 
-		throw failException(_assembly, message)
-		      ?? new NotSupportedException("Failed to create the fail assertion type");
+		throw inconclusiveException(_assembly, message)
+		      ?? new NotSupportedException("Failed to create the inconclusive assertion type");
 	}
 
 	#endregion

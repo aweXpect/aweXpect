@@ -11,5 +11,6 @@ namespace aweXpect.Core.Adapters;
 internal class XUnit2Adapter() : TestFrameworkAdapter(
 	"xunit.assert",
 	(a, m) => FromType("Xunit.Sdk.XunitException", a, m),
-	(_, m) => new SkipException($"SKIPPED: {m} (xunit v2 does not support skipping test)")
+	(_, m) => new SkipException($"SKIPPED: {m} (xunit v2 does not support skipping test)"),
+	(_, m) => new InconclusiveException($"INCONCLUSIVE: {m} (xunit v2 does not support inconclusive tests)")
 );

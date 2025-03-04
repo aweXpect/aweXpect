@@ -63,7 +63,7 @@ public sealed class TestFrameworkAdapterTests
 		MyTestFrameworkAdapter adapter = new(MissingAssembly, new MyException());
 		_ = adapter.IsAvailable;
 
-		await That(() => adapter.Throw("foo")).Throws<NotSupportedException>()
+		await That(() => adapter.Fail("foo")).Throws<NotSupportedException>()
 			.WithMessage("Failed to create the fail assertion type");
 	}
 
@@ -73,7 +73,7 @@ public sealed class TestFrameworkAdapterTests
 		MyTestFrameworkAdapter adapter = new(ExistingAssembly);
 		_ = adapter.IsAvailable;
 
-		await That(() => adapter.Throw("foo")).Throws<NotSupportedException>()
+		await That(() => adapter.Fail("foo")).Throws<NotSupportedException>()
 			.WithMessage("Failed to create the fail assertion type");
 	}
 
@@ -84,7 +84,7 @@ public sealed class TestFrameworkAdapterTests
 		MyTestFrameworkAdapter adapter = new(ExistingAssembly, exception);
 		_ = adapter.IsAvailable;
 
-		await That(() => adapter.Throw("foo")).Throws<MyException>()
+		await That(() => adapter.Fail("foo")).Throws<MyException>()
 			.WithMessage("my-message");
 	}
 
@@ -109,10 +109,12 @@ public sealed class TestFrameworkAdapterTests
 
 		public MyTestFrameworkAdapter(string assemblyName,
 			Exception? failException = null,
-			Exception? skipException = null)
+			Exception? skipException = null,
+			Exception? inconclusiveException = null)
 			: base(assemblyName,
 				(_, _) => failException,
-				(_, _) => skipException)
+				(_, _) => skipException,
+				(_, _) => inconclusiveException)
 		{
 		}
 
