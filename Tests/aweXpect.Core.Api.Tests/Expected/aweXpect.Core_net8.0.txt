@@ -21,17 +21,12 @@ namespace aweXpect.Core.Constraints
         protected ConstraintResult() { }
         protected ConstraintResult(aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy) { }
         public aweXpect.Core.Constraints.FurtherProcessingStrategy FurtherProcessingStrategy { get; protected set; }
-        public aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
+        public virtual aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
         public abstract void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract aweXpect.Core.Constraints.ConstraintResult Negate();
         public virtual bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
-        public static aweXpect.Core.Constraints.ConstraintResult Create<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-        public static aweXpect.Core.Constraints.ConstraintResult Create<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<aweXpect.Core.ExpectationGrammars, TExpected, string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
         public static aweXpect.Core.Constraints.ConstraintResult CreateWithObjects<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, object?, object?, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-        public static aweXpect.Core.Constraints.ConstraintResult CreateWithObjects<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<aweXpect.Core.ExpectationGrammars, TExpected, string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, object?, object?, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-        public static aweXpect.Core.Constraints.ConstraintResult FromOutcome<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> failureResultBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> successResultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-        public static aweXpect.Core.Constraints.ConstraintResult FromOutcome<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<aweXpect.Core.ExpectationGrammars, TExpected, string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> failureResultBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, TActual, TExpected, string> successResultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
         public class Failure : aweXpect.Core.Constraints.ConstraintResult.TextBasedConstraintResult
         {
             public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
@@ -62,29 +57,46 @@ namespace aweXpect.Core.Constraints
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
         }
+        public abstract class WithNotNullValue<T> : aweXpect.Core.Constraints.ConstraintResult
+        {
+            protected WithNotNullValue(string it, aweXpect.Core.ExpectationGrammars grammars) { }
+            protected T Actual { get; set; }
+            public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
+            public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
+            public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
+        }
+        public abstract class WithValue<T> : aweXpect.Core.Constraints.ConstraintResult
+        {
+            protected WithValue(aweXpect.Core.ExpectationGrammars grammars) { }
+            protected T Actual { get; set; }
+            public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
+            public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
+            public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
+        }
     }
     public static class ConstraintResultExtensions
     {
         public static aweXpect.Core.Constraints.ConstraintResult AppendExpectationText(this aweXpect.Core.Constraints.ConstraintResult inner, System.Action<System.Text.StringBuilder>? suffix) { }
         public static aweXpect.Core.Constraints.ConstraintResult Fail<T>(this aweXpect.Core.Constraints.ConstraintResult inner, string failure, T value) { }
         public static bool HasSameResultTextAs(this aweXpect.Core.Constraints.ConstraintResult left, aweXpect.Core.Constraints.ConstraintResult right) { }
+        public static T Negated<T>(this T constraintResult)
+            where T : aweXpect.Core.Constraints.ConstraintResult { }
         public static aweXpect.Core.Constraints.ConstraintResult PrependExpectationText(this aweXpect.Core.Constraints.ConstraintResult inner, System.Action<System.Text.StringBuilder>? prefix) { }
         public static aweXpect.Core.Constraints.ConstraintResult SuffixExpectation(this aweXpect.Core.Constraints.ConstraintResult inner, string expectationSuffix) { }
         public static aweXpect.Core.Constraints.ConstraintResult UseValue<T>(this aweXpect.Core.Constraints.ConstraintResult inner, T value) { }
         public static aweXpect.Core.Constraints.ConstraintResult WithOutcome(this aweXpect.Core.Constraints.ConstraintResult inner, aweXpect.Core.Constraints.Outcome outcome, string? expectation = null) { }
-    }
-    public abstract class ConstraintResult<T> : aweXpect.Core.Constraints.ConstraintResult
-    {
-        protected ConstraintResult(aweXpect.Core.ExpectationGrammars grammars) { }
-        protected T Actual { get; set; }
-        public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-        protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-        protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
-        protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-        protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
-        public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-        public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
-        public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
     }
     public enum FurtherProcessingStrategy
     {

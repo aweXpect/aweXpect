@@ -6,98 +6,6 @@ using aweXpect.Core.Helpers;
 namespace aweXpect.Core.Constraints;
 
 /// <summary>
-///     A typed <see cref="ConstraintResult" />.
-/// </summary>
-public abstract class ConstraintResult<T>(ExpectationGrammars grammars) : ConstraintResult
-{
-	/// <summary>
-	///     The actual value.
-	/// </summary>
-	protected T? Actual { get; set; }
-
-	/// <summary>
-	///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
-	///     not negated.
-	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected abstract void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null);
-
-	/// <summary>
-	///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are not
-	///     negated.
-	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected abstract void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null);
-
-	/// <summary>
-	///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
-	///     negated.
-	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected abstract void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null);
-
-	/// <summary>
-	///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
-	///     negated.
-	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
-
-	/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-	{
-		if (grammars.IsNegated())
-		{
-			AppendNegatedExpectation(stringBuilder, indentation);
-		}
-		else
-		{
-			AppendNormalExpectation(stringBuilder, indentation);
-		}
-	}
-
-	/// <inheritdoc cref="ConstraintResult.AppendResult(StringBuilder, string?)" />
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-	{
-		if (grammars.IsNegated())
-		{
-			AppendNegatedResult(stringBuilder, indentation);
-		}
-		else
-		{
-			AppendNormalResult(stringBuilder, indentation);
-		}
-	}
-
-	/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
-	public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-	{
-		if (Actual is TValue typedValue)
-		{
-			value = typedValue;
-			return true;
-		}
-
-		value = default;
-		return typeof(TValue).IsAssignableFrom(typeof(T));
-	}
-
-	/// <inheritdoc cref="ConstraintResult.Negate()" />
-	public override ConstraintResult Negate()
-	{
-		Outcome = Outcome switch
-		{
-			Outcome.Failure => Outcome.Success,
-			Outcome.Success => Outcome.Failure,
-			_ => Outcome,
-		};
-		return this;
-	}
-}
-
-/// <summary>
 ///     The result of the check if an expectation is met.
 /// </summary>
 public abstract partial class ConstraintResult
@@ -107,7 +15,6 @@ public abstract partial class ConstraintResult
 	/// </summary>
 	protected ConstraintResult(FurtherProcessingStrategy furtherProcessingStrategy)
 	{
-		Outcome = Outcome.Undecided;
 		FurtherProcessingStrategy = furtherProcessingStrategy;
 	}
 
@@ -116,14 +23,13 @@ public abstract partial class ConstraintResult
 	/// </summary>
 	protected ConstraintResult()
 	{
-		Outcome = Outcome.Undecided;
 		FurtherProcessingStrategy = FurtherProcessingStrategy.Continue;
 	}
 
 	/// <summary>
 	///     The outcome of the <see cref="ConstraintResult" />.
 	/// </summary>
-	public Outcome Outcome { get; protected set; }
+	public virtual Outcome Outcome { get; protected set; } = Outcome.Undecided;
 
 	/// <summary>
 	///     Specifies if further processing of chained constraints should be ignored.

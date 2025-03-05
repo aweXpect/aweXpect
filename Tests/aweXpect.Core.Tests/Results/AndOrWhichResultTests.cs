@@ -22,9 +22,9 @@ public class AndOrWhichResultTests
 			.WithMessage("""
 			             Expected that subject
 			              which .Value1 is True and which .Value2 is True and refers to subject MyClass {
-			               Value1 = False,
-			               Value2 = False
-			             },
+			                 Value1 = False,
+			                 Value2 = False
+			               },
 			             but .Value1 was False and .Value2 was False
 			             """);
 	}

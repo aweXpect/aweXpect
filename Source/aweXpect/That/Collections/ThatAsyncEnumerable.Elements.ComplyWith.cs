@@ -33,7 +33,7 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	private class ComplyWithConstraint<TItem>
-		: ConstraintResult<IAsyncEnumerable<TItem>?>,
+		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly ExpectationGrammars _grammars;

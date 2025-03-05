@@ -22,7 +22,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	private class CollectionConstraint<TItem> 
-		: ConstraintResult<IAsyncEnumerable<TItem>?>,
+		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly string _it;
@@ -168,7 +168,8 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private class AsyncCollectionCountConstraint<TItem> : ConstraintResult<IAsyncEnumerable<TItem>?>,
+	private class AsyncCollectionCountConstraint<TItem>
+		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly string _it;

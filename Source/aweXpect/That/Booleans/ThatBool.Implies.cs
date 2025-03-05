@@ -17,7 +17,7 @@ public static partial class ThatBool
 			source);
 
 	private class ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
-		: ConstraintResult<bool>(grammars), 
+		: ConstraintResult.WithValue<bool>(grammars), 
 			IValueConstraint<bool>
 	{
 		public ConstraintResult IsMetBy(bool actual)

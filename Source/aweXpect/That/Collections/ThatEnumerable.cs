@@ -73,7 +73,7 @@ public static partial class ThatEnumerable
 	}
 
 	private class CollectionConstraint<TItem>
-		: ConstraintResult<IEnumerable<TItem>?>,
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
@@ -91,7 +91,7 @@ public static partial class ThatEnumerable
 			EnumerableQuantifier quantifier,
 			Func<ExpectationGrammars, string> expectationText,
 			Func<TItem, bool> predicate,
-			string verb) : base(grammars)
+			string verb) : base(it, grammars)
 		{
 			_it = it;
 			_grammars = grammars;
@@ -167,12 +167,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Actual is null)
-			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
-			}
-			else if (Outcome == Outcome.Undecided)
+			if (Outcome == Outcome.Undecided)
 			{
 				stringBuilder.Append("could not verify, because it was cancelled early");
 			}
@@ -203,12 +198,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Actual is null)
-			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
-			}
-			else if (Outcome == Outcome.Undecided)
+			if (Outcome == Outcome.Undecided)
 			{
 				stringBuilder.Append("could not verify, because it was cancelled early");
 			}
@@ -220,7 +210,7 @@ public static partial class ThatEnumerable
 	}
 
 	private class SyncCollectionCountConstraint<TItem>
-		: ConstraintResult<IEnumerable<TItem>?>,
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
 		private readonly string _it;
@@ -231,7 +221,7 @@ public static partial class ThatEnumerable
 		private int? _totalCount;
 
 		public SyncCollectionCountConstraint(string it, ExpectationGrammars grammars, EnumerableQuantifier quantifier)
-			: base(grammars)
+			: base(it, grammars)
 		{
 			_it = it;
 			_grammars = grammars;
@@ -296,12 +286,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Actual is null)
-			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
-			}
-			else if (Outcome == Outcome.Undecided)
+			if (Outcome == Outcome.Undecided)
 			{
 				stringBuilder.Append("could not verify, because it was cancelled early");
 			}
@@ -321,12 +306,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Actual is null)
-			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
-			}
-			else if (Outcome == Outcome.Undecided)
+			if (Outcome == Outcome.Undecided)
 			{
 				stringBuilder.Append("could not verify, because it was cancelled early");
 			}

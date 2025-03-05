@@ -33,7 +33,7 @@ public static partial class ThatEnumerable
 		}
 
 		private class ComplyWithConstraint
-			: ConstraintResult<IEnumerable<TItem>?>,
+			: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 				IAsyncContextConstraint<IEnumerable<TItem>?>
 		{
 			private readonly ExpectationGrammars _grammars;
@@ -47,7 +47,7 @@ public static partial class ThatEnumerable
 			public ComplyWithConstraint(string it, ExpectationGrammars grammars,
 				EnumerableQuantifier quantifier,
 				Action<IThat<TItem>> expectations)
-				: base(grammars)
+				: base(it, grammars)
 			{
 				_it = it;
 				_grammars = grammars;
@@ -113,12 +113,7 @@ public static partial class ThatEnumerable
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 			{
-				if (Actual is null)
-				{
-					stringBuilder.Append(_it);
-					stringBuilder.Append(" was <null>");
-				}
-				else if (Outcome == Outcome.Undecided)
+				if (Outcome == Outcome.Undecided)
 				{
 					stringBuilder.Append("could not verify, because it was cancelled early");
 				}
@@ -138,12 +133,7 @@ public static partial class ThatEnumerable
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			{
-				if (Actual is null)
-				{
-					stringBuilder.Append(_it);
-					stringBuilder.Append(" was <null>");
-				}
-				else if (Outcome == Outcome.Undecided)
+				if (Outcome == Outcome.Undecided)
 				{
 					stringBuilder.Append("could not verify, because it was cancelled early");
 				}

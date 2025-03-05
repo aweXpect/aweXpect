@@ -37,8 +37,8 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             does not refer to expected Other {
-					               Value = 1
-					             },
+					                 Value = 1
+					               },
 					             but it did
 					             """);
 			}
@@ -62,11 +62,11 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             refers to expected Other {
-					               Value = 1
-					             },
+					                 Value = 1
+					               },
 					             but it was Other {
-					               Value = 1
-					             }
+					                 Value = 1
+					               }
 					             """);
 			}
 
@@ -87,8 +87,8 @@ public sealed partial class ThatGeneric
 					             Expected that subject
 					             refers to expected <null>,
 					             but it was Other {
-					               Value = 1
-					             }
+					                 Value = 1
+					               }
 					             """);
 			}
 
@@ -120,8 +120,8 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             refers to expected Other {
-					               Value = 1
-					             },
+					                 Value = 1
+					               },
 					             but it was <null>
 					             """);
 			}

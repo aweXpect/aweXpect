@@ -9,34 +9,26 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatBool
 {
-	private class IsEqualToConstraint : ConstraintResult<bool>,
+	private class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool expected)
+		: ConstraintResult.WithValue<bool>(grammars),
 			IValueConstraint<bool>
 	{
-		private readonly string _it;
-		private readonly bool _expected;
-
-		public IsEqualToConstraint(string it, ExpectationGrammars grammars, bool expected) : base(grammars)
-		{
-			_it = it;
-			_expected = expected;
-		}
-
 		public ConstraintResult IsMetBy(bool actual)
 		{
 			Actual = actual;
-			Outcome = _expected.Equals(actual) ? Outcome.Success : Outcome.Failure;
+			Outcome = expected.Equals(actual) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is ");
-			Formatter.Format(stringBuilder, _expected, FormattingOptions.Indented(indentation));
+			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(_it);
+			stringBuilder.Append(it);
 			stringBuilder.Append(" was ");
 			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
 		}
@@ -44,12 +36,12 @@ public static partial class ThatBool
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not ");
-			Formatter.Format(stringBuilder, _expected, FormattingOptions.Indented(indentation));
+			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(_it);
+			stringBuilder.Append(it);
 			stringBuilder.Append(" was");
 		}
 	}

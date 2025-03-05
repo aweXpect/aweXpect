@@ -11,6 +11,15 @@ namespace aweXpect.Core.Constraints;
 public static class ConstraintResultExtensions
 {
 	/// <summary>
+	///     Negates the <paramref name="constraintResult" /> and returns the same instance.
+	/// </summary>
+	public static T Negated<T>(this T constraintResult) where T : ConstraintResult
+	{
+		constraintResult.Negate();
+		return constraintResult;
+	}
+
+	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> from the <paramref name="inner" /> constraint result
 	///     with the <paramref name="expectationSuffix" />.
 	/// </summary>
@@ -21,7 +30,7 @@ public static class ConstraintResultExtensions
 			return inner;
 		}
 
-		return new ConstraintResultWrapper(inner, expectationSuffix: expectationSuffix);
+		return new ConstraintResultWrapper(inner, expectationSuffix);
 	}
 
 	/// <summary>
