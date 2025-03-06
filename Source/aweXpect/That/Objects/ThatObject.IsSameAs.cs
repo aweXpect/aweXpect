@@ -29,7 +29,7 @@ public static partial class ThatObject
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new IsSameAsConstraint<T>(it, grammars.Negate(), expected, doNotPopulateThisValue.TrimCommonWhiteSpace())
+					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())
 						.Negated()),
 			source);
 
@@ -41,8 +41,6 @@ public static partial class ThatObject
 		: ConstraintResult.WithNotNullValue<T>(it, grammars),
 			IValueConstraint<T>
 	{
-		private readonly string _it = it;
-
 		public ConstraintResult IsMetBy(T actual)
 		{
 			Actual = actual;
@@ -60,7 +58,7 @@ public static partial class ThatObject
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(_it);
+			stringBuilder.Append(It);
 			stringBuilder.Append(" was ");
 			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
 		}
@@ -75,7 +73,7 @@ public static partial class ThatObject
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(_it);
+			stringBuilder.Append(It);
 			stringBuilder.Append(" did");
 		}
 	}

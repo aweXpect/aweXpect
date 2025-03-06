@@ -22,23 +22,6 @@ public static partial class ThatBool
 	public static AndOrResult<bool, IThat<bool>> IsNotEqualTo(this IThat<bool> source,
 		bool unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsNotEqualToConstraint(it, unexpected)),
+				=> new IsEqualToConstraint(it, grammars, unexpected).Negated()),
 			source);
-
-	private readonly struct IsNotEqualToConstraint(string it, bool unexpected)
-		: IValueConstraint<bool>
-	{
-		public ConstraintResult IsMetBy(bool actual)
-		{
-			if (!unexpected.Equals(actual))
-			{
-				return new ConstraintResult.Success<bool>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-		}
-
-		public override string ToString()
-			=> $"is not {Formatter.Format(unexpected)}";
-	}
 }

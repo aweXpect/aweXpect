@@ -36,7 +36,7 @@ public sealed partial class ThatNullableBool
 					.WithMessage($"""
 					              Expected that subject
 					              is not {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was
 					              """);
 			}
 		}

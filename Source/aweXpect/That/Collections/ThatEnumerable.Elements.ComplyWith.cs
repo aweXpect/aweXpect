@@ -36,8 +36,6 @@ public static partial class ThatEnumerable
 			: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 				IAsyncContextConstraint<IEnumerable<TItem>?>
 		{
-			private readonly ExpectationGrammars _grammars;
-			private readonly string _it;
 			private readonly ManualExpectationBuilder<TItem> _itemExpectationBuilder;
 			private readonly EnumerableQuantifier _quantifier;
 			private int _matchingCount;
@@ -49,8 +47,6 @@ public static partial class ThatEnumerable
 				Action<IThat<TItem>> expectations)
 				: base(it, grammars)
 			{
-				_it = it;
-				_grammars = grammars;
 				_quantifier = quantifier;
 				_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
 				expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
@@ -119,7 +115,7 @@ public static partial class ThatEnumerable
 				}
 				else
 				{
-					_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
+					_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
 				}
 			}
 
@@ -139,7 +135,7 @@ public static partial class ThatEnumerable
 				}
 				else
 				{
-					_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount,
+					_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
 						_totalCount);
 				}
 			}

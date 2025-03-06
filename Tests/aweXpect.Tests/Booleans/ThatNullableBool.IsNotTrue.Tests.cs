@@ -29,7 +29,7 @@ public sealed partial class ThatNullableBool
 					.WithMessage("""
 					             Expected that subject
 					             is not True, because we want to test the failure,
-					             but it was True
+					             but it was
 					             """);
 			}
 		}

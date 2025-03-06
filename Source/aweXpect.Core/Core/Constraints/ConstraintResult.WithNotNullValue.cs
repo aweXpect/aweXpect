@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
-using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Constraints;
 
@@ -10,10 +9,15 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     A typed <see cref="ConstraintResult" />.
 	/// </summary>
-	public abstract class WithNotNullValue<T>(string it, ExpectationGrammars grammars) : ConstraintResult
+	public abstract class WithNotNullValue<T>(string it, ExpectationGrammars grammars) : ConstraintResult(grammars)
 	{
 		private bool _isNegated;
 		private Outcome _outcome = Outcome.Undecided;
+
+		/// <summary>
+		///     The `it` parameter.
+		/// </summary>
+		protected string It { get; } = it;
 
 		/// <summary>
 		///     The actual value.
@@ -64,7 +68,7 @@ public abstract partial class ConstraintResult
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (grammars.IsNegated())
+			if (Grammars.IsNegated())
 			{
 				AppendNegatedExpectation(stringBuilder, indentation);
 			}
@@ -80,10 +84,10 @@ public abstract partial class ConstraintResult
 		{
 			if (Actual is null)
 			{
-				stringBuilder.Append(it);
+				stringBuilder.Append(It);
 				stringBuilder.Append(" was <null>");
 			}
-			else if (grammars.IsNegated())
+			else if (Grammars.IsNegated())
 			{
 				AppendNegatedResult(stringBuilder, indentation);
 			}

@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
 using System.Text;
 using aweXpect.Core.Helpers;
 
@@ -15,16 +14,23 @@ public abstract partial class ConstraintResult
 	/// </summary>
 	protected ConstraintResult(FurtherProcessingStrategy furtherProcessingStrategy)
 	{
+		Grammars = ExpectationGrammars.None;
 		FurtherProcessingStrategy = furtherProcessingStrategy;
 	}
 
 	/// <summary>
 	///     Initializes a new instance of <see cref="ConstraintResult" />.
 	/// </summary>
-	protected ConstraintResult()
+	protected ConstraintResult(ExpectationGrammars grammars)
 	{
+		Grammars = grammars;
 		FurtherProcessingStrategy = FurtherProcessingStrategy.Continue;
 	}
+
+	/// <summary>
+	///     The <see cref="ExpectationGrammars" /> of the constraint result.
+	/// </summary>
+	public ExpectationGrammars Grammars { get; internal set; }
 
 	/// <summary>
 	///     The outcome of the <see cref="ConstraintResult" />.

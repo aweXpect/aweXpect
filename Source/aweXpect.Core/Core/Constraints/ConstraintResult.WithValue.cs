@@ -9,7 +9,7 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     A typed <see cref="ConstraintResult" />.
 	/// </summary>
-	public abstract class WithValue<T>(ExpectationGrammars grammars) : ConstraintResult
+	public abstract class WithValue<T>(ExpectationGrammars grammars) : ConstraintResult(grammars)
 	{
 		private bool _isNegated;
 		private Outcome _outcome = Outcome.Undecided;
@@ -63,7 +63,7 @@ public abstract partial class ConstraintResult
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (grammars.IsNegated())
+			if (Grammars.IsNegated())
 			{
 				AppendNegatedExpectation(stringBuilder, indentation);
 			}
@@ -77,7 +77,7 @@ public abstract partial class ConstraintResult
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (grammars.IsNegated())
+			if (Grammars.IsNegated())
 			{
 				AppendNegatedResult(stringBuilder, indentation);
 			}

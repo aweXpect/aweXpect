@@ -15,6 +15,7 @@ public static class ConstraintResultExtensions
 	/// </summary>
 	public static T Negated<T>(this T constraintResult) where T : ConstraintResult
 	{
+		constraintResult.Grammars = constraintResult.Grammars.Negate();
 		constraintResult.Negate();
 		return constraintResult;
 	}

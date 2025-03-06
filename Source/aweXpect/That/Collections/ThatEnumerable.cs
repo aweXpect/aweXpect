@@ -76,8 +76,6 @@ public static partial class ThatEnumerable
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
-		private readonly string _it;
-		private readonly ExpectationGrammars _grammars;
 		private readonly EnumerableQuantifier _quantifier;
 		private readonly Func<ExpectationGrammars, string> _expectationText;
 		private readonly Func<TItem, bool> _predicate;
@@ -93,8 +91,6 @@ public static partial class ThatEnumerable
 			Func<TItem, bool> predicate,
 			string verb) : base(it, grammars)
 		{
-			_it = it;
-			_grammars = grammars;
 			_quantifier = quantifier;
 			_expectationText = expectationText;
 			_predicate = predicate;
@@ -149,15 +145,15 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_grammars.HasFlag(ExpectationGrammars.Nested))
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
-				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(_expectationText(Grammars));
 			}
 			else
 			{
-				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(_expectationText(Grammars));
 				stringBuilder.Append(" for ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
@@ -173,22 +169,22 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
+				_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
 			}
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_grammars.HasFlag(ExpectationGrammars.Nested))
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
 				stringBuilder.Append("not ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
-				stringBuilder.Append(_expectationText(_grammars));
+				stringBuilder.Append(_expectationText(Grammars));
 			}
 			else
 			{
-				stringBuilder.Append(_expectationText(_grammars.Negate()));
+				stringBuilder.Append(_expectationText(Grammars.Negate()));
 				stringBuilder.Append(" for ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(' ');
@@ -204,7 +200,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount, _verb);
+				_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount, _verb);
 			}
 		}
 	}
@@ -213,8 +209,6 @@ public static partial class ThatEnumerable
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
-		private readonly string _it;
-		private readonly ExpectationGrammars _grammars;
 		private readonly EnumerableQuantifier _quantifier;
 		private int _matchingCount;
 		private int _notMatchingCount;
@@ -223,8 +217,6 @@ public static partial class ThatEnumerable
 		public SyncCollectionCountConstraint(string it, ExpectationGrammars grammars, EnumerableQuantifier quantifier)
 			: base(it, grammars)
 		{
-			_it = it;
-			_grammars = grammars;
 			_quantifier = quantifier;
 		}
 
@@ -292,7 +284,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
+				_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
 			}
 		}
 
@@ -312,7 +304,7 @@ public static partial class ThatEnumerable
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount);
+				_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount);
 			}
 		}
 	}

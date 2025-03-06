@@ -18,15 +18,15 @@ namespace aweXpect.Core.Constraints
 {
     public abstract class ConstraintResult
     {
-        protected ConstraintResult() { }
         protected ConstraintResult(aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy) { }
+        protected ConstraintResult(aweXpect.Core.ExpectationGrammars grammars) { }
         public aweXpect.Core.Constraints.FurtherProcessingStrategy FurtherProcessingStrategy { get; protected set; }
+        public aweXpect.Core.ExpectationGrammars Grammars { get; }
         public virtual aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
         public abstract void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract aweXpect.Core.Constraints.ConstraintResult Negate();
         public virtual bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
-        public static aweXpect.Core.Constraints.ConstraintResult CreateWithObjects<TActual, TExpected>(aweXpect.Core.Constraints.Outcome outcome, TActual actual, TExpected expected, string it, aweXpect.Core.ExpectationGrammars grammars, System.Func<string> expectationBuilder, System.Func<string, aweXpect.Core.ExpectationGrammars, object?, object?, string> resultBuilder, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
         public class Failure : aweXpect.Core.Constraints.ConstraintResult.TextBasedConstraintResult
         {
             public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
@@ -61,6 +61,7 @@ namespace aweXpect.Core.Constraints
         {
             protected WithNotNullValue(string it, aweXpect.Core.ExpectationGrammars grammars) { }
             protected T Actual { get; set; }
+            protected string It { get; }
             public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
             public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
