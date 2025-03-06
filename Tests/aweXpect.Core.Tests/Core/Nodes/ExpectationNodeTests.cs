@@ -29,11 +29,14 @@ public class ExpectationNodeTests
 		node.AddConstraint(new DummyConstraint("foo"));
 		node.AddAsyncMapping(
 			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " with length "));
+		StringBuilder sb = new();
 
 		node.AddConstraint(new DummyConstraint("bar"));
 
-		await That(node.ToString()).IsEqualTo("foobar");
+		node.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foobar");
 	}
+
 
 	[Fact]
 	public async Task AddConstraint_WithMapping_ShouldForwardToInnerNode()
@@ -41,10 +44,12 @@ public class ExpectationNodeTests
 		ExpectationNode node = new();
 		node.AddConstraint(new DummyConstraint("foo"));
 		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, " with length "));
+		StringBuilder sb = new();
 
 		node.AddConstraint(new DummyConstraint("bar"));
 
-		await That(node.ToString()).IsEqualTo("foobar");
+		node.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foobar");
 	}
 
 	[Fact]
@@ -56,6 +61,86 @@ public class ExpectationNodeTests
 
 		await That(Act).Throws<NotSupportedException>()
 			.WithMessage("Don't specify the inner node for Expectation nodes directly. Use AddMapping() instead!");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_Empty_ShouldReturnEmptyText()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithAsyncConstraintAndWithMapping_ShouldReturnBoth()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddConstraint(new DummyConstraint("foo"));
+		node.AddAsyncMapping(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithAsyncMapping_ShouldReturnMapping()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddAsyncMapping(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithConstraint_ShouldReturnConstraint()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddConstraint(new DummyConstraint("foo"));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithConstraintAndWithMapping_ShouldReturnBoth()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddConstraint(new DummyConstraint("foo"));
+		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithMapping_ShouldReturnMapping()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("");
 	}
 
 	[Fact]
@@ -363,80 +448,6 @@ public class ExpectationNodeTests
 		ConstraintResult result = await node.IsMetBy(3, null!, CancellationToken.None);
 
 		await That(result.Outcome).IsEqualTo(expectedOutcome);
-	}
-
-	[Fact]
-	public async Task ToString_Empty_ShouldReturnEmptyText()
-	{
-		ExpectationNode node = new();
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithAsyncConstraintAndWithMapping_ShouldReturnBoth()
-	{
-		ExpectationNode node = new();
-
-		node.AddConstraint(new DummyConstraint("foo"));
-		node.AddAsyncMapping(
-			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithAsyncMapping_ShouldReturnMapping()
-	{
-		ExpectationNode node = new();
-
-		node.AddAsyncMapping(
-			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithConstraint_ShouldReturnConstraint()
-	{
-		ExpectationNode node = new();
-
-		node.AddConstraint(new DummyConstraint("foo"));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo");
-	}
-
-	[Fact]
-	public async Task ToString_WithConstraintAndWithMapping_ShouldReturnBoth()
-	{
-		ExpectationNode node = new();
-
-		node.AddConstraint(new DummyConstraint("foo"));
-		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithMapping_ShouldReturnMapping()
-	{
-		ExpectationNode node = new();
-
-		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("<empty>");
 	}
 
 	[Fact]

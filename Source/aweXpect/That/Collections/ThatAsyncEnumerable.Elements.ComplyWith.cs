@@ -104,7 +104,7 @@ public static partial class ThatAsyncEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(_itemExpectationBuilder);
+			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 			stringBuilder.Append(" for ");
 			stringBuilder.Append(_quantifier);
 			stringBuilder.Append(" items");
@@ -131,7 +131,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			stringBuilder.Append(_quantifier);
 			stringBuilder.Append(" for ");
-			stringBuilder.Append(_itemExpectationBuilder);
+			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 			stringBuilder.Append(" items");
 		}
 

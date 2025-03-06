@@ -19,15 +19,11 @@ internal static class ObjectEqualityOptions
 
 		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
 		public string GetExpectation(string expected, ExpectationGrammars grammars)
-			=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equal to {expected}";
+			=> $"is {(grammars.IsNegated() ? "not " : "")}equal to {expected}";
 
 		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
 		public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
-			=> grammars.HasFlag(ExpectationGrammars.Negated) switch
-			{
-				true => $"{it} was",
-				false => $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}",
-			};
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.Indented())}";
 
 		#endregion
 	}

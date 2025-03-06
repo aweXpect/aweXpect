@@ -76,15 +76,15 @@ internal class OrNode : Node
 		=> Current.SetReason(becauseReason);
 
 	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_nodes.Any())
+		foreach (Node node in _nodes.Select(n => n.Item2))
 		{
-			return string.Join(DefaultSeparator, _nodes.Select(x => x.Item2))
-			       + DefaultSeparator + Current;
+			node.AppendExpectation(stringBuilder, indentation);
+			stringBuilder.Append(DefaultSeparator);
 		}
 
-		return Current.ToString();
+		Current.AppendExpectation(stringBuilder, indentation);
 	}
 
 	private static ConstraintResult CombineResults(
@@ -104,11 +104,11 @@ internal class OrNode : Node
 
 	private sealed class OrConstraintResult : ConstraintResult
 	{
-		private bool _isNegated;
 		private readonly FurtherProcessingStrategy _furtherProcessingStrategy;
 		private readonly ConstraintResult _left;
 		private readonly ConstraintResult _right;
 		private readonly string _separator;
+		private bool _isNegated;
 
 		public OrConstraintResult(ConstraintResult left,
 			ConstraintResult right,
@@ -142,6 +142,7 @@ internal class OrNode : Node
 			{
 				stringBuilder.Append(_separator);
 			}
+
 			_right.AppendExpectation(stringBuilder);
 		}
 

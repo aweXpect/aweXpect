@@ -13,6 +13,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
 	public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 	{
+		_failureBuilder.Clear();
 		if (HandleSpecialCases(actual, expected, _failureBuilder, out bool? specialCaseResult))
 		{
 			return specialCaseResult.Value;
@@ -30,7 +31,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	{
 		if (grammars.HasFlag(ExpectationGrammars.Negated))
 		{
-			return $"{it} was considered equivalent";
+			return $"{it} was considered equivalent to {Formatter.Format(actual, FormattingOptions.Indented())}";
 		}
 
 		if (actual is null != expected is null)

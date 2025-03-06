@@ -105,7 +105,7 @@ public static partial class ThatEnumerable
 
 			protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
-				stringBuilder.Append(_itemExpectationBuilder);
+				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 				stringBuilder.Append(" for ");
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(" items");
@@ -127,7 +127,7 @@ public static partial class ThatEnumerable
 			{
 				stringBuilder.Append(_quantifier);
 				stringBuilder.Append(" for ");
-				stringBuilder.Append(_itemExpectationBuilder);
+				_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 				stringBuilder.Append(" items");
 			}
 

@@ -9,9 +9,6 @@ namespace aweXpect.Core.Tests.TestHelpers;
 
 internal class DummyNode(string name, Func<ConstraintResult>? result = null) : Node
 {
-	public override string ToString()
-		=> name;
-
 	public override void AddConstraint(IConstraint constraint)
 		=> throw new NotSupportedException();
 
@@ -41,4 +38,7 @@ internal class DummyNode(string name, Func<ConstraintResult>? result = null) : N
 
 	public override void SetReason(BecauseReason becauseReason)
 		=> throw new NotSupportedException();
+
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		=> stringBuilder.Append(name);
 }

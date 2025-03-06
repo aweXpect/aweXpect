@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading;
@@ -79,7 +78,7 @@ internal class WhichNode<TSource, TMember> : Node
 			throw new InvalidOperationException("No inner node specified for the which node.");
 		}
 
-		if (value is null || value is DelegateValue { IsNull: true })
+		if (value is null || value is DelegateValue { IsNull: true, })
 		{
 			ConstraintResult nullResult = await _inner.IsMetBy<TMember>(default, context, cancellationToken);
 			return CombineResults(parentResult, nullResult, _separator ?? "",
@@ -127,13 +126,25 @@ internal class WhichNode<TSource, TMember> : Node
 	public override void SetReason(BecauseReason becauseReason)
 		=> _inner?.SetReason(becauseReason);
 
+	/// <inheritdoc />
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+	{
+		if (_separator != null)
+		{
+			stringBuilder.Append(_separator);
+		}
+
+		_inner?.AppendExpectation(stringBuilder, indentation);
+	}
+
 	private sealed class WhichConstraintResult : ConstraintResult
 	{
-		// ReSharper disable once ReplaceWithPrimaryConstructorParameter
-		private readonly TMember? _value;
 		private readonly ConstraintResult _left;
 		private readonly ConstraintResult _right;
 		private readonly string _separator;
+
+		// ReSharper disable once ReplaceWithPrimaryConstructorParameter
+		private readonly TMember? _value;
 
 		public WhichConstraintResult(ConstraintResult left,
 			ConstraintResult right,

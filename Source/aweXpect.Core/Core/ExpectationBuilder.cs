@@ -260,10 +260,6 @@ public abstract class ExpectationBuilder
 			return this;
 		});
 
-	/// <inheritdoc />
-	public override string? ToString()
-		=> _node.ToString();
-
 	/// <summary>
 	///     Adds a <paramref name="cancellationToken" /> to be used by the constraints.
 	/// </summary>

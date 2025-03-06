@@ -122,24 +122,18 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override void SetReason(BecauseReason becauseReason) => _reason = becauseReason;
 
-	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_constraint != null && _inner != null)
+		if (_constraint is ConstraintResult constraintResult)
 		{
-			return _constraint + _inner.ToString();
+			constraintResult.AppendExpectation(stringBuilder, indentation);
+		}
+		else if (_constraint != null)
+		{
+			//TODO: Do we need this case? Could we add the `AppendExpectation` to the `IConstraint` interface?
+			stringBuilder.Append(_constraint);
 		}
 
-		if (_constraint != null)
-		{
-			return _constraint.ToString();
-		}
-
-		if (_inner != null)
-		{
-			return _inner.ToString();
-		}
-
-		return "<empty>";
+		_inner?.AppendExpectation(stringBuilder, indentation);
 	}
 }

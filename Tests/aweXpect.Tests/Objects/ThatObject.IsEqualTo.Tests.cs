@@ -32,8 +32,8 @@ public sealed partial class ThatObject
 					             Expected that subject
 					             is equal to expected, because we want to test the failure,
 					             but it was MyClass {
-					               Value = 0
-					             }
+					                 Value = 0
+					               }
 					             """);
 			}
 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Nodes;
@@ -10,6 +8,17 @@ namespace aweXpect.Core.Tests.Core.Nodes;
 
 public sealed class OrNodeTests
 {
+	[Fact]
+	public async Task AppendExpectation_WithoutAdditionalNodes_ShouldUseFirstNode()
+	{
+		AndNode node = new(new DummyNode("foo"));
+		StringBuilder sb = new();
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
 	[Theory]
 	[InlineData(Outcome.Success, Outcome.Success, Outcome.Success)]
 	[InlineData(Outcome.Failure, Outcome.Success, Outcome.Success)]
@@ -45,15 +54,6 @@ public sealed class OrNodeTests
 		await That(sb.ToString()).IsEqualTo("foo my bar");
 	}
 
-	[Fact]
-	public async Task ToString_WithoutAdditionalNodes_ShouldUseFirstNode()
-	{
-		OrNode node = new(new DummyNode("foo"));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo");
-	}
 
 	[Fact]
 	public async Task TryGetValue_WhenLeftHasValue_ShouldReturnLeftValue()

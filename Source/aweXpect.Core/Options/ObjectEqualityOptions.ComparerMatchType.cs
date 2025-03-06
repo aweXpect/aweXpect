@@ -28,11 +28,7 @@ public partial class ObjectEqualityOptions<TSubject>
 
 		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
 		public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
-			=> grammars.HasFlag(ExpectationGrammars.Negated) switch
-			{
-				true => $"{it} was",
-				false => $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}",
-			};
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.Indented())}";
 
 		/// <inheritdoc cref="object.ToString()" />
 		public override string ToString()

@@ -82,15 +82,15 @@ internal class AndNode : Node
 		=> Current.SetReason(becauseReason);
 
 	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_nodes.Any())
+		foreach (Node node in _nodes.Select(n => n.Item2))
 		{
-			return string.Join(DefaultSeparator, _nodes.Select(x => x.Item2))
-			       + DefaultSeparator + Current;
+			node.AppendExpectation(stringBuilder, indentation);
+			stringBuilder.Append(DefaultSeparator);
 		}
 
-		return Current.ToString();
+		Current.AppendExpectation(stringBuilder, indentation);
 	}
 
 	private static ConstraintResult CombineResults(

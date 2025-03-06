@@ -64,7 +64,7 @@ public static partial class ThatGeneric
 			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 			if (isMatch.Outcome == Outcome.Success)
 			{
-				return new ConstraintResult.Success<T>(actual, ToString());
+				return isMatch.SuffixExpectation(_options.ToString());
 			}
 
 			if (_options.Timeout > TimeSpan.Zero)
@@ -85,17 +85,13 @@ public static partial class ThatGeneric
 					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 					if (isMatch.Outcome == Outcome.Success)
 					{
-						return new ConstraintResult.Success<T>(actual, ToString());
+						return isMatch.SuffixExpectation(_options.ToString());
 					}
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{_it} was {Formatter.Format(actual)}");
+			return isMatch.SuffixExpectation(_options.ToString());
 		}
-
-		public override string ToString()
-			=> $"{_itemExpectationBuilder}{_options}";
 	}
 
 	private readonly struct DoesNotComplyWithConstraint<T> : IAsyncContextConstraint<T>
@@ -149,8 +145,5 @@ public static partial class ThatGeneric
 
 			return isMatch.Negate().SuffixExpectation(_options.ToString());
 		}
-
-		public override string ToString()
-			=> $"{_itemExpectationBuilder}{_options}";
 	}
 }
