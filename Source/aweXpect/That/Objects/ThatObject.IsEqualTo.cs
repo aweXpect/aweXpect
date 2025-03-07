@@ -72,7 +72,7 @@ public static partial class ThatObject
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<object?, object?>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
-					.Negated()),
+					.Invert()),
 			source,
 			options);
 	}
@@ -91,7 +91,7 @@ public static partial class ThatObject
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsNullableEqualToConstraint<T>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
-					.Negated()),
+					.Invert()),
 			source,
 			options);
 	}
@@ -110,7 +110,7 @@ public static partial class ThatObject
 		return new ObjectEqualityResult<T, IThat<T>, T>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<T>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
-					.Negated()),
+					.Invert()),
 			source,
 			options);
 	}

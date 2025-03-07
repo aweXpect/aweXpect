@@ -20,6 +20,6 @@ public static partial class ThatNullableBool
 	/// </summary>
 	public static AndOrResult<bool?, IThat<bool?>> IsNotTrue(this IThat<bool?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint(it, grammars, true).Negated()),
+				=> new IsEqualToConstraint(it, grammars, true).Invert()),
 			source);
 }

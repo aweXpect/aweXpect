@@ -19,7 +19,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             is not equal to <null>,
-					             but it did match
+					             but it was <null>
 					             """);
 			}
 
@@ -132,7 +132,7 @@ public sealed partial class ThatString
 					.WithMessage($"""
 					              Expected that subject
 					              is not equal to "foo",
-					              but it did match
+					              but it was "foo"
 
 					              Actual:
 					              foo
@@ -170,7 +170,7 @@ public sealed partial class ThatString
 					.WithMessage($"""
 					              Expected that subject
 					              is not equal to "{expected.DisplayWhitespace()}" ignoring leading white-space,
-					              but it did match
+					              but it was "{subject.DisplayWhitespace()}"
 
 					              Actual:
 					              {subject}
@@ -197,7 +197,7 @@ public sealed partial class ThatString
 					.WithMessage($"""
 					              Expected that subject
 					              is not equal to "{expected.DisplayWhitespace()}" ignoring newline style,
-					              but it did match
+					              but it was "{subject.DisplayWhitespace()}"
 
 					              Actual:
 					              {subject}
@@ -223,7 +223,7 @@ public sealed partial class ThatString
 					.WithMessage($"""
 					              Expected that subject
 					              is not equal to "{expected.DisplayWhitespace()}" ignoring trailing white-space,
-					              but it did match
+					              but it was "{subject.DisplayWhitespace()}"
 
 					              Actual:
 					              {subject}

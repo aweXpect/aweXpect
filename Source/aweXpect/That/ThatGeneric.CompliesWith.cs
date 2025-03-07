@@ -105,7 +105,7 @@ public static partial class ThatGeneric
 		{
 			_it = it;
 			_options = options;
-			_itemExpectationBuilder = new ManualExpectationBuilder<T>(grammars.Negate());
+			_itemExpectationBuilder = new ManualExpectationBuilder<T>(grammars);
 			expectations.Invoke(new ThatSubject<T>(_itemExpectationBuilder));
 		}
 

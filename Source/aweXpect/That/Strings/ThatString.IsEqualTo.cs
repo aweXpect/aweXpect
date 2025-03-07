@@ -33,67 +33,47 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars) =>
-				new IsNotEqualToConstraint(expectationBuilder, it, grammars, unexpected, options)),
+				new IsEqualToConstraint(expectationBuilder, it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct IsEqualToConstraint(
+	private class IsEqualToConstraint(
 		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		string? expected,
 		StringEqualityOptions options)
-		: IValueConstraint<string?>
+		: ConstraintResult.WithValue<string?>(grammars),
+			IValueConstraint<string?>
 	{
-		/// <inheritdoc />
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (options.AreConsideredEqual(actual, expected))
-			{
-				StringEqualityOptions? o = options;
-				string? i = it;
-				ExpectationGrammars g = grammars;
-				string? e = expected;
-				return new ConstraintResult.Success<string?>(actual, ToString(),
-					() => o.GetExtendedFailure(i, g, actual, e));
-			}
-
+			Actual = actual;
+			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
 			expectationBuilder.UpdateContexts(contexts => contexts
 				.Add(new ResultContext("Actual", actual)));
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				options.GetExtendedFailure(it, grammars, actual, expected));
+			return this;
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
-			=> options.GetExpectation(expected, grammars | ExpectationGrammars.Active);
-	}
-
-	private readonly struct IsNotEqualToConstraint(
-		ExpectationBuilder expectationBuilder,
-		string it,
-		ExpectationGrammars grammars,
-		string? unexpected,
-		StringEqualityOptions options)
-		: IValueConstraint<string?>
-	{
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (!options.AreConsideredEqual(actual, unexpected))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			expectationBuilder.UpdateContexts(contexts => contexts
-				.Add(new ResultContext("Actual", actual)));
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				$"{it} did match");
+			stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
-			=> options.GetExpectation(unexpected, grammars.Negate() | ExpectationGrammars.Active);
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
+		}
 	}
 }

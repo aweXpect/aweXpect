@@ -148,10 +148,10 @@ internal class OrNode : Node
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_left.Outcome == Outcome.Failure != _isNegated)
+			if (_left.Outcome == Outcome.Failure)
 			{
 				_left.AppendResult(stringBuilder, indentation);
-				if (_right.Outcome == Outcome.Failure != _isNegated &&
+				if (_right.Outcome == Outcome.Failure &&
 				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
 				    !_left.HasSameResultTextAs(_right))
 				{
@@ -159,7 +159,7 @@ internal class OrNode : Node
 					_right.AppendResult(stringBuilder, indentation);
 				}
 			}
-			else if (_right.Outcome == Outcome.Failure != _isNegated &&
+			else if (_right.Outcome == Outcome.Failure &&
 			         _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult)
 			{
 				_right.AppendResult(stringBuilder, indentation);
@@ -194,6 +194,8 @@ internal class OrNode : Node
 				Outcome.Success => Outcome.Failure,
 				_ => Outcome,
 			};
+			_left.Negate();
+			_right.Negate();
 			return this;
 		}
 	}

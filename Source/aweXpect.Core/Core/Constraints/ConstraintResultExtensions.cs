@@ -13,9 +13,8 @@ public static class ConstraintResultExtensions
 	/// <summary>
 	///     Negates the <paramref name="constraintResult" /> and returns the same instance.
 	/// </summary>
-	public static T Negated<T>(this T constraintResult) where T : ConstraintResult
+	public static T Invert<T>(this T constraintResult) where T : ConstraintResult
 	{
-		constraintResult.Grammars = constraintResult.Grammars.Negate();
 		constraintResult.Negate();
 		return constraintResult;
 	}

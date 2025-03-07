@@ -22,6 +22,6 @@ public static partial class ThatBool
 	public static AndOrResult<bool, IThat<bool>> IsNotEqualTo(this IThat<bool> source,
 		bool unexpected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint(it, grammars, unexpected).Negated()),
+				=> new IsEqualToConstraint(it, grammars, unexpected).Invert()),
 			source);
 }

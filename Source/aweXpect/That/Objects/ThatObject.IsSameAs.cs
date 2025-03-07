@@ -30,7 +30,7 @@ public static partial class ThatObject
 		=> new(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())
-						.Negated()),
+						.Invert()),
 			source);
 
 	private class IsSameAsConstraint<T>(

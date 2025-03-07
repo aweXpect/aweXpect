@@ -113,6 +113,7 @@ public abstract partial class ConstraintResult
 		/// <inheritdoc cref="ConstraintResult.Negate()" />
 		public override ConstraintResult Negate()
 		{
+			Grammars = Grammars.Negate();
 			_isNegated = !_isNegated;
 			return this;
 		}

@@ -23,7 +23,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not match regex ".*ME ME.*",
-					             but it did match
+					             but it was "some message"
 					             
 					             Actual:
 					             some message
