@@ -121,7 +121,7 @@ public static partial class ThatObject
 		TExpected expected,
 		string expectedExpression,
 		ObjectEqualityOptions<TSubject> options)
-		: ConstraintResult.WithNotNullValue<TSubject>(it, grammars),
+		: ConstraintResult.WithEqualToValue<TSubject>(it, grammars, expected is null),
 			IValueConstraint<TSubject>
 	{
 		public ConstraintResult IsMetBy(TSubject actual)
@@ -196,7 +196,7 @@ public static partial class ThatObject
 		T? expected,
 		string expectedExpression,
 		ObjectEqualityOptions<T?> options)
-		: ConstraintResult.WithNotNullValue<T?>(it, grammars),
+		: ConstraintResult.WithEqualToValue<T?>(it, grammars, expected is null),
 			IValueConstraint<T?>
 		where T : struct
 	{

@@ -9,7 +9,7 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     A typed <see cref="ConstraintResult" />.
 	/// </summary>
-	public abstract class WithNotNullValue<T>(string it, ExpectationGrammars grammars)
+	public abstract class WithEqualToValue<T>(string it, ExpectationGrammars grammars, bool isExpectedNull)
 		: ConstraintResult(grammars)
 	{
 		private Outcome _outcome = Outcome.Undecided;
@@ -34,7 +34,7 @@ public abstract partial class ConstraintResult
 		{
 			get
 			{
-				if (Actual is null)
+				if (Actual is null && IsNegated == isExpectedNull)
 				{
 					return Outcome.Failure;
 				}

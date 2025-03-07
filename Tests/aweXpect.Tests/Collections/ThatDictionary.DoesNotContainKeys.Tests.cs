@@ -11,7 +11,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAllKeysDoNotExist_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKeys(42, 43);
@@ -22,7 +22,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAtLeastOneKeyExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainKeys(42, 2);
@@ -51,6 +51,20 @@ public sealed partial class ThatDictionary
 					             does not contain keys ["foo", "bar"],
 					             but it was <null>
 					             """);
+			}
+		}
+
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task WhenOneKeyIsMissingAndOneExists_ShouldSucceed()
+			{
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(d => d.DoesNotContainKeys(42, 2));
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 	}

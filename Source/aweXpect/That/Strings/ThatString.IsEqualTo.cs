@@ -51,29 +51,27 @@ public static partial class ThatString
 		{
 			Actual = actual;
 			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
-			expectationBuilder.UpdateContexts(contexts => contexts
-				.Add(new ResultContext("Actual", actual)));
+			if (Outcome == Outcome.Failure)
+			{
+				expectationBuilder.UpdateContexts(contexts => contexts
+					.Add(new ResultContext("Actual", actual)));
+			}
+
 			return this;
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
-		}
+			=> stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
-		}
+			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected)
+				.Indent(indentation, false));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
-		}
+			=> stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
-		}
+			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected)
+				.Indent(indentation, false));
 	}
 }

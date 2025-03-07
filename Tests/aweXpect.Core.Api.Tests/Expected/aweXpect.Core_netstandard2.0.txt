@@ -57,10 +57,27 @@ namespace aweXpect.Core.Constraints
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
         }
+        public abstract class WithEqualToValue<T> : aweXpect.Core.Constraints.ConstraintResult
+        {
+            protected WithEqualToValue(string it, aweXpect.Core.ExpectationGrammars grammars, bool isExpectedNull) { }
+            protected T Actual { get; set; }
+            protected bool IsNegated { get; }
+            protected string It { get; }
+            public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
+            public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
+            public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
+        }
         public abstract class WithNotNullValue<T> : aweXpect.Core.Constraints.ConstraintResult
         {
             protected WithNotNullValue(string it, aweXpect.Core.ExpectationGrammars grammars) { }
             protected T Actual { get; set; }
+            protected bool IsNegated { get; }
             protected string It { get; }
             public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
             public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
@@ -76,6 +93,7 @@ namespace aweXpect.Core.Constraints
         {
             protected WithValue(aweXpect.Core.ExpectationGrammars grammars) { }
             protected T Actual { get; set; }
+            protected bool IsNegated { get; }
             public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
             public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);

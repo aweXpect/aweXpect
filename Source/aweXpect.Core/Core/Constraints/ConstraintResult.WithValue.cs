@@ -11,8 +11,12 @@ public abstract partial class ConstraintResult
 	/// </summary>
 	public abstract class WithValue<T>(ExpectationGrammars grammars) : ConstraintResult(grammars)
 	{
-		private bool _isNegated;
 		private Outcome _outcome = Outcome.Undecided;
+
+		/// <summary>
+		///     Flag indicating if the constraint is negated.
+		/// </summary>
+		protected bool IsNegated { get; private set; }
 
 		/// <summary>
 		///     The actual value.
@@ -22,11 +26,11 @@ public abstract partial class ConstraintResult
 		/// <inheritdoc />
 		public override Outcome Outcome
 		{
-			get => (_outcome, _isNegated) switch
+			get => (_outcome, _isNegated: IsNegated) switch
 			{
 				(Outcome.Failure, true) => Outcome.Success,
 				(Outcome.Success, true) => Outcome.Failure,
-				(_,_) => _outcome,
+				(_, _) => _outcome,
 			};
 			protected set => _outcome = value;
 		}
@@ -104,7 +108,7 @@ public abstract partial class ConstraintResult
 		public override ConstraintResult Negate()
 		{
 			Grammars = Grammars.Negate();
-			_isNegated = !_isNegated;
+			IsNegated = !IsNegated;
 			return this;
 		}
 	}

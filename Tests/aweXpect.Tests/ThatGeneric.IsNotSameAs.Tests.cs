@@ -62,7 +62,49 @@ public sealed partial class ThatGeneric
 			}
 
 			[Fact]
-			public async Task WhenNegated_ShouldHaveCorrectResultString()
+			public async Task WhenSubjectAndExpectedIsNull_ShouldFail()
+			{
+				Other? subject = null;
+				Other? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotSameAs(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not refer to expected <null>,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNull_ShouldFail()
+			{
+				Other? subject = null;
+				Other expected = new()
+				{
+					Value = 1,
+				};
+
+				async Task Act()
+					=> await That(subject).IsNotSameAs(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not refer to expected Other {
+					                 Value = 1
+					               },
+					             but it was <null>
+					             """);
+			}
+		}
+
+		public sealed class NegatedTests
+		{
+			[Fact]
+			public async Task ShouldHaveCorrectResultString()
 			{
 				Other subject = new()
 				{
@@ -86,38 +128,6 @@ public sealed partial class ThatGeneric
 					                 Value = 1
 					               }
 					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectAndExpectedIsNull_ShouldFail()
-			{
-				Other? subject = null;
-				Other? expected = null;
-
-				async Task Act()
-					=> await That(subject).IsNotSameAs(expected);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             does not refer to expected <null>,
-					             but it was <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
-			{
-				Other? subject = null;
-				Other expected = new()
-				{
-					Value = 1,
-				};
-
-				async Task Act()
-					=> await That(subject).IsNotSameAs(expected);
-
-				await That(Act).DoesNotThrow();
 			}
 		}
 	}

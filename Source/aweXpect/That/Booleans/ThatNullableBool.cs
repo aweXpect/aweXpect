@@ -9,7 +9,7 @@ namespace aweXpect;
 public static partial class ThatNullableBool
 {
 	private class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool? expected)
-		: ConstraintResult.WithValue<bool?>(grammars),
+		: ConstraintResult.WithEqualToValue<bool?>(it, grammars, expected is null),
 		IValueConstraint<bool?>
 	{
 		public ConstraintResult IsMetBy(bool? actual)
@@ -27,7 +27,7 @@ public static partial class ThatNullableBool
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(it);
+			stringBuilder.Append(It);
 			stringBuilder.Append(" was ");
 			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
 		}
@@ -40,7 +40,7 @@ public static partial class ThatNullableBool
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(it);
+			stringBuilder.Append(It);
 			stringBuilder.Append(" was");
 		}
 	}
