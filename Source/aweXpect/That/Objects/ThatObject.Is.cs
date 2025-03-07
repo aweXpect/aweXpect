@@ -14,7 +14,7 @@ public static partial class ThatObject
 	public static AndOrWhoseResult<TType, IThat<object?>> Is<TType>(
 		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint<TType>(it)),
+				=> new IsOfTypeConstraint<TType>(it, grammars)),
 			source);
 
 	/// <summary>
@@ -25,7 +25,7 @@ public static partial class ThatObject
 		Type type)
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint(it, type)),
+				=> new IsOfTypeConstraint(it, grammars, type)),
 			source);
 
 	/// <summary>
@@ -34,7 +34,7 @@ public static partial class ThatObject
 	public static AndOrResult<object?, IThat<object?>> IsNot<TType>(
 		this IThat<object?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsNotOfTypeConstraint<TType>(it)),
+				=> new IsOfTypeConstraint<TType>(it, grammars).Invert()),
 			source);
 
 	/// <summary>
@@ -45,74 +45,78 @@ public static partial class ThatObject
 		Type type)
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsNotOfTypeConstraint(it, type)),
+				=> new IsOfTypeConstraint(it, grammars, type).Invert()),
 			source);
 
-	private readonly struct IsOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
+	private class IsOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<object?>(grammars),
+			IValueConstraint<object?>
 	{
 		public ConstraintResult IsMetBy(object? actual)
 		{
-			if (actual is TType typedActual)
-			{
-				return new ConstraintResult.Success<TType>(typedActual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
+			Actual = actual;
+			Outcome = actual is TType ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"is type {Formatter.Format(typeof(TType))}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is type ");
+			Formatter.Format(stringBuilder, typeof(TType));
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not type ");
+			Formatter.Format(stringBuilder, typeof(TType));
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
 	}
 
-	private readonly struct IsOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
+	private class IsOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)
+		: ConstraintResult.WithValue<object>(grammars),
+			IValueConstraint<object?>
 	{
 		public ConstraintResult IsMetBy(object? actual)
 		{
-			if (type.IsAssignableFrom(actual?.GetType()))
-			{
-				return new ConstraintResult.Success<object?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
+			Actual = actual;
+			Outcome = type.IsInstanceOfType(actual) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"is type {Formatter.Format(type)}";
-	}
-
-	private readonly struct IsNotOfTypeConstraint<TType>(string it) : IValueConstraint<object?>
-	{
-		public ConstraintResult IsMetBy(object? actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is TType typedActual)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(typedActual, FormattingOptions.MultipleLines)}");
-			}
-
-			return new ConstraintResult.Success<object?>(actual, ToString());
+			stringBuilder.Append("is type ");
+			Formatter.Format(stringBuilder, type);
 		}
 
-		public override string ToString()
-			=> $"is not type {Formatter.Format(typeof(TType))}";
-	}
-
-	private readonly struct IsNotOfTypeConstraint(string it, Type type) : IValueConstraint<object?>
-	{
-		public ConstraintResult IsMetBy(object? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (type.IsAssignableFrom(actual?.GetType()))
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
-			}
-
-			return new ConstraintResult.Success<object?>(actual, ToString());
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
 		}
 
-		public override string ToString()
-			=> $"is not type {Formatter.Format(type)}";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not type ");
+			Formatter.Format(stringBuilder, type);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
 	}
 }

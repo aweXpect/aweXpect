@@ -763,6 +763,7 @@ namespace aweXpect.Options
         public void Between(int minimum, int maximum) { }
         public bool? Check(int amount, bool isLast) { }
         public void Exactly(int expected) { }
+        public void Negate() { }
         public override string ToString() { }
     }
     public class SignalerOptions : System.IEquatable<aweXpect.Options.SignalerOptions>
