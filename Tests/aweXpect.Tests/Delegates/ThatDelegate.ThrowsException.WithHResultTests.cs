@@ -4,7 +4,7 @@ public sealed partial class ThatDelegate
 {
 	public sealed partial class ThrowsException
 	{
-		public class WithHResultTests
+		public sealed class WithHResultTests
 		{
 			[Theory]
 			[AutoData]

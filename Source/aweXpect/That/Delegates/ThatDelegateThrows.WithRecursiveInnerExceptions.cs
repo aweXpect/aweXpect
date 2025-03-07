@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Delegates;
 using aweXpect.Helpers;
 using aweXpect.Results;
@@ -24,9 +25,12 @@ public static partial class ThatDelegateThrows
 		=> new(source.ExpectationBuilder
 				.ForMember(
 					MemberAccessor<Exception?, IEnumerable<Exception>>.FromFunc(
-						e => e.GetInnerExpectations(), "recursive inner exceptions "),
-					(property, stringBuilder) => stringBuilder.Append("with ").Append(property).Append("which "))
+						e => e.GetInnerExpectations(),
+						"recursive inner exceptions"),
+					(_, s) => s.Append(" which "))
+				.Validate((_, grammars) => new ThatException.HasRecursiveInnerExceptionsConstraint(
+					grammars | ExpectationGrammars.Active | ExpectationGrammars.Nested))
 				.AddExpectations(e => expectations(new ThatSubject<IEnumerable<Exception>>(e)),
-					grammars => grammars | ExpectationGrammars.Nested),
+					grammars => grammars | ExpectationGrammars.Active | ExpectationGrammars.Nested),
 			source);
 }

@@ -61,9 +61,9 @@ public static partial class ThatEnumerable
 		}
 
 		public override string ToString()
-			=> grammars switch
+			=> grammars.HasFlag(ExpectationGrammars.Nested) switch
 			{
-				ExpectationGrammars.Nested => "are empty",
+				true => "are empty",
 				_ => "is empty",
 			};
 	}

@@ -17,10 +17,10 @@ public static partial class ThatException
 		where TInnerException : Exception?
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
-					$"has an inner {typeof(TInnerException).Name} whose",
+					" whose ",
 					false)
-				.Validate(it
-					=> new InnerExceptionIsTypeConstraint<TInnerException>(it))
+				.Validate((it, grammars)
+					=> new HasInnerExceptionValueConstraint(typeof(TInnerException), it, grammars))
 				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)),
 					grammars => grammars | ExpectationGrammars.Nested),
 			source);
@@ -32,8 +32,7 @@ public static partial class ThatException
 		this IThat<Exception?> source)
 		where TInnerException : Exception?
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new HasInnerExceptionValueConstraint<TInnerException>("has",
-					it)),
+				new HasInnerExceptionValueConstraint(typeof(TInnerException), it, grammars)),
 			source);
 
 	/// <summary>
@@ -46,11 +45,10 @@ public static partial class ThatException
 		Action<IThat<Exception?>> expectations)
 		=> new(source.ThatIs().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
-					$"has an inner {innerExceptionType.Name} whose",
+					" whose ",
 					false)
-				.Validate(it
-					=> new InnerExceptionIsTypeConstraint(it,
-						innerExceptionType))
+				.Validate((it, grammars)
+					=> new HasInnerExceptionValueConstraint(innerExceptionType, it, grammars))
 				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)),
 					grammars => grammars | ExpectationGrammars.Nested),
 			source);
@@ -62,7 +60,6 @@ public static partial class ThatException
 		this IThat<Exception?> source,
 		Type innerExceptionType)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new HasInnerExceptionValueConstraint(innerExceptionType,
-					"has", it)),
+				=> new HasInnerExceptionValueConstraint(innerExceptionType, it, grammars)),
 			source);
 }

@@ -155,6 +155,7 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 				Outcome.Success => Outcome.Failure,
 				_ => Outcome,
 			};
+			_left.Negate();
 			return this;
 		}
 	}

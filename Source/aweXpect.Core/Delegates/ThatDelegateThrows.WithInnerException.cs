@@ -1,5 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Results;
 
 namespace aweXpect.Delegates;
@@ -13,10 +14,18 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException(
 		Action<IThat<Exception?>> expectations)
 		=> new(ExpectationBuilder
-				.ForMember<Exception, Exception?>(e => e.InnerException,
-					"with an inner exception whose",
+				.ForMember(
+					MemberAccessor<Exception?, Exception?>.FromFunc(
+						e => e?.InnerException,
+						"the inner exception"),
+					(_, s) => s.Append(" whose "),
 					false)
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), grammars => grammars | ExpectationGrammars.Nested),
+				.Validate((it, grammars)
+					=> new ConstraintResult.ExpectationOnly<Exception?>(grammars,
+						"with an inner exception",
+						"without an inner exception"))
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -25,7 +34,6 @@ public partial class ThatDelegateThrows<TException>
 	public AndOrResult<TException, ThatDelegateThrows<TException>> WithInnerException()
 		=> new(ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new HasInnerExceptionValueConstraint<Exception>("with",
-						it)),
+					new HasInnerExceptionValueConstraint(typeof(Exception), it, grammars)),
 			this);
 }

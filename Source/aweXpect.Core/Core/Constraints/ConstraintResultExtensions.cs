@@ -8,6 +8,7 @@ namespace aweXpect.Core.Constraints;
 /// <summary>
 ///     Extensions methods on <see cref="ConstraintResult" />
 /// </summary>
+//TODO: Check which extensions are still necessary!
 public static class ConstraintResultExtensions
 {
 	/// <summary>
@@ -31,6 +32,14 @@ public static class ConstraintResultExtensions
 		}
 
 		return new ConstraintResultWrapper(inner, expectationSuffix);
+	}
+
+	/// <summary>
+	///     Creates a new <see cref="ConstraintResult" /> from the <paramref name="inner" /> constraint with empty expectation text.
+	/// </summary>
+	public static ConstraintResult WithoutExpectation(this ConstraintResult inner)
+	{
+		return new ConstraintResultExpectationWrapper(inner, includeInnerExpectation: false);
 	}
 
 	/// <summary>
@@ -59,13 +68,6 @@ public static class ConstraintResultExtensions
 	/// </summary>
 	public static ConstraintResult Fail<T>(this ConstraintResult inner, string failure, T value)
 		=> new ConstraintResultFailure<T>(inner, failure, value);
-
-	/// <summary>
-	///     Creates a new <see cref="ConstraintResult" /> with the given <paramref name="outcome" /> from
-	///     the <paramref name="inner" /> constraint result.
-	/// </summary>
-	public static ConstraintResult WithOutcome(this ConstraintResult inner, Outcome outcome, string? expectation = null)
-		=> new ConstraintWithOutcome(inner, outcome, expectation);
 
 	/// <summary>
 	///     Checks if the two <see cref="ConstraintResult" />s have the same result text.
@@ -262,15 +264,18 @@ public static class ConstraintResultExtensions
 		private readonly ConstraintResult _inner;
 		private readonly Action<StringBuilder>? _prefix;
 		private readonly Action<StringBuilder>? _suffix;
+		private readonly bool _includeInnerExpectation;
 
 		public ConstraintResultExpectationWrapper(ConstraintResult inner,
-			Action<StringBuilder>? prefix,
-			Action<StringBuilder>? suffix) : base(inner.FurtherProcessingStrategy)
+			Action<StringBuilder>? prefix = null,
+			Action<StringBuilder>? suffix = null,
+			bool includeInnerExpectation = true) : base(inner.FurtherProcessingStrategy)
 		{
 			_inner = inner;
 			Outcome = _inner.Outcome;
 			_prefix = prefix;
 			_suffix = suffix;
+			_includeInnerExpectation = includeInnerExpectation;
 		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
@@ -281,7 +286,10 @@ public static class ConstraintResultExtensions
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			_prefix?.Invoke(stringBuilder);
-			_inner.AppendExpectation(stringBuilder, indentation);
+			if (_includeInnerExpectation)
+			{
+				_inner.AppendExpectation(stringBuilder, indentation);
+			}
 			_suffix?.Invoke(stringBuilder);
 		}
 

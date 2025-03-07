@@ -2,7 +2,6 @@
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
-using aweXpect.Options;
 
 namespace aweXpect;
 
@@ -11,136 +10,60 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatException
 {
-	private readonly struct HasMessageValueConstraint<TException>(
-		ExpectationBuilder expectationBuilder,
-		string it,
-		ExpectationGrammars grammars,
-		string expected,
-		StringEqualityOptions options)
-		: IValueConstraint<Exception?>
-		where TException : Exception?
-	{
-		public ConstraintResult IsMetBy(Exception? actual)
-		{
-			if (options.AreConsideredEqual(actual?.Message, expected))
-			{
-				return new ConstraintResult.Success<TException?>(actual as TException, ToString());
-			}
-
-			expectationBuilder.UpdateContexts(contexts => contexts
-				.Add(new ResultContext("Message", actual?.Message)));
-			return new ConstraintResult.Failure(ToString(),
-					options.GetExtendedFailure(it, grammars, actual?.Message, expected));
-		}
-
-		public override string ToString()
-			=> grammars switch
-			{
-				ExpectationGrammars.Nested => $" Message is {options.GetExpectation(expected, grammars)}",
-				_ => $"has Message {options.GetExpectation(expected, grammars)}",
-			};
-	}
-
-	private readonly struct HasInnerExceptionValueConstraint<TInnerException>(
-		string verb,
-		string it)
-		: IValueConstraint<Exception?>
-		where TInnerException : Exception?
+	private class HasInnerExceptionValueConstraint(Type innerExceptionType, string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<Exception>(it, grammars),
+			IValueConstraint<Exception?>
 	{
 		/// <inheritdoc />
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
-			Exception? innerException = actual?.InnerException;
-			if (actual?.InnerException is TInnerException)
-			{
-				return new ConstraintResult.Success<Exception?>(actual, ToString());
-			}
-
-			if (innerException is not null)
-			{
-				return new ConstraintResult.Failure<Exception?>(actual, ToString(),
-					$"{it} was {innerException.FormatForMessage()}");
-			}
-
-			return new ConstraintResult.Failure<Exception?>(actual, ToString(),
-				$"{it} was <null>");
+			Actual = actual;
+			Outcome = innerExceptionType.IsAssignableFrom(actual?.InnerException?.GetType())
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"{verb} an inner {(typeof(TInnerException) == typeof(Exception) ? "exception" : Formatter.Format(typeof(TInnerException)))}";
-	}
-
-	private readonly struct HasInnerExceptionValueConstraint(
-		Type innerExceptionType,
-		string verb,
-		string it)
-		: IValueConstraint<Exception?>
-	{
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(Exception? actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			Exception? innerException = actual?.InnerException;
-			if (innerExceptionType.IsAssignableFrom(actual?.InnerException?.GetType()))
+			stringBuilder.Append("has an inner ");
+			if (innerExceptionType == typeof(Exception))
 			{
-				return new ConstraintResult.Success<Exception?>(actual, ToString());
+				stringBuilder.Append("exception");
 			}
-
-			if (innerException is not null)
+			else
 			{
-				return new ConstraintResult.Failure<Exception?>(actual, ToString(),
-					$"{it} was {innerException.FormatForMessage()}");
+				Formatter.Format(stringBuilder, innerExceptionType);
 			}
-
-			return new ConstraintResult.Failure<Exception?>(actual, ToString(),
-				$"{it} was <null>");
 		}
 
-		public override string ToString()
-			=> $"{verb} an inner {(innerExceptionType == typeof(Exception) ? "exception" : Formatter.Format(innerExceptionType))}";
-	}
-
-	private readonly struct InnerExceptionIsTypeConstraint<TInnerException>(string it)
-		: IValueConstraint<Exception?>
-		where TInnerException : Exception?
-	{
-		#region IValueConstraint<Exception?> Members
-
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(Exception? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual?.InnerException is TInnerException)
+			if (Actual?.InnerException is null)
 			{
-				return new ConstraintResult.Success<Exception?>(actual, "");
+				stringBuilder.Append(It).Append(" was <null>");
 			}
-
-			return new ConstraintResult.Failure<Exception?>(actual, "",
-				actual == null
-					? $"{it} was <null>"
-					: $"{it} was {actual.InnerException?.FormatForMessage()}");
+			else
+			{
+				stringBuilder.Append(It).Append(" was ");
+				stringBuilder.Append(Actual.InnerException.FormatForMessage());
+			}
 		}
 
-		#endregion
-	}
-
-	private readonly struct InnerExceptionIsTypeConstraint(string it, Type exceptionType)
-		: IValueConstraint<Exception?>
-	{
-		#region IValueConstraint<Exception?> Members
-
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(Exception? actual)
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (exceptionType.IsAssignableFrom(actual?.InnerException?.GetType()))
+			stringBuilder.Append("does not have an inner ");
+			if (innerExceptionType == typeof(Exception))
 			{
-				return new ConstraintResult.Success<Exception>(actual, "");
+				stringBuilder.Append("exception");
 			}
-
-			return new ConstraintResult.Failure<Exception?>(actual, "",
-				actual == null
-					? $"{it} was <null>"
-					: $"{it} was {actual.InnerException?.FormatForMessage()}");
+			else
+			{
+				Formatter.Format(stringBuilder, innerExceptionType);
+			}
 		}
 
-		#endregion
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" had");
 	}
 }

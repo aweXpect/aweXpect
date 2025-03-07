@@ -184,7 +184,7 @@ public abstract class ExpectationBuilder
 		{
 			if (sourceConstraintCallback is not null)
 			{
-				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it, ExpectationGrammars);
 				_node.AddConstraint(constraint);
 			}
 
@@ -221,14 +221,14 @@ public abstract class ExpectationBuilder
 	///     by the <paramref name="memberAccessor" />.
 	/// </summary>
 	public MemberExpectationBuilder<TSource, TTarget> ForAsyncMember<TSource, TTarget>(
-		MemberAccessor<TSource, Task<TTarget?>> memberAccessor,
+		MemberAccessor<TSource, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
 		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
-				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it, ExpectationGrammars);
 				_node.AddConstraint(constraint);
 			}
 
@@ -464,16 +464,16 @@ public abstract class ExpectationBuilder
 		private readonly Func<
 				Action<ExpectationBuilder>,
 				Func<ExpectationGrammars, ExpectationGrammars>?,
-				Func<string, IValueConstraint<TSource>>?,
+				Func<string, ExpectationGrammars, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			_callback;
 
-		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
+		private Func<string, ExpectationGrammars, IValueConstraint<TSource>>? _sourceConstraintBuilder;
 
 		internal MemberExpectationBuilder(Func<
 				Action<ExpectationBuilder>,
 				Func<ExpectationGrammars, ExpectationGrammars>?,
-				Func<string, IValueConstraint<TSource>>?,
+				Func<string, ExpectationGrammars, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -496,7 +496,7 @@ public abstract class ExpectationBuilder
 		///     "it").
 		/// </remarks>
 		public MemberExpectationBuilder<TSource, TMember> Validate(
-			Func<string, IValueConstraint<TSource>> constraintBuilder)
+			Func<string, ExpectationGrammars, IValueConstraint<TSource>> constraintBuilder)
 		{
 			_sourceConstraintBuilder = constraintBuilder;
 			return this;

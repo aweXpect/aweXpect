@@ -170,6 +170,8 @@ namespace aweXpect
     {
         public static aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithHResult<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, int expected)
             where TException : System.Exception? { }
+        public static aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithMessage<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string expected)
+            where TException : System.Exception? { }
         public static aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string expected)
             where TException : System.ArgumentException? { }
         public static aweXpect.Results.AndOrResult<TException?, aweXpect.Delegates.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations)

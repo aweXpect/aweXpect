@@ -16,35 +16,79 @@ public static partial class ThatException
 		string expected)
 		where TException : ArgumentException?
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new HasParamNameValueConstraint<TException>(it, "has", expected)),
+				new HasParamNameValueConstraint<TException>(it, grammars, expected)),
 			source);
 
-	internal readonly struct HasParamNameValueConstraint<TArgumentException>(
+	internal class HasParamNameValueConstraint<TArgumentException>(
 		string it,
-		string verb,
+		ExpectationGrammars grammars,
 		string expected)
-		: IValueConstraint<Exception?>
+		: ConstraintResult.WithNotNullValue<Exception?>(it, grammars),
+			IValueConstraint<Exception?>
 		where TArgumentException : ArgumentException?
 	{
 		public ConstraintResult IsMetBy(Exception? actual)
 		{
-			if (actual is TArgumentException argumentException)
-			{
-				if (argumentException.ParamName == expected)
-				{
-					return new ConstraintResult.Success<TArgumentException?>(argumentException,
-						ToString());
-				}
-
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} had ParamName {Formatter.Format(argumentException.ParamName)}");
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			Actual = actual;
+			Outcome = actual is TArgumentException argumentException && argumentException.ParamName == expected
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"{verb} ParamName {Formatter.Format(expected)}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Active))
+			{
+				stringBuilder.Append("with ParamName ");
+			}
+			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("ParamName is ");
+			}
+			else
+			{
+				stringBuilder.Append("has ParamName ");
+			}
+
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Actual is TArgumentException argumentException)
+			{
+				stringBuilder.Append(It).Append(" had ParamName ");
+				Formatter.Format(stringBuilder, argumentException.ParamName);
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" was ");
+				Formatter.Format(stringBuilder, Actual);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Active))
+			{
+				stringBuilder.Append("without ParamName ");
+			}
+			else if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("ParamName is not ");
+			}
+			else
+			{
+				stringBuilder.Append("does not have ParamName ");
+			}
+
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" had");
+		}
 	}
 }
