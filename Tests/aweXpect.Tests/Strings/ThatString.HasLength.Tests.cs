@@ -323,14 +323,19 @@ public sealed partial class ThatString
 		public sealed class NotEqualToTests
 		{
 			[Fact]
-			public async Task WhenActualIsNull_ShouldSucceed()
+			public async Task WhenActualIsNull_ShouldFail()
 			{
 				string? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasLength().NotEqualTo(0);
+					=> await That(subject).HasLength().NotEqualTo(1);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has length not equal to 1,
+					              but it was <null>
+					              """);
 			}
 
 			[Theory]

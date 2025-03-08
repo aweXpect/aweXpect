@@ -339,15 +339,20 @@ public sealed partial class ThatNullableDateTimeOffset
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				DateTimeOffset? subject = null;
-				TimeSpan expected = 2.Hours();
+				TimeSpan unexpected = 2.Hours();
 
 				async Task Act()
-					=> await That(subject).HasOffset().NotEqualTo(expected);
+					=> await That(subject).HasOffset().NotEqualTo(unexpected);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has offset not equal to {Formatter.Format(unexpected)},
+					              but it was <null>
+					              """);
 			}
 		}
 	}

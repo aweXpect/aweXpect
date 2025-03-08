@@ -426,14 +426,19 @@ public sealed partial class ThatStream
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				Stream? subject = null;
 
 				async Task Act()
-					=> await That(subject).HasPosition().NotEqualTo(0);
+					=> await That(subject).HasPosition().NotEqualTo(1);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has position not equal to 1,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]

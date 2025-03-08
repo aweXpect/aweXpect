@@ -85,15 +85,20 @@ public sealed partial class ThatNullableDateTime
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				DateTime? subject = null;
-				DateTimeKind expected = DateTimeKind.Utc;
+				DateTimeKind unexpected = DateTimeKind.Utc;
 
 				async Task Act()
-					=> await That(subject).HasKind().NotEqualTo(expected);
+					=> await That(subject).HasKind().NotEqualTo(unexpected);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has kind not equal to {Formatter.Format(unexpected)},
+					              but it was <null>
+					              """);
 			}
 		}
 	}
