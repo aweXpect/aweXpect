@@ -36,8 +36,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with ["bar"] ignoring case,
-					             but it did in [
-					               "FOO",
+					             but it did end with [
 					               "BAR"
 					             ]
 					             """);
@@ -59,19 +58,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with [MyClass { Inner = <null>, Value = 3 }, MyClass { Inner = <null>, Value = 5 }, MyClass { Inner = <null>, Value = 8 }] equivalent,
-					             but it did in [
-					               MyClass {
-					                 Inner = <null>,
-					                 Value = 1
-					               },
-					               MyClass {
-					                 Inner = <null>,
-					                 Value = 1
-					               },
-					               MyClass {
-					                 Inner = <null>,
-					                 Value = 2
-					               },
+					             but it did end with [
 					               MyClass {
 					                 Inner = <null>,
 					                 Value = 3
@@ -100,7 +87,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with [1, 2, 3],
-					             but it did in [
+					             but it did end with [
 					               1,
 					               2,
 					               3
@@ -133,8 +120,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with unexpected,
-					             but it did in [
-					               "foo",
+					             but it did end with [
 					               "bar",
 					               "baz"
 					             ]
@@ -180,7 +166,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with [],
-					             but it did in [
+					             but it was [
 					               1,
 					               2
 					             ]

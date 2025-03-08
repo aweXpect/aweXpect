@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -27,10 +28,13 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<TItem> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
+		ArgumentNullException.ThrowIfNull(expected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
+				new EndsWithConstraint<TItem, TItem>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -44,10 +48,14 @@ public static partial class ThatAsyncEnumerable
 			this IThat<IAsyncEnumerable<TItem>?> source,
 			params TItem[] expected)
 	{
+		ArgumentNullException.ThrowIfNull(expected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<TItem, TItem>(it, Formatter.Format(expected), expected, options)),
+				new EndsWithConstraint<TItem, TItem>(it, grammars,
+					Formatter.Format(expected),
+					expected,
+					options)),
 			source,
 			options);
 	}
@@ -61,10 +69,13 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<string?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
+		ArgumentNullException.ThrowIfNull(expected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
+				new EndsWithConstraint<string?, string?>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -78,10 +89,14 @@ public static partial class ThatAsyncEnumerable
 			this IThat<IAsyncEnumerable<string?>?> source,
 			params string[] expected)
 	{
+		ArgumentNullException.ThrowIfNull(expected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new EndsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
+				new EndsWithConstraint<string, string>(it, grammars,
+					Formatter.Format(expected),
+					expected,
+					options)),
 			source,
 			options);
 	}
@@ -96,11 +111,14 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
+		ArgumentNullException.ThrowIfNull(unexpected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new DoesNotEndWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
-					options)),
+				new EndsWithConstraint<TItem, TItem>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected.ToArray(),
+					options).Invert()),
 			source,
 			options);
 	}
@@ -113,11 +131,14 @@ public static partial class ThatAsyncEnumerable
 			this IThat<IAsyncEnumerable<TItem>?> source,
 			params TItem[] unexpected)
 	{
+		ArgumentNullException.ThrowIfNull(unexpected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new DoesNotEndWithConstraint<TItem, TItem>(it, Formatter.Format(unexpected), unexpected,
-					options)),
+				new EndsWithConstraint<TItem, TItem>(it, grammars,
+					Formatter.Format(unexpected),
+					unexpected,
+					options).Invert()),
 			source,
 			options);
 	}
@@ -132,11 +153,14 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("unexpected")]
 			string doNotPopulateThisValue = "")
 	{
+		ArgumentNullException.ThrowIfNull(unexpected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new DoesNotEndWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
-					options)),
+				new EndsWithConstraint<string?, string?>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected.ToArray(),
+					options).Invert()),
 			source,
 			options);
 	}
@@ -149,29 +173,40 @@ public static partial class ThatAsyncEnumerable
 			this IThat<IAsyncEnumerable<string?>?> source,
 			params string[] unexpected)
 	{
+		ArgumentNullException.ThrowIfNull(unexpected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new DoesNotEndWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
-					options)),
+				new EndsWithConstraint<string, string>(it, grammars,
+					Formatter.Format(unexpected),
+					unexpected,
+					options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct EndsWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	private class EndsWithConstraint<TItem, TMatch>
+		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>,
+		IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private readonly List<TItem> _foundValues = [];
 		private readonly string _it;
 		private readonly string _expectedExpression;
 		private readonly TItem[] _expected;
 		private readonly IOptionsEquality<TMatch> _options;
+		private TItem? _firstMismatchItem;
+		private bool _foundMismatch;
+		private int _index;
+		private int _offset;
+		private int _itemsCount;
 
 		public EndsWithConstraint(string it,
+			ExpectationGrammars grammars,
 			string expectedExpression,
 			TItem[] expected,
-			IOptionsEquality<TMatch> options)
+			IOptionsEquality<TMatch> options) : base(it, grammars)
 		{
-			ArgumentNullException.ThrowIfNull(expected);
 			_it = it;
 			_expectedExpression = expectedExpression;
 			_expected = expected;
@@ -181,115 +216,104 @@ public static partial class ThatAsyncEnumerable
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{_it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
+			IAsyncEnumerable<TItem> materializedEnumerable =
+				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			if (_expected.Length == 0)
 			{
-				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
-			}
-
-			IAsyncEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			List<TItem> items = new();
-			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
-			{
-				items.Add(item);
-			}
-
-			int offset = items.Count - _expected.Length;
-			for (int index = _expected.Length - 1; index >= 0; index--)
-			{
-				if (index + offset < 0)
+				int maximumNumberOfCollectionItems =
+					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+				await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 				{
-					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-						$"{_it} contained only {items.Count} items and misses {-offset} items: {Formatter.Format(_expected.Take(-offset), FormattingOptions.MultipleLines)}");
+					_foundValues.Add(item);
+					if (_foundValues.Count == maximumNumberOfCollectionItems)
+					{
+						break;
+					}
 				}
 
-				TItem item = items[index + offset];
-				TItem expectedItem = _expected[index];
+				Outcome = Outcome.Success;
+				return this;
+			}
+
+			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
+			{
+				_foundValues.Add(item);
+			}
+
+			_itemsCount = _foundValues.Count;
+			_offset = _itemsCount - _expected.Length;
+			for (_index = _expected.Length - 1; _index >= 0; _index--)
+			{
+				if (_index + _offset < 0)
+				{
+					Outcome = Outcome.Failure;
+					return this;
+				}
+
+				TItem item = _foundValues[_index + _offset];
+				TItem expectedItem = _expected[_index];
 				if (!_options.AreConsideredEqual(item, expectedItem))
 				{
-					return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-						$"{_it} contained {Formatter.Format(item)} at index {index + offset} instead of {Formatter.Format(expectedItem)}");
+					_firstMismatchItem = item;
+					_foundMismatch = true;
+					Outcome = Outcome.Failure;
+					return this;
 				}
 			}
 
-			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
+			Outcome = Outcome.Success;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"ends with {_expectedExpression}{_options}";
-	}
-
-	private readonly struct DoesNotEndWithConstraint<TItem, TMatch> : IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
-		where TItem : TMatch
-	{
-		private readonly string _it;
-		private readonly string _unexpectedExpression;
-		private readonly TItem[] _unexpected;
-		private readonly IOptionsEquality<TMatch> _options;
-
-		public DoesNotEndWithConstraint(string it,
-			string unexpectedExpression,
-			TItem[] unexpected,
-			IOptionsEquality<TMatch> options)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			ArgumentNullException.ThrowIfNull(unexpected);
-			_it = it;
-			_unexpectedExpression = unexpectedExpression;
-			_unexpected = unexpected;
-			_options = options;
+			stringBuilder.Append("ends with ").Append(_expectedExpression);
+			stringBuilder.Append(_options);
 		}
 
-		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
-			CancellationToken cancellationToken)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is null)
+			if (_foundMismatch)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{_it} was <null>");
+				stringBuilder.Append(_it).Append(" contained ");
+				Formatter.Format(stringBuilder, _firstMismatchItem);
+				stringBuilder.Append(" at index ").Append(_index + _offset).Append(" instead of ");
+				Formatter.Format(stringBuilder, _expected[_index]);
 			}
-
-			IAsyncEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			List<TItem> items = new();
-			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
+			else
 			{
-				items.Add(item);
+				stringBuilder.Append(_it).Append(" contained only ").Append(_itemsCount).Append(" items and misses ")
+					.Append(_expected.Length - _itemsCount).Append(" items: ");
+				Formatter.Format(stringBuilder, _expected.Take(-_offset), FormattingOptions.MultipleLines);
 			}
-
-			if (_unexpected.Length == 0)
-			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-					$"{_it} did in {Formatter.Format(items, FormattingOptions.MultipleLines)}");
-			}
-
-			int offset = items.Count - _unexpected.Length;
-			for (int index = _unexpected.Length - 1; index >= 0; index--)
-			{
-				if (index + offset < 0)
-				{
-					return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
-				}
-
-				TItem item = items[index + offset];
-				TItem unexpectedItem = _unexpected[index];
-				if (!_options.AreConsideredEqual(item, unexpectedItem))
-				{
-					return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(actual, ToString());
-				}
-			}
-
-			return new ConstraintResult.Failure<IAsyncEnumerable<TItem>>(actual, ToString(),
-				$"{_it} did in {Formatter.Format(items, FormattingOptions.MultipleLines)}");
 		}
 
-		public override string ToString()
-			=> $"does not end with {_unexpectedExpression}{_options}";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not end with ").Append(_expectedExpression);
+			stringBuilder.Append(_options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_expected.Length == 0)
+			{
+				stringBuilder.Append(_it).Append(" was ");
+				Formatter.Format(stringBuilder, _foundValues, FormattingOptions.MultipleLines);
+			}
+			else
+			{
+				stringBuilder.Append(_it).Append(" did end with ");
+				Formatter.Format(stringBuilder, _foundValues, FormattingOptions.MultipleLines);
+			}
+		}
 	}
 }
 #endif

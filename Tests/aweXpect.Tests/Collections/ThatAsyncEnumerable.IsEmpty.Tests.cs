@@ -23,11 +23,11 @@ public sealed partial class ThatAsyncEnumerable
 				async Task Act()
 					=> await That(subject).IsEmpty().WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             is empty,
-					             but could not evaluate it, because it was already cancelled
+					             but could not verify, because it was already cancelled
 					             """);
 			}
 

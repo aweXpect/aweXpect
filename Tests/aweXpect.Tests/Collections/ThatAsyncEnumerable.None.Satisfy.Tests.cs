@@ -29,7 +29,7 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             satisfies item => item < 0 for no items,
-						             but could not verify, because it was cancelled early
+						             but could not verify, because it was already cancelled
 						             """);
 				}
 

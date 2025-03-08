@@ -98,6 +98,7 @@ namespace aweXpect.Core.Constraints
             protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
             protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            protected virtual void AppendUndecidedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
             public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
         }
@@ -113,6 +114,7 @@ namespace aweXpect.Core.Constraints
             protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
             protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
+            protected virtual void AppendUndecidedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
             public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
         }
@@ -776,6 +778,7 @@ namespace aweXpect.Options
         public void Exactly(int expected) { }
         public void Negate() { }
         public override string ToString() { }
+        public static aweXpect.Options.Quantifier Never() { }
     }
     public class SignalerOptions : System.IEquatable<aweXpect.Options.SignalerOptions>
     {

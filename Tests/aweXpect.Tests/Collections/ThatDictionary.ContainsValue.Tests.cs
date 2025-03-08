@@ -48,9 +48,9 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             contains value 2,
 					             but it contained only [
-					               1,
-					               2,
-					               3
+					               41,
+					               42,
+					               43
 					             ]
 					             """);
 			}

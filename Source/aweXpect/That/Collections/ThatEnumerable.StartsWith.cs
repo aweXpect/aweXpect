@@ -27,7 +27,9 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
+				=> new StartsWithConstraint<TItem, TItem>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -44,7 +46,10 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithConstraint<TItem, TItem>(it, Formatter.Format(expected), expected, options)),
+				=> new StartsWithConstraint<TItem, TItem>(it, grammars,
+					Formatter.Format(expected),
+					expected ?? throw new ArgumentNullException(nameof(expected)),
+					options)),
 			source,
 			options);
 	}
@@ -61,7 +66,9 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected.ToArray(),
+				=> new StartsWithConstraint<string?, string?>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected.ToArray(),
 					options)),
 			source,
 			options);
@@ -78,7 +85,10 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new StartsWithConstraint<string, string>(it, Formatter.Format(expected), expected, options)),
+				=> new StartsWithConstraint<string, string>(it, grammars,
+					Formatter.Format(expected),
+					expected ?? throw new ArgumentNullException(nameof(expected)),
+					options)),
 			source,
 			options);
 	}
@@ -96,8 +106,10 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new NotStartsWithConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
-					options)),
+				=> new StartsWithConstraint<TItem, TItem>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected.ToArray(),
+					options).Invert()),
 			source,
 			options);
 	}
@@ -113,8 +125,10 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new NotStartsWithConstraint<TItem, TItem>(it, Formatter.Format(unexpected), unexpected,
-					options)),
+				=> new StartsWithConstraint<TItem, TItem>(it, grammars,
+					Formatter.Format(unexpected),
+					unexpected ?? throw new ArgumentNullException(nameof(unexpected)),
+					options).Invert()),
 			source,
 			options);
 	}
@@ -132,8 +146,10 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new NotStartsWithConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), unexpected.ToArray(),
-					options)),
+				=> new StartsWithConstraint<string?, string?>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected.ToArray(),
+					options).Invert()),
 			source,
 			options);
 	}
@@ -149,128 +165,120 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new NotStartsWithConstraint<string, string>(it, Formatter.Format(unexpected), unexpected,
-					options)),
+				=> new StartsWithConstraint<string, string>(it, grammars,
+					Formatter.Format(unexpected),
+					unexpected ?? throw new ArgumentNullException(nameof(unexpected)),
+					options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct StartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
+	private class StartsWithConstraint<TItem, TMatch>
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
+			IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		private readonly string _it;
-		private readonly string _expectedExpression;
 		private readonly TItem[] _expected;
+		private readonly string _expectedExpression;
+		private readonly string _it;
 		private readonly IOptionsEquality<TMatch> _options;
+		private TItem? _firstMismatchItem;
+		private bool _foundMismatch;
+		private int _index;
 
 		public StartsWithConstraint(string it,
+			ExpectationGrammars grammars,
 			string expectedExpression,
 			TItem[] expected,
-			IOptionsEquality<TMatch> options)
+			IOptionsEquality<TMatch> options) : base(it, grammars)
 		{
 			_it = it;
 			_expectedExpression = expectedExpression;
-			_expected = expected ?? throw new ArgumentNullException(nameof(expected));
+			_expected = expected;
 			_options = options;
 		}
 
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{_it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			IEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			if (_expected.Length == 0)
 			{
-				return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
-			}
-
-			int index = 0;
-			foreach (TItem item in materializedEnumerable)
-			{
-				TItem expectedItem = _expected[index++];
-				if (!_options.AreConsideredEqual(item, expectedItem))
-				{
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-						$"{_it} contained {Formatter.Format(item)} at index {index - 1} instead of {Formatter.Format(expectedItem)}");
-				}
-
-				if (_expected.Length == index)
-				{
-					return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
-				}
-			}
-
-
-			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-				$"{_it} contained only {index} items and misses {_expected.Length - index} items: {Formatter.Format(_expected.Skip(index), FormattingOptions.MultipleLines)}");
-		}
-
-		public override string ToString()
-			=> $"starts with {_expectedExpression}{_options}";
-	}
-
-	private readonly struct NotStartsWithConstraint<TItem, TMatch> : IContextConstraint<IEnumerable<TItem>?>
-		where TItem : TMatch
-	{
-		private readonly string _it;
-		private readonly string _unexpectedExpression;
-		private readonly TItem[] _unexpected;
-		private readonly IOptionsEquality<TMatch> _options;
-
-		public NotStartsWithConstraint(string it,
-			string unexpectedExpression,
-			TItem[] unexpected,
-			IOptionsEquality<TMatch> options)
-		{
-			_it = it;
-			_unexpectedExpression = unexpectedExpression;
-			_unexpected = unexpected ?? throw new ArgumentNullException(nameof(unexpected));
-			_options = options;
-		}
-
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
-		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{_it} was <null>");
+				Outcome = Outcome.Success;
+				return this;
 			}
 
 			IEnumerable<TItem> materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			if (_unexpected.Length == 0)
-			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-					$"{_it} was {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
-			}
-
-			int index = 0;
-			List<TItem> foundValues = new();
+			_index = 0;
 			foreach (TItem item in materializedEnumerable)
 			{
-				foundValues.Add(item);
-				TItem unexpectedItem = _unexpected[index++];
-				if (!_options.AreConsideredEqual(item, unexpectedItem))
+				TItem expectedItem = _expected[_index++];
+				if (!_options.AreConsideredEqual(item, expectedItem))
 				{
-					return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
+					_firstMismatchItem = item;
+					_foundMismatch = true;
+					Outcome = Outcome.Failure;
+					return this;
 				}
 
-				if (_unexpected.Length == index)
+				if (_expected.Length == _index)
 				{
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-						$"{_it} did start with {Formatter.Format(foundValues, FormattingOptions.MultipleLines)}");
+					Outcome = Outcome.Success;
+					return this;
 				}
 			}
 
-			return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
+			Outcome = Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"does not start with {_unexpectedExpression}{_options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("starts with ").Append(_expectedExpression);
+			stringBuilder.Append(_options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_foundMismatch)
+			{
+				stringBuilder.Append(_it).Append(" contained ");
+				Formatter.Format(stringBuilder, _firstMismatchItem);
+				stringBuilder.Append(" at index ").Append(_index - 1).Append(" instead of ");
+				Formatter.Format(stringBuilder, _expected[_index - 1]);
+			}
+			else
+			{
+				stringBuilder.Append(_it).Append(" contained only ").Append(_index).Append(" items and misses ")
+					.Append(_expected.Length - _index).Append(" items: ");
+				Formatter.Format(stringBuilder, _expected.Skip(_index), FormattingOptions.MultipleLines);
+			}
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not start with ").Append(_expectedExpression);
+			stringBuilder.Append(_options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_expected.Length == 0)
+			{
+				stringBuilder.Append(_it).Append(" was ");
+				Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
+			}
+			else
+			{
+				stringBuilder.Append(_it).Append(" did start with ");
+				Formatter.Format(stringBuilder, Actual?.Take(_index), FormattingOptions.MultipleLines);
+			}
+		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -18,46 +19,72 @@ public static partial class ThatEnumerable
 	public static SingleItemResult<IEnumerable<TItem>, TItem> HasSingle<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammars) => new HaveSingleConstraint<TItem>(it)),
+				.AddConstraint((it, grammars) => new HaveSingleConstraint<TItem>(it, grammars)),
 			f => f.FirstOrDefault()
 		);
 
-	private readonly struct HaveSingleConstraint<TItem>(string it) : IContextConstraint<IEnumerable<TItem>?>
+	private class HaveSingleConstraint<TItem>(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<TItem?>(it, grammars),
+			IContextConstraint<IEnumerable<TItem>?>
 	{
+		private IEnumerable<TItem>? _actual;
+		private int _count;
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			_actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			TItem? singleItem = default;
-			int count = 0;
+			_count = 0;
 
 			foreach (TItem item in materialized)
 			{
-				singleItem = item;
-				if (++count > 1)
+				Actual = item;
+				if (++_count > 1)
 				{
 					break;
 				}
 			}
 
-			switch (count)
+			Outcome = _count == 1 ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
 			{
-				case 1:
-					return new ConstraintResult.Success<TItem>(singleItem!, ToString());
-				case 0:
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(materialized, ToString(),
-						$"{it} was empty");
-				default:
-					return new ConstraintResult.Failure<IEnumerable<TItem>>(materialized, ToString(),
-						$"{it} contained more than one item");
+				value = typedValue;
+				return true;
+			}
+
+			return base.TryGetValue(out value);
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("has a single item");
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_count == 0)
+			{
+				stringBuilder.Append(It).Append(" was empty");
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" contained more than one item");
 			}
 		}
 
-		public override string ToString() => "has a single item";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("does not have a single item");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" did");
 	}
 }

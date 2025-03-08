@@ -36,7 +36,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with ["bar"] ignoring case,
-					             but it did in [
+					             but it did end with [
 					               "FOO",
 					               "BAR"
 					             ]
@@ -59,7 +59,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with [MyClass { Value = 3 }, MyClass { Value = 5 }, MyClass { Value = 8 }] equivalent,
-					             but it did in [
+					             but it did end with [
 					               MyClass {
 					                 Value = 1
 					               },
@@ -94,7 +94,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with [1, 2, 3],
-					             but it did in [
+					             but it did end with [
 					               1,
 					               2,
 					               3
@@ -127,7 +127,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with unexpected,
-					             but it did in [
+					             but it did end with [
 					               "foo",
 					               "bar",
 					               "baz"
@@ -174,7 +174,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not end with [],
-					             but it did in [
+					             but it was [
 					               1,
 					               2
 					             ]

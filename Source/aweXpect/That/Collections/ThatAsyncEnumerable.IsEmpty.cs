@@ -22,7 +22,7 @@ public static partial class ThatAsyncEnumerable
 		IsEmpty<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEmptyConstraint<TItem>(it)),
+				new IsEmptyConstraint<TItem>(it, grammars)),
 			source);
 
 	/// <summary>
@@ -32,20 +32,25 @@ public static partial class ThatAsyncEnumerable
 		IsNotEmpty<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NotIsEmptyConstraint<TItem>(it)),
+				new IsEmptyConstraint<TItem>(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsEmptyConstraint<TItem>(string it)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+	private class IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>(it, grammars),
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
+		private readonly List<TItem> _items = [];
+
 		public async Task<ConstraintResult> IsMetBy(
 			IAsyncEnumerable<TItem>? actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IAsyncEnumerable<TItem> materializedEnumerable =
@@ -56,65 +61,63 @@ public static partial class ThatAsyncEnumerable
 			{
 				int maximumNumberOfCollectionItems =
 					Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
-				List<TItem> items = new(maximumNumberOfCollectionItems + 1)
-				{
-					enumerator.Current,
-				};
+				_items.Add(enumerator.Current);
 				while (await enumerator.MoveNextAsync())
 				{
-					items.Add(enumerator.Current);
-					if (items.Count > maximumNumberOfCollectionItems)
+					_items.Add(enumerator.Current);
+					if (_items.Count > maximumNumberOfCollectionItems)
 					{
 						break;
 					}
 				}
 
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(items, FormattingOptions.MultipleLines)}");
+
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			if (cancellationToken.IsCancellationRequested)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"could not evaluate {it}, because it was already cancelled");
+				Outcome = Outcome.Undecided;
+				return this;
 			}
 
-			return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
-				ToString());
+			Outcome = Outcome.Success;
+			return this;
 		}
 
-		public override string ToString()
-			=> "is empty";
-	}
-
-	private readonly struct NotIsEmptyConstraint<TItem>(string it)
-		: IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
-	{
-		public async Task<ConstraintResult> IsMetBy(
-			IAsyncEnumerable<TItem>? actual,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is null)
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
 			{
-				return new ConstraintResult.Failure<IAsyncEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				stringBuilder.Append("are empty");
 			}
-
-			IAsyncEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
-			await using IAsyncEnumerator<TItem> enumerator =
-				materializedEnumerable.GetAsyncEnumerator(cancellationToken);
-			if (await enumerator.MoveNextAsync())
+			else
 			{
-				return new ConstraintResult.Success<IAsyncEnumerable<TItem>>(materializedEnumerable,
-					ToString());
+				stringBuilder.Append("is empty");
 			}
-
-			return new ConstraintResult.Failure(ToString(), $"{it} was");
 		}
 
-		public override string ToString()
-			=> "is not empty";
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("are not empty");
+			}
+			else
+			{
+				stringBuilder.Append("is not empty");
+			}
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was");
 	}
 }
 #endif

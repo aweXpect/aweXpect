@@ -31,7 +31,7 @@ public sealed partial class ThatDictionary
 					.WithMessage("""
 					             Expected that subject
 					             contains values [42, 2],
-					             but it did not have [
+					             but it did not contain [
 					               2
 					             ] in [
 					               41,

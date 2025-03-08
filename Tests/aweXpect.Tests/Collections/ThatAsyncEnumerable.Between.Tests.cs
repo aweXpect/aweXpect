@@ -28,7 +28,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             satisfies y => y < 6 for between 6 and 8 items,
-					             but could not verify, because it was cancelled early
+					             but could not verify, because it was already cancelled
 					             """);
 			}
 

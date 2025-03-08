@@ -50,32 +50,39 @@ public abstract partial class ConstraintResult
 		}
 
 		/// <summary>
-		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
-		///     not negated.
+		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" />
+		///     are not negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null);
 
 		/// <summary>
-		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are not
-		///     negated.
+		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" />
+		///     are not negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null);
 
 		/// <summary>
-		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
-		///     negated.
+		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" />
+		///     are negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null);
 
 		/// <summary>
-		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
-		///     negated.
+		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" />
+		///     are negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
+
+		/// <summary>
+		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="Outcome" />
+		///     is <see cref="Outcome.Undecided" />.
+		/// </summary>
+		protected virtual void AppendUndecidedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("could not verify, because it was already cancelled");
 
 		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -99,6 +106,10 @@ public abstract partial class ConstraintResult
 			{
 				stringBuilder.Append(It);
 				stringBuilder.Append(" was <null>");
+			}
+			else if (Outcome == Outcome.Undecided)
+			{
+				AppendUndecidedResult(stringBuilder, indentation);
 			}
 			else if (Grammars.IsNegated())
 			{

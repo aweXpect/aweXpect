@@ -117,10 +117,6 @@ public static partial class ThatAsyncEnumerable
 				stringBuilder.Append(_it);
 				stringBuilder.Append(" was <null>");
 			}
-			else if (Outcome == Outcome.Undecided)
-			{
-				stringBuilder.Append("could not verify, because it was cancelled early");
-			}
 			else
 			{
 				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
@@ -141,10 +137,6 @@ public static partial class ThatAsyncEnumerable
 			{
 				stringBuilder.Append(_it);
 				stringBuilder.Append(" was <null>");
-			}
-			else if (Outcome == Outcome.Undecided)
-			{
-				stringBuilder.Append("could not verify, because it was cancelled early");
 			}
 			else
 			{

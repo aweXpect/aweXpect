@@ -109,14 +109,7 @@ public static partial class ThatEnumerable
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 			{
-				if (Outcome == Outcome.Undecided)
-				{
-					stringBuilder.Append("could not verify, because it was cancelled early");
-				}
-				else
-				{
-					_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
-				}
+				_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
 			}
 
 			protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
@@ -129,15 +122,8 @@ public static partial class ThatEnumerable
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			{
-				if (Outcome == Outcome.Undecided)
-				{
-					stringBuilder.Append("could not verify, because it was cancelled early");
-				}
-				else
-				{
-					_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
-						_totalCount);
-				}
+				_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+					_totalCount);
 			}
 		}
 	}

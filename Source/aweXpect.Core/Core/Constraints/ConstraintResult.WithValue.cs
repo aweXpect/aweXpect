@@ -63,6 +63,13 @@ public abstract partial class ConstraintResult
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
 
+		/// <summary>
+		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="Outcome" />
+		///     is <see cref="Outcome.Undecided" />.
+		/// </summary>
+		protected virtual void AppendUndecidedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("could not verify, because it was already cancelled");
+		
 		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
@@ -81,7 +88,11 @@ public abstract partial class ConstraintResult
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (Grammars.IsNegated())
+			if (Outcome == Outcome.Undecided)
+			{
+				AppendUndecidedResult(stringBuilder, indentation);
+			}
+			else if (Grammars.IsNegated())
 			{
 				AppendNegatedResult(stringBuilder, indentation);
 			}

@@ -96,11 +96,8 @@ public static partial class ThatDictionary
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			List<TKey> existingKeys = expected.Where(Actual!.ContainsKey).ToList();
 			stringBuilder.Append(It).Append(" did contain ");
-			Formatter.Format(stringBuilder, existingKeys, FormattingOptions.MultipleLines);
+			Formatter.Format(stringBuilder, _existingKeys, FormattingOptions.MultipleLines);
 		}
-
-		public override string ToString() => $"contains keys {Formatter.Format(expected)}";
 	}
 }

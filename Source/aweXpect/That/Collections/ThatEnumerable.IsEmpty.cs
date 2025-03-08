@@ -26,66 +26,32 @@ public static partial class ThatEnumerable
 	public static AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>> IsNotEmpty<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammars) => new IsNotEmptyConstraint<TItem>(it, grammars)),
+				.AddConstraint((it, grammars) => new IsEmptyConstraint<TItem>(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
-		: IValueConstraint<IEnumerable<TItem>?>
-	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual)
-		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
-			}
-
-			if (actual is ICollection<TItem> collectionOfT)
-			{
-				if (collectionOfT.Count > 0)
-				{
-					return new ConstraintResult.Failure(ToString(),
-						$"{it} was {Formatter.Format(collectionOfT, FormattingOptions.MultipleLines)}");
-				}
-
-				return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
-			}
-
-			using IEnumerator<TItem> enumerator = actual.GetEnumerator();
-			if (enumerator.MoveNext())
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
-			}
-
-			return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
-		}
-
-		public override string ToString()
-			=> grammars.HasFlag(ExpectationGrammars.Nested) switch
-			{
-				true => "are empty",
-				_ => "is empty",
-			};
-	}
-
-	private readonly struct IsNotEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
-		: IContextConstraint<IEnumerable<TItem>?>
+	private class IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
+			IContextConstraint<IEnumerable<TItem>?>
 	{
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			if (actual is ICollection<TItem> collectionOfT)
 			{
 				if (collectionOfT.Count > 0)
 				{
-					return new ConstraintResult.Success<IEnumerable<TItem>>(actual, ToString());
+					Outcome = Outcome.Failure;
+					return this;
 				}
 
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} was");
+				Outcome = Outcome.Success;
+				return this;
 			}
 
 			IEnumerable<TItem> materializedEnumerable =
@@ -93,18 +59,52 @@ public static partial class ThatEnumerable
 			using IEnumerator<TItem> enumerator = materializedEnumerable.GetEnumerator();
 			if (enumerator.MoveNext())
 			{
-				return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
-					ToString());
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), $"{it} was");
+			Outcome = Outcome.Success;
+			return this;
 		}
 
 		public override string ToString()
-			=> grammars switch
+			=> Grammars.HasFlag(ExpectationGrammars.Nested) switch
 			{
-				ExpectationGrammars.Nested => "are not empty",
-				_ => "is not empty",
+				true => "are empty",
+				_ => "is empty",
 			};
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("are empty");
+			}
+			else
+			{
+				stringBuilder.Append("is empty");
+			}
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.HasFlag(ExpectationGrammars.Nested))
+			{
+				stringBuilder.Append("are not empty");
+			}
+			else
+			{
+				stringBuilder.Append("is not empty");
+			}
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was");
 	}
 }

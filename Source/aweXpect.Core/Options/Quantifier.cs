@@ -13,6 +13,16 @@ public class Quantifier
 	private int? _minimum = 1;
 
 	/// <summary>
+	///     A quantifier for exactly zero items.
+	/// </summary>
+	public static Quantifier Never()
+	{
+		Quantifier? quantifier = new();
+		quantifier.Exactly(0);
+		return quantifier;
+	}
+
+	/// <summary>
 	///     Verifies, that it occurs at least <paramref name="minimum" /> times.
 	/// </summary>
 	public void AtLeast(int minimum)

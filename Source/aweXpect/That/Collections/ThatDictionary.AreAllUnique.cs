@@ -26,7 +26,7 @@ public static partial class ThatDictionary
 		ObjectEqualityOptions<TValue> options = new();
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TValue>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AllIsUniqueConstraint<TKey, TValue, TValue>(it, options)),
+				new AllIsUniqueConstraint<TKey, TValue, TValue>(it, grammars, options)),
 			source, options
 		);
 	}
@@ -43,7 +43,7 @@ public static partial class ThatDictionary
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IDictionary<TKey, string?>, IThat<IDictionary<TKey, string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AllIsUniqueConstraint<TKey, string?, string?>(it, options)),
+				new AllIsUniqueConstraint<TKey, string?, string?>(it, grammars, options)),
 			source, options
 		);
 	}
@@ -66,7 +66,10 @@ public static partial class ThatDictionary
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(it, memberAccessor,
+				new AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMember>(
+					it,
+					grammars,
+					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
@@ -91,70 +94,95 @@ public static partial class ThatDictionary
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IDictionary<TKey, TValue>, IThat<IDictionary<TKey, TValue>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(it, memberAccessor,
+				new AllIsUniqueWithPredicateConstraint<TKey, TValue, string, string>(
+					it,
+					grammars,
+					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct AllIsUniqueConstraint<TKey, TValue, TMatch>(string it, IOptionsEquality<TMatch> options)
-		: IContextConstraint<IDictionary<TKey, TValue>?>
+	private class AllIsUniqueConstraint<TKey, TValue, TMatch>(
+		string it,
+		ExpectationGrammars grammars,
+		IOptionsEquality<TMatch> options)
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+			IContextConstraint<IDictionary<TKey, TValue>?>
 		where TValue : TMatch
 	{
+		private readonly List<TValue> _duplicates = [];
+
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			List<TValue> checkedItems = new();
-			List<TValue> duplicates = new();
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
 			{
 				if (checkedItems.Any(compareWith =>
 					    o.AreConsideredEqual(item, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(item, x))))
+					    _duplicates.All(x => !o.AreConsideredEqual(item, x))))
 				{
-					duplicates.Add(item);
+					_duplicates.Add(item);
 				}
 
 				checkedItems.Add(item);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			return this;
 		}
 
-		public override string ToString() => $"only has unique values{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique values");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate values");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 
-	private readonly struct AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
+	private class AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
 		string it,
+		ExpectationGrammars grammars,
 		Func<TValue, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		: IContextConstraint<IDictionary<TKey, TValue>?>
+		:  ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+			IContextConstraint<IDictionary<TKey, TValue>?>
 		where TMember : TMatch
 	{
+		private readonly List<TMember> _duplicates = [];
+
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			List<TMember> checkedItems = new();
-			List<TMember> duplicates = new();
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TValue item in actual.Values)
@@ -162,24 +190,34 @@ public static partial class ThatDictionary
 				TMember itemMember = memberAccessor(item);
 				if (checkedItems.Any(compareWith =>
 					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
 				{
-					duplicates.Add(itemMember);
+					_duplicates.Add(itemMember);
 				}
 
 				checkedItems.Add(itemMember);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			return this;
 		}
 
-		public override string ToString() => $"only has unique values for {memberAccessorExpression}{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique values for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate values for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 }

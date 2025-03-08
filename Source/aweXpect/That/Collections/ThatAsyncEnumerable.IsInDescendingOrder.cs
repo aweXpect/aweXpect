@@ -23,7 +23,7 @@ public static partial class ThatAsyncEnumerable
 		CollectionOrderOptions<TItem> options = new();
 		return new CollectionOrderResult<TItem, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsInOrderConstraint<TItem, TItem>(it, x => x, SortOrder.Descending, options, "")),
+				new IsInOrderConstraint<TItem, TItem>(it, grammars, x => x, SortOrder.Descending, options, "")),
 			source,
 			options);
 	}
@@ -42,7 +42,7 @@ public static partial class ThatAsyncEnumerable
 		CollectionOrderOptions<TMember> options = new();
 		return new CollectionOrderResult<TMember, IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsInOrderConstraint<TItem, TMember>(it, memberAccessor, SortOrder.Descending, options,
+				new IsInOrderConstraint<TItem, TMember>(it, grammars, memberAccessor, SortOrder.Descending, options,
 					$" for {doNotPopulateThisValue.TrimCommonWhiteSpace()}")),
 			source,
 			options);

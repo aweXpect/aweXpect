@@ -27,7 +27,7 @@ public static partial class ThatEnumerable
 		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
-					it,
+					it, grammars,
 					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
@@ -48,7 +48,7 @@ public static partial class ThatEnumerable
 		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(
-					it,
+					it, grammars,
 					q => $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
@@ -71,7 +71,7 @@ public static partial class ThatEnumerable
 		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
-					it,
+					it, grammars,
 					q => $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
 					predicate,
 					quantifier)),
@@ -92,7 +92,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsConstraint<TItem, TItem>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
+				new IsConstraint<TItem, TItem>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -110,7 +110,7 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsConstraint<string?, string?>(it, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -127,9 +127,10 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NotContainConstraint<TItem>(it,
-					() => $"does not contain {Formatter.Format(unexpected)}",
-					a => options.AreConsideredEqual(a, unexpected))),
+				new ContainConstraint<TItem>(it, grammars,
+					_ => $"does not contain {Formatter.Format(unexpected)}",
+					a => options.AreConsideredEqual(a, unexpected),
+					Quantifier.Never())),
 			source,
 			options);
 	}
@@ -145,9 +146,10 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NotContainConstraint<string?>(it,
-					() => $"does not contain {Formatter.Format(unexpected)}{options}",
-					a => options.AreConsideredEqual(a, unexpected))),
+				new ContainConstraint<string?>(it, grammars,
+					_ => $"does not contain {Formatter.Format(unexpected)}{options}",
+					a => options.AreConsideredEqual(a, unexpected),
+					Quantifier.Never())),
 			source,
 			options);
 	}
@@ -163,90 +165,86 @@ public static partial class ThatEnumerable
 			string doNotPopulateThisValue = "")
 		=> new(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NotContainConstraint<TItem>(it,
-					() => $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
-					predicate)),
+				new ContainConstraint<TItem>(it, grammars,
+					_ => $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+					predicate,
+					Quantifier.Never())),
 			source);
 
-	private readonly struct ContainConstraint<TItem>(
+	private class ContainConstraint<TItem>(
 		string it,
+		ExpectationGrammars grammars,
 		Func<Quantifier, string> expectationText,
 		Func<TItem, bool> predicate,
 		Quantifier quantifier)
-		: IContextConstraint<IEnumerable<TItem>?>
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
+			IContextConstraint<IEnumerable<TItem>?>
 	{
+		private int _count;
+		private IEnumerable<TItem>? _materializedEnumerable;
+		private bool _isFinished;
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			IEnumerable<TItem> materializedEnumerable =
+			_materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			int count = 0;
-			foreach (TItem item in materializedEnumerable)
+			_count = 0;
+			foreach (TItem item in _materializedEnumerable)
 			{
 				if (predicate(item))
 				{
-					count++;
-					bool? check = quantifier.Check(count, false);
-					if (check == false)
+					_count++;
+					bool? check = quantifier.Check(_count, false);
+					switch (check)
 					{
-						return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-							$"{it} contained it at least {count} times in {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
-					}
-
-					if (check == true)
-					{
-						return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
-							ToString());
+						case false:
+							Outcome = Outcome.Failure;
+							return this;
+						case true:
+							Outcome = Outcome.Success;
+							return this;
 					}
 				}
 			}
 
-			if (quantifier.Check(count, true) == true)
+			if (quantifier.Check(_count, true) == true)
 			{
-				return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
-					ToString());
+				Outcome = Outcome.Success;
+				return this;
 			}
 
-			return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(),
-				$"{it} contained it {count} times in {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)}");
+			_isFinished = true;
+			Outcome = Outcome.Failure;
+			return this;
 		}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectationText.Invoke(quantifier));
 
-		public override string ToString() => expectationText(quantifier);
-	}
-
-	private readonly struct NotContainConstraint<TItem>(
-		string it,
-		Func<string> expectationText,
-		Func<TItem, bool> predicate)
-		: IContextConstraint<IEnumerable<TItem>?>
-	{
-		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is null)
+			if (_isFinished)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				stringBuilder.Append(It).Append(" contained it ").Append(_count).Append(" times in ");
+				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 			}
-
-			IEnumerable<TItem> materializedEnumerable =
-				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			foreach (TItem item in materializedEnumerable)
+			else
 			{
-				if (predicate(item))
-				{
-					return new ConstraintResult.Failure(ToString(),
-						$"{it} did");
-				}
+				stringBuilder.Append(It).Append(" contained it at least ").Append(_count).Append(" times in ");
+				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 			}
-
-			return new ConstraintResult.Success<IEnumerable<TItem>>(materializedEnumerable,
-				ToString());
 		}
 
-		public override string ToString()
-			=> expectationText();
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectationText.Invoke(quantifier));
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" did");
 	}
 }

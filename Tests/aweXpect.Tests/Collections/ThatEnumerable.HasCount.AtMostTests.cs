@@ -26,7 +26,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             has at most 6 items,
-					             but could not verify, because it was cancelled early
+					             but could not verify, because it was already cancelled
 					             """);
 			}
 

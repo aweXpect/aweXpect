@@ -24,7 +24,7 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new OnlyHasUniqueItemsConstraint<TItem, TItem>(it, options)),
+				=> new AreAllUniqueConstraint<TItem, TItem>(it, grammars, options)),
 			source, options
 		);
 	}
@@ -38,7 +38,7 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new OnlyHasUniqueItemsConstraint<string, string>(it, options)),
+				=> new AreAllUniqueConstraint<string, string>(it, grammars, options)),
 			source, options
 		);
 	}
@@ -57,7 +57,8 @@ public static partial class ThatEnumerable
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new OnlyHasUniqueItemsWithPredicateConstraint<TItem, TMember, TMember>(it, memberAccessor,
+				=> new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, grammars,
+					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
@@ -77,74 +78,97 @@ public static partial class ThatEnumerable
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new OnlyHasUniqueItemsWithPredicateConstraint<TItem, string, string>(it, memberAccessor,
+				=> new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, grammars,
+					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
 		);
 	}
 
-	private readonly struct OnlyHasUniqueItemsConstraint<TItem, TMatch>(string it, IOptionsEquality<TMatch> options)
-		: IContextConstraint<IEnumerable<TItem>?>
+	private class AreAllUniqueConstraint<TItem, TMatch>(
+		string it,
+		ExpectationGrammars grammars,
+		IOptionsEquality<TMatch> options)
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
+			IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private readonly List<TItem> _duplicates = [];
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
-			List<TItem> duplicates = new();
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
 			{
 				if (checkedItems.Any(compareWith =>
 					    o.AreConsideredEqual(item, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(item, x))))
+					    _duplicates.All(x => !o.AreConsideredEqual(item, x))))
 				{
-					duplicates.Add(item);
+					_duplicates.Add(item);
 				}
 
 				checkedItems.Add(item);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			return this;
 		}
 
-		public override string ToString() => $"only has unique items{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique items");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate items");
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 
-	private readonly struct OnlyHasUniqueItemsWithPredicateConstraint<TItem, TMember, TMatch>(
+	private class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
 		string it,
+		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		: IContextConstraint<IEnumerable<TItem>?>
+		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
+			IContextConstraint<IEnumerable<TItem>?>
 		where TMember : TMatch
 	{
+		private readonly List<TMember> _duplicates = [];
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
+			Actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<IEnumerable<TItem>?>(actual, ToString(), $"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
 			IEnumerable<TItem> materialized = context
 				.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			List<TMember> checkedItems = new();
-			List<TMember> duplicates = new();
 
 			IOptionsEquality<TMatch> o = options;
 			foreach (TItem item in materialized)
@@ -152,24 +176,34 @@ public static partial class ThatEnumerable
 				TMember itemMember = memberAccessor(item);
 				if (checkedItems.Any(compareWith =>
 					    o.AreConsideredEqual(itemMember, compareWith) &&
-					    duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
+					    _duplicates.All(x => !o.AreConsideredEqual(itemMember, x))))
 				{
-					duplicates.Add(itemMember);
+					_duplicates.Add(itemMember);
 				}
 
 				checkedItems.Add(itemMember);
 			}
 
-			if (duplicates.Any())
-			{
-				string failure = CollectionHelpers.CreateDuplicateFailureMessage(it, duplicates);
-				return new ConstraintResult.Failure<IEnumerable<TItem>>(actual, ToString(), failure);
-			}
-
-			return new ConstraintResult.Success<IEnumerable<TItem>>(actual,
-				ToString());
+			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			return this;
 		}
 
-		public override string ToString() => $"only has unique items for {memberAccessorExpression}{options}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("only has unique items for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has duplicate items for ").Append(memberAccessorExpression);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("all were unique");
 	}
 }
