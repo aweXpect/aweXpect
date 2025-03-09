@@ -8,7 +8,6 @@ namespace aweXpect.Core.Constraints;
 /// <summary>
 ///     Extensions methods on <see cref="ConstraintResult" />
 /// </summary>
-//TODO: Check which extensions are still necessary!
 public static class ConstraintResultExtensions
 {
 	/// <summary>
@@ -18,28 +17,6 @@ public static class ConstraintResultExtensions
 	{
 		constraintResult.Negate();
 		return constraintResult;
-	}
-
-	/// <summary>
-	///     Creates a new <see cref="ConstraintResult" /> from the <paramref name="inner" /> constraint result
-	///     with the <paramref name="expectationSuffix" />.
-	/// </summary>
-	public static ConstraintResult SuffixExpectation(this ConstraintResult inner, string expectationSuffix)
-	{
-		if (string.IsNullOrEmpty(expectationSuffix))
-		{
-			return inner;
-		}
-
-		return new ConstraintResultWrapper(inner, expectationSuffix);
-	}
-
-	/// <summary>
-	///     Creates a new <see cref="ConstraintResult" /> from the <paramref name="inner" /> constraint with empty expectation text.
-	/// </summary>
-	public static ConstraintResult WithoutExpectation(this ConstraintResult inner)
-	{
-		return new ConstraintResultExpectationWrapper(inner, includeInnerExpectation: false);
 	}
 
 	/// <summary>
@@ -54,7 +31,7 @@ public static class ConstraintResultExtensions
 	///     <paramref name="prefix" />
 	/// </summary>
 	public static ConstraintResult PrependExpectationText(this ConstraintResult inner, Action<StringBuilder>? prefix)
-		=> new ConstraintResultExpectationWrapper(inner, prefix, null);
+		=> new ConstraintResultExpectationWrapper(inner, prefix);
 
 	/// <summary>
 	///     Creates a new <see cref="ConstraintResult" /> where the expectation is appended with the <paramref name="suffix" />
@@ -80,39 +57,6 @@ public static class ConstraintResultExtensions
 		StringBuilder sb = new();
 		result.AppendResult(sb);
 		return sb.ToString();
-	}
-
-
-	private sealed class ConstraintResultWrapper : ConstraintResult
-	{
-		private readonly string? _expectationSuffix;
-		private readonly ConstraintResult _inner;
-
-		public ConstraintResultWrapper(ConstraintResult inner,
-			string? expectationSuffix = null)
-			: base(inner.FurtherProcessingStrategy)
-		{
-			Outcome = inner.Outcome;
-			_inner = inner;
-			_expectationSuffix = expectationSuffix;
-		}
-
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			_inner.AppendExpectation(stringBuilder, indentation);
-			if (_expectationSuffix != null)
-			{
-				stringBuilder.Append(_expectationSuffix);
-			}
-		}
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> _inner.AppendResult(stringBuilder, indentation);
-
-		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> _inner.TryGetValue(out value);
-
-		public override ConstraintResult Negate() => _inner.Negate();
 	}
 
 	private sealed class ConstraintResultValueWrapper<T> : ConstraintResult
@@ -187,10 +131,10 @@ public static class ConstraintResultExtensions
 
 	private sealed class ConstraintResultExpectationWrapper : ConstraintResult
 	{
+		private readonly bool _includeInnerExpectation;
 		private readonly ConstraintResult _inner;
 		private readonly Action<StringBuilder>? _prefix;
 		private readonly Action<StringBuilder>? _suffix;
-		private readonly bool _includeInnerExpectation;
 
 		public ConstraintResultExpectationWrapper(ConstraintResult inner,
 			Action<StringBuilder>? prefix = null,
@@ -216,6 +160,7 @@ public static class ConstraintResultExtensions
 			{
 				_inner.AppendExpectation(stringBuilder, indentation);
 			}
+
 			_suffix?.Invoke(stringBuilder);
 		}
 

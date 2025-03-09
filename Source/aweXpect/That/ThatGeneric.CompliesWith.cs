@@ -21,8 +21,8 @@ public static partial class ThatGeneric
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammars) =>
-					new CompliesWithConstraint<T>(it, grammars, expectations, options)),
+				.AddConstraint((_, grammars) =>
+					new CompliesWithConstraint<T>(grammars, expectations, options)),
 			source,
 			options);
 	}
@@ -35,8 +35,8 @@ public static partial class ThatGeneric
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammars) =>
-					new CompliesWithConstraint<T>(it, grammars, expectations, options).Invert()),
+				.AddConstraint((_, grammars) =>
+					new CompliesWithConstraint<T>(grammars, expectations, options).Invert()),
 			source,
 			options);
 	}
@@ -45,16 +45,14 @@ public static partial class ThatGeneric
 		: ConstraintResult,
 			IAsyncContextConstraint<T>
 	{
-		private readonly string _it;
 		private readonly ManualExpectationBuilder<T> _itemExpectationBuilder;
 		private readonly RepeatedCheckOptions _options;
 		private bool _isNegated;
 
-		public CompliesWithConstraint(string it, ExpectationGrammars grammars,
+		public CompliesWithConstraint(ExpectationGrammars grammars,
 			Action<IThat<T>> expectations, RepeatedCheckOptions options)
 			: base(grammars)
 		{
-			_it = it;
 			_options = options;
 			_itemExpectationBuilder = new ManualExpectationBuilder<T>(grammars);
 			expectations.Invoke(new ThatSubject<T>(_itemExpectationBuilder));
@@ -68,7 +66,7 @@ public static partial class ThatGeneric
 			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 			if (isMatch.Outcome == Outcome.Success != _isNegated)
 			{
-				return NegateIfNegated(isMatch).SuffixExpectation(_options.ToString());
+				return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 			}
 
 			if (_options.Timeout > TimeSpan.Zero)
@@ -89,12 +87,12 @@ public static partial class ThatGeneric
 					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
 					if (isMatch.Outcome == Outcome.Success != _isNegated)
 					{
-						return NegateIfNegated(isMatch).SuffixExpectation(_options.ToString());
+						return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 					}
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return NegateIfNegated(isMatch).SuffixExpectation(_options.ToString());
+			return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 		}
 
 		private ConstraintResult NegateIfNegated(ConstraintResult constraintResult)
