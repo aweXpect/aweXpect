@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -13,10 +14,7 @@ public static partial class ThatStream
 	public static AndOrResult<Stream?, IThat<Stream?>> IsWriteOnly(
 		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint(
-					"is write-only",
-					actual => actual is { CanWrite: true, CanRead: false },
-					actual => actual == null ? $"{it} was <null>" : $"{it} was not")),
+				new IsWriteOnlyConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -25,9 +23,30 @@ public static partial class ThatStream
 	public static AndOrResult<Stream?, IThat<Stream?>> IsNotWriteOnly(
 		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint(
-					"is not write-only",
-					actual => actual != null && !(actual is { CanWrite: true, CanRead: false }),
-					actual => actual == null ? $"{it} was <null>" : $"{it} was")),
+				new IsWriteOnlyConstraint(it, grammars).Invert()),
 			source);
+
+	private class IsWriteOnlyConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
+			IValueConstraint<Stream?>
+	{
+		public ConstraintResult IsMetBy(Stream? actual)
+		{
+			Actual = actual;
+			Outcome = actual is { CanWrite: true, CanRead: false, } ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is write-only");
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was not");
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not write-only");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(It).Append(" was");
+	}
 }

@@ -19,7 +19,7 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOneOfConstraint(it, expected, options)),
+				=> new IsOneOfConstraint(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -34,69 +34,54 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsNotOneOfConstraint(it, unexpected, options)),
+				=> new IsOneOfConstraint(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct IsOneOfConstraint(
+	private class IsOneOfConstraint(
 		string it,
+		ExpectationGrammars grammars,
 		string?[] expectedValues,
 		StringEqualityOptions options)
-		: IValueConstraint<string?>
+		: ConstraintResult.WithNotNullValue<string?>(it, grammars),
+			IValueConstraint<string?>
 	{
-		/// <inheritdoc />
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
-			}
-
+			Actual = actual;
 			StringEqualityOptions stringEqualityOptions = options;
-			if (expectedValues.Any(expectedValue => stringEqualityOptions.AreConsideredEqual(actual, expectedValue)))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			Outcome = expectedValues.Any(expectedValue => stringEqualityOptions
+				.AreConsideredEqual(actual, expectedValue))
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"is one of {Formatter.Format(expectedValues)}{options}";
-	}
-
-	private readonly struct IsNotOneOfConstraint(
-		string it,
-		string?[] unexpectedValues,
-		StringEqualityOptions options)
-		: IValueConstraint<string?>
-	{
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
-			}
-
-			StringEqualityOptions stringEqualityOptions = options;
-			if (unexpectedValues.Any(unexpectedValue
-				    => stringEqualityOptions.AreConsideredEqual(actual, unexpectedValue)))
-			{
-				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} was {Formatter.Format(actual)}");
-			}
-
-			return new ConstraintResult.Success<string?>(actual, ToString());
+			stringBuilder.Append("is one of ");
+			Formatter.Format(stringBuilder, expectedValues);
+			stringBuilder.Append(options);
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"is not one of {Formatter.Format(unexpectedValues)}{options}";
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not one of ");
+			Formatter.Format(stringBuilder, expectedValues);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }

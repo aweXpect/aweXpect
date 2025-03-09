@@ -13,7 +13,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsNullOrEmpty(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsNullOrEmptyConstraint(it)),
+				new IsNullOrEmptyConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -22,40 +22,36 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotNullOrEmpty(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsNotNullOrEmptyConstraint(it)),
+				new IsNullOrEmptyConstraint(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsNullOrEmptyConstraint(string it) : IValueConstraint<string?>
+	private class IsNullOrEmptyConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<string?>(grammars),
+			IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (string.IsNullOrEmpty(actual))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			Actual = actual;
+			Outcome = string.IsNullOrEmpty(actual) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> "is null or empty";
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is null or empty");
 
-	private readonly struct IsNotNullOrEmptyConstraint(string it) : IValueConstraint<string?>
-	{
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (!string.IsNullOrEmpty(actual))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
 		}
 
-		public override string ToString()
-			=> "is not null or empty";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not null or empty");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }

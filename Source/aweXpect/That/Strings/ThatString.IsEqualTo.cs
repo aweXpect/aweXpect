@@ -44,7 +44,7 @@ public static partial class ThatString
 		ExpectationGrammars grammars,
 		string? expected,
 		StringEqualityOptions options)
-		: ConstraintResult.WithValue<string?>(grammars),
+		: ConstraintResult.WithEqualToValue<string?>(it, grammars, expected is null),
 			IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
@@ -64,14 +64,14 @@ public static partial class ThatString
 			=> stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected)
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected)
 				.Indent(indentation, false));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExpectation(expected, Grammars | ExpectationGrammars.Active));
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected)
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected)
 				.Indent(indentation, false));
 	}
 }

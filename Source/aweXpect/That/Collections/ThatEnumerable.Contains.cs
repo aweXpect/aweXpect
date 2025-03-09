@@ -246,5 +246,11 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(It).Append(" did");
+
+		public override ConstraintResult Negate()
+		{
+			quantifier.Negate();
+			return base.Negate();
+		}
 	}
 }

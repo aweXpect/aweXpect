@@ -14,7 +14,7 @@ public static partial class ThatString
 	public static AndOrResult<string?, IThat<string?>> IsNullOrWhiteSpace(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsNullOrWhiteSpaceConstraint(it)),
+				new IsNullOrWhiteSpaceConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -24,40 +24,36 @@ public static partial class ThatString
 	public static AndOrResult<string, IThat<string?>> IsNotNullOrWhiteSpace(
 		this IThat<string?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsNotNullOrWhiteSpaceConstraint(it)),
+				new IsNullOrWhiteSpaceConstraint(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsNullOrWhiteSpaceConstraint(string it) : IValueConstraint<string?>
+	private class IsNullOrWhiteSpaceConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<string?>(grammars),
+			IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (string.IsNullOrWhiteSpace(actual))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			Actual = actual;
+			Outcome = string.IsNullOrWhiteSpace(actual) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> "is null or white-space";
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is null or white-space");
 
-	private readonly struct IsNotNullOrWhiteSpaceConstraint(string it) : IValueConstraint<string?>
-	{
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (!string.IsNullOrWhiteSpace(actual))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
 		}
 
-		public override string ToString()
-			=> "is not null or white-space";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not null or white-space");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }

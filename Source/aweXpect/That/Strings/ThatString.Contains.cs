@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -20,7 +21,7 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsConstraint(it, expected, quantifier, options)),
+				new ContainsConstraint(it, grammars, expected, quantifier, options)),
 			source,
 			quantifier,
 			options);
@@ -33,40 +34,52 @@ public static partial class ThatString
 		this IThat<string?> source,
 		string unexpected)
 	{
-		Quantifier quantifier = new();
-		quantifier.Exactly(0);
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsConstraint(it, unexpected, quantifier, options)),
+				new ContainsConstraint(it, grammars, unexpected, Quantifier.Never(), options)),
 			source,
 			options);
 	}
 
-	private readonly struct ContainsConstraint(
+	private class ContainsConstraint(
 		string it,
+		ExpectationGrammars grammars,
 		string expected,
 		Quantifier quantifier,
 		StringEqualityOptions options)
-		: IValueConstraint<string?>
+		: ConstraintResult(grammars),
+			IValueConstraint<string?>
 	{
+		private string? _actual;
+		private int _actualCount;
+
 		/// <inheritdoc />
 		public ConstraintResult IsMetBy(string? actual)
 		{
+			_actual = actual;
 			if (actual is null)
 			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			int actualCount = CountOccurrences(actual, expected, options);
-			if (quantifier.Check(actualCount, true) == true)
+			_actualCount = CountOccurrences(actual, expected, options);
+			Outcome = quantifier.Check(_actualCount, true) == true ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
 			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
+				value = typedValue;
+				return true;
 			}
 
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				$"{it} contained it {actualCount} times in {Formatter.Format(actual)}");
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(string));
 		}
 
 		private static int CountOccurrences(string actual, string expected,
@@ -97,16 +110,47 @@ public static partial class ThatString
 			return count;
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			string quantifierString = quantifier.ToString();
 			if (quantifierString == "never")
 			{
-				return $"does not contain {Formatter.Format(expected)}{options}";
+				stringBuilder.Append("does not contain ");
+				Formatter.Format(stringBuilder, expected);
+			}
+			else
+			{
+				stringBuilder.Append("contains ");
+				Formatter.Format(stringBuilder, expected);
+				stringBuilder.Append(' ').Append(quantifier);
 			}
 
-			return $"contains {Formatter.Format(expected)} {quantifier}{options}";
+			stringBuilder.Append(options);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual is null)
+			{
+				stringBuilder.Append(it).Append(" was <null>");
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
+				Formatter.Format(stringBuilder, _actual);
+			}
+		}
+
+		public override ConstraintResult Negate()
+		{
+			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
 		}
 	}
 }

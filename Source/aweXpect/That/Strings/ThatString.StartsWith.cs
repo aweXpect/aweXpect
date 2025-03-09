@@ -18,7 +18,7 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new StartsWithConstraint(it, expected, options)),
+				new StartsWithConstraint(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -33,85 +33,82 @@ public static partial class ThatString
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new DoesNotStartWithConstraint(it, unexpected, options)),
+				new StartsWithConstraint(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct StartsWithConstraint(
+	private class StartsWithConstraint(
 		string it,
+		ExpectationGrammars grammars,
 		string? expected,
 		StringEqualityOptions options)
-		: IValueConstraint<string?>
+		: ConstraintResult.WithNotNullValue<string?>(it, grammars),
+			IValueConstraint<string?>
 	{
-		/// <inheritdoc />
 		public ConstraintResult IsMetBy(string? actual)
+		{
+			Actual = actual;
+			if (expected is null)
+			{
+				Outcome = IsNegated ? Outcome.Success : Outcome.Failure;
+				return this;
+			}
+
+			Outcome = expected.Length <= actual?.Length &&
+			          options.AreConsideredEqual(actual[..expected.Length], expected)
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("starts with ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			if (expected is null)
 			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{Formatter.Format(actual)} cannot be validated against <null>");
+				Formatter.Format(stringBuilder, Actual);
+				stringBuilder.Append(" cannot be validated against <null>");
 			}
-
-			if (actual is null)
+			else if (expected.Length > Actual?.Length)
 			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
+				stringBuilder.Append(It).Append(" was ");
+				Formatter.Format(stringBuilder, Actual);
+				stringBuilder.Append(" and with length ").Append(Actual?.Length)
+					.Append(" is shorter than the expected length of ").Append(expected.Length);
 			}
-
-			if (expected.Length > actual.Length)
+			else
 			{
-				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} was {Formatter.Format(actual)} and with length {actual.Length} is shorter than the expected length of {expected.Length}");
+				stringBuilder.Append(It).Append(" was ");
+				Formatter.Format(stringBuilder, Actual);
 			}
-
-			if (options.AreConsideredEqual(actual[..expected.Length], expected))
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure<string?>(actual, ToString(),
-				$"{it} was {Formatter.Format(actual)}");
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"starts with {Formatter.Format(expected)}{options}";
-	}
-
-	private readonly struct DoesNotStartWithConstraint(
-		string it,
-		string? unexpected,
-		StringEqualityOptions options)
-		: IValueConstraint<string?>
-	{
-		/// <inheritdoc />
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (unexpected is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{Formatter.Format(actual)} cannot be validated against <null>");
-			}
-
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure<string?>(null, ToString(),
-					$"{it} was <null>");
-			}
-
-			if (unexpected.Length <= actual.Length &&
-			    options.AreConsideredEqual(actual[..unexpected.Length], unexpected))
-			{
-				return new ConstraintResult.Failure<string?>(actual, ToString(),
-					$"{it} was {Formatter.Format(actual)}");
-			}
-
-			return new ConstraintResult.Success<string?>(actual, ToString());
+			stringBuilder.Append("does not start with ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
 		}
 
-		/// <inheritdoc />
-		public override string ToString()
-			=> $"does not start with {Formatter.Format(unexpected)}{options}";
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (expected is null)
+			{
+				Formatter.Format(stringBuilder, Actual);
+				stringBuilder.Append(" cannot be validated against <null>");
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" was ");
+				Formatter.Format(stringBuilder, Actual);
+			}
+		}
 	}
 }

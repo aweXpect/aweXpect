@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -13,10 +15,7 @@ public static partial class ThatStream
 	public static AndOrResult<Stream?, IThat<Stream?>> IsReadable(
 		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint(
-					"is readable",
-					actual => actual?.CanRead == true,
-					actual => actual == null ? $"{it} was <null>" : $"{it} was not")),
+				new IsReadableConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -25,9 +24,38 @@ public static partial class ThatStream
 	public static AndOrResult<Stream?, IThat<Stream?>> IsNotReadable(
 		this IThat<Stream?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint(
-					"is not readable",
-					actual => actual?.CanRead == false,
-					actual => actual == null ? $"{it} was <null>" : $"{it} was")),
+				new IsReadableConstraint(it, grammars).Invert()),
 			source);
+
+	private class IsReadableConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
+			IValueConstraint<Stream?>
+	{
+		public ConstraintResult IsMetBy(Stream? actual)
+		{
+			Actual = actual;
+			Outcome = actual?.CanRead == true ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is readable");
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was not");
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not readable");
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was");
+		}
+	}
 }
