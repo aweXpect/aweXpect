@@ -274,7 +274,8 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "outer failure")));
+			new DummyValueConstraint<int>(v
+				=> new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "outer failure")));
 		node.AddAsyncMapping(MemberAccessor<int, Task<int>>.FromFunc(s => Task.FromResult(s), " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
 			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "inner failure")));
@@ -295,7 +296,8 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "same failure")));
+			new DummyValueConstraint<int>(
+				v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "same failure")));
 		node.AddAsyncMapping(MemberAccessor<int, Task<int>>.FromFunc(s => Task.FromResult(s), " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
 			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "same failure")));
@@ -315,7 +317,8 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "outer failure")));
+			new DummyValueConstraint<int>(v
+				=> new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "outer failure")));
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
 			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "inner failure")));
@@ -336,7 +339,8 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "same failure")));
+			new DummyValueConstraint<int>(
+				v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "same failure")));
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
 			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "same failure")));
@@ -372,7 +376,8 @@ public class ExpectationNodeTests
 		FurtherProcessingStrategy furtherProcessingStrategy, string expectedFailureText)
 	{
 		DummyConstraint constraint1 = new("",
-			() => new DummyConstraintResult(Outcome.Failure, failureText: "failure1", furtherProcessingStrategy: furtherProcessingStrategy));
+			() => new DummyConstraintResult(Outcome.Failure, failureText: "failure1",
+				furtherProcessingStrategy: furtherProcessingStrategy));
 		DummyConstraint constraint2 =
 			new("", () => new DummyConstraintResult(Outcome.Failure, failureText: "failure2"));
 		ExpectationNode node = new();
@@ -393,7 +398,8 @@ public class ExpectationNodeTests
 		FurtherProcessingStrategy furtherProcessingStrategy, string expectedFailureText)
 	{
 		DummyConstraint constraint1 = new("",
-			() => new DummyConstraintResult(Outcome.Failure, failureText: "failure1", furtherProcessingStrategy: furtherProcessingStrategy));
+			() => new DummyConstraintResult(Outcome.Failure, failureText: "failure1",
+				furtherProcessingStrategy: furtherProcessingStrategy));
 		DummyConstraint constraint2 =
 			new("", () => new DummyConstraintResult(Outcome.Failure, failureText: "failure2"));
 		ExpectationNode node = new();
@@ -501,5 +507,9 @@ public class ExpectationNodeTests
 		await That(value).IsNull();
 	}
 
-	private class UnsupportedConstraint : IConstraint;
+	private sealed class UnsupportedConstraint : IConstraint
+	{
+		/// <inheritdoc />
+		public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null) { }
+	}
 }

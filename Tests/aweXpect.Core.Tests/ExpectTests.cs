@@ -116,7 +116,7 @@ public class ExpectTests
 		await That(Act).DoesNotThrow();
 	}
 #endif
-	private class MyExpectation(Expectation.Result result, params ResultContext[] contexts) : Expectation
+	private sealed class MyExpectation(Expectation.Result result, params ResultContext[] contexts) : Expectation
 	{
 		internal override Task<Result> GetResult(int index) => Task.FromResult(result);
 		internal override IEnumerable<ResultContext> GetContexts(int index) => contexts;

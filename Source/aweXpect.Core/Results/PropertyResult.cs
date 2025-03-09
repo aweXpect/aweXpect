@@ -397,7 +397,7 @@ public static class PropertyResult
 				source);
 	}
 
-	private class PropertyConstraint<TItem, TProperty>(
+	private sealed class PropertyConstraint<TItem, TProperty>(
 		string it,
 		ExpectationGrammars grammars,
 		TProperty? expected,

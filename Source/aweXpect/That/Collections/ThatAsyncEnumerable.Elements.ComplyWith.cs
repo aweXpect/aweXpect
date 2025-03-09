@@ -32,7 +32,7 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private class ComplyWithConstraint<TItem>
+	private sealed class ComplyWithConstraint<TItem>
 		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{

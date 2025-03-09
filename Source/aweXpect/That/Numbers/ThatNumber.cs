@@ -9,7 +9,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNumber
 {
-	private class GenericConstraint<T>(
+	private sealed class GenericConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T? expected,
@@ -40,7 +40,7 @@ public static partial class ThatNumber
 			=> throw new NotImplementedException();
 	}
 
-	private class NullableGenericConstraint<T>(
+	private sealed class NullableGenericConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T? expected,
@@ -71,7 +71,7 @@ public static partial class ThatNumber
 			=> throw new NotImplementedException();
 	}
 
-	private class GenericArrayConstraint<T>(
+	private sealed class GenericArrayConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T[] expected,
@@ -102,7 +102,7 @@ public static partial class ThatNumber
 			=> throw new NotImplementedException();
 	}
 
-	private class GenericArrayConstraintWithNullableValues<T>(
+	private sealed class GenericArrayConstraintWithNullableValues<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T?[] expected,
@@ -133,7 +133,7 @@ public static partial class ThatNumber
 			=> throw new NotImplementedException();
 	}
 
-	private class NullableGenericArrayConstraint<T>(
+	private sealed class NullableGenericArrayConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T[] expected,
@@ -164,7 +164,7 @@ public static partial class ThatNumber
 			=> throw new NotImplementedException();
 	}
 
-	private class NullableGenericArrayConstraintWithNullableValues<T>(
+	private sealed class NullableGenericArrayConstraintWithNullableValues<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T?[] expected,

@@ -19,7 +19,7 @@ public class ObjectEqualityOptionsTests
 		await That(sut.AreConsideredEqual(a, b)).IsEqualTo(isEqual);
 	}
 
-	private class EqualsObject(bool isEqual)
+	private sealed class EqualsObject(bool isEqual)
 	{
 		public override bool Equals(object? obj) => isEqual;
 

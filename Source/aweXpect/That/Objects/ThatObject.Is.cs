@@ -48,7 +48,7 @@ public static partial class ThatObject
 				=> new IsOfTypeConstraint(it, grammars, type).Invert()),
 			source);
 
-	private class IsOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
+	private sealed class IsOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<object?>(grammars),
 			IValueConstraint<object?>
 	{
@@ -84,7 +84,7 @@ public static partial class ThatObject
 		}
 	}
 
-	private class IsOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)
+	private sealed class IsOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)
 		: ConstraintResult.WithValue<object>(grammars),
 			IValueConstraint<object?>
 	{

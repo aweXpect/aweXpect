@@ -125,7 +125,7 @@ public static partial class ThatSignaler
 			options);
 	}
 
-	private class SignaledConstraint(string it, ExpectationGrammars grammars, int count, SignalerOptions options)
+	private sealed class SignaledConstraint(string it, ExpectationGrammars grammars, int count, SignalerOptions options)
 		: ConstraintResult.WithNotNullValue<SignalerResult>(it, grammars), IAsyncConstraint<Signaler>
 	{
 		public async Task<ConstraintResult> IsMetBy(Signaler actual, CancellationToken cancellationToken)
@@ -215,7 +215,7 @@ public static partial class ThatSignaler
 		}
 	}
 
-	private class SignaledConstraint<TParameter>(
+	private sealed class SignaledConstraint<TParameter>(
 		string it,
 		ExpectationGrammars grammars,
 		int count,

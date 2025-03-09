@@ -23,7 +23,7 @@ public static partial class ThatEnumerable
 			f => f.FirstOrDefault()
 		);
 
-	private class HaveSingleConstraint<TItem>(string it, ExpectationGrammars grammars)
+	private sealed class HaveSingleConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<TItem?>(it, grammars),
 			IContextConstraint<IEnumerable<TItem>?>
 	{

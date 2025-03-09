@@ -89,7 +89,7 @@ public static partial class ThatAsyncEnumerable
 		);
 	}
 
-	private class AreAllUniqueConstraint<TItem, TMatch>(
+	private sealed class AreAllUniqueConstraint<TItem, TMatch>(
 		string it,
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
@@ -152,7 +152,7 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
+	private sealed class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
 		string it,
 		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,

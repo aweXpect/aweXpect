@@ -33,7 +33,7 @@ public static partial class ThatObject
 						.Invert()),
 			source);
 
-	private class IsSameAsConstraint<T>(
+	private sealed class IsSameAsConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		object? expected,

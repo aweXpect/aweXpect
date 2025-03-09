@@ -185,7 +185,7 @@ public static partial class ThatAsyncEnumerable
 			options);
 	}
 
-	private class StartsWithConstraint<TItem, TMatch>
+	private sealed class StartsWithConstraint<TItem, TMatch>
 		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch

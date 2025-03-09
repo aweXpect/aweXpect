@@ -26,7 +26,7 @@ public abstract partial class ThatDelegate
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
 				new DoesNotThrowConstraint(it, grammars)));
 
-		private class DoesNotThrowConstraint(string it, ExpectationGrammars grammars)
+		private sealed class DoesNotThrowConstraint(string it, ExpectationGrammars grammars)
 			: ConstraintResult(grammars),
 				IValueConstraint<DelegateValue<T>>
 		{

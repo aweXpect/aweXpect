@@ -19,7 +19,7 @@ public static partial class ThatNullableDateTimeOffset
 		       difference >= tolerance.Value.Negate();
 	}
 
-	private class ConditionConstraint(
+	private sealed class ConditionConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		DateTimeOffset? expected,

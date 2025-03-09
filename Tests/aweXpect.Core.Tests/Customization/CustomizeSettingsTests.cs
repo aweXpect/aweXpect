@@ -174,7 +174,7 @@ public sealed class CustomizeSettingsTests
 		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
 	}
 
-	private class ChangingClass
+	private sealed class ChangingClass
 	{
 		private readonly Stopwatch _stopwatch = new();
 

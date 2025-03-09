@@ -26,7 +26,7 @@ public static partial class ThatGuid
 				new IsEqualToConstraint(it, grammars, unexpected).Invert()),
 			source);
 
-	private class IsEqualToConstraint(string it, ExpectationGrammars grammars, Guid? expected)
+	private sealed class IsEqualToConstraint(string it, ExpectationGrammars grammars, Guid? expected)
 		: ConstraintResult.WithEqualToValue<Guid>(it, grammars, expected is null),
 			IValueConstraint<Guid>
 	{

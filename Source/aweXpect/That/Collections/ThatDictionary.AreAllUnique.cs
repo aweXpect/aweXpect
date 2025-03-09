@@ -104,7 +104,7 @@ public static partial class ThatDictionary
 		);
 	}
 
-	private class AllIsUniqueConstraint<TKey, TValue, TMatch>(
+	private sealed class AllIsUniqueConstraint<TKey, TValue, TMatch>(
 		string it,
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
@@ -161,7 +161,7 @@ public static partial class ThatDictionary
 			=> stringBuilder.Append("all were unique");
 	}
 
-	private class AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
+	private sealed class AllIsUniqueWithPredicateConstraint<TKey, TValue, TMember, TMatch>(
 		string it,
 		ExpectationGrammars grammars,
 		Func<TValue, TMember> memberAccessor,

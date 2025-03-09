@@ -1,4 +1,5 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System.Text;
+using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Results;
@@ -73,8 +74,6 @@ public class EvaluationContextTests
 	{
 		public IEvaluationContext? Context { get; private set; }
 
-		#region IContextConstraint<bool> Members
-
 		/// <inheritdoc />
 		public ConstraintResult IsMetBy(bool actual, IEvaluationContext context)
 		{
@@ -82,6 +81,7 @@ public class EvaluationContextTests
 			return new DummyConstraintResult<bool>(Outcome.Success, actual, "");
 		}
 
-		#endregion
+		/// <inheritdoc />
+		public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null) { }
 	}
 }

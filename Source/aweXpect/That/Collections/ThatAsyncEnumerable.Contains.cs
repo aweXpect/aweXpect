@@ -177,7 +177,7 @@ public static partial class ThatAsyncEnumerable
 					Quantifier.Never())),
 			source);
 
-	private class ContainConstraint<TItem>(
+	private sealed class ContainConstraint<TItem>(
 		string it,
 		ExpectationGrammars grammars,
 		Func<Quantifier, string> expectationText,

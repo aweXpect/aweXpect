@@ -26,7 +26,7 @@ public static partial class ThatTimeSpan
 				new IsNegativeConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsNegativeConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsNegativeConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<TimeSpan>(it, grammars),
 			IValueConstraint<TimeSpan>
 	{

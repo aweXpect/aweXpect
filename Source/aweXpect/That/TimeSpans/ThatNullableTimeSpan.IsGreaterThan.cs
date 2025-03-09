@@ -40,7 +40,7 @@ public static partial class ThatNullableTimeSpan
 			tolerance);
 	}
 
-	private class IsGreaterThanConstraint(
+	private sealed class IsGreaterThanConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		TimeSpan? expected,

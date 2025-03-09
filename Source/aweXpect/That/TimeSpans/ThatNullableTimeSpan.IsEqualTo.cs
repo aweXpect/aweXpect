@@ -39,7 +39,7 @@ public static partial class ThatNullableTimeSpan
 			tolerance);
 	}
 
-	private class IsEqualToConstraint(
+	private sealed class IsEqualToConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		TimeSpan? expected,

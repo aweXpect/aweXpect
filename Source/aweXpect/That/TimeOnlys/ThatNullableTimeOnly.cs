@@ -12,7 +12,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNullableTimeOnly
 {
-	private class ConditionConstraintWithTolerance(
+	private sealed class ConditionConstraintWithTolerance(
 		string it,
 		ExpectationGrammars grammars,
 		TimeOnly? expected,

@@ -31,7 +31,7 @@ public static partial class ThatString
 				new IsLowerCasedConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsLowerCasedConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsLowerCasedConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<string?>(it, grammars),
 			IValueConstraint<string?>
 	{

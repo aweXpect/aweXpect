@@ -46,7 +46,7 @@ public static partial class ThatDelegate
 		=> new(source.ThatIs().ExpectationBuilder
 			.AddConstraint((it, grammars) => new ExecutesWithinConstraint(it, grammars, duration).Invert()));
 
-	private class ExecutesWithinConstraint<T>(string it, ExpectationGrammars grammars, TimeSpan duration)
+	private sealed class ExecutesWithinConstraint<T>(string it, ExpectationGrammars grammars, TimeSpan duration)
 		: ConstraintResult(grammars),
 			IValueConstraint<DelegateValue<T>>
 	{
@@ -131,7 +131,7 @@ public static partial class ThatDelegate
 		}
 	}
 
-	private class ExecutesWithinConstraint(string it, ExpectationGrammars grammars, TimeSpan duration)
+	private sealed class ExecutesWithinConstraint(string it, ExpectationGrammars grammars, TimeSpan duration)
 		: ConstraintResult(grammars),
 			IValueConstraint<DelegateValue>
 	{

@@ -14,7 +14,7 @@ public static class MyConstraintExtensions
 				=> new MyConstraint(grammars, expectation, isSuccess, failureMessage)),
 			subject);
 
-	private class MyConstraint(
+	private sealed class MyConstraint(
 		ExpectationGrammars grammars,
 		string expectation,
 		Func<bool, bool> isSuccess,

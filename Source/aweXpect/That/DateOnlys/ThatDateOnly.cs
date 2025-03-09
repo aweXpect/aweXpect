@@ -12,7 +12,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatDateOnly
 {
-	private class ConditionConstraintWithTolerance(
+	private sealed class ConditionConstraintWithTolerance(
 		string it,
 		ExpectationGrammars grammars,
 		DateOnly? expected,

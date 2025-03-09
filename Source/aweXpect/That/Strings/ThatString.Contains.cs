@@ -42,7 +42,7 @@ public static partial class ThatString
 			options);
 	}
 
-	private class ContainsConstraint(
+	private sealed class ContainsConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		string expected,

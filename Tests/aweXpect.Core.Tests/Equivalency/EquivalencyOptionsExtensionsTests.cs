@@ -79,6 +79,6 @@ public sealed class EquivalencyOptionsExtensionsTests
 			});
 	}
 
-	private class MyClass;
+	private sealed class MyClass;
 }
 #endif

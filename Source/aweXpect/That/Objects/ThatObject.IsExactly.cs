@@ -46,7 +46,7 @@ public static partial class ThatObject
 				=> new IsExactlyOfTypeConstraint(it, grammars, type).Invert()),
 			source);
 
-	private class IsExactlyOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
+	private sealed class IsExactlyOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<object?>(grammars),
 			IValueConstraint<object?>
 	{
@@ -82,7 +82,7 @@ public static partial class ThatObject
 		}
 	}
 
-	private class IsExactlyOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)
+	private sealed class IsExactlyOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)
 		: ConstraintResult.WithValue<object>(grammars),
 			IValueConstraint<object?>
 	{

@@ -49,7 +49,7 @@ public class ExpectationResultTests
 		await That(receivedToken).IsEqualTo(token);
 	}
 
-	private class MyExpectationBuilder(string subject, Func<ConstraintResult>? resultBuilder = null)
+	private sealed class MyExpectationBuilder(string subject, Func<ConstraintResult>? resultBuilder = null)
 		: ExpectationBuilder(subject)
 	{
 		private readonly Func<ConstraintResult> _resultBuilder = resultBuilder ?? DefaultResultBuilder;

@@ -41,7 +41,7 @@ public static partial class ThatGeneric
 			options);
 	}
 
-	private class CompliesWithConstraint<T>
+	private sealed class CompliesWithConstraint<T>
 		: ConstraintResult,
 			IAsyncContextConstraint<T>
 	{

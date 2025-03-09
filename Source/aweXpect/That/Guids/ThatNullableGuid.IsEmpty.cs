@@ -24,7 +24,7 @@ public static partial class ThatNullableGuid
 				new IsEmptyConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsEmptyConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsEmptyConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Guid?>(it, grammars),
 			IValueConstraint<Guid?>
 	{

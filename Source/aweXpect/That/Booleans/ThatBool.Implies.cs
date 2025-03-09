@@ -16,7 +16,7 @@ public static partial class ThatBool
 				=> new ImpliesConstraint(it, grammars, consequent)),
 			source);
 
-	private class ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
+	private sealed class ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
 		: ConstraintResult.WithValue<bool>(grammars), 
 			IValueConstraint<bool>
 	{

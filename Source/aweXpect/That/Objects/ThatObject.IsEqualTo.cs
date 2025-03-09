@@ -115,7 +115,7 @@ public static partial class ThatObject
 			options);
 	}
 
-	private class IsEqualToConstraint<TSubject, TExpected>(
+	private sealed class IsEqualToConstraint<TSubject, TExpected>(
 		string it,
 		ExpectationGrammars grammars,
 		TExpected expected,
@@ -152,7 +152,7 @@ public static partial class ThatObject
 		}
 	}
 
-	private class IsEqualToConstraint<T>(
+	private sealed class IsEqualToConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T? expected,
@@ -190,7 +190,7 @@ public static partial class ThatObject
 		}
 	}
 
-	private class IsNullableEqualToConstraint<T>(
+	private sealed class IsNullableEqualToConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		T? expected,

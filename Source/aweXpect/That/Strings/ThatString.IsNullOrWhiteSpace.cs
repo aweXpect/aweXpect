@@ -27,7 +27,7 @@ public static partial class ThatString
 				new IsNullOrWhiteSpaceConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsNullOrWhiteSpaceConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsNullOrWhiteSpaceConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<string?>(grammars),
 			IValueConstraint<string?>
 	{

@@ -35,7 +35,7 @@ public static partial class ThatDictionary
 			source
 		);
 
-	private class ContainsKeyConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TKey expected)
+	private sealed class ContainsKeyConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TKey expected)
 		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
 			IValueConstraint<IDictionary<TKey, TValue>?>
 	{

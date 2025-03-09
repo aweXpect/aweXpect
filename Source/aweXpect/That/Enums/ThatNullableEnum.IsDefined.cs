@@ -28,7 +28,7 @@ public static partial class ThatNullableEnum
 				new IsDefinedConstraint<TEnum>(it, grammars).Invert()),
 			source);
 
-	private class IsDefinedConstraint<TEnum>(string it, ExpectationGrammars grammars)
+	private sealed class IsDefinedConstraint<TEnum>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<TEnum?>(it, grammars),
 			IValueConstraint<TEnum?>
 		where TEnum : struct, Enum

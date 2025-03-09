@@ -143,7 +143,7 @@ public sealed partial class ThatGeneric
 					             """);
 			}
 
-			private class MyChangingClass(int numberOfChanges)
+			private sealed class MyChangingClass(int numberOfChanges)
 			{
 				private int _iterations;
 				public bool HasWaitedEnough => _iterations++ >= numberOfChanges;

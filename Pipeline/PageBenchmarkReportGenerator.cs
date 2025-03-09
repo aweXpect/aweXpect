@@ -57,7 +57,7 @@ public class PageBenchmarkReportGenerator
 		return (newFileContent, limitedFileContent);
 	}
 
-	private class PageReportData : Dictionary<string, PageReport>
+	private sealed class PageReportData : Dictionary<string, PageReport>
 	{
 		public bool Append(CommitInfo commitInfo, BenchmarkReport benchmarkReport)
 		{
@@ -189,7 +189,7 @@ public class PageBenchmarkReportGenerator
 		[JsonPropertyName("message")] public string Message { get; } = message;
 	}
 
-	private class PageReport
+	private sealed class PageReport
 	{
 		[JsonPropertyName("commits")] public List<CommitInfo> Commits { get; init; } = new();
 		[JsonPropertyName("labels")] public List<string> Labels { get; init; } = new();
@@ -236,7 +236,7 @@ public class PageBenchmarkReportGenerator
 		}
 	}
 
-	private class BenchmarkReport
+	private sealed class BenchmarkReport
 	{
 		public Benchmark[] Benchmarks { get; init; }
 

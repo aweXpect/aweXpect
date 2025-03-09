@@ -32,7 +32,7 @@ public static partial class ThatEnumerable
 				options);
 		}
 
-		private class ComplyWithConstraint
+		private sealed class ComplyWithConstraint
 			: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 				IAsyncContextConstraint<IEnumerable<TItem>?>
 		{

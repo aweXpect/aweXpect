@@ -299,12 +299,12 @@ public sealed class PropertyResultTests
 		}
 	}
 
-	private class Dummy : IThat<string>, IThatIs<string>
+	private sealed class Dummy : IThat<string>, IThatIs<string>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; } = new ManualExpectationBuilder<string>();
 	}
 
-	private class MyClass
+	private sealed class MyClass
 	{
 		public int IntValue { get; private init; }
 		public long LongValue { get; private init; }

@@ -177,7 +177,7 @@ public sealed partial class EquivalencyComparerTests
 			}
 		}
 
-		private class MyClassWithProperties(int publicProperty, int internalProperty, int privateProperty)
+		private sealed class MyClassWithProperties(int publicProperty, int internalProperty, int privateProperty)
 		{
 			internal int MyInternalProperty { get; } = internalProperty;
 			private int MyPrivateProperty { get; } = privateProperty;

@@ -12,7 +12,7 @@ public static class ExpectationGrammarsExtensions
 	///     Toggles the <see cref="ExpectationGrammars.Negated" /> flag.
 	/// </summary>
 	public static ExpectationGrammars Negate(this ExpectationGrammars grammars)
-		=> grammars ^= ExpectationGrammars.Negated;
+		=> grammars ^ ExpectationGrammars.Negated;
 
 	/// <summary>
 	///     Checks if the <paramref name="grammars"/> has the <see cref="ExpectationGrammars.Negated" /> flag.

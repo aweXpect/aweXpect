@@ -47,7 +47,7 @@ public static partial class ThatObject
 				=> new IsNullConstraint<T?>(it, grammars).Invert()),
 			source);
 
-	private class IsNullConstraint<T>(
+	private sealed class IsNullConstraint<T>(
 		string it,
 		ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<T>(grammars),

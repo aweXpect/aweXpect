@@ -51,7 +51,7 @@ public static partial class ThatGeneric
 						null).Invert()),
 			source);
 
-	private class SatisfiesConstraint<T>(
+	private sealed class SatisfiesConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
 		Func<T, bool> predicate,

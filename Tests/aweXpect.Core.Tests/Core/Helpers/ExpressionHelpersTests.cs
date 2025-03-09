@@ -56,7 +56,7 @@ public sealed class ExpressionHelpersTests
 		await That(memberExpression).IsNull();
 	}
 
-	private class MyClass
+	private sealed class MyClass
 	{
 		public int Foo { get; set; }
 	}

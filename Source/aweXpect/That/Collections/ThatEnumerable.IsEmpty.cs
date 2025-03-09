@@ -29,7 +29,7 @@ public static partial class ThatEnumerable
 				.AddConstraint((it, grammars) => new IsEmptyConstraint<TItem>(it, grammars).Invert()),
 			source);
 
-	private class IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
+	private sealed class IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
 			IContextConstraint<IEnumerable<TItem>?>
 	{

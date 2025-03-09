@@ -173,7 +173,7 @@ public static partial class ThatEnumerable
 			options);
 	}
 
-	private class EndsWithConstraint<TItem, TMatch>
+	private sealed class EndsWithConstraint<TItem, TMatch>
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 		IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch

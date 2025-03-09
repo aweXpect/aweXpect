@@ -33,7 +33,7 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 		return message;
 	}
 
-	private class DelegateIsNotNullConstraint(string it, ExpectationGrammars grammars)
+	private sealed class DelegateIsNotNullConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult(grammars),
 			IValueConstraint<DelegateValue>
 	{

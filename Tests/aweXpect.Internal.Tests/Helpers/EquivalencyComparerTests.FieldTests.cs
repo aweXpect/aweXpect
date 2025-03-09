@@ -172,7 +172,7 @@ public sealed partial class EquivalencyComparerTests
 			}
 		}
 
-		private class MyClassWithFields(int publicField, int internalField, int privateField)
+		private sealed class MyClassWithFields(int publicField, int internalField, int privateField)
 		{
 			internal int MyInternalField = internalField;
 			private int MyPrivateField = privateField;

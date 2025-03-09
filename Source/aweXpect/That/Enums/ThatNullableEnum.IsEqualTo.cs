@@ -29,7 +29,7 @@ public static partial class ThatNullableEnum
 				new IsEqualToConstraint<TEnum>(it, grammars, unexpected).Invert()),
 			source);
 
-	private class IsEqualToConstraint<TEnum>(string it, ExpectationGrammars grammars, TEnum? expected)
+	private sealed class IsEqualToConstraint<TEnum>(string it, ExpectationGrammars grammars, TEnum? expected)
 		: ConstraintResult.WithEqualToValue<TEnum?>(it, grammars, expected is null),
 			IValueConstraint<TEnum?>
 		where TEnum : struct, Enum

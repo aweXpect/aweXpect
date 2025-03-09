@@ -39,7 +39,7 @@ public static partial class ThatTimeSpan
 			tolerance);
 	}
 
-	private class IsConstraint(string it,
+	private sealed class IsConstraint(string it,
 		ExpectationGrammars grammars, TimeSpan? expected, TimeTolerance tolerance)
 		: ConstraintResult.WithEqualToValue<TimeSpan>(it, grammars, false),
 			IValueConstraint<TimeSpan>

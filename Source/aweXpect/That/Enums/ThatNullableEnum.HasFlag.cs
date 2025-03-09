@@ -30,7 +30,7 @@ public static partial class ThatNullableEnum
 				new HasFlagConstraint<TEnum>(it, grammars, unexpectedFlag).Invert()),
 			source);
 
-	private class HasFlagConstraint<TEnum>(string it, ExpectationGrammars grammars, TEnum? expectedFlag)
+	private sealed class HasFlagConstraint<TEnum>(string it, ExpectationGrammars grammars, TEnum? expectedFlag)
 		: ConstraintResult.WithValue<TEnum?>(grammars),
 			IValueConstraint<TEnum?>
 		where TEnum : struct, Enum

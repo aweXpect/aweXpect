@@ -80,18 +80,18 @@ public sealed partial class EquivalencyComparerTests
 			                              """);
 		}
 
-		private class MyClassWithDifferentProperties
+		private sealed class MyClassWithDifferentProperties
 		{
 			public MyClass1? Property1 { get; set; }
 			public MyClass2? Property2 { get; set; }
 		}
 
-		private class MyClass1
+		private sealed class MyClass1
 		{
 			public int Value { get; set; }
 		}
 
-		private class MyClass2
+		private sealed class MyClass2
 		{
 			public int Value { get; set; }
 		}

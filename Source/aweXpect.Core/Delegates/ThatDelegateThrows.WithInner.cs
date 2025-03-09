@@ -62,7 +62,7 @@ public partial class ThatDelegateThrows<TException>
 					new HasInnerExceptionValueConstraint(innerExceptionType, it, grammars | ExpectationGrammars.Nested)),
 			this);
 	
-	private class HasInnerExceptionValueConstraint(Type innerExceptionType, string it, ExpectationGrammars grammars)
+	private sealed class HasInnerExceptionValueConstraint(Type innerExceptionType, string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Exception>(it, grammars),
 			IValueConstraint<Exception?>
 	{

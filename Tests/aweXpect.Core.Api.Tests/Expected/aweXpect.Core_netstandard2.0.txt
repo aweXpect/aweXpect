@@ -113,7 +113,10 @@ namespace aweXpect.Core.Constraints
     {
         System.Threading.Tasks.Task<aweXpect.Core.Constraints.ConstraintResult> IsMetBy(TValue actual, aweXpect.Core.EvaluationContext.IEvaluationContext context, System.Threading.CancellationToken cancellationToken);
     }
-    public interface IConstraint { }
+    public interface IConstraint
+    {
+        void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
+    }
     public interface IContextConstraint<in TValue> : aweXpect.Core.Constraints.IConstraint
     {
         aweXpect.Core.Constraints.ConstraintResult IsMetBy(TValue actual, aweXpect.Core.EvaluationContext.IEvaluationContext context);

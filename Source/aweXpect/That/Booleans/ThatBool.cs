@@ -9,7 +9,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatBool
 {
-	private class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool expected)
+	private sealed class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool expected)
 		: ConstraintResult.WithEqualToValue<bool>(it, grammars, false),
 			IValueConstraint<bool>
 	{

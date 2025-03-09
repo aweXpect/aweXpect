@@ -31,7 +31,7 @@ public static partial class ThatEnum
 				new HasValueConstraint<TEnum>(it, grammars, unexpected).Invert()),
 			source);
 
-	private class HasValueConstraint<TEnum>(string it, ExpectationGrammars grammars, long? expectedValue)
+	private sealed class HasValueConstraint<TEnum>(string it, ExpectationGrammars grammars, long? expectedValue)
 		: ConstraintResult.WithNotNullValue<TEnum>(it, grammars),
 			IValueConstraint<TEnum>
 		where TEnum : struct, Enum

@@ -27,7 +27,7 @@ public static partial class ThatStream
 				new IsReadableConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsReadableConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsReadableConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
 			IValueConstraint<Stream?>
 	{

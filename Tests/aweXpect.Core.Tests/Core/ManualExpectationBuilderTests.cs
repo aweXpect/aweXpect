@@ -119,7 +119,7 @@ public class ManualExpectationBuilderTests
 		await That(sut.Subject).IsEmpty();
 	}
 
-	private class DummyConstraint<T>(
+	private sealed class DummyConstraint<T>(
 		Func<T, bool> predicate)
 		: ConstraintResult(ExpectationGrammars.None), IValueConstraint<T>
 	{

@@ -28,7 +28,7 @@ public static partial class ThatAsyncEnumerable
 				return await enumerator.MoveNextAsync() ? enumerator.Current : default;
 			});
 
-	private class HasSingleConstraint<TItem>(string it, ExpectationGrammars grammars)
+	private sealed class HasSingleConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<TItem?>(it, grammars),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{

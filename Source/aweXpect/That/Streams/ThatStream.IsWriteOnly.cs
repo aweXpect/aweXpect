@@ -26,7 +26,7 @@ public static partial class ThatStream
 				new IsWriteOnlyConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsWriteOnlyConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsWriteOnlyConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
 			IValueConstraint<Stream?>
 	{

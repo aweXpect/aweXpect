@@ -13,7 +13,7 @@ public partial class HappyCaseBenchmarks
 {
 	private readonly Consumer _consumer = new();
 
-	private class Config : ManualConfig
+	private sealed class Config : ManualConfig
 	{
 		public Config()
 		{

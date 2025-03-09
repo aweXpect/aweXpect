@@ -39,7 +39,7 @@ public static partial class ThatString
 			options);
 	}
 
-	private class IsOneOfConstraint(
+	private sealed class IsOneOfConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		string?[] expectedValues,

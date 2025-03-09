@@ -11,7 +11,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatEventRecording
 {
-	private class HaveTriggeredConstraint<TSubject>(
+	private sealed class HaveTriggeredConstraint<TSubject>(
 		string it,
 		ExpectationGrammars grammars,
 		string eventName,

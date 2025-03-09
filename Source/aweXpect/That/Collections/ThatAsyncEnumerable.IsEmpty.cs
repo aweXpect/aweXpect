@@ -35,7 +35,7 @@ public static partial class ThatAsyncEnumerable
 				new IsEmptyConstraint<TItem>(it, grammars).Invert()),
 			source);
 
-	private class IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
+	private sealed class IsEmptyConstraint<TItem>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>(it, grammars),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{

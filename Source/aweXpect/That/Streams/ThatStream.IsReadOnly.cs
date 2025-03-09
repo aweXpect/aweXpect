@@ -26,7 +26,7 @@ public static partial class ThatStream
 				new IsReadOnlyConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsReadOnlyConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsReadOnlyConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
 			IValueConstraint<Stream?>
 	{

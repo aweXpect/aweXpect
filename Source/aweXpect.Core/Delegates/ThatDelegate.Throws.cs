@@ -39,7 +39,7 @@ public abstract partial class ThatDelegate
 			throwOptions);
 	}
 
-	private class ThrowsConstraint(
+	private sealed class ThrowsConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		Type exceptionType,

@@ -26,7 +26,7 @@ public static partial class ThatStream
 				new IsSeekableConstraint(it, grammars).Invert()),
 			source);
 
-	private class IsSeekableConstraint(string it, ExpectationGrammars grammars)
+	private sealed class IsSeekableConstraint(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Stream?>(it, grammars),
 			IValueConstraint<Stream?>
 	{

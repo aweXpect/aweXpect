@@ -20,7 +20,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatAsyncEnumerable
 {
-	private class CollectionConstraint<TItem>
+	private sealed class CollectionConstraint<TItem>
 		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
@@ -161,7 +161,7 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private class AsyncCollectionCountConstraint<TItem>
+	private sealed class AsyncCollectionCountConstraint<TItem>
 		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
@@ -263,7 +263,7 @@ public static partial class ThatAsyncEnumerable
 		}
 	}
 
-	private class IsConstraint<TItem, TMatch>(
+	private sealed class IsConstraint<TItem, TMatch>(
 		string it,
 		ExpectationGrammars grammars,
 		string expectedExpression,
@@ -380,7 +380,7 @@ public static partial class ThatAsyncEnumerable
 			=> throw new NotImplementedException();
 	}
 
-	private class IsInOrderConstraint<TItem, TMember>(
+	private sealed class IsInOrderConstraint<TItem, TMember>(
 		string it,
 		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,

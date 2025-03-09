@@ -38,7 +38,7 @@ public static partial class ThatString
 			options);
 	}
 
-	private class IsEqualToConstraint(
+	private sealed class IsEqualToConstraint(
 		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,

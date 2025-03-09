@@ -38,7 +38,7 @@ public static partial class ThatString
 			options);
 	}
 
-	private class EndsWithConstraint(
+	private sealed class EndsWithConstraint(
 		string it,
 		ExpectationGrammars grammars,
 		string? expected,

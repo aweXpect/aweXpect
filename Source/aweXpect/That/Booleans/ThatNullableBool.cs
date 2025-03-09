@@ -8,7 +8,7 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNullableBool
 {
-	private class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool? expected)
+	private sealed class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool? expected)
 		: ConstraintResult.WithEqualToValue<bool?>(it, grammars, expected is null),
 		IValueConstraint<bool?>
 	{

@@ -124,16 +124,7 @@ internal class ExpectationNode : Node
 
 	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_constraint is ConstraintResult constraintResult)
-		{
-			constraintResult.AppendExpectation(stringBuilder, indentation);
-		}
-		else if (_constraint != null)
-		{
-			//TODO: Do we need this case? Could we add the `AppendExpectation` to the `IConstraint` interface?
-			stringBuilder.Append(_constraint);
-		}
-
+		_constraint?.AppendExpectation(stringBuilder, indentation);
 		_inner?.AppendExpectation(stringBuilder, indentation);
 	}
 }
