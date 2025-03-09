@@ -3,12 +3,21 @@
 public class FormattingOptionsTests
 {
 	[Fact]
-	public async Task Indented_ShouldUseLineBreaks()
+	public async Task Indented_ShouldDefaultToTwoSpaces()
 	{
-		FormattingOptions options = FormattingOptions.Indented;
+		FormattingOptions options = FormattingOptions.Indented();
 
 		await That(options.UseLineBreaks).IsTrue();
 		await That(options.Indentation).IsEqualTo("  ");
+	}
+
+	[Fact]
+	public async Task Indented_ShouldUseLineBreaks()
+	{
+		FormattingOptions options = FormattingOptions.Indented("    ");
+
+		await That(options.UseLineBreaks).IsTrue();
+		await That(options.Indentation).IsEqualTo("    ");
 	}
 
 	[Fact]

@@ -20,7 +20,7 @@ public sealed partial class ThatGeneric
 					.OnlyIf(!predicateResult)
 					.WithMessage("""
 					             Expected that subject
-					             satisfy _ => predicateResult,
+					             satisfies _ => predicateResult,
 					             but it was Other {
 					               Value = 0
 					             }
@@ -43,7 +43,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             satisfy _ => ++count > 42 within 0:30,
+					             satisfies _ => ++count > 42 within 0:30,
 					             but it was Other {
 					               Value = 0
 					             }
@@ -111,7 +111,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             satisfy _ => ++count > 42 within 0:00.050,
+					             satisfies _ => ++count > 42 within 0:00.050,
 					             but it was Other {
 					               Value = 0
 					             }

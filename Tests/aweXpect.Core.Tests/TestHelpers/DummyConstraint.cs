@@ -1,4 +1,5 @@
-﻿using aweXpect.Core.Constraints;
+﻿using System.Text;
+using aweXpect.Core.Constraints;
 
 namespace aweXpect.Core.Tests.TestHelpers;
 
@@ -7,8 +8,9 @@ internal class DummyConstraint(string expectationText, Func<ConstraintResult>? c
 {
 	public ConstraintResult IsMetBy(int actual)
 		=> constraintResult == null
-			? new ConstraintResult.Success(expectationText)
+			? new DummyConstraintResult(Outcome.Success, expectationText)
 			: constraintResult();
 
-	public override string ToString() => expectationText;
+	public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		=> stringBuilder.Append(expectationText);
 }

@@ -40,10 +40,10 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task Equivalent_InDifferentOrder_ShouldFail()
 			{
-				IEnumerable<int[]> subject = [[1, 2], [1, 3]];
+				IEnumerable<int[]> subject = [[1, 2,], [1, 3,],];
 
 				async Task Act()
-					=> await That(subject).Contains([2, 1]).AtLeast(1).Equivalent();
+					=> await That(subject).Contains([2, 1,]).AtLeast(1).Equivalent();
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -65,10 +65,10 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task Equivalent_InDifferentOrder_WhenIgnoringCollectionOrder_ShouldSucceed()
 			{
-				IEnumerable<int[]> subject = [[1, 2], [1, 3]];
+				IEnumerable<int[]> subject = [[1, 2,], [1, 3,],];
 
 				async Task Act()
-					=> await That(subject).Contains([2, 1]).AtLeast(1).Equivalent(o => o.IgnoringCollectionOrder());
+					=> await That(subject).Contains([2, 1,]).AtLeast(1).Equivalent(o => o.IgnoringCollectionOrder());
 
 				await That(Act).DoesNotThrow();
 			}
@@ -313,7 +313,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("[g-h]{1}[o]*", false)]
 			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
 			{
-				string[] subject = ["foo", "bar", "baz"];
+				string[] subject = ["foo", "bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).Contains(regex).AsRegex();
@@ -335,7 +335,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("f??o", false)]
 			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
 			{
-				string[] subject = ["foo", "bar", "baz"];
+				string[] subject = ["foo", "bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).Contains(wildcard).AsWildcard();
@@ -357,7 +357,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("*oo", false)]
 			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
 			{
-				string[] subject = ["foo", "bar", "baz"];
+				string[] subject = ["foo", "bar", "baz",];
 #pragma warning disable aweXpect0001
 				StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> expectation =
 					That(subject).Contains(match);
@@ -382,7 +382,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldCompareCaseSensitive()
 			{
-				string[] sut = ["green", "blue", "yellow"];
+				string[] sut = ["green", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(sut).Contains("GREEN");
@@ -402,7 +402,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNotPartOfStringEnumerable_ShouldFail()
 			{
-				string[] sut = ["green", "blue", "yellow"];
+				string[] sut = ["green", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(sut).Contains("red");
@@ -422,7 +422,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenExpectedIsPartOfStringEnumerable_ShouldSucceed()
 			{
-				string[] sut = ["green", "blue", "yellow"];
+				string[] sut = ["green", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(sut).Contains("blue");
@@ -435,7 +435,7 @@ public sealed partial class ThatEnumerable
 			[InlineData("goo", false)]
 			public async Task WhenIgnoringCase_ShouldUseCaseInsensitiveMatch(string match, bool expectSuccess)
 			{
-				string[] subject = ["foo", "bar", "baz"];
+				string[] subject = ["foo", "bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).Contains(match).IgnoringCase();
@@ -458,7 +458,7 @@ public sealed partial class ThatEnumerable
 			public async Task WhenIgnoringNewlineStyle_ShouldIgnoreNewlineStyle(string match, bool expectSuccess)
 			{
 				string nl = Environment.NewLine;
-				string[] subject = [$"fo{nl}o", $"ba{nl}r", $"ba{nl}z"];
+				string[] subject = [$"fo{nl}o", $"ba{nl}r", $"ba{nl}z",];
 
 				async Task Act()
 					=> await That(subject).Contains(match).IgnoringNewlineStyle();
@@ -498,7 +498,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAtLeast_ShouldVerifyCorrectNumberOfTimes()
 			{
-				string[] sut = ["green", "green", "blue", "yellow"];
+				string[] sut = ["green", "green", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(sut).Contains("green").AtLeast(3.Times());
@@ -519,7 +519,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAtMost_ShouldVerifyCorrectNumberOfTimes()
 			{
-				string[] sut = ["green", "green", "green", "green", "blue", "yellow"];
+				string[] sut = ["green", "green", "green", "green", "blue", "yellow",];
 
 				async Task Act()
 					=> await That(sut).Contains("green").AtMost(2.Times());

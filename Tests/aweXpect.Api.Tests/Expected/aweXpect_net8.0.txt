@@ -6,7 +6,8 @@ namespace aweXpect
     public abstract class EnumerableQuantifier
     {
         protected EnumerableQuantifier() { }
-        public abstract aweXpect.Core.Constraints.ConstraintResult GetResult<TEnumerable>(TEnumerable actual, string it, string? expectationExpression, int matchingCount, int notMatchingCount, int? totalCount, string? verb, System.Func<string, string?, string>? expectationGenerator = null);
+        public abstract void AppendResult(System.Text.StringBuilder stringBuilder, aweXpect.Core.ExpectationGrammars grammars, int matchingCount, int notMatchingCount, int? totalCount, string? verb = null);
+        public abstract aweXpect.Core.Constraints.Outcome GetOutcome(int matchingCount, int notMatchingCount, int? totalCount);
         public abstract bool IsDeterminable(int matchingCount, int notMatchingCount);
         public abstract bool IsSingle();
         public static aweXpect.EnumerableQuantifier All(aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
@@ -169,6 +170,8 @@ namespace aweXpect
     {
         public static aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithHResult<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, int expected)
             where TException : System.Exception? { }
+        public static aweXpect.Results.StringEqualityTypeResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithMessage<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string expected)
+            where TException : System.Exception? { }
         public static aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithParamName<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, string expected)
             where TException : System.ArgumentException? { }
         public static aweXpect.Results.AndOrResult<TException?, aweXpect.Delegates.ThatDelegateThrows<TException>> WithRecursiveInnerExceptions<TException>(this aweXpect.Delegates.ThatDelegateThrows<TException> source, System.Action<aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<System.Exception>>> expectations)
@@ -317,6 +320,7 @@ namespace aweXpect
     public static class ThatGeneric
     {
         public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> CompliesWith<T>(this aweXpect.Core.IThat<T> source, System.Action<aweXpect.Core.IThat<T>> expectations) { }
+        public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> DoesNotComplyWith<T>(this aweXpect.Core.IThat<T> source, System.Action<aweXpect.Core.IThat<T>> expectations) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> DoesNotSatisfy<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T>> For<T, TMember>(this aweXpect.Core.IThat<T> source, System.Linq.Expressions.Expression<System.Func<T, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
         public static aweXpect.Results.RepeatedCheckResult<T, aweXpect.Core.IThat<T>> Satisfies<T>(this aweXpect.Core.IThat<T> source, System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
@@ -422,8 +426,6 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsEqualTo(this aweXpect.Core.IThat<System.Guid?> source, System.Guid? expected) { }
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNotEmpty(this aweXpect.Core.IThat<System.Guid?> source) { }
         public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNotEqualTo(this aweXpect.Core.IThat<System.Guid?> source, System.Guid? unexpected) { }
-        public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNotNull(this aweXpect.Core.IThat<System.Guid?> source) { }
-        public static aweXpect.Results.AndOrResult<System.Guid?, aweXpect.Core.IThat<System.Guid?>> IsNull(this aweXpect.Core.IThat<System.Guid?> source) { }
     }
     public static class ThatNullableTimeOnly
     {
@@ -808,6 +810,7 @@ namespace aweXpect
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsEqualTo(this aweXpect.Core.IThat<string?> source, string? expected) { }
         public static aweXpect.Results.AndOrResult<string?, aweXpect.Core.IThat<string?>> IsLowerCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> IsNotEmpty(this aweXpect.Core.IThat<string?> source) { }
+        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> IsNotEqualTo(this aweXpect.Core.IThat<string?> source, string? unexpected) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> IsNotLowerCased(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> IsNotNull(this aweXpect.Core.IThat<string?> source) { }
         public static aweXpect.Results.AndOrResult<string, aweXpect.Core.IThat<string?>> IsNotNullOrEmpty(this aweXpect.Core.IThat<string?> source) { }

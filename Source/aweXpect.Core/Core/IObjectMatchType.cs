@@ -14,10 +14,10 @@ public interface IObjectMatchType
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	string GetExpectation(string expected, bool negate = false);
+	string GetExpectation(string expected, ExpectationGrammars grammars);
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
-	string GetExtendedFailure(string it, object? actual, object? expected);
+	string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected);
 }

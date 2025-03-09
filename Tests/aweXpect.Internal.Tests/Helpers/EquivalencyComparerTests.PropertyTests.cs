@@ -1,4 +1,5 @@
-﻿using aweXpect.Equivalency;
+﻿using aweXpect.Core;
+using aweXpect.Equivalency;
 
 namespace aweXpect.Internal.Tests.Helpers;
 
@@ -58,7 +59,7 @@ public sealed partial class EquivalencyComparerTests
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo($"""
@@ -81,7 +82,7 @@ public sealed partial class EquivalencyComparerTests
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -110,7 +111,7 @@ public sealed partial class EquivalencyComparerTests
 			await That(result).IsEqualTo(expectedResult);
 			if (!expectedResult)
 			{
-				await That(sut.GetExtendedFailure("it", actual, expected))
+				await That(sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected))
 					.IsEqualTo($"""
 					            it was not:
 					              Property MyInternalProperty differed:
@@ -138,7 +139,7 @@ public sealed partial class EquivalencyComparerTests
 			await That(result).IsEqualTo(expectedResult);
 			if (!expectedResult)
 			{
-				await That(sut.GetExtendedFailure("it", actual, expected))
+				await That(sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected))
 					.IsEqualTo($"""
 					            it was not:
 					              Property MyPrivateProperty differed:
@@ -166,7 +167,7 @@ public sealed partial class EquivalencyComparerTests
 			await That(result).IsEqualTo(expectedResult);
 			if (!expectedResult)
 			{
-				await That(sut.GetExtendedFailure("it", actual, expected))
+				await That(sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected))
 					.IsEqualTo($"""
 					            it was not:
 					              Property MyPublicProperty differed:
@@ -176,7 +177,7 @@ public sealed partial class EquivalencyComparerTests
 			}
 		}
 
-		private class MyClassWithProperties(int publicProperty, int internalProperty, int privateProperty)
+		private sealed class MyClassWithProperties(int publicProperty, int internalProperty, int privateProperty)
 		{
 			internal int MyInternalProperty { get; } = internalProperty;
 			private int MyPrivateProperty { get; } = privateProperty;

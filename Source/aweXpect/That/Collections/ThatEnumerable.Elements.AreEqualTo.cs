@@ -18,13 +18,18 @@ public static partial class ThatEnumerable
 		{
 			StringEqualityOptions options = new();
 			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammar.HasFlag(ExpectationGrammars.Plural)
-							? $"are equal to {Formatter.Format(expected)}{options}"
-							: $"is equal to {Formatter.Format(expected)}{options}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+								(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+								(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+								(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+							},
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,
@@ -42,13 +47,18 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammar.HasFlag(ExpectationGrammars.Plural)
-							? $"are equal to {Formatter.Format(expected)}{options}"
-							: $"is equal to {Formatter.Format(expected)}{options}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are equal to {Formatter.Format(expected)}{options}",
+								(false, false) => $"is equal to {Formatter.Format(expected)}{options}",
+								(true, true) => $"are not equal to {Formatter.Format(expected)}{options}",
+								(false, true) => $"is not equal to {Formatter.Format(expected)}{options}",
+							},
 						a => options.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

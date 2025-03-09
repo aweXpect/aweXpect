@@ -63,14 +63,19 @@ public partial class StringEqualityOptions : IOptionsEquality<string?>
 	/// <summary>
 	///     Get the expectations text.
 	/// </summary>
-	public string GetExpectation(string? expected, ExpectationGrammars grammar)
-		=> _matchType.GetExpectation(expected, grammar) + GetOptionString();
+	public string GetExpectation(string? expected, ExpectationGrammars grammars)
+		=> _matchType.GetExpectation(expected, grammars) + GetOptionString();
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
-	public string GetExtendedFailure(string it, string? actual, string? expected)
+	public string GetExtendedFailure(string it, ExpectationGrammars grammars, string? actual, string? expected)
 	{
+		if (grammars.HasFlag(ExpectationGrammars.Negated))
+		{
+			return $"{it} was {Formatter.Format(actual)}";
+		}
+
 		StringDifferenceSettings? settings = null;
 		if (_ignoreLeadingWhiteSpace && actual is not null)
 		{

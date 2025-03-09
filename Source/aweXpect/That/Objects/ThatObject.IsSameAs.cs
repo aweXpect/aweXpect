@@ -16,8 +16,8 @@ public static partial class ThatObject
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) =>
-					new IsSameAsConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
+				.AddConstraint((it, grammars) =>
+					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
 			source);
 
 	/// <summary>
@@ -28,49 +28,53 @@ public static partial class ThatObject
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		where T : class
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) =>
-					new IsNotSameAsConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
+				.AddConstraint((it, grammars) =>
+					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())
+						.Invert()),
 			source);
 
-	private readonly struct IsSameAsConstraint<T>(
+	private sealed class IsSameAsConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		object? expected,
 		string expectedExpression)
-		: IValueConstraint<T>
+		: ConstraintResult.WithNotNullValue<T>(it, grammars),
+			IValueConstraint<T>
 	{
 		public ConstraintResult IsMetBy(T actual)
 		{
-			if (ReferenceEquals(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}");
+			Actual = actual;
+			Outcome = ReferenceEquals(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"refers to {expectedExpression} {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
-	}
-
-	private readonly struct IsNotSameAsConstraint<T>(
-		string it,
-		object? unexpected,
-		string expectedExpression)
-		: IValueConstraint<T>
-	{
-		public ConstraintResult IsMetBy(T actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (!ReferenceEquals(actual, unexpected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} did");
+			stringBuilder.Append("refers to ");
+			stringBuilder.Append(expectedExpression);
+			stringBuilder.Append(' ');
+			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
 		}
 
-		public override string ToString()
-			=> $"does not refer to {expectedExpression} {Formatter.Format(unexpected, FormattingOptions.MultipleLines)}";
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It);
+			stringBuilder.Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not refer to ");
+			stringBuilder.Append(expectedExpression);
+			stringBuilder.Append(' ');
+			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It);
+			stringBuilder.Append(" did");
+		}
 	}
 }

@@ -22,18 +22,18 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).HasCount().Between(3).And(6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             has between 3 and 6 items,
-					             but could not verify, because it was cancelled early
+					             but could not verify, because it was already cancelled
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenArrayContainsMatchingItems_ShouldSucceed()
 			{
-				int[] subject = [1, 2, 3];
+				int[] subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -44,7 +44,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsTooFewItems_ShouldFail()
 			{
-				int[] subject = [1, 2];
+				int[] subject = [1, 2,];
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -60,7 +60,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsTooManyItems_ShouldSucceed()
 			{
-				int[] subject = [1, 2, 3, 4, 5, 6, 7];
+				int[] subject = [1, 2, 3, 4, 5, 6, 7,];
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -76,7 +76,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMatchingItems_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -87,7 +87,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2]);
+				IEnumerable<int> subject = ToEnumerable([1, 2,]);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -103,7 +103,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyItems_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 4, 5, 6, 7]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3, 4, 5, 6, 7,]);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);

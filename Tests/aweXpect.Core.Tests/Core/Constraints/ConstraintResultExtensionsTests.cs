@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Constraints;
@@ -12,7 +10,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeDoesNotMatch_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Success<string>("value", "foo");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Success, "value", "foo");
 			sut = sut.Fail("bar", 1);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -25,7 +23,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeMatches_ShouldReturnTrue()
 		{
-			ConstraintResult sut = new ConstraintResult.Success<string>("value", "foo");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Success, "value", "foo");
 			sut = sut.Fail("bar", 1);
 
 			bool result = sut.TryGetValue(out int value);
@@ -38,7 +36,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WithNullValue_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Success<string>("value", "foo");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Success, "value", "foo");
 			sut = sut.Fail<string?>("bar", null);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -54,7 +52,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeDoesNotMatch_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Failure, "value", "foo", "bar");
 			sut = sut.UseValue(1);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -66,7 +64,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WhenTypeMatches_ShouldReturnTrue()
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Failure, "value", "foo", "bar");
 			sut = sut.UseValue(1);
 
 			bool result = sut.TryGetValue(out int value);
@@ -78,7 +76,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task Failure_TryGetValue_WithNullValue_ShouldReturnFalse()
 		{
-			ConstraintResult sut = new ConstraintResult.Failure<string>("value", "foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult<string>(Outcome.Failure, "value", "foo", "bar");
 			sut = sut.UseValue<string?>(null);
 
 			bool result = sut.TryGetValue(out string? value);
@@ -93,7 +91,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task ShouldAppendAfterExpectationText()
 		{
-			ConstraintResult.Success sut = new("foo");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Success, "foo");
 
 			ConstraintResult result = sut.AppendExpectationText(s => s.Append("\nsuffix-foo"));
 
@@ -104,7 +102,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task ShouldKeepResultTextUnchanged()
 		{
-			ConstraintResult.Failure sut = new("foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Failure, "foo", "bar");
 
 			ConstraintResult result = sut.AppendExpectationText(s => s.Append("\nsuffix-foo"));
 
@@ -119,7 +117,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task ShouldAppendAfterExpectationText()
 		{
-			ConstraintResult.Success sut = new("foo");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Success, "foo");
 
 			ConstraintResult result = sut.PrependExpectationText(s => s.Append("prefix-foo\n"));
 
@@ -130,7 +128,7 @@ public sealed class ConstraintResultExtensionsTests
 		[Fact]
 		public async Task ShouldKeepResultTextUnchanged()
 		{
-			ConstraintResult.Failure sut = new("foo", "bar");
+			ConstraintResult sut = new DummyConstraintResult(Outcome.Failure, "foo", "bar");
 
 			ConstraintResult result = sut.PrependExpectationText(s => s.Append("prefix-foo\n"));
 

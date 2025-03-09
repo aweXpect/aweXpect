@@ -9,13 +9,13 @@ public class MaterializingEnumerableTests
 	[Fact]
 	public async Task WhenIterating_ShouldReturnAllValues()
 	{
-		IEnumerable<int> enumerable = ToEnumerable([1, 2, 3]);
+		IEnumerable<int> enumerable = ToEnumerable([1, 2, 3,]);
 
 		IEnumerable<int> materialized = MaterializingEnumerable<int>.Wrap(enumerable);
 
 		List<int> result = materialized.ToList();
 
-		await That(result).IsEqualTo([1, 2, 3]);
+		await That(result).IsEqualTo([1, 2, 3,]);
 	}
 
 	[Fact]
@@ -31,7 +31,7 @@ public class MaterializingEnumerableTests
 	[Fact]
 	public async Task Wrap_Twice_ShouldUseSameInstance()
 	{
-		IEnumerable<int> enumerable = ToEnumerable([1, 2, 3]);
+		IEnumerable<int> enumerable = ToEnumerable([1, 2, 3,]);
 
 		IEnumerable<int> materialized1 = MaterializingEnumerable<int>.Wrap(enumerable);
 		IEnumerable<int> materialized2 = MaterializingEnumerable<int>.Wrap(materialized1);

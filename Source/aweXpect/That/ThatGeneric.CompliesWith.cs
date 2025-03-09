@@ -21,24 +21,40 @@ public static partial class ThatGeneric
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) =>
-					new ComplyWithConstraint<T>(it, expectations, options)),
+				.AddConstraint((_, grammars) =>
+					new CompliesWithConstraint<T>(grammars, expectations, options)),
 			source,
 			options);
 	}
 
-	private readonly struct ComplyWithConstraint<T> : IAsyncContextConstraint<T>
+	/// <summary>
+	///     Verifies that the actual value does not comply with the <paramref name="expectations" />.
+	/// </summary>
+	public static RepeatedCheckResult<T, IThat<T>> DoesNotComplyWith<T>(this IThat<T> source,
+		Action<IThat<T>> expectations)
 	{
-		private readonly string _it;
-		private readonly RepeatedCheckOptions _options;
-		private readonly ManualExpectationBuilder<T> _itemExpectationBuilder;
+		RepeatedCheckOptions options = new();
+		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
+				.AddConstraint((_, grammars) =>
+					new CompliesWithConstraint<T>(grammars, expectations, options).Invert()),
+			source,
+			options);
+	}
 
-		public ComplyWithConstraint(string it,
+	private sealed class CompliesWithConstraint<T>
+		: ConstraintResult,
+			IAsyncContextConstraint<T>
+	{
+		private readonly ManualExpectationBuilder<T> _itemExpectationBuilder;
+		private readonly RepeatedCheckOptions _options;
+		private bool _isNegated;
+
+		public CompliesWithConstraint(ExpectationGrammars grammars,
 			Action<IThat<T>> expectations, RepeatedCheckOptions options)
+			: base(grammars)
 		{
-			_it = it;
 			_options = options;
-			_itemExpectationBuilder = new ManualExpectationBuilder<T>();
+			_itemExpectationBuilder = new ManualExpectationBuilder<T>(grammars);
 			expectations.Invoke(new ThatSubject<T>(_itemExpectationBuilder));
 		}
 
@@ -48,9 +64,9 @@ public static partial class ThatGeneric
 			CancellationToken cancellationToken)
 		{
 			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
-			if (isMatch.Outcome == Outcome.Success)
+			if (isMatch.Outcome == Outcome.Success != _isNegated)
 			{
-				return new ConstraintResult.Success<T>(actual, ToString());
+				return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 			}
 
 			if (_options.Timeout > TimeSpan.Zero)
@@ -69,18 +85,38 @@ public static partial class ThatGeneric
 					}
 
 					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
-					if (isMatch.Outcome == Outcome.Success)
+					if (isMatch.Outcome == Outcome.Success != _isNegated)
 					{
-						return new ConstraintResult.Success<T>(actual, ToString());
+						return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 					}
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{_it} was {Formatter.Format(actual)}");
+			return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 		}
 
-		public override string ToString()
-			=> $"{_itemExpectationBuilder}{_options}";
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+		}
+
+		private ConstraintResult NegateIfNegated(ConstraintResult constraintResult)
+		{
+			if (_isNegated)
+			{
+				return constraintResult.Negate();
+			}
+
+			return constraintResult;
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			return this;
+		}
 	}
 }

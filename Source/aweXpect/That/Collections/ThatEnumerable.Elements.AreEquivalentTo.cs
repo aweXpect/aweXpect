@@ -31,13 +31,20 @@ public static partial class ThatEnumerable
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
-							? $"is equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
-							: $"are equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"is equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) =>
+									$"are not equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) =>
+									$"is not equivalent to {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
 						a => equalityOptions.AreConsideredEqual(a, expected),
 						"were")),
 				_subject,

@@ -39,15 +39,16 @@ public abstract class ExpectationBuilder
 	///     Initializes the <see cref="ExpectationBuilder" /> with the <paramref name="subjectExpression" />
 	///     for the statement builder.
 	/// </summary>
-	protected ExpectationBuilder(string subjectExpression)
+	protected ExpectationBuilder(string subjectExpression, ExpectationGrammars grammars = ExpectationGrammars.None)
 	{
 		Subject = subjectExpression;
+		ExpectationGrammars = grammars;
 	}
 
 	/// <summary>
 	///     The expected grammatical form of the expectation text.
 	/// </summary>
-	public ExpectationGrammars ExpectationGrammars { get; private set; } = ExpectationGrammars.None;
+	public ExpectationGrammars ExpectationGrammars { get; private set; }
 
 	internal string Subject { get; }
 
@@ -183,7 +184,7 @@ public abstract class ExpectationBuilder
 		{
 			if (sourceConstraintCallback is not null)
 			{
-				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it, ExpectationGrammars);
 				_node.AddConstraint(constraint);
 			}
 
@@ -194,10 +195,18 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			ExpectationGrammars previousGrammars = ExpectationGrammars;
-			ExpectationGrammars = expectationGrammar;
-			expectationBuilderCallback.Invoke(this);
-			ExpectationGrammars = previousGrammars;
+			if (expectationGrammar != null)
+			{
+				ExpectationGrammars previousGrammars = ExpectationGrammars;
+				ExpectationGrammars = expectationGrammar(ExpectationGrammars);
+				expectationBuilderCallback.Invoke(this);
+				ExpectationGrammars = previousGrammars;
+			}
+			else
+			{
+				expectationBuilderCallback.Invoke(this);
+			}
+
 			_node = root;
 			if (replaceIt)
 			{
@@ -212,14 +221,14 @@ public abstract class ExpectationBuilder
 	///     by the <paramref name="memberAccessor" />.
 	/// </summary>
 	public MemberExpectationBuilder<TSource, TTarget> ForAsyncMember<TSource, TTarget>(
-		MemberAccessor<TSource, Task<TTarget?>> memberAccessor,
+		MemberAccessor<TSource, Task<TTarget>> memberAccessor,
 		Action<MemberAccessor, StringBuilder>? expectationTextGenerator = null,
 		bool replaceIt = true) =>
 		new((expectationBuilderCallback, expectationGrammar, sourceConstraintCallback) =>
 		{
 			if (sourceConstraintCallback is not null)
 			{
-				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it);
+				IValueConstraint<TSource> constraint = sourceConstraintCallback.Invoke(_it, ExpectationGrammars);
 				_node.AddConstraint(constraint);
 			}
 
@@ -230,10 +239,18 @@ public abstract class ExpectationBuilder
 				_it = memberAccessor.ToString().Trim();
 			}
 
-			ExpectationGrammars previousGrammars = ExpectationGrammars;
-			ExpectationGrammars = expectationGrammar;
-			expectationBuilderCallback.Invoke(this);
-			ExpectationGrammars = previousGrammars;
+			if (expectationGrammar != null)
+			{
+				ExpectationGrammars previousGrammars = ExpectationGrammars;
+				ExpectationGrammars = expectationGrammar(ExpectationGrammars);
+				expectationBuilderCallback.Invoke(this);
+				ExpectationGrammars = previousGrammars;
+			}
+			else
+			{
+				expectationBuilderCallback.Invoke(this);
+			}
+
 			_node = root;
 			if (replaceIt)
 			{
@@ -242,10 +259,6 @@ public abstract class ExpectationBuilder
 
 			return this;
 		});
-
-	/// <inheritdoc />
-	public override string? ToString()
-		=> _node.ToString();
 
 	/// <summary>
 	///     Adds a <paramref name="cancellationToken" /> to be used by the constraints.
@@ -300,7 +313,7 @@ public abstract class ExpectationBuilder
 		Func<TSource, TTarget?> memberAccessor,
 		string? separator = null,
 		string? replaceIt = null,
-		ExpectationGrammars? expectationGrammar = null)
+		Func<ExpectationGrammars, ExpectationGrammars>? expectationGrammar = null)
 	{
 		Node? parentNode = null;
 		if (_node is not ExpectationNode e || !e.IsEmpty())
@@ -316,7 +329,7 @@ public abstract class ExpectationBuilder
 
 		if (expectationGrammar != null)
 		{
-			ExpectationGrammars = expectationGrammar.Value;
+			ExpectationGrammars = expectationGrammar(ExpectationGrammars);
 		}
 
 		_whichNode = new WhichNode<TSource, TTarget>(parentNode, memberAccessor, separator);
@@ -346,7 +359,7 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	public ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
 	{
-		_contexts ??= new();
+		_contexts ??= new ResultContexts();
 		callback(_contexts);
 		return this;
 	}
@@ -450,17 +463,17 @@ public abstract class ExpectationBuilder
 	{
 		private readonly Func<
 				Action<ExpectationBuilder>,
-				ExpectationGrammars,
-				Func<string, IValueConstraint<TSource>>?,
+				Func<ExpectationGrammars, ExpectationGrammars>?,
+				Func<string, ExpectationGrammars, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			_callback;
 
-		private Func<string, IValueConstraint<TSource>>? _sourceConstraintBuilder;
+		private Func<string, ExpectationGrammars, IValueConstraint<TSource>>? _sourceConstraintBuilder;
 
 		internal MemberExpectationBuilder(Func<
 				Action<ExpectationBuilder>,
-				ExpectationGrammars,
-				Func<string, IValueConstraint<TSource>>?,
+				Func<ExpectationGrammars, ExpectationGrammars>?,
+				Func<string, ExpectationGrammars, IValueConstraint<TSource>>?,
 				ExpectationBuilder>
 			callback)
 		{
@@ -472,7 +485,7 @@ public abstract class ExpectationBuilder
 		/// </summary>
 		public ExpectationBuilder AddExpectations(
 			Action<ExpectationBuilder> expectation,
-			ExpectationGrammars expectationGrammars = ExpectationGrammars.None)
+			Func<ExpectationGrammars, ExpectationGrammars>? expectationGrammars = null)
 			=> _callback(expectation, expectationGrammars, _sourceConstraintBuilder);
 
 		/// <summary>
@@ -483,7 +496,7 @@ public abstract class ExpectationBuilder
 		///     "it").
 		/// </remarks>
 		public MemberExpectationBuilder<TSource, TMember> Validate(
-			Func<string, IValueConstraint<TSource>> constraintBuilder)
+			Func<string, ExpectationGrammars, IValueConstraint<TSource>> constraintBuilder)
 		{
 			_sourceConstraintBuilder = constraintBuilder;
 			return this;

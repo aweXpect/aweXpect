@@ -8,8 +8,19 @@ namespace aweXpect.Options;
 /// </summary>
 public class Quantifier
 {
+	private bool _isNegated;
 	private int? _maximum;
 	private int? _minimum = 1;
+
+	/// <summary>
+	///     A quantifier for exactly zero items.
+	/// </summary>
+	public static Quantifier Never()
+	{
+		Quantifier? quantifier = new();
+		quantifier.Exactly(0);
+		return quantifier;
+	}
 
 	/// <summary>
 	///     Verifies, that it occurs at least <paramref name="minimum" /> times.
@@ -80,13 +91,13 @@ public class Quantifier
 	{
 		if (_maximum != null && amount > _maximum)
 		{
-			return false;
+			return _isNegated;
 		}
 
 		if ((isLast || _maximum == null) &&
 		    (_minimum == null || amount >= _minimum))
 		{
-			return true;
+			return !_isNegated;
 		}
 
 		return null;
@@ -110,6 +121,11 @@ public class Quantifier
 	/// <inheritdoc />
 	public override string ToString()
 	{
+		if (_isNegated)
+		{
+			return NegatedToString();
+		}
+
 		string? specialCases = (_minimum, _maximum) switch
 		{
 			(1, null) => "at least once",
@@ -140,4 +156,43 @@ public class Quantifier
 
 		return $"between {_minimum} and {_maximum} times";
 	}
+
+	private string NegatedToString()
+	{
+		string? specialCases = (_minimum, _maximum) switch
+		{
+			(1, null) => "never",
+			(_, 0) => "at least once",
+			(1, 1) => "not once",
+			(null, 1) => "more than once",
+			(_, _) => null,
+		};
+		if (specialCases != null)
+		{
+			return specialCases;
+		}
+
+		if (_minimum == _maximum)
+		{
+			return $"not exactly {_minimum} times";
+		}
+
+		if (_maximum == null)
+		{
+			return $"at most {_minimum - 1} times";
+		}
+
+		if (_minimum == null)
+		{
+			return $"at least {_maximum + 1} times";
+		}
+
+		return $"outside {_minimum} and {_maximum} times";
+	}
+
+	/// <summary>
+	///     Negates the quantifier.
+	/// </summary>
+	public void Negate()
+		=> _isNegated = !_isNegated;
 }

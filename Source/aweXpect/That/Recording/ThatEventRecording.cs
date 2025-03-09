@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Recording;
 
@@ -10,58 +12,109 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatEventRecording
 {
-	private readonly struct HaveTriggeredConstraint<TSubject>(
+	private sealed class HaveTriggeredConstraint<TSubject>(
 		string it,
+		ExpectationGrammars grammars,
 		string eventName,
 		TriggerEventFilter filter,
-		Quantifier quantifier) : IValueConstraint<IEventRecording<TSubject>>
+		Quantifier quantifier)
+		: ConstraintResult(grammars),
+			IValueConstraint<IEventRecording<TSubject>>
 		where TSubject : notnull
 	{
+		private IEventRecording<TSubject>? _actual;
+		private IEventRecordingResult? _result;
+
 		public ConstraintResult IsMetBy(IEventRecording<TSubject> actual)
 		{
-			string expectation = $"has recorded the {eventName} event on {actual}{filter} {quantifier}";
-			string quantifierString = quantifier.ToString();
-			if (quantifierString == "never")
-			{
-				expectation = $"has never recorded the {eventName} event on {actual}{filter}";
-			}
-
+			_actual = actual;
 			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-			if (actual is null)
+			if (actual == null)
 			{
-				expectation = quantifierString == "never"
-					? $"has never recorded the {eventName} event{filter}"
-					: $"has recorded the {eventName} event{filter} {quantifier}";
-				return new ConstraintResult.Failure<IEventRecording<TSubject>>(actual!, expectation,
-					$"{it} was <null>");
+				Outcome = Outcome.Failure;
+				return this;
 			}
 
-			IEventRecordingResult recordingResult = actual.Stop();
-			int eventCount = recordingResult.GetEventCount(eventName, filter.IsMatch);
+			_result = actual.Stop();
+			int eventCount = _result.GetEventCount(eventName, filter.IsMatch);
+			Outcome = quantifier.Check(eventCount, true) != true ? Outcome.Failure : Outcome.Success;
+			return this;
+		}
 
-			if (quantifier.Check(eventCount, true) != true)
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (quantifier.ToString() == "never")
 			{
-				StringBuilder sb = new();
-				sb.Append(it).Append(" was ");
-				if (eventCount == 0)
+				stringBuilder.Append("has never recorded the ").Append(eventName).Append(" event");
+				if (_actual != null)
 				{
-					sb.Append("never recorded ");
-				}
-				else if (eventCount == 1)
-				{
-					sb.Append("recorded once ");
-				}
-				else
-				{
-					sb.Append("recorded ").Append(eventCount).Append(" times ");
+					stringBuilder.Append(" on ").Append(_actual);
 				}
 
-				sb.Append("in ");
-				sb.Append(recordingResult.ToString(eventName));
-				return new ConstraintResult.Failure<IEventRecording<TSubject>>(actual, expectation, sb.ToString());
+				stringBuilder.Append(filter);
+			}
+			else
+			{
+				stringBuilder.Append("has recorded the ").Append(eventName).Append(" event");
+				if (_actual != null)
+				{
+					stringBuilder.Append(" on ").Append(_actual);
+				}
+
+				stringBuilder.Append(filter).Append(' ').Append(quantifier);
+			}
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual == null)
+			{
+				stringBuilder.ItWasNull(it);
+				return;
 			}
 
-			return new ConstraintResult.Success<IEventRecording<TSubject>>(actual, expectation);
+			int? eventCount = _result?.GetEventCount(eventName, filter.IsMatch);
+			stringBuilder.Append(it).Append(" was ");
+			if (eventCount == 0)
+			{
+				stringBuilder.Append("never recorded ");
+			}
+			else if (eventCount == 1)
+			{
+				stringBuilder.Append("recorded once ");
+			}
+			else
+			{
+				stringBuilder.Append("recorded ").Append(eventCount).Append(" times ");
+			}
+
+			stringBuilder.Append("in ");
+			stringBuilder.Append(_result?.ToString(eventName));
+		}
+
+		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(IEventRecording<TSubject>));
+		}
+
+		public override ConstraintResult Negate()
+		{
+			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
 		}
 	}
 }

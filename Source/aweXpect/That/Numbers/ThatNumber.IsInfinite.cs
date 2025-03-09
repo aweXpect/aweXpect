@@ -13,9 +13,10 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsInfinite(this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectIsInfinite,
 					(a, _) => float.IsInfinity(a),
@@ -27,9 +28,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsInfinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectIsInfinite,
 					(a, _) => double.IsInfinity(a),
@@ -40,9 +42,10 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as infinite (not <see langword="null" /> and <see cref="float.IsInfinity" />).
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsInfinite(this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectIsInfinite,
 					(a, _) => a != null && float.IsInfinity(a.Value),
@@ -54,9 +57,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsInfinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectIsInfinite,
 					(a, _) => a != null && double.IsInfinity(a.Value),
@@ -68,9 +72,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsNotInfinite(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectIsNotInfinite,
 					(a, _) => !float.IsInfinity(a),
@@ -82,9 +87,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsNotInfinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectIsNotInfinite,
 					(a, _) => !double.IsInfinity(a),
@@ -96,9 +102,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsNotInfinite(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectIsNotInfinite,
 					(a, _) => a == null || !float.IsInfinity(a.Value),
@@ -111,9 +118,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsNotInfinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectIsNotInfinite,
 					(a, _) => a == null || !double.IsInfinity(a.Value),

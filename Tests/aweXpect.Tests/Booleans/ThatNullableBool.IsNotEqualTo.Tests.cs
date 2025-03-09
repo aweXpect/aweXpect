@@ -6,6 +6,23 @@ public sealed partial class ThatNullableBool
 	{
 		public sealed class Tests
 		{
+			[Fact]
+			public async Task WhenSubjectAndExpectedAreNull_ShouldFail()
+			{
+				bool? subject = null;
+				bool? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not {Formatter.Format(unexpected)},
+					              but it was <null>
+					              """);
+			}
+
 			[Theory]
 			[InlineData(true, false)]
 			[InlineData(true, null)]
@@ -24,7 +41,6 @@ public sealed partial class ThatNullableBool
 			[Theory]
 			[InlineData(true)]
 			[InlineData(false)]
-			[InlineData(null)]
 			public async Task WhenSubjectIsTheSame_ShouldFail(bool? subject)
 			{
 				bool? unexpected = subject;
@@ -36,7 +52,7 @@ public sealed partial class ThatNullableBool
 					.WithMessage($"""
 					              Expected that subject
 					              is not {Formatter.Format(unexpected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was
 					              """);
 			}
 		}

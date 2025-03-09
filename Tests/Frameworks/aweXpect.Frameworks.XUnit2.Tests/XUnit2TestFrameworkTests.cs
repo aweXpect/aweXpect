@@ -23,7 +23,7 @@ public sealed class XUnit2TestFrameworkTests
 			=> Fail.Inconclusive("my message");
 
 		await Expect.That(Act).Throws<InconclusiveException>()
-			.WithMessage("INCONCLUSIVE: my message (xunit v2 does not support inconclusive tests)");
+			.WithMessage("my message");
 	}
 #endif
 

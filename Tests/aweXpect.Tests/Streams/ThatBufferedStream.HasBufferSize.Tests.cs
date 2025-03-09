@@ -429,14 +429,19 @@ public sealed partial class ThatBufferedStream
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				using BufferedStream? subject = null;
 
 				async Task Act()
 					=> await That(subject).HasBufferSize().NotEqualTo(0);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has buffer size not equal to 0,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]

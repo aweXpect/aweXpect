@@ -59,7 +59,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"],
+							Collection = ["1", "2", "3",],
 						},
 					},
 				};
@@ -72,7 +72,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"],
+							Collection = ["1", "2", "3",],
 						},
 					},
 				};
@@ -95,7 +95,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"],
+							Collection = ["1", "2", "3",],
 						},
 					},
 				};
@@ -109,7 +109,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3", "4"],
+							Collection = ["1", "2", "3", "4",],
 						},
 					},
 				};
@@ -139,7 +139,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"],
+							Collection = ["1", "2", "3",],
 						},
 					},
 				};
@@ -153,7 +153,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3", "4"],
+							Collection = ["1", "2", "3", "4",],
 						},
 					},
 				};
@@ -177,7 +177,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Baz",
-							Collection = ["1", "2", "3"],
+							Collection = ["1", "2", "3",],
 						},
 					},
 				};
@@ -191,7 +191,7 @@ public sealed partial class ThatObject
 						Inner = new InnerClass
 						{
 							Value = "Bart",
-							Collection = ["1", "2", "3", "4"],
+							Collection = ["1", "2", "3", "4",],
 						},
 					},
 				};

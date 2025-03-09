@@ -17,13 +17,13 @@ internal static class ObjectEqualityOptions
 		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 			=> Equals(actual, expected);
 
-		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
-		public string GetExpectation(string expected, bool negate = false)
-			=> $"is {(negate ? "not " : "")}equal to {expected}";
+		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
+		public string GetExpectation(string expected, ExpectationGrammars grammars)
+			=> $"is {(grammars.IsNegated() ? "not " : "")}equal to {expected}";
 
-		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
-		public string GetExtendedFailure(string it, object? actual, object? expected)
-			=> $"{it} was {Formatter.Format(actual, FormattingOptions.MultipleLines)}";
+		/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
+		public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
+			=> $"{it} was {Formatter.Format(actual, FormattingOptions.Indented())}";
 
 		#endregion
 	}
@@ -48,14 +48,14 @@ public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
-	public string GetExtendedFailure(string it, object? actual, object? expected)
-		=> _matchType.GetExtendedFailure(it, actual, expected);
+	public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
+		=> _matchType.GetExtendedFailure(it, grammars, actual, expected);
 
 	/// <summary>
 	///     Returns the expectation string, e.g. <c>be equal to {expectedExpression}</c>.
 	/// </summary>
-	public string GetExpectation(string expectedExpression, bool negate = false)
-		=> _matchType.GetExpectation(expectedExpression, negate);
+	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
+		=> _matchType.GetExpectation(expectedExpression, grammars);
 
 	/// <inheritdoc />
 	public override string? ToString() => _matchType.ToString();

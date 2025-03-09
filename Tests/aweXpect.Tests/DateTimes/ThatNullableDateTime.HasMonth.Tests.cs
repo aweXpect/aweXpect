@@ -385,15 +385,20 @@ public sealed partial class ThatNullableDateTime
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				DateTime? subject = null;
-				int? expected = 1;
+				int? unexpected = 1;
 
 				async Task Act()
-					=> await That(subject).HasMonth().NotEqualTo(expected);
+					=> await That(subject).HasMonth().NotEqualTo(unexpected);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has month not equal to {unexpected},
+					              but it was <null>
+					              """);
 			}
 
 			[Fact]

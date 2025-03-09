@@ -20,11 +20,17 @@ public static partial class ThatAsyncEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+						g => (g.IsNested(), g.IsNegated()) switch
+						{
+							(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+						},
 						predicate,
 						"did")),
 				_subject);
@@ -40,11 +46,18 @@ public static partial class ThatAsyncEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+			=> new(_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, false) => $"satisfies {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(true, true) => $"do not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+								(false, true) => $"does not satisfy {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+							},
 						predicate,
 						"did")),
 				_subject);

@@ -70,8 +70,8 @@ public partial class ValueFormatters
 			                        """;
 			StringBuilder sb = new();
 
-			string result = Formatter.Format(value, FormattingOptions.Indented);
-			Formatter.Format(sb, value, FormattingOptions.Indented);
+			string result = Formatter.Format(value, FormattingOptions.Indented());
+			Formatter.Format(sb, value, FormattingOptions.Indented());
 
 			await That(result).IsEqualTo(expectedResult);
 			await That(sb.ToString()).IsEqualTo(expectedResult);

@@ -18,9 +18,10 @@ public static partial class ThatNullableTimeOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					expected,
 					(e, t) => $"is after {Formatter.Format(e)}{t}",
 					(a, e, t) => a?.Add(t) > e,
@@ -39,9 +40,10 @@ public static partial class ThatNullableTimeOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					unexpected,
 					(u, t) => $"is not after {Formatter.Format(u)}{t}",
 					(a, e, t) => a?.Add(t.Negate()) <= e,

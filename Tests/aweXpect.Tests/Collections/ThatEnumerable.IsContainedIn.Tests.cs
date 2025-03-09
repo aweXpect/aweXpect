@@ -56,7 +56,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c"];
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -127,8 +127,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -146,8 +146,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -158,8 +158,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -175,8 +175,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -194,8 +194,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -213,8 +213,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -230,8 +230,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -242,8 +242,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -259,8 +259,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -271,8 +271,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -288,8 +288,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -300,8 +300,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -313,8 +313,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected);
@@ -370,7 +370,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c"];
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -382,7 +382,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b"];
+				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -420,8 +420,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -439,8 +439,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -451,8 +451,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -468,8 +468,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -487,8 +487,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -506,8 +506,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -518,8 +518,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -530,8 +530,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -542,8 +542,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -554,8 +554,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -566,8 +566,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -578,8 +578,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -590,8 +590,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).IgnoringDuplicates();
@@ -647,7 +647,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c"];
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -685,8 +685,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -704,8 +704,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -716,8 +716,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -733,8 +733,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -752,8 +752,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -764,8 +764,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -781,8 +781,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -793,8 +793,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -810,8 +810,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -822,8 +822,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -839,8 +839,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -851,8 +851,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -864,8 +864,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder();
@@ -921,7 +921,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b", "c", "a"];
+				string[] expected = ["a", "a", "b", "c", "a",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -933,7 +933,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b"];
+				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -971,8 +971,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -990,8 +990,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1002,8 +1002,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1019,8 +1019,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1038,8 +1038,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1050,8 +1050,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1062,8 +1062,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1074,8 +1074,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1086,8 +1086,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1098,8 +1098,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1110,8 +1110,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1122,8 +1122,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1134,8 +1134,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).InAnyOrder().IgnoringDuplicates();
@@ -1191,7 +1191,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c"];
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1229,8 +1229,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1248,8 +1248,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1260,8 +1260,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1279,8 +1279,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1299,8 +1299,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1319,8 +1319,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1338,8 +1338,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1350,8 +1350,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1369,8 +1369,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1381,8 +1381,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1400,8 +1400,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1412,8 +1412,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1425,8 +1425,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly();
@@ -1487,7 +1487,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c"];
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1499,7 +1499,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b"];
+				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1537,8 +1537,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1556,8 +1556,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1568,8 +1568,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1587,8 +1587,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1607,8 +1607,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1627,8 +1627,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1644,8 +1644,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1661,8 +1661,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1678,8 +1678,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1695,8 +1695,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1712,8 +1712,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1724,8 +1724,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1736,8 +1736,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().IgnoringDuplicates();
@@ -1798,7 +1798,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "b", "c"];
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1836,8 +1836,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1855,8 +1855,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1867,8 +1867,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1886,8 +1886,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1906,8 +1906,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1923,8 +1923,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1942,8 +1942,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1954,8 +1954,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1973,8 +1973,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -1985,8 +1985,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -2004,8 +2004,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -2016,8 +2016,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -2029,8 +2029,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder();
@@ -2092,7 +2092,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollection_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b", "c", "a"];
+				string[] expected = ["a", "a", "b", "c", "a",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2105,7 +2105,7 @@ public sealed partial class ThatEnumerable
 			public async Task EmptyCollectionWithDuplicatesInExpected_ShouldSucceed()
 			{
 				IEnumerable<string> subject = ToEnumerable(Array.Empty<string>());
-				string[] expected = ["a", "a", "b"];
+				string[] expected = ["a", "a", "b",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2145,8 +2145,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalAndMissingItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c", "x", "y", "z"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c", "x", "y", "z",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2165,8 +2165,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalExpectedItemAtBeginningAndEnd_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d"]);
-				string[] expected = ["a", "b", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["b", "b", "c", "d",]);
+				string[] expected = ["a", "b", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2178,8 +2178,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItem_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2198,8 +2198,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithAdditionalItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "d", "e",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2219,8 +2219,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithCollectionInDifferentOrder_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "c", "b"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "c", "b",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2237,8 +2237,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtBeginOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["c", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2255,8 +2255,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2273,8 +2273,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesAtEndOfSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2291,8 +2291,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInExpected_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2309,8 +2309,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithDuplicatesInSubject_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2327,8 +2327,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItem_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2340,8 +2340,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithMissingItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c", "d", "e"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c", "d", "e",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()
@@ -2353,8 +2353,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WithSameCollection_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["a", "b", "c"]);
-				string[] expected = ["a", "b", "c"];
+				IEnumerable<string> subject = ToEnumerable(["a", "b", "c",]);
+				string[] expected = ["a", "b", "c",];
 
 				async Task Act()
 					=> await That(subject).IsContainedIn(expected).Properly().InAnyOrder()

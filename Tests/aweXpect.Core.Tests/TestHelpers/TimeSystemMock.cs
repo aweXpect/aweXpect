@@ -13,7 +13,7 @@ internal class TimeSystemMock : ITimeSystem
 		return this;
 	}
 
-	private class StopwatchFactoryMock : IStopwatchFactory
+	private sealed class StopwatchFactoryMock : IStopwatchFactory
 	{
 		private TimeSpan _elapsed = TimeSpan.Zero;
 		public IStopwatch New() => new StopwatchMock(() => _elapsed);
@@ -21,7 +21,7 @@ internal class TimeSystemMock : ITimeSystem
 		public void SetElapsed(TimeSpan elapsed) => _elapsed = elapsed;
 	}
 
-	private class StopwatchMock(Func<TimeSpan> getElapsed) : IStopwatch
+	private sealed class StopwatchMock(Func<TimeSpan> getElapsed) : IStopwatch
 	{
 		public TimeSpan Elapsed { get; private set; }
 		public bool IsRunning { get; private set; }

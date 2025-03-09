@@ -15,9 +15,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsFinite(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => !float.IsInfinity(a) && !float.IsNaN(a),
@@ -30,9 +31,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsFinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => !double.IsInfinity(a) && !double.IsNaN(a),
@@ -45,9 +47,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float?>> IsFinite(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => a != null && !float.IsInfinity(a.Value) && !float.IsNaN(a.Value),
@@ -60,9 +63,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double?>> IsFinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => a != null && !double.IsInfinity(a.Value) && !double.IsNaN(a.Value),
@@ -75,9 +79,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsNotFinite(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => float.IsInfinity(a) || float.IsNaN(a),
@@ -90,9 +95,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsNotFinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => double.IsInfinity(a) || double.IsNaN(a),
@@ -105,9 +111,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsNotFinite(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => a == null || float.IsInfinity(a.Value) || float.IsNaN(a.Value),
@@ -120,9 +127,10 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsNotFinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => a == null || double.IsInfinity(a.Value) || double.IsNaN(a.Value),

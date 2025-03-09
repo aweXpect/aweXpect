@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using aweXpect.Core;
 
 namespace aweXpect.Equivalency;
@@ -13,6 +12,7 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 	/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
 	public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
 	{
+		_failureBuilder.Clear();
 		if (HandleSpecialCases(actual, expected, _failureBuilder, out bool? specialCaseResult))
 		{
 			return specialCaseResult.Value;
@@ -21,13 +21,18 @@ internal sealed class EquivalencyComparer(EquivalencyOptions equivalencyOptions)
 		return EquivalencyComparison.Compare(actual, expected, equivalencyOptions, _failureBuilder);
 	}
 
-	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, bool)" />
-	public string GetExpectation(string expected, bool negate = false)
-		=> $"is {(negate ? "not " : "")}equivalent to {expected}";
+	/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
+	public string GetExpectation(string expected, ExpectationGrammars grammars)
+		=> $"is {(grammars.HasFlag(ExpectationGrammars.Negated) ? "not " : "")}equivalent to {expected}";
 
-	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, object?, object?)" />
-	public string GetExtendedFailure(string it, object? actual, object? expected)
+	/// <inheritdoc cref="IObjectMatchType.GetExtendedFailure(string, ExpectationGrammars, object?, object?)" />
+	public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
 	{
+		if (grammars.HasFlag(ExpectationGrammars.Negated))
+		{
+			return $"{it} was considered equivalent to {Formatter.Format(actual, FormattingOptions.Indented())}";
+		}
+
 		if (actual is null != expected is null)
 		{
 			_failureBuilder.Clear();

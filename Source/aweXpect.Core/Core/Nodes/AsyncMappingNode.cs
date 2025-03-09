@@ -70,13 +70,25 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 		StringBuilder expectation)
 		=> expectation.Append(memberAccessor);
 
-	private sealed class AsyncMappingConstraintResult(
-		ConstraintResult left,
-		ConstraintResult right,
-		Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>? expectationTextGenerator,
-		MemberAccessor<TSource, Task<TTarget>> memberAccessor)
-		: ConstraintResult(And(left.Outcome, right.Outcome), FurtherProcessingStrategy.Continue)
+	private sealed class AsyncMappingConstraintResult : ConstraintResult
 	{
+		private readonly Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>? _expectationTextGenerator;
+		private readonly ConstraintResult _left;
+		private readonly MemberAccessor<TSource, Task<TTarget>> _memberAccessor;
+		private readonly ConstraintResult _right;
+
+		public AsyncMappingConstraintResult(ConstraintResult left,
+			ConstraintResult right,
+			Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>? expectationTextGenerator,
+			MemberAccessor<TSource, Task<TTarget>> memberAccessor) : base(FurtherProcessingStrategy.Continue)
+		{
+			_left = left;
+			_right = right;
+			_expectationTextGenerator = expectationTextGenerator;
+			_memberAccessor = memberAccessor;
+			Outcome = And(left.Outcome, right.Outcome);
+		}
+
 		private static Outcome And(Outcome left, Outcome right)
 			=> (left, right) switch
 			{
@@ -88,44 +100,44 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			left.AppendExpectation(stringBuilder);
-			if (expectationTextGenerator is not null)
+			_left.AppendExpectation(stringBuilder);
+			if (_expectationTextGenerator is not null)
 			{
-				expectationTextGenerator(memberAccessor, stringBuilder);
+				_expectationTextGenerator(_memberAccessor, stringBuilder);
 			}
 
-			right.AppendExpectation(stringBuilder);
+			_right.AppendExpectation(stringBuilder);
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (left.Outcome == Outcome.Failure)
+			if (_left.Outcome == Outcome.Failure)
 			{
-				left.AppendResult(stringBuilder, indentation);
-				if (right.Outcome == Outcome.Failure &&
-				    left.FurtherProcessingStrategy == FurtherProcessingStrategy.Continue &&
-				    !left.HasSameResultTextAs(right))
+				_left.AppendResult(stringBuilder, indentation);
+				if (_right.Outcome == Outcome.Failure &&
+				    _left.FurtherProcessingStrategy == FurtherProcessingStrategy.Continue &&
+				    !_left.HasSameResultTextAs(_right))
 				{
 					stringBuilder.Append(" and ");
-					right.AppendResult(stringBuilder, indentation);
+					_right.AppendResult(stringBuilder, indentation);
 				}
 			}
-			else if (right.Outcome == Outcome.Failure)
+			else if (_right.Outcome == Outcome.Failure)
 			{
-				right.AppendResult(stringBuilder, indentation);
+				_right.AppendResult(stringBuilder, indentation);
 			}
 		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue(out TValue? leftValue))
+			if (_left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue(out TValue? rightValue))
+			if (_right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
@@ -133,6 +145,17 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 
 			value = default;
 			return false;
+		}
+
+		public override ConstraintResult Negate()
+		{
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
 		}
 	}
 }

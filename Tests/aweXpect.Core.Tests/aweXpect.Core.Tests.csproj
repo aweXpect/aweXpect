@@ -12,6 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Remove="Nullable"/>
 		<PackageReference Include="aweXpect.Chronology"/>
 		<ProjectReference Include="..\..\Source\aweXpect.Analyzers\aweXpect.Analyzers.csproj"
 						  PrivateAssets="all"

@@ -149,7 +149,7 @@ public static class JsonAwexpectCustomizationExtensions
         };
     }
 
-    private class CustomizationValue<TValue>(
+    private sealed class CustomizationValue<TValue>(
         Func<TValue> getter,
         Func<TValue, CustomizationLifetime> setter)
         : ICustomizationValueSetter<TValue>

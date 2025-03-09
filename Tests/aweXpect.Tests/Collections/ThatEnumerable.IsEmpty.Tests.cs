@@ -41,7 +41,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsValues_ShouldFail()
 			{
-				string[] subject = ["foo"];
+				string[] subject = ["foo",];
 
 				async Task Act()
 					=> await That(subject).IsEmpty();
@@ -70,7 +70,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsValues_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 2]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 2,]);
 
 				async Task Act()
 					=> await That(subject).IsEmpty();

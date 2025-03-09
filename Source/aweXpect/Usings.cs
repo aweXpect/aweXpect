@@ -3,5 +3,6 @@ global using aweXpect.Polyfills;
 #endif
 
 global using System.Numerics;
+global using System.Text;
 global using aweXpect.Formatting;
 global using static aweXpect.Formatting.Format;

@@ -32,9 +32,10 @@ public sealed partial class ThatGeneric
 					             {
 					             	Value = expectedValue,
 					             },
-					             but it was Other {
-					               Value = 1
-					             }
+					             but it was not:
+					               Property Value differed:
+					                    Found: 1
+					                 Expected: 2
 					             """);
 			}
 		}
@@ -59,9 +60,10 @@ public sealed partial class ThatGeneric
 					             {
 					             	HasWaitedEnough = true,
 					             } within 0:30,
-					             but it was MyChangingClass {
-					               HasWaitedEnough = False
-					             }
+					             but it was not:
+					               Property HasWaitedEnough differed:
+					                    Found: False
+					                 Expected: True
 					             """);
 			}
 
@@ -134,13 +136,14 @@ public sealed partial class ThatGeneric
 					             {
 					             	HasWaitedEnough = true,
 					             } within 0:00.050,
-					             but it was MyChangingClass {
-					               HasWaitedEnough = False
-					             }
+					             but it was not:
+					               Property HasWaitedEnough differed:
+					                    Found: False
+					                 Expected: True
 					             """);
 			}
 
-			private class MyChangingClass(int numberOfChanges)
+			private sealed class MyChangingClass(int numberOfChanges)
 			{
 				private int _iterations;
 				public bool HasWaitedEnough => _iterations++ >= numberOfChanges;

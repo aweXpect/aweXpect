@@ -240,7 +240,7 @@ public sealed class SignalerTests
 			SignalerResult<int> result = signaler.Wait(amount);
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).IsEqualTo([4, 5, 6]).InAnyOrder();
+			await That(result.Parameters).IsEqualTo([4, 5, 6,]).InAnyOrder();
 		}
 
 		[Fact]
@@ -315,7 +315,7 @@ public sealed class SignalerTests
 			SignalerResult<int> result = signaler.Wait();
 
 			await That(result.IsSuccess).IsTrue();
-			await That(result.Parameters).IsEqualTo([4, 5, 6]).InAnyOrder();
+			await That(result.Parameters).IsEqualTo([4, 5, 6,]).InAnyOrder();
 		}
 
 		[Fact]

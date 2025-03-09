@@ -43,9 +43,9 @@ public sealed partial class ThatObject
 					             Expected that subject
 					             is not equal to expected using MyComparer,
 					             but it was OuterClass {
-					               Inner = <null>,
-					               Value = "Foo"
-					             }
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               }
 					             """);
 			}
 

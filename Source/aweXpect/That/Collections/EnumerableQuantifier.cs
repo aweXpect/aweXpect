@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
-using aweXpect.Helpers;
 
 namespace aweXpect;
 
@@ -26,71 +24,20 @@ public abstract partial class EnumerableQuantifier
 	public abstract bool IsSingle();
 
 	/// <summary>
-	///     Returns the result.
+	///     Returns the outcome.
 	/// </summary>
-	public abstract ConstraintResult GetResult<TEnumerable>(
-		TEnumerable actual,
-		string it,
-		string? expectationExpression,
+	public abstract Outcome GetOutcome(
+		int matchingCount,
+		int notMatchingCount,
+		int? totalCount);
+
+	/// <summary>
+	///     Appends the result text to the <paramref name="stringBuilder" />.
+	/// </summary>
+	public abstract void AppendResult(StringBuilder stringBuilder,
+		ExpectationGrammars grammars,
 		int matchingCount,
 		int notMatchingCount,
 		int? totalCount,
-		string? verb,
-		Func<string, string?, string>? expectationGenerator = null);
-
-
-	private string GenerateExpectation(string quantifierExpectation,
-		string? expectationExpression,
-		Func<string, string?, string>? expectationGenerator,
-		ExpectationGrammars expectationGrammars)
-	{
-		if (expectationGenerator is not null)
-		{
-			return expectationGenerator(quantifierExpectation, expectationExpression);
-		}
-
-		if (expectationExpression is null)
-		{
-			return quantifierExpectation;
-		}
-
-		if (expectationGrammars.HasFlag(ExpectationGrammars.Nested))
-		{
-			return $"{quantifierExpectation} {expectationExpression}";
-		}
-
-		return $"{expectationExpression} for {quantifierExpectation} {this.GetItemString()}";
-	}
-
-	/// <summary>
-	///     The collection result could not be evaluated.
-	/// </summary>
-	private sealed class UndecidedResult<T> : ConstraintResult
-	{
-		private readonly string _expectationText;
-		private readonly string _resultText;
-
-		/// <summary>
-		///     Initializes a new instance of <see cref="UndecidedResult{T}" />.
-		/// </summary>
-		public UndecidedResult(
-			T value,
-			string expectationText,
-			string resultText,
-			FurtherProcessingStrategy furtherProcessingStrategy = FurtherProcessingStrategy.Continue)
-			: base(Outcome.Undecided, furtherProcessingStrategy)
-		{
-			_ = value;
-			_expectationText = expectationText;
-			_resultText = resultText;
-		}
-
-		/// <inheritdoc />
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(_expectationText.Indent(indentation, false));
-
-		/// <inheritdoc />
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(_resultText.Indent(indentation, false));
-	}
+		string? verb = null);
 }

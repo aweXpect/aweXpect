@@ -386,7 +386,7 @@ public sealed partial class ThatNullableDateOnly
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldSucceed()
+			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				DateOnly? subject = null;
 				int? expected = 1;
@@ -394,7 +394,12 @@ public sealed partial class ThatNullableDateOnly
 				async Task Act()
 					=> await That(subject).HasDay().NotEqualTo(expected);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              has day not equal to {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
 			}
 
 			[Fact]

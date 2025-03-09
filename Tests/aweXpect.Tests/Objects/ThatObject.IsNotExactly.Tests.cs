@@ -82,8 +82,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is not exactly type MyClass, because {{reason}},
 					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 		}
@@ -166,8 +166,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is not exactly type MyClass, because {{reason}},
 					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 		}

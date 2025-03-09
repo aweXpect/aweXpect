@@ -20,7 +20,8 @@ public sealed class CustomizeSettingsTests
 		using (IDisposable __ = Customize.aweXpect.Settings().DefaultCheckInterval.Set(timeout))
 		{
 			await That(sut2).Satisfies(x => x.HasMeasuredInterval).Within(30.Seconds());
-			await That(sut2.Interval).IsGreaterThanOrEqualTo(timeout).Within(50.Milliseconds()).And.IsLessThan(20.Seconds());
+			await That(sut2.Interval).IsGreaterThanOrEqualTo(timeout).Within(50.Milliseconds()).And
+				.IsLessThan(20.Seconds());
 		}
 	}
 
@@ -174,7 +175,7 @@ public sealed class CustomizeSettingsTests
 		await That(stopwatch.Elapsed).IsLessThanOrEqualTo(2.Seconds());
 	}
 
-	private class ChangingClass
+	private sealed class ChangingClass
 	{
 		private readonly Stopwatch _stopwatch = new();
 

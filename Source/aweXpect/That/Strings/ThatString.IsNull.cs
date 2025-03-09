@@ -12,8 +12,8 @@ public static partial class ThatString
 	/// </summary>
 	public static AndOrResult<string?, IThat<string?>> IsNull(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsNullConstraint(it)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsNullConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -21,41 +21,34 @@ public static partial class ThatString
 	/// </summary>
 	public static AndOrResult<string, IThat<string?>> IsNotNull(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new IsNotNullConstraint(it)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsNullConstraint(it, grammars).Invert()),
 			source);
 
-	private readonly struct IsNullConstraint(string it) : IValueConstraint<string?>
+	private sealed class IsNullConstraint(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<string?>(grammars),
+			IValueConstraint<string?>
 	{
 		public ConstraintResult IsMetBy(string? actual)
 		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Success<string?>(null, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual, FormattingOptions.SingleLine)}");
+			Actual = actual;
+			Outcome = actual is null ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> "is null";
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is null");
 
-	private readonly struct IsNotNullConstraint(string it) : IValueConstraint<string?>
-	{
-		public ConstraintResult IsMetBy(string? actual)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is not null)
-			{
-				return new ConstraintResult.Success<string?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was");
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
 		}
 
-		public override string ToString()
-			=> "is not null";
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("is not null");
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(it).Append(" was");
 	}
 }

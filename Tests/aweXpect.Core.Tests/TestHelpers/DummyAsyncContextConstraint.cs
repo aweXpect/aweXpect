@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Text;
+using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 
@@ -8,4 +9,6 @@ internal class DummyAsyncContextConstraint<T>(Func<T, Task<ConstraintResult>> ca
 {
 	public Task<ConstraintResult> IsMetBy(T actual, IEvaluationContext context, CancellationToken cancellationToken)
 		=> callback(actual);
+
+	public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null) { }
 }

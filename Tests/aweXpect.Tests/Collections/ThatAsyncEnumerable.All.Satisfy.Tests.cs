@@ -91,7 +91,7 @@ public sealed partial class ThatAsyncEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
 				{
-					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
 
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x?.StartsWith("ba") == true);
@@ -118,7 +118,7 @@ public sealed partial class ThatAsyncEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsMatchingValues_ShouldSucceed()
 				{
-					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
 
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x?.Length == 3);

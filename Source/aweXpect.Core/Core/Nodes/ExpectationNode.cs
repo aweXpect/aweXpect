@@ -122,24 +122,9 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override void SetReason(BecauseReason becauseReason) => _reason = becauseReason;
 
-	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_constraint != null && _inner != null)
-		{
-			return _constraint + _inner.ToString();
-		}
-
-		if (_constraint != null)
-		{
-			return _constraint.ToString();
-		}
-
-		if (_inner != null)
-		{
-			return _inner.ToString();
-		}
-
-		return "<empty>";
+		_constraint?.AppendExpectation(stringBuilder, indentation);
+		_inner?.AppendExpectation(stringBuilder, indentation);
 	}
 }

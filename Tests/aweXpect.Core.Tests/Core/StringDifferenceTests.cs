@@ -342,7 +342,7 @@ public class StringDifferenceTests
 		await That(sut.ToString()).IsEqualTo("differs");
 	}
 
-	private class ExecuteOnceComparer : IEqualityComparer<string>
+	private sealed class ExecuteOnceComparer : IEqualityComparer<string>
 	{
 		private bool _wasExecuted;
 

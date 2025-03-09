@@ -170,7 +170,7 @@ public sealed partial class ThatAsyncEnumerable
 				[InlineData(false)]
 				public async Task WhenItemsDifferInCase_ShouldSucceedWhenIgnoringCase(bool ignoreCase)
 				{
-					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO"]);
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO",]);
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringCase(ignoreCase);

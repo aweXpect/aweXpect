@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using aweXpect.Core;
 using aweXpect.Equivalency;
 
 namespace aweXpect.Internal.Tests.Helpers;
@@ -10,8 +11,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task ArrayAndListWithSameValues_ShouldBeConsideredEqual()
 		{
-			int[] actual = [1, 2, 3, 4, 5];
-			List<int> expected = [1, 2, 3, 4, 5];
+			int[] actual = [1, 2, 3, 4, 5,];
+			List<int> expected = [1, 2, 3, 4, 5,];
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -22,8 +23,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task ListAndArrayWithSameValues_ShouldBeConsideredEqual()
 		{
-			List<int> actual = [1, 2, 3, 4, 5];
-			int[] expected = [1, 2, 3, 4, 5];
+			List<int> actual = [1, 2, 3, 4, 5,];
+			int[] expected = [1, 2, 3, 4, 5,];
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -34,12 +35,12 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenActualHasFewerValues_ShouldNotBeConsideredEqual()
 		{
-			int[] actual = [1, 2, 3, 4];
-			List<int> expected = [1, 2, 3, 4, 5];
+			int[] actual = [1, 2, 3, 4,];
+			List<int> expected = [1, 2, 3, 4, 5,];
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -51,12 +52,12 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenActualHasMoreValues_ShouldNotBeConsideredEqual()
 		{
-			int[] actual = [1, 2, 3, 4, 5];
-			List<int> expected = [1, 2, 3, 4];
+			int[] actual = [1, 2, 3, 4, 5,];
+			List<int> expected = [1, 2, 3, 4,];
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -68,12 +69,12 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenCollectionsDifferInOrder_ShouldNotBeConsideredEqual()
 		{
-			int[] actual = [1, 2, 3, 4, 5];
-			List<int> expected = [1, 5, 2, 3, 4];
+			int[] actual = [1, 2, 3, 4, 5,];
+			List<int> expected = [1, 5, 2, 3, 4,];
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""

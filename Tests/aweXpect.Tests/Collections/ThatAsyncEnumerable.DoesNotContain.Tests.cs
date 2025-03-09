@@ -37,7 +37,19 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 5,
-					             but it did
+					             but it contained it at least 1 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
 					             """);
 			}
 
@@ -59,7 +71,39 @@ public sealed partial class ThatAsyncEnumerable
 					             does not contain MyClass {
 					               Value = 5
 					             } equivalent,
-					             but it did
+					             but it contained it at least 1 times in [
+					               MyClass {
+					                 Value = 1
+					               },
+					               MyClass {
+					                 Value = 1
+					               },
+					               MyClass {
+					                 Value = 2
+					               },
+					               MyClass {
+					                 Value = 3
+					               },
+					               MyClass {
+					                 Value = 5
+					               },
+					               MyClass {
+					                 Value = 8
+					               },
+					               MyClass {
+					                 Value = 13
+					               },
+					               MyClass {
+					                 Value = 21
+					               },
+					               MyClass {
+					                 Value = 34
+					               },
+					               MyClass {
+					                 Value = 55
+					               },
+					               …
+					             ]
 					             """);
 			}
 
@@ -78,7 +122,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain {Formatter.Format(unexpected)},
-					              but it did
+					              but it contained it 1 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
 					              """);
 			}
 
@@ -123,7 +167,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenStringDiffersInCase_ShouldSucceed()
 			{
-				string[] values = ["a", "b", "c"];
+				string[] values = ["a", "b", "c",];
 				string unexpected = "A";
 
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
@@ -137,7 +181,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenStringDiffersInCase_WhileIgnoringCase_ShouldFail()
 			{
-				string[] values = ["a", "b", "c"];
+				string[] values = ["a", "b", "c",];
 				string unexpected = "A";
 
 				IAsyncEnumerable<string> subject = ToAsyncEnumerable(values);
@@ -149,7 +193,11 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "A" ignoring case,
-					             but it did
+					             but it contained it 1 times in [
+					               "a",
+					               "b",
+					               "c"
+					             ]
 					             """);
 			}
 
@@ -197,7 +245,19 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 5,
-					             but it did
+					             but it contained it at least 1 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
 					             """);
 			}
 
@@ -213,11 +273,11 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).DoesNotContain(x => x == unexpected);
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             does not contain item matching x => x == unexpected,
-					             but it did
-					             """);
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain item matching x => x == unexpected,
+					              but it contained it 1 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
+					              """);
 			}
 
 			[Theory]

@@ -1,4 +1,5 @@
-﻿using aweXpect.Equivalency;
+﻿using aweXpect.Core;
+using aweXpect.Equivalency;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Local
 
@@ -40,7 +41,7 @@ public sealed partial class EquivalencyComparerTests
 				}));
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -68,7 +69,7 @@ public sealed partial class EquivalencyComparerTests
 			});
 
 			bool result = sut.AreConsideredEqual(actual, expected);
-			string failure = sut.GetExtendedFailure("it", actual, expected);
+			string failure = sut.GetExtendedFailure("it", ExpectationGrammars.None, actual, expected);
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
@@ -79,18 +80,18 @@ public sealed partial class EquivalencyComparerTests
 			                              """);
 		}
 
-		private class MyClassWithDifferentProperties
+		private sealed class MyClassWithDifferentProperties
 		{
 			public MyClass1? Property1 { get; set; }
 			public MyClass2? Property2 { get; set; }
 		}
 
-		private class MyClass1
+		private sealed class MyClass1
 		{
 			public int Value { get; set; }
 		}
 
-		private class MyClass2
+		private sealed class MyClass2
 		{
 			public int Value { get; set; }
 		}

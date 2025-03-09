@@ -59,7 +59,7 @@ public static partial class CSharpCodeFixVerifier<TAnalyzer, TCodeFix>
 	///     cref="CodeFixVerifier{TAnalyzer, TCodeFix, TTest, TVerifier}.VerifyCodeFixAsync(string, DiagnosticResult, string)" />
 	public static async Task VerifyCodeFixAsync([StringSyntax("c#-test")] string source, DiagnosticResult expected,
 		[StringSyntax("c#-test")] string fixedSource)
-		=> await VerifyCodeFixAsync(source, [expected], fixedSource);
+		=> await VerifyCodeFixAsync(source, [expected,], fixedSource);
 
 	/// <inheritdoc
 	///     cref="CodeFixVerifier{TAnalyzer, TCodeFix, TTest, TVerifier}.VerifyCodeFixAsync(string, DiagnosticResult[], string)" />

@@ -20,13 +20,18 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
-							? $"is exactly of type {Formatter.Format(typeof(TType))}"
-							: $"are exactly of type {Formatter.Format(typeof(TType))}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are exactly of type {Formatter.Format(typeof(TType))}",
+								(false, false) => $"is exactly of type {Formatter.Format(typeof(TType))}",
+								(true, true) => $"are not exactly of type {Formatter.Format(typeof(TType))}",
+								(false, true) => $"is not exactly of type {Formatter.Format(typeof(TType))}",
+							},
 						a => a?.GetType() == typeof(TType),
 						"were")),
 				_subject,
@@ -41,13 +46,18 @@ public static partial class ThatAsyncEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
-						it,
+						it, grammars,
 						_quantifier,
-						() => grammar == ExpectationGrammars.None
-							? $"is exactly of type {Formatter.Format(type)}"
-							: $"are exactly of type {Formatter.Format(type)}",
+						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
+								g.IsNegated()) switch
+							{
+								(true, false) => $"are exactly of type {Formatter.Format(type)}",
+								(false, false) => $"is exactly of type {Formatter.Format(type)}",
+								(true, true) => $"are not exactly of type {Formatter.Format(type)}",
+								(false, true) => $"is not exactly of type {Formatter.Format(type)}",
+							},
 						a => a?.GetType() == type,
 						"were")),
 				_subject,

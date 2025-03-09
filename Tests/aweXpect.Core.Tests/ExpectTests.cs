@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Results;
 
 namespace aweXpect.Core.Tests;
@@ -9,13 +10,14 @@ public class ExpectTests
 	[Fact]
 	public async Task Context_FromSuccess_ShouldNotBeIncludedInMessage()
 	{
-		Expectation.Result result1 = new(1, "foo1", new ConstraintResult.Failure("expectation1", "result1"));
-		Expectation.Result result2 = new(1, "foo2", new ConstraintResult.Success("expectation2"));
+		Expectation.Result result1 = new(1, "foo1",
+			new DummyConstraintResult(Outcome.Failure, "expectation1", "result1"));
+		Expectation.Result result2 = new(1, "foo2", new DummyConstraintResult(Outcome.Success, "expectation2"));
 
 		async Task Act()
 			=> await ThatAll(
-				new MyExpectation(result1, [new ResultContext("context-title1", "contest-content1"),]),
-				new MyExpectation(result2, [new ResultContext("context-title2", "contest-content2"),]));
+				new MyExpectation(result1, new ResultContext("context-title1", "contest-content1")),
+				new MyExpectation(result2, new ResultContext("context-title2", "contest-content2")));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -24,10 +26,10 @@ public class ExpectTests
 			             foo2 expectation2
 			             but
 			              [01] result1
-			             
+
 			             [01] context-title1:
 			             contest-content1
-			             
+
 			             [02] context-title2:
 			             contest-content2
 			             """);
@@ -36,14 +38,11 @@ public class ExpectTests
 	[Fact]
 	public async Task Context_Multiple_ShouldBeIncludedInMessage()
 	{
-		Expectation.Result result = new(1, "foo", new ConstraintResult.Failure("expectation", "result"));
+		Expectation.Result result = new(1, "foo", new DummyConstraintResult(Outcome.Failure, "expectation", "result"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result, [
-				new ResultContext("t1", "c1"),
-				new ResultContext("t2", "c2"),
-				new ResultContext("t3", "c3"),
-			]));
+			=> await ThatAll(new MyExpectation(result, new ResultContext("t1", "c1"), new ResultContext("t2", "c2"),
+				new ResultContext("t3", "c3")));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -66,10 +65,10 @@ public class ExpectTests
 	[Fact]
 	public async Task Context_ShouldBeIncludedInMessage()
 	{
-		Expectation.Result result = new(1, "foo", new ConstraintResult.Failure("expectation", "result"));
+		Expectation.Result result = new(1, "foo", new DummyConstraintResult(Outcome.Failure, "expectation", "result"));
 
 		async Task Act()
-			=> await ThatAll(new MyExpectation(result, [new ResultContext("context-title", "contest-content"),]));
+			=> await ThatAll(new MyExpectation(result, new ResultContext("context-title", "contest-content")));
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -115,7 +114,7 @@ public class ExpectTests
 		await That(Act).DoesNotThrow();
 	}
 #endif
-	private class MyExpectation(Expectation.Result result, params ResultContext[] contexts) : Expectation
+	private sealed class MyExpectation(Expectation.Result result, params ResultContext[] contexts) : Expectation
 	{
 		internal override Task<Result> GetResult(int index) => Task.FromResult(result);
 		internal override IEnumerable<ResultContext> GetContexts(int index) => contexts;

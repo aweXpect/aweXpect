@@ -19,8 +19,9 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsEqualToConstraint<object?, object?>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<object?, object?>(it, grammars, expected,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -36,8 +37,9 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNullableEqualToConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsNullableEqualToConstraint<T>(it, grammars, expected,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
 			source,
 			options);
 	}
@@ -53,8 +55,9 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsEqualToConstraint<T>(it, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					options)),
 			source,
 			options);
 	}
@@ -70,8 +73,10 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNotEqualToConstraint(it, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<object?, object?>(it, grammars, unexpected,
+						doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
+					.Invert()),
 			source,
 			options);
 	}
@@ -88,8 +93,10 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNullableNotEqualToConstraint<T>(it, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsNullableEqualToConstraint<T>(it, grammars, unexpected,
+						doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
+					.Invert()),
 			source,
 			options);
 	}
@@ -106,139 +113,100 @@ public static partial class ThatObject
 	{
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new IsNotEqualToConstraint<T>(it, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<T>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+						options)
+					.Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct IsEqualToConstraint<TSubject, TExpected>(
+	private sealed class IsEqualToConstraint<TSubject, TExpected>(
 		string it,
+		ExpectationGrammars grammars,
 		TExpected expected,
 		string expectedExpression,
 		ObjectEqualityOptions<TSubject> options)
-		: IValueConstraint<TSubject>
+		: ConstraintResult.WithEqualToValue<TSubject>(it, grammars, expected is null),
+			IValueConstraint<TSubject>
 	{
 		public ConstraintResult IsMetBy(TSubject actual)
 		{
-			if (options.AreConsideredEqual(actual, expected))
-			{
-				return new ConstraintResult.Success<TSubject>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
+			Actual = actual;
+			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> options.GetExpectation(expectedExpression.TrimCommonWhiteSpace());
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
 	}
 
-	private readonly struct IsEqualToConstraint<T>(
+	private sealed class IsEqualToConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? expected,
 		string expectedExpression,
 		ObjectEqualityOptions<T> options)
-		: IValueConstraint<T>
+		: ConstraintResult.WithValue<T>(grammars),
+			IValueConstraint<T>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T actual)
 		{
-			if (options.AreConsideredEqual(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
+			Actual = actual;
+			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> options.GetExpectation(expectedExpression);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
 	}
 
-	private readonly struct IsNullableEqualToConstraint<T>(
+	private sealed class IsNullableEqualToConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? expected,
 		string expectedExpression,
 		ObjectEqualityOptions<T?> options)
-		: IValueConstraint<T?>
+		: ConstraintResult.WithEqualToValue<T?>(it, grammars, expected is null),
+			IValueConstraint<T?>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T? actual)
 		{
-			if (options.AreConsideredEqual(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(), options.GetExtendedFailure(it, actual, expected));
+			Actual = actual;
+			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> options.GetExpectation(expectedExpression);
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
 
-	private readonly struct IsNotEqualToConstraint(
-		string it,
-		object? unexpected,
-		string unexpectedExpression,
-		ObjectEqualityOptions<object?> options)
-		: IValueConstraint<object?>
-	{
-		public ConstraintResult IsMetBy(object? actual)
-		{
-			if (options.AreConsideredEqual(actual, unexpected))
-			{
-				return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-			}
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
 
-			return new ConstraintResult.Success<object?>(actual, ToString());
-		}
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
 
-		public override string ToString()
-			=> options.GetExpectation(unexpectedExpression, true);
-	}
-
-	private readonly struct IsNotEqualToConstraint<T>(
-		string it,
-		T? unexpected,
-		string unexpectedExpression,
-		ObjectEqualityOptions<T> options)
-		: IValueConstraint<T>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T actual)
-		{
-			if (options.AreConsideredEqual(actual, unexpected))
-			{
-				return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-			}
-
-			return new ConstraintResult.Success<T>(actual, ToString());
-		}
-
-		public override string ToString()
-			=> options.GetExpectation(unexpectedExpression, true);
-	}
-
-	private readonly struct IsNullableNotEqualToConstraint<T>(
-		string it,
-		T? unexpected,
-		string unexpectedExpression,
-		ObjectEqualityOptions<T?> options)
-		: IValueConstraint<T?>
-		where T : struct
-	{
-		public ConstraintResult IsMetBy(T? actual)
-		{
-			if (options.AreConsideredEqual(actual, unexpected))
-			{
-				return new ConstraintResult.Failure(ToString(), $"{it} was {Formatter.Format(actual)}");
-			}
-
-			return new ConstraintResult.Success<T?>(actual, ToString());
-		}
-
-		public override string ToString()
-			=> options.GetExpectation(unexpectedExpression, true);
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
 	}
 }

@@ -82,15 +82,15 @@ internal class AndNode : Node
 		=> Current.SetReason(becauseReason);
 
 	/// <inheritdoc />
-	public override string? ToString()
+	public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 	{
-		if (_nodes.Any())
+		foreach (Node node in _nodes.Select(n => n.Item2))
 		{
-			return string.Join(DefaultSeparator, _nodes.Select(x => x.Item2))
-			       + DefaultSeparator + Current;
+			node.AppendExpectation(stringBuilder, indentation);
+			stringBuilder.Append(DefaultSeparator);
 		}
 
-		return Current.ToString();
+		Current.AppendExpectation(stringBuilder, indentation);
 	}
 
 	private static ConstraintResult CombineResults(
@@ -108,14 +108,25 @@ internal class AndNode : Node
 			furtherProcessingStrategy ?? FurtherProcessingStrategy.Continue);
 	}
 
-	private sealed class AndConstraintResult(
-		ConstraintResult left,
-		ConstraintResult right,
-		string separator,
-		FurtherProcessingStrategy furtherProcessingStrategy)
-		: ConstraintResult(And(left.Outcome, right.Outcome), furtherProcessingStrategy)
+	private sealed class AndConstraintResult : ConstraintResult
 	{
-		private readonly FurtherProcessingStrategy _furtherProcessingStrategy = furtherProcessingStrategy;
+		private readonly FurtherProcessingStrategy _furtherProcessingStrategy;
+		private readonly ConstraintResult _left;
+		private readonly ConstraintResult _right;
+		private readonly string _separator;
+		private bool _isNegated;
+
+		public AndConstraintResult(ConstraintResult left,
+			ConstraintResult right,
+			string separator,
+			FurtherProcessingStrategy furtherProcessingStrategy) : base(furtherProcessingStrategy)
+		{
+			_left = left;
+			_right = right;
+			_separator = separator;
+			_furtherProcessingStrategy = furtherProcessingStrategy;
+			Outcome = And(left.Outcome, right.Outcome);
+		}
 
 		private static Outcome And(Outcome left, Outcome right)
 			=> (left, right) switch
@@ -128,40 +139,48 @@ internal class AndNode : Node
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			left.AppendExpectation(stringBuilder);
-			stringBuilder.Append(separator);
-			right.AppendExpectation(stringBuilder);
+			_left.AppendExpectation(stringBuilder);
+			if (_separator == DefaultSeparator && _isNegated)
+			{
+				stringBuilder.Append(" or ");
+			}
+			else
+			{
+				stringBuilder.Append(_separator);
+			}
+
+			_right.AppendExpectation(stringBuilder);
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (left.Outcome == Outcome.Failure)
+			if (_left.Outcome == Outcome.Failure)
 			{
-				left.AppendResult(stringBuilder, indentation);
-				if (right.Outcome == Outcome.Failure &&
+				_left.AppendResult(stringBuilder, indentation);
+				if (_right.Outcome == Outcome.Failure &&
 				    _furtherProcessingStrategy != FurtherProcessingStrategy.IgnoreResult &&
-				    !left.HasSameResultTextAs(right))
+				    !_left.HasSameResultTextAs(_right))
 				{
 					stringBuilder.Append(" and ");
-					right.AppendResult(stringBuilder, indentation);
+					_right.AppendResult(stringBuilder, indentation);
 				}
 			}
-			else if (right.Outcome == Outcome.Failure)
+			else if (_right.Outcome == Outcome.Failure)
 			{
-				right.AppendResult(stringBuilder, indentation);
+				_right.AppendResult(stringBuilder, indentation);
 			}
 		}
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
 			where TValue : default
 		{
-			if (left.TryGetValue(out TValue? leftValue))
+			if (_left.TryGetValue(out TValue? leftValue))
 			{
 				value = leftValue;
 				return true;
 			}
 
-			if (right.TryGetValue(out TValue? rightValue))
+			if (_right.TryGetValue(out TValue? rightValue))
 			{
 				value = rightValue;
 				return true;
@@ -169,6 +188,20 @@ internal class AndNode : Node
 
 			value = default;
 			return false;
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			_left.Negate();
+			_right.Negate();
+			return this;
 		}
 	}
 }

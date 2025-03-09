@@ -241,7 +241,7 @@ public sealed partial class ThatAsyncEnumerable
 			[InlineData("[g-h]{1}[o]*", false)]
 			public async Task AsRegex_ShouldUseRegex(string regex, bool expectSuccess)
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).Contains(regex).AsRegex();
@@ -263,7 +263,7 @@ public sealed partial class ThatAsyncEnumerable
 			[InlineData("f??o", false)]
 			public async Task AsWildcard_ShouldUseWildcard(string wildcard, bool expectSuccess)
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).Contains(wildcard).AsWildcard();
@@ -285,7 +285,7 @@ public sealed partial class ThatAsyncEnumerable
 			[InlineData("*oo", false)]
 			public async Task Exactly_ShouldUseExactMatch(string match, bool expectSuccess)
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
 #pragma warning disable aweXpect0001
 				StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 					expectation = That(subject).Contains(match);
@@ -310,7 +310,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldCompareCaseSensitive()
 			{
-				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow",]);
 
 				async Task Act()
 					=> await That(sut).Contains("GREEN");
@@ -330,7 +330,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenExpectedIsNotPartOfStringEnumerable_ShouldFail()
 			{
-				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow",]);
 
 				async Task Act()
 					=> await That(sut).Contains("red");
@@ -350,7 +350,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenExpectedIsPartOfStringEnumerable_ShouldSucceed()
 			{
-				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow",]);
 
 				async Task Act()
 					=> await That(sut).Contains("blue");
@@ -361,7 +361,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenIgnoringCase_ShouldSucceedForCaseSensitiveDifference()
 			{
-				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow"]);
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "blue", "yellow",]);
 
 				async Task Act()
 					=> await That(sut).Contains("GREEN").IgnoringCase();
@@ -375,7 +375,7 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WhenIgnoringNewlineStyle_ShouldIgnoreNewlineStyle(string match, bool expectSuccess)
 			{
 				string nl = Environment.NewLine;
-				IAsyncEnumerable<string> sut = ToAsyncEnumerable([$"fo{nl}o", $"ba{nl}r", $"ba{nl}z"]);
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable([$"fo{nl}o", $"ba{nl}r", $"ba{nl}z",]);
 
 				async Task Act()
 					=> await That(sut).Contains(match).IgnoringNewlineStyle();
@@ -415,7 +415,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WithAtLeast_ShouldVerifyCorrectNumberOfTimes()
 			{
-				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "green", "blue", "yellow"]);
+				IAsyncEnumerable<string> sut = ToAsyncEnumerable(["green", "green", "blue", "yellow",]);
 
 				async Task Act()
 					=> await That(sut).Contains("green").AtLeast(3.Times());
@@ -437,7 +437,7 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task WithAtMost_ShouldVerifyCorrectNumberOfTimes()
 			{
 				IAsyncEnumerable<string>
-					sut = ToAsyncEnumerable(["green", "green", "green", "green", "blue", "yellow"]);
+					sut = ToAsyncEnumerable(["green", "green", "green", "green", "blue", "yellow",]);
 
 				async Task Act()
 					=> await That(sut).Contains("green").AtMost(2.Times());

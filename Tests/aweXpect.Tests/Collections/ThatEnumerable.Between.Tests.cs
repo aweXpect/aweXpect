@@ -22,11 +22,11 @@ public sealed partial class ThatEnumerable
 					=> await That(subject).Between(6).And(8).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).Throws<XunitException>()
+				await That(Act).Throws<InconclusiveException>()
 					.WithMessage("""
 					             Expected that subject
 					             satisfies y => y < 6 for between 6 and 8 items,
-					             but could not verify, because it was cancelled early
+					             but could not verify, because it was already cancelled
 					             """);
 			}
 
@@ -61,7 +61,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSufficientlyEqualItems_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo(1);
@@ -72,7 +72,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo(2);
@@ -88,7 +88,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).Between(1).And(3).AreEqualTo(1);
@@ -123,7 +123,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(0).And(1).AreEqualTo("foo").IgnoringCase();
@@ -139,7 +139,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(2).And(3).AreEqualTo("foo");
@@ -150,7 +150,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewEqualItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(3).And(4).AreEqualTo("foo");
@@ -166,7 +166,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).Between(0).And(1).AreEqualTo("foo");

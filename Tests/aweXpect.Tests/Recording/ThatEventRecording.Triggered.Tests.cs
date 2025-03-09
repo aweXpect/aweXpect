@@ -116,5 +116,208 @@ public sealed partial class ThatEventRecording
 						"The CustomEvent event contains too many parameters (5): [string, int?, bool, DateTime, int]");
 			}
 		}
+
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[InlineData(3, false)]
+			[InlineData(2, true)]
+			public async Task AtLeast3_WhenNotificationCountIsEnough_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.AtLeast(3.Times()));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut at most 2 times,
+					             but it was recorded 3 times in [
+					               CustomEvent(),
+					               CustomEvent(),
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(0, true)]
+			public async Task AtLeastOnce_WhenNotificationCountIsEnough_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent)));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has never recorded the CustomEvent event on sut,
+					             but it was recorded once in [
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(3, false)]
+			[InlineData(4, true)]
+			public async Task AtMost3_WhenNotificationCountIsTooFew_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.AtMost(3.Times()));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut at least 4 times,
+					             but it was recorded 3 times in [
+					               CustomEvent(),
+					               CustomEvent(),
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(2, true)]
+			public async Task AtMostOnce_WhenNotificationCountIsEnough_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.AtMost(1));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut more than once,
+					             but it was recorded once in [
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(2, true)]
+			[InlineData(3, false)]
+			[InlineData(4, false)]
+			[InlineData(5, false)]
+			[InlineData(6, true)]
+			public async Task Between3And5_WhenNotificationCountIsBetween_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.Between(3).And(5.Times()));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that recording
+					              has recorded the CustomEvent event on sut outside 3 and 5 times,
+					              but it was recorded {count} times in [*
+					              """).AsWildcard();
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(0, true)]
+			public async Task ExactlyOnce_WhenNotificationCountIsEnough_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.Exactly(1));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut not once,
+					             but it was recorded once in [
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(0, false)]
+			public async Task Never_WhenNotificationCountIsEnough_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.Never());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut at least once,
+					             but it was never recorded in []
+					             """);
+			}
+		}
 	}
 }

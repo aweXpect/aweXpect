@@ -29,11 +29,14 @@ public class ExpectationNodeTests
 		node.AddConstraint(new DummyConstraint("foo"));
 		node.AddAsyncMapping(
 			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " with length "));
+		StringBuilder sb = new();
 
 		node.AddConstraint(new DummyConstraint("bar"));
 
-		await That(node.ToString()).IsEqualTo("foobar");
+		node.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foobar");
 	}
+
 
 	[Fact]
 	public async Task AddConstraint_WithMapping_ShouldForwardToInnerNode()
@@ -41,10 +44,12 @@ public class ExpectationNodeTests
 		ExpectationNode node = new();
 		node.AddConstraint(new DummyConstraint("foo"));
 		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, " with length "));
+		StringBuilder sb = new();
 
 		node.AddConstraint(new DummyConstraint("bar"));
 
-		await That(node.ToString()).IsEqualTo("foobar");
+		node.AppendExpectation(sb);
+		await That(sb.ToString()).IsEqualTo("foobar");
 	}
 
 	[Fact]
@@ -59,11 +64,91 @@ public class ExpectationNodeTests
 	}
 
 	[Fact]
+	public async Task AppendExpectation_Empty_ShouldReturnEmptyText()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithAsyncConstraintAndWithMapping_ShouldReturnBoth()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddConstraint(new DummyConstraint("foo"));
+		node.AddAsyncMapping(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithAsyncMapping_ShouldReturnMapping()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddAsyncMapping(
+			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithConstraint_ShouldReturnConstraint()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddConstraint(new DummyConstraint("foo"));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithConstraintAndWithMapping_ShouldReturnBoth()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddConstraint(new DummyConstraint("foo"));
+		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("foo");
+	}
+
+	[Fact]
+	public async Task AppendExpectation_WithMapping_ShouldReturnMapping()
+	{
+		StringBuilder sb = new();
+		ExpectationNode node = new();
+
+		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
+
+		node.AppendExpectation(sb);
+
+		await That(sb.ToString()).IsEqualTo("");
+	}
+
+	[Fact]
 	public async Task IsMetBy_WhenAsyncConstraintReturns_ShouldApplyBecauseReason()
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(new DummyAsyncConstraint<int>(_
-			=> Task.FromResult<ConstraintResult>(new ConstraintResult.Success("foo"))));
+			=> Task.FromResult<ConstraintResult>(new DummyConstraintResult(Outcome.Success, "foo"))));
 		node.SetReason(new BecauseReason("my reason"));
 		StringBuilder sb = new();
 
@@ -95,7 +180,7 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(new DummyAsyncContextConstraint<int>(_
-			=> Task.FromResult<ConstraintResult>(new ConstraintResult.Success("foo"))));
+			=> Task.FromResult<ConstraintResult>(new DummyConstraintResult(Outcome.Success, "foo"))));
 		node.SetReason(new BecauseReason("my reason"));
 		StringBuilder sb = new();
 
@@ -126,7 +211,7 @@ public class ExpectationNodeTests
 	public async Task IsMetBy_WhenContextConstraintReturns_ShouldApplyBecauseReason()
 	{
 		ExpectationNode node = new();
-		node.AddConstraint(new DummyContextConstraint<int>(_ => new ConstraintResult.Success("foo")));
+		node.AddConstraint(new DummyContextConstraint<int>(_ => new DummyConstraintResult(Outcome.Success, "foo")));
 		node.SetReason(new BecauseReason("my reason"));
 		StringBuilder sb = new();
 
@@ -157,7 +242,7 @@ public class ExpectationNodeTests
 	public async Task IsMetBy_WhenValueConstraintReturns_ShouldApplyBecauseReason()
 	{
 		ExpectationNode node = new();
-		node.AddConstraint(new DummyValueConstraint<int>(_ => new ConstraintResult.Success("foo")));
+		node.AddConstraint(new DummyValueConstraint<int>(_ => new DummyConstraintResult(Outcome.Success, "foo")));
 		node.SetReason(new BecauseReason("my reason"));
 		StringBuilder sb = new();
 
@@ -189,10 +274,11 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "outer failure")));
+			new DummyValueConstraint<int>(v
+				=> new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "outer failure")));
 		node.AddAsyncMapping(MemberAccessor<int, Task<int>>.FromFunc(s => Task.FromResult(s), " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
-			=> new ConstraintResult.Failure<int>(2 * v, "bar", "inner failure")));
+			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "inner failure")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
@@ -210,10 +296,11 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "same failure")));
+			new DummyValueConstraint<int>(
+				v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "same failure")));
 		node.AddAsyncMapping(MemberAccessor<int, Task<int>>.FromFunc(s => Task.FromResult(s), " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
-			=> new ConstraintResult.Failure<int>(2 * v, "bar", "same failure")));
+			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "same failure")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
@@ -230,10 +317,11 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "outer failure")));
+			new DummyValueConstraint<int>(v
+				=> new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "outer failure")));
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
-			=> new ConstraintResult.Failure<int>(2 * v, "bar", "inner failure")));
+			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "inner failure")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
@@ -251,10 +339,11 @@ public class ExpectationNodeTests
 	{
 		ExpectationNode node = new();
 		node.AddConstraint(
-			new DummyValueConstraint<int>(v => new ConstraintResult.Failure<int>(v, "foo", "same failure")));
+			new DummyValueConstraint<int>(
+				v => new DummyConstraintResult<int>(Outcome.Failure, v, "foo", "same failure")));
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(s => s, " with mapping "));
 		node.AddConstraint(new DummyValueConstraint<int>(v
-			=> new ConstraintResult.Failure<int>(2 * v, "bar", "same failure")));
+			=> new DummyConstraintResult<int>(Outcome.Failure, 2 * v, "bar", "same failure")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(42, null!, CancellationToken.None);
@@ -287,7 +376,8 @@ public class ExpectationNodeTests
 		FurtherProcessingStrategy furtherProcessingStrategy, string expectedFailureText)
 	{
 		DummyConstraint constraint1 = new("",
-			() => new DummyConstraintResult(Outcome.Failure, furtherProcessingStrategy, failureText: "failure1"));
+			() => new DummyConstraintResult(Outcome.Failure, failureText: "failure1",
+				furtherProcessingStrategy: furtherProcessingStrategy));
 		DummyConstraint constraint2 =
 			new("", () => new DummyConstraintResult(Outcome.Failure, failureText: "failure2"));
 		ExpectationNode node = new();
@@ -308,7 +398,8 @@ public class ExpectationNodeTests
 		FurtherProcessingStrategy furtherProcessingStrategy, string expectedFailureText)
 	{
 		DummyConstraint constraint1 = new("",
-			() => new DummyConstraintResult(Outcome.Failure, furtherProcessingStrategy, failureText: "failure1"));
+			() => new DummyConstraintResult(Outcome.Failure, failureText: "failure1",
+				furtherProcessingStrategy: furtherProcessingStrategy));
 		DummyConstraint constraint2 =
 			new("", () => new DummyConstraintResult(Outcome.Failure, failureText: "failure2"));
 		ExpectationNode node = new();
@@ -366,84 +457,10 @@ public class ExpectationNodeTests
 	}
 
 	[Fact]
-	public async Task ToString_Empty_ShouldReturnEmptyText()
-	{
-		ExpectationNode node = new();
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithAsyncConstraintAndWithMapping_ShouldReturnBoth()
-	{
-		ExpectationNode node = new();
-
-		node.AddConstraint(new DummyConstraint("foo"));
-		node.AddAsyncMapping(
-			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithAsyncMapping_ShouldReturnMapping()
-	{
-		ExpectationNode node = new();
-
-		node.AddAsyncMapping(
-			MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithConstraint_ShouldReturnConstraint()
-	{
-		ExpectationNode node = new();
-
-		node.AddConstraint(new DummyConstraint("foo"));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo");
-	}
-
-	[Fact]
-	public async Task ToString_WithConstraintAndWithMapping_ShouldReturnBoth()
-	{
-		ExpectationNode node = new();
-
-		node.AddConstraint(new DummyConstraint("foo"));
-		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("foo<empty>");
-	}
-
-	[Fact]
-	public async Task ToString_WithMapping_ShouldReturnMapping()
-	{
-		ExpectationNode node = new();
-
-		node.AddMapping(MemberAccessor<string, int>.FromFunc(s => s.Length, "with length: "));
-
-		string? result = node.ToString();
-
-		await That(result).IsEqualTo("<empty>");
-	}
-
-	[Fact]
 	public async Task TryGetValue_WhenLeftHasNoValue_ShouldUseDefaultValue()
 	{
-		DummyConstraint constraint1 = new("", () => new ConstraintResult.Success(""));
-		DummyConstraint constraint2 = new("", () => new ConstraintResult.Success<int>(2, ""));
+		DummyConstraint constraint1 = new("", () => new DummyConstraintResult(Outcome.Success, ""));
+		DummyConstraint constraint2 = new("", () => new DummyConstraintResult<int>(Outcome.Success, 2, ""));
 		ExpectationNode node = new();
 		node.AddConstraint(constraint1);
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
@@ -459,8 +476,8 @@ public class ExpectationNodeTests
 	[Fact]
 	public async Task TryGetValue_WhenLeftHasValue_ShouldReturnFalse()
 	{
-		DummyConstraint constraint1 = new("", () => new ConstraintResult.Success<int>(1, ""));
-		DummyConstraint constraint2 = new("", () => new ConstraintResult.Success<int>(2, ""));
+		DummyConstraint constraint1 = new("", () => new DummyConstraintResult<int>(Outcome.Success, 1, ""));
+		DummyConstraint constraint2 = new("", () => new DummyConstraintResult<int>(Outcome.Success, 2, ""));
 		ExpectationNode node = new();
 		node.AddConstraint(constraint1);
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
@@ -476,8 +493,8 @@ public class ExpectationNodeTests
 	[Fact]
 	public async Task TryGetValue_WhenNeitherLeftNorRightHasValue_ShouldReturnFalse()
 	{
-		DummyConstraint constraint1 = new("", () => new ConstraintResult.Success(""));
-		DummyConstraint constraint2 = new("", () => new ConstraintResult.Success(""));
+		DummyConstraint constraint1 = new("", () => new DummyConstraintResult(Outcome.Success, ""));
+		DummyConstraint constraint2 = new("", () => new DummyConstraintResult(Outcome.Success, ""));
 		ExpectationNode node = new();
 		node.AddConstraint(constraint1);
 		node.AddMapping(MemberAccessor<int, int>.FromFunc(_ => 0, "length"));
@@ -490,5 +507,9 @@ public class ExpectationNodeTests
 		await That(value).IsNull();
 	}
 
-	private class UnsupportedConstraint : IConstraint;
+	private sealed class UnsupportedConstraint : IConstraint
+	{
+		/// <inheritdoc />
+		public void AppendExpectation(StringBuilder stringBuilder, string? indentation = null) { }
+	}
 }

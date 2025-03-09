@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(Configuration)' != 'Debug' ">
-		<PackageReference Include="aweXpect.Core"/>
+		<ProjectReference Include="..\aweXpect.Core\aweXpect.Core.csproj"/>
 	</ItemGroup>
 	<ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
 		<ProjectReference Include="..\aweXpect.Core\aweXpect.Core.csproj"/>

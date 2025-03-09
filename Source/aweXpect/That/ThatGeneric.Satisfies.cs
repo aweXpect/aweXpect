@@ -23,8 +23,13 @@ public static partial class ThatGeneric
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) =>
-					new SatisfyConstraint<T>(it, predicate, doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+				.AddConstraint((it, grammars) =>
+					new SatisfiesConstraint<T>(
+						it,
+						grammars,
+						predicate,
+						doNotPopulateThisValue.TrimCommonWhiteSpace(),
+						options)),
 			source,
 			options);
 	}
@@ -37,27 +42,36 @@ public static partial class ThatGeneric
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 		=> new(source.ThatIs().ExpectationBuilder
-				.AddConstraint((it, grammar) =>
-					new NotSatisfyConstraint<T>(it, predicate, doNotPopulateThisValue.TrimCommonWhiteSpace())),
+				.AddConstraint((it, grammars) =>
+					new SatisfiesConstraint<T>(
+						it,
+						grammars,
+						predicate,
+						doNotPopulateThisValue.TrimCommonWhiteSpace(),
+						null).Invert()),
 			source);
 
-	private readonly struct SatisfyConstraint<T>(
+	private sealed class SatisfiesConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		Func<T, bool> predicate,
 		string predicateExpression,
-		RepeatedCheckOptions options)
-		: IAsyncConstraint<T>
+		RepeatedCheckOptions? options)
+		: ConstraintResult.WithNotNullValue<T?>(it, grammars),
+			IAsyncConstraint<T>
 	{
 		public async Task<ConstraintResult> IsMetBy(T actual, CancellationToken cancellationToken)
 		{
+			Actual = actual;
 			if (predicate(actual))
 			{
-				return new ConstraintResult.Success<T>(actual, ToString());
+				Outcome = Outcome.Success;
+				return this;
 			}
 
-			if (options.Timeout > TimeSpan.Zero)
+			if (options != null && options.Timeout > TimeSpan.Zero)
 			{
-				Stopwatch? sw = new();
+				Stopwatch sw = new();
 				sw.Start();
 				do
 				{
@@ -72,37 +86,28 @@ public static partial class ThatGeneric
 
 					if (predicate(actual))
 					{
-						return new ConstraintResult.Success<T>(actual, ToString());
+						Outcome = Outcome.Success;
+						return this;
 					}
 				} while (sw.Elapsed <= options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			Outcome = Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"satisfy {predicateExpression.TrimCommonWhiteSpace()}{options}";
-	}
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("satisfies ").Append(predicateExpression.TrimCommonWhiteSpace())
+				.Append(options);
 
-	private readonly struct NotSatisfyConstraint<T>(
-		string it,
-		Func<T, bool> predicate,
-		string predicateExpression)
-		: IValueConstraint<T>
-	{
-		public ConstraintResult IsMetBy(T actual)
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("does not satisfy ").Append(predicateExpression.TrimCommonWhiteSpace())
+				.Append(options);
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (!predicate(actual))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
 		}
-
-		public override string ToString()
-			=> $"not satisfy {predicateExpression}";
 	}
 }

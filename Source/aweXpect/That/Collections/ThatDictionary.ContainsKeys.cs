@@ -16,11 +16,12 @@ public static partial class ThatDictionary
 		ContainsKeys<TKey, TValue>(
 			this IThat<IDictionary<TKey, TValue>?> source,
 			params TKey[] expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new ContainKeysConstraint<TKey, TValue>(it, expected)),
+		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new ContainKeysConstraint<TKey, TValue>(it, grammars, expected)),
 			source,
 			expected,
-			f => expected.Select(e => f.TryGetValue(e, out TValue? value) ? value : default)
+			dictionary => expected
+				.Select(key => key is not null && dictionary.TryGetValue(key, out TValue? value) ? value : default)
 		);
 
 	/// <summary>
@@ -31,56 +32,72 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source,
 			params TKey[] unexpected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
-				new NotContainKeysConstraint<TKey, TValue>(it, unexpected)),
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new ContainKeysConstraint<TKey, TValue>(it, grammars, unexpected).Invert()),
 			source
 		);
 
-	private readonly struct ContainKeysConstraint<TKey, TValue>(string it, TKey[] expected)
-		: IValueConstraint<IDictionary<TKey, TValue>?>
+	private sealed class ContainKeysConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TKey[] expected)
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>>(it, grammars),
+			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
+		private List<TKey>? _existingKeys;
+		private List<TKey>? _missingKeys;
+
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
 		{
-			if (actual is null)
+			Actual = actual;
+			if (actual != null)
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
+				_missingKeys = [];
+				_existingKeys = [];
+				foreach (TKey item in expected)
+				{
+					if (actual.ContainsKey(item))
+					{
+						_existingKeys.Add(item);
+					}
+					else
+					{
+						_missingKeys.Add(item);
+					}
+				}
 			}
 
-			List<TKey> missingKeys = expected.Where(key => !actual.ContainsKey(key)).ToList();
-			if (missingKeys.Any())
+			Outcome = (IsNegated, _missingKeys, _existingKeys) switch
 			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did not contain {Formatter.Format(missingKeys, FormattingOptions.MultipleLines)} in {Formatter.Format(actual.Keys, FormattingOptions.MultipleLines)}");
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
+				(true, _, []) => Outcome.Failure,
+				(true, _, _) => Outcome.Success,
+				(false, [], _) => Outcome.Success,
+				(false, _, _) => Outcome.Failure,
+			};
+			return this;
 		}
 
-		public override string ToString() => $"contains keys {Formatter.Format(expected)}";
-	}
-
-	private readonly struct NotContainKeysConstraint<TKey, TValue>(string it, TKey[] unexpected)
-		: IValueConstraint<IDictionary<TKey, TValue>?>
-	{
-		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual is null)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was <null>");
-			}
-
-			List<TKey> existingKeys = unexpected.Where(actual.ContainsKey).ToList();
-			if (existingKeys.Any())
-			{
-				return new ConstraintResult.Failure<IDictionary<TKey, TValue>>(actual, ToString(),
-					$"{it} did contain {Formatter.Format(existingKeys, FormattingOptions.MultipleLines)}");
-			}
-
-			return new ConstraintResult.Success<IDictionary<TKey, TValue>>(actual, ToString());
+			stringBuilder.Append("contains keys ");
+			Formatter.Format(stringBuilder, expected);
 		}
 
-		public override string ToString() => $"does not contain keys {Formatter.Format(unexpected)}";
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" did not contain ");
+			Formatter.Format(stringBuilder, _missingKeys, FormattingOptions.MultipleLines);
+			stringBuilder.Append(" in ");
+			Formatter.Format(stringBuilder, Actual!.Keys, FormattingOptions.MultipleLines);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not contain keys ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" did contain ");
+			Formatter.Format(stringBuilder, _existingKeys, FormattingOptions.MultipleLines);
+		}
 	}
 }

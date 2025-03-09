@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Sources;
@@ -16,7 +17,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((it, _) => new ExecutesWithinConstraint<TValue>(it, duration)));
+			.AddConstraint((it, grammars) => new ExecutesWithinConstraint<TValue>(it, grammars, duration)));
 
 	/// <summary>
 	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
@@ -25,7 +26,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((it, _) => new ExecutesWithinConstraint(it, duration)));
+			.AddConstraint((it, grammars) => new ExecutesWithinConstraint(it, grammars, duration)));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
@@ -34,7 +35,7 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((it, _) => new DoesNotExecuteWithinConstraint<TValue>(it, duration)));
+			.AddConstraint((it, grammars) => new ExecutesWithinConstraint<TValue>(it, grammars, duration).Invert()));
 
 	/// <summary>
 	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
@@ -43,121 +44,169 @@ public static partial class ThatDelegate
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
 		TimeSpan duration)
 		=> new(source.ThatIs().ExpectationBuilder
-			.AddConstraint((it, _) => new DoesNotExecuteWithinConstraint(it, duration)));
+			.AddConstraint((it, grammars) => new ExecutesWithinConstraint(it, grammars, duration).Invert()));
 
-	private readonly struct ExecutesWithinConstraint<TValue>(string it, TimeSpan duration)
-		: IValueConstraint<DelegateValue<TValue>>
+	private sealed class ExecutesWithinConstraint<T>(string it, ExpectationGrammars grammars, TimeSpan duration)
+		: ConstraintResult(grammars),
+			IValueConstraint<DelegateValue<T>>
 	{
-		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
+		private DelegateValue<T>? _actual;
+		private bool _isNegated;
+
+		public ConstraintResult IsMetBy(DelegateValue<T> actual)
 		{
+			_actual = actual;
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(), That.ItWasNull);
+				Outcome = Outcome.Failure;
 			}
-
-			if (actual.Exception is OperationCanceledException)
+			else
 			{
-				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
-					$"{it} was canceled within {Formatter.Format(actual.Duration)}");
+				Outcome = (actual.Exception is not null || actual.Duration > duration) != _isNegated
+					? Outcome.Failure
+					: Outcome.Success;
 			}
 
-			if (actual.Exception is { } exception)
-			{
-				return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
-					$"{it} did throw {exception.FormatForMessage()}");
-			}
-
-			if (actual.Duration <= duration)
-			{
-				return new ConstraintResult.Success<TValue?>(actual.Value, ToString());
-			}
-
-			return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
-				$"{it} took {Formatter.Format(actual.Duration)}");
+			return this;
 		}
 
-		public override string ToString()
-			=> $"executes within {Formatter.Format(duration)}";
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_isNegated)
+			{
+				stringBuilder.Append("does not execute within ");
+			}
+			else
+			{
+				stringBuilder.Append("executes within ");
+			}
+
+			Formatter.Format(stringBuilder, duration);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (_actual?.IsNull != false)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else if (_isNegated)
+			{
+				stringBuilder.Append(it).Append(" took only ");
+				Formatter.Format(stringBuilder, _actual.Duration);
+			}
+			else if (_actual.Exception is OperationCanceledException)
+			{
+				stringBuilder.Append(it).Append(" was canceled within ");
+				Formatter.Format(stringBuilder, _actual.Duration);
+			}
+			else if (_actual.Exception is { } exception)
+			{
+				stringBuilder.Append(it).Append(" did throw ");
+				stringBuilder.Append(exception.FormatForMessage());
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" took ");
+				Formatter.Format(stringBuilder, _actual.Duration);
+			}
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			return this;
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is { Value: TValue typedValue, })
+			{
+				value = typedValue;
+				return true;
+			}
+
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(T));
+		}
 	}
 
-	private readonly struct ExecutesWithinConstraint(string it, TimeSpan duration)
-		: IValueConstraint<DelegateValue>
+	private sealed class ExecutesWithinConstraint(string it, ExpectationGrammars grammars, TimeSpan duration)
+		: ConstraintResult(grammars),
+			IValueConstraint<DelegateValue>
 	{
+		private DelegateValue? _actual;
+		private bool _isNegated;
+
 		public ConstraintResult IsMetBy(DelegateValue actual)
 		{
+			_actual = actual;
 			if (actual.IsNull)
 			{
-				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
+				Outcome = Outcome.Failure;
 			}
-
-			if (actual.Exception is OperationCanceledException)
+			else
 			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} was canceled within {Formatter.Format(actual.Duration)}");
+				Outcome = (actual.Exception is not null || actual.Duration > duration) != _isNegated
+					? Outcome.Failure
+					: Outcome.Success;
 			}
 
-			if (actual.Exception is { } exception)
-			{
-				return new ConstraintResult.Failure(ToString(),
-					$"{it} did throw {exception.FormatForMessage()}");
-			}
-
-			if (actual.Duration <= duration)
-			{
-				return new ConstraintResult.Success(ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} took {Formatter.Format(actual.Duration)}");
+			return this;
 		}
 
-		public override string ToString()
-			=> $"executes within {Formatter.Format(duration)}";
-	}
-
-	private readonly struct DoesNotExecuteWithinConstraint<TValue>(string it, TimeSpan duration)
-		: IValueConstraint<DelegateValue<TValue>>
-	{
-		public ConstraintResult IsMetBy(DelegateValue<TValue> actual)
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual.IsNull)
+			if (_isNegated)
 			{
-				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
+				stringBuilder.Append("does not execute within ");
+			}
+			else
+			{
+				stringBuilder.Append("executes within ");
 			}
 
-			if (actual.Exception is not null || actual.Duration > duration)
-			{
-				return new ConstraintResult.Success<TValue?>(actual.Value, ToString());
-			}
-
-			return new ConstraintResult.Failure<TValue?>(actual.Value, ToString(),
-				$"{it} took only {Formatter.Format(actual.Duration)}");
+			Formatter.Format(stringBuilder, duration);
 		}
 
-		public override string ToString()
-			=> $"does not execute within {Formatter.Format(duration)}";
-	}
-
-	private readonly struct DoesNotExecuteWithinConstraint(string it, TimeSpan duration)
-		: IValueConstraint<DelegateValue>
-	{
-		public ConstraintResult IsMetBy(DelegateValue actual)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (actual.IsNull)
+			if (_actual?.IsNull != false)
 			{
-				return new ConstraintResult.Failure(ToString(), That.ItWasNull);
+				stringBuilder.ItWasNull(it);
 			}
-
-			if (actual.Exception is not null || actual.Duration > duration)
+			else if (_isNegated)
 			{
-				return new ConstraintResult.Success(ToString());
+				stringBuilder.Append(it).Append(" took only ");
+				Formatter.Format(stringBuilder, _actual.Duration);
 			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} took only {Formatter.Format(actual.Duration)}");
+			else if (_actual.Exception is OperationCanceledException)
+			{
+				stringBuilder.Append(it).Append(" was canceled within ");
+				Formatter.Format(stringBuilder, _actual.Duration);
+			}
+			else if (_actual.Exception is { } exception)
+			{
+				stringBuilder.Append(it).Append(" did throw ");
+				stringBuilder.Append(exception.FormatForMessage());
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" took ");
+				Formatter.Format(stringBuilder, _actual.Duration);
+			}
 		}
 
-		public override string ToString()
-			=> $"does not execute within {Formatter.Format(duration)}";
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			return this;
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			value = default;
+			return false;
+		}
 	}
 }

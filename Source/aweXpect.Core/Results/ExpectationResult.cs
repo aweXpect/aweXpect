@@ -195,15 +195,17 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 	{
 		ConstraintResult result = await expectationBuilder.IsMet();
 
-		if (result.Outcome == Outcome.Success &&
-		    result.TryGetValue(out TType? value))
+		switch (result.Outcome)
 		{
-			return value;
-		}
-
-		if (result.Outcome == Outcome.Failure)
-		{
-			Fail.Test(await expectationBuilder.FromFailure(result));
+			case Outcome.Success
+				when result.TryGetValue(out TType? value):
+				return value;
+			case Outcome.Undecided:
+				Fail.Inconclusive(await expectationBuilder.FromFailure(result));
+				break;
+			case Outcome.Failure:
+				Fail.Test(await expectationBuilder.FromFailure(result));
+				break;
 		}
 
 		throw new FailException(

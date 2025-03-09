@@ -54,8 +54,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is exactly type OtherClass, because we want to test the failure,
 					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -77,8 +77,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is exactly type MyBaseClass, because we want to test the failure,
 					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -100,8 +100,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is exactly type MyClass, because {{reason}},
 					               but it was MyBaseClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -167,8 +167,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is exactly type OtherClass, because we want to test the failure,
 					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -190,8 +190,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is exactly type MyBaseClass, because we want to test the failure,
 					               but it was MyClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 
@@ -213,8 +213,8 @@ public sealed partial class ThatObject
 					               Expected that subject
 					               is exactly type MyClass, because {{reason}},
 					               but it was MyBaseClass {
-					                 Value = {{value}}
-					               }
+					                   Value = {{value}}
+					                 }
 					               """);
 			}
 

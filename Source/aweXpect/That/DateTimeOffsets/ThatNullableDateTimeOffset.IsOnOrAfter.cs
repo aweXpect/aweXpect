@@ -17,9 +17,10 @@ public static partial class ThatNullableDateTimeOffset
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					expected,
 					$"is on or after {Formatter.Format(expected)}",
 					(a, e, t) => a + t >= e,
@@ -38,9 +39,10 @@ public static partial class ThatNullableDateTimeOffset
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTimeOffset?, IThat<DateTimeOffset?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar) =>
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					unexpected,
 					$"is not on or after {Formatter.Format(unexpected)}",
 					(a, e, t) => a - t < e,

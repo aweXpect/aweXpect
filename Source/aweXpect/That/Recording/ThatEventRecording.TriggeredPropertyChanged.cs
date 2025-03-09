@@ -19,8 +19,9 @@ public static partial class ThatEventRecording
 		Quantifier quantifier = new();
 		TriggerEventFilter filter = new();
 		return new EventTriggerResult<TSubject>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new HaveTriggeredConstraint<TSubject>(it, nameof(INotifyPropertyChanged.PropertyChanged), filter,
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
+					filter,
 					quantifier)),
 			source,
 			filter,
@@ -38,8 +39,9 @@ public static partial class ThatEventRecording
 		quantifier.Exactly(0);
 		TriggerEventFilter filter = new();
 		return new EventTriggerResult<TSubject>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammar)
-				=> new HaveTriggeredConstraint<TSubject>(it, nameof(INotifyPropertyChanged.PropertyChanged), filter,
+			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
+					filter,
 					quantifier)),
 			source,
 			filter,

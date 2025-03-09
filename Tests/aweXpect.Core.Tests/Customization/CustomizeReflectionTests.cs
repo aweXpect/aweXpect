@@ -14,7 +14,7 @@ public sealed class CustomizeReflectionTests
 
 		using (IDisposable _ = Customize.aweXpect.Reflection().Update(p => p with
 		       {
-			       ExcludedAssemblyPrefixes = [..p.ExcludedAssemblyPrefixes, additionalExcludedAssemblyNamespace],
+			       ExcludedAssemblyPrefixes = [..p.ExcludedAssemblyPrefixes, additionalExcludedAssemblyNamespace,],
 		       }))
 		{
 			await That(Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get())
