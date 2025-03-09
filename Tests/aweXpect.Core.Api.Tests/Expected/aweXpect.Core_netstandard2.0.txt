@@ -462,10 +462,10 @@ namespace aweXpect.Delegates
         public aweXpect.Delegates.ThatDelegateThrows<TException> ThrowsExactly<TException>()
             where TException : System.Exception { }
         public aweXpect.Delegates.ThatDelegateThrows<System.Exception> ThrowsException() { }
-        public sealed class WithValue<TValue> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<TValue>>
+        public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
         {
             public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-            public aweXpect.Results.ExpectationResult<TValue> DoesNotThrow() { }
+            public aweXpect.Results.ExpectationResult<T> DoesNotThrow() { }
         }
         public sealed class WithoutValue : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue>
         {
