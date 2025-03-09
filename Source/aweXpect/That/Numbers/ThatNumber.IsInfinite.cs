@@ -1,4 +1,5 @@
 ﻿using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -14,13 +15,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsInfinite(this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<float>(
-					it,
-					grammars,
-					float.PositiveInfinity,
-					_ => ExpectIsInfinite,
-					(a, _) => float.IsInfinity(a),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsFloatInfiniteConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -29,13 +24,7 @@ public static partial class ThatNumber
 	public static AndOrResult<double, IThat<double>> IsInfinite(
 		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<double>(
-					it,
-					grammars,
-					double.PositiveInfinity,
-					_ => ExpectIsInfinite,
-					(a, _) => double.IsInfinity(a),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsDoubleInfiniteConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -43,13 +32,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsInfinite(this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<float>(
-					it,
-					grammars,
-					float.PositiveInfinity,
-					_ => ExpectIsInfinite,
-					(a, _) => a != null && float.IsInfinity(a.Value),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsFloatInfiniteConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -58,13 +41,7 @@ public static partial class ThatNumber
 	public static AndOrResult<double?, IThat<double?>> IsInfinite(
 		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<double>(
-					it,
-					grammars,
-					double.PositiveInfinity,
-					_ => ExpectIsInfinite,
-					(a, _) => a != null && double.IsInfinity(a.Value),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsDoubleInfiniteConstraint(it, grammars)),
 			source);
 
 	/// <summary>
@@ -73,13 +50,7 @@ public static partial class ThatNumber
 	public static AndOrResult<float, IThat<float>> IsNotInfinite(
 		this IThat<float> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<float>(
-					it,
-					grammars,
-					float.PositiveInfinity,
-					_ => ExpectIsNotInfinite,
-					(a, _) => !float.IsInfinity(a),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsFloatInfiniteConstraint(it, grammars).Invert()),
 			source);
 
 	/// <summary>
@@ -88,13 +59,7 @@ public static partial class ThatNumber
 	public static AndOrResult<double, IThat<double>> IsNotInfinite(
 		this IThat<double> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<double>(
-					it,
-					grammars,
-					double.PositiveInfinity,
-					_ => ExpectIsNotInfinite,
-					(a, _) => !double.IsInfinity(a),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsDoubleInfiniteConstraint(it, grammars).Invert()),
 			source);
 
 	/// <summary>
@@ -103,13 +68,7 @@ public static partial class ThatNumber
 	public static AndOrResult<float?, IThat<float?>> IsNotInfinite(
 		this IThat<float?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<float>(
-					it,
-					grammars,
-					float.PositiveInfinity,
-					_ => ExpectIsNotInfinite,
-					(a, _) => a == null || !float.IsInfinity(a.Value),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsFloatInfiniteConstraint(it, grammars).Invert()),
 			source);
 
 	/// <summary>
@@ -119,12 +78,110 @@ public static partial class ThatNumber
 	public static AndOrResult<double?, IThat<double?>> IsNotInfinite(
 		this IThat<double?> source)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<double>(
-					it,
-					grammars,
-					double.PositiveInfinity,
-					_ => ExpectIsNotInfinite,
-					(a, _) => a == null || !double.IsInfinity(a.Value),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsDoubleInfiniteConstraint(it, grammars).Invert()),
 			source);
+
+	private sealed class IsFloatInfiniteConstraint(
+		string it,
+		ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<float>(grammars),
+			IValueConstraint<float>
+	{
+		public ConstraintResult IsMetBy(float actual)
+		{
+			Actual = actual;
+			Outcome = float.IsInfinity(actual) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsInfinite);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
+
+	private sealed class IsDoubleInfiniteConstraint(
+		string it,
+		ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<double>(grammars),
+			IValueConstraint<double>
+	{
+		public ConstraintResult IsMetBy(double actual)
+		{
+			Actual = actual;
+			Outcome = double.IsInfinity(actual) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsInfinite);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
+
+	private sealed class NullableIsFloatInfiniteConstraint(
+		string it,
+		ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<float?>(grammars),
+			IValueConstraint<float?>
+	{
+		public ConstraintResult IsMetBy(float? actual)
+		{
+			Actual = actual;
+			Outcome = actual is not null && float.IsInfinity(actual.Value) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsInfinite);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
+
+	private sealed class NullableIsDoubleInfiniteConstraint(
+		string it,
+		ExpectationGrammars grammars)
+		: ConstraintResult.WithValue<double?>(grammars),
+			IValueConstraint<double?>
+	{
+		public ConstraintResult IsMetBy(double? actual)
+		{
+			Actual = actual;
+			Outcome = actual is not null && double.IsInfinity(actual.Value) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsInfinite);
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
 }

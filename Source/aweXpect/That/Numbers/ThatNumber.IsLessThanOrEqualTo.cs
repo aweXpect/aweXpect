@@ -1,4 +1,6 @@
-﻿using aweXpect.Core;
+﻿using System;
+using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -13,13 +15,7 @@ public static partial class ThatNumber
 		this IThat<byte> source,
 		byte? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<byte>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<byte>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -29,13 +25,7 @@ public static partial class ThatNumber
 		this IThat<sbyte> source,
 		sbyte? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<sbyte>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<sbyte>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -45,13 +35,7 @@ public static partial class ThatNumber
 		this IThat<short> source,
 		short? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<short>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<short>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -61,13 +45,7 @@ public static partial class ThatNumber
 		this IThat<ushort> source,
 		ushort? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<ushort>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<ushort>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -77,13 +55,7 @@ public static partial class ThatNumber
 		this IThat<int> source,
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<int>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<int>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -93,13 +65,7 @@ public static partial class ThatNumber
 		this IThat<uint> source,
 		uint? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<uint>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<uint>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -109,13 +75,7 @@ public static partial class ThatNumber
 		this IThat<long> source,
 		long? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<long>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<long>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -125,13 +85,7 @@ public static partial class ThatNumber
 		this IThat<ulong> source,
 		ulong? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<ulong>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<ulong>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -141,13 +95,7 @@ public static partial class ThatNumber
 		this IThat<float> source,
 		float? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<float>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<float>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -157,13 +105,7 @@ public static partial class ThatNumber
 		this IThat<double> source,
 		double? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<double>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<double>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -173,13 +115,7 @@ public static partial class ThatNumber
 		this IThat<decimal> source,
 		decimal? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new GenericConstraint<decimal>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new IsLessThanOrEqualToConstraint<decimal>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -189,13 +125,7 @@ public static partial class ThatNumber
 		this IThat<byte?> source,
 		byte? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<byte>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<byte>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -205,13 +135,7 @@ public static partial class ThatNumber
 		this IThat<sbyte?> source,
 		sbyte? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<sbyte>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<sbyte>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -221,13 +145,7 @@ public static partial class ThatNumber
 		this IThat<short?> source,
 		short? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<short>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<short>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -237,13 +155,7 @@ public static partial class ThatNumber
 		this IThat<ushort?> source,
 		ushort? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<ushort>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<ushort>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -253,13 +165,7 @@ public static partial class ThatNumber
 		this IThat<int?> source,
 		int? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<int>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<int>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -269,13 +175,7 @@ public static partial class ThatNumber
 		this IThat<uint?> source,
 		uint? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<uint>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<uint>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -285,13 +185,7 @@ public static partial class ThatNumber
 		this IThat<long?> source,
 		long? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<long>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<long>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -301,13 +195,7 @@ public static partial class ThatNumber
 		this IThat<ulong?> source,
 		ulong? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<ulong>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<ulong>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -317,13 +205,7 @@ public static partial class ThatNumber
 		this IThat<float?> source,
 		float? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<float>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<float>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -333,13 +215,7 @@ public static partial class ThatNumber
 		this IThat<double?> source,
 		double? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<double>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<double>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -349,12 +225,75 @@ public static partial class ThatNumber
 		this IThat<decimal?> source,
 		decimal? expected)
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableGenericConstraint<decimal>(
-					it,
-					grammars,
-					expected,
-					e => $"is less than or equal to {Formatter.Format(e)}",
-					(a, e) => a <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}")),
+				new NullableIsLessThanOrEqualToConstraint<decimal>(it, grammars, expected)),
 			source);
+
+	private sealed class IsLessThanOrEqualToConstraint<TNumber>(string it, ExpectationGrammars grammars, TNumber? expected)
+		: ConstraintResult.WithEqualToValue<TNumber>(it, grammars, expected is null),
+			IValueConstraint<TNumber>
+		where TNumber : struct, IComparable<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber actual)
+		{
+			Actual = actual;
+			Outcome = IsFinite(expected) && IsFinite(actual) && actual.CompareTo(expected.Value) <= 0
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is less than or equal to ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not less than or equal to ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
+
+	private sealed class NullableIsLessThanOrEqualToConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber? expected)
+		: ConstraintResult.WithEqualToValue<TNumber?>(it, grammars, expected is null),
+			IValueConstraint<TNumber?>
+		where TNumber : struct, IComparable<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber? actual)
+		{
+			Actual = actual;
+			Outcome = IsFinite(expected) && IsFinite(actual) && actual.Value.CompareTo(expected.Value) <= 0
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is less than or equal to ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not less than or equal to ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
 }
