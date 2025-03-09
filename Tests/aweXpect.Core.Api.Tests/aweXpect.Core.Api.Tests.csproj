@@ -27,4 +27,8 @@
 	<ItemGroup>
 		<Folder Include="Expected\"/>
 	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="**/*.cs" />
+	</ItemGroup>
 </Project>
