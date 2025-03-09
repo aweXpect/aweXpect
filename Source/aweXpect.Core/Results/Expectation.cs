@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Results;
 
@@ -114,7 +115,7 @@ public abstract class Expectation
 
 		/// <summary>
 		///     Specifies, if the combination should be treated as
-		///     <see cref="ConstraintResult.Success" /> or <see cref="ConstraintResult.Failure" />
+		///     <see cref="Outcome.Success" /> or <see cref="Outcome.Failure" />
 		/// </summary>
 		protected abstract Outcome CheckOutcome(Outcome? previous, Outcome current);
 
@@ -167,12 +168,40 @@ public abstract class Expectation
 
 			if (outcome != Outcome.Success)
 			{
-				ConstraintResult.Failure result = new(expectationTexts.ToString(), failureTexts.ToString());
-				return new Result(index, GetSubjectLine(), result);
+				return new Result(index, GetSubjectLine(),
+					new CombinationResult(Outcome.Failure, expectationTexts.ToString(), failureTexts.ToString()));
 			}
 
 			return new Result(index, GetSubjectLine(),
-				new ConstraintResult.Success(expectationTexts.ToString()));
+				new CombinationResult(Outcome.Success, expectationTexts.ToString()));
+		}
+
+		private sealed class CombinationResult : ConstraintResult
+		{
+			private readonly string _expectationTexts;
+			private readonly string? _failureTexts;
+
+			public CombinationResult(Outcome outcome, string expectationTexts, string? failureTexts = null) : base(ExpectationGrammars.None)
+			{
+				_expectationTexts = expectationTexts;
+				_failureTexts = failureTexts;
+				Outcome = outcome;
+			}
+
+			public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			{
+				stringBuilder.Append(_expectationTexts.Indent(indentation, false));
+			}
+
+			public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			{
+				if (_failureTexts != null)
+				{
+					stringBuilder.Append(_failureTexts.Indent(indentation, false));
+				}
+			}
+
+			public override ConstraintResult Negate() => this;
 		}
 
 		internal override IEnumerable<ResultContext> GetContexts(int index)

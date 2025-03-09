@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text;
-using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Constraints;
 
@@ -65,47 +64,4 @@ public abstract partial class ConstraintResult
 	///     Negate the current <see cref="ConstraintResult" />.
 	/// </summary>
 	public abstract ConstraintResult Negate();
-
-	/// <summary>
-	///     A <see cref="ConstraintResult" /> with a text-based expectation.
-	/// </summary>
-	public class TextBasedConstraintResult : ConstraintResult
-	{
-		private readonly string? _expectationText;
-
-		/// <summary>
-		///     Initializes a new instance of <see cref="ConstraintResult" />.
-		/// </summary>
-		protected TextBasedConstraintResult(
-			Outcome outcome,
-			string expectationText,
-			FurtherProcessingStrategy furtherProcessingStrategy)
-			: base(furtherProcessingStrategy)
-		{
-			Outcome = outcome;
-			_expectationText = expectationText;
-		}
-
-		/// <inheritdoc />
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(_expectationText.Indent(indentation, false));
-
-		/// <inheritdoc />
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			// Do nothing
-		}
-
-		/// <inheritdoc />
-		public override ConstraintResult Negate()
-		{
-			Outcome = Outcome switch
-			{
-				Outcome.Failure => Outcome.Success,
-				Outcome.Success => Outcome.Failure,
-				_ => Outcome,
-			};
-			return this;
-		}
-	}
 }

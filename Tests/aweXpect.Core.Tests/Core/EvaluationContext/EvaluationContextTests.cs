@@ -1,5 +1,6 @@
 ﻿using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Results;
 
 namespace aweXpect.Core.Tests.Core.EvaluationContext;
@@ -78,7 +79,7 @@ public class EvaluationContextTests
 		public ConstraintResult IsMetBy(bool actual, IEvaluationContext context)
 		{
 			Context = context;
-			return new ConstraintResult.Success<bool>(actual, "");
+			return new DummyConstraintResult<bool>(Outcome.Success, actual, "");
 		}
 
 		#endregion

@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Nodes;
+using aweXpect.Core.Tests.TestHelpers;
 using aweXpect.Core.TimeSystem;
 using aweXpect.Results;
 
@@ -23,14 +24,14 @@ public class ExpectationResultTests
 	public async Task IsMet_InvalidType_ShouldThrowFailException()
 	{
 		MyExpectationBuilder myBuilder =
-			new("my-subject", () => new ConstraintResult.Success<string>("foo", "SUCCESS"));
+			new("my-subject", () => new DummyConstraintResult<string>(Outcome.Success, "foo", "SUCCESS"));
 		ExpectationResult<int> sut = new(myBuilder);
 
 		async Task Act() => await sut;
 
 		await That(Act).Throws<FailException>()
 			.WithMessage("""
-			             The value in Success<string> did not match expected type int.
+			             The value in DummyConstraintResult<string> did not match expected type int.
 			             """);
 	}
 
@@ -55,7 +56,7 @@ public class ExpectationResultTests
 
 		private CancellationToken? _cancellationToken;
 
-		private static ConstraintResult DefaultResultBuilder() => new ConstraintResult.Success("SUCCESS");
+		private static ConstraintResult DefaultResultBuilder() => new DummyConstraintResult(Outcome.Success, "SUCCESS");
 
 		public async Task<CancellationToken?> GetRegisteredCancellationToken()
 		{

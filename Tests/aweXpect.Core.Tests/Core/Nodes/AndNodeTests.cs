@@ -41,11 +41,11 @@ public sealed class AndNodeTests
 	public async Task ShouldConsiderFurtherProcessingStrategy()
 	{
 		AndNode node = new(new DummyNode("",
-			() => new ConstraintResult.Failure("foo", "-")));
+			() => new DummyConstraintResult(Outcome.Failure, "foo", "-")));
 		node.AddNode(new DummyNode("",
-			() => new ConstraintResult.Failure("bar", "-", FurtherProcessingStrategy.IgnoreCompletely)), " my ");
+			() => new DummyConstraintResult(Outcome.Failure, "bar", "-", FurtherProcessingStrategy.IgnoreCompletely)), " my ");
 		node.AddNode(new DummyNode("",
-			() => new ConstraintResult.Failure("baz", "-")), " is ");
+			() => new DummyConstraintResult(Outcome.Failure, "baz", "-")), " is ");
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
@@ -57,8 +57,8 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task TryGetValue_WhenLeftHasValue_ShouldReturnLeftValue()
 	{
-		DummyNode node1 = new("", () => new ConstraintResult.Success<int>(1, ""));
-		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
+		DummyNode node1 = new("", () => new DummyConstraintResult<int>(Outcome.Success, 1, ""));
+		DummyNode node2 = new("", () => new DummyConstraintResult<int>(Outcome.Success, 2, ""));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
 		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
@@ -72,8 +72,8 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task TryGetValue_WhenNoneHasValue_ShouldReturnFalse()
 	{
-		DummyNode node1 = new("", () => new ConstraintResult.Success(""));
-		DummyNode node2 = new("", () => new ConstraintResult.Success(""));
+		DummyNode node1 = new("", () => new DummyConstraintResult(Outcome.Success, ""));
+		DummyNode node2 = new("", () => new DummyConstraintResult(Outcome.Success, ""));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
 		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
@@ -87,8 +87,8 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task TryGetValue_WhenOnlyRightHasValue_ShouldReturnRightValue()
 	{
-		DummyNode node1 = new("", () => new ConstraintResult.Success(""));
-		DummyNode node2 = new("", () => new ConstraintResult.Success<int>(2, ""));
+		DummyNode node1 = new("", () => new DummyConstraintResult(Outcome.Success, ""));
+		DummyNode node2 = new("", () => new DummyConstraintResult<int>(Outcome.Success, 2, ""));
 		AndNode andNode = new(node1);
 		andNode.AddNode(node2);
 		ConstraintResult constraintResult = await andNode.IsMetBy(0, null!, CancellationToken.None);
@@ -102,8 +102,8 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task WithCustomSeparator_ShouldUseItInsteadOfOr()
 	{
-		AndNode node = new(new DummyNode("", () => new ConstraintResult.Failure("foo", "-")));
-		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
+		AndNode node = new(new DummyNode("", () => new DummyConstraintResult(Outcome.Failure, "foo", "-")));
+		node.AddNode(new DummyNode("", () => new DummyConstraintResult(Outcome.Failure, "bar", "-")), " my ");
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
@@ -115,9 +115,9 @@ public sealed class AndNodeTests
 	[Fact]
 	public async Task WithCustomSeparators_ShouldUseItInsteadOfOr()
 	{
-		AndNode node = new(new DummyNode("", () => new ConstraintResult.Failure("foo", "-")));
-		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("bar", "-")), " my ");
-		node.AddNode(new DummyNode("", () => new ConstraintResult.Failure("baz", "-")), " is ");
+		AndNode node = new(new DummyNode("", () => new DummyConstraintResult(Outcome.Failure, "foo", "-")));
+		node.AddNode(new DummyNode("", () => new DummyConstraintResult(Outcome.Failure, "bar", "-")), " my ");
+		node.AddNode(new DummyNode("", () => new DummyConstraintResult(Outcome.Failure, "baz", "-")), " is ");
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);
@@ -158,11 +158,11 @@ public sealed class AndNodeTests
 	public async Task WithProcessingStrategy_ShouldConsiderIgnoreCompletely()
 	{
 		AndNode node = new(new DummyNode("",
-			() => new ConstraintResult.Success("foo")));
+			() => new DummyConstraintResult(Outcome.Success, "foo")));
 		node.AddNode(new DummyNode("",
-			() => new ConstraintResult.Success("bar", null, FurtherProcessingStrategy.IgnoreCompletely)));
+			() => new DummyConstraintResult(Outcome.Success, "bar", null, FurtherProcessingStrategy.IgnoreCompletely)));
 		node.AddNode(new DummyNode("",
-			() => new ConstraintResult.Failure("baz", "-")));
+			() => new DummyConstraintResult(Outcome.Failure, "baz", "-")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(0, null!, CancellationToken.None);

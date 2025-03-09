@@ -77,11 +77,6 @@ public static class ConstraintResultExtensions
 
 	private static string GetResultText(this ConstraintResult result)
 	{
-		if (result is ConstraintResult.Failure failure)
-		{
-			return failure.ResultText;
-		}
-
 		StringBuilder sb = new();
 		result.AppendResult(sb);
 		return sb.ToString();
@@ -186,75 +181,6 @@ public static class ConstraintResultExtensions
 			value = default;
 			return _value is null;
 		}
-
-		public override ConstraintResult Negate() => _inner.Negate();
-	}
-
-	private sealed class ConstraintWithOutcome : ConstraintResult
-	{
-		private readonly string? _expectation;
-		private readonly ConstraintResult _inner;
-		private readonly string? _result;
-
-		public ConstraintWithOutcome(ConstraintResult inner,
-			Outcome outcome,
-			string? expectation = null,
-			string? result = null) : base(inner.FurtherProcessingStrategy)
-		{
-			Outcome = outcome;
-			_inner = inner;
-			_expectation = expectation;
-			_result = result;
-		}
-
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (_expectation == null)
-			{
-				_inner.AppendExpectation(stringBuilder, indentation);
-			}
-			else
-			{
-				stringBuilder.Append(_expectation.Indent(indentation));
-			}
-		}
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (_result == null)
-			{
-				_inner.AppendResult(stringBuilder, indentation);
-			}
-			else
-			{
-				stringBuilder.Append(_result.Indent(indentation));
-			}
-		}
-
-		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> _inner.TryGetValue(out value);
-
-		public override ConstraintResult Negate() => _inner.Negate();
-	}
-
-	private sealed class ConstraintResultFailure : ConstraintResult
-	{
-		private readonly ConstraintResult _inner;
-
-		public ConstraintResultFailure(ConstraintResult inner) : base(inner.FurtherProcessingStrategy)
-		{
-			Outcome = Outcome.Failure;
-			_inner = inner;
-		}
-
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> _inner.AppendExpectation(stringBuilder, indentation);
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> _inner.AppendResult(stringBuilder, indentation);
-
-		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-			=> _inner.TryGetValue(out value);
 
 		public override ConstraintResult Negate() => _inner.Negate();
 	}
