@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Recording;
 
@@ -69,7 +70,7 @@ public static partial class ThatEventRecording
 		{
 			if (_actual == null)
 			{
-				stringBuilder.Append(it).Append(" was <null>");
+				stringBuilder.ItWasNull(it);
 				return;
 			}
 

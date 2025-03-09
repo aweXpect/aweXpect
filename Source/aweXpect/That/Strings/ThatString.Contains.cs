@@ -132,7 +132,7 @@ public static partial class ThatString
 		{
 			if (_actual is null)
 			{
-				stringBuilder.Append(it).Append(" was <null>");
+				stringBuilder.ItWasNull(it);
 			}
 			else
 			{

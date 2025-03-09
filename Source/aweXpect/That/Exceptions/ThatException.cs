@@ -41,7 +41,7 @@ public static partial class ThatException
 		{
 			if (Actual?.InnerException is null)
 			{
-				stringBuilder.Append(It).Append(" was <null>");
+				stringBuilder.ItWasNull(It);
 			}
 			else
 			{

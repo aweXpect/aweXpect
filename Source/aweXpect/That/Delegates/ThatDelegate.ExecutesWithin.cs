@@ -88,7 +88,7 @@ public static partial class ThatDelegate
 		{
 			if (_actual?.IsNull != false)
 			{
-				stringBuilder.Append(it).Append(" was <null>");
+				stringBuilder.ItWasNull(it);
 			}
 			else if (_isNegated)
 			{
@@ -173,7 +173,7 @@ public static partial class ThatDelegate
 		{
 			if (_actual?.IsNull != false)
 			{
-				stringBuilder.Append(it).Append(" was <null>");
+				stringBuilder.ItWasNull(it);
 			}
 			else if (_isNegated)
 			{

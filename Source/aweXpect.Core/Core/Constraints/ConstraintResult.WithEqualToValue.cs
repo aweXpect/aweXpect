@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Constraints;
 
@@ -97,8 +98,7 @@ public abstract partial class ConstraintResult
 		{
 			if (Actual is null)
 			{
-				stringBuilder.Append(It);
-				stringBuilder.Append(" was <null>");
+				stringBuilder.ItWasNull(It);
 			}
 			else if (Grammars.IsNegated())
 			{

@@ -48,7 +48,8 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 			// Do nothing
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null) => stringBuilder.Append(it).Append(" was <null>");
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.ItWasNull(it);
 
 		public override ConstraintResult Negate()
 			=> this;

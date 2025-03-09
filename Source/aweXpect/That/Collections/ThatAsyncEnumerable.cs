@@ -117,8 +117,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			if (Actual is null)
 			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
+				stringBuilder.ItWasNull(_it);
 			}
 			else
 			{
@@ -150,8 +149,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			if (Actual is null)
 			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
+				stringBuilder.ItWasNull(_it);
 			}
 			else
 			{
@@ -231,8 +229,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			if (Actual is null)
 			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
+				stringBuilder.ItWasNull(_it);
 			}
 			else
 			{
@@ -252,8 +249,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			if (Actual is null)
 			{
-				stringBuilder.Append(_it);
-				stringBuilder.Append(" was <null>");
+				stringBuilder.ItWasNull(_it);
 			}
 			else
 			{
