@@ -155,7 +155,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected that sut
 				             matches regex <null>,
-				             but could not compare the <null> regex with <null>
+				             but it was <null>
 				             """);
 		}
 
@@ -171,11 +171,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected that sut
 				             matches regex ".*",
-				             but it did not match:
-				               ↓ (actual)
-				               <null>
-				               ".*"
-				               ↑ (regex pattern)
+				             but it was <null>
 				             """);
 		}
 	}

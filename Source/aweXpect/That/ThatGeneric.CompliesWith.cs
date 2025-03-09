@@ -22,7 +22,7 @@ public static partial class ThatGeneric
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new ComplyWithConstraint<T>(it, grammars, expectations, options)),
+					new CompliesWithConstraint<T>(it, grammars, expectations, options)),
 			source,
 			options);
 	}
@@ -36,19 +36,23 @@ public static partial class ThatGeneric
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new DoesNotComplyWithConstraint<T>(it, grammars, expectations, options)),
+					new CompliesWithConstraint<T>(it, grammars, expectations, options).Invert()),
 			source,
 			options);
 	}
 
-	private readonly struct ComplyWithConstraint<T> : IAsyncContextConstraint<T>
+	private class CompliesWithConstraint<T>
+		: ConstraintResult,
+			IAsyncContextConstraint<T>
 	{
 		private readonly string _it;
-		private readonly RepeatedCheckOptions _options;
 		private readonly ManualExpectationBuilder<T> _itemExpectationBuilder;
+		private readonly RepeatedCheckOptions _options;
+		private bool _isNegated;
 
-		public ComplyWithConstraint(string it, ExpectationGrammars grammars,
+		public CompliesWithConstraint(string it, ExpectationGrammars grammars,
 			Action<IThat<T>> expectations, RepeatedCheckOptions options)
+			: base(grammars)
 		{
 			_it = it;
 			_options = options;
@@ -62,9 +66,9 @@ public static partial class ThatGeneric
 			CancellationToken cancellationToken)
 		{
 			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
-			if (isMatch.Outcome == Outcome.Success)
+			if (isMatch.Outcome == Outcome.Success != _isNegated)
 			{
-				return isMatch.SuffixExpectation(_options.ToString());
+				return NegateIfNegated(isMatch).SuffixExpectation(_options.ToString());
 			}
 
 			if (_options.Timeout > TimeSpan.Zero)
@@ -83,67 +87,38 @@ public static partial class ThatGeneric
 					}
 
 					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
-					if (isMatch.Outcome == Outcome.Success)
+					if (isMatch.Outcome == Outcome.Success != _isNegated)
 					{
-						return isMatch.SuffixExpectation(_options.ToString());
+						return NegateIfNegated(isMatch).SuffixExpectation(_options.ToString());
 					}
 				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
 			}
 
-			return isMatch.SuffixExpectation(_options.ToString());
-		}
-	}
-
-	private readonly struct DoesNotComplyWithConstraint<T> : IAsyncContextConstraint<T>
-	{
-		private readonly string _it;
-		private readonly RepeatedCheckOptions _options;
-		private readonly ManualExpectationBuilder<T> _itemExpectationBuilder;
-
-		public DoesNotComplyWithConstraint(string it, ExpectationGrammars grammars,
-			Action<IThat<T>> expectations, RepeatedCheckOptions options)
-		{
-			_it = it;
-			_options = options;
-			_itemExpectationBuilder = new ManualExpectationBuilder<T>(grammars);
-			expectations.Invoke(new ThatSubject<T>(_itemExpectationBuilder));
+			return NegateIfNegated(isMatch).SuffixExpectation(_options.ToString());
 		}
 
-		public async Task<ConstraintResult> IsMetBy(
-			T actual,
-			IEvaluationContext context,
-			CancellationToken cancellationToken)
+		private ConstraintResult NegateIfNegated(ConstraintResult constraintResult)
 		{
-			ConstraintResult isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
-			if (isMatch.Outcome != Outcome.Success)
+			if (_isNegated)
 			{
-				return isMatch.Negate();
+				return constraintResult.Negate();
 			}
 
-			if (_options.Timeout > TimeSpan.Zero)
-			{
-				Stopwatch? sw = new();
-				sw.Start();
-				do
-				{
-					try
-					{
-						await Task.Delay(_options.Interval.NextCheckInterval(), cancellationToken);
-					}
-					catch (TaskCanceledException)
-					{
-						break;
-					}
+			return constraintResult;
+		}
 
-					isMatch = await _itemExpectationBuilder.IsMetBy(actual, context, cancellationToken);
-					if (isMatch.Outcome != Outcome.Success)
-					{
-						return isMatch.Negate().SuffixExpectation(_options.ToString());
-					}
-				} while (sw.Elapsed <= _options.Timeout && !cancellationToken.IsCancellationRequested);
-			}
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+		}
 
-			return isMatch.Negate().SuffixExpectation(_options.ToString());
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			return this;
 		}
 	}
 }

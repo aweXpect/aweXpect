@@ -144,7 +144,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected that sut
 				             matches <null>,
-				             but could not compare the <null> wildcard pattern with <null>
+				             but it was <null>
 				             """);
 		}
 
@@ -160,11 +160,7 @@ public sealed partial class StringEqualityOptionsTests
 				.WithMessage("""
 				             Expected that sut
 				             matches "*",
-				             but it did not match:
-				               ↓ (actual)
-				               <null>
-				               "*"
-				               ↑ (wildcard pattern)
+				             but it was <null>
 				             """);
 		}
 	}

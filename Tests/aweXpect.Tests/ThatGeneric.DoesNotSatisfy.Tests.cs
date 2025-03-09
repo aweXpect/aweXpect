@@ -20,7 +20,7 @@ public sealed partial class ThatGeneric
 					.OnlyIf(predicateResult)
 					.WithMessage("""
 					             Expected that subject
-					             not satisfy _ => predicateResult,
+					             does not satisfy _ => predicateResult,
 					             but it was Other {
 					               Value = 0
 					             }
