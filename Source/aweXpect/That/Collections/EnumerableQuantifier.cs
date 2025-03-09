@@ -40,28 +40,4 @@ public abstract partial class EnumerableQuantifier
 		int notMatchingCount,
 		int? totalCount,
 		string? verb = null);
-
-
-	private string GenerateExpectation(string quantifierExpectation,
-		string? expectationExpression,
-		Func<string, string?, string>? expectationGenerator,
-		ExpectationGrammars expectationGrammars)
-	{
-		if (expectationGenerator is not null)
-		{
-			return expectationGenerator(quantifierExpectation, expectationExpression);
-		}
-
-		if (expectationExpression is null)
-		{
-			return quantifierExpectation;
-		}
-
-		if (expectationGrammars.HasFlag(ExpectationGrammars.Nested))
-		{
-			return $"{quantifierExpectation} {expectationExpression}";
-		}
-
-		return $"{expectationExpression} for {quantifierExpectation} {this.GetItemString()}";
-	}
 }

@@ -71,7 +71,7 @@ public static partial class ThatGeneric
 
 			if (options != null && options.Timeout > TimeSpan.Zero)
 			{
-				Stopwatch? sw = new();
+				Stopwatch sw = new();
 				sw.Start();
 				do
 				{
@@ -100,17 +100,11 @@ public static partial class ThatGeneric
 			=> stringBuilder.Append("satisfies ").Append(predicateExpression.TrimCommonWhiteSpace())
 				.Append(options);
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("does not satisfy ").Append(predicateExpression.TrimCommonWhiteSpace())
 				.Append(options);
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);

@@ -22,7 +22,6 @@ public static partial class ThatEventRecording
 			IValueConstraint<IEventRecording<TSubject>>
 		where TSubject : notnull
 	{
-		private readonly Quantifier _quantifier = quantifier;
 		private IEventRecording<TSubject>? _actual;
 		private IEventRecordingResult? _result;
 
@@ -38,13 +37,13 @@ public static partial class ThatEventRecording
 
 			_result = actual.Stop();
 			int eventCount = _result.GetEventCount(eventName, filter.IsMatch);
-			Outcome = _quantifier.Check(eventCount, true) != true ? Outcome.Failure : Outcome.Success;
+			Outcome = quantifier.Check(eventCount, true) != true ? Outcome.Failure : Outcome.Success;
 			return this;
 		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_quantifier.ToString() == "never")
+			if (quantifier.ToString() == "never")
 			{
 				stringBuilder.Append("has never recorded the ").Append(eventName).Append(" event");
 				if (_actual != null)
@@ -62,7 +61,7 @@ public static partial class ThatEventRecording
 					stringBuilder.Append(" on ").Append(_actual);
 				}
 
-				stringBuilder.Append(filter).Append(' ').Append(_quantifier);
+				stringBuilder.Append(filter).Append(' ').Append(quantifier);
 			}
 		}
 
@@ -108,7 +107,7 @@ public static partial class ThatEventRecording
 
 		public override ConstraintResult Negate()
 		{
-			_quantifier.Negate();
+			quantifier.Negate();
 			Outcome = Outcome switch
 			{
 				Outcome.Failure => Outcome.Success,

@@ -38,7 +38,7 @@ public static partial class ThatNullableEnum
 		public ConstraintResult IsMetBy(TEnum? actual)
 		{
 			Actual = actual;
-			Outcome = HasFlag(actual, expectedFlag) ? Outcome.Success : Outcome.Failure;
+			Outcome = HasNullableFlag(actual, expectedFlag) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 
@@ -48,25 +48,19 @@ public static partial class ThatNullableEnum
 			Formatter.Format(stringBuilder, expectedFlag);
 		}
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("does not have flag ");
 			Formatter.Format(stringBuilder, expectedFlag);
 		}
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
 		}
 
-		private static bool HasFlag(TEnum? actual, TEnum? expectedFlag)
+		private static bool HasNullableFlag(TEnum? actual, TEnum? expectedFlag)
 			=> (actual == null && expectedFlag == null) ||
 			   (actual != null && expectedFlag != null &&
 			    actual.Value.HasFlag(expectedFlag));

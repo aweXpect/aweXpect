@@ -40,16 +40,10 @@ public static partial class ThatTimeSpan
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("is negative");
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("is not negative");
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);

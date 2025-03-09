@@ -75,12 +75,6 @@ public static partial class ThatTimeSpan
 			stringBuilder.Append(tolerance);
 		}
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not less than or equal to ");
@@ -88,7 +82,7 @@ public static partial class ThatTimeSpan
 			stringBuilder.Append(tolerance);
 		}
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);

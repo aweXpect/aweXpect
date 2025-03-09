@@ -62,7 +62,7 @@ public abstract partial class ConstraintResult
 		///     negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		protected abstract void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null);
+		protected virtual void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null) { }
 
 		/// <summary>
 		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
@@ -76,7 +76,7 @@ public abstract partial class ConstraintResult
 		///     negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
+		protected virtual void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null) { }
 
 		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

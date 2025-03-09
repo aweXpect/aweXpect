@@ -63,19 +63,13 @@ public static partial class ThatObject
 			Formatter.Format(stringBuilder, typeof(TType));
 		}
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not exactly type ");
 			Formatter.Format(stringBuilder, typeof(TType));
 		}
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
@@ -99,19 +93,13 @@ public static partial class ThatObject
 			Formatter.Format(stringBuilder, type);
 		}
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not exactly type ");
 			Formatter.Format(stringBuilder, type);
 		}
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));

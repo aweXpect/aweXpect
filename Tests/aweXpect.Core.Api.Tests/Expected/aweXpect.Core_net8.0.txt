@@ -48,9 +48,9 @@ namespace aweXpect.Core.Constraints
             public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
             public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-            protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected virtual void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-            protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected virtual void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
             public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
@@ -64,9 +64,9 @@ namespace aweXpect.Core.Constraints
             public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
             public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-            protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected virtual void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-            protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected virtual void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected virtual void AppendUndecidedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
@@ -80,9 +80,9 @@ namespace aweXpect.Core.Constraints
             public override aweXpect.Core.Constraints.Outcome Outcome { get; protected set; }
             public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNegatedExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-            protected abstract void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected virtual void AppendNegatedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected abstract void AppendNormalExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
-            protected abstract void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
+            protected virtual void AppendNormalResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             protected virtual void AppendUndecidedResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }

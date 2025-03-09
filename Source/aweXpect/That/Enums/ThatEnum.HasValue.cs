@@ -51,19 +51,13 @@ public static partial class ThatEnum
 			Formatter.Format(stringBuilder, expectedValue);
 		}
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
-
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("does not have value ");
 			Formatter.Format(stringBuilder, expectedValue);
 		}
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);

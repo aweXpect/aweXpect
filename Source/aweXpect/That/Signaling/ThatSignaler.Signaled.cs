@@ -13,6 +13,8 @@ namespace aweXpect;
 
 public static partial class ThatSignaler
 {
+	private const string Times = " times";
+
 	/// <summary>
 	///     Verifies that the expected callback was signaled at least once.
 	/// </summary>
@@ -164,7 +166,7 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(" times");
+				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(Times);
 			}
 
 			stringBuilder.Append(options);
@@ -183,7 +185,7 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("only recorded ").Append(Actual?.Count).Append(" times");
+				stringBuilder.Append("only recorded ").Append(Actual?.Count).Append(Times);
 			}
 		}
 
@@ -195,7 +197,7 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(" times");
+				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(Times);
 			}
 
 			stringBuilder.Append(options);
@@ -210,7 +212,7 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("recorded ").Append(Actual?.Count).Append(" times");
+				stringBuilder.Append("recorded ").Append(Actual?.Count).Append(Times);
 			}
 		}
 	}
@@ -267,7 +269,7 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(" times");
+				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(Times);
 			}
 
 			stringBuilder.Append(options);
@@ -286,13 +288,13 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("only recorded ").Append(_actualCount).Append(" times");
+				stringBuilder.Append("only recorded ").Append(_actualCount).Append(Times);
 			}
 
 			if (Actual?.Count > 0)
 			{
 				stringBuilder.Append(" in ");
-				Formatter.Format(stringBuilder, Actual.Parameters, FormattingOptions.MultipleLines);
+				ValueFormatters.Format(Formatter, stringBuilder, Actual.Parameters, FormattingOptions.MultipleLines);
 			}
 		}
 
@@ -304,7 +306,7 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(" times");
+				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(Times);
 			}
 
 			stringBuilder.Append(options);
@@ -319,13 +321,13 @@ public static partial class ThatSignaler
 			}
 			else
 			{
-				stringBuilder.Append("recorded ").Append(_actualCount).Append(" times");
+				stringBuilder.Append("recorded ").Append(_actualCount).Append(Times);
 			}
 
 			if (Actual?.Count > 0)
 			{
 				stringBuilder.Append(" in ");
-				Formatter.Format(stringBuilder, Actual.Parameters, FormattingOptions.MultipleLines);
+				ValueFormatters.Format(Formatter, stringBuilder, Actual.Parameters, FormattingOptions.MultipleLines);
 			}
 		}
 	}

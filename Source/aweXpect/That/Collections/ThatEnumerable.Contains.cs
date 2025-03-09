@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -198,7 +199,7 @@ public static partial class ThatEnumerable
 			_materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			_count = 0;
-			foreach (TItem item in _materializedEnumerable)
+			foreach (TItem item in _materializedEnumerable.Where(predicate))
 			{
 				if (predicate(item))
 				{
