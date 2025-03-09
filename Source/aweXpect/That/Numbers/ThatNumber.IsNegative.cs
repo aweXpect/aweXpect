@@ -16,6 +16,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<sbyte>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -30,6 +31,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<short>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -44,6 +46,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<int>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -58,6 +61,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<long>(
 					it,
+					grammars,
 					0L,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -72,6 +76,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					0.0F,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -86,6 +91,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					0.0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -100,6 +106,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<decimal>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -114,6 +121,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<sbyte>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -128,6 +136,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<short>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -142,6 +151,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<int>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -156,6 +166,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<long>(
 					it,
+					grammars,
 					0L,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -170,6 +181,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					0.0F,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -184,6 +196,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					0.0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,
@@ -198,6 +211,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<decimal>(
 					it,
+					grammars,
 					0,
 					_ => ExpectIsNegative,
 					(a, e) => a < e,

@@ -22,6 +22,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<byte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -43,6 +44,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<sbyte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -64,6 +66,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<short>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -85,6 +88,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<ushort>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -106,6 +110,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<int>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -127,6 +132,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<uint>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -148,6 +154,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<long>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -169,6 +176,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<ulong>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -190,6 +198,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<float>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -211,6 +220,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<double>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -232,6 +242,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<decimal>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -253,6 +264,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<byte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -274,6 +286,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<sbyte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -295,6 +308,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<short>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -316,6 +330,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<ushort>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -337,6 +352,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<int>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -358,6 +374,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<uint>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -379,6 +396,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<long>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -400,6 +418,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<ulong>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -421,6 +440,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<float>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -442,6 +462,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<double>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -463,6 +484,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<decimal>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -484,6 +506,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<byte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -505,6 +528,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<sbyte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -526,6 +550,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<short>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -547,6 +572,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<ushort>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -568,6 +594,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<int>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -589,6 +616,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<uint>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -610,6 +638,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<long>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -631,6 +660,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<ulong>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -652,6 +682,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<float>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -673,6 +704,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<double>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -694,6 +726,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<decimal>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -715,6 +748,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<byte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -736,6 +770,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<sbyte>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -757,6 +792,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<short>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -778,6 +814,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<ushort>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -799,6 +836,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<int>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -820,6 +858,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<uint>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -841,6 +880,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<long>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -862,6 +902,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<ulong>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -883,6 +924,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<float>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -904,6 +946,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<double>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -925,6 +968,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<decimal>(
 					it,
+					grammars,
 					expected,
 					e => $"is one of {Formatter.Format(e)}{options}",
 					(a, e) => e.Any(v => options.IsWithinTolerance(a, v)),
@@ -946,6 +990,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<byte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -967,6 +1012,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<sbyte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -988,6 +1034,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<short>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1009,6 +1056,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<ushort>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1030,6 +1078,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<int>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1051,6 +1100,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<uint>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1072,6 +1122,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<long>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1093,6 +1144,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<ulong>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1114,6 +1166,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<float>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1135,6 +1188,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<double>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1156,6 +1210,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraintWithNullableValues<decimal>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1177,6 +1232,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<byte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1198,6 +1254,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<sbyte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1219,6 +1276,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<short>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1240,6 +1298,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<ushort>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1261,6 +1320,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<int>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1282,6 +1342,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<uint>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1303,6 +1364,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<long>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1324,6 +1386,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<ulong>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1345,6 +1408,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<float>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1366,6 +1430,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<double>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1387,6 +1452,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraintWithNullableValues<decimal>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1408,6 +1474,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<byte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1429,6 +1496,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<sbyte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1450,6 +1518,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<short>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1471,6 +1540,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<ushort>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1492,6 +1562,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<int>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1513,6 +1584,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<uint>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1534,6 +1606,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<long>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1555,6 +1628,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<ulong>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1576,6 +1650,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<float>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1597,6 +1672,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<double>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1618,6 +1694,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericArrayConstraint<decimal>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1639,6 +1716,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<byte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1660,6 +1738,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<sbyte>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1681,6 +1760,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<short>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1702,6 +1782,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<ushort>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1723,6 +1804,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<int>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1744,6 +1826,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<uint>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1765,6 +1848,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<long>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1786,6 +1870,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<ulong>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1807,6 +1892,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<float>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1828,6 +1914,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<double>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),
@@ -1849,6 +1936,7 @@ public static partial class ThatNumber
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericArrayConstraint<decimal>(
 					it,
+					grammars,
 					unexpected,
 					u => $"is not one of {Formatter.Format(u)}{options}",
 					(a, u) => u.All(v => !options.IsWithinTolerance(a, v)),

@@ -16,6 +16,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.NaN,
 					_ => ExpectIsNaN,
 					(a, _) => float.IsNaN(a),
@@ -29,6 +30,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.NaN,
 					_ => ExpectIsNaN,
 					(a, _) => double.IsNaN(a),
@@ -42,6 +44,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.NaN,
 					_ => ExpectIsNaN,
 					(a, _) => a != null && float.IsNaN(a.Value),
@@ -55,6 +58,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.NaN,
 					_ => ExpectIsNaN,
 					(a, _) => a != null && double.IsNaN(a.Value),
@@ -68,6 +72,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.NaN,
 					_ => ExpectIsNotNaN,
 					(a, _) => !float.IsNaN(a),
@@ -81,6 +86,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.NaN,
 					_ => ExpectIsNotNaN,
 					(a, _) => !double.IsNaN(a),
@@ -95,6 +101,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.NaN,
 					_ => ExpectIsNotNaN,
 					(a, _) => a == null || !float.IsNaN(a.Value),
@@ -108,6 +115,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.NaN,
 					_ => ExpectIsNotNaN,
 					(a, _) => a == null || !double.IsNaN(a.Value),

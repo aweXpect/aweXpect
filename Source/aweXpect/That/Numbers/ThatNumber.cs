@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -8,147 +9,189 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatNumber
 {
-	private readonly struct GenericConstraint<T>(
+	private class GenericConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? expected,
 		Func<T?, string> expectation,
 		Func<T, T?, bool> condition,
 		Func<T, T?, string, string> failureMessageFactory)
-		: IValueConstraint<T>
+		: ConstraintResult.WithValue<T>(grammars),
+			IValueConstraint<T>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T actual)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			Actual = actual;
+			Outcome = condition(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectation(expected));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
 	}
 
-	private readonly struct NullableGenericConstraint<T>(
+	private class NullableGenericConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T? expected,
 		Func<T?, string> expectation,
 		Func<T?, T?, bool> condition,
 		Func<T?, T?, string, string> failureMessageFactory)
-		: IValueConstraint<T?>
+		: ConstraintResult.WithValue<T?>(grammars),
+			IValueConstraint<T?>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T? actual)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			Actual = actual;
+			Outcome = condition(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectation(expected));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
 	}
 
-	private readonly struct GenericArrayConstraint<T>(
+	private class GenericArrayConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T[] expected,
 		Func<T[], string> expectation,
 		Func<T, T[], bool> condition,
 		Func<T, T[], string, string> failureMessageFactory)
-		: IValueConstraint<T>
+		: ConstraintResult.WithValue<T>(grammars),
+			IValueConstraint<T>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T actual)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			Actual = actual;
+			Outcome = condition(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectation(expected));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
 	}
 
-	private readonly struct GenericArrayConstraintWithNullableValues<T>(
+	private class GenericArrayConstraintWithNullableValues<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T?[] expected,
 		Func<T?[], string> expectation,
 		Func<T, T?[], bool> condition,
 		Func<T, T?[], string, string> failureMessageFactory)
-		: IValueConstraint<T>
+		: ConstraintResult.WithValue<T>(grammars),
+			IValueConstraint<T>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T actual)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			Actual = actual;
+			Outcome = condition(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectation(expected));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
 	}
 
-	private readonly struct NullableGenericArrayConstraint<T>(
+	private class NullableGenericArrayConstraint<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T[] expected,
 		Func<T[], string> expectation,
 		Func<T?, T[], bool> condition,
 		Func<T?, T[], string, string> failureMessageFactory)
-		: IValueConstraint<T?>
+		: ConstraintResult.WithValue<T?>(grammars),
+			IValueConstraint<T?>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T? actual)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			Actual = actual;
+			Outcome = condition(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectation(expected));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
 	}
 
-	private readonly struct NullableGenericArrayConstraintWithNullableValues<T>(
+	private class NullableGenericArrayConstraintWithNullableValues<T>(
 		string it,
+		ExpectationGrammars grammars,
 		T?[] expected,
 		Func<T?[], string> expectation,
 		Func<T?, T?[], bool> condition,
 		Func<T?, T?[], string, string> failureMessageFactory)
-		: IValueConstraint<T?>
+		: ConstraintResult.WithValue<T?>(grammars),
+			IValueConstraint<T?>
 		where T : struct
 	{
 		public ConstraintResult IsMetBy(T? actual)
 		{
-			if (condition(actual, expected))
-			{
-				return new ConstraintResult.Success<T?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				failureMessageFactory(actual, expected, it));
+			Actual = actual;
+			Outcome = condition(actual, expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> expectation(expected);
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectation(expected));
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> throw new NotImplementedException();
 	}
 }

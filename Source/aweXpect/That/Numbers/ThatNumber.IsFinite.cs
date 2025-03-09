@@ -18,6 +18,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => !float.IsInfinity(a) && !float.IsNaN(a),
@@ -33,6 +34,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => !double.IsInfinity(a) && !double.IsNaN(a),
@@ -48,6 +50,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => a != null && !float.IsInfinity(a.Value) && !float.IsNaN(a.Value),
@@ -63,6 +66,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectBeFinite,
 					(a, _) => a != null && !double.IsInfinity(a.Value) && !double.IsNaN(a.Value),
@@ -78,6 +82,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => float.IsInfinity(a) || float.IsNaN(a),
@@ -93,6 +98,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new GenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => double.IsInfinity(a) || double.IsNaN(a),
@@ -108,6 +114,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<float>(
 					it,
+					grammars,
 					float.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => a == null || float.IsInfinity(a.Value) || float.IsNaN(a.Value),
@@ -123,6 +130,7 @@ public static partial class ThatNumber
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableGenericConstraint<double>(
 					it,
+					grammars,
 					double.PositiveInfinity,
 					_ => ExpectNotBeFinite,
 					(a, _) => a == null || double.IsInfinity(a.Value) || double.IsNaN(a.Value),
