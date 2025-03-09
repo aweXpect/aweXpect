@@ -1098,6 +1098,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -1283,7 +1289,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -1472,7 +1479,8 @@ window.BENCHMARK_DATA = {
           171.54681151253837,
           183.56633501052858,
           173.69618018468222,
-          168.2654207263674
+          168.2654207263674,
+          164.15571522712708
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1666,7 +1674,8 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
-          536
+          536,
+          472
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1863,7 +1872,8 @@ window.BENCHMARK_DATA = {
           190.22198325792948,
           188.87429242134095,
           237.62443008422852,
-          239.20520447095234
+          239.20520447095234,
+          231.74298645655315
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2056,6 +2066,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952
         ],
@@ -2254,7 +2265,8 @@ window.BENCHMARK_DATA = {
           864.4126622517904,
           903.6536175182888,
           851.1558710244985,
-          858.5084951945713
+          858.5084951945713,
+          846.5095114026751
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2408,6 +2420,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3098,6 +3111,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -3206,7 +3225,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -3318,7 +3338,8 @@ window.BENCHMARK_DATA = {
           276867.96990094864,
           296832.73782784597,
           289128.71858723956,
-          278073.4334960937
+          278073.4334960937,
+          273493.8233398438
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3435,7 +3456,8 @@ window.BENCHMARK_DATA = {
           284796,
           284796,
           284796,
-          284796
+          284796,
+          284660
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3555,7 +3577,8 @@ window.BENCHMARK_DATA = {
           2008032.5908854166,
           2081069.8685825893,
           2115592.642447917,
-          2113901.516183036
+          2113901.516183036,
+          2173553.9423076925
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3671,6 +3694,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416
         ],
@@ -3792,7 +3816,8 @@ window.BENCHMARK_DATA = {
           675463.828515625,
           722017.1429268973,
           686753.953515625,
-          672613.6637834822
+          672613.6637834822,
+          656970.9888671875
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3869,6 +3894,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -5021,6 +5047,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -5206,7 +5238,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -5395,7 +5428,8 @@ window.BENCHMARK_DATA = {
           587.3454969269889,
           614.0317229588826,
           597.5750592549642,
-          608.6763963063557
+          608.6763963063557,
+          298.6866218493535
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5589,7 +5623,8 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
-          1200
+          1200,
+          944
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5786,7 +5821,8 @@ window.BENCHMARK_DATA = {
           409.4196905771891,
           415.4028848012288,
           484.9907749039786,
-          459.64790402925934
+          459.64790402925934,
+          487.9379932539804
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5979,6 +6015,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008
         ],
@@ -6177,7 +6214,8 @@ window.BENCHMARK_DATA = {
           15343.575655619303,
           14887.769664219448,
           14510.48108455113,
-          14870.746408315805
+          14870.746408315805,
+          14329.694505818685
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6331,6 +6369,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -7483,6 +7522,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -7668,7 +7713,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -7857,7 +7903,8 @@ window.BENCHMARK_DATA = {
           232.76018914154596,
           227.87851854960124,
           230.8690607731159,
-          225.54175645510355
+          225.54175645510355,
+          198.36091564496357
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8051,7 +8098,8 @@ window.BENCHMARK_DATA = {
           888,
           888,
           888,
-          888
+          888,
+          808
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8248,7 +8296,8 @@ window.BENCHMARK_DATA = {
           188.8867773214976,
           187.9419527212779,
           242.93717343012491,
-          232.50726308822632
+          232.50726308822632,
+          235.45952997888838
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8441,6 +8490,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224
         ],
@@ -8639,7 +8689,8 @@ window.BENCHMARK_DATA = {
           1184.3981236049108,
           1299.482372724093,
           1238.4115753173828,
-          1204.0861206054688
+          1204.0861206054688,
+          1166.7026947566442
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8793,6 +8844,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -9945,6 +9997,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -10130,7 +10188,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -10319,7 +10378,8 @@ window.BENCHMARK_DATA = {
           355.1486850466047,
           361.08979349136354,
           385.5733520825704,
-          362.89561853408816
+          362.89561853408816,
+          260.6219154993693
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10513,7 +10573,8 @@ window.BENCHMARK_DATA = {
           992,
           992,
           992,
-          992
+          992,
+          896
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10710,7 +10771,8 @@ window.BENCHMARK_DATA = {
           408.47902362687245,
           427.4617662747701,
           471.8195525487264,
-          459.46896031697594
+          459.46896031697594,
+          453.58026231129963
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10903,6 +10965,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168
         ],
@@ -11101,7 +11164,8 @@ window.BENCHMARK_DATA = {
           1277.1121269226073,
           1275.5034381321498,
           1251.611459187099,
-          1265.0706071217855
+          1265.0706071217855,
+          1232.1434441975184
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11255,6 +11319,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -12407,6 +12472,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -12592,7 +12663,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -12781,7 +12853,8 @@ window.BENCHMARK_DATA = {
           1237.9322574615478,
           1260.8275195757549,
           1288.3729685465494,
-          1254.0057444254558
+          1254.0057444254558,
+          1048.1564278920491
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12975,7 +13048,8 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
-          2376
+          2376,
+          2008
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13172,7 +13246,8 @@ window.BENCHMARK_DATA = {
           1208.3844462076822,
           1203.8119869232178,
           1309.6961647914006,
-          1275.3307777132306
+          1275.3307777132306,
+          1283.593655649821
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13365,6 +13440,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152
         ],
@@ -13563,7 +13639,8 @@ window.BENCHMARK_DATA = {
           2720.119975789388,
           2793.2210238138837,
           2710.8960502624514,
-          2736.6767807006836
+          2736.6767807006836,
+          2785.3487462361654
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13717,6 +13794,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -14869,6 +14947,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Tue Mar 4 13:25:25 2025 \u002B0100",
         "message": "feat: add support for inconclusive tests (#440)"
+      },
+      {
+        "sha": "02698bd2cf1ae3d78e84f3ea29400ec2e7967a65",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
+        "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
       }
     ],
     "labels": [
@@ -15054,7 +15138,8 @@ window.BENCHMARK_DATA = {
       "10f1052e",
       "75dd39e7",
       "ab75babf",
-      "73699f2c"
+      "73699f2c",
+      "02698bd2"
     ],
     "datasets": [
       {
@@ -15243,7 +15328,8 @@ window.BENCHMARK_DATA = {
           1335.3071844918388,
           1407.1330056508382,
           1323.9663009643555,
-          1363.4367474873861
+          1363.4367474873861,
+          1134.303102874756
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15437,7 +15523,8 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
-          2408
+          2408,
+          1976
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15634,7 +15721,8 @@ window.BENCHMARK_DATA = {
           85819.94818522135,
           86942.26736653646,
           152275.1486328125,
-          149264.7859375
+          149264.7859375,
+          148849.50686848958
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15828,7 +15916,8 @@ window.BENCHMARK_DATA = {
           54273,
           54271,
           64012,
-          63485
+          63485,
+          63493
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16025,7 +16114,8 @@ window.BENCHMARK_DATA = {
           3118.234434400286,
           3233.5305570874893,
           3102.598887252808,
-          3151.8277659098308
+          3151.8277659098308,
+          3292.0800842285157
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16196,6 +16286,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
