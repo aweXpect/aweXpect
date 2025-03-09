@@ -39,36 +39,6 @@ namespace aweXpect.Core.Constraints
             public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
             public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
         }
-        public class Failure : aweXpect.Core.Constraints.ConstraintResult.TextBasedConstraintResult
-        {
-            public Failure(string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-            public string ResultText { get; }
-            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-        }
-        public class Failure<T> : aweXpect.Core.Constraints.ConstraintResult.Failure
-        {
-            public Failure(T value, string expectationText, string resultText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-            public T Value { get; }
-            public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
-        }
-        public class Success : aweXpect.Core.Constraints.ConstraintResult.TextBasedConstraintResult
-        {
-            public Success(string expectationText, System.Func<string>? resultText = null, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-        }
-        public class Success<T> : aweXpect.Core.Constraints.ConstraintResult.Success
-        {
-            public Success(T value, string expectationText, System.Func<string>? resultText = null, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy = 0) { }
-            public T Value { get; }
-            public override bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
-        }
-        public class TextBasedConstraintResult : aweXpect.Core.Constraints.ConstraintResult
-        {
-            protected TextBasedConstraintResult(aweXpect.Core.Constraints.Outcome outcome, string expectationText, aweXpect.Core.Constraints.FurtherProcessingStrategy furtherProcessingStrategy) { }
-            public override void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-            public override void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null) { }
-            public override aweXpect.Core.Constraints.ConstraintResult Negate() { }
-        }
         public abstract class WithEqualToValue<T> : aweXpect.Core.Constraints.ConstraintResult
         {
             protected WithEqualToValue(string it, aweXpect.Core.ExpectationGrammars grammars, bool isExpectedNull) { }
