@@ -72,10 +72,10 @@ internal class MappingNode<TSource, TTarget> : ExpectationNode
 
 	private sealed class MappingConstraintResult : ConstraintResult
 	{
-		private readonly ConstraintResult _left;
-		private readonly ConstraintResult _right;
 		private readonly Action<MemberAccessor<TSource, TTarget>, StringBuilder>? _expectationTextGenerator;
+		private readonly ConstraintResult _left;
 		private readonly MemberAccessor<TSource, TTarget> _memberAccessor;
+		private readonly ConstraintResult _right;
 
 		public MappingConstraintResult(ConstraintResult left,
 			ConstraintResult right,

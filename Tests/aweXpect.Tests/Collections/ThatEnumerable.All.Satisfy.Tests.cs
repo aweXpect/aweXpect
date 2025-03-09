@@ -62,7 +62,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
 				{
-					int[] subject = [1, 1, 1, 1, 2, 2, 3];
+					int[] subject = [1, 1, 1, 1, 2, 2, 3,];
 
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x == 1);
@@ -89,7 +89,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsEqualValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1]);
+					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1,]);
 
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x == 1);
@@ -119,7 +119,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
 				{
-					string[] subject = ["foo", "bar", "baz"];
+					string[] subject = ["foo", "bar", "baz",];
 
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x?.StartsWith("ba") == true);
@@ -146,7 +146,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsMatchingValues_ShouldSucceed()
 				{
-					IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
+					IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
 
 					async Task Act()
 						=> await That(subject).All().Satisfy(x => x?.Length == 3);

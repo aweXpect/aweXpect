@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
@@ -89,7 +87,8 @@ public sealed class WhichNodeTests
 		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", "e1"));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
-		whichNode.AddConstraint(new DummyConstraint("c2", () => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
+		whichNode.AddConstraint(new DummyConstraint("c2",
+			() => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
@@ -105,7 +104,8 @@ public sealed class WhichNodeTests
 		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", ""));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
-		whichNode.AddConstraint(new DummyConstraint("c2", () => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
+		whichNode.AddConstraint(new DummyConstraint("c2",
+			() => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
 		StringBuilder sb = new();
 
 		async Task Act()
@@ -135,7 +135,8 @@ public sealed class WhichNodeTests
 	{
 		WhichNode<string, int> whichNode = new(null, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
-		whichNode.AddConstraint(new DummyConstraint("c2", () => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
+		whichNode.AddConstraint(new DummyConstraint("c2",
+			() => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await whichNode.IsMetBy("foo", null!, CancellationToken.None);
@@ -171,7 +172,8 @@ public sealed class WhichNodeTests
 		DummyNode node1 = new("", () => new DummyConstraintResult<string?>(Outcome.Success, "1", "e1"));
 		WhichNode<string, int> whichNode = new(node1, s => s.Length);
 		whichNode.AddNode(new ExpectationNode());
-		whichNode.AddConstraint(new DummyConstraint("c2", () => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
+		whichNode.AddConstraint(new DummyConstraint("c2",
+			() => new DummyConstraintResult<int>(Outcome.Success, 4, "e2")));
 		whichNode.SetReason(new BecauseReason("bc"));
 		StringBuilder sb = new();
 
@@ -272,7 +274,8 @@ public sealed class WhichNodeTests
 	public async Task WhenLeftIsFailureAndHasIgnoreResultFurtherProcessingStrategy_ShouldExcludeRightResultText()
 	{
 		WhichNode<string, int> whichNode = new(new DummyNode("",
-			() => new DummyConstraintResult(Outcome.Failure, "foo", "r1", FurtherProcessingStrategy.IgnoreResult)), _ => 3);
+				() => new DummyConstraintResult(Outcome.Failure, "foo", "r1", FurtherProcessingStrategy.IgnoreResult)),
+			_ => 3);
 		whichNode.AddNode(new DummyNode("",
 			() => new DummyConstraintResult(Outcome.Failure, "bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
 
@@ -285,7 +288,8 @@ public sealed class WhichNodeTests
 	public async Task WhenLeftIsSuccessAndHasIgnoreResultFurtherProcessingStrategy_ShouldStillIncludeRightResultText()
 	{
 		WhichNode<string, int> whichNode = new(new DummyNode("",
-			() => new DummyConstraintResult(Outcome.Success, "foo", null, FurtherProcessingStrategy.IgnoreResult)), _ => 3);
+				() => new DummyConstraintResult(Outcome.Success, "foo", null, FurtherProcessingStrategy.IgnoreResult)),
+			_ => 3);
 		whichNode.AddNode(new DummyNode("",
 			() => new DummyConstraintResult(Outcome.Failure, "bar", "r2", FurtherProcessingStrategy.IgnoreResult)));
 
@@ -332,7 +336,7 @@ public sealed class WhichNodeTests
 			               "foo"
 			               "bar"
 			                ↑ (expected)
-			             
+
 			             Actual:
 			             foo
 			             """);

@@ -27,7 +27,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldSupportCaseInsensitiveComparison()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["FOO", "BAR"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["FOO", "BAR",]);
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith("bar").IgnoringCase();
@@ -85,7 +85,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(1, 2, 3);
@@ -105,8 +105,8 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentEndingElements_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([0, 0, 1, 2, 3]);
-				IEnumerable<int> unexpected = [1, 3];
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([0, 0, 1, 2, 3,]);
+				IEnumerable<int> unexpected = [1, 3,];
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(unexpected);
@@ -117,8 +117,8 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenSubjectEndsWithUnexpectedValues_ShouldFail()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> unexpected = ["bar", "baz"];
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
+				IEnumerable<string> unexpected = ["bar", "baz",];
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(unexpected);
@@ -154,7 +154,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenUnexpectedContainsAdditionalElements_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(0, 0, 1, 2, 3);
@@ -165,7 +165,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenUnexpectedIsEmpty_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith();
@@ -184,7 +184,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotEndWith(null!);

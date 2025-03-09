@@ -30,7 +30,7 @@ public static partial class ValueFormatters
 		}
 	}
 
-	private static MemberInfo[] GetMembers(Type type) => [..type.GetFields(), ..type.GetProperties()];
+	private static MemberInfo[] GetMembers(Type type) => [..type.GetFields(), ..type.GetProperties(),];
 
 	private static bool HasDefaultToStringImplementation(object value)
 	{

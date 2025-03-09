@@ -10,7 +10,7 @@ public static partial class ThatNullableBool
 {
 	private sealed class IsEqualToConstraint(string it, ExpectationGrammars grammars, bool? expected)
 		: ConstraintResult.WithEqualToValue<bool?>(it, grammars, expected is null),
-		IValueConstraint<bool?>
+			IValueConstraint<bool?>
 	{
 		public ConstraintResult IsMetBy(bool? actual)
 		{

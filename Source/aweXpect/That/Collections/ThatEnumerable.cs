@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -31,7 +30,7 @@ public static partial class ThatEnumerable
 		where TItem : TMatch
 	{
 		private string? _failure;
-		
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
 			Actual = actual;
@@ -76,7 +75,8 @@ public static partial class ThatEnumerable
 		private string TooManyDeviationsError(IEnumerable<TItem> materializedEnumerable)
 			=> $"{It} was completely different: {Formatter.Format(materializedEnumerable, FormattingOptions.MultipleLines)} had more than {2 * Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get()} deviations compared to {Formatter.Format(expected, FormattingOptions.MultipleLines)}";
 
-		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)		{
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
 			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression));
 			stringBuilder.Append(options);
 		}
@@ -104,9 +104,9 @@ public static partial class ThatEnumerable
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
-		private readonly EnumerableQuantifier _quantifier;
 		private readonly Func<ExpectationGrammars, string> _expectationText;
 		private readonly Func<TItem, bool> _predicate;
+		private readonly EnumerableQuantifier _quantifier;
 		private readonly string _verb;
 		private int _matchingCount;
 		private int _notMatchingCount;
@@ -190,9 +190,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
-		}
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount, _verb);
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -214,9 +212,8 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount, _verb);
-		}
+			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+				_totalCount, _verb);
 	}
 
 	private sealed class SyncCollectionCountConstraint<TItem>
@@ -291,9 +288,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
-		}
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -304,9 +299,8 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount);
-		}
+			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+				_totalCount);
 	}
 
 	private sealed class IsInOrderConstraint<TItem, TMember>(
@@ -379,7 +373,7 @@ public static partial class ThatEnumerable
 			stringBuilder.Append("is not in ").Append(sortOrder.ToString().ToLower()).Append(" order");
 			stringBuilder.Append(options).Append(memberExpression);
 		}
- 
+
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was in ");

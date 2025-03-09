@@ -65,8 +65,6 @@ public static partial class ThatDictionary
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" did");
-		}
+			=> stringBuilder.Append(It).Append(" did");
 	}
 }

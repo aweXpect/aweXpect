@@ -9,8 +9,8 @@ public sealed class CustomizeEquivalencyTests
 	[Fact]
 	public async Task SetDefaultEquivalencyDocumentOptions_ShouldApplyOptionsWithinScope()
 	{
-		int[] actual = [1, 2];
-		int[] expected = [2, 1];
+		int[] actual = [1, 2,];
+		int[] expected = [2, 1,];
 
 		async Task Act()
 			=> await That(actual).IsEquivalentTo(expected);

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Core.Constraints;
 
 namespace aweXpect;
@@ -51,7 +49,8 @@ public abstract partial class EnumerableQuantifier
 			verb ??= "were";
 			if (totalCount.HasValue)
 			{
-				stringBuilder.Append("only ").Append(matchingCount).Append(" of ").Append(totalCount.Value).Append(' ').Append(verb);
+				stringBuilder.Append("only ").Append(matchingCount).Append(" of ").Append(totalCount.Value).Append(' ')
+					.Append(verb);
 			}
 			else
 			{

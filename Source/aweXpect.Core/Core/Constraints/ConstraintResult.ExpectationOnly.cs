@@ -25,6 +25,20 @@ public abstract partial class ConstraintResult
 		/// <inheritdoc cref="IValueConstraint{TValue}.IsMetBy(TValue)" />
 		public ConstraintResult IsMetBy(T actual) => this;
 
+		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			if (Grammars.IsNegated())
+			{
+				AppendNegatedExpectation(stringBuilder, indentation);
+			}
+			else
+			{
+				AppendNormalExpectation(stringBuilder, indentation);
+			}
+		}
+
 		/// <summary>
 		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
 		///     not negated.
@@ -48,20 +62,6 @@ public abstract partial class ConstraintResult
 			if (expectation != null)
 			{
 				stringBuilder.Append(negatedExpectation);
-			}
-		}
-
-		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			if (Grammars.IsNegated())
-			{
-				AppendNegatedExpectation(stringBuilder, indentation);
-			}
-			else
-			{
-				AppendNormalExpectation(stringBuilder, indentation);
 			}
 		}
 

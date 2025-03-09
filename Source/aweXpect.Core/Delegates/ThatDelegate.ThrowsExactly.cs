@@ -20,7 +20,8 @@ public abstract partial class ThatDelegate
 		return new ThatDelegateThrows<TException>(ExpectationBuilder
 				.AddConstraint((it, grammars) => new DelegateIsNotNullConstraint(it, grammars))
 				.ForWhich<DelegateValue, Exception?>(d => d.Exception)
-				.AddConstraint((it, grammars) => new ThrowsExactlyConstraint(it, grammars, typeof(TException), throwOptions))
+				.AddConstraint((it, grammars)
+					=> new ThrowsExactlyConstraint(it, grammars, typeof(TException), throwOptions))
 				.And(" "),
 			throwOptions);
 	}

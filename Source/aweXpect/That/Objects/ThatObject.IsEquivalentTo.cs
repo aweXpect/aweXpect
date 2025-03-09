@@ -30,7 +30,8 @@ public static partial class ThatObject
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new AndOrResult<TSubject, IThat<TSubject>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions)),
+				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions)),
 			source);
 	}
 }

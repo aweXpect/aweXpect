@@ -129,14 +129,14 @@ public sealed partial class ThatString
 					=> await That(subject).IsNotEqualTo(expected);
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is not equal to "foo",
-					              but it was "foo"
+					.WithMessage("""
+					             Expected that subject
+					             is not equal to "foo",
+					             but it was "foo"
 
-					              Actual:
-					              foo
-					              """);
+					             Actual:
+					             foo
+					             """);
 			}
 
 			[Fact]

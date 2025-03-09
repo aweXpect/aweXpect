@@ -187,19 +187,19 @@ public static partial class ThatAsyncEnumerable
 
 	private sealed class EndsWithConstraint<TItem, TMatch>
 		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>,
-		IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
+			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private readonly TItem[] _expected;
+		private readonly string _expectedExpression;
 		private readonly List<TItem> _foundValues = [];
 		private readonly string _it;
-		private readonly string _expectedExpression;
-		private readonly TItem[] _expected;
 		private readonly IOptionsEquality<TMatch> _options;
 		private TItem? _firstMismatchItem;
 		private bool _foundMismatch;
 		private int _index;
-		private int _offset;
 		private int _itemsCount;
+		private int _offset;
 
 		public EndsWithConstraint(string it,
 			ExpectationGrammars grammars,

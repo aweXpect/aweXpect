@@ -69,7 +69,7 @@ public abstract partial class ConstraintResult
 		/// </summary>
 		protected virtual void AppendUndecidedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append("could not verify, because it was already cancelled");
-		
+
 		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)

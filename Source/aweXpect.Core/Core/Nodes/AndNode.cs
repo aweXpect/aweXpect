@@ -110,11 +110,11 @@ internal class AndNode : Node
 
 	private sealed class AndConstraintResult : ConstraintResult
 	{
-		private bool _isNegated;
 		private readonly FurtherProcessingStrategy _furtherProcessingStrategy;
 		private readonly ConstraintResult _left;
 		private readonly ConstraintResult _right;
 		private readonly string _separator;
+		private bool _isNegated;
 
 		public AndConstraintResult(ConstraintResult left,
 			ConstraintResult right,
@@ -148,6 +148,7 @@ internal class AndNode : Node
 			{
 				stringBuilder.Append(_separator);
 			}
+
 			_right.AppendExpectation(stringBuilder);
 		}
 

@@ -69,6 +69,24 @@ public static partial class ThatString
 			return this;
 		}
 
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			string quantifierString = quantifier.ToString();
+			if (quantifierString == "never")
+			{
+				stringBuilder.Append("does not contain ");
+				Formatter.Format(stringBuilder, expected);
+			}
+			else
+			{
+				stringBuilder.Append("contains ");
+				Formatter.Format(stringBuilder, expected);
+				stringBuilder.Append(' ').Append(quantifier);
+			}
+
+			stringBuilder.Append(options);
+		}
+
 		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
@@ -108,24 +126,6 @@ public static partial class ThatString
 			}
 
 			return count;
-		}
-
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			string quantifierString = quantifier.ToString();
-			if (quantifierString == "never")
-			{
-				stringBuilder.Append("does not contain ");
-				Formatter.Format(stringBuilder, expected);
-			}
-			else
-			{
-				stringBuilder.Append("contains ");
-				Formatter.Format(stringBuilder, expected);
-				stringBuilder.Append(' ').Append(quantifier);
-			}
-
-			stringBuilder.Append(options);
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)

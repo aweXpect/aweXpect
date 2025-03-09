@@ -95,6 +95,10 @@ public static partial class ThatGeneric
 			return NegateIfNegated(isMatch).AppendExpectationText(sb => sb.Append(_options));
 		}
 
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+		}
+
 		private ConstraintResult NegateIfNegated(ConstraintResult constraintResult)
 		{
 			if (_isNegated)
@@ -103,10 +107,6 @@ public static partial class ThatGeneric
 			}
 
 			return constraintResult;
-		}
-
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
 		}
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)

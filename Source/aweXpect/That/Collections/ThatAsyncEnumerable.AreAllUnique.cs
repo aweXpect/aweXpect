@@ -98,6 +98,7 @@ public static partial class ThatAsyncEnumerable
 		where TItem : TMatch
 	{
 		private readonly List<TItem> _duplicates = [];
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
@@ -136,9 +137,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
-		}
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -147,9 +146,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("all were unique");
-		}
+			=> stringBuilder.Append("all were unique");
 	}
 
 	private sealed class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
@@ -163,6 +160,7 @@ public static partial class ThatAsyncEnumerable
 		where TMember : TMatch
 	{
 		private readonly List<TMember> _duplicates = [];
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
@@ -202,9 +200,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
-		}
+			=> stringBuilder.Append(CollectionHelpers.CreateDuplicateFailureMessage(It, _duplicates));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -213,9 +209,7 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("all were unique");
-		}
+			=> stringBuilder.Append("all were unique");
 	}
 }
 #endif

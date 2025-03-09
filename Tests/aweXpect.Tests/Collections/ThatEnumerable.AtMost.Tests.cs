@@ -61,7 +61,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsSufficientlyFewEqualItems_ShouldSucceed()
 			{
-				int[] subject = [1, 1, 1, 1, 2, 2, 3];
+				int[] subject = [1, 1, 1, 1, 2, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(2);
@@ -72,7 +72,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsTooManyEqualItems_ShouldFail()
 			{
-				int[] subject = [1, 1, 1, 1, 2, 2, 3];
+				int[] subject = [1, 1, 1, 1, 2, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(1);
@@ -88,7 +88,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSufficientlyFewEqualItems_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(2);
@@ -99,7 +99,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(1);
@@ -134,7 +134,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "FOO", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtMost(1).AreEqualTo("foo").IgnoringCase();
@@ -150,7 +150,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtMost(2).AreEqualTo("foo");
@@ -161,7 +161,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar"]);
+				IEnumerable<string> subject = ToEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtMost(1).AreEqualTo("foo");

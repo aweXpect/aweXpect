@@ -43,7 +43,9 @@ public sealed class AndNodeTests
 		AndNode node = new(new DummyNode("",
 			() => new DummyConstraintResult(Outcome.Failure, "foo", "-")));
 		node.AddNode(new DummyNode("",
-			() => new DummyConstraintResult(Outcome.Failure, "bar", "-", FurtherProcessingStrategy.IgnoreCompletely)), " my ");
+				() => new DummyConstraintResult(Outcome.Failure, "bar", "-",
+					FurtherProcessingStrategy.IgnoreCompletely)),
+			" my ");
 		node.AddNode(new DummyNode("",
 			() => new DummyConstraintResult(Outcome.Failure, "baz", "-")), " is ");
 		StringBuilder sb = new();

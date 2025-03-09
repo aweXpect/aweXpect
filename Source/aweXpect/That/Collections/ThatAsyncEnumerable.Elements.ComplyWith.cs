@@ -1,7 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -108,9 +107,7 @@ public static partial class ThatEnumerable
 			}
 
 			protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-			{
-				_quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
-			}
+				=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount, _totalCount);
 
 			protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			{
@@ -121,10 +118,8 @@ public static partial class ThatEnumerable
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			{
-				_quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+				=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
 					_totalCount);
-			}
 		}
 	}
 }

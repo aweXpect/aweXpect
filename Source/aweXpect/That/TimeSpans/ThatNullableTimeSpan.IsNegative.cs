@@ -39,9 +39,7 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("is negative");
-		}
+			=> stringBuilder.Append("is negative");
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -50,9 +48,7 @@ public static partial class ThatNullableTimeSpan
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("is not negative");
-		}
+			=> stringBuilder.Append("is not negative");
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{

@@ -28,26 +28,24 @@ public static partial class ThatDateTimeOffset
 		Func<DateTimeOffset, DateTimeOffset?, string, string> failureMessageFactory,
 		TimeTolerance tolerance)
 		: ConstraintResult.WithValue<DateTimeOffset>(grammars),
-		IValueConstraint<DateTimeOffset>
+			IValueConstraint<DateTimeOffset>
 	{
 		public ConstraintResult IsMetBy(DateTimeOffset actual)
 		{
 			Actual = actual;
 			Outcome = expected != null && condition(actual, expected.Value, tolerance.Tolerance
-			                                                                ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get())
-				? Outcome.Success : Outcome.Failure;
+			                                                                ?? Customize.aweXpect.Settings()
+				                                                                .DefaultTimeComparisonTolerance.Get())
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(expectation).Append(tolerance);
-		}
+			=> stringBuilder.Append(expectation).Append(tolerance);
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(failureMessageFactory(Actual, expected, it));
-		}
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> throw new NotImplementedException();

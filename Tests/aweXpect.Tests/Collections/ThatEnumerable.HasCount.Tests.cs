@@ -33,7 +33,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsMatchingItems_ShouldSucceed()
 			{
-				int[] subject = [1, 2, 3];
+				int[] subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasCount(3);
@@ -44,7 +44,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsTooFewItems_ShouldFail()
 			{
-				int[] subject = [1, 2, 3];
+				int[] subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasCount(4);
@@ -60,7 +60,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenArrayContainsTooManyItems_ShouldFail()
 			{
-				int[] subject = [1, 2, 3];
+				int[] subject = [1, 2, 3,];
 
 				async Task Act()
 					=> await That(subject).HasCount(2);
@@ -76,7 +76,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMatchingItems_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).HasCount(3);
@@ -87,7 +87,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).HasCount(4);
@@ -103,7 +103,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyItems_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).HasCount(2);

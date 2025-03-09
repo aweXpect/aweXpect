@@ -66,6 +66,7 @@ public sealed partial class ThatEventRecording
 					             """);
 			}
 		}
+
 		public sealed class NegatedTests
 		{
 			[Fact]

@@ -11,8 +11,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task ArrayAndListWithSameValues_ShouldBeConsideredEqual()
 		{
-			int[] actual = [3, 2, 4, 1, 5];
-			List<int> expected = [1, 4, 3, 2, 5];
+			int[] actual = [3, 2, 4, 1, 5,];
+			List<int> expected = [1, 4, 3, 2, 5,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -23,8 +23,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task ListAndArrayWithSameValues_ShouldBeConsideredEqual()
 		{
-			List<int> actual = [1, 5, 3, 4, 2];
-			int[] expected = [5, 4, 3, 2, 1];
+			List<int> actual = [1, 5, 3, 4, 2,];
+			int[] expected = [5, 4, 3, 2, 1,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -35,8 +35,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenActualHasFewerValues_ShouldNotBeConsideredEqual()
 		{
-			int[] actual = [1, 4, 3, 2];
-			List<int> expected = [1, 5, 3, 4, 2];
+			int[] actual = [1, 4, 3, 2,];
+			List<int> expected = [1, 5, 3, 4, 2,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -52,8 +52,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenActualHasMoreValues_ShouldNotBeConsideredEqual()
 		{
-			int[] actual = [1, 5, 4, 3, 2];
-			List<int> expected = [1, 3, 2, 4];
+			int[] actual = [1, 5, 4, 3, 2,];
+			List<int> expected = [1, 3, 2, 4,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -72,8 +72,8 @@ public sealed partial class EquivalencyComparerTests
 		public async Task WhenCollectionsDifferInOrder_ShouldBeConsideredEqualWhenCollectionOrderIsIgnored(
 			bool ignoreCollectionOrder)
 		{
-			int[] actual = [1, 2, 3, 4, 5];
-			List<int> expected = [1, 5, 2, 3, 4];
+			int[] actual = [1, 2, 3, 4, 5,];
+			List<int> expected = [1, 5, 2, 3, 4,];
 			EquivalencyComparer sut = new(new EquivalencyOptions().IgnoringCollectionOrder(ignoreCollectionOrder));
 
 			bool result = sut.AreConsideredEqual(actual, expected);

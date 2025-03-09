@@ -62,7 +62,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableContainsDifferentValues_ShouldFail()
 				{
-					int[] subject = [1, 1, 1, 1, 2, 2, 3];
+					int[] subject = [1, 1, 1, 1, 2, 2, 3,];
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(1));
@@ -89,7 +89,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsEqualValues_ShouldSucceed()
 				{
-					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1]);
+					IEnumerable<int> subject = ToEnumerable([1, 1, 1, 1, 1, 1, 1,]);
 
 					async Task Act()
 						=> await That(subject).All().ComplyWith(x => x.IsEqualTo(1));

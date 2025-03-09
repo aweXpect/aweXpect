@@ -11,7 +11,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAllValuesDoNotExist_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [41, 42, 43,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainValues(0, 2);
@@ -22,7 +22,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenAtLeastOneValueExists_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [41, 42, 43]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [41, 42, 43,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotContainValues(42, 2);

@@ -106,11 +106,11 @@ public sealed partial class ThatString
 					=> await That(subject).IsNotLowerCased();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is not lower-cased,
-					              but it was <null>
-					              """);
+					.WithMessage("""
+					             Expected that subject
+					             is not lower-cased,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]

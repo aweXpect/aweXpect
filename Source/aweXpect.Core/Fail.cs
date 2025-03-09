@@ -33,7 +33,7 @@ public static class Fail
 	/// <param name="reason">The reason why the test was failed</param>
 	public static void When([DoesNotReturnIf(true)] bool condition, string reason)
 		=> FailIf(condition, reason);
-	
+
 	/// <summary>
 	///     Explicitly fails the current test as inconclusive.
 	/// </summary>

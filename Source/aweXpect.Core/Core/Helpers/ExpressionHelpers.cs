@@ -12,7 +12,7 @@ internal static class ExpressionHelpers
 			LambdaExpression lambdaExpression => lambdaExpression.Body switch
 			{
 				MemberExpression body => body,
-				UnaryExpression { Operand: MemberExpression m } => m,
+				UnaryExpression { Operand: MemberExpression m, } => m,
 				_ => null,
 			},
 			_ => null,

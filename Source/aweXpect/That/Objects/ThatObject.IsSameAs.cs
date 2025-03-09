@@ -44,7 +44,7 @@ public static partial class ThatObject
 		public ConstraintResult IsMetBy(T actual)
 		{
 			Actual = actual;
-			Outcome = ReferenceEquals(actual, expected) ? Outcome.Success :  Outcome.Failure;
+			Outcome = ReferenceEquals(actual, expected) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 

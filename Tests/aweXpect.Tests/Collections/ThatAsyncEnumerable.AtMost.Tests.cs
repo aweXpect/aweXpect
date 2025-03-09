@@ -63,7 +63,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsSufficientlyFewEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(2);
@@ -74,7 +74,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).AtMost(3).AreEqualTo(1);
@@ -109,7 +109,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldSupportIgnoringCase()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "FOO", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtMost(1).AreEqualTo("foo").IgnoringCase();
@@ -125,7 +125,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsExpectedNumberOfEqualItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtMost(2).AreEqualTo("foo");
@@ -136,7 +136,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyEqualItems_ShouldFail()
 			{
-				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar"]);
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "foo", "bar",]);
 
 				async Task Act()
 					=> await That(subject).AtMost(1).AreEqualTo("foo");

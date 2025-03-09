@@ -176,34 +176,6 @@ public abstract class Expectation
 				new CombinationResult(Outcome.Success, expectationTexts.ToString()));
 		}
 
-		private sealed class CombinationResult : ConstraintResult
-		{
-			private readonly string _expectationTexts;
-			private readonly string? _failureTexts;
-
-			public CombinationResult(Outcome outcome, string expectationTexts, string? failureTexts = null) : base(ExpectationGrammars.None)
-			{
-				_expectationTexts = expectationTexts;
-				_failureTexts = failureTexts;
-				Outcome = outcome;
-			}
-
-			public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			{
-				stringBuilder.Append(_expectationTexts.Indent(indentation, false));
-			}
-
-			public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			{
-				if (_failureTexts != null)
-				{
-					stringBuilder.Append(_failureTexts.Indent(indentation, false));
-				}
-			}
-
-			public override ConstraintResult Negate() => this;
-		}
-
 		internal override IEnumerable<ResultContext> GetContexts(int index)
 		{
 			List<ResultContext> combinedContexts = new();
@@ -254,6 +226,33 @@ public abstract class Expectation
 			}
 
 			Fail.Test(sb.ToString());
+		}
+
+		private sealed class CombinationResult : ConstraintResult
+		{
+			private readonly string _expectationTexts;
+			private readonly string? _failureTexts;
+
+			public CombinationResult(Outcome outcome, string expectationTexts, string? failureTexts = null) : base(
+				ExpectationGrammars.None)
+			{
+				_expectationTexts = expectationTexts;
+				_failureTexts = failureTexts;
+				Outcome = outcome;
+			}
+
+			public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+				=> stringBuilder.Append(_expectationTexts.Indent(indentation, false));
+
+			public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+			{
+				if (_failureTexts != null)
+				{
+					stringBuilder.Append(_failureTexts.Indent(indentation, false));
+				}
+			}
+
+			public override ConstraintResult Negate() => this;
 		}
 
 		/// <summary>

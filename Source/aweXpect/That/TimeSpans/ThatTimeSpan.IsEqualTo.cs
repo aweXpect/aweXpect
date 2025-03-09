@@ -39,15 +39,20 @@ public static partial class ThatTimeSpan
 			tolerance);
 	}
 
-	private sealed class IsConstraint(string it,
-		ExpectationGrammars grammars, TimeSpan? expected, TimeTolerance tolerance)
+	private sealed class IsConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		TimeSpan? expected,
+		TimeTolerance tolerance)
 		: ConstraintResult.WithEqualToValue<TimeSpan>(it, grammars, false),
 			IValueConstraint<TimeSpan>
 	{
 		public ConstraintResult IsMetBy(TimeSpan actual)
 		{
 			Actual = actual;
-			Outcome = expected != null && IsWithinTolerance(tolerance.Tolerance, actual - expected.Value) ? Outcome.Success : Outcome.Failure;
+			Outcome = expected != null && IsWithinTolerance(tolerance.Tolerance, actual - expected.Value)
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 

@@ -404,7 +404,8 @@ public static class PropertyResult
 		Func<TItem, TProperty?> mapper,
 		string propertyExpression,
 		Func<TProperty?, TProperty?, bool> condition,
-		string expectation) : ConstraintResult.WithEqualToValue<TItem>(it, grammars, expected is null), IValueConstraint<TItem>
+		string expectation) : ConstraintResult.WithEqualToValue<TItem>(it, grammars, expected is null),
+		IValueConstraint<TItem>
 		where TProperty : struct
 	{
 		private TProperty? _value;

@@ -1,8 +1,4 @@
-﻿using System;
-using aweXpect.Core;
-using aweXpect.Core.Constraints;
-
-namespace aweXpect;
+﻿namespace aweXpect;
 
 /// <summary>
 ///     Expectations on <see cref="object" /> values.

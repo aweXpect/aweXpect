@@ -34,7 +34,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMatchingItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -45,7 +45,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooFewItems_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2,]);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);
@@ -61,7 +61,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsTooManyItems_ShouldSucceed()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 4, 5, 6, 7]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 2, 3, 4, 5, 6, 7,]);
 
 				async Task Act()
 					=> await That(subject).HasCount().Between(3).And(6);

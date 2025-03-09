@@ -39,7 +39,9 @@ public static partial class ThatEnum
 		public ConstraintResult IsMetBy(TEnum actual)
 		{
 			Actual = actual;
-			Outcome = Convert.ToInt64(actual, CultureInfo.InvariantCulture) == expectedValue ? Outcome.Success : Outcome.Failure;
+			Outcome = Convert.ToInt64(actual, CultureInfo.InvariantCulture) == expectedValue
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 

@@ -167,7 +167,7 @@ public static partial class ThatDictionary
 		Func<TValue, TMember> memberAccessor,
 		string memberAccessorExpression,
 		IOptionsEquality<TMatch> options)
-		:  ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
 			IContextConstraint<IDictionary<TKey, TValue>?>
 		where TMember : TMatch
 	{

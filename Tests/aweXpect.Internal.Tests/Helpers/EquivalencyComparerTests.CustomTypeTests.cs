@@ -12,8 +12,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenPropertiesDiffer_IgnoreCollectionOrderOnlySetForOneProperty_ShouldFailForOtherProperty()
 		{
-			SomeRecord actual = new(new SomeCustomRecord([1, 2]), new SomeOtherRecord([1, 2]));
-			SomeRecord expected = new(new SomeCustomRecord([2, 1]), new SomeOtherRecord([2, 1]));
+			SomeRecord actual = new(new SomeCustomRecord([1, 2,]), new SomeOtherRecord([1, 2,]));
+			SomeRecord expected = new(new SomeCustomRecord([2, 1,]), new SomeOtherRecord([2, 1,]));
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
 				CustomOptions =
@@ -46,8 +46,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenPropertiesDiffer_ShouldReturnFalse()
 		{
-			SomeRecord actual = new(new SomeCustomRecord([1, 2]), new SomeOtherRecord([1, 2]));
-			SomeRecord expected = new(new SomeCustomRecord([2, 1]), new SomeOtherRecord([2, 1]));
+			SomeRecord actual = new(new SomeCustomRecord([1, 2,]), new SomeOtherRecord([1, 2,]));
+			SomeRecord expected = new(new SomeCustomRecord([2, 1,]), new SomeOtherRecord([2, 1,]));
 			EquivalencyComparer sut = new(new EquivalencyOptions());
 
 			bool result = sut.AreConsideredEqual(actual, expected);
@@ -77,8 +77,8 @@ public sealed partial class EquivalencyComparerTests
 		[Fact]
 		public async Task WhenPropertiesDifferButIgnoreCollectionOrderIsSet_ShouldReturnTrue()
 		{
-			SomeRecord actual = new(new SomeCustomRecord([1, 2]), new SomeOtherRecord([1, 2]));
-			SomeRecord expected = new(new SomeCustomRecord([2, 1]), new SomeOtherRecord([2, 1]));
+			SomeRecord actual = new(new SomeCustomRecord([1, 2,]), new SomeOtherRecord([1, 2,]));
+			SomeRecord expected = new(new SomeCustomRecord([2, 1,]), new SomeOtherRecord([2, 1,]));
 			EquivalencyComparer sut = new(new EquivalencyOptions
 			{
 				IgnoreCollectionOrder = true,

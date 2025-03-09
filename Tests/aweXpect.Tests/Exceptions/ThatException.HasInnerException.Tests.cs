@@ -36,7 +36,7 @@ public sealed partial class ThatException
 					               "inner"
 					               "some other message"
 					                ↑ (expected)
-					             
+
 					             Message:
 					             inner
 					             """);

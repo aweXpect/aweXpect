@@ -262,7 +262,7 @@ public static partial class ThatAsyncEnumerable
 			Outcome = Outcome.Failure;
 			return this;
 		}
-		
+
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("starts with ").Append(_expectedExpression);

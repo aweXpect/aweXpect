@@ -25,7 +25,8 @@ public static partial class EquivalencyComparison
 		}
 
 		EquivalencyComparisonType comparisonType = typeOptions.ComparisonType
-		                                           ?? equivalencyOptions.DefaultComparisonTypeSelector.Invoke(actual.GetType());
+		                                           ?? equivalencyOptions.DefaultComparisonTypeSelector.Invoke(
+			                                           actual.GetType());
 		if (comparisonType == EquivalencyComparisonType.ByValue)
 		{
 			return CompareByValue(actual, expected, failureBuilder, memberPath, memberType);

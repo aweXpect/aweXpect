@@ -10,7 +10,10 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatException
 {
-	private sealed class HasInnerExceptionValueConstraint(Type innerExceptionType, string it, ExpectationGrammars grammars)
+	private sealed class HasInnerExceptionValueConstraint(
+		Type innerExceptionType,
+		string it,
+		ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Exception>(it, grammars),
 			IValueConstraint<Exception?>
 	{

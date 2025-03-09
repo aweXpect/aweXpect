@@ -262,7 +262,7 @@ public sealed class StringDifference(
 	private static int GetLengthOfPhraseToShowOrDefaultLength(string value)
 	{
 		int minLength = Customize.aweXpect.Formatting().MinimumNumberOfCharactersAfterStringDifference.Get();
-		int defaultLength  = minLength + 5;
+		int defaultLength = minLength + 5;
 		int maxLength = minLength + 15;
 		const int lengthOfWhitespace = 1;
 

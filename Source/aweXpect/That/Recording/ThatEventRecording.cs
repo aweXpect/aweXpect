@@ -22,8 +22,8 @@ public static partial class ThatEventRecording
 			IValueConstraint<IEventRecording<TSubject>>
 		where TSubject : notnull
 	{
+		private readonly Quantifier _quantifier = quantifier;
 		private IEventRecording<TSubject>? _actual;
-		private Quantifier _quantifier = quantifier;
 		private IEventRecordingResult? _result;
 
 		public ConstraintResult IsMetBy(IEventRecording<TSubject> actual)

@@ -28,19 +28,16 @@ public static partial class ThatNullableTimeOnly
 			Actual = actual;
 			Outcome = condition(actual, expected, tolerance.Tolerance
 			                                      ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get())
-				? Outcome.Success : Outcome.Failure;
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(expectation(expected, tolerance));
-		}
+			=> stringBuilder.Append(expectation(expected, tolerance));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(failureMessageFactory(Actual, expected, it));
-		}
+			=> stringBuilder.Append(failureMessageFactory(Actual, expected, it));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> throw new NotImplementedException();

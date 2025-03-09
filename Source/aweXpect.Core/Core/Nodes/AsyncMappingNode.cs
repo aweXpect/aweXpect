@@ -72,10 +72,10 @@ internal class AsyncMappingNode<TSource, TTarget> : ExpectationNode
 
 	private sealed class AsyncMappingConstraintResult : ConstraintResult
 	{
-		private readonly ConstraintResult _left;
-		private readonly ConstraintResult _right;
 		private readonly Action<MemberAccessor<TSource, Task<TTarget>>, StringBuilder>? _expectationTextGenerator;
+		private readonly ConstraintResult _left;
 		private readonly MemberAccessor<TSource, Task<TTarget>> _memberAccessor;
+		private readonly ConstraintResult _right;
 
 		public AsyncMappingConstraintResult(ConstraintResult left,
 			ConstraintResult right,

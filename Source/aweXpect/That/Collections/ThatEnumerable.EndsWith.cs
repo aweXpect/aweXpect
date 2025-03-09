@@ -175,18 +175,18 @@ public static partial class ThatEnumerable
 
 	private sealed class EndsWithConstraint<TItem, TMatch>
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
-		IContextConstraint<IEnumerable<TItem>?>
+			IContextConstraint<IEnumerable<TItem>?>
 		where TItem : TMatch
 	{
-		private readonly string _it;
-		private readonly string _expectedExpression;
 		private readonly TItem[] _expected;
+		private readonly string _expectedExpression;
+		private readonly string _it;
 		private readonly IOptionsEquality<TMatch> _options;
 		private TItem? _firstMismatchItem;
 		private bool _foundMismatch;
 		private int _index;
-		private int _offset;
 		private int _itemsCount;
+		private int _offset;
 
 		public EndsWithConstraint(string it,
 			ExpectationGrammars grammars,

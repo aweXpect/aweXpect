@@ -92,7 +92,8 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsConstraint<TItem, TItem>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
+				new IsConstraint<TItem, TItem>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected,
+					options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -110,7 +111,8 @@ public static partial class ThatEnumerable
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsConstraint<string?, string?>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected, options, matchOptions)),
+				new IsConstraint<string?, string?>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					expected, options, matchOptions)),
 			source,
 			options,
 			matchOptions);
@@ -181,8 +183,8 @@ public static partial class ThatEnumerable
 			IContextConstraint<IEnumerable<TItem>?>
 	{
 		private int _count;
-		private IEnumerable<TItem>? _materializedEnumerable;
 		private bool _isFinished;
+		private IEnumerable<TItem>? _materializedEnumerable;
 
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
@@ -224,6 +226,7 @@ public static partial class ThatEnumerable
 			Outcome = Outcome.Failure;
 			return this;
 		}
+
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(expectationText.Invoke(quantifier));
 

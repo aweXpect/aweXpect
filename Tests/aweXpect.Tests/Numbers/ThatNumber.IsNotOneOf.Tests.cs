@@ -103,7 +103,7 @@ public sealed partial class ThatNumber
 			public async Task ForDouble_WhenSubjectAndExpectedAreNaN_ShouldFail()
 			{
 				double subject = double.NaN;
-				double[] expected = [double.NaN];
+				double[] expected = [double.NaN,];
 
 				async Task Act() => await That(subject).IsNotOneOf(expected);
 
@@ -186,7 +186,7 @@ public sealed partial class ThatNumber
 			public async Task ForFloat_WhenSubjectAndExpectedAreNaN_ShouldFail()
 			{
 				float subject = float.NaN;
-				float[] expected = [float.NaN];
+				float[] expected = [float.NaN,];
 
 				async Task Act() => await That(subject).IsNotOneOf(expected);
 

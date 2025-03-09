@@ -271,7 +271,7 @@ public static partial class ThatAsyncEnumerable
 		where TItem : TMatch
 	{
 		private string? _failure;
-		
+
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{

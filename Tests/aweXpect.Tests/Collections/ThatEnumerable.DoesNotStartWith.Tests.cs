@@ -37,7 +37,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportCaseInsensitiveComparison()
 			{
-				IEnumerable<string> subject = ToEnumerable(["FOO", "BAR"]);
+				IEnumerable<string> subject = ToEnumerable(["FOO", "BAR",]);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith("foo").IgnoringCase();
@@ -56,7 +56,7 @@ public sealed partial class ThatEnumerable
 			public async Task ShouldSupportEquivalent()
 			{
 				IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(x => new MyClass(x), 20);
-				IEnumerable<MyClass> unexpected = [new(1), new(1), new(2)];
+				IEnumerable<MyClass> unexpected = [new(1), new(1), new(2),];
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(unexpected).Equivalent();
@@ -85,7 +85,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenCollectionsAreIdentical_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(1, 2, 3);
@@ -105,8 +105,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenEnumerableHasDifferentStartingElements_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
-				IEnumerable<int> unexpected = [1, 3];
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
+				IEnumerable<int> unexpected = [1, 3,];
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(unexpected);
@@ -133,8 +133,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenSubjectStartsWithUnexpectedValues_ShouldFail()
 			{
-				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz"]);
-				IEnumerable<string> unexpected = ["foo", "bar"];
+				IEnumerable<string> subject = ToEnumerable(["foo", "bar", "baz",]);
+				IEnumerable<string> unexpected = ["foo", "bar",];
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(unexpected);
@@ -153,7 +153,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenUnexpectedContainsAdditionalElements_ShouldSucceed()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2, 3]);
+				IEnumerable<int> subject = ToEnumerable([1, 2, 3,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(1, 2, 3, 4);
@@ -164,7 +164,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenUnexpectedIsEmpty_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1, 2]);
+				IEnumerable<int> subject = ToEnumerable([1, 2,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith();
@@ -183,7 +183,7 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task WhenUnexpectedIsNull_ShouldFail()
 			{
-				IEnumerable<int> subject = ToEnumerable([1]);
+				IEnumerable<int> subject = ToEnumerable([1,]);
 
 				async Task Act()
 					=> await That(subject).DoesNotStartWith(null!);

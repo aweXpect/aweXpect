@@ -79,6 +79,7 @@ public sealed partial class ThatAsyncEnumerable
 					             """);
 			}
 		}
+
 		public sealed class NegatedTests
 		{
 			[Fact]

@@ -13,7 +13,7 @@ namespace aweXpect.Analyzers;
 public class EqualsAnalyzer : DiagnosticAnalyzer
 {
 	/// <inheritdoc />
-	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [Rules.EqualsRule];
+	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [Rules.EqualsRule,];
 
 	/// <inheritdoc />
 	public override void Initialize(AnalysisContext context)

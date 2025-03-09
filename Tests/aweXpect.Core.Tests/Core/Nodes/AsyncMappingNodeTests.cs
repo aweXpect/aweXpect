@@ -15,7 +15,8 @@ public class AsyncMappingNodeTests
 	{
 		AsyncMappingNode<string, int> node =
 			new(MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "));
-		node.AddConstraint(new DummyValueConstraint<int>(v => new DummyConstraintResult<int>(Outcome.Success, v, $"yeah: {v}")));
+		node.AddConstraint(new DummyValueConstraint<int>(v
+			=> new DummyConstraintResult<int>(Outcome.Success, v, $"yeah: {v}")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy("foobar", null!, CancellationToken.None);
@@ -32,7 +33,8 @@ public class AsyncMappingNodeTests
 	{
 		AsyncMappingNode<string, int> node =
 			new(MemberAccessor<string, Task<int>>.FromFunc(s => Task.FromResult(s.Length), " length "));
-		node.AddConstraint(new DummyValueConstraint<int?>(v => new DummyConstraintResult<int?>(Outcome.Success, v, "yeah!")));
+		node.AddConstraint(
+			new DummyValueConstraint<int?>(v => new DummyConstraintResult<int?>(Outcome.Success, v, "yeah!")));
 		async Task Act() => await node.IsMetBy(42, null!, CancellationToken.None);
 
 		await That(Act).Throws<InvalidOperationException>()
@@ -49,7 +51,8 @@ public class AsyncMappingNodeTests
 		DelegateValue<string?> value = new("foo", null, 10.Milliseconds(), true);
 		AsyncMappingNode<string?, int?> node =
 			new(MemberAccessor<string?, Task<int?>>.FromFunc(s => Task.FromResult(s?.Length), " length "));
-		node.AddConstraint(new DummyValueConstraint<int?>(v => new DummyConstraintResult<int?>(Outcome.Success, v, "yeah!")));
+		node.AddConstraint(
+			new DummyValueConstraint<int?>(v => new DummyConstraintResult<int?>(Outcome.Success, v, "yeah!")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy(value, null!, CancellationToken.None);
@@ -65,7 +68,8 @@ public class AsyncMappingNodeTests
 	{
 		AsyncMappingNode<string?, int?> node =
 			new(MemberAccessor<string?, Task<int?>>.FromFunc(s => Task.FromResult(s?.Length), " length "));
-		node.AddConstraint(new DummyValueConstraint<int?>(v => new DummyConstraintResult<int?>(Outcome.Success, v, "yeah!")));
+		node.AddConstraint(
+			new DummyValueConstraint<int?>(v => new DummyConstraintResult<int?>(Outcome.Success, v, "yeah!")));
 		StringBuilder sb = new();
 
 		ConstraintResult result = await node.IsMetBy<string?>(null, null!, CancellationToken.None);

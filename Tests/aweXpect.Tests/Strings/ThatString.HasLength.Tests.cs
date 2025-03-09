@@ -331,11 +331,11 @@ public sealed partial class ThatString
 					=> await That(subject).HasLength().NotEqualTo(1);
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              has length not equal to 1,
-					              but it was <null>
-					              """);
+					.WithMessage("""
+					             Expected that subject
+					             has length not equal to 1,
+					             but it was <null>
+					             """);
 			}
 
 			[Theory]

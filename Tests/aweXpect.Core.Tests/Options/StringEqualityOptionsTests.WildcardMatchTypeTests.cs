@@ -35,7 +35,7 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo\nbar"
 				               "FOO\nBAR"
 				               ↑ (wildcard pattern)
-				             
+
 				             Actual:
 				             foo
 				             bar
@@ -59,7 +59,7 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo"
 				               "bar"
 				               ↑ (wildcard pattern)
-				             
+
 				             Actual:
 				             foo
 				             """);
@@ -82,7 +82,7 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo\nbar"
 				               "\tsomething\r\nelse"
 				               ↑ (wildcard pattern)
-				             
+
 				             Actual:
 				             foo
 				             bar
@@ -107,7 +107,7 @@ public sealed partial class StringEqualityOptionsTests
 				               "foo"
 				               "bar"
 				               ↑ (wildcard pattern)
-				             
+
 				             Message:
 				             foo
 				             """);
@@ -126,7 +126,7 @@ public sealed partial class StringEqualityOptionsTests
 				             Expected that sut
 				             matches <null>,
 				             but could not compare the <null> wildcard pattern with "foo"
-				             
+
 				             Actual:
 				             foo
 				             """);

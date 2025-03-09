@@ -69,11 +69,11 @@ public sealed partial class ThatString
 					=> await That(subject).IsNotUpperCased();
 
 				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is not upper-cased,
-					              but it was <null>
-					              """);
+					.WithMessage("""
+					             Expected that subject
+					             is not upper-cased,
+					             but it was <null>
+					             """);
 			}
 
 			[Fact]

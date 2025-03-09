@@ -20,7 +20,8 @@ public static partial class ThatEventRecording
 		TriggerEventFilter filter = new();
 		return new EventTriggerResult<TSubject>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged), filter,
+				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
+					filter,
 					quantifier)),
 			source,
 			filter,
@@ -39,7 +40,8 @@ public static partial class ThatEventRecording
 		TriggerEventFilter filter = new();
 		return new EventTriggerResult<TSubject>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged), filter,
+				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
+					filter,
 					quantifier)),
 			source,
 			filter,

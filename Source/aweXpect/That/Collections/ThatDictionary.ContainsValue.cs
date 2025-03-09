@@ -35,7 +35,7 @@ public static partial class ThatDictionary
 		);
 
 	private sealed class ContainValueConstraint<TKey, TValue>(string it, ExpectationGrammars grammars, TValue expected)
-		:ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
+		: ConstraintResult.WithNotNullValue<IDictionary<TKey, TValue>?>(it, grammars),
 			IValueConstraint<IDictionary<TKey, TValue>?>
 	{
 		public ConstraintResult IsMetBy(IDictionary<TKey, TValue>? actual)
@@ -64,8 +64,6 @@ public static partial class ThatDictionary
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(It).Append(" did");
-		}
+			=> stringBuilder.Append(It).Append(" did");
 	}
 }

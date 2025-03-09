@@ -37,7 +37,7 @@ internal class XUnit3Adapter() : TestFrameworkAdapter(
 
 #pragma warning disable S3871 // Exception types should be "public"
 	private sealed class XunitTimeoutException(string message)
-		: InconclusiveException(message), ITestTimeoutException ;
+		: InconclusiveException(message), ITestTimeoutException;
 #pragma warning restore S3871 // Exception types should be "public"
 	private interface ITestTimeoutException;
 }

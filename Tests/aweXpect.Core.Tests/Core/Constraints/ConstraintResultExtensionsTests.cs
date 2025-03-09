@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using aweXpect.Core.Constraints;
+﻿using aweXpect.Core.Constraints;
 using aweXpect.Core.Tests.TestHelpers;
 
 namespace aweXpect.Core.Tests.Core.Constraints;

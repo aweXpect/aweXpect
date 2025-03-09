@@ -22,8 +22,10 @@ public partial class ThatDelegateThrows<TException>
 					" whose ",
 					false)
 				.Validate((it, grammars)
-					=> new HasInnerExceptionValueConstraint(typeof(TInnerException), it, grammars | ExpectationGrammars.Nested))
-				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)), grammars => grammars | ExpectationGrammars.Nested),
+					=> new HasInnerExceptionValueConstraint(typeof(TInnerException), it,
+						grammars | ExpectationGrammars.Nested))
+				.AddExpectations(e => expectations(new ThatSubject<TInnerException?>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -50,7 +52,8 @@ public partial class ThatDelegateThrows<TException>
 					false)
 				.Validate((it, grammars)
 					=> new HasInnerExceptionValueConstraint(innerExceptionType, it, grammars))
-				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)), grammars => grammars | ExpectationGrammars.Nested),
+				.AddExpectations(e => expectations(new ThatSubject<Exception?>(e)),
+					grammars => grammars | ExpectationGrammars.Nested),
 			this);
 
 	/// <summary>
@@ -60,10 +63,14 @@ public partial class ThatDelegateThrows<TException>
 		Type innerExceptionType)
 		=> new(ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new HasInnerExceptionValueConstraint(innerExceptionType, it, grammars | ExpectationGrammars.Nested)),
+					new HasInnerExceptionValueConstraint(innerExceptionType, it,
+						grammars | ExpectationGrammars.Nested)),
 			this);
-	
-	private sealed class HasInnerExceptionValueConstraint(Type innerExceptionType, string it, ExpectationGrammars grammars)
+
+	private sealed class HasInnerExceptionValueConstraint(
+		Type innerExceptionType,
+		string it,
+		ExpectationGrammars grammars)
 		: ConstraintResult.WithNotNullValue<Exception>(it, grammars),
 			IValueConstraint<Exception?>
 	{

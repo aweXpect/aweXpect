@@ -11,7 +11,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2);
@@ -22,7 +22,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldFail()
 			{
-				IDictionary<int, int> subject = ToDictionary([1, 2, 3], [0, 0, 0]);
+				IDictionary<int, int> subject = ToDictionary([1, 2, 3,], [0, 0, 0,]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(0);
@@ -61,7 +61,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ButValueDoesNotMatch_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("foo");
@@ -75,7 +75,7 @@ public sealed partial class ThatDictionary
 					               "bar"
 					               "foo"
 					                ↑ (expected)
-					             
+
 					             Actual:
 					             bar
 					             """);
@@ -84,7 +84,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyExists_ShouldSucceed()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(2).WhoseValue.IsEqualTo("bar");
@@ -95,7 +95,7 @@ public sealed partial class ThatDictionary
 			[Fact]
 			public async Task WhenKeyIsMissing_ShouldFail()
 			{
-				IDictionary<int, string> subject = ToDictionary([1, 2, 3], ["foo", "bar", "baz"]);
+				IDictionary<int, string> subject = ToDictionary([1, 2, 3,], ["foo", "bar", "baz",]);
 
 				async Task Act()
 					=> await That(subject).ContainsKey(0).WhoseValue.IsEqualTo("bar");

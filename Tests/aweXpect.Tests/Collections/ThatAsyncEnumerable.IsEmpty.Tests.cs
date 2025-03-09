@@ -89,7 +89,7 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsValues_ShouldFail()
 			{
-				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 2]);
+				IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 2,]);
 
 				async Task Act()
 					=> await That(subject).IsEmpty();

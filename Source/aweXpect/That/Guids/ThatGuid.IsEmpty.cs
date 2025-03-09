@@ -36,9 +36,7 @@ public static partial class ThatGuid
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("is empty");
-		}
+			=> stringBuilder.Append("is empty");
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -47,9 +45,7 @@ public static partial class ThatGuid
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append("is not empty");
-		}
+			=> stringBuilder.Append("is not empty");
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 		{

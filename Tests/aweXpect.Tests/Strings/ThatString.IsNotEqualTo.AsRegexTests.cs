@@ -24,7 +24,7 @@ public sealed partial class ThatString
 					             Expected that subject
 					             does not match regex ".*ME ME.*",
 					             but it was "some message"
-					             
+
 					             Actual:
 					             some message
 					             """);

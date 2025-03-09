@@ -168,7 +168,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowAllConfigurationsInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo")
@@ -188,7 +188,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringCaseInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringCase();
@@ -204,7 +204,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringLeadingWhiteSpaceInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringLeadingWhiteSpace();
@@ -220,7 +220,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringNewlineStyleInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringNewlineStyle();
@@ -236,7 +236,7 @@ public sealed partial class ThatEnumerable
 				[Fact]
 				public async Task WhenItemsDiffer_ShouldShowIgnoringTrailingWhiteSpaceInMessage()
 				{
-					string[] subject = ["bar"];
+					string[] subject = ["bar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringTrailingWhiteSpace();
@@ -254,7 +254,7 @@ public sealed partial class ThatEnumerable
 				[InlineData(false)]
 				public async Task WhenItemsDifferInCase_ShouldSucceedWhenIgnoringCase(bool ignoreCase)
 				{
-					string[] subject = ["foo", "FOO"];
+					string[] subject = ["foo", "FOO",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo").IgnoringCase(ignoreCase);
@@ -273,7 +273,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenItemsDifferInLeadingWhiteSpace_ShouldSucceedWhenIgnoringLeadingWhiteSpace(
 					bool ignoreLeadingWhiteSpace)
 				{
-					string[] subject = [" foo", "foo", "\tfoo"];
+					string[] subject = [" foo", "foo", "\tfoo",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo")
@@ -293,7 +293,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenItemsDifferInNewlineStyle_ShouldSucceedWhenIgnoringNewlineStyle(
 					bool ignoreNewlineStyle)
 				{
-					string[] subject = ["foo\r\nbar", "foo\nbar", "foo\rbar"];
+					string[] subject = ["foo\r\nbar", "foo\nbar", "foo\rbar",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo\nbar").IgnoringNewlineStyle(ignoreNewlineStyle);
@@ -312,7 +312,7 @@ public sealed partial class ThatEnumerable
 				public async Task WhenItemsDifferInTrailingWhiteSpace_ShouldSucceedWhenIgnoringTrailingWhiteSpace(
 					bool ignoreTrailingWhiteSpace)
 				{
-					string[] subject = ["foo ", "foo", "foo\t"];
+					string[] subject = ["foo ", "foo", "foo\t",];
 
 					async Task Act()
 						=> await That(subject).All().AreEqualTo("foo")
