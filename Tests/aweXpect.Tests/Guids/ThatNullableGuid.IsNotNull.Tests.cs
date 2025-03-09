@@ -40,7 +40,7 @@ public sealed partial class ThatNullableGuid
 					.WithMessage("""
 					             Expected that subject
 					             is not null,
-					             but it was <null>
+					             but it was
 					             """);
 			}
 		}

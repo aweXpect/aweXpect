@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -16,12 +17,7 @@ public static partial class ThatNullableEnum
 		long? expected)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint<TEnum>(
-					it,
-					$"has value {Formatter.Format(expected)}",
-					actual => actual != null &&
-					          Convert.ToInt64(actual, CultureInfo.InvariantCulture)
-					          == expected)),
+				new HasValueConstraint<TEnum>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -32,11 +28,45 @@ public static partial class ThatNullableEnum
 		long? unexpected)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint<TEnum>(
-					it,
-					$"does not have value {Formatter.Format(unexpected)}",
-					actual => actual != null &&
-					          Convert.ToInt64(actual.Value, CultureInfo.InvariantCulture) !=
-					          unexpected)),
+				new HasValueConstraint<TEnum>(it, grammars, unexpected).Invert()),
 			source);
+
+	private class HasValueConstraint<TEnum>(string it, ExpectationGrammars grammars, long? expectedValue)
+		: ConstraintResult.WithNotNullValue<TEnum?>(it, grammars),
+			IValueConstraint<TEnum?>
+		where TEnum : struct, Enum
+	{
+		public ConstraintResult IsMetBy(TEnum? actual)
+		{
+			Actual = actual;
+			Outcome = Convert.ToInt64(actual, CultureInfo.InvariantCulture) == expectedValue
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("has value ");
+			Formatter.Format(stringBuilder, expectedValue);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("does not have value ");
+			Formatter.Format(stringBuilder, expectedValue);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
 }

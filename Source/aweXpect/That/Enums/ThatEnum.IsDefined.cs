@@ -1,5 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -14,10 +15,7 @@ public static partial class ThatEnum
 		this IThat<TEnum> source)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint<TEnum>(
-					it,
-					"is defined",
-					actual => Enum.IsDefined(typeof(TEnum), actual))),
+				new IsDefinedConstraint<TEnum>(it, grammars)),
 			source);
 
 	/// <summary>
@@ -27,9 +25,41 @@ public static partial class ThatEnum
 		this IThat<TEnum> source)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint<TEnum>(
-					it,
-					"is not defined",
-					actual => !Enum.IsDefined(typeof(TEnum), actual))),
+				new IsDefinedConstraint<TEnum>(it, grammars).Invert()),
 			source);
+
+	private class IsDefinedConstraint<TEnum>(string it, ExpectationGrammars grammars)
+		: ConstraintResult.WithNotNullValue<TEnum>(it, grammars),
+			IValueConstraint<TEnum>
+		where TEnum : struct, Enum
+	{
+		public ConstraintResult IsMetBy(TEnum actual)
+		{
+			Actual = actual;
+			Outcome = Enum.IsDefined(typeof(TEnum), actual) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is defined");
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not defined");
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
 }

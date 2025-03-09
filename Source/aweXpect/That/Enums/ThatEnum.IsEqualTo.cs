@@ -1,5 +1,6 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -14,10 +15,7 @@ public static partial class ThatEnum
 		TEnum? expected)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint<TEnum>(
-					it,
-					$"is {Formatter.Format(expected)}",
-					actual => actual.Equals(expected))),
+				new IsEqualToConstraint<TEnum>(it, grammars, expected)),
 			source);
 
 	/// <summary>
@@ -27,9 +25,43 @@ public static partial class ThatEnum
 		TEnum? unexpected)
 		where TEnum : struct, Enum
 		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ValueConstraint<TEnum>(
-					it,
-					$"is not {Formatter.Format(unexpected)}",
-					actual => !actual.Equals(unexpected))),
+				new IsEqualToConstraint<TEnum>(it, grammars, unexpected).Invert()),
 			source);
+
+	private class IsEqualToConstraint<TEnum>(string it, ExpectationGrammars grammars, TEnum? expected)
+		: ConstraintResult.WithEqualToValue<TEnum>(it, grammars, expected is null),
+			IValueConstraint<TEnum>
+		where TEnum : struct, Enum
+	{
+		public ConstraintResult IsMetBy(TEnum actual)
+		{
+			Actual = actual;
+			Outcome = actual.Equals(expected) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+	}
 }
