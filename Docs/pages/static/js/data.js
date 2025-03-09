@@ -1104,6 +1104,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -1290,7 +1296,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -1480,7 +1487,8 @@ window.BENCHMARK_DATA = {
           183.56633501052858,
           173.69618018468222,
           168.2654207263674,
-          164.15571522712708
+          164.15571522712708,
+          176.17142219543456
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1675,6 +1683,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472
         ],
         "borderColor": "#63A2AC",
@@ -1873,7 +1882,8 @@ window.BENCHMARK_DATA = {
           188.87429242134095,
           237.62443008422852,
           239.20520447095234,
-          231.74298645655315
+          231.74298645655315,
+          244.7992969581059
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2066,6 +2076,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952
@@ -2266,7 +2277,8 @@ window.BENCHMARK_DATA = {
           903.6536175182888,
           851.1558710244985,
           858.5084951945713,
-          846.5095114026751
+          846.5095114026751,
+          973.9195568084717
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2420,6 +2432,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3117,6 +3130,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -3226,7 +3245,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -3339,7 +3359,8 @@ window.BENCHMARK_DATA = {
           296832.73782784597,
           289128.71858723956,
           278073.4334960937,
-          273493.8233398438
+          273493.8233398438,
+          274522.8242885045
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3457,6 +3478,7 @@ window.BENCHMARK_DATA = {
           284796,
           284796,
           284796,
+          284660,
           284660
         ],
         "borderColor": "#63A2AC",
@@ -3578,7 +3600,8 @@ window.BENCHMARK_DATA = {
           2081069.8685825893,
           2115592.642447917,
           2113901.516183036,
-          2173553.9423076925
+          2173553.9423076925,
+          2175283.4486177885
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3694,6 +3717,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416
@@ -3817,7 +3841,8 @@ window.BENCHMARK_DATA = {
           722017.1429268973,
           686753.953515625,
           672613.6637834822,
-          656970.9888671875
+          656970.9888671875,
+          680180.5769205729
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3894,6 +3919,7 @@ window.BENCHMARK_DATA = {
           836713,
           836713,
           836713,
+          866721,
           866721,
           866721,
           866721,
@@ -5053,6 +5079,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -5239,7 +5271,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -5429,7 +5462,8 @@ window.BENCHMARK_DATA = {
           614.0317229588826,
           597.5750592549642,
           608.6763963063557,
-          298.6866218493535
+          298.6866218493535,
+          317.5908219337463
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5624,6 +5658,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944
         ],
         "borderColor": "#63A2AC",
@@ -5822,7 +5857,8 @@ window.BENCHMARK_DATA = {
           415.4028848012288,
           484.9907749039786,
           459.64790402925934,
-          487.9379932539804
+          487.9379932539804,
+          479.2692531585693
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6015,6 +6051,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008
@@ -6215,7 +6252,8 @@ window.BENCHMARK_DATA = {
           14887.769664219448,
           14510.48108455113,
           14870.746408315805,
-          14329.694505818685
+          14329.694505818685,
+          15526.99873046875
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6369,6 +6407,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -7528,6 +7567,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -7714,7 +7759,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -7904,7 +7950,8 @@ window.BENCHMARK_DATA = {
           227.87851854960124,
           230.8690607731159,
           225.54175645510355,
-          198.36091564496357
+          198.36091564496357,
+          221.05132443110148
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8099,7 +8146,8 @@ window.BENCHMARK_DATA = {
           888,
           888,
           888,
-          808
+          808,
+          784
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8297,7 +8345,8 @@ window.BENCHMARK_DATA = {
           187.9419527212779,
           242.93717343012491,
           232.50726308822632,
-          235.45952997888838
+          235.45952997888838,
+          255.64428755215235
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8490,6 +8539,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224
@@ -8690,7 +8740,8 @@ window.BENCHMARK_DATA = {
           1299.482372724093,
           1238.4115753173828,
           1204.0861206054688,
-          1166.7026947566442
+          1166.7026947566442,
+          1304.4231871287027
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8844,6 +8895,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -10003,6 +10055,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -10189,7 +10247,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -10379,7 +10438,8 @@ window.BENCHMARK_DATA = {
           361.08979349136354,
           385.5733520825704,
           362.89561853408816,
-          260.6219154993693
+          260.6219154993693,
+          267.1549735705058
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10574,6 +10634,7 @@ window.BENCHMARK_DATA = {
           992,
           992,
           992,
+          896,
           896
         ],
         "borderColor": "#63A2AC",
@@ -10772,7 +10833,8 @@ window.BENCHMARK_DATA = {
           427.4617662747701,
           471.8195525487264,
           459.46896031697594,
-          453.58026231129963
+          453.58026231129963,
+          462.3741830417088
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10965,6 +11027,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168
@@ -11165,7 +11228,8 @@ window.BENCHMARK_DATA = {
           1275.5034381321498,
           1251.611459187099,
           1265.0706071217855,
-          1232.1434441975184
+          1232.1434441975184,
+          1314.6187144688197
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11319,6 +11383,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -12478,6 +12543,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -12664,7 +12735,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -12854,7 +12926,8 @@ window.BENCHMARK_DATA = {
           1260.8275195757549,
           1288.3729685465494,
           1254.0057444254558,
-          1048.1564278920491
+          1048.1564278920491,
+          1122.5865618841988
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13049,6 +13122,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008
         ],
         "borderColor": "#63A2AC",
@@ -13247,7 +13321,8 @@ window.BENCHMARK_DATA = {
           1203.8119869232178,
           1309.6961647914006,
           1275.3307777132306,
-          1283.593655649821
+          1283.593655649821,
+          1314.5250933329264
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13440,6 +13515,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152
@@ -13640,7 +13716,8 @@ window.BENCHMARK_DATA = {
           2793.2210238138837,
           2710.8960502624514,
           2736.6767807006836,
-          2785.3487462361654
+          2785.3487462361654,
+          2887.640587942941
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13794,6 +13871,7 @@ window.BENCHMARK_DATA = {
           4112,
           4112,
           4112,
+          4520,
           4520,
           4520,
           4520,
@@ -14953,6 +15031,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun Mar 9 12:20:38 2025 \u002B0100",
         "message": "chore: update aweXpect to v2.0.0-pre.1 (#444)"
+      },
+      {
+        "sha": "8baa2a409242122daf165748a283f84e2606c815",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun Mar 9 14:02:01 2025 \u002B0100",
+        "message": "refactor: use explicit constraints for numbers (#445)"
       }
     ],
     "labels": [
@@ -15139,7 +15223,8 @@ window.BENCHMARK_DATA = {
       "75dd39e7",
       "ab75babf",
       "73699f2c",
-      "02698bd2"
+      "02698bd2",
+      "8baa2a40"
     ],
     "datasets": [
       {
@@ -15329,7 +15414,8 @@ window.BENCHMARK_DATA = {
           1407.1330056508382,
           1323.9663009643555,
           1363.4367474873861,
-          1134.303102874756
+          1134.303102874756,
+          1127.1653111321586
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15524,6 +15610,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976
         ],
         "borderColor": "#63A2AC",
@@ -15722,7 +15809,8 @@ window.BENCHMARK_DATA = {
           86942.26736653646,
           152275.1486328125,
           149264.7859375,
-          148849.50686848958
+          148849.50686848958,
+          156777.26891276042
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15917,6 +16005,7 @@ window.BENCHMARK_DATA = {
           54271,
           64012,
           63485,
+          63493,
           63493
         ],
         "borderColor": "#FF671B",
@@ -16115,7 +16204,8 @@ window.BENCHMARK_DATA = {
           3233.5305570874893,
           3102.598887252808,
           3151.8277659098308,
-          3292.0800842285157
+          3292.0800842285157,
+          3387.5568405151366
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16286,6 +16376,7 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
+          5680,
           5680,
           5680,
           5680,
