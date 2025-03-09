@@ -20,6 +20,7 @@ public static partial class ThatNullableDateOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					expected,
 					(e, t) => $"is equal to {Formatter.Format(e)}{t.ToDayString()}",
 					(a, e, t) => (a == null && e == null) ||
@@ -43,6 +44,7 @@ public static partial class ThatNullableDateOnly
 				.AddConstraint((it, grammars) =>
 					new ConditionConstraintWithTolerance(
 						it,
+						grammars,
 						unexpected,
 						(e, t) => $"is not equal to {Formatter.Format(e)}{t.ToDayString()}",
 						(a, u, t) => a == null != (u == null) ||

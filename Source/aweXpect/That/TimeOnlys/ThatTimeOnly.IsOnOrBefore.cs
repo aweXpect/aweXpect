@@ -21,6 +21,7 @@ public static partial class ThatTimeOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					expected,
 					(e, t) => $"is on or before {Formatter.Format(e)}{t}",
 					(a, e, t) => a.Add(t.Negate()) <= e,
@@ -42,6 +43,7 @@ public static partial class ThatTimeOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					unexpected,
 					(u, t) => $"is not on or before {Formatter.Format(u)}{t}",
 					(a, e, t) => a.Add(t) > e,

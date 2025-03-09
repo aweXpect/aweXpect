@@ -20,6 +20,7 @@ public static partial class ThatDateTime
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					expected,
 					$"is on or after {Formatter.Format(expected)}",
 					(a, e, t) => a + t >= e,
@@ -41,6 +42,7 @@ public static partial class ThatDateTime
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					unexpected,
 					$"is not on or after {Formatter.Format(unexpected)}",
 					(a, e, t) => a - t < e,

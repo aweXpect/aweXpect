@@ -19,7 +19,7 @@ public static partial class ThatNullableTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint(it, expected, tolerance)),
+				new IsEqualToConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -34,47 +34,50 @@ public static partial class ThatNullableTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan?, IThat<TimeSpan?>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsNotEqualToConstraint(it, unexpected, tolerance)),
+				new IsEqualToConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
 	}
 
-	private readonly struct IsEqualToConstraint(string it, TimeSpan? expected, TimeTolerance tolerance)
-		: IValueConstraint<TimeSpan?>
-	{
-		public ConstraintResult IsMetBy(TimeSpan? actual)
-		{
-			if (IsWithinTolerance(tolerance.Tolerance, actual - expected))
-			{
-				return new ConstraintResult.Success<TimeSpan?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
-		}
-
-		public override string ToString()
-			=> $"is equal to {Formatter.Format(expected)}{tolerance}";
-	}
-
-	private readonly struct IsNotEqualToConstraint(
+	private class IsEqualToConstraint(
 		string it,
-		TimeSpan? unexpected,
+		ExpectationGrammars grammars,
+		TimeSpan? expected,
 		TimeTolerance tolerance)
-		: IValueConstraint<TimeSpan?>
+		: ConstraintResult.WithEqualToValue<TimeSpan?>(it, grammars, expected is null),
+			IValueConstraint<TimeSpan?>
 	{
 		public ConstraintResult IsMetBy(TimeSpan? actual)
 		{
-			if (!IsWithinTolerance(tolerance.Tolerance, actual - unexpected))
-			{
-				return new ConstraintResult.Success<TimeSpan?>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			Actual = actual;
+			Outcome = IsWithinTolerance(tolerance.Tolerance, actual - expected) ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"is not equal to {Formatter.Format(unexpected)}{tolerance}";
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }

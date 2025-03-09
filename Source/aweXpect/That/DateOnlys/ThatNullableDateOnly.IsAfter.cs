@@ -21,6 +21,7 @@ public static partial class ThatNullableDateOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					expected,
 					(e, t) => $"is after {Formatter.Format(e)}{t.ToDayString()}",
 					(a, e, t) => a?.AddDays((int)t.TotalDays) > e,
@@ -42,6 +43,7 @@ public static partial class ThatNullableDateOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					unexpected,
 					(u, t) => $"is not after {Formatter.Format(u)}{t.ToDayString()}",
 					(a, e, t) => a?.AddDays(-1 * (int)t.TotalDays) <= e,

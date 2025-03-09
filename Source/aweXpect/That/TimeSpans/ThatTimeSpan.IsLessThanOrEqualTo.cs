@@ -20,7 +20,7 @@ public static partial class ThatTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsLessThanOrEqualToConstraint(it, expected, tolerance)),
+				new IsLessThanOrEqualToConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -35,54 +35,63 @@ public static partial class ThatTimeSpan
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeSpan, IThat<TimeSpan>>(
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsNotLessThanOrEqualToConstraint(it, unexpected, tolerance)),
+				new IsLessThanOrEqualToConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
 	}
 
-	private readonly struct IsLessThanOrEqualToConstraint(
+	private class IsLessThanOrEqualToConstraint(
 		string it,
+		ExpectationGrammars grammars,
 		TimeSpan? expected,
 		TimeTolerance tolerance)
-		: IValueConstraint<TimeSpan>
+		: ConstraintResult.WithNotNullValue<TimeSpan>(it, grammars),
+			IValueConstraint<TimeSpan>
 	{
 		public ConstraintResult IsMetBy(TimeSpan actual)
 		{
-			TimeSpan timeTolerance = tolerance.Tolerance
-			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
-			if (actual - timeTolerance <= expected)
+			Actual = actual;
+			if (expected is null)
 			{
-				return new ConstraintResult.Success<TimeSpan>(actual, ToString());
+				Outcome = IsNegated ? Outcome.Success : Outcome.Failure;
+				return this;
 			}
 
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			TimeSpan timeTolerance = tolerance.Tolerance
+			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+			if (IsNegated)
+			{
+				timeTolerance = timeTolerance.Negate();
+			}
+
+			Outcome = actual - timeTolerance <= expected ? Outcome.Success : Outcome.Failure;
+			return this;
 		}
 
-		public override string ToString()
-			=> $"is less than or equal to {Formatter.Format(expected)}{tolerance}";
-	}
-
-	private readonly struct IsNotLessThanOrEqualToConstraint(
-		string it,
-		TimeSpan? unexpected,
-		TimeTolerance tolerance)
-		: IValueConstraint<TimeSpan>
-	{
-		public ConstraintResult IsMetBy(TimeSpan actual)
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			TimeSpan timeTolerance = tolerance.Tolerance
-			                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
-			if (actual + timeTolerance > unexpected)
-			{
-				return new ConstraintResult.Success<TimeSpan>(actual, ToString());
-			}
-
-			return new ConstraintResult.Failure(ToString(),
-				$"{it} was {Formatter.Format(actual)}");
+			stringBuilder.Append("is less than or equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
 		}
 
-		public override string ToString()
-			=> $"is not less than or equal to {Formatter.Format(unexpected)}{tolerance}";
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not less than or equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }

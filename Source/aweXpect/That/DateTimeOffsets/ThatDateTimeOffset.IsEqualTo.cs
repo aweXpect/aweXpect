@@ -20,6 +20,7 @@ public static partial class ThatDateTimeOffset
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					expected,
 					$"is equal to {Formatter.Format(expected)}{tolerance}",
 					(a, e, t) => IsWithinTolerance(t, a - e),
@@ -41,6 +42,7 @@ public static partial class ThatDateTimeOffset
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					unexpected,
 					$"is not equal to {Formatter.Format(unexpected)}{tolerance}",
 					(a, e, t) => !IsWithinTolerance(t, a - e),

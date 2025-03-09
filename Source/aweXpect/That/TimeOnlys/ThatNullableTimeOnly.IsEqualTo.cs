@@ -20,6 +20,7 @@ public static partial class ThatNullableTimeOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					expected,
 					(e, t) => $"is equal to {Formatter.Format(e)}{t}",
 					(a, e, t) => (a == null && e == null) ||
@@ -43,6 +44,7 @@ public static partial class ThatNullableTimeOnly
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
+					grammars,
 					unexpected,
 					(e, t) => $"is not equal to {Formatter.Format(e)}{t}",
 					(a, u, t) => a == null != (u == null) ||

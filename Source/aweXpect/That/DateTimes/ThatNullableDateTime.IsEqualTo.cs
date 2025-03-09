@@ -20,6 +20,7 @@ public static partial class ThatNullableDateTime
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					expected,
 					$"is equal to {Formatter.Format(expected)}{tolerance}",
 					(a, e, t) => AreKindCompatible(a?.Kind, e?.Kind) && IsWithinTolerance(t, a - e),
@@ -43,6 +44,7 @@ public static partial class ThatNullableDateTime
 			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraint(
 					it,
+					grammars,
 					unexpected,
 					$"is not equal to {Formatter.Format(unexpected)}{tolerance}",
 					(a, e, t) => !AreKindCompatible(a?.Kind, e?.Kind) || !IsWithinTolerance(t, a - e),
