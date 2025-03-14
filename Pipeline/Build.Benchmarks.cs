@@ -48,7 +48,8 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
-			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" / "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
+			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
+			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
 			Log.Information("Report:\n {FileContent}", fileContent);
 			if (GitHubActions?.IsPullRequest == true)
 			{

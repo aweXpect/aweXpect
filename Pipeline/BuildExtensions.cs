@@ -38,7 +38,7 @@ public static class BuildExtensions
 		Log.Information("Use branch analysis for '{BranchName}'", branchName);
 		return settings.SetBranchName(branchName);
 	}
-	
+
 	public static async Task DownloadArtifactTo(this string artifactName, string artifactsDirectory, string githubToken)
 	{
 		string runId = Environment.GetEnvironmentVariable("WorkflowRunId");

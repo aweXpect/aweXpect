@@ -57,7 +57,7 @@ partial class Build
 						(settings, project) => settings
 							.SetProjectFile(project)
 							.CombineWith(
-								project.GetTargetFrameworks()?.Except([net48]),
+								project.GetTargetFrameworks()?.Except([net48,]),
 								(frameworkSettings, framework) => frameworkSettings
 									.SetFramework(framework)
 									.AddLoggers($"trx;LogFileName={project.Name}_{framework}.trx")
@@ -69,7 +69,7 @@ partial class Build
 	Project[] UnitTestProjects(BuildScope buildScope)
 		=> buildScope switch
 		{
-			BuildScope.CoreOnly => [Solution.Tests.aweXpect_Core_Tests],
+			BuildScope.CoreOnly => [Solution.Tests.aweXpect_Core_Tests,],
 			BuildScope.MainOnly =>
 			[
 				Solution.Tests.aweXpect_Analyzers_Tests,

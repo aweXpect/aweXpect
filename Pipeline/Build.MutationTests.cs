@@ -47,10 +47,10 @@ partial class Build
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{
-					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests]
+					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]
 				},
 				{
-					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests]
+					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]
 				},
 			};
 
@@ -63,6 +63,8 @@ partial class Build
 					branchName = "release/" + version;
 					Log.Information("Use release branch analysis for '{BranchName}'", branchName);
 				}
+
+				File.WriteAllText(ArtifactsDirectory / "BranchName.txt", branchName);
 
 				string configText = $$"""
 				                      {
@@ -144,21 +146,23 @@ partial class Build
 			Dictionary<Project, Project[]> projects = new()
 			{
 				{
-					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests]
+					Solution.aweXpect, [Solution.Tests.aweXpect_Tests, Solution.Tests.aweXpect_Internal_Tests,]
 				},
 				{
-					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests]
+					Solution.aweXpect_Core, [..FrameworkUnitTestProjects, Solution.Tests.aweXpect_Core_Tests,]
 				},
 			};
-			var apiKey = Environment.GetEnvironmentVariable("STRYKER_DASHBOARD_API_KEY");
-			var branchName = File.ReadAllText(ArtifactsDirectory / "BranchName.txt");
-			foreach (var project in projects)
+			string apiKey = Environment.GetEnvironmentVariable("STRYKER_DASHBOARD_API_KEY");
+			string branchName = File.ReadAllText(ArtifactsDirectory / "BranchName.txt");
+			foreach (KeyValuePair<Project, Project[]> project in projects)
 			{
-				var reportComment = File.ReadAllText(ArtifactsDirectory / "Stryker" / "reports" / "mutation-report.json");
-				using var client = new HttpClient();
+				string reportComment =
+					File.ReadAllText(ArtifactsDirectory / "Stryker" / "reports" / "mutation-report.json");
+				using HttpClient client = new();
 				client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 				// https://stryker-mutator.io/docs/General/dashboard/#send-a-report-via-curl
-				await client.PutAsync($"https://dashboard.stryker-mutator.io/api/reports/github.com/aweXpect/aweXpect/{branchName}?module={project.Key.Name}",
+				await client.PutAsync(
+					$"https://dashboard.stryker-mutator.io/api/reports/github.com/aweXpect/aweXpect/{branchName}?module={project.Key.Name}",
 					new StringContent(reportComment, new MediaTypeHeaderValue("application/json")));
 			}
 

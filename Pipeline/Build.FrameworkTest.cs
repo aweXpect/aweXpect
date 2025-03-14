@@ -37,7 +37,7 @@ partial class Build
 			var testCombinations =
 				from project in FrameworkUnitTestProjects
 				let frameworks = project.GetTargetFrameworks()
-				let supportedFrameworks = EnvironmentInfo.IsWin ? frameworks : frameworks.Except(["net48"])
+				let supportedFrameworks = EnvironmentInfo.IsWin ? frameworks : frameworks.Except(["net48",])
 				from framework in supportedFrameworks
 				select new
 				{

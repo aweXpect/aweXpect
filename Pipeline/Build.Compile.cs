@@ -68,7 +68,7 @@ partial class Build
 				Console.WriteLine(
 					$"Branch spec is a pull request. Adding build number {buildNumber}");
 
-				SemVer = string.Join('.', gitVersion.SemVer.Split('.').Take(3).Union([buildNumber]));
+				SemVer = string.Join('.', gitVersion.SemVer.Split('.').Take(3).Union([buildNumber,]));
 			}
 
 			Console.WriteLine($"SemVer = {SemVer}");
