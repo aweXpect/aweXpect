@@ -12,11 +12,8 @@ namespace aweXpect.Options;
 public partial class StringEqualityOptions : IOptionsEquality<string?>
 {
 	private const int DefaultMaxLength = 30;
-	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
-	private static readonly IStringMatchType RegexMatch = new RegexMatchType();
 
 	private static readonly TimeSpan RegexTimeout = TimeSpan.FromMilliseconds(1000);
-	private static readonly IStringMatchType WildcardMatch = new WildcardMatchType();
 	private IEqualityComparer<string>? _comparer;
 	private bool _ignoreCase;
 	private bool _ignoreLeadingWhiteSpace;

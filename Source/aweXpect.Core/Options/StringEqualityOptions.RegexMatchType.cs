@@ -7,6 +7,8 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
+	private static readonly IStringMatchType RegexMatch = new RegexMatchType();
+
 	/// <summary>
 	///     Interprets the expected <see langword="string" /> as <see cref="Regex" /> pattern.
 	/// </summary>

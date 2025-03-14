@@ -59,6 +59,17 @@ The regex comparison uses the following [
 - `Multiline` (always)
 - `IgnoreCase` (if the `IgnoringCase` method is also used)
 
+### Prefix / Suffix
+
+You can also verify that the subject starts with or ends with a given string.
+
+```csharp
+string subject = "some text";
+
+await Expect.That(subject).IsEqualTo("some").AsPrefix();
+await Expect.That(subject).IsEqualTo("text").AsSuffix();
+```
+
 ## One of
 
 You can verify, that the `string` is one of many alternatives.  
