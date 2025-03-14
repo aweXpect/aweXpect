@@ -7,6 +7,8 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
+	private static readonly IStringMatchType WildcardMatch = new WildcardMatchType();
+
 	/// <summary>
 	///     Interprets the expected <see langword="string" /> as wildcard pattern.<br />
 	///     Supports * to match zero or more characters and ? to match exactly one character.

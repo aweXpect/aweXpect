@@ -7,18 +7,18 @@ namespace aweXpect.Options;
 
 public partial class StringEqualityOptions
 {
-	private static readonly IStringMatchType ExactMatch = new ExactMatchType();
+	private static readonly IStringMatchType SuffixMatch = new SuffixMatchType();
 
 	/// <summary>
-	///     Interprets the expected <see langword="string" /> to be exactly equal.
+	///     Interprets the expected <see langword="string" /> to be a suffix for the actual string.
 	/// </summary>
-	public StringEqualityOptions Exactly()
+	public StringEqualityOptions AsSuffix()
 	{
-		_matchType = ExactMatch;
+		_matchType = SuffixMatch;
 		return this;
 	}
 
-	private sealed class ExactMatchType : IStringMatchType
+	private sealed class SuffixMatchType : IStringMatchType
 	{
 		private static int GetIndexOfFirstMatch(string stringWithLeadingWhitespace, string value,
 			IEqualityComparer<string> comparer)
@@ -109,7 +109,7 @@ public partial class StringEqualityOptions
 				return false;
 			}
 
-			return comparer.Equals(actual, expected);
+			return actual.Length >= expected.Length && comparer.Equals(actual[^expected.Length..], expected);
 		}
 
 		/// <inheritdoc cref="IStringMatchType.GetExpectation(string?, ExpectationGrammars)" />
@@ -117,18 +117,18 @@ public partial class StringEqualityOptions
 			=> (grammars.HasFlag(ExpectationGrammars.Active), grammars.HasFlag(ExpectationGrammars.Negated)) switch
 			{
 				(true, false) =>
-					$"is equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+					$"ends with {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				(false, false) =>
-					$"equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+					$"end with {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				(true, true) =>
-					$"is not equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+					$"does not end with {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 				(false, true) =>
-					$"not equal to {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
+					$"not end with {Formatter.Format(expected.TruncateWithEllipsisOnWord(DefaultMaxLength).ToSingleLine())}",
 			};
 
 		/// <inheritdoc cref="IStringMatchType.GetTypeString()" />
 		public string GetTypeString()
-			=> "";
+			=> " as suffix";
 
 		/// <inheritdoc cref="IStringMatchType.GetOptionString(bool, IEqualityComparer{string})" />
 		public string GetOptionString(bool ignoreCase, IEqualityComparer<string>? comparer)
