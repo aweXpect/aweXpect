@@ -21,9 +21,15 @@ public record FormattingOptions
 	/// </summary>
 	public static FormattingOptions SingleLine { get; } = new(false);
 
-	internal bool UseLineBreaks { get; }
+	/// <summary>
+	///     Flag indicating, if line-breaks should be used during formatting.
+	/// </summary>
+	public bool UseLineBreaks { get; }
 
-	internal string Indentation { get; }
+	/// <summary>
+	///     The indentation prefix for subsequent lines when <see cref="UseLineBreaks" /> is <see langword="true" />
+	/// </summary>
+	public string Indentation { get; }
 
 	/// <summary>
 	///     Format the objects on multiple lines with the given <paramref name="indentation" />.
