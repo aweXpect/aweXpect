@@ -1146,6 +1146,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -1339,7 +1345,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -1536,7 +1543,8 @@ window.BENCHMARK_DATA = {
           160.9493169784546,
           161.6816267456327,
           165.92124809537614,
-          182.26335317747933
+          182.26335317747933,
+          158.41954604784647
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1731,6 +1739,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -1943,7 +1952,8 @@ window.BENCHMARK_DATA = {
           240.51115379333496,
           230.83095904758997,
           240.8905581327585,
-          257.5963397707258
+          257.5963397707258,
+          231.87938550802377
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2136,6 +2146,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2350,7 +2361,8 @@ window.BENCHMARK_DATA = {
           905.2701262694138,
           869.1814584096272,
           893.1698188145955,
-          981.0475728352865
+          981.0475728352865,
+          877.5055404809805
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2504,6 +2516,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3250,6 +3263,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -3366,7 +3385,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -3486,7 +3506,8 @@ window.BENCHMARK_DATA = {
           285384.19038085936,
           275508.29822716344,
           283756.71956380206,
-          295421.13430989586
+          295421.13430989586,
+          273279.8782435826
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3604,6 +3625,7 @@ window.BENCHMARK_DATA = {
           284796,
           284796,
           284796,
+          284660,
           284660,
           284660,
           284660,
@@ -3739,7 +3761,8 @@ window.BENCHMARK_DATA = {
           2356855.4369791667,
           2198131.122916667,
           2190826.3526041666,
-          2348783.9505208335
+          2348783.9505208335,
+          2175234.423958333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3855,6 +3878,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -3992,7 +4016,8 @@ window.BENCHMARK_DATA = {
           698781.6824869792,
           644591.2944661458,
           669766.1166015625,
-          680369.6327373798
+          680369.6327373798,
+          663385.5214146206
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4115,6 +4140,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737
@@ -5277,6 +5303,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -5470,7 +5502,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -5667,7 +5700,8 @@ window.BENCHMARK_DATA = {
           320.0136107126872,
           292.54120066960655,
           307.8086868604024,
-          319.9824292182922
+          319.9824292182922,
+          305.6191011156355
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5862,6 +5896,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6074,7 +6109,8 @@ window.BENCHMARK_DATA = {
           484.4899031321208,
           490.11738363901776,
           480.9515347847572,
-          540.8244476954143
+          540.8244476954143,
+          454.00476280848187
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6267,6 +6303,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -6481,7 +6518,8 @@ window.BENCHMARK_DATA = {
           14443.980366007487,
           14138.145599365234,
           14628.554648179273,
-          15419.679756673177
+          15419.679756673177,
+          14570.725048828124
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6635,6 +6673,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -7843,6 +7882,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -8036,7 +8081,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -8233,7 +8279,8 @@ window.BENCHMARK_DATA = {
           202.14973522822064,
           192.6233399765832,
           198.749853404363,
-          207.99990037282308
+          207.99990037282308,
+          197.23878059387206
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8429,6 +8476,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -8640,7 +8688,8 @@ window.BENCHMARK_DATA = {
           242.88464476267498,
           230.49344965389795,
           244.308202679952,
-          271.2618663787842
+          271.2618663787842,
+          232.43778773716517
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8833,6 +8882,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9047,7 +9097,8 @@ window.BENCHMARK_DATA = {
           1184.8042831420898,
           1136.1392062260554,
           1170.2048784891765,
-          1263.0496241251628
+          1263.0496241251628,
+          1187.118502298991
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9201,6 +9252,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -10409,6 +10461,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -10602,7 +10660,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -10799,7 +10858,8 @@ window.BENCHMARK_DATA = {
           268.22042716344197,
           270.87497364679973,
           269.43409357070925,
-          276.3807796410152
+          276.3807796410152,
+          271.953155263265
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10994,6 +11054,7 @@ window.BENCHMARK_DATA = {
           992,
           992,
           992,
+          896,
           896,
           896,
           896,
@@ -11206,7 +11267,8 @@ window.BENCHMARK_DATA = {
           472.77625162260875,
           483.4981426556905,
           477.31995919545494,
-          491.90489689509076
+          491.90489689509076,
+          453.6384391466776
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11399,6 +11461,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -11613,7 +11676,8 @@ window.BENCHMARK_DATA = {
           1316.5574400583903,
           1243.3946056365967,
           1260.399676132202,
-          1357.2902275965764
+          1357.2902275965764,
+          1273.9165192921957
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11767,6 +11831,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -12975,6 +13040,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -13168,7 +13239,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -13365,7 +13437,8 @@ window.BENCHMARK_DATA = {
           1089.7768157958985,
           1030.4426962534587,
           1052.7831845964704,
-          1070.3683983939034
+          1070.3683983939034,
+          1033.1266834259034
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13560,6 +13633,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -13772,7 +13846,8 @@ window.BENCHMARK_DATA = {
           1300.4066338857015,
           1236.6571908315022,
           1289.5524681091308,
-          1343.8835406670203
+          1343.8835406670203,
+          1234.7625334421793
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13965,6 +14040,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -14179,7 +14255,8 @@ window.BENCHMARK_DATA = {
           2729.5099077860514,
           2688.0239860534666,
           2821.270694732666,
-          2829.3479817708335
+          2829.3479817708335,
+          2654.8867284138996
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14379,6 +14456,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536
@@ -15541,6 +15619,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 10:35:33 2025 \u002B0100",
         "message": "chore: update Microsoft.codeAnalysis.* to v4.13.0 (#452)"
+      },
+      {
+        "sha": "90fee8812070a81e273a10dfda3bd04001e0d845",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:05:36 2025 \u002B0100",
+        "message": "feat: add \u0060IsPrefix\u0060 and \u0060IsSuffix\u0060 as string equality option (#454)"
       }
     ],
     "labels": [
@@ -15734,7 +15818,8 @@ window.BENCHMARK_DATA = {
       "651c6220",
       "e8e57940",
       "43563dba",
-      "2dfb85c6"
+      "2dfb85c6",
+      "90fee881"
     ],
     "datasets": [
       {
@@ -15931,7 +16016,8 @@ window.BENCHMARK_DATA = {
           1144.2632775624593,
           1125.79919090271,
           1172.4011702219645,
-          1168.5818340301514
+          1168.5818340301514,
+          1118.5358032226563
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16126,6 +16212,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -16338,7 +16425,8 @@ window.BENCHMARK_DATA = {
           151538.50983537946,
           147908.83820452009,
           153420.87657752403,
-          153619.1695033482
+          153619.1695033482,
+          152661.80055338543
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16537,6 +16625,7 @@ window.BENCHMARK_DATA = {
           63493,
           63493,
           63043,
+          63493,
           63493,
           63493,
           63493,
@@ -16745,7 +16834,8 @@ window.BENCHMARK_DATA = {
           3201.6279594421385,
           4461.56309967041,
           4514.45413869222,
-          4755.667217799595
+          4755.667217799595,
+          4387.296158423791
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16945,6 +17035,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648
