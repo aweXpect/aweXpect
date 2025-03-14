@@ -577,6 +577,8 @@ namespace aweXpect.Formatting
     }
     public class FormattingOptions : System.IEquatable<aweXpect.Formatting.FormattingOptions>
     {
+        public string Indentation { get; }
+        public bool UseLineBreaks { get; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
         public static aweXpect.Formatting.FormattingOptions Indented(string? indentation = null) { }
