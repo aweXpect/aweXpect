@@ -108,7 +108,7 @@ public class PageBenchmarkReportGenerator
 					Label = $"{type} memory",
 					Unit = "b",
 					PointStyle = "triangle",
-					BorderDash = [5, 5],
+					BorderDash = [5, 5,],
 					YAxisId = "y1",
 					BackgroundColor = GetColor(type),
 					BorderColor = GetColor(type),
