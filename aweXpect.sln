@@ -49,6 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build.yml = .github\workflows\build.yml
 		.github\workflows\ci.yml = .github\workflows\ci.yml
 		.github\workflows\pages.yml = .github\workflows\pages.yml
+		.github\workflows\ci-analysis.yml = .github\workflows\ci-analysis.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{97A9E15D-5A21-4BA1-940B-7F42933DE0A5}"

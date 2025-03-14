@@ -48,26 +48,34 @@ partial class Build
 		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
-			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" /
-			                                                 "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
+			string fileContent = await File.ReadAllTextAsync(ArtifactsDirectory / "Benchmarks" / "results" / "aweXpect.Benchmarks.HappyCaseBenchmarks-report-github.md");
 			Log.Information("Report:\n {FileContent}", fileContent);
+			if (GitHubActions?.IsPullRequest == true)
+			{
+				File.WriteAllText(ArtifactsDirectory / "PR.txt", GitHubActions.PullRequestNumber.ToString());
+			}
 		});
 
 	Target BenchmarkComment => _ => _
-		.After(BenchmarkDotNet)
-		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default && GitHubActions?.IsPullRequest == true)
 		.Executes(async () =>
 		{
+			await "Benchmarks".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
+			if (!File.Exists(ArtifactsDirectory / "PR.txt"))
+			{
+				Log.Information("Skip writing a comment, as no PR number was specified.");
+				return;
+			}
+
+			string prNumber = File.ReadAllText(ArtifactsDirectory / "PR.txt");
 			string body = CreateBenchmarkCommentBody();
-			int? prId = GitHubActions.PullRequestNumber;
-			Log.Debug("Pull request number: {PullRequestId}", prId);
-			if (prId != null)
+			Log.Debug("Pull request number: {PullRequestId}", prNumber);
+			if (int.TryParse(prNumber, out int prId))
 			{
 				GitHubClient gitHubClient = new(new ProductHeaderValue("Nuke"));
 				Credentials tokenAuth = new(GithubToken);
 				gitHubClient.Credentials = tokenAuth;
 				IReadOnlyList<IssueComment> comments =
-					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId.Value);
+					await gitHubClient.Issue.Comment.GetAllForIssue("aweXpect", "aweXpect", prId);
 				long? commentId = null;
 				Log.Information($"Found {comments.Count} comments");
 				foreach (IssueComment comment in comments)
@@ -82,7 +90,7 @@ partial class Build
 				if (commentId == null)
 				{
 					Log.Information($"Create comment:\n{body}");
-					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId.Value, body);
+					await gitHubClient.Issue.Comment.Create("aweXpect", "aweXpect", prId, body);
 				}
 				else
 				{
@@ -154,7 +162,6 @@ partial class Build
 	Target Benchmarks => _ => _
 		.DependsOn(BenchmarkDotNet)
 		.DependsOn(BenchmarkResult)
-		.DependsOn(BenchmarkComment)
 		.DependsOn(BenchmarkReport);
 
 	async Task UploadBenchmarkFile(

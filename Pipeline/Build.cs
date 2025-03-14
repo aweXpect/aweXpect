@@ -9,7 +9,7 @@ namespace Build;
 	"Build",
 	GitHubActionsImage.UbuntuLatest,
 	AutoGenerate = false,
-	ImportSecrets = [nameof(GithubToken)]
+	ImportSecrets = [nameof(GithubToken),]
 )]
 partial class Build : NukeBuild
 {
