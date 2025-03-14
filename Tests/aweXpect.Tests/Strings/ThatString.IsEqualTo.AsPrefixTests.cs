@@ -1,5 +1,4 @@
-﻿#if DEBUG // Remove after next core update
-namespace aweXpect.Tests;
+﻿namespace aweXpect.Tests;
 
 public sealed partial class ThatString
 {
@@ -200,4 +199,3 @@ public sealed partial class ThatString
 		}
 	}
 }
-#endif
