@@ -1158,6 +1158,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -1353,7 +1359,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -1552,7 +1559,8 @@ window.BENCHMARK_DATA = {
           165.92124809537614,
           182.26335317747933,
           158.41954604784647,
-          165.30161616007487
+          165.30161616007487,
+          161.66923328808375
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1747,6 +1755,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -1963,7 +1972,8 @@ window.BENCHMARK_DATA = {
           240.8905581327585,
           257.5963397707258,
           231.87938550802377,
-          232.6799507507911
+          232.6799507507911,
+          240.6717063463651
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2156,6 +2166,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2374,7 +2385,8 @@ window.BENCHMARK_DATA = {
           893.1698188145955,
           981.0475728352865,
           877.5055404809805,
-          887.1098309199016
+          887.1098309199016,
+          888.6276376430804
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2528,6 +2540,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3288,6 +3301,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -3406,7 +3425,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -3528,7 +3548,8 @@ window.BENCHMARK_DATA = {
           283756.71956380206,
           295421.13430989586,
           273279.8782435826,
-          281557.5468374399
+          281557.5468374399,
+          282598.11298828124
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3646,6 +3667,7 @@ window.BENCHMARK_DATA = {
           284796,
           284796,
           284796,
+          284660,
           284660,
           284660,
           284660,
@@ -3785,7 +3807,8 @@ window.BENCHMARK_DATA = {
           2190826.3526041666,
           2348783.9505208335,
           2175234.423958333,
-          2279750.448958333
+          2279750.448958333,
+          2156216.866887019
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3901,6 +3924,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4042,7 +4066,8 @@ window.BENCHMARK_DATA = {
           669766.1166015625,
           680369.6327373798,
           663385.5214146206,
-          659928.5746744792
+          659928.5746744792,
+          692978.6518229167
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4165,6 +4190,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5341,6 +5367,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -5536,7 +5568,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -5735,7 +5768,8 @@ window.BENCHMARK_DATA = {
           307.8086868604024,
           319.9824292182922,
           305.6191011156355,
-          294.5774037996928
+          294.5774037996928,
+          323.202521387736
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5930,6 +5964,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6146,7 +6181,8 @@ window.BENCHMARK_DATA = {
           480.9515347847572,
           540.8244476954143,
           454.00476280848187,
-          492.72265040079753
+          492.72265040079753,
+          474.90354137420655
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6339,6 +6375,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -6557,7 +6594,8 @@ window.BENCHMARK_DATA = {
           14628.554648179273,
           15419.679756673177,
           14570.725048828124,
-          15384.87397257487
+          15384.87397257487,
+          14391.646486554828
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6711,6 +6749,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -7933,6 +7972,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -8128,7 +8173,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -8327,7 +8373,8 @@ window.BENCHMARK_DATA = {
           198.749853404363,
           207.99990037282308,
           197.23878059387206,
-          195.88432817799705
+          195.88432817799705,
+          196.2443610350291
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8523,6 +8570,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -8738,7 +8786,8 @@ window.BENCHMARK_DATA = {
           244.308202679952,
           271.2618663787842,
           232.43778773716517,
-          270.90966650644935
+          270.90966650644935,
+          236.38804149627686
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8931,6 +8980,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9149,7 +9199,8 @@ window.BENCHMARK_DATA = {
           1170.2048784891765,
           1263.0496241251628,
           1187.118502298991,
-          1212.9889626820882
+          1212.9889626820882,
+          1194.7894939422608
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9303,6 +9354,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -10525,6 +10577,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -10720,7 +10778,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -10919,7 +10978,8 @@ window.BENCHMARK_DATA = {
           269.43409357070925,
           276.3807796410152,
           271.953155263265,
-          265.5304442087809
+          265.5304442087809,
+          269.5926916758219
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11114,6 +11174,7 @@ window.BENCHMARK_DATA = {
           992,
           992,
           992,
+          896,
           896,
           896,
           896,
@@ -11330,7 +11391,8 @@ window.BENCHMARK_DATA = {
           477.31995919545494,
           491.90489689509076,
           453.6384391466776,
-          494.29116083780923
+          494.29116083780923,
+          466.64023366341223
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11523,6 +11585,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -11741,7 +11804,8 @@ window.BENCHMARK_DATA = {
           1260.399676132202,
           1357.2902275965764,
           1273.9165192921957,
-          1313.8986300150552
+          1313.8986300150552,
+          1227.8855416615804
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11895,6 +11959,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -13117,6 +13182,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -13312,7 +13383,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -13511,7 +13583,8 @@ window.BENCHMARK_DATA = {
           1052.7831845964704,
           1070.3683983939034,
           1033.1266834259034,
-          1102.027259572347
+          1102.027259572347,
+          1070.2858438491821
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13706,6 +13779,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -13922,7 +13996,8 @@ window.BENCHMARK_DATA = {
           1289.5524681091308,
           1343.8835406670203,
           1234.7625334421793,
-          1340.0175034659248
+          1340.0175034659248,
+          1223.5157888852632
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14115,6 +14190,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -14333,7 +14409,8 @@ window.BENCHMARK_DATA = {
           2821.270694732666,
           2829.3479817708335,
           2654.8867284138996,
-          2836.3493975321453
+          2836.3493975321453,
+          2670.2113827296666
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14533,6 +14610,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -15709,6 +15787,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Mar 14 12:23:29 2025 \u002B0100",
         "message": "fix: incorrect project in build pipeline (#455)"
+      },
+      {
+        "sha": "0d568381c1eb0862af4524d9c393d25c4131a382",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Mar 14 12:38:22 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0-pre.2 (#456)"
       }
     ],
     "labels": [
@@ -15904,7 +15988,8 @@ window.BENCHMARK_DATA = {
       "43563dba",
       "2dfb85c6",
       "90fee881",
-      "c114f723"
+      "c114f723",
+      "0d568381"
     ],
     "datasets": [
       {
@@ -16103,7 +16188,8 @@ window.BENCHMARK_DATA = {
           1172.4011702219645,
           1168.5818340301514,
           1118.5358032226563,
-          1145.1644336155482
+          1145.1644336155482,
+          1105.3659702301024
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16298,6 +16384,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -16514,7 +16601,8 @@ window.BENCHMARK_DATA = {
           153420.87657752403,
           153619.1695033482,
           152661.80055338543,
-          150656.24488932293
+          150656.24488932293,
+          152451.69674479167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16713,6 +16801,7 @@ window.BENCHMARK_DATA = {
           63493,
           63493,
           63043,
+          63493,
           63493,
           63493,
           63493,
@@ -16925,7 +17014,8 @@ window.BENCHMARK_DATA = {
           4514.45413869222,
           4755.667217799595,
           4387.296158423791,
-          4631.401912943522
+          4631.401912943522,
+          4463.862214660645
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17125,6 +17215,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
