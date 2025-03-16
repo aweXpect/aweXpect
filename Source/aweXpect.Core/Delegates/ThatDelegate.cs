@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
@@ -50,6 +51,12 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.ItWasNull(it);
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			value = default;
+			return false;
+		}
 
 		public override ConstraintResult Negate()
 			=> this;

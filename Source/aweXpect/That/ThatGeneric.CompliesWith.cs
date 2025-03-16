@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -111,6 +112,12 @@ public static partial class ThatGeneric
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			value = default;
+			return false;
 		}
 
 		public override ConstraintResult Negate()

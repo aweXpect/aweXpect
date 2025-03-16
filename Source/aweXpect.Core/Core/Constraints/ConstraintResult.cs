@@ -54,11 +54,7 @@ public abstract partial class ConstraintResult
 	/// <summary>
 	///     Tries to extract the <paramref name="value" /> that is stored in the constraint result.
 	/// </summary>
-	public virtual bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value)
-	{
-		value = default;
-		return false;
-	}
+	public abstract bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value);
 
 	/// <summary>
 	///     Negate the current <see cref="ConstraintResult" />.
