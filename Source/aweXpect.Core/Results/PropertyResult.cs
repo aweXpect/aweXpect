@@ -27,7 +27,7 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, int>(
 							it, grammars,
@@ -46,7 +46,7 @@ public static class PropertyResult
 			int? unexpected)
 		{
 			validation?.Invoke(unexpected, nameof(unexpected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, int>(
 							it, grammars,
@@ -65,7 +65,7 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, int>(
 							it, grammars,
@@ -84,7 +84,7 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, int>(
 							it, grammars,
@@ -103,7 +103,7 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, int>(
 							it, grammars,
@@ -122,7 +122,7 @@ public static class PropertyResult
 			int? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, int>(
 							it, grammars,
@@ -151,7 +151,7 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, long>(
 							it, grammars,
@@ -170,7 +170,7 @@ public static class PropertyResult
 			long? unexpected)
 		{
 			validation?.Invoke(unexpected, nameof(unexpected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, long>(
 							it, grammars,
@@ -189,7 +189,7 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, long>(
 							it, grammars,
@@ -208,7 +208,7 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, long>(
 							it, grammars,
@@ -227,7 +227,7 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, long>(
 							it, grammars,
@@ -246,7 +246,7 @@ public static class PropertyResult
 			long? expected)
 		{
 			validation?.Invoke(expected, nameof(expected));
-			return new AndOrResult<TItem, IThat<TItem>>(source.ThatIs().ExpectationBuilder
+			return new AndOrResult<TItem, IThat<TItem>>(source.Get().ExpectationBuilder
 					.AddConstraint((it, grammars) =>
 						new PropertyConstraint<TItem, long>(
 							it, grammars,
@@ -272,7 +272,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			DateTimeKind expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, DateTimeKind>(
 						it, grammars,
 						expected,
@@ -287,7 +287,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			DateTimeKind unexpected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, DateTimeKind>(
 						it, grammars,
 						unexpected,
@@ -311,7 +311,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> EqualTo(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it, grammars,
 						expected,
@@ -326,7 +326,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> NotEqualTo(
 			TimeSpan? unexpected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it, grammars,
 						unexpected,
@@ -341,7 +341,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThan(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it, grammars,
 						expected,
@@ -356,7 +356,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> GreaterThanOrEqualTo(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it, grammars,
 						expected,
@@ -371,7 +371,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThan(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it, grammars,
 						expected,
@@ -386,7 +386,7 @@ public static class PropertyResult
 		/// </summary>
 		public AndOrResult<TItem, IThat<TItem>> LessThanOrEqualTo(
 			TimeSpan? expected)
-			=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 					new PropertyConstraint<TItem, TimeSpan>(
 						it, grammars,
 						expected,

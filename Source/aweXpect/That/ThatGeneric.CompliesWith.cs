@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
@@ -20,7 +21,7 @@ public static partial class ThatGeneric
 		Action<IThat<T>> expectations)
 	{
 		RepeatedCheckOptions options = new();
-		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
+		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((expectationBuilder, _, grammars) =>
 					new CompliesWithConstraint<T>(expectationBuilder, grammars, expectations, options)),
 			source,
@@ -34,7 +35,7 @@ public static partial class ThatGeneric
 		Action<IThat<T>> expectations)
 	{
 		RepeatedCheckOptions options = new();
-		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
+		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((expectationBuilder, _, grammars) =>
 					new CompliesWithConstraint<T>(expectationBuilder, grammars, expectations, options).Invert()),
 			source,
@@ -111,6 +112,12 @@ public static partial class ThatGeneric
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
+		}
+
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			value = default;
+			return false;
 		}
 
 		public override ConstraintResult Negate()

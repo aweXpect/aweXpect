@@ -147,7 +147,8 @@ public class ManualExpectationBuilderTests
 				return true;
 			}
 
-			return base.TryGetValue(out value);
+			value = default;
+			return false;
 		}
 	}
 }

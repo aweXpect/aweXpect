@@ -14,7 +14,7 @@ public static partial class ThatEnum
 	public static AndOrResult<TEnum, IThat<TEnum>> IsDefined<TEnum>(
 		this IThat<TEnum> source)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsDefinedConstraint<TEnum>(it, grammars)),
 			source);
 
@@ -24,7 +24,7 @@ public static partial class ThatEnum
 	public static AndOrResult<TEnum, IThat<TEnum>> IsNotDefined<TEnum>(
 		this IThat<TEnum> source)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsDefinedConstraint<TEnum>(it, grammars).Invert()),
 			source);
 

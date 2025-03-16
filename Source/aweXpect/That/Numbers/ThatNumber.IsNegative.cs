@@ -17,7 +17,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<sbyte, IThat<sbyte>> IsNegative(
 		this IThat<sbyte> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<sbyte>(it, grammars, a => a < 0)),
 			source);
 
@@ -26,7 +26,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<short, IThat<short>> IsNegative(
 		this IThat<short> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<short>(it, grammars, a => a < 0)),
 			source);
 
@@ -35,7 +35,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<int, IThat<int>> IsNegative(
 		this IThat<int> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<int>(it, grammars, a => a < 0)),
 			source);
 
@@ -44,7 +44,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<long, IThat<long>> IsNegative(
 		this IThat<long> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<long>(it, grammars, a => a < 0L)),
 			source);
 
@@ -53,7 +53,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsNegative(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<float>(it, grammars, a => a < 0.0F)),
 			source);
 
@@ -62,7 +62,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsNegative(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<double>(it, grammars, a => a < 0.0)),
 			source);
 
@@ -71,7 +71,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<decimal, IThat<decimal>> IsNegative(
 		this IThat<decimal> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsNegativeConstraint<decimal>(it, grammars, a => a < 0)),
 			source);
 
@@ -80,7 +80,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<sbyte?, IThat<sbyte?>> IsNegative(
 		this IThat<sbyte?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<sbyte>(it, grammars, a => a < 0)),
 			source);
 
@@ -89,7 +89,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<short?, IThat<short?>> IsNegative(
 		this IThat<short?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<short>(it, grammars, a => a < 0)),
 			source);
 
@@ -98,7 +98,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<int?, IThat<int?>> IsNegative(
 		this IThat<int?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<int>(it, grammars, a => a < 0)),
 			source);
 
@@ -107,7 +107,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<long?, IThat<long?>> IsNegative(
 		this IThat<long?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<long>(it, grammars, a => a < 0L)),
 			source);
 
@@ -116,7 +116,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsNegative(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<float>(it, grammars, a => a < 0.0F)),
 			source);
 
@@ -125,7 +125,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsNegative(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<double>(it, grammars, a => a < 0.0)),
 			source);
 
@@ -134,7 +134,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<decimal?, IThat<decimal?>> IsNegative(
 		this IThat<decimal?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsNegativeConstraint<decimal>(it, grammars, a => a < 0)),
 			source);
 

@@ -14,7 +14,7 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as infinite (<see cref="float.IsInfinity" />).
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsInfinite(this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsFloatInfiniteConstraint(it, grammars)),
 			source);
 
@@ -23,7 +23,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsInfinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsDoubleInfiniteConstraint(it, grammars)),
 			source);
 
@@ -31,7 +31,7 @@ public static partial class ThatNumber
 	///     Verifies that the subject is seen as infinite (not <see langword="null" /> and <see cref="float.IsInfinity" />).
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsInfinite(this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsFloatInfiniteConstraint(it, grammars)),
 			source);
 
@@ -40,7 +40,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsInfinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsDoubleInfiniteConstraint(it, grammars)),
 			source);
 
@@ -49,7 +49,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float, IThat<float>> IsNotInfinite(
 		this IThat<float> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsFloatInfiniteConstraint(it, grammars).Invert()),
 			source);
 
@@ -58,7 +58,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double, IThat<double>> IsNotInfinite(
 		this IThat<double> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsDoubleInfiniteConstraint(it, grammars).Invert()),
 			source);
 
@@ -67,7 +67,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<float?, IThat<float?>> IsNotInfinite(
 		this IThat<float?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsFloatInfiniteConstraint(it, grammars).Invert()),
 			source);
 
@@ -77,7 +77,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static AndOrResult<double?, IThat<double?>> IsNotInfinite(
 		this IThat<double?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsDoubleInfiniteConstraint(it, grammars).Invert()),
 			source);
 

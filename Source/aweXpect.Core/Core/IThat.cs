@@ -7,7 +7,7 @@ namespace aweXpect.Core;
 ///     Starting point for an expectation.
 /// </summary>
 /// <remarks>
-///     All implementations are also expected to implement at least <see cref="IThatVerb{T}" />!
+///     All implementations are also expected to implement at least <see cref="IExpectThat{T}" />!
 /// </remarks>
 // ReSharper disable once UnusedTypeParameter
 #pragma warning disable S2326 // 'T' is not used in the interface

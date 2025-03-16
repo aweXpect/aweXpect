@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -258,6 +259,12 @@ public abstract class Expectation
 				{
 					stringBuilder.Append(_failureTexts.Indent(indentation, false));
 				}
+			}
+
+			public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+			{
+				value = default;
+				return false;
 			}
 
 			public override ConstraintResult Negate() => this;

@@ -15,7 +15,7 @@ public static partial class ThatException
 		this IThat<Exception?> source,
 		Action<IThat<TInnerException?>> expectations)
 		where TInnerException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
 					" whose ",
 					false)
@@ -31,7 +31,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInner<TInnerException>(
 		this IThat<Exception?> source)
 		where TInnerException : Exception?
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new HasInnerExceptionValueConstraint(typeof(TInnerException), it, grammars)),
 			source);
 
@@ -43,7 +43,7 @@ public static partial class ThatException
 		this IThat<Exception?> source,
 		Type innerExceptionType,
 		Action<IThat<Exception?>> expectations)
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.ForMember<Exception?, Exception?>(e => e?.InnerException,
 					" whose ",
 					false)
@@ -59,7 +59,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasInner(
 		this IThat<Exception?> source,
 		Type innerExceptionType)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HasInnerExceptionValueConstraint(innerExceptionType, it, grammars)),
 			source);
 }

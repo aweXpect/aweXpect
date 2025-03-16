@@ -31,7 +31,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(expected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<TItem, TItem>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected.ToArray(),
@@ -51,7 +51,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(expected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<TItem, TItem>(it, grammars,
 					Formatter.Format(expected),
 					expected,
@@ -72,7 +72,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(expected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<string?, string?>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected.ToArray(),
@@ -92,7 +92,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(expected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<string, string>(it, grammars,
 					Formatter.Format(expected),
 					expected,
@@ -114,7 +114,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(unexpected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<TItem, TItem>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					unexpected.ToArray(),
@@ -134,7 +134,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(unexpected);
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<TItem, TItem>(it, grammars,
 					Formatter.Format(unexpected),
 					unexpected,
@@ -156,7 +156,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(unexpected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<string?, string?>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					unexpected.ToArray(),
@@ -176,7 +176,7 @@ public static partial class ThatAsyncEnumerable
 		ArgumentNullException.ThrowIfNull(unexpected);
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new StartsWithConstraint<string?, string?>(it, grammars,
 					Formatter.Format(unexpected),
 					unexpected,

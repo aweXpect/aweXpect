@@ -23,7 +23,7 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new AreAllUniqueConstraint<TItem, TItem>(it, grammars, options)),
 			source, options
 		);
@@ -37,7 +37,7 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new AreAllUniqueConstraint<string, string>(it, grammars, options)),
 			source, options
 		);
@@ -56,7 +56,7 @@ public static partial class ThatEnumerable
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, grammars,
 					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
@@ -77,7 +77,7 @@ public static partial class ThatEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, grammars,
 					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),

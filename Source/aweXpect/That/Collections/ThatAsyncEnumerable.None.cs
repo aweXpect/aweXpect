@@ -13,7 +13,7 @@ public static partial class ThatAsyncEnumerable
 	public static Elements<TItem> None<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> subject)
 		=> new(subject,
-			EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars |
+			EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |
 			                          ExpectationGrammars.Plural));
 
 	/// <summary>
@@ -22,7 +22,7 @@ public static partial class ThatAsyncEnumerable
 	public static Elements None(
 		this IThat<IAsyncEnumerable<string?>?> subject)
 		=> new(subject,
-			EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars |
+			EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |
 			                          ExpectationGrammars.Plural));
 }
 #endif

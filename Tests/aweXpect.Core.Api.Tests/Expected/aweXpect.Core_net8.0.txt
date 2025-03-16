@@ -26,7 +26,7 @@ namespace aweXpect.Core.Constraints
         public abstract void AppendExpectation(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract void AppendResult(System.Text.StringBuilder stringBuilder, string? indentation = null);
         public abstract aweXpect.Core.Constraints.ConstraintResult Negate();
-        public virtual bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value) { }
+        public abstract bool TryGetValue<TValue>([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out TValue? value);
         public class ExpectationOnly<T> : aweXpect.Core.Constraints.ConstraintResult, aweXpect.Core.Constraints.IConstraint, aweXpect.Core.Constraints.IValueConstraint<T>
         {
             public ExpectationOnly(aweXpect.Core.ExpectationGrammars grammars, string? expectation = null, string? negatedExpectation = null) { }
@@ -195,6 +195,10 @@ namespace aweXpect.Core
         bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
         bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
     }
+    public interface IExpectThat<out T> : aweXpect.Core.IThat<T>
+    {
+        aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
+    }
     public interface IObjectMatchType
     {
         bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected);
@@ -217,18 +221,7 @@ namespace aweXpect.Core
         string GetOptionString(bool ignoreCase, System.Collections.Generic.IEqualityComparer<string>? comparer);
         string GetTypeString();
     }
-    public interface IThatDelegateThrows<out T> : aweXpect.Core.IThatVerb<T> { }
-    public interface IThatDoes<out T> : aweXpect.Core.IThatVerb<T> { }
-    public interface IThatHas<out T> : aweXpect.Core.IThatVerb<T> { }
-    public interface IThatIs<out T> : aweXpect.Core.IThatVerb<T> { }
-    public interface IThatVerb<out T>
-    {
-        aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
-        bool Equals(object? obj);
-        int GetHashCode();
-        System.Type GetType();
-        string? ToString();
-    }
+    public interface IThatDelegateThrows<out T> : aweXpect.Core.IExpectThat<T>, aweXpect.Core.IThat<T> { }
     public interface IThat<out T>
     {
         bool Equals(object? obj);
@@ -296,7 +289,7 @@ namespace aweXpect.Core
         public static aweXpect.Core.StringDifferenceSettings WithMatchType(this aweXpect.Core.StringDifferenceSettings? settings, aweXpect.Core.StringDifference.MatchType matchType) { }
     }
     [System.Diagnostics.DebuggerDisplay("ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
-    public readonly struct ThatSubject<T> : aweXpect.Core.IThatDoes<T>, aweXpect.Core.IThatHas<T>, aweXpect.Core.IThatIs<T>, aweXpect.Core.IThatVerb<T>, aweXpect.Core.IThat<T>
+    public readonly struct ThatSubject<T> : aweXpect.Core.IExpectThat<T>, aweXpect.Core.IThat<T>
     {
         public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
@@ -434,18 +427,18 @@ namespace aweXpect.Delegates
         public aweXpect.Delegates.ThatDelegateThrows<TException> ThrowsExactly<TException>()
             where TException : System.Exception { }
         public aweXpect.Delegates.ThatDelegateThrows<System.Exception> ThrowsException() { }
-        public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
+        public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
         {
             public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
             public aweXpect.Results.ExpectationResult<T> DoesNotThrow() { }
         }
-        public sealed class WithoutValue : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IThatDoes<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatHas<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatIs<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThatVerb<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue>
+        public sealed class WithoutValue : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue>
         {
             public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
             public aweXpect.Results.ExpectationResult DoesNotThrow() { }
         }
     }
-    public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>>, aweXpect.Core.IThatDelegateThrows<TException>, aweXpect.Core.IThatVerb<TException>
+    public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>>, aweXpect.Core.IExpectThat<TException>, aweXpect.Core.IThatDelegateThrows<TException>, aweXpect.Core.IThat<TException>
         where TException : System.Exception?
     {
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }

@@ -22,7 +22,7 @@ public static partial class ThatGeneric
 		string doNotPopulateThisValue = "")
 	{
 		RepeatedCheckOptions options = new();
-		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
+		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new SatisfiesConstraint<T>(
 						it,
@@ -41,7 +41,7 @@ public static partial class ThatGeneric
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new SatisfiesConstraint<T>(
 						it,

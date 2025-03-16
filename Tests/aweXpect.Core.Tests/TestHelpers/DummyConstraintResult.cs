@@ -36,6 +36,12 @@ public sealed class DummyConstraintResult : ConstraintResult
 		}
 	}
 
+	public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+	{
+		value = default;
+		return false;
+	}
+
 	public override ConstraintResult Negate()
 	{
 		Outcome = Outcome switch
@@ -91,7 +97,8 @@ public sealed class DummyConstraintResult<T> : ConstraintResult
 			return true;
 		}
 
-		return base.TryGetValue(out value);
+		value = default;
+		return false;
 	}
 
 	public override ConstraintResult Negate()
