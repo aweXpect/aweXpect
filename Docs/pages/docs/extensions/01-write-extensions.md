@@ -22,20 +22,20 @@ public static AndOrResult<string, IThat<string>> IsAbsolutePath(this IThat<strin
 ```
 
 The next step is to extract the `ExpectationBuilder`. In order to keep the automatic code suggestions for developers
-clear, you have to cast the `IThat<TType>` interface to `IThatVerb<TType>`, which will then give access to the
+clear, you have to cast the `IThat<TType>` interface to `IExpectThat<TType>`, which will then give access to the
 `ExpectationBuilder` property.
-You can also use the following extension method:
+To improve readability you can copy the following internal extension method into your project:
 
 ```csharp
 [ExcludeFromCodeCoverage]
-internal static IThatVerb<T> Get<T>(this IThat<T> subject)
+internal static IExpectThat<T> Get<T>(this IThat<T> subject)
 {
-    if (subject is IThatVerb<T> thatIs)
+    if (subject is IExpectThat<T> thatIs)
     {
         return thatIs;
     }
 
-    throw new NotSupportedException("IThat<T> must also implement IThatVerb<T>");
+    throw new NotSupportedException("IThat<T> must also implement IExpectThat<T>");
 }
 ```
 
