@@ -1,5 +1,7 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -18,14 +20,7 @@ public static partial class ThatDateTimeOffset
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTimeOffset, IThat<DateTimeOffset>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraint(
-					it,
-					grammars,
-					expected,
-					$"is before {Formatter.Format(expected)}",
-					(a, e, t) => a - t < e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsBeforeConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -40,15 +35,59 @@ public static partial class ThatDateTimeOffset
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTimeOffset, IThat<DateTimeOffset>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraint(
-					it,
-					grammars,
-					unexpected,
-					$"is not before {Formatter.Format(unexpected)}",
-					(a, e, t) => a + t >= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsBeforeConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
+	}
+
+	private sealed class IsBeforeConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		DateTimeOffset? expected,
+		TimeTolerance tolerance)
+		: ConstraintResult.WithNotNullValue<DateTimeOffset>(it, grammars),
+			IValueConstraint<DateTimeOffset>
+	{
+		public ConstraintResult IsMetBy(DateTimeOffset actual)
+		{
+			Actual = actual;
+			if (expected is null)
+			{
+				Outcome = Outcome.Failure;
+			}
+			else
+			{
+				TimeSpan timeTolerance = tolerance.Tolerance
+				                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				if (!IsNegated)
+				{
+					timeTolerance = timeTolerance.Negate();
+				}
+
+				Outcome = actual.Add(timeTolerance) < expected ? Outcome.Success : Outcome.Failure;
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is before ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not before ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }
