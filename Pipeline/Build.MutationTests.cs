@@ -139,6 +139,7 @@ partial class Build
 
 	Target MutationTestDashboard => _ => _
 		.After(MutationTestExecution)
+		.OnlyWhenDynamic(() => BuildScope == BuildScope.Default)
 		.Executes(async () =>
 		{
 			await "MutationTests".DownloadArtifactTo(ArtifactsDirectory, GithubToken);
