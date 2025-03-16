@@ -21,8 +21,8 @@ public static partial class ThatGeneric
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint((_, grammars) =>
-					new CompliesWithConstraint<T>(grammars, expectations, options)),
+				.AddConstraint((expectationBuilder, _, grammars) =>
+					new CompliesWithConstraint<T>(expectationBuilder, grammars, expectations, options)),
 			source,
 			options);
 	}
@@ -35,8 +35,8 @@ public static partial class ThatGeneric
 	{
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
-				.AddConstraint((_, grammars) =>
-					new CompliesWithConstraint<T>(grammars, expectations, options).Invert()),
+				.AddConstraint((expectationBuilder, _, grammars) =>
+					new CompliesWithConstraint<T>(expectationBuilder, grammars, expectations, options).Invert()),
 			source,
 			options);
 	}
@@ -49,12 +49,12 @@ public static partial class ThatGeneric
 		private readonly RepeatedCheckOptions _options;
 		private bool _isNegated;
 
-		public CompliesWithConstraint(ExpectationGrammars grammars,
+		public CompliesWithConstraint(ExpectationBuilder expectationBuilder, ExpectationGrammars grammars,
 			Action<IThat<T>> expectations, RepeatedCheckOptions options)
 			: base(grammars)
 		{
 			_options = options;
-			_itemExpectationBuilder = new ManualExpectationBuilder<T>(grammars);
+			_itemExpectationBuilder = new ManualExpectationBuilder<T>(expectationBuilder, grammars);
 			expectations.Invoke(new ThatSubject<T>(_itemExpectationBuilder));
 		}
 
@@ -71,7 +71,7 @@ public static partial class ThatGeneric
 
 			if (_options.Timeout > TimeSpan.Zero)
 			{
-				Stopwatch? sw = new();
+				Stopwatch sw = new();
 				sw.Start();
 				do
 				{

@@ -51,12 +51,8 @@ public static partial class ThatString
 		{
 			Actual = actual;
 			Outcome = options.AreConsideredEqual(actual, expected) ? Outcome.Success : Outcome.Failure;
-			if (Outcome == Outcome.Failure)
-			{
-				expectationBuilder.UpdateContexts(contexts => contexts
-					.Add(new ResultContext("Actual", actual)));
-			}
-
+			expectationBuilder.UpdateContexts(contexts => contexts
+				.Add(new ResultContext("Actual", actual)));
 			return this;
 		}
 

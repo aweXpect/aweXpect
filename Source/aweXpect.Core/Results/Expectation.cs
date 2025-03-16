@@ -65,9 +65,9 @@ public abstract class Expectation
 	public override string? ToString()
 		=> base.ToString();
 
-	internal abstract Task<Result> GetResult(int index);
+	internal abstract Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes);
 
-	internal abstract IEnumerable<ResultContext> GetContexts(int index);
+	internal abstract IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes);
 
 	internal struct Result(int index, string subjectLine, ConstraintResult result)
 	{
@@ -120,16 +120,17 @@ public abstract class Expectation
 		protected abstract Outcome CheckOutcome(Outcome? previous, Outcome current);
 
 		/// <inheritdoc />
-		internal override async Task<Result> GetResult(int index)
+		internal override async Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes)
 		{
 			StringBuilder expectationTexts = new();
 			StringBuilder failureTexts = new();
 			Outcome? outcome = null;
 			foreach (Expectation? expectation in _expectations)
 			{
-				Result result = await expectation.GetResult(index);
+				Result result = await expectation.GetResult(index, outcomes);
 				outcome = CheckOutcome(outcome, result.ConstraintResult.Outcome);
 				index = result.Index;
+				outcomes[index] = result.ConstraintResult.Outcome;
 				if (expectationTexts.Length > 0)
 				{
 					expectationTexts.AppendLine();
@@ -176,18 +177,24 @@ public abstract class Expectation
 				new CombinationResult(Outcome.Success, expectationTexts.ToString()));
 		}
 
-		internal override IEnumerable<ResultContext> GetContexts(int index)
+		internal override IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes)
 		{
 			List<ResultContext> combinedContexts = new();
 			foreach (Expectation expectation in _expectations)
 			{
 				if (expectation is Combination)
 				{
-					combinedContexts.AddRange(expectation.GetContexts(index));
+					combinedContexts.AddRange(expectation.GetContexts(index, outcomes));
 				}
 				else
 				{
-					foreach (ResultContext context in expectation.GetContexts(++index))
+					index++;
+					if (outcomes.TryGetValue(index, out Outcome outcome) && outcome == Outcome.Success)
+					{
+						continue;
+					}
+
+					foreach (ResultContext context in expectation.GetContexts(index, outcomes))
 					{
 						context.Title = $"[{index:00}] {context.Title}";
 						combinedContexts.Add(context);
@@ -200,7 +207,8 @@ public abstract class Expectation
 
 		private async Task GetResultOrThrow(CancellationToken cancellationToken = default)
 		{
-			Result result = await GetResult(0);
+			Dictionary<int, Outcome> outcomes = new();
+			Result result = await GetResult(0, outcomes);
 			if (result.ConstraintResult.Outcome == Outcome.Success)
 			{
 				return;
@@ -212,7 +220,7 @@ public abstract class Expectation
 			sb.AppendLine();
 			sb.AppendLine("but");
 			result.ConstraintResult.AppendResult(sb);
-			foreach (ResultContext context in GetContexts(0))
+			foreach (ResultContext context in GetContexts(0, outcomes))
 			{
 				string? content = await context.GetContent(cancellationToken);
 				if (content is null)

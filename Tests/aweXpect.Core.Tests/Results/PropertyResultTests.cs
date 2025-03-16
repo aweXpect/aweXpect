@@ -301,7 +301,7 @@ public sealed class PropertyResultTests
 
 	private sealed class Dummy : IThat<string>, IThatIs<string>
 	{
-		public ExpectationBuilder ExpectationBuilder { get; } = new ManualExpectationBuilder<string>();
+		public ExpectationBuilder ExpectationBuilder { get; } = new ManualExpectationBuilder<string>(null);
 	}
 
 	private sealed class MyClass

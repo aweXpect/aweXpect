@@ -27,9 +27,6 @@ public class ExpectTests
 			             but
 			              [01] result1
 
-			             [01] context-title1:
-			             contest-content1
-
 			             [02] context-title2:
 			             contest-content2
 			             """);
@@ -116,7 +113,9 @@ public class ExpectTests
 #endif
 	private sealed class MyExpectation(Expectation.Result result, params ResultContext[] contexts) : Expectation
 	{
-		internal override Task<Result> GetResult(int index) => Task.FromResult(result);
-		internal override IEnumerable<ResultContext> GetContexts(int index) => contexts;
+		internal override Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes)
+			=> Task.FromResult(result);
+		internal override IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes)
+			=> contexts;
 	}
 }

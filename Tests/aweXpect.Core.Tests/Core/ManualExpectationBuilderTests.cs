@@ -12,7 +12,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task AddAsyncContextValueConstraint_ShouldAllowGettingExpectationBuilder()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		ExpectationBuilder? expectationBuilder = null;
 		sut.AddConstraint((e, _, _) =>
 		{
@@ -29,7 +29,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task AddAsyncValueConstraint_ShouldAllowGettingExpectationBuilder()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		ExpectationBuilder? expectationBuilder = null;
 		sut.AddConstraint((e, _, _) =>
 		{
@@ -46,7 +46,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task AddContextValueConstraint_ShouldAllowGettingExpectationBuilder()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		ExpectationBuilder? expectationBuilder = null;
 		sut.AddConstraint((e, _, _) =>
 		{
@@ -62,7 +62,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task AddValueConstraint_ShouldAllowGettingExpectationBuilder()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		ExpectationBuilder? expectationBuilder = null;
 		sut.AddConstraint((e, _, _) =>
 		{
@@ -79,7 +79,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task IsMet_ShouldThrowNotSupportedException()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		sut.AddConstraint((_, _) => new DummyConstraint<int>(_ => true));
 
 		async Task Act() => await sut.IsMet(
@@ -92,7 +92,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task IsMetBy_FailingConstraint_ShouldReturnFailure()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		sut.AddConstraint((_, _) => new DummyConstraint<int>(_ => false));
 
 		ConstraintResult result = await sut.IsMetBy(1, null!, CancellationToken.None);
@@ -103,7 +103,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task IsMetBy_SucceedingConstraint_ShouldReturnSuccess()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 		sut.AddConstraint((_, _) => new DummyConstraint<int>(_ => true));
 
 		ConstraintResult result = await sut.IsMetBy(1, null!, CancellationToken.None);
@@ -114,7 +114,7 @@ public class ManualExpectationBuilderTests
 	[Fact]
 	public async Task Subject_ShouldBeEmpty()
 	{
-		ManualExpectationBuilder<int> sut = new();
+		ManualExpectationBuilder<int> sut = new(null);
 
 		await That(sut.Subject).IsEmpty();
 	}

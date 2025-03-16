@@ -24,6 +24,9 @@ public sealed partial class ThatGeneric
 					              Expected that subject
 					              is not equal to "{expectedValue}",
 					              but it was "foo"
+					              
+					              Actual:
+					              foo
 					              """);
 			}
 		}
