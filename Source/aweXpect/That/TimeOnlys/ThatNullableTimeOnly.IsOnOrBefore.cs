@@ -1,6 +1,8 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -19,14 +21,7 @@ public static partial class ThatNullableTimeOnly
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraintWithTolerance(
-					it,
-					grammars,
-					expected,
-					(e, t) => $"is on or before {Formatter.Format(e)}{t}",
-					(a, e, t) => a?.Add(t.Negate()) <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsOnOrBeforeConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -41,16 +36,64 @@ public static partial class ThatNullableTimeOnly
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<TimeOnly?, IThat<TimeOnly?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraintWithTolerance(
-					it,
-					grammars,
-					unexpected,
-					(u, t) => $"is not on or before {Formatter.Format(u)}{t}",
-					(a, e, t) => a?.Add(t) > e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsOnOrBeforeConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
+	}
+
+	private sealed class IsOnOrBeforeConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		TimeOnly? expected,
+		TimeTolerance tolerance)
+		: ConstraintResult.WithNotNullValue<TimeOnly?>(it, grammars),
+			IValueConstraint<TimeOnly?>
+	{
+		public ConstraintResult IsMetBy(TimeOnly? actual)
+		{
+			Actual = actual;
+			if (actual is null && expected is null)
+			{
+				Outcome = Outcome.Success;
+			}
+			else if (actual is null || expected is null)
+			{
+				Outcome = IsNegated ? Outcome.Success : Outcome.Failure;
+			}
+			else
+			{
+				TimeSpan timeTolerance = tolerance.Tolerance
+				                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				if (!IsNegated)
+				{
+					timeTolerance = timeTolerance.Negate();
+				}
+
+				Outcome = actual.Value.Add(timeTolerance) <= expected ? Outcome.Success : Outcome.Failure;
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is on or before ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not on or before ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }
 #endif

@@ -1,5 +1,7 @@
 ﻿using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -18,14 +20,7 @@ public static partial class ThatNullableDateTime
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTime?, IThat<DateTime?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraint(
-					it,
-					grammars,
-					expected,
-					$"is after {Formatter.Format(expected)}",
-					(a, e, t) => a + t > e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsAfterConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -40,15 +35,63 @@ public static partial class ThatNullableDateTime
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateTime?, IThat<DateTime?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraint(
-					it,
-					grammars,
-					unexpected,
-					$"is not after {Formatter.Format(unexpected)}",
-					(a, e, t) => a - t <= e,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsAfterConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
+	}
+
+	private sealed class IsAfterConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		DateTime? expected,
+		TimeTolerance tolerance)
+		: ConstraintResult.WithNotNullValue<DateTime?>(it, grammars),
+			IValueConstraint<DateTime?>
+	{
+		public ConstraintResult IsMetBy(DateTime? actual)
+		{
+			Actual = actual;
+			if (actual is null && expected is null)
+			{
+				Outcome = Outcome.Success;
+			}
+			else if (actual is null || expected is null)
+			{
+				Outcome = IsNegated ? Outcome.Success : Outcome.Failure;
+			}
+			else
+			{
+				TimeSpan timeTolerance = tolerance.Tolerance
+				                         ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				if (IsNegated)
+				{
+					timeTolerance = timeTolerance.Negate();
+				}
+
+				Outcome = actual.Value.Add(timeTolerance) > expected ? Outcome.Success : Outcome.Failure;
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is after ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not after ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance);
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }

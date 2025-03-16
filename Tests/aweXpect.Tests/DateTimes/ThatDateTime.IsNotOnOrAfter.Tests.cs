@@ -87,21 +87,15 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
-			public async Task WhenUnexpectedIsNull_ShouldFail()
+			public async Task WhenUnexpectedIsNull_ShouldSucceed()
 			{
 				DateTime subject = CurrentTime();
 				DateTime? unexpected = null;
 
 				async Task Act()
-					=> await That(subject).IsNotOnOrAfter(unexpected)
-						.Because("we want to test the failure");
+					=> await That(subject).IsNotOnOrAfter(unexpected);
 
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is not on or after <null>, because we want to test the failure,
-					              but it was {Formatter.Format(subject)}
-					              """);
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]

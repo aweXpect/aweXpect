@@ -86,6 +86,18 @@ public sealed partial class ThatDateTime
 			}
 
 			[Fact]
+			public async Task WhenUnexpectedIsNull_ShouldSucceed()
+			{
+				DateTime subject = CurrentTime();
+				DateTime? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task Within_NegativeTolerance_ShouldThrowArgumentOutOfRangeException()
 			{
 				DateTime subject = CurrentTime();
