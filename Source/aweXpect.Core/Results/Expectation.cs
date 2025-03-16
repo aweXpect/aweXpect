@@ -22,6 +22,7 @@ namespace aweXpect.Results;
 [StackTraceHidden]
 public abstract class Expectation
 {
+#pragma warning disable S3877 // Exceptions should not be thrown from unexpected methods
 	/// <summary>
 	///     <i>Not supported!</i><br />
 	///     <see cref="object.Equals(object?)" /> is not supported. Did you mean <c>IsEqualTo</c> instead?
@@ -32,7 +33,9 @@ public abstract class Expectation
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public override bool Equals(object? obj)
 		=> throw new NotSupportedException("Equals is not supported. Did you mean Is() instead?");
+#pragma warning restore S3877
 
+#pragma warning disable S3877 // Exceptions should not be thrown from unexpected methods
 	/// <summary>
 	///     <i>Not supported!</i><br />
 	///     <see cref="object.GetHashCode()" /> is not supported.
@@ -43,6 +46,7 @@ public abstract class Expectation
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public override int GetHashCode()
 		=> throw new NotSupportedException("GetHashCode is not supported.");
+#pragma warning restore S3877
 
 	/// <summary>
 	///     <i>Not supported!</i><br />
@@ -120,6 +124,7 @@ public abstract class Expectation
 		/// </summary>
 		protected abstract Outcome CheckOutcome(Outcome? previous, Outcome current);
 
+#pragma warning disable S3776 // Cognitive Complexity of methods should not be too high
 		/// <inheritdoc />
 		internal override async Task<Result> GetResult(int index, Dictionary<int, Outcome> outcomes)
 		{
@@ -177,6 +182,7 @@ public abstract class Expectation
 			return new Result(index, GetSubjectLine(),
 				new CombinationResult(Outcome.Success, expectationTexts.ToString()));
 		}
+#pragma warning restore S3776
 
 		internal override IEnumerable<ResultContext> GetContexts(int index, Dictionary<int, Outcome> outcomes)
 		{

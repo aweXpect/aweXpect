@@ -14,6 +14,7 @@ public partial class CollectionMatchOptions(
 	CollectionMatchOptions.EquivalenceRelations equivalenceRelations
 		= CollectionMatchOptions.EquivalenceRelations.Equivalent)
 {
+#pragma warning disable S4070 // Non-flags enums should not be marked with "FlagsAttribute"
 	/// <summary>
 	///     Specifies the equivalence relation between subject and expected.
 	/// </summary>
@@ -45,6 +46,7 @@ public partial class CollectionMatchOptions(
 		/// </summary>
 		Contains = 8,
 	}
+#pragma warning restore S4070
 
 	private EquivalenceRelations _equivalenceRelations = equivalenceRelations;
 	private bool _ignoringDuplicates;
