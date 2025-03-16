@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Tests.TestHelpers;
@@ -14,7 +15,7 @@ public class ExpectationResultTests
 	{
 		ExpectationResult sut = new(new MyExpectationBuilder("my-subject"));
 
-		Expectation.Result result = await sut.GetResult(3);
+		Expectation.Result result = await sut.GetResult(3, new Dictionary<int, Outcome>());
 
 		await That(result.Index).IsEqualTo(4);
 		await That(result.SubjectLine).IsEqualTo(" [04] Expected that my-subject");

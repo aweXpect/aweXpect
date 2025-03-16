@@ -17,7 +17,7 @@ public class Quantifier
 	/// </summary>
 	public static Quantifier Never()
 	{
-		Quantifier? quantifier = new();
+		Quantifier quantifier = new();
 		quantifier.Exactly(0);
 		return quantifier;
 	}

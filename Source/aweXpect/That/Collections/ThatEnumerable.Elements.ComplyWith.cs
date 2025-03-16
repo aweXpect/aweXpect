@@ -25,8 +25,8 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new ComplyWithConstraint(it, grammars, _quantifier, expectations)),
+				_subject.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
+					=> new ComplyWithConstraint(expectationBuilder, it, grammars, _quantifier, expectations)),
 				_subject,
 				options);
 		}
@@ -41,13 +41,13 @@ public static partial class ThatEnumerable
 			private int _notMatchingCount;
 			private int? _totalCount;
 
-			public ComplyWithConstraint(string it, ExpectationGrammars grammars,
+			public ComplyWithConstraint(ExpectationBuilder expectationBuilder, string it, ExpectationGrammars grammars,
 				EnumerableQuantifier quantifier,
 				Action<IThat<TItem>> expectations)
 				: base(it, grammars)
 			{
 				_quantifier = quantifier;
-				_itemExpectationBuilder = new ManualExpectationBuilder<TItem>();
+				_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder);
 				expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 			}
 

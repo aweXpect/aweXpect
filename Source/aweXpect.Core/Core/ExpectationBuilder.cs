@@ -357,7 +357,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Update the list of <see cref="ResultContext" /> that is included in the failure message.
 	/// </summary>
-	public ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
+	public virtual ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
 	{
 		_contexts ??= new ResultContexts();
 		callback(_contexts);
@@ -367,7 +367,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Gets the list of <see cref="ResultContext" />.
 	/// </summary>
-	internal IEnumerable<ResultContext> GetContexts() => _contexts ?? [];
+	internal virtual IEnumerable<ResultContext> GetContexts() => _contexts ?? [];
 
 	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.

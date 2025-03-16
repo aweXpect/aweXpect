@@ -122,30 +122,30 @@ public class ExpectHelpersTests
 	private sealed class ThatWithThatIs : IThat<int>, IThatIs<int>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; }
-			= new ManualExpectationBuilder<int>();
+			= new ManualExpectationBuilder<int>(null);
 	}
 
 	private sealed class ThatWithThatHas : IThat<int>, IThatHas<int>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; }
-			= new ManualExpectationBuilder<int>();
+			= new ManualExpectationBuilder<int>(null);
 	}
 
 	private sealed class ThatIs : IThatIs<int>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; }
-			= new ManualExpectationBuilder<int>();
+			= new ManualExpectationBuilder<int>(null);
 	}
 
 	private sealed class ThatHas : IThatHas<int>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; }
-			= new ManualExpectationBuilder<int>();
+			= new ManualExpectationBuilder<int>(null);
 	}
 
 	private sealed class ThatWithThatVerb : IThat<int>, IThatVerb<int>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; }
-			= new ManualExpectationBuilder<int>();
+			= new ManualExpectationBuilder<int>(null);
 	}
 }

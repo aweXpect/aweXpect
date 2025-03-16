@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ namespace aweXpect.Core;
 /// <summary>
 ///     A manual expectation builder can be used for manually evaluating inner expectations.
 /// </summary>
-public class ManualExpectationBuilder<TValue>(ExpectationGrammars grammars = ExpectationGrammars.None)
+public class ManualExpectationBuilder<TValue>(
+	ExpectationBuilder? inner,
+	ExpectationGrammars grammars = ExpectationGrammars.None)
 	: ExpectationBuilder("", grammars)
 {
 	/// <summary>
@@ -37,4 +40,12 @@ public class ManualExpectationBuilder<TValue>(ExpectationGrammars grammars = Exp
 		TimeSpan? timeout,
 		CancellationToken cancellationToken)
 		=> throw new NotSupportedException($"Use {nameof(IsMetBy)} for ManualExpectationBuilder!");
+
+	/// <inheritdoc cref="ExpectationBuilder.UpdateContexts(Action{ResultContexts})" />
+	public override ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
+	{
+		inner?.UpdateContexts(callback);
+		base.UpdateContexts(callback);
+		return this;
+	}
 }
