@@ -7,7 +7,9 @@ This library will never be able to cope with all ideas and use cases. Therefore,
 Goal of this package is to be more stable than the main aweXpect package, so reduce the risk of version conflicts
 between different extensions.
 
-You can extend the functionality for any types, by adding extension methods on `IThat<TType>`.
+## Expectations
+
+You can extend the expectations for any types, by adding extension methods on `IThat<TType>`.
 
 If you want to verify that a `string` is an absolute path, you specify the following method signature:
 
@@ -20,6 +22,8 @@ public static AndOrResult<string, IThat<string>> IsAbsolutePath(this IThat<strin
     // ...
 }
 ```
+
+### ExpectationBuilder
 
 The next step is to extract the `ExpectationBuilder`. In order to keep the automatic code suggestions for developers
 clear, you have to cast the `IThat<TType>` interface to `IExpectThat<TType>`, which will then give access to the
@@ -47,6 +51,8 @@ public static AndOrResult<string, IThat<string>> IsAbsolutePath(this IThat<strin
             => new IsAbsolutePathConstraint(it, grammars)),
         subject);
 ```
+
+### Constraints
 
 The basis for expectations are constraints. You can add different constraints to the `ExpectationBuilder` that is
 available for the `IThat<T>`. They differ in the input and output parameters for the `IsMetBy` method:
@@ -118,6 +124,7 @@ in most cases with one of the following helper classes:
 -
 
 With these the above example could be written (with support for the negated case):
+
 ```csharp
 private sealed class IsAbsolutePathConstraint(string it, ExpectationGrammars grammars)
     : ConstraintResult.WithValue<string>(grammars),
@@ -149,7 +156,10 @@ private sealed class IsAbsolutePathConstraint(string it, ExpectationGrammars gra
     }
 }
 ```
-This then also allows you to write an explicit negated expectation with the same constraint using the `.Invert()` method:
+
+This then also allows you to write an explicit negated expectation with the same constraint using the `.Invert()`
+method:
+
 ```csharp
 /// <summary>
 ///     Verifies that the <paramref name="subject"/> is no absolute path.
@@ -160,7 +170,6 @@ public static AndOrResult<string, IThat<string>> IsNoAbsolutePath(
             => new IsAbsolutePathConstraint(it, grammars).Invert()),
         subject);
 ```
-
 
 ## Customization
 
