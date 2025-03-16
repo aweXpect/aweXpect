@@ -44,6 +44,9 @@ public sealed partial class ThatObject
 					             is equivalent to expected,
 					             but it was not:
 					               Property Value was <null> instead of "Foo"
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 
@@ -123,6 +126,9 @@ public sealed partial class ThatObject
 					             is equivalent to expected,
 					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 
@@ -210,6 +216,10 @@ public sealed partial class ThatObject
 					               Property Inner.Inner.Value differed:
 					                    Found: "Baz"
 					                 Expected: "Bart"
+					             
+					             Equivalency options:
+					              - include public fields and properties
+					              - ignore members: ["Inner.Inner.Collection.[3]"]
 					             """);
 			}
 
@@ -281,6 +291,9 @@ public sealed partial class ThatObject
 					             is equivalent to expected,
 					             but it was not:
 					               Property Inner.Inner.Value was <null> instead of "Baz"
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Customization;
 using aweXpect.Equivalency;
@@ -20,16 +21,19 @@ public static partial class ThatObject
 		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();
 		if (options != null)
 		{
 			equivalencyOptions = options(new EquivalencyOptions<TExpected>(equivalencyOptions));
 		}
 
+		expectationBuilder.AddEquivalencyContext(equivalencyOptions);
+
 		ObjectEqualityOptions<TSubject> equalityOptions = new();
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new AndOrResult<TSubject, IThat<TSubject>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions)),
 			source);

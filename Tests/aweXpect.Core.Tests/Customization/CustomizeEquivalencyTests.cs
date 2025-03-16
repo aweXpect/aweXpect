@@ -35,6 +35,9 @@ public sealed class CustomizeEquivalencyTests
 			               Element [1] differed:
 			                    Found: 2
 			                 Expected: 1
+			             
+			             Equivalency options:
+			              - include public fields and properties
 			             """);
 	}
 

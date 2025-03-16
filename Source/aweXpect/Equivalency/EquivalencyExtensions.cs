@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -32,4 +33,10 @@ public static class EquivalencyExtensions
 		options.SetMatchType(new EquivalencyComparer(equivalencyOptions));
 		return options;
 	}
+
+
+	internal static void AddEquivalencyContext(this ExpectationBuilder expectationBuilder,
+		EquivalencyOptions equivalencyOptions)
+		=> expectationBuilder.UpdateContexts(contexts => contexts.Add(
+			new ResultContext("Equivalency options", _ => Task.FromResult<string?>(equivalencyOptions.ToString()))));
 }

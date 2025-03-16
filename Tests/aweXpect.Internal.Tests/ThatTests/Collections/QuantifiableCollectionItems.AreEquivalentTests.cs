@@ -40,6 +40,9 @@ public sealed partial class QuantifiableCollectionItems
 				             Expected that subject
 				             is equivalent to expected for all items,
 				             but only 3 of 4 were
+				             
+				             Equivalency options:
+				              - include public fields and properties
 				             """);
 		}
 

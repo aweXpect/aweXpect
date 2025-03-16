@@ -39,6 +39,9 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 1 for all items,
 						             but not all were
+						             
+						             Equivalency options:
+						              - include public fields and properties
 						             """);
 				}
 
@@ -66,6 +69,9 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to 5 for all items,
 						             but only 1 of 20 were
+						             
+						             Equivalency options:
+						              - include public fields and properties
 						             """);
 				}
 
@@ -95,6 +101,9 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             is equivalent to constantValue for all items,
 						             but it was <null>
+						             
+						             Equivalency options:
+						              - include public fields and properties
 						             """);
 				}
 			}

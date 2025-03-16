@@ -89,6 +89,9 @@ public sealed partial class ThatGeneric
 					             but it was considered equivalent to MyChangingClass {
 					                 HasWaitedEnough = False
 					               }
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 
@@ -164,6 +167,9 @@ public sealed partial class ThatGeneric
 					             but it was considered equivalent to MyChangingClass {
 					                 HasWaitedEnough = False
 					               }
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 

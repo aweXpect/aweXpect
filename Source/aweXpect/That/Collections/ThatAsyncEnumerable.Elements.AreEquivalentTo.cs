@@ -23,16 +23,19 @@ public static partial class ThatAsyncEnumerable
 				Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
 				[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		{
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
 			EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();
 			if (options != null)
 			{
 				equivalencyOptions = options(new EquivalencyOptions<TExpected>(equivalencyOptions));
 			}
 
+			expectationBuilder.AddEquivalencyContext(equivalencyOptions);
+
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it, grammars,
 						_quantifier,
