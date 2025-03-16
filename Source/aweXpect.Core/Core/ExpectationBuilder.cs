@@ -367,7 +367,7 @@ public abstract class ExpectationBuilder
 	/// <summary>
 	///     Gets the list of <see cref="ResultContext" />.
 	/// </summary>
-	internal virtual IEnumerable<ResultContext> GetContexts() => _contexts ?? [];
+	internal IEnumerable<ResultContext> GetContexts() => _contexts ?? [];
 
 	/// <summary>
 	///     Creates the exception message from the <paramref name="failure" />.

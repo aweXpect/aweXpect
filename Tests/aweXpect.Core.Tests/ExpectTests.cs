@@ -27,9 +27,6 @@ public class ExpectTests
 			             but
 			              [01] result1
 
-			             [01] context-title1:
-			             contest-content1
-
 			             [02] context-title2:
 			             contest-content2
 			             """);
