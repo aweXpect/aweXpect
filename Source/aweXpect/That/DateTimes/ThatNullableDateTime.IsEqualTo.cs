@@ -54,7 +54,8 @@ public static partial class ThatNullableDateTime
 		{
 			Actual = actual;
 
-			TimeSpan timeTolerance = tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+			TimeSpan timeTolerance =
+				tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 			TimeSpan? difference = actual - expected;
 			_hasKindDifference = !AreKindCompatible(actual?.Kind, expected?.Kind);
 			Outcome = !_hasKindDifference && difference <= timeTolerance && difference >= timeTolerance.Negate()

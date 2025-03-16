@@ -61,7 +61,8 @@ public static partial class ThatNullableDateOnly
 			}
 			else
 			{
-				TimeSpan timeTolerance = tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				TimeSpan timeTolerance = tolerance.Tolerance ??
+				                         Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 				Outcome = Math.Abs(actual.Value.DayNumber - expected.Value.DayNumber) <= (int)timeTolerance.TotalDays
 					? Outcome.Success
 					: Outcome.Failure;

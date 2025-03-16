@@ -57,7 +57,8 @@ public static partial class ThatTimeOnly
 			}
 			else
 			{
-				TimeSpan timeTolerance = tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				TimeSpan timeTolerance = tolerance.Tolerance ??
+				                         Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 				Outcome = Math.Abs(actual.Ticks - expected.Value.Ticks) <= timeTolerance.Ticks
 					? Outcome.Success
 					: Outcome.Failure;
