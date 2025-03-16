@@ -15,7 +15,7 @@ public static partial class ThatObject
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
 			source);
@@ -27,7 +27,7 @@ public static partial class ThatObject
 		object? expected,
 		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 		where T : class
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())
 						.Invert()),

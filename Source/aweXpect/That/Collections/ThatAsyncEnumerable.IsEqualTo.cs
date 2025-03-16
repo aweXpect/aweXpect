@@ -22,7 +22,7 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsConstraint<TItem, TItem>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected,
@@ -45,7 +45,7 @@ public static partial class ThatAsyncEnumerable
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
 		return new StringCollectionMatchResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsConstraint<string?, string?>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected,

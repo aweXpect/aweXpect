@@ -12,7 +12,7 @@ public static partial class ThatEnumerable
 	public static Elements<TItem> None<TItem>(
 		this IThat<IEnumerable<TItem>?> subject)
 		=> new(subject,
-			EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars |
+			EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |
 			                          ExpectationGrammars.Plural));
 
 	/// <summary>
@@ -21,6 +21,6 @@ public static partial class ThatEnumerable
 	public static Elements None(
 		this IThat<IEnumerable<string?>?> subject)
 		=> new(subject,
-			EnumerableQuantifier.None(subject.ThatIs().ExpectationBuilder.ExpectationGrammars |
+			EnumerableQuantifier.None(subject.Get().ExpectationBuilder.ExpectationGrammars |
 			                          ExpectationGrammars.Plural));
 }

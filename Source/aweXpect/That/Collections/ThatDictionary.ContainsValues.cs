@@ -16,7 +16,7 @@ public static partial class ThatDictionary
 		this IThat<IDictionary<TKey, TValue>?> source,
 		params TValue[] expected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValuesConstraint<TKey, TValue>(it, grammars, expected)),
 			source
 		);
@@ -30,7 +30,7 @@ public static partial class ThatDictionary
 			this IThat<IDictionary<TKey, TValue>?> source,
 			params TValue[] unexpected)
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainValuesConstraint<TKey, TValue>(it, grammars, unexpected).Invert()),
 			source
 		);

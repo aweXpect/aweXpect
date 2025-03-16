@@ -21,7 +21,7 @@ public static partial class ThatGeneric
 		Action<IThat<T>> expectations)
 	{
 		RepeatedCheckOptions options = new();
-		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
+		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((expectationBuilder, _, grammars) =>
 					new CompliesWithConstraint<T>(expectationBuilder, grammars, expectations, options)),
 			source,
@@ -35,7 +35,7 @@ public static partial class ThatGeneric
 		Action<IThat<T>> expectations)
 	{
 		RepeatedCheckOptions options = new();
-		return new RepeatedCheckResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder
+		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((expectationBuilder, _, grammars) =>
 					new CompliesWithConstraint<T>(expectationBuilder, grammars, expectations, options).Invert()),
 			source,

@@ -21,7 +21,7 @@ public static partial class ThatAsyncEnumerable
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		IsEmpty<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEmptyConstraint<TItem>(it, grammars)),
 			source);
 
@@ -31,7 +31,7 @@ public static partial class ThatAsyncEnumerable
 	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		IsNotEmpty<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEmptyConstraint<TItem>(it, grammars).Invert()),
 			source);
 

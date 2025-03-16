@@ -25,7 +25,7 @@ public static partial class ThatEnumerable
 		{
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.ThatIs().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
+				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
 					=> new ComplyWithConstraint(expectationBuilder, it, grammars, _quantifier, expectations)),
 				_subject,
 				options);

@@ -27,7 +27,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AreAllUniqueConstraint<TItem, TItem>(it, grammars, options)),
 			source, options
 		);
@@ -41,7 +41,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AreAllUniqueConstraint<string, string>(it, grammars, options)),
 			source, options
 		);
@@ -60,7 +60,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TMember> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, grammars, memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
@@ -81,7 +81,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, grammars, memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),

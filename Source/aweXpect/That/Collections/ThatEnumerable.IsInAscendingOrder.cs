@@ -19,7 +19,7 @@ public static partial class ThatEnumerable
 	{
 		CollectionOrderOptions<TItem> options = new();
 		return new CollectionOrderResult<TItem, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsInOrderConstraint<TItem, TItem>(it, grammars,
 					x => x,
 					SortOrder.Ascending,
@@ -42,7 +42,7 @@ public static partial class ThatEnumerable
 	{
 		CollectionOrderOptions<TMember> options = new();
 		return new CollectionOrderResult<TMember, IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsInOrderConstraint<TItem, TMember>(it, grammars,
 					memberAccessor,
 					SortOrder.Ascending,

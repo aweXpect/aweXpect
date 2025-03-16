@@ -20,7 +20,7 @@ public static partial class ThatException
 	public static AndOrResult<Exception?, IThat<Exception?>> HasRecursiveInnerExceptions(
 		this IThat<Exception?> source,
 		Action<IThat<IEnumerable<Exception>>> expectations)
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.ForMember<Exception?, IEnumerable<Exception?>>(
 					e => e.GetInnerExpectations(),
 					" which ",

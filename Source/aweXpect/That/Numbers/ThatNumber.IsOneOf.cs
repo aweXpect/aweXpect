@@ -20,7 +20,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<byte, IThat<byte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<byte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -36,7 +36,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<sbyte, IThat<sbyte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<sbyte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -52,7 +52,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<short, IThat<short>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<short>(it, grammars, expected, options)),
 			source,
 			options);
@@ -68,7 +68,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<ushort, IThat<ushort>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<ushort>(it, grammars, expected, options)),
 			source,
 			options);
@@ -84,7 +84,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<int, IThat<int>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<int>(it, grammars, expected, options)),
 			source,
 			options);
@@ -100,7 +100,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<uint, IThat<uint>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<uint>(it, grammars, expected, options)),
 			source,
 			options);
@@ -116,7 +116,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<long, IThat<long>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<long>(it, grammars, expected, options)),
 			source,
 			options);
@@ -132,7 +132,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<ulong, IThat<ulong>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<ulong>(it, grammars, expected, options)),
 			source,
 			options);
@@ -148,7 +148,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<float, IThat<float>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<float>(it, grammars, expected, options)),
 			source,
 			options);
@@ -164,7 +164,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<double, IThat<double>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<double>(it, grammars, expected, options)),
 			source,
 			options);
@@ -180,7 +180,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<decimal, IThat<decimal>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<decimal>(it, grammars, expected, options)),
 			source,
 			options);
@@ -196,7 +196,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<byte, IThat<byte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<byte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -212,7 +212,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<sbyte, IThat<sbyte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<sbyte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -228,7 +228,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<short, IThat<short?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<short>(it, grammars, expected, options)),
 			source,
 			options);
@@ -244,7 +244,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ushort, IThat<ushort?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<ushort>(it, grammars, expected, options)),
 			source,
 			options);
@@ -260,7 +260,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<int, IThat<int?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<int>(it, grammars, expected, options)),
 			source,
 			options);
@@ -276,7 +276,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<uint, IThat<uint?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<uint>(it, grammars, expected, options)),
 			source,
 			options);
@@ -292,7 +292,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<long, IThat<long?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<long>(it, grammars, expected, options)),
 			source,
 			options);
@@ -308,7 +308,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ulong, IThat<ulong?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<ulong>(it, grammars, expected, options)),
 			source,
 			options);
@@ -324,7 +324,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<float, IThat<float?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<float>(it, grammars, expected, options)),
 			source,
 			options);
@@ -340,7 +340,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<double, IThat<double?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<double>(it, grammars, expected, options)),
 			source,
 			options);
@@ -356,7 +356,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<decimal, IThat<decimal?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<decimal>(it, grammars, expected, options)),
 			source,
 			options);
@@ -372,7 +372,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<byte, IThat<byte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<byte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -388,7 +388,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<sbyte, IThat<sbyte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<sbyte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -404,7 +404,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<short, IThat<short>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<short>(it, grammars, expected, options)),
 			source,
 			options);
@@ -420,7 +420,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<ushort, IThat<ushort>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<ushort>(it, grammars, expected, options)),
 			source,
 			options);
@@ -436,7 +436,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<int, IThat<int>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<int>(it, grammars, expected, options)),
 			source,
 			options);
@@ -452,7 +452,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<uint, IThat<uint>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<uint>(it, grammars, expected, options)),
 			source,
 			options);
@@ -468,7 +468,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<long, IThat<long>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<long>(it, grammars, expected, options)),
 			source,
 			options);
@@ -484,7 +484,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<ulong, IThat<ulong>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<ulong>(it, grammars, expected, options)),
 			source,
 			options);
@@ -500,7 +500,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<float, IThat<float>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<float>(it, grammars, expected, options)),
 			source,
 			options);
@@ -516,7 +516,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<double, IThat<double>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<double>(it, grammars, expected, options)),
 			source,
 			options);
@@ -532,7 +532,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<decimal, IThat<decimal>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<decimal>(it, grammars, expected, options)),
 			source,
 			options);
@@ -548,7 +548,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<byte, IThat<byte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<byte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -564,7 +564,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<sbyte, IThat<sbyte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<sbyte>(it, grammars, expected, options)),
 			source,
 			options);
@@ -580,7 +580,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<short, IThat<short?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<short>(it, grammars, expected, options)),
 			source,
 			options);
@@ -596,7 +596,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ushort, IThat<ushort?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<ushort>(it, grammars, expected, options)),
 			source,
 			options);
@@ -612,7 +612,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<int, IThat<int?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<int>(it, grammars, expected, options)),
 			source,
 			options);
@@ -628,7 +628,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<uint, IThat<uint?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<uint>(it, grammars, expected, options)),
 			source,
 			options);
@@ -644,7 +644,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<long, IThat<long?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<long>(it, grammars, expected, options)),
 			source,
 			options);
@@ -660,7 +660,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ulong, IThat<ulong?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<ulong>(it, grammars, expected, options)),
 			source,
 			options);
@@ -676,7 +676,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<float, IThat<float?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<float>(it, grammars, expected, options)),
 			source,
 			options);
@@ -692,7 +692,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<double, IThat<double?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<double>(it, grammars, expected, options)),
 			source,
 			options);
@@ -708,7 +708,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<decimal, IThat<decimal?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<decimal>(it, grammars, expected, options)),
 			source,
 			options);
@@ -724,7 +724,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<byte, IThat<byte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<byte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -740,7 +740,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<sbyte, IThat<sbyte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<sbyte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -756,7 +756,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<short, IThat<short>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<short>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -772,7 +772,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<ushort, IThat<ushort>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<ushort>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -788,7 +788,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<int, IThat<int>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<int>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -804,7 +804,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<uint, IThat<uint>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<uint>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -820,7 +820,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<long, IThat<long>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<long>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -836,7 +836,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<ulong, IThat<ulong>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<ulong>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -852,7 +852,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<float, IThat<float>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<float>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -868,7 +868,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<double, IThat<double>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<double>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -884,7 +884,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<decimal, IThat<decimal>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraintWithNullable<decimal>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -900,7 +900,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<byte, IThat<byte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<byte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -916,7 +916,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<sbyte, IThat<sbyte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<sbyte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -932,7 +932,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<short, IThat<short?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<short>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -948,7 +948,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ushort, IThat<ushort?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<ushort>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -964,7 +964,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<int, IThat<int?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<int>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -980,7 +980,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<uint, IThat<uint?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<uint>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -996,7 +996,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<long, IThat<long?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<long>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1012,7 +1012,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ulong, IThat<ulong?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<ulong>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1028,7 +1028,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<float, IThat<float?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<float>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1044,7 +1044,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<double, IThat<double?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<double>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1060,7 +1060,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<decimal, IThat<decimal?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraintWithNullable<decimal>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1076,7 +1076,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<byte, IThat<byte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<byte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1092,7 +1092,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<sbyte, IThat<sbyte>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<sbyte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1108,7 +1108,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<short, IThat<short>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<short>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1124,7 +1124,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<ushort, IThat<ushort>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<ushort>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1140,7 +1140,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<int, IThat<int>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<int>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1156,7 +1156,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<uint, IThat<uint>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<uint>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1172,7 +1172,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<long, IThat<long>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<long>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1188,7 +1188,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NumberToleranceResult<ulong, IThat<ulong>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<ulong>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1204,7 +1204,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<float, IThat<float>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<float>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1220,7 +1220,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<double, IThat<double>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<double>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1236,7 +1236,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NumberToleranceResult<decimal, IThat<decimal>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsOneOfConstraint<decimal>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1252,7 +1252,7 @@ public static partial class ThatNumber
 		NumberTolerance<byte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<byte, IThat<byte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<byte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1268,7 +1268,7 @@ public static partial class ThatNumber
 		NumberTolerance<sbyte> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<sbyte, IThat<sbyte?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<sbyte>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1284,7 +1284,7 @@ public static partial class ThatNumber
 		NumberTolerance<short> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<short, IThat<short?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<short>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1300,7 +1300,7 @@ public static partial class ThatNumber
 		NumberTolerance<ushort> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ushort, IThat<ushort?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<ushort>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1316,7 +1316,7 @@ public static partial class ThatNumber
 		NumberTolerance<int> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<int, IThat<int?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<int>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1332,7 +1332,7 @@ public static partial class ThatNumber
 		NumberTolerance<uint> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<uint, IThat<uint?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<uint>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1348,7 +1348,7 @@ public static partial class ThatNumber
 		NumberTolerance<long> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<long, IThat<long?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<long>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1364,7 +1364,7 @@ public static partial class ThatNumber
 		NumberTolerance<ulong> options = new(
 			(a, e, t) => (a > e ? a - e : e - a) <= (t ?? 0));
 		return new NullableNumberToleranceResult<ulong, IThat<ulong?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<ulong>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1380,7 +1380,7 @@ public static partial class ThatNumber
 		NumberTolerance<float> options = new(
 			(a, e, t) => (float.IsNaN(a) && float.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<float, IThat<float?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<float>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1396,7 +1396,7 @@ public static partial class ThatNumber
 		NumberTolerance<double> options = new(
 			(a, e, t) => (double.IsNaN(a) && double.IsNaN(e)) || Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<double, IThat<double?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<double>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
@@ -1412,7 +1412,7 @@ public static partial class ThatNumber
 		NumberTolerance<decimal> options = new(
 			(a, e, t) => Math.Abs(a - e) <= (t ?? 0));
 		return new NullableNumberToleranceResult<decimal, IThat<decimal?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<decimal>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);

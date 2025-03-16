@@ -29,7 +29,7 @@ public static partial class ThatAsyncEnumerable
 		Quantifier quantifier = new();
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
 					q => $"contains {Formatter.Format(expected)}{options} {q}",
@@ -51,7 +51,7 @@ public static partial class ThatAsyncEnumerable
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(
 					it, grammars,
 					q => $"contains {Formatter.Format(expected)}{options} {q}",
@@ -74,7 +74,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		Quantifier quantifier = new();
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
 					q => $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
@@ -96,7 +96,7 @@ public static partial class ThatAsyncEnumerable
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new ObjectCollectionContainResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsConstraint<TItem, TItem>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(), expected,
 					options, matchOptions)),
 			source,
@@ -116,7 +116,7 @@ public static partial class ThatAsyncEnumerable
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new(CollectionMatchOptions.EquivalenceRelations.Contains);
 		return new StringCollectionContainResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsConstraint<string?, string?>(it, grammars, doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					expected, options, matchOptions)),
 			source,
@@ -134,7 +134,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
 					_ => $"does not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected),
@@ -153,7 +153,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(it, grammars,
 					_ => $"does not contain {Formatter.Format(unexpected)}{options}",
 					a => options.AreConsideredEqual(a, unexpected),
@@ -172,7 +172,7 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		=> new(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
 					_ => $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
 					predicate,

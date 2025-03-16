@@ -18,7 +18,7 @@ public static partial class ThatString
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsOneOfConstraint(it, grammars, expected, options)),
 			source,
 			options);
@@ -33,7 +33,7 @@ public static partial class ThatString
 	{
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsOneOfConstraint(it, grammars, unexpected, options).Invert()),
 			source,
 			options);

@@ -67,7 +67,7 @@ public class AndOrWhichResultTests
 #pragma warning disable aweXpect0001
 		IThat<T> source = That(subject);
 #pragma warning restore aweXpect0001
-		return new AndOrWhichResult<T, IThat<T>>(source.ThatIs().ExpectationBuilder.AddConstraint((it, _)
+		return new AndOrWhichResult<T, IThat<T>>(source.Get().ExpectationBuilder.AddConstraint((it, _)
 				=> new DummyConstraint(it)),
 			source);
 	}

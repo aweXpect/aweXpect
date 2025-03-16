@@ -10,7 +10,7 @@ public class ExpectHelpersTests
 	{
 		IThat<int> subject = new ThatWith();
 
-		IThatIs<int> Act() => subject.ThatIs();
+		IThatIs<int> Act() => subject.Get();
 
 		await That(Act).Throws<NotSupportedException>()
 			.WithMessage("IThat<T> must also implement IThatIs<T>");
@@ -21,7 +21,7 @@ public class ExpectHelpersTests
 	{
 		IThat<int> subject = new ThatWithThatIs();
 
-		IThatIs<int> result = subject.ThatIs();
+		IThatIs<int> result = subject.Get();
 
 		await That(result).IsSameAs(subject);
 	}
@@ -32,7 +32,7 @@ public class ExpectHelpersTests
 		ThatWithThatVerb origin = new();
 		IThat<int> subject = origin;
 
-		IThatIs<int> result = subject.ThatIs();
+		IThatIs<int> result = subject.Get();
 
 		await That(result).IsNotSameAs(subject);
 		await That(result.ExpectationBuilder).IsSameAs(origin.ExpectationBuilder);

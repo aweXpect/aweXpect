@@ -12,7 +12,7 @@ public static partial class ThatString
 	/// </summary>
 	public static AndOrResult<string?, IThat<string?>> IsEmpty(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEmptyConstraint(it, grammars)),
 			source);
 
@@ -21,7 +21,7 @@ public static partial class ThatString
 	/// </summary>
 	public static AndOrResult<string, IThat<string?>> IsNotEmpty(
 		this IThat<string?> source)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEmptyConstraint(it, grammars).Invert()),
 			source);
 

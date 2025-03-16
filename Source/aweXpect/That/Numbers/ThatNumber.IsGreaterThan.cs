@@ -14,7 +14,7 @@ public static partial class ThatNumber
 	public static AndOrResult<byte, IThat<byte>> IsGreaterThan(
 		this IThat<byte> source,
 		byte? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<byte>(it, grammars, expected)),
 			source);
 
@@ -24,7 +24,7 @@ public static partial class ThatNumber
 	public static AndOrResult<sbyte, IThat<sbyte>> IsGreaterThan(
 		this IThat<sbyte> source,
 		sbyte? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<sbyte>(it, grammars, expected)),
 			source);
 
@@ -34,7 +34,7 @@ public static partial class ThatNumber
 	public static AndOrResult<short, IThat<short>> IsGreaterThan(
 		this IThat<short> source,
 		short? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<short>(it, grammars, expected)),
 			source);
 
@@ -44,7 +44,7 @@ public static partial class ThatNumber
 	public static AndOrResult<ushort, IThat<ushort>> IsGreaterThan(
 		this IThat<ushort> source,
 		ushort? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<ushort>(it, grammars, expected)),
 			source);
 
@@ -54,7 +54,7 @@ public static partial class ThatNumber
 	public static AndOrResult<int, IThat<int>> IsGreaterThan(
 		this IThat<int> source,
 		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<int>(it, grammars, expected)),
 			source);
 
@@ -64,7 +64,7 @@ public static partial class ThatNumber
 	public static AndOrResult<uint, IThat<uint>> IsGreaterThan(
 		this IThat<uint> source,
 		uint? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<uint>(it, grammars, expected)),
 			source);
 
@@ -74,7 +74,7 @@ public static partial class ThatNumber
 	public static AndOrResult<long, IThat<long>> IsGreaterThan(
 		this IThat<long> source,
 		long? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<long>(it, grammars, expected)),
 			source);
 
@@ -84,7 +84,7 @@ public static partial class ThatNumber
 	public static AndOrResult<ulong, IThat<ulong>> IsGreaterThan(
 		this IThat<ulong> source,
 		ulong? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<ulong>(it, grammars, expected)),
 			source);
 
@@ -94,7 +94,7 @@ public static partial class ThatNumber
 	public static AndOrResult<float, IThat<float>> IsGreaterThan(
 		this IThat<float> source,
 		float? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<float>(it, grammars, expected)),
 			source);
 
@@ -104,7 +104,7 @@ public static partial class ThatNumber
 	public static AndOrResult<double, IThat<double>> IsGreaterThan(
 		this IThat<double> source,
 		double? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<double>(it, grammars, expected)),
 			source);
 
@@ -114,7 +114,7 @@ public static partial class ThatNumber
 	public static AndOrResult<decimal, IThat<decimal>> IsGreaterThan(
 		this IThat<decimal> source,
 		decimal? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsGreaterThanConstraint<decimal>(it, grammars, expected)),
 			source);
 
@@ -124,7 +124,7 @@ public static partial class ThatNumber
 	public static AndOrResult<byte?, IThat<byte?>> IsGreaterThan(
 		this IThat<byte?> source,
 		byte? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<byte>(it, grammars, expected)),
 			source);
 
@@ -134,7 +134,7 @@ public static partial class ThatNumber
 	public static AndOrResult<sbyte?, IThat<sbyte?>> IsGreaterThan(
 		this IThat<sbyte?> source,
 		sbyte? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<sbyte>(it, grammars, expected)),
 			source);
 
@@ -144,7 +144,7 @@ public static partial class ThatNumber
 	public static AndOrResult<short?, IThat<short?>> IsGreaterThan(
 		this IThat<short?> source,
 		short? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<short>(it, grammars, expected)),
 			source);
 
@@ -154,7 +154,7 @@ public static partial class ThatNumber
 	public static AndOrResult<ushort?, IThat<ushort?>> IsGreaterThan(
 		this IThat<ushort?> source,
 		ushort? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<ushort>(it, grammars, expected)),
 			source);
 
@@ -164,7 +164,7 @@ public static partial class ThatNumber
 	public static AndOrResult<int?, IThat<int?>> IsGreaterThan(
 		this IThat<int?> source,
 		int? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<int>(it, grammars, expected)),
 			source);
 
@@ -174,7 +174,7 @@ public static partial class ThatNumber
 	public static AndOrResult<uint?, IThat<uint?>> IsGreaterThan(
 		this IThat<uint?> source,
 		uint? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<uint>(it, grammars, expected)),
 			source);
 
@@ -184,7 +184,7 @@ public static partial class ThatNumber
 	public static AndOrResult<long?, IThat<long?>> IsGreaterThan(
 		this IThat<long?> source,
 		long? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<long>(it, grammars, expected)),
 			source);
 
@@ -194,7 +194,7 @@ public static partial class ThatNumber
 	public static AndOrResult<ulong?, IThat<ulong?>> IsGreaterThan(
 		this IThat<ulong?> source,
 		ulong? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<ulong>(it, grammars, expected)),
 			source);
 
@@ -204,7 +204,7 @@ public static partial class ThatNumber
 	public static AndOrResult<float?, IThat<float?>> IsGreaterThan(
 		this IThat<float?> source,
 		float? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<float>(it, grammars, expected)),
 			source);
 
@@ -214,7 +214,7 @@ public static partial class ThatNumber
 	public static AndOrResult<double?, IThat<double?>> IsGreaterThan(
 		this IThat<double?> source,
 		double? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<double>(it, grammars, expected)),
 			source);
 
@@ -224,7 +224,7 @@ public static partial class ThatNumber
 	public static AndOrResult<decimal?, IThat<decimal?>> IsGreaterThan(
 		this IThat<decimal?> source,
 		decimal? expected)
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsGreaterThanConstraint<decimal>(it, grammars, expected)),
 			source);
 

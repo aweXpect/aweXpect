@@ -43,7 +43,7 @@ public static partial class ThatEventRecording
 			o => o.Length > 1 && o[1] is PropertyChangedEventArgs m && m.PropertyName == propertyName,
 			$" for property {propertyName}");
 		return new EventTriggerResult<TSubject>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
 					filter,
 					quantifier)),
@@ -84,7 +84,7 @@ public static partial class ThatEventRecording
 			o => o.Length > 1 && o[1] is PropertyChangedEventArgs m && m.PropertyName == propertyName,
 			$" for property {propertyName}");
 		return new EventTriggerResult<TSubject>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars)
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
 					filter,
 					quantifier)),

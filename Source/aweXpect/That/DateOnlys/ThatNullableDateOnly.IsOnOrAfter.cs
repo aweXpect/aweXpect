@@ -18,7 +18,7 @@ public static partial class ThatNullableDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					grammars,
@@ -40,7 +40,7 @@ public static partial class ThatNullableDateOnly
 	{
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(
-			source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ConditionConstraintWithTolerance(
 					it,
 					grammars,

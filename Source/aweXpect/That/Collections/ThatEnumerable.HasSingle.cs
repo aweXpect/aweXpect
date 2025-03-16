@@ -18,7 +18,7 @@ public static partial class ThatEnumerable
 	/// </summary>
 	public static SingleItemResult<IEnumerable<TItem>, TItem> HasSingle<TItem>(
 		this IThat<IEnumerable<TItem>?> source)
-		=> new(source.ThatIs().ExpectationBuilder
+		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) => new HaveSingleConstraint<TItem>(it, grammars)),
 			f => f.FirstOrDefault()
 		);

@@ -16,7 +16,7 @@ public static partial class ThatGeneric
 		Expression<Func<T, TMember?>> memberSelector,
 		Action<IThat<TMember?>> expectations)
 	{
-		ExpectationBuilder expectationBuilder = source.ThatIs().ExpectationBuilder;
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		expectationBuilder
 			.ForMember(
 				MemberAccessor<T, TMember?>.FromExpression(memberSelector),

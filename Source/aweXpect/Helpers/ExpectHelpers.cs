@@ -5,7 +5,7 @@ namespace aweXpect.Helpers;
 
 internal static class ExpectHelpers
 {
-	public static IThatIs<T> ThatIs<T>(this IThat<T> subject)
+	public static IThatIs<T> Get<T>(this IThat<T> subject)
 	{
 		if (subject is IThatIs<T> thatIs)
 		{

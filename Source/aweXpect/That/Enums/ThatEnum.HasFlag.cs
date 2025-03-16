@@ -15,7 +15,7 @@ public static partial class ThatEnum
 		this IThat<TEnum> source,
 		TEnum? expectedFlag)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new HasFlagConstraint<TEnum>(it, grammars, expectedFlag)),
 			source);
 
@@ -26,7 +26,7 @@ public static partial class ThatEnum
 		this IThat<TEnum> source,
 		TEnum? unexpectedFlag)
 		where TEnum : struct, Enum
-		=> new(source.ThatIs().ExpectationBuilder.AddConstraint((it, grammars) =>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new HasFlagConstraint<TEnum>(it, grammars, unexpectedFlag).Invert()),
 			source);
 
