@@ -11,14 +11,6 @@ namespace aweXpect;
 /// </summary>
 public static partial class ThatDateTime
 {
-	private static bool IsWithinTolerance(TimeSpan? tolerance, TimeSpan difference)
-	{
-		tolerance ??= Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
-
-		return difference <= tolerance.Value &&
-		       difference >= tolerance.Value.Negate();
-	}
-
 	private sealed class ConditionConstraint(
 		string it,
 		ExpectationGrammars grammars,

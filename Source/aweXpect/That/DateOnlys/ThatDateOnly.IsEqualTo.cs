@@ -1,6 +1,8 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -18,15 +20,7 @@ public static partial class ThatDateOnly
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new ConditionConstraintWithTolerance(
-						it,
-						grammars,
-						expected,
-						(e, t) => $"is equal to {Formatter.Format(e)}{t.ToDayString()}",
-						(a, e, t) => e != null &&
-						             Math.Abs(a.DayNumber - e.Value.DayNumber) <= (int)t.TotalDays,
-						(a, _, i) => $"{i} was {Formatter.Format(a)}",
-						tolerance)),
+					new IsEqualToConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -41,17 +35,56 @@ public static partial class ThatDateOnly
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly, IThat<DateOnly>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraintWithTolerance(
-					it,
-					grammars,
-					unexpected,
-					(e, t) => $"is not equal to {Formatter.Format(e)}{t.ToDayString()}",
-					(a, u, t) => u == null ||
-					             Math.Abs(a.DayNumber - u.Value.DayNumber) > (int)t.TotalDays,
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsEqualToConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
+	}
+
+	private sealed class IsEqualToConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		DateOnly? expected,
+		TimeTolerance tolerance)
+		: ConstraintResult.WithEqualToValue<DateOnly>(it, grammars, expected is null),
+			IValueConstraint<DateOnly>
+	{
+		public ConstraintResult IsMetBy(DateOnly actual)
+		{
+			Actual = actual;
+			if (expected is null)
+			{
+				Outcome = Outcome.Failure;
+			}
+			else
+			{
+				TimeSpan timeTolerance = tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				Outcome = Math.Abs(actual.DayNumber - expected.Value.DayNumber) <= (int)timeTolerance.TotalDays
+					? Outcome.Success
+					: Outcome.Failure;
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance.ToDayString());
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance.ToDayString());
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }
 #endif

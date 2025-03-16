@@ -1,6 +1,8 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
+using aweXpect.Customization;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -18,16 +20,7 @@ public static partial class ThatNullableDateOnly
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ConditionConstraintWithTolerance(
-					it,
-					grammars,
-					expected,
-					(e, t) => $"is equal to {Formatter.Format(e)}{t.ToDayString()}",
-					(a, e, t) => (a == null && e == null) ||
-					             (a != null && e != null &&
-					              Math.Abs(a.Value.DayNumber - e.Value.DayNumber) <= (int)t.TotalDays),
-					(a, _, i) => $"{i} was {Formatter.Format(a)}",
-					tolerance)),
+				new IsEqualToConstraint(it, grammars, expected, tolerance)),
 			source,
 			tolerance);
 	}
@@ -42,18 +35,60 @@ public static partial class ThatNullableDateOnly
 		TimeTolerance tolerance = new();
 		return new TimeToleranceResult<DateOnly?, IThat<DateOnly?>>(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new ConditionConstraintWithTolerance(
-						it,
-						grammars,
-						unexpected,
-						(e, t) => $"is not equal to {Formatter.Format(e)}{t.ToDayString()}",
-						(a, u, t) => a == null != (u == null) ||
-						             (a != null && u != null &&
-						              Math.Abs(a.Value.DayNumber - u.Value.DayNumber) > (int)t.TotalDays),
-						(a, _, i) => $"{i} was {Formatter.Format(a)}",
-						tolerance)),
+					new IsEqualToConstraint(it, grammars, unexpected, tolerance).Invert()),
 			source,
 			tolerance);
+	}
+
+	private sealed class IsEqualToConstraint(
+		string it,
+		ExpectationGrammars grammars,
+		DateOnly? expected,
+		TimeTolerance tolerance)
+		: ConstraintResult.WithEqualToValue<DateOnly?>(it, grammars, expected is null),
+			IValueConstraint<DateOnly?>
+	{
+		public ConstraintResult IsMetBy(DateOnly? actual)
+		{
+			Actual = actual;
+			if (actual is null && expected is null)
+			{
+				Outcome = Outcome.Success;
+			}
+			else if (actual is null || expected is null)
+			{
+				Outcome = Outcome.Failure;
+			}
+			else
+			{
+				TimeSpan timeTolerance = tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
+				Outcome = Math.Abs(actual.Value.DayNumber - expected.Value.DayNumber) <= (int)timeTolerance.TotalDays
+					? Outcome.Success
+					: Outcome.Failure;
+			}
+
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance.ToDayString());
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(tolerance.ToDayString());
+		}
+
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
 	}
 }
 #endif
