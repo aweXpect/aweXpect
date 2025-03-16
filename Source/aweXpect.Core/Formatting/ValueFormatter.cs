@@ -10,5 +10,7 @@ public class ValueFormatter
 	/// </summary>
 	public static readonly string NullString = "<null>";
 
+#pragma warning disable S1118 // Utility classes should not have public constructors
 	internal ValueFormatter() { }
+#pragma warning restore S1118
 }
