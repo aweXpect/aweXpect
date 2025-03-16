@@ -14,11 +14,7 @@ public abstract partial class ThatDelegate
 	///     A delegate with value of type <typeparamref name="T" />.
 	/// </summary>
 	public sealed class WithValue<T>(ExpectationBuilder expectationBuilder)
-		: ThatDelegate(expectationBuilder),
-			IThat<WithValue<T>>,
-			IThatDoes<WithValue<T>>,
-			IThatHas<WithValue<T>>,
-			IThatIs<WithValue<T>>
+		: ThatDelegate(expectationBuilder), IExpectThat<WithValue<T>>
 	{
 		/// <summary>
 		///     Verifies that the delegate does not throw any exception.

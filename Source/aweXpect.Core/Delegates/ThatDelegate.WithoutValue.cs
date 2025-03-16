@@ -14,11 +14,7 @@ public abstract partial class ThatDelegate
 	///     A delegate without value.
 	/// </summary>
 	public sealed class WithoutValue(ExpectationBuilder expectationBuilder)
-		: ThatDelegate(expectationBuilder),
-			IThat<WithoutValue>,
-			IThatDoes<WithoutValue>,
-			IThatHas<WithoutValue>,
-			IThatIs<WithoutValue>
+		: ThatDelegate(expectationBuilder), IExpectThat<WithoutValue>
 	{
 		/// <summary>
 		///     Verifies that the delegate does not throw any exception.

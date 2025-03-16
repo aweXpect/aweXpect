@@ -7,8 +7,8 @@ namespace aweXpect.Core;
 /// </summary>
 [DebuggerDisplay("ThatSubject<{typeof(T)}>: {ExpectationBuilder}")]
 public readonly struct ThatSubject<T>(ExpectationBuilder expectationBuilder)
-	: IThat<T>, IThatDoes<T>, IThatHas<T>, IThatIs<T>
+	: IExpectThat<T>
 {
-	/// <inheritdoc cref="IThatVerb{T}.ExpectationBuilder" />
+	/// <inheritdoc cref="IExpectThat{T}.ExpectationBuilder" />
 	public ExpectationBuilder ExpectationBuilder { get; } = expectationBuilder;
 }

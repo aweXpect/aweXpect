@@ -299,7 +299,7 @@ public sealed class PropertyResultTests
 		}
 	}
 
-	private sealed class Dummy : IThat<string>, IThatIs<string>
+	private sealed class Dummy : IExpectThat<string>
 	{
 		public ExpectationBuilder ExpectationBuilder { get; } = new ManualExpectationBuilder<string>(null);
 	}

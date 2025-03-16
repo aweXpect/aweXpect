@@ -59,10 +59,10 @@ public class EvaluationContextTests
 	private static async Task<IEvaluationContext> GetSut()
 	{
 #pragma warning disable aweXpect0001
-		IThatVerb<bool> that = (IThatVerb<bool>)That(true);
+		IExpectThat<bool> that = (IExpectThat<bool>)That(true);
 #pragma warning restore aweXpect0001
 		MyContextConstraint constraint = new();
-		await new AndOrResult<bool, IThatVerb<bool>>(
+		await new AndOrResult<bool, IExpectThat<bool>>(
 			that.ExpectationBuilder
 				.AddConstraint((_, _) => constraint),
 			that);
