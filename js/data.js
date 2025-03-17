@@ -1230,6 +1230,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -1437,7 +1443,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -1648,7 +1655,8 @@ window.BENCHMARK_DATA = {
           157.98740509840158,
           178.2246840318044,
           163.54591789245606,
-          165.92183519999188
+          165.92183519999188,
+          172.68274527390798
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1843,6 +1851,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2083,7 +2092,8 @@ window.BENCHMARK_DATA = {
           234.35384324391683,
           259.70870803197226,
           238.44811379114788,
-          242.88882830937703
+          242.88882830937703,
+          239.68419085230147
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2276,6 +2286,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2518,7 +2529,8 @@ window.BENCHMARK_DATA = {
           854.7048373903547,
           1047.3008476257323,
           867.5029351552328,
-          895.5982624689738
+          895.5982624689738,
+          906.6067698342459
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2672,6 +2684,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3516,6 +3529,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -3646,7 +3665,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -3780,7 +3800,8 @@ window.BENCHMARK_DATA = {
           267150.34697265626,
           306598.6268484933,
           277293.1015625,
-          283522.0496744792
+          283522.0496744792,
+          284471.90084402903
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3914,6 +3935,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4061,7 +4083,8 @@ window.BENCHMARK_DATA = {
           2166297.565848214,
           2299801.0697916667,
           2144136.9921875,
-          2212550.92421875
+          2212550.92421875,
+          2234282.2372395834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4177,6 +4200,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4342,7 +4366,8 @@ window.BENCHMARK_DATA = {
           667480.6617606027,
           701356.70625,
           663076.0768554688,
-          667573.0028545673
+          667573.0028545673,
+          658268.8691781851
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4465,6 +4490,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5725,6 +5751,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -5932,7 +5964,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -6143,7 +6176,8 @@ window.BENCHMARK_DATA = {
           295.08082081476846,
           310.62695396863495,
           318.34378143946327,
-          303.912731774648
+          303.912731774648,
+          307.12983853022257
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6338,6 +6372,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6578,7 +6613,8 @@ window.BENCHMARK_DATA = {
           461.98903564044406,
           488.18733297075545,
           482.5589239756266,
-          460.875958665212
+          460.875958665212,
+          482.7237631479899
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6771,6 +6807,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -7013,7 +7050,8 @@ window.BENCHMARK_DATA = {
           14099.84168461391,
           16559.56398111979,
           15419.28394165039,
-          17993.781623331706
+          17993.781623331706,
+          14785.222966875348
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7167,6 +7205,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -8473,6 +8512,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -8680,7 +8725,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -8891,7 +8937,8 @@ window.BENCHMARK_DATA = {
           195.50008742014566,
           218.4978681564331,
           208.55345498720806,
-          201.98719415664672
+          201.98719415664672,
+          200.97458520302405
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9087,6 +9134,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9326,7 +9374,8 @@ window.BENCHMARK_DATA = {
           231.700279601415,
           253.82694234166826,
           250.21170717875162,
-          239.92496147155762
+          239.92496147155762,
+          243.7187738418579
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9519,6 +9568,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9761,7 +9811,8 @@ window.BENCHMARK_DATA = {
           1142.2847730000815,
           1301.9752620697022,
           1221.9395844777425,
-          1233.053832244873
+          1233.053832244873,
+          1210.411253229777
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9915,6 +9966,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -11221,6 +11273,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -11428,7 +11486,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -11639,7 +11698,8 @@ window.BENCHMARK_DATA = {
           311.55052595872144,
           325.57109610239667,
           331.90583082607816,
-          316.89248394966125
+          316.89248394966125,
+          316.0221185684204
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11846,6 +11906,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -12074,7 +12135,8 @@ window.BENCHMARK_DATA = {
           447.4516038161058,
           475.9512894834791,
           480.5227783203125,
-          457.31557512283325
+          457.31557512283325,
+          465.6692876815796
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12267,6 +12329,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -12509,7 +12572,8 @@ window.BENCHMARK_DATA = {
           1208.8943484170097,
           1362.7712586266655,
           1342.3559018452963,
-          1305.4552368164063
+          1305.4552368164063,
+          1249.328197479248
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12663,6 +12727,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -13969,6 +14034,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -14176,7 +14247,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -14387,7 +14459,8 @@ window.BENCHMARK_DATA = {
           1068.9074942725044,
           1175.2127840677897,
           1088.9597409566243,
-          1064.7006388346354
+          1064.7006388346354,
+          1093.1394198099772
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14582,6 +14655,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -14822,7 +14896,8 @@ window.BENCHMARK_DATA = {
           1218.8123661041259,
           1273.25422261556,
           1274.0229181925456,
-          1261.8983540852864
+          1261.8983540852864,
+          1297.403947693961
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15015,6 +15090,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -15257,7 +15333,8 @@ window.BENCHMARK_DATA = {
           2703.362432607015,
           3067.6608192443846,
           2766.423967088972,
-          2836.7501820155553
+          2836.7501820155553,
+          2789.4095503489175
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15457,6 +15534,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -16717,6 +16795,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
@@ -16924,7 +17008,8 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
@@ -17135,7 +17220,8 @@ window.BENCHMARK_DATA = {
           1145.1339630126954,
           1221.9560544331869,
           1140.7694166623628,
-          1145.4661491100605
+          1145.4661491100605,
+          1183.7077392850604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17330,6 +17416,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -17570,7 +17657,8 @@ window.BENCHMARK_DATA = {
           148460.44033203126,
           148435.97880859376,
           146143.82690429688,
-          152007.95295061384
+          152007.95295061384,
+          149824.43977864584
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17786,6 +17874,7 @@ window.BENCHMARK_DATA = {
           63493,
           63492,
           63769,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -18005,7 +18094,8 @@ window.BENCHMARK_DATA = {
           4545.287001037597,
           4736.905811945598,
           4481.940071614584,
-          4577.533850533621
+          4577.533850533621,
+          4510.248827798026
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18205,6 +18295,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
