@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
-      {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          167.9433664908776,
           172.06123638153076,
           178.79297504425048,
           182.56371884686607,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           166.79829565684,
           163.36280160683853,
           157.98740509840158,
-          178.2246840318044
+          178.2246840318044,
+          163.54591789245606
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -443,13 +443,13 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
-          528,
           536,
           536,
           536,
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          191.07316716512045,
           186.67972442081995,
           199.183309674263,
           231.6946769396464,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           239.76428587096078,
           234.11165084838868,
           234.35384324391683,
-          259.70870803197226
+          259.70870803197226,
+          238.44811379114788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -572,7 +572,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
-          688,
+          952,
           952,
           952,
           952,
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          901.804033279419,
           853.6182649612426,
           891.5863506453378,
           890.5650809605917,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           907.1032630284627,
           864.0413846333821,
           854.7048373903547,
-          1047.3008476257323
+          1047.3008476257323,
+          867.5029351552328
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
-      {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          290733.7574986049,
           281619.6502604167,
           281975.97007533483,
           298649.4815499442,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           276589.70611979166,
           273158.1563802083,
           267150.34697265626,
-          306598.6268484933
+          306598.6268484933,
+          277293.1015625
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          284916,
           284916,
           284916,
           284916,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
+          284980,
           284980
         ],
         "borderColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2053437.7658854167,
           2098761.8587740385,
           2042218.8045572916,
           2147836.0474759615,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2120777.417708333,
           2105043.0479166666,
           2166297.565848214,
-          2299801.0697916667
+          2299801.0697916667,
+          2144136.9921875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1278,7 +1278,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          3977738,
           3977738,
           3977738,
           3977738,
@@ -1327,6 +1326,7 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
+          4584416,
           4584416
         ],
         "borderColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          659648.3072265625,
           659636.8208007812,
           678343.0311197917,
           690813.5706705729,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           681378.23046875,
           647975.6565104167,
           667480.6617606027,
-          701356.70625
+          701356.70625,
+          663076.0768554688
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1437,7 +1437,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
-          866721,
+          866737,
           866737,
           866737,
           866737,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
       {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          590.4595533098493,
           575.9046996661594,
           572.834473101298,
           595.1413941065471,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           295.25477701822916,
           298.69143435160316,
           295.08082081476846,
-          310.62695396863495
+          310.62695396863495,
+          318.34378143946327
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1909,13 +1909,13 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
-          1192,
           1200,
           1200,
           1200,
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          422.0607046127319,
           400.0867781956991,
           419.7947309176127,
           450.0644242922465,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           459.9552013874054,
           463.2056982119878,
           461.98903564044406,
-          488.18733297075545
+          488.18733297075545,
+          482.5589239756266
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2038,7 +2038,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
-          1744,
+          2008,
           2008,
           2008,
           2008,
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          15428.535354614258,
           16402.207141113282,
           15287.155989583332,
           15003.299413408551,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14447.703008379254,
           14757.583208524264,
           14099.84168461391,
-          16559.56398111979
+          16559.56398111979,
+          15419.28394165039
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
-      {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          213.47624916689736,
           215.9380817583629,
           218.38870809872944,
           231.23179208437602,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           199.28388903822218,
           203.34001922607422,
           195.50008742014566,
-          218.4978681564331
+          218.4978681564331,
+          208.55345498720806
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2619,7 +2619,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          880,
           880,
           880,
           880,
@@ -2668,6 +2667,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          784,
           784
         ],
         "borderColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          189.78662632192885,
           192.6749353726705,
           185.41719624201457,
           228.7781462351481,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           240.51813103602484,
           235.8832950251443,
           231.700279601415,
-          253.82694234166826
+          253.82694234166826,
+          250.21170717875162
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2771,7 +2771,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
-          960,
+          1224,
           1224,
           1224,
           1224,
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1177.5525391896565,
           1138.007636896769,
           1160.1968612670898,
           1200.4025933401924,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1196.7106460843768,
           1209.8751998628888,
           1142.2847730000815,
-          1301.9752620697022
+          1301.9752620697022,
+          1221.9395844777425
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
-      {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          332.9062349115099,
           348.0253969192505,
           333.7147529919942,
           355.70023959477743,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           324.1367013795035,
           310.8449862162272,
           311.55052595872144,
-          325.57109610239667
+          325.57109610239667,
+          331.90583082607816
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3375,7 +3375,6 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
-          952,
           992,
           992,
           992,
@@ -3394,6 +3393,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          412.93423722585044,
           407.07984895706176,
           411.0302793820699,
           467.19529029301236,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           459.9366309642792,
           463.79639853749956,
           447.4516038161058,
-          475.9512894834791
+          475.9512894834791,
+          480.5227783203125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3504,7 +3504,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
-          1904,
+          2168,
           2168,
           2168,
           2168,
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1250.979700978597,
           1231.04967212677,
           1215.4984794616698,
           1270.6808133125305,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1238.2014982859293,
           1283.2920346941266,
           1208.8943484170097,
-          1362.7712586266655
+          1362.7712586266655,
+          1342.3559018452963
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
-      {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 12:44:39 2025 \u002B0100",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1258.4862521035332,
           1185.3442564646402,
           1175.9756165822348,
           1254.718436901386,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1056.4786418914796,
           1055.4216938018799,
           1068.9074942725044,
-          1175.2127840677897
+          1175.2127840677897,
+          1088.9597409566243
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4103,7 +4103,6 @@ window.BENCHMARK_DATA = {
           2336,
           2336,
           2336,
-          2336,
           2368,
           2368,
           2368,
@@ -4115,6 +4114,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1216.4824661254884,
           1164.1131950378417,
           1253.9695091247559,
           1245.1175818125407,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1213.2288977305095,
           1250.42152432033,
           1218.8123661041259,
-          1273.25422261556
+          1273.25422261556,
+          1274.0229181925456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4237,7 +4237,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
-          3888,
+          4152,
           4152,
           4152,
           4152,
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2718.762555531093,
           2709.8235127766925,
           2590.2343086242677,
           2770.376335961478,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2823.614532470703,
           2668.1128826141357,
           2703.362432607015,
-          3067.6608192443846
+          3067.6608192443846,
+          2766.423967088972
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4369,7 +4369,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
-          4520,
+          4536,
           4536,
           4536,
           4536,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
-        "message": "docs: fix link in README (#394)"
-      },
       {
         "sha": "d8aaae48559a0e83768916d409714db3f1f961c5",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
-      "f6640b2f",
       "d8aaae48",
       "e0d78b97",
       "bf2c3932",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1253.4246359605056,
           1258.740214892796,
           1228.2627910614015,
           1316.4008160909018,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1159.0066467285155,
           1123.452940495809,
           1145.1339630126954,
-          1221.9560544331869
+          1221.9560544331869,
+          1140.7694166623628
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4836,7 +4836,6 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
-          2368,
           2400,
           2400,
           2400,
@@ -4848,6 +4847,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          84987.55909830729,
           85550.67788085938,
           84579.75254313152,
           86110.58205566407,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           151084.22646484376,
           149890.19129356972,
           148460.44033203126,
-          148435.97880859376
+          148435.97880859376,
+          146143.82690429688
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54273,
           54273,
           54273,
           54271,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63493,
           63493,
           63493,
-          63492
+          63492,
+          63769
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          6981.408885701498,
           6952.934167044504,
           7154.258612496512,
           7268.1919593811035,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4467.649567159017,
           4476.084490966797,
           4545.287001037597,
-          4736.905811945598
+          4736.905811945598,
+          4481.940071614584
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5073,7 +5073,6 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
-          8800,
           5680,
           5680,
           5680,
@@ -5103,6 +5102,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
