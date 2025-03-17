@@ -50,7 +50,7 @@ public static partial class ThatAsyncEnumerable
 			_it = it;
 			_grammars = grammars;
 			_quantifier = quantifier;
-			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder);
+			_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder, grammars);
 			expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 		}
 
@@ -137,8 +137,7 @@ public static partial class ThatAsyncEnumerable
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount,
-					_totalCount);
+				_quantifier.AppendResult(stringBuilder, _grammars, _matchingCount, _notMatchingCount, _totalCount);
 			}
 		}
 	}

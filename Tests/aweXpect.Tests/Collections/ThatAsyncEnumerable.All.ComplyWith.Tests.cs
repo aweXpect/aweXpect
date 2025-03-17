@@ -114,6 +114,25 @@ public sealed partial class ThatAsyncEnumerable
 						             """);
 				}
 			}
+
+			public sealed class NegatedTests
+			{
+				[Fact]
+				public async Task WhenEnumerableOnlyContainsEqualValues_ShouldFail()
+				{
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 1, 1, 1,]);
+
+					async Task Act()
+						=> await That(subject).All().ComplyWith(x => x.DoesNotComplyWith(it => it.IsEqualTo(1)));
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             is not equal to 1 for all items,
+						             but not all were
+						             """);
+				}
+			}
 		}
 	}
 }
