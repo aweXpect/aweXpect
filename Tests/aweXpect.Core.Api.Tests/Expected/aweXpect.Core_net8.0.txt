@@ -475,11 +475,13 @@ namespace aweXpect.Equivalency
         public System.Collections.Generic.Dictionary<System.Type, aweXpect.Equivalency.EquivalencyTypeOptions> CustomOptions { get; init; }
         public System.Func<System.Type, aweXpect.Equivalency.EquivalencyComparisonType> DefaultComparisonTypeSelector { get; init; }
         public aweXpect.Equivalency.EquivalencyOptions For<TMember>(System.Func<aweXpect.Equivalency.EquivalencyTypeOptions, aweXpect.Equivalency.EquivalencyTypeOptions> options) { }
+        public override string ToString() { }
     }
     public class EquivalencyOptions<TExpected> : aweXpect.Equivalency.EquivalencyOptions, System.IEquatable<aweXpect.Equivalency.EquivalencyOptions<TExpected>>
     {
         public EquivalencyOptions(aweXpect.Equivalency.EquivalencyOptions inner) { }
         public new aweXpect.Equivalency.EquivalencyOptions<TExpected> For<TMember>(System.Func<aweXpect.Equivalency.EquivalencyTypeOptions, aweXpect.Equivalency.EquivalencyTypeOptions> options) { }
+        public override string ToString() { }
     }
     public class EquivalencyTypeOptions : System.IEquatable<aweXpect.Equivalency.EquivalencyTypeOptions>
     {

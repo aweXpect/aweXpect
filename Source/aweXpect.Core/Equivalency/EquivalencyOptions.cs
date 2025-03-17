@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace aweXpect.Equivalency;
 
@@ -8,14 +9,19 @@ namespace aweXpect.Equivalency;
 /// </summary>
 public record EquivalencyOptions : EquivalencyTypeOptions
 {
+	private readonly Func<Type, EquivalencyComparisonType>? _defaultComparisonTypeSelector;
+
 	/// <summary>
 	///     Specifies the selector how types should be compared, if not overwritten in the <see cref="CustomOptions" />.
 	/// </summary>
 	/// <remarks>
 	///     Defaults to use the <see cref="EquivalencyDefaults.DefaultComparisonType" />.
 	/// </remarks>
-	public Func<Type, EquivalencyComparisonType> DefaultComparisonTypeSelector { get; init; } =
-		EquivalencyDefaults.DefaultComparisonType;
+	public Func<Type, EquivalencyComparisonType> DefaultComparisonTypeSelector
+	{
+		get => _defaultComparisonTypeSelector ?? EquivalencyDefaults.DefaultComparisonType;
+		init => _defaultComparisonTypeSelector = value;
+	}
 
 	/// <summary>
 	///     Custom type-specific equivalency options.
@@ -31,6 +37,22 @@ public record EquivalencyOptions : EquivalencyTypeOptions
 		EquivalencyTypeOptions typeOptions = options(this);
 		CustomOptions.Add(typeof(TMember), typeOptions);
 		return this;
+	}
+
+	/// <inheritdoc />
+	public override string ToString()
+	{
+		StringBuilder? sb = new();
+		AppendOptions(sb);
+		foreach (KeyValuePair<Type, EquivalencyTypeOptions> customOption in CustomOptions)
+		{
+			sb.Append(" - for ");
+			Formatter.Format(sb, customOption.Key);
+			sb.AppendLine(":");
+			customOption.Value.AppendOptions(sb, "  ");
+		}
+
+		return sb.ToString().TrimEnd();
 	}
 }
 
@@ -58,4 +80,7 @@ public record EquivalencyOptions<TExpected> : EquivalencyOptions
 		base.For<TMember>(options);
 		return this;
 	}
+
+	/// <inheritdoc />
+	public override string ToString() => base.ToString();
 }

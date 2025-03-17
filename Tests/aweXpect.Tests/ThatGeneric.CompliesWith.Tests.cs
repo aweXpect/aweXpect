@@ -36,6 +36,9 @@ public sealed partial class ThatGeneric
 					               Property Value differed:
 					                    Found: 1
 					                 Expected: 2
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 		}
@@ -64,6 +67,9 @@ public sealed partial class ThatGeneric
 					               Property HasWaitedEnough differed:
 					                    Found: False
 					                 Expected: True
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 
@@ -140,6 +146,9 @@ public sealed partial class ThatGeneric
 					               Property HasWaitedEnough differed:
 					                    Found: False
 					                 Expected: True
+					             
+					             Equivalency options:
+					              - include public fields and properties
 					             """);
 			}
 

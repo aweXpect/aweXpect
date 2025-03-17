@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace aweXpect.Equivalency;
 
 /// <summary>
@@ -32,4 +34,49 @@ public record EquivalencyTypeOptions
 	///     Ignores the order of collections when checking for equivalency.
 	/// </summary>
 	public bool IgnoreCollectionOrder { get; init; }
+
+	internal void AppendOptions(StringBuilder sb, string indentation = "")
+	{
+		sb.Append(indentation).Append(" - include").Append(Fields switch
+		{
+			IncludeMembers.Public => " public",
+			IncludeMembers.Private => " private",
+			IncludeMembers.Internal => " internal",
+			_ => " no",
+		}).Append(" fields and");
+
+		if (Fields != Properties)
+		{
+			sb.Append(Properties switch
+			{
+				IncludeMembers.Public => " public",
+				IncludeMembers.Private => " private",
+				IncludeMembers.Internal => " internal",
+				_ => " no",
+			});
+		}
+
+		sb.AppendLine(" properties");
+		if (ComparisonType is not null)
+		{
+			sb.Append(indentation).Append(" - compare types ");
+			sb.AppendLine(ComparisonType switch
+			{
+				EquivalencyComparisonType.ByMembers => "by members",
+				_ => "by value",
+			});
+		}
+
+		if (IgnoreCollectionOrder)
+		{
+			sb.Append(indentation).AppendLine(" - ignore collection order");
+		}
+
+		if (MembersToIgnore.Length > 0)
+		{
+			sb.Append(indentation).Append(" - ignore members: ");
+			Formatter.Format(sb, MembersToIgnore, FormattingOptions.SingleLine);
+			sb.AppendLine();
+		}
+	}
 }
