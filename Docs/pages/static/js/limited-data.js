@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
-      {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          178.79297504425048,
           182.56371884686607,
           178.10221670071283,
           173.66952892712183,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           157.98740509840158,
           178.2246840318044,
           163.54591789245606,
-          165.92183519999188
+          165.92183519999188,
+          172.68274527390798
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -441,13 +441,13 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
-          528,
           536,
           536,
           536,
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          199.183309674263,
           231.6946769396464,
           186.79948214122228,
           190.04389559427898,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           234.35384324391683,
           259.70870803197226,
           238.44811379114788,
-          242.88882830937703
+          242.88882830937703,
+          239.68419085230147
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -570,7 +570,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
-          688,
+          952,
           952,
           952,
           952,
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          891.5863506453378,
           890.5650809605917,
           863.3809864861624,
           874.2524589538574,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           854.7048373903547,
           1047.3008476257323,
           867.5029351552328,
-          895.5982624689738
+          895.5982624689738,
+          906.6067698342459
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
-      {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          281975.97007533483,
           298649.4815499442,
           284053.9682992789,
           290605.1613420759,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           267150.34697265626,
           306598.6268484933,
           277293.1015625,
-          283522.0496744792
+          283522.0496744792,
+          284471.90084402903
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          284916,
           284916,
           284916,
           284916,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
+          284980,
           284980
         ],
         "borderColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2042218.8045572916,
           2147836.0474759615,
           2019867.22421875,
           2063046.751674107,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2166297.565848214,
           2299801.0697916667,
           2144136.9921875,
-          2212550.92421875
+          2212550.92421875,
+          2234282.2372395834
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1278,7 +1278,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          3977738,
           3977738,
           3977738,
           3977738,
@@ -1327,6 +1326,7 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
+          4584416,
           4584416
         ],
         "borderColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          678343.0311197917,
           690813.5706705729,
           670203.4954101562,
           690081.5088541667,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           667480.6617606027,
           701356.70625,
           663076.0768554688,
-          667573.0028545673
+          667573.0028545673,
+          658268.8691781851
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1435,7 +1435,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
-          866721,
+          866737,
           866737,
           866737,
           866737,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
       {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          572.834473101298,
           595.1413941065471,
           625.1195526123047,
           575.013306753976,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           295.08082081476846,
           310.62695396863495,
           318.34378143946327,
-          303.912731774648
+          303.912731774648,
+          307.12983853022257
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1907,13 +1907,13 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
-          1192,
           1200,
           1200,
           1200,
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          419.7947309176127,
           450.0644242922465,
           410.4526568821498,
           414.1491769790649,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           461.98903564044406,
           488.18733297075545,
           482.5589239756266,
-          460.875958665212
+          460.875958665212,
+          482.7237631479899
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2036,7 +2036,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
-          1744,
+          2008,
           2008,
           2008,
           2008,
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          15287.155989583332,
           15003.299413408551,
           16510.67483317057,
           14931.850549316407,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14099.84168461391,
           16559.56398111979,
           15419.28394165039,
-          17993.781623331706
+          17993.781623331706,
+          14785.222966875348
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
-      {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          218.38870809872944,
           231.23179208437602,
           225.35320029939925,
           229.8542181934629,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           195.50008742014566,
           218.4978681564331,
           208.55345498720806,
-          201.98719415664672
+          201.98719415664672,
+          200.97458520302405
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2619,7 +2619,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          880,
           880,
           880,
           880,
@@ -2668,6 +2667,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          784,
           784
         ],
         "borderColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          185.41719624201457,
           228.7781462351481,
           193.40501196043832,
           190.69795659383138,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           231.700279601415,
           253.82694234166826,
           250.21170717875162,
-          239.92496147155762
+          239.92496147155762,
+          243.7187738418579
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2769,7 +2769,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
-          960,
+          1224,
           1224,
           1224,
           1224,
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1160.1968612670898,
           1200.4025933401924,
           1156.0381518143874,
           1217.9535160064697,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1142.2847730000815,
           1301.9752620697022,
           1221.9395844777425,
-          1233.053832244873
+          1233.053832244873,
+          1210.411253229777
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
-      {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          333.7147529919942,
           355.70023959477743,
           344.400312937223,
           341.82775629483734,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           311.55052595872144,
           325.57109610239667,
           331.90583082607816,
-          316.89248394966125
+          316.89248394966125,
+          316.0221185684204
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3373,7 +3373,6 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
-          952,
           992,
           992,
           992,
@@ -3392,6 +3391,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          411.0302793820699,
           467.19529029301236,
           408.16460307439166,
           426.5458315531413,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           447.4516038161058,
           475.9512894834791,
           480.5227783203125,
-          457.31557512283325
+          457.31557512283325,
+          465.6692876815796
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3502,7 +3502,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
-          1904,
+          2168,
           2168,
           2168,
           2168,
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1215.4984794616698,
           1270.6808133125305,
           1268.836889775594,
           1256.0316761561803,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1208.8943484170097,
           1362.7712586266655,
           1342.3559018452963,
-          1305.4552368164063
+          1305.4552368164063,
+          1249.328197479248
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
-      {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
         "date": "Sat Feb 22 11:11:08 2025 \u002B0100",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1175.9756165822348,
           1254.718436901386,
           1240.073859914144,
           1208.147041193644,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1068.9074942725044,
           1175.2127840677897,
           1088.9597409566243,
-          1064.7006388346354
+          1064.7006388346354,
+          1093.1394198099772
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4101,7 +4101,6 @@ window.BENCHMARK_DATA = {
           2336,
           2336,
           2336,
-          2336,
           2368,
           2368,
           2368,
@@ -4113,6 +4112,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1253.9695091247559,
           1245.1175818125407,
           1254.9389784886287,
           1169.2599378313337,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1218.8123661041259,
           1273.25422261556,
           1274.0229181925456,
-          1261.8983540852864
+          1261.8983540852864,
+          1297.403947693961
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4235,7 +4235,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
-          3888,
+          4152,
           4152,
           4152,
           4152,
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2590.2343086242677,
           2770.376335961478,
           2704.6743069966633,
           2836.385721588135,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2703.362432607015,
           3067.6608192443846,
           2766.423967088972,
-          2836.7501820155553
+          2836.7501820155553,
+          2789.4095503489175
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4367,7 +4367,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
-          4520,
+          4536,
           4536,
           4536,
           4536,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "e0d78b97a1b88d29190c977e6faae7a28d81a38e",
-        "author": "Valentin Breu\u00DF",
-        "date": "Tue Feb 18 08:38:00 2025 \u002B0100",
-        "message": "docs: add redirects for extensions (#399)"
-      },
       {
         "sha": "bf2c3932f3e333208fb89ffbd4839317ed71147b",
         "author": "dependabot[bot]",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 12:15:04 2025 \u002B0100",
         "message": "fix: missing expectation text in collections \u0060ComplyWith\u0060 constraint (#472)"
+      },
+      {
+        "sha": "8b74560f17a738fd3a0f7b0e1a341e4c7a42f546",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 20:44:06 2025 \u002B0100",
+        "message": "fix: package reference in release mode (#473)"
       }
     ],
     "labels": [
-      "e0d78b97",
       "bf2c3932",
       "fa4ce4f4",
       "c5103c0c",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "9204701a",
       "11b106e3",
       "24fc41b1",
-      "3af9446c"
+      "3af9446c",
+      "8b74560f"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1228.2627910614015,
           1316.4008160909018,
           1282.0749186197916,
           1300.001635823931,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1145.1339630126954,
           1221.9560544331869,
           1140.7694166623628,
-          1145.4661491100605
+          1145.4661491100605,
+          1183.7077392850604
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4834,7 +4834,6 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
-          2368,
           2400,
           2400,
           2400,
@@ -4846,6 +4845,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          84579.75254313152,
           86110.58205566407,
           87871.03189290364,
           86335.90899251302,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           148460.44033203126,
           148435.97880859376,
           146143.82690429688,
-          152007.95295061384
+          152007.95295061384,
+          149824.43977864584
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54273,
           54271,
           54273,
           54271,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63493,
           63492,
           63769,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          7154.258612496512,
           7268.1919593811035,
           7104.996159362793,
           7369.830386352539,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4545.287001037597,
           4736.905811945598,
           4481.940071614584,
-          4577.533850533621
+          4577.533850533621,
+          4510.248827798026
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5071,7 +5071,6 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
-          8800,
           5680,
           5680,
           5680,
@@ -5101,6 +5100,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
