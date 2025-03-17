@@ -1206,6 +1206,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -1409,7 +1415,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -1616,7 +1623,8 @@ window.BENCHMARK_DATA = {
           164.96232867240906,
           160.9934914622988,
           166.79829565684,
-          163.36280160683853
+          163.36280160683853,
+          157.98740509840158
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1811,6 +1819,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2043,7 +2052,8 @@ window.BENCHMARK_DATA = {
           247.7314146677653,
           235.90913554600306,
           239.76428587096078,
-          234.11165084838868
+          234.11165084838868,
+          234.35384324391683
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2236,6 +2246,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2470,7 +2481,8 @@ window.BENCHMARK_DATA = {
           891.8962659200032,
           854.1869452794393,
           907.1032630284627,
-          864.0413846333821
+          864.0413846333821,
+          854.7048373903547
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2624,6 +2636,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3440,6 +3453,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -3566,7 +3585,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -3696,7 +3716,8 @@ window.BENCHMARK_DATA = {
           279082.0008789062,
           281660.68903459824,
           276589.70611979166,
-          273158.1563802083
+          273158.1563802083,
+          267150.34697265626
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3830,6 +3851,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980
         ],
@@ -3969,7 +3991,8 @@ window.BENCHMARK_DATA = {
           2137094.8239397323,
           2152093.0758928573,
           2120777.417708333,
-          2105043.0479166666
+          2105043.0479166666,
+          2166297.565848214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4085,6 +4108,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4242,7 +4266,8 @@ window.BENCHMARK_DATA = {
           657650.2616536458,
           654745.6105608259,
           681378.23046875,
-          647975.6565104167
+          647975.6565104167,
+          667480.6617606027
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4365,6 +4390,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5597,6 +5623,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -5800,7 +5832,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -6007,7 +6040,8 @@ window.BENCHMARK_DATA = {
           316.33320335241467,
           302.7200027147929,
           295.25477701822916,
-          298.69143435160316
+          298.69143435160316,
+          295.08082081476846
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6202,6 +6236,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6434,7 +6469,8 @@ window.BENCHMARK_DATA = {
           466.9131487528483,
           472.68471519763654,
           459.9552013874054,
-          463.2056982119878
+          463.2056982119878,
+          461.98903564044406
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6627,6 +6663,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -6861,7 +6898,8 @@ window.BENCHMARK_DATA = {
           16237.898856608073,
           17353.15066731771,
           14447.703008379254,
-          14757.583208524264
+          14757.583208524264,
+          14099.84168461391
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7015,6 +7053,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -8293,6 +8332,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -8496,7 +8541,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -8703,7 +8749,8 @@ window.BENCHMARK_DATA = {
           195.96122037569683,
           195.71398862202963,
           199.28388903822218,
-          203.34001922607422
+          203.34001922607422,
+          195.50008742014566
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8899,6 +8946,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9130,7 +9178,8 @@ window.BENCHMARK_DATA = {
           246.39153728485107,
           245.24175936835152,
           240.51813103602484,
-          235.8832950251443
+          235.8832950251443,
+          231.700279601415
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9323,6 +9372,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9557,7 +9607,8 @@ window.BENCHMARK_DATA = {
           1222.2253629048666,
           1207.7859367370606,
           1196.7106460843768,
-          1209.8751998628888
+          1209.8751998628888,
+          1142.2847730000815
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9711,6 +9762,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -10989,6 +11041,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -11192,7 +11250,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -11399,7 +11458,8 @@ window.BENCHMARK_DATA = {
           320.84224213872636,
           311.74326975005016,
           324.1367013795035,
-          310.8449862162272
+          310.8449862162272,
+          311.55052595872144
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11606,6 +11666,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -11826,7 +11887,8 @@ window.BENCHMARK_DATA = {
           468.40600602967396,
           456.3158748149872,
           459.9366309642792,
-          463.79639853749956
+          463.79639853749956,
+          447.4516038161058
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12019,6 +12081,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -12253,7 +12316,8 @@ window.BENCHMARK_DATA = {
           1273.5760589012732,
           1290.5970557076591,
           1238.2014982859293,
-          1283.2920346941266
+          1283.2920346941266,
+          1208.8943484170097
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12407,6 +12471,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -13685,6 +13750,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -13888,7 +13959,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -14095,7 +14167,8 @@ window.BENCHMARK_DATA = {
           1076.2518012183052,
           1112.6748668964092,
           1056.4786418914796,
-          1055.4216938018799
+          1055.4216938018799,
+          1068.9074942725044
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14290,6 +14363,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -14522,7 +14596,8 @@ window.BENCHMARK_DATA = {
           1285.541519800822,
           1255.6113290786743,
           1213.2288977305095,
-          1250.42152432033
+          1250.42152432033,
+          1218.8123661041259
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14715,6 +14790,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -14949,7 +15025,8 @@ window.BENCHMARK_DATA = {
           2806.2044576917374,
           2883.146070098877,
           2823.614532470703,
-          2668.1128826141357
+          2668.1128826141357,
+          2703.362432607015
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15149,6 +15226,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -16381,6 +16459,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 09:50:21 2025 \u002B0100",
         "message": "refactor: remove obsolete \u0060ToString\u0060 overloads (#468)"
+      },
+      {
+        "sha": "9204701a25c0a32e4ef3a53e8a0dbe189e4a41f8",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
+        "message": "build(deps): bump the tunit group with 2 updates (#470)"
       }
     ],
     "labels": [
@@ -16584,7 +16668,8 @@ window.BENCHMARK_DATA = {
       "3fff2633",
       "747a24ed",
       "736daeea",
-      "f6189ccd"
+      "f6189ccd",
+      "9204701a"
     ],
     "datasets": [
       {
@@ -16791,7 +16876,8 @@ window.BENCHMARK_DATA = {
           1195.9573783874512,
           1145.2307318369546,
           1159.0066467285155,
-          1123.452940495809
+          1123.452940495809,
+          1145.1339630126954
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16986,6 +17072,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -17218,7 +17305,8 @@ window.BENCHMARK_DATA = {
           153037.2458984375,
           149497.9458705357,
           151084.22646484376,
-          149890.19129356972
+          149890.19129356972,
+          148460.44033203126
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17429,6 +17517,7 @@ window.BENCHMARK_DATA = {
           64013,
           64013,
           64013,
+          63493,
           63493,
           63493
         ],
@@ -17645,7 +17734,8 @@ window.BENCHMARK_DATA = {
           4506.93489634196,
           4628.038524627686,
           4467.649567159017,
-          4476.084490966797
+          4476.084490966797,
+          4545.287001037597
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17845,6 +17935,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
