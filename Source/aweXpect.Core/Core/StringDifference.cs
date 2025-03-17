@@ -60,7 +60,6 @@ public sealed class StringDifference(
 		return _indexOfFirstMismatch.Value;
 	}
 
-
 	/// <inheritdoc />
 	public override string ToString() => ToString("differs");
 

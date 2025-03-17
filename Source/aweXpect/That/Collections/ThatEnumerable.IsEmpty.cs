@@ -67,13 +67,6 @@ public static partial class ThatEnumerable
 			return this;
 		}
 
-		public override string ToString()
-			=> Grammars.HasFlag(ExpectationGrammars.Nested) switch
-			{
-				true => "are empty",
-				_ => "is empty",
-			};
-
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			if (Grammars.HasFlag(ExpectationGrammars.Nested))

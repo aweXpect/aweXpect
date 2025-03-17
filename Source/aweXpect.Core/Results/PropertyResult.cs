@@ -418,10 +418,6 @@ public static class PropertyResult
 			return this;
 		}
 
-
-		public override string ToString()
-			=> expectation;
-
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(expectation);
 
