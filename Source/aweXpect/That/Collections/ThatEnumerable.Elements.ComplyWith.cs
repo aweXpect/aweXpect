@@ -47,7 +47,7 @@ public static partial class ThatEnumerable
 				: base(it, grammars)
 			{
 				_quantifier = quantifier;
-				_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder);
+				_itemExpectationBuilder = new ManualExpectationBuilder<TItem>(expectationBuilder, grammars);
 				expectations.Invoke(new ThatSubject<TItem>(_itemExpectationBuilder));
 			}
 
@@ -118,7 +118,7 @@ public static partial class ThatEnumerable
 			}
 
 			protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-				=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+				=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount,
 					_totalCount);
 		}
 	}

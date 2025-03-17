@@ -98,6 +98,7 @@ public static partial class ThatGeneric
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
+			_itemExpectationBuilder.AppendExpectation(stringBuilder, indentation);
 		}
 
 		private ConstraintResult NegateIfNegated(ConstraintResult constraintResult)
