@@ -1212,6 +1212,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -1416,7 +1422,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -1624,7 +1631,8 @@ window.BENCHMARK_DATA = {
           160.9934914622988,
           166.79829565684,
           163.36280160683853,
-          157.98740509840158
+          157.98740509840158,
+          178.2246840318044
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1819,6 +1827,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2053,7 +2062,8 @@ window.BENCHMARK_DATA = {
           235.90913554600306,
           239.76428587096078,
           234.11165084838868,
-          234.35384324391683
+          234.35384324391683,
+          259.70870803197226
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2246,6 +2256,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2482,7 +2493,8 @@ window.BENCHMARK_DATA = {
           854.1869452794393,
           907.1032630284627,
           864.0413846333821,
-          854.7048373903547
+          854.7048373903547,
+          1047.3008476257323
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2636,6 +2648,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3459,6 +3472,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -3586,7 +3605,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -3717,7 +3737,8 @@ window.BENCHMARK_DATA = {
           281660.68903459824,
           276589.70611979166,
           273158.1563802083,
-          267150.34697265626
+          267150.34697265626,
+          306598.6268484933
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3851,6 +3872,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980
@@ -3992,7 +4014,8 @@ window.BENCHMARK_DATA = {
           2152093.0758928573,
           2120777.417708333,
           2105043.0479166666,
-          2166297.565848214
+          2166297.565848214,
+          2299801.0697916667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4108,6 +4131,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4267,7 +4291,8 @@ window.BENCHMARK_DATA = {
           654745.6105608259,
           681378.23046875,
           647975.6565104167,
-          667480.6617606027
+          667480.6617606027,
+          701356.70625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4390,6 +4415,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5629,6 +5655,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -5833,7 +5865,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -6041,7 +6074,8 @@ window.BENCHMARK_DATA = {
           302.7200027147929,
           295.25477701822916,
           298.69143435160316,
-          295.08082081476846
+          295.08082081476846,
+          310.62695396863495
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6236,6 +6270,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6470,7 +6505,8 @@ window.BENCHMARK_DATA = {
           472.68471519763654,
           459.9552013874054,
           463.2056982119878,
-          461.98903564044406
+          461.98903564044406,
+          488.18733297075545
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6663,6 +6699,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -6899,7 +6936,8 @@ window.BENCHMARK_DATA = {
           17353.15066731771,
           14447.703008379254,
           14757.583208524264,
-          14099.84168461391
+          14099.84168461391,
+          16559.56398111979
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7053,6 +7091,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -8338,6 +8377,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -8542,7 +8587,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -8750,7 +8796,8 @@ window.BENCHMARK_DATA = {
           195.71398862202963,
           199.28388903822218,
           203.34001922607422,
-          195.50008742014566
+          195.50008742014566,
+          218.4978681564331
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8946,6 +8993,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9179,7 +9227,8 @@ window.BENCHMARK_DATA = {
           245.24175936835152,
           240.51813103602484,
           235.8832950251443,
-          231.700279601415
+          231.700279601415,
+          253.82694234166826
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9372,6 +9421,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9608,7 +9658,8 @@ window.BENCHMARK_DATA = {
           1207.7859367370606,
           1196.7106460843768,
           1209.8751998628888,
-          1142.2847730000815
+          1142.2847730000815,
+          1301.9752620697022
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9762,6 +9813,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -11047,6 +11099,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -11251,7 +11309,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -11459,7 +11518,8 @@ window.BENCHMARK_DATA = {
           311.74326975005016,
           324.1367013795035,
           310.8449862162272,
-          311.55052595872144
+          311.55052595872144,
+          325.57109610239667
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11666,6 +11726,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -11888,7 +11949,8 @@ window.BENCHMARK_DATA = {
           456.3158748149872,
           459.9366309642792,
           463.79639853749956,
-          447.4516038161058
+          447.4516038161058,
+          475.9512894834791
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12081,6 +12143,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -12317,7 +12380,8 @@ window.BENCHMARK_DATA = {
           1290.5970557076591,
           1238.2014982859293,
           1283.2920346941266,
-          1208.8943484170097
+          1208.8943484170097,
+          1362.7712586266655
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12471,6 +12535,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -13756,6 +13821,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -13960,7 +14031,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -14168,7 +14240,8 @@ window.BENCHMARK_DATA = {
           1112.6748668964092,
           1056.4786418914796,
           1055.4216938018799,
-          1068.9074942725044
+          1068.9074942725044,
+          1175.2127840677897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14363,6 +14436,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -14597,7 +14671,8 @@ window.BENCHMARK_DATA = {
           1255.6113290786743,
           1213.2288977305095,
           1250.42152432033,
-          1218.8123661041259
+          1218.8123661041259,
+          1273.25422261556
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14790,6 +14865,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -15026,7 +15102,8 @@ window.BENCHMARK_DATA = {
           2883.146070098877,
           2823.614532470703,
           2668.1128826141357,
-          2703.362432607015
+          2703.362432607015,
+          3067.6608192443846
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15226,6 +15303,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -16465,6 +16543,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
@@ -16669,7 +16753,8 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
@@ -16877,7 +16962,8 @@ window.BENCHMARK_DATA = {
           1145.2307318369546,
           1159.0066467285155,
           1123.452940495809,
-          1145.1339630126954
+          1145.1339630126954,
+          1221.9560544331869
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17072,6 +17158,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -17306,7 +17393,8 @@ window.BENCHMARK_DATA = {
           149497.9458705357,
           151084.22646484376,
           149890.19129356972,
-          148460.44033203126
+          148460.44033203126,
+          148435.97880859376
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17519,7 +17607,8 @@ window.BENCHMARK_DATA = {
           64013,
           63493,
           63493,
-          63493
+          63493,
+          63492
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17735,7 +17824,8 @@ window.BENCHMARK_DATA = {
           4628.038524627686,
           4467.649567159017,
           4476.084490966797,
-          4545.287001037597
+          4545.287001037597,
+          4736.905811945598
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17935,6 +18025,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
