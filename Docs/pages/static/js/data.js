@@ -1218,6 +1218,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -1423,7 +1429,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -1632,7 +1639,8 @@ window.BENCHMARK_DATA = {
           166.79829565684,
           163.36280160683853,
           157.98740509840158,
-          178.2246840318044
+          178.2246840318044,
+          163.54591789245606
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1827,6 +1835,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2063,7 +2072,8 @@ window.BENCHMARK_DATA = {
           239.76428587096078,
           234.11165084838868,
           234.35384324391683,
-          259.70870803197226
+          259.70870803197226,
+          238.44811379114788
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2256,6 +2266,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2494,7 +2505,8 @@ window.BENCHMARK_DATA = {
           907.1032630284627,
           864.0413846333821,
           854.7048373903547,
-          1047.3008476257323
+          1047.3008476257323,
+          867.5029351552328
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2648,6 +2660,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3478,6 +3491,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -3606,7 +3625,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -3738,7 +3758,8 @@ window.BENCHMARK_DATA = {
           276589.70611979166,
           273158.1563802083,
           267150.34697265626,
-          306598.6268484933
+          306598.6268484933,
+          277293.1015625
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3872,6 +3893,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4015,7 +4037,8 @@ window.BENCHMARK_DATA = {
           2120777.417708333,
           2105043.0479166666,
           2166297.565848214,
-          2299801.0697916667
+          2299801.0697916667,
+          2144136.9921875
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4131,6 +4154,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4292,7 +4316,8 @@ window.BENCHMARK_DATA = {
           681378.23046875,
           647975.6565104167,
           667480.6617606027,
-          701356.70625
+          701356.70625,
+          663076.0768554688
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4415,6 +4440,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5661,6 +5687,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -5866,7 +5898,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -6075,7 +6108,8 @@ window.BENCHMARK_DATA = {
           295.25477701822916,
           298.69143435160316,
           295.08082081476846,
-          310.62695396863495
+          310.62695396863495,
+          318.34378143946327
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6270,6 +6304,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6506,7 +6541,8 @@ window.BENCHMARK_DATA = {
           459.9552013874054,
           463.2056982119878,
           461.98903564044406,
-          488.18733297075545
+          488.18733297075545,
+          482.5589239756266
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6699,6 +6735,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -6937,7 +6974,8 @@ window.BENCHMARK_DATA = {
           14447.703008379254,
           14757.583208524264,
           14099.84168461391,
-          16559.56398111979
+          16559.56398111979,
+          15419.28394165039
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7091,6 +7129,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -8383,6 +8422,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -8588,7 +8633,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -8797,7 +8843,8 @@ window.BENCHMARK_DATA = {
           199.28388903822218,
           203.34001922607422,
           195.50008742014566,
-          218.4978681564331
+          218.4978681564331,
+          208.55345498720806
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8993,6 +9040,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9228,7 +9276,8 @@ window.BENCHMARK_DATA = {
           240.51813103602484,
           235.8832950251443,
           231.700279601415,
-          253.82694234166826
+          253.82694234166826,
+          250.21170717875162
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9421,6 +9470,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9659,7 +9709,8 @@ window.BENCHMARK_DATA = {
           1196.7106460843768,
           1209.8751998628888,
           1142.2847730000815,
-          1301.9752620697022
+          1301.9752620697022,
+          1221.9395844777425
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9813,6 +9864,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -11105,6 +11157,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -11310,7 +11368,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -11519,7 +11578,8 @@ window.BENCHMARK_DATA = {
           324.1367013795035,
           310.8449862162272,
           311.55052595872144,
-          325.57109610239667
+          325.57109610239667,
+          331.90583082607816
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11726,6 +11786,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -11950,7 +12011,8 @@ window.BENCHMARK_DATA = {
           459.9366309642792,
           463.79639853749956,
           447.4516038161058,
-          475.9512894834791
+          475.9512894834791,
+          480.5227783203125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12143,6 +12205,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -12381,7 +12444,8 @@ window.BENCHMARK_DATA = {
           1238.2014982859293,
           1283.2920346941266,
           1208.8943484170097,
-          1362.7712586266655
+          1362.7712586266655,
+          1342.3559018452963
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12535,6 +12599,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -13827,6 +13892,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -14032,7 +14103,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -14241,7 +14313,8 @@ window.BENCHMARK_DATA = {
           1056.4786418914796,
           1055.4216938018799,
           1068.9074942725044,
-          1175.2127840677897
+          1175.2127840677897,
+          1088.9597409566243
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14436,6 +14509,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -14672,7 +14746,8 @@ window.BENCHMARK_DATA = {
           1213.2288977305095,
           1250.42152432033,
           1218.8123661041259,
-          1273.25422261556
+          1273.25422261556,
+          1274.0229181925456
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14865,6 +14940,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -15103,7 +15179,8 @@ window.BENCHMARK_DATA = {
           2823.614532470703,
           2668.1128826141357,
           2703.362432607015,
-          3067.6608192443846
+          3067.6608192443846,
+          2766.423967088972
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15303,6 +15380,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -16549,6 +16627,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
         "message": "refactor: move nullable tests in subclass (#471)"
+      },
+      {
+        "sha": "24fc41b18b6b349e5024e57a39e9eb7e8892e3c0",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 17 09:25:51 2025 \u002B0000",
+        "message": "build(deps): bump FluentAssertions and Microsoft.NETFramework.ReferenceAssemblies (#469)"
       }
     ],
     "labels": [
@@ -16754,7 +16838,8 @@ window.BENCHMARK_DATA = {
       "736daeea",
       "f6189ccd",
       "9204701a",
-      "11b106e3"
+      "11b106e3",
+      "24fc41b1"
     ],
     "datasets": [
       {
@@ -16963,7 +17048,8 @@ window.BENCHMARK_DATA = {
           1159.0066467285155,
           1123.452940495809,
           1145.1339630126954,
-          1221.9560544331869
+          1221.9560544331869,
+          1140.7694166623628
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17158,6 +17244,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -17394,7 +17481,8 @@ window.BENCHMARK_DATA = {
           151084.22646484376,
           149890.19129356972,
           148460.44033203126,
-          148435.97880859376
+          148435.97880859376,
+          146143.82690429688
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17608,7 +17696,8 @@ window.BENCHMARK_DATA = {
           63493,
           63493,
           63493,
-          63492
+          63492,
+          63769
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17825,7 +17914,8 @@ window.BENCHMARK_DATA = {
           4467.649567159017,
           4476.084490966797,
           4545.287001037597,
-          4736.905811945598
+          4736.905811945598,
+          4481.940071614584
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18025,6 +18115,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
