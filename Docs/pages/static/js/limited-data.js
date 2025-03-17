@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
-      {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          181.7518288918904,
           167.9433664908776,
           172.06123638153076,
           178.79297504425048,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           160.9934914622988,
           166.79829565684,
           163.36280160683853,
-          157.98740509840158
+          157.98740509840158,
+          178.2246840318044
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -444,13 +444,13 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
-          528,
           536,
           536,
           536,
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          194.8697292621319,
           191.07316716512045,
           186.67972442081995,
           199.183309674263,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           235.90913554600306,
           239.76428587096078,
           234.11165084838868,
-          234.35384324391683
+          234.35384324391683,
+          259.70870803197226
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -573,7 +573,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
-          688,
+          952,
           952,
           952,
           952,
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1317.8601283391317,
           901.804033279419,
           853.6182649612426,
           891.5863506453378,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           854.1869452794393,
           907.1032630284627,
           864.0413846333821,
-          854.7048373903547
+          854.7048373903547,
+          1047.3008476257323
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
-      {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          285669.0477539062,
           290733.7574986049,
           281619.6502604167,
           281975.97007533483,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           281660.68903459824,
           276589.70611979166,
           273158.1563802083,
-          267150.34697265626
+          267150.34697265626,
+          306598.6268484933
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          284916,
           284916,
           284916,
           284916,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           284660,
           284980,
           284980,
+          284980,
           284980
         ],
         "borderColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2114869.402901786,
           2053437.7658854167,
           2098761.8587740385,
           2042218.8045572916,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2152093.0758928573,
           2120777.417708333,
           2105043.0479166666,
-          2166297.565848214
+          2166297.565848214,
+          2299801.0697916667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1278,7 +1278,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          3977738,
           3977738,
           3977738,
           3977738,
@@ -1327,6 +1326,7 @@ window.BENCHMARK_DATA = {
           4584416,
           4584416,
           4584416,
+          4584416,
           4584416
         ],
         "borderColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          654988.8837193081,
           659648.3072265625,
           659636.8208007812,
           678343.0311197917,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           654745.6105608259,
           681378.23046875,
           647975.6565104167,
-          667480.6617606027
+          667480.6617606027,
+          701356.70625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1438,7 +1438,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
-          866721,
+          866737,
           866737,
           866737,
           866737,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
       {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          593.3588637034098,
           590.4595533098493,
           575.9046996661594,
           572.834473101298,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           302.7200027147929,
           295.25477701822916,
           298.69143435160316,
-          295.08082081476846
+          295.08082081476846,
+          310.62695396863495
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1910,13 +1910,13 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
-          1192,
           1200,
           1200,
           1200,
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          422.5835122426351,
           422.0607046127319,
           400.0867781956991,
           419.7947309176127,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           472.68471519763654,
           459.9552013874054,
           463.2056982119878,
-          461.98903564044406
+          461.98903564044406,
+          488.18733297075545
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2039,7 +2039,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
-          1744,
+          2008,
           2008,
           2008,
           2008,
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          15008.982607014974,
           15428.535354614258,
           16402.207141113282,
           15287.155989583332,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           17353.15066731771,
           14447.703008379254,
           14757.583208524264,
-          14099.84168461391
+          14099.84168461391,
+          16559.56398111979
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
-      {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          239.5079508940379,
           213.47624916689736,
           215.9380817583629,
           218.38870809872944,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           195.71398862202963,
           199.28388903822218,
           203.34001922607422,
-          195.50008742014566
+          195.50008742014566,
+          218.4978681564331
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2619,7 +2619,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          880,
           880,
           880,
           880,
@@ -2668,6 +2667,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          784,
           784
         ],
         "borderColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          195.54911555846533,
           189.78662632192885,
           192.6749353726705,
           185.41719624201457,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           245.24175936835152,
           240.51813103602484,
           235.8832950251443,
-          231.700279601415
+          231.700279601415,
+          253.82694234166826
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2772,7 +2772,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
-          960,
+          1224,
           1224,
           1224,
           1224,
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1157.5352917989096,
           1177.5525391896565,
           1138.007636896769,
           1160.1968612670898,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1207.7859367370606,
           1196.7106460843768,
           1209.8751998628888,
-          1142.2847730000815
+          1142.2847730000815,
+          1301.9752620697022
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
-      {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          349.86260458628334,
           332.9062349115099,
           348.0253969192505,
           333.7147529919942,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           311.74326975005016,
           324.1367013795035,
           310.8449862162272,
-          311.55052595872144
+          311.55052595872144,
+          325.57109610239667
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3376,7 +3376,6 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
-          952,
           992,
           992,
           992,
@@ -3395,6 +3394,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          417.97452425956726,
           412.93423722585044,
           407.07984895706176,
           411.0302793820699,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           456.3158748149872,
           459.9366309642792,
           463.79639853749956,
-          447.4516038161058
+          447.4516038161058,
+          475.9512894834791
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3505,7 +3505,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
-          1904,
+          2168,
           2168,
           2168,
           2168,
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1267.477118219648,
           1250.979700978597,
           1231.04967212677,
           1215.4984794616698,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1290.5970557076591,
           1238.2014982859293,
           1283.2920346941266,
-          1208.8943484170097
+          1208.8943484170097,
+          1362.7712586266655
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
-      {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
         "date": "Sun Feb 16 10:42:13 2025 \u002B0100",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1235.6281406402588,
           1258.4862521035332,
           1185.3442564646402,
           1175.9756165822348,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1112.6748668964092,
           1056.4786418914796,
           1055.4216938018799,
-          1068.9074942725044
+          1068.9074942725044,
+          1175.2127840677897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4104,7 +4104,6 @@ window.BENCHMARK_DATA = {
           2336,
           2336,
           2336,
-          2336,
           2368,
           2368,
           2368,
@@ -4116,6 +4115,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1206.4140895843507,
           1216.4824661254884,
           1164.1131950378417,
           1253.9695091247559,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1255.6113290786743,
           1213.2288977305095,
           1250.42152432033,
-          1218.8123661041259
+          1218.8123661041259,
+          1273.25422261556
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4238,7 +4238,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
-          3888,
+          4152,
           4152,
           4152,
           4152,
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2689.551872253418,
           2718.762555531093,
           2709.8235127766925,
           2590.2343086242677,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2883.146070098877,
           2823.614532470703,
           2668.1128826141357,
-          2703.362432607015
+          2703.362432607015,
+          3067.6608192443846
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4370,7 +4370,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
-          4520,
+          4536,
           4536,
           4536,
           4536,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "dd4803124f8423871f8991f18170388f6e4b0733",
-        "author": "Valentin Breu\u00DF",
-        "date": "Sun Feb 16 09:05:55 2025 \u002B0100",
-        "message": "docs: add nuget badge to extension documentation page (#393)"
-      },
       {
         "sha": "f6640b2ffdf76d5eda2b70b9626946a384736c49",
         "author": "Valentin Breu\u00DF",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Mar 17 10:12:05 2025 \u002B0100",
         "message": "build(deps): bump the tunit group with 2 updates (#470)"
+      },
+      {
+        "sha": "11b106e3b546c479a2b5f6c022fded08e9f97bef",
+        "author": "Valentin Breu\u00DF",
+        "date": "Mon Mar 17 10:17:11 2025 \u002B0100",
+        "message": "refactor: move nullable tests in subclass (#471)"
       }
     ],
     "labels": [
-      "dd480312",
       "f6640b2f",
       "d8aaae48",
       "e0d78b97",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "747a24ed",
       "736daeea",
       "f6189ccd",
-      "9204701a"
+      "9204701a",
+      "11b106e3"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1345.4889954158239,
           1253.4246359605056,
           1258.740214892796,
           1228.2627910614015,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1145.2307318369546,
           1159.0066467285155,
           1123.452940495809,
-          1145.1339630126954
+          1145.1339630126954,
+          1221.9560544331869
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4837,7 +4837,6 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
-          2368,
           2400,
           2400,
           2400,
@@ -4849,6 +4848,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          87469.1875813802,
           84987.55909830729,
           85550.67788085938,
           84579.75254313152,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           149497.9458705357,
           151084.22646484376,
           149890.19129356972,
-          148460.44033203126
+          148460.44033203126,
+          148435.97880859376
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54273,
           54273,
           54273,
           54273,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           64013,
           63493,
           63493,
-          63493
+          63493,
+          63492
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          7246.210503133138,
           6981.408885701498,
           6952.934167044504,
           7154.258612496512,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4628.038524627686,
           4467.649567159017,
           4476.084490966797,
-          4545.287001037597
+          4545.287001037597,
+          4736.905811945598
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5074,7 +5074,6 @@ window.BENCHMARK_DATA = {
           8800,
           8800,
           8800,
-          8800,
           5680,
           5680,
           5680,
@@ -5104,6 +5103,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
