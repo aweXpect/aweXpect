@@ -56,12 +56,6 @@ public partial class StringEqualityOptions
 			int minCommonLength = Math.Min(actual.Length, expected.Length);
 			StringDifference stringDifference = new(actual, expected, comparer, settings);
 			int indexOfFirstMismatch = stringDifference.IndexOfFirstMismatch(StringDifference.MatchType.Equality);
-			if (indexOfFirstMismatch == 0 && comparer.Equals(actual.TrimStart(), expected))
-			{
-				return
-					$"{prefix} which has unexpected whitespace (\"{actual.Substring(0, GetIndexOfFirstMatch(actual, expected, comparer)).DisplayWhitespace().TruncateWithEllipsis(100)}\" at the beginning)";
-			}
-
 			if (indexOfFirstMismatch == 0 && comparer.Equals(actual, expected.TrimStart()))
 			{
 				return
@@ -84,12 +78,6 @@ public partial class StringEqualityOptions
 			{
 				return
 					$"{prefix} with a length of {actual.Length} which is shorter than the expected length of {expected.Length} and misses:{Environment.NewLine}  \"{expected.Substring(actual.Length).TruncateWithEllipsis(100)}\"";
-			}
-
-			if (actual.Length > expected.Length && indexOfFirstMismatch == expected.Length)
-			{
-				return
-					$"{prefix} with a length of {actual.Length} which is longer than the expected length of {expected.Length} and has superfluous:{Environment.NewLine}  \"{actual.Substring(expected.Length).TruncateWithEllipsis(100)}\"";
 			}
 
 			return $"{prefix} which {stringDifference}";

@@ -196,5 +196,49 @@ public sealed partial class ThatString
 					             """);
 			}
 		}
+
+		public sealed class AsSuffixNegatedTests
+		{
+			[Fact]
+			public async Task WhenStringEndsWithExpected_ShouldFail()
+			{
+				string subject = "some text without out";
+				string expected = "text without out";
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => it.IsEqualTo(expected).AsSuffix().IgnoringCase());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not end with "text without out" ignoring case,
+					             but it was "some text without out"
+
+					             Actual:
+					             some text without out
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenStringEndsWithExpected_UsingCustomComparer_ShouldFail()
+			{
+				string subject = "some text without out";
+				string expected = "text wIthOUt OUt";
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsEqualTo(expected).AsSuffix().Using(new IgnoreCaseForVocalsComparer()));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not end with "text wIthOUt OUt" using IgnoreCaseForVocalsComparer,
+					             but it was "some text without out"
+
+					             Actual:
+					             some text without out
+					             """);
+			}
+		}
 	}
 }
