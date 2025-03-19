@@ -1254,6 +1254,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -1465,7 +1471,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -1680,7 +1687,8 @@ window.BENCHMARK_DATA = {
           172.68274527390798,
           180.71712684631348,
           173.76708812713622,
-          176.6302481174469
+          176.6302481174469,
+          170.26065149307252
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1875,6 +1883,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2123,7 +2132,8 @@ window.BENCHMARK_DATA = {
           239.68419085230147,
           264.3397433757782,
           254.37777904101782,
-          261.26113214492796
+          261.26113214492796,
+          241.17864256638748
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2316,6 +2326,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2566,7 +2577,8 @@ window.BENCHMARK_DATA = {
           906.6067698342459,
           948.2278507672823,
           924.9879849116007,
-          945.1787460872105
+          945.1787460872105,
+          913.6364226023356
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2720,6 +2732,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3592,6 +3605,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -3726,7 +3745,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -3864,7 +3884,8 @@ window.BENCHMARK_DATA = {
           284471.90084402903,
           292411.8892903646,
           279142.3519856771,
-          291802.00309244794
+          291802.00309244794,
+          283539.51492513024
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3998,6 +4019,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4153,7 +4175,8 @@ window.BENCHMARK_DATA = {
           2234282.2372395834,
           2373078.324479167,
           2244931.4364583334,
-          2391938.5811941964
+          2391938.5811941964,
+          2350614.045052083
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4269,6 +4292,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4442,7 +4466,8 @@ window.BENCHMARK_DATA = {
           658268.8691781851,
           683795.1105608259,
           683855.6362304688,
-          667701.316545759
+          667701.316545759,
+          668431.1036658654
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4565,6 +4590,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5853,6 +5879,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -6064,7 +6096,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -6279,7 +6312,8 @@ window.BENCHMARK_DATA = {
           307.12983853022257,
           316.50242703755697,
           328.2137557097844,
-          307.7271069117955
+          307.7271069117955,
+          315.3617300669352
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6474,6 +6508,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6722,7 +6757,8 @@ window.BENCHMARK_DATA = {
           482.7237631479899,
           505.96081390380857,
           518.4237146377563,
-          482.2837441444397
+          482.2837441444397,
+          505.73970858256024
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -6915,6 +6951,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -7165,7 +7202,8 @@ window.BENCHMARK_DATA = {
           14785.222966875348,
           15335.068558756511,
           15482.237575276693,
-          16992.99462236677
+          16992.99462236677,
+          14717.510885385367
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7319,6 +7357,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -8653,6 +8692,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -8864,7 +8909,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -9079,7 +9125,8 @@ window.BENCHMARK_DATA = {
           200.97458520302405,
           212.77688984870912,
           213.12408639589947,
-          228.5134648958842
+          228.5134648958842,
+          198.7790673630578
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9275,6 +9322,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9522,7 +9570,8 @@ window.BENCHMARK_DATA = {
           243.7187738418579,
           258.99439767201744,
           256.25449688094005,
-          254.91321617762247
+          254.91321617762247,
+          248.4615275065104
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9715,6 +9764,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -9965,7 +10015,8 @@ window.BENCHMARK_DATA = {
           1210.411253229777,
           1220.597413889567,
           1268.1213821411134,
-          1248.5108115332466
+          1248.5108115332466,
+          1197.3660872323173
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10119,6 +10170,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -11453,6 +11505,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -11664,7 +11722,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -11879,7 +11938,8 @@ window.BENCHMARK_DATA = {
           316.0221185684204,
           337.60048491160074,
           332.73864224978854,
-          324.72881041254317
+          324.72881041254317,
+          323.1034324645996
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12086,6 +12146,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -12322,7 +12383,8 @@ window.BENCHMARK_DATA = {
           465.6692876815796,
           486.19733295440676,
           518.8307388941447,
-          474.121267636617
+          474.121267636617,
+          461.00527041753134
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12515,6 +12577,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -12765,7 +12828,8 @@ window.BENCHMARK_DATA = {
           1249.328197479248,
           1271.675506210327,
           1365.8808971405028,
-          1301.1841406504313
+          1301.1841406504313,
+          1274.7612510681151
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12919,6 +12983,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -14253,6 +14318,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -14464,7 +14535,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -14679,7 +14751,8 @@ window.BENCHMARK_DATA = {
           1093.1394198099772,
           1099.9575327555337,
           1120.065237045288,
-          1071.0747042338053
+          1071.0747042338053,
+          1063.5104094285232
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -14874,6 +14947,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -15122,7 +15196,8 @@ window.BENCHMARK_DATA = {
           1297.403947693961,
           1381.5749364217122,
           1352.5350563049317,
-          1349.4627017974854
+          1349.4627017974854,
+          1247.8314323425293
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15315,6 +15390,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -15565,7 +15641,8 @@ window.BENCHMARK_DATA = {
           2789.4095503489175,
           2899.0117762247723,
           2941.913101196289,
-          2783.641153717041
+          2783.641153717041,
+          2798.0536120096845
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15765,6 +15842,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -17053,6 +17131,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Wed Mar 19 14:29:36 2025 \u002B0100",
         "message": "refactor: solve sonar issues (#478)"
+      },
+      {
+        "sha": "4cfb62e93d273505ae62e73c6ffb4adb93c16ef9",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Mar 19 15:23:28 2025 \u002B0100",
+        "message": "chore: update aweXpect.Core to v2.0.0 (#479)"
       }
     ],
     "labels": [
@@ -17264,7 +17348,8 @@ window.BENCHMARK_DATA = {
       "8b74560f",
       "8d5a0760",
       "b100e91a",
-      "12cced9d"
+      "12cced9d",
+      "4cfb62e9"
     ],
     "datasets": [
       {
@@ -17479,7 +17564,8 @@ window.BENCHMARK_DATA = {
           1183.7077392850604,
           1220.6338747569494,
           1160.2002478281656,
-          1142.9465913772583
+          1142.9465913772583,
+          1166.0270200093587
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17674,6 +17760,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -17922,7 +18009,8 @@ window.BENCHMARK_DATA = {
           149824.43977864584,
           149908.09283854166,
           153396.05737304688,
-          149150.0044596354
+          149150.0044596354,
+          148959.8798828125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18142,7 +18230,8 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63788,
-          63788
+          63788,
+          63352
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18365,7 +18454,8 @@ window.BENCHMARK_DATA = {
           4510.248827798026,
           4614.643771870931,
           4702.3288650512695,
-          4671.771960122244
+          4671.771960122244,
+          4512.383724975586
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18565,6 +18655,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
