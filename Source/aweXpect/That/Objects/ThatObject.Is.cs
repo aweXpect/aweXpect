@@ -65,17 +65,20 @@ public static partial class ThatObject
 			Formatter.Format(stringBuilder, typeof(TType));
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not type ");
 			Formatter.Format(stringBuilder, typeof(TType));
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class IsOfTypeConstraint(string it, ExpectationGrammars grammars, Type type)
@@ -95,16 +98,19 @@ public static partial class ThatObject
 			Formatter.Format(stringBuilder, type);
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not type ");
 			Formatter.Format(stringBuilder, type);
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }

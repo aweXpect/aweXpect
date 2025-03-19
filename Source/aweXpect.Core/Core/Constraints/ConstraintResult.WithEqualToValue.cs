@@ -8,8 +8,22 @@ namespace aweXpect.Core.Constraints;
 public abstract partial class ConstraintResult
 {
 	/// <summary>
-	///     A typed <see cref="ConstraintResult" />.
+	///     A typed <see cref="ConstraintResult" /> for equality comparison to ensure that
+	///     <see langword="null" /> is handled consistently.
 	/// </summary>
+	/// <param name="it">The <c>it</c> parameter.</param>
+	/// <param name="grammars">The expectation grammars.</param>
+	/// <param name="isExpectedNull">
+	///     Flag indicating if the expected parameter for the equality comparison is
+	///     <see langword="null" /> or not.
+	/// </param>
+	/// <remarks>
+	///     Set <see cref="Actual" /> in one of the <c>IsMetBy</c> overloads of <see cref="IConstraint" /> and overwrite<br />
+	///     - <see cref="AppendNormalExpectation" /> / <see cref="AppendNegatedExpectation" />
+	///     which add the normal and negated expectation strings<br />
+	///     - <see cref="AppendNormalResult" /> / <see cref="AppendNegatedResult" />
+	///     which add the normal and negated result strings
+	/// </remarks>
 	public abstract class WithEqualToValue<T>(string it, ExpectationGrammars grammars, bool isExpectedNull)
 		: ConstraintResult(grammars)
 	{
@@ -62,7 +76,7 @@ public abstract partial class ConstraintResult
 		///     negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		protected virtual void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null) { }
+		protected abstract void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null);
 
 		/// <summary>
 		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
@@ -76,11 +90,18 @@ public abstract partial class ConstraintResult
 		///     negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		protected virtual void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null) { }
+		protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
+
+		/// <summary>
+		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="Outcome" />
+		///     is <see cref="Outcome.Undecided" />.
+		/// </summary>
+		protected virtual void AppendUndecidedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append("could not verify, because it was already cancelled");
 
 		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		public sealed override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			if (Grammars.IsNegated())
 			{
@@ -94,11 +115,15 @@ public abstract partial class ConstraintResult
 
 		/// <inheritdoc cref="ConstraintResult.AppendResult(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		public sealed override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			if (Actual is null)
 			{
 				stringBuilder.ItWasNull(It);
+			}
+			else if (Outcome == Outcome.Undecided)
+			{
+				AppendUndecidedResult(stringBuilder, indentation);
 			}
 			else if (Grammars.IsNegated())
 			{

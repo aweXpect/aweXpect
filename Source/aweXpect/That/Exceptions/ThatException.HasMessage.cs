@@ -67,6 +67,9 @@ public static partial class ThatException
 			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars));
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual?.Message, expected));
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			ExpectationGrammars equalityGrammars = Grammars;
@@ -87,7 +90,7 @@ public static partial class ThatException
 			stringBuilder.Append(options.GetExpectation(expected, equalityGrammars));
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual?.Message, expected));
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }

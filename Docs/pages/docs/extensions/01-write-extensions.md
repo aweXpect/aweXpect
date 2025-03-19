@@ -121,7 +121,9 @@ in most cases with one of the following helper classes:
 - `ConstraintResult.WithNotNullValue<T>`
   Similar to `ConstraintResult.WithValue<T>`, but will automatically include a check that Actual is not `null` with the
   generic result text.
--
+- `ConstraintResult.WithEqualToValue<T>`
+  Ensures consistent `null`-handling when comparing two values for equality. Similar to `ConstraintResult.WithValue<T>`,
+  but you have to also provide a flag, indicating if the expected value is `null` or not.
 
 With these the above example could be written (with support for the negated case):
 

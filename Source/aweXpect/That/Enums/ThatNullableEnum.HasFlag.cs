@@ -48,17 +48,20 @@ public static partial class ThatNullableEnum
 			Formatter.Format(stringBuilder, expectedFlag);
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("does not have flag ");
 			Formatter.Format(stringBuilder, expectedFlag);
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 
 		private static bool HasNullableFlag(TEnum? actual, TEnum? expectedFlag)
 			=> (actual == null && expectedFlag == null) ||

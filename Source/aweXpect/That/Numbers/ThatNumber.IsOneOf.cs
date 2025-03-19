@@ -1441,6 +1441,12 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
@@ -1448,11 +1454,8 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class NullableIsOneOfConstraint<TNumber>(
@@ -1478,6 +1481,12 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
@@ -1485,11 +1494,8 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class IsOneOfConstraintWithNullable<TNumber>(
@@ -1515,6 +1521,12 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
@@ -1522,11 +1534,8 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class NullableIsOneOfConstraintWithNullable<TNumber>(
@@ -1552,6 +1561,12 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("is not one of ");
@@ -1559,10 +1574,7 @@ public static partial class ThatNumber
 			stringBuilder.Append(options);
 		}
 
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual);
-		}
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }
