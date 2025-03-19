@@ -7,8 +7,17 @@ namespace aweXpect.Core.Constraints;
 public abstract partial class ConstraintResult
 {
 	/// <summary>
-	///     A <see cref="ConstraintResult" /> with only an expectation text.
+	///     A <see cref="ConstraintResult" /> which only adds an expectation text.
 	/// </summary>
+	/// <param name="grammars">The expectation grammars.</param>
+	/// <param name="expectation">
+	///     The expectation text in the normal case.<br />
+	///     Will not add anything when set to <see langword="null" />.
+	/// </param>
+	/// <param name="negatedExpectation">
+	///     The expectation text in the negated case.<br />
+	///     Will not add anything when set to <see langword="null" />.
+	/// </param>
 	public class ExpectationOnly<T>(
 		ExpectationGrammars grammars,
 		string? expectation = null,
@@ -59,7 +68,7 @@ public abstract partial class ConstraintResult
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected virtual void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (expectation != null)
+			if (negatedExpectation != null)
 			{
 				stringBuilder.Append(negatedExpectation);
 			}

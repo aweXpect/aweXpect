@@ -7,8 +7,15 @@ namespace aweXpect.Core.Constraints;
 public abstract partial class ConstraintResult
 {
 	/// <summary>
-	///     A typed <see cref="ConstraintResult" />.
+	///     A typed <see cref="ConstraintResult" /> which stores the actual value in the <see cref="Actual" /> property.
 	/// </summary>
+	/// <remarks>
+	///     Set <see cref="Actual" /> in one of the <c>IsMetBy</c> overloads of <see cref="IConstraint" /> and overwrite<br />
+	///     - <see cref="AppendNormalExpectation" /> / <see cref="AppendNegatedExpectation" />
+	///     which add the normal and negated expectation strings<br />
+	///     - <see cref="AppendNormalResult" /> / <see cref="AppendNegatedResult" />
+	///     which add the normal and negated result strings
+	/// </remarks>
 	public abstract class WithValue<T>(ExpectationGrammars grammars) : ConstraintResult(grammars)
 	{
 		private Outcome _outcome = Outcome.Undecided;
@@ -47,7 +54,7 @@ public abstract partial class ConstraintResult
 		///     negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		protected virtual void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null) { }
+		protected abstract void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null);
 
 		/// <summary>
 		///     Appends the expectation to the <paramref name="stringBuilder" /> when the <see cref="ExpectationGrammars" /> are
@@ -61,7 +68,7 @@ public abstract partial class ConstraintResult
 		///     negated.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		protected virtual void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null) { }
+		protected abstract void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null);
 
 		/// <summary>
 		///     Appends the result to the <paramref name="stringBuilder" /> when the <see cref="Outcome" />
@@ -72,7 +79,7 @@ public abstract partial class ConstraintResult
 
 		/// <inheritdoc cref="ConstraintResult.AppendExpectation(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+		public sealed override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			if (Grammars.IsNegated())
 			{
@@ -86,7 +93,7 @@ public abstract partial class ConstraintResult
 
 		/// <inheritdoc cref="ConstraintResult.AppendResult(StringBuilder, string?)" />
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		public sealed override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			if (Outcome == Outcome.Undecided)
 			{

@@ -97,14 +97,17 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(ExpectIsInfinite);
 
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(ExpectIsNotInfinite);
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
 		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class IsDoubleInfiniteConstraint(
@@ -123,14 +126,17 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(ExpectIsInfinite);
 
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(ExpectIsNotInfinite);
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
 		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class NullableIsFloatInfiniteConstraint(
@@ -149,14 +155,17 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(ExpectIsInfinite);
 
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(ExpectIsNotInfinite);
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
 		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
 	private sealed class NullableIsDoubleInfiniteConstraint(
@@ -175,13 +184,16 @@ public static partial class ThatNumber
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(ExpectIsInfinite);
 
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(ExpectIsNotInfinite);
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
 		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(ExpectIsNotInfinite);
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }
