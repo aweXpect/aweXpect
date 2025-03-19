@@ -322,7 +322,7 @@ public class ExpectTests
 				             """);
 		}
 
-		[Fact(Skip = "TODO: Check later")]
+		[Fact]
 		public async Task WhenNested_ShouldIndentMultiLineResults()
 		{
 			async Task Act()

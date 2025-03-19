@@ -29,10 +29,10 @@ public static class MyConstraintExtensions
 		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(expectation);
+			=> stringBuilder.Append(expectation.Indent(indentation, false));
 
 		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(failureMessage);
+			=> stringBuilder.Append(failureMessage.Indent(indentation, false));
 
 		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
 		{
