@@ -11,7 +11,6 @@ public partial class ThatDelegateThrows<TException>
 	: ExpectationResult<TException, ThatDelegateThrows<TException>>, IThatDelegateThrows<TException>
 	where TException : Exception?
 {
-	private const string ExceptionString = "exception";
 	private readonly ThatDelegate.ThrowsOption _throwOptions;
 
 	internal ThatDelegateThrows(ExpectationBuilder expectationBuilder, ThatDelegate.ThrowsOption throwOptions)
