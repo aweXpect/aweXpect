@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Tests.TestHelpers;
@@ -117,38 +115,5 @@ public class ManualExpectationBuilderTests
 		ManualExpectationBuilder<int> sut = new(null);
 
 		await That(sut.Subject).IsEmpty();
-	}
-
-	private sealed class DummyConstraint<T>(
-		Func<T, bool> predicate)
-		: ConstraintResult(ExpectationGrammars.None), IValueConstraint<T>
-	{
-		private T? _actual;
-
-		public ConstraintResult IsMetBy(T actual)
-		{
-			_actual = actual;
-			Outcome = predicate(actual) ? Outcome.Success : Outcome.Failure;
-			return this;
-		}
-
-		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null) { }
-
-		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null) { }
-
-		public override ConstraintResult Negate()
-			=> this;
-
-		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
-		{
-			if (_actual is TValue typedValue)
-			{
-				value = typedValue;
-				return true;
-			}
-
-			value = default;
-			return false;
-		}
 	}
 }
