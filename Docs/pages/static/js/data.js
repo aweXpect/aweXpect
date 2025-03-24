@@ -1272,6 +1272,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -1486,7 +1492,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -1704,7 +1711,8 @@ window.BENCHMARK_DATA = {
           176.6302481174469,
           170.26065149307252,
           156.98596627895648,
-          171.3037170648575
+          171.3037170648575,
+          163.49811126504625
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1899,6 +1907,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2153,7 +2162,8 @@ window.BENCHMARK_DATA = {
           261.26113214492796,
           241.17864256638748,
           230.04112335613794,
-          270.2158886273702
+          270.2158886273702,
+          242.18482637405396
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2346,6 +2356,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2602,7 +2613,8 @@ window.BENCHMARK_DATA = {
           945.1787460872105,
           913.6364226023356,
           849.6961111655602,
-          924.6051081248692
+          924.6051081248692,
+          856.103875541687
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2756,6 +2768,7 @@ window.BENCHMARK_DATA = {
           2216,
           2216,
           2216,
+          2384,
           2384,
           2384,
           2384,
@@ -3649,6 +3662,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -3786,7 +3805,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -3927,7 +3947,8 @@ window.BENCHMARK_DATA = {
           291802.00309244794,
           283539.51492513024,
           277890.3010091146,
-          279168.3089518229
+          279168.3089518229,
+          278353.85065104166
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4061,6 +4082,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4222,7 +4244,8 @@ window.BENCHMARK_DATA = {
           2391938.5811941964,
           2350614.045052083,
           2097516.3323102677,
-          2244013.0263020834
+          2244013.0263020834,
+          2098878.690848214
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4338,6 +4361,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4517,7 +4541,8 @@ window.BENCHMARK_DATA = {
           667701.316545759,
           668431.1036658654,
           663172.5994466146,
-          694504.1695638021
+          694504.1695638021,
+          670338.7095424107
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4640,6 +4665,7 @@ window.BENCHMARK_DATA = {
           866721,
           866721,
           866721,
+          866737,
           866737,
           866737,
           866737,
@@ -5949,6 +5975,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -6163,7 +6195,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -6381,7 +6414,8 @@ window.BENCHMARK_DATA = {
           307.7271069117955,
           315.3617300669352,
           294.62078857421875,
-          335.97487173080447
+          335.97487173080447,
+          302.97579785755704
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6576,6 +6610,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6830,7 +6865,8 @@ window.BENCHMARK_DATA = {
           482.2837441444397,
           505.73970858256024,
           467.9178527685312,
-          519.1207705179851
+          519.1207705179851,
+          473.7025029182434
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7023,6 +7059,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -7279,7 +7316,8 @@ window.BENCHMARK_DATA = {
           16992.99462236677,
           14717.510885385367,
           14213.683872477213,
-          16079.871056189904
+          16079.871056189904,
+          14650.634098597935
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7433,6 +7471,7 @@ window.BENCHMARK_DATA = {
           27288,
           27288,
           27288,
+          27456,
           27456,
           27456,
           27456,
@@ -8788,6 +8827,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -9002,7 +9047,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -9220,7 +9266,8 @@ window.BENCHMARK_DATA = {
           228.5134648958842,
           198.7790673630578,
           191.22647075653077,
-          220.06180620193481
+          220.06180620193481,
+          192.23126941067832
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9416,6 +9463,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9669,7 +9717,8 @@ window.BENCHMARK_DATA = {
           254.91321617762247,
           248.4615275065104,
           237.80481947385348,
-          252.1239548365275
+          252.1239548365275,
+          234.39922358194988
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9862,6 +9911,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -10118,7 +10168,8 @@ window.BENCHMARK_DATA = {
           1248.5108115332466,
           1197.3660872323173,
           1187.4626007080078,
-          1303.8257226308187
+          1303.8257226308187,
+          1163.9586760203044
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10272,6 +10323,7 @@ window.BENCHMARK_DATA = {
           2848,
           2848,
           2848,
+          2952,
           2952,
           2952,
           2952,
@@ -11627,6 +11679,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -11841,7 +11899,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -12059,7 +12118,8 @@ window.BENCHMARK_DATA = {
           324.72881041254317,
           323.1034324645996,
           314.9434088298253,
-          331.9945740699768
+          331.9945740699768,
+          309.2631950060526
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12266,6 +12326,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -12508,7 +12569,8 @@ window.BENCHMARK_DATA = {
           474.121267636617,
           461.00527041753134,
           451.52869078318275,
-          516.7315806661334
+          516.7315806661334,
+          470.53340026310514
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12701,6 +12763,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -12957,7 +13020,8 @@ window.BENCHMARK_DATA = {
           1301.1841406504313,
           1274.7612510681151,
           1266.8228563161997,
-          1297.2650608062745
+          1297.2650608062745,
+          1286.172911130465
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13111,6 +13175,7 @@ window.BENCHMARK_DATA = {
           2896,
           2896,
           2896,
+          3064,
           3064,
           3064,
           3064,
@@ -14466,6 +14531,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -14680,7 +14751,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -14898,7 +14970,8 @@ window.BENCHMARK_DATA = {
           1071.0747042338053,
           1063.5104094285232,
           1124.9772745279165,
-          1189.5063625063215
+          1189.5063625063215,
+          1026.1354383741107
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15093,6 +15166,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -15347,7 +15421,8 @@ window.BENCHMARK_DATA = {
           1349.4627017974854,
           1247.8314323425293,
           1222.4558835347493,
-          1349.9552834828694
+          1349.9552834828694,
+          1220.0199904123942
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15540,6 +15615,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -15796,7 +15872,8 @@ window.BENCHMARK_DATA = {
           2783.641153717041,
           2798.0536120096845,
           2867.3662478129067,
-          2854.5697733561196
+          2854.5697733561196,
+          2742.3004670824325
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -15996,6 +16073,7 @@ window.BENCHMARK_DATA = {
           4520,
           4520,
           4520,
+          4536,
           4536,
           4536,
           4536,
@@ -17305,6 +17383,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
         "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
+      },
+      {
+        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
+        "author": "dependabot[bot]",
+        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
+        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
       }
     ],
     "labels": [
@@ -17519,7 +17603,8 @@ window.BENCHMARK_DATA = {
       "12cced9d",
       "4cfb62e9",
       "8c5483ee",
-      "c17f75ad"
+      "c17f75ad",
+      "175c5793"
     ],
     "datasets": [
       {
@@ -17737,7 +17822,8 @@ window.BENCHMARK_DATA = {
           1142.9465913772583,
           1166.0270200093587,
           1145.2270387922015,
-          1174.9262185414632
+          1174.9262185414632,
+          1097.5551499684652
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -17932,6 +18018,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -18186,7 +18273,8 @@ window.BENCHMARK_DATA = {
           149150.0044596354,
           148959.8798828125,
           149068.41604817708,
-          154597.10517578124
+          154597.10517578124,
+          149486.75247395833
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18409,7 +18497,8 @@ window.BENCHMARK_DATA = {
           63788,
           63352,
           63788,
-          64324
+          64324,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18635,7 +18724,8 @@ window.BENCHMARK_DATA = {
           4671.771960122244,
           4512.383724975586,
           4452.423140843709,
-          4703.8853474934895
+          4703.8853474934895,
+          4412.741452026367
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -18835,6 +18925,7 @@ window.BENCHMARK_DATA = {
           5680,
           5680,
           5680,
+          6648,
           6648,
           6648,
           6648,
