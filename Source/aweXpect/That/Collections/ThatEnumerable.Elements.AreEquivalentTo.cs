@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
 using aweXpect.Customization;
@@ -12,12 +11,12 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TCollection>
 	{
 		/// <summary>
 		///     …are equivalent to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>
 			AreEquivalentTo<TExpected>(TExpected expected,
 				Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
 				[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -33,9 +32,9 @@ public static partial class ThatEnumerable
 
 			ObjectEqualityOptions<TItem> equalityOptions = new();
 			equalityOptions.Equivalent(equivalencyOptions);
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>(
 				expectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<TItem>(
+					=> new CollectionConstraint<TItem, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

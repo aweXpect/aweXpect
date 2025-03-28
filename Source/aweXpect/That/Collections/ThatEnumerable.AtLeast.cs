@@ -9,7 +9,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection at least <paramref name="minimum" /> items…
 	/// </summary>
-	public static Elements<TItem> AtLeast<TItem>(
+	public static Elements<TItem, IEnumerable<TItem>?> AtLeast<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum, subject.Get().ExpectationBuilder.ExpectationGrammars));
@@ -17,7 +17,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection at least <paramref name="minimum" /> items…
 	/// </summary>
-	public static Elements AtLeast(
+	public static Elements<IEnumerable<string?>?> AtLeast(
 		this IThat<IEnumerable<string?>?> subject,
 		int minimum)
 		=> new(subject, EnumerableQuantifier.AtLeast(minimum));

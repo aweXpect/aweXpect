@@ -100,9 +100,10 @@ public static partial class ThatEnumerable
 			=> throw new NotImplementedException();
 	}
 
-	private sealed class CollectionConstraint<TItem>
-		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
-			IAsyncContextConstraint<IEnumerable<TItem>?>
+	private sealed class CollectionConstraint<TItem, TCollection>
+		: ConstraintResult.WithNotNullValue<TCollection>,
+			IAsyncContextConstraint<TCollection>
+	where TCollection : IEnumerable<TItem>?
 	{
 		private readonly Func<ExpectationGrammars, string> _expectationText;
 		private readonly Func<TItem, bool> _predicate;
@@ -126,7 +127,7 @@ public static partial class ThatEnumerable
 		}
 
 		public Task<ConstraintResult> IsMetBy(
-			IEnumerable<TItem>? actual,
+			TCollection actual,
 			IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{

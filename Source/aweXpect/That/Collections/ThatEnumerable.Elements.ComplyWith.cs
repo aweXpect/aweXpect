@@ -15,16 +15,16 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TCollection>
 	{
 		/// <summary>
 		///     …comply with the <paramref name="expectations" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<IEnumerable<TItem>, IThat<TCollection>, TItem>
 			ComplyWith(Action<IThat<TItem>> expectations)
 		{
 			ObjectEqualityOptions<TItem> options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<TCollection>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((expectationBuilder, it, grammars)
 					=> new ComplyWithConstraint(expectationBuilder, it, grammars, _quantifier, expectations)),
 				_subject,

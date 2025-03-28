@@ -8,7 +8,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
-	public static Elements<TItem> Exactly<TItem>(
+	public static Elements<TItem, IEnumerable<TItem>?> Exactly<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected));
@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection exactly <paramref name="expected" /> items…
 	/// </summary>
-	public static Elements Exactly(
+	public static Elements<IEnumerable<string?>?> Exactly(
 		this IThat<IEnumerable<string?>?> subject,
 		int expected)
 		=> new(subject, EnumerableQuantifier.Exactly(expected));

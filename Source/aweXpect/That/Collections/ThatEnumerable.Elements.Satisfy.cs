@@ -9,18 +9,18 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements
+	public partial class Elements<TCollection>
 	{
 		/// <summary>
 		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
+		public AndOrResult<TCollection, IThat<TCollection>>
 			Satisfy(
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
 			=> new(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<string?>(
+					=> new CollectionConstraint<string?, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.IsNested(), g.IsNegated()) switch
@@ -35,18 +35,18 @@ public static partial class ThatEnumerable
 				_subject);
 	}
 
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TCollection>
 	{
 		/// <summary>
 		///     …satisfy the <paramref name="predicate" />.
 		/// </summary>
-		public AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>
+		public AndOrResult<IEnumerable<TItem>, IThat<TCollection>>
 			Satisfy(
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
 			=> new(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<TItem>(
+					=> new CollectionConstraint<TItem, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

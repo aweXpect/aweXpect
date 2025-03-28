@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Options;
@@ -9,18 +8,18 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TCollection>
 	{
 		/// <summary>
 		///     …are exactly of type <typeparamref name="TType" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>
 			AreExactly<TType>()
 		{
 			ObjectEqualityOptions<TItem> options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<TItem>(
+					=> new CollectionConstraint<TItem, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -40,13 +39,13 @@ public static partial class ThatEnumerable
 		/// <summary>
 		///     …are exactly of type <paramref name="type" />.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>
 			AreExactly(Type type)
 		{
 			ObjectEqualityOptions<TItem> options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<TItem>(
+					=> new CollectionConstraint<TItem, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

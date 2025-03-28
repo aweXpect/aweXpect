@@ -8,7 +8,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
-	public static Elements<TItem> AtMost<TItem>(
+	public static Elements<TItem, IEnumerable<TItem>?> AtMost<TItem>(
 		this IThat<IEnumerable<TItem>?> subject,
 		int maximum)
 		=> new(subject, EnumerableQuantifier.AtMost(maximum));
@@ -16,7 +16,7 @@ public static partial class ThatEnumerable
 	/// <summary>
 	///     Verifies that in the collection at most <paramref name="maximum" /> items…
 	/// </summary>
-	public static Elements AtMost(
+	public static Elements<IEnumerable<string?>?> AtMost(
 		this IThat<IEnumerable<string?>?> subject,
 		int maximum)
 		=> new(subject, EnumerableQuantifier.AtMost(maximum));

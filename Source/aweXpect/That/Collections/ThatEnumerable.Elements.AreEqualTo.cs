@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -8,18 +7,18 @@ namespace aweXpect;
 
 public static partial class ThatEnumerable
 {
-	public partial class Elements
+	public partial class Elements<TCollection>
 	{
 		/// <summary>
 		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>> AreEqualTo(
+		public StringEqualityResult<TCollection, IThat<TCollection>> AreEqualTo(
 			string? expected)
 		{
 			StringEqualityOptions options = new();
-			return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			return new StringEqualityResult<TCollection, IThat<TCollection>>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<string?>(
+					=> new CollectionConstraint<string?, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -37,18 +36,18 @@ public static partial class ThatEnumerable
 		}
 	}
 
-	public partial class Elements<TItem>
+	public partial class Elements<TItem, TCollection>
 	{
 		/// <summary>
 		///     …are equal to the <paramref name="expected" /> value.
 		/// </summary>
-		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		public ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>
 			AreEqualTo(TItem expected)
 		{
 			ObjectEqualityOptions<TItem> options = new();
-			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			return new ObjectEqualityResult<TCollection, IThat<TCollection>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
-					=> new CollectionConstraint<TItem>(
+					=> new CollectionConstraint<TItem, TCollection>(
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
