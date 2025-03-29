@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+#if NET8_0_OR_GREATER
+using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 using System.Threading;
+#endif
 
 namespace aweXpect.Tests;
 
@@ -104,4 +107,25 @@ internal static class Factory
 			yield return value;
 		} while (++iterations < maxIterations);
 	}
+
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Returns an <see cref="ImmutableArray{T}" /> with <paramref name="count" /> elements of constant
+	///     <paramref name="value" />.
+	/// </summary>
+	public static ImmutableArray<T> GetConstantValueImmutableArray<T>(T value, int count)
+		=> [..GetConstantValueEnumerable(value, count),];
+
+	/// <summary>
+	///     Returns an <see cref="ImmutableArray{T}" /> with <paramref name="count" /> fibonacci numbers.
+	/// </summary>
+	public static ImmutableArray<int> GetFibonacciNumbersImmutableArray(int count)
+		=> [..GetFibonacciNumbers(count),];
+
+	/// <summary>
+	///     Returns an <see cref="ImmutableArray{T}" /> with <paramref name="count" /> fibonacci numbers.
+	/// </summary>
+	public static ImmutableArray<T> GetFibonacciNumbersImmutableArray<T>(Func<int, T> mapper, int count)
+		=> [..GetFibonacciNumbers(mapper, count),];
+#endif
 }

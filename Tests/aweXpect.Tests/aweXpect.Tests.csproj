@@ -18,4 +18,69 @@
 						  SetTargetFramework="TargetFramework=netstandard2.0"/>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Remove="Collections\ThatImmutableArray.All.AreEquivalentTo.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.All.AreEquivalentTo.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.All.AreExactly.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.All.AreExactly.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.All.ComplyWith.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.All.ComplyWith.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.All.Satisfy.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.All.Satisfy.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.AreAllUnique.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.AreAllUnique.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.AtLeast.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.AtLeast.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.AtMost.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.AtMost.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.Between.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.Between.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.Contains.CollectionTests.cs" />
+	  <None Include="Collections\ThatImmutableArray.Contains.CollectionTests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.Contains.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.Contains.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.DoesNotContain.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.DoesNotContain.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.DoesNotEndWith.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.DoesNotEndWith.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.DoesNotStartWith.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.DoesNotStartWith.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.EndsWith.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.EndsWith.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.Exactly.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.Exactly.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.HasCount.AtLeastTests.cs" />
+	  <None Include="Collections\ThatImmutableArray.HasCount.AtLeastTests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.HasCount.AtMostTests.cs" />
+	  <None Include="Collections\ThatImmutableArray.HasCount.AtMostTests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.HasCount.BetweenTests.cs" />
+	  <None Include="Collections\ThatImmutableArray.HasCount.BetweenTests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.HasCount.EqualToTests.cs" />
+	  <None Include="Collections\ThatImmutableArray.HasCount.EqualToTests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.HasCount.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.HasCount.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.HasSingle.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.HasSingle.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsContainedIn.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsContainedIn.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsEmpty.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsEmpty.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsEqualTo.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsEqualTo.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsInAscendingOrder.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsInAscendingOrder.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsInDescendingOrder.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsInDescendingOrder.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsNotEmpty.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsNotEmpty.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.IsNull.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.IsNull.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.None.AreEqualTo.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.None.AreEqualTo.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.None.Satisfy.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.None.Satisfy.Tests.cs" />
+	  <Compile Remove="Collections\ThatImmutableArray.StartsWith.Tests.cs" />
+	  <None Include="Collections\ThatImmutableArray.StartsWith.Tests.cs" />
+	</ItemGroup>
+
 </Project>

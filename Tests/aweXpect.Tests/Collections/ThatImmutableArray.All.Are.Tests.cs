@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatImmutableArray
 {
-	public sealed class All
+	public sealed partial class All
 	{
 		public sealed class Are
 		{
