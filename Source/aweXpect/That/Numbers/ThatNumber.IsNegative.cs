@@ -2,7 +2,6 @@
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
-using aweXpect.Options;
 using aweXpect.Results;
 
 namespace aweXpect;
@@ -138,7 +137,10 @@ public static partial class ThatNumber
 				new NullableIsNegativeConstraint<decimal>(it, grammars, a => a < 0)),
 			source);
 
-	private sealed class IsNegativeConstraint<TNumber>(string it, ExpectationGrammars grammars, Func<TNumber, bool> predicate)
+	private sealed class IsNegativeConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		Func<TNumber, bool> predicate)
 		: ConstraintResult.WithValue<TNumber>(grammars),
 			IValueConstraint<TNumber>
 		where TNumber : struct, IComparable<TNumber>
@@ -151,9 +153,7 @@ public static partial class ThatNumber
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(ExpectIsNegative);
-		}
+			=> stringBuilder.Append(ExpectIsNegative);
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -162,15 +162,16 @@ public static partial class ThatNumber
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(ExpectIsNotNegative);
-		}
+			=> stringBuilder.Append(ExpectIsNotNegative);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
-	private sealed class NullableIsNegativeConstraint<TNumber>(string it, ExpectationGrammars grammars, Func<TNumber, bool> predicate)
+	private sealed class NullableIsNegativeConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		Func<TNumber, bool> predicate)
 		: ConstraintResult.WithValue<TNumber?>(grammars),
 			IValueConstraint<TNumber?>
 		where TNumber : struct, IComparable<TNumber>
@@ -183,9 +184,7 @@ public static partial class ThatNumber
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(ExpectIsNegative);
-		}
+			=> stringBuilder.Append(ExpectIsNegative);
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
@@ -194,9 +193,7 @@ public static partial class ThatNumber
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-		{
-			stringBuilder.Append(ExpectIsNotNegative);
-		}
+			=> stringBuilder.Append(ExpectIsNotNegative);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalResult(stringBuilder, indentation);

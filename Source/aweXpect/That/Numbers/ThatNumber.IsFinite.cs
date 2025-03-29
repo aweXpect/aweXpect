@@ -157,7 +157,9 @@ public static partial class ThatNumber
 		public ConstraintResult IsMetBy(float? actual)
 		{
 			Actual = actual;
-			Outcome = actual is not null && !float.IsInfinity(actual.Value) && !float.IsNaN(actual.Value) ? Outcome.Success : Outcome.Failure;
+			Outcome = actual is not null && !float.IsInfinity(actual.Value) && !float.IsNaN(actual.Value)
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 
@@ -186,7 +188,9 @@ public static partial class ThatNumber
 		public ConstraintResult IsMetBy(double? actual)
 		{
 			Actual = actual;
-			Outcome = actual is not null && !double.IsInfinity(actual.Value) && !double.IsNaN(actual.Value) ? Outcome.Success : Outcome.Failure;
+			Outcome = actual is not null && !double.IsInfinity(actual.Value) && !double.IsNaN(actual.Value)
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 

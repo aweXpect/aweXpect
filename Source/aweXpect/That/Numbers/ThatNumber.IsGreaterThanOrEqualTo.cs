@@ -14,29 +14,32 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is greater than or equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T, IThat<T>> IsGreaterThanOrEqualTo<T>(
-		this IThat<T> source, T? expected)
-		where T : struct, INumber<T>
+	public static AndOrResult<TNumber, IThat<TNumber>> IsGreaterThanOrEqualTo<TNumber>(
+		this IThat<TNumber> source, TNumber? expected)
+		where TNumber : struct, INumber<TNumber>
 		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsGreaterThanOrEqualToConstraint<T>(it, grammars, expected)),
+				new IsGreaterThanOrEqualToConstraint<TNumber>(it, grammars, expected)),
 			source);
 
 	/// <summary>
 	///     Verifies that the subject is greater than or equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T?, IThat<T?>> IsGreaterThanOrEqualTo<T>(
-		this IThat<T?> source, T? expected)
-		where T : struct, INumber<T>
+	public static AndOrResult<TNumber?, IThat<TNumber?>> IsGreaterThanOrEqualTo<TNumber>(
+		this IThat<TNumber?> source, TNumber? expected)
+		where TNumber : struct, INumber<TNumber>
 		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableIsGreaterThanOrEqualToConstraint<T>(it, grammars, expected)),
+				new NullableIsGreaterThanOrEqualToConstraint<TNumber>(it, grammars, expected)),
 			source);
 
-	private sealed class IsGreaterThanOrEqualToConstraint<T>(string it, ExpectationGrammars grammars, T? expected)
-		: ConstraintResult.WithEqualToValue<T>(it, grammars, expected is null),
-			IValueConstraint<T>
-		where T : struct, INumber<T>
+	private sealed class IsGreaterThanOrEqualToConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber? expected)
+		: ConstraintResult.WithEqualToValue<TNumber>(it, grammars, expected is null),
+			IValueConstraint<TNumber>
+		where TNumber : struct, INumber<TNumber>
 	{
-		public ConstraintResult IsMetBy(T actual)
+		public ConstraintResult IsMetBy(TNumber actual)
 		{
 			Actual = actual;
 			Outcome = IsFinite(expected) && IsFinite(actual) && actual >= expected
@@ -67,15 +70,15 @@ public static partial class ThatNumber
 			=> AppendNormalResult(stringBuilder, indentation);
 	}
 
-	private sealed class NullableIsGreaterThanOrEqualToConstraint<T>(
+	private sealed class NullableIsGreaterThanOrEqualToConstraint<TNumber>(
 		string it,
 		ExpectationGrammars grammars,
-		T? expected)
-		: ConstraintResult.WithEqualToValue<T?>(it, grammars, expected is null),
-			IValueConstraint<T?>
-		where T : struct, INumber<T>
+		TNumber? expected)
+		: ConstraintResult.WithEqualToValue<TNumber?>(it, grammars, expected is null),
+			IValueConstraint<TNumber?>
+		where TNumber : struct, INumber<TNumber>
 	{
-		public ConstraintResult IsMetBy(T? actual)
+		public ConstraintResult IsMetBy(TNumber? actual)
 		{
 			Actual = actual;
 			Outcome = IsFinite(expected) && IsFinite(actual) && actual >= expected
