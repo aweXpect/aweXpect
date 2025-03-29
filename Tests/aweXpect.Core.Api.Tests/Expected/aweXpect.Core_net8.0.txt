@@ -942,24 +942,24 @@ namespace aweXpect.Results
         public TSelf WithTimeout(System.TimeSpan timeout) { }
     }
     public class NullableNumberToleranceResult<TType, TThat> : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, aweXpect.Results.NullableNumberToleranceResult<TType, TThat>>
-        where TType :  struct, System.IComparable<TType>
+        where TType :  struct, System.Numerics.INumber<TType>
     {
         public NullableNumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
     }
     public class NullableNumberToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType?, TThat, TSelf>
-        where TType :  struct, System.IComparable<TType>
+        where TType :  struct, System.Numerics.INumber<TType>
         where TSelf : aweXpect.Results.NullableNumberToleranceResult<TType, TThat, TSelf>
     {
         public NullableNumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
         public TSelf Within(TType tolerance) { }
     }
     public class NumberToleranceResult<TType, TThat> : aweXpect.Results.NumberToleranceResult<TType, TThat, aweXpect.Results.NumberToleranceResult<TType, TThat>>
-        where TType :  struct, System.IComparable<TType>
+        where TType :  struct, System.Numerics.INumber<TType>
     {
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }
     }
     public class NumberToleranceResult<TType, TThat, TSelf> : aweXpect.Results.AndOrResult<TType, TThat, TSelf>
-        where TType :  struct, System.IComparable<TType>
+        where TType :  struct, System.Numerics.INumber<TType>
         where TSelf : aweXpect.Results.NumberToleranceResult<TType, TThat, TSelf>
     {
         public NumberToleranceResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.NumberTolerance<TType> options) { }

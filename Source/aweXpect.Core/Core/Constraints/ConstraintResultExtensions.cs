@@ -87,7 +87,7 @@ public static class ConstraintResultExtensions
 			}
 
 			value = default;
-			return _value is null;
+			return typeof(TValue).IsAssignableFrom(typeof(T));
 		}
 
 		public override ConstraintResult Negate() => _inner.Negate();
@@ -123,7 +123,7 @@ public static class ConstraintResultExtensions
 			}
 
 			value = default;
-			return _value is null;
+			return typeof(TValue).IsAssignableFrom(typeof(T));
 		}
 
 		public override ConstraintResult Negate() => _inner.Negate();

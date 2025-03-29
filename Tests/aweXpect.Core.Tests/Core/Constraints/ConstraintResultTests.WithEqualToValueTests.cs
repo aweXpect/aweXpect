@@ -176,9 +176,9 @@ public partial class ConstraintResultTests
 		}
 
 		[Fact]
-		public async Task TryGetValue_ShouldReturnFalseWhenTypeIsSupertypeAndValueIsNull()
+		public async Task TryGetValue_ShouldReturnFalseWhenTypeIsSupertype()
 		{
-			ConstraintResult sut = new MyWithEqualToValueDummy<MyBaseClass?>(null, false);
+			ConstraintResult sut = new MyWithEqualToValueDummy<MyBaseClass?>(new MyBaseClass(), false);
 
 			bool result = sut.TryGetValue(out MyDerivedClass? value);
 

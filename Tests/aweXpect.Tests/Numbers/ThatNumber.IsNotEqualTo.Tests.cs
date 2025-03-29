@@ -375,9 +375,9 @@ public sealed partial class ThatNumber
 				byte? unexpected)
 			{
 				byte? subject = null;
-
+				var result = await That(subject).IsNotEqualTo(unexpected);
 				async Task Act()
-					=> await That(subject).IsNotEqualTo(unexpected);
+					=> 
 
 				await That(Act).DoesNotThrow();
 			}
