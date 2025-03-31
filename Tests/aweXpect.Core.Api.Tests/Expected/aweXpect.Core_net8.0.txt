@@ -719,7 +719,7 @@ namespace aweXpect.Options
         public override string ToString() { }
     }
     public class NumberTolerance<TNumber>
-        where TNumber :  struct, System.IComparable<TNumber>
+        where TNumber :  struct, System.Numerics.INumber<TNumber>
     {
         public NumberTolerance(System.Func<TNumber, TNumber, TNumber?, bool> isWithinTolerance) { }
         public TNumber? Tolerance { get; }

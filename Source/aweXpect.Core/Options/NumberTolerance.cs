@@ -1,4 +1,7 @@
 ﻿using System;
+#if NET8_0_OR_GREATER
+using System.Numerics;
+#endif
 
 namespace aweXpect.Options;
 
@@ -7,7 +10,11 @@ namespace aweXpect.Options;
 /// </summary>
 public class NumberTolerance<TNumber>(
 	Func<TNumber, TNumber, TNumber?, bool> isWithinTolerance)
+#if NET8_0_OR_GREATER
+	where TNumber : struct, INumber<TNumber>
+#else
 	where TNumber : struct, IComparable<TNumber>
+#endif
 {
 	/// <summary>
 	///     The tolerance to apply on the number comparisons.
@@ -50,6 +57,6 @@ public class NumberTolerance<TNumber>(
 			(null, null) => true,
 			(_, null) => false,
 			(null, _) => false,
-			(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance),
+			(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance)
 		};
 }
