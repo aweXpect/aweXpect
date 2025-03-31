@@ -54,6 +54,24 @@ public partial class ValueFormatters
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
+#if NET8_0_OR_GREATER
+		[Fact]
+		public async Task Numbers_Half_ShouldReturnExpectedValue()
+		{
+			Half value = (Half)11.3;
+			string expectedResult = "11.3";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+#endif
+
 		[Fact]
 		public async Task Numbers_Int16_ShouldReturnExpectedValue()
 		{
@@ -226,6 +244,41 @@ public partial class ValueFormatters
 			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
+
+#if NET8_0_OR_GREATER
+		[Fact]
+		public async Task Numbers_NullableHalf_ShouldReturnExpectedValue()
+		{
+			Half? value = (Half)11.03;
+			string expectedResult = "11.03";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+#endif
+
+#if NET8_0_OR_GREATER
+		[Fact]
+		public async Task Numbers_NullableHalf_WhenNull_ShouldUseDefaultNullString()
+		{
+			Half? value = null;
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(ValueFormatter.NullString);
+			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
+			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
+		}
+#endif
 
 		[Fact]
 		public async Task Numbers_NullableInt16_ShouldReturnExpectedValue()

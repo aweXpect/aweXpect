@@ -100,6 +100,12 @@ public static partial class ValueFormatters
 		{
 			formatter.Format(stringBuilder, floatValue, options);
 		}
+#if NET8_0_OR_GREATER
+		else if (value is Half halfValue)
+		{
+			formatter.Format(stringBuilder, halfValue, options);
+		}
+#endif
 		else if (value is decimal decimalValue)
 		{
 			formatter.Format(stringBuilder, decimalValue, options);

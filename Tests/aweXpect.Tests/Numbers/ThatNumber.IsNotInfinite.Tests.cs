@@ -29,7 +29,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is not infinite,
-					              but it was {Formatter.Format(subject)}
+					              but it was {ValueFormatters.Format(Formatter, subject)}
 					              """);
 			}
 
@@ -72,7 +72,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is not infinite,
-					              but it was {Formatter.Format(subject)}
+					              but it was {ValueFormatters.Format(Formatter, subject)}
 					              """);
 			}
 
@@ -91,6 +91,48 @@ public sealed partial class ThatNumber
 
 				await That(Act).DoesNotThrow();
 			}
+#if NET8_0_OR_GREATER
+			[Fact]
+			public async Task ForHalf_ShouldSupportChaining()
+			{
+				Half subject = Half.Epsilon;
+
+				async Task Act()
+					=> await That(subject).IsNotInfinite()
+						.And.IsEqualTo(subject);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[MemberData(nameof(GetInfinityHalfValues))]
+			public async Task ForHalf_WhenSubjectIsInfinity_ShouldFail(Half subject)
+			{
+				async Task Act()
+					=> await That(subject).IsNotInfinite();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not infinite,
+					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              """);
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[MemberData(nameof(GetNormalOrNaNHalfValues))]
+			public async Task ForHalf_WhenSubjectIsNormalOrNaNValue_ShouldSucceed(Half subject)
+			{
+				async Task Act()
+					=> await That(subject).IsNotInfinite();
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
 
 			[Fact]
 			public async Task ForNullableDouble_ShouldSupportChaining()
@@ -116,7 +158,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is not infinite,
-					              but it was {Formatter.Format(subject)}
+					              but it was {ValueFormatters.Format(Formatter, subject)}
 					              """);
 			}
 
@@ -162,7 +204,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is not infinite,
-					              but it was {Formatter.Format(subject)}
+					              but it was {ValueFormatters.Format(Formatter, subject)}
 					              """);
 			}
 
@@ -181,6 +223,85 @@ public sealed partial class ThatNumber
 
 				await That(Act).DoesNotThrow();
 			}
+
+#if NET8_0_OR_GREATER
+			[Fact]
+			public async Task ForNullableHalf_ShouldSupportChaining()
+			{
+				Half? subject = Half.Epsilon;
+
+				async Task Act()
+					=> await That(subject).IsNotInfinite()
+						.And.IsEqualTo(subject);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[MemberData(nameof(GetInfinityHalfValues))]
+			public async Task ForNullableHalf_WhenSubjectIsInfinity_ShouldFail(
+				Half subjectValue)
+			{
+				Half? subject = subjectValue;
+
+				async Task Act() => await That(subject).IsNotInfinite();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not infinite,
+					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              """);
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[MemberData(nameof(GetNormalOrNaNHalfValues))]
+			public async Task ForNullableHalf_WhenSubjectIsNormalOrNaNValue_ShouldSucceed(
+				Half subjectValue)
+			{
+				Half? subject = subjectValue;
+
+				async Task Act()
+					=> await That(subject).IsNotInfinite();
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Fact]
+			public async Task ForNullableHalf_WhenSubjectIsNull_ShouldSucceed()
+			{
+				Half? subject = null;
+
+				async Task Act()
+					=> await That(subject).IsNotInfinite();
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			public static TheoryData<Half> GetNormalOrNaNHalfValues() =>
+			[
+				(Half)0.0,
+				(Half)1.0,
+				Half.MinValue,
+				Half.MaxValue,
+				Half.Epsilon,
+				Half.NaN,
+			];
+
+			public static TheoryData<Half> GetInfinityHalfValues() =>
+			[
+				Half.NegativeInfinity,
+				Half.PositiveInfinity,
+			];
+#endif
 		}
 	}
 }
