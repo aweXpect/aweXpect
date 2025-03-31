@@ -45,7 +45,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is infinite,
-					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
@@ -88,7 +88,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is infinite,
-					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 #if NET8_0_OR_GREATER
@@ -129,7 +129,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is infinite,
-					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 #endif
@@ -175,7 +175,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is infinite,
-					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
@@ -219,7 +219,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is infinite,
-					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
@@ -266,7 +266,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is infinite,
-					              but it was {ValueFormatters.Format(Formatter, subject)}
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 #endif
