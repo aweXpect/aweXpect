@@ -1,9 +1,11 @@
-﻿using System;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+#if !NET8_0_OR_GREATER
+using System;
+#endif
 
 namespace aweXpect;
 
@@ -13,81 +15,14 @@ public static partial class ThatNumber
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
-	public static NumberToleranceResult<float, IThat<float>> IsEqualTo(
-		this IThat<float> source,
-		float? expected)
-	{
-		NumberTolerance<float> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<float, IThat<float>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<float>(it, grammars, expected, options)),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
-	/// </summary>
-	public static NumberToleranceResult<double, IThat<double>> IsEqualTo(
-		this IThat<double> source,
-		double? expected)
-	{
-		NumberTolerance<double> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<double, IThat<double>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<double>(it, grammars, expected, options)),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
-	/// </summary>
 	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsEqualTo<TNumber>(
 		this IThat<TNumber> source, TNumber? expected)
 		where TNumber : struct, INumber<TNumber>
 	{
-		NumberTolerance<TNumber> options = new(
-			(a, e, t) => a < e
-				? e - a <= (t ?? default(TNumber))
-				: a - e <= (t ?? default(TNumber)));
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
 		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint<TNumber>(it, grammars, expected, options)),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
-	/// </summary>
-	public static NullableNumberToleranceResult<float, IThat<float?>> IsEqualTo(
-		this IThat<float?> source,
-		float? expected)
-	{
-		NumberTolerance<float> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<float, IThat<float?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableIsEqualToConstraint<float>(it, grammars, expected, options)),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
-	/// </summary>
-	public static NullableNumberToleranceResult<double, IThat<double?>> IsEqualTo(
-		this IThat<double?> source,
-		double? expected)
-	{
-		NumberTolerance<double> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<double, IThat<double?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableIsEqualToConstraint<double>(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -99,45 +34,10 @@ public static partial class ThatNumber
 		this IThat<TNumber?> source, TNumber? expected)
 		where TNumber : struct, INumber<TNumber>
 	{
-		NumberTolerance<TNumber> options = new(
-			(a, e, t) => a < e
-				? e - a <= (t ?? default(TNumber))
-				: a - e <= (t ?? default(TNumber)));
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
 		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsEqualToConstraint<TNumber>(it, grammars, expected, options)),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static NumberToleranceResult<float, IThat<float>> IsNotEqualTo(
-		this IThat<float> source,
-		float? unexpected)
-	{
-		NumberTolerance<float> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<float, IThat<float>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<float>(it, grammars, unexpected, options).Invert()),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static NumberToleranceResult<double, IThat<double>> IsNotEqualTo(
-		this IThat<double> source,
-		double? unexpected)
-	{
-		NumberTolerance<double> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NumberToleranceResult<double, IThat<double>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new IsEqualToConstraint<double>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
@@ -149,45 +49,10 @@ public static partial class ThatNumber
 		this IThat<TNumber> source, TNumber? unexpected)
 		where TNumber : struct, INumber<TNumber>
 	{
-		NumberTolerance<TNumber> options = new(
-			(a, e, t) => a < e
-				? e - a <= (t ?? default(TNumber))
-				: a - e <= (t ?? default(TNumber)));
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
 		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint<TNumber>(it, grammars, unexpected, options).Invert()),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static NullableNumberToleranceResult<float, IThat<float?>> IsNotEqualTo(
-		this IThat<float?> source,
-		float? unexpected)
-	{
-		NumberTolerance<float> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<float, IThat<float?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableIsEqualToConstraint<float>(it, grammars, unexpected, options).Invert()),
-			source,
-			options);
-	}
-
-	/// <summary>
-	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
-	/// </summary>
-	public static NullableNumberToleranceResult<double, IThat<double?>> IsNotEqualTo(
-		this IThat<double?> source,
-		double? unexpected)
-	{
-		NumberTolerance<double> options = new(
-			(a, e, t) => a.Equals(e) || Math.Abs(a - e) <= (t ?? 0));
-		return new NullableNumberToleranceResult<double, IThat<double?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new NullableIsEqualToConstraint<double>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
@@ -199,10 +64,7 @@ public static partial class ThatNumber
 		this IThat<TNumber?> source, TNumber? unexpected)
 		where TNumber : struct, INumber<TNumber>
 	{
-		NumberTolerance<TNumber> options = new(
-			(a, e, t) => a < e
-				? e - a <= (t ?? default(TNumber))
-				: a - e <= (t ?? default(TNumber)));
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
 		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsEqualToConstraint<TNumber>(it, grammars, unexpected, options).Invert()),

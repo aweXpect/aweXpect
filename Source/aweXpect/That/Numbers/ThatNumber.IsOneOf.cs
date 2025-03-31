@@ -1,15 +1,306 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+#if !NET8_0_OR_GREATER
+using System;
+#endif
 
 namespace aweXpect;
 
 public static partial class ThatNumber
 {
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsOneOf<TNumber>(
+		this IThat<TNumber> source,
+		params TNumber?[] expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOneOfConstraintWithNullable<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsOneOf<TNumber>(
+		this IThat<TNumber?> source,
+		params TNumber?[] expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsOneOfConstraintWithNullable<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsOneOf<TNumber>(
+		this IThat<TNumber> source,
+		params TNumber[] expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOneOfConstraint<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsOneOf<TNumber>(
+		this IThat<TNumber?> source,
+		params TNumber[] expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsOneOfConstraint<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsNotOneOf<TNumber>(
+		this IThat<TNumber> source,
+		params TNumber?[] unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOneOfConstraintWithNullable<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsNotOneOf<TNumber>(
+		this IThat<TNumber?> source,
+		params TNumber?[] unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsOneOfConstraintWithNullable<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsNotOneOf<TNumber>(
+		this IThat<TNumber> source,
+		params TNumber[] unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOneOfConstraint<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsNotOneOf<TNumber>(
+		this IThat<TNumber?> source,
+		params TNumber[] unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsOneOfConstraint<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	private sealed class IsOneOfConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber[] expected,
+		NumberTolerance<TNumber> options)
+		: ConstraintResult.WithValue<TNumber>(grammars),
+			IValueConstraint<TNumber>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber actual)
+		{
+			Actual = actual;
+			Outcome = expected.Any(e => options.IsWithinTolerance(actual, e)) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+
+	private sealed class NullableIsOneOfConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber[] expected,
+		NumberTolerance<TNumber> options)
+		: ConstraintResult.WithValue<TNumber?>(grammars),
+			IValueConstraint<TNumber?>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber? actual)
+		{
+			Actual = actual;
+			Outcome = expected.Any(e => options.IsWithinTolerance(actual, e)) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+
+	private sealed class IsOneOfConstraintWithNullable<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber?[] expected,
+		NumberTolerance<TNumber> options)
+		: ConstraintResult.WithValue<TNumber>(grammars),
+			IValueConstraint<TNumber>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber actual)
+		{
+			Actual = actual;
+			Outcome = expected.Any(e => options.IsWithinTolerance(actual, e)) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+
+	private sealed class NullableIsOneOfConstraintWithNullable<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber?[] expected,
+		NumberTolerance<TNumber> options)
+		: ConstraintResult.WithValue<TNumber?>(grammars),
+			IValueConstraint<TNumber?>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber? actual)
+		{
+			Actual = actual;
+			Outcome = expected.Any(e => options.IsWithinTolerance(actual, e)) ? Outcome.Success : Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(it).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not one of ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+#else
 	/// <summary>
 	///     Verifies that the subject is one of the <paramref name="expected" /> values.
 	/// </summary>
@@ -1577,4 +1868,5 @@ public static partial class ThatNumber
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalResult(stringBuilder, indentation);
 	}
+#endif
 }
