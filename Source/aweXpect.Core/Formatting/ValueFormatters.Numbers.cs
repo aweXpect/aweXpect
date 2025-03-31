@@ -36,7 +36,7 @@ public static partial class ValueFormatters
 		byte? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -54,7 +54,7 @@ public static partial class ValueFormatters
 		byte? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -91,7 +91,7 @@ public static partial class ValueFormatters
 		sbyte? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -109,7 +109,7 @@ public static partial class ValueFormatters
 		sbyte? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -146,7 +146,7 @@ public static partial class ValueFormatters
 		short? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -164,7 +164,7 @@ public static partial class ValueFormatters
 		short? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -201,7 +201,7 @@ public static partial class ValueFormatters
 		ushort? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -219,7 +219,7 @@ public static partial class ValueFormatters
 		ushort? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -256,7 +256,7 @@ public static partial class ValueFormatters
 		int? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -274,7 +274,7 @@ public static partial class ValueFormatters
 		int? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -311,7 +311,7 @@ public static partial class ValueFormatters
 		uint? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -329,7 +329,7 @@ public static partial class ValueFormatters
 		uint? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -366,7 +366,7 @@ public static partial class ValueFormatters
 		long? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -384,7 +384,7 @@ public static partial class ValueFormatters
 		long? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -421,7 +421,7 @@ public static partial class ValueFormatters
 		ulong? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -439,7 +439,7 @@ public static partial class ValueFormatters
 		ulong? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -481,7 +481,7 @@ public static partial class ValueFormatters
 		float? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -499,7 +499,7 @@ public static partial class ValueFormatters
 		float? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -541,7 +541,7 @@ public static partial class ValueFormatters
 		double? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -559,7 +559,7 @@ public static partial class ValueFormatters
 		double? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -577,12 +577,12 @@ public static partial class ValueFormatters
 		Half value,
 		FormattingOptions? options = null)
 	{
-		if (value == Half.NegativeInfinity)
+		if (Half.IsNegativeInfinity(value))
 		{
 			return "-\u221e";
 		}
 
-		if (value == Half.PositiveInfinity)
+		if (Half.IsPositiveInfinity(value))
 		{
 			return "+\u221e";
 		}
@@ -613,7 +613,7 @@ public static partial class ValueFormatters
 		Half? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -633,7 +633,7 @@ public static partial class ValueFormatters
 		Half? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -671,7 +671,7 @@ public static partial class ValueFormatters
 		decimal? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -689,7 +689,7 @@ public static partial class ValueFormatters
 		decimal? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -726,7 +726,7 @@ public static partial class ValueFormatters
 		nint? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -744,7 +744,7 @@ public static partial class ValueFormatters
 		nint? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
@@ -781,7 +781,7 @@ public static partial class ValueFormatters
 		nuint? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			return ValueFormatter.NullString;
 		}
@@ -799,7 +799,7 @@ public static partial class ValueFormatters
 		nuint? value,
 		FormattingOptions? options = null)
 	{
-		if (value == null)
+		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
