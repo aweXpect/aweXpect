@@ -209,7 +209,7 @@ internal class WhichNode<TSource, TMember> : Node
 			}
 
 			value = default;
-			return false;
+			return typeof(TValue).IsAssignableFrom(typeof(TMember));
 		}
 
 		public override ConstraintResult Negate()

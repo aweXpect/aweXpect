@@ -27,7 +27,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((byte)1, (byte)2)]
 			[InlineData((byte)1, (byte)0)]
-			public async Task ForByte_WhenValueIsDifferentToExpected_ShouldFail(byte subject,
+			public async Task ForByte_WhenValueIsDifferentFromExpected_ShouldFail(byte subject,
 				byte? expected)
 			{
 				async Task Act()
@@ -72,7 +72,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForDecimal_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForDecimal_WhenValueIsDifferentFromExpected_ShouldFail(
 				double subjectValue, double expectedValue)
 			{
 				decimal subject = new(subjectValue);
@@ -161,7 +161,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForDouble_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForDouble_WhenValueIsDifferentFromExpected_ShouldFail(
 				double subject, double expected)
 			{
 				async Task Act()
@@ -233,7 +233,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((float)1.1, (float)2.1)]
 			[InlineData((float)1.1, (float)0.1)]
-			public async Task ForFloat_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForFloat_WhenValueIsDifferentFromExpected_ShouldFail(
 				float subject, float expected)
 			{
 				async Task Act()
@@ -279,7 +279,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1, 2)]
 			[InlineData(2, 1)]
-			public async Task ForInt_WhenValueIsDifferentToExpected_ShouldFail(int subject,
+			public async Task ForInt_WhenValueIsDifferentFromExpected_ShouldFail(int subject,
 				int? expected)
 			{
 				async Task Act()
@@ -303,6 +303,63 @@ public sealed partial class ThatNumber
 
 				await That(Act).DoesNotThrow();
 			}
+#if NET8_0_OR_GREATER
+			[Theory]
+			[AutoData]
+			public async Task ForInt128_WhenExpectedIsNull_ShouldFail(int subjectValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to <null>,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 2)]
+			[InlineData(2, 1)]
+			public async Task ForInt128_WhenValueIsDifferentFromExpected_ShouldFail(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? expected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to {Formatter.Format(expected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 1)]
+			public async Task ForInt128_WhenValueIsEqualToExpected_ShouldSucceed(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? expected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
 
 			[Theory]
 			[InlineData(1L, 1)]
@@ -335,7 +392,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((long)1, (long)2)]
 			[InlineData((long)1, (long)0)]
-			public async Task ForLong_WhenValueIsDifferentToExpected_ShouldFail(long subject,
+			public async Task ForLong_WhenValueIsDifferentFromExpected_ShouldFail(long subject,
 				long? expected)
 			{
 				async Task Act()
@@ -363,7 +420,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((byte)1, (byte)2)]
 			[InlineData((byte)1, (byte)0)]
-			public async Task ForNullableByte_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableByte_WhenValueIsDifferentFromExpected_ShouldFail(
 				byte? subject, byte? expected)
 			{
 				async Task Act()
@@ -426,7 +483,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForNullableDecimal_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableDecimal_WhenValueIsDifferentFromExpected_ShouldFail(
 				double? subjectValue, double? expectedValue)
 			{
 				decimal? subject = subjectValue == null ? null : new decimal(subjectValue.Value);
@@ -477,7 +534,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
-			public async Task ForNullableDouble_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableDouble_WhenValueIsDifferentFromExpected_ShouldFail(
 				double? subject, double? expected)
 			{
 				async Task Act()
@@ -522,7 +579,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((float)1.1, (float)2.1)]
 			[InlineData((float)1.1, (float)0.1)]
-			public async Task ForNullableFloat_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableFloat_WhenValueIsDifferentFromExpected_ShouldFail(
 				float? subject, float? expected)
 			{
 				async Task Act()
@@ -550,7 +607,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData(1, 2)]
 			[InlineData(1, 0)]
-			public async Task ForNullableInt_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableInt_WhenValueIsDifferentFromExpected_ShouldFail(
 				int? subject, int? expected)
 			{
 				async Task Act()
@@ -593,10 +650,68 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+#if NET8_0_OR_GREATER
+			[Theory]
+			[AutoData]
+			public async Task ForNullableInt128_WhenExpectedIsNull_ShouldFail(int subjectValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to <null>,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 2)]
+			[InlineData(2, 1)]
+			public async Task ForNullableInt128_WhenValueIsDifferentFromExpected_ShouldFail(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? expected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is equal to {Formatter.Format(expected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(1, 1)]
+			public async Task ForNullableInt128_WhenValueIsEqualToExpected_ShouldSucceed(
+				int subjectValue, int expectedValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? expected = expectedValue;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
 			[Theory]
 			[InlineData((long)1, (long)2)]
 			[InlineData((long)1, (long)0)]
-			public async Task ForNullableLong_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableLong_WhenValueIsDifferentFromExpected_ShouldFail(
 				long? subject, long? expected)
 			{
 				async Task Act()
@@ -642,7 +757,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((sbyte)1, (sbyte)2)]
 			[InlineData((sbyte)1, (sbyte)0)]
-			public async Task ForNullableSbyte_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableSbyte_WhenValueIsDifferentFromExpected_ShouldFail(
 				sbyte? subject, sbyte? expected)
 			{
 				async Task Act()
@@ -688,7 +803,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((short)1, (short)2)]
 			[InlineData((short)1, (short)0)]
-			public async Task ForNullableShort_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableShort_WhenValueIsDifferentFromExpected_ShouldFail(
 				short? subject, short? expected)
 			{
 				async Task Act()
@@ -734,7 +849,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((uint)1, (uint)2)]
 			[InlineData((uint)1, (uint)0)]
-			public async Task ForNullableUint_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableUint_WhenValueIsDifferentFromExpected_ShouldFail(
 				uint? subject, uint? expected)
 			{
 				async Task Act()
@@ -780,7 +895,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ulong)1, (ulong)2)]
 			[InlineData((ulong)1, (ulong)0)]
-			public async Task ForNullableUlong_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableUlong_WhenValueIsDifferentFromExpected_ShouldFail(
 				ulong? subject, ulong? expected)
 			{
 				async Task Act()
@@ -826,7 +941,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ushort)1, (ushort)2)]
 			[InlineData((ushort)1, (ushort)0)]
-			public async Task ForNullableUshort_WhenValueIsDifferentToExpected_ShouldFail(
+			public async Task ForNullableUshort_WhenValueIsDifferentFromExpected_ShouldFail(
 				ushort? subject, ushort? expected)
 			{
 				async Task Act()
@@ -890,7 +1005,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((sbyte)1, (sbyte)2)]
 			[InlineData((sbyte)1, (sbyte)0)]
-			public async Task ForSbyte_WhenValueIsDifferentToExpected_ShouldFail(sbyte subject,
+			public async Task ForSbyte_WhenValueIsDifferentFromExpected_ShouldFail(sbyte subject,
 				sbyte? expected)
 			{
 				async Task Act()
@@ -936,7 +1051,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((short)1, (short)2)]
 			[InlineData((short)1, (short)0)]
-			public async Task ForShort_WhenValueIsDifferentToExpected_ShouldFail(short subject,
+			public async Task ForShort_WhenValueIsDifferentFromExpected_ShouldFail(short subject,
 				short? expected)
 			{
 				async Task Act()
@@ -982,7 +1097,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((uint)1, (uint)2)]
 			[InlineData((uint)1, (uint)0)]
-			public async Task ForUint_WhenValueIsDifferentToExpected_ShouldFail(uint subject,
+			public async Task ForUint_WhenValueIsDifferentFromExpected_ShouldFail(uint subject,
 				uint? expected)
 			{
 				async Task Act()
@@ -1028,7 +1143,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ulong)1, (ulong)2)]
 			[InlineData((ulong)1, (ulong)0)]
-			public async Task ForUlong_WhenValueIsDifferentToExpected_ShouldFail(ulong subject,
+			public async Task ForUlong_WhenValueIsDifferentFromExpected_ShouldFail(ulong subject,
 				ulong? expected)
 			{
 				async Task Act()
@@ -1074,7 +1189,7 @@ public sealed partial class ThatNumber
 			[Theory]
 			[InlineData((ushort)1, (ushort)2)]
 			[InlineData((ushort)1, (ushort)0)]
-			public async Task ForUshort_WhenValueIsDifferentToExpected_ShouldFail(ushort subject,
+			public async Task ForUshort_WhenValueIsDifferentFromExpected_ShouldFail(ushort subject,
 				ushort? expected)
 			{
 				async Task Act()

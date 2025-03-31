@@ -1,6 +1,10 @@
-﻿using System;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Options;
+#if NET8_0_OR_GREATER
+using System.Numerics;
+#else
+using System;
+#endif
 
 namespace aweXpect.Results;
 
@@ -19,7 +23,11 @@ public class NumberToleranceResult<TType, TThat>(
 		expectationBuilder,
 		returnValue,
 		options)
+#if NET8_0_OR_GREATER
+	where TType : struct, INumber<TType>;
+#else
 	where TType : struct, IComparable<TType>;
+#endif
 
 /// <summary>
 ///     The result of an expectation with an underlying value of type <typeparamref name="TType" />.
@@ -33,7 +41,11 @@ public class NumberToleranceResult<TType, TThat, TSelf>(
 	NumberTolerance<TType> options)
 	: AndOrResult<TType, TThat, TSelf>(expectationBuilder, returnValue)
 	where TSelf : NumberToleranceResult<TType, TThat, TSelf>
+#if NET8_0_OR_GREATER
+	where TType : struct, INumber<TType>
+#else
 	where TType : struct, IComparable<TType>
+#endif
 {
 	/// <summary>
 	///     Specifies a <paramref name="tolerance" /> to apply on the number comparison.

@@ -1,14 +1,161 @@
-﻿using System;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
+#if !NET8_0_OR_GREATER
+using System;
+#endif
 
 namespace aweXpect;
 
 public static partial class ThatNumber
 {
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsEqualTo<TNumber>(
+		this IThat<TNumber> source, TNumber? expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsEqualTo<TNumber>(
+		this IThat<TNumber?> source, TNumber? expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsEqualToConstraint<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsNotEqualTo<TNumber>(
+		this IThat<TNumber> source, TNumber? unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsEqualToConstraint<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not equal to the <paramref name="unexpected" /> value.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsNotEqualTo<TNumber>(
+		this IThat<TNumber?> source, TNumber? unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsEqualToConstraint<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	private sealed class IsEqualToConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber? expected,
+		NumberTolerance<TNumber> options)
+		: ConstraintResult.WithEqualToValue<TNumber>(it, grammars, expected is null),
+			IValueConstraint<TNumber>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber actual)
+		{
+			Actual = actual;
+			Outcome = options.IsWithinTolerance(actual, expected)
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+
+	private sealed class NullableIsEqualToConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber? expected,
+		NumberTolerance<TNumber> options)
+		: ConstraintResult.WithEqualToValue<TNumber?>(it, grammars, expected is null),
+			IValueConstraint<TNumber?>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber? actual)
+		{
+			Actual = actual;
+			Outcome = options.IsWithinTolerance(actual, expected)
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not equal to ");
+			Formatter.Format(stringBuilder, expected);
+			stringBuilder.Append(options);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+#else
 	/// <summary>
 	///     Verifies that the subject is equal to the <paramref name="expected" /> value.
 	/// </summary>
@@ -792,4 +939,5 @@ public static partial class ThatNumber
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalResult(stringBuilder, indentation);
 	}
+#endif
 }

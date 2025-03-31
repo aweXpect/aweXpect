@@ -1,13 +1,111 @@
-﻿using System;
-using aweXpect.Core;
+﻿using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
+#if !NET8_0_OR_GREATER
+using System;
+#endif
 
 namespace aweXpect;
 
 public static partial class ThatNumber
 {
+#if NET8_0_OR_GREATER
+	/// <summary>
+	///     Verifies that the subject is less than the <paramref name="expected" /> value.
+	/// </summary>
+	public static AndOrResult<TNumber, IThat<TNumber>> IsLessThan<TNumber>(
+		this IThat<TNumber> source, TNumber? expected)
+		where TNumber : struct, INumber<TNumber>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsLessThanConstraint<TNumber>(it, grammars, expected)),
+			source);
+
+	/// <summary>
+	///     Verifies that the subject is less than the <paramref name="expected" /> value.
+	/// </summary>
+	public static AndOrResult<TNumber?, IThat<TNumber?>> IsLessThan<TNumber>(
+		this IThat<TNumber?> source, TNumber? expected)
+		where TNumber : struct, INumber<TNumber>
+		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsLessThanConstraint<TNumber>(it, grammars, expected)),
+			source);
+
+	private sealed class IsLessThanConstraint<TNumber>(string it, ExpectationGrammars grammars, TNumber? expected)
+		: ConstraintResult.WithEqualToValue<TNumber>(it, grammars, expected is null),
+			IValueConstraint<TNumber>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber actual)
+		{
+			Actual = actual;
+			Outcome = IsFinite(expected) && IsFinite(actual) && actual < expected
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is less than ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not less than ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+
+	private sealed class NullableIsLessThanConstraint<TNumber>(
+		string it,
+		ExpectationGrammars grammars,
+		TNumber? expected)
+		: ConstraintResult.WithEqualToValue<TNumber?>(it, grammars, expected is null),
+			IValueConstraint<TNumber?>
+		where TNumber : struct, INumber<TNumber>
+	{
+		public ConstraintResult IsMetBy(TNumber? actual)
+		{
+			Actual = actual;
+			Outcome = IsFinite(expected) && IsFinite(actual) && actual < expected
+				? Outcome.Success
+				: Outcome.Failure;
+			return this;
+		}
+
+		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is less than ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append(It).Append(" was ");
+			Formatter.Format(stringBuilder, Actual);
+		}
+
+		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
+		{
+			stringBuilder.Append("is not less than ");
+			Formatter.Format(stringBuilder, expected);
+		}
+
+		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
+			=> AppendNormalResult(stringBuilder, indentation);
+	}
+#else
 	/// <summary>
 	///     Verifies that the subject is less than the <paramref name="expected" /> value.
 	/// </summary>
@@ -302,4 +400,5 @@ public static partial class ThatNumber
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> AppendNormalResult(stringBuilder, indentation);
 	}
+#endif
 }
