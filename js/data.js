@@ -1296,6 +1296,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -1514,7 +1520,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -1736,7 +1743,8 @@ window.BENCHMARK_DATA = {
           163.49811126504625,
           164.75682552044208,
           167.02554147584098,
-          162.11072840009416
+          162.11072840009416,
+          163.15415088335672
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1931,6 +1939,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2193,7 +2202,8 @@ window.BENCHMARK_DATA = {
           242.18482637405396,
           241.61384241397565,
           248.07671928405762,
-          240.6158151967185
+          240.6158151967185,
+          237.84551973342894
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2386,6 +2396,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2650,7 +2661,8 @@ window.BENCHMARK_DATA = {
           856.103875541687,
           859.5091006596883,
           923.9799948472244,
-          885.0155139287313
+          885.0155139287313,
+          960.5610146840413
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2876,6 +2888,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416
         ],
@@ -3725,6 +3738,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -3866,7 +3885,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -4011,7 +4031,8 @@ window.BENCHMARK_DATA = {
           278353.85065104166,
           285001.949609375,
           287970.2119466146,
-          276222.89306640625
+          276222.89306640625,
+          279415.3660982572
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4145,6 +4166,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4314,7 +4336,8 @@ window.BENCHMARK_DATA = {
           2098878.690848214,
           2188063.4755208334,
           2227621.3916666666,
-          2166723.4344951925
+          2166723.4344951925,
+          2191280.552604167
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4430,6 +4453,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4617,7 +4641,8 @@ window.BENCHMARK_DATA = {
           670338.7095424107,
           664400.9916015625,
           676650.402483259,
-          669895.7610677084
+          669895.7610677084,
+          685731.1853515625
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4766,6 +4791,7 @@ window.BENCHMARK_DATA = {
           866737,
           866737,
           866745,
+          866777,
           866777,
           866777
         ],
@@ -6077,6 +6103,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -6295,7 +6327,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -6517,7 +6550,8 @@ window.BENCHMARK_DATA = {
           302.97579785755704,
           306.92667961120605,
           318.3793118476868,
-          294.3728154727391
+          294.3728154727391,
+          301.3979596069881
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6712,6 +6746,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -6974,7 +7009,8 @@ window.BENCHMARK_DATA = {
           473.7025029182434,
           468.12436334292096,
           491.5830592473348,
-          488.0484597342355
+          488.0484597342355,
+          573.459484799703
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7167,6 +7203,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -7431,7 +7468,8 @@ window.BENCHMARK_DATA = {
           14650.634098597935,
           15092.907186654898,
           16889.01275431315,
-          14700.711894444057
+          14700.711894444057,
+          15503.565374755859
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7657,6 +7695,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488
         ],
@@ -8968,6 +9007,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -9186,7 +9231,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -9408,7 +9454,8 @@ window.BENCHMARK_DATA = {
           192.23126941067832,
           195.72708524068196,
           198.29120249407632,
-          195.46890456859882
+          195.46890456859882,
+          235.43419138590494
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9604,6 +9651,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -9865,7 +9913,8 @@ window.BENCHMARK_DATA = {
           234.39922358194988,
           238.55658632914225,
           243.78727032343548,
-          237.879097366333
+          237.879097366333,
+          251.7869842529297
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10058,6 +10107,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -10322,7 +10372,8 @@ window.BENCHMARK_DATA = {
           1163.9586760203044,
           1170.9133229573567,
           1252.336823096642,
-          1229.3176584879557
+          1229.3176584879557,
+          1261.1004776000977
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10548,6 +10599,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992
         ],
@@ -11859,6 +11911,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -12077,7 +12135,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -12299,7 +12358,8 @@ window.BENCHMARK_DATA = {
           309.2631950060526,
           320.47593148549396,
           334.1007035891215,
-          310.067596244812
+          310.067596244812,
+          400.01151927312213
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12506,6 +12566,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -12756,7 +12817,8 @@ window.BENCHMARK_DATA = {
           470.53340026310514,
           462.6129742940267,
           484.86786600748695,
-          449.47659437473004
+          449.47659437473004,
+          471.0718896865845
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12949,6 +13011,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -13213,7 +13276,8 @@ window.BENCHMARK_DATA = {
           1286.172911130465,
           1271.4335255940755,
           1333.1742518107096,
-          1344.591949735369
+          1344.591949735369,
+          1297.6393529256186
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13439,6 +13503,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096
         ],
@@ -14750,6 +14815,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -14968,7 +15039,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -15190,7 +15262,8 @@ window.BENCHMARK_DATA = {
           1026.1354383741107,
           1059.8611496516637,
           1143.2706895192464,
-          1110.1784766060966
+          1110.1784766060966,
+          1061.209801864624
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15385,6 +15458,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -15647,7 +15721,8 @@ window.BENCHMARK_DATA = {
           1220.0199904123942,
           1275.0634483337403,
           1295.60396194458,
-          1241.3094042264497
+          1241.3094042264497,
+          1280.5874989373344
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15840,6 +15915,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -16104,7 +16180,8 @@ window.BENCHMARK_DATA = {
           2742.3004670824325,
           2731.5107015882218,
           2848.0084948221843,
-          2843.5196779886883
+          2843.5196779886883,
+          2814.9921308664175
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16330,6 +16407,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576
         ],
@@ -17641,6 +17719,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
         "message": "chore: update aweXpect to v2.1.0 (#489)"
+      },
+      {
+        "sha": "158a233ed6174aa31be7e8c171f03608e1f1d1c0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
+        "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
       }
     ],
     "labels": [
@@ -17859,7 +17943,8 @@ window.BENCHMARK_DATA = {
       "175c5793",
       "0fa791ad",
       "aad9bc45",
-      "396bfd6d"
+      "396bfd6d",
+      "158a233e"
     ],
     "datasets": [
       {
@@ -18081,7 +18166,8 @@ window.BENCHMARK_DATA = {
           1097.5551499684652,
           1115.0560511075532,
           1161.8420987447103,
-          1193.232441075643
+          1193.232441075643,
+          1138.4773532867432
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18276,6 +18362,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -18538,7 +18625,8 @@ window.BENCHMARK_DATA = {
           149486.75247395833,
           150419.99490792412,
           150208.15927734374,
-          149516.11694335938
+          149516.11694335938,
+          149107.68327985491
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18765,6 +18853,7 @@ window.BENCHMARK_DATA = {
           63787,
           63788,
           64324,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -18995,7 +19084,8 @@ window.BENCHMARK_DATA = {
           4412.741452026367,
           4480.870552571615,
           4835.739166259766,
-          4697.371419270833
+          4697.371419270833,
+          4661.493729727609
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19221,6 +19311,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744
         ],
