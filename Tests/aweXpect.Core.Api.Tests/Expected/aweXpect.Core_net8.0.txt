@@ -196,6 +196,10 @@ namespace aweXpect.Core
         bool Verify(string it, T value, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
         bool VerifyComplete(string it, aweXpect.Core.IOptionsEquality<T2> options, int maximumNumber, out string? error);
     }
+    public interface IDescribableSubject
+    {
+        string GetDescription();
+    }
     public interface IExpectThat<out T> : aweXpect.Core.IThat<T>
     {
         aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
