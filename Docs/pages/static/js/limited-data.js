@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
-      {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
         "date": "Mon Feb 24 20:18:48 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          183.03493776321412,
           177.03573072751362,
           200.66352038383485,
           177.48725737844194,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           164.75682552044208,
           167.02554147584098,
           162.11072840009416,
-          163.15415088335672
+          163.15415088335672,
+          169.83083828857966
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -429,13 +429,13 @@ window.BENCHMARK_DATA = {
           528,
           528,
           528,
-          528,
           536,
           536,
           536,
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          194.55252879460653,
           187.79813311650202,
           203.44081190427144,
           190.81489157676697,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           241.61384241397565,
           248.07671928405762,
           240.6158151967185,
-          237.84551973342894
+          237.84551973342894,
+          256.0753515788487
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -558,7 +558,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
-          688,
+          952,
           952,
           952,
           952,
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          922.2297602335613,
           902.2438252766927,
           909.2683493750436,
           927.8644832611084,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           859.5091006596883,
           923.9799948472244,
           885.0155139287313,
-          960.5610146840413
+          960.5610146840413,
+          946.9108399073283
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -716,7 +716,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
-          2384,
+          2416,
           2416,
           2416,
           2416
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
       {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          292797.6131766183,
           295842.3683035714,
           289367.9005208333,
           293767.01881510415,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           285001.949609375,
           287970.2119466146,
           276222.89306640625,
-          279415.3660982572
+          279415.3660982572,
+          300501.7185058594
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1153,7 +1153,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          284916,
           284916,
           284916,
           284916,
@@ -1202,6 +1201,7 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
+          284980,
           284980
         ],
         "borderColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2117136.2260416667,
           2004428.314732143,
           2156013.5640625,
           2220208.1515066964,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2188063.4755208334,
           2227621.3916666666,
           2166723.4344951925,
-          2191280.552604167
+          2191280.552604167,
+          2165885.7114583333
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1291,7 +1291,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
-          3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          684462.5043945312,
           656558.4916015625,
           722873.0350911458,
           685143.1132161458,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           664400.9916015625,
           676650.402483259,
           669895.7610677084,
-          685731.1853515625
+          685731.1853515625,
+          678218.3104817708
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1403,7 +1403,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          866721,
           866721,
           866721,
           866721,
@@ -1452,6 +1451,7 @@ window.BENCHMARK_DATA = {
           866745,
           866777,
           866777,
+          866777,
           866777
         ],
         "borderColor": "#1A6029",
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
       {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          619.2218229293824,
           595.3874572118124,
           611.1879355748495,
           612.951800664266,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           306.92667961120605,
           318.3793118476868,
           294.3728154727391,
-          301.3979596069881
+          301.3979596069881,
+          312.61072807312013
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1895,13 +1895,13 @@ window.BENCHMARK_DATA = {
           1192,
           1192,
           1192,
-          1192,
           1200,
           1200,
           1200,
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          480.7912103017171,
           431.4810540335519,
           426.0770240851811,
           430.17569850041315,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           468.12436334292096,
           491.5830592473348,
           488.0484597342355,
-          573.459484799703
+          573.459484799703,
+          511.79366152627125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2024,7 +2024,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
-          1744,
+          2008,
           2008,
           2008,
           2008,
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          15348.9453125,
           14922.130297851563,
           14700.490827120268,
           15772.640808105469,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           15092.907186654898,
           16889.01275431315,
           14700.711894444057,
-          15503.565374755859
+          15503.565374755859,
+          15001.203969319662
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2182,7 +2182,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
-          27456,
+          27488,
           27488,
           27488,
           27488
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
       {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          247.66958737373352,
           219.3735548019409,
           242.91908044081467,
           250.77408463160197,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           195.72708524068196,
           198.29120249407632,
           195.46890456859882,
-          235.43419138590494
+          235.43419138590494,
+          202.78552311261495
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2619,7 +2619,6 @@ window.BENCHMARK_DATA = {
         "label": "aweXpect memory",
         "unit": "b",
         "data": [
-          880,
           880,
           880,
           880,
@@ -2668,6 +2667,7 @@ window.BENCHMARK_DATA = {
           784,
           784,
           784,
+          784,
           784
         ],
         "borderColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          236.8888242562612,
           195.19265469482966,
           213.346586672465,
           197.96642166773478,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           238.55658632914225,
           243.78727032343548,
           237.879097366333,
-          251.7869842529297
+          251.7869842529297,
+          254.49343224934168
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2757,7 +2757,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
-          960,
+          1224,
           1224,
           1224,
           1224,
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1233.0145332336426,
           1170.859646987915,
           1249.3803084237236,
           1212.0548372268677,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1170.9133229573567,
           1252.336823096642,
           1229.3176584879557,
-          1261.1004776000977
+          1261.1004776000977,
+          1221.843351872762
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2915,7 +2915,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
-          2952,
+          2992,
           2992,
           2992,
           2992
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
       {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          378.8276767412821,
           344.6333299416762,
           369.10111042658485,
           341.05374489511763,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           320.47593148549396,
           334.1007035891215,
           310.067596244812,
-          400.01151927312213
+          400.01151927312213,
+          328.8593104680379
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3361,7 +3361,6 @@ window.BENCHMARK_DATA = {
           952,
           952,
           952,
-          952,
           992,
           992,
           992,
@@ -3380,6 +3379,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          461.9652804647173,
           434.73349113464354,
           443.058380762736,
           425.1323392050607,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           462.6129742940267,
           484.86786600748695,
           449.47659437473004,
-          471.0718896865845
+          471.0718896865845,
+          483.3842655590602
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3490,7 +3490,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
-          1904,
+          2168,
           2168,
           2168,
           2168,
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1335.2321887383093,
           1238.1949005126953,
           1265.3086311340332,
           1308.7605392456055,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1271.4335255940755,
           1333.1742518107096,
           1344.591949735369,
-          1297.6393529256186
+          1297.6393529256186,
+          1288.7011830647787
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3648,7 +3648,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
-          3064,
+          3096,
           3096,
           3096,
           3096
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
       {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1309.4071862147405,
           1203.0499405494104,
           1276.887897237142,
           1211.28622341156,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1059.8611496516637,
           1143.2706895192464,
           1110.1784766060966,
-          1061.209801864624
+          1061.209801864624,
+          1068.232519276937
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4089,7 +4089,6 @@ window.BENCHMARK_DATA = {
           2336,
           2336,
           2336,
-          2336,
           2368,
           2368,
           2368,
@@ -4101,6 +4100,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1312.46263478597,
           1223.2447832743326,
           1281.6934903462727,
           1214.9134709676107,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1275.0634483337403,
           1295.60396194458,
           1241.3094042264497,
-          1280.5874989373344
+          1280.5874989373344,
+          1295.2539573396955
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4223,7 +4223,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
-          3888,
+          4152,
           4152,
           4152,
           4152,
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2845.336651102702,
           2713.892446899414,
           2837.940751647949,
           2786.307632991246,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2731.5107015882218,
           2848.0084948221843,
           2843.5196779886883,
-          2814.9921308664175
+          2814.9921308664175,
+          2886.719512939453
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4335,7 +4335,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          4520,
           4520,
           4520,
           4520,
@@ -4384,6 +4383,7 @@ window.BENCHMARK_DATA = {
           4544,
           4576,
           4576,
+          4576,
           4576
         ],
         "borderColor": "#1A6029",
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "e74b96fbfa10c29253be679de47c3b3c8001086f",
-        "author": "dependabot[bot]",
-        "date": "Mon Feb 24 20:19:00 2025 \u002B0100",
-        "message": "build(deps): bump TUnit.Assertions from 0.14.0 to 0.14.6 in the tunit group (#410)"
-      },
       {
         "sha": "ad717ef751db9b920448a9f29b43de7e6e214f30",
         "author": "dependabot[bot]",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Fri Apr 4 14:08:56 2025 \u002B0200",
         "message": "fix: update docusaurus to fix GitHub security advisory (#490)"
+      },
+      {
+        "sha": "27bfcfcea91c1638ece853f2a3653def9556ce97",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 5 16:56:35 2025 \u002B0200",
+        "message": "feat: allow overriding the subject description (#491)"
       }
     ],
     "labels": [
-      "e74b96fb",
       "ad717ef7",
       "977afeac",
       "485d524c",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
-      "158a233e"
+      "158a233e",
+      "27bfcfce"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1348.150994237264,
           1327.1830154418944,
           1377.70715675354,
           1369.8687587738036,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1115.0560511075532,
           1161.8420987447103,
           1193.232441075643,
-          1138.4773532867432
+          1138.4773532867432,
+          1140.4709837777275
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4822,7 +4822,6 @@ window.BENCHMARK_DATA = {
           2368,
           2368,
           2368,
-          2368,
           2400,
           2400,
           2400,
@@ -4834,6 +4833,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          89223.75324358259,
           87719.32002476284,
           88058.01293945312,
           89844.2961344401,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           150419.99490792412,
           150208.15927734374,
           149516.11694335938,
-          149107.68327985491
+          149107.68327985491,
+          151502.0056640625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          54273,
           54273,
           54273,
           54273,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           63788,
           64324,
           63788,
+          63788,
           63788
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          3331.5351066589355,
           3188.171901702881,
           3311.208043507167,
           3327.511433919271,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4480.870552571615,
           4835.739166259766,
           4697.371419270833,
-          4661.493729727609
+          4661.493729727609,
+          4576.999457804362
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5068,7 +5068,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          5680,
           5680,
           5680,
           5680,
@@ -5115,6 +5114,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744
