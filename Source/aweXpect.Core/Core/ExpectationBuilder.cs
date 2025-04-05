@@ -385,7 +385,11 @@ public abstract class ExpectationBuilder
 		CancellationToken cancellationToken)
 	{
 		StringBuilder sb = new();
-		sb.Append("Expected that ").Append(subject).AppendLine();
+		sb.Append("Expected that ");
+		sb.Append(failure.TryGetValue(out IDescribableSubject? describableSubject)
+			? describableSubject.GetDescription()
+			: subject);
+		sb.AppendLine();
 		failure.AppendExpectation(sb);
 		sb.AppendLine(",");
 		sb.Append("but ");

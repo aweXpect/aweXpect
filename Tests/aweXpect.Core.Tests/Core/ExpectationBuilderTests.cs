@@ -65,4 +65,25 @@ public class ExpectationBuilderTests
 		await That(constraintResult.Outcome).IsEqualTo(Outcome.Success);
 		await That(constraintResult.GetExpectationText()).IsEqualTo("length equal to 3");
 	}
+
+	[Fact]
+	public async Task WhenTypeImplementsIDescribableSubject_ShouldUseToStringFromIt()
+	{
+		MyDescribableSubject subject = new("this long description for the subject");
+
+		async Task Act() => await That(subject).IsNull();
+
+		await That(Act).Throws<XunitException>()
+			.WithMessage("""
+			             Expected that this long description for the subject
+			             is null,
+			             but it was MyDescribableSubject { }
+			             """);
+	}
+
+	private sealed class MyDescribableSubject(string subject) : IDescribableSubject
+	{
+		public string GetDescription()
+			=> subject;
+	}
 }
