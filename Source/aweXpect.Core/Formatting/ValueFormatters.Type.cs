@@ -123,6 +123,7 @@ public static partial class ValueFormatters
 				FormatType(value.DeclaringType, stringBuilder);
 				stringBuilder.Append('.');
 			}
+
 			if (value.IsGenericType)
 			{
 				Type genericTypeDefinition = value.GetGenericTypeDefinition();

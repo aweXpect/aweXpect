@@ -9,7 +9,23 @@ public partial class ValueFormatters
 	public sealed class TypeTests
 	{
 		[Fact]
-		public async Task NestedTypes_ShouldOnlyIncludeTheDeclaringTypeAndName()
+		public async Task NestedGenericTypes_ShouldIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(NestedGenericType<TypeTests>);
+			string expectedResult = "ValueFormatters.TypeTests.NestedGenericType<ValueFormatters.TypeTests>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task NestedTypes_ShouldIncludeTheDeclaringTypeAndName()
 		{
 			Type value = typeof(TypeTests);
 			string expectedResult = $"{nameof(ValueFormatters)}.{nameof(TypeTests)}";
@@ -134,6 +150,8 @@ public partial class ValueFormatters
 			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
+
+		private class NestedGenericType<T>;
 
 		public static TheoryData<Type, string> SimpleTypes
 			=> new()
