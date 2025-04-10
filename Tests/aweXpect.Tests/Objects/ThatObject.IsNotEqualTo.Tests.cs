@@ -19,7 +19,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is not equal to subject, because we want to test the failure,
-					             but it was MyClass {
+					             but it was ThatObject.MyClass {
 					                 Value = 0
 					               }
 					             """);
@@ -88,7 +88,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is not equal to unexpected, because we want to test the failure,
-					             but it was MyStruct {
+					             but it was ThatObject.MyStruct {
 					                 Value = 1
 					               }
 					             """);
@@ -135,7 +135,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is not equal to unexpected, because we want to test the failure,
-					             but it was MyStruct {
+					             but it was ThatObject.MyStruct {
 					                 Value = 1
 					               }
 					             """);

@@ -13,7 +13,7 @@ public sealed class EventRecordingTests
 			=> sut.Record().Events("someMissingEventName");
 
 		await That(Act).Throws<NotSupportedException>()
-			.WithMessage("Event someMissingEventName is not supported on CustomEventClass { }");
+			.WithMessage("Event someMissingEventName is not supported on EventRecordingTests.CustomEventClass { }");
 	}
 
 	[Fact]

@@ -25,7 +25,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 		{
 			await That(result.ToString()).IsEqualTo("""
 			                                         - include public fields and properties
-			                                         - for MyClass:
+			                                         - for EquivalencyOptionsExtensionsTests.MyClass:
 			                                           - include public fields and properties
 			                                           - ignore collection order
 			                                        """);
@@ -51,7 +51,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 			});
 		await That(result.ToString()).IsEqualTo($"""
 		                                          - include public fields and properties
-		                                          - for MyClass:
+		                                          - for EquivalencyOptionsExtensionsTests.MyClass:
 		                                            - include public fields and properties
 		                                            - ignore members: ["{memberToIgnore}"]
 		                                         """);
@@ -82,7 +82,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 			});
 		await That(result.ToString()).IsEqualTo($"""
 		                                          - include public fields and properties
-		                                          - for MyClass:
+		                                          - for EquivalencyOptionsExtensionsTests.MyClass:
 		                                            - include {expectedVisibility} fields and public properties
 		                                         """);
 	}
@@ -112,7 +112,7 @@ public sealed class EquivalencyOptionsExtensionsTests
 			});
 		await That(result.ToString()).IsEqualTo($"""
 		                                          - include public fields and properties
-		                                          - for MyClass:
+		                                          - for EquivalencyOptionsExtensionsTests.MyClass:
 		                                            - include public fields and {expectedVisibility} properties
 		                                         """);
 	}

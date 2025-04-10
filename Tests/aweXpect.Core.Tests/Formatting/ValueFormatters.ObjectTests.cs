@@ -18,7 +18,7 @@ public partial class ValueFormatters
 				Value = 2,
 			};
 			string expectedResult = """
-			                        Dummy { Inner = InnerDummy { InnerValue = "foo" }, Value = 2 }
+			                        ValueFormatters.FormatObjectTests.Dummy { Inner = ValueFormatters.FormatObjectTests.InnerDummy { InnerValue = "foo" }, Value = 2 }
 			                        """;
 			StringBuilder sb = new();
 
@@ -38,7 +38,7 @@ public partial class ValueFormatters
 			};
 			value.Inner = value;
 			string expectedResult = """
-			                        RecursiveDummy { Inner = RecursiveDummy { *recursive* }, Value = 1 }
+			                        ValueFormatters.FormatObjectTests.RecursiveDummy { Inner = ValueFormatters.FormatObjectTests.RecursiveDummy { *recursive* }, Value = 1 }
 			                        """;
 			StringBuilder sb = new();
 
@@ -61,8 +61,8 @@ public partial class ValueFormatters
 				Value = 2,
 			};
 			string expectedResult = """
-			                        Dummy {
-			                            Inner = InnerDummy {
+			                        ValueFormatters.FormatObjectTests.Dummy {
+			                            Inner = ValueFormatters.FormatObjectTests.InnerDummy {
 			                              InnerValue = "foo"
 			                            },
 			                            Value = 2
@@ -89,8 +89,8 @@ public partial class ValueFormatters
 				Value = 2,
 			};
 			string expectedResult = """
-			                        Dummy {
-			                          Inner = InnerDummy {
+			                        ValueFormatters.FormatObjectTests.Dummy {
+			                          Inner = ValueFormatters.FormatObjectTests.InnerDummy {
 			                            InnerValue = "foo"
 			                          },
 			                          Value = 2
@@ -143,7 +143,7 @@ public partial class ValueFormatters
 			{
 				Value = 42,
 			};
-			string expectedResult = "ClassWithField { Value = 42 }";
+			string expectedResult = "ValueFormatters.FormatObjectTests.ClassWithField { Value = 42 }";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
@@ -157,7 +157,7 @@ public partial class ValueFormatters
 		public async Task WhenClassIsEmpty_ShouldDisplayClassName()
 		{
 			object value = new EmptyClass();
-			string expectedResult = "EmptyClass { }";
+			string expectedResult = "ValueFormatters.FormatObjectTests.EmptyClass { }";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);
@@ -172,7 +172,7 @@ public partial class ValueFormatters
 		{
 			Exception exception = new("foo");
 			object value = new ClassWithExceptionProperty(exception);
-			string expectedResult = "ClassWithExceptionProperty { Value = [Member 'Value' threw an exception: 'foo'] }";
+			string expectedResult = "ValueFormatters.FormatObjectTests.ClassWithExceptionProperty { Value = [Member 'Value' threw an exception: 'foo'] }";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value, FormattingOptions.SingleLine);

@@ -86,7 +86,7 @@ public sealed partial class ThatGeneric
 					             {
 					             	HasWaitedEnough = false,
 					             } within 0:30,
-					             but it was considered equivalent to MyChangingClass {
+					             but it was considered equivalent to ThatGeneric.DoesNotComplyWith.WithinTests.MyChangingClass {
 					                 HasWaitedEnough = False
 					               }
 					             
@@ -164,7 +164,7 @@ public sealed partial class ThatGeneric
 					             {
 					             	HasWaitedEnough = false,
 					             } within 0:00.050,
-					             but it was considered equivalent to MyChangingClass {
+					             but it was considered equivalent to ThatGeneric.DoesNotComplyWith.WithinTests.MyChangingClass {
 					                 HasWaitedEnough = False
 					               }
 					             

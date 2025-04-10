@@ -47,7 +47,7 @@ public sealed partial class ThatEventRecording
 					             Expected that recording
 					             has recorded the PropertyChanged event on sut at least 2 times,
 					             but it was recorded once in [
-					               PropertyChanged(PropertyChangedClass {
+					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 42
 					                 }, PropertyChangedEventArgs {
 					                   PropertyName = "MyValue"
@@ -93,12 +93,12 @@ public sealed partial class ThatEventRecording
 					             Expected that recording
 					             has recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least 2 times,
 					             but it was recorded once in [
-					               PropertyChanged(PropertyChangedClass {
+					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 0
 					                 }, PropertyChangedEventArgs {
 					                   PropertyName = "foo"
 					                 }),
-					               PropertyChanged(PropertyChangedClass {
+					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 0
 					                 }, PropertyChangedEventArgs {
 					                   PropertyName = "bar"

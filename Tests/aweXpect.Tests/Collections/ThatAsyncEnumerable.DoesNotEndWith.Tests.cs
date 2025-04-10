@@ -58,24 +58,24 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not end with [MyClass { Value = 3 }, MyClass { Value = 5 }, MyClass { Value = 8 }] equivalent,
+					             does not end with [ThatAsyncEnumerable.MyClass { Value = 3 }, ThatAsyncEnumerable.MyClass { Value = 5 }, ThatAsyncEnumerable.MyClass { Value = 8 }] equivalent,
 					             but it did end with [
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 2
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 3
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 5
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 8
 					               }
 					             ]

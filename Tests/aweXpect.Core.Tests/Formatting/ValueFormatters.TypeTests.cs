@@ -9,6 +9,22 @@ public partial class ValueFormatters
 	public sealed class TypeTests
 	{
 		[Fact]
+		public async Task NestedTypes_ShouldOnlyIncludeTheDeclaringTypeAndName()
+		{
+			Type value = typeof(TypeTests);
+			string expectedResult = $"{nameof(ValueFormatters)}.{nameof(TypeTests)}";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task ShouldSupportArraySyntax()
 		{
 			Type value = typeof(int[]);
@@ -28,7 +44,7 @@ public partial class ValueFormatters
 		public async Task ShouldSupportArraySyntaxWithComplexObjects()
 		{
 			Type value = typeof(TypeTests[]);
-			string expectedResult = $"{nameof(TypeTests)}[]";
+			string expectedResult = $"{nameof(ValueFormatters)}.{nameof(TypeTests)}[]";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
@@ -60,7 +76,7 @@ public partial class ValueFormatters
 		public async Task ShouldSupportNestedGenericTypeDefinitions()
 		{
 			Type value = typeof(Expression<Func<TypeTests[], bool>>);
-			string expectedResult = $"Expression<Func<{nameof(TypeTests)}[], bool>>";
+			string expectedResult = $"Expression<Func<{nameof(ValueFormatters)}.{nameof(TypeTests)}[], bool>>";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
@@ -91,8 +107,8 @@ public partial class ValueFormatters
 		[Fact]
 		public async Task Types_ShouldOnlyIncludeTheName()
 		{
-			Type value = typeof(TypeTests);
-			string expectedResult = nameof(TypeTests);
+			Type value = typeof(ValueFormatter);
+			string expectedResult = nameof(ValueFormatter);
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);

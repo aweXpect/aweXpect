@@ -21,7 +21,7 @@ public class AndOrWhichResultTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that subject
-			              which .Value1 is True and which .Value2 is True and refers to subject MyClass {
+			              which .Value1 is True and which .Value2 is True and refers to subject AndOrWhichResultTests.MyClass {
 			                 Value1 = False,
 			                 Value2 = False
 			               },

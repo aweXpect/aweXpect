@@ -30,7 +30,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is null, because we want to test the failure,
-					             but it was MyClass {
+					             but it was ThatObject.MyClass {
 					                 Value = 0
 					               }
 					             """);

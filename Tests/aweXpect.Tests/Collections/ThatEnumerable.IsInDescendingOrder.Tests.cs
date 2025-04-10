@@ -190,19 +190,19 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had 1 before 3 which is not in descending order in [
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 2
 					               },
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 1
 					               },
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               }
 					             ]
@@ -247,13 +247,13 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is not in descending order for x => x.Value,
 					             but it was in [
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 2
 					               },
-					               MyIntClass {
+					               ThatEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 1
 					               }
 					             ]
@@ -276,10 +276,10 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had "A" before "a" which is not in descending order in [
-					               MyStringClass {
+					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "A"
 					               },
-					               MyStringClass {
+					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               }
 					             ]
@@ -311,16 +311,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had "a" before "c" which is not in descending order in [
-					               MyStringClass {
+					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },
-					               MyStringClass {
+					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               MyStringClass {
+					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               MyStringClass {
+					               ThatEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               }
 					             ]

@@ -191,19 +191,19 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had 1 before 3 which is not in descending order in [
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 2
 					               },
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 1
 					               },
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               }
 					             ]
@@ -248,13 +248,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is not in descending order for x => x.Value,
 					             but it was in [
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 3
 					               },
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 2
 					               },
-					               MyIntClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.MyIntClass {
 					                 Value = 1
 					               }
 					             ]
@@ -277,10 +277,10 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had "A" before "a" which is not in descending order in [
-					               MyStringClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "A"
 					               },
-					               MyStringClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               }
 					             ]
@@ -313,16 +313,16 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is in descending order for x => x.Value,
 					             but it had "a" before "c" which is not in descending order in [
-					               MyStringClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               },
-					               MyStringClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "b"
 					               },
-					               MyStringClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "a"
 					               },
-					               MyStringClass {
+					               ThatAsyncEnumerable.IsInDescendingOrder.StringMemberTests.MyStringClass {
 					                 Value = "c"
 					               }
 					             ]

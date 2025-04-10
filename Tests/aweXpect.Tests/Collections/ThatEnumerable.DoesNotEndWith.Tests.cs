@@ -57,17 +57,17 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not end with [MyClass { Inner = <null>, Value = 3 }, MyClass { Inner = <null>, Value = 5 }, MyClass { Inner = <null>, Value = 8 }] equivalent,
+					             does not end with [ThatEnumerable.MyClass { Inner = <null>, Value = 3 }, ThatEnumerable.MyClass { Inner = <null>, Value = 5 }, ThatEnumerable.MyClass { Inner = <null>, Value = 8 }] equivalent,
 					             but it did end with [
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 3
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 5
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 8
 					               }

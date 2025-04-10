@@ -21,7 +21,7 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             does not satisfy _ => predicateResult,
-					             but it was Other {
+					             but it was ThatGeneric.Other {
 					               Value = 0
 					             }
 					             """);

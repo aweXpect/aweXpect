@@ -31,7 +31,7 @@ public sealed partial class ThatDelegate
 					.WithMessage($"""
 					              Expected that @delegate
 					              does not throw any exception,
-					              but it did throw a CustomException:
+					              but it did throw a ThatDelegate.CustomException:
 					                {message}
 					              """);
 			}
@@ -91,7 +91,7 @@ public sealed partial class ThatDelegate
 					.WithMessage($"""
 					              Expected that @delegate
 					              does not throw any exception,
-					              but it did throw a CustomException:
+					              but it did throw a ThatDelegate.CustomException:
 					                {message}
 					              """);
 			}

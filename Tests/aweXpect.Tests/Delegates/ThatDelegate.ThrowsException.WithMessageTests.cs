@@ -77,7 +77,7 @@ public sealed partial class ThatDelegate
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that Delegate
-					             throws a CustomException with Message equal to "foo",
+					             throws a ThatDelegate.CustomException with Message equal to "foo",
 					             but it was "FOO" which differs at index 0:
 					                ↓ (actual)
 					               "FOO"
