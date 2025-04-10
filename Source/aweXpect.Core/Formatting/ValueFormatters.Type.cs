@@ -116,28 +116,37 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append(alias);
 		}
-		else if (value.IsGenericType)
-		{
-			Type genericTypeDefinition = value.GetGenericTypeDefinition();
-			stringBuilder.Append(genericTypeDefinition.Name.SubstringUntilFirst('`'));
-			stringBuilder.Append('<');
-			bool isFirstArgument = true;
-			foreach (Type argument in value.GetGenericArguments())
-			{
-				if (!isFirstArgument)
-				{
-					stringBuilder.Append(", ");
-				}
-
-				isFirstArgument = false;
-				FormatType(argument, stringBuilder);
-			}
-
-			stringBuilder.Append('>');
-		}
 		else
 		{
-			stringBuilder.Append(value.Name);
+			if (value.IsNested && value.DeclaringType is not null)
+			{
+				FormatType(value.DeclaringType, stringBuilder);
+				stringBuilder.Append('.');
+			}
+
+			if (value.IsGenericType)
+			{
+				Type genericTypeDefinition = value.GetGenericTypeDefinition();
+				stringBuilder.Append(genericTypeDefinition.Name.SubstringUntilFirst('`'));
+				stringBuilder.Append('<');
+				bool isFirstArgument = true;
+				foreach (Type argument in value.GetGenericArguments())
+				{
+					if (!isFirstArgument)
+					{
+						stringBuilder.Append(", ");
+					}
+
+					isFirstArgument = false;
+					FormatType(argument, stringBuilder);
+				}
+
+				stringBuilder.Append('>');
+			}
+			else
+			{
+				stringBuilder.Append(value.Name);
+			}
 		}
 	}
 

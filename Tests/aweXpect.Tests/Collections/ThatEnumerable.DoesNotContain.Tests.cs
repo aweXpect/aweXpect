@@ -70,48 +70,48 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not contain MyClass {
+					             does not contain ThatEnumerable.MyClass {
 					               Inner = <null>,
 					               Value = 5
 					             },
 					             but it contained it at least 1 times in [
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 2
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 3
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 5
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 8
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 13
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 21
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 34
 					               },
-					               MyClass {
+					               ThatEnumerable.MyClass {
 					                 Inner = <null>,
 					                 Value = 55
 					               },

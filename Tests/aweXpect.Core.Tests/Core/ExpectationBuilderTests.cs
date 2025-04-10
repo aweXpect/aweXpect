@@ -77,7 +77,7 @@ public class ExpectationBuilderTests
 			.WithMessage("""
 			             Expected that this long description for the subject
 			             is null,
-			             but it was MyDescribableSubject { }
+			             but it was ExpectationBuilderTests.MyDescribableSubject { }
 			             """);
 	}
 

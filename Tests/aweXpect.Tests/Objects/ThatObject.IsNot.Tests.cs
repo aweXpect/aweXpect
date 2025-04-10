@@ -58,8 +58,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyBaseClass, because we want to test the failure,
-					               but it was MyClass {
+					               is not type ThatObject.MyBaseClass, because we want to test the failure,
+					               but it was ThatObject.MyClass {
 					                   Value = {{value}}
 					                 }
 					               """);
@@ -92,8 +92,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyClass, because {{reason}},
-					               but it was MyClass {
+					               is not type ThatObject.MyClass, because {{reason}},
+					               but it was ThatObject.MyClass {
 					                   Value = {{value}}
 					                 }
 					               """);
@@ -154,8 +154,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyBaseClass, because we want to test the failure,
-					               but it was MyClass {
+					               is not type ThatObject.MyBaseClass, because we want to test the failure,
+					               but it was ThatObject.MyClass {
 					                   Value = {{value}}
 					                 }
 					               """);
@@ -188,8 +188,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is not type MyClass, because {{reason}},
-					               but it was MyClass {
+					               is not type ThatObject.MyClass, because {{reason}},
+					               but it was ThatObject.MyClass {
 					                   Value = {{value}}
 					                 }
 					               """);

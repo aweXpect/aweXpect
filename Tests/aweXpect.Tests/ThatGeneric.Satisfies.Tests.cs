@@ -21,7 +21,7 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             satisfies _ => predicateResult,
-					             but it was Other {
+					             but it was ThatGeneric.Other {
 					               Value = 0
 					             }
 					             """);
@@ -44,7 +44,7 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             satisfies _ => ++count > 42 within 0:30,
-					             but it was Other {
+					             but it was ThatGeneric.Other {
 					               Value = 0
 					             }
 					             """);
@@ -112,7 +112,7 @@ public sealed partial class ThatGeneric
 					.WithMessage("""
 					             Expected that subject
 					             satisfies _ => ++count > 42 within 0:00.050,
-					             but it was Other {
+					             but it was ThatGeneric.Other {
 					               Value = 0
 					             }
 					             """);

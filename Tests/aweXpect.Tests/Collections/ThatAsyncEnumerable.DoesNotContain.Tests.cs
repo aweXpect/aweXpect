@@ -68,38 +68,38 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not contain MyClass {
+					             does not contain ThatAsyncEnumerable.MyClass {
 					               Value = 5
 					             } equivalent,
 					             but it contained it at least 1 times in [
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 2
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 3
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 5
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 8
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 13
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 21
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 34
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 55
 					               },
 					               …

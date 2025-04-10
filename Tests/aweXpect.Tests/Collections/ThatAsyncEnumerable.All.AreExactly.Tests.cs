@@ -26,7 +26,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is exactly of type MyClass for all items,
+						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyClass for all items,
 						             but not all were
 						             """);
 				}
@@ -43,7 +43,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is exactly of type MyBaseClass for all items,
+						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyBaseClass for all items,
 						             but not all were
 						             """);
 				}
@@ -75,7 +75,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is exactly of type MyClass for all items,
+						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyClass for all items,
 						             but not all were
 						             """);
 				}
@@ -92,7 +92,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is exactly of type MyBaseClass for all items,
+						             is exactly of type ThatAsyncEnumerable.All.AreExactly.MyBaseClass for all items,
 						             but not all were
 						             """);
 				}

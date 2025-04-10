@@ -84,7 +84,7 @@ public abstract partial class ThatDelegate
 			}
 			else
 			{
-				stringBuilder.Append("throws exactly ").Append(exceptionType.Name.PrependAOrAn());
+				stringBuilder.Append("throws exactly ").Append(Formatter.Format(exceptionType).PrependAOrAn());
 			}
 		}
 

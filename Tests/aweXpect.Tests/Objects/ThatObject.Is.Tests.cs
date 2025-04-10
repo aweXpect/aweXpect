@@ -31,7 +31,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is type MyClass,
+					             is type ThatObject.MyClass,
 					             but it was <null>
 					             """);
 			}
@@ -52,8 +52,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is type OtherClass, because we want to test the failure,
-					               but it was MyClass {
+					               is type ThatObject.OtherClass, because we want to test the failure,
+					               but it was ThatObject.MyClass {
 					                   Value = {{value}}
 					                 }
 					               """);
@@ -86,8 +86,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is type MyClass, because {{reason}},
-					               but it was MyBaseClass {
+					               is type ThatObject.MyClass, because {{reason}},
+					               but it was ThatObject.MyBaseClass {
 					                   Value = {{value}}
 					                 }
 					               """);
@@ -132,7 +132,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is type MyClass,
+					             is type ThatObject.MyClass,
 					             but it was <null>
 					             """);
 			}
@@ -153,8 +153,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is type OtherClass, because we want to test the failure,
-					               but it was MyClass {
+					               is type ThatObject.OtherClass, because we want to test the failure,
+					               but it was ThatObject.MyClass {
 					                   Value = {{value}}
 					                 }
 					               """);
@@ -187,8 +187,8 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage($$"""
 					               Expected that subject
-					               is type MyClass, because {{reason}},
-					               but it was MyBaseClass {
+					               is type ThatObject.MyClass, because {{reason}},
+					               but it was ThatObject.MyBaseClass {
 					                   Value = {{value}}
 					                 }
 					               """);

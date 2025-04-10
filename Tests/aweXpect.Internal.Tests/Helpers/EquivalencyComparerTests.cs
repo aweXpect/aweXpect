@@ -78,7 +78,7 @@ public sealed partial class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was <null> instead of MyClass { MyValue = <null>, Nested = <null> }
+			                              it was <null> instead of EquivalencyComparerTests.MyClass { MyValue = <null>, Nested = <null> }
 			                              """);
 		}
 
@@ -94,7 +94,7 @@ public sealed partial class EquivalencyComparerTests
 
 			await That(result).IsFalse();
 			await That(failure).IsEqualTo("""
-			                              it was MyClass { MyValue = <null>, Nested = <null> } instead of <null>
+			                              it was EquivalencyComparerTests.MyClass { MyValue = <null>, Nested = <null> } instead of <null>
 			                              """);
 		}
 	}

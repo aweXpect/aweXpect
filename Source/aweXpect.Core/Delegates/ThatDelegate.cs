@@ -25,7 +25,7 @@ public abstract partial class ThatDelegate(ExpectationBuilder expectationBuilder
 			return "<null>";
 		}
 
-		string message = exception.GetType().Name.PrependAOrAn();
+		string message = Formatter.Format(exception.GetType()).PrependAOrAn();
 		if (!string.IsNullOrEmpty(exception.Message))
 		{
 			message += ":" + Environment.NewLine + exception.Message.Indent();

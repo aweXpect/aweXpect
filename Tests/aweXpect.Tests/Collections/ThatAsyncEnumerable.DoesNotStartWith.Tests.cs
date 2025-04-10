@@ -67,13 +67,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             does not start with unexpected equivalent,
 					             but it did start with [
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 1
 					               },
-					               MyClass {
+					               ThatAsyncEnumerable.MyClass {
 					                 Value = 2
 					               }
 					             ]

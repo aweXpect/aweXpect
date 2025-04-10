@@ -26,7 +26,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is of type MyClass for all items,
+						             is of type ThatAsyncEnumerable.All.Are.MyClass for all items,
 						             but not all were
 						             """);
 				}
@@ -70,7 +70,7 @@ public sealed partial class ThatAsyncEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             is of type MyClass for all items,
+						             is of type ThatAsyncEnumerable.All.Are.MyClass for all items,
 						             but not all were
 						             """);
 				}

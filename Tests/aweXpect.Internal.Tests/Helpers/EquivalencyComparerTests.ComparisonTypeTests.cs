@@ -47,8 +47,8 @@ public sealed partial class EquivalencyComparerTests
 			await That(failure).IsEqualTo("""
 			                              it was not:
 			                                Property Property2 differed:
-			                                     Found: MyClass2 { Value = 1 }
-			                                  Expected: MyClass2 { Value = 1 }
+			                                     Found: EquivalencyComparerTests.ComparisonTypeTests.MyClass2 { Value = 1 }
+			                                  Expected: EquivalencyComparerTests.ComparisonTypeTests.MyClass2 { Value = 1 }
 			                              """);
 		}
 
@@ -75,8 +75,8 @@ public sealed partial class EquivalencyComparerTests
 			await That(failure).IsEqualTo("""
 			                              it was not:
 			                                It differed:
-			                                     Found: MyClass { MyValue = "foo", Nested = <null> }
-			                                  Expected: MyClass { MyValue = "foo", Nested = <null> }
+			                                     Found: EquivalencyComparerTests.MyClass { MyValue = "foo", Nested = <null> }
+			                                  Expected: EquivalencyComparerTests.MyClass { MyValue = "foo", Nested = <null> }
 			                              """);
 		}
 

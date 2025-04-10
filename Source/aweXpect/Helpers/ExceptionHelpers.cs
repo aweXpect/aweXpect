@@ -7,7 +7,7 @@ internal static class ExceptionHelpers
 {
 	public static string FormatForMessage(this Exception exception)
 	{
-		string message = exception.GetType().Name.PrependAOrAn();
+		string message = Formatter.Format(exception.GetType()).PrependAOrAn();
 		if (!string.IsNullOrEmpty(exception.Message))
 		{
 			message += ":" + Environment.NewLine + exception.Message.Indent();
