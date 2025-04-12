@@ -104,6 +104,22 @@ public partial class ValueFormatters
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
+		[Fact]
+		public async Task ShouldSupportOpenGenericTypeDefinitions()
+		{
+			Type value = typeof(IEnumerable<>);
+			string expectedResult = "IEnumerable<>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
 		[Theory]
 		[MemberData(nameof(SimpleTypes))]
 		public async Task SimpleTypes_ShouldUseSimpleNames(Type value, string expectedResult)
@@ -151,6 +167,7 @@ public partial class ValueFormatters
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
 		}
 
+		// ReSharper disable once UnusedTypeParameter
 		private class NestedGenericType<T>;
 
 		public static TheoryData<Type, string> SimpleTypes

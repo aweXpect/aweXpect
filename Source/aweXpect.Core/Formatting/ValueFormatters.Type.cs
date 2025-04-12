@@ -138,7 +138,10 @@ public static partial class ValueFormatters
 					}
 
 					isFirstArgument = false;
-					FormatType(argument, stringBuilder);
+					if (!argument.ContainsGenericParameters)
+					{
+						FormatType(argument, stringBuilder);
+					}
 				}
 
 				stringBuilder.Append('>');
