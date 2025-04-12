@@ -63,7 +63,7 @@ internal static class AweXpectInitialization
 	private static void ExecuteCustomInitializers()
 	{
 		Type initializerInterface = typeof(IAweXpectInitializer);
-		foreach (Assembly? assembly in AppDomain.CurrentDomain.GetAssemblies()
+		foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies()
 			         .Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
 				         .All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix))))
 		{
@@ -88,6 +88,7 @@ internal static class AweXpectInitialization
 			}
 			catch (ReflectionTypeLoadException)
 			{
+				// Ignore any ReflectionTypeLoadException and continue with the next assembly.
 			}
 		}
 	}
