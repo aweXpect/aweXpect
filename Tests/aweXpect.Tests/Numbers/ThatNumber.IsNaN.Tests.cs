@@ -425,6 +425,8 @@ public sealed partial class ThatNumber
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it => 
 						it.IsNaN());
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
