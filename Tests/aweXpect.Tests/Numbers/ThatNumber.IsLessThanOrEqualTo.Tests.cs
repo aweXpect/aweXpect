@@ -1199,5 +1199,98 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 		}
+
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[AutoData]
+			public async Task ForInt_WhenExpectedIsNull_ShouldSucceed(
+				int subject)
+			{
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsLessThanOrEqualTo(expected));
+
+				await That(Act).DoesNotThrow();
+			}
+
+
+			[Theory]
+			[InlineData(1, 2)]
+			[InlineData(0, 0)]
+			public async Task ForInt_WhenValueIsLessThanOrEqualToExpected_ShouldFail(int subject,
+				int? expected)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsLessThanOrEqualTo(expected));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not less than or equal to {Formatter.Format(expected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1, -2)]
+			public async Task ForInt_WhenValueIsGreaterThanExpected_ShouldSucceed(int subject,
+				int? expected)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsLessThanOrEqualTo(expected));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[AutoData]
+			public async Task ForNullableInt_WhenExpectedIsNull_ShouldSucceed(
+				int? subject)
+			{
+				int? expected = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsLessThanOrEqualTo(expected));
+
+				await That(Act).DoesNotThrow();
+			}
+
+
+			[Theory]
+			[InlineData(1, 2)]
+			[InlineData(0, 0)]
+			public async Task ForNullableInt_WhenValueIsLessThanOrEqualToExpected_ShouldFail(int? subject,
+				int? expected)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsLessThanOrEqualTo(expected));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not less than or equal to {Formatter.Format(expected)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1, -2)]
+			public async Task ForNullableInt_WhenValueIsGreaterThanExpected_ShouldSucceed(int? subject,
+				int? expected)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it
+						=> it.IsLessThanOrEqualTo(expected));
+
+				await That(Act).DoesNotThrow();
+			}
+		}
 	}
 }

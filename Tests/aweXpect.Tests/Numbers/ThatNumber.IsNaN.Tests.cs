@@ -414,5 +414,97 @@ public sealed partial class ThatNumber
 			];
 #endif
 		}
+		
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[InlineData(double.PositiveInfinity)]
+			[InlineData(double.NegativeInfinity)]
+			public async Task ForDouble_WhenSubjectIsInfinity_ShouldSucceed(double subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNaN());
+			}
+
+			[Fact]
+			public async Task ForDouble_WhenSubjectIsNaN_ShouldFail()
+			{
+				double subject = double.NaN;
+
+				async Task Act() => await That(subject).DoesNotComplyWith(it => 
+					it.IsNaN());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not NaN,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1.0)]
+			[InlineData(0.0)]
+			[InlineData(1.0)]
+			[InlineData(double.MinValue)]
+			[InlineData(double.MaxValue)]
+			[InlineData(double.Epsilon)]
+			public async Task ForDouble_WhenSubjectIsNormalValue_ShouldSucceed(double subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNaN());
+
+				await That(Act).DoesNotThrow();
+			}
+			
+			[Theory]
+			[InlineData(double.PositiveInfinity)]
+			[InlineData(double.NegativeInfinity)]
+			[InlineData(null)]
+			public async Task ForNullableDouble_WhenSubjectIsInfinityOrNull_ShouldSucceed(
+				double? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNaN());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task ForNullableDouble_WhenSubjectIsNaN_ShouldFail()
+			{
+				double? subject = double.NaN;
+
+				async Task Act() => await That(subject).DoesNotComplyWith(it => 
+					it.IsNaN());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not NaN,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1.0)]
+			[InlineData(0.0)]
+			[InlineData(1.0)]
+			[InlineData(double.MinValue)]
+			[InlineData(double.MaxValue)]
+			[InlineData(double.Epsilon)]
+			public async Task ForNullableDouble_WhenSubjectIsNormalValue_ShouldSucceed(
+				double? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNaN());
+
+				await That(Act).DoesNotThrow();
+			}
+		}
 	}
 }

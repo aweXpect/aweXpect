@@ -738,5 +738,77 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 		}
+		
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[InlineData(1)]
+			[InlineData(0)]
+			public async Task ForInt_WhenValueIsGreaterThanOrEqualToZero_ShouldSucceed(int subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNegative());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(-1)]
+			public async Task ForInt_WhenValueIsLessThanZero_ShouldFail(int subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNegative());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not negative,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+			
+			[Theory]
+			[InlineData(1)]
+			[InlineData(0)]
+			public async Task ForNullableInt_WhenValueIsGreaterThanOrEqualToZero_ShouldSucceed(
+				int? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNegative());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(-1)]
+			public async Task ForNullableInt_WhenValueIsLessThanZero_ShouldFail(int? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNegative());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not negative,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenValueIsNull_ShouldSucceed()
+			{
+				int? subject = null;
+
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsNegative());
+
+				await That(Act).DoesNotThrow();
+			}
+		}
 	}
 }

@@ -16,18 +16,16 @@ internal static class ExceptionHelpers
 		return message;
 	}
 
-	public static IEnumerable<Exception> GetInnerExpectations(this Exception? actual)
+	public static IEnumerable<Exception> GetInnerExceptions(this Exception? actual)
 	{
 		switch (actual)
 		{
-			case null:
-				yield break;
 			case AggregateException aggregateException:
 				{
 					foreach (Exception innerException in aggregateException.InnerExceptions)
 					{
 						yield return innerException;
-						foreach (Exception inner in GetInnerExpectations(innerException))
+						foreach (Exception inner in GetInnerExceptions(innerException))
 						{
 							yield return inner;
 						}
@@ -37,10 +35,10 @@ internal static class ExceptionHelpers
 				}
 			default:
 				{
-					if (actual.InnerException != null)
+					if (actual?.InnerException is not null)
 					{
 						yield return actual.InnerException;
-						foreach (Exception inner in GetInnerExpectations(actual.InnerException))
+						foreach (Exception inner in GetInnerExceptions(actual.InnerException))
 						{
 							yield return inner;
 						}

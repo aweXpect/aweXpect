@@ -311,5 +311,76 @@ public sealed partial class ThatNumber
 			];
 #endif
 		}
+
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[InlineData(double.PositiveInfinity)]
+			[InlineData(double.NegativeInfinity)]
+			[InlineData(double.NaN)]
+			public async Task ForDouble_WhenSubjectIsInfinityOrNaN_ShouldSucceed(double subject)
+			{
+				async Task Act() => await That(subject).DoesNotComplyWith(it =>
+					it.IsFinite());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(-1d)]
+			[InlineData(0d)]
+			[InlineData(1d)]
+			[InlineData(double.MinValue)]
+			[InlineData(double.MaxValue)]
+			[InlineData(double.Epsilon)]
+			public async Task ForDouble_WhenSubjectIsNormalValue_ShouldFail(double subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.IsFinite());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not finite,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(double.PositiveInfinity)]
+			[InlineData(double.NegativeInfinity)]
+			[InlineData(double.NaN)]
+			[InlineData(null)]
+			public async Task ForNullableDouble_WhenSubjectIsInfinityNaNOrNull_ShouldSucceed(double? subject)
+			{
+				async Task Act() => await That(subject).DoesNotComplyWith(it =>
+					it.IsFinite());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(-1d)]
+			[InlineData(0d)]
+			[InlineData(1d)]
+			[InlineData(double.MinValue)]
+			[InlineData(double.MaxValue)]
+			[InlineData(double.Epsilon)]
+			public async Task ForNullableDouble_WhenSubjectIsNormalValue_ShouldFail(
+				double? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it =>
+						it.IsFinite());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not finite,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+		}
 	}
 }
