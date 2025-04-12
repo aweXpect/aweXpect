@@ -37,8 +37,21 @@ public static partial class ValueFormatters
 		if (value is null)
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
+			return;
 		}
-		else if (value is bool boolValue)
+
+		if (ValueFormatter.RegisteredValueFormatters.Count > 0)
+		{
+			foreach (IValueFormatter valueFormatter in ValueFormatter.RegisteredValueFormatters.Values)
+			{
+				if (valueFormatter.TryFormat(stringBuilder, value, options))
+				{
+					return;
+				}
+			}
+		}
+
+		if (value is bool boolValue)
 		{
 			formatter.Format(stringBuilder, boolValue, options);
 		}
