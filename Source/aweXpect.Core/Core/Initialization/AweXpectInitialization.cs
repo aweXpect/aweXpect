@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using aweXpect.Core.Adapters;
 using aweXpect.Customization;
 
@@ -50,31 +51,45 @@ internal static class AweXpectInitialization
 
 	private static InitializationState Initialize()
 	{
-		Type initializerInterface = typeof(IAweXpectInitializer);
-		foreach (Type initializerType in AppDomain.CurrentDomain.GetAssemblies()
-			         .Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
-				         .All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
-			         .SelectMany(assembly => assembly.GetTypes()
-				         .Where(type => type is { IsClass: true, IsAbstract: false, } &&
-				                        initializerInterface.IsAssignableFrom(type))))
-		{
-			try
-			{
-				IAweXpectInitializer? initializer = (IAweXpectInitializer?)Activator.CreateInstance(initializerType);
-				initializer?.Initialize();
-			}
-			catch (Exception ex)
-			{
-				throw new InvalidOperationException(
-					$"Could not instantiate initializer '{Formatter.Format(initializerType)}'!", ex);
-			}
-		}
+		ExecuteCustomInitializers();
 
 		ITestFrameworkAdapter testFramework = DetectFramework(AppDomain.CurrentDomain.GetAssemblies()
 			.Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
 				.All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
 			.SelectMany(assembly => assembly.GetTypes().Where(x => !x.IsNestedPrivate)));
 		return new InitializationState(testFramework);
+	}
+
+	private static void ExecuteCustomInitializers()
+	{
+		Type initializerInterface = typeof(IAweXpectInitializer);
+		foreach (Assembly? assembly in AppDomain.CurrentDomain.GetAssemblies()
+			         .Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
+				         .All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix))))
+		{
+			try
+			{
+				foreach (Type initializerType in assembly.GetTypes()
+					         .Where(type => type is { IsClass: true, IsAbstract: false, } &&
+					                        initializerInterface.IsAssignableFrom(type)))
+				{
+					try
+					{
+						IAweXpectInitializer? initializer =
+							(IAweXpectInitializer?)Activator.CreateInstance(initializerType);
+						initializer?.Initialize();
+					}
+					catch (Exception ex)
+					{
+						throw new InvalidOperationException(
+							$"Could not instantiate initializer '{Formatter.Format(initializerType)}'!", ex);
+					}
+				}
+			}
+			catch (ReflectionTypeLoadException)
+			{
+			}
+		}
 	}
 
 	internal class InitializationState(ITestFrameworkAdapter testFramework)
