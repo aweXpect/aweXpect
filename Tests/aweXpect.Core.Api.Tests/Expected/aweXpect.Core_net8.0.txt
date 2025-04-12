@@ -596,9 +596,14 @@ namespace aweXpect.Formatting
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
         public static aweXpect.Formatting.FormattingOptions Indented(string? indentation = null) { }
     }
+    public interface IValueFormatter
+    {
+        bool TryFormat(System.Text.StringBuilder stringBuilder, object value, aweXpect.Formatting.FormattingOptions? options);
+    }
     public class ValueFormatter
     {
         public static readonly string NullString;
+        public static System.IDisposable Register(aweXpect.Formatting.IValueFormatter formatter) { }
     }
     public static class ValueFormatters
     {
