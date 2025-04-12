@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Net;
 using System.Text;
 
@@ -40,133 +41,103 @@ public static partial class ValueFormatters
 			return;
 		}
 
-		if (ValueFormatter.RegisteredValueFormatters.Count > 0)
+		if (!ValueFormatter.RegisteredValueFormatters.IsEmpty &&
+		    ValueFormatter.RegisteredValueFormatters.Any(item
+			    => item.Value.TryFormat(stringBuilder, value, options)))
 		{
-			foreach (IValueFormatter valueFormatter in ValueFormatter.RegisteredValueFormatters.Values)
-			{
-				if (valueFormatter.TryFormat(stringBuilder, value, options))
-				{
-					return;
-				}
-			}
+			return;
 		}
 
-		if (value is bool boolValue)
+		switch (value)
 		{
-			formatter.Format(stringBuilder, boolValue, options);
-		}
-		else if (value is string stringValue)
-		{
-			formatter.Format(stringBuilder, stringValue, options);
-		}
-		else if (value is char charValue)
-		{
-			formatter.Format(stringBuilder, charValue, options);
-		}
-		else if (value is Type typeValue)
-		{
-			formatter.Format(stringBuilder, typeValue, options);
-		}
-		else if (value is IEnumerable enumerableValue)
-		{
-			formatter.Format(stringBuilder, enumerableValue, options);
-		}
-		else if (value is HttpStatusCode httpStatusCodeValue)
-		{
-			formatter.Format(stringBuilder, httpStatusCodeValue, options);
-		}
-		else if (value is DateTime dateTimeValue)
-		{
-			formatter.Format(stringBuilder, dateTimeValue, options);
-		}
-		else if (value is DateTimeOffset dateTimeOffsetValue)
-		{
-			formatter.Format(stringBuilder, dateTimeOffsetValue, options);
-		}
-		else if (value is TimeSpan timeSpanValue)
-		{
-			formatter.Format(stringBuilder, timeSpanValue, options);
-		}
+			case bool boolValue:
+				formatter.Format(stringBuilder, boolValue, options);
+				return;
+			case string stringValue:
+				formatter.Format(stringBuilder, stringValue, options);
+				return;
+			case char charValue:
+				formatter.Format(stringBuilder, charValue, options);
+				return;
+			case Type typeValue:
+				formatter.Format(stringBuilder, typeValue, options);
+				return;
+			case IEnumerable enumerableValue:
+				formatter.Format(stringBuilder, enumerableValue, options);
+				return;
+			case HttpStatusCode httpStatusCodeValue:
+				formatter.Format(stringBuilder, httpStatusCodeValue, options);
+				return;
+			case DateTime dateTimeValue:
+				formatter.Format(stringBuilder, dateTimeValue, options);
+				return;
+			case DateTimeOffset dateTimeOffsetValue:
+				formatter.Format(stringBuilder, dateTimeOffsetValue, options);
+				return;
+			case TimeSpan timeSpanValue:
+				formatter.Format(stringBuilder, timeSpanValue, options);
+				return;
 #if NET8_0_OR_GREATER
-		else if (value is DateOnly dateOnlyValue)
-		{
-			formatter.Format(stringBuilder, dateOnlyValue, options);
-		}
-		else if (value is TimeOnly timeOnlyValue)
-		{
-			formatter.Format(stringBuilder, timeOnlyValue, options);
-		}
+			case DateOnly dateOnlyValue:
+				formatter.Format(stringBuilder, dateOnlyValue, options);
+				return;
+			case TimeOnly timeOnlyValue:
+				formatter.Format(stringBuilder, timeOnlyValue, options);
+				return;
 #endif
-		else if (value is Guid guidValue)
-		{
-			formatter.Format(stringBuilder, guidValue, options);
-		}
-		else if (value is Enum enumValue)
-		{
-			formatter.Format(stringBuilder, enumValue, options);
-		}
-		else if (value is double doubleValue)
-		{
-			formatter.Format(stringBuilder, doubleValue, options);
-		}
-		else if (value is float floatValue)
-		{
-			formatter.Format(stringBuilder, floatValue, options);
-		}
+			case Guid guidValue:
+				formatter.Format(stringBuilder, guidValue, options);
+				return;
+			case Enum enumValue:
+				formatter.Format(stringBuilder, enumValue, options);
+				return;
+			case double doubleValue:
+				formatter.Format(stringBuilder, doubleValue, options);
+				return;
+			case float floatValue:
+				formatter.Format(stringBuilder, floatValue, options);
+				return;
 #if NET8_0_OR_GREATER
-		else if (value is Half halfValue)
-		{
-			formatter.Format(stringBuilder, halfValue, options);
-		}
+			case Half halfValue:
+				formatter.Format(stringBuilder, halfValue, options);
+				return;
 #endif
-		else if (value is decimal decimalValue)
-		{
-			formatter.Format(stringBuilder, decimalValue, options);
+			case decimal decimalValue:
+				formatter.Format(stringBuilder, decimalValue, options);
+				return;
+			case int intValue:
+				formatter.Format(stringBuilder, intValue, options);
+				return;
+			case uint uintValue:
+				formatter.Format(stringBuilder, uintValue, options);
+				return;
+			case long longValue:
+				formatter.Format(stringBuilder, longValue, options);
+				return;
+			case ulong ulongValue:
+				formatter.Format(stringBuilder, ulongValue, options);
+				return;
+			case byte byteValue:
+				formatter.Format(stringBuilder, byteValue, options);
+				return;
+			case sbyte sbyteValue:
+				formatter.Format(stringBuilder, sbyteValue, options);
+				return;
+			case short shortValue:
+				formatter.Format(stringBuilder, shortValue, options);
+				return;
+			case ushort ushortValue:
+				formatter.Format(stringBuilder, ushortValue, options);
+				return;
+			case nint nintValue:
+				formatter.Format(stringBuilder, nintValue, options);
+				return;
+			case nuint nuintValue:
+				formatter.Format(stringBuilder, nuintValue, options);
+				return;
 		}
-		else if (value is int intValue)
-		{
-			formatter.Format(stringBuilder, intValue, options);
-		}
-		else if (value is uint uintValue)
-		{
-			formatter.Format(stringBuilder, uintValue, options);
-		}
-		else if (value is long longValue)
-		{
-			formatter.Format(stringBuilder, longValue, options);
-		}
-		else if (value is ulong ulongValue)
-		{
-			formatter.Format(stringBuilder, ulongValue, options);
-		}
-		else if (value is byte byteValue)
-		{
-			formatter.Format(stringBuilder, byteValue, options);
-		}
-		else if (value is sbyte sbyteValue)
-		{
-			formatter.Format(stringBuilder, sbyteValue, options);
-		}
-		else if (value is short shortValue)
-		{
-			formatter.Format(stringBuilder, shortValue, options);
-		}
-		else if (value is ushort ushortValue)
-		{
-			formatter.Format(stringBuilder, ushortValue, options);
-		}
-		else if (value is nint nintValue)
-		{
-			formatter.Format(stringBuilder, nintValue, options);
-		}
-		else if (value is nuint nuintValue)
-		{
-			formatter.Format(stringBuilder, nuintValue, options);
-		}
-		else
-		{
-			FormatObject(stringBuilder, value,
-				options ?? FormattingOptions.MultipleLines, context);
-		}
+
+		FormatObject(stringBuilder, value,
+			options ?? FormattingOptions.MultipleLines, context);
 	}
 }
