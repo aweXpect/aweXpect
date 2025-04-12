@@ -1332,6 +1332,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -1556,7 +1562,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -1784,7 +1791,8 @@ window.BENCHMARK_DATA = {
           162.05879340171813,
           162.6735976378123,
           271.2420153277261,
-          163.26840634346007
+          163.26840634346007,
+          171.221613747733
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1979,6 +1987,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2253,7 +2262,8 @@ window.BENCHMARK_DATA = {
           246.27180423736573,
           242.68065325419107,
           494.27155900001526,
-          234.48888805934362
+          234.48888805934362,
+          246.19574042728968
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2446,6 +2456,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2722,7 +2733,8 @@ window.BENCHMARK_DATA = {
           905.2766574450901,
           1022.7813792909894,
           1744.305140177409,
-          886.1725380761283
+          886.1725380761283,
+          927.4466937383016
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2948,6 +2960,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -3839,6 +3852,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -3986,7 +4005,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -4137,7 +4157,8 @@ window.BENCHMARK_DATA = {
           285343.96944754466,
           297106.54638671875,
           697612.6020507812,
-          290751.0905924479
+          290751.0905924479,
+          292559.94936523435
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4271,6 +4292,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4452,7 +4474,8 @@ window.BENCHMARK_DATA = {
           2217235.0356770833,
           2394563.9671875,
           3853426.921614583,
-          2167610.0242745536
+          2167610.0242745536,
+          2271015.56328125
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4568,6 +4591,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4767,7 +4791,8 @@ window.BENCHMARK_DATA = {
           646556.3046223958,
           702629.09296875,
           1108754.5138671875,
-          651876.2898111979
+          651876.2898111979,
+          699768.6596679688
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4923,6 +4948,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777
         ],
         "borderColor": "#1A6029",
@@ -6269,6 +6295,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -6493,7 +6525,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -6721,7 +6754,8 @@ window.BENCHMARK_DATA = {
           305.10629749298096,
           305.06349873542786,
           451.2747742335002,
-          287.075070977211
+          287.075070977211,
+          318.7846941947937
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -6916,6 +6950,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -7190,7 +7225,8 @@ window.BENCHMARK_DATA = {
           469.8343757482675,
           469.1536730766296,
           819.6606222788492,
-          473.49535421224743
+          473.49535421224743,
+          496.84731241861977
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7383,6 +7419,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -7659,7 +7696,8 @@ window.BENCHMARK_DATA = {
           14404.18723932902,
           15471.594205729167,
           22488.97798374721,
-          14668.357003348214
+          14668.357003348214,
+          15334.142970784505
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -7885,6 +7923,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -9238,6 +9277,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -9462,7 +9507,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -9690,7 +9736,8 @@ window.BENCHMARK_DATA = {
           196.39931909243265,
           206.61100385739252,
           301.6242468697684,
-          192.71993873914082
+          192.71993873914082,
+          202.46659006391252
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -9886,6 +9933,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -10159,7 +10207,8 @@ window.BENCHMARK_DATA = {
           281.4458539009094,
           256.24701023101807,
           319.7008345603943,
-          262.6701855659485
+          262.6701855659485,
+          249.20876369476318
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10352,6 +10401,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -10628,7 +10678,8 @@ window.BENCHMARK_DATA = {
           1211.4755146026612,
           1254.929337565104,
           2032.9110057195028,
-          1255.5186494680552
+          1255.5186494680552,
+          1222.40902028765
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10854,6 +10905,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -12207,6 +12259,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -12431,7 +12489,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -12659,7 +12718,8 @@ window.BENCHMARK_DATA = {
           316.1708313501798,
           305.0399069786072,
           420.4995104244777,
-          329.5756052652995
+          329.5756052652995,
+          325.4519148554121
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12866,6 +12926,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -13128,7 +13189,8 @@ window.BENCHMARK_DATA = {
           447.85168031056725,
           447.70865934235707,
           651.1543642452785,
-          462.3107726757343
+          462.3107726757343,
+          479.8086456934611
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13321,6 +13383,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -13597,7 +13660,8 @@ window.BENCHMARK_DATA = {
           1260.8275141398112,
           1319.9104419435773,
           1651.9124093373616,
-          1313.0143759409586
+          1313.0143759409586,
+          1346.2087994893393
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13823,6 +13887,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -15176,6 +15241,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -15400,7 +15471,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -15628,7 +15700,8 @@ window.BENCHMARK_DATA = {
           1056.1872095743815,
           1109.3324143545967,
           1706.9824881235759,
-          1106.8352112088885
+          1106.8352112088885,
+          1127.9552107493082
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15823,6 +15896,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -16097,7 +16171,8 @@ window.BENCHMARK_DATA = {
           1230.1847798483711,
           1330.6799790700277,
           1997.3936989648003,
-          1331.1228448232016
+          1331.1228448232016,
+          1331.3651218414307
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16290,6 +16365,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -16566,7 +16642,8 @@ window.BENCHMARK_DATA = {
           2869.0325810750323,
           2865.913978068034,
           3314.272362391154,
-          2920.6913950602216
+          2920.6913950602216,
+          2829.1982192993164
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16792,6 +16869,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -18145,6 +18223,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
         "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
+      },
+      {
+        "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
+        "message": "chore: update aweXpect.Core to v2.3.0 (#502)"
       }
     ],
     "labels": [
@@ -18369,7 +18453,8 @@ window.BENCHMARK_DATA = {
       "2597e1fe",
       "8527c4e4",
       "ec23c81a",
-      "d1fe3081"
+      "d1fe3081",
+      "ef3c4ea0"
     ],
     "datasets": [
       {
@@ -18597,7 +18682,8 @@ window.BENCHMARK_DATA = {
           1128.772327014378,
           1152.6644451141358,
           1403.6528884569805,
-          1121.7708871205648
+          1121.7708871205648,
+          1186.8729700724284
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18792,6 +18878,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -19066,7 +19153,8 @@ window.BENCHMARK_DATA = {
           148776.76067243304,
           150365.82788085938,
           171199.31315104166,
-          147966.16297325722
+          147966.16297325722,
+          152152.75469501203
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19299,7 +19387,8 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63788,
-          63352
+          63352,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19535,7 +19624,8 @@ window.BENCHMARK_DATA = {
           4552.402039119175,
           4625.012977091471,
           6294.925835673014,
-          4644.5872404915945
+          4644.5872404915945,
+          4677.96892191569
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19761,6 +19851,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
