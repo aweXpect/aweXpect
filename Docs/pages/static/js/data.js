@@ -1356,6 +1356,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -1584,7 +1590,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -1816,7 +1823,8 @@ window.BENCHMARK_DATA = {
           171.221613747733,
           172.12464152971904,
           171.65568786008018,
-          163.0079639752706
+          163.0079639752706,
+          181.16087979929787
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2011,6 +2019,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2293,7 +2302,8 @@ window.BENCHMARK_DATA = {
           246.19574042728968,
           243.84058519999186,
           230.60925475756326,
-          234.10655784606934
+          234.10655784606934,
+          267.4430270512899
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2486,6 +2496,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2770,7 +2781,8 @@ window.BENCHMARK_DATA = {
           927.4466937383016,
           897.1431950160435,
           909.7133782068888,
-          901.4819433848063
+          901.4819433848063,
+          953.9626859937396
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2996,6 +3008,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -3915,6 +3928,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -4066,7 +4085,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -4221,7 +4241,8 @@ window.BENCHMARK_DATA = {
           292559.94936523435,
           279425.6501627604,
           303852.7521484375,
-          270934.8798828125
+          270934.8798828125,
+          323169.5622907366
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4355,6 +4376,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4544,7 +4566,8 @@ window.BENCHMARK_DATA = {
           2271015.56328125,
           2119807.87890625,
           2201255.48046875,
-          2086016.84765625
+          2086016.84765625,
+          2293040.180245536
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4660,6 +4683,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -4867,7 +4891,8 @@ window.BENCHMARK_DATA = {
           699768.6596679688,
           649118.3092773438,
           678007.3373697917,
-          690587.31953125
+          690587.31953125,
+          704850.773046875
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5023,6 +5048,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -6397,6 +6423,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -6625,7 +6657,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -6857,7 +6890,8 @@ window.BENCHMARK_DATA = {
           318.7846941947937,
           320.77183561325074,
           308.6339365641276,
-          299.65377105077107
+          299.65377105077107,
+          330.19864838463917
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7052,6 +7086,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -7334,7 +7369,8 @@ window.BENCHMARK_DATA = {
           496.84731241861977,
           456.6167625109355,
           476.50009632110596,
-          455.6583114306132
+          455.6583114306132,
+          488.38705771309986
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7527,6 +7563,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -7811,7 +7848,8 @@ window.BENCHMARK_DATA = {
           15334.142970784505,
           19231.073976643882,
           20954.85867745536,
-          23391.937829153878
+          23391.937829153878,
+          18684.621852620443
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8037,6 +8075,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -9418,6 +9457,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -9646,7 +9691,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -9878,7 +9924,8 @@ window.BENCHMARK_DATA = {
           202.46659006391252,
           194.99374374321528,
           200.73248023646218,
-          187.4422121524811
+          187.4422121524811,
+          206.67400906880695
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10074,6 +10121,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -10355,7 +10403,8 @@ window.BENCHMARK_DATA = {
           249.20876369476318,
           242.45655274391174,
           235.0627590247563,
-          237.09159021377565
+          237.09159021377565,
+          252.65418842860632
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -10548,6 +10597,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -10832,7 +10882,8 @@ window.BENCHMARK_DATA = {
           1222.40902028765,
           1196.64937210083,
           1285.7777481079102,
-          1163.3620379130045
+          1163.3620379130045,
+          1225.8321932383947
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11058,6 +11109,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -12439,6 +12491,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -12667,7 +12725,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -12899,7 +12958,8 @@ window.BENCHMARK_DATA = {
           325.4519148554121,
           315.53746509552,
           307.3575401624044,
-          307.17106339136757
+          307.17106339136757,
+          334.04503107070923
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13106,6 +13166,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -13376,7 +13437,8 @@ window.BENCHMARK_DATA = {
           479.8086456934611,
           472.50604704448153,
           457.0701125008719,
-          449.8377588272095
+          449.8377588272095,
+          473.66288668314616
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13569,6 +13631,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -13853,7 +13916,8 @@ window.BENCHMARK_DATA = {
           1346.2087994893393,
           1363.875945409139,
           1313.2155202229817,
-          1291.2940386454263
+          1291.2940386454263,
+          1307.1318186442056
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14079,6 +14143,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -15460,6 +15525,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -15688,7 +15759,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -15920,7 +15992,8 @@ window.BENCHMARK_DATA = {
           1127.9552107493082,
           1104.8587485722132,
           1102.3417764027913,
-          1089.5965651194253
+          1089.5965651194253,
+          1120.1602608816963
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16115,6 +16188,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -16397,7 +16471,8 @@ window.BENCHMARK_DATA = {
           1331.3651218414307,
           1277.3845671335855,
           1367.9343302408854,
-          1255.2281643794133
+          1255.2281643794133,
+          1353.8691059112548
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16590,6 +16665,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -16874,7 +16950,8 @@ window.BENCHMARK_DATA = {
           2829.1982192993164,
           2894.4404389063516,
           2849.5485924312047,
-          2847.830561319987
+          2847.830561319987,
+          2837.1913078308107
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17100,6 +17177,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -18481,6 +18559,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 21:07:56 2025 \u002B0200",
         "message": "fix: catch \u0060ReflectionTypeLoadException\u0060 during initialization (#505)"
+      },
+      {
+        "sha": "ef635cadc7aa67babbd66675f44bcd0b97610314",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat Apr 12 21:09:55 2025 \u002B0200",
+        "message": "fix: formatting exception with open generic types (#506)"
       }
     ],
     "labels": [
@@ -18709,7 +18793,8 @@ window.BENCHMARK_DATA = {
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
-      "cab3f522"
+      "cab3f522",
+      "ef635cad"
     ],
     "datasets": [
       {
@@ -18941,7 +19026,8 @@ window.BENCHMARK_DATA = {
           1186.8729700724284,
           1165.5963742182805,
           1141.5582317624774,
-          1122.6638080051966
+          1122.6638080051966,
+          1233.891072681972
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19136,6 +19222,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -19418,7 +19505,8 @@ window.BENCHMARK_DATA = {
           152152.75469501203,
           149061.3936767578,
           150408.25285993304,
-          147210.44224330358
+          147210.44224330358,
+          152015.78404947917
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19652,6 +19740,7 @@ window.BENCHMARK_DATA = {
           63788,
           63788,
           63352,
+          63787,
           63787,
           63787,
           63787,
@@ -19895,7 +19984,8 @@ window.BENCHMARK_DATA = {
           4677.96892191569,
           4753.810086763822,
           4670.794108072917,
-          4674.987731424967
+          4674.987731424967,
+          4882.251838175455
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20121,6 +20211,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
