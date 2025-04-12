@@ -22,7 +22,7 @@ public static partial class ThatException
 		Action<IThat<IEnumerable<Exception>>> expectations)
 		=> new(source.Get().ExpectationBuilder
 				.ForMember<Exception?, IEnumerable<Exception?>>(
-					e => e.GetInnerExpectations(),
+					e => e.GetInnerExceptions(),
 					" which ",
 					false)
 				.Validate((_, grammars) => new HasRecursiveInnerExceptionsConstraint(grammars))

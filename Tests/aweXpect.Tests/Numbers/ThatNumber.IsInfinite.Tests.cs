@@ -307,5 +307,76 @@ public sealed partial class ThatNumber
 			];
 #endif
 		}
+		
+		public sealed class NegatedTests
+		{
+			[Theory]
+			[InlineData(double.PositiveInfinity)]
+			[InlineData(double.NegativeInfinity)]
+			public async Task ForDouble_WhenSubjectIsInfinity_ShouldFail(double subject)
+			{
+				async Task Act() => await That(subject).DoesNotComplyWith(it => 
+					it.IsInfinite());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not infinite,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1d)]
+			[InlineData(0d)]
+			[InlineData(1d)]
+			[InlineData(double.MinValue)]
+			[InlineData(double.MaxValue)]
+			[InlineData(double.Epsilon)]
+			[InlineData(double.NaN)]
+			public async Task ForDouble_WhenSubjectIsNormalOrNaNValue_ShouldSucceed(double subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsInfinite());
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(double.PositiveInfinity)]
+			[InlineData(double.NegativeInfinity)]
+			public async Task ForNullableDouble_WhenSubjectIsInfinity_ShouldFail(double? subject)
+			{
+				async Task Act() => await That(subject).DoesNotComplyWith(it => 
+					it.IsInfinite());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not infinite,
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
+			[InlineData(-1d)]
+			[InlineData(0d)]
+			[InlineData(1d)]
+			[InlineData(double.MinValue)]
+			[InlineData(double.MaxValue)]
+			[InlineData(double.Epsilon)]
+			[InlineData(double.NaN)]
+			[InlineData(null)]
+			public async Task ForNullableDouble_WhenSubjectIsNormalOrNaNValueOrNull_ShouldSucceed(
+				double? subject)
+			{
+				async Task Act()
+					=> await That(subject).DoesNotComplyWith(it => 
+						it.IsInfinite());
+
+				await That(Act).DoesNotThrow();
+			}
+		}
 	}
 }
