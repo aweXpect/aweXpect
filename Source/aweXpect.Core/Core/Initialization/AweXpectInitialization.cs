@@ -6,11 +6,21 @@ using System.Linq;
 using aweXpect.Core.Adapters;
 using aweXpect.Customization;
 
-namespace aweXpect.Core.Ambient;
+namespace aweXpect.Core.Initialization;
 
-internal static class Initialization
+internal static class AweXpectInitialization
 {
 	public static Lazy<InitializationState> State { get; } = new(Initialize);
+
+	internal static void EnsureInitialized()
+	{
+		if (State.IsValueCreated)
+		{
+			return;
+		}
+
+		_ = State.Value;
+	}
 
 	internal static ITestFrameworkAdapter DetectFramework(IEnumerable<Type> types)
 	{
@@ -31,7 +41,7 @@ internal static class Initialization
 			catch (Exception ex)
 			{
 				throw new InvalidOperationException(
-					$"Could not instantiate test framework '{frameworkType.Name}'!", ex);
+					$"Could not instantiate test framework '{Formatter.Format(frameworkType)}'!", ex);
 			}
 		}
 
@@ -40,6 +50,26 @@ internal static class Initialization
 
 	private static InitializationState Initialize()
 	{
+		Type initializerInterface = typeof(IAweXpectInitializer);
+		foreach (Type initializerType in AppDomain.CurrentDomain.GetAssemblies()
+			         .Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
+				         .All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))
+			         .SelectMany(assembly => assembly.GetTypes()
+				         .Where(type => type is { IsClass: true, IsAbstract: false, } &&
+				                        initializerInterface.IsAssignableFrom(type))))
+		{
+			try
+			{
+				IAweXpectInitializer? initializer = (IAweXpectInitializer?)Activator.CreateInstance(initializerType);
+				initializer?.Initialize();
+			}
+			catch (Exception ex)
+			{
+				throw new InvalidOperationException(
+					$"Could not instantiate initializer '{Formatter.Format(initializerType)}'!", ex);
+			}
+		}
+
 		ITestFrameworkAdapter testFramework = DetectFramework(AppDomain.CurrentDomain.GetAssemblies()
 			.Where(assembly => Customize.aweXpect.Reflection().ExcludedAssemblyPrefixes.Get()
 				.All(excludedAssemblyPrefix => !assembly.FullName!.StartsWith(excludedAssemblyPrefix)))

@@ -1,4 +1,4 @@
-using aweXpect.Core.Ambient;
+using aweXpect.Core.Initialization;
 
 namespace aweXpect.Formatting;
 
@@ -10,5 +10,5 @@ public static class Format
 	/// <summary>
 	///     The formatter to use for formatting values.
 	/// </summary>
-	public static ValueFormatter Formatter { get; } = Initialization.State.Value.Formatter;
+	public static ValueFormatter Formatter { get; } = AweXpectInitialization.State.Value.Formatter;
 }

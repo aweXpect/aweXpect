@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.Helpers;
+using aweXpect.Core.Initialization;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.Sources;
 using aweXpect.Core.TimeSystem;
@@ -41,6 +42,7 @@ public abstract class ExpectationBuilder
 	/// </summary>
 	protected ExpectationBuilder(string subjectExpression, ExpectationGrammars grammars = ExpectationGrammars.None)
 	{
+		AweXpectInitialization.EnsureInitialized();
 		Subject = subjectExpression;
 		ExpectationGrammars = grammars;
 	}
