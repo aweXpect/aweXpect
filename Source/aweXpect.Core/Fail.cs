@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using aweXpect.Core.Ambient;
+using aweXpect.Core.Initialization;
 
 namespace aweXpect;
 
@@ -40,7 +40,7 @@ public static class Fail
 	/// <param name="reason">The reason why the test failed</param>
 	[DoesNotReturn]
 	public static void Inconclusive(string reason)
-		=> Initialization.State.Value.Inconclusive(reason);
+		=> AweXpectInitialization.State.Value.Inconclusive(reason);
 
 	private static void FailIf([DoesNotReturnIf(true)] bool condition, string reason)
 	{
@@ -49,6 +49,6 @@ public static class Fail
 			return;
 		}
 
-		Initialization.State.Value.Fail(reason);
+		AweXpectInitialization.State.Value.Fail(reason);
 	}
 }

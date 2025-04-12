@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using aweXpect.Core.Ambient;
+using aweXpect.Core.Initialization;
 
 namespace aweXpect;
 
@@ -43,6 +43,6 @@ public static class Skip
 			return;
 		}
 
-		Initialization.State.Value.Skip(reason);
+		AweXpectInitialization.State.Value.Skip(reason);
 	}
 }

@@ -1,15 +1,16 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using aweXpect.Core.Adapters;
-using aweXpect.Core.Ambient;
+using aweXpect.Core.Initialization;
 
-namespace aweXpect.Core.Tests.Core.Ambient;
+namespace aweXpect.Core.Tests.Core.Initialization;
 
-public sealed class InitializationTests
+public sealed class AweXpectInitializationTests
 {
 	[Fact]
 	public async Task DetectFramework_WhenAllFrameworksAreNotAvailable_ShouldUseFallbackAdapter()
 	{
-		ITestFrameworkAdapter result = Initialization.DetectFramework([typeof(UnavailableFrameworkAdapter),]);
+		ITestFrameworkAdapter result = AweXpectInitialization.DetectFramework([typeof(UnavailableFrameworkAdapter),]);
 
 		await That(result.IsAvailable).IsFalse();
 		await That(result.GetType().Name).IsEqualTo("FallbackTestFramework");
@@ -18,10 +19,28 @@ public sealed class InitializationTests
 	[Fact]
 	public async Task DetectFramework_WhenFrameworkAdapterThrows_ShouldThrowInvalidOperationException()
 	{
-		void Act() => Initialization.DetectFramework([typeof(IncorrectFrameworkAdapter),]);
+		void Act() => AweXpectInitialization.DetectFramework([typeof(IncorrectFrameworkAdapter),]);
 
 		await That(Act).Throws<InvalidOperationException>()
-			.WithMessage($"Could not instantiate test framework '{nameof(IncorrectFrameworkAdapter)}'!");
+			.WithMessage(
+				$"Could not instantiate test framework 'AweXpectInitializationTests.{nameof(IncorrectFrameworkAdapter)}'!");
+	}
+
+	[Fact]
+	public async Task ShouldInitializeCustomInitializerOnceBeforeExpectationIsEvaluated()
+	{
+		int result = CustomInitializer.InitializationCount;
+
+		await That(result).IsEqualTo(1);
+	}
+
+	public sealed class CustomInitializer : IAweXpectInitializer
+	{
+		private static int _initializationCount;
+		public static int InitializationCount => _initializationCount;
+
+
+		public void Initialize() => Interlocked.Increment(ref _initializationCount);
 	}
 
 	private sealed class UnavailableFrameworkAdapter : ITestFrameworkAdapter
