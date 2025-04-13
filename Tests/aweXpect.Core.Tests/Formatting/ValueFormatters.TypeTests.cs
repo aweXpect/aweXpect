@@ -104,11 +104,46 @@ public partial class ValueFormatters
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
+		[Theory]
+		[InlineData(typeof(IDictionary<,>), 0, "IDictionary<, >.TKey")]
+		[InlineData(typeof(IDictionary<,>), 1, "IDictionary<, >.TValue")]
+		[InlineData(typeof(IEnumerable<>), 0, "IEnumerable<>.T")]
+		public async Task ShouldSupportOpenGenericParametersOfIDictionary(
+			Type genericType, int argumentIndex, string expectedResult)
+		{
+			Type value = genericType.GetGenericArguments()[argumentIndex];
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
 		[Fact]
 		public async Task ShouldSupportOpenGenericTypeDefinitions()
 		{
 			Type value = typeof(IEnumerable<>);
 			string expectedResult = "IEnumerable<>";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task ShouldSupportOpenGenericTypeWithMultipleParametersDefinitions()
+		{
+			Type value = typeof(IDictionary<,>);
+			string expectedResult = "IDictionary<, >";
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
