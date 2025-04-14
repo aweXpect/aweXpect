@@ -1,4 +1,5 @@
-﻿using aweXpect.Equivalency;
+﻿using System.Collections.Generic;
+using aweXpect.Equivalency;
 
 namespace aweXpect.Tests;
 
@@ -333,7 +334,7 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
-			public async Task WhenInDifferentOrderOrder_ShouldFail()
+			public async Task WhenInDifferentOrder_ShouldFail()
 			{
 				int[] subject = [1, 2, 3,];
 				int[] expected = [1, 3, 2,];
@@ -360,7 +361,7 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
-			public async Task WhenInDifferentOrderOrder_WhenIgnoringCollectionOrder_ShouldSucceed()
+			public async Task WhenInDifferentOrder_WhenIgnoringCollectionOrder_ShouldSucceed()
 			{
 				int[] subject = [1, 2, 3,];
 				int[] expected = [1, 3, 2,];
@@ -381,6 +382,161 @@ public sealed partial class ThatObject
 					=> await That(subject).IsEquivalentTo(expected);
 
 				await That(Act).DoesNotThrow();
+			}
+		}
+
+		public sealed class DictionaryTests
+		{
+			[Fact]
+			public async Task WhenDifferentKeys_ShouldFail()
+			{
+				Dictionary<int, int> subject = new()
+				{
+					{
+						1, 2
+					},
+					{
+						2, 3
+					},
+					{
+						3, 4
+					},
+				};
+				Dictionary<int, int> expected = new()
+				{
+					{
+						1, 2
+					},
+					{
+						3, 3
+					},
+					{
+						4, 4
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o.IgnoringCollectionOrder());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equivalent to expected,
+					             but it was not:
+					               Element [2] had superfluous 3
+					             and
+					               Element [3] differed:
+					                    Found: 4
+					                 Expected: 3
+					             and
+					               Element [4] was missing 4
+
+					             Equivalency options:
+					              - include public fields and properties
+					              - ignore collection order
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenDifferentValues_ShouldFail()
+			{
+				Dictionary<int, int> subject = new()
+				{
+					{
+						1, 2
+					},
+					{
+						2, 3
+					},
+					{
+						3, 4
+					},
+				};
+				Dictionary<int, int> expected = new()
+				{
+					{
+						1, 2
+					},
+					{
+						2, 4
+					},
+					{
+						3, 5
+					},
+				};
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected, o => o.IgnoringCollectionOrder());
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is equivalent to expected,
+					             but it was not:
+					               Element [2] differed:
+					                    Found: 3
+					                 Expected: 4
+					             and
+					               Element [3] differed:
+					                    Found: 4
+					                 Expected: 5
+
+					             Equivalency options:
+					              - include public fields and properties
+					              - ignore collection order
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenSameEntries_ShouldBeEquivalent()
+			{
+				Dictionary<int, int> subject = new()
+				{
+					{
+						2, 3
+					},
+					{
+						1, 4
+					},
+				};
+
+				Dictionary<int, int> expected = new()
+				{
+					{
+						2, 3
+					},
+					{
+						1, 4
+					},
+				};
+
+				await That(subject).IsEquivalentTo(expected);
+			}
+
+			[Fact]
+			public async Task WhenSameEntriesInDifferentOrder_ShouldBeEquivalent()
+			{
+				Dictionary<string, string> subject = new(StringComparer.OrdinalIgnoreCase)
+				{
+					{
+						"A", "A"
+					},
+					{
+						"B", "B"
+					},
+				};
+
+				Dictionary<string, string> expected = new(StringComparer.OrdinalIgnoreCase)
+				{
+					{
+						"B", "B"
+					},
+					{
+						"A", "A"
+					},
+				};
+
+				await That(subject).IsEquivalentTo(expected);
 			}
 		}
 

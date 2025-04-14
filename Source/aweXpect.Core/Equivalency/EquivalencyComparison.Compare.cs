@@ -37,6 +37,12 @@ public static partial class EquivalencyComparison
 			return true;
 		}
 
+		if (actual is IDictionary actualDictionary && expected is IDictionary expectedDictionary)
+		{
+			return CompareDictionaries(actualDictionary, expectedDictionary, failureBuilder, memberPath,
+				equivalencyOptions, typeOptions, context);
+		}
+
 		if (actual is IEnumerable actualEnumerable && expected is IEnumerable expectedEnumerable)
 		{
 			return CompareEnumerables(actualEnumerable, expectedEnumerable, failureBuilder, memberPath,
@@ -122,6 +128,85 @@ public static partial class EquivalencyComparison
 			Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
 			failureBuilder.AppendLine().Append("    Expected: ");
 			Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
+			result = false;
+		}
+
+		return result;
+	}
+
+	private static bool CompareDictionaries(
+		IDictionary actual,
+		IDictionary expected,
+		StringBuilder failureBuilder,
+		string memberPath,
+		EquivalencyOptions options,
+		EquivalencyTypeOptions typeOptions,
+		EquivalencyContext context)
+	{
+		bool result = true;
+
+		foreach (object? key in actual.Keys)
+		{
+			string elementMemberPath = $"{memberPath}[{key}]";
+			if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+			{
+				continue;
+			}
+
+			object? actualObject = actual[key];
+			if (expected.Contains(key))
+			{
+				object? expectedObject = expected[key];
+
+				if (!Compare(actualObject, expectedObject,
+					    options, options.GetTypeOptions(actualObject?.GetType(), typeOptions),
+					    failureBuilder, elementMemberPath, MemberType.Element, context))
+				{
+					result = false;
+				}
+			}
+			else
+			{
+				failureBuilder.AppendLine();
+				if (failureBuilder.Length > 2)
+				{
+					failureBuilder.AppendLine("and");
+				}
+
+				failureBuilder.Append("  ");
+				failureBuilder.Append(GetMemberPath(MemberType.Element, elementMemberPath));
+				failureBuilder.Append(" had superfluous ");
+				Formatter.Format(failureBuilder, actualObject, FormattingOptions.SingleLine);
+				result = false;
+			}
+		}
+
+		foreach (object? key in expected.Keys)
+		{
+			if (actual.Contains(key))
+			{
+				continue;
+			}
+
+			string elementMemberPath = $"{memberPath}[{key}]";
+			if (typeOptions.MembersToIgnore.Contains(elementMemberPath))
+			{
+				continue;
+			}
+
+
+			object? expectedObject = expected[key];
+
+			failureBuilder.AppendLine();
+			if (failureBuilder.Length > 2)
+			{
+				failureBuilder.AppendLine("and");
+			}
+
+			failureBuilder.Append("  ");
+			failureBuilder.Append(GetMemberPath(MemberType.Element, elementMemberPath));
+			failureBuilder.Append(" was missing ");
+			Formatter.Format(failureBuilder, expectedObject, FormattingOptions.SingleLine);
 			result = false;
 		}
 
