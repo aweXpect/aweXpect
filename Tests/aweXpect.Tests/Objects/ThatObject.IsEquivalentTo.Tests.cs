@@ -488,7 +488,7 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
-			public async Task WhenSameEntries_ShouldBeEquivalent()
+			public async Task WhenSameEntries_ShouldSucceed()
 			{
 				Dictionary<int, int> subject = new()
 				{
@@ -510,11 +510,14 @@ public sealed partial class ThatObject
 					},
 				};
 
-				await That(subject).IsEquivalentTo(expected);
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Fact]
-			public async Task WhenSameEntriesInDifferentOrder_ShouldBeEquivalent()
+			public async Task WhenSameEntriesInDifferentOrder_ShouldSucceed()
 			{
 				Dictionary<string, string> subject = new(StringComparer.OrdinalIgnoreCase)
 				{
@@ -536,7 +539,10 @@ public sealed partial class ThatObject
 					},
 				};
 
-				await That(subject).IsEquivalentTo(expected);
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 		}
 
