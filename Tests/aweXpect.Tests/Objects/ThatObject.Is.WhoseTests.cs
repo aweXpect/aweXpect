@@ -16,7 +16,7 @@ public sealed partial class ThatObject
 
 				async Task Act()
 					=> await That(subject).Is<MyClass>()
-						.Whose(x => x.Value, x => x.IsLessThan(42));
+						.Whose(it => it.Value, value => value.IsLessThan(42));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
@@ -35,7 +35,7 @@ public sealed partial class ThatObject
 				};
 
 				async Task Act()
-					=> await That(subject).Is<MyClass>().Whose(x => x.Value, x => x.IsEqualTo(42));
+					=> await That(subject).Is<MyClass>().Whose(it => it.Value, value => value.IsEqualTo(42));
 
 				await That(Act).DoesNotThrow();
 			}
