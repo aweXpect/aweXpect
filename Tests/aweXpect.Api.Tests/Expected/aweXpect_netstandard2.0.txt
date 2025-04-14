@@ -632,6 +632,7 @@ namespace aweXpect
             where T :  struct { }
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>, T?> IsNotEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
             where T :  struct { }
+        public static aweXpect.Results.AndOrResult<TSubject, aweXpect.Core.IThat<TSubject>> IsNotEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected unexpected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source)
