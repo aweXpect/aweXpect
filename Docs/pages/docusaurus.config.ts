@@ -171,6 +171,10 @@ const config: Config = {
             to: '/docs/extensions/project/Testably/index',
             from: '/aweXpect.Testably',
           },
+          {
+          	to: '/docs/extensions/project/Reflection/index',
+          	from: '/aweXpect.Reflection',
+          },
         ],
       },
     ],
