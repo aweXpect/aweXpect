@@ -4,7 +4,7 @@ Describes the possible expectations for numbers.
 
 ## Equality
 
-You can verify, that the number is equal to another one or not:
+You can verify that the number is equal to another one or not:
 
 ```csharp
 int subject = 42;
@@ -23,7 +23,7 @@ await Expect.That(subject).IsEqualTo(42).Within(0.2)
 
 ## One of
 
-You can verify, that the number is one of many alternatives:
+You can verify that the number is one of many alternatives:
 
 ```csharp
 int subject = 42;
@@ -42,7 +42,7 @@ await Expect.That(subject).IsOneOf(40, 42, 44).Within(0.2)
 
 ## Greater than
 
-You can verify, that the number is greater than (or equal to) another number:
+You can verify that the number is greater than (or equal to) another number:
 
 ```csharp
 int subject = 42;
@@ -62,7 +62,7 @@ await Expect.That(subject).IsGreaterThan(42).Within(0.2)
 
 ## Less than
 
-You can verify, that the number is less than (or equal to) another number:
+You can verify that the number is less than (or equal to) another number:
 
 ```csharp
 int subject = 42;
@@ -82,7 +82,7 @@ await Expect.That(subject).IsLessThan(42).Within(0.2)
 
 ## Positive / negative
 
-You can verify, that the number is positive or negative:
+You can verify that the number is positive or negative:
 
 ```csharp
 await Expect.That(42).IsPositive();
@@ -93,7 +93,7 @@ await Expect.That(-3).IsNegative();
 
 ## NaN
 
-For floating point numbers you can verify, that the number is `NaN` or not:
+For floating point numbers you can verify that the number is `NaN` or not:
 
 ```csharp
 await Expect.That(float.NaN).IsNaN();
@@ -102,7 +102,7 @@ await Expect.That(42.0).IsNotNaN();
 
 ## Infinity
 
-For floating point numbers you can verify, that the number is finite or infinite:
+For floating point numbers you can verify that the number is finite or infinite:
 
 ```csharp
 await Expect.That(float.PositiveInfinity).IsInfinite();

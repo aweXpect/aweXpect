@@ -4,7 +4,7 @@ Describes the possible expectations for collections.
 
 ## Equality
 
-You can verify, that a collection matches another collection:
+You can verify that a collection matches another collection:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 3);
@@ -35,7 +35,7 @@ await Expect.That(values).HasCount().Between(8).And(12);
 
 ## All be
 
-You can verify, that all items in the collection are equal to the `expected` value
+You can verify that all items in the collection are equal to the `expected` value
 
 ```csharp
 await Expect.That([1, 1, 1]).All().AreEqualTo(1);
@@ -63,7 +63,7 @@ await Expect.That(["foo", "FOO", "Foo"]).All().AreEqualTo("foo").IgnoringCase();
 
 ## All be unique
 
-You can verify, that all items in a collection are unique.
+You can verify that all items in a collection are unique.
 
 ```csharp
 await Expect.That([1, 2, 3]).AreAllUnique();
@@ -90,7 +90,7 @@ You can add expectations that a certain number of elements must meet.
 
 ### Comply with
 
-You can verify, that items in a collection comply with an expectation on the individual elements:
+You can verify that items in a collection comply with an expectation on the individual elements:
 
 ```csharp
 await Expect.That([1, 2, 3]).All().ComplyWith(item => item.IsLessThan(4));
@@ -105,7 +105,7 @@ await Expect.That([1, 2, 3]).None().ComplyWith(item => item.IsNegative());
 
 ### Satisfy
 
-You can verify, that items in a collection satisfy a condition:
+You can verify that items in a collection satisfy a condition:
 
 ```csharp
 await Expect.That([1, 2, 3]).All().Satisfy(item => item < 4);
@@ -121,7 +121,7 @@ await Expect.That([1, 2, 3]).None().Satisfy(item => item < 0);
 
 ## Sort order
 
-You can verify, that the collection contains is sorted in ascending or descending order:
+You can verify that the collection contains is sorted in ascending or descending order:
 
 ```csharp
 await Expect.That([1, 2, 3]).IsInAscendingOrder();
@@ -146,7 +146,7 @@ await Expect.That(values).IsInAscendingOrder(x => x.Value);
 
 ## Contain
 
-You can verify, that the collection contains a specific item or not:
+You can verify that the collection contains a specific item or not:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -181,7 +181,7 @@ await Expect.That(values).Contains(expected).Using(new MyClassComparer());
 
 ### Predicate
 
-You can verify, that the collection contains an item that satisfies a condition:
+You can verify that the collection contains an item that satisfies a condition:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -205,7 +205,7 @@ await Expect.That(values).Contains(x => x == 1).Between(1).And(5.Times());
 
 ### Contain subset
 
-You can verify, that a collection contains another collection as a subset:
+You can verify that a collection contains another collection as a subset:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 3);
@@ -222,7 +222,7 @@ To check for a proper subset, append `.Properly()` (which would fail for equal c
 
 ### Be contained in
 
-You can verify, that a collection is contained in another collection (it is a superset):
+You can verify that a collection is contained in another collection (it is a superset):
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 3);
@@ -308,7 +308,7 @@ Specifications that count the elements in a collection.
 
 ### All
 
-You can verify, that all items in the collection, satisfy an expectation:
+You can verify that all items in the collection, satisfy an expectation:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -320,7 +320,7 @@ await Expect.That(values).All().Satisfy(i => i <= 20);
 
 ### At least
 
-You can verify, that at least `minimum` items in the collection, satisfy an expectation:
+You can verify that at least `minimum` items in the collection, satisfy an expectation:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -332,7 +332,7 @@ await Expect.That(values).AtLeast(9).Satisfy(i => i < 10);
 
 ### At most
 
-You can verify, that at most `maximum` items in the collection, satisfy an expectation:
+You can verify that at most `maximum` items in the collection, satisfy an expectation:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -344,7 +344,7 @@ await Expect.That(values).AtMost(1).Satisfy(i => i < 2);
 
 ### Between
 
-You can verify, that between `minimum` and `maximum` items in the collection, satisfy an expectation:
+You can verify that between `minimum` and `maximum` items in the collection, satisfy an expectation:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -356,7 +356,7 @@ await Expect.That(values).Between(1).And(2).Satisfy(i => i < 2);
 
 ### Exactly
 
-You can verify, that exactly `expected` items in the collection, satisfy an expectation:
+You can verify that exactly `expected` items in the collection, satisfy an expectation:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -368,7 +368,7 @@ await Expect.That(values).Exactly(9).Satisfy(i => i < 10);
 
 ### None
 
-You can verify, that not item in the collection, satisfies an expectation:
+You can verify that not item in the collection, satisfies an expectation:
 
 ```csharp
 IEnumerable<int> values = Enumerable.Range(1, 20);
@@ -376,7 +376,7 @@ IEnumerable<int> values = Enumerable.Range(1, 20);
 await Expect.That(values).None().Satisfy(i => i > 20);
 ```
 
-You can also verify, that the collection is empty.
+You can also verify that the collection is empty.
 
 ```csharp
 IEnumerable<int> values = Array.Empty<int>();
@@ -388,13 +388,27 @@ await Expect.That(values).IsEmpty();
 
 ## Have single
 
-You can verify, that the collection contains a single element that satisfies an expectation.
+You can verify that the collection contains a single element that satisfies an expectation.
 
 ```csharp
 IEnumerable<int> values = [42];
 
 await Expect.That(values).HasSingle();
 await Expect.That(values).HasSingle().Which.IsGreaterThan(41);
+```
+
+You can also apply filters for the items:
+
+```csharp
+IEnumerable<int> values = [1, 2, 3,];
+
+await Expect.That(values).HasSingle().Matching(it => it > 2);
+
+// Or with generic type:
+IEnumerable<Person> persons = //...
+
+await Expect.That(persons).HasSingle().Matching<Student>();
+await Expect.That(persons).HasSingle().Matching<Student>(student => student.Courses.Count == 0);
 ```
 
 The awaited result is the single element:
@@ -412,7 +426,7 @@ await Expect.That(result).IsGreaterThan(41);
 
 ### Contain key(s)
 
-You can verify, that a dictionary contains the `expected` key(s):
+You can verify that a dictionary contains the `expected` key(s):
 
 ```csharp
 Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };
@@ -434,7 +448,7 @@ await Expect.That(values).ContainsKeys(43, 44).WhoseValues.ComplyWith(v => v.Sta
 
 ### Contain value(s)
 
-You can verify, that a dictionary contains the `expected` value(s):
+You can verify that a dictionary contains the `expected` value(s):
 
 ```csharp
 Dictionary<int, string> values = new() { { 42, "foo" }, { 43, "bar" } };

@@ -4,7 +4,7 @@ Describes the possible expectations for strings.
 
 ## Equality
 
-You can verify, that the `string` is equal to another one.  
+You can verify that the `string` is equal to another one.  
 This expectation can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or
 use a custom `IEqualityComparer<string>`:
 
@@ -72,7 +72,7 @@ await Expect.That(subject).IsEqualTo("text").AsSuffix();
 
 ## One of
 
-You can verify, that the `string` is one of many alternatives.  
+You can verify that the `string` is one of many alternatives.  
 This expectation can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or
 use a custom `IEqualityComparer<string>`:
 
@@ -88,7 +88,7 @@ await Expect.That(subject).IsOneOf("NONE", "SOME", "MANY").Using(StringComparer.
 
 ## Null, empty or white-space
 
-You can verify, that the `string` is null, empty or contains only whitespace:
+You can verify that the `string` is null, empty or contains only whitespace:
 
 ```csharp
 string? subject = null;
@@ -108,7 +108,7 @@ await Expect.That("foo").IsNotNullOrWhiteSpace();
 
 ## Length
 
-You can verify, that the `string` has the expected length:
+You can verify that the `string` has the expected length:
 
 ```csharp
 string subject = "some value";
@@ -124,7 +124,7 @@ await Expect.That(subject).HasLength().LessThan(12);
 
 ## String start / end
 
-You can verify, that the `string` starts or ends with a given string.  
+You can verify that the `string` starts or ends with a given string.  
 These expectations can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or
 use a custom `IEqualityComparer<string>`:
 
@@ -146,7 +146,7 @@ await Expect.That(subject).EndsWith("TEXT").Using(StringComparer.OrdinalIgnoreCa
 
 ## Contains
 
-You can verify, that the `string` contains a given substring.  
+You can verify that the `string` contains a given substring.  
 These expectations can be configured to ignore case, ignore newline style, ignoring leading or trailing white-space, or
 use a custom `IEqualityComparer<string>`:
 
@@ -177,7 +177,7 @@ await Expect.That(subject).Contains("in").Between(1).And(5)
 
 ## Character casing
 
-You can verify, that the characters in a `string` are all upper or lower cased:
+You can verify that the characters in a `string` are all upper or lower cased:
 
 ```csharp
 await Expect.That("1ST PLACE").IsUpperCased()

@@ -28,7 +28,7 @@ IEventRecording<MyClass> recording = sut.Record().Events(nameof(MyClass.Threshol
 
 ## Triggering
 
-You can verify, that a recording recorded an event:
+You can verify that a recording recorded an event:
 
 ```csharp
 // Start the recording
@@ -87,7 +87,7 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
 
 ## Counting
 
-You can verify, that an event was recorded a specific number of times
+You can verify that an event was recorded a specific number of times
 
 ```csharp
 IEventRecording<MyClass> recording = sut.Record().Events();

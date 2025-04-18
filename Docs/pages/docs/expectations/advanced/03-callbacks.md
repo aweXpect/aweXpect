@@ -68,7 +68,7 @@ You can specify a number of times, that a callback must at least be signaled:
 await Expect.That(signaler).Signaled(3.Times());
 ```
 
-You can also verify, that the callback was not signaled at least the given number of times:
+You can also verify that the callback was not signaled at least the given number of times:
 
 ```csharp
 await Expect.That(signaler).DidNotSignal(3.Times());

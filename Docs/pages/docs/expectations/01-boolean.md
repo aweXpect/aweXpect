@@ -4,7 +4,7 @@ Describes the possible expectations for boolean values.
 
 ## Equality
 
-You can verify, that the `bool` is equal to another one or not:
+You can verify that the `bool` is equal to another one or not:
 
 ```csharp
 bool subject = false;
@@ -15,7 +15,7 @@ await Expect.That(subject).IsNotEqualTo(true);
 
 ## True / False
 
-You can verify, that the `bool` is `true` or `false`:
+You can verify that the `bool` is `true` or `false`:
 
 ```csharp
 await Expect.That(false).IsFalse();
@@ -35,7 +35,7 @@ await Expect.That(subject).IsNotTrue()
 
 ## Implication
 
-You can verify, that `a` implies `b` (*find [here](https://mathworld.wolfram.com/Implies.html) a mathematical
+You can verify that `a` implies `b` (*find [here](https://mathworld.wolfram.com/Implies.html) a mathematical
 explanation*):
 
 ```csharp
