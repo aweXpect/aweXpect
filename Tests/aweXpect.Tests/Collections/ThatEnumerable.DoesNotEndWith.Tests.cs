@@ -1,5 +1,4 @@
-﻿#if NET8_0_OR_GREATER
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -57,18 +56,18 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not end with [ThatEnumerable.MyClass { Inner = <null>, Value = 3 }, ThatEnumerable.MyClass { Inner = <null>, Value = 5 }, ThatEnumerable.MyClass { Inner = <null>, Value = 8 }] equivalent,
+					             does not end with [MyClass { StringValue = "", Value = 3 }, MyClass { StringValue = "", Value = 5 }, MyClass { StringValue = "", Value = 8 }] equivalent,
 					             but it did end with [
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 3
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 5
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 8
 					               }
 					             ]
@@ -187,4 +186,3 @@ public sealed partial class ThatEnumerable
 		}
 	}
 }
-#endif
