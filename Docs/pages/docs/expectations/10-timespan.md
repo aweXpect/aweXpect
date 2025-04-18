@@ -4,7 +4,7 @@ Describes the possible expectations for `TimeSpan`.
 
 ## Equality
 
-You can verify, that the `TimeSpan` is equal to another one or not:
+You can verify that the `TimeSpan` is equal to another one or not:
 
 ```csharp
 TimeSpan subject = TimeSpan.FromSeconds(42);
@@ -24,7 +24,7 @@ await Expect.That(subject).IsEqualTo(TimeSpan.FromSeconds(43)).Within(TimeSpan.F
 
 ## Greater than
 
-You can verify, that the `TimeSpan` is greater than (or equal to) another number:
+You can verify that the `TimeSpan` is greater than (or equal to) another number:
 
 ```csharp
 TimeSpan subject = TimeSpan.FromSeconds(42);
@@ -44,7 +44,7 @@ await Expect.That(subject).IsGreaterThan(42).Within(TimeSpan.FromSeconds(2))
 
 ## Less than
 
-You can verify, that the `TimeSpan` is less than (or equal to) another number:
+You can verify that the `TimeSpan` is less than (or equal to) another number:
 
 ```csharp
 TimeSpan subject = TimeSpan.FromSeconds(42);
@@ -64,7 +64,7 @@ await Expect.That(subject).IsLessThan(42).Within(TimeSpan.FromSeconds(2))
 
 ## Positive / negative
 
-You can verify, that the `TimeSpan` is positive or negative:
+You can verify that the `TimeSpan` is positive or negative:
 
 ```csharp
 await Expect.That(TimeSpan.FromSeconds(42)).IsPositive();

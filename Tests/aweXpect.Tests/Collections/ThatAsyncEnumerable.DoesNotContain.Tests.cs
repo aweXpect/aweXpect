@@ -57,10 +57,7 @@ public sealed partial class ThatAsyncEnumerable
 			public async Task ShouldSupportEquivalent()
 			{
 				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass(x), 20);
-				MyClass unexpected = new()
-				{
-					Value = 5,
-				};
+				MyClass unexpected = new(5);
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(unexpected).Equivalent();
@@ -68,38 +65,49 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not contain ThatAsyncEnumerable.MyClass {
+					             does not contain MyClass {
+					               StringValue = "",
 					               Value = 5
 					             } equivalent,
 					             but it contained it at least 1 times in [
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 1
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 1
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 2
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 3
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 5
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 8
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 13
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 21
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 34
 					               },
-					               ThatAsyncEnumerable.MyClass {
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 55
 					               },
 					               …

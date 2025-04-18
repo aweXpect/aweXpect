@@ -7,6 +7,7 @@ using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
 using aweXpect.Helpers;
+using aweXpect.Options;
 using aweXpect.Results;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -16,20 +17,35 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Verifies that the collection contains exactly one element.
+	///     Verifies that the collection contains exactly one item.
 	/// </summary>
 	public static SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(
 		this IThat<IAsyncEnumerable<TItem>?> source)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new HasSingleConstraint<TItem>(it, grammars)),
+	{
+		PredicateOptions<TItem> options = new();
+		return new SingleItemResult<IAsyncEnumerable<TItem>, TItem>.Async(source.Get().ExpectationBuilder
+				.AddConstraint((it, grammars) =>
+					new HasSingleConstraint<TItem>(it, grammars, options)),
+			options,
 			async f =>
 			{
-				await using IAsyncEnumerator<TItem> enumerator = f.GetAsyncEnumerator();
-				return await enumerator.MoveNextAsync() ? enumerator.Current : default;
-			});
+				await foreach (TItem item in f)
+				{
+					if (options.Matches(item))
+					{
+						return item;
+					}
+				}
 
-	private sealed class HasSingleConstraint<TItem>(string it, ExpectationGrammars grammars)
-		: ConstraintResult.WithNotNullValue<TItem?>(it, grammars),
+				return default;
+			});
+	}
+
+	private sealed class HasSingleConstraint<TItem>(
+		string it,
+		ExpectationGrammars grammars,
+		PredicateOptions<TItem> options)
+		: ConstraintResult.WithValue<TItem?>(grammars),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private IAsyncEnumerable<TItem>? _actual;
@@ -51,6 +67,11 @@ public static partial class ThatAsyncEnumerable
 
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
+				if (!options.Matches(item))
+				{
+					continue;
+				}
+
 				Actual = item;
 				if (++_count > 1)
 				{
@@ -74,25 +95,38 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append("has a single item");
+			=> stringBuilder.Append("has a single item").Append(options.GetDescription());
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_count == 0)
+			if (_actual is null)
 			{
-				stringBuilder.Append(It).Append(" was empty");
+				stringBuilder.ItWasNull(it);
+			}
+			else if (_count == 0)
+			{
+				stringBuilder.Append(it).Append(" was empty");
 			}
 			else
 			{
-				stringBuilder.Append(It).Append(" contained more than one item");
+				stringBuilder.Append(it).Append(" contained more than one item");
 			}
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append("does not have a single item");
+			=> stringBuilder.Append("does not have a single item").Append(options.GetDescription());
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(It).Append(" did");
+		{
+			if (_actual is null)
+			{
+				stringBuilder.ItWasNull(it);
+			}
+			else
+			{
+				stringBuilder.Append(it).Append(" did");
+			}
+		}
 	}
 }
 #endif

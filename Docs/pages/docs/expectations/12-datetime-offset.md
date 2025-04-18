@@ -4,7 +4,7 @@ Describes the possible expectations for `DateTime` and `DateTimeOffset`.
 
 ## Equality
 
-You can verify, that the `DateTime` or `DateTimeOffset` is equal to another one or not:
+You can verify that the `DateTime` or `DateTimeOffset` is equal to another one or not:
 
 ```csharp
 DateTime subject1 = new DateTime(2024, 12, 24);
@@ -32,7 +32,7 @@ await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 5, 0,
 
 ## After
 
-You can verify, that the `DateTime` or `DateTimeOffset` is (on or) after another value:
+You can verify that the `DateTime` or `DateTimeOffset` is (on or) after another value:
 
 ```csharp
 DateTime subject1 = DateTime.Now;
@@ -57,7 +57,7 @@ await Expect.That(subject).IsAfter(DateTime.Now).Within(TimeSpan.FromSeconds(1))
 
 ## Before
 
-You can verify, that the `DateTime` or `DateTimeOffset` is (on or) before another value:
+You can verify that the `DateTime` or `DateTimeOffset` is (on or) before another value:
 
 ```csharp
 DateTime subject1 = DateTime.Now;

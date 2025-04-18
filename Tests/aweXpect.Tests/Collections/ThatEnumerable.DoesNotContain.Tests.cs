@@ -55,14 +55,8 @@ public sealed partial class ThatEnumerable
 			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
-				IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass
-				{
-					Value = x,
-				});
-				MyClass unexpected = new()
-				{
-					Value = 5,
-				};
+				IEnumerable<MyClass> subject = Factory.GetFibonacciNumbers(20).Select(x => new MyClass(x));
+				MyClass unexpected = new(5);
 
 				async Task Act()
 					=> await That(subject).DoesNotContain(unexpected).Equivalent();
@@ -70,49 +64,49 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             does not contain ThatEnumerable.MyClass {
-					               Inner = <null>,
+					             does not contain MyClass {
+					               StringValue = "",
 					               Value = 5
 					             },
 					             but it contained it at least 1 times in [
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 1
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 1
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 2
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 3
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 5
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 8
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 13
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 21
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 34
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 55
 					               },
 					               …

@@ -4,7 +4,7 @@ Describes the possible expectations for `DateOnly` and `TimeOnly`.
 
 ## Equality
 
-You can verify, that the `DateOnly` or `TimeOnly` is equal to another one or not:
+You can verify that the `DateOnly` or `TimeOnly` is equal to another one or not:
 
 ```csharp
 DateOnly subjectA = new DateOnly(2024, 12, 24);
@@ -34,7 +34,7 @@ await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 17)).Within(TimeSpan.
 
 ## After
 
-You can verify, that the `DateOnly` or `TimeOnly` is (on or) after another value
+You can verify that the `DateOnly` or `TimeOnly` is (on or) after another value
 
 ```csharp
 DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);
@@ -62,7 +62,7 @@ await Expect.That(subjectB).IsAfter(TimeOnly.FromDateTime(DateTime.Now)).Within(
 
 ## Before
 
-You can verify, that the `DateOnly` or `TimeOnly` is (on or) before another value
+You can verify that the `DateOnly` or `TimeOnly` is (on or) before another value
 
 ```csharp
 DateOnly subjectA = DateOnly.FromDateTime(DateTime.Now);

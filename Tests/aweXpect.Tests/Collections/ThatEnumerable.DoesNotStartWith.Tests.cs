@@ -66,16 +66,16 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             does not start with unexpected equivalent,
 					             but it did start with [
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 1
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 1
 					               },
-					               ThatEnumerable.MyClass {
-					                 Inner = <null>,
+					               MyClass {
+					                 StringValue = "",
 					                 Value = 2
 					               }
 					             ]

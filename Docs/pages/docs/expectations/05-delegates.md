@@ -20,7 +20,7 @@ A delegate can be any of the following:
 
 ## Not throw
 
-You can verify, that the delegate does not throw any exception:
+You can verify that the delegate does not throw any exception:
 
 ```csharp
 void Act() => {};
@@ -30,7 +30,7 @@ await Expect.That(Act).DoesNotThrow();
 
 ## Throw exception
 
-You can verify, that the delegate throws an exception:
+You can verify that the delegate throws an exception:
 
 ```csharp
 void Act() => throw new CustomException("my exception");
@@ -40,7 +40,7 @@ await Expect.That(Act).ThrowsException();
 
 ### Specific exception
 
-You can verify, that the delegate throws a specific exception:
+You can verify that the delegate throws a specific exception:
 
 ```csharp
 void Act() => throw new CustomException("my exception");
@@ -53,7 +53,7 @@ This will verify that the thrown exception is of type `CustomException` or any d
 
 ### Exact exception
 
-You can verify, that the delegate throws exactly a specific exception:
+You can verify that the delegate throws exactly a specific exception:
 
 ```csharp
 void Act() => throw new CustomException("my exception");
@@ -66,7 +66,7 @@ This will verify that the thrown exception is of type `CustomException` and not 
 
 ### Conditional throw
 
-You can verify, that the delegate throws an exception only if a predicate is satisfied (otherwise it verifies, that no
+You can verify that the delegate throws an exception only if a predicate is satisfied (otherwise it verifies, that no
 exception is thrown):
 
 ```csharp
@@ -130,7 +130,7 @@ await Expect.That(Act).ThrowsException()
 
 ## Execute within
 
-You can verify, that the delegate finishes execution in a specified amount of time
+You can verify that the delegate finishes execution in a specified amount of time
 
 ```csharp
 await Expect.That(Task.Delay(200)).ExecutesWithin(TimeSpan.FromMilliseconds(300))

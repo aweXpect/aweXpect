@@ -857,9 +857,15 @@ namespace aweXpect.Results
     public class SingleItemResult<TCollection, TItem> : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>>
     {
         public aweXpect.Core.IThat<TItem> Which { get; }
+        public aweXpect.Results.SingleItemResult<TCollection, TItem> Matching(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+        public aweXpect.Results.SingleItemResult<TCollection, TItem> Matching<T>() { }
+        public aweXpect.Results.SingleItemResult<TCollection, TItem> Matching<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         public class Async : aweXpect.Results.ExpectationResult<TItem, aweXpect.Results.SingleItemResult<TCollection, TItem>.Async>
         {
             public aweXpect.Core.IThat<TItem> Which { get; }
+            public aweXpect.Results.SingleItemResult<TCollection, TItem>.Async Matching(System.Func<TItem, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
+            public aweXpect.Results.SingleItemResult<TCollection, TItem>.Async Matching<T>() { }
+            public aweXpect.Results.SingleItemResult<TCollection, TItem>.Async Matching<T>(System.Func<T, bool> predicate, [System.Runtime.CompilerServices.CallerArgumentExpression("predicate")] string doNotPopulateThisValue = "") { }
         }
     }
     public class StringCollectionBeContainedInResult<TType, TThat> : aweXpect.Results.StringCollectionMatchResult<TType, TThat>
