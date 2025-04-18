@@ -43,6 +43,15 @@ public partial class ThatAsyncEnumerable
 		}
 	}
 
+	public static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(params T[] items)
+	{
+		foreach (T item in items)
+		{
+			await Task.Yield();
+			yield return item;
+		}
+	}
+
 	public static async IAsyncEnumerable<int> ToDelayedAsyncEnumerable(
 		int[] items,
 		[EnumeratorCancellation] CancellationToken cancellationToken = default)
@@ -101,11 +110,6 @@ public partial class ThatAsyncEnumerable
 		}
 
 		#endregion
-	}
-
-	public class MyClass(int value = 0)
-	{
-		public int Value { get; set; } = value;
 	}
 }
 #endif

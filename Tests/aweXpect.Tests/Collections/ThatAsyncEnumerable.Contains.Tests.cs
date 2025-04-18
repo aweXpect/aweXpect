@@ -133,14 +133,8 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
-				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass
-				{
-					Value = x,
-				}, 20);
-				MyClass expected = new()
-				{
-					Value = 1,
-				};
+				IAsyncEnumerable<MyClass> subject = Factory.GetAsyncFibonacciNumbers(x => new MyClass(x), 20);
+				MyClass expected = new(1);
 
 				async Task Act()
 					=> await That(subject).Contains(expected).AtLeast(1).Equivalent();
