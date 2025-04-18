@@ -24,10 +24,13 @@ partial class Build
 					"aweXpect.Json", "Json"
 				},
 				{
-					"aweXpect.Testably", "Testably"
+					"aweXpect.Web", "Web"
 				},
 				{
-					"aweXpect.Web", "Web"
+					"aweXpect.Reflection", "Reflection"
+				},
+				{
+					"aweXpect.Testably", "Testably"
 				},
 			};
 			foreach (var (project, directoryName) in projects)

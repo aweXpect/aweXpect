@@ -69,6 +69,10 @@ More information can be found in the [extensibility guide](https://awexpect.com/
   [![Nuget](https://img.shields.io/nuget/v/aweXpect.Web)](https://www.nuget.org/packages/aweXpect.Web)  
   Expectations for HttpClient.
 
+- [aweXpect.Reflection](https://github.com/aweXpect/aweXpect.Reflection)  
+  [![Nuget](https://img.shields.io/nuget/v/aweXpect.Reflection)](https://www.nuget.org/packages/aweXpect.Reflection)  
+  Expectations for reflection types.
+
 - [aweXpect.Testably](https://github.com/aweXpect/aweXpect.Testably)  
   [![Nuget](https://img.shields.io/nuget/v/aweXpect.Testably)](https://www.nuget.org/packages/aweXpect.Testably)  
   Expectations for the file and time system from [Testably.Abstractions](https://github.com/Testably/Testably.Abstractions).
