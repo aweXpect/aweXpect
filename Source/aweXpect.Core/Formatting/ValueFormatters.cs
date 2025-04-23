@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -135,6 +136,19 @@ public static partial class ValueFormatters
 			case nuint nuintValue:
 				formatter.Format(stringBuilder, nuintValue, options);
 				return;
+		}
+
+		Type? valueType = value.GetType();
+		if (valueType.IsGenericType && valueType.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+		{
+			object? key = valueType.GetProperty("Key")?.GetValue(value);
+			object? item = valueType.GetProperty("Value")?.GetValue(value);
+			stringBuilder.Append('[');
+			Formatter.Format(stringBuilder, key, options);
+			stringBuilder.Append(", ");
+			Formatter.Format(stringBuilder, item, options);
+			stringBuilder.Append(']');
+			return;
 		}
 
 		FormatObject(stringBuilder, value,
