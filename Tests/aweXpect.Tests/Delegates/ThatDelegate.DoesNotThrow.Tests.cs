@@ -2,7 +2,7 @@
 
 public sealed partial class ThatDelegate
 {
-	public sealed class DoesNotThrow
+	public sealed partial class DoesNotThrow
 	{
 		public sealed class ActionTests
 		{
