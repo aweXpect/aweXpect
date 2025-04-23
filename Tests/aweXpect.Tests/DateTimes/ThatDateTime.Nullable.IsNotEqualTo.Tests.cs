@@ -45,6 +45,23 @@ public sealed partial class ThatDateTime
 				}
 
 				[Fact]
+				public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
+				{
+					DateTime? subject = null;
+					DateTime? unexpected = null;
+
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             is not equal to <null>,
+						             but it was <null>
+						             """);
+				}
+
+				[Fact]
 				public async Task WhenSubjectIsDifferent_ShouldSucceed()
 				{
 					DateTime? subject = CurrentTime();

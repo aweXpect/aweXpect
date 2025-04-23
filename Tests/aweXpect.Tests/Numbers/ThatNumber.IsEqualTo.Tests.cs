@@ -417,6 +417,18 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 
+			[Fact]
+			public async Task ForNullableByte_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				byte? subject = null;
+				byte? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData((byte)1, (byte)2)]
 			[InlineData((byte)1, (byte)0)]
@@ -480,6 +492,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForNullableDecimal_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				decimal? subject = null;
+				decimal? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
@@ -531,6 +555,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForNullableDouble_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				double? subject = null;
+				double? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData(1.1, 2.1)]
 			[InlineData(1.1, 0.1)]
@@ -576,6 +612,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForNullableFloat_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				float? subject = null;
+				float? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData((float)1.1, (float)2.1)]
 			[InlineData((float)1.1, (float)0.1)]
@@ -598,6 +646,18 @@ public sealed partial class ThatNumber
 			public async Task ForNullableFloat_WhenValueIsEqualToExpected_ShouldSucceed(
 				float? subject, float? expected)
 			{
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				int? subject = null;
+				int? expected = null;
+
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
 
@@ -671,6 +731,20 @@ public sealed partial class ThatNumber
 #endif
 
 #if NET8_0_OR_GREATER
+			[Fact]
+			public async Task ForNullableInt128_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				Int128? subject = null;
+				Int128? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
 			[Theory]
 			[InlineData(1, 2)]
 			[InlineData(2, 1)]
@@ -707,6 +781,18 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 #endif
+
+			[Fact]
+			public async Task ForNullableLong_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				long? subject = null;
+				long? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
 
 			[Theory]
 			[InlineData((long)1, (long)2)]
@@ -752,6 +838,18 @@ public sealed partial class ThatNumber
 					              is equal to {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableSbyte_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				sbyte? subject = null;
+				sbyte? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -800,6 +898,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForNullableShort_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				short? subject = null;
+				short? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData((short)1, (short)2)]
 			[InlineData((short)1, (short)0)]
@@ -844,6 +954,18 @@ public sealed partial class ThatNumber
 					              is equal to {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableUint_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				uint? subject = null;
+				uint? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -892,6 +1014,18 @@ public sealed partial class ThatNumber
 					              """);
 			}
 
+			[Fact]
+			public async Task ForNullableUlong_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				ulong? subject = null;
+				ulong? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData((ulong)1, (ulong)2)]
 			[InlineData((ulong)1, (ulong)0)]
@@ -936,6 +1070,18 @@ public sealed partial class ThatNumber
 					              is equal to {Formatter.Format(expected)},
 					              but it was <null>
 					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableUshort_WhenValueAndExpectedAreNull_ShouldSucceed()
+			{
+				ushort? subject = null;
+				ushort? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]

@@ -38,7 +38,7 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
-			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
+			public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
 			{
 				MyClass? subject = null;
 				MyClass? expected = null;

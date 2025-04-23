@@ -34,7 +34,7 @@ public sealed partial class ThatDateOnly
 				}
 
 				[Fact]
-				public async Task WhenSubjectAndUnexpectedIsNull_ShouldFail()
+				public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
 				{
 					DateOnly? subject = null;
 					DateOnly? unexpected = null;

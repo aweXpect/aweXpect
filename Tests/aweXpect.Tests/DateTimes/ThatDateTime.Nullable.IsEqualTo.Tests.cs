@@ -77,6 +77,18 @@ public sealed partial class ThatDateTime
 				}
 
 				[Fact]
+				public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
+				{
+					DateTime? subject = null;
+					DateTime? expected = null;
+
+					async Task Act()
+						=> await That(subject).IsEqualTo(expected);
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
 				public async Task WhenSubjectIsDifferent_ShouldFail()
 				{
 					DateTime? subject = CurrentTime();

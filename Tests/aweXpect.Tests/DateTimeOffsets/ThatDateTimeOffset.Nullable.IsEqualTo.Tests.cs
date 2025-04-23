@@ -9,6 +9,18 @@ public sealed partial class ThatDateTimeOffset
 			public sealed class Tests
 			{
 				[Fact]
+				public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
+				{
+					DateTimeOffset? subject = null;
+					DateTimeOffset? expected = null;
+
+					async Task Act()
+						=> await That(subject).IsEqualTo(expected);
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
 				public async Task WhenSubjectIsDifferent_ShouldFail()
 				{
 					DateTimeOffset? subject = CurrentTime();

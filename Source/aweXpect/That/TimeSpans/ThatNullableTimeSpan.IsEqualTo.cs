@@ -50,7 +50,10 @@ public static partial class ThatNullableTimeSpan
 		public ConstraintResult IsMetBy(TimeSpan? actual)
 		{
 			Actual = actual;
-			Outcome = IsWithinTolerance(tolerance.Tolerance, actual - expected) ? Outcome.Success : Outcome.Failure;
+			Outcome = (actual is null && expected is null) ||
+			          IsWithinTolerance(tolerance.Tolerance, actual - expected)
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 

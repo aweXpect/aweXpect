@@ -55,6 +55,23 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
+			{
+				MyClass? subject = null;
+				MyClass? unexpected = null;
+
+				async Task Act()
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not equal to unexpected,
+					             but it was <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				MyClass? subject = null;
