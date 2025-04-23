@@ -1416,6 +1416,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -1654,7 +1660,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -1896,7 +1903,8 @@ window.BENCHMARK_DATA = {
           187.91740506490072,
           174.50051062901815,
           167.3493604830333,
-          174.88549381891886
+          174.88549381891886,
+          171.99046910726108
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2091,6 +2099,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2393,7 +2402,8 @@ window.BENCHMARK_DATA = {
           254.01929577191672,
           248.52970523834227,
           242.10036687850953,
-          257.32321408589684
+          257.32321408589684,
+          238.87768023354667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2586,6 +2596,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -2890,7 +2901,8 @@ window.BENCHMARK_DATA = {
           893.4172147604136,
           993.2431596609263,
           953.183803431193,
-          952.5433057638315
+          952.5433057638315,
+          899.9651235580444
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3116,6 +3128,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -4105,6 +4118,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -4266,7 +4285,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -4431,7 +4451,8 @@ window.BENCHMARK_DATA = {
           288582.9062825521,
           284706.7961077009,
           294376.2471679688,
-          286339.9604980469
+          286339.9604980469,
+          292236.77252604166
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4565,6 +4586,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -4774,7 +4796,8 @@ window.BENCHMARK_DATA = {
           2334812.1919270833,
           2242361.3895833334,
           2202506.453125,
-          2289374.1260416666
+          2289374.1260416666,
+          2162510.932091346
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4890,6 +4913,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -5117,7 +5141,8 @@ window.BENCHMARK_DATA = {
           673995.2780598958,
           677454.1836635044,
           698783.9190755208,
-          665152.6090494791
+          665152.6090494791,
+          656350.7912760417
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5273,6 +5298,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -6717,6 +6743,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -6955,7 +6987,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -7197,7 +7230,8 @@ window.BENCHMARK_DATA = {
           342.9348689397176,
           327.98435462315877,
           328.63511956532795,
-          337.32091137568153
+          337.32091137568153,
+          320.78613669077555
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -7392,6 +7426,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -7694,7 +7729,8 @@ window.BENCHMARK_DATA = {
           503.6010553042094,
           480.23742074232837,
           473.2413011959621,
-          527.7672714869182
+          527.7672714869182,
+          465.1829759597778
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -7887,6 +7923,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -8191,7 +8228,8 @@ window.BENCHMARK_DATA = {
           17855.019201660158,
           16115.22378133138,
           15073.389371744792,
-          22282.449279785156
+          22282.449279785156,
+          14523.108042035785
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -8417,6 +8455,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -9868,6 +9907,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -10106,7 +10151,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -10348,7 +10394,8 @@ window.BENCHMARK_DATA = {
           221.86800956726074,
           201.41859899248396,
           204.02411695889063,
-          213.07146724065146
+          213.07146724065146,
+          201.86157444318135
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -10544,6 +10591,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -10845,7 +10893,8 @@ window.BENCHMARK_DATA = {
           249.94870079480685,
           239.71570798328943,
           245.97536669458663,
-          272.053271484375
+          272.053271484375,
+          241.8168249130249
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -11038,6 +11087,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -11342,7 +11392,8 @@ window.BENCHMARK_DATA = {
           1303.1603326161703,
           1242.637045288086,
           1201.4014718373617,
-          1272.9689338684082
+          1272.9689338684082,
+          1215.6832419804164
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -11568,6 +11619,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -13019,6 +13071,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -13257,7 +13315,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -13499,7 +13558,8 @@ window.BENCHMARK_DATA = {
           370.55715093612673,
           322.3637885366167,
           324.152760664622,
-          336.1079351425171
+          336.1079351425171,
+          318.9303197860718
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -13706,6 +13766,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -13996,7 +14057,8 @@ window.BENCHMARK_DATA = {
           501.50936568578084,
           466.5115341186523,
           463.506650352478,
-          509.7198886235555
+          509.7198886235555,
+          457.40909881591796
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -14189,6 +14251,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -14493,7 +14556,8 @@ window.BENCHMARK_DATA = {
           1341.0663757324219,
           1326.3313828786215,
           1337.4512399037678,
-          1348.0628437314715
+          1348.0628437314715,
+          1318.4579432169596
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -14719,6 +14783,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -16170,6 +16235,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -16408,7 +16479,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -16650,7 +16722,8 @@ window.BENCHMARK_DATA = {
           1180.6780648549397,
           1090.0653171539307,
           1112.30292523702,
-          1157.757976659139
+          1157.757976659139,
+          1097.1040682474772
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16845,6 +16918,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -17147,7 +17221,8 @@ window.BENCHMARK_DATA = {
           1409.362286376953,
           1281.437453842163,
           1294.7140761057535,
-          1403.1249450683595
+          1403.1249450683595,
+          1275.729163233439
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -17340,6 +17415,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -17644,7 +17720,8 @@ window.BENCHMARK_DATA = {
           2960.71565729777,
           2781.353117116292,
           2815.9722903115407,
-          2918.518009185791
+          2918.518009185791,
+          2774.6984792073567
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17870,6 +17947,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -19321,6 +19399,12 @@ window.BENCHMARK_DATA = {
         "author": "dependabot[bot]",
         "date": "Mon Apr 21 11:47:01 2025 \u002B0200",
         "message": "build(deps): bump TUnit.Assertions from 0.19.74 to 0.19.86 in the tunit group (#517)"
+      },
+      {
+        "sha": "ec1c097dbbd46569f8eb989da1911b599faa4e5f",
+        "author": "Valentin Breu\u00DF",
+        "date": "Wed Apr 23 10:54:45 2025 \u002B0200",
+        "message": "fix: compare two \u0060null\u0060 should succeed for \u0060DateTime\u0060 and \u0060TimeSpan\u0060 (#522)"
       }
     ],
     "labels": [
@@ -19559,7 +19643,8 @@ window.BENCHMARK_DATA = {
       "a515324e",
       "68d9a56e",
       "1f7ff44a",
-      "9bad633f"
+      "9bad633f",
+      "ec1c097d"
     ],
     "datasets": [
       {
@@ -19801,7 +19886,8 @@ window.BENCHMARK_DATA = {
           1220.7780817667642,
           1180.2304985863823,
           1187.543562825521,
-          1193.4336172739665
+          1193.4336172739665,
+          1146.2252353668214
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -19996,6 +20082,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -20298,7 +20385,8 @@ window.BENCHMARK_DATA = {
           151233.91828264509,
           148940.79039713542,
           151713.18385416668,
-          155486.13359375
+          155486.13359375,
+          151202.79432896205
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20545,7 +20633,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           63787,
-          63787
+          63787,
+          62778
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20795,7 +20884,8 @@ window.BENCHMARK_DATA = {
           4852.292223612468,
           4666.333506266276,
           4680.074990408762,
-          4820.4263982137045
+          4820.4263982137045,
+          4662.9461828378535
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -21021,6 +21111,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
