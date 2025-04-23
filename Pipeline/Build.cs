@@ -17,9 +17,9 @@ partial class Build : NukeBuild
 	///     Set this flag temporarily when you introduce breaking changes in the core library.
 	///     This will change the build pipeline to only build and publish the aweXpect.Core or aweXpect package.
 	///     <para />
-	///     Afterward you can update the package reference in `Directory.Packages.props` and reset this flag.
+	///     Afterward, you can update the package reference in `Directory.Packages.props` and reset this flag.
 	/// </summary>
-	readonly BuildScope BuildScope = BuildScope.Default;
+	readonly BuildScope BuildScope = BuildScope.CoreOnly;
 
 	[Parameter("Github Token")] readonly string GithubToken;
 
