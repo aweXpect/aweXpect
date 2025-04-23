@@ -299,7 +299,7 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
+			=> _quantifier.AppendResult(stringBuilder, Grammars, _matchingCount, _notMatchingCount,
 				_totalCount);
 	}
 
