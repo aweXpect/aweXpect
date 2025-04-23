@@ -160,20 +160,18 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	private sealed class AsyncCollectionCountConstraint<TItem>
-		: ConstraintResult.WithValue<IAsyncEnumerable<TItem>?>,
+		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>,
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly ExpectationGrammars _grammars;
-		private readonly string _it;
 		private readonly EnumerableQuantifier _quantifier;
 		private int _matchingCount;
 		private int _notMatchingCount;
 		private int? _totalCount;
 
 		public AsyncCollectionCountConstraint(string it, ExpectationGrammars grammars, EnumerableQuantifier quantifier)
-			: base(grammars)
+			: base(it, grammars)
 		{
-			_it = it;
 			_grammars = grammars;
 			_quantifier = quantifier;
 		}
@@ -229,7 +227,7 @@ public static partial class ThatAsyncEnumerable
 		{
 			if (Actual is null)
 			{
-				stringBuilder.ItWasNull(_it);
+				stringBuilder.ItWasNull(It);
 			}
 			else
 			{
@@ -249,12 +247,11 @@ public static partial class ThatAsyncEnumerable
 		{
 			if (Actual is null)
 			{
-				stringBuilder.ItWasNull(_it);
+				stringBuilder.ItWasNull(It);
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount,
-					_totalCount);
+				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount);
 			}
 		}
 	}

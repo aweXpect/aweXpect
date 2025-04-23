@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Results;
 
@@ -25,6 +26,16 @@ public static partial class ThatAsyncEnumerable
 		HasCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject, int expected)
 		=> new(subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new AsyncCollectionCountConstraint<TItem>(it, grammars, EnumerableQuantifier.Exactly(expected))),
+			subject);
+
+	/// <summary>
+	///     Verifies that the <paramref name="subject" /> does not have <paramref name="unexpected" /> items.
+	/// </summary>
+	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+		DoesNotHaveCount<TItem>(this IThat<IAsyncEnumerable<TItem>?> subject, int unexpected)
+		=> new(subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new AsyncCollectionCountConstraint<TItem>(
+					it, grammars, EnumerableQuantifier.Exactly(unexpected)).Invert()),
 			subject);
 }
 #endif

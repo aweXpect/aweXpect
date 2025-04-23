@@ -52,6 +52,20 @@ public abstract partial class EnumerableQuantifier
 			int? totalCount,
 			string? verb = null)
 		{
+			if (grammars.IsNegated())
+			{
+				if (totalCount.HasValue)
+				{
+					stringBuilder.Append("found ").Append(matchingCount);
+				}
+				else
+				{
+					stringBuilder.Append("found at least ").Append(matchingCount);
+				}
+
+				return;
+			}
+
 			if (!totalCount.HasValue)
 			{
 				return;

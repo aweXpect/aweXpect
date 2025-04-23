@@ -54,7 +54,11 @@ public abstract partial class EnumerableQuantifier
 			int? totalCount,
 			string? verb = null)
 		{
-			if (matchingCount > expected)
+			if (grammars.HasFlag(ExpectationGrammars.Negated))
+			{
+				stringBuilder.Append("it did");
+			}
+			else if (matchingCount > expected)
 			{
 				if (totalCount.HasValue)
 				{
