@@ -1,5 +1,4 @@
-﻿#if DEBUG // TODO Re-Enable after aweXpect update
-using aweXpect.Customization;
+﻿using aweXpect.Customization;
 using aweXpect.Equivalency;
 
 namespace aweXpect.Core.Tests.Customization;
@@ -60,4 +59,3 @@ public sealed class CustomizeEquivalencyTests
 			.IsFalse();
 	}
 }
-#endif

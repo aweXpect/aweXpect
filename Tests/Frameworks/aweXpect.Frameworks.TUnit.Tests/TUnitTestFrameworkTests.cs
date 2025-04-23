@@ -16,7 +16,6 @@ public sealed class TUnitTestFrameworkTests
 			.WithMessage("my message");
 	}
 
-#if DEBUG // TODO remove after next core update
 	[Test]
 	public async Task OnInconclusive_WhenUsingXunit2AsTestFramework_ShouldThrowXunitException()
 	{
@@ -26,7 +25,6 @@ public sealed class TUnitTestFrameworkTests
 		await Expect.That(Act).Throws<InconclusiveTestException>()
 			.WithMessage("my message");
 	}
-#endif
 
 	[Test]
 	public async Task OnSkip_WhenUsingXunit2AsTestFramework_ShouldThrowSkipException()

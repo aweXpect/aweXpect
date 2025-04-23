@@ -15,7 +15,6 @@ public sealed class NUnit4TestFrameworkTests
 			.WithMessage("my message");
 	}
 
-#if DEBUG // TODO remove after next core update
 	[Test]
 	public async Task OnInconclusive_WhenUsingNUnit3AsTestFramework_ShouldThrowAssertionException()
 	{
@@ -25,7 +24,6 @@ public sealed class NUnit4TestFrameworkTests
 		await Expect.That(Act).Throws<NUnit.Framework.InconclusiveException>()
 			.WithMessage("my message");
 	}
-#endif
 
 	[Test]
 	public async Task OnSkip_WhenUsingNUnit4AsTestFramework_ShouldThrowIgnoreException()

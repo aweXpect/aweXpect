@@ -15,7 +15,6 @@ public sealed class XUnit2TestFrameworkTests
 		await Expect.That(Act).Throws<XunitException>();
 	}
 
-#if DEBUG // TODO remove after next core update
 	[Fact]
 	public async Task OnInconclusive_WhenUsingXunit2AsTestFramework_ShouldThrowInconclusiveException()
 	{
@@ -25,7 +24,6 @@ public sealed class XUnit2TestFrameworkTests
 		await Expect.That(Act).Throws<InconclusiveException>()
 			.WithMessage("my message");
 	}
-#endif
 
 	[Fact]
 	public async Task OnSkip_WhenUsingXunit2AsTestFramework_ShouldThrowSkipException()
