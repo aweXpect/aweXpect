@@ -522,7 +522,7 @@ public sealed partial class ThatObject
 					             """);
 			}
 
-			[Fact(Skip="TODO: Re-enable after next core update")]
+			[Fact]
 			public async Task WhenSameEntriesInDifferentOrder_ShouldFail()
 			{
 				Dictionary<string, string> subject = new(StringComparer.OrdinalIgnoreCase)

@@ -16,7 +16,6 @@ public class XUnit3TestFrameworkTests
 		await Expect.That(Act).Throws<XunitException>();
 	}
 
-#if DEBUG // TODO remove after next core update
 	[Fact]
 	public async Task OnInconclusive_WhenUsingXunit3AsTestFramework_ShouldThrowXunitException()
 	{
@@ -28,7 +27,6 @@ public class XUnit3TestFrameworkTests
 		await Expect.That(exception.GetType().GetInterfaces().Select(e => e.Name))
 			.Contains("ITestTimeoutException");
 	}
-#endif
 
 	[Fact]
 	public async Task OnSkip_WhenUsingXunit3AsTestFramework_ShouldThrowSkipException()

@@ -1,5 +1,4 @@
-﻿#if DEBUG // TODO Re-Enable after aweXpect update
-using aweXpect.Equivalency;
+﻿using aweXpect.Equivalency;
 
 namespace aweXpect.Core.Tests.Equivalency;
 
@@ -119,4 +118,3 @@ public sealed class EquivalencyOptionsExtensionsTests
 
 	private sealed class MyClass;
 }
-#endif

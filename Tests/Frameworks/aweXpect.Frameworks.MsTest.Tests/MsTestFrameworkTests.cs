@@ -16,7 +16,6 @@ public sealed class MsTestFrameworkTests
 			.WithMessage("my message");
 	}
 
-#if DEBUG // TODO remove after next core update
 	[TestMethod]
 	public async Task OnInconclusive_WhenUsingMsTestAsTestFramework_ShouldThrowAssertInconclusiveException()
 	{
@@ -26,7 +25,6 @@ public sealed class MsTestFrameworkTests
 		await Expect.That(Act).Throws<AssertInconclusiveException>()
 			.WithMessage("my message");
 	}
-#endif
 
 	[TestMethod]
 	public async Task OnSkip_WhenUsingMsTestAsTestFramework_ShouldThrowAssertInconclusiveException()
