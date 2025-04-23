@@ -45,6 +45,23 @@ public sealed partial class ThatTimeSpan
 				}
 
 				[Fact]
+				public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
+				{
+					TimeSpan? subject = null;
+					TimeSpan? unexpected = null;
+
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             is not equal to <null>,
+						             but it was <null>
+						             """);
+				}
+
+				[Fact]
 				public async Task WhenSubjectIsDifferent_ShouldSucceed()
 				{
 					TimeSpan? subject = CurrentTime();

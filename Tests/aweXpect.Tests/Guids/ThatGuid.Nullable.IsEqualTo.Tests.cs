@@ -12,9 +12,10 @@ public sealed partial class ThatGuid
 				public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
 				{
 					Guid? subject = null;
+					Guid? expected = null;
 
 					async Task Act()
-						=> await That(subject).IsEqualTo(null);
+						=> await That(subject).IsEqualTo(expected);
 
 					await That(Act).DoesNotThrow();
 				}

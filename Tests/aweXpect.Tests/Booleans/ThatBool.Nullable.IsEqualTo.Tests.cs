@@ -8,6 +8,18 @@ public sealed partial class ThatBool
 		{
 			public sealed class Tests
 			{
+				[Fact]
+				public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
+				{
+					bool? subject = null;
+					bool? expected = null;
+
+					async Task Act()
+						=> await That(subject).IsEqualTo(expected);
+
+					await That(Act).DoesNotThrow();
+				}
+
 				[Theory]
 				[InlineData(true, false)]
 				[InlineData(true, null)]

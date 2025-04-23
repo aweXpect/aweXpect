@@ -8,6 +8,23 @@ public sealed partial class ThatEnum
 		{
 			public sealed class Tests
 			{
+				[Fact]
+				public async Task ForLong_WhenSubjectAndUnexpectedAreNull_ShouldFail()
+				{
+					EnumLong? subject = null;
+					EnumLong? unexpected = null;
+
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             is not <null>,
+						             but it was <null>
+						             """);
+				}
+
 				[Theory]
 				[InlineData(EnumLong.Int64Max, EnumLong.Int64LessOne)]
 				public async Task ForLong_WhenSubjectIsDifferent_ShouldSucceed(EnumLong? subject,
@@ -18,6 +35,7 @@ public sealed partial class ThatEnum
 
 					await That(Act).DoesNotThrow();
 				}
+
 
 				[Theory]
 				[InlineData(EnumLong.Int64Max)]

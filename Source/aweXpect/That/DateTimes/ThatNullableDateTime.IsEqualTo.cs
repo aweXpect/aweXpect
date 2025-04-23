@@ -58,7 +58,8 @@ public static partial class ThatNullableDateTime
 				tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
 			TimeSpan? difference = actual - expected;
 			_hasKindDifference = !AreKindCompatible(actual?.Kind, expected?.Kind);
-			Outcome = !_hasKindDifference && difference <= timeTolerance && difference >= timeTolerance.Negate()
+			Outcome = (actual is null && expected is null) ||
+			          (!_hasKindDifference && difference <= timeTolerance && difference >= timeTolerance.Negate())
 				? Outcome.Success
 				: Outcome.Failure;
 

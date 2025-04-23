@@ -44,7 +44,7 @@ public sealed partial class ThatTimeOnly
 				}
 
 				[Fact]
-				public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
+				public async Task WhenSubjectAndExpectedAreNull_ShouldSucceed()
 				{
 					TimeOnly? subject = null;
 					TimeOnly? expected = null;

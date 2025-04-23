@@ -20,7 +20,7 @@ public sealed partial class ThatBool
 					await That(Act).Throws<XunitException>()
 						.WithMessage($"""
 						              Expected that subject
-						              is not {Formatter.Format(unexpected)},
+						              is not <null>,
 						              but it was <null>
 						              """);
 				}
