@@ -442,12 +442,24 @@ namespace aweXpect.Delegates
         public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
         {
             public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-            public aweXpect.Results.ExpectationResult<T> DoesNotThrow() { }
+            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow() { }
+            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow(System.Type exceptionType) { }
+            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow<TException>()
+                where TException : System.Exception { }
+            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly(System.Type exceptionType) { }
+            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly<TException>()
+                where TException : System.Exception { }
         }
         public sealed class WithoutValue : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue>
         {
             public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-            public aweXpect.Results.ExpectationResult DoesNotThrow() { }
+            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow() { }
+            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow(System.Type exceptionType) { }
+            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow<TException>()
+                where TException : System.Exception { }
+            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrowExactly(System.Type exceptionType) { }
+            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrowExactly<TException>()
+                where TException : System.Exception { }
         }
     }
     public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>>, aweXpect.Core.IExpectThat<TException>, aweXpect.Core.IThatDelegateThrows<TException>, aweXpect.Core.IThat<TException>
@@ -843,6 +855,12 @@ namespace aweXpect.Recording
 }
 namespace aweXpect.Results
 {
+    public class AndOrResult<TThat> : aweXpect.Results.ExpectationResult
+    {
+        public AndOrResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+        public TThat And { get; }
+        public TThat Or { get; }
+    }
     public class AndOrResult<TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat, aweXpect.Results.AndOrResult<TType, TThat>>
     {
         public AndOrResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
