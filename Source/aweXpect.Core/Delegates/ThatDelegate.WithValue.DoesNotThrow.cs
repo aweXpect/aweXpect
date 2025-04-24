@@ -16,7 +16,7 @@ public abstract partial class ThatDelegate
 		/// <summary>
 		///     Verifies that the delegate does not throw any exception.
 		/// </summary>
-		public AndOrResult<T, WithValue<T>> DoesNotThrow()
+		public AndResult<T, WithValue<T>> DoesNotThrow()
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
 					new DoesNotThrowConstraint(it, grammars, typeof(Exception))),
 				this);
@@ -24,7 +24,7 @@ public abstract partial class ThatDelegate
 		/// <summary>
 		///     Verifies that the delegate does not throw an exception of type <typeparamref name="TException" />.
 		/// </summary>
-		public AndOrResult<T, WithValue<T>> DoesNotThrow<TException>()
+		public AndResult<T, WithValue<T>> DoesNotThrow<TException>()
 			where TException : Exception
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
 					new DoesNotThrowConstraint(it, grammars, typeof(TException))),
@@ -33,7 +33,7 @@ public abstract partial class ThatDelegate
 		/// <summary>
 		///     Verifies that the delegate does not throw an exception of type <paramref name="exceptionType" />.
 		/// </summary>
-		public AndOrResult<T, WithValue<T>> DoesNotThrow(Type exceptionType)
+		public AndResult<T, WithValue<T>> DoesNotThrow(Type exceptionType)
 			=> new(ExpectationBuilder.AddConstraint((it, grammars) =>
 					new DoesNotThrowConstraint(it, grammars, exceptionType)),
 				this);

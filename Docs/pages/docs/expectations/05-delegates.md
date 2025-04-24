@@ -128,9 +128,25 @@ await Expect.That(Act).ThrowsException()
 
 ```
 
-## Execute within
+## Execution time
 
-You can verify that the delegate finishes execution in a specified amount of time
+You can verify that the execution time of a delegate:
+
+```csharp
+await Expect.That(Task.Delay(200)).ExecutesIn().AtMost(300.Milliseconds())
+  .Because("the delegate should execute faster than 300ms");
+await Expect.That(Task.Delay(200)).ExecutesIn().AtLeast(100.Milliseconds())
+  .Because("the delegate should execute slower than 100ms");
+await Expect.That(Task.Delay(200)).ExecutesIn().Approximately(200.Milliseconds(), 50.Milliseconds())
+  .Because("the delegate should execute within 200ms ± 50ms");
+await Expect.That(Task.Delay(200)).ExecutesIn().Between(100.Milliseconds()).And(300.Milliseconds())
+  .Because("the delegate should execute slower than 100ms and faster than 300ms");
+```
+
+### Execute within
+
+There is also a shorthand expectation for a delegate that finishes the execution without throwing an exception
+in (at most) a given time:
 
 ```csharp
 await Expect.That(Task.Delay(200)).ExecutesWithin(TimeSpan.FromMilliseconds(300))
