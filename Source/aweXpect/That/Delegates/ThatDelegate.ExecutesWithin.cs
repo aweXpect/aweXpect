@@ -11,7 +11,8 @@ namespace aweXpect;
 public static partial class ThatDelegate
 {
 	/// <summary>
-	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
+	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />
+	///     without throwing an exception.
 	/// </summary>
 	public static ExpectationResult<TValue> ExecutesWithin<TValue>(
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
@@ -20,7 +21,8 @@ public static partial class ThatDelegate
 			.AddConstraint((it, grammars) => new ExecutesWithinConstraint<TValue>(it, grammars, duration)));
 
 	/// <summary>
-	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />.
+	///     Verifies that the delegate finishes execution within the given <paramref name="duration" />
+	///     without throwing an exception.
 	/// </summary>
 	public static ExpectationResult ExecutesWithin(
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,
@@ -29,7 +31,8 @@ public static partial class ThatDelegate
 			.AddConstraint((it, grammars) => new ExecutesWithinConstraint(it, grammars, duration)));
 
 	/// <summary>
-	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
+	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />
+	///     or throws an exception.
 	/// </summary>
 	public static ExpectationResult<TValue> DoesNotExecuteWithin<TValue>(
 		this IThat<Delegates.ThatDelegate.WithValue<TValue>> source,
@@ -38,7 +41,8 @@ public static partial class ThatDelegate
 			.AddConstraint((it, grammars) => new ExecutesWithinConstraint<TValue>(it, grammars, duration).Invert()));
 
 	/// <summary>
-	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />.
+	///     Verifies that the delegate does not finish execution within the given <paramref name="duration" />
+	///     or throws an exception.
 	/// </summary>
 	public static ExpectationResult DoesNotExecuteWithin(
 		this IThat<Delegates.ThatDelegate.WithoutValue> source,

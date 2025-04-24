@@ -442,24 +442,26 @@ namespace aweXpect.Delegates
         public sealed class WithValue<T> : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithValue<T>>
         {
             public WithValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow() { }
-            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow(System.Type exceptionType) { }
-            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow<TException>()
+            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow() { }
+            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow(System.Type exceptionType) { }
+            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrow<TException>()
                 where TException : System.Exception { }
-            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly(System.Type exceptionType) { }
-            public aweXpect.Results.AndOrResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly<TException>()
+            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly(System.Type exceptionType) { }
+            public aweXpect.Results.AndResult<T, aweXpect.Delegates.ThatDelegate.WithValue<T>> DoesNotThrowExactly<TException>()
                 where TException : System.Exception { }
+            public aweXpect.Results.ExecutesInResult<aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithValue<T>>> ExecutesIn() { }
         }
         public sealed class WithoutValue : aweXpect.Delegates.ThatDelegate, aweXpect.Core.IExpectThat<aweXpect.Delegates.ThatDelegate.WithoutValue>, aweXpect.Core.IThat<aweXpect.Delegates.ThatDelegate.WithoutValue>
         {
             public WithoutValue(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
-            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow() { }
-            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow(System.Type exceptionType) { }
-            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow<TException>()
+            public aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow() { }
+            public aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow(System.Type exceptionType) { }
+            public aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrow<TException>()
                 where TException : System.Exception { }
-            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrowExactly(System.Type exceptionType) { }
-            public aweXpect.Results.AndOrResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrowExactly<TException>()
+            public aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrowExactly(System.Type exceptionType) { }
+            public aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithoutValue> DoesNotThrowExactly<TException>()
                 where TException : System.Exception { }
+            public aweXpect.Results.ExecutesInResult<aweXpect.Results.AndResult<aweXpect.Delegates.ThatDelegate.WithoutValue>> ExecutesIn() { }
         }
     }
     public class ThatDelegateThrows<TException> : aweXpect.Results.ExpectationResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>>, aweXpect.Core.IExpectThat<TException>, aweXpect.Core.IThatDelegateThrows<TException>, aweXpect.Core.IThat<TException>
@@ -814,6 +816,17 @@ namespace aweXpect.Options
         public override string ToString() { }
         public aweXpect.Options.StringEqualityOptions UsingComparer(System.Collections.Generic.IEqualityComparer<string>? comparer) { }
     }
+    public class TimeSpanEqualityOptions
+    {
+        public TimeSpanEqualityOptions() { }
+        public void AppendFailureResult(System.Text.StringBuilder stringBuilder, System.TimeSpan actual) { }
+        public void Approximately(System.TimeSpan expected, System.TimeSpan tolerance) { }
+        public void AtLeast(System.TimeSpan minimum) { }
+        public void AtMost(System.TimeSpan maximum) { }
+        public void Between(System.TimeSpan minimum, System.TimeSpan maximum) { }
+        public bool IsWithinLimit(System.TimeSpan? actual) { }
+        public override string ToString() { }
+    }
     public class TimeTolerance
     {
         public TimeTolerance() { }
@@ -902,6 +915,21 @@ namespace aweXpect.Results
             public aweXpect.Results.AndOrWhoseResult<TType, TThat, TSelf>.AdditionalAndOrWhoseResult AndWhose<TMember>(System.Linq.Expressions.Expression<System.Func<TType, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
         }
     }
+    public class AndResult<TThat> : aweXpect.Results.ExpectationResult
+    {
+        public AndResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+        public TThat And { get; }
+    }
+    public class AndResult<TType, TThat> : aweXpect.Results.AndResult<TType, TThat, aweXpect.Results.AndResult<TType, TThat>>
+    {
+        public AndResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+    }
+    public class AndResult<TType, TThat, TSelf> : aweXpect.Results.ExpectationResult<TType, TSelf>
+        where TSelf : aweXpect.Results.AndResult<TType, TThat, TSelf>
+    {
+        public AndResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue) { }
+        public TThat And { get; }
+    }
     public class BetweenResult<TTarget>
     {
         public BetweenResult(System.Func<int, TTarget> callback) { }
@@ -926,6 +954,19 @@ namespace aweXpect.Results
         public TSelf Exactly(aweXpect.Times expected) { }
         public TSelf Never() { }
         public TSelf Once() { }
+    }
+    public class ExecutesInResult<TResult>
+    {
+        public ExecutesInResult(TResult returnValue, aweXpect.Options.TimeSpanEqualityOptions options) { }
+        public TResult Approximately(System.TimeSpan expected, System.TimeSpan tolerance) { }
+        public TResult AtLeast(System.TimeSpan minimum) { }
+        public TResult AtMost(System.TimeSpan maximum) { }
+        public aweXpect.Results.ExecutesInResult<TResult>.BetweenResult Between(System.TimeSpan minimum) { }
+        public class BetweenResult
+        {
+            public BetweenResult(System.Func<System.TimeSpan, TResult> callback) { }
+            public TResult And(System.TimeSpan maximum) { }
+        }
     }
     [System.Diagnostics.StackTraceHidden]
     public abstract class Expectation
