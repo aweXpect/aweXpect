@@ -74,7 +74,7 @@ public class TimeSpanEqualityOptions
 			=> Formatter.Format(stringBuilder, actual);
 	}
 
-	private record ApproximatelyLimit(TimeSpan Expected, TimeSpan Tolerance) : Limit
+	private sealed record ApproximatelyLimit(TimeSpan Expected, TimeSpan Tolerance) : Limit
 	{
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual >= Expected - Tolerance && actual <= Expected + Tolerance;
@@ -93,7 +93,7 @@ public class TimeSpanEqualityOptions
 		}
 	}
 
-	private record BetweenLimit(TimeSpan Minimum, TimeSpan Maximum) : Limit
+	private sealed record BetweenLimit(TimeSpan Minimum, TimeSpan Maximum) : Limit
 	{
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual >= Minimum && actual <= Maximum;
@@ -111,7 +111,7 @@ public class TimeSpanEqualityOptions
 		}
 	}
 
-	private record MinimumLimit(TimeSpan Minimum) : Limit
+	private sealed record MinimumLimit(TimeSpan Minimum) : Limit
 	{
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual >= Minimum;
@@ -125,7 +125,7 @@ public class TimeSpanEqualityOptions
 		}
 	}
 
-	private record MaximumLimit(TimeSpan Maximum) : Limit
+	private sealed record MaximumLimit(TimeSpan Maximum) : Limit
 	{
 		public override bool IsWithinLimit(TimeSpan actual)
 			=> actual <= Maximum;
