@@ -43,7 +43,7 @@ internal static class ObjectEqualityOptions
 			return Equals(actual, expected);
 		}
 
-		private bool AreNumericsEqual(object actual, object expected)
+		private static bool AreNumericsEqual(object actual, object expected)
 		{
 			Type expectedType = expected.GetType();
 			Type actualType = actual.GetType();
