@@ -32,9 +32,18 @@ public static partial class EquivalencyComparison
 			return CompareByValue(actual, expected, failureBuilder, memberPath, memberType);
 		}
 
-		if (!context.ComparedObjects.Add(actual) || actual.Equals(expected))
+		try
 		{
-			return true;
+			if (!context.ComparedObjects.Add(actual) || actual.Equals(expected))
+			{
+				return true;
+			}
+		}
+		catch (Exception exception)
+		{
+			throw new InvalidOperationException(
+				$"The equals method of {Formatter.Format(actual.GetType())} threw an {Formatter.Format(exception.GetType())}: {exception.Message}",
+				exception);
 		}
 
 		if (actual is IDictionary actualDictionary && expected is IDictionary expectedDictionary)

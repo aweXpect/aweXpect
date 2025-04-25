@@ -35,6 +35,6 @@ public static partial class EquivalencyComparison
 		/// <summary>
 		///     Tracks already compared objects to catch recursions.
 		/// </summary>
-		public HashSet<object> ComparedObjects { get; } = new();
+		public HashSet<object> ComparedObjects { get; } = new(ReferenceEqualityComparer.Instance);
 	}
 }

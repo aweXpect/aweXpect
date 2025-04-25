@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Equivalency;
+
+// ReSharper disable UnusedMember.Local
 
 namespace aweXpect.Tests;
 
@@ -738,6 +741,22 @@ public sealed partial class ThatObject
 					              """);
 			}
 
+			[Fact]
+			public async Task
+				WhenTypesThrowExceptionDuringEquals_ShouldThrowInvalidOperationExceptionWithCorrespondingMessage()
+			{
+				MyClassThrowingOnEqualsCheck subject = new();
+				MyClassThrowingOnEqualsCheck expected = new();
+
+				async Task Act()
+					=> await That(subject).IsEquivalentTo(expected);
+
+				await That(Act).Throws<InvalidOperationException>()
+					.WithMessage(
+						"*The equals method of ThatObject.IsEquivalentTo.PropertyTests.MyClassThrowingOnEqualsCheck threw an ArgumentNullException: Value cannot be null.*")
+					.AsWildcard();
+			}
+
 			[Theory]
 			[InlineData(0, 0, 0, true)]
 			[InlineData(0, 0, 1, true)]
@@ -854,6 +873,26 @@ public sealed partial class ThatObject
 				internal int InternalValue { get; set; } = internalValue;
 				private int PrivateValue { get; set; } = privateValue;
 				public int PublicValue { get; set; } = publicValue;
+			}
+
+			private sealed class MyClassThrowingOnEqualsCheck(List<int>? values = null)
+			{
+				public List<int>? Values { get; } = values;
+
+				public override bool Equals(object? obj) => Equals(obj as MyClassThrowingOnEqualsCheck);
+
+				private bool Equals(MyClassThrowingOnEqualsCheck? other)
+				{
+					if (other is null)
+					{
+						return false;
+					}
+
+					// Throws an exception when the Values list is null
+					return Values!.SequenceEqual(other.Values!);
+				}
+
+				public override int GetHashCode() => Values != null ? Values.GetHashCode() : 0;
 			}
 		}
 	}
