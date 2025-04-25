@@ -109,6 +109,56 @@ public sealed partial class ThatObject
 			}
 		}
 
+		public sealed class NumericTests
+		{
+			[Theory]
+			[MemberData(nameof(GetValues))]
+			public async Task WhenSubjectAndExpectedAreDifferentNumericsWithSameValues_ShouldSucceed(object subject,
+				object expected)
+			{
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			public static TheoryData<object, object> GetValues() => new()
+			{
+				{
+					1.0, 1
+				},
+				{
+					2, 2.0
+				},
+				{
+					3, (long)3
+				},
+				{
+					(sbyte)4, (ulong)4
+				},
+				{
+					(float)5.0, 5.0
+				},
+				{
+					(decimal)6.1, (float)6.1
+				},
+				{
+					(byte)7, (short)7
+				},
+				{
+					(ushort)8, (uint)8
+				},
+#if NET8_0_OR_GREATER
+				{
+					(Int128)9, (UInt128)9
+				},
+				{
+					(Half)10, (float)10
+				},
+#endif
+			};
+		}
+
 		public sealed class NullableStructTests
 		{
 			[Fact]
