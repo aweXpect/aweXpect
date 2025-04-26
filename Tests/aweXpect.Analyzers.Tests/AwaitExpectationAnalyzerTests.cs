@@ -80,6 +80,26 @@ public class AwaitExpectationAnalyzerTests
 		);
 
 	[Fact]
+	public async Task WhenNotAwaited_WithoutReturnValue_WithVerifyInMethod_ShouldStillBeFlagged() => await Verifier
+		.VerifyAnalyzerAsync(
+			"""
+			using System.Threading.Tasks;
+			using aweXpect;
+
+			public class MyClass
+			{
+			    public async Task MyTest()
+			    {
+			        aweXpect.Synchronous.Synchronously.Verify(Expect.That(true).IsTrue());
+			        {|#0:Expect.That(() => {})|}.DoesNotThrow();
+			    }
+			}
+			""",
+			Verifier.Diagnostic(Rules.AwaitExpectationRule)
+				.WithLocation(0)
+		);
+
+	[Fact]
 	public async Task WhenVerified_ShouldNotBeFlagged() => await Verifier
 		.VerifyAnalyzerAsync(
 			"""

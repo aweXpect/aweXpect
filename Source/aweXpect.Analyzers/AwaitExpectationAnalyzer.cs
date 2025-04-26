@@ -53,24 +53,24 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 
 	private static bool IsAwaitedOrVerifyCalled(IInvocationOperation invocationOperation)
 	{
-		IOperation? parent = invocationOperation.Parent;
+		IOperation? operation = invocationOperation.Parent;
 
-		while (parent != null)
+		while (operation != null)
 		{
-			if (parent is IBlockOperation or IDelegateCreationOperation &&
-			    parent.SemanticModel != null)
+			if (operation.Parent is IBlockOperation or IDelegateCreationOperation &&
+			    operation.SemanticModel != null)
 			{
-				ExpressionSyntaxWalker walker = new(parent.SemanticModel);
-				walker.Visit(parent.Syntax);
+				ExpressionSyntaxWalker walker = new(operation.SemanticModel);
+				walker.Visit(operation.Syntax);
 				return walker.IsVerifyCalled;
 			}
 
-			if (parent is IAwaitOperation)
+			if (operation is IAwaitOperation)
 			{
 				return true;
 			}
 
-			parent = parent.Parent;
+			operation = operation.Parent;
 		}
 
 		return false;
