@@ -336,6 +336,7 @@ namespace aweXpect
     }
     public static class ThatNullableBool
     {
+        public static aweXpect.Results.AndOrResult<bool?, aweXpect.Core.IThat<bool?>> Implies(this aweXpect.Core.IThat<bool?> source, bool consequent) { }
         public static aweXpect.Results.AndOrResult<bool?, aweXpect.Core.IThat<bool?>> IsEqualTo(this aweXpect.Core.IThat<bool?> source, bool? expected) { }
         public static aweXpect.Results.AndOrResult<bool?, aweXpect.Core.IThat<bool?>> IsFalse(this aweXpect.Core.IThat<bool?> source) { }
         public static aweXpect.Results.AndOrResult<bool?, aweXpect.Core.IThat<bool?>> IsNotEqualTo(this aweXpect.Core.IThat<bool?> source, bool? unexpected) { }
