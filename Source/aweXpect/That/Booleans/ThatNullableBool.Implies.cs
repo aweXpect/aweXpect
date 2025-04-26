@@ -5,7 +5,7 @@ using aweXpect.Results;
 
 namespace aweXpect;
 
-public static partial class ThatBool
+public static partial class ThatNullableBool
 {
 	/// <summary>
 	///     Verifies that the subject implies the <paramref name="consequent" /> value.
@@ -14,20 +14,20 @@ public static partial class ThatBool
 	///     <c>A implies B</c> is equivalent to <c>NOT A OR B</c>.<br />
 	///     <seealso href="https://mathworld.wolfram.com/Implies.html" />
 	/// </remarks>
-	public static AndOrResult<bool, IThat<bool>> Implies(this IThat<bool> source,
+	public static AndOrResult<bool?, IThat<bool?>> Implies(this IThat<bool?> source,
 		bool consequent)
 		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new ImpliesConstraint(it, grammars, consequent)),
 			source);
 
 	private sealed class ImpliesConstraint(string it, ExpectationGrammars grammars, bool consequent)
-		: ConstraintResult.WithValue<bool>(grammars),
-			IValueConstraint<bool>
+		: ConstraintResult.WithValue<bool?>(grammars),
+			IValueConstraint<bool?>
 	{
-		public ConstraintResult IsMetBy(bool actual)
+		public ConstraintResult IsMetBy(bool? actual)
 		{
 			Actual = actual;
-			Outcome = !actual || consequent ? Outcome.Success : Outcome.Failure;
+			Outcome = actual is not null && (!actual.Value || consequent) ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 
