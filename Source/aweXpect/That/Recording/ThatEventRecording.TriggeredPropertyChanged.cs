@@ -18,14 +18,17 @@ public static partial class ThatEventRecording
 	{
 		Quantifier quantifier = new();
 		TriggerEventFilter filter = new();
+		RepeatedCheckOptions options = new();
 		return new EventTriggerResult<TSubject>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
 					filter,
-					quantifier)),
+					quantifier,
+					options)),
 			source,
 			filter,
-			quantifier);
+			quantifier,
+			options);
 	}
 
 	/// <summary>
@@ -38,13 +41,16 @@ public static partial class ThatEventRecording
 		Quantifier quantifier = new();
 		quantifier.Exactly(0);
 		TriggerEventFilter filter = new();
+		RepeatedCheckOptions options = new();
 		return new EventTriggerResult<TSubject>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new HaveTriggeredConstraint<TSubject>(it, grammars, nameof(INotifyPropertyChanged.PropertyChanged),
 					filter,
-					quantifier)),
+					quantifier,
+					options)),
 			source,
 			filter,
-			quantifier);
+			quantifier,
+			options);
 	}
 }

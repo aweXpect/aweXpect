@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+#if NET8_0_OR_GREATER
+using System.Threading.Channels;
+#endif
 
 namespace aweXpect.Recording;
 
@@ -38,11 +43,35 @@ internal sealed class EventRecording<TSubject> : IEventRecording<TSubject>, IEve
 		}
 	}
 
-	/// <summary>
-	///     Stops the recording of events.
-	/// </summary>
-	public IEventRecordingResult Stop()
+#if NET8_0_OR_GREATER
+	public async Task<IEventRecordingResult> StopWhen(Func<IEventRecordingResult, bool> areFound, TimeSpan timeout)
 	{
+		if (timeout > TimeSpan.Zero && !areFound(this))
+		{
+			Channel<bool> channel = Channel.CreateUnbounded<bool>();
+			using CancellationTokenSource cts = new(timeout);
+			CancellationToken token = cts.Token;
+			foreach (EventRecorder recorder in _recorders.Values)
+			{
+				recorder.Register(channel.Writer);
+			}
+
+			try
+			{
+				await foreach (bool _ in channel.Reader.ReadAllAsync(token))
+				{
+					if (areFound(this))
+					{
+						break;
+					}
+				}
+			}
+			catch (OperationCanceledException)
+			{
+				// Ignore cancellation
+			}
+		}
+
 		foreach (EventRecorder recorder in _recorders.Values)
 		{
 			recorder.Dispose();
@@ -50,6 +79,46 @@ internal sealed class EventRecording<TSubject> : IEventRecording<TSubject>, IEve
 
 		return this;
 	}
+#else
+	public Task<IEventRecordingResult> StopWhen(Func<IEventRecordingResult, bool> areFound, TimeSpan timeout)
+	{
+		DateTime now = DateTime.Now;
+		DateTime endTime = now.Add(timeout);
+		if (timeout > TimeSpan.Zero && !areFound(this))
+		{
+			using (ManualResetEventSlim ms = new())
+			{
+				foreach (EventRecorder recorder in _recorders.Values)
+				{
+					recorder.Register(ms);
+				}
+
+				while (true)
+				{
+					now = DateTime.Now;
+					if (now >= endTime)
+					{
+						break;
+					}
+
+					ms.Reset();
+					ms.Wait(endTime - now);
+					if (areFound(this))
+					{
+						break;
+					}
+				}
+			}
+		}
+
+		foreach (EventRecorder recorder in _recorders.Values)
+		{
+			recorder.Dispose();
+		}
+
+		return Task.FromResult<IEventRecordingResult>(this);
+	}
+#endif
 
 	/// <summary>
 	///     Gets the number of recorded events for <paramref name="eventName" /> that match the <paramref name="filter" />.

@@ -21,11 +21,13 @@ public static partial class ThatEventRecording
 	{
 		Quantifier quantifier = new();
 		TriggerEventFilter filter = new();
+		RepeatedCheckOptions options = new();
 		return new EventTriggerResult<TSubject>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new HaveTriggeredConstraint<TSubject>(it, grammars, eventName, filter, quantifier)),
+				=> new HaveTriggeredConstraint<TSubject>(it, grammars, eventName, filter, quantifier, options)),
 			source,
 			filter,
-			quantifier);
+			quantifier,
+			options);
 	}
 }

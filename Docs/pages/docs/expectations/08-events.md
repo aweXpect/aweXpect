@@ -55,6 +55,27 @@ await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
   .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10);
 ```
 
+## Timeout
+
+You can specify a timeout within the expected events should be triggered:
+
+```csharp
+IEventRecording<MyClass> recording = sut.Record().Events();
+
+_ = Task.Delay(2.Seconds()).ContinueWith(_ => {
+    // Trigger the events in the background
+    sut.OnThresholdReached(new ThresholdReachedEventArgs(5));
+    sut.OnThresholdReached(new ThresholdReachedEventArgs(15));
+});
+
+await Expect.That(recording).Triggered(nameof(MyClass.ThresholdReached))
+  .WithParameter<ThresholdReachedEventArgs>(e => e.Threshold > 10)
+  .Within(3.Seconds());
+```
+
+The `.Within(TimeSpan)` method will wait up to 3 seconds for the expected events and
+finish successfully as soon as the events are triggered.
+
 ### Sender
 
 When you follow

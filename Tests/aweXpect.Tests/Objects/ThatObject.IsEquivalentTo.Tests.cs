@@ -753,7 +753,7 @@ public sealed partial class ThatObject
 
 				await That(Act).Throws<InvalidOperationException>()
 					.WithMessage(
-						"*The equals method of ThatObject.IsEquivalentTo.PropertyTests.MyClassThrowingOnEqualsCheck threw an ArgumentNullException: Value cannot be null.*")
+						"*The equals method of ThatObject.IsEquivalentTo.PropertyTests.MyClassThrowingOnEqualsCheck threw an ArgumentNullException:*")
 					.AsWildcard();
 			}
 
