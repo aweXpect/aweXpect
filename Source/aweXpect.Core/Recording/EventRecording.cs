@@ -58,6 +58,7 @@ internal sealed class EventRecording<TSubject> : IEventRecording<TSubject>, IEve
 
 			try
 			{
+#pragma warning disable S3267 // https://rules.sonarsource.com/csharp/RSPEC-3267
 				await foreach (bool _ in channel.Reader.ReadAllAsync(token))
 				{
 					if (areFound(this))
@@ -65,6 +66,7 @@ internal sealed class EventRecording<TSubject> : IEventRecording<TSubject>, IEve
 						break;
 					}
 				}
+#pragma warning restore S3267
 			}
 			catch (OperationCanceledException)
 			{

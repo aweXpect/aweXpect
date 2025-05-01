@@ -68,6 +68,7 @@ public partial class CollectionMatchOptions
 			       2 * maximumNumber;
 		}
 
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			int maximumNumberOfCollectionItems =
@@ -125,6 +126,7 @@ public partial class CollectionMatchOptions
 			error = ReturnErrorString(it, errors);
 			return error != null;
 		}
+#pragma warning restore S3776
 
 		private void VerifyCompleteForSubsetMatch(IOptionsEquality<T2> options)
 		{
