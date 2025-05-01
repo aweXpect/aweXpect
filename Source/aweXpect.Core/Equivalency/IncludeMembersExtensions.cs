@@ -14,7 +14,9 @@ internal static class IncludeMembersExtensions
 			return BindingFlags.Public | BindingFlags.Instance;
 		}
 
+#pragma warning disable S3011 // https://rules.sonarsource.com/csharp/RSPEC-3011
 		return BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+#pragma warning restore S3011
 	}
 
 	public static IEnumerable<FieldInfo> GetFields(this Type type, IncludeMembers includeMembers)

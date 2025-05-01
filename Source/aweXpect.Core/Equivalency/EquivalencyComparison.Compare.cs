@@ -9,6 +9,8 @@ namespace aweXpect.Equivalency;
 
 public static partial class EquivalencyComparison
 {
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
+#pragma warning disable S107 // https://rules.sonarsource.com/csharp/RSPEC-107
 	private static bool Compare<TActual, TExpected>(
 		TActual actual,
 		TExpected expected,
@@ -321,6 +323,8 @@ public static partial class EquivalencyComparison
 
 		return result;
 	}
+#pragma warning restore S107
+#pragma warning restore S3776
 
 	private static bool CompareByValue<TActual, TExpected>(
 		[DisallowNull] TActual actual,

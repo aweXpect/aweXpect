@@ -103,6 +103,7 @@ public static partial class ValueFormatters
 		FormatType(value, stringBuilder);
 	}
 
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 	private static void FormatType(
 		Type value,
 		StringBuilder stringBuilder)
@@ -152,6 +153,7 @@ public static partial class ValueFormatters
 			}
 		}
 	}
+#pragma warning restore S3776
 
 	private static bool TryFindPrimitiveAlias(Type value, [NotNullWhen(true)] out string? alias)
 	{

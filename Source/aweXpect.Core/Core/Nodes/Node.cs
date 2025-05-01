@@ -8,6 +8,7 @@ using aweXpect.Core.Helpers;
 
 namespace aweXpect.Core.Nodes;
 
+#pragma warning disable S1694 // https://rules.sonarsource.com/csharp/RSPEC-1694
 internal abstract class Node
 {
 	/// <summary>
@@ -53,3 +54,4 @@ internal abstract class Node
 	/// </summary>
 	public abstract void AppendExpectation(StringBuilder stringBuilder, string? indentation = null);
 }
+#pragma warning restore S1694

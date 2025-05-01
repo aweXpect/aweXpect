@@ -69,6 +69,7 @@ internal static class AweXpectInitialization
 		{
 			try
 			{
+#pragma warning disable S2259
 				foreach (Type initializerType in assembly.GetTypes()
 					         .Where(type => type is { IsClass: true, IsAbstract: false, } &&
 					                        initializerInterface.IsAssignableFrom(type)))
@@ -85,6 +86,7 @@ internal static class AweXpectInitialization
 							$"Could not instantiate initializer '{Formatter.Format(initializerType)}'!", ex);
 					}
 				}
+#pragma warning restore S2259
 			}
 			catch (ReflectionTypeLoadException)
 			{

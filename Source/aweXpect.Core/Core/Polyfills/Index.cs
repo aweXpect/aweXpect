@@ -5,6 +5,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
+#pragma warning disable S3427
 // ReSharper disable once CheckNamespace
 namespace System;
 
@@ -163,4 +164,5 @@ public readonly struct Index : IEquatable<Index>
 		return ((uint)Value).ToString();
 	}
 }
+#pragma warning restore S3427
 #endif

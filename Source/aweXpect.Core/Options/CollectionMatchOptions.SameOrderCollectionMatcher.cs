@@ -53,6 +53,7 @@ public partial class CollectionMatchOptions
 			return _additionalItems.Count + _incorrectItems.Count + _missingItems.Count > 2 * maximumNumber;
 		}
 
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 		public bool VerifyComplete(string it, IOptionsEquality<T2> options, int maximumNumber, out string? error)
 		{
 			int consideredExpectedItems = Math.Max(_expectationIndex - 1, _matchIndex);
@@ -105,6 +106,7 @@ public partial class CollectionMatchOptions
 			error = ReturnErrorString(it, errors);
 			return error != null;
 		}
+#pragma warning restore S3776
 
 		private void VerifyTheCurrentValueIsDifferentFromTheExpectedValue(T value, IOptionsEquality<T2> options)
 		{
@@ -147,6 +149,7 @@ public partial class CollectionMatchOptions
 			}
 		}
 
+#pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 		private bool SearchForMatchInFoundItems(T value, IOptionsEquality<T2> options)
 		{
 			for (int i = 1; i < _expectedItems.Length - _matchingItems.Count; i++)
@@ -178,6 +181,7 @@ public partial class CollectionMatchOptions
 
 			return false;
 		}
+#pragma warning restore S3776
 
 		private void VerifyTheCurrentValueIsEqualToTheExpectedValue(T value)
 		{
