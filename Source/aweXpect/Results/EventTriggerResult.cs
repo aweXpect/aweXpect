@@ -15,7 +15,8 @@ public class EventTriggerResult<TSubject>(
 	ExpectationBuilder expectationBuilder,
 	IThat<IEventRecording<TSubject>> returnValue,
 	TriggerEventFilter filter,
-	Quantifier quantifier)
+	Quantifier quantifier,
+	RepeatedCheckOptions options)
 	: CountResult<IEventRecording<TSubject>, IThat<IEventRecording<TSubject>>>(
 			expectationBuilder, returnValue, quantifier),
 		EventTriggerResult<TSubject>.IExtensions
@@ -103,6 +104,15 @@ public class EventTriggerResult<TSubject>(
 		return this;
 	}
 
+	/// <summary>
+	///     Allows a <paramref name="timeout" /> until the condition must be met.
+	/// </summary>
+	public EventTriggerResult<TSubject> Within(TimeSpan timeout)
+	{
+		options.Within(timeout);
+		return this;
+	}
+	
 	/// <summary>
 	///     Gives access to additional methods for extensions.
 	/// </summary>
