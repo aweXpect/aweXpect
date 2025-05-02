@@ -126,7 +126,7 @@ public sealed partial class ThatDateTime
 				public async Task Within_WhenExpectedValueIsOutsideTheTolerance_ShouldFail()
 				{
 					DateTime? subject = CurrentTime();
-					DateTime expected = LaterTime(-3);
+					DateTime expected = LaterTime(-3)!.Value;
 
 					async Task Act()
 						=> await That(subject).IsBefore(expected)
