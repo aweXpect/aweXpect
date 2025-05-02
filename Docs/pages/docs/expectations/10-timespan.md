@@ -22,6 +22,26 @@ await Expect.That(subject).IsEqualTo(TimeSpan.FromSeconds(43)).Within(TimeSpan.F
   .Because("we accept values between 0:41 and 0:43");
 ```
 
+## One of
+
+You can verify that the `TimeSpan` is one of many alternatives:
+
+```csharp
+TimeSpan subject = TimeSpan.FromSeconds(42);
+
+await Expect.That(subject).IsOneOf([TimeSpan.FromSeconds(40), TimeSpan.FromSeconds(42)]);
+await Expect.That(subject).IsNotOneOf([TimeSpan.FromSeconds(41), TimeSpan.FromSeconds(43)]);
+```
+
+You can also specify a tolerance:
+
+```csharp
+TimeSpan subject = TimeSpan.FromSeconds(42);
+
+await Expect.That(subject).IsOneOf([TimeSpan.FromSeconds(43), TimeSpan.FromSeconds(45)]).Within(TimeSpan.FromSeconds(1))
+  .Because("we accept values between 0:41 and 0:43 or between 00:44 and 00:46");
+```
+
 ## Greater than
 
 You can verify that the `TimeSpan` is greater than (or equal to) another number:
