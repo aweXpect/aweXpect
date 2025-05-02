@@ -1,4 +1,7 @@
-﻿namespace aweXpect.Tests;
+﻿using System.Collections.Generic;
+// ReSharper disable PossibleMultipleEnumeration
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatString
 {
@@ -10,9 +13,10 @@ public sealed partial class ThatString
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				string? subject = null;
+				IEnumerable<string> unexpected = ["foo", "bar",];
 
 				async Task Act()
-					=> await That(subject).IsNotOneOf("foo", "bar");
+					=> await That(subject).IsNotOneOf(unexpected);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
