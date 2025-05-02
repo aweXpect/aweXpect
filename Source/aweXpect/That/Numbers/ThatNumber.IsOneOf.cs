@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -50,7 +51,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsOneOf<TNumber>(
 		this IThat<TNumber> source,
-		params TNumber[] expected)
+		IEnumerable<TNumber> expected)
 		where TNumber : struct, INumber<TNumber>
 	{
 		NumberTolerance<TNumber> options = new(IsWithinTolerance);
@@ -66,13 +67,45 @@ public static partial class ThatNumber
 	/// </summary>
 	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsOneOf<TNumber>(
 		this IThat<TNumber?> source,
-		params TNumber[] expected)
+		IEnumerable<TNumber> expected)
 		where TNumber : struct, INumber<TNumber>
 	{
 		NumberTolerance<TNumber> options = new(IsWithinTolerance);
 		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new NullableIsOneOfConstraint<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsOneOf<TNumber>(
+		this IThat<TNumber> source,
+		IEnumerable<TNumber?> expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOneOfConstraintWithNullable<TNumber>(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsOneOf<TNumber>(
+		this IThat<TNumber?> source,
+		IEnumerable<TNumber?> expected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsOneOfConstraintWithNullable<TNumber>(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -114,7 +147,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsNotOneOf<TNumber>(
 		this IThat<TNumber> source,
-		params TNumber[] unexpected)
+		IEnumerable<TNumber> unexpected)
 		where TNumber : struct, INumber<TNumber>
 	{
 		NumberTolerance<TNumber> options = new(IsWithinTolerance);
@@ -130,7 +163,7 @@ public static partial class ThatNumber
 	/// </summary>
 	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsNotOneOf<TNumber>(
 		this IThat<TNumber?> source,
-		params TNumber[] unexpected)
+		IEnumerable<TNumber> unexpected)
 		where TNumber : struct, INumber<TNumber>
 	{
 		NumberTolerance<TNumber> options = new(IsWithinTolerance);
@@ -141,10 +174,42 @@ public static partial class ThatNumber
 			options);
 	}
 
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static NumberToleranceResult<TNumber, IThat<TNumber>> IsNotOneOf<TNumber>(
+		this IThat<TNumber> source,
+		IEnumerable<TNumber?> unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NumberToleranceResult<TNumber, IThat<TNumber>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new IsOneOfConstraintWithNullable<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static NullableNumberToleranceResult<TNumber, IThat<TNumber?>> IsNotOneOf<TNumber>(
+		this IThat<TNumber?> source,
+		IEnumerable<TNumber?> unexpected)
+		where TNumber : struct, INumber<TNumber>
+	{
+		NumberTolerance<TNumber> options = new(IsWithinTolerance);
+		return new NullableNumberToleranceResult<TNumber, IThat<TNumber?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
+				new NullableIsOneOfConstraintWithNullable<TNumber>(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
 	private sealed class IsOneOfConstraint<TNumber>(
 		string it,
 		ExpectationGrammars grammars,
-		TNumber[] expected,
+		IEnumerable<TNumber> expected,
 		NumberTolerance<TNumber> options)
 		: ConstraintResult.WithValue<TNumber>(grammars),
 			IValueConstraint<TNumber>
@@ -184,7 +249,7 @@ public static partial class ThatNumber
 	private sealed class NullableIsOneOfConstraint<TNumber>(
 		string it,
 		ExpectationGrammars grammars,
-		TNumber[] expected,
+		IEnumerable<TNumber> expected,
 		NumberTolerance<TNumber> options)
 		: ConstraintResult.WithValue<TNumber?>(grammars),
 			IValueConstraint<TNumber?>
@@ -224,7 +289,7 @@ public static partial class ThatNumber
 	private sealed class IsOneOfConstraintWithNullable<TNumber>(
 		string it,
 		ExpectationGrammars grammars,
-		TNumber?[] expected,
+		IEnumerable<TNumber?> expected,
 		NumberTolerance<TNumber> options)
 		: ConstraintResult.WithValue<TNumber>(grammars),
 			IValueConstraint<TNumber>
@@ -264,7 +329,7 @@ public static partial class ThatNumber
 	private sealed class NullableIsOneOfConstraintWithNullable<TNumber>(
 		string it,
 		ExpectationGrammars grammars,
-		TNumber?[] expected,
+		IEnumerable<TNumber?> expected,
 		NumberTolerance<TNumber> options)
 		: ConstraintResult.WithValue<TNumber?>(grammars),
 			IValueConstraint<TNumber?>
