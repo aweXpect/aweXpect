@@ -28,7 +28,7 @@ public sealed partial class ThatDateTime
 				public async Task WhenNullableSubjectIsTheExpectedValue_ShouldSucceed()
 				{
 					DateTime? subject = CurrentTime();
-					DateTime expected = CurrentTime();
+					DateTime expected = CurrentTime()!.Value;
 
 					async Task Act()
 						=> await That(subject).IsEqualTo(expected);

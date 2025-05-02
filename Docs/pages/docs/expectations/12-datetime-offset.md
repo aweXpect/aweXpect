@@ -30,6 +30,36 @@ await Expect.That(subject2).IsEqualTo(new DateTimeOffset(2024, 12, 24, 13, 5, 0,
   .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
 ```
 
+## One of
+
+You can verify that the `DateTime` or `DateTimeOffset` is one of many alternatives:
+
+```csharp
+DateTime subjectA = new DateTime(2024, 12, 24);
+
+await Expect.That(subjectA).IsOneOf([new DateTime(2024, 12, 23), new DateTime(2024, 12, 24)]);
+await Expect.That(subjectA).IsNotOneOf([new DateTime(2022, 12, 24), new DateTime(2023, 12, 24)]);
+
+DateTimeOffset subject2 = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
+
+await Expect.That(subjectB).IsOneOf([new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2)), new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2))]);
+await Expect.That(subjectB).IsNotOneOf([new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2)), new DateTimeOffset(2025, 12, 24, 13, 15, 0, TimeSpan.FromHours(3))]);
+```
+
+You can also specify a tolerance:
+
+```csharp
+DateTime subjectA = new DateTime(2024, 12, 24);
+
+await Expect.That(subjectA).IsOneOf([new DateTime(2024, 12, 23)]).Within(TimeSpan.FromDays(1))
+  .Because("we accept values between 2024-12-22 and 2024-12-24");
+
+DateTimeOffset subjectB = new DateTimeOffset(2024, 12, 24, 13, 15, 0, TimeSpan.FromHours(2));
+
+await Expect.That(subjectB).IsOneOf([new DateTimeOffset(2024, 12, 24, 13, 5, 0, TimeSpan.FromHours(2))]).Within(TimeSpan.FromMinutes(10))
+  .Because("we accept values between 2024-12-24T12:55:00+2:00 and 2024-12-24T13:15:00+2:00");
+```
+
 ## After
 
 You can verify that the `DateTime` or `DateTimeOffset` is (on or) after another value:
