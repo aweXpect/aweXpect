@@ -127,7 +127,7 @@ public sealed partial class ThatDateTime
 				public async Task Within_WhenUnexpectedValueIsOutsideTheTolerance_ShouldFail()
 				{
 					DateTime? subject = CurrentTime();
-					DateTime unexpected = LaterTime(4);
+					DateTime unexpected = LaterTime(4)!.Value;
 
 					async Task Act()
 						=> await That(subject).IsNotOnOrBefore(unexpected)
@@ -163,8 +163,8 @@ public sealed partial class ThatDateTime
 				[Fact]
 				public async Task Within_WhenValuesAreWithinTheTolerance_ShouldSucceed()
 				{
-					DateTime subject = EarlierTime(2);
-					DateTime unexpected = CurrentTime();
+					DateTime? subject = EarlierTime(2);
+					DateTime unexpected = CurrentTime()!.Value;
 
 					async Task Act()
 						=> await That(subject).IsNotOnOrBefore(unexpected)

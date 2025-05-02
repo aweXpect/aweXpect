@@ -11,13 +11,13 @@ public sealed partial class ThatDateTime
 		private static readonly Lazy<DateTime> CurrentTimeLazy = new(
 			() => DateTime.MinValue.AddSeconds(new Random().Next(100, 100000)));
 
-		private static DateTime CurrentTime()
+		private static DateTime? CurrentTime()
 			=> CurrentTimeLazy.Value;
 
-		private static DateTime EarlierTime(int seconds = 1)
-			=> CurrentTime().AddSeconds(-1 * seconds);
+		private static DateTime? EarlierTime(int seconds = 1)
+			=> CurrentTime()?.AddSeconds(-1 * seconds);
 
-		private static DateTime LaterTime(int seconds = 1)
-			=> CurrentTime().AddSeconds(seconds);
+		private static DateTime? LaterTime(int seconds = 1)
+			=> CurrentTime()?.AddSeconds(seconds);
 	}
 }

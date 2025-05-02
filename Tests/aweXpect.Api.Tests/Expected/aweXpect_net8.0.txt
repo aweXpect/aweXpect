@@ -142,8 +142,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateTime> source, System.DateTime? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTime> source, System.Collections.Generic.IEnumerable<System.DateTime> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTime> source, System.Collections.Generic.IEnumerable<System.DateTime?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTime> source, params System.DateTime?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsOnOrAfter(this aweXpect.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsOnOrBefore(this aweXpect.Core.IThat<System.DateTime> source, System.DateTime? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsOneOf(this aweXpect.Core.IThat<System.DateTime> source, System.Collections.Generic.IEnumerable<System.DateTime> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsOneOf(this aweXpect.Core.IThat<System.DateTime> source, System.Collections.Generic.IEnumerable<System.DateTime?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime, aweXpect.Core.IThat<System.DateTime>> IsOneOf(this aweXpect.Core.IThat<System.DateTime> source, params System.DateTime?[] expected) { }
     }
     public static class ThatDateTimeOffset
     {
@@ -163,8 +169,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTimeOffset> source, params System.DateTimeOffset?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsOnOrAfter(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsOnOrBefore(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.DateTimeOffset? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsOneOf(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsOneOf(this aweXpect.Core.IThat<System.DateTimeOffset> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset, aweXpect.Core.IThat<System.DateTimeOffset>> IsOneOf(this aweXpect.Core.IThat<System.DateTimeOffset> source, params System.DateTimeOffset?[] expected) { }
     }
     public static class ThatDelegate
     {
@@ -392,8 +404,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTime?> source, System.Collections.Generic.IEnumerable<System.DateTime> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTime?> source, System.Collections.Generic.IEnumerable<System.DateTime?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTime?> source, params System.DateTime?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsOnOrAfter(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsOnOrBefore(this aweXpect.Core.IThat<System.DateTime?> source, System.DateTime? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsOneOf(this aweXpect.Core.IThat<System.DateTime?> source, System.Collections.Generic.IEnumerable<System.DateTime> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsOneOf(this aweXpect.Core.IThat<System.DateTime?> source, System.Collections.Generic.IEnumerable<System.DateTime?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTime?, aweXpect.Core.IThat<System.DateTime?>> IsOneOf(this aweXpect.Core.IThat<System.DateTime?> source, params System.DateTime?[] expected) { }
     }
     public static class ThatNullableDateTimeOffset
     {
@@ -413,8 +431,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateTimeOffset?> source, params System.DateTimeOffset?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsOnOrAfter(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsOnOrBefore(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.DateTimeOffset? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsOneOf(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsOneOf(this aweXpect.Core.IThat<System.DateTimeOffset?> source, System.Collections.Generic.IEnumerable<System.DateTimeOffset?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateTimeOffset?, aweXpect.Core.IThat<System.DateTimeOffset?>> IsOneOf(this aweXpect.Core.IThat<System.DateTimeOffset?> source, params System.DateTimeOffset?[] expected) { }
     }
     public static class ThatNullableEnum
     {
