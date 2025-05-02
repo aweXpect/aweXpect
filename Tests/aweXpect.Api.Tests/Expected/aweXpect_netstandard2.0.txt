@@ -335,7 +335,13 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotLessThan(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotLessThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan?> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotNegative(this aweXpect.Core.IThat<System.TimeSpan?> source) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeSpan?> source, System.Collections.Generic.IEnumerable<System.TimeSpan> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeSpan?> source, System.Collections.Generic.IEnumerable<System.TimeSpan?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeSpan?> source, params System.TimeSpan?[] unexpected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsNotPositive(this aweXpect.Core.IThat<System.TimeSpan?> source) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan?> source, System.Collections.Generic.IEnumerable<System.TimeSpan> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan?> source, System.Collections.Generic.IEnumerable<System.TimeSpan?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan?> source, params System.TimeSpan?[] expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan?, aweXpect.Core.IThat<System.TimeSpan?>> IsPositive(this aweXpect.Core.IThat<System.TimeSpan?> source) { }
     }
     public static class ThatNumber
@@ -716,7 +722,13 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotLessThan(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotLessThanOrEqualTo(this aweXpect.Core.IThat<System.TimeSpan> source, System.TimeSpan? unexpected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotNegative(this aweXpect.Core.IThat<System.TimeSpan> source) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, System.Collections.Generic.IEnumerable<System.TimeSpan> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, System.Collections.Generic.IEnumerable<System.TimeSpan?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, params System.TimeSpan?[] unexpected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsNotPositive(this aweXpect.Core.IThat<System.TimeSpan> source) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, System.Collections.Generic.IEnumerable<System.TimeSpan> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, System.Collections.Generic.IEnumerable<System.TimeSpan?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsOneOf(this aweXpect.Core.IThat<System.TimeSpan> source, params System.TimeSpan?[] expected) { }
         public static aweXpect.Results.AndOrResult<System.TimeSpan, aweXpect.Core.IThat<System.TimeSpan>> IsPositive(this aweXpect.Core.IThat<System.TimeSpan> source) { }
     }
 }
