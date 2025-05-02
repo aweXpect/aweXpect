@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
@@ -25,6 +26,21 @@ public static partial class ThatString
 	}
 
 	/// <summary>
+	///     Verifies that the subject is one of the <paramref name="expected" /> values.
+	/// </summary>
+	public static StringEqualityTypeResult<string?, IThat<string?>> IsOneOf(
+		this IThat<string?> source,
+		IEnumerable<string?> expected)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsOneOfConstraint(it, grammars, expected, options)),
+			source,
+			options);
+	}
+
+	/// <summary>
 	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
 	/// </summary>
 	public static StringEqualityTypeResult<string?, IThat<string?>> IsNotOneOf(
@@ -39,10 +55,25 @@ public static partial class ThatString
 			options);
 	}
 
+	/// <summary>
+	///     Verifies that the subject is not one of the <paramref name="unexpected" /> values.
+	/// </summary>
+	public static StringEqualityTypeResult<string?, IThat<string?>> IsNotOneOf(
+		this IThat<string?> source,
+		IEnumerable<string?> unexpected)
+	{
+		StringEqualityOptions options = new();
+		return new StringEqualityTypeResult<string?, IThat<string?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsOneOfConstraint(it, grammars, unexpected, options).Invert()),
+			source,
+			options);
+	}
+
 	private sealed class IsOneOfConstraint(
 		string it,
 		ExpectationGrammars grammars,
-		string?[] expectedValues,
+		IEnumerable<string?> expectedValues,
 		StringEqualityOptions options)
 		: ConstraintResult.WithNotNullValue<string?>(it, grammars),
 			IValueConstraint<string?>

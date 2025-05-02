@@ -64,6 +64,18 @@ await Expect.That(subject).IsNotEqualTo(new MyClass(2)).Equivalent();
 
 *Note: this compares recursively all properties on the two objects for equivalence.*
 
+## One of
+
+You can verify that the `object` is one of many alternatives:
+
+```csharp
+record MyClass(int Value);
+MyClass subject = new(1);
+
+await Expect.That(subject).IsOneOf([new MyClass(1), new MyClass(2)]);
+await Expect.That(subject).IsNotOneOf([new MyClass(2), new MyClass(3)]);
+```
+
 ## Type check
 
 You can verify that the `object` is of a given type or not:
