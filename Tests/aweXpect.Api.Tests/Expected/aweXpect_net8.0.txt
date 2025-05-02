@@ -115,8 +115,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOneOf(this aweXpect.Core.IThat<System.DateOnly> source, System.Collections.Generic.IEnumerable<System.DateOnly> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOneOf(this aweXpect.Core.IThat<System.DateOnly> source, System.Collections.Generic.IEnumerable<System.DateOnly?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsNotOneOf(this aweXpect.Core.IThat<System.DateOnly> source, params System.DateOnly?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsOnOrAfter(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsOnOrBefore(this aweXpect.Core.IThat<System.DateOnly> source, System.DateOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsOneOf(this aweXpect.Core.IThat<System.DateOnly> source, System.Collections.Generic.IEnumerable<System.DateOnly> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsOneOf(this aweXpect.Core.IThat<System.DateOnly> source, System.Collections.Generic.IEnumerable<System.DateOnly?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly, aweXpect.Core.IThat<System.DateOnly>> IsOneOf(this aweXpect.Core.IThat<System.DateOnly> source, params System.DateOnly?[] expected) { }
     }
     public static class ThatDateTime
     {
@@ -359,8 +365,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotEqualTo(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateOnly?> source, System.Collections.Generic.IEnumerable<System.DateOnly> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateOnly?> source, System.Collections.Generic.IEnumerable<System.DateOnly?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsNotOneOf(this aweXpect.Core.IThat<System.DateOnly?> source, params System.DateOnly?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsOnOrAfter(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsOnOrBefore(this aweXpect.Core.IThat<System.DateOnly?> source, System.DateOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsOneOf(this aweXpect.Core.IThat<System.DateOnly?> source, System.Collections.Generic.IEnumerable<System.DateOnly> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsOneOf(this aweXpect.Core.IThat<System.DateOnly?> source, System.Collections.Generic.IEnumerable<System.DateOnly?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.DateOnly?, aweXpect.Core.IThat<System.DateOnly?>> IsOneOf(this aweXpect.Core.IThat<System.DateOnly?> source, params System.DateOnly?[] expected) { }
     }
     public static class ThatNullableDateTime
     {
@@ -444,8 +456,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotEqualTo(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeOnly?> source, System.Collections.Generic.IEnumerable<System.TimeOnly> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeOnly?> source, System.Collections.Generic.IEnumerable<System.TimeOnly?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeOnly?> source, params System.TimeOnly?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsOnOrBefore(this aweXpect.Core.IThat<System.TimeOnly?> source, System.TimeOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsOneOf(this aweXpect.Core.IThat<System.TimeOnly?> source, System.Collections.Generic.IEnumerable<System.TimeOnly> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsOneOf(this aweXpect.Core.IThat<System.TimeOnly?> source, System.Collections.Generic.IEnumerable<System.TimeOnly?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly?, aweXpect.Core.IThat<System.TimeOnly?>> IsOneOf(this aweXpect.Core.IThat<System.TimeOnly?> source, params System.TimeOnly?[] expected) { }
     }
     public static class ThatNullableTimeSpan
     {
@@ -518,19 +536,27 @@ namespace aweXpect
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsNotNaN<TNumber>(this aweXpect.Core.IThat<TNumber?> source)
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
-        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, params TNumber[] unexpected)
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, System.Collections.Generic.IEnumerable<TNumber> unexpected)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, System.Collections.Generic.IEnumerable<TNumber?> unexpected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, params TNumber?[] unexpected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, params TNumber[] unexpected)
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, System.Collections.Generic.IEnumerable<TNumber> unexpected)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, System.Collections.Generic.IEnumerable<TNumber?> unexpected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsNotOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, params TNumber?[] unexpected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, params TNumber[] expected)
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, System.Collections.Generic.IEnumerable<TNumber> expected)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, System.Collections.Generic.IEnumerable<TNumber?> expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber> source, params TNumber?[] expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
-        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, params TNumber[] expected)
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, System.Collections.Generic.IEnumerable<TNumber> expected)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, System.Collections.Generic.IEnumerable<TNumber?> expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsOneOf<TNumber>(this aweXpect.Core.IThat<TNumber?> source, params TNumber?[] expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
@@ -642,8 +668,14 @@ namespace aweXpect
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotEqualTo(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOnOrBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeOnly> source, System.Collections.Generic.IEnumerable<System.TimeOnly> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeOnly> source, System.Collections.Generic.IEnumerable<System.TimeOnly?> unexpected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsNotOneOf(this aweXpect.Core.IThat<System.TimeOnly> source, params System.TimeOnly?[] unexpected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsOnOrAfter(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
         public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsOnOrBefore(this aweXpect.Core.IThat<System.TimeOnly> source, System.TimeOnly? expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsOneOf(this aweXpect.Core.IThat<System.TimeOnly> source, System.Collections.Generic.IEnumerable<System.TimeOnly> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsOneOf(this aweXpect.Core.IThat<System.TimeOnly> source, System.Collections.Generic.IEnumerable<System.TimeOnly?> expected) { }
+        public static aweXpect.Results.TimeToleranceResult<System.TimeOnly, aweXpect.Core.IThat<System.TimeOnly>> IsOneOf(this aweXpect.Core.IThat<System.TimeOnly> source, params System.TimeOnly?[] expected) { }
     }
     public static class ThatTimeSpan
     {

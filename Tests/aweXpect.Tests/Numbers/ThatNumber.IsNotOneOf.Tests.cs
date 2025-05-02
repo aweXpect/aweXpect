@@ -1,4 +1,9 @@
 ﻿using System.Linq;
+#if NET8_0_OR_GREATER
+using System.Collections.Generic;
+
+// ReSharper disable PossibleMultipleEnumeration
+#endif
 
 namespace aweXpect.Tests;
 
@@ -1014,6 +1019,25 @@ public sealed partial class ThatNumber
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
+
+#if NET8_0_OR_GREATER
+			[Fact]
+			public async Task ShouldSupportEnumerable()
+			{
+				int subject = 2;
+				IEnumerable<int> unexpected = [1, 2, 3,];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(unexpected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is not one of [1, 2, 3],
+					             but it was 2
+					             """);
+			}
+#endif
 		}
 	}
 }

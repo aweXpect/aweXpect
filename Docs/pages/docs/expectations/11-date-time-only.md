@@ -32,6 +32,36 @@ await Expect.That(subjectB).IsEqualTo(new TimeOnly(14, 15, 17)).Within(TimeSpan.
   .Because("we accept values between 14:15:16 and 14:15:18");
 ```
 
+## One of
+
+You can verify that the `DateOnly` or `TimeOnly` is one of many alternatives:
+
+```csharp
+DateOnly subjectA = new DateOnly(2024, 12, 24);
+
+await Expect.That(subjectA).IsOneOf([new DateOnly(2024, 12, 23), new DateOnly(2024, 12, 24)]);
+await Expect.That(subjectA).IsNotOneOf([new DateOnly(2024, 12, 23), new DateOnly(2024, 12, 25)]);
+
+TimeOnly subjectB = new TimeOnly(14, 15, 16);
+
+await Expect.That(subjectB).IsOneOf([new TimeOnly(14, 15, 15), new TimeOnly(14, 15, 16)]);
+await Expect.That(subjectB).IsNotOneOf([new TimeOnly(13, 15, 16), new TimeOnly(13, 14, 15)]);
+```
+
+You can also specify a tolerance:
+
+```csharp
+DateOnly subjectA = new DateOnly(2024, 12, 24);
+
+await Expect.That(subjectA).IsOneOf([new DateOnly(2024, 12, 23)]).Within(TimeSpan.FromDays(1))
+  .Because("we accept values between 2024-12-22 and 2024-12-24");
+
+TimeOnly subjectB = new TimeOnly(14, 15, 16);
+
+await Expect.That(subjectB).IsOneOf([new TimeOnly(14, 15, 17)]).Within(TimeSpan.FromSeconds(1))
+  .Because("we accept values between 14:15:16 and 14:15:18");
+```
+
 ## After
 
 You can verify that the `DateOnly` or `TimeOnly` is (on or) after another value
