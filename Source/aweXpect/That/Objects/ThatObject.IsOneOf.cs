@@ -81,28 +81,32 @@ public static partial class ThatObject
 		ExpectationGrammars grammars,
 		IEnumerable<TExpected?> expected,
 		ObjectEqualityOptions<TSubject> options)
-		: ConstraintResult.WithNotNullValue<TSubject>(it, grammars),
+		: ConstraintResult.WithValue<TSubject>(grammars),
 			IValueConstraint<TSubject>
 	{
 		public ConstraintResult IsMetBy(TSubject actual)
 		{
 			Actual = actual;
-			Outcome = expected.Any(value => options.AreConsideredEqual(actual, value)) ? Outcome.Success : Outcome.Failure;
+			Outcome = expected.Any(value => options.AreConsideredEqual(actual, value))
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation("one of " + Formatter.Format(expected).TrimCommonWhiteSpace(),
+			=> stringBuilder.Append(options.GetExpectation(
+				"one of " + Formatter.Format(expected).TrimCommonWhiteSpace(),
 				Grammars));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
+			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation("one of " + Formatter.Format(expected).TrimCommonWhiteSpace(),
+			=> stringBuilder.Append(options.GetExpectation(
+				"one of " + Formatter.Format(expected).TrimCommonWhiteSpace(),
 				Grammars));
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
+			=> AppendNormalResult(stringBuilder, indentation);
 	}
 }

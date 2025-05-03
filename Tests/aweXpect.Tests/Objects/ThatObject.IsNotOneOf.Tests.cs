@@ -20,7 +20,7 @@ public sealed partial class ThatObject
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected)
 						.Because("we want to test the failure");
-				
+
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
@@ -75,19 +75,31 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				MyClass? subject = null;
 
 				async Task Act()
 					=> await That(subject).IsNotOneOf(new MyClass());
 
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNullAndUnexpectedContainsNull_ShouldFail()
+			{
+				object? subject = null;
+				IEnumerable<object?> expected = [new MyClass(), null,];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
 				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             is not equal to one of [ThatObject.MyClass { Value = 0 }],
-					             but it was <null>
-					             """);
+					.WithMessage($"""
+					              Expected that subject
+					              is not equal to one of {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
 			}
 		}
 	}

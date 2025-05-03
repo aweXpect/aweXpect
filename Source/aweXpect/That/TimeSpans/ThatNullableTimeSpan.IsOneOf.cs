@@ -114,7 +114,7 @@ public static partial class ThatNullableTimeSpan
 			Actual = actual;
 			if (actual is null)
 			{
-				Outcome = Outcome.Failure;
+				Outcome = expected.Any(x => x is null) ? Outcome.Success : Outcome.Failure;
 			}
 			else
 			{

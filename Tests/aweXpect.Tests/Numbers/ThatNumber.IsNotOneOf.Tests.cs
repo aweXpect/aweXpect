@@ -1391,6 +1391,23 @@ public sealed partial class ThatNumber
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNullAndUnexpectedContainsNull_ShouldFail()
+			{
+				int? subject = null;
+				IEnumerable<int?> expected = [1, null,];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is not one of {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
+			}
 		}
 	}
 }

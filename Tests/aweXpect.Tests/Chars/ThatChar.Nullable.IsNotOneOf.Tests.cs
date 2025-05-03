@@ -56,6 +56,23 @@ public sealed partial class ThatChar
 
 					await That(Act).DoesNotThrow();
 				}
+
+				[Fact]
+				public async Task WhenSubjectIsNullAndUnexpectedContainsNull_ShouldFail()
+				{
+					char? subject = null;
+					IEnumerable<char?> expected = ['a', null,];
+
+					async Task Act()
+						=> await That(subject).IsNotOneOf(expected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage($"""
+						              Expected that subject
+						              is not one of {Formatter.Format(expected)},
+						              but it was <null>
+						              """);
+				}
 			}
 		}
 	}

@@ -27,6 +27,18 @@ public sealed partial class ThatString
 					             """);
 			}
 
+			[Fact]
+			public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+			{
+				string? subject = null;
+				IEnumerable<string?> expected = ["foo", null,];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).DoesNotThrow();
+			}
+
 			[Theory]
 			[InlineData("foo", "bar", "baz")]
 			public async Task WhenValueIsDifferentToAllExpected_ShouldFail(

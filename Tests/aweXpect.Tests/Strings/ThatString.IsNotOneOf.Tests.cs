@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace aweXpect.Tests;
@@ -10,7 +11,7 @@ public sealed partial class ThatString
 		public sealed class Tests
 		{
 			[Fact]
-			public async Task WhenSubjectIsNull_ShouldFail()
+			public async Task WhenSubjectIsNull_ShouldSucceed()
 			{
 				string? subject = null;
 				IEnumerable<string> unexpected = ["foo", "bar",];
@@ -18,12 +19,24 @@ public sealed partial class ThatString
 				async Task Act()
 					=> await That(subject).IsNotOneOf(unexpected);
 
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WhenSubjectIsNullAndUnexpectedContainsNull_ShouldFail()
+			{
+				string? subject = null;
+				IEnumerable<string?> expected = ["foo", null,];
+
+				async Task Act()
+					=> await That(subject).IsNotOneOf(expected);
+
 				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that subject
-					             is not one of ["foo", "bar"],
-					             but it was <null>
-					             """);
+					.WithMessage($"""
+					              Expected that subject
+					              is not one of {Formatter.Format(expected)},
+					              but it was <null>
+					              """);
 			}
 
 			[Theory]

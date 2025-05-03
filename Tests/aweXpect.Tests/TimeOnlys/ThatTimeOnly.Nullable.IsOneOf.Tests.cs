@@ -59,6 +59,35 @@ public sealed partial class ThatTimeOnly
 						              """);
 				}
 
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					TimeOnly? subject = null;
+					IEnumerable<TimeOnly?> expected = [CurrentTime(), LaterTime(),];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage($"""
+						              Expected that subject
+						              is one of {Formatter.Format(expected)},
+						              but it was <null>
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+				{
+					TimeOnly? subject = null;
+					IEnumerable<TimeOnly?> expected = [CurrentTime(), null,];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).DoesNotThrow();
+				}
+
 				[Theory]
 				[InlineData(3, 2, true)]
 				[InlineData(5, 3, true)]

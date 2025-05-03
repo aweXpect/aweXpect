@@ -59,6 +59,35 @@ public sealed partial class ThatEnum
 						              but it was {Formatter.Format(subject)}
 						              """);
 				}
+
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					MyColors? subject = null;
+					IEnumerable<MyColors?> expected = [MyColors.Green, MyColors.Blue,];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage($"""
+						              Expected that subject
+						              is one of {Formatter.Format(expected)},
+						              but it was <null>
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+				{
+					MyColors? subject = null;
+					IEnumerable<MyColors?> expected = [MyColors.Green, null,];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).DoesNotThrow();
+				}
 			}
 
 			public sealed class LongTests
