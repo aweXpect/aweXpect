@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
-      {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
         "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          171.3037170648575,
           163.49811126504625,
           164.75682552044208,
           167.02554147584098,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           173.64851198877608,
           166.22084147589547,
           163.80129350148715,
-          162.08096432685852
+          162.08096432685852,
+          207.0191752910614
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          270.2158886273702,
           242.18482637405396,
           241.61384241397565,
           248.07671928405762,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           238.1568175462576,
           237.2804264472081,
           235.4971661908286,
-          231.61853501001994
+          231.61853501001994,
+          238.91562185968672
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          924.6051081248692,
           856.103875541687,
           859.5091006596883,
           923.9799948472244,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           920.9252905527751,
           900.9516015370687,
           901.7422954852765,
-          907.845147005717
+          907.845147005717,
+          933.6279779161725
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -672,7 +672,7 @@ window.BENCHMARK_DATA = {
         "data": [
           2384,
           2384,
-          2384,
+          2416,
           2416,
           2416,
           2416,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
       {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          279168.3089518229,
           278353.85065104166,
           285001.949609375,
           287970.2119466146,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           296488.6456380208,
           294263.8017926897,
           285122.41532389325,
-          275634.4102608817
+          275634.4102608817,
+          278383.95852864586
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2244013.0263020834,
           2098878.690848214,
           2188063.4755208334,
           2227621.3916666666,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2274071.468191964,
           2184018.7740384615,
           2162105.9625,
-          2194071.428125
+          2194071.428125,
+          2097926.244140625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          694504.1695638021,
           670338.7095424107,
           664400.9916015625,
           676650.402483259,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           678022.538671875,
           667407.6690755208,
           668596.7297526042,
-          662367.9934645433
+          662367.9934645433,
+          684898.1748046875
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1404,7 +1404,6 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           866737,
-          866737,
           866745,
           866777,
           866777,
@@ -1413,6 +1412,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
       {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          335.97487173080447,
           302.97579785755704,
           306.92667961120605,
           318.3793118476868,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           368.0442564646403,
           322.168027528127,
           332.65407371520996,
-          313.86700930962195
+          313.86700930962195,
+          327.65055929819744
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          519.1207705179851,
           473.7025029182434,
           468.12436334292096,
           491.5830592473348,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           521.4623104731241,
           446.1931544031416,
           473.4106966018677,
-          472.7895427385966
+          472.7895427385966,
+          472.28804372151694
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          16079.871056189904,
           14650.634098597935,
           15092.907186654898,
           16889.01275431315,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           15244.095091756184,
           14830.447230529786,
           14649.120131356376,
-          14170.736137898763
+          14170.736137898763,
+          15124.549154663086
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2138,7 +2138,7 @@ window.BENCHMARK_DATA = {
         "data": [
           27456,
           27456,
-          27456,
+          27488,
           27488,
           27488,
           27488,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
       {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          220.06180620193481,
           192.23126941067832,
           195.72708524068196,
           198.29120249407632,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           227.18015921910603,
           195.99596883700445,
           196.0282522201538,
-          196.53526055018108
+          196.53526055018108,
+          203.7640518591954
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          252.1239548365275,
           234.39922358194988,
           238.55658632914225,
           243.78727032343548,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           263.1249355872472,
           239.4648401896159,
           229.81374611854554,
-          236.53758862813314
+          236.53758862813314,
+          240.35454528672355
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1303.8257226308187,
           1163.9586760203044,
           1170.9133229573567,
           1252.336823096642,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1312.2903555552164,
           1232.2807968684606,
           1204.294773864746,
-          1223.8121726989746
+          1223.8121726989746,
+          1181.904225894383
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2871,7 +2871,7 @@ window.BENCHMARK_DATA = {
         "data": [
           2952,
           2952,
-          2952,
+          2992,
           2992,
           2992,
           2992,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
       {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          331.9945740699768,
           309.2631950060526,
           320.47593148549396,
           334.1007035891215,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           355.39944585164386,
           320.67167244638716,
           311.01900577545166,
-          330.3369025502886
+          330.3369025502886,
+          312.1214802265167
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          516.7315806661334,
           470.53340026310514,
           462.6129742940267,
           484.86786600748695,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           510.8224069595337,
           475.9185428619385,
           449.5346137682597,
-          473.49254035949707
+          473.49254035949707,
+          466.9854555130005
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1297.2650608062745,
           1286.172911130465,
           1271.4335255940755,
           1333.1742518107096,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1338.4309794562203,
           1343.672829691569,
           1266.0400791168213,
-          1293.8258757591248
+          1293.8258757591248,
+          1368.5393503824869
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3604,7 +3604,7 @@ window.BENCHMARK_DATA = {
         "data": [
           3064,
           3064,
-          3064,
+          3096,
           3096,
           3096,
           3096,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
       {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1189.5063625063215,
           1026.1354383741107,
           1059.8611496516637,
           1143.2706895192464,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1139.1761419932047,
           1134.4428824016027,
           1120.8965291341146,
-          1095.1651114145914
+          1095.1651114145914,
+          1065.5912098517786
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1349.9552834828694,
           1220.0199904123942,
           1275.0634483337403,
           1295.60396194458,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1365.9006033579508,
           1292.962818400065,
           1276.8586231231689,
-          1238.2117856343586
+          1238.2117856343586,
+          1275.9561566670736
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2854.5697733561196,
           2742.3004670824325,
           2731.5107015882218,
           2848.0084948221843,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2965.770257404872,
           2821.7097231547036,
           2741.832515970866,
-          2813.879779052734
+          2813.879779052734,
+          2892.6376848856607
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4336,8 +4336,8 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           4536,
-          4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "c17f75ad5dc08ebf207e8fdfa61ced46e0b60ea4",
-        "author": "Valentin Breu\u00DF",
-        "date": "Thu Mar 20 08:13:08 2025 \u002B0100",
-        "message": "chore: reset Microsoft.CodeAnalysis.* to v4.11.0 (#481)"
-      },
       {
         "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
         "author": "dependabot[bot]",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:08:11 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.Is\u0060 (#561)"
+      },
+      {
+        "sha": "5df2b5c0a3e01dbd73f130d776bfad6e652060e0",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 21:33:55 2025 \u002B0200",
+        "message": "feat: handle \u0060null\u0060 in type tests (#562)"
       }
     ],
     "labels": [
-      "c17f75ad",
       "175c5793",
       "0fa791ad",
       "aad9bc45",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "f71870f3",
       "187a765e",
       "832882ed",
-      "f1215d68"
+      "f1215d68",
+      "5df2b5c0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1174.9262185414632,
           1097.5551499684652,
           1115.0560511075532,
           1161.8420987447103,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1214.7664426167805,
           1202.247618230184,
           1120.0858514149984,
-          1193.5822503407796
+          1193.5822503407796,
+          1119.3546980539957
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          154597.10517578124,
           149486.75247395833,
           150419.99490792412,
           150208.15927734374,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           153622.30001395088,
           148479.8994140625,
           148583.46011117788,
-          152270.59652944712
+          152270.59652944712,
+          152414.53016075722
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          64324,
           63787,
           63788,
           64324,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           64324,
           63787,
           63787,
-          64323
+          64323,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4703.8853474934895,
           4412.741452026367,
           4480.870552571615,
           4835.739166259766,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4894.253436787923,
           4697.899395869328,
           4671.139084879557,
-          4636.246869600736
+          4636.246869600736,
+          4764.200469462076
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5069,8 +5069,8 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           6648,
-          6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
