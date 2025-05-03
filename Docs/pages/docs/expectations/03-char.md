@@ -65,7 +65,7 @@ This verifies that the subject is categorized as a Unicode number
 You can verify that the `char` is white-space.
 
 ```csharp
-await Expect.That('3').IsWhiteSpace();
+await Expect.That('\t').IsWhiteSpace();
 ```
 
 This verifies that the subject is categorized as white-space
