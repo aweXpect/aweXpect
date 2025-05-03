@@ -89,6 +89,18 @@ public sealed partial class ThatObject
 					             but it was <null>
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+			{
+				object? subject = null;
+				IEnumerable<object?> expected = [new MyClass(), null,];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).DoesNotThrow();
+			}
 		}
 	}
 }

@@ -58,6 +58,35 @@ public sealed partial class ThatDateTimeOffset
 						              """);
 				}
 
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					DateTimeOffset? subject = null;
+					IEnumerable<DateTimeOffset?> expected = [CurrentTime(), LaterTime(),];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage($"""
+						              Expected that subject
+						              is one of {Formatter.Format(expected)},
+						              but it was <null>
+						              """);
+				}
+
+				[Fact]
+				public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+				{
+					DateTimeOffset? subject = null;
+					IEnumerable<DateTimeOffset?> expected = [CurrentTime(), null,];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).DoesNotThrow();
+				}
+
 				[Theory]
 				[InlineData(3, 2, true)]
 				[InlineData(5, 3, true)]

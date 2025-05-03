@@ -1243,6 +1243,18 @@ public sealed partial class ThatNumber
 
 				await That(Act).DoesNotThrow();
 			}
+
+			[Fact]
+			public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+			{
+				int? subject = null;
+				IEnumerable<int?> expected = [1, null,];
+
+				async Task Act()
+					=> await That(subject).IsOneOf(expected);
+
+				await That(Act).DoesNotThrow();
+			}
 		}
 	}
 }

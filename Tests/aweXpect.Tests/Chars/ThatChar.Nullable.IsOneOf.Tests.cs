@@ -61,6 +61,18 @@ public sealed partial class ThatChar
 						              but it was {Formatter.Format(subject)}
 						              """);
 				}
+
+				[Fact]
+				public async Task WhenSubjectIsNullAndExpectedContainsNull_ShouldSucceed()
+				{
+					char? subject = null;
+					IEnumerable<char?> expected = ['a', null,];
+
+					async Task Act()
+						=> await That(subject).IsOneOf(expected);
+
+					await That(Act).DoesNotThrow();
+				}
 			}
 		}
 	}
