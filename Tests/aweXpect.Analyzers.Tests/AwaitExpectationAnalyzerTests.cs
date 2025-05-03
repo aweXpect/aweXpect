@@ -112,7 +112,7 @@ public class AwaitExpectationAnalyzerTests
 			    public async Task MyTest()
 			    {
 			        var subject = true;
-			        {|#0:Expect.That(subject)|}.IsTrue().Verify();
+			        {|#0:Expect.That(subject)|}.IsTrue().VerifySynchronously();
 			    }
 			}
 			"""
@@ -130,7 +130,7 @@ public class AwaitExpectationAnalyzerTests
 			{
 			    public async Task MyTest()
 			    {
-			        {|#0:Expect.That(() => {})|}.DoesNotThrow().Verify();
+			        {|#0:Expect.That(() => {})|}.DoesNotThrow().VerifySynchronously();
 			    }
 			}
 			"""
@@ -168,6 +168,45 @@ public class AwaitExpectationAnalyzerTests
 			    public async Task MyTest()
 			    {
 			        Synchronously.Verify({|#0:Expect.That(() => {})|}.DoesNotThrow());
+			    }
+			}
+			"""
+		);
+
+	[Fact]
+	public async Task WhenVerifiedWithStaticUsing_ShouldNotBeFlagged() => await Verifier
+		.VerifyAnalyzerAsync(
+			"""
+			using System.Threading.Tasks;
+			using aweXpect;
+			using aweXpect.Synchronous;
+			using static aweXpect.Synchronous.Synchronously;
+
+			public class MyClass
+			{
+			    public async Task MyTest()
+			    {
+			        var subject = true;
+			        Verify({|#0:Expect.That(subject)|}.IsTrue());
+			    }
+			}
+			"""
+		);
+
+	[Fact]
+	public async Task WhenVerifiedWithStaticUsing_WithoutReturnValue_ShouldNotBeFlagged() => await Verifier
+		.VerifyAnalyzerAsync(
+			"""
+			using System.Threading.Tasks;
+			using aweXpect;
+			using aweXpect.Synchronous;
+			using static aweXpect.Synchronous.Synchronously;
+
+			public class MyClass
+			{
+			    public async Task MyTest()
+			    {
+			        Verify({|#0:Expect.That(() => {})|}.DoesNotThrow());
 			    }
 			}
 			"""

@@ -1170,8 +1170,14 @@ namespace aweXpect.Synchronous
 {
     public static class Synchronously
     {
-        public static void Verify(this aweXpect.Results.ExpectationResult result) { }
-        public static TType Verify<TType, TSelf>(this aweXpect.Results.ExpectationResult<TType, TSelf> result)
+        public static void Verify(aweXpect.Results.ExpectationResult result) { }
+        public static TType Verify<TType, TSelf>(aweXpect.Results.ExpectationResult<TType, TSelf> result)
+            where TSelf : aweXpect.Results.ExpectationResult<TType, TSelf> { }
+    }
+    public static class SynchronouslyExtensions
+    {
+        public static void VerifySynchronously(this aweXpect.Results.ExpectationResult result) { }
+        public static TType VerifySynchronously<TType, TSelf>(this aweXpect.Results.ExpectationResult<TType, TSelf> result)
             where TSelf : aweXpect.Results.ExpectationResult<TType, TSelf> { }
     }
 }

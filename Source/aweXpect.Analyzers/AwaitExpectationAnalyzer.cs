@@ -87,20 +87,22 @@ public class AwaitExpectationAnalyzer : DiagnosticAnalyzer
 				return;
 			}
 
-			if (IsVerifyMatch(semanticModel, node, 0) ||
+			if (IsVerifyMatch(semanticModel, node) ||
 			    (node is MemberAccessExpressionSyntax memberAccessExpressionSyntax &&
-			     IsVerifyMatch(semanticModel, memberAccessExpressionSyntax.Name, 1)))
+			     IsVerifyMatch(semanticModel, memberAccessExpressionSyntax.Name)))
 			{
 				IsVerifyCalled = true;
 			}
 
 			base.Visit(node);
 
-			static bool IsVerifyMatch(SemanticModel semanticModel, SyntaxNode syntaxNode, int parameterCount)
+			static bool IsVerifyMatch(SemanticModel semanticModel, SyntaxNode syntaxNode)
 				=> syntaxNode is IdentifierNameSyntax nameSyntax &&
 				   semanticModel.GetSymbolInfo(nameSyntax).Symbol is IMethodSymbol methodSymbol &&
-				   methodSymbol.MatchesFullName("aweXpect", "Synchronous", "Synchronously", "Verify") &&
-				   methodSymbol.Parameters.Length == parameterCount;
+				   (methodSymbol.MatchesFullName("aweXpect", "Synchronous",
+					    "Synchronously", "Verify") ||
+				    methodSymbol.MatchesFullName("aweXpect", "Synchronous",
+					    "SynchronouslyExtensions", "VerifySynchronously"));
 		}
 	}
 }
