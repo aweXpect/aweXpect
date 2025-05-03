@@ -55,13 +55,16 @@ public class NumberTolerance<TNumber>(
 	{
 		try
 		{
-			return (actual, expected) switch
+			checked
 			{
-				(null, null) => true,
-				(_, null) => false,
-				(null, _) => false,
-				(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance),
-			};
+				return (actual, expected) switch
+				{
+					(null, null) => true,
+					(_, null) => false,
+					(null, _) => false,
+					(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance),
+				};
+			}
 		}
 		catch (OverflowException)
 		{
