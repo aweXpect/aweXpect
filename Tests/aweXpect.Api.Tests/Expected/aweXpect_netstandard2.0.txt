@@ -564,93 +564,137 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<double?, aweXpect.Core.IThat<double?>> IsNotNaN(this aweXpect.Core.IThat<double?> source) { }
         public static aweXpect.Results.AndOrResult<float, aweXpect.Core.IThat<float>> IsNotNaN(this aweXpect.Core.IThat<float> source) { }
         public static aweXpect.Results.AndOrResult<float?, aweXpect.Core.IThat<float?>> IsNotNaN(this aweXpect.Core.IThat<float?> source) { }
-        public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsNotOneOf(this aweXpect.Core.IThat<byte> source, params byte[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsNotOneOf(this aweXpect.Core.IThat<byte> source, System.Collections.Generic.IEnumerable<byte> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsNotOneOf(this aweXpect.Core.IThat<byte> source, System.Collections.Generic.IEnumerable<byte?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsNotOneOf(this aweXpect.Core.IThat<byte> source, params byte?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsNotOneOf(this aweXpect.Core.IThat<byte?> source, params byte[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsNotOneOf(this aweXpect.Core.IThat<byte?> source, System.Collections.Generic.IEnumerable<byte> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsNotOneOf(this aweXpect.Core.IThat<byte?> source, System.Collections.Generic.IEnumerable<byte?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsNotOneOf(this aweXpect.Core.IThat<byte?> source, params byte?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsNotOneOf(this aweXpect.Core.IThat<decimal> source, params decimal[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsNotOneOf(this aweXpect.Core.IThat<decimal> source, System.Collections.Generic.IEnumerable<decimal> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsNotOneOf(this aweXpect.Core.IThat<decimal> source, System.Collections.Generic.IEnumerable<decimal?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsNotOneOf(this aweXpect.Core.IThat<decimal> source, params decimal?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsNotOneOf(this aweXpect.Core.IThat<decimal?> source, params decimal[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsNotOneOf(this aweXpect.Core.IThat<decimal?> source, System.Collections.Generic.IEnumerable<decimal> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsNotOneOf(this aweXpect.Core.IThat<decimal?> source, System.Collections.Generic.IEnumerable<decimal?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsNotOneOf(this aweXpect.Core.IThat<decimal?> source, params decimal?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsNotOneOf(this aweXpect.Core.IThat<double> source, params double[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsNotOneOf(this aweXpect.Core.IThat<double> source, System.Collections.Generic.IEnumerable<double> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsNotOneOf(this aweXpect.Core.IThat<double> source, System.Collections.Generic.IEnumerable<double?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsNotOneOf(this aweXpect.Core.IThat<double> source, params double?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsNotOneOf(this aweXpect.Core.IThat<double?> source, params double[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsNotOneOf(this aweXpect.Core.IThat<double?> source, System.Collections.Generic.IEnumerable<double> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsNotOneOf(this aweXpect.Core.IThat<double?> source, System.Collections.Generic.IEnumerable<double?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsNotOneOf(this aweXpect.Core.IThat<double?> source, params double?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsNotOneOf(this aweXpect.Core.IThat<float> source, params float[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsNotOneOf(this aweXpect.Core.IThat<float> source, System.Collections.Generic.IEnumerable<float> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsNotOneOf(this aweXpect.Core.IThat<float> source, System.Collections.Generic.IEnumerable<float?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsNotOneOf(this aweXpect.Core.IThat<float> source, params float?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsNotOneOf(this aweXpect.Core.IThat<float?> source, params float[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsNotOneOf(this aweXpect.Core.IThat<float?> source, System.Collections.Generic.IEnumerable<float> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsNotOneOf(this aweXpect.Core.IThat<float?> source, System.Collections.Generic.IEnumerable<float?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsNotOneOf(this aweXpect.Core.IThat<float?> source, params float?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsNotOneOf(this aweXpect.Core.IThat<int> source, params int[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsNotOneOf(this aweXpect.Core.IThat<int> source, System.Collections.Generic.IEnumerable<int> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsNotOneOf(this aweXpect.Core.IThat<int> source, System.Collections.Generic.IEnumerable<int?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsNotOneOf(this aweXpect.Core.IThat<int> source, params int?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsNotOneOf(this aweXpect.Core.IThat<int?> source, params int[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsNotOneOf(this aweXpect.Core.IThat<int?> source, System.Collections.Generic.IEnumerable<int> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsNotOneOf(this aweXpect.Core.IThat<int?> source, System.Collections.Generic.IEnumerable<int?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsNotOneOf(this aweXpect.Core.IThat<int?> source, params int?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsNotOneOf(this aweXpect.Core.IThat<long> source, params long[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsNotOneOf(this aweXpect.Core.IThat<long> source, System.Collections.Generic.IEnumerable<long> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsNotOneOf(this aweXpect.Core.IThat<long> source, System.Collections.Generic.IEnumerable<long?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsNotOneOf(this aweXpect.Core.IThat<long> source, params long?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsNotOneOf(this aweXpect.Core.IThat<long?> source, params long[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsNotOneOf(this aweXpect.Core.IThat<long?> source, System.Collections.Generic.IEnumerable<long> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsNotOneOf(this aweXpect.Core.IThat<long?> source, System.Collections.Generic.IEnumerable<long?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsNotOneOf(this aweXpect.Core.IThat<long?> source, params long?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsNotOneOf(this aweXpect.Core.IThat<sbyte> source, params sbyte[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsNotOneOf(this aweXpect.Core.IThat<sbyte> source, System.Collections.Generic.IEnumerable<sbyte> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsNotOneOf(this aweXpect.Core.IThat<sbyte> source, System.Collections.Generic.IEnumerable<sbyte?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsNotOneOf(this aweXpect.Core.IThat<sbyte> source, params sbyte?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsNotOneOf(this aweXpect.Core.IThat<sbyte?> source, params sbyte[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsNotOneOf(this aweXpect.Core.IThat<sbyte?> source, System.Collections.Generic.IEnumerable<sbyte> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsNotOneOf(this aweXpect.Core.IThat<sbyte?> source, System.Collections.Generic.IEnumerable<sbyte?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsNotOneOf(this aweXpect.Core.IThat<sbyte?> source, params sbyte?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsNotOneOf(this aweXpect.Core.IThat<short> source, params short[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsNotOneOf(this aweXpect.Core.IThat<short> source, System.Collections.Generic.IEnumerable<short> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsNotOneOf(this aweXpect.Core.IThat<short> source, System.Collections.Generic.IEnumerable<short?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsNotOneOf(this aweXpect.Core.IThat<short> source, params short?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsNotOneOf(this aweXpect.Core.IThat<short?> source, params short[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsNotOneOf(this aweXpect.Core.IThat<short?> source, System.Collections.Generic.IEnumerable<short> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsNotOneOf(this aweXpect.Core.IThat<short?> source, System.Collections.Generic.IEnumerable<short?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsNotOneOf(this aweXpect.Core.IThat<short?> source, params short?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsNotOneOf(this aweXpect.Core.IThat<uint> source, params uint[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsNotOneOf(this aweXpect.Core.IThat<uint> source, System.Collections.Generic.IEnumerable<uint> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsNotOneOf(this aweXpect.Core.IThat<uint> source, System.Collections.Generic.IEnumerable<uint?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsNotOneOf(this aweXpect.Core.IThat<uint> source, params uint?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsNotOneOf(this aweXpect.Core.IThat<uint?> source, params uint[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsNotOneOf(this aweXpect.Core.IThat<uint?> source, System.Collections.Generic.IEnumerable<uint> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsNotOneOf(this aweXpect.Core.IThat<uint?> source, System.Collections.Generic.IEnumerable<uint?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsNotOneOf(this aweXpect.Core.IThat<uint?> source, params uint?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsNotOneOf(this aweXpect.Core.IThat<ulong> source, params ulong[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsNotOneOf(this aweXpect.Core.IThat<ulong> source, System.Collections.Generic.IEnumerable<ulong> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsNotOneOf(this aweXpect.Core.IThat<ulong> source, System.Collections.Generic.IEnumerable<ulong?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsNotOneOf(this aweXpect.Core.IThat<ulong> source, params ulong?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsNotOneOf(this aweXpect.Core.IThat<ulong?> source, params ulong[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsNotOneOf(this aweXpect.Core.IThat<ulong?> source, System.Collections.Generic.IEnumerable<ulong> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsNotOneOf(this aweXpect.Core.IThat<ulong?> source, System.Collections.Generic.IEnumerable<ulong?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsNotOneOf(this aweXpect.Core.IThat<ulong?> source, params ulong?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsNotOneOf(this aweXpect.Core.IThat<ushort> source, params ushort[] unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsNotOneOf(this aweXpect.Core.IThat<ushort> source, System.Collections.Generic.IEnumerable<ushort> unexpected) { }
+        public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsNotOneOf(this aweXpect.Core.IThat<ushort> source, System.Collections.Generic.IEnumerable<ushort?> unexpected) { }
         public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsNotOneOf(this aweXpect.Core.IThat<ushort> source, params ushort?[] unexpected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsNotOneOf(this aweXpect.Core.IThat<ushort?> source, params ushort[] unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsNotOneOf(this aweXpect.Core.IThat<ushort?> source, System.Collections.Generic.IEnumerable<ushort> unexpected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsNotOneOf(this aweXpect.Core.IThat<ushort?> source, System.Collections.Generic.IEnumerable<ushort?> unexpected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsNotOneOf(this aweXpect.Core.IThat<ushort?> source, params ushort?[] unexpected) { }
-        public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsOneOf(this aweXpect.Core.IThat<byte> source, params byte[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsOneOf(this aweXpect.Core.IThat<byte> source, System.Collections.Generic.IEnumerable<byte> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsOneOf(this aweXpect.Core.IThat<byte> source, System.Collections.Generic.IEnumerable<byte?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<byte, aweXpect.Core.IThat<byte>> IsOneOf(this aweXpect.Core.IThat<byte> source, params byte?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsOneOf(this aweXpect.Core.IThat<byte?> source, params byte[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsOneOf(this aweXpect.Core.IThat<byte?> source, System.Collections.Generic.IEnumerable<byte> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsOneOf(this aweXpect.Core.IThat<byte?> source, System.Collections.Generic.IEnumerable<byte?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<byte, aweXpect.Core.IThat<byte?>> IsOneOf(this aweXpect.Core.IThat<byte?> source, params byte?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsOneOf(this aweXpect.Core.IThat<decimal> source, params decimal[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsOneOf(this aweXpect.Core.IThat<decimal> source, System.Collections.Generic.IEnumerable<decimal> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsOneOf(this aweXpect.Core.IThat<decimal> source, System.Collections.Generic.IEnumerable<decimal?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<decimal, aweXpect.Core.IThat<decimal>> IsOneOf(this aweXpect.Core.IThat<decimal> source, params decimal?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsOneOf(this aweXpect.Core.IThat<decimal?> source, params decimal[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsOneOf(this aweXpect.Core.IThat<decimal?> source, System.Collections.Generic.IEnumerable<decimal> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsOneOf(this aweXpect.Core.IThat<decimal?> source, System.Collections.Generic.IEnumerable<decimal?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<decimal, aweXpect.Core.IThat<decimal?>> IsOneOf(this aweXpect.Core.IThat<decimal?> source, params decimal?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsOneOf(this aweXpect.Core.IThat<double> source, params double[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsOneOf(this aweXpect.Core.IThat<double> source, System.Collections.Generic.IEnumerable<double> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsOneOf(this aweXpect.Core.IThat<double> source, System.Collections.Generic.IEnumerable<double?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<double, aweXpect.Core.IThat<double>> IsOneOf(this aweXpect.Core.IThat<double> source, params double?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsOneOf(this aweXpect.Core.IThat<double?> source, params double[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsOneOf(this aweXpect.Core.IThat<double?> source, System.Collections.Generic.IEnumerable<double> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsOneOf(this aweXpect.Core.IThat<double?> source, System.Collections.Generic.IEnumerable<double?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<double, aweXpect.Core.IThat<double?>> IsOneOf(this aweXpect.Core.IThat<double?> source, params double?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsOneOf(this aweXpect.Core.IThat<float> source, params float[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsOneOf(this aweXpect.Core.IThat<float> source, System.Collections.Generic.IEnumerable<float> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsOneOf(this aweXpect.Core.IThat<float> source, System.Collections.Generic.IEnumerable<float?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<float, aweXpect.Core.IThat<float>> IsOneOf(this aweXpect.Core.IThat<float> source, params float?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsOneOf(this aweXpect.Core.IThat<float?> source, params float[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsOneOf(this aweXpect.Core.IThat<float?> source, System.Collections.Generic.IEnumerable<float> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsOneOf(this aweXpect.Core.IThat<float?> source, System.Collections.Generic.IEnumerable<float?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<float, aweXpect.Core.IThat<float?>> IsOneOf(this aweXpect.Core.IThat<float?> source, params float?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsOneOf(this aweXpect.Core.IThat<int> source, params int[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsOneOf(this aweXpect.Core.IThat<int> source, System.Collections.Generic.IEnumerable<int> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsOneOf(this aweXpect.Core.IThat<int> source, System.Collections.Generic.IEnumerable<int?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<int, aweXpect.Core.IThat<int>> IsOneOf(this aweXpect.Core.IThat<int> source, params int?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsOneOf(this aweXpect.Core.IThat<int?> source, params int[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsOneOf(this aweXpect.Core.IThat<int?> source, System.Collections.Generic.IEnumerable<int> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsOneOf(this aweXpect.Core.IThat<int?> source, System.Collections.Generic.IEnumerable<int?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<int, aweXpect.Core.IThat<int?>> IsOneOf(this aweXpect.Core.IThat<int?> source, params int?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsOneOf(this aweXpect.Core.IThat<long> source, params long[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsOneOf(this aweXpect.Core.IThat<long> source, System.Collections.Generic.IEnumerable<long> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsOneOf(this aweXpect.Core.IThat<long> source, System.Collections.Generic.IEnumerable<long?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<long, aweXpect.Core.IThat<long>> IsOneOf(this aweXpect.Core.IThat<long> source, params long?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsOneOf(this aweXpect.Core.IThat<long?> source, params long[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsOneOf(this aweXpect.Core.IThat<long?> source, System.Collections.Generic.IEnumerable<long> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsOneOf(this aweXpect.Core.IThat<long?> source, System.Collections.Generic.IEnumerable<long?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<long, aweXpect.Core.IThat<long?>> IsOneOf(this aweXpect.Core.IThat<long?> source, params long?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsOneOf(this aweXpect.Core.IThat<sbyte> source, params sbyte[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsOneOf(this aweXpect.Core.IThat<sbyte> source, System.Collections.Generic.IEnumerable<sbyte> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsOneOf(this aweXpect.Core.IThat<sbyte> source, System.Collections.Generic.IEnumerable<sbyte?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte>> IsOneOf(this aweXpect.Core.IThat<sbyte> source, params sbyte?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsOneOf(this aweXpect.Core.IThat<sbyte?> source, params sbyte[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsOneOf(this aweXpect.Core.IThat<sbyte?> source, System.Collections.Generic.IEnumerable<sbyte> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsOneOf(this aweXpect.Core.IThat<sbyte?> source, System.Collections.Generic.IEnumerable<sbyte?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<sbyte, aweXpect.Core.IThat<sbyte?>> IsOneOf(this aweXpect.Core.IThat<sbyte?> source, params sbyte?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsOneOf(this aweXpect.Core.IThat<short> source, params short[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsOneOf(this aweXpect.Core.IThat<short> source, System.Collections.Generic.IEnumerable<short> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsOneOf(this aweXpect.Core.IThat<short> source, System.Collections.Generic.IEnumerable<short?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<short, aweXpect.Core.IThat<short>> IsOneOf(this aweXpect.Core.IThat<short> source, params short?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsOneOf(this aweXpect.Core.IThat<short?> source, params short[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsOneOf(this aweXpect.Core.IThat<short?> source, System.Collections.Generic.IEnumerable<short> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsOneOf(this aweXpect.Core.IThat<short?> source, System.Collections.Generic.IEnumerable<short?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<short, aweXpect.Core.IThat<short?>> IsOneOf(this aweXpect.Core.IThat<short?> source, params short?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsOneOf(this aweXpect.Core.IThat<uint> source, params uint[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsOneOf(this aweXpect.Core.IThat<uint> source, System.Collections.Generic.IEnumerable<uint> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsOneOf(this aweXpect.Core.IThat<uint> source, System.Collections.Generic.IEnumerable<uint?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<uint, aweXpect.Core.IThat<uint>> IsOneOf(this aweXpect.Core.IThat<uint> source, params uint?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsOneOf(this aweXpect.Core.IThat<uint?> source, params uint[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsOneOf(this aweXpect.Core.IThat<uint?> source, System.Collections.Generic.IEnumerable<uint> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsOneOf(this aweXpect.Core.IThat<uint?> source, System.Collections.Generic.IEnumerable<uint?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<uint, aweXpect.Core.IThat<uint?>> IsOneOf(this aweXpect.Core.IThat<uint?> source, params uint?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsOneOf(this aweXpect.Core.IThat<ulong> source, params ulong[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsOneOf(this aweXpect.Core.IThat<ulong> source, System.Collections.Generic.IEnumerable<ulong> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsOneOf(this aweXpect.Core.IThat<ulong> source, System.Collections.Generic.IEnumerable<ulong?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<ulong, aweXpect.Core.IThat<ulong>> IsOneOf(this aweXpect.Core.IThat<ulong> source, params ulong?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsOneOf(this aweXpect.Core.IThat<ulong?> source, params ulong[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsOneOf(this aweXpect.Core.IThat<ulong?> source, System.Collections.Generic.IEnumerable<ulong> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsOneOf(this aweXpect.Core.IThat<ulong?> source, System.Collections.Generic.IEnumerable<ulong?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<ulong, aweXpect.Core.IThat<ulong?>> IsOneOf(this aweXpect.Core.IThat<ulong?> source, params ulong?[] expected) { }
-        public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsOneOf(this aweXpect.Core.IThat<ushort> source, params ushort[] expected) { }
+        public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsOneOf(this aweXpect.Core.IThat<ushort> source, System.Collections.Generic.IEnumerable<ushort> expected) { }
+        public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsOneOf(this aweXpect.Core.IThat<ushort> source, System.Collections.Generic.IEnumerable<ushort?> expected) { }
         public static aweXpect.Results.NumberToleranceResult<ushort, aweXpect.Core.IThat<ushort>> IsOneOf(this aweXpect.Core.IThat<ushort> source, params ushort?[] expected) { }
-        public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsOneOf(this aweXpect.Core.IThat<ushort?> source, params ushort[] expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsOneOf(this aweXpect.Core.IThat<ushort?> source, System.Collections.Generic.IEnumerable<ushort> expected) { }
+        public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsOneOf(this aweXpect.Core.IThat<ushort?> source, System.Collections.Generic.IEnumerable<ushort?> expected) { }
         public static aweXpect.Results.NullableNumberToleranceResult<ushort, aweXpect.Core.IThat<ushort?>> IsOneOf(this aweXpect.Core.IThat<ushort?> source, params ushort?[] expected) { }
         public static aweXpect.Results.AndOrResult<decimal, aweXpect.Core.IThat<decimal>> IsPositive(this aweXpect.Core.IThat<decimal> source) { }
         public static aweXpect.Results.AndOrResult<decimal?, aweXpect.Core.IThat<decimal?>> IsPositive(this aweXpect.Core.IThat<decimal?> source) { }
