@@ -17,6 +17,12 @@ public static partial class ThatString
 		this IThat<string?> source,
 		string expected)
 	{
+		if (expected == string.Empty)
+		{
+			// ReSharper disable once LocalizableElement
+			throw new ArgumentException("The 'expected' string cannot be empty.", nameof(expected));
+		}
+
 		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
@@ -34,6 +40,12 @@ public static partial class ThatString
 		this IThat<string?> source,
 		string unexpected)
 	{
+		if (unexpected == string.Empty)
+		{
+			// ReSharper disable once LocalizableElement
+			throw new ArgumentException("The 'unexpected' string cannot be empty.", nameof(unexpected));
+		}
+
 		StringEqualityOptions options = new();
 		return new StringEqualityTypeResult<string?, IThat<string?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>

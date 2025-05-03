@@ -71,6 +71,20 @@ public sealed partial class ThatString
 
 				await That(Act).DoesNotThrow();
 			}
+
+			[Fact]
+			public async Task WhenUnexpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				string subject = "some text";
+				string unexpected = "";
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(unexpected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("The 'unexpected' string cannot be empty.").AsPrefix().And
+					.WithParamName("unexpected");
+			}
 		}
 	}
 }

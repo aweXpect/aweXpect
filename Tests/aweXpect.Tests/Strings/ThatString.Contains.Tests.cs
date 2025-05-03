@@ -12,14 +12,28 @@ public sealed partial class ThatString
 				string? subject = null;
 
 				async Task Act()
-					=> await That(subject).Contains("");
+					=> await That(subject).Contains("foo");
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             contains "" at least once,
+					             contains "foo" at least once,
 					             but it was <null>
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
+			{
+				string subject = "some text";
+				string expected = "";
+
+				async Task Act()
+					=> await That(subject).Contains(expected);
+
+				await That(Act).Throws<ArgumentException>()
+					.WithMessage("The 'expected' string cannot be empty.").AsPrefix().And
+					.WithParamName("expected");
 			}
 
 			[Fact]
