@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Tests;
+﻿using System.Collections.Generic;
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatObject
 {
@@ -201,6 +203,28 @@ public sealed partial class ThatObject
 
 				async Task Act()
 					=> await That(subject).Is(typeof(MyClass));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithMatchingOpenGenericInterfaceType_ShouldSucceed()
+			{
+				List<string> subject = new();
+
+				async Task Act()
+					=> await That(subject).Is(typeof(IList<>));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithMatchingOpenGenericType_ShouldSucceed()
+			{
+				List<string> subject = new();
+
+				async Task Act()
+					=> await That(subject).Is(typeof(List<>));
 
 				await That(Act).DoesNotThrow();
 			}
