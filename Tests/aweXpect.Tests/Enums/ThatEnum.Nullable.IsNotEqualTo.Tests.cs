@@ -9,22 +9,6 @@ public sealed partial class ThatEnum
 			public sealed class Tests
 			{
 				[Fact]
-				public async Task WhenSubjectAndExpectedAreNull_ShouldFail()
-				{
-					MyColors? subject = null;
-
-					async Task Act()
-						=> await That(subject).IsNotEqualTo(null);
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected that subject
-						             is not <null>,
-						             but it was <null>
-						             """);
-				}
-
-				[Fact]
 				public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
 				{
 					MyColors? subject = null;
