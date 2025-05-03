@@ -22,10 +22,14 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<object?, IThat<object?>> IsExactly(
 		this IThat<object?> source,
-		Type type)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+		Type? type)
+	{
+		// ReSharper disable once LocalizableElement
+		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+		return new AndOrResult<object?, IThat<object?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsExactlyOfTypeConstraint(it, grammars, type)),
 			source);
+	}
 
 	/// <summary>
 	///     Verifies that the subject is not exactly of type <typeparamref name="TType" />.
@@ -41,10 +45,14 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<object?, IThat<object?>> IsNotExactly(
 		this IThat<object?> source,
-		Type type)
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+		Type? type)
+	{
+		// ReSharper disable once LocalizableElement
+		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+		return new AndOrResult<object?, IThat<object?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsExactlyOfTypeConstraint(it, grammars, type).Invert()),
 			source);
+	}
 
 	private sealed class IsExactlyOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<object?>(grammars),
