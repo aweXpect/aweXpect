@@ -45,10 +45,13 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to ThatObject.OuterClass {
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               },
 					             but it was not:
 					               Property Value was <null> instead of "Foo"
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -127,10 +130,26 @@ public sealed partial class ThatObject
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = ThatObject.InnerClass {
+					                     Collection = [
+					                     "1",
+					                     "2",
+					                     "3",
+					                     "4"
+					                   ],
+					                     Inner = <null>,
+					                     Value = "Baz"
+					                   },
+					                   Value = "Bar"
+					                 },
+					                 Value = "Foo"
+					               },
 					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -213,14 +232,30 @@ public sealed partial class ThatObject
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = ThatObject.InnerClass {
+					                     Collection = [
+					                     "1",
+					                     "2",
+					                     "3",
+					                     "4"
+					                   ],
+					                     Inner = <null>,
+					                     Value = "Bart"
+					                   },
+					                   Value = "Bar"
+					                 },
+					                 Value = "Foo"
+					               },
 					             but it was not:
 					               Element Inner.Inner.Collection[3] was missing "4"
 					             and
 					               Property Inner.Inner.Value differed:
 					                    Found: "Baz"
 					                 Expected: "Bart"
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					              - ignore members: ["Inner.Inner.Collection.[3]"]
@@ -292,10 +327,21 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = ThatObject.InnerClass {
+					                     Collection = <null>,
+					                     Inner = <null>,
+					                     Value = "Baz"
+					                   },
+					                   Value = "Bar"
+					                 },
+					                 Value = "Foo"
+					               },
 					             but it was not:
 					               Property Inner.Inner.Value was <null> instead of "Baz"
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -316,7 +362,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to [
+					               4,
+					               3,
+					               2
+					             ],
 					             but it was not:
 					               Element [0] differed:
 					                    Found: 1
@@ -348,7 +398,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to [
+					               1,
+					               3,
+					               2
+					             ],
 					             but it was not:
 					               Element [1] differed:
 					                    Found: 2
@@ -424,7 +478,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to [
+					               [1, 2],
+					               [3, 3],
+					               [4, 4]
+					             ],
 					             but it was not:
 					               Element [2] had superfluous 3
 					             and
@@ -474,7 +532,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to [
+					               [1, 2],
+					               [2, 4],
+					               [3, 5]
+					             ],
 					             but it was not:
 					               Element [2] differed:
 					                    Found: 3
@@ -573,13 +635,16 @@ public sealed partial class ThatObject
 					=> await That(subject).IsEquivalentTo(expected);
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
+					.WithMessage($$"""
 					              Expected that subject
-					              is equivalent to expected,
+					              is equivalent to ThatObject.IsEquivalentTo.FieldTests.MyClass {
+					                  MyProperty = False,
+					                  PublicValue = {{1 + publicDifference}}
+					                },
 					              but it was not:
 					                Field PublicValue differed:
 					                     Found: 1
-					                  Expected: {1 + publicDifference}
+					                  Expected: {{1 + publicDifference}}
 
 					              Equivalency options:
 					               - include public fields and properties
@@ -609,13 +674,16 @@ public sealed partial class ThatObject
 					=> await That(subject).IsEquivalentTo(expected, o => o.IncludingFields(IncludeMembers.Internal));
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
+					.WithMessage($$"""
 					              Expected that subject
-					              is equivalent to expected,
+					              is equivalent to ThatObject.IsEquivalentTo.FieldTests.MyClass {
+					                  MyProperty = False,
+					                  PublicValue = {{1 + publicDifference}}
+					                },
 					              but it was not:
 					                Field InternalValue differed:
 					                     Found: 2
-					                  Expected: {2 + internalDifference}
+					                  Expected: {{2 + internalDifference}}
 
 					              Equivalency options:
 					               - include internal fields and public properties
@@ -636,7 +704,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to ThatObject.IsEquivalentTo.FieldTests.MyClass {
+					                 MyProperty = True,
+					                 PublicValue = 4
+					               },
 					             but it was not:
 					               Property MyProperty differed:
 					                    Found: False
@@ -682,13 +753,16 @@ public sealed partial class ThatObject
 					=> await That(subject).IsEquivalentTo(expected, o => o.IncludingFields(IncludeMembers.Private));
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
+					.WithMessage($$"""
 					              Expected that subject
-					              is equivalent to expected,
+					              is equivalent to ThatObject.IsEquivalentTo.FieldTests.MyClass {
+					                  MyProperty = False,
+					                  PublicValue = {{1 + publicDifference}}
+					                },
 					              but it was not:
 					                Field PrivateValue differed:
 					                     Found: 3
-					                  Expected: {3 + privateDifference}
+					                  Expected: {{3 + privateDifference}}
 
 					              Equivalency options:
 					               - include private fields and public properties
@@ -728,13 +802,16 @@ public sealed partial class ThatObject
 					=> await That(subject).IsEquivalentTo(expected);
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
+					.WithMessage($$"""
 					              Expected that subject
-					              is equivalent to expected,
+					              is equivalent to ThatObject.IsEquivalentTo.PropertyTests.MyClass {
+					                  MyField = False,
+					                  PublicValue = {{1 + publicDifference}}
+					                },
 					              but it was not:
 					                Property PublicValue differed:
 					                     Found: 1
-					                  Expected: {1 + publicDifference}
+					                  Expected: {{1 + publicDifference}}
 
 					              Equivalency options:
 					               - include public fields and properties
@@ -781,13 +858,16 @@ public sealed partial class ThatObject
 						.IsEquivalentTo(expected, o => o.IncludingProperties(IncludeMembers.Internal));
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
+					.WithMessage($$"""
 					              Expected that subject
-					              is equivalent to expected,
+					              is equivalent to ThatObject.IsEquivalentTo.PropertyTests.MyClass {
+					                  MyField = False,
+					                  PublicValue = {{1 + publicDifference}}
+					                },
 					              but it was not:
 					                Property InternalValue differed:
 					                     Found: 2
-					                  Expected: {2 + internalDifference}
+					                  Expected: {{2 + internalDifference}}
 
 					              Equivalency options:
 					               - include public fields and internal properties
@@ -808,7 +888,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to expected,
+					             is equivalent to ThatObject.IsEquivalentTo.PropertyTests.MyClass {
+					                 MyField = True,
+					                 PublicValue = 4
+					               },
 					             but it was not:
 					               Field MyField differed:
 					                    Found: False
@@ -854,13 +937,16 @@ public sealed partial class ThatObject
 					=> await That(subject).IsEquivalentTo(expected, o => o.IncludingProperties(IncludeMembers.Private));
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
-					.WithMessage($"""
+					.WithMessage($$"""
 					              Expected that subject
-					              is equivalent to expected,
+					              is equivalent to ThatObject.IsEquivalentTo.PropertyTests.MyClass {
+					                  MyField = False,
+					                  PublicValue = {{1 + publicDifference}}
+					                },
 					              but it was not:
 					                Property PrivateValue differed:
 					                     Found: 3
-					                  Expected: {3 + privateDifference}
+					                  Expected: {{3 + privateDifference}}
 
 					              Equivalency options:
 					               - include public fields and private properties

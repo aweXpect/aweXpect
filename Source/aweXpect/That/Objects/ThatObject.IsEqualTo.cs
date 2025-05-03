@@ -20,8 +20,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<object?, object?>(it, grammars, expected,
-					doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+				=> new IsEqualToConstraint<object?, object?>(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -38,8 +37,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsNullableEqualToConstraint<T>(it, grammars, expected,
-					doNotPopulateThisValue.TrimCommonWhiteSpace(), options)),
+				=> new IsNullableEqualToConstraint<T>(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -56,8 +54,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace(),
-					options)),
+				=> new IsEqualToConstraint<T>(it, grammars, expected, options)),
 			source,
 			options);
 	}
@@ -74,9 +71,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<object?, object?>(it, grammars, unexpected,
-						doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
-					.Invert()),
+				=> new IsEqualToConstraint<object?, object?>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
@@ -94,9 +89,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<T?> options = new();
 		return new ObjectEqualityResult<T?, IThat<T?>, T?>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsNullableEqualToConstraint<T>(it, grammars, unexpected,
-						doNotPopulateThisValue.TrimCommonWhiteSpace(), options)
-					.Invert()),
+				=> new IsNullableEqualToConstraint<T>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
@@ -114,9 +107,7 @@ public static partial class ThatObject
 		ObjectEqualityOptions<T> options = new();
 		return new ObjectEqualityResult<T, IThat<T>, T>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<T>(it, grammars, unexpected, doNotPopulateThisValue.TrimCommonWhiteSpace(),
-						options)
-					.Invert()),
+				=> new IsEqualToConstraint<T>(it, grammars, unexpected, options).Invert()),
 			source,
 			options);
 	}
@@ -125,7 +116,6 @@ public static partial class ThatObject
 		string it,
 		ExpectationGrammars grammars,
 		TExpected expected,
-		string expectedExpression,
 		ObjectEqualityOptions<TSubject> options)
 		: ConstraintResult.WithEqualToValue<TSubject>(it, grammars, expected is null),
 			IValueConstraint<TSubject>
@@ -138,13 +128,15 @@ public static partial class ThatObject
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+			=> stringBuilder.Append(options.GetExpectation(
+				Formatter.Format(expected, FormattingOptions.Indented()), Grammars));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+			=> stringBuilder.Append(options.GetExpectation(
+				Formatter.Format(expected, FormattingOptions.Indented()), Grammars));
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
@@ -154,7 +146,6 @@ public static partial class ThatObject
 		string it,
 		ExpectationGrammars grammars,
 		T? expected,
-		string expectedExpression,
 		ObjectEqualityOptions<T> options)
 		: ConstraintResult.WithValue<T>(grammars),
 			IValueConstraint<T>
@@ -168,13 +159,15 @@ public static partial class ThatObject
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+			=> stringBuilder.Append(options.GetExpectation(
+				Formatter.Format(expected, FormattingOptions.Indented()), Grammars));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+			=> stringBuilder.Append(options.GetExpectation(
+				Formatter.Format(expected, FormattingOptions.Indented()), Grammars));
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExtendedFailure(it, Grammars, Actual, expected));
@@ -184,7 +177,6 @@ public static partial class ThatObject
 		string it,
 		ExpectationGrammars grammars,
 		T? expected,
-		string expectedExpression,
 		ObjectEqualityOptions<T?> options)
 		: ConstraintResult.WithEqualToValue<T?>(it, grammars, expected is null),
 			IValueConstraint<T?>
@@ -198,13 +190,15 @@ public static partial class ThatObject
 		}
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+			=> stringBuilder.Append(options.GetExpectation(
+				Formatter.Format(expected, FormattingOptions.Indented()), Grammars));
 
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(options.GetExpectation(expectedExpression.TrimCommonWhiteSpace(), Grammars));
+			=> stringBuilder.Append(options.GetExpectation(
+				Formatter.Format(expected, FormattingOptions.Indented()), Grammars));
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> stringBuilder.Append(options.GetExtendedFailure(It, Grammars, Actual, expected));

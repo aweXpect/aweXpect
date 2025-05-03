@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
@@ -35,8 +34,7 @@ public static partial class ThatObject
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new AndOrResult<TSubject, IThat<TSubject>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected,
-					doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions)),
+				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected, equalityOptions)),
 			source);
 	}
 	/// <summary>
@@ -61,8 +59,7 @@ public static partial class ThatObject
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new AndOrResult<TSubject, IThat<TSubject>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, unexpected,
-					doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions).Invert()),
+				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, unexpected, equalityOptions).Invert()),
 			source);
 	}
 }
