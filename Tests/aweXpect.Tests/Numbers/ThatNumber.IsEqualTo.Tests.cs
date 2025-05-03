@@ -1372,8 +1372,8 @@ public sealed partial class ThatNumber
 				await That(Action).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that decimal.MinValue
-					             is equal to 79228162514264337593543950335,
-					             but it was -79228162514264337593543950335
+					             is equal to decimal.MaxValue,
+					             but it was decimal.MinValue
 					             """);
 			}
 
@@ -1384,19 +1384,11 @@ public sealed partial class ThatNumber
 					=> await That(double.MinValue).IsEqualTo(double.MaxValue);
 
 				await That(Action).Throws<XunitException>()
-#if NET8_0_OR_GREATER
 					.WithMessage("""
 					             Expected that double.MinValue
-					             is equal to 1.7976931348623157E+308,
-					             but it was -1.7976931348623157E+308
+					             is equal to double.MaxValue,
+					             but it was double.MinValue
 					             """);
-#else
-					.WithMessage("""
-					             Expected that double.MinValue
-					             is equal to 1.79769313486232E+308,
-					             but it was -1.79769313486232E+308
-					             """);
-#endif
 			}
 
 			[Fact]
@@ -1406,19 +1398,11 @@ public sealed partial class ThatNumber
 					=> await That(float.MinValue).IsEqualTo(float.MaxValue);
 
 				await That(Action).Throws<XunitException>()
-#if NET8_0_OR_GREATER
 					.WithMessage("""
 					             Expected that float.MinValue
-					             is equal to 3.4028235E+38,
-					             but it was -3.4028235E+38
+					             is equal to float.MaxValue,
+					             but it was float.MinValue
 					             """);
-#else
-					.WithMessage("""
-					             Expected that float.MinValue
-					             is equal to 3.402823E+38,
-					             but it was -3.402823E+38
-					             """);
-#endif
 			}
 
 			[Fact]
@@ -1460,8 +1444,8 @@ public sealed partial class ThatNumber
 				await That(Action).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that minValue
-					             is equal to 79228162514264337593543950335,
-					             but it was -79228162514264337593543950335
+					             is equal to decimal.MaxValue,
+					             but it was decimal.MinValue
 					             """);
 			}
 
@@ -1474,19 +1458,11 @@ public sealed partial class ThatNumber
 					=> await That(minValue).IsEqualTo(double.MaxValue);
 
 				await That(Action).Throws<XunitException>()
-#if NET8_0_OR_GREATER
 					.WithMessage("""
 					             Expected that minValue
-					             is equal to 1.7976931348623157E+308,
-					             but it was -1.7976931348623157E+308
+					             is equal to double.MaxValue,
+					             but it was double.MinValue
 					             """);
-#else
-					.WithMessage("""
-					             Expected that minValue
-					             is equal to 1.79769313486232E+308,
-					             but it was -1.79769313486232E+308
-					             """);
-#endif
 			}
 
 			[Fact]
@@ -1498,19 +1474,11 @@ public sealed partial class ThatNumber
 					=> await That(minValue).IsEqualTo(float.MaxValue);
 
 				await That(Action).Throws<XunitException>()
-#if NET8_0_OR_GREATER
 					.WithMessage("""
 					             Expected that minValue
-					             is equal to 3.4028235E+38,
-					             but it was -3.4028235E+38
+					             is equal to float.MaxValue,
+					             but it was float.MinValue
 					             """);
-#else
-					.WithMessage("""
-					             Expected that minValue
-					             is equal to 3.402823E+38,
-					             but it was -3.402823E+38
-					             """);
-#endif
 			}
 
 			[Fact]

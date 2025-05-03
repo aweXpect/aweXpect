@@ -459,6 +459,8 @@ public static partial class ValueFormatters
 		{
 			float.NegativeInfinity => "-\u221e",
 			float.PositiveInfinity => "+\u221e",
+			float.MinValue => "float.MinValue",
+			float.MaxValue => "float.MaxValue",
 			_ => value.ToString(CultureInfo.InvariantCulture)
 		};
 
@@ -519,6 +521,8 @@ public static partial class ValueFormatters
 		{
 			double.NegativeInfinity => "-\u221e",
 			double.PositiveInfinity => "+\u221e",
+			double.MinValue => "double.MinValue",
+			double.MaxValue => "double.MaxValue",
 			_ => value.ToString(CultureInfo.InvariantCulture)
 		};
 
@@ -650,7 +654,12 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		decimal value,
 		FormattingOptions? options = null)
-		=> value.ToString(CultureInfo.InvariantCulture);
+		=> value switch
+		{
+			decimal.MinValue => "decimal.MinValue",
+			decimal.MaxValue => "decimal.MaxValue",
+			_ => value.ToString(CultureInfo.InvariantCulture)
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -661,7 +670,7 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		decimal value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value.ToString(CultureInfo.InvariantCulture));
+		=> stringBuilder.Append(Formatter.Format(value, options));
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
