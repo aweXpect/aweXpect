@@ -25,11 +25,13 @@ public static partial class ThatObject
 		this IThat<T?> source,
 		Type? type)
 		where T : class
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint(it, grammars,
-					// ReSharper disable once LocalizableElement
-					type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null."))),
+	{
+		// ReSharper disable once LocalizableElement
+		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+		return new AndOrResult<T?, IThat<T?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsOfTypeConstraint(it, grammars, type)),
 			source);
+	}
 
 	/// <summary>
 	///     Verifies that the subject is not of type <typeparamref name="TType" />.
@@ -47,11 +49,13 @@ public static partial class ThatObject
 		this IThat<T?> source,
 		Type? type)
 		where T : class
-		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint(it, grammars,
-					// ReSharper disable once LocalizableElement
-					type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.")).Invert()),
+	{
+		// ReSharper disable once LocalizableElement
+		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+		return new AndOrResult<T?, IThat<T?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsOfTypeConstraint(it, grammars, type).Invert()),
 			source);
+	}
 
 	private sealed class IsOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
 		: ConstraintResult.WithValue<object?>(grammars),
