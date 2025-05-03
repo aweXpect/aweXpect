@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 using aweXpect.Core.Tests.TestHelpers;
-using static aweXpect.Synchronous.Synchronously;
+using aweXpect.Synchronous;
 
 // ReSharper disable InvokeAsExtensionMethod
 
 namespace aweXpect.Core.Tests.Synchronous;
 
-public class SynchronouslyTests
+public class SynchronouslyExtensionsTests
 {
 	[Fact]
 	public void WhenActionDoesNotThrow_ShouldSucceed()
@@ -17,7 +17,7 @@ public class SynchronouslyTests
 		};
 
 		int value = subject.Bar;
-		Verify(That(() => ThrowIf(value != 3)).DoesNotThrow());
+		That(() => ThrowIf(value != 3)).DoesNotThrow().VerifySynchronously();
 	}
 
 	[Fact]
@@ -28,15 +28,15 @@ public class SynchronouslyTests
 			Bar = 3,
 		};
 		int value = subject.Bar;
-		void Act() => Verify(That(() => ThrowIf(value == 3)).DoesNotThrow());
+		void Act() => That(() => ThrowIf(value == 3)).DoesNotThrow().VerifySynchronously();;
 
-		Verify(That(Act).Throws<XunitException>()
+		That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that () => ThrowIf(value == 3)
 			             does not throw any exception,
 			             but it did throw a MyException:
 			               WhenActionThrows_ShouldFail
-			             """));
+			             """).VerifySynchronously();
 	}
 
 	[Fact]
@@ -47,14 +47,14 @@ public class SynchronouslyTests
 			Bar = 3,
 		};
 		int value = subject.Bar;
-		void Act() => Verify(That(value).IsEqualTo(2));
+		void Act() => That(value).IsEqualTo(2).VerifySynchronously();;
 
-		Verify(That(Act).Throws<XunitException>()
+		That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that value
 			             is equal to 2,
 			             but it was 3
-			             """));
+			             """).VerifySynchronously();
 	}
 
 	[Fact]
@@ -65,9 +65,9 @@ public class SynchronouslyTests
 			Bar = 3,
 		};
 
-		int value = Verify(That(subject.Bar).IsEqualTo(3));
+		int value = That(subject.Bar).IsEqualTo(3).VerifySynchronously();
 
-		Verify(That(value).IsEqualTo(3));
+		That(value).IsEqualTo(3).VerifySynchronously();
 	}
 
 	private static void ThrowIf(bool condition, [CallerMemberName] string message = "")

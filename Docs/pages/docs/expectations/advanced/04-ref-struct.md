@@ -12,7 +12,7 @@ ReadOnlySpan<char> subject = @"foo".AsSpan();
 
 Synchronously.Verify(Expect.That(subject.Length).IsEqualTo(3));
 // or alternatively:
-Expect.That(subject.Length).IsEqualTo(3).Verify();
+Expect.That(subject.Length).IsEqualTo(3).VerifySynchronously();
 ```
 
 *Note: These methods are in the namespace `aweXpect.Synchronous`.*

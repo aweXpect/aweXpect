@@ -3,13 +3,13 @@
 namespace aweXpect.Synchronous;
 
 /// <summary>
-///     Methods to support synchronous execution.
+///     Extension methods to support synchronous execution.
 /// </summary>
 /// <remarks>
 ///     <b>WARNING!</b><br />
 ///     The only intended use case is to support synchronous evaluation for <c>ref struct</c>.
 /// </remarks>
-public static class Synchronously
+public static class SynchronouslyExtensions
 {
 	/// <summary>
 	///     Verifies synchronously that the expectation is satisfied.
@@ -18,7 +18,7 @@ public static class Synchronously
 	///     <b>WARNING!</b><br />
 	///     The only intended use case is to support synchronous evaluation for <c>ref struct</c>.
 	/// </remarks>
-	public static void Verify(ExpectationResult result)
+	public static void VerifySynchronously(this ExpectationResult result)
 		=> result.GetAwaiter().GetResult();
 
 	/// <summary>
@@ -28,7 +28,7 @@ public static class Synchronously
 	///     <b>WARNING!</b><br />
 	///     The only intended use case is to support synchronous evaluation for <c>ref struct</c>.
 	/// </remarks>
-	public static TType Verify<TType, TSelf>(ExpectationResult<TType, TSelf> result)
+	public static TType VerifySynchronously<TType, TSelf>(this ExpectationResult<TType, TSelf> result)
 		where TSelf : ExpectationResult<TType, TSelf>
 		=> result.GetAwaiter().GetResult();
 }
