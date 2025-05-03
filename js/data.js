@@ -1548,6 +1548,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -1808,7 +1814,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -2072,7 +2079,8 @@ window.BENCHMARK_DATA = {
           173.95329621632894,
           165.7090482200895,
           159.22060564586096,
-          173.64851198877608
+          173.64851198877608,
+          166.22084147589547
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2267,6 +2275,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2613,7 +2622,8 @@ window.BENCHMARK_DATA = {
           226.97398613049432,
           241.48596822420757,
           231.0315809249878,
-          238.1568175462576
+          238.1568175462576,
+          237.2804264472081
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2806,6 +2816,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3154,7 +3165,8 @@ window.BENCHMARK_DATA = {
           898.2513748804728,
           954.2672925676618,
           862.9981925964355,
-          920.9252905527751
+          920.9252905527751,
+          900.9516015370687
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3380,6 +3392,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -4523,6 +4536,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -4706,7 +4725,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -4893,7 +4913,8 @@ window.BENCHMARK_DATA = {
           313390.685546875,
           286524.1049153646,
           277191.6359700521,
-          296488.6456380208
+          296488.6456380208,
+          294263.8017926897
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5027,6 +5048,7 @@ window.BENCHMARK_DATA = {
           284660,
           284660,
           284660,
+          284980,
           284980,
           284980,
           284980,
@@ -5280,7 +5302,8 @@ window.BENCHMARK_DATA = {
           2058332.0270833333,
           2175700.837760417,
           2150267.728125,
-          2274071.468191964
+          2274071.468191964,
+          2184018.7740384615
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5396,6 +5419,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -5667,7 +5691,8 @@ window.BENCHMARK_DATA = {
           652032.273297991,
           709149.6187825521,
           680601.3444010416,
-          678022.538671875
+          678022.538671875,
+          667407.6690755208
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5823,6 +5848,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -7421,6 +7447,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -7681,7 +7713,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -7945,7 +7978,8 @@ window.BENCHMARK_DATA = {
           299.9650811513265,
           318.63179118292675,
           301.9195462862651,
-          368.0442564646403
+          368.0442564646403,
+          322.168027528127
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8140,6 +8174,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -8486,7 +8521,8 @@ window.BENCHMARK_DATA = {
           467.49968843460084,
           471.1435238293239,
           469.7251967748006,
-          521.4623104731241
+          521.4623104731241,
+          446.1931544031416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8679,6 +8715,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -9027,7 +9064,8 @@ window.BENCHMARK_DATA = {
           20315.722926548548,
           15256.0556640625,
           18268.298282877604,
-          15244.095091756184
+          15244.095091756184,
+          14830.447230529786
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9253,6 +9291,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -10858,6 +10897,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -11118,7 +11163,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -11382,7 +11428,8 @@ window.BENCHMARK_DATA = {
           194.88268915812174,
           201.2655917065484,
           200.37508874280113,
-          227.18015921910603
+          227.18015921910603,
+          195.99596883700445
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11578,6 +11625,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -11923,7 +11971,8 @@ window.BENCHMARK_DATA = {
           235.64379371915544,
           245.53292983373007,
           234.94063962300618,
-          263.1249355872472
+          263.1249355872472,
+          239.4648401896159
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12116,6 +12165,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -12464,7 +12514,8 @@ window.BENCHMARK_DATA = {
           1181.0991156441826,
           1260.7702212015788,
           1123.6169231414794,
-          1312.2903555552164
+          1312.2903555552164,
+          1232.2807968684606
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12690,6 +12741,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -14295,6 +14347,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -14555,7 +14613,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -14819,7 +14878,8 @@ window.BENCHMARK_DATA = {
           322.5970549583435,
           309.9200983365377,
           320.98374331792195,
-          355.39944585164386
+          355.39944585164386,
+          320.67167244638716
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15026,6 +15086,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -15360,7 +15421,8 @@ window.BENCHMARK_DATA = {
           473.10309168008655,
           466.8173184712728,
           447.55869150161743,
-          510.8224069595337
+          510.8224069595337,
+          475.9185428619385
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15553,6 +15615,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -15901,7 +15964,8 @@ window.BENCHMARK_DATA = {
           1309.0132199696131,
           1332.9188726970128,
           1259.7360284169515,
-          1338.4309794562203
+          1338.4309794562203,
+          1343.672829691569
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16127,6 +16191,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -17732,6 +17797,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -17992,7 +18063,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -18256,7 +18328,8 @@ window.BENCHMARK_DATA = {
           1096.2862469809395,
           1087.625200544085,
           985.9961134592692,
-          1139.1761419932047
+          1139.1761419932047,
+          1134.4428824016027
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18451,6 +18524,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -18797,7 +18871,8 @@ window.BENCHMARK_DATA = {
           1226.7488852909632,
           1275.630331548055,
           1250.1545215606689,
-          1365.9006033579508
+          1365.9006033579508,
+          1292.962818400065
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -18990,6 +19065,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -19338,7 +19414,8 @@ window.BENCHMARK_DATA = {
           2785.7193117777506,
           2836.537471262614,
           2737.215337208339,
-          2965.770257404872
+          2965.770257404872,
+          2821.7097231547036
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -19564,6 +19641,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -21169,6 +21247,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 12:08:40 2025 \u002B0200",
         "message": "fix: nullability handling in \u0060IsOneOf\u0060 (#553)"
+      },
+      {
+        "sha": "187a765e7dff05a3390ba15d0690697016ade344",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 3 13:19:24 2025 \u002B0200",
+        "message": "fix: handle string \u0060.Contains\u0060 with empty string (#556)"
       }
     ],
     "labels": [
@@ -21429,7 +21513,8 @@ window.BENCHMARK_DATA = {
       "26291596",
       "b0678de8",
       "889bfeda",
-      "f71870f3"
+      "f71870f3",
+      "187a765e"
     ],
     "datasets": [
       {
@@ -21693,7 +21778,8 @@ window.BENCHMARK_DATA = {
           1177.3703173319498,
           1158.0549877166748,
           1062.655637105306,
-          1214.7664426167805
+          1214.7664426167805,
+          1202.247618230184
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -21888,6 +21974,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -22234,7 +22321,8 @@ window.BENCHMARK_DATA = {
           153049.95552884616,
           148764.67923677884,
           145546.7947591146,
-          153622.30001395088
+          153622.30001395088,
+          148479.8994140625
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22503,7 +22591,8 @@ window.BENCHMARK_DATA = {
           63787,
           63352,
           63787,
-          64324
+          64324,
+          63787
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -22775,7 +22864,8 @@ window.BENCHMARK_DATA = {
           4641.391261509487,
           4682.651739756267,
           4446.063539632161,
-          4894.253436787923
+          4894.253436787923,
+          4697.899395869328
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23001,6 +23091,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
