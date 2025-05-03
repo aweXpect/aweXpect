@@ -9,13 +9,12 @@ public sealed partial class ThatEnum
 			public sealed class Tests
 			{
 				[Fact]
-				public async Task ForLong_WhenSubjectAndUnexpectedAreNull_ShouldFail()
+				public async Task WhenSubjectAndExpectedAreNull_ShouldFail()
 				{
-					EnumLong? subject = null;
-					EnumLong? unexpected = null;
+					MyColors? subject = null;
 
 					async Task Act()
-						=> await That(subject).IsNotEqualTo(unexpected);
+						=> await That(subject).IsNotEqualTo(null);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -25,74 +24,14 @@ public sealed partial class ThatEnum
 						             """);
 				}
 
-				[Theory]
-				[InlineData(EnumLong.Int64Max, EnumLong.Int64LessOne)]
-				public async Task ForLong_WhenSubjectIsDifferent_ShouldSucceed(EnumLong? subject,
-					EnumLong? unexpected)
-				{
-					async Task Act()
-						=> await That(subject).IsNotEqualTo(unexpected);
-
-					await That(Act).DoesNotThrow();
-				}
-
-
-				[Theory]
-				[InlineData(EnumLong.Int64Max)]
-				[InlineData(EnumLong.Int64LessOne)]
-				public async Task ForLong_WhenSubjectTheSame_ShouldFail(EnumLong? subject)
-				{
-					EnumLong? unexpected = subject;
-
-					async Task Act()
-						=> await That(subject).IsNotEqualTo(unexpected);
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage($"""
-						              Expected that subject
-						              is not {Formatter.Format(unexpected)},
-						              but it was {Formatter.Format(subject)}
-						              """);
-				}
-
-				[Theory]
-				[InlineData(EnumULong.UInt64Max, EnumULong.UInt64LessOne)]
-				[InlineData(EnumULong.UInt64Max, EnumULong.Int64Max)]
-				public async Task ForULong_WhenSubjectIsDifferent_ShouldSucceed(EnumULong? subject,
-					EnumULong? unexpected)
-				{
-					async Task Act()
-						=> await That(subject).IsNotEqualTo(unexpected);
-
-					await That(Act).DoesNotThrow();
-				}
-
-				[Theory]
-				[InlineData(EnumULong.Int64Max)]
-				[InlineData(EnumULong.UInt64LessOne)]
-				[InlineData(EnumULong.UInt64Max)]
-				public async Task ForULong_WhenSubjectTheSame_ShouldFail(EnumULong? subject)
-				{
-					EnumULong? unexpected = subject;
-
-					async Task Act()
-						=> await That(subject).IsNotEqualTo(unexpected);
-
-					await That(Act).Throws<XunitException>()
-						.WithMessage($"""
-						              Expected that subject
-						              is not {Formatter.Format(unexpected)},
-						              but it was {Formatter.Format(subject)}
-						              """);
-				}
-
 				[Fact]
-				public async Task WhenSubjectAndExpectedAreNull_ShouldFail()
+				public async Task WhenSubjectAndUnexpectedAreNull_ShouldFail()
 				{
 					MyColors? subject = null;
+					MyColors? unexpected = null;
 
 					async Task Act()
-						=> await That(subject).IsNotEqualTo(null);
+						=> await That(subject).IsNotEqualTo(unexpected);
 
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
@@ -146,6 +85,72 @@ public sealed partial class ThatEnum
 						=> await That(subject).IsNotEqualTo(null);
 
 					await That(Act).DoesNotThrow();
+				}
+			}
+
+			public sealed class LongTests
+			{
+				[Theory]
+				[InlineData(EnumLong.Int64Max, EnumLong.Int64LessOne)]
+				public async Task WhenSubjectIsDifferent_ShouldSucceed(EnumLong? subject,
+					EnumLong? unexpected)
+				{
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Theory]
+				[InlineData(EnumLong.Int64Max)]
+				[InlineData(EnumLong.Int64LessOne)]
+				public async Task WhenSubjectTheSame_ShouldFail(EnumLong? subject)
+				{
+					EnumLong? unexpected = subject;
+
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage($"""
+						              Expected that subject
+						              is not {Formatter.Format(unexpected)},
+						              but it was {Formatter.Format(subject)}
+						              """);
+				}
+			}
+
+			public sealed class UlongTests
+			{
+				[Theory]
+				[InlineData(EnumULong.UInt64Max, EnumULong.UInt64LessOne)]
+				[InlineData(EnumULong.UInt64Max, EnumULong.Int64Max)]
+				public async Task WhenSubjectIsDifferent_ShouldSucceed(EnumULong? subject,
+					EnumULong? unexpected)
+				{
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).DoesNotThrow();
+				}
+
+				[Theory]
+				[InlineData(EnumULong.Int64Max)]
+				[InlineData(EnumULong.UInt64LessOne)]
+				[InlineData(EnumULong.UInt64Max)]
+				public async Task WhenSubjectTheSame_ShouldFail(EnumULong? subject)
+				{
+					EnumULong? unexpected = subject;
+
+					async Task Act()
+						=> await That(subject).IsNotEqualTo(unexpected);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage($"""
+						              Expected that subject
+						              is not {Formatter.Format(unexpected)},
+						              but it was {Formatter.Format(subject)}
+						              """);
 				}
 			}
 		}

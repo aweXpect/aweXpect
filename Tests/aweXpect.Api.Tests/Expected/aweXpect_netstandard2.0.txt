@@ -130,6 +130,18 @@ namespace aweXpect
             where TEnum :  struct, System.Enum { }
         public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsNotEqualTo<TEnum>(this aweXpect.Core.IThat<TEnum> source, TEnum? unexpected)
             where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsNotOneOf<TEnum>(this aweXpect.Core.IThat<TEnum> source, System.Collections.Generic.IEnumerable<TEnum> unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsNotOneOf<TEnum>(this aweXpect.Core.IThat<TEnum> source, System.Collections.Generic.IEnumerable<TEnum?> unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsNotOneOf<TEnum>(this aweXpect.Core.IThat<TEnum> source, params TEnum?[] unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsOneOf<TEnum>(this aweXpect.Core.IThat<TEnum> source, System.Collections.Generic.IEnumerable<TEnum> expected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsOneOf<TEnum>(this aweXpect.Core.IThat<TEnum> source, System.Collections.Generic.IEnumerable<TEnum?> expected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum, aweXpect.Core.IThat<TEnum>> IsOneOf<TEnum>(this aweXpect.Core.IThat<TEnum> source, params TEnum?[] expected)
+            where TEnum :  struct, System.Enum { }
     }
     public static class ThatEnumerable
     {
@@ -336,6 +348,18 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotDefined<TEnum>(this aweXpect.Core.IThat<TEnum?> source)
             where TEnum :  struct, System.Enum { }
         public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotEqualTo<TEnum>(this aweXpect.Core.IThat<TEnum?> source, TEnum? unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotOneOf<TEnum>(this aweXpect.Core.IThat<TEnum?> source, System.Collections.Generic.IEnumerable<TEnum> unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotOneOf<TEnum>(this aweXpect.Core.IThat<TEnum?> source, System.Collections.Generic.IEnumerable<TEnum?> unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsNotOneOf<TEnum>(this aweXpect.Core.IThat<TEnum?> source, params TEnum?[] unexpected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsOneOf<TEnum>(this aweXpect.Core.IThat<TEnum?> source, System.Collections.Generic.IEnumerable<TEnum> expected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsOneOf<TEnum>(this aweXpect.Core.IThat<TEnum?> source, System.Collections.Generic.IEnumerable<TEnum?> expected)
+            where TEnum :  struct, System.Enum { }
+        public static aweXpect.Results.AndOrResult<TEnum?, aweXpect.Core.IThat<TEnum?>> IsOneOf<TEnum>(this aweXpect.Core.IThat<TEnum?> source, params TEnum?[] expected)
             where TEnum :  struct, System.Enum { }
     }
     public static class ThatNullableGuid
