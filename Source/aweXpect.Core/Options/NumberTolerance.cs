@@ -52,11 +52,20 @@ public class NumberTolerance<TNumber>(
 	///     <paramref name="expected" /> number.
 	/// </summary>
 	public bool IsWithinTolerance(TNumber? actual, TNumber? expected)
-		=> (actual, expected) switch
+	{
+		try
 		{
-			(null, null) => true,
-			(_, null) => false,
-			(null, _) => false,
-			(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance)
-		};
+			return (actual, expected) switch
+			{
+				(null, null) => true,
+				(_, null) => false,
+				(null, _) => false,
+				(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance),
+			};
+		}
+		catch (OverflowException)
+		{
+			return false;
+		}
+	}
 }
