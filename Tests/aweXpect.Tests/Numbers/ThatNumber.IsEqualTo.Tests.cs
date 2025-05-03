@@ -1360,5 +1360,218 @@ public sealed partial class ThatNumber
 				await That(Act).DoesNotThrow();
 			}
 		}
+
+		public sealed class OverflowTests
+		{
+			[Fact]
+			public async Task DecimalDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(decimal.MinValue).IsEqualTo(decimal.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that decimal.MinValue
+					             is equal to decimal.MaxValue,
+					             but it was decimal.MinValue
+					             """);
+			}
+
+			[Fact]
+			public async Task DoubleDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(double.MinValue).IsEqualTo(double.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that double.MinValue
+					             is equal to double.MaxValue,
+					             but it was double.MinValue
+					             """);
+			}
+
+			[Fact]
+			public async Task FloatDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(float.MinValue).IsEqualTo(float.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that float.MinValue
+					             is equal to float.MaxValue,
+					             but it was float.MinValue
+					             """);
+			}
+
+			[Fact]
+			public async Task IntDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(int.MinValue).IsEqualTo(int.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that int.MinValue
+					             is equal to 2147483647,
+					             but it was -2147483648
+					             """);
+			}
+
+			[Fact]
+			public async Task LongDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(long.MinValue).IsEqualTo(long.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that long.MinValue
+					             is equal to 9223372036854775807,
+					             but it was -9223372036854775808
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableDecimalDifferenceOverflow_ShouldFail()
+			{
+				decimal? minValue = decimal.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(decimal.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to decimal.MaxValue,
+					             but it was decimal.MinValue
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableDoubleDifferenceOverflow_ShouldFail()
+			{
+				double? minValue = double.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(double.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to double.MaxValue,
+					             but it was double.MinValue
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableFloatDifferenceOverflow_ShouldFail()
+			{
+				float? minValue = float.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(float.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to float.MaxValue,
+					             but it was float.MinValue
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableIntDifferenceOverflow_ShouldFail()
+			{
+				int? minValue = int.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(int.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to 2147483647,
+					             but it was -2147483648
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableLongDifferenceOverflow_ShouldFail()
+			{
+				long? minValue = long.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(long.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to 9223372036854775807,
+					             but it was -9223372036854775808
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableSbyteDifferenceOverflow_ShouldFail()
+			{
+				sbyte? minValue = sbyte.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(sbyte.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to 127,
+					             but it was -128
+					             """);
+			}
+
+			[Fact]
+			public async Task NullableShortDifferenceOverflow_ShouldFail()
+			{
+				short? minValue = short.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsEqualTo(short.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that minValue
+					             is equal to 32767,
+					             but it was -32768
+					             """);
+			}
+
+			[Fact]
+			public async Task SbyteDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(sbyte.MinValue).IsEqualTo(sbyte.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that sbyte.MinValue
+					             is equal to 127,
+					             but it was -128
+					             """);
+			}
+
+			[Fact]
+			public async Task ShortDifferenceOverflow_ShouldFail()
+			{
+				async Task Action()
+					=> await That(short.MinValue).IsEqualTo(short.MaxValue);
+
+				await That(Action).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that short.MinValue
+					             is equal to 32767,
+					             but it was -32768
+					             """);
+			}
+		}
 	}
 }

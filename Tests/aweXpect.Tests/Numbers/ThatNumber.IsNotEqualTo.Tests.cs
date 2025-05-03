@@ -428,11 +428,11 @@ public sealed partial class ThatNumber
 				byte? unexpected)
 			{
 				byte? subject = null;
-				byte? result = await That(subject).IsNotEqualTo(unexpected);
 
 				async Task Act()
-					=>
-						await That(Act).DoesNotThrow();
+					=> await That(subject).IsNotEqualTo(unexpected);
+
+				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
@@ -1106,6 +1106,149 @@ public sealed partial class ThatNumber
 					              is not equal to {Formatter.Format(unexpected)},
 					              but it was {Formatter.Format(subject)}
 					              """);
+			}
+		}
+
+		public sealed class OverflowTests
+		{
+			[Fact]
+			public async Task DecimalDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(decimal.MinValue).IsNotEqualTo(decimal.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task DoubleDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(double.MinValue).IsNotEqualTo(double.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task FloatDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(float.MinValue).IsNotEqualTo(float.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task IntDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(int.MinValue).IsNotEqualTo(int.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task LongDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(long.MinValue).IsNotEqualTo(long.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableDecimalDifferenceOverflow_ShouldSucceed()
+			{
+				decimal? minValue = decimal.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(decimal.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableDoubleDifferenceOverflow_ShouldSucceed()
+			{
+				double? minValue = double.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(double.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableFloatDifferenceOverflow_ShouldSucceed()
+			{
+				float? minValue = float.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(float.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableIntDifferenceOverflow_ShouldSucceed()
+			{
+				int? minValue = int.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(int.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableLongDifferenceOverflow_ShouldSucceed()
+			{
+				long? minValue = long.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(long.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableSbyteDifferenceOverflow_ShouldSucceed()
+			{
+				sbyte? minValue = sbyte.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(sbyte.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task NullableShortDifferenceOverflow_ShouldSucceed()
+			{
+				short? minValue = short.MinValue;
+
+				async Task Action()
+					=> await That(minValue).IsNotEqualTo(short.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task SbyteDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(sbyte.MinValue).IsNotEqualTo(sbyte.MaxValue);
+
+				await That(Action).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task ShortDifferenceOverflow_ShouldSucceed()
+			{
+				async Task Action()
+					=> await That(short.MinValue).IsNotEqualTo(short.MaxValue);
+
+				await That(Action).DoesNotThrow();
 			}
 		}
 	}

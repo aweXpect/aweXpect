@@ -35,9 +35,19 @@ public static partial class ThatNumber
 			return !IsFinite(expected);
 		}
 
-		return actual < expected
-			? expected - actual <= (tolerance ?? default(TNumber))
-			: actual - expected <= (tolerance ?? default(TNumber));
+		try
+		{
+			checked
+			{
+				return actual < expected
+					? expected - actual <= (tolerance ?? default(TNumber))
+					: actual - expected <= (tolerance ?? default(TNumber));
+			}
+		}
+		catch (OverflowException)
+		{
+			return false;
+		}
 	}
 #endif
 }
