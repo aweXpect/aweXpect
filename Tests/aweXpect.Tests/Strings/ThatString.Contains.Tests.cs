@@ -23,7 +23,7 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
-			public async Task WhenExpectedIsEmpty_ShouldFail()
+			public async Task WhenExpectedIsEmpty_ShouldThrowArgumentException()
 			{
 				string subject = "some text";
 				string expected = "";

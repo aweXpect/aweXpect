@@ -73,7 +73,7 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
-			public async Task WhenUnexpectedIsEmpty_ShouldFail()
+			public async Task WhenUnexpectedIsEmpty_ShouldThrowArgumentException()
 			{
 				string subject = "some text";
 				string unexpected = "";
