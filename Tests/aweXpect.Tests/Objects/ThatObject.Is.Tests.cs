@@ -163,6 +163,19 @@ public sealed partial class ThatObject
 			}
 
 			[Fact]
+			public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
+			{
+				object subject = new MyClass();
+
+				async Task Act()
+					=> await That(subject).Is(null);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("type").And
+					.WithMessage("The type cannot be null.").AsPrefix();
+			}
+
+			[Fact]
 			public async Task WhenTypeIsSubtype_ShouldSucceed()
 			{
 				object subject = new MyClass();

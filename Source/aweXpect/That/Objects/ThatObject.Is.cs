@@ -23,10 +23,12 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<T?, IThat<T?>> Is<T>(
 		this IThat<T?> source,
-		Type type)
+		Type? type)
 		where T : class
 		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint(it, grammars, type)),
+				=> new IsOfTypeConstraint(it, grammars,
+					// ReSharper disable once LocalizableElement
+					type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null."))),
 			source);
 
 	/// <summary>
@@ -43,10 +45,12 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<T?, IThat<T?>> IsNot<T>(
 		this IThat<T?> source,
-		Type type)
+		Type? type)
 		where T : class
 		=> new(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new IsOfTypeConstraint(it, grammars, type).Invert()),
+				=> new IsOfTypeConstraint(it, grammars,
+					// ReSharper disable once LocalizableElement
+					type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.")).Invert()),
 			source);
 
 	private sealed class IsOfTypeConstraint<TType>(string it, ExpectationGrammars grammars)
