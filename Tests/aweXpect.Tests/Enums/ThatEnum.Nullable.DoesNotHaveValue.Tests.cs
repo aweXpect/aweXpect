@@ -40,19 +40,14 @@ public sealed partial class ThatEnum
 				}
 
 				[Fact]
-				public async Task WhenSubjectIsNull_ShouldFail()
+				public async Task WhenSubjectIsNull_ShouldSucceed()
 				{
-					MyNumbers? subject = null;
+					MyColors? subject = null;
 
 					async Task Act()
-						=> await That(subject).DoesNotHaveValue(1L);
+						=> await That(subject).DoesNotHaveValue(2);
 
-					await That(Act).Throws<XunitException>()
-						.WithMessage("""
-						             Expected that subject
-						             does not have value 1,
-						             but it was <null>
-						             """);
+					await That(Act).DoesNotThrow();
 				}
 
 				[Fact]

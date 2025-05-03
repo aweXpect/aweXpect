@@ -65,6 +65,22 @@ public sealed partial class ThatEnum
 					await That(Act).DoesNotThrow();
 				}
 
+				[Fact]
+				public async Task WhenSubjectIsNull_ShouldFail()
+				{
+					MyColors? subject = null;
+
+					async Task Act()
+						=> await That(subject).HasFlag(MyColors.Blue);
+
+					await That(Act).Throws<XunitException>()
+						.WithMessage("""
+						             Expected that subject
+						             has flag Blue,
+						             but it was <null>
+						             """);
+				}
+
 				[Theory]
 				[InlineData(MyColors.Blue)]
 				[InlineData(MyColors.Green)]
