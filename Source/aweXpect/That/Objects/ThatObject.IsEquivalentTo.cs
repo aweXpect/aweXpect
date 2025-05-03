@@ -18,8 +18,7 @@ public static partial class ThatObject
 	public static AndOrResult<TSubject, IThat<TSubject>> IsEquivalentTo<TSubject, TExpected>(
 		this IThat<TSubject> source,
 		TExpected expected,
-		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null)
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();
@@ -43,8 +42,7 @@ public static partial class ThatObject
 	public static AndOrResult<TSubject, IThat<TSubject>> IsNotEquivalentTo<TSubject, TExpected>(
 		this IThat<TSubject> source,
 		TExpected unexpected,
-		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
-		[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null)
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();

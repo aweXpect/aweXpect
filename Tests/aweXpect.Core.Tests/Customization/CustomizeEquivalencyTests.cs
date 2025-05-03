@@ -25,7 +25,10 @@ public sealed class CustomizeEquivalencyTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that actual
-			             is equivalent to expected,
+			             is equivalent to [
+			               2,
+			               1
+			             ],
 			             but it was not:
 			               Element [0] differed:
 			                    Found: 1

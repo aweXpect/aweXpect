@@ -11,9 +11,7 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies the actual value to be the same as the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T?, IThat<T?>> IsSameAs<T>(this IThat<T?> source,
-		object? expected,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	public static AndOrResult<T?, IThat<T?>> IsSameAs<T>(this IThat<T?> source, object? expected)
 		where T : class
 		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
@@ -21,15 +19,13 @@ public static partial class ThatObject
 			source);
 
 	/// <summary>
-	///     Verifies the actual value to not be the same as the <paramref name="expected" /> value.
+	///     Verifies the actual value to not be the same as the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<T?, IThat<T?>> IsNotSameAs<T>(this IThat<T?> source,
-		object? expected,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	public static AndOrResult<T?, IThat<T?>> IsNotSameAs<T>(this IThat<T?> source, object? unexpected)
 		where T : class
 		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new IsSameAsConstraint<T>(it, grammars, expected).Invert()),
+					new IsSameAsConstraint<T>(it, grammars, unexpected).Invert()),
 			source);
 
 	private sealed class IsSameAsConstraint<T>(

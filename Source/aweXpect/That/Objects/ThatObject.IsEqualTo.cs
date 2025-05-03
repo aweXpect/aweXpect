@@ -14,8 +14,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static ObjectEqualityResult<object?, IThat<object?>, object?> IsEqualTo(
 		this IThat<object?> source,
-		object? expected,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		object? expected)
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
@@ -64,9 +63,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static ObjectEqualityResult<object?, IThat<object?>, object?> IsNotEqualTo(
 		this IThat<object?> source,
-		object? unexpected,
-		[CallerArgumentExpression("unexpected")]
-		string doNotPopulateThisValue = "")
+		object? unexpected)
 	{
 		ObjectEqualityOptions<object?> options = new();
 		return new ObjectEqualityResult<object?, IThat<object?>, object?>(
