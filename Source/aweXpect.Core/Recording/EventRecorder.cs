@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-#if NET8_0_OR_GREATER
+﻿#if NET8_0_OR_GREATER
 using System.Threading.Channels;
 #else
 using System.Threading;
 #endif
+using System;
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Recording;
 
@@ -55,7 +56,8 @@ internal sealed class EventRecorder(string eventName) : IDisposable
 		if (handler == null)
 		{
 			throw new NotSupportedException(
-				$"The {eventName} event contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}");
+					$"The {eventName} event contains too many parameters ({handlerType.GetParameters().Length}): {Formatter.Format(handlerType.GetParameters().Select(x => x.ParameterType))}")
+				.LogTrace();
 		}
 
 		eventInfo.AddEventHandler(subject.Target, handler);

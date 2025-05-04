@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using aweXpect.Core.Helpers;
 #if NET8_0_OR_GREATER
 using System.Threading.Channels;
 #endif
@@ -36,7 +37,8 @@ internal sealed class EventRecording<TSubject> : IEventRecording<TSubject>, IEve
 			EventInfo? @event = events.FirstOrDefault(x => x.Name == eventName);
 			if (@event == null)
 			{
-				throw new NotSupportedException($"Event {eventName} is not supported on {Formatter.Format(subject)}");
+				throw new NotSupportedException($"Event {eventName} is not supported on {Formatter.Format(subject)}")
+					.LogTrace();
 			}
 
 			recorder.Attach(new WeakReference(subject), @event);

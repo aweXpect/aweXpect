@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core.Helpers;
 using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace aweXpect.Options;
@@ -30,7 +31,8 @@ public class Quantifier
 		if (minimum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(minimum),
-				"The parameter 'minimum' must be non-negative");
+					"The parameter 'minimum' must be non-negative")
+				.LogTrace();
 		}
 
 		_minimum = minimum;
@@ -45,7 +47,8 @@ public class Quantifier
 		if (maximum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(maximum),
-				"The parameter 'maximum' must be non-negative");
+					"The parameter 'maximum' must be non-negative")
+				.LogTrace();
 		}
 
 		_minimum = null;
@@ -60,18 +63,21 @@ public class Quantifier
 		if (minimum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(minimum),
-				"The parameter 'minimum' must be non-negative");
+					"The parameter 'minimum' must be non-negative")
+				.LogTrace();
 		}
 
 		if (maximum < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(maximum),
-				"The parameter 'maximum' must be non-negative");
+					"The parameter 'maximum' must be non-negative")
+				.LogTrace();
 		}
 
 		if (minimum > maximum)
 		{
-			throw new ArgumentException("The parameter 'maximum' must be greater than or equal to 'minimum'");
+			throw new ArgumentException("The parameter 'maximum' must be greater than or equal to 'minimum'")
+				.LogTrace();
 		}
 
 		_minimum = minimum;
@@ -111,7 +117,8 @@ public class Quantifier
 		if (expected < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(expected),
-				"The parameter 'expected' must be non-negative");
+					"The parameter 'expected' must be non-negative")
+				.LogTrace();
 		}
 
 		_minimum = expected;

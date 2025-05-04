@@ -326,11 +326,13 @@ namespace aweXpect.Core.Sources
         public System.TimeSpan Duration { get; }
         public System.Exception? Exception { get; }
         public bool IsNull { get; }
+        public override string ToString() { }
     }
     public class DelegateValue<TValue> : aweXpect.Core.Sources.DelegateValue
     {
         public DelegateValue(in TValue? value, System.Exception? exception, System.TimeSpan duration, bool isNull = false) { }
         public TValue Value { get; }
+        public override string ToString() { }
     }
 }
 namespace aweXpect.Customization
@@ -338,6 +340,7 @@ namespace aweXpect.Customization
     public class AwexpectCustomization : aweXpect.Customization.IAwexpectCustomization
     {
         public AwexpectCustomization() { }
+        public aweXpect.Customization.CustomizationLifetime EnableTracing(aweXpect.Customization.ITraceWriter traceWriter) { }
         public aweXpect.Customization.AwexpectCustomization.EquivalencyCustomization Equivalency() { }
         public aweXpect.Customization.AwexpectCustomization.FormattingCustomization Formatting() { }
         public aweXpect.Customization.AwexpectCustomization.ReflectionCustomization Reflection() { }
@@ -418,6 +421,11 @@ namespace aweXpect.Customization
     {
         TValue Get();
         aweXpect.Customization.CustomizationLifetime Update(System.Func<TValue, TValue> update);
+    }
+    public interface ITraceWriter
+    {
+        void WriteException(System.Exception exception);
+        void WriteMessage(string message);
     }
     public class TestCancellation
     {

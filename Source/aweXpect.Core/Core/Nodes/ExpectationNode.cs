@@ -31,7 +31,8 @@ internal class ExpectationNode : Node
 		else
 		{
 			throw new InvalidOperationException(
-				"You have to specify how to combine the expectations! Use `And()` or `Or()` in between adding expectations.");
+					"You have to specify how to combine the expectations! Use `And()` or `Or()` in between adding expectations.")
+				.LogTrace();
 		}
 	}
 
@@ -65,7 +66,8 @@ internal class ExpectationNode : Node
 	/// <inheritdoc />
 	public override void AddNode(Node node, string? separator = null)
 		=> throw new NotSupportedException(
-			$"Don't specify the inner node for Expectation nodes directly. Use {nameof(AddMapping)}() instead!");
+				$"Don't specify the inner node for Expectation nodes directly. Use {nameof(AddMapping)}() instead!")
+			.LogTrace();
 
 	/// <summary>
 	///     Indicates, if the node is empty.
@@ -104,8 +106,9 @@ internal class ExpectationNode : Node
 		catch (Exception e) when (_constraint is not null)
 		{
 			throw new InvalidOperationException(
-				$"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}: {e.Message}",
-				e);
+					$"Error evaluating {Formatter.Format(_constraint.GetType())} constraint with value {Formatter.Format(value)}: {e.Message}",
+					e)
+				.LogTrace();
 		}
 
 		if (_inner != null)
@@ -116,7 +119,8 @@ internal class ExpectationNode : Node
 		}
 
 		return result ?? throw new InvalidOperationException(
-			$"The expectation node does not support {Formatter.Format(typeof(TValue))} with value {Formatter.Format(value)}");
+				$"The expectation node does not support {Formatter.Format(typeof(TValue))} with value {Formatter.Format(value)}")
+			.LogTrace();
 	}
 
 	/// <inheritdoc />

@@ -12,6 +12,19 @@ public class DelegateValue<TValue>(in TValue? value, Exception? exception, TimeS
 	///     The value of the delegate, if no exception was thrown.
 	/// </summary>
 	public TValue? Value { get; } = value;
+
+	/// <inheritdoc />
+	public override string ToString()
+	{
+		if (Exception == null)
+		{
+			return
+				$"delegate returning {Formatter.Format(typeof(TValue))} {Formatter.Format(Value)} in {Formatter.Format(Duration)}";
+		}
+
+		return
+			$"delegate returning {Formatter.Format(typeof(TValue))} throwing {Formatter.Format(Exception)} after {Formatter.Format(Duration)}";
+	}
 }
 
 /// <summary>
@@ -34,4 +47,17 @@ public class DelegateValue(Exception? exception, TimeSpan duration, bool isNull 
 	///     Flag, indicating if the delegate callback was <see langword="null" />.
 	/// </summary>
 	public bool IsNull { get; } = isNull;
+
+	/// <inheritdoc />
+	public override string ToString()
+	{
+		if (Exception == null)
+		{
+			return
+				$"delegate returning in {Formatter.Format(Duration)}";
+		}
+
+		return
+			$"delegate throwing {Formatter.Format(Exception)} after {Formatter.Format(Duration)}";
+	}
 }

@@ -11,6 +11,8 @@ public partial class AwexpectCustomization : IAwexpectCustomization
 {
 	private readonly AsyncLocal<CustomizationStore> _store = new();
 
+	internal static ITraceWriter? TraceWriter { get; private set; }
+
 	/// <inheritdoc cref="IAwexpectCustomization.Get{TValue}(string, TValue)" />
 	TValue IAwexpectCustomization.Get<TValue>(string key, TValue defaultValue)
 	{
@@ -31,6 +33,16 @@ public partial class AwexpectCustomization : IAwexpectCustomization
 		}
 
 		return _store.Value.Set(key, value);
+	}
+
+	/// <summary>
+	///     Enables capturing tracing information.
+	/// </summary>
+	public CustomizationLifetime EnableTracing(ITraceWriter traceWriter)
+	{
+		ITraceWriter? previousTraceWriter = TraceWriter;
+		TraceWriter = traceWriter;
+		return new CustomizationLifetime(() => TraceWriter = previousTraceWriter);
 	}
 
 	private sealed class CustomizationValue<TValue>(

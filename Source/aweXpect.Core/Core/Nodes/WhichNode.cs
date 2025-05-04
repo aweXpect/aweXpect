@@ -75,7 +75,8 @@ internal class WhichNode<TSource, TMember> : Node
 
 		if (_inner == null)
 		{
-			throw new InvalidOperationException("No inner node specified for the which node.");
+			throw new InvalidOperationException("No inner node specified for the which node.")
+				.LogTrace();
 		}
 
 		if (value is null || value is DelegateValue { IsNull: true, })
@@ -88,7 +89,8 @@ internal class WhichNode<TSource, TMember> : Node
 		if (value is not TSource typedValue)
 		{
 			throw new InvalidOperationException(
-				$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}");
+					$"The member type for the actual value in the which node did not match.{Environment.NewLine}     Found: {Formatter.Format(value.GetType())}{Environment.NewLine}  Expected: {Formatter.Format(typeof(TSource))}")
+				.LogTrace();
 		}
 
 		TMember? matchingValue;

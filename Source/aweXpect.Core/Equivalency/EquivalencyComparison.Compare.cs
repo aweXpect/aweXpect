@@ -4,11 +4,90 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using aweXpect.Core.Helpers;
 
 namespace aweXpect.Equivalency;
 
 public static partial class EquivalencyComparison
 {
+	private static bool CompareByValue<TActual, TExpected>(
+		[DisallowNull] TActual actual,
+		[DisallowNull] TExpected expected,
+		StringBuilder failureBuilder,
+		string memberPath,
+		MemberType memberType)
+	{
+		if (!actual.Equals(expected))
+		{
+			failureBuilder.AppendLine();
+			if (failureBuilder.Length > 2)
+			{
+				failureBuilder.AppendLine("and");
+			}
+
+			failureBuilder.Append("  ");
+			failureBuilder.Append(GetMemberPath(memberType, memberPath));
+			failureBuilder.AppendLine(" differed:");
+			failureBuilder.Append("       Found: ");
+			Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
+			failureBuilder.AppendLine().Append("    Expected: ");
+			Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
+			return false;
+		}
+
+		return true;
+	}
+
+	private static bool CompareNulls<TActual, TExpected>(TActual actual, TExpected expected,
+		StringBuilder failureBuilder, string memberPath, MemberType memberType)
+	{
+		if (actual is null && expected is null)
+		{
+			return true;
+		}
+
+		failureBuilder.AppendLine();
+		if (failureBuilder.Length > 2)
+		{
+			failureBuilder.AppendLine("and");
+		}
+
+		failureBuilder.Append("  ");
+		failureBuilder.Append(GetMemberPath(memberType, memberPath));
+		failureBuilder.Append(" was ");
+		Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
+		failureBuilder.Append(" instead of ");
+		Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
+		return false;
+	}
+
+	private static string ConcatMemberPath(string memberPath, string memberName)
+	{
+		if (string.IsNullOrEmpty(memberPath))
+		{
+			return memberName;
+		}
+
+		return $"{memberPath}.{memberName}";
+	}
+
+	private static string GetMemberPath(MemberType type, string memberPath)
+	{
+		if (string.IsNullOrEmpty(memberPath))
+		{
+			return "It";
+		}
+
+		return $"{type} {memberPath}";
+	}
+
+	private enum MemberType
+	{
+		Property,
+		Field,
+		Value,
+		Element,
+	}
 #pragma warning disable S3776 // https://rules.sonarsource.com/csharp/RSPEC-3776
 #pragma warning disable S107 // https://rules.sonarsource.com/csharp/RSPEC-107
 	private static bool Compare<TActual, TExpected>(
@@ -44,8 +123,9 @@ public static partial class EquivalencyComparison
 		catch (Exception exception)
 		{
 			throw new InvalidOperationException(
-				$"The equals method of {Formatter.Format(actual.GetType())} threw an {Formatter.Format(exception.GetType())}: {exception.Message}",
-				exception);
+					$"The equals method of {Formatter.Format(actual.GetType())} threw an {Formatter.Format(exception.GetType())}: {exception.Message}",
+					exception)
+				.LogTrace();
 		}
 
 		if (actual is IDictionary actualDictionary && expected is IDictionary expectedDictionary)
@@ -325,83 +405,4 @@ public static partial class EquivalencyComparison
 	}
 #pragma warning restore S107
 #pragma warning restore S3776
-
-	private static bool CompareByValue<TActual, TExpected>(
-		[DisallowNull] TActual actual,
-		[DisallowNull] TExpected expected,
-		StringBuilder failureBuilder,
-		string memberPath,
-		MemberType memberType)
-	{
-		if (!actual.Equals(expected))
-		{
-			failureBuilder.AppendLine();
-			if (failureBuilder.Length > 2)
-			{
-				failureBuilder.AppendLine("and");
-			}
-
-			failureBuilder.Append("  ");
-			failureBuilder.Append(GetMemberPath(memberType, memberPath));
-			failureBuilder.AppendLine(" differed:");
-			failureBuilder.Append("       Found: ");
-			Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
-			failureBuilder.AppendLine().Append("    Expected: ");
-			Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
-			return false;
-		}
-
-		return true;
-	}
-
-	private static bool CompareNulls<TActual, TExpected>(TActual actual, TExpected expected,
-		StringBuilder failureBuilder, string memberPath, MemberType memberType)
-	{
-		if (actual is null && expected is null)
-		{
-			return true;
-		}
-
-		failureBuilder.AppendLine();
-		if (failureBuilder.Length > 2)
-		{
-			failureBuilder.AppendLine("and");
-		}
-
-		failureBuilder.Append("  ");
-		failureBuilder.Append(GetMemberPath(memberType, memberPath));
-		failureBuilder.Append(" was ");
-		Formatter.Format(failureBuilder, actual, FormattingOptions.SingleLine);
-		failureBuilder.Append(" instead of ");
-		Formatter.Format(failureBuilder, expected, FormattingOptions.SingleLine);
-		return false;
-	}
-
-	private static string ConcatMemberPath(string memberPath, string memberName)
-	{
-		if (string.IsNullOrEmpty(memberPath))
-		{
-			return memberName;
-		}
-
-		return $"{memberPath}.{memberName}";
-	}
-
-	private static string GetMemberPath(MemberType type, string memberPath)
-	{
-		if (string.IsNullOrEmpty(memberPath))
-		{
-			return "It";
-		}
-
-		return $"{type} {memberPath}";
-	}
-
-	private enum MemberType
-	{
-		Property,
-		Field,
-		Value,
-		Element,
-	}
 }

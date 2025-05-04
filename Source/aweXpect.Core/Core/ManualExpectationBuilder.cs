@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core.Constraints;
 using aweXpect.Core.EvaluationContext;
+using aweXpect.Core.Helpers;
 using aweXpect.Core.Nodes;
 using aweXpect.Core.TimeSystem;
 
@@ -39,7 +40,8 @@ public class ManualExpectationBuilder<TValue>(
 		ITimeSystem timeSystem,
 		TimeSpan? timeout,
 		CancellationToken cancellationToken)
-		=> throw new NotSupportedException($"Use {nameof(IsMetBy)} for ManualExpectationBuilder!");
+		=> throw new NotSupportedException($"Use {nameof(IsMetBy)} for ManualExpectationBuilder!")
+			.LogTrace();
 
 	/// <inheritdoc cref="ExpectationBuilder.UpdateContexts(Action{ResultContexts})" />
 	public override ExpectationBuilder UpdateContexts(Action<ResultContexts> callback)
