@@ -11,7 +11,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		char value,
 		FormattingOptions? options = null)
-		=> $"'{value}'";
+		=> options?.IncludeType switch
+		{
+			true => $"char '{value}'",
+			_ => $"'{value}'",
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -23,6 +27,11 @@ public static partial class ValueFormatters
 		char value,
 		FormattingOptions? options = null)
 	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("char ");
+		}
+
 		stringBuilder.Append('\'');
 		stringBuilder.Append(value);
 		stringBuilder.Append('\'');
@@ -32,7 +41,7 @@ public static partial class ValueFormatters
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
 	/// </summary>
 	public static string Format(
-		this ValueFormatter _,
+		this ValueFormatter formatter,
 		char? value,
 		FormattingOptions? options = null)
 	{
@@ -41,7 +50,7 @@ public static partial class ValueFormatters
 			return ValueFormatter.NullString;
 		}
 
-		return $"'{value}'";
+		return Format(formatter, value.Value, options);
 	}
 
 	/// <summary>
@@ -60,8 +69,6 @@ public static partial class ValueFormatters
 			return;
 		}
 
-		stringBuilder.Append('\'');
-		stringBuilder.Append(value);
-		stringBuilder.Append('\'');
+		Format(formatter, stringBuilder, value.Value, options);
 	}
 }

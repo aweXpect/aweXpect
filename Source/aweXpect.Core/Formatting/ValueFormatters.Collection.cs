@@ -41,6 +41,12 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
+		if (options.IncludeType)
+		{
+			Format(Formatter, stringBuilder, value.GetType());
+			stringBuilder.Append(' ');
+		}
+
 		int maxCount = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
 		int count = maxCount;
 		stringBuilder.Append('[');
@@ -73,7 +79,10 @@ public static partial class ValueFormatters
 				break;
 			}
 
-			stringBuilder.Append(Format(formatter, v, options).Indent("  ", false));
+			stringBuilder.Append(Format(formatter, v, options with
+			{
+				IncludeType = false,
+			}).Indent("  ", false));
 		}
 
 		if (hasMoreValues)

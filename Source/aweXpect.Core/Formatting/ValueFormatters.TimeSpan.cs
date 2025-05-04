@@ -73,6 +73,11 @@ public static partial class ValueFormatters
 			return;
 		}
 
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("TimeSpan ");
+		}
+
 		TimeSpan absoluteValue = value.Value.Duration();
 		bool hasDays = absoluteValue.Days > 0;
 		bool hasHours = absoluteValue.Hours > 0;

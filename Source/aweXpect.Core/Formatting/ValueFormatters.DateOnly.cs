@@ -13,7 +13,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		DateOnly value,
 		FormattingOptions? options = null)
-		=> value.ToString("o");
+		=> options?.IncludeType switch
+		{
+			true => $"DateOnly {value.ToString("o")}",
+			_ => value.ToString("o"),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -24,7 +28,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		DateOnly value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value.ToString("o"));
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("DateOnly ");
+		}
+
+		stringBuilder.Append(value.ToString("o"));
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.

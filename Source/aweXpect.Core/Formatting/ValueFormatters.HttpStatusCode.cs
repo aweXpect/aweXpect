@@ -18,7 +18,11 @@ public static partial class ValueFormatters
 			return ValueFormatter.NullString;
 		}
 
-		return $"{(int)value} {value}";
+		return options?.IncludeType switch
+		{
+			true => $"HttpStatusCode {(int)value} {value}",
+			_ => $"{(int)value} {value}",
+		};
 	}
 
 	/// <summary>
@@ -35,6 +39,11 @@ public static partial class ValueFormatters
 		{
 			stringBuilder.Append(ValueFormatter.NullString);
 			return;
+		}
+
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("HttpStatusCode ");
 		}
 
 		stringBuilder.Append((int)value).Append(' ').Append(value);

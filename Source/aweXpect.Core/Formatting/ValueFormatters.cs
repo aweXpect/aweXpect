@@ -52,95 +52,103 @@ public static partial class ValueFormatters
 		switch (value)
 		{
 			case bool boolValue:
-				formatter.Format(stringBuilder, boolValue, options);
+				Format(formatter, stringBuilder, boolValue, options);
 				return;
 			case string stringValue:
-				formatter.Format(stringBuilder, stringValue, options);
+				Format(formatter, stringBuilder, stringValue, options);
 				return;
 			case char charValue:
-				formatter.Format(stringBuilder, charValue, options);
+				Format(formatter, stringBuilder, charValue, options);
 				return;
 			case Type typeValue:
-				formatter.Format(stringBuilder, typeValue, options);
+				Format(formatter, stringBuilder, typeValue, options);
 				return;
 			case IEnumerable enumerableValue:
-				formatter.Format(stringBuilder, enumerableValue, options);
+				Format(formatter, stringBuilder, enumerableValue, options);
 				return;
 			case HttpStatusCode httpStatusCodeValue:
-				formatter.Format(stringBuilder, httpStatusCodeValue, options);
+				Format(formatter, stringBuilder, httpStatusCodeValue, options);
 				return;
 			case DateTime dateTimeValue:
-				formatter.Format(stringBuilder, dateTimeValue, options);
+				Format(formatter, stringBuilder, dateTimeValue, options);
 				return;
 			case DateTimeOffset dateTimeOffsetValue:
-				formatter.Format(stringBuilder, dateTimeOffsetValue, options);
+				Format(formatter, stringBuilder, dateTimeOffsetValue, options);
 				return;
 			case TimeSpan timeSpanValue:
-				formatter.Format(stringBuilder, timeSpanValue, options);
+				Format(formatter, stringBuilder, timeSpanValue, options);
 				return;
 #if NET8_0_OR_GREATER
 			case DateOnly dateOnlyValue:
-				formatter.Format(stringBuilder, dateOnlyValue, options);
+				Format(formatter, stringBuilder, dateOnlyValue, options);
 				return;
 			case TimeOnly timeOnlyValue:
-				formatter.Format(stringBuilder, timeOnlyValue, options);
+				Format(formatter, stringBuilder, timeOnlyValue, options);
 				return;
 #endif
 			case Guid guidValue:
-				formatter.Format(stringBuilder, guidValue, options);
+				Format(formatter, stringBuilder, guidValue, options);
 				return;
 			case Enum enumValue:
-				formatter.Format(stringBuilder, enumValue, options);
+				Format(formatter, stringBuilder, enumValue, options);
 				return;
 			case double doubleValue:
-				formatter.Format(stringBuilder, doubleValue, options);
+				Format(formatter, stringBuilder, doubleValue, options);
 				return;
 			case float floatValue:
-				formatter.Format(stringBuilder, floatValue, options);
+				Format(formatter, stringBuilder, floatValue, options);
 				return;
 #if NET8_0_OR_GREATER
 			case Half halfValue:
-				formatter.Format(stringBuilder, halfValue, options);
+				Format(formatter, stringBuilder, halfValue, options);
 				return;
 #endif
 			case decimal decimalValue:
-				formatter.Format(stringBuilder, decimalValue, options);
+				Format(formatter, stringBuilder, decimalValue, options);
 				return;
 			case int intValue:
-				formatter.Format(stringBuilder, intValue, options);
+				Format(formatter, stringBuilder, intValue, options);
 				return;
 			case uint uintValue:
-				formatter.Format(stringBuilder, uintValue, options);
+				Format(formatter, stringBuilder, uintValue, options);
 				return;
 			case long longValue:
-				formatter.Format(stringBuilder, longValue, options);
+				Format(formatter, stringBuilder, longValue, options);
 				return;
 			case ulong ulongValue:
-				formatter.Format(stringBuilder, ulongValue, options);
+				Format(formatter, stringBuilder, ulongValue, options);
 				return;
 			case byte byteValue:
-				formatter.Format(stringBuilder, byteValue, options);
+				Format(formatter, stringBuilder, byteValue, options);
 				return;
 			case sbyte sbyteValue:
-				formatter.Format(stringBuilder, sbyteValue, options);
+				Format(formatter, stringBuilder, sbyteValue, options);
 				return;
 			case short shortValue:
-				formatter.Format(stringBuilder, shortValue, options);
+				Format(formatter, stringBuilder, shortValue, options);
 				return;
 			case ushort ushortValue:
-				formatter.Format(stringBuilder, ushortValue, options);
+				Format(formatter, stringBuilder, ushortValue, options);
 				return;
 			case nint nintValue:
-				formatter.Format(stringBuilder, nintValue, options);
+				Format(formatter, stringBuilder, nintValue, options);
 				return;
 			case nuint nuintValue:
-				formatter.Format(stringBuilder, nuintValue, options);
+				Format(formatter, stringBuilder, nuintValue, options);
 				return;
 		}
 
 		Type? valueType = value.GetType();
 		if (valueType.IsGenericType && valueType.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
 		{
+			if (options is not null)
+			{
+				options = options with
+				{
+					IncludeType = false,
+				};
+			}
+
 			object? key = valueType.GetProperty("Key")?.GetValue(value);
 			object? item = valueType.GetProperty("Value")?.GetValue(value);
 			stringBuilder.Append('[');

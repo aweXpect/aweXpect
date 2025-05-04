@@ -77,7 +77,7 @@ public static partial class ThatObject
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation, true));
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
@@ -141,7 +141,7 @@ public static partial class ThatObject
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(it).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation));
+			Formatter.Format(stringBuilder, Actual, FormattingOptions.Indented(indentation, true));
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)

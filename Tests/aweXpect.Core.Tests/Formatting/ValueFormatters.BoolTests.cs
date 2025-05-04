@@ -23,6 +23,22 @@ public partial class ValueFormatters
 		}
 
 		[Theory]
+		[InlineData(true, "bool True")]
+		[InlineData(false, "bool False")]
+		public async Task Booleans_WithType_ShouldHaveCapitalizedFirstLetter(bool value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
 		[InlineData(true, "True")]
 		[InlineData(false, "False")]
 		[InlineData(null, "<null>")]
@@ -33,6 +49,23 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value);
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
+		[InlineData(true, "bool True")]
+		[InlineData(false, "bool False")]
+		[InlineData(null, "<null>")]
+		public async Task NullableBooleans_WithType_ShouldHaveCapitalizedFirstLetter(bool? value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
 
 			await That(result).IsEqualTo(expectedResult);
 			await That(objectResult).IsEqualTo(expectedResult);

@@ -12,7 +12,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		DateTimeOffset value,
 		FormattingOptions? options = null)
-		=> value.ToString("o");
+		=> options?.IncludeType switch
+		{
+			true => $"DateTimeOffset {value:o}",
+			_ => value.ToString("o"),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -23,7 +27,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		DateTimeOffset value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value.ToString("o"));
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("DateTimeOffset ");
+		}
+
+		stringBuilder.Append(value.ToString("o"));
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.

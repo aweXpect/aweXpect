@@ -23,6 +23,22 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
+		public async Task NullableValue_WithType_ShouldAddSingleQuotes()
+		{
+			char? value = 'X';
+			string expectedResult = "char 'X'";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
 		public async Task Value_ShouldAddSingleQuotes()
 		{
 			char value = 'a';
@@ -32,6 +48,22 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value);
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Value_WithType_ShouldAddSingleQuotes()
+		{
+			char value = 'a';
+			string expectedResult = "char 'a'";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
 
 			await That(result).IsEqualTo(expectedResult);
 			await That(objectResult).IsEqualTo(expectedResult);

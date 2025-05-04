@@ -26,6 +26,24 @@ public partial class ValueFormatters
 		}
 
 		[Theory]
+		[InlineData(HttpStatusCode.OK, "HttpStatusCode 200 OK")]
+		[InlineData(HttpStatusCode.BadRequest, "HttpStatusCode 400 BadRequest")]
+		[InlineData(null, "<null>")]
+		public async Task Nullable_WithType_ShouldIncludeNumberAndDescription(HttpStatusCode? value,
+			string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
 		[InlineData(HttpStatusCode.OK, "200 OK")]
 		[InlineData(HttpStatusCode.BadRequest, "400 BadRequest")]
 		public async Task ShouldIncludeNumberAndDescription(HttpStatusCode value, string expectedResult)
@@ -54,6 +72,22 @@ public partial class ValueFormatters
 			await That(result).IsEqualTo(ValueFormatter.NullString);
 			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
+		}
+
+		[Theory]
+		[InlineData(HttpStatusCode.OK, "HttpStatusCode 200 OK")]
+		[InlineData(HttpStatusCode.BadRequest, "HttpStatusCode 400 BadRequest")]
+		public async Task WithType_ShouldIncludeNumberAndDescription(HttpStatusCode value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 	}
 }
