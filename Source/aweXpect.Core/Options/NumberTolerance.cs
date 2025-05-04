@@ -1,4 +1,5 @@
 ﻿using System;
+using aweXpect.Core.Helpers;
 #if NET8_0_OR_GREATER
 using System.Numerics;
 #endif
@@ -29,7 +30,8 @@ public class NumberTolerance<TNumber>(
 		if (tolerance.CompareTo(default) < 0)
 		{
 			throw new ArgumentOutOfRangeException(nameof(tolerance),
-				"Tolerance must be non-negative");
+					"Tolerance must be non-negative")
+				.LogTrace();
 		}
 
 		Tolerance = tolerance;

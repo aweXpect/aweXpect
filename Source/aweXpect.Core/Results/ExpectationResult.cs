@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
+using aweXpect.Core.Helpers;
 using aweXpect.Core.TimeSystem;
+using aweXpect.Customization;
 
 namespace aweXpect.Results;
 
@@ -95,7 +98,25 @@ public class ExpectationResult(ExpectationBuilder expectationBuilder) : Expectat
 
 		if (result.Outcome == Outcome.Success)
 		{
+			ITraceWriter? traceWriter = Customize.aweXpect.TraceWriter.Value;
+			if (traceWriter != null)
+			{
+				StringBuilder sb = new();
+				sb.Append("  Successfully verified that ");
+				sb.Append(result.TryGetValue(out IDescribableSubject? describableSubject)
+					? describableSubject.GetDescription()
+					: expectationBuilder.Subject);
+				sb.Append(' ');
+				result.AppendExpectation(sb);
+				traceWriter.WriteMessage(sb.ToString());
+			}
+
 			return;
+		}
+
+		if (result.Outcome == Outcome.Undecided)
+		{
+			Fail.Inconclusive(await expectationBuilder.FromFailure(result));
 		}
 
 		Fail.Test(await expectationBuilder.FromFailure(result));
@@ -199,6 +220,19 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 		{
 			case Outcome.Success
 				when result.TryGetValue(out TType? value):
+				ITraceWriter? traceWriter = Customize.aweXpect.TraceWriter.Value;
+				if (traceWriter != null)
+				{
+					StringBuilder sb = new();
+					sb.Append("  Successfully verified that ");
+					sb.Append(result.TryGetValue(out IDescribableSubject? describableSubject)
+						? describableSubject.GetDescription()
+						: expectationBuilder.Subject);
+					sb.Append(' ');
+					result.AppendExpectation(sb);
+					traceWriter.WriteMessage(sb.ToString());
+				}
+
 				return value;
 			case Outcome.Undecided:
 				Fail.Inconclusive(await expectationBuilder.FromFailure(result));
@@ -209,6 +243,7 @@ public class ExpectationResult<TType, TSelf>(ExpectationBuilder expectationBuild
 		}
 
 		throw new FailException(
-			$"The value in {Formatter.Format(result.GetType())} did not match expected type {Formatter.Format(typeof(TType))}.");
+				$"The value in {Formatter.Format(result.GetType())} did not match expected type {Formatter.Format(typeof(TType))}.")
+			.LogTrace();
 	}
 }

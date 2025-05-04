@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using aweXpect.Core.Adapters;
+using aweXpect.Core.Helpers;
 using aweXpect.Customization;
 
 namespace aweXpect.Core.Initialization;
@@ -42,7 +43,8 @@ internal static class AweXpectInitialization
 			catch (Exception ex)
 			{
 				throw new InvalidOperationException(
-					$"Could not instantiate test framework '{Formatter.Format(frameworkType)}'!", ex);
+						$"Could not instantiate test framework '{Formatter.Format(frameworkType)}'!", ex)
+					.LogTrace();
 			}
 		}
 
@@ -83,7 +85,8 @@ internal static class AweXpectInitialization
 					catch (Exception ex)
 					{
 						throw new InvalidOperationException(
-							$"Could not instantiate initializer '{Formatter.Format(initializerType)}'!", ex);
+								$"Could not instantiate initializer '{Formatter.Format(initializerType)}'!", ex)
+							.LogTrace();
 					}
 				}
 #pragma warning restore S2259
@@ -105,7 +108,17 @@ internal static class AweXpectInitialization
 		[DoesNotReturn]
 		[StackTraceHidden]
 		public void Skip(string message)
-			=> testFramework.Skip(message);
+		{
+			try
+			{
+				testFramework.Skip(message);
+			}
+			catch (Exception ex)
+			{
+				ex.LogTrace();
+				throw;
+			}
+		}
 
 		/// <summary>
 		///     Throws a framework-specific exception to indicate a failing unit test.
@@ -113,7 +126,17 @@ internal static class AweXpectInitialization
 		[DoesNotReturn]
 		[StackTraceHidden]
 		public void Fail(string message)
-			=> testFramework.Fail(message);
+		{
+			try
+			{
+				testFramework.Fail(message);
+			}
+			catch (Exception ex)
+			{
+				ex.LogTrace();
+				throw;
+			}
+		}
 
 		/// <summary>
 		///     Throws a framework-specific exception to indicate an inconclusive unit test.
@@ -121,7 +144,17 @@ internal static class AweXpectInitialization
 		[DoesNotReturn]
 		[StackTraceHidden]
 		public void Inconclusive(string message)
-			=> testFramework.Inconclusive(message);
+		{
+			try
+			{
+				testFramework.Inconclusive(message);
+			}
+			catch (Exception ex)
+			{
+				ex.LogTrace();
+				throw;
+			}
+		}
 	}
 
 	private sealed class FallbackTestFramework : ITestFrameworkAdapter
