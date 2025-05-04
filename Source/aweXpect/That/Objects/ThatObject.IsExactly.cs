@@ -94,7 +94,11 @@ public static partial class ThatObject
 		public ConstraintResult IsMetBy(object? actual)
 		{
 			Actual = actual;
-			Outcome = actual?.GetType() == type ? Outcome.Success : Outcome.Failure;
+			Outcome = actual?.GetType() == type ||
+			          type.IsGenericTypeDefinition && actual?.GetType().IsGenericType == true &&
+			          actual.GetType().GetGenericTypeDefinition() == type
+				? Outcome.Success
+				: Outcome.Failure;
 			return this;
 		}
 

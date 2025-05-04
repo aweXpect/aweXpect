@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Tests;
+﻿using System.Collections.Generic;
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatObject
 {
@@ -240,6 +242,49 @@ public sealed partial class ThatObject
 					=> await That(subject).IsExactly(typeof(MyClass));
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithMatchingOpenGenericInterfaceType_ShouldFail()
+			{
+				List<string> subject = new();
+
+				async Task Act()
+					=> await That(subject).IsExactly(typeof(IList<>));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is exactly type IList<>,
+					             but it was []
+					             """);
+			}
+
+			[Fact]
+			public async Task WithMatchingOpenGenericType_ShouldSucceed()
+			{
+				List<string> subject = new();
+
+				async Task Act()
+					=> await That(subject).IsExactly(typeof(List<>));
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
+			public async Task WithNotMatchingOpenGenericInterfaceType_ShouldFail()
+			{
+				List<string> subject = new();
+
+				async Task Act()
+					=> await That(subject).IsExactly(typeof(IDictionary<,>));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is exactly type IDictionary<, >,
+					             but it was []
+					             """);
 			}
 		}
 	}
