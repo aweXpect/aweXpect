@@ -178,7 +178,7 @@ public sealed partial class ThatObject
 				object subject = new MyClass();
 
 				async Task Act()
-					=> await That(subject).IsExactly(null);
+					=> await That(subject).IsExactly(null!);
 
 				await That(Act).Throws<ArgumentNullException>()
 					.WithParamName("type").And
