@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
-      {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          167.02554147584098,
           162.11072840009416,
           163.15415088335672,
           169.83083828857966,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           162.08096432685852,
           207.0191752910614,
           178.9766370455424,
-          173.4129153398367
+          173.4129153398367,
+          190.90324578285217
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          248.07671928405762,
           240.6158151967185,
           237.84551973342894,
           256.0753515788487,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           231.61853501001994,
           238.91562185968672,
           240.67592266627722,
-          234.85438110033672
+          234.85438110033672,
+          240.06441246668498
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          923.9799948472244,
           885.0155139287313,
           960.5610146840413,
           946.9108399073283,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           907.845147005717,
           933.6279779161725,
           896.281517301287,
-          879.1422638893127
+          879.1422638893127,
+          940.1296917597452
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
-      {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          287970.2119466146,
           276222.89306640625,
           279415.3660982572,
           300501.7185058594,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           275634.4102608817,
           278383.95852864586,
           284726.32170758926,
-          276890.0346304086
+          276890.0346304086,
+          283532.1356282552
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1202,7 +1202,7 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
-          284980
+          284932
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2227621.3916666666,
           2166723.4344951925,
           2191280.552604167,
           2165885.7114583333,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2194071.428125,
           2097926.244140625,
           2189250.2376302085,
-          2189006.81640625
+          2189006.81640625,
+          2218366.5223958334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          676650.402483259,
           669895.7610677084,
           685731.1853515625,
           678218.3104817708,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           662367.9934645433,
           684898.1748046875,
           682591.1339192708,
-          655609.3125
+          655609.3125,
+          677288.8535807292
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1408,8 +1408,8 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866777,
-          866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
       {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          318.3793118476868,
           294.3728154727391,
           301.3979596069881,
           312.61072807312013,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           313.86700930962195,
           327.65055929819744,
           322.35498600006105,
-          319.01773500442505
+          319.01773500442505,
+          344.12992871602376
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          491.5830592473348,
           488.0484597342355,
           573.459484799703,
           511.79366152627125,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           472.7895427385966,
           472.28804372151694,
           464.2729692776998,
-          476.44061388288225
+          476.44061388288225,
+          477.4883343378703
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          16889.01275431315,
           14700.711894444057,
           15503.565374755859,
           15001.203969319662,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14170.736137898763,
           15124.549154663086,
           14669.320938110352,
-          17908.42039388021
+          17908.42039388021,
+          15853.13842976888
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
-      {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          198.29120249407632,
           195.46890456859882,
           235.43419138590494,
           202.78552311261495,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           196.53526055018108,
           203.7640518591954,
           212.51391885961806,
-          209.56310594876607
+          209.56310594876607,
+          207.242883511952
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          243.78727032343548,
           237.879097366333,
           251.7869842529297,
           254.49343224934168,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           236.53758862813314,
           240.35454528672355,
           243.04447610037667,
-          240.5249119758606
+          240.5249119758606,
+          237.28448702494305
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1252.336823096642,
           1229.3176584879557,
           1261.1004776000977,
           1221.843351872762,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1223.8121726989746,
           1181.904225894383,
           1245.2421039853778,
-          1249.0305711110434
+          1249.0305711110434,
+          1214.6129182668833
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
-      {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          334.1007035891215,
           310.067596244812,
           400.01151927312213,
           328.8593104680379,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           330.3369025502886,
           312.1214802265167,
           322.26248404184975,
-          333.021638806661
+          333.021638806661,
+          323.4944691998618
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          484.86786600748695,
           449.47659437473004,
           471.0718896865845,
           483.3842655590602,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           473.49254035949707,
           466.9854555130005,
           471.3781625307523,
-          468.82323525746665
+          468.82323525746665,
+          465.3824154218038
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1333.1742518107096,
           1344.591949735369,
           1297.6393529256186,
           1288.7011830647787,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1293.8258757591248,
           1368.5393503824869,
           1308.4046480814616,
-          1400.1093870309683
+          1400.1093870309683,
+          1291.972287750244
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
-      {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1143.2706895192464,
           1110.1784766060966,
           1061.209801864624,
           1068.232519276937,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1095.1651114145914,
           1065.5912098517786,
           1137.932123184204,
-          1111.9980724879674
+          1111.9980724879674,
+          1131.4874315897623
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1295.60396194458,
           1241.3094042264497,
           1280.5874989373344,
           1295.2539573396955,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1238.2117856343586,
           1275.9561566670736,
           1254.241219584147,
-          1349.4964748382567
+          1349.4964748382567,
+          1326.1594444274901
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2848.0084948221843,
           2843.5196779886883,
           2814.9921308664175,
           2886.719512939453,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2813.879779052734,
           2892.6376848856607,
           2838.5192807515464,
-          2957.531360880534
+          2957.531360880534,
+          2846.073918206351
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "aad9bc45395204d3f736bea2ef1a2f04f79a40a9",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 31 11:08:16 2025 \u002B0200",
-        "message": "build(deps): bump TUnit.Assertions from 0.18.60 to 0.19.32 in the tunit group (#487)"
-      },
-      {
         "sha": "396bfd6d2c32a76fe6d3d5f5c43c13ae2cb4b645",
         "author": "Valentin Breu\u00DF",
         "date": "Mon Mar 31 12:33:06 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
-      "aad9bc45",
       "396bfd6d",
       "158a233e",
       "27bfcfce",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1161.8420987447103,
           1193.232441075643,
           1138.4773532867432,
           1140.4709837777275,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1193.5822503407796,
           1119.3546980539957,
           1255.3160134829009,
-          1165.7036774953206
+          1165.7036774953206,
+          1197.7879957471575
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          150208.15927734374,
           149516.11694335938,
           149107.68327985491,
           151502.0056640625,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           152270.59652944712,
           152414.53016075722,
           150932.24428013392,
-          152087.92163085938
+          152087.92163085938,
+          152802.60944010416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          64324,
           63788,
           63788,
           63788,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           64323,
           63787,
           64323,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4835.739166259766,
           4697.371419270833,
           4661.493729727609,
           4576.999457804362,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4636.246869600736,
           4764.200469462076,
           4592.987258911133,
-          4771.235330200196
+          4771.235330200196,
+          4734.016973767962
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
