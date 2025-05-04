@@ -23,7 +23,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<T?, IThat<T?>> Is<T>(
 		this IThat<T?> source,
-		Type? type)
+		Type type)
 		where T : class
 	{
 		// ReSharper disable once LocalizableElement
@@ -47,7 +47,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<T?, IThat<T?>> IsNot<T>(
 		this IThat<T?> source,
-		Type? type)
+		Type type)
 		where T : class
 	{
 		// ReSharper disable once LocalizableElement

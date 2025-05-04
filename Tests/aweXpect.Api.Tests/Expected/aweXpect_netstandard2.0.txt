@@ -744,7 +744,7 @@ namespace aweXpect
     public static class ThatObject
     {
         public static aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<object?>> Is<TType>(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> Is<T>(this aweXpect.Core.IThat<T?> source, System.Type? type)
+        public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> Is<T>(this aweXpect.Core.IThat<T?> source, System.Type type)
             where T :  class { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>, object?> IsEqualTo(this aweXpect.Core.IThat<object?> source, object? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<T, aweXpect.Core.IThat<T>, T> IsEqualTo<T>(this aweXpect.Core.IThat<T> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
@@ -752,10 +752,10 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>, T?> IsEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
             where T :  struct { }
         public static aweXpect.Results.AndOrResult<TSubject, aweXpect.Core.IThat<TSubject>> IsEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected expected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsExactly(this aweXpect.Core.IThat<object?> source, System.Type? type) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrWhoseResult<TType, aweXpect.Core.IThat<object?>> IsExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNot<TType>(this aweXpect.Core.IThat<object?> source) { }
-        public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNot<T>(this aweXpect.Core.IThat<T?> source, System.Type? type)
+        public static aweXpect.Results.AndOrResult<T?, aweXpect.Core.IThat<T?>> IsNot<T>(this aweXpect.Core.IThat<T?> source, System.Type type)
             where T :  class { }
         public static aweXpect.Results.ObjectEqualityResult<object?, aweXpect.Core.IThat<object?>, object?> IsNotEqualTo(this aweXpect.Core.IThat<object?> source, object? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.Results.ObjectEqualityResult<T, aweXpect.Core.IThat<T>, T> IsNotEqualTo<T>(this aweXpect.Core.IThat<T> source, T? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
@@ -763,7 +763,7 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<T?, aweXpect.Core.IThat<T?>, T?> IsNotEqualTo<T>(this aweXpect.Core.IThat<T?> source, T? unexpected, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
             where T :  struct { }
         public static aweXpect.Results.AndOrResult<TSubject, aweXpect.Core.IThat<TSubject>> IsNotEquivalentTo<TSubject, TExpected>(this aweXpect.Core.IThat<TSubject> source, TExpected unexpected, System.Func<aweXpect.Equivalency.EquivalencyOptions<TExpected>, aweXpect.Equivalency.EquivalencyOptions>? options = null, [System.Runtime.CompilerServices.CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "") { }
-        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly(this aweXpect.Core.IThat<object?> source, System.Type? type) { }
+        public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly(this aweXpect.Core.IThat<object?> source, System.Type type) { }
         public static aweXpect.Results.AndOrResult<object?, aweXpect.Core.IThat<object?>> IsNotExactly<TType>(this aweXpect.Core.IThat<object?> source) { }
         public static aweXpect.Results.AndOrResult<T, aweXpect.Core.IThat<T?>> IsNotNull<T>(this aweXpect.Core.IThat<T?> source)
             where T :  class { }
