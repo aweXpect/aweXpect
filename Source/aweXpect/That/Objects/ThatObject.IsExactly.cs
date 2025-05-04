@@ -22,7 +22,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<object?, IThat<object?>> IsExactly(
 		this IThat<object?> source,
-		Type? type)
+		Type type)
 	{
 		// ReSharper disable once LocalizableElement
 		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
@@ -45,7 +45,7 @@ public static partial class ThatObject
 	/// </summary>
 	public static AndOrResult<object?, IThat<object?>> IsNotExactly(
 		this IThat<object?> source,
-		Type? type)
+		Type type)
 	{
 		// ReSharper disable once LocalizableElement
 		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
