@@ -6,7 +6,7 @@ namespace aweXpect.Core.Tests.Results;
 
 public class AndOrWhichResultTests
 {
-	[Fact(Skip="TODO Reactivate after next update")]
+	[Fact]
 	public async Task MultipleWhose_ShouldAllowChaining()
 	{
 		MyClass subject = new();
