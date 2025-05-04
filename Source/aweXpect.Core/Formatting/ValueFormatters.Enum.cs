@@ -18,6 +18,11 @@ public static partial class ValueFormatters
 			return ValueFormatter.NullString;
 		}
 
+		if (options?.IncludeType == true)
+		{
+			return $"{Format(formatter, value.GetType())} {value}";
+		}
+
 		return value.ToString();
 	}
 
@@ -37,6 +42,12 @@ public static partial class ValueFormatters
 		}
 		else
 		{
+			if (options?.IncludeType == true)
+			{
+				Format(formatter, stringBuilder, value.GetType());
+				stringBuilder.Append(' ');
+			}
+
 			stringBuilder.Append(value);
 		}
 	}

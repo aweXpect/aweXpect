@@ -10,13 +10,30 @@ public partial class ValueFormatters
 		[InlineData(Dummy.Foo, "Foo")]
 		[InlineData(Dummy.Bar, "Bar")]
 		[InlineData(null, "<null>")]
-		public async Task NullableShouldUseStringRepresentation(Dummy? value, string expectedResult)
+		public async Task Nullable_ShouldUseStringRepresentation(Dummy? value, string expectedResult)
 		{
 			StringBuilder sb = new();
 
 			string result = Formatter.Format(value);
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
+		[InlineData(Dummy.Foo, "ValueFormatters.EnumTests.Dummy Foo")]
+		[InlineData(Dummy.Bar, "ValueFormatters.EnumTests.Dummy Bar")]
+		[InlineData(null, "<null>")]
+		public async Task Nullable_WithType_ShouldUseStringRepresentation(Dummy? value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
 
 			await That(result).IsEqualTo(expectedResult);
 			await That(objectResult).IsEqualTo(expectedResult);
@@ -52,6 +69,22 @@ public partial class ValueFormatters
 			await That(result).IsEqualTo(ValueFormatter.NullString);
 			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
+		}
+
+		[Theory]
+		[InlineData(Dummy.Foo, "ValueFormatters.EnumTests.Dummy Foo")]
+		[InlineData(Dummy.Bar, "ValueFormatters.EnumTests.Dummy Bar")]
+		public async Task WithType_ShouldUseStringRepresentation(Dummy value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
 		public enum Dummy

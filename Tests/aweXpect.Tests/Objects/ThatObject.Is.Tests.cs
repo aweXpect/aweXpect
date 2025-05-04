@@ -254,7 +254,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is type IDictionary<, >,
-					             but it was []
+					             but it was List<string> []
 					             """);
 			}
 		}

@@ -23,7 +23,7 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
-		public async Task NullableEmpty_ShouldUseDefaultFormat()
+		public async Task Nullable_Empty_ShouldUseDefaultFormat()
 		{
 			Guid? value = Guid.Empty;
 			string expectedResult = "00000000-0000-0000-0000-000000000000";
@@ -39,7 +39,7 @@ public partial class ValueFormatters
 		}
 
 		[Fact]
-		public async Task NullableShouldUseRoundtripFormat()
+		public async Task Nullable_ShouldUseRoundtripFormat()
 		{
 			Guid? value = Guid.NewGuid();
 			string? expectedResult = value.ToString();
@@ -48,6 +48,22 @@ public partial class ValueFormatters
 			string result = Formatter.Format(value);
 			string objectResult = Formatter.Format((object?)value);
 			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Nullable_WithType_ShouldUseRoundtripFormat()
+		{
+			Guid? value = Guid.NewGuid();
+			string expectedResult = $"Guid {value.ToString()}";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
 
 			await That(result).IsEqualTo(expectedResult);
 			await That(objectResult).IsEqualTo(expectedResult);
@@ -83,6 +99,22 @@ public partial class ValueFormatters
 			await That(result).IsEqualTo(ValueFormatter.NullString);
 			await That(objectResult).IsEqualTo(ValueFormatter.NullString);
 			await That(sb.ToString()).IsEqualTo(ValueFormatter.NullString);
+		}
+
+		[Fact]
+		public async Task WithType_ShouldUseRoundtripFormat()
+		{
+			Guid value = Guid.NewGuid();
+			string expectedResult = $"Guid {value.ToString()}";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 	}
 }

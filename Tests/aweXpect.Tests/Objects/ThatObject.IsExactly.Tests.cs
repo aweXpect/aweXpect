@@ -256,7 +256,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is exactly type IList<>,
-					             but it was []
+					             but it was List<string> []
 					             """);
 			}
 
@@ -283,7 +283,7 @@ public sealed partial class ThatObject
 					.WithMessage("""
 					             Expected that subject
 					             is exactly type IDictionary<, >,
-					             but it was []
+					             but it was List<string> []
 					             """);
 			}
 		}

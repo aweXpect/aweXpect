@@ -15,7 +15,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		byte value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"byte {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -26,7 +30,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		byte value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("byte ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -70,7 +81,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		sbyte value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"sbyte {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -81,7 +96,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		sbyte value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("sbyte ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -125,7 +147,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		short value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"short {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -136,7 +162,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		short value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("short ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -180,7 +213,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		ushort value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"ushort {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -191,7 +228,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		ushort value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("ushort ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -235,7 +279,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		int value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"int {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -246,7 +294,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		int value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("int ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -290,7 +345,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		uint value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"uint {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -301,7 +360,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		uint value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("uint ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -345,7 +411,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		long value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"long {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -356,7 +426,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		long value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("long ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -400,7 +477,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		ulong value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"ulong {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -411,7 +492,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		ulong value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("ulong ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -455,13 +543,18 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		float value,
 		FormattingOptions? options = null)
-		=> value switch
+		=> (options?.IncludeType, value) switch
 		{
-			float.NegativeInfinity => "-\u221e",
-			float.PositiveInfinity => "+\u221e",
-			float.MinValue => "float.MinValue",
-			float.MaxValue => "float.MaxValue",
-			_ => value.ToString(CultureInfo.InvariantCulture)
+			(true, float.NegativeInfinity) => "float -\u221e",
+			(true, float.PositiveInfinity) => "float +\u221e",
+			(true, float.MinValue) => "float.MinValue",
+			(true, float.MaxValue) => "float.MaxValue",
+			(true, _) => $"float {value.ToString(CultureInfo.InvariantCulture)}",
+			(_, float.NegativeInfinity) => "-\u221e",
+			(_, float.PositiveInfinity) => "+\u221e",
+			(_, float.MinValue) => "float.MinValue",
+			(_, float.MaxValue) => "float.MaxValue",
+			(_, _) => value.ToString(CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
@@ -517,13 +610,18 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		double value,
 		FormattingOptions? options = null)
-		=> value switch
+		=> (options?.IncludeType, value) switch
 		{
-			double.NegativeInfinity => "-\u221e",
-			double.PositiveInfinity => "+\u221e",
-			double.MinValue => "double.MinValue",
-			double.MaxValue => "double.MaxValue",
-			_ => value.ToString(CultureInfo.InvariantCulture)
+			(true, double.NegativeInfinity) => "double -\u221e",
+			(true, double.PositiveInfinity) => "double +\u221e",
+			(true, double.MinValue) => "double.MinValue",
+			(true, double.MaxValue) => "double.MaxValue",
+			(true, _) => $"double {value.ToString(CultureInfo.InvariantCulture)}",
+			(_, double.NegativeInfinity) => "-\u221e",
+			(_, double.PositiveInfinity) => "+\u221e",
+			(_, double.MinValue) => "double.MinValue",
+			(_, double.MaxValue) => "double.MaxValue",
+			(_, _) => value.ToString(CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
@@ -583,12 +681,17 @@ public static partial class ValueFormatters
 	{
 		if (Half.IsNegativeInfinity(value))
 		{
-			return "-\u221e";
+			return options?.IncludeType == true ? "Half -\u221e" : "-\u221e";
 		}
 
 		if (Half.IsPositiveInfinity(value))
 		{
-			return "+\u221e";
+			return options?.IncludeType == true ? "Half +\u221e" : "+\u221e";
+		}
+
+		if (options?.IncludeType == true)
+		{
+			return $"Half {value.ToString(CultureInfo.InvariantCulture)}";
 		}
 
 		return value.ToString(CultureInfo.InvariantCulture);
@@ -654,11 +757,14 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		decimal value,
 		FormattingOptions? options = null)
-		=> value switch
+		=> (options?.IncludeType, value) switch
 		{
-			decimal.MinValue => "decimal.MinValue",
-			decimal.MaxValue => "decimal.MaxValue",
-			_ => value.ToString(CultureInfo.InvariantCulture)
+			(true, decimal.MinValue) => "decimal.MinValue",
+			(true, decimal.MaxValue) => "decimal.MaxValue",
+			(true, _) => $"decimal {value.ToString(CultureInfo.InvariantCulture)}",
+			(_, decimal.MinValue) => "decimal.MinValue",
+			(_, decimal.MaxValue) => "decimal.MaxValue",
+			(_, _) => value.ToString(CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
@@ -714,7 +820,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		nint value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"nint {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -725,7 +835,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		nint value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("nint ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
@@ -769,7 +886,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		nuint value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"nuint {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -780,7 +901,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		nuint value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("nuint ");
+		}
+		
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.

@@ -18,7 +18,10 @@ public static partial class ValueFormatters
 		else if (HasDefaultToStringImplementation(value))
 		{
 			context ??= new FormattingContext();
-			WriteTypeAndMemberValues(value, stringBuilder, options, context);
+			WriteTypeAndMemberValues(value, stringBuilder, options with
+			{
+				IncludeType = false,
+			}, context);
 		}
 		else if (options.UseLineBreaks)
 		{

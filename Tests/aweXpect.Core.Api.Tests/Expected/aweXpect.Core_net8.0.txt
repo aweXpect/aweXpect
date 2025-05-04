@@ -612,11 +612,14 @@ namespace aweXpect.Formatting
     }
     public class FormattingOptions : System.IEquatable<aweXpect.Formatting.FormattingOptions>
     {
-        public string Indentation { get; }
-        public bool UseLineBreaks { get; }
+        public FormattingOptions() { }
+        public bool IncludeType { get; init; }
+        public string Indentation { get; init; }
+        public bool UseLineBreaks { get; init; }
         public static aweXpect.Formatting.FormattingOptions MultipleLines { get; }
         public static aweXpect.Formatting.FormattingOptions SingleLine { get; }
-        public static aweXpect.Formatting.FormattingOptions Indented(string? indentation = null) { }
+        public static aweXpect.Formatting.FormattingOptions WithType { get; }
+        public static aweXpect.Formatting.FormattingOptions Indented(string? indentation = null, bool includeType = false) { }
     }
     public interface IValueFormatter
     {
@@ -641,7 +644,6 @@ namespace aweXpect.Formatting
         public static string Format(this aweXpect.Formatting.ValueFormatter _, bool value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, byte value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, char value, aweXpect.Formatting.FormattingOptions? options = null) { }
-        public static string Format(this aweXpect.Formatting.ValueFormatter _, char? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, decimal value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, double value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter _, float value, aweXpect.Formatting.FormattingOptions? options = null) { }
@@ -667,6 +669,7 @@ namespace aweXpect.Formatting
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, System.UIntPtr? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, bool? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, byte? value, aweXpect.Formatting.FormattingOptions? options = null) { }
+        public static string Format(this aweXpect.Formatting.ValueFormatter formatter, char? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, decimal? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, double? value, aweXpect.Formatting.FormattingOptions? options = null) { }
         public static string Format(this aweXpect.Formatting.ValueFormatter formatter, float? value, aweXpect.Formatting.FormattingOptions? options = null) { }

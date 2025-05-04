@@ -670,5 +670,457 @@ public partial class ValueFormatters
 			await That(objectResult).IsEqualTo(expectedResult);
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
+		
+		[Fact]
+		public async Task Numbers_WithType_Byte_ShouldReturnExpectedValue()
+		{
+			byte value = 3;
+			string expectedResult = "byte 3";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Decimal_ShouldReturnExpectedValue()
+		{
+			decimal value = new(11.3);
+			string expectedResult = "decimal 11.3";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Double_ShouldReturnExpectedValue()
+		{
+			double value = 10.2;
+			string expectedResult = "double 10.2";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+#if NET8_0_OR_GREATER
+		[Fact]
+		public async Task Numbers_WithType_Half_ShouldReturnExpectedValue()
+		{
+			Half value = (Half)11.3;
+			string expectedResult = "Half 11.3";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+#endif
+
+		[Fact]
+		public async Task Numbers_WithType_Int16_ShouldReturnExpectedValue()
+		{
+			short value = -5;
+			string expectedResult = "short -5";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Int32_ShouldReturnExpectedValue()
+		{
+			int value = -1;
+			string expectedResult = "int -1";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Int64_ShouldReturnExpectedValue()
+		{
+			long value = -7;
+			string expectedResult = "long -7";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Nint_ShouldReturnExpectedValue()
+		{
+			nint value = -123;
+			string expectedResult = "nint -123";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Nuint_ShouldReturnExpectedValue()
+		{
+			nuint value = 123;
+			string expectedResult = "nuint 123";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableByte_ShouldReturnExpectedValue()
+		{
+			byte? value = 30;
+			string expectedResult = "byte 30";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableDecimal_ShouldReturnExpectedValue()
+		{
+			decimal? value = new(11.03);
+			string expectedResult = "decimal 11.03";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableDouble_ShouldReturnExpectedValue()
+		{
+			double? value = 10.02;
+			string expectedResult = "double 10.02";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+#if NET8_0_OR_GREATER
+		[Fact]
+		public async Task Numbers_WithType_NullableHalf_ShouldReturnExpectedValue()
+		{
+			Half? value = (Half)11.03;
+			string expectedResult = "Half 11.03";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+#endif
+
+		[Fact]
+		public async Task Numbers_WithType_NullableInt16_ShouldReturnExpectedValue()
+		{
+			short? value = -50;
+			string expectedResult = "short -50";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableInt32_ShouldReturnExpectedValue()
+		{
+			int? value = -10;
+			string expectedResult = "int -10";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableInt64_ShouldReturnExpectedValue()
+		{
+			long? value = -70;
+			string expectedResult = "long -70";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableNint_ShouldReturnExpectedValue()
+		{
+			nint? value = -123;
+			string expectedResult = "nint -123";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableNuint_ShouldReturnExpectedValue()
+		{
+			nuint? value = 123;
+			string expectedResult = "nuint 123";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableSByte_ShouldReturnExpectedValue()
+		{
+			sbyte? value = -40;
+			string expectedResult = "sbyte -40";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableSingle_ShouldReturnExpectedValue()
+		{
+			float? value = 9.01F;
+			string expectedResult = "float 9.01";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableUInt16_ShouldReturnExpectedValue()
+		{
+			ushort? value = 60;
+			string expectedResult = "ushort 60";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableUInt32_ShouldReturnExpectedValue()
+		{
+			uint? value = 20;
+			string expectedResult = "uint 20";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_NullableUInt64_ShouldReturnExpectedValue()
+		{
+			ulong? value = 80;
+			string expectedResult = "ulong 80";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_SByte_ShouldReturnExpectedValue()
+		{
+			sbyte value = -4;
+			string expectedResult = "sbyte -4";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_Single_ShouldReturnExpectedValue()
+		{
+			float value = 9.1F;
+			string expectedResult = "float 9.1";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_UInt16_ShouldReturnExpectedValue()
+		{
+			ushort value = 6;
+			string expectedResult = "ushort 6";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_UInt32_ShouldReturnExpectedValue()
+		{
+			uint value = 2;
+			string expectedResult = "uint 2";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Numbers_WithType_UInt64_ShouldReturnExpectedValue()
+		{
+			ulong value = 8;
+			string expectedResult = "ulong 8";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
 	}
 }

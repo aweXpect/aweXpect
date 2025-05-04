@@ -52,10 +52,27 @@ public partial class ValueFormatters
 			                        """;
 			StringBuilder sb = new();
 
-			string result = Formatter.Format(value, FormattingOptions.MultipleLines);
+			string result =
+				Formatter.Format(value, FormattingOptions.MultipleLines);
 			Formatter.Format(sb, value, FormattingOptions.MultipleLines);
 
 			await That(result).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Fact]
+		public async Task Strings_WithType_ShouldIncludeTypeInformation()
+		{
+			string value = "foo";
+			string expectedResult = "string \"foo\"";
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value, FormattingOptions.WithType);
+			string objectResult = Formatter.Format((object?)value, FormattingOptions.WithType);
+			Formatter.Format(sb, value, FormattingOptions.WithType);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 

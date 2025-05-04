@@ -19,12 +19,13 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
-		if (!options.UseLineBreaks)
+		return (options.UseLineBreaks, options.IncludeType) switch
 		{
-			return $"\"{value.DisplayWhitespace().TruncateWithEllipsis(100)}\"";
-		}
-
-		return $"\"{value}\"";
+			(true, true) => $"string \"{value}\"",
+			(false, true) => $"string \"{value.DisplayWhitespace().TruncateWithEllipsis(100)}\"",
+			(true, false) => $"\"{value}\"",
+			(false, false) => $"\"{value.DisplayWhitespace().TruncateWithEllipsis(100)}\"",
+		};
 	}
 
 	/// <summary>
@@ -44,6 +45,11 @@ public static partial class ValueFormatters
 		}
 
 		options ??= FormattingOptions.SingleLine;
+		if (options.IncludeType)
+		{
+			stringBuilder.Append("string ");
+		}
+
 		stringBuilder.Append('\"');
 		if (!options.UseLineBreaks)
 		{

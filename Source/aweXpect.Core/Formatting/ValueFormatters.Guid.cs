@@ -12,7 +12,11 @@ public static partial class ValueFormatters
 		this ValueFormatter _,
 		Guid value,
 		FormattingOptions? options = null)
-		=> value.ToString();
+		=> options?.IncludeType switch
+		{
+			true => $"Guid {value}",
+			_ => value.ToString(),
+		};
 
 	/// <summary>
 	///     Appends the formatted <paramref name="value" /> according to the <paramref name="options" />
@@ -23,7 +27,14 @@ public static partial class ValueFormatters
 		StringBuilder stringBuilder,
 		Guid value,
 		FormattingOptions? options = null)
-		=> stringBuilder.Append(value);
+	{
+		if (options?.IncludeType == true)
+		{
+			stringBuilder.Append("Guid ");
+		}
+
+		stringBuilder.Append(value);
+	}
 
 	/// <summary>
 	///     Returns the formatted <paramref name="value" /> according to the <paramref name="options" />.
