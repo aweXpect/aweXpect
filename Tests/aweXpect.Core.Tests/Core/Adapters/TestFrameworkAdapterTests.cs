@@ -1,11 +1,21 @@
 ﻿using System.Reflection;
 using aweXpect.Core.Adapters;
 using aweXpect.Core.Tests.TestHelpers;
+using Xunit.Abstractions;
 
 namespace aweXpect.Core.Tests.Core.Adapters;
 
-public sealed class TestFrameworkAdapterTests
+public sealed class TestFrameworkAdapterTests : IDisposable
 {
+	private readonly XunitTraceWriter _writer;
+
+	public TestFrameworkAdapterTests(ITestOutputHelper testOutputHelper)
+	{
+		_writer = new XunitTraceWriter(testOutputHelper);
+	}
+
+	public void Dispose() => _writer.Dispose();
+
 	[Fact]
 	public async Task FromType_WhenNameDoesNotExist_ShouldReturnNull()
 	{
