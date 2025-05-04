@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
-      {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
         "date": "Mon Mar 24 12:12:42 2025 \u002B0100",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          163.49811126504625,
           164.75682552044208,
           167.02554147584098,
           162.11072840009416,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           166.22084147589547,
           163.80129350148715,
           162.08096432685852,
-          207.0191752910614
+          207.0191752910614,
+          178.9766370455424
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          242.18482637405396,
           241.61384241397565,
           248.07671928405762,
           240.6158151967185,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           237.2804264472081,
           235.4971661908286,
           231.61853501001994,
-          238.91562185968672
+          238.91562185968672,
+          240.67592266627722
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          856.103875541687,
           859.5091006596883,
           923.9799948472244,
           885.0155139287313,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           900.9516015370687,
           901.7422954852765,
           907.845147005717,
-          933.6279779161725
+          933.6279779161725,
+          896.281517301287
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -671,7 +671,7 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           2384,
-          2384,
+          2416,
           2416,
           2416,
           2416,
@@ -734,12 +734,6 @@ window.BENCHMARK_DATA = {
   },
   "Equivalency": {
     "commits": [
-      {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
       {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          278353.85065104166,
           285001.949609375,
           287970.2119466146,
           276222.89306640625,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           294263.8017926897,
           285122.41532389325,
           275634.4102608817,
-          278383.95852864586
+          278383.95852864586,
+          284726.32170758926
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2098878.690848214,
           2188063.4755208334,
           2227621.3916666666,
           2166723.4344951925,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2184018.7740384615,
           2162105.9625,
           2194071.428125,
-          2097926.244140625
+          2097926.244140625,
+          2189250.2376302085
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          670338.7095424107,
           664400.9916015625,
           676650.402483259,
           669895.7610677084,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           667407.6690755208,
           668596.7297526042,
           662367.9934645433,
-          684898.1748046875
+          684898.1748046875,
+          682591.1339192708
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1403,7 +1403,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          866737,
           866745,
           866777,
           866777,
@@ -1412,6 +1411,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -1467,12 +1467,6 @@ window.BENCHMARK_DATA = {
   },
   "ItemsCount_AtLeast": {
     "commits": [
-      {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
       {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          302.97579785755704,
           306.92667961120605,
           318.3793118476868,
           294.3728154727391,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           322.168027528127,
           332.65407371520996,
           313.86700930962195,
-          327.65055929819744
+          327.65055929819744,
+          322.35498600006105
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          473.7025029182434,
           468.12436334292096,
           491.5830592473348,
           488.0484597342355,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           446.1931544031416,
           473.4106966018677,
           472.7895427385966,
-          472.28804372151694
+          472.28804372151694,
+          464.2729692776998
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          14650.634098597935,
           15092.907186654898,
           16889.01275431315,
           14700.711894444057,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           14830.447230529786,
           14649.120131356376,
           14170.736137898763,
-          15124.549154663086
+          15124.549154663086,
+          14669.320938110352
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2137,7 +2137,7 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           27456,
-          27456,
+          27488,
           27488,
           27488,
           27488,
@@ -2200,12 +2200,6 @@ window.BENCHMARK_DATA = {
   },
   "Int_GreaterThan": {
     "commits": [
-      {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
       {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          192.23126941067832,
           195.72708524068196,
           198.29120249407632,
           195.46890456859882,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           195.99596883700445,
           196.0282522201538,
           196.53526055018108,
-          203.7640518591954
+          203.7640518591954,
+          212.51391885961806
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          234.39922358194988,
           238.55658632914225,
           243.78727032343548,
           237.879097366333,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           239.4648401896159,
           229.81374611854554,
           236.53758862813314,
-          240.35454528672355
+          240.35454528672355,
+          243.04447610037667
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1163.9586760203044,
           1170.9133229573567,
           1252.336823096642,
           1229.3176584879557,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1232.2807968684606,
           1204.294773864746,
           1223.8121726989746,
-          1181.904225894383
+          1181.904225894383,
+          1245.2421039853778
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2870,7 +2870,7 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           2952,
-          2952,
+          2992,
           2992,
           2992,
           2992,
@@ -2933,12 +2933,6 @@ window.BENCHMARK_DATA = {
   },
   "String": {
     "commits": [
-      {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
       {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          309.2631950060526,
           320.47593148549396,
           334.1007035891215,
           310.067596244812,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           320.67167244638716,
           311.01900577545166,
           330.3369025502886,
-          312.1214802265167
+          312.1214802265167,
+          322.26248404184975
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          470.53340026310514,
           462.6129742940267,
           484.86786600748695,
           449.47659437473004,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           475.9185428619385,
           449.5346137682597,
           473.49254035949707,
-          466.9854555130005
+          466.9854555130005,
+          471.3781625307523
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1286.172911130465,
           1271.4335255940755,
           1333.1742518107096,
           1344.591949735369,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1343.672829691569,
           1266.0400791168213,
           1293.8258757591248,
-          1368.5393503824869
+          1368.5393503824869,
+          1308.4046480814616
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3603,7 +3603,7 @@ window.BENCHMARK_DATA = {
         "unit": "b",
         "data": [
           3064,
-          3064,
+          3096,
           3096,
           3096,
           3096,
@@ -3666,12 +3666,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArray": {
     "commits": [
-      {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
       {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1026.1354383741107,
           1059.8611496516637,
           1143.2706895192464,
           1110.1784766060966,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1134.4428824016027,
           1120.8965291341146,
           1095.1651114145914,
-          1065.5912098517786
+          1065.5912098517786,
+          1137.932123184204
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1220.0199904123942,
           1275.0634483337403,
           1295.60396194458,
           1241.3094042264497,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1292.962818400065,
           1276.8586231231689,
           1238.2117856343586,
-          1275.9561566670736
+          1275.9561566670736,
+          1254.241219584147
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2742.3004670824325,
           2731.5107015882218,
           2848.0084948221843,
           2843.5196779886883,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2821.7097231547036,
           2741.832515970866,
           2813.879779052734,
-          2892.6376848856607
+          2892.6376848856607,
+          2838.5192807515464
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4335,8 +4335,8 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -4399,12 +4399,6 @@ window.BENCHMARK_DATA = {
   },
   "StringArrayInAnyOrder": {
     "commits": [
-      {
-        "sha": "175c57930f3936bac57d85ce6c7b78a96ccac47e",
-        "author": "dependabot[bot]",
-        "date": "Mon Mar 24 12:12:17 2025 \u002B0100",
-        "message": "build(deps): bump Microsoft.Testing.Extensions.TrxReport from 1.6.2 to 1.6.3 (#485)"
-      },
       {
         "sha": "0fa791adcbd59daa71a42b97721f6058f51c65b3",
         "author": "dependabot[bot]",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 3 21:33:55 2025 \u002B0200",
         "message": "feat: handle \u0060null\u0060 in type tests (#562)"
+      },
+      {
+        "sha": "36b1ff77385d7f341498da304f0b2eadf9e30790",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 02:51:36 2025 \u002B0200",
+        "message": "refactor: \u0060Is\u0060/\u0060IsExactly\u0060 signature for \u0060null\u0060 case (#564)"
       }
     ],
     "labels": [
-      "175c5793",
       "0fa791ad",
       "aad9bc45",
       "396bfd6d",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "187a765e",
       "832882ed",
       "f1215d68",
-      "5df2b5c0"
+      "5df2b5c0",
+      "36b1ff77"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1097.5551499684652,
           1115.0560511075532,
           1161.8420987447103,
           1193.232441075643,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1202.247618230184,
           1120.0858514149984,
           1193.5822503407796,
-          1119.3546980539957
+          1119.3546980539957,
+          1255.3160134829009
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          149486.75247395833,
           150419.99490792412,
           150208.15927734374,
           149516.11694335938,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           148479.8994140625,
           148583.46011117788,
           152270.59652944712,
-          152414.53016075722
+          152414.53016075722,
+          150932.24428013392
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63787,
           63788,
           64324,
           63788,
@@ -4992,7 +4991,8 @@ window.BENCHMARK_DATA = {
           63787,
           63787,
           64323,
-          63787
+          63787,
+          64323
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4412.741452026367,
           4480.870552571615,
           4835.739166259766,
           4697.371419270833,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4697.899395869328,
           4671.139084879557,
           4636.246869600736,
-          4764.200469462076
+          4764.200469462076,
+          4592.987258911133
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5068,8 +5068,8 @@ window.BENCHMARK_DATA = {
         "label": "TUnit memory",
         "unit": "b",
         "data": [
-          6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
