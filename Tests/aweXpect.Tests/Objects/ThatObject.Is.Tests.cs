@@ -241,6 +241,22 @@ public sealed partial class ThatObject
 
 				await That(Act).DoesNotThrow();
 			}
+
+			[Fact]
+			public async Task WithNotMatchingOpenGenericInterfaceType_ShouldFail()
+			{
+				List<string> subject = new();
+
+				async Task Act()
+					=> await That(subject).Is(typeof(IDictionary<,>));
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             is type IDictionary<, >,
+					             but it was []
+					             """);
+			}
 		}
 	}
 }
