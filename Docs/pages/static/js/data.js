@@ -1584,6 +1584,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -1850,7 +1856,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -2120,7 +2127,8 @@ window.BENCHMARK_DATA = {
           162.08096432685852,
           207.0191752910614,
           178.9766370455424,
-          173.4129153398367
+          173.4129153398367,
+          190.90324578285217
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2315,6 +2323,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2673,7 +2682,8 @@ window.BENCHMARK_DATA = {
           231.61853501001994,
           238.91562185968672,
           240.67592266627722,
-          234.85438110033672
+          234.85438110033672,
+          240.06441246668498
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2866,6 +2876,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3226,7 +3237,8 @@ window.BENCHMARK_DATA = {
           907.845147005717,
           933.6279779161725,
           896.281517301287,
-          879.1422638893127
+          879.1422638893127,
+          940.1296917597452
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3452,6 +3464,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -4637,6 +4650,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -4826,7 +4845,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -5019,7 +5039,8 @@ window.BENCHMARK_DATA = {
           275634.4102608817,
           278383.95852864586,
           284726.32170758926,
-          276890.0346304086
+          276890.0346304086,
+          283532.1356282552
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5217,7 +5238,8 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
-          284980
+          284980,
+          284932
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5418,7 +5440,8 @@ window.BENCHMARK_DATA = {
           2194071.428125,
           2097926.244140625,
           2189250.2376302085,
-          2189006.81640625
+          2189006.81640625,
+          2218366.5223958334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5534,6 +5557,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -5817,7 +5841,8 @@ window.BENCHMARK_DATA = {
           662367.9934645433,
           684898.1748046875,
           682591.1339192708,
-          655609.3125
+          655609.3125,
+          677288.8535807292
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -5973,6 +5998,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -7613,6 +7639,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -7879,7 +7911,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -8149,7 +8182,8 @@ window.BENCHMARK_DATA = {
           313.86700930962195,
           327.65055929819744,
           322.35498600006105,
-          319.01773500442505
+          319.01773500442505,
+          344.12992871602376
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8344,6 +8378,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -8702,7 +8737,8 @@ window.BENCHMARK_DATA = {
           472.7895427385966,
           472.28804372151694,
           464.2729692776998,
-          476.44061388288225
+          476.44061388288225,
+          477.4883343378703
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -8895,6 +8931,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -9255,7 +9292,8 @@ window.BENCHMARK_DATA = {
           14170.736137898763,
           15124.549154663086,
           14669.320938110352,
-          17908.42039388021
+          17908.42039388021,
+          15853.13842976888
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -9481,6 +9519,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -11128,6 +11167,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -11394,7 +11439,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -11664,7 +11710,8 @@ window.BENCHMARK_DATA = {
           196.53526055018108,
           203.7640518591954,
           212.51391885961806,
-          209.56310594876607
+          209.56310594876607,
+          207.242883511952
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -11860,6 +11907,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -12217,7 +12265,8 @@ window.BENCHMARK_DATA = {
           236.53758862813314,
           240.35454528672355,
           243.04447610037667,
-          240.5249119758606
+          240.5249119758606,
+          237.28448702494305
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -12410,6 +12459,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -12770,7 +12820,8 @@ window.BENCHMARK_DATA = {
           1223.8121726989746,
           1181.904225894383,
           1245.2421039853778,
-          1249.0305711110434
+          1249.0305711110434,
+          1214.6129182668833
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -12996,6 +13047,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -14643,6 +14695,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -14909,7 +14967,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -15179,7 +15238,8 @@ window.BENCHMARK_DATA = {
           330.3369025502886,
           312.1214802265167,
           322.26248404184975,
-          333.021638806661
+          333.021638806661,
+          323.4944691998618
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -15386,6 +15446,7 @@ window.BENCHMARK_DATA = {
           896,
           896,
           896,
+          1120,
           1120,
           1120,
           1120,
@@ -15732,7 +15793,8 @@ window.BENCHMARK_DATA = {
           473.49254035949707,
           466.9854555130005,
           471.3781625307523,
-          468.82323525746665
+          468.82323525746665,
+          465.3824154218038
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -15925,6 +15987,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -16285,7 +16348,8 @@ window.BENCHMARK_DATA = {
           1293.8258757591248,
           1368.5393503824869,
           1308.4046480814616,
-          1400.1093870309683
+          1400.1093870309683,
+          1291.972287750244
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -16511,6 +16575,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -18158,6 +18223,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -18424,7 +18495,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -18694,7 +18766,8 @@ window.BENCHMARK_DATA = {
           1095.1651114145914,
           1065.5912098517786,
           1137.932123184204,
-          1111.9980724879674
+          1111.9980724879674,
+          1131.4874315897623
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -18889,6 +18962,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -19247,7 +19321,8 @@ window.BENCHMARK_DATA = {
           1238.2117856343586,
           1275.9561566670736,
           1254.241219584147,
-          1349.4964748382567
+          1349.4964748382567,
+          1326.1594444274901
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -19440,6 +19515,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -19800,7 +19876,8 @@ window.BENCHMARK_DATA = {
           2813.879779052734,
           2892.6376848856607,
           2838.5192807515464,
-          2957.531360880534
+          2957.531360880534,
+          2846.073918206351
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -20026,6 +20103,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -21673,6 +21751,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sun May 4 03:03:24 2025 \u002B0200",
         "message": "fix: support open-generic types and interfaces in \u0060ThatObject.IsExactly\u0060 (#565)"
+      },
+      {
+        "sha": "80db07fd0be5cac12ea849d3da6fd7a010023cc1",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 4 03:05:12 2025 \u002B0200",
+        "message": "feat: include formatted expected value in failure message (#563)"
       }
     ],
     "labels": [
@@ -21939,7 +22023,8 @@ window.BENCHMARK_DATA = {
       "f1215d68",
       "5df2b5c0",
       "36b1ff77",
-      "056d280a"
+      "056d280a",
+      "80db07fd"
     ],
     "datasets": [
       {
@@ -22209,7 +22294,8 @@ window.BENCHMARK_DATA = {
           1193.5822503407796,
           1119.3546980539957,
           1255.3160134829009,
-          1165.7036774953206
+          1165.7036774953206,
+          1197.7879957471575
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -22404,6 +22490,7 @@ window.BENCHMARK_DATA = {
           2408,
           2408,
           2408,
+          1976,
           1976,
           1976,
           1976,
@@ -22762,7 +22849,8 @@ window.BENCHMARK_DATA = {
           152270.59652944712,
           152414.53016075722,
           150932.24428013392,
-          152087.92163085938
+          152087.92163085938,
+          152802.60944010416
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -23037,6 +23125,7 @@ window.BENCHMARK_DATA = {
           64323,
           63787,
           64323,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -23315,7 +23404,8 @@ window.BENCHMARK_DATA = {
           4636.246869600736,
           4764.200469462076,
           4592.987258911133,
-          4771.235330200196
+          4771.235330200196,
+          4734.016973767962
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -23541,6 +23631,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
