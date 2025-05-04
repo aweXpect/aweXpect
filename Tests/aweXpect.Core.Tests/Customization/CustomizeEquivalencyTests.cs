@@ -5,7 +5,7 @@ namespace aweXpect.Core.Tests.Customization;
 
 public sealed class CustomizeEquivalencyTests
 {
-	[Fact(Skip="TODO Reactivate after next update")]
+	[Fact]
 	public async Task SetDefaultEquivalencyDocumentOptions_ShouldApplyOptionsWithinScope()
 	{
 		int[] actual = [1, 2,];
