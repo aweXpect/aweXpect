@@ -57,7 +57,7 @@ public static partial class ThatString
 	private sealed class ContainsConstraint(
 		string it,
 		ExpectationGrammars grammars,
-		string expected,
+		string? expected,
 		Quantifier quantifier,
 		StringEqualityOptions options)
 		: ConstraintResult(grammars),
@@ -65,11 +65,18 @@ public static partial class ThatString
 	{
 		private string? _actual;
 		private int _actualCount;
+		private bool _isNegated;
 
 		/// <inheritdoc />
 		public ConstraintResult IsMetBy(string? actual)
 		{
 			_actual = actual;
+			if (expected is null)
+			{
+				Outcome = _isNegated ? Outcome.Success : Outcome.Failure;
+				return this;
+			}
+
 			if (actual is null)
 			{
 				Outcome = Outcome.Failure;
@@ -146,6 +153,11 @@ public static partial class ThatString
 			{
 				stringBuilder.ItWasNull(it);
 			}
+			else if (expected is null)
+			{
+				Formatter.Format(stringBuilder, _actual);
+				stringBuilder.Append(" cannot be validated against <null>");
+			}
 			else
 			{
 				stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
@@ -155,6 +167,7 @@ public static partial class ThatString
 
 		public override ConstraintResult Negate()
 		{
+			_isNegated = !_isNegated;
 			quantifier.Negate();
 			Outcome = Outcome switch
 			{

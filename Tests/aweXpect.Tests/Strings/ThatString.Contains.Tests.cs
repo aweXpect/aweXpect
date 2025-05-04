@@ -37,6 +37,23 @@ public sealed partial class ThatString
 			}
 
 			[Fact]
+			public async Task WhenExpectedIsNull_ShouldFail()
+			{
+				string subject = "some text";
+				string? expected = null;
+
+				async Task Act()
+					=> await That(subject).Contains(expected!);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             contains <null> at least once,
+					             but "some text" cannot be validated against <null>
+					             """);
+			}
+
+			[Fact]
 			public async Task WhenExpectedStringIsContained_ShouldSucceed()
 			{
 				string subject = "some text";
