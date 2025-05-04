@@ -11,33 +11,27 @@ public static partial class ThatObject
 	/// <summary>
 	///     Verifies the actual value to be the same as the <paramref name="expected" /> value.
 	/// </summary>
-	public static AndOrResult<T?, IThat<T?>> IsSameAs<T>(this IThat<T?> source,
-		object? expected,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	public static AndOrResult<T?, IThat<T?>> IsSameAs<T>(this IThat<T?> source, object? expected)
 		where T : class
 		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())),
+					new IsSameAsConstraint<T>(it, grammars, expected)),
 			source);
 
 	/// <summary>
-	///     Verifies the actual value to not be the same as the <paramref name="expected" /> value.
+	///     Verifies the actual value to not be the same as the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static AndOrResult<T?, IThat<T?>> IsNotSameAs<T>(this IThat<T?> source,
-		object? expected,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+	public static AndOrResult<T?, IThat<T?>> IsNotSameAs<T>(this IThat<T?> source, object? unexpected)
 		where T : class
 		=> new(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
-					new IsSameAsConstraint<T>(it, grammars, expected, doNotPopulateThisValue.TrimCommonWhiteSpace())
-						.Invert()),
+					new IsSameAsConstraint<T>(it, grammars, unexpected).Invert()),
 			source);
 
 	private sealed class IsSameAsConstraint<T>(
 		string it,
 		ExpectationGrammars grammars,
-		object? expected,
-		string expectedExpression)
+		object? expected)
 		: ConstraintResult.WithNotNullValue<T>(it, grammars),
 			IValueConstraint<T>
 	{
@@ -51,8 +45,6 @@ public static partial class ThatObject
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("refers to ");
-			stringBuilder.Append(expectedExpression);
-			stringBuilder.Append(' ');
 			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
 		}
 
@@ -66,8 +58,6 @@ public static partial class ThatObject
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append("does not refer to ");
-			stringBuilder.Append(expectedExpression);
-			stringBuilder.Append(' ');
 			Formatter.Format(stringBuilder, expected, FormattingOptions.Indented(indentation));
 		}
 

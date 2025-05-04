@@ -30,7 +30,9 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected, because we want to test the failure,
+					             is equal to ThatObject.MyClass {
+					                 Value = 0
+					               }, because we want to test the failure,
 					             but it was ThatObject.MyClass {
 					                 Value = 0
 					               }
@@ -60,7 +62,9 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to new MyClass(),
+					             is equal to ThatObject.MyClass {
+					                 Value = 0
+					               },
 					             but it was <null>
 					             """);
 			}
@@ -101,7 +105,9 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected, because we want to test the failure,
+					             is equal to ThatObject.MyStruct {
+					                 Value = 2
+					               }, because we want to test the failure,
 					             but it was ThatObject.MyStruct {
 					                 Value = 1
 					               }
@@ -194,7 +200,9 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to expected, because we want to test the failure,
+					             is equal to ThatObject.MyStruct {
+					                 Value = 2
+					               }, because we want to test the failure,
 					             but it was ThatObject.MyStruct {
 					                 Value = 1
 					               }
@@ -224,7 +232,9 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equal to new MyStruct(),
+					             is equal to ThatObject.MyStruct {
+					                 Value = 0
+					               },
 					             but it was <null>
 					             """);
 			}
@@ -243,7 +253,7 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that sut
-					             is equal to expected,
+					             is equal to int,
 					             but it was long
 					             """);
 			}

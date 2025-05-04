@@ -27,12 +27,15 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to ThatObject.OuterClass {
+					                 Inner = <null>,
+					                 Value = "Foo"
+					               },
 					             but it was considered equivalent to ThatObject.OuterClass {
 					                 Inner = <null>,
 					                 Value = "Foo"
 					               }
-
+					             
 					             Equivalency options:
 					              - include public fields and properties
 					             """);
@@ -92,7 +95,23 @@ public sealed partial class ThatObject
 				await That(Act).ThrowsException()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = ThatObject.InnerClass {
+					                     Collection = [
+					                     "1",
+					                     "2",
+					                     "3",
+					                     "4"
+					                   ],
+					                     Inner = <null>,
+					                     Value = "Baz"
+					                   },
+					                   Value = "Bar"
+					                 },
+					                 Value = "Foo"
+					               },
 					             but it was considered equivalent to ThatObject.OuterClass {
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
@@ -189,7 +208,18 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = ThatObject.InnerClass {
+					                     Collection = <null>,
+					                     Inner = <null>,
+					                     Value = "Baz"
+					                   },
+					                   Value = "Bar"
+					                 },
+					                 Value = "Foo"
+					               },
 					             but it was considered equivalent to ThatObject.OuterClass {
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
@@ -244,7 +274,22 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to ThatObject.OuterClass {
+					                 Inner = ThatObject.InnerClass {
+					                   Collection = <null>,
+					                   Inner = ThatObject.InnerClass {
+					                     Collection = [
+					                     "1",
+					                     "2",
+					                     "3"
+					                   ],
+					                     Inner = <null>,
+					                     Value = "Baz"
+					                   },
+					                   Value = "Bar"
+					                 },
+					                 Value = "Foo"
+					               },
 					             but it was considered equivalent to ThatObject.OuterClass {
 					                 Inner = ThatObject.InnerClass {
 					                   Collection = <null>,
@@ -374,7 +419,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to [
+					               1,
+					               3,
+					               2
+					             ],
 					             but it was considered equivalent to [
 					               1,
 					               2,
@@ -399,7 +448,11 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to [
+					               1,
+					               2,
+					               3
+					             ],
 					             but it was considered equivalent to [
 					               1,
 					               2,
@@ -511,7 +564,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to [
+					               [2, 3],
+					               [1, 4]
+					             ],
 					             but it was considered equivalent to [
 					               [2, 3],
 					               [1, 4]
@@ -551,7 +607,10 @@ public sealed partial class ThatObject
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not equivalent to unexpected,
+					             is not equivalent to [
+					               ["B", "B"],
+					               ["A", "A"]
+					             ],
 					             but it was considered equivalent to [
 					               ["A", "A"],
 					               ["B", "B"]

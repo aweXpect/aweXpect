@@ -28,10 +28,7 @@ public sealed partial class ThatGeneric
 					.OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to new
-					             {
-					             	Value = expectedValue,
-					             },
+					             is equivalent to { Value = 2 },
 					             but it was not:
 					               Property Value differed:
 					                    Found: 1
@@ -59,10 +56,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to new
-					             {
-					             	HasWaitedEnough = true,
-					             } within 0:30,
+					             is equivalent to { HasWaitedEnough = True } within 0:30,
 					             but it was not:
 					               Property HasWaitedEnough differed:
 					                    Found: False
@@ -138,10 +132,7 @@ public sealed partial class ThatGeneric
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is equivalent to new
-					             {
-					             	HasWaitedEnough = true,
-					             } within 0:00.050,
+					             is equivalent to { HasWaitedEnough = True } within 0:00.050,
 					             but it was not:
 					               Property HasWaitedEnough differed:
 					                    Found: False

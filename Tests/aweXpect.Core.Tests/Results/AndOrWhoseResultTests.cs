@@ -2,7 +2,7 @@
 
 public class AndOrWhoseResultTests
 {
-	[Fact]
+	[Fact(Skip="TODO Reactivate after next update")]
 	public async Task MultipleWhose_ShouldAllowChaining()
 	{
 		MyClass sut = new();
@@ -16,7 +16,7 @@ public class AndOrWhoseResultTests
 		await That(Act).ThrowsException()
 			.WithMessage("""
 			             Expected that sut
-			             is type AndOrWhoseResultTests.MyClass whose .Value1 is True and whose .Value2 is True and refers to sut AndOrWhoseResultTests.MyClass {
+			             is type AndOrWhoseResultTests.MyClass whose .Value1 is True and whose .Value2 is True and refers to AndOrWhoseResultTests.MyClass {
 			                 Value1 = False,
 			                 Value2 = False
 			               },

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using aweXpect.Core;
 using aweXpect.Core.Constraints;
 using aweXpect.Customization;
@@ -19,8 +18,7 @@ public static partial class ThatObject
 	public static AndOrResult<TSubject, IThat<TSubject>> IsEquivalentTo<TSubject, TExpected>(
 		this IThat<TSubject> source,
 		TExpected expected,
-		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
-		[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null)
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();
@@ -35,8 +33,7 @@ public static partial class ThatObject
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new AndOrResult<TSubject, IThat<TSubject>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected,
-					doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions)),
+				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, expected, equalityOptions)),
 			source);
 	}
 	/// <summary>
@@ -45,8 +42,7 @@ public static partial class ThatObject
 	public static AndOrResult<TSubject, IThat<TSubject>> IsNotEquivalentTo<TSubject, TExpected>(
 		this IThat<TSubject> source,
 		TExpected unexpected,
-		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null,
-		[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+		Func<EquivalencyOptions<TExpected>, EquivalencyOptions>? options = null)
 	{
 		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		EquivalencyOptions equivalencyOptions = Customize.aweXpect.Equivalency().DefaultEquivalencyOptions.Get();
@@ -61,8 +57,7 @@ public static partial class ThatObject
 		equalityOptions.Equivalent(equivalencyOptions);
 		return new AndOrResult<TSubject, IThat<TSubject>>(
 			expectationBuilder.AddConstraint((it, grammars)
-				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, unexpected,
-					doNotPopulateThisValue.TrimCommonWhiteSpace(), equalityOptions).Invert()),
+				=> new IsEqualToConstraint<TSubject, TExpected>(it, grammars, unexpected, equalityOptions).Invert()),
 			source);
 	}
 }
