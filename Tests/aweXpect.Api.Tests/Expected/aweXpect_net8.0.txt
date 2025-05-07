@@ -719,7 +719,7 @@ namespace aweXpect
     public static class ThatString
     {
         public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> Contains(this aweXpect.Core.IThat<string?> source, string expected) { }
-        public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotContain(this aweXpect.Core.IThat<string?> source, string unexpected) { }
+        public static aweXpect.Results.StringEqualityTypeCountResult<string?, aweXpect.Core.IThat<string?>> DoesNotContain(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotEndWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> DoesNotStartWith(this aweXpect.Core.IThat<string?> source, string unexpected) { }
         public static aweXpect.Results.StringEqualityTypeResult<string?, aweXpect.Core.IThat<string?>> EndsWith(this aweXpect.Core.IThat<string?> source, string expected) { }

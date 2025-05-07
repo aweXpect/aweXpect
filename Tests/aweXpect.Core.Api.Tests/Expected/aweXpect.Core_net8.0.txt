@@ -791,6 +791,8 @@ namespace aweXpect.Options
         public void Between(int minimum, int maximum) { }
         public bool? Check(int amount, bool isLast) { }
         public void Exactly(int expected) { }
+        public void LessThan(int maximum) { }
+        public void MoreThan(int minimum) { }
         public void Negate() { }
         public override string ToString() { }
         public static aweXpect.Options.Quantifier Never() { }
@@ -963,6 +965,8 @@ namespace aweXpect.Results
         public TSelf AtMost(aweXpect.Times maximum) { }
         public aweXpect.Results.BetweenResult<TSelf> Between(int minimum) { }
         public TSelf Exactly(aweXpect.Times expected) { }
+        public TSelf LessThan(aweXpect.Times maximum) { }
+        public TSelf MoreThan(aweXpect.Times minimum) { }
         public TSelf Never() { }
         public TSelf Once() { }
     }
