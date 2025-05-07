@@ -44,7 +44,7 @@ public sealed partial class ThatDelegate
 					.WithMessage($"""
 					              Expected that Delegate
 					              throws an exception whose .HResult is equal to {expectedHResult} and with HResult {hResult},
-					              but .HResult was {hResult}
+					              but .HResult was {hResult} which differs by -1
 					              """);
 			}
 

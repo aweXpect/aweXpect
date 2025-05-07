@@ -749,8 +749,9 @@ namespace aweXpect.Options
     public class NumberTolerance<TNumber>
         where TNumber :  struct, System.IComparable<TNumber>
     {
-        public NumberTolerance(System.Func<TNumber, TNumber, TNumber?, bool> isWithinTolerance) { }
+        public NumberTolerance(System.Func<TNumber, TNumber, TNumber?> calculateDifference) { }
         public TNumber? Tolerance { get; }
+        public TNumber? CalculateDifference(TNumber? actual, TNumber? expected) { }
         public bool IsWithinTolerance(TNumber? actual, TNumber? expected) { }
         public void SetTolerance(TNumber tolerance) { }
         public override string ToString() { }

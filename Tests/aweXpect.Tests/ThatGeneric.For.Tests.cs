@@ -76,7 +76,7 @@ public sealed partial class ThatGeneric
 					.WithMessage($"""
 					              Expected that subject
 					              for .Value is equal to {Formatter.Format(expectedValue)},
-					              but .Value was {Formatter.Format(value)}
+					              but .Value was {Formatter.Format(value)} which differs by -1
 					              """);
 			}
 
