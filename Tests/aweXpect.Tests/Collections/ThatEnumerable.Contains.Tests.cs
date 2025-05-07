@@ -209,6 +209,67 @@ public sealed partial class ThatEnumerable
 					              """);
 			}
 
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             contains 1 less than 2 times,
+					             but it contained it at least 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains 1 more than {minimum} times,
+					              but it contained it 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
 			[Fact]
 			public async Task Using_WithAllDifferentComparer_ShouldFail()
 			{

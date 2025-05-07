@@ -241,8 +241,5 @@ public class Quantifier
 	/// <summary>
 	///     Negates the quantifier.
 	/// </summary>
-	public void Negate()
-	{
-		_isNegated = !_isNegated;
-	}
+	public void Negate() => _isNegated = !_isNegated;
 }

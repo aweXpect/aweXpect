@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -52,6 +51,97 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).AtLeast(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain 1 at least {minimum} times,
+					              but it contained it at least 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).AtMost(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1 at most 2 times,
+					             but it contained it 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, 2, false)]
+			[InlineData(2, 3, false)]
+			[InlineData(3, 4, true)]
+			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).Between(minimum).And(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain 1 between {minimum} and {maximum} times,
+					              but it contained it 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
 			[Fact]
 			public async Task ShouldSupportEquivalent()
 			{
@@ -67,7 +157,7 @@ public sealed partial class ThatEnumerable
 					             does not contain MyClass {
 					               StringValue = "",
 					               Value = 5
-					             },
+					             } equivalent,
 					             but it contained it at least 1 times in [
 					               MyClass {
 					                 StringValue = "",
@@ -109,6 +199,98 @@ public sealed partial class ThatEnumerable
 					                 StringValue = "",
 					                 Value = 55
 					               },
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportExactly(int times, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).Exactly(times);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(2, true)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1 less than 3 times,
+					             but it contained it 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(2, true)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1,
+					             but it contained it at least 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
 					               …
 					             ]
 					             """);

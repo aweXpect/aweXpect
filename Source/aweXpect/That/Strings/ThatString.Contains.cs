@@ -95,9 +95,7 @@ public static partial class ThatString
 			{
 				stringBuilder.Append("does not contain ");
 				Formatter.Format(stringBuilder, expected);
-				quantifier.Negate();
-				stringBuilder.Append(' ').Append(quantifier);
-				quantifier.Negate();
+				stringBuilder.Append(' ').Append(quantifier.ToNegatedString());
 			}
 			else
 			{
