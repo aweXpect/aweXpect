@@ -81,8 +81,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not one of [1, 2, 3],
-					             but it was 2
+					             is not one of [1.0, 2.0, 3.0],
+					             but it was 2.0
 					             """);
 			}
 
@@ -148,8 +148,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not one of [1, 2, 3],
-					             but it was 2
+					             is not one of [1.0, 2.0, 3.0],
+					             but it was 2.0
 					             """);
 			}
 
@@ -248,8 +248,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not one of [1, 2, 3],
-					             but it was 2
+					             is not one of [1.0, 2.0, 3.0],
+					             but it was 2.0
 					             """);
 			}
 
@@ -522,8 +522,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not one of [1, 2, 3],
-					             but it was 2
+					             is not one of [1.0, 2.0, 3.0],
+					             but it was 2.0
 					             """);
 			}
 
@@ -593,8 +593,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not one of [1, 2, 3],
-					             but it was 2
+					             is not one of [1.0, 2.0, 3.0],
+					             but it was 2.0
 					             """);
 			}
 
@@ -650,8 +650,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is not one of [1, 2, 3],
-					             but it was 2
+					             is not one of [1.0, 2.0, 3.0],
+					             but it was 2.0
 					             """);
 			}
 

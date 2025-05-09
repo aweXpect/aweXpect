@@ -68,8 +68,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is one of [2, 3],
-					             but it was 1
+					             is one of [2.0, 3.0],
+					             but it was 1.0
 					             """);
 			}
 
@@ -441,8 +441,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is one of [2, 3],
-					             but it was 1
+					             is one of [2.0, 3.0],
+					             but it was 1.0
 					             """);
 			}
 
@@ -500,8 +500,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is one of [2, 3],
-					             but it was 1
+					             is one of [2.0, 3.0],
+					             but it was 1.0
 					             """);
 			}
 
@@ -545,8 +545,8 @@ public sealed partial class ThatNumber
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             is one of [2, 3],
-					             but it was 1
+					             is one of [2.0, 3.0],
+					             but it was 1.0
 					             """);
 			}
 
