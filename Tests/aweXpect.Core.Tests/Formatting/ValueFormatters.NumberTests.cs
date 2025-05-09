@@ -38,6 +38,64 @@ public partial class ValueFormatters
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
 
+		[Theory]
+		[InlineData(2, "2.0")]
+		[InlineData(1.1, "1.1")]
+		[InlineData(1.12, "1.12")]
+		[InlineData(1.123, "1.123")]
+		[InlineData(1.12345678910111, "1.12345678910111")]
+		public async Task Numbers_Decimal_ShouldHaveAtLeastOneDecimalDigit(double doubleValue, string expectedResult)
+		{
+			decimal value = new(doubleValue);
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
+		[InlineData(2, "2.0")]
+		[InlineData(1.1, "1.1")]
+		[InlineData(1.12, "1.12")]
+		[InlineData(1.123, "1.123")]
+		[InlineData(1.12345678910111, "1.12345678910111")]
+		public async Task Numbers_Double_ShouldHaveAtLeastOneDecimalDigit(double value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
+		[Theory]
+		[InlineData(2F, "2.0")]
+		[InlineData(1.1F, "1.1")]
+		[InlineData(1.12F, "1.12")]
+		[InlineData(1.123F, "1.123")]
+		[InlineData(1.123456, "1.123456")]
+		public async Task Numbers_Float_ShouldHaveAtLeastOneDecimalDigit(float value, string expectedResult)
+		{
+			StringBuilder sb = new();
+
+			string result = Formatter.Format(value);
+			string objectResult = Formatter.Format((object?)value);
+			Formatter.Format(sb, value);
+
+			await That(result).IsEqualTo(expectedResult);
+			await That(objectResult).IsEqualTo(expectedResult);
+			await That(sb.ToString()).IsEqualTo(expectedResult);
+		}
+
 		[Fact]
 		public async Task Numbers_Double_ShouldReturnExpectedValue()
 		{
@@ -670,7 +728,7 @@ public partial class ValueFormatters
 			await That(objectResult).IsEqualTo(expectedResult);
 			await That(sb.ToString()).IsEqualTo(expectedResult);
 		}
-		
+
 		[Fact]
 		public async Task Numbers_WithType_Byte_ShouldReturnExpectedValue()
 		{
