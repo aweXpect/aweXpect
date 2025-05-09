@@ -554,7 +554,7 @@ public static partial class ValueFormatters
 			(_, float.PositiveInfinity) => "+\u221e",
 			(_, float.MinValue) => "float.MinValue",
 			(_, float.MaxValue) => "float.MaxValue",
-			(_, _) => value.ToString(CultureInfo.InvariantCulture),
+			(_, _) => value.ToString("0.0###########################", CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
@@ -621,7 +621,7 @@ public static partial class ValueFormatters
 			(_, double.PositiveInfinity) => "+\u221e",
 			(_, double.MinValue) => "double.MinValue",
 			(_, double.MaxValue) => "double.MaxValue",
-			(_, _) => value.ToString(CultureInfo.InvariantCulture),
+			(_, _) => value.ToString("0.0###########################", CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
@@ -764,7 +764,7 @@ public static partial class ValueFormatters
 			(true, _) => $"decimal {value.ToString(CultureInfo.InvariantCulture)}",
 			(_, decimal.MinValue) => "decimal.MinValue",
 			(_, decimal.MaxValue) => "decimal.MaxValue",
-			(_, _) => value.ToString(CultureInfo.InvariantCulture),
+			(_, _) => value.ToString("0.0###########################", CultureInfo.InvariantCulture),
 		};
 
 	/// <summary>
