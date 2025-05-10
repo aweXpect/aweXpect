@@ -54,15 +54,16 @@ public sealed partial class ThatSignaler
 						signaler.Signal();
 						signaler.Signal();
 						signaler.Signal();
+						signaler.Signal();
 					});
 
 				async Task Act() =>
-					await That(signaler).DidNotSignal(2.Times());
+					await That(signaler).DidNotSignal(3.Times());
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             does not have recorded the callback at least twice,
+					             does not have recorded the callback at least 3 times,
 					             but it was recorded ? times
 					             """).AsWildcard();
 			}
