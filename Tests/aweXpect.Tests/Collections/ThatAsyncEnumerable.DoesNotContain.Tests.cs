@@ -36,7 +36,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 5,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               1,
 					               1,
 					               2,
@@ -159,7 +159,7 @@ public sealed partial class ThatAsyncEnumerable
 					               StringValue = "",
 					               Value = 5
 					             } equivalent,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               MyClass {
 					                 StringValue = "",
 					                 Value = 1
@@ -280,7 +280,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain 1,
+					             does not contain 1 more than once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -312,7 +312,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain {Formatter.Format(unexpected)},
-					              but it contained it 1 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
+					              but it contained it once in {Formatter.Format(values, FormattingOptions.MultipleLines)}
 					              """);
 			}
 
@@ -485,7 +485,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain "blue",
+					             does not contain "blue" more than once,
 					             but it contained it 2 times in [
 					               "green",
 					               "blue",
@@ -524,7 +524,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "A" ignoring case,
-					             but it contained it 1 times in [
+					             but it contained it once in [
 					               "a",
 					               "b",
 					               "c"
@@ -576,7 +576,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 5,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               1,
 					               1,
 					               2,
@@ -758,7 +758,7 @@ public sealed partial class ThatAsyncEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain item matching x => x == 1,
+					             does not contain item matching x => x == 1 more than once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -790,7 +790,7 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == unexpected,
-					              but it contained it 1 times in {Formatter.Format(values, FormattingOptions.MultipleLines)}
+					              but it contained it once in {Formatter.Format(values, FormattingOptions.MultipleLines)}
 					              """);
 			}
 

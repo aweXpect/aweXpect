@@ -15,6 +15,15 @@ public class Quantifier
 	private int? _minimum = 1;
 
 	/// <summary>
+	///     Flag indicating if the <see cref="Quantifier" /> is equivalent to never.
+	/// </summary>
+	public bool IsNever => _isNegated switch
+	{
+		false => _allowEqual && _maximum == 0,
+		true => _allowEqual && _minimum == 1 && _maximum == null,
+	};
+
+	/// <summary>
 	///     A quantifier for exactly zero items.
 	/// </summary>
 	public static Quantifier Never()

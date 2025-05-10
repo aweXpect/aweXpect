@@ -33,7 +33,9 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
-					q => $"contains {Formatter.Format(expected)}{options} {q}",
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -55,7 +57,9 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(
 					it, grammars,
-					q => $"contains {Formatter.Format(expected)}{options} {q}",
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -78,7 +82,9 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
-					q => $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
 					predicate,
 					quantifier)),
 			source,
@@ -138,7 +144,7 @@ public static partial class ThatAsyncEnumerable
 		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
 						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
 					a => options.AreConsideredEqual(a, unexpected),
@@ -161,7 +167,7 @@ public static partial class ThatAsyncEnumerable
 		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
 						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
 					a => options.AreConsideredEqual(a, unexpected),
@@ -185,7 +191,7 @@ public static partial class ThatAsyncEnumerable
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
 						: $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q.ToNegatedString()}",
 					predicate,
@@ -203,8 +209,8 @@ public static partial class ThatAsyncEnumerable
 		: ConstraintResult(grammars),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
-		private IAsyncEnumerable<TItem>? _actual;
 		private readonly List<TItem> _items = [];
+		private IAsyncEnumerable<TItem>? _actual;
 		private int _count;
 		private bool _isFinished;
 		private bool _isNegated;
@@ -277,12 +283,30 @@ public static partial class ThatAsyncEnumerable
 			}
 			else if (_isFinished)
 			{
-				stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times in ");
+				stringBuilder.Append(it).Append(" contained it ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once in ");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times in ");
+				}
+
 				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
 			}
 			else
 			{
-				stringBuilder.Append(it).Append(" contained it at least ").Append(_count).Append(" times in ");
+				stringBuilder.Append(it).Append(" contained it at least ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once in ");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times in ");
+				}
+
 				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
 			}
 		}

@@ -35,7 +35,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 5,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               1,
 					               1,
 					               2,
@@ -158,7 +158,7 @@ public sealed partial class ThatEnumerable
 					               StringValue = "",
 					               Value = 5
 					             } equivalent,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               MyClass {
 					                 StringValue = "",
 					                 Value = 1
@@ -279,7 +279,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain 1,
+					             does not contain 1 more than once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -310,7 +310,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain {Formatter.Format(unexpected)},
-					              but it contained it at least 1 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
+					              but it contained it at least once in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 					              """);
 			}
 
@@ -362,7 +362,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "item-5",
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               "item-1",
 					               "item-1",
 					               "item-2",
@@ -460,7 +460,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "foo" ignoring case,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               "FOO"
 					             ]
 					             """);
@@ -527,7 +527,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain "blue",
+					             does not contain "blue" more than once,
 					             but it contained it at least 2 times in [
 					               "green",
 					               "blue",
@@ -549,7 +549,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "foo",
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               "FOO",
 					               "foo"
 					             ]
@@ -611,7 +611,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 5,
-					             but it contained it at least 1 times in [
+					             but it contained it at least once in [
 					               1,
 					               1,
 					               2,
@@ -793,7 +793,7 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain item matching x => x == 1,
+					             does not contain item matching x => x == 1 more than once,
 					             but it contained it at least 2 times in [
 					               1,
 					               1,
@@ -824,7 +824,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == unexpected,
-					              but it contained it at least 1 times in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
+					              but it contained it at least once in {Formatter.Format(subject, FormattingOptions.MultipleLines)}
 					              """);
 			}
 

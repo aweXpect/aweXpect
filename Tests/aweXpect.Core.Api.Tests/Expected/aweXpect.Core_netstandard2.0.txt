@@ -769,6 +769,7 @@ namespace aweXpect.Options
     public class Quantifier
     {
         public Quantifier() { }
+        public bool IsNever { get; }
         public void AtLeast(int minimum) { }
         public void AtMost(int maximum) { }
         public void Between(int minimum, int maximum) { }

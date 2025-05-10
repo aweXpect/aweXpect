@@ -47,7 +47,7 @@ public static partial class ThatEventRecording
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (quantifier.ToString() == "never")
+			if (quantifier.IsNever)
 			{
 				stringBuilder.Append("has never recorded the ").Append(eventName).Append(" event");
 				if (_actual != null)

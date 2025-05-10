@@ -30,7 +30,7 @@ public static partial class ThatEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain {Formatter.Format(expected)}{options}"
 						: $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
@@ -53,7 +53,7 @@ public static partial class ThatEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(
 					it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain {Formatter.Format(expected)}{options}"
 						: $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
@@ -78,7 +78,7 @@ public static partial class ThatEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
 						: $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
 					predicate,
@@ -139,7 +139,7 @@ public static partial class ThatEnumerable
 		return new ObjectCountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
 						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
 					a => options.AreConsideredEqual(a, unexpected),
@@ -162,7 +162,7 @@ public static partial class ThatEnumerable
 		return new StringEqualityTypeCountResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain {Formatter.Format(unexpected)}{options}"
 						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
 					a => options.AreConsideredEqual(a, unexpected),
@@ -186,7 +186,7 @@ public static partial class ThatEnumerable
 		return new CountResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
-					q => q.ToString() == "never"
+					q => q.IsNever
 						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
 						: $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q.ToNegatedString()}",
 					predicate,
@@ -262,12 +262,30 @@ public static partial class ThatEnumerable
 			}
 			else if (_isFinished)
 			{
-				stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times in ");
+				stringBuilder.Append(it).Append(" contained it ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once in ");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times in ");
+				}
+
 				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 			}
 			else
 			{
-				stringBuilder.Append(it).Append(" contained it at least ").Append(_count).Append(" times in ");
+				stringBuilder.Append(it).Append(" contained it at least ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once in ");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times in ");
+				}
+
 				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 			}
 		}

@@ -271,6 +271,34 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task ShouldSupportNever()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).Never();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1,
+					             but it contained it at least once in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Fact]
 			public async Task Using_WithAllDifferentComparer_ShouldFail()
 			{
 				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
@@ -527,21 +555,21 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Theory]
-			[InlineData(1, false)]
-			[InlineData(2, true)]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
 			[InlineData(3, false)]
 			public async Task ShouldSupportExactly(int times, bool expectSuccess)
 			{
 				string[] subject = ["green", "blue", "blue", "yellow",];
 
 				async Task Act()
-					=> await That(subject).Contains("blue").Exactly(times);
+					=> await That(subject).Contains("yellow").Exactly(times);
 
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              contains "blue" exactly {(times == 1 ? "once" : $"{times} times")},
-					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+					              contains "yellow" exactly {times} times,
+					              but it contained it once in [
 					                "green",
 					                "blue",
 					                "blue",
@@ -595,6 +623,27 @@ public sealed partial class ThatEnumerable
 					                "yellow"
 					              ]
 					              """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNever()
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").Never();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not contain "blue",
+					             but it contained it at least once in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
 			}
 
 			[Fact]
@@ -690,50 +739,6 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains "foo" at least once,
 					             but it was <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WithAtLeast_ShouldVerifyCorrectNumberOfTimes()
-			{
-				string[] sut = ["green", "green", "blue", "yellow",];
-
-				async Task Act()
-					=> await That(sut).Contains("green").AtLeast(3.Times());
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that sut
-					             contains "green" at least 3 times,
-					             but it contained it 2 times in [
-					               "green",
-					               "green",
-					               "blue",
-					               "yellow"
-					             ]
-					             """);
-			}
-
-			[Fact]
-			public async Task WithAtMost_ShouldVerifyCorrectNumberOfTimes()
-			{
-				string[] sut = ["green", "green", "green", "green", "blue", "yellow",];
-
-				async Task Act()
-					=> await That(sut).Contains("green").AtMost(2.Times());
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that sut
-					             contains "green" at most 2 times,
-					             but it contained it at least 3 times in [
-					               "green",
-					               "green",
-					               "green",
-					               "green",
-					               "blue",
-					               "yellow"
-					             ]
 					             """);
 			}
 		}
@@ -946,6 +951,34 @@ public sealed partial class ThatEnumerable
 					                …
 					              ]
 					              """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNever()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(x => x == 1).Never();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not contain item matching x => x == 1,
+					             but it contained it at least once in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
 			}
 
 			[Theory]

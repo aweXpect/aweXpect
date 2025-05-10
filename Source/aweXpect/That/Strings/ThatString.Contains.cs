@@ -86,7 +86,7 @@ public static partial class ThatString
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (quantifier.ToString() == "never")
+			if (quantifier.IsNever)
 			{
 				stringBuilder.Append("does not contain ");
 				Formatter.Format(stringBuilder, expected);
