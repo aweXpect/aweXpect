@@ -87,6 +87,10 @@ public static partial class ThatEventRecording
 			{
 				stringBuilder.Append("recorded once ");
 			}
+			else if (eventCount == 2)
+			{
+				stringBuilder.Append("recorded twice ");
+			}
 			else
 			{
 				stringBuilder.Append("recorded ").Append(eventCount).Append(" times ");

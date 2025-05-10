@@ -262,14 +262,21 @@ public static partial class ThatEnumerable
 			}
 			else if (_isFinished)
 			{
-				stringBuilder.Append(it).Append(" contained it ");
-				if (_count == 1)
+				if (_count == 0)
 				{
-					stringBuilder.Append("once in ");
+					stringBuilder.Append(it).Append(" did not contain it in ");
+				}
+				else if (_count == 1)
+				{
+					stringBuilder.Append(it).Append(" contained it once in ");
+				}
+				else if (_count == 2)
+				{
+					stringBuilder.Append(it).Append(" contained it twice in ");
 				}
 				else
 				{
-					stringBuilder.Append(_count).Append(" times in ");
+					stringBuilder.Append(it).Append(" contained it ").Append(_count).Append(" times in ");
 				}
 
 				Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
@@ -280,6 +287,10 @@ public static partial class ThatEnumerable
 				if (_count == 1)
 				{
 					stringBuilder.Append("once in ");
+				}
+				else if (_count == 2)
+				{
+					stringBuilder.Append("twice in ");
 				}
 				else
 				{

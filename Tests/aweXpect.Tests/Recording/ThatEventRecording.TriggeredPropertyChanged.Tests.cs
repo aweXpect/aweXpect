@@ -46,7 +46,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that recording
-					             has recorded the PropertyChanged event on sut at least 2 times,
+					             has recorded the PropertyChanged event on sut at least twice,
 					             but it was recorded once in [
 					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 42
@@ -92,7 +92,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that recording
-					             has recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least 2 times,
+					             has recorded the PropertyChanged event on sut with PropertyChangedEventArgs e => e.PropertyName == "foo" at least twice,
 					             but it was recorded once in [
 					               PropertyChanged(ThatEventRecording.PropertyChangedClass {
 					                   MyValue = 0

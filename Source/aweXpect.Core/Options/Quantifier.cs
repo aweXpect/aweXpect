@@ -185,10 +185,15 @@ public class Quantifier
 		{
 			(true, 1, null) => "at least once",
 			(false, 1, null) => "more than once",
+			(true, 2, null) => "at least twice",
+			(false, 2, null) => "more than twice",
 			(true, _, 0) => "never",
 			(true, 1, 1) => "exactly once",
 			(true, null, 1) => "at most once",
 			(false, null, 1) => "less than once",
+			(true, 2, 2) => "exactly twice",
+			(true, null, 2) => "at most twice",
+			(false, null, 2) => "less than twice",
 			(_, _, _) => null,
 		};
 		if (specialCases != null)
@@ -198,17 +203,17 @@ public class Quantifier
 
 		if (_minimum == _maximum)
 		{
-			return $"exactly {_minimum} times";
+			return $"exactly {ToTimesString(_minimum)}";
 		}
 
 		if (_maximum == null)
 		{
-			return _allowEqual ? $"at least {_minimum} times" : $"more than {_minimum} times";
+			return _allowEqual ? $"at least {ToTimesString(_minimum)}" : $"more than {ToTimesString(_minimum)}";
 		}
 
 		if (_minimum == null)
 		{
-			return _allowEqual ? $"at most {_maximum} times" : $"less than {_maximum} times";
+			return _allowEqual ? $"at most {ToTimesString(_maximum)}" : $"less than {ToTimesString(_maximum)}";
 		}
 
 		return $"between {_minimum} and {_maximum} times";
@@ -216,13 +221,13 @@ public class Quantifier
 
 	private string NegatedToString()
 	{
-		string? specialCases = (_minimum, _maximum) switch
+		string? specialCases = (_allowEqual, _minimum, _maximum) switch
 		{
-			(1, null) => "never",
-			(_, 0) => "at least once",
-			(1, 1) => "not once",
-			(null, 1) => "more than once",
-			(_, _) => null,
+			(true, 1, null) => "never",
+			(true, _, 0) => "at least once",
+			(true, 1, 1) => "not once",
+			(true, null, 1) => "more than once",
+			(_, _, _) => null,
 		};
 		if (specialCases != null)
 		{
@@ -231,17 +236,17 @@ public class Quantifier
 
 		if (_minimum == _maximum)
 		{
-			return $"not exactly {_minimum} times";
+			return $"not exactly {ToTimesString(_minimum)}";
 		}
 
 		if (_maximum == null)
 		{
-			return $"at most {_minimum - 1} times";
+			return _allowEqual ? $"less than {ToTimesString(_minimum)}" : $"at most {ToTimesString(_minimum)}";
 		}
 
 		if (_minimum == null)
 		{
-			return $"at least {_maximum + 1} times";
+			return _allowEqual ? $"more than {ToTimesString(_maximum)}" : $"at least {ToTimesString(_maximum)}";
 		}
 
 		return $"outside {_minimum} and {_maximum} times";
@@ -251,4 +256,12 @@ public class Quantifier
 	///     Negates the quantifier.
 	/// </summary>
 	public void Negate() => _isNegated = !_isNegated;
+	
+	private static string ToTimesString(int? value)
+		=> value switch
+		{
+			1 => "once",
+			2 => "twice",
+			_ => $"{value} times",
+		};
 }

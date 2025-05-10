@@ -65,8 +65,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain 1 at least {minimum} times,
-					              but it contained it at least 2 times in [
+					              does not contain 1 at least {minimum.ToTimesString()},
+					              but it contained it at least twice in [
 					                1,
 					                1,
 					                2,
@@ -95,8 +95,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain 1 at most 2 times,
-					             but it contained it 2 times in [
+					             does not contain 1 at most twice,
+					             but it contained it twice in [
 					               1,
 					               1,
 					               2,
@@ -127,7 +127,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain 1 between {minimum} and {maximum} times,
-					              but it contained it 2 times in [
+					              but it contained it twice in [
 					                1,
 					                1,
 					                2,
@@ -219,8 +219,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
-					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+					              does not contain 1 exactly {times.ToTimesString()},
+					              but it contained it {(times == 1 ? "at least " : "")}twice in [
 					                1,
 					                1,
 					                2,
@@ -250,7 +250,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 1 less than 3 times,
-					             but it contained it 2 times in [
+					             but it contained it twice in [
 					               1,
 					               1,
 					               2,
@@ -281,7 +281,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain 1 more than once,
-					             but it contained it at least 2 times in [
+					             but it contained it at least twice in [
 					               1,
 					               1,
 					               2,
@@ -392,8 +392,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain "blue" at least {minimum} times,
-					              but it contained it at least 2 times in [
+					              does not contain "blue" at least {minimum.ToTimesString()},
+					              but it contained it at least twice in [
 					                "green",
 					                "blue",
 					                "blue",
@@ -415,8 +415,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain "blue" at most 2 times,
-					             but it contained it 2 times in [
+					             does not contain "blue" at most twice,
+					             but it contained it twice in [
 					               "green",
 					               "blue",
 					               "blue",
@@ -440,7 +440,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain "blue" between {minimum} and {maximum} times,
-					              but it contained it 2 times in [
+					              but it contained it twice in [
 					                "green",
 					                "blue",
 					                "blue",
@@ -481,8 +481,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain "blue" exactly {(times == 1 ? "once" : $"{times} times")},
-					              but it contained it 2 times in [
+					              does not contain "blue" exactly {times.ToTimesString()},
+					              but it contained it twice in [
 					                "green",
 					                "blue",
 					                "blue",
@@ -505,7 +505,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "blue" less than 3 times,
-					             but it contained it 2 times in [
+					             but it contained it twice in [
 					               "green",
 					               "blue",
 					               "blue",
@@ -529,7 +529,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "blue" more than once,
-					             but it contained it at least 2 times in [
+					             but it contained it at least twice in [
 					               "green",
 					               "blue",
 					               "blue",
@@ -641,8 +641,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain item matching x => x == 1 at least {minimum} times,
-					              but it contained it at least 2 times in [
+					              does not contain item matching x => x == 1 at least {minimum.ToTimesString()},
+					              but it contained it at least twice in [
 					                1,
 					                1,
 					                2,
@@ -671,8 +671,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that subject
-					             does not contain item matching x => x == 1 at most 2 times,
-					             but it contained it 2 times in [
+					             does not contain item matching x => x == 1 at most twice,
+					             but it contained it twice in [
 					               1,
 					               1,
 					               2,
@@ -703,7 +703,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage($"""
 					              Expected that subject
 					              does not contain item matching x => x == 1 between {minimum} and {maximum} times,
-					              but it contained it 2 times in [
+					              but it contained it twice in [
 					                1,
 					                1,
 					                2,
@@ -733,8 +733,8 @@ public sealed partial class ThatEnumerable
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
-					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+					              does not contain item matching x => x == 1 exactly {times.ToTimesString()},
+					              but it contained it {(times == 1 ? "at least " : "")}twice in [
 					                1,
 					                1,
 					                2,
@@ -764,7 +764,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 1 less than 3 times,
-					             but it contained it 2 times in [
+					             but it contained it twice in [
 					               1,
 					               1,
 					               2,
@@ -795,7 +795,7 @@ public sealed partial class ThatEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             does not contain item matching x => x == 1 more than once,
-					             but it contained it at least 2 times in [
+					             but it contained it at least twice in [
 					               1,
 					               1,
 					               2,

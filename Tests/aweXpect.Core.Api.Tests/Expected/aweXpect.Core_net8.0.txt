@@ -963,14 +963,25 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.CountResult<TType, TThat, TSelf>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
+        public aweXpect.Results.CountTimesResult<TSelf> AtLeast() { }
         public TSelf AtLeast(aweXpect.Core.Times minimum) { }
+        public aweXpect.Results.CountTimesResult<TSelf> AtMost() { }
         public TSelf AtMost(aweXpect.Core.Times maximum) { }
         public aweXpect.Results.BetweenResult<TSelf> Between(int minimum) { }
         public TSelf Exactly(aweXpect.Core.Times expected) { }
+        public aweXpect.Results.CountTimesResult<TSelf> LessThan() { }
         public TSelf LessThan(aweXpect.Core.Times maximum) { }
+        public aweXpect.Results.CountTimesResult<TSelf> MoreThan() { }
         public TSelf MoreThan(aweXpect.Core.Times minimum) { }
         public TSelf Never() { }
         public TSelf Once() { }
+        public TSelf Twice() { }
+    }
+    public class CountTimesResult<TTarget>
+    {
+        public CountTimesResult(System.Func<int, TTarget> callback) { }
+        public TTarget Once() { }
+        public TTarget Twice() { }
     }
     public class ExecutesInResult<TResult>
     {
