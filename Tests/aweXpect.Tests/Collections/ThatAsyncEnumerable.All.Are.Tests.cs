@@ -76,6 +76,20 @@ public sealed partial class ThatAsyncEnumerable
 				}
 
 				[Fact]
+				public async Task WhenTypeIsNull_ShouldThrowArgumentNullException()
+				{
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable(
+						Enumerable.Range(1, 10));
+
+					async Task Act()
+						=> await That(subject).All().Are(null!);
+
+					await That(Act).Throws<ArgumentNullException>()
+						.WithParamName("type").And
+						.WithMessage("The type cannot be null.").AsPrefix();
+				}
+
+				[Fact]
 				public async Task WhenTypeMatchesBaseType_ShouldSucceed()
 				{
 					IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable(

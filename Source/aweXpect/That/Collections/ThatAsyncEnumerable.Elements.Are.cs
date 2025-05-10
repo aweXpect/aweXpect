@@ -44,6 +44,8 @@ public static partial class ThatAsyncEnumerable
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 			Are(Type type)
 		{
+			// ReSharper disable once LocalizableElement
+			_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
