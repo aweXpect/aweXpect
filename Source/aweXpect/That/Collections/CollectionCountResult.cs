@@ -1,6 +1,7 @@
 ﻿using System;
+using aweXpect.Results;
 
-namespace aweXpect.Results;
+namespace aweXpect;
 
 /// <summary>
 ///     The result for counting items in a collection.

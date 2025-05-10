@@ -1,4 +1,5 @@
-﻿using aweXpect.Recording;
+﻿using aweXpect.Core;
+using aweXpect.Recording;
 using aweXpect.Results;
 
 namespace aweXpect.Internal.Tests.Results;

@@ -299,6 +299,16 @@ namespace aweXpect.Core
         public ThatSubject(aweXpect.Core.ExpectationBuilder expectationBuilder) { }
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
     }
+    public readonly struct Times
+    {
+        public Times(int value) { }
+        public int Value { get; }
+        public static aweXpect.Core.Times op_Implicit(int value) { }
+    }
+    public static class TimesExtensions
+    {
+        public static aweXpect.Core.Times Times(this int value) { }
+    }
 }
 namespace aweXpect.Core.Helpers
 {
@@ -587,16 +597,6 @@ namespace aweXpect
     public class SkipException : System.Exception
     {
         public SkipException(string message) { }
-    }
-    public readonly struct Times
-    {
-        public Times(int value) { }
-        public int Value { get; }
-        public static aweXpect.Times op_Implicit(int value) { }
-    }
-    public static class TimesExtensions
-    {
-        public static aweXpect.Times Times(this int value) { }
     }
 }
 namespace aweXpect.Formatting
@@ -947,7 +947,7 @@ namespace aweXpect.Results
     public class BetweenResult<TTarget>
     {
         public BetweenResult(System.Func<int, TTarget> callback) { }
-        public TTarget And(aweXpect.Times maximum) { }
+        public TTarget And(aweXpect.Core.Times maximum) { }
     }
     public class CollectionOrderResult<TMember, TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
     {
@@ -962,12 +962,12 @@ namespace aweXpect.Results
         where TSelf : aweXpect.Results.CountResult<TType, TThat, TSelf>
     {
         public CountResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.Quantifier quantifier) { }
-        public TSelf AtLeast(aweXpect.Times minimum) { }
-        public TSelf AtMost(aweXpect.Times maximum) { }
+        public TSelf AtLeast(aweXpect.Core.Times minimum) { }
+        public TSelf AtMost(aweXpect.Core.Times maximum) { }
         public aweXpect.Results.BetweenResult<TSelf> Between(int minimum) { }
-        public TSelf Exactly(aweXpect.Times expected) { }
-        public TSelf LessThan(aweXpect.Times maximum) { }
-        public TSelf MoreThan(aweXpect.Times minimum) { }
+        public TSelf Exactly(aweXpect.Core.Times expected) { }
+        public TSelf LessThan(aweXpect.Core.Times maximum) { }
+        public TSelf MoreThan(aweXpect.Core.Times minimum) { }
         public TSelf Never() { }
         public TSelf Once() { }
     }
@@ -1174,10 +1174,10 @@ namespace aweXpect.Signaling
     public class Signaler
     {
         public Signaler() { }
-        public bool IsSignaled(aweXpect.Times? amount = default) { }
+        public bool IsSignaled(aweXpect.Core.Times? amount = default) { }
         public void Signal() { }
         public aweXpect.Signaling.SignalerResult Wait(System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
-        public aweXpect.Signaling.SignalerResult Wait(aweXpect.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Signaling.SignalerResult Wait(aweXpect.Core.Times amount, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
     public class SignalerResult
     {
@@ -1193,10 +1193,10 @@ namespace aweXpect.Signaling
     public class Signaler<TParameter>
     {
         public Signaler() { }
-        public bool IsSignaled(aweXpect.Times? amount = default) { }
+        public bool IsSignaled(aweXpect.Core.Times? amount = default) { }
         public void Signal(TParameter parameter) { }
         public aweXpect.Signaling.SignalerResult<TParameter> Wait(System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
-        public aweXpect.Signaling.SignalerResult<TParameter> Wait(aweXpect.Times amount, System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
+        public aweXpect.Signaling.SignalerResult<TParameter> Wait(aweXpect.Core.Times amount, System.Func<TParameter, bool>? predicate = null, System.TimeSpan? timeout = default, System.Threading.CancellationToken cancellationToken = default) { }
     }
 }
 namespace aweXpect.Synchronous
