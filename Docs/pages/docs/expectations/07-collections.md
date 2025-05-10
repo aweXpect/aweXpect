@@ -160,9 +160,11 @@ You can also set occurrence constraints on `Contain`:
 ```csharp
 IEnumerable<int> values = [1, 1, 1, 2];
 
+await Expect.That(values).Contains(1).MoreThan(1.Times());
 await Expect.That(values).Contains(1).AtLeast(2.Times());
 await Expect.That(values).Contains(1).Exactly(3.Times());
 await Expect.That(values).Contains(1).AtMost(4.Times());
+await Expect.That(values).Contains(1).LessThan(5.Times());
 await Expect.That(values).Contains(1).Between(1).And(5.Times());
 ```
 
