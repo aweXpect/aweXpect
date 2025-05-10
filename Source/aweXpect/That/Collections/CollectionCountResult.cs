@@ -21,6 +21,18 @@ public class CollectionCountResult<TReturn>(Func<EnumerableQuantifier, TReturn> 
 		=> factory(EnumerableQuantifier.AtLeast(minimum));
 
 	/// <summary>
+	///     Verifies that the collection has less than <paramref name="maximum" /> items.
+	/// </summary>
+	public TReturn LessThan(int maximum)
+		=> factory(EnumerableQuantifier.LessThan(maximum));
+
+	/// <summary>
+	///     Verifies that the collection has more than <paramref name="minimum" /> items.
+	/// </summary>
+	public TReturn MoreThan(int minimum)
+		=> factory(EnumerableQuantifier.MoreThan(minimum));
+
+	/// <summary>
 	///     Verifies that the collection has at most <paramref name="maximum" /> items.
 	/// </summary>
 	public TReturn AtMost(int maximum)

@@ -10,6 +10,8 @@ namespace aweXpect
         public TReturn AtMost(int maximum) { }
         public aweXpect.Results.BetweenResult<TReturn> Between(int minimum) { }
         public TReturn EqualTo(int expected) { }
+        public TReturn LessThan(int maximum) { }
+        public TReturn MoreThan(int minimum) { }
     }
     public abstract class EnumerableQuantifier
     {
@@ -23,6 +25,8 @@ namespace aweXpect
         public static aweXpect.EnumerableQuantifier AtMost(int maximum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
         public static aweXpect.EnumerableQuantifier Between(int minimum, int maximum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
         public static aweXpect.EnumerableQuantifier Exactly(int expected, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier LessThan(int maximum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
+        public static aweXpect.EnumerableQuantifier MoreThan(int minimum, aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
         public static aweXpect.EnumerableQuantifier None(aweXpect.Core.ExpectationGrammars expectationGrammars = 0) { }
     }
     public static class ThatAsyncEnumerable
