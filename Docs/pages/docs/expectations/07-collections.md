@@ -28,9 +28,16 @@ await Expect.That(values).HasCount(10);
 // or more explicit
 await Expect.That(values).HasCount().EqualTo(10);
 
-await Expect.That(values).HasCount().AtLeast(9);
-await Expect.That(values).HasCount().AtMost(11);
-await Expect.That(values).HasCount().Between(8).And(12);
+await Expect.That(values).HasCount().MoreThan(8)
+	.Because("item count should be '> 8'");
+await Expect.That(values).HasCount().AtLeast(9)
+	.Because("item count should be '>= 9'");
+await Expect.That(values).HasCount().AtMost(11)
+	.Because("item count should be '<= 11'");
+await Expect.That(values).HasCount().LessThan(12)
+	.Because("item count should be '< 12'");
+await Expect.That(values).HasCount().Between(8).And(12)
+	.Because("item count should be '>= 8 AND <= 12'");
 ```
 
 ## All be
