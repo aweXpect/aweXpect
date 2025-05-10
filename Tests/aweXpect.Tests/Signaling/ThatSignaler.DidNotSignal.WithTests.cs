@@ -71,7 +71,7 @@ public sealed partial class ThatSignaler
 					.WithMessage("""
 					             Expected that signaler
 					             does not have recorded the callback at least twice with p => p > 1,
-					             but it was recorded ? times in [
+					             but it was recorded * in [
 					               1,
 					               2,
 					               *
