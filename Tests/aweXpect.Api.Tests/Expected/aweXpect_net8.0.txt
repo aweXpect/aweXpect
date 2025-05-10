@@ -3,6 +3,14 @@
 [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v8.0", FrameworkDisplayName=".NET 8.0")]
 namespace aweXpect
 {
+    public class CollectionCountResult<TReturn>
+    {
+        public CollectionCountResult(System.Func<aweXpect.EnumerableQuantifier, TReturn> factory) { }
+        public TReturn AtLeast(int minimum) { }
+        public TReturn AtMost(int maximum) { }
+        public aweXpect.Results.BetweenResult<TReturn> Between(int minimum) { }
+        public TReturn EqualTo(int expected) { }
+    }
     public abstract class EnumerableQuantifier
     {
         protected EnumerableQuantifier() { }
@@ -54,7 +62,7 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>, TItem> EndsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.ThatAsyncEnumerable.Elements Exactly(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?> subject, int expected) { }
         public static aweXpect.ThatAsyncEnumerable.Elements<TItem> Exactly<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> subject, int expected) { }
-        public static aweXpect.Results.CollectionCountResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> subject) { }
+        public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> subject) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IAsyncEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> subject, int expected) { }
         public static aweXpect.Results.SingleItemResult<System.Collections.Generic.IAsyncEnumerable<TItem>, TItem>.Async HasSingle<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<TItem>?> source) { }
         public static aweXpect.Results.StringCollectionBeContainedInResult<System.Collections.Generic.IAsyncEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?>> IsContainedIn(this aweXpect.Core.IThat<System.Collections.Generic.IAsyncEnumerable<string?>?> source, System.Collections.Generic.IEnumerable<string?> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
@@ -294,7 +302,7 @@ namespace aweXpect
         public static aweXpect.Results.ObjectEqualityResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>, TItem> EndsWith<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source, System.Collections.Generic.IEnumerable<TItem> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
         public static aweXpect.ThatEnumerable.Elements Exactly(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> subject, int expected) { }
         public static aweXpect.ThatEnumerable.Elements<TItem> Exactly<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int expected) { }
-        public static aweXpect.Results.CollectionCountResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
+        public static aweXpect.CollectionCountResult<aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject) { }
         public static aweXpect.Results.AndOrResult<System.Collections.Generic.IEnumerable<TItem>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?>> HasCount<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> subject, int expected) { }
         public static aweXpect.Results.SingleItemResult<System.Collections.Generic.IEnumerable<TItem>, TItem> HasSingle<TItem>(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<TItem>?> source) { }
         public static aweXpect.Results.StringCollectionBeContainedInResult<System.Collections.Generic.IEnumerable<string?>, aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?>> IsContainedIn(this aweXpect.Core.IThat<System.Collections.Generic.IEnumerable<string?>?> source, System.Collections.Generic.IEnumerable<string?> expected, [System.Runtime.CompilerServices.CallerArgumentExpression("expected")] string doNotPopulateThisValue = "") { }
@@ -693,13 +701,13 @@ namespace aweXpect
     public static class ThatSignaler
     {
         public static aweXpect.Results.SignalCountResult DidNotSignal(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source) { }
-        public static aweXpect.Results.SignalCountResult DidNotSignal(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult DidNotSignal(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Core.Times times) { }
         public static aweXpect.Results.SignalCountResult<TParameter> DidNotSignal<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
-        public static aweXpect.Results.SignalCountResult<TParameter> DidNotSignal<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult<TParameter> DidNotSignal<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Core.Times times) { }
         public static aweXpect.Results.SignalCountResult Signaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source) { }
-        public static aweXpect.Results.SignalCountResult Signaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountResult Signaled(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler> source, aweXpect.Core.Times times) { }
         public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source) { }
-        public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Times times) { }
+        public static aweXpect.Results.SignalCountWhoseResult<TParameter> Signaled<TParameter>(this aweXpect.Core.IThat<aweXpect.Signaling.Signaler<TParameter>> source, aweXpect.Core.Times times) { }
     }
     public static class ThatStream
     {
@@ -834,14 +842,6 @@ namespace aweXpect.Options
 }
 namespace aweXpect.Results
 {
-    public class CollectionCountResult<TReturn>
-    {
-        public CollectionCountResult(System.Func<aweXpect.EnumerableQuantifier, TReturn> factory) { }
-        public TReturn AtLeast(int minimum) { }
-        public TReturn AtMost(int maximum) { }
-        public aweXpect.Results.BetweenResult<TReturn> Between(int minimum) { }
-        public TReturn EqualTo(int expected) { }
-    }
     public class ContainsValueResult<TCollection, TThat, TKey, TValue> : aweXpect.Results.AndOrResult<TCollection, TThat>
     {
         public aweXpect.Core.IThat<TValue> WhoseValue { get; }

@@ -1,4 +1,4 @@
-﻿namespace aweXpect;
+﻿namespace aweXpect.Core;
 
 /// <summary>
 ///     Extension methods for <see cref="Times" />.

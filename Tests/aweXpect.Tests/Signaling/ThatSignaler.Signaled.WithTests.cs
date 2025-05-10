@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using aweXpect.Core;
 using aweXpect.Signaling;
 
 namespace aweXpect.Tests;

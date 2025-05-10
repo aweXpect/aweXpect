@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using aweXpect.Core;
 using aweXpect.Recording;
 
 namespace aweXpect.Tests;

@@ -1,4 +1,4 @@
-﻿namespace aweXpect;
+﻿namespace aweXpect.Core;
 
 /// <summary>
 ///     Count the number of times something occurred.
