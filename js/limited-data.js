@@ -2,12 +2,6 @@ window.BENCHMARK_DATA = {
   "Bool": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -300,10 +294,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -352,14 +351,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          163.26840634346007,
           171.221613747733,
           172.12464152971904,
           171.65568786008018,
@@ -408,7 +407,8 @@ window.BENCHMARK_DATA = {
           183.20275456110636,
           186.9730508497783,
           187.93699448449271,
-          189.92178870950426
+          189.92178870950426,
+          187.68441233268152
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -484,7 +484,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          234.48888805934362,
           246.19574042728968,
           243.84058519999186,
           230.60925475756326,
@@ -533,7 +532,8 @@ window.BENCHMARK_DATA = {
           255.21987845102947,
           249.9274384498596,
           246.00606307983398,
-          239.88851985931396
+          239.88851985931396,
+          242.5904700756073
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -609,7 +609,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          886.1725380761283,
           927.4466937383016,
           897.1431950160435,
           909.7133782068888,
@@ -658,7 +657,8 @@ window.BENCHMARK_DATA = {
           952.0901317596436,
           953.1452189127605,
           909.8590599060059,
-          899.8877541224161
+          899.8877541224161,
+          920.3758982249668
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -735,12 +735,6 @@ window.BENCHMARK_DATA = {
   "Equivalency": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -1033,10 +1027,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -1085,14 +1084,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          290751.0905924479,
           292559.94936523435,
           279425.6501627604,
           303852.7521484375,
@@ -1141,7 +1140,8 @@ window.BENCHMARK_DATA = {
           318550.01521809894,
           301668.11149088544,
           286187.73310546874,
-          289366.45026041666
+          289366.45026041666,
+          293149.0384765625
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1195,7 +1195,7 @@ window.BENCHMARK_DATA = {
           284980,
           284980,
           284980,
-          284980,
+          284932,
           284932,
           284932,
           284932,
@@ -1217,7 +1217,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          2167610.0242745536,
           2271015.56328125,
           2119807.87890625,
           2201255.48046875,
@@ -1266,7 +1265,8 @@ window.BENCHMARK_DATA = {
           2311989.2666666666,
           2283430.6747395834,
           2238001.8705729167,
-          2210293.50078125
+          2210293.50078125,
+          2235006.9778645835
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -1342,7 +1342,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          651876.2898111979,
           699768.6596679688,
           649118.3092773438,
           678007.3373697917,
@@ -1391,7 +1390,8 @@ window.BENCHMARK_DATA = {
           721639.873186384,
           722651.6041341146,
           667034.5729417067,
-          681086.8244791667
+          681086.8244791667,
+          662894.0899135044
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -1468,12 +1468,6 @@ window.BENCHMARK_DATA = {
   "ItemsCount_AtLeast": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -1766,10 +1760,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -1818,14 +1817,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          287.075070977211,
           318.7846941947937,
           320.77183561325074,
           308.6339365641276,
@@ -1874,7 +1873,8 @@ window.BENCHMARK_DATA = {
           363.6487522125244,
           360.4573261896769,
           323.6965099334717,
-          348.20052129881725
+          348.20052129881725,
+          315.0915292104085
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -1950,7 +1950,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          473.49535421224743,
           496.84731241861977,
           456.6167625109355,
           476.50009632110596,
@@ -1999,7 +1998,8 @@ window.BENCHMARK_DATA = {
           507.92714544932045,
           492.7462219238281,
           521.3276209831238,
-          465.2328128814697
+          465.2328128814697,
+          471.3577575683594
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2075,7 +2075,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          14668.357003348214,
           15334.142970784505,
           19231.073976643882,
           20954.85867745536,
@@ -2124,7 +2123,8 @@ window.BENCHMARK_DATA = {
           22040.0852028983,
           14859.349299112955,
           18589.882716878255,
-          16238.435689290365
+          16238.435689290365,
+          20527.379644775392
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2201,12 +2201,6 @@ window.BENCHMARK_DATA = {
   "Int_GreaterThan": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -2499,10 +2493,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -2551,14 +2550,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          192.71993873914082,
           202.46659006391252,
           194.99374374321528,
           200.73248023646218,
@@ -2607,7 +2606,8 @@ window.BENCHMARK_DATA = {
           223.91885953290122,
           215.76536512374878,
           212.83608763558524,
-          237.7747310002645
+          237.7747310002645,
+          208.9273886340005
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2683,7 +2683,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          262.6701855659485,
           249.20876369476318,
           242.45655274391174,
           235.0627590247563,
@@ -2732,7 +2731,8 @@ window.BENCHMARK_DATA = {
           255.89793984095255,
           265.8048391342163,
           246.43859730448042,
-          241.86590830485025
+          241.86590830485025,
+          240.5374766077314
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -2808,7 +2808,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1255.5186494680552,
           1222.40902028765,
           1196.64937210083,
           1285.7777481079102,
@@ -2857,7 +2856,8 @@ window.BENCHMARK_DATA = {
           1322.2861422220865,
           1246.9645393371582,
           1217.8589766366142,
-          1211.7379708607991
+          1211.7379708607991,
+          1227.4604891459146
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -2934,12 +2934,6 @@ window.BENCHMARK_DATA = {
   "String": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -3232,10 +3226,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -3284,14 +3283,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          329.5756052652995,
           325.4519148554121,
           315.53746509552,
           307.3575401624044,
@@ -3340,7 +3339,8 @@ window.BENCHMARK_DATA = {
           349.9901569366455,
           354.09764188130697,
           335.60100383758544,
-          329.0063972791036
+          329.0063972791036,
+          331.0735701243083
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -3416,7 +3416,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          462.3107726757343,
           479.8086456934611,
           472.50604704448153,
           457.0701125008719,
@@ -3465,7 +3464,8 @@ window.BENCHMARK_DATA = {
           502.7881717046102,
           493.5823944091797,
           480.3555441538493,
-          464.9862608909607
+          464.9862608909607,
+          463.304212697347
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3541,7 +3541,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          1313.0143759409586,
           1346.2087994893393,
           1363.875945409139,
           1313.2155202229817,
@@ -3590,7 +3589,8 @@ window.BENCHMARK_DATA = {
           1351.1635727515588,
           1344.1089904785156,
           1295.0702143351236,
-          1280.314464187622
+          1280.314464187622,
+          1341.8971743265788
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3667,12 +3667,6 @@ window.BENCHMARK_DATA = {
   "StringArray": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -3965,10 +3959,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -4017,14 +4016,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1106.8352112088885,
           1127.9552107493082,
           1104.8587485722132,
           1102.3417764027913,
@@ -4073,7 +4072,8 @@ window.BENCHMARK_DATA = {
           1135.6465227762858,
           1130.9418654123942,
           1106.836745452881,
-          1102.6660358428956
+          1102.6660358428956,
+          1117.201140721639
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4149,7 +4149,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          1331.1228448232016,
           1331.3651218414307,
           1277.3845671335855,
           1367.9343302408854,
@@ -4198,7 +4197,8 @@ window.BENCHMARK_DATA = {
           1404.4512463887534,
           1354.077754465739,
           1387.7131831829365,
-          1249.1069519860405
+          1249.1069519860405,
+          1314.1766084035237
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4274,7 +4274,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          2920.6913950602216,
           2829.1982192993164,
           2894.4404389063516,
           2849.5485924312047,
@@ -4323,7 +4322,8 @@ window.BENCHMARK_DATA = {
           2918.1378712972005,
           2893.312228902181,
           2886.243987782796,
-          2762.7905563354493
+          2762.7905563354493,
+          2814.362615966797
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -4400,12 +4400,6 @@ window.BENCHMARK_DATA = {
   "StringArrayInAnyOrder": {
     "commits": [
       {
-        "sha": "d1fe3081ee4e150c0ac9a37d2f2b4d94b7b81e2c",
-        "author": "dependabot[bot]",
-        "date": "Mon Apr 7 15:19:49 2025 \u002B0200",
-        "message": "build(deps): bump NUnit.Analyzers from 4.6.0 to 4.7.0 in the nunit group (#496)"
-      },
-      {
         "sha": "ef3c4ea0da2f3726c86bfc4e03b07dbdbe3f6aae",
         "author": "Valentin Breu\u00DF",
         "date": "Sat Apr 12 15:09:46 2025 \u002B0200",
@@ -4698,10 +4692,15 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 10 21:56:22 2025 \u002B0200",
         "message": "fix: handle \u0060null\u0060 type in collections \u0060Are(Type)\u0060 (#587)"
+      },
+      {
+        "sha": "083abec01df497ae293c081986458feab324cf53",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sat May 10 22:15:02 2025 \u002B0200",
+        "message": "fix: handle \u0060null\u0060 type in collections \u0060AreExactly(Type)\u0060 (#589)"
       }
     ],
     "labels": [
-      "d1fe3081",
       "ef3c4ea0",
       "0672d6ab",
       "46d77bc3",
@@ -4750,14 +4749,14 @@ window.BENCHMARK_DATA = {
       "39e6ba3b",
       "53a68057",
       "81ce7262",
-      "c64a8e6e"
+      "c64a8e6e",
+      "083abec0"
     ],
     "datasets": [
       {
         "label": "aweXpect time",
         "unit": "ns",
         "data": [
-          1121.7708871205648,
           1186.8729700724284,
           1165.5963742182805,
           1141.5582317624774,
@@ -4806,7 +4805,8 @@ window.BENCHMARK_DATA = {
           1213.5268715449743,
           1205.1942123413087,
           1190.5742140452066,
-          1198.0187185832433
+          1198.0187185832433,
+          1166.6910568237304
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -4882,7 +4882,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions time",
         "unit": "ns",
         "data": [
-          147966.16297325722,
           152152.75469501203,
           149061.3936767578,
           150408.25285993304,
@@ -4931,7 +4930,8 @@ window.BENCHMARK_DATA = {
           157652.69057992788,
           151244.3387920673,
           152170.5484049479,
-          153086.337890625
+          153086.337890625,
+          149664.79208984374
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -4943,7 +4943,6 @@ window.BENCHMARK_DATA = {
         "label": "FluentAssertions memory",
         "unit": "b",
         "data": [
-          63352,
           63787,
           63787,
           63787,
@@ -4992,6 +4991,7 @@ window.BENCHMARK_DATA = {
           64323,
           63352,
           63787,
+          63787,
           63787
         ],
         "borderColor": "#FF671B",
@@ -5007,7 +5007,6 @@ window.BENCHMARK_DATA = {
         "label": "TUnit time",
         "unit": "ns",
         "data": [
-          4644.5872404915945,
           4677.96892191569,
           4753.810086763822,
           4670.794108072917,
@@ -5056,7 +5055,8 @@ window.BENCHMARK_DATA = {
           4937.898943583171,
           4782.3023747762045,
           4737.360218302409,
-          4705.025280253092
+          4705.025280253092,
+          4560.478717258999
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
