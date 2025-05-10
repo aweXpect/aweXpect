@@ -24,7 +24,7 @@ public sealed partial class ThatSignaler
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that signaler
-					             has recorded the callback at least 2 times with x => x > 0 and whose parameters only has unique items,
+					             has recorded the callback at least twice with x => x > 0 and whose parameters only has unique items,
 					             but it was never recorded
 					             """);
 			}

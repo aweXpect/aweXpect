@@ -81,7 +81,7 @@ public sealed partial class ThatEventRecording
 					.WithMessage("""
 					             Expected that recording
 					             has recorded the CustomEvent event on sut at least 3 times,
-					             but it was recorded 2 times in [
+					             but it was recorded twice in [
 					               CustomEvent("foo"),
 					               CustomEvent("bar")
 					             ]
@@ -141,7 +141,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that recording
-					             has recorded the CustomEvent event on sut at most 2 times,
+					             has recorded the CustomEvent event on sut less than 3 times,
 					             but it was recorded 3 times in [
 					               CustomEvent(),
 					               CustomEvent(),
@@ -198,7 +198,7 @@ public sealed partial class ThatEventRecording
 				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
 					.WithMessage("""
 					             Expected that recording
-					             has recorded the CustomEvent event on sut at least 4 times,
+					             has recorded the CustomEvent event on sut more than 3 times,
 					             but it was recorded 3 times in [
 					               CustomEvent(),
 					               CustomEvent(),
@@ -288,6 +288,67 @@ public sealed partial class ThatEventRecording
 					             Expected that recording
 					             has recorded the CustomEvent event on sut not once,
 					             but it was recorded once in [
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+
+			[Theory]
+			[InlineData(3, false)]
+			[InlineData(4, true)]
+			public async Task LessThan4_WhenNotificationCountIsTooFew_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.LessThan(4.Times()));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut at least 4 times,
+					             but it was recorded 3 times in [
+					               CustomEvent(),
+					               CustomEvent(),
+					               CustomEvent()
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(3, false)]
+			[InlineData(2, true)]
+			public async Task MoreThan2_WhenNotificationCountIsEnough_ShouldFail(int count, bool expectSuccess)
+			{
+				CustomEventWithoutParametersClass sut = new();
+				IEventRecording<CustomEventWithoutParametersClass> recording = sut.Record().Events();
+
+				for (int i = 0; i < count; i++)
+				{
+					sut.NotifyCustomEvent();
+				}
+
+				async Task Act() =>
+					await That(recording).DoesNotComplyWith(r => r
+						.Triggered(nameof(CustomEventWithoutParametersClass.CustomEvent))
+						.MoreThan(2.Times()));
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that recording
+					             has recorded the CustomEvent event on sut at most twice,
+					             but it was recorded 3 times in [
+					               CustomEvent(),
+					               CustomEvent(),
 					               CustomEvent()
 					             ]
 					             """);

@@ -33,6 +33,16 @@ public class CountResult<TType, TThat, TSelf>(
 	where TSelf : CountResult<TType, TThat, TSelf>
 {
 	/// <summary>
+	///     Verifies, that it occurs at least…
+	/// </summary>
+	public CountTimesResult<TSelf> AtLeast()
+		=> new(value =>
+		{
+			quantifier.AtLeast(value);
+			return (TSelf)this;
+		});
+
+	/// <summary>
 	///     Verifies, that it occurs at least <paramref name="minimum" /> times.
 	/// </summary>
 	public TSelf AtLeast(Times minimum)
@@ -40,6 +50,16 @@ public class CountResult<TType, TThat, TSelf>(
 		quantifier.AtLeast(minimum.Value);
 		return (TSelf)this;
 	}
+
+	/// <summary>
+	///     Verifies, that it occurs at most…
+	/// </summary>
+	public CountTimesResult<TSelf> AtMost()
+		=> new(value =>
+		{
+			quantifier.AtMost(value);
+			return (TSelf)this;
+		});
 
 	/// <summary>
 	///     Verifies, that it occurs at most <paramref name="maximum" /> times.
@@ -51,7 +71,7 @@ public class CountResult<TType, TThat, TSelf>(
 	}
 
 	/// <summary>
-	///     Verifies, that it occurs between <paramref name="minimum" />...
+	///     Verifies, that it occurs between <paramref name="minimum" />…
 	/// </summary>
 	public BetweenResult<TSelf> Between(int minimum)
 		=> new(maximum =>
@@ -70,6 +90,16 @@ public class CountResult<TType, TThat, TSelf>(
 	}
 
 	/// <summary>
+	///     Verifies, that it occurs less than…
+	/// </summary>
+	public CountTimesResult<TSelf> LessThan()
+		=> new(value =>
+		{
+			quantifier.LessThan(value);
+			return (TSelf)this;
+		});
+
+	/// <summary>
 	///     Verifies, that it occurs less than <paramref name="maximum" /> times.
 	/// </summary>
 	public TSelf LessThan(Times maximum)
@@ -77,6 +107,16 @@ public class CountResult<TType, TThat, TSelf>(
 		quantifier.LessThan(maximum.Value);
 		return (TSelf)this;
 	}
+
+	/// <summary>
+	///     Verifies, that it occurs more than…
+	/// </summary>
+	public CountTimesResult<TSelf> MoreThan()
+		=> new(value =>
+		{
+			quantifier.MoreThan(value);
+			return (TSelf)this;
+		});
 
 	/// <summary>
 	///     Verifies, that it occurs more than <paramref name="minimum" /> times.
@@ -102,6 +142,15 @@ public class CountResult<TType, TThat, TSelf>(
 	public TSelf Once()
 	{
 		quantifier.Exactly(1);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs exactly twice.
+	/// </summary>
+	public TSelf Twice()
+	{
+		quantifier.Exactly(2);
 		return (TSelf)this;
 	}
 }

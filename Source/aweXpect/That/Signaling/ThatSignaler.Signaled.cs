@@ -164,6 +164,10 @@ public static partial class ThatSignaler
 			{
 				stringBuilder.Append("has recorded the callback at least once");
 			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("has recorded the callback at least twice");
+			}
 			else
 			{
 				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(Times);
@@ -183,6 +187,10 @@ public static partial class ThatSignaler
 			{
 				stringBuilder.Append("only recorded once");
 			}
+			else if (Actual?.Count == 2)
+			{
+				stringBuilder.Append("only recorded twice");
+			}
 			else
 			{
 				stringBuilder.Append("only recorded ").Append(Actual?.Count).Append(Times);
@@ -194,6 +202,10 @@ public static partial class ThatSignaler
 			if (count == 1)
 			{
 				stringBuilder.Append("does not have recorded the callback");
+			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("does not have recorded the callback at least twice");
 			}
 			else
 			{
@@ -209,6 +221,10 @@ public static partial class ThatSignaler
 			if (Actual?.Count == 1)
 			{
 				stringBuilder.Append("recorded once");
+			}
+			else if (Actual?.Count == 2)
+			{
+				stringBuilder.Append("recorded twice");
 			}
 			else
 			{
@@ -267,6 +283,10 @@ public static partial class ThatSignaler
 			{
 				stringBuilder.Append("has recorded the callback at least once");
 			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("has recorded the callback at least twice");
+			}
 			else
 			{
 				stringBuilder.Append("has recorded the callback at least ").Append(count).Append(Times);
@@ -286,6 +306,10 @@ public static partial class ThatSignaler
 			{
 				stringBuilder.Append("only recorded once");
 			}
+			else if (_actualCount == 2)
+			{
+				stringBuilder.Append("only recorded twice");
+			}
 			else
 			{
 				stringBuilder.Append("only recorded ").Append(_actualCount).Append(Times);
@@ -304,6 +328,10 @@ public static partial class ThatSignaler
 			{
 				stringBuilder.Append("does not have recorded the callback");
 			}
+			else if (count == 2)
+			{
+				stringBuilder.Append("does not have recorded the callback at least twice");
+			}
 			else
 			{
 				stringBuilder.Append("does not have recorded the callback at least ").Append(count).Append(Times);
@@ -318,6 +346,10 @@ public static partial class ThatSignaler
 			if (_actualCount == 1)
 			{
 				stringBuilder.Append("recorded once");
+			}
+			else if (_actualCount == 2)
+			{
+				stringBuilder.Append("recorded twice");
 			}
 			else
 			{

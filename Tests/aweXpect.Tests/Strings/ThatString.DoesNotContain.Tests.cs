@@ -20,7 +20,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "INVESTIGATOR" ignoring case,
-					             but it contained it 1 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained it once in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
 
@@ -39,7 +39,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "InvEstIgAtOr" using IgnoreCaseForVocalsComparer,
-					             but it contained it 1 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained it once in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
 
@@ -87,7 +87,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "me",
-					             but it contained it 1 times in "some text"
+					             but it contained it once in "some text"
 					             """);
 			}
 
@@ -195,7 +195,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "text that does not occur" at most once,
-					             but it contained it 0 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it did not contain it in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
 
@@ -421,7 +421,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "text that does not occur" less than once,
-					             but it contained it 0 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it did not contain it in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
 
@@ -513,7 +513,7 @@ public sealed partial class ThatString
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              does not contain "in" more than 2 times,
+					              does not contain "in" more than twice,
 					              but it contained it 3 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					              """);
 			}
@@ -565,7 +565,7 @@ public sealed partial class ThatString
 					.WithMessage("""
 					             Expected that subject
 					             does not contain "investigator" exactly once,
-					             but it contained it 1 times in "In this text in between the word an investigator should find the word 'IN' multiple times."
+					             but it contained it once in "In this text in between the word an investigator should find the word 'IN' multiple times."
 					             """);
 			}
 

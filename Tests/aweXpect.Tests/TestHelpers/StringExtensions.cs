@@ -20,4 +20,12 @@ internal static class StringExtensions
 		return (indentFirstLine ? indentation : "")
 		       + value.Replace("\n", $"\n{indentation}");
 	}
+
+	public static string ToTimesString(this int value)
+		=> value switch
+		{
+			1 => "once",
+			2 => "twice",
+			_ => $"{value} times",
+		};
 }

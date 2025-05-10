@@ -19,12 +19,12 @@ public sealed class EventTriggerResultTests
 			await ((EventTriggerResult<CustomEventWithParametersClass<string>>.IExtensions)That(recording)
 					.Triggered(nameof(CustomEventWithParametersClass<string>.CustomEvent)))
 				.WithParameter<string>(" with my parameter", null, s => s == "foo")
-				.AtLeast(2.Times());
+				.AtLeast().Twice();
 
 		await That(Act).Throws<XunitException>()
 			.WithMessage("""
 			             Expected that recording
-			             has recorded the CustomEvent event on sut with my parameter at least 2 times,
+			             has recorded the CustomEvent event on sut with my parameter at least twice,
 			             but it was recorded once in [
 			               CustomEvent("foo"),
 			               CustomEvent("bar")

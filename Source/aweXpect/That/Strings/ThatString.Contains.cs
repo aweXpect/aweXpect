@@ -161,7 +161,22 @@ public static partial class ThatString
 			}
 			else
 			{
-				stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
+				if (_actualCount == 0)
+				{
+					stringBuilder.Append(it).Append(" did not contain it in ");
+				}
+				else if (_actualCount == 1)
+				{
+					stringBuilder.Append(it).Append(" contained it once in ");
+				}
+				else if (_actualCount == 2)
+				{
+					stringBuilder.Append(it).Append(" contained it twice in ");
+				}
+				else
+				{
+					stringBuilder.Append(it).Append(" contained it ").Append(_actualCount).Append(" times in ");
+				}
 				Formatter.Format(stringBuilder, _actual);
 			}
 		}
