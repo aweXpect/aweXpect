@@ -70,6 +70,24 @@ public class CountResult<TType, TThat, TSelf>(
 	}
 
 	/// <summary>
+	///     Verifies, that it occurs less than <paramref name="maximum" /> times.
+	/// </summary>
+	public TSelf LessThan(Times maximum)
+	{
+		quantifier.LessThan(maximum.Value);
+		return (TSelf)this;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs more than <paramref name="minimum" /> times.
+	/// </summary>
+	public TSelf MoreThan(Times minimum)
+	{
+		quantifier.MoreThan(minimum.Value);
+		return (TSelf)this;
+	}
+
+	/// <summary>
 	///     Verifies, that it occurs never.
 	/// </summary>
 	public TSelf Never()

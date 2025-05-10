@@ -165,14 +165,19 @@ You can also specify, how often the substring should be found:
 ```csharp
 string subject = "In this text in between the word an investigator should find the word 'IN' multiple times.";
 
+// 'in' can be found 3 times
+await Expect.That(subject).Contains("in").MoreThan(1)
+  .Because("count should be '> 1'");
 await Expect.That(subject).Contains("in").AtLeast(2)
-  .Because("'in' can be found 3 times");
+  .Because("count should be '>= 2'");
 await Expect.That(subject).Contains("in").Exactly(3)
-  .Because("'in' can be found 3 times");
+  .Because("count should be '== 3'");
 await Expect.That(subject).Contains("in").AtMost(4)
-  .Because("'in' can be found 3 times");
-await Expect.That(subject).Contains("in").Between(1).And(5)
-  .Because("'in' can be found 3 times");
+  .Because("count should be '<= 4'");
+await Expect.That(subject).Contains("in").LessThan(5)
+  .Because("count should be '< 5'");
+await Expect.That(subject).Contains("in").Between(1).And(6)
+  .Because("count should be '>= 1 AND <= 6'");
 ```
 
 ## Character casing

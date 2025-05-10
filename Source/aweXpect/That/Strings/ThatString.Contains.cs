@@ -36,7 +36,7 @@ public static partial class ThatString
 	/// <summary>
 	///     Verifies that the subject contains the <paramref name="unexpected" /> <see langword="string" />.
 	/// </summary>
-	public static StringEqualityTypeResult<string?, IThat<string?>> DoesNotContain(
+	public static StringEqualityTypeCountResult<string?, IThat<string?>> DoesNotContain(
 		this IThat<string?> source,
 		string unexpected)
 	{
@@ -46,11 +46,13 @@ public static partial class ThatString
 			throw new ArgumentException("The 'unexpected' string cannot be empty.", nameof(unexpected));
 		}
 
+		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringEqualityTypeResult<string?, IThat<string?>>(
+		return new StringEqualityTypeCountResult<string?, IThat<string?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new ContainsConstraint(it, grammars, unexpected, Quantifier.Never(), options)),
+				new ContainsConstraint(it, grammars, unexpected, quantifier, options).Invert()),
 			source,
+			quantifier,
 			options);
 	}
 
@@ -71,30 +73,29 @@ public static partial class ThatString
 		public ConstraintResult IsMetBy(string? actual)
 		{
 			_actual = actual;
-			if (expected is null)
-			{
-				Outcome = _isNegated ? Outcome.Success : Outcome.Failure;
-				return this;
-			}
-
-			if (actual is null)
+			if (actual is null || expected is null)
 			{
 				Outcome = Outcome.Failure;
 				return this;
 			}
 
 			_actualCount = CountOccurrences(actual, expected, options);
-			Outcome = quantifier.Check(_actualCount, true) == true ? Outcome.Success : Outcome.Failure;
+			Outcome = quantifier.Check(_actualCount, true) ?? _isNegated ? Outcome.Success : Outcome.Failure;
 			return this;
 		}
 
 		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			string quantifierString = quantifier.ToString();
-			if (quantifierString == "never")
+			if (quantifier.IsNever)
 			{
 				stringBuilder.Append("does not contain ");
 				Formatter.Format(stringBuilder, expected);
+			}
+			else if (_isNegated)
+			{
+				stringBuilder.Append("does not contain ");
+				Formatter.Format(stringBuilder, expected);
+				stringBuilder.Append(' ').Append(quantifier.ToNegatedString());
 			}
 			else
 			{

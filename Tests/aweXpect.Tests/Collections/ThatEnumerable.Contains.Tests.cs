@@ -209,6 +209,95 @@ public sealed partial class ThatEnumerable
 					              """);
 			}
 
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             contains 1 less than 2 times,
+					             but it contained it at least 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains 1 more than {minimum} times,
+					              but it contained it 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNever()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(1).Never();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1,
+					             but it contained it at least once in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
 			[Fact]
 			public async Task Using_WithAllDifferentComparer_ShouldFail()
 			{
@@ -393,6 +482,170 @@ public sealed partial class ThatEnumerable
 					             """);
 			}
 
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, true)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").AtLeast(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "blue" at least {minimum} times,
+					              but it contained it 2 times in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(2, true)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").AtMost(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             contains "blue" at most once,
+					             but it contained it at least 2 times in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, 2, true)]
+			[InlineData(2, 3, true)]
+			[InlineData(3, 4, false)]
+			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").Between(minimum).And(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "blue" between {minimum} and {maximum} times,
+					              but it contained it 2 times in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportExactly(int times, bool expectSuccess)
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("yellow").Exactly(times);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "yellow" exactly {times} times,
+					              but it contained it once in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             contains "blue" less than 2 times,
+					             but it contained it at least 2 times in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains "blue" more than {minimum} times,
+					              but it contained it 2 times in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNever()
+			{
+				string[] subject = ["green", "blue", "blue", "yellow",];
+
+				async Task Act()
+					=> await That(subject).Contains("blue").Never();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not contain "blue",
+					             but it contained it at least once in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
+			}
+
 			[Fact]
 			public async Task WhenExpectedIsNotPartOfStringEnumerable_ShouldFail()
 			{
@@ -486,50 +739,6 @@ public sealed partial class ThatEnumerable
 					             Expected that subject
 					             contains "foo" at least once,
 					             but it was <null>
-					             """);
-			}
-
-			[Fact]
-			public async Task WithAtLeast_ShouldVerifyCorrectNumberOfTimes()
-			{
-				string[] sut = ["green", "green", "blue", "yellow",];
-
-				async Task Act()
-					=> await That(sut).Contains("green").AtLeast(3.Times());
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that sut
-					             contains "green" at least 3 times,
-					             but it contained it 2 times in [
-					               "green",
-					               "green",
-					               "blue",
-					               "yellow"
-					             ]
-					             """);
-			}
-
-			[Fact]
-			public async Task WithAtMost_ShouldVerifyCorrectNumberOfTimes()
-			{
-				string[] sut = ["green", "green", "green", "green", "blue", "yellow",];
-
-				async Task Act()
-					=> await That(sut).Contains("green").AtMost(2.Times());
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage("""
-					             Expected that sut
-					             contains "green" at most 2 times,
-					             but it contained it at least 3 times in [
-					               "green",
-					               "green",
-					               "green",
-					               "green",
-					               "blue",
-					               "yellow"
-					             ]
 					             """);
 			}
 		}
@@ -681,6 +890,95 @@ public sealed partial class ThatEnumerable
 					                …
 					              ]
 					              """);
+			}
+
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(x => x == 1).LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             contains item matching x => x == 1 less than 2 times,
+					             but it contained it at least 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(x => x == 1).MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              contains item matching x => x == 1 more than {minimum} times,
+					              but it contained it 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Fact]
+			public async Task ShouldSupportNever()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).Contains(x => x == 1).Never();
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             does not contain item matching x => x == 1,
+					             but it contained it at least once in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
 			}
 
 			[Theory]

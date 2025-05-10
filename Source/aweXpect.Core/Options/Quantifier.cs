@@ -9,9 +9,19 @@ namespace aweXpect.Options;
 /// </summary>
 public class Quantifier
 {
+	private bool _allowEqual = true;
 	private bool _isNegated;
 	private int? _maximum;
 	private int? _minimum = 1;
+
+	/// <summary>
+	///     Flag indicating if the <see cref="Quantifier" /> is equivalent to never.
+	/// </summary>
+	public bool IsNever => _isNegated switch
+	{
+		false => _allowEqual && _maximum == 0,
+		true => _allowEqual && _minimum == 1 && _maximum == null,
+	};
 
 	/// <summary>
 	///     A quantifier for exactly zero items.
@@ -37,6 +47,7 @@ public class Quantifier
 
 		_minimum = minimum;
 		_maximum = null;
+		_allowEqual = true;
 	}
 
 	/// <summary>
@@ -53,6 +64,7 @@ public class Quantifier
 
 		_minimum = null;
 		_maximum = maximum;
+		_allowEqual = true;
 	}
 
 	/// <summary>
@@ -82,6 +94,41 @@ public class Quantifier
 
 		_minimum = minimum;
 		_maximum = maximum;
+		_allowEqual = true;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs less than <paramref name="maximum" /> times.
+	/// </summary>
+	public void LessThan(int maximum)
+	{
+		if (maximum < 0)
+		{
+			throw new ArgumentOutOfRangeException(nameof(maximum),
+					"The parameter 'maximum' must be non-negative")
+				.LogTrace();
+		}
+
+		_minimum = null;
+		_maximum = maximum;
+		_allowEqual = false;
+	}
+
+	/// <summary>
+	///     Verifies, that it occurs more than <paramref name="minimum" /> times.
+	/// </summary>
+	public void MoreThan(int minimum)
+	{
+		if (minimum < 0)
+		{
+			throw new ArgumentOutOfRangeException(nameof(minimum),
+					"The parameter 'minimum' must be non-negative")
+				.LogTrace();
+		}
+
+		_minimum = minimum;
+		_maximum = null;
+		_allowEqual = false;
 	}
 
 	/// <summary>
@@ -95,13 +142,13 @@ public class Quantifier
 	/// </remarks>
 	public bool? Check(int amount, bool isLast)
 	{
-		if (_maximum != null && amount > _maximum)
+		if (_maximum != null && (_allowEqual ? amount > _maximum : amount >= _maximum))
 		{
 			return _isNegated;
 		}
 
 		if ((isLast || _maximum == null) &&
-		    (_minimum == null || amount >= _minimum))
+		    (_minimum == null || (_allowEqual ? amount >= _minimum : amount > _minimum)))
 		{
 			return !_isNegated;
 		}
@@ -123,6 +170,7 @@ public class Quantifier
 
 		_minimum = expected;
 		_maximum = expected;
+		_allowEqual = true;
 	}
 
 	/// <inheritdoc />
@@ -133,13 +181,15 @@ public class Quantifier
 			return NegatedToString();
 		}
 
-		string? specialCases = (_minimum, _maximum) switch
+		string? specialCases = (_allowEqual, _minimum, _maximum) switch
 		{
-			(1, null) => "at least once",
-			(_, 0) => "never",
-			(1, 1) => "exactly once",
-			(null, 1) => "at most once",
-			(_, _) => null,
+			(true, 1, null) => "at least once",
+			(false, 1, null) => "more than once",
+			(true, _, 0) => "never",
+			(true, 1, 1) => "exactly once",
+			(true, null, 1) => "at most once",
+			(false, null, 1) => "less than once",
+			(_, _, _) => null,
 		};
 		if (specialCases != null)
 		{
@@ -153,12 +203,12 @@ public class Quantifier
 
 		if (_maximum == null)
 		{
-			return $"at least {_minimum} times";
+			return _allowEqual ? $"at least {_minimum} times" : $"more than {_minimum} times";
 		}
 
 		if (_minimum == null)
 		{
-			return $"at most {_maximum} times";
+			return _allowEqual ? $"at most {_maximum} times" : $"less than {_maximum} times";
 		}
 
 		return $"between {_minimum} and {_maximum} times";
@@ -200,6 +250,5 @@ public class Quantifier
 	/// <summary>
 	///     Negates the quantifier.
 	/// </summary>
-	public void Negate()
-		=> _isNegated = !_isNegated;
+	public void Negate() => _isNegated = !_isNegated;
 }

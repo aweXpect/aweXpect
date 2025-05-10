@@ -1,6 +1,7 @@
 ﻿#if NET8_0_OR_GREATER
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,7 +33,9 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
-					q => $"contains {Formatter.Format(expected)}{options} {q}",
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -54,7 +57,9 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(
 					it, grammars,
-					q => $"contains {Formatter.Format(expected)}{options} {q}",
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(expected)}{options}"
+						: $"contains {Formatter.Format(expected)}{options} {q}",
 					a => options.AreConsideredEqual(a, expected),
 					quantifier)),
 			source,
@@ -77,7 +82,9 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(
 					it, grammars,
-					q => $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"contains item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q}",
 					predicate,
 					quantifier)),
 			source,
@@ -127,57 +134,71 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
+	public static ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		DoesNotContain<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
 			TItem unexpected)
 	{
+		Quantifier quantifier = new();
 		ObjectEqualityOptions<TItem> options = new();
-		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
+		return new ObjectCountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
-					_ => $"does not contain {Formatter.Format(unexpected)}{options}",
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(unexpected)}{options}"
+						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
 					a => options.AreConsideredEqual(a, unexpected),
-					Quantifier.Never())),
+					quantifier).Invert()),
 			source,
+			quantifier,
 			options);
 	}
 
 	/// <summary>
 	///     Verifies that the collection does not contain the <paramref name="unexpected" /> value.
 	/// </summary>
-	public static StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
+	public static StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 		DoesNotContain(
 			this IThat<IAsyncEnumerable<string?>?> source,
 			string? unexpected)
 	{
+		Quantifier quantifier = new();
 		StringEqualityOptions options = new();
-		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
+		return new StringEqualityTypeCountResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<string?>(it, grammars,
-					_ => $"does not contain {Formatter.Format(unexpected)}{options}",
+					q => q.IsNever
+						? $"does not contain {Formatter.Format(unexpected)}{options}"
+						: $"does not contain {Formatter.Format(unexpected)}{options} {q.ToNegatedString()}",
 					a => options.AreConsideredEqual(a, unexpected),
-					Quantifier.Never())),
+					quantifier).Invert()),
 			source,
+			quantifier,
 			options);
 	}
 
 	/// <summary>
 	///     Verifies that the collection contains no item that satisfies the <paramref name="predicate" />.
 	/// </summary>
-	public static AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
+	public static CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>
 		DoesNotContain<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
 			Func<TItem, bool> predicate,
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
-		=> new(
+	{
+		Quantifier quantifier = new();
+		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new ContainConstraint<TItem>(it, grammars,
-					_ => $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}",
+					q => q.IsNever
+						? $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()}"
+						: $"does not contain item matching {doNotPopulateThisValue.TrimCommonWhiteSpace()} {q.ToNegatedString()}",
 					predicate,
-					Quantifier.Never())),
-			source);
+					quantifier).Invert()),
+			source,
+			quantifier);
+	}
 
 	private sealed class ContainConstraint<TItem>(
 		string it,
@@ -185,17 +206,19 @@ public static partial class ThatAsyncEnumerable
 		Func<Quantifier, string> expectationText,
 		Func<TItem, bool> predicate,
 		Quantifier quantifier)
-		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>(it, grammars),
+		: ConstraintResult(grammars),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 	{
 		private readonly List<TItem> _items = [];
+		private IAsyncEnumerable<TItem>? _actual;
 		private int _count;
 		private bool _isFinished;
+		private bool _isNegated;
 
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
 		{
-			Actual = actual;
+			_actual = actual;
 			if (actual is null)
 			{
 				Outcome = Outcome.Failure;
@@ -238,7 +261,7 @@ public static partial class ThatAsyncEnumerable
 				}
 			}
 
-			if (quantifier.Check(_count, true) == true)
+			if (quantifier.Check(_count, true) ?? _isNegated)
 			{
 				Outcome = Outcome.Success;
 				return this;
@@ -249,28 +272,70 @@ public static partial class ThatAsyncEnumerable
 			return this;
 		}
 
-		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(expectationText(quantifier));
+		public override void AppendExpectation(StringBuilder stringBuilder, string? indentation = null)
+			=> stringBuilder.Append(expectationText.Invoke(quantifier));
 
-		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
+		public override void AppendResult(StringBuilder stringBuilder, string? indentation = null)
 		{
-			if (_isFinished)
+			if (_actual == null)
 			{
-				stringBuilder.Append(It).Append(" contained it ").Append(_count).Append(" times in ");
+				stringBuilder.Append(it).Append(" was <null>");
+			}
+			else if (_isFinished)
+			{
+				stringBuilder.Append(it).Append(" contained it ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once in ");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times in ");
+				}
+
 				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
 			}
 			else
 			{
-				stringBuilder.Append(It).Append(" contained it at least ").Append(_count).Append(" times in ");
+				stringBuilder.Append(it).Append(" contained it at least ");
+				if (_count == 1)
+				{
+					stringBuilder.Append("once in ");
+				}
+				else
+				{
+					stringBuilder.Append(_count).Append(" times in ");
+				}
+
 				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
 			}
 		}
 
-		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(expectationText.Invoke(quantifier));
+		/// <inheritdoc cref="ConstraintResult.TryGetValue{TValue}(out TValue)" />
+		public override bool TryGetValue<TValue>([NotNullWhen(true)] out TValue? value) where TValue : default
+		{
+			if (_actual is TValue typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
 
-		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> stringBuilder.Append(It).Append(" did");
+			value = default;
+			return typeof(TValue).IsAssignableFrom(typeof(IAsyncEnumerable<TItem>));
+		}
+
+		public override ConstraintResult Negate()
+		{
+			_isNegated = !_isNegated;
+			quantifier.Negate();
+			Outcome = Outcome switch
+			{
+				Outcome.Failure => Outcome.Success,
+				Outcome.Success => Outcome.Failure,
+				_ => Outcome,
+			};
+			return this;
+		}
 	}
 }
 #endif
