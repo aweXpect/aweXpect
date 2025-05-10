@@ -1,7 +1,6 @@
 ﻿#if NET8_0_OR_GREATER
 using System.Collections.Generic;
 using System.Linq;
-using aweXpect.Equivalency;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -51,6 +50,97 @@ public sealed partial class ThatAsyncEnumerable
 					               …
 					             ]
 					             """);
+			}
+
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).AtLeast(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain 1 at least {minimum} times,
+					              but it contained it at least 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).AtMost(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1 at most 2 times,
+					             but it contained it 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, 2, false)]
+			[InlineData(2, 3, false)]
+			[InlineData(3, 4, true)]
+			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).Between(minimum).And(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain 1 between {minimum} and {maximum} times,
+					              but it contained it 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
 			}
 
 			[Fact]
@@ -116,6 +206,98 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportExactly(int times, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).Exactly(times);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(2, true)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1 less than 3 times,
+					             but it contained it 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(2, true)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(1).MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain 1,
+					             but it contained it at least 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
 			[AutoData]
 			public async Task WhenEnumerableContainsUnexpectedValue_ShouldFail(
 				List<int> values, int unexpected)
@@ -172,6 +354,147 @@ public sealed partial class ThatAsyncEnumerable
 
 		public sealed class StringItemTests
 		{
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["green", "blue", "blue", "yellow",]);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain("blue").AtLeast(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain "blue" at least {minimum} times,
+					              but it contained it 2 times in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["green", "blue", "blue", "yellow",]);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain("blue").AtMost(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain "blue" at most 2 times,
+					             but it contained it 2 times in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, 2, false)]
+			[InlineData(2, 3, false)]
+			[InlineData(3, 4, true)]
+			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["green", "blue", "blue", "yellow",]);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain("blue").Between(minimum).And(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain "blue" between {minimum} and {maximum} times,
+					              but it contained it 2 times in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportExactly(int times, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["green", "blue", "blue", "yellow",]);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain("blue").Exactly(times);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain "blue" exactly {(times == 1 ? "once" : $"{times} times")},
+					              but it contained it 2 times in [
+					                "green",
+					                "blue",
+					                "blue",
+					                "yellow"
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(2, true)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["green", "blue", "blue", "yellow",]);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain("blue").LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain "blue" less than 3 times,
+					             but it contained it 2 times in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(2, true)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IAsyncEnumerable<string> subject = ToAsyncEnumerable(["green", "blue", "blue", "yellow",]);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain("blue").MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain "blue",
+					             but it contained it 2 times in [
+					               "green",
+					               "blue",
+					               "blue",
+					               "yellow"
+					             ]
+					             """);
+			}
+
 			[Fact]
 			public async Task WhenStringDiffersInCase_ShouldSucceed()
 			{
@@ -254,6 +577,189 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             does not contain item matching x => x == 5,
 					             but it contained it at least 1 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportAtLeast(int minimum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(x => x == 1).AtLeast(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain item matching x => x == 1 at least {minimum} times,
+					              but it contained it at least 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			public async Task ShouldSupportAtMost(int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(x => x == 1).AtMost(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain item matching x => x == 1 at most 2 times,
+					             but it contained it 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, 2, false)]
+			[InlineData(2, 3, false)]
+			[InlineData(3, 4, true)]
+			public async Task ShouldSupportBetween(int minimum, int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(x => x == 1).Between(minimum).And(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain item matching x => x == 1 between {minimum} and {maximum} times,
+					              but it contained it 2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(1, true)]
+			[InlineData(2, false)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportExactly(int times, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(x => x == 1).Exactly(times);
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage($"""
+					              Expected that subject
+					              does not contain item matching x => x == 1 exactly {(times == 1 ? "once" : $"{times} times")},
+					              but it contained it {(times == 1 ? "at least " : "")}2 times in [
+					                1,
+					                1,
+					                2,
+					                3,
+					                5,
+					                8,
+					                13,
+					                21,
+					                34,
+					                55,
+					                …
+					              ]
+					              """);
+			}
+
+			[Theory]
+			[InlineData(2, true)]
+			[InlineData(3, false)]
+			public async Task ShouldSupportLessThan(int maximum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(x => x == 1).LessThan(maximum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain item matching x => x == 1 less than 3 times,
+					             but it contained it 2 times in [
+					               1,
+					               1,
+					               2,
+					               3,
+					               5,
+					               8,
+					               13,
+					               21,
+					               34,
+					               55,
+					               …
+					             ]
+					             """);
+			}
+
+			[Theory]
+			[InlineData(1, false)]
+			[InlineData(2, true)]
+			[InlineData(3, true)]
+			public async Task ShouldSupportMoreThan(int minimum, bool expectSuccess)
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers(20);
+
+				async Task Act()
+					=> await That(subject).DoesNotContain(x => x == 1).MoreThan(minimum.Times());
+
+				await That(Act).Throws<XunitException>().OnlyIf(!expectSuccess)
+					.WithMessage("""
+					             Expected that subject
+					             does not contain item matching x => x == 1,
+					             but it contained it at least 2 times in [
 					               1,
 					               1,
 					               2,
