@@ -10,7 +10,7 @@ namespace aweXpect.Options;
 ///     Tolerance for number comparisons.
 /// </summary>
 public class NumberTolerance<TNumber>(
-	Func<TNumber, TNumber, TNumber?, bool> isWithinTolerance)
+	Func<TNumber, TNumber, TNumber?> calculateDifference)
 #if NET8_0_OR_GREATER
 	where TNumber : struct, INumber<TNumber>
 #else
@@ -50,6 +50,20 @@ public class NumberTolerance<TNumber>(
 	}
 
 	/// <summary>
+	///     Calculates the difference between the <paramref name="actual" /> number
+	///     and the <paramref name="expected" /> number.
+	/// </summary>
+	public TNumber? CalculateDifference(TNumber? actual, TNumber? expected)
+	{
+		if (actual == null || expected == null)
+		{
+			return null;
+		}
+
+		return calculateDifference(actual.Value, expected.Value);
+	}
+
+	/// <summary>
 	///     Verifies if the <paramref name="actual" /> number is within the tolerance to the
 	///     <paramref name="expected" /> number.
 	/// </summary>
@@ -64,7 +78,12 @@ public class NumberTolerance<TNumber>(
 					(null, null) => true,
 					(_, null) => false,
 					(null, _) => false,
-					(_, _) => isWithinTolerance(actual.Value, expected.Value, Tolerance),
+#if NET8_0_OR_GREATER
+					(_, _) => actual.Equals(expected) || calculateDifference(actual.Value, expected.Value) <= Tolerance,
+#else
+					(_, _) => actual.Equals(expected) ||
+					          calculateDifference(actual.Value, expected.Value)?.CompareTo(Tolerance ?? default) <= 0,
+#endif
 				};
 			}
 		}

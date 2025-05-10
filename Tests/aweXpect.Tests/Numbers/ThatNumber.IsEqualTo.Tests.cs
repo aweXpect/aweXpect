@@ -25,10 +25,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((byte)1, (byte)2)]
-			[InlineData((byte)1, (byte)0)]
+			[InlineData((byte)1, (byte)2, -1)]
+			[InlineData((byte)1, (byte)0, 1)]
 			public async Task ForByte_WhenValueIsDifferentFromExpected_ShouldFail(byte subject,
-				byte? expected)
+				byte? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -37,7 +37,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -70,10 +70,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData(1.1, 2.1)]
-			[InlineData(1.1, 0.1)]
+			[InlineData(1.1, 2.1, "-1.0")]
+			[InlineData(1.1, 0.2, "0.9")]
 			public async Task ForDecimal_WhenValueIsDifferentFromExpected_ShouldFail(
-				double subjectValue, double expectedValue)
+				double subjectValue, double expectedValue, string expectedDifference)
 			{
 				decimal subject = new(subjectValue);
 				decimal expected = new(expectedValue);
@@ -85,7 +85,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -159,10 +159,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData(1.1, 2.1)]
-			[InlineData(1.1, 0.1)]
+			[InlineData(1.1, 2.1, "-1.0")]
+			[InlineData(1.1, 0.3, "0.8")]
 			public async Task ForDouble_WhenValueIsDifferentFromExpected_ShouldFail(
-				double subject, double expected)
+				double subject, double expected, string expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -171,7 +171,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -231,10 +231,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((float)1.1, (float)2.1)]
-			[InlineData((float)1.1, (float)0.1)]
+			[InlineData((float)1.1, (float)2.2, "-1.1")]
+			[InlineData((float)1.1, (float)0.3, "0.8")]
 			public async Task ForFloat_WhenValueIsDifferentFromExpected_ShouldFail(
-				float subject, float expected)
+				float subject, float expected, string expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -243,7 +243,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -277,10 +277,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData(1, 2)]
-			[InlineData(2, 1)]
-			public async Task ForInt_WhenValueIsDifferentFromExpected_ShouldFail(int subject,
-				int? expected)
+			[InlineData(1, 2, -1)]
+			[InlineData(3, 1, 2)]
+			public async Task ForInt_WhenValueIsDifferentFromExpected_ShouldFail(
+				int subject, int? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -289,7 +289,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -325,10 +325,10 @@ public sealed partial class ThatNumber
 
 #if NET8_0_OR_GREATER
 			[Theory]
-			[InlineData(1, 2)]
-			[InlineData(2, 1)]
+			[InlineData(1, 2, -1)]
+			[InlineData(2, 1, 1)]
 			public async Task ForInt128_WhenValueIsDifferentFromExpected_ShouldFail(
-				int subjectValue, int expectedValue)
+				int subjectValue, int expectedValue, int expectedDifference)
 			{
 				Int128 subject = subjectValue;
 				Int128? expected = expectedValue;
@@ -340,7 +340,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 #endif
@@ -390,10 +390,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((long)1, (long)2)]
-			[InlineData((long)1, (long)0)]
-			public async Task ForLong_WhenValueIsDifferentFromExpected_ShouldFail(long subject,
-				long? expected)
+			[InlineData((long)1, (long)2, -1)]
+			[InlineData((long)1, (long)0, 1)]
+			public async Task ForLong_WhenValueIsDifferentFromExpected_ShouldFail(
+				long subject, long? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -402,7 +402,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -430,10 +430,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((byte)1, (byte)2)]
-			[InlineData((byte)1, (byte)0)]
+			[InlineData((byte)1, (byte)2, -1)]
+			[InlineData((byte)1, (byte)0, 1)]
 			public async Task ForNullableByte_WhenValueIsDifferentFromExpected_ShouldFail(
-				byte? subject, byte? expected)
+				byte? subject, byte? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -442,7 +442,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -505,10 +505,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData(1.1, 2.1)]
-			[InlineData(1.1, 0.1)]
+			[InlineData(1.1, 2.1, "-1.0")]
+			[InlineData(1.1, 0.3, "0.8")]
 			public async Task ForNullableDecimal_WhenValueIsDifferentFromExpected_ShouldFail(
-				double? subjectValue, double? expectedValue)
+				double? subjectValue, double? expectedValue, string expectedDifference)
 			{
 				decimal? subject = subjectValue == null ? null : new decimal(subjectValue.Value);
 				decimal? expected = expectedValue == null ? null : new decimal(expectedValue.Value);
@@ -520,7 +520,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -568,10 +568,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData(1.1, 2.1)]
-			[InlineData(1.1, 0.1)]
+			[InlineData(1.1, 2.1, "-1.0")]
+			[InlineData(1.1, 0.3, "0.8")]
 			public async Task ForNullableDouble_WhenValueIsDifferentFromExpected_ShouldFail(
-				double? subject, double? expected)
+				double? subject, double? expected, string expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -580,7 +580,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -625,10 +625,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((float)1.1, (float)2.1)]
-			[InlineData((float)1.1, (float)0.1)]
+			[InlineData((float)1.1, (float)2.2, "-1.1")]
+			[InlineData((float)1.1, (float)0.2, "0.9")]
 			public async Task ForNullableFloat_WhenValueIsDifferentFromExpected_ShouldFail(
-				float? subject, float? expected)
+				float? subject, float? expected, string expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -637,7 +637,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -665,10 +665,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData(1, 2)]
-			[InlineData(1, 0)]
+			[InlineData(1, 2, -1)]
+			[InlineData(1, 0, 1)]
 			public async Task ForNullableInt_WhenValueIsDifferentFromExpected_ShouldFail(
-				int? subject, int? expected)
+				int? subject, int? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -677,7 +677,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -746,10 +746,10 @@ public sealed partial class ThatNumber
 
 #if NET8_0_OR_GREATER
 			[Theory]
-			[InlineData(1, 2)]
-			[InlineData(2, 1)]
+			[InlineData(1, 2, -1)]
+			[InlineData(2, 1, 1)]
 			public async Task ForNullableInt128_WhenValueIsDifferentFromExpected_ShouldFail(
-				int subjectValue, int expectedValue)
+				int subjectValue, int expectedValue, int expectedDifference)
 			{
 				Int128 subject = subjectValue;
 				Int128? expected = expectedValue;
@@ -761,7 +761,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 #endif
@@ -795,10 +795,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((long)1, (long)2)]
-			[InlineData((long)1, (long)0)]
+			[InlineData((long)1, (long)2, -1)]
+			[InlineData((long)1, (long)0, 1)]
 			public async Task ForNullableLong_WhenValueIsDifferentFromExpected_ShouldFail(
-				long? subject, long? expected)
+				long? subject, long? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -807,7 +807,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -853,10 +853,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((sbyte)1, (sbyte)2)]
-			[InlineData((sbyte)1, (sbyte)0)]
+			[InlineData((sbyte)1, (sbyte)2, -1)]
+			[InlineData((sbyte)1, (sbyte)0, 1)]
 			public async Task ForNullableSbyte_WhenValueIsDifferentFromExpected_ShouldFail(
-				sbyte? subject, sbyte? expected)
+				sbyte? subject, sbyte? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -865,7 +865,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -911,10 +911,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((short)1, (short)2)]
-			[InlineData((short)1, (short)0)]
+			[InlineData((short)1, (short)2, -1)]
+			[InlineData((short)1, (short)0, 1)]
 			public async Task ForNullableShort_WhenValueIsDifferentFromExpected_ShouldFail(
-				short? subject, short? expected)
+				short? subject, short? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -923,7 +923,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -969,10 +969,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((uint)1, (uint)2)]
-			[InlineData((uint)1, (uint)0)]
+			[InlineData((uint)1, (uint)2, -1)]
+			[InlineData((uint)1, (uint)0, 1)]
 			public async Task ForNullableUint_WhenValueIsDifferentFromExpected_ShouldFail(
-				uint? subject, uint? expected)
+				uint? subject, uint? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -981,7 +981,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -1027,10 +1027,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((ulong)1, (ulong)2)]
-			[InlineData((ulong)1, (ulong)0)]
+			[InlineData((ulong)1, (ulong)2, -1)]
+			[InlineData((ulong)1, (ulong)0, 1)]
 			public async Task ForNullableUlong_WhenValueIsDifferentFromExpected_ShouldFail(
-				ulong? subject, ulong? expected)
+				ulong? subject, ulong? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1039,7 +1039,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -1085,10 +1085,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((ushort)1, (ushort)2)]
-			[InlineData((ushort)1, (ushort)0)]
+			[InlineData((ushort)1, (ushort)2, -1)]
+			[InlineData((ushort)1, (ushort)0, 1)]
 			public async Task ForNullableUshort_WhenValueIsDifferentFromExpected_ShouldFail(
-				ushort? subject, ushort? expected)
+				ushort? subject, ushort? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1097,7 +1097,7 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
@@ -1149,10 +1149,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((sbyte)1, (sbyte)2)]
-			[InlineData((sbyte)1, (sbyte)0)]
-			public async Task ForSbyte_WhenValueIsDifferentFromExpected_ShouldFail(sbyte subject,
-				sbyte? expected)
+			[InlineData((sbyte)1, (sbyte)2, -1)]
+			[InlineData((sbyte)1, (sbyte)0, 1)]
+			public async Task ForSbyte_WhenValueIsDifferentFromExpected_ShouldFail(
+				sbyte subject, sbyte? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1161,14 +1161,14 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
 			[Theory]
 			[InlineData((sbyte)1, (sbyte)1)]
-			public async Task ForSbyte_WhenValueIsEqualToExpected_ShouldSucceed(sbyte subject,
-				sbyte? expected)
+			public async Task ForSbyte_WhenValueIsEqualToExpected_ShouldSucceed(
+				sbyte subject, sbyte? expected)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1195,10 +1195,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((short)1, (short)2)]
-			[InlineData((short)1, (short)0)]
-			public async Task ForShort_WhenValueIsDifferentFromExpected_ShouldFail(short subject,
-				short? expected)
+			[InlineData((short)1, (short)2, -1)]
+			[InlineData((short)1, (short)0, 1)]
+			public async Task ForShort_WhenValueIsDifferentFromExpected_ShouldFail(
+				short subject, short? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1207,14 +1207,14 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
 			[Theory]
 			[InlineData((short)1, (short)1)]
-			public async Task ForShort_WhenValueIsEqualToExpected_ShouldSucceed(short subject,
-				short? expected)
+			public async Task ForShort_WhenValueIsEqualToExpected_ShouldSucceed(
+				short subject, short? expected)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1241,10 +1241,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((uint)1, (uint)2)]
-			[InlineData((uint)1, (uint)0)]
-			public async Task ForUint_WhenValueIsDifferentFromExpected_ShouldFail(uint subject,
-				uint? expected)
+			[InlineData((uint)1, (uint)2, -1)]
+			[InlineData((uint)1, (uint)0, 1)]
+			public async Task ForUint_WhenValueIsDifferentFromExpected_ShouldFail(
+				uint subject, uint? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1253,14 +1253,14 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
 			[Theory]
 			[InlineData((uint)1, (uint)1)]
-			public async Task ForUint_WhenValueIsEqualToExpected_ShouldSucceed(uint subject,
-				uint? expected)
+			public async Task ForUint_WhenValueIsEqualToExpected_ShouldSucceed(
+				uint subject, uint? expected)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1287,10 +1287,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((ulong)1, (ulong)2)]
-			[InlineData((ulong)1, (ulong)0)]
-			public async Task ForUlong_WhenValueIsDifferentFromExpected_ShouldFail(ulong subject,
-				ulong? expected)
+			[InlineData((ulong)1, (ulong)2, -1)]
+			[InlineData((ulong)1, (ulong)0, 1)]
+			public async Task ForUlong_WhenValueIsDifferentFromExpected_ShouldFail(
+				ulong subject, ulong? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1299,14 +1299,14 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
 			[Theory]
 			[InlineData((ulong)1, (ulong)1)]
-			public async Task ForUlong_WhenValueIsEqualToExpected_ShouldSucceed(ulong subject,
-				ulong? expected)
+			public async Task ForUlong_WhenValueIsEqualToExpected_ShouldSucceed(
+				ulong subject, ulong? expected)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1333,10 +1333,10 @@ public sealed partial class ThatNumber
 			}
 
 			[Theory]
-			[InlineData((ushort)1, (ushort)2)]
-			[InlineData((ushort)1, (ushort)0)]
-			public async Task ForUshort_WhenValueIsDifferentFromExpected_ShouldFail(ushort subject,
-				ushort? expected)
+			[InlineData((ushort)1, (ushort)2, -1)]
+			[InlineData((ushort)1, (ushort)0, 1)]
+			public async Task ForUshort_WhenValueIsDifferentFromExpected_ShouldFail(
+				ushort subject, ushort? expected, int expectedDifference)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);
@@ -1345,14 +1345,14 @@ public sealed partial class ThatNumber
 					.WithMessage($"""
 					              Expected that subject
 					              is equal to {Formatter.Format(expected)},
-					              but it was {Formatter.Format(subject)}
+					              but it was {Formatter.Format(subject)} which differs by {expectedDifference}
 					              """);
 			}
 
 			[Theory]
 			[InlineData((ushort)1, (ushort)1)]
-			public async Task ForUshort_WhenValueIsEqualToExpected_ShouldSucceed(ushort subject,
-				ushort? expected)
+			public async Task ForUshort_WhenValueIsEqualToExpected_ShouldSucceed(
+				ushort subject, ushort? expected)
 			{
 				async Task Act()
 					=> await That(subject).IsEqualTo(expected);

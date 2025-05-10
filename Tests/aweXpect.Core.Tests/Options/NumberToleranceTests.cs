@@ -7,7 +7,7 @@ public class NumberToleranceTests
 	[Fact]
 	public async Task IsWithinTolerance_WhenBothAreNull_ShouldReturnTrue()
 	{
-		NumberTolerance<int> sut = new((a, b, t) => Math.Abs(a - b) <= t);
+		NumberTolerance<int> sut = new((a, b) => Math.Abs(a - b));
 
 		bool result = sut.IsWithinTolerance(null, null);
 
@@ -19,7 +19,7 @@ public class NumberToleranceTests
 	[InlineData(-3, null)]
 	public async Task IsWithinTolerance_WhenOneIsNull_ShouldReturnFalse(int? actual, int? expected)
 	{
-		NumberTolerance<int> sut = new((a, b, t) => Math.Abs(a - b) <= t);
+		NumberTolerance<int> sut = new((a, b) => Math.Abs(a - b));
 
 		bool result = sut.IsWithinTolerance(actual, expected);
 
@@ -32,7 +32,7 @@ public class NumberToleranceTests
 	public async Task IsWithinTolerance_WhenValuesAreNotNull_ShouldApplyTolerance(
 		int actual, int expected, int tolerance, bool expectedResult)
 	{
-		NumberTolerance<int> sut = new((a, b, t) => Math.Abs(a - b) <= t);
+		NumberTolerance<int> sut = new((a, b) => Math.Abs(a - b));
 		sut.SetTolerance(tolerance);
 
 		bool result = sut.IsWithinTolerance(actual, expected);
@@ -43,7 +43,7 @@ public class NumberToleranceTests
 	[Fact]
 	public async Task WhenToleranceIsNegative_ShouldThrowArgumentOutOfRangeException()
 	{
-		NumberTolerance<int> sut = new((_, _, _) => false);
+		NumberTolerance<int> sut = new((_, _) => null);
 
 		void Act() => sut.SetTolerance(-1);
 
@@ -54,7 +54,7 @@ public class NumberToleranceTests
 	[Fact]
 	public async Task WhenToleranceIsZero_ShouldNotThrow()
 	{
-		NumberTolerance<int> sut = new((_, _, _) => false);
+		NumberTolerance<int> sut = new((_, _) => null);
 
 		void Act() => sut.SetTolerance(0);
 
