@@ -21,8 +21,7 @@ public static partial class ThatAsyncEnumerable
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
 		{
-			// ReSharper disable once LocalizableElement
-			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+			predicate.ThrowIfNull();
 			return new AndOrResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
 						it, grammars,
@@ -51,8 +50,7 @@ public static partial class ThatAsyncEnumerable
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
 		{
-			// ReSharper disable once LocalizableElement
-			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+			predicate.ThrowIfNull();
 			return new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it, grammars,

@@ -26,8 +26,7 @@ public static partial class ThatObject
 		Type type)
 		where T : class
 	{
-		// ReSharper disable once LocalizableElement
-		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+		type.ThrowIfNull();;
 		return new AndOrResult<T?, IThat<T?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsOfTypeConstraint(it, grammars, type)),
 			source);
@@ -50,8 +49,7 @@ public static partial class ThatObject
 		Type type)
 		where T : class
 	{
-		// ReSharper disable once LocalizableElement
-		_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+		type.ThrowIfNull();;
 		return new AndOrResult<T?, IThat<T?>>(source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsOfTypeConstraint(it, grammars, type).Invert()),
 			source);

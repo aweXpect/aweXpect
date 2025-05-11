@@ -77,8 +77,7 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
-		// ReSharper disable once LocalizableElement
-		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+		predicate.ThrowIfNull();
 		Quantifier quantifier = new();
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
@@ -189,8 +188,7 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
-		// ReSharper disable once LocalizableElement
-		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+		predicate.ThrowIfNull();
 		Quantifier quantifier = new();
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>

@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using aweXpect.Core;
+using aweXpect.Helpers;
 using aweXpect.Options;
 
 namespace aweXpect.Results;
@@ -42,8 +43,7 @@ public class SingleItemResult<TCollection, TItem>
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
-		// ReSharper disable once LocalizableElement
-		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+		predicate.ThrowIfNull();
 		_options.SetPredicate(predicate,
 			$" matching {doNotPopulateThisValue}");
 		return this;
@@ -66,8 +66,7 @@ public class SingleItemResult<TCollection, TItem>
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
-		// ReSharper disable once LocalizableElement
-		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+		predicate.ThrowIfNull();
 		_options.SetPredicate(item => item is T typed && predicate(typed),
 			$" of type {Formatter.Format(typeof(T))} matching {doNotPopulateThisValue}");
 		return this;
@@ -105,8 +104,7 @@ public class SingleItemResult<TCollection, TItem>
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		{
-			// ReSharper disable once LocalizableElement
-			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+			predicate.ThrowIfNull();
 			_options.SetPredicate(predicate,
 				$" matching {doNotPopulateThisValue}");
 			return this;
@@ -129,8 +127,7 @@ public class SingleItemResult<TCollection, TItem>
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		{
-			// ReSharper disable once LocalizableElement
-			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+			predicate.ThrowIfNull();
 			_options.SetPredicate(item => item is T typed && predicate(typed),
 				$" of type {Formatter.Format(typeof(T))} matching {doNotPopulateThisValue}");
 			return this;

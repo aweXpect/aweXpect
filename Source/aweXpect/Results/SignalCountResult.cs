@@ -62,8 +62,7 @@ public class SignalCountResult<TParameter, TSelf>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
-		// ReSharper disable once LocalizableElement
-		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+		predicate.ThrowIfNull();
 		options.WithPredicate(predicate, doNotPopulateThisValue.TrimCommonWhiteSpace());
 		return (TSelf)this;
 	}
