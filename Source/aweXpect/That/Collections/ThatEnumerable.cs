@@ -34,15 +34,9 @@ public static partial class ThatEnumerable
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
 			Actual = actual;
-			if (actual is null && expected is null)
-			{
-				Outcome = Outcome.Success;
-				return this;
-			}
-
 			if (actual is null || expected is null)
 			{
-				Outcome = Outcome.Failure;
+				Outcome = actual is null && expected is null ? Outcome.Success : Outcome.Failure;
 				return this;
 			}
 

@@ -274,15 +274,9 @@ public static partial class ThatAsyncEnumerable
 			CancellationToken cancellationToken)
 		{
 			Actual = actual;
-			if (actual is null && expected is null)
-			{
-				Outcome = Outcome.Success;
-				return this;
-			}
-
 			if (actual is null || expected is null)
 			{
-				Outcome = Outcome.Failure;
+				Outcome = actual is null && expected is null ? Outcome.Success : Outcome.Failure;
 				return this;
 			}
 
