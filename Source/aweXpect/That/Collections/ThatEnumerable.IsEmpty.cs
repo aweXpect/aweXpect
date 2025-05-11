@@ -33,6 +33,8 @@ public static partial class ThatEnumerable
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>(it, grammars),
 			IContextConstraint<IEnumerable<TItem>?>
 	{
+		private IEnumerable<TItem>? _materializedEnumerable;
+
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
 			Actual = actual;
@@ -44,6 +46,7 @@ public static partial class ThatEnumerable
 
 			if (actual is ICollection<TItem> collectionOfT)
 			{
+				_materializedEnumerable = actual;
 				if (collectionOfT.Count > 0)
 				{
 					Outcome = Outcome.Failure;
@@ -54,9 +57,9 @@ public static partial class ThatEnumerable
 				return this;
 			}
 
-			IEnumerable<TItem> materializedEnumerable =
+			_materializedEnumerable =
 				context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
-			using IEnumerator<TItem> enumerator = materializedEnumerable.GetEnumerator();
+			using IEnumerator<TItem> enumerator = _materializedEnumerable.GetEnumerator();
 			if (enumerator.MoveNext())
 			{
 				Outcome = Outcome.Failure;
@@ -82,7 +85,7 @@ public static partial class ThatEnumerable
 		protected override void AppendNormalResult(StringBuilder stringBuilder, string? indentation = null)
 		{
 			stringBuilder.Append(It).Append(" was ");
-			Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
+			Formatter.Format(stringBuilder, _materializedEnumerable, FormattingOptions.MultipleLines);
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)

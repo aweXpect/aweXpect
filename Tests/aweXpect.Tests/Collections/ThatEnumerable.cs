@@ -102,7 +102,7 @@ public partial class ThatEnumerable
 		{
 			if (_isEnumerated)
 			{
-				Fail.Test("The enumerable was enumerated twice!");
+				throw new NotSupportedException("The enumerable was enumerated twice!");
 			}
 
 			_isEnumerated = true;
