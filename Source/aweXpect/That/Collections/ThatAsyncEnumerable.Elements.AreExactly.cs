@@ -44,7 +44,7 @@ public static partial class ThatAsyncEnumerable
 		public ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 			AreExactly(Type type)
 		{
-			type.ThrowIfNull();;
+			type.ThrowIfNull();
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)

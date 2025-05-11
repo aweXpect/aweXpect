@@ -43,7 +43,7 @@ public static partial class ThatEnumerable
 		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 			AreExactly(Type type)
 		{
-			type.ThrowIfNull();;
+			type.ThrowIfNull();
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
