@@ -28,6 +28,7 @@ public class EventTriggerResult<TSubject>(
 		int? position,
 		Func<TParameter, bool> predicate)
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => position == null
 				? o.Any(x => x is TParameter p && predicate(p))
@@ -47,6 +48,7 @@ public class EventTriggerResult<TSubject>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Length > 0 && predicate(o[0]),
 			$" with sender {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
@@ -65,6 +67,7 @@ public class EventTriggerResult<TSubject>(
 		string doNotPopulateThisValue = "")
 		where TEventArgs : EventArgs
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Length > 1 && o[1] is TEventArgs m && predicate(m),
 			$" with {Formatter.Format(typeof(TEventArgs))} {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
@@ -81,6 +84,7 @@ public class EventTriggerResult<TSubject>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Any(x => x is TParameter m && predicate(m)),
 			$" with {Formatter.Format(typeof(TParameter))} parameter {doNotPopulateThisValue.TrimCommonWhiteSpace()}");
@@ -98,6 +102,7 @@ public class EventTriggerResult<TSubject>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		filter.AddPredicate(
 			o => o.Length > position && o[position] is TParameter m && predicate(m),
 			$" with {Formatter.Format(typeof(TParameter))} parameter [{position}] {doNotPopulateThisValue.TrimCommonWhiteSpace()}");

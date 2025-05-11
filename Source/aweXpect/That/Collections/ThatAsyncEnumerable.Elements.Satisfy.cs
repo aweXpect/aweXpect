@@ -20,7 +20,9 @@ public static partial class ThatAsyncEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+		{
+			predicate.ThrowIfNull();
+			return new AndOrResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
 						it, grammars,
 						_quantifier,
@@ -34,6 +36,7 @@ public static partial class ThatAsyncEnumerable
 						predicate,
 						"did")),
 				_subject);
+		}
 	}
 
 	public partial class Elements<TItem>
@@ -46,7 +49,9 @@ public static partial class ThatAsyncEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+		{
+			predicate.ThrowIfNull();
+			return new AndOrResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it, grammars,
 						_quantifier,
@@ -61,6 +66,7 @@ public static partial class ThatAsyncEnumerable
 						predicate,
 						"did")),
 				_subject);
+		}
 	}
 }
 #endif

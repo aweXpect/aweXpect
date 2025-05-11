@@ -77,6 +77,7 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		Quantifier quantifier = new();
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
@@ -187,6 +188,7 @@ public static partial class ThatAsyncEnumerable
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		Quantifier quantifier = new();
 		return new CountResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>

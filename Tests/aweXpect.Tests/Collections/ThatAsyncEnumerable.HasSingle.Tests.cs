@@ -151,6 +151,19 @@ public sealed partial class ThatAsyncEnumerable
 			}
 
 			[Fact]
+			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+			{
+				IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
+
+				async Task Act()
+					=> await That(subject).HasSingle().Matching(null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("predicate").And
+					.WithMessage("The predicate cannot be null.").AsPrefix();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IAsyncEnumerable<string>? subject = null;
@@ -230,9 +243,9 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task ShouldReturnSingleItem()
 			{
-				IAsyncEnumerable<MyBaseClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyBaseClass(x));
+				IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyClass(x));
 
-				MyBaseClass result = await That(subject).HasSingle().Matching(x => x.Value == 2);
+				MyBaseClass result = await That(subject).HasSingle().Matching<MyBaseClass>(x => x.Value == 2);
 
 				await That(result.Value).IsEqualTo(2);
 			}
@@ -240,25 +253,41 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableContainsMoreThanOneElement_ShouldFail()
 			{
-				IAsyncEnumerable<MyBaseClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyBaseClass(x));
+				IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyClass(x));
 
 				async Task Act()
-					=> await That(subject).HasSingle().Matching(x => x.Value > 1);
+					=> await That(subject).HasSingle().Matching<MyBaseClass>(x => x.Value > 1);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has a single item matching x => x.Value > 1,
+					             has a single item of type MyBaseClass matching x => x.Value > 1,
 					             but it contained more than one item
+					             """);
+			}
+
+			[Fact]
+			public async Task WhenEnumerableContainsNoMatchingElements_ShouldFail()
+			{
+				IAsyncEnumerable<MyBaseClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyBaseClass(x));
+
+				async Task Act()
+					=> await That(subject).HasSingle().Matching<MyClass>(x => x.Value > 1);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage("""
+					             Expected that subject
+					             has a single item of type MyClass matching x => x.Value > 1,
+					             but it did not contain any matching item
 					             """);
 			}
 
 			[Fact]
 			public async Task WhenEnumerableContainsSingleElement_ShouldSucceed()
 			{
-				IAsyncEnumerable<MyBaseClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyBaseClass(x));
+				IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyClass(x));
 
-				MyBaseClass result = await That(subject).HasSingle().Matching(x => x.Value > 2);
+				MyBaseClass result = await That(subject).HasSingle().Matching<MyBaseClass>(x => x.Value > 2);
 
 				await That(result.Value).IsEqualTo(3);
 			}
@@ -266,17 +295,30 @@ public sealed partial class ThatAsyncEnumerable
 			[Fact]
 			public async Task WhenEnumerableIsEmpty_ShouldFail()
 			{
-				IAsyncEnumerable<MyBaseClass> subject = ToAsyncEnumerable([], x => new MyBaseClass(x));
+				IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable([], x => new MyClass(x));
 
 				async Task Act()
-					=> await That(subject).HasSingle().Matching(_ => true);
+					=> await That(subject).HasSingle().Matching<MyBaseClass>(_ => true);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage("""
 					             Expected that subject
-					             has a single item matching _ => true,
+					             has a single item of type MyBaseClass matching _ => true,
 					             but it was empty
 					             """);
+			}
+
+			[Fact]
+			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+			{
+				IAsyncEnumerable<MyClass> subject = ToAsyncEnumerable([1, 2, 3,], x => new MyClass(x));
+
+				async Task Act()
+					=> await That(subject).HasSingle().Matching<MyBaseClass>(null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("predicate").And
+					.WithMessage("The predicate cannot be null.").AsPrefix();
 			}
 		}
 

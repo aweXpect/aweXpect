@@ -43,8 +43,7 @@ public static partial class ThatEnumerable
 		public ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 			Are(Type type)
 		{
-			// ReSharper disable once LocalizableElement
-			_ = type ?? throw new ArgumentNullException(nameof(type), "The type cannot be null.");
+			type.ThrowIfNull();
 			ObjectEqualityOptions<TItem> options = new();
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
 				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)

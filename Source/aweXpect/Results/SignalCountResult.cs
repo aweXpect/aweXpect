@@ -62,6 +62,7 @@ public class SignalCountResult<TParameter, TSelf>(
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		predicate.ThrowIfNull();
 		options.WithPredicate(predicate, doNotPopulateThisValue.TrimCommonWhiteSpace());
 		return (TSelf)this;
 	}

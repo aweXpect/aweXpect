@@ -26,6 +26,19 @@ public sealed partial class ThatGeneric
 					             }
 					             """);
 			}
+
+			[Fact]
+			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+			{
+				Other subject = new();
+
+				async Task Act()
+					=> await That(subject).Satisfies(null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("predicate").And
+					.WithMessage("The predicate cannot be null.").AsPrefix();
+			}
 		}
 
 		public sealed class WithinTests

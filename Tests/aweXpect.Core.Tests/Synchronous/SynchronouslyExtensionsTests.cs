@@ -28,7 +28,7 @@ public class SynchronouslyExtensionsTests
 			Bar = 3,
 		};
 		int value = subject.Bar;
-		void Act() => That(() => ThrowIf(value == 3)).DoesNotThrow().VerifySynchronously();;
+		void Act() => That(() => ThrowIf(value == 3)).DoesNotThrow().VerifySynchronously();
 
 		That(Act).Throws<XunitException>()
 			.WithMessage("""
@@ -47,7 +47,7 @@ public class SynchronouslyExtensionsTests
 			Bar = 3,
 		};
 		int value = subject.Bar;
-		void Act() => That(value).IsEqualTo(2).VerifySynchronously();;
+		void Act() => That(value).IsEqualTo(2).VerifySynchronously();
 
 		That(Act).Throws<XunitException>()
 			.WithMessage("""

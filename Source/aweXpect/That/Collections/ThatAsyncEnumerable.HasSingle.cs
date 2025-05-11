@@ -50,6 +50,7 @@ public static partial class ThatAsyncEnumerable
 	{
 		private IAsyncEnumerable<TItem>? _actual;
 		private int _count;
+		private bool _isEmpty;
 
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
 			CancellationToken cancellationToken)
@@ -64,9 +65,11 @@ public static partial class ThatAsyncEnumerable
 			IAsyncEnumerable<TItem> materialized =
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			_count = 0;
+			_isEmpty = true;
 
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
 			{
+				_isEmpty = false;
 				if (!options.Matches(item))
 				{
 					continue;
@@ -105,7 +108,7 @@ public static partial class ThatAsyncEnumerable
 			}
 			else if (_count == 0)
 			{
-				stringBuilder.Append(it).Append(" was empty");
+				stringBuilder.Append(it).Append(_isEmpty ? " was empty" : " did not contain any matching item");
 			}
 			else
 			{

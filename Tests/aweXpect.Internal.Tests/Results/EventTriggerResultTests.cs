@@ -33,6 +33,66 @@ public sealed class EventTriggerResultTests
 	}
 
 	[Fact]
+	public async Task WhenPredicateIsNull_ForEventArgs_ShouldThrowArgumentNullException()
+	{
+		CustomEventWithParametersClass<string> sut = new();
+		IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+
+		async Task Act() =>
+			await That(recording).Triggered(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.With<EventArgs>(null!);
+
+		await That(Act).Throws<ArgumentNullException>()
+			.WithParamName("predicate").And
+			.WithMessage("The predicate cannot be null.").AsPrefix();
+	}
+
+	[Fact]
+	public async Task WhenPredicateIsNull_ForParameter_ShouldThrowArgumentNullException()
+	{
+		CustomEventWithParametersClass<string> sut = new();
+		IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+
+		async Task Act() =>
+			await That(recording).Triggered(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.WithParameter<string>(null!);
+
+		await That(Act).Throws<ArgumentNullException>()
+			.WithParamName("predicate").And
+			.WithMessage("The predicate cannot be null.").AsPrefix();
+	}
+
+	[Fact]
+	public async Task WhenPredicateIsNull_ForParameter_WithPosition_ShouldThrowArgumentNullException()
+	{
+		CustomEventWithParametersClass<string> sut = new();
+		IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+
+		async Task Act() =>
+			await That(recording).Triggered(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.WithParameter<string>(1, null!);
+
+		await That(Act).Throws<ArgumentNullException>()
+			.WithParamName("predicate").And
+			.WithMessage("The predicate cannot be null.").AsPrefix();
+	}
+
+	[Fact]
+	public async Task WhenPredicateIsNull_ForSender_ShouldThrowArgumentNullException()
+	{
+		CustomEventWithParametersClass<string> sut = new();
+		IEventRecording<CustomEventWithParametersClass<string>> recording = sut.Record().Events();
+
+		async Task Act() =>
+			await That(recording).Triggered(nameof(CustomEventWithParametersClass<string>.CustomEvent))
+				.WithSender(null!);
+
+		await That(Act).Throws<ArgumentNullException>()
+			.WithParamName("predicate").And
+			.WithMessage("The predicate cannot be null.").AsPrefix();
+	}
+
+	[Fact]
 	public async Task WithMultipleMatchingParameters_PredicateChecksForAnyOne()
 	{
 		CustomEventWithParametersClass<string, int, string> sut = new();
