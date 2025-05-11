@@ -71,7 +71,7 @@ public static partial class ThatEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression));
+			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
 			stringBuilder.Append(options);
 		}
 
@@ -88,10 +88,20 @@ public static partial class ThatEnumerable
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> throw new NotImplementedException();
+			=> AppendNormalExpectation(stringBuilder, indentation);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> throw new NotImplementedException();
+		{
+			if (expected is null)
+			{
+				stringBuilder.Append(It).Append(" cannot compare to <null>");
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" did in ");
+				Formatter.Format(stringBuilder, Actual, FormattingOptions.MultipleLines);
+			}
+		}
 	}
 
 	private sealed class CollectionConstraint<TItem>

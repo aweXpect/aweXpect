@@ -268,6 +268,7 @@ public static partial class ThatAsyncEnumerable
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
+		private List<TItem>? _items = [];
 		private string? _failure;
 
 		public async Task<ConstraintResult> IsMetBy(IAsyncEnumerable<TItem>? actual, IEvaluationContext context,
@@ -284,9 +285,18 @@ public static partial class ThatAsyncEnumerable
 				context.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			ICollectionMatcher<TItem, TMatch> matcher = matchOptions.GetCollectionMatcher<TItem, TMatch>(expected);
 			int maximumNumber = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get();
+			if (IsNegated)
+			{
+				_items = [];
+			}
 
 			await foreach (TItem item in materializedEnumerable.WithCancellation(cancellationToken))
 			{
+				if (_items?.Count < maximumNumber + 1)
+				{
+					_items.Add(item);
+				}
+
 				if (matcher.Verify(It, item, options, maximumNumber, out _failure))
 				{
 					_failure ??= await TooManyDeviationsError(materializedEnumerable);
@@ -345,7 +355,7 @@ public static partial class ThatAsyncEnumerable
 
 		protected override void AppendNormalExpectation(StringBuilder stringBuilder, string? indentation = null)
 		{
-			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression));
+			stringBuilder.Append(matchOptions.GetExpectation(expectedExpression, Grammars));
 			stringBuilder.Append(options);
 		}
 
@@ -362,10 +372,20 @@ public static partial class ThatAsyncEnumerable
 		}
 
 		protected override void AppendNegatedExpectation(StringBuilder stringBuilder, string? indentation = null)
-			=> throw new NotImplementedException();
+			=> AppendNormalExpectation(stringBuilder, indentation);
 
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
-			=> throw new NotImplementedException();
+		{
+			if (expected is null)
+			{
+				stringBuilder.Append(It).Append(" cannot compare to <null>");
+			}
+			else
+			{
+				stringBuilder.Append(It).Append(" did in ");
+				Formatter.Format(stringBuilder, _items, FormattingOptions.MultipleLines);
+			}
+		}
 	}
 
 	private sealed class IsInOrderConstraint<TItem, TMember>(

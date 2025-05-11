@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using aweXpect.Core;
+using aweXpect.Core.Constraints;
 using aweXpect.Helpers;
 using aweXpect.Options;
 using aweXpect.Results;
@@ -10,7 +11,7 @@ namespace aweXpect;
 public static partial class ThatEnumerable
 {
 	/// <summary>
-	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
 	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
 		IsEqualTo<TItem>(
@@ -33,7 +34,7 @@ public static partial class ThatEnumerable
 	}
 
 	/// <summary>
-	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
 	public static StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
 		IsEqualTo(this IThat<IEnumerable<string?>?> source,
@@ -49,6 +50,51 @@ public static partial class ThatEnumerable
 					expected,
 					options,
 					matchOptions)),
+			source,
+			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
+	/// </summary>
+	public static ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>
+		IsNotEqualTo<TItem>(
+			this IThat<IEnumerable<TItem>?> source,
+			IEnumerable<TItem> unexpected,
+			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+	{
+		ObjectEqualityOptions<TItem> options = new();
+		CollectionMatchOptions matchOptions = new();
+		return new ObjectCollectionMatchResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<TItem, TItem>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					options,
+					matchOptions).Invert()),
+			source,
+			options,
+			matchOptions);
+	}
+
+	/// <summary>
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
+	/// </summary>
+	public static StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>
+		IsNotEqualTo(this IThat<IEnumerable<string?>?> source,
+			IEnumerable<string?> unexpected,
+			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+	{
+		StringEqualityOptions options = new();
+		CollectionMatchOptions matchOptions = new();
+		return new StringCollectionMatchResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				=> new IsEqualToConstraint<string?, string?>(it, grammars,
+					doNotPopulateThisValue.TrimCommonWhiteSpace(),
+					unexpected,
+					options,
+					matchOptions).Invert()),
 			source,
 			options,
 			matchOptions);

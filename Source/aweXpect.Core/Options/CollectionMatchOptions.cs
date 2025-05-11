@@ -82,27 +82,38 @@ public partial class CollectionMatchOptions(
 		};
 
 	/// <summary>
-	///     Specifies the expectation for the <paramref name="expectedExpression" />.
+	///     Specifies the expectation for the <paramref name="expectedExpression" /> using the provided <paramref name="grammars"/>.
 	/// </summary>
-	public string GetExpectation(string expectedExpression)
+	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
 		=> (_inAnyOrder, _ignoringDuplicates) switch
 		{
-			(true, true) => ToString(_equivalenceRelations, expectedExpression) + " in any order ignoring duplicates",
-			(true, false) => ToString(_equivalenceRelations, expectedExpression) + " in any order",
-			(false, true) => ToString(_equivalenceRelations, expectedExpression) + " in order ignoring duplicates",
-			(false, false) => ToString(_equivalenceRelations, expectedExpression) + " in order",
+			(true, true) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order ignoring duplicates",
+			(true, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in any order",
+			(false, true) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order ignoring duplicates",
+			(false, false) => ToString(_equivalenceRelations, expectedExpression, grammars) + " in order",
 		};
 
-	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression)
-		=> equivalenceRelation switch
+	private static string ToString(EquivalenceRelations equivalenceRelation, string expectedExpression, ExpectationGrammars grammars)
+		=> (equivalenceRelation, grammars.IsNegated()) switch
 		{
-			EquivalenceRelations.Contains => $"contains collection {expectedExpression}",
-			EquivalenceRelations.ContainsProperly =>
-				$"contains collection {expectedExpression} and at least one additional item",
-			EquivalenceRelations.IsContainedIn => $"is contained in collection {expectedExpression}",
-			EquivalenceRelations.IsContainedInProperly =>
-				$"is contained in collection {expectedExpression} which has at least one additional item",
-			_ => $"matches collection {expectedExpression}",
+			(EquivalenceRelations.Contains, false)
+				=> $"contains collection {expectedExpression}",
+			(EquivalenceRelations.Contains, true)
+				=> $"does not contain collection {expectedExpression}",
+			(EquivalenceRelations.ContainsProperly, false)
+				=> $"contains collection {expectedExpression} and at least one additional item",
+			(EquivalenceRelations.ContainsProperly, true)
+				=> $"does not contain collection {expectedExpression} and at least one additional item",
+			(EquivalenceRelations.IsContainedIn, false)
+				=> $"is contained in collection {expectedExpression}",
+			(EquivalenceRelations.IsContainedIn, true)
+				=> $"is not contained in collection {expectedExpression}",
+			(EquivalenceRelations.IsContainedInProperly, false)
+				=> $"is contained in collection {expectedExpression} which has at least one additional item",
+			(EquivalenceRelations.IsContainedInProperly, true)
+				=> $"is not contained in collection {expectedExpression} which has at least one additional item",
+			(_, false) => $"matches collection {expectedExpression}",
+			(_, true) => $"does not match collection {expectedExpression}",
 		};
 
 	private static string? ReturnErrorString(string it, List<string> errors)
