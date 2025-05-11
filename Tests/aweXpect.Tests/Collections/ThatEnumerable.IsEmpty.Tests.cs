@@ -39,6 +39,17 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task ShouldCallEnumeratorOnlyOnce()
+			{
+				IEnumerable<int> subject = new ThrowWhenIteratingTwiceEnumerable();
+
+				async Task Act()
+					=> await That(subject).IsEmpty();
+
+				await That(Act).Throws<XunitException>();
+			}
+
+			[Fact]
 			public async Task WhenArrayContainsValues_ShouldFail()
 			{
 				string[] subject = ["foo",];
