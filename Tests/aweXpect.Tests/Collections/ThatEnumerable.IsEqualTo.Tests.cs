@@ -157,6 +157,18 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WhenSubjectAndExpectedIsNull_ShouldSucceed()
+			{
+				IEnumerable<int>? subject = null;
+				IEnumerable<int>? expected = null;
+
+				async Task Act()
+					=> await That(subject).IsEqualTo(expected!);
+
+				await That(Act).DoesNotThrow();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IEnumerable<string>? subject = null;

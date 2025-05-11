@@ -251,19 +251,20 @@ public static partial class ThatAsyncEnumerable
 			}
 			else
 			{
-				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount, _totalCount);
+				_quantifier.AppendResult(stringBuilder, _grammars.Negate(), _matchingCount, _notMatchingCount,
+					_totalCount);
 			}
 		}
 	}
 
-	private sealed class IsConstraint<TItem, TMatch>(
+	private sealed class IsEqualToConstraint<TItem, TMatch>(
 		string it,
 		ExpectationGrammars grammars,
 		string expectedExpression,
 		IEnumerable<TItem>? expected,
 		IOptionsEquality<TMatch> options,
 		CollectionMatchOptions matchOptions)
-		: ConstraintResult.WithNotNullValue<IAsyncEnumerable<TItem>?>(it, grammars),
+		: ConstraintResult.WithEqualToValue<IAsyncEnumerable<TItem>?>(it, grammars, expected is null),
 			IAsyncContextConstraint<IAsyncEnumerable<TItem>?>
 		where TItem : TMatch
 	{
@@ -273,13 +274,13 @@ public static partial class ThatAsyncEnumerable
 			CancellationToken cancellationToken)
 		{
 			Actual = actual;
-			if (actual is null)
+			if (actual is null && expected is null)
 			{
-				Outcome = Outcome.Failure;
+				Outcome = Outcome.Success;
 				return this;
 			}
 
-			if (expected is null)
+			if (actual is null || expected is null)
 			{
 				Outcome = Outcome.Failure;
 				return this;
