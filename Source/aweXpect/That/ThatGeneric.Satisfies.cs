@@ -21,6 +21,8 @@ public static partial class ThatGeneric
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		// ReSharper disable once LocalizableElement
+		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
 		RepeatedCheckOptions options = new();
 		return new RepeatedCheckResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
@@ -41,7 +43,10 @@ public static partial class ThatGeneric
 		Func<T, bool> predicate,
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
-		=> new(source.Get().ExpectationBuilder
+	{
+		// ReSharper disable once LocalizableElement
+		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+		return new AndOrResult<T, IThat<T>>(source.Get().ExpectationBuilder
 				.AddConstraint((it, grammars) =>
 					new SatisfiesConstraint<T>(
 						it,
@@ -50,6 +55,7 @@ public static partial class ThatGeneric
 						doNotPopulateThisValue.TrimCommonWhiteSpace(),
 						null).Invert()),
 			source);
+	}
 
 	private sealed class SatisfiesConstraint<T>(
 		string it,

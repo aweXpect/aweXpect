@@ -1016,6 +1016,19 @@ public sealed partial class ThatEnumerable
 			}
 
 			[Fact]
+			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+			{
+				IEnumerable<int> subject = Factory.GetFibonacciNumbers();
+
+				async Task Act()
+					=> await That(subject).Contains(predicate: null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("predicate").And
+					.WithMessage("The predicate cannot be null.").AsPrefix();
+			}
+
+			[Fact]
 			public async Task WhenSubjectIsNull_ShouldFail()
 			{
 				IEnumerable<int>? subject = null;

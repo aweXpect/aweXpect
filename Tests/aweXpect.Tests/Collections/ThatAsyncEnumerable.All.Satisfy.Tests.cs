@@ -70,6 +70,19 @@ public sealed partial class ThatAsyncEnumerable
 				}
 
 				[Fact]
+				public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+				{
+					IAsyncEnumerable<int> subject = Factory.GetAsyncFibonacciNumbers();
+
+					async Task Act()
+						=> await That(subject).All().Satisfy(null!);
+
+					await That(Act).Throws<ArgumentNullException>()
+						.WithParamName("predicate").And
+						.WithMessage("The predicate cannot be null.").AsPrefix();
+				}
+
+				[Fact]
 				public async Task WhenSubjectIsNull_ShouldFail()
 				{
 					IAsyncEnumerable<string>? subject = null;
@@ -124,6 +137,19 @@ public sealed partial class ThatAsyncEnumerable
 						=> await That(subject).All().Satisfy(x => x?.Length == 3);
 
 					await That(Act).DoesNotThrow();
+				}
+
+				[Fact]
+				public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+				{
+					IAsyncEnumerable<string> subject = ToAsyncEnumerable(["foo", "bar", "baz",]);
+
+					async Task Act()
+						=> await That(subject).All().Satisfy(null!);
+
+					await That(Act).Throws<ArgumentNullException>()
+						.WithParamName("predicate").And
+						.WithMessage("The predicate cannot be null.").AsPrefix();
 				}
 
 				[Fact]

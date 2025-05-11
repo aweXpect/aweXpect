@@ -37,6 +37,7 @@ public static partial class ThatEnumerable
 	{
 		private IEnumerable<TItem>? _actual;
 		private int _count;
+		private bool _isEmpty;
 
 		public ConstraintResult IsMetBy(IEnumerable<TItem>? actual, IEvaluationContext context)
 		{
@@ -49,9 +50,11 @@ public static partial class ThatEnumerable
 
 			IEnumerable<TItem> materialized = context.UseMaterializedEnumerable<TItem, IEnumerable<TItem>>(actual);
 			_count = 0;
+			_isEmpty = true;
 
 			foreach (TItem item in materialized)
 			{
+				_isEmpty = false;
 				if (!options.Matches(item))
 				{
 					continue;
@@ -90,7 +93,7 @@ public static partial class ThatEnumerable
 			}
 			else if (_count == 0)
 			{
-				stringBuilder.Append(it).Append(" was empty");
+				stringBuilder.Append(it).Append(_isEmpty ? " was empty" : " did not contain any matching item");
 			}
 			else
 			{

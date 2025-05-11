@@ -19,7 +19,10 @@ public static partial class ThatEnumerable
 				Func<string?, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+		{
+			// ReSharper disable once LocalizableElement
+			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+			return new AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
 						it, grammars,
 						_quantifier,
@@ -33,6 +36,7 @@ public static partial class ThatEnumerable
 						predicate,
 						"did")),
 				_subject);
+		}
 	}
 
 	public partial class Elements<TItem>
@@ -45,7 +49,10 @@ public static partial class ThatEnumerable
 				Func<TItem, bool> predicate,
 				[CallerArgumentExpression("predicate")]
 				string doNotPopulateThisValue = "")
-			=> new(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+		{
+			// ReSharper disable once LocalizableElement
+			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
+			return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
 						it, grammars,
 						_quantifier,
@@ -60,5 +67,6 @@ public static partial class ThatEnumerable
 						predicate,
 						"did")),
 				_subject);
+		}
 	}
 }

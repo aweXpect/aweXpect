@@ -19,6 +19,8 @@ public class TriggerEventFilter
 	/// </summary>
 	public void AddPredicate(Func<object?[], bool> predicate, string predicateExpression)
 	{
+		// ReSharper disable once LocalizableElement
+		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
 		if (_predicates.Count != 0)
 		{
 			_toString.Append(" and");

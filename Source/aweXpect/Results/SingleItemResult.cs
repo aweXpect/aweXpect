@@ -42,6 +42,8 @@ public class SingleItemResult<TCollection, TItem>
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		// ReSharper disable once LocalizableElement
+		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
 		_options.SetPredicate(predicate,
 			$" matching {doNotPopulateThisValue}");
 		return this;
@@ -64,6 +66,8 @@ public class SingleItemResult<TCollection, TItem>
 		[CallerArgumentExpression("predicate")]
 		string doNotPopulateThisValue = "")
 	{
+		// ReSharper disable once LocalizableElement
+		_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
 		_options.SetPredicate(item => item is T typed && predicate(typed),
 			$" of type {Formatter.Format(typeof(T))} matching {doNotPopulateThisValue}");
 		return this;
@@ -101,6 +105,8 @@ public class SingleItemResult<TCollection, TItem>
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		{
+			// ReSharper disable once LocalizableElement
+			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
 			_options.SetPredicate(predicate,
 				$" matching {doNotPopulateThisValue}");
 			return this;
@@ -123,6 +129,8 @@ public class SingleItemResult<TCollection, TItem>
 			[CallerArgumentExpression("predicate")]
 			string doNotPopulateThisValue = "")
 		{
+			// ReSharper disable once LocalizableElement
+			_ = predicate ?? throw new ArgumentNullException(nameof(predicate), "The predicate cannot be null.");
 			_options.SetPredicate(item => item is T typed && predicate(typed),
 				$" of type {Formatter.Format(typeof(T))} matching {doNotPopulateThisValue}");
 			return this;

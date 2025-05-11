@@ -50,6 +50,19 @@ public sealed partial class ThatSignaler
 			}
 
 			[Fact]
+			public async Task WhenPredicateIsNull_ShouldThrowArgumentNullException()
+			{
+				Signaler<int> signaler = new();
+
+				async Task Act()
+					=> await That(signaler).DidNotSignal().With(null!);
+
+				await That(Act).Throws<ArgumentNullException>()
+					.WithParamName("predicate").And
+					.WithMessage("The predicate cannot be null.").AsPrefix();
+			}
+
+			[Fact]
 			public async Task WhenTriggeredMoreOftenMatchingPredicate_ShouldFail()
 			{
 				Signaler<int> signaler = new();
