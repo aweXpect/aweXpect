@@ -12,7 +12,7 @@ namespace aweXpect;
 public static partial class ThatAsyncEnumerable
 {
 	/// <summary>
-	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
 	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		IsEqualTo<TItem>(
@@ -35,7 +35,7 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	/// <summary>
-	///     Verifies that the collection matches the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
 	public static StringCollectionMatchResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 		IsEqualTo(
@@ -57,13 +57,13 @@ public static partial class ThatAsyncEnumerable
 			matchOptions);
 	}
 	/// <summary>
-	///     Verifies that the collection does not match the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
 	public static ObjectCollectionMatchResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>
 		IsNotEqualTo<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
-			IEnumerable<TItem> expected,
-			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+			IEnumerable<TItem> unexpected,
+			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new();
@@ -71,7 +71,7 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint<TItem, TItem>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
-					expected,
+					unexpected,
 					options,
 					matchOptions).Invert()),
 			source,
@@ -80,13 +80,13 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	/// <summary>
-	///     Verifies that the collection does not match the provided <paramref name="expected" /> collection.
+	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
 	public static StringCollectionMatchResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<string?>?> source,
-			IEnumerable<string?> expected,
-			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
+			IEnumerable<string?> unexpected,
+			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();
@@ -94,7 +94,7 @@ public static partial class ThatAsyncEnumerable
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
 				new IsEqualToConstraint<string?, string?>(it, grammars,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
-					expected,
+					unexpected,
 					options,
 					matchOptions).Invert()),
 			source,
