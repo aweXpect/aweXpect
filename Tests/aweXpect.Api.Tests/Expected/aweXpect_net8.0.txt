@@ -600,6 +600,10 @@ namespace aweXpect
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsGreaterThanOrEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsInRange<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum, TNumber? maximum)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsInRange<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum, TNumber? maximum)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>> IsInfinite<TNumber>(this aweXpect.Core.IThat<TNumber> source)
             where TNumber :  struct, System.Numerics.IFloatingPoint<TNumber> { }
         public static aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>> IsInfinite<TNumber>(this aweXpect.Core.IThat<TNumber?> source)

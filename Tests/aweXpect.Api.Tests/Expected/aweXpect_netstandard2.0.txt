@@ -508,6 +508,28 @@ namespace aweXpect
         public static aweXpect.Results.AndOrResult<ulong?, aweXpect.Core.IThat<ulong?>> IsGreaterThanOrEqualTo(this aweXpect.Core.IThat<ulong?> source, ulong? expected) { }
         public static aweXpect.Results.AndOrResult<ushort, aweXpect.Core.IThat<ushort>> IsGreaterThanOrEqualTo(this aweXpect.Core.IThat<ushort> source, ushort? expected) { }
         public static aweXpect.Results.AndOrResult<ushort?, aweXpect.Core.IThat<ushort?>> IsGreaterThanOrEqualTo(this aweXpect.Core.IThat<ushort?> source, ushort? expected) { }
+        public static aweXpect.Results.AndOrResult<byte, aweXpect.Core.IThat<byte>> IsInRange(this aweXpect.Core.IThat<byte> source, byte? minimum, byte? maximum) { }
+        public static aweXpect.Results.AndOrResult<byte?, aweXpect.Core.IThat<byte?>> IsInRange(this aweXpect.Core.IThat<byte?> source, byte? minimum, byte? maximum) { }
+        public static aweXpect.Results.AndOrResult<decimal, aweXpect.Core.IThat<decimal>> IsInRange(this aweXpect.Core.IThat<decimal> source, decimal? minimum, decimal? maximum) { }
+        public static aweXpect.Results.AndOrResult<decimal?, aweXpect.Core.IThat<decimal?>> IsInRange(this aweXpect.Core.IThat<decimal?> source, decimal? minimum, decimal? maximum) { }
+        public static aweXpect.Results.AndOrResult<double, aweXpect.Core.IThat<double>> IsInRange(this aweXpect.Core.IThat<double> source, double? minimum, double? maximum) { }
+        public static aweXpect.Results.AndOrResult<double?, aweXpect.Core.IThat<double?>> IsInRange(this aweXpect.Core.IThat<double?> source, double? minimum, double? maximum) { }
+        public static aweXpect.Results.AndOrResult<float, aweXpect.Core.IThat<float>> IsInRange(this aweXpect.Core.IThat<float> source, float? minimum, float? maximum) { }
+        public static aweXpect.Results.AndOrResult<float?, aweXpect.Core.IThat<float?>> IsInRange(this aweXpect.Core.IThat<float?> source, float? minimum, float? maximum) { }
+        public static aweXpect.Results.AndOrResult<int, aweXpect.Core.IThat<int>> IsInRange(this aweXpect.Core.IThat<int> source, int? minimum, int? maximum) { }
+        public static aweXpect.Results.AndOrResult<int?, aweXpect.Core.IThat<int?>> IsInRange(this aweXpect.Core.IThat<int?> source, int? minimum, int? maximum) { }
+        public static aweXpect.Results.AndOrResult<long, aweXpect.Core.IThat<long>> IsInRange(this aweXpect.Core.IThat<long> source, long? minimum, long? maximum) { }
+        public static aweXpect.Results.AndOrResult<long?, aweXpect.Core.IThat<long?>> IsInRange(this aweXpect.Core.IThat<long?> source, long? minimum, long? maximum) { }
+        public static aweXpect.Results.AndOrResult<sbyte, aweXpect.Core.IThat<sbyte>> IsInRange(this aweXpect.Core.IThat<sbyte> source, sbyte? minimum, sbyte? maximum) { }
+        public static aweXpect.Results.AndOrResult<sbyte?, aweXpect.Core.IThat<sbyte?>> IsInRange(this aweXpect.Core.IThat<sbyte?> source, sbyte? minimum, sbyte? maximum) { }
+        public static aweXpect.Results.AndOrResult<short, aweXpect.Core.IThat<short>> IsInRange(this aweXpect.Core.IThat<short> source, short? minimum, short? maximum) { }
+        public static aweXpect.Results.AndOrResult<short?, aweXpect.Core.IThat<short?>> IsInRange(this aweXpect.Core.IThat<short?> source, short? minimum, short? maximum) { }
+        public static aweXpect.Results.AndOrResult<uint, aweXpect.Core.IThat<uint>> IsInRange(this aweXpect.Core.IThat<uint> source, uint? minimum, uint? maximum) { }
+        public static aweXpect.Results.AndOrResult<uint?, aweXpect.Core.IThat<uint?>> IsInRange(this aweXpect.Core.IThat<uint?> source, uint? minimum, uint? maximum) { }
+        public static aweXpect.Results.AndOrResult<ulong, aweXpect.Core.IThat<ulong>> IsInRange(this aweXpect.Core.IThat<ulong> source, ulong? minimum, ulong? maximum) { }
+        public static aweXpect.Results.AndOrResult<ulong?, aweXpect.Core.IThat<ulong?>> IsInRange(this aweXpect.Core.IThat<ulong?> source, ulong? minimum, ulong? maximum) { }
+        public static aweXpect.Results.AndOrResult<ushort, aweXpect.Core.IThat<ushort>> IsInRange(this aweXpect.Core.IThat<ushort> source, ushort? minimum, ushort? maximum) { }
+        public static aweXpect.Results.AndOrResult<ushort?, aweXpect.Core.IThat<ushort?>> IsInRange(this aweXpect.Core.IThat<ushort?> source, ushort? minimum, ushort? maximum) { }
         public static aweXpect.Results.AndOrResult<double, aweXpect.Core.IThat<double>> IsInfinite(this aweXpect.Core.IThat<double> source) { }
         public static aweXpect.Results.AndOrResult<double?, aweXpect.Core.IThat<double?>> IsInfinite(this aweXpect.Core.IThat<double?> source) { }
         public static aweXpect.Results.AndOrResult<float, aweXpect.Core.IThat<float>> IsInfinite(this aweXpect.Core.IThat<float> source) { }
