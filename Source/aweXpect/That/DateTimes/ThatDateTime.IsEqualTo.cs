@@ -56,9 +56,7 @@ public static partial class ThatDateTime
 
 			TimeSpan timeTolerance =
 				tolerance.Tolerance ?? Customize.aweXpect.Settings().DefaultTimeComparisonTolerance.Get();
-			TimeSpan? difference = actual - expected;
-			_hasKindDifference = !AreKindCompatible(actual.Kind, expected?.Kind);
-			Outcome = !_hasKindDifference && difference <= timeTolerance && difference >= timeTolerance.Negate()
+			Outcome = actual.IsConsideredEqualTo(expected, timeTolerance, out _hasKindDifference)
 				? Outcome.Success
 				: Outcome.Failure;
 
@@ -96,16 +94,6 @@ public static partial class ThatDateTime
 		{
 			stringBuilder.Append(It).Append(" was ");
 			Formatter.Format(stringBuilder, Actual);
-		}
-
-		private static bool AreKindCompatible(DateTimeKind actualKind, DateTimeKind? expectedKind)
-		{
-			if (actualKind == DateTimeKind.Unspecified || expectedKind == DateTimeKind.Unspecified)
-			{
-				return true;
-			}
-
-			return actualKind == expectedKind;
 		}
 	}
 }

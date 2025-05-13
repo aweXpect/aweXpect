@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
@@ -142,8 +143,8 @@ internal static class ObjectEqualityOptions
 					convertedNumber = (Half)sourceNumber;
 				}
 #else
-					object? convertedNumber =
- Convert.ChangeType(source, targetType, System.Globalization.CultureInfo.InvariantCulture);
+				object? convertedNumber =
+					Convert.ChangeType(source, targetType, CultureInfo.InvariantCulture);
 #endif
 				return target.Equals(convertedNumber);
 			}
@@ -170,29 +171,32 @@ internal static class ObjectEqualityOptions
 /// </summary>
 public partial class ObjectEqualityOptions<TSubject> : IOptionsEquality<TSubject>
 {
-	private IObjectMatchType _matchType = ObjectEqualityOptions.EqualsMatch;
+	/// <summary>
+	///     The match type.
+	/// </summary>
+	protected IObjectMatchType MatchType = ObjectEqualityOptions.EqualsMatch;
 
 	/// <inheritdoc />
 	public bool AreConsideredEqual<TExpected>(TSubject? actual, TExpected? expected)
-		=> _matchType.AreConsideredEqual(actual, expected);
+		=> MatchType.AreConsideredEqual(actual, expected);
 
 	/// <summary>
 	///     Specifies a new <see cref="IStringMatchType" /> to use for matching two strings.
 	/// </summary>
-	public void SetMatchType(IObjectMatchType matchType) => _matchType = matchType;
+	public void SetMatchType(IObjectMatchType matchType) => MatchType = matchType;
 
 	/// <summary>
 	///     Get an extended failure text.
 	/// </summary>
 	public string GetExtendedFailure(string it, ExpectationGrammars grammars, object? actual, object? expected)
-		=> _matchType.GetExtendedFailure(it, grammars, actual, expected);
+		=> MatchType.GetExtendedFailure(it, grammars, actual, expected);
 
 	/// <summary>
 	///     Returns the expectation string, e.g. <c>be equal to {expectedExpression}</c>.
 	/// </summary>
 	public string GetExpectation(string expectedExpression, ExpectationGrammars grammars)
-		=> _matchType.GetExpectation(expectedExpression, grammars);
+		=> MatchType.GetExpectation(expectedExpression, grammars);
 
 	/// <inheritdoc />
-	public override string? ToString() => _matchType.ToString();
+	public override string? ToString() => MatchType.ToString();
 }

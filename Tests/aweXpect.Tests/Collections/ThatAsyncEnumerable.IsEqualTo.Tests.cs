@@ -8,7 +8,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatAsyncEnumerable
 {
-	public sealed class IsEqualTo
+	public sealed partial class IsEqualTo
 	{
 		public sealed class InSameOrderTests
 		{

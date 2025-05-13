@@ -7,7 +7,7 @@ namespace aweXpect.Tests;
 
 public sealed partial class ThatEnumerable
 {
-	public sealed class IsEqualTo
+	public sealed partial class IsEqualTo
 	{
 		public sealed class InSameOrderTests
 		{

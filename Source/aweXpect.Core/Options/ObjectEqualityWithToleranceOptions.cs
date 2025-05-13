@@ -1,26 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using aweXpect.Core;
 
 namespace aweXpect.Options;
 
-public partial class ObjectEqualityOptions<TSubject>
+/// <summary>
+///     Checks equality of objects with an optional tolerance.
+/// </summary>
+public class ObjectEqualityWithToleranceOptions<TSubject, TTolerance>(
+	Func<TSubject, TSubject, TTolerance, bool> isWithinTolerance)
+	: ObjectEqualityOptions<TSubject>
 {
 	/// <summary>
 	///     Specifies a specific <see cref="IEqualityComparer{T}" /> to use for comparing <see cref="object" />s.
 	/// </summary>
-	public ObjectEqualityOptions<TSubject> Using(IEqualityComparer<object> comparer)
+	public ObjectEqualityOptions<TSubject> Within(TTolerance tolerance)
 	{
-		MatchType = new ComparerMatchType(comparer);
+		MatchType = new WithinMatchType(tolerance, isWithinTolerance);
 		return this;
 	}
 
-	private sealed class ComparerMatchType(IEqualityComparer<object> comparer) : IObjectMatchType
+	private sealed class WithinMatchType(
+		TTolerance tolerance,
+		Func<TSubject, TSubject, TTolerance, bool> isWithinTolerance) : IObjectMatchType
 	{
 		#region IEquality Members
 
 		/// <inheritdoc cref="IObjectMatchType.AreConsideredEqual{TSubject, TExpected}(TSubject, TExpected)" />
 		public bool AreConsideredEqual<TActual, TExpected>(TActual actual, TExpected expected)
-			=> comparer.Equals(actual, expected);
+		{
+			if (actual is null && expected is null)
+			{
+				return true;
+			}
+
+			return actual is TSubject typedActual && expected is TSubject typedExpected &&
+			       isWithinTolerance(typedActual, typedExpected, tolerance);
+		}
 
 		/// <inheritdoc cref="IObjectMatchType.GetExpectation(string, ExpectationGrammars)" />
 		public string GetExpectation(string expected, ExpectationGrammars grammars)
@@ -32,7 +48,7 @@ public partial class ObjectEqualityOptions<TSubject>
 
 		/// <inheritdoc cref="object.ToString()" />
 		public override string ToString()
-			=> $" using {Formatter.Format(comparer.GetType())}";
+			=> $" within {Formatter.Format(tolerance)}";
 
 		#endregion
 	}
