@@ -486,6 +486,7 @@ namespace aweXpect.Delegates
         where TException : System.Exception?
     {
         public aweXpect.Core.ExpectationBuilder ExpectationBuilder { get; }
+        public aweXpect.Core.IThat<TException> Which { get; }
         public aweXpect.Delegates.ThatDelegateThrows<TException?> OnlyIf(bool predicate) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> Whose<TMember>(System.Linq.Expressions.Expression<System.Func<TException, TMember?>> memberSelector, System.Action<aweXpect.Core.IThat<TMember?>> expectations) { }
         public aweXpect.Results.AndOrResult<TException, aweXpect.Delegates.ThatDelegateThrows<TException>> WithInner(System.Type innerExceptionType) { }
