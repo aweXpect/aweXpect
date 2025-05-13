@@ -584,6 +584,10 @@ namespace aweXpect
     }
     public static class ThatNumber
     {
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber, aweXpect.Core.IThat<TNumber>>, TNumber?> IsBetween<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? minimum)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
+        public static aweXpect.Results.BetweenResult<aweXpect.Results.AndOrResult<TNumber?, aweXpect.Core.IThat<TNumber?>>, TNumber?> IsBetween<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? minimum)
+            where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber>> IsEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber> source, TNumber? expected)
             where TNumber :  struct, System.Numerics.INumber<TNumber> { }
         public static aweXpect.Results.NullableNumberToleranceResult<TNumber, aweXpect.Core.IThat<TNumber?>> IsEqualTo<TNumber>(this aweXpect.Core.IThat<TNumber?> source, TNumber? expected)

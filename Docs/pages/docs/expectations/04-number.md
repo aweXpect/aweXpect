@@ -80,6 +80,16 @@ await Expect.That(subject).IsLessThan(42).Within(0.2)
   .Because("we accept values less than 42.2 (42 ± 0.2)");
 ```
 
+## Between
+
+You can verify that the number is between two numbers:
+
+```csharp
+int subject = 42;
+
+await Expect.That(subject).IsBetween(41).And(43);
+```
+
 ## Positive / negative
 
 You can verify that the number is positive or negative:
