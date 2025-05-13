@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using aweXpect.Core;
 
@@ -30,7 +31,7 @@ public partial class CollectionMatchOptions
 				_additionalItems.Add(_index, value);
 			}
 
-			_missingItems.Remove(value);
+			RemoveFirst(_missingItems, e => options.AreConsideredEqual(value, e));
 			_index++;
 			error = null;
 			return _additionalItems.Count > 2 * maximumNumber;
@@ -65,6 +66,20 @@ public partial class CollectionMatchOptions
 
 			error = ReturnErrorString(it, errors);
 			return error != null;
+		}
+
+		private static void RemoveFirst(List<T> items, Func<T, bool> predicate)
+		{
+			int index = -1;
+			foreach (T? item in items)
+			{
+				index++;
+				if (predicate(item))
+				{
+					items.RemoveAt(index);
+					break;
+				}
+			}
 		}
 	}
 }

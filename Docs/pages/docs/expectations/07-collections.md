@@ -20,6 +20,17 @@ await Expect.That(values).IsNotEqualTo([1, 1, 3, 3, 2, 2]).IgnoringDuplicates();
 await Expect.That(values).IsNotEqualTo([3, 3, 2, 2, 1, 1, 4]).InAnyOrder().IgnoringDuplicates();
 ```
 
+For certain types you can also specify a tolerance:
+
+```csharp
+IEnumerable<double> values = [3.04, 2.02, 1.01];
+IEnumerable<double> expected = [1.0, 2.0, 3.0];
+
+await Expect.That(values).IsEqualTo(expected).Within(0.1).InAnyOrder();
+```
+
+This tolerance can be applied to `double`, `float`, `decimal` and `DateTime`.
+
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 ## Has count
