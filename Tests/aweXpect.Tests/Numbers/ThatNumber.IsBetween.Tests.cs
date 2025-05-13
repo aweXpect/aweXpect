@@ -2,7 +2,7 @@
 
 public sealed partial class ThatNumber
 {
-	public sealed class IsInRange
+	public sealed class IsBetween
 	{
 		public sealed class Tests
 		{
@@ -14,30 +14,13 @@ public sealed partial class ThatNumber
 				byte subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was 2
-					              """);
-			}
-			
-			[Theory]
-			[InlineData((byte)2, (byte)0, (byte)1)]
-			[InlineData((byte)0, (byte)1, (byte)2)]
-			public async Task ForByte_WhenValueIsOutsideTheRange_ShouldFail(byte subject,
-				byte? minimum, byte? maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
@@ -49,48 +32,45 @@ public sealed partial class ThatNumber
 				byte? minimum, byte? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
+			[InlineData((byte)2, (byte)0, (byte)1)]
+			[InlineData((byte)0, (byte)1, (byte)2)]
+			public async Task ForByte_WhenValueIsOutsideTheRange_ShouldFail(byte subject,
+				byte? minimum, byte? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Theory]
 			[InlineData(null, 1.1)]
 			[InlineData(1.1, null)]
-			public async Task ForDecimal_WhenMinimumOrMaximumIsNull_ShouldFail(double? minimumValue, double? maximumValue)
+			public async Task ForDecimal_WhenMinimumOrMaximumIsNull_ShouldFail(double? minimumValue,
+				double? maximumValue)
 			{
 				decimal subject = 2;
 				decimal? minimum = minimumValue is null ? null : new decimal(minimumValue.Value);
 				decimal? maximum = maximumValue is null ? null : new decimal(maximumValue.Value);
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData(2.0, 0.0, 1.9)]
-			[InlineData(0.0, 0.1, 2.0)]
-			public async Task ForDecimal_WhenValueIsOutsideTheRange_ShouldFail(
-				double subjectValue, double minimumValue, double maximumValue)
-			{
-				decimal subject = new(subjectValue);
-				decimal minimum = new(minimumValue);
-				decimal maximum = new(maximumValue);
-
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -107,9 +87,30 @@ public sealed partial class ThatNumber
 				decimal? maximum = new(expectedMaximum);
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(2.0, 0.0, 1.9)]
+			[InlineData(0.0, 0.1, 2.0)]
+			public async Task ForDecimal_WhenValueIsOutsideTheRange_ShouldFail(
+				double subjectValue, double minimumValue, double maximumValue)
+			{
+				decimal subject = new(subjectValue);
+				decimal minimum = new(minimumValue);
+				decimal maximum = new(maximumValue);
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -120,29 +121,12 @@ public sealed partial class ThatNumber
 				double subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData(2.0, 0.0, 1.9)]
-			[InlineData(0.0, 0.1, 2.0)]
-			public async Task ForDouble_WhenValueIsOutsideTheRange_ShouldFail(
-				double subject, double minimum, double maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -155,9 +139,26 @@ public sealed partial class ThatNumber
 				double subject, double minimum, double maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(2.0, 0.0, 1.9)]
+			[InlineData(0.0, 0.1, 2.0)]
+			public async Task ForDouble_WhenValueIsOutsideTheRange_ShouldFail(
+				double subject, double minimum, double maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -168,29 +169,12 @@ public sealed partial class ThatNumber
 				float subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((float)2.0, (float)0.0, (float)1.9)]
-			[InlineData((float)0.0, (float)0.1, (float)2.0)]
-			public async Task ForFloat_WhenValueIsOutsideTheRange_ShouldFail(
-				float subject, float minimum, float maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -203,11 +187,41 @@ public sealed partial class ThatNumber
 				float subject, float minimum, float maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
-			
+
+			[Theory]
+			[InlineData((float)2.0, (float)0.0, (float)1.9)]
+			[InlineData((float)0.0, (float)0.1, (float)2.0)]
+			public async Task ForFloat_WhenValueIsOutsideTheRange_ShouldFail(
+				float subject, float minimum, float maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task ForInt_WhenMaximumIsSmallerThanMinimum_ShouldThrowArgumentOutOfRangeException()
+			{
+				int subject = 2;
+
+				async Task Act()
+					=> await That(subject).IsBetween(2).And(1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithParamName("maximum").And
+					.WithMessage("The maximum must be greater than or equal to the minimum.").AsPrefix();
+			}
+
 			[Theory]
 			[InlineData(null, 1)]
 			[InlineData(1, null)]
@@ -217,29 +231,12 @@ public sealed partial class ThatNumber
 				int subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData(2, 0, 1)]
-			[InlineData(0, 1, 2)]
-			public async Task ForInt_WhenValueIsOutsideTheRange_ShouldFail(int subject,
-				int? minimum, int maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -252,9 +249,26 @@ public sealed partial class ThatNumber
 				int? minimum, int maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(2, 0, 1)]
+			[InlineData(0, 1, 2)]
+			public async Task ForInt_WhenValueIsOutsideTheRange_ShouldFail(int subject,
+				int? minimum, int maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 #if NET8_0_OR_GREATER
@@ -268,35 +282,12 @@ public sealed partial class ThatNumber
 				Int128? maximum = maximumValue;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-#endif
-
-#if NET8_0_OR_GREATER
-			[Theory]
-			[InlineData(2, 0, 1)]
-			[InlineData(0, 1, 2)]
-			public async Task ForInt128_WhenValueIsOutsideTheRange_ShouldFail(
-				int subjectValue, int minimumValue, int maximumValue)
-			{
-				Int128 subject = subjectValue;
-				Int128? minimum = minimumValue;
-				Int128? maximum = maximumValue;
-
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -315,9 +306,32 @@ public sealed partial class ThatNumber
 				Int128? maximum = maximumValue;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(2, 0, 1)]
+			[InlineData(0, 1, 2)]
+			public async Task ForInt128_WhenValueIsOutsideTheRange_ShouldFail(
+				int subjectValue, int minimumValue, int maximumValue)
+			{
+				Int128 subject = subjectValue;
+				Int128? minimum = minimumValue;
+				Int128? maximum = maximumValue;
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 #endif
 
@@ -330,29 +344,12 @@ public sealed partial class ThatNumber
 				long subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((long)2, (long)0, (long)1)]
-			[InlineData((long)0, (long)1, (long)2)]
-			public async Task ForLong_WhenValueIsOutsideTheRange_ShouldFail(long subject,
-				long? minimum, long maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -365,24 +362,24 @@ public sealed partial class ThatNumber
 				long? minimum, long maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
-			[InlineData((byte)2, (byte)0, (byte)1)]
-			[InlineData((byte)0, (byte)1, (byte)2)]
-			public async Task ForNullableByte_WhenValueIsOutsideTheRange_ShouldFail(
-				byte? subject, byte? minimum, byte? maximum)
+			[InlineData((long)2, (long)0, (long)1)]
+			[InlineData((long)0, (long)1, (long)2)]
+			public async Task ForLong_WhenValueIsOutsideTheRange_ShouldFail(long subject,
+				long? minimum, long maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -395,65 +392,63 @@ public sealed partial class ThatNumber
 				byte? subject, byte? minimum, byte? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableByte_WhenValueIsNull_ShouldFail(
-				byte? minimum, byte maximum)
+			[Fact]
+			public async Task ForNullableByte_WhenValueIsNull_ShouldFail()
 			{
 				byte? subject = null;
+				byte minimum = 1;
+				byte maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
+					              """);
+			}
+
+			[Theory]
+			[InlineData((byte)2, (byte)0, (byte)1)]
+			[InlineData((byte)0, (byte)1, (byte)2)]
+			public async Task ForNullableByte_WhenValueIsOutsideTheRange_ShouldFail(
+				byte? subject, byte? minimum, byte? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
 			[Theory]
 			[InlineData(null, 1.1)]
 			[InlineData(1.1, null)]
-			public async Task ForNullableDecimal_WhenMinimumOrMaximumIsNull_ShouldFail(double? minimumValue, double? maximumValue)
+			public async Task ForNullableDecimal_WhenMinimumOrMaximumIsNull_ShouldFail(double? minimumValue,
+				double? maximumValue)
 			{
 				decimal subject = 2;
 				decimal? minimum = minimumValue == null ? null : new decimal(minimumValue.Value);
 				decimal? maximum = maximumValue == null ? null : new decimal(maximumValue.Value);
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-			[Theory]
-			[InlineData(2.0, 0.0, 1.9)]
-			[InlineData(0.0, 0.1, 2.0)]
-			public async Task ForNullableDecimal_WhenValueIsOutsideTheRange_ShouldFail(
-				double? subjectValue, double? minimumValue, double? maximumValue)
-			{
-				decimal? subject = subjectValue == null ? null : new decimal(subjectValue.Value);
-				decimal? minimum = minimumValue == null ? null : new decimal(minimumValue.Value);
-				decimal? maximum = maximumValue == null ? null : new decimal(maximumValue.Value);
-
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -470,9 +465,30 @@ public sealed partial class ThatNumber
 				decimal? maximum = maximumValue == null ? null : new decimal(maximumValue.Value);
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(2.0, 0.0, 1.9)]
+			[InlineData(0.0, 0.1, 2.0)]
+			public async Task ForNullableDecimal_WhenValueIsOutsideTheRange_ShouldFail(
+				double? subjectValue, double? minimumValue, double? maximumValue)
+			{
+				decimal? subject = subjectValue == null ? null : new decimal(subjectValue.Value);
+				decimal? minimum = minimumValue == null ? null : new decimal(minimumValue.Value);
+				decimal? maximum = maximumValue == null ? null : new decimal(maximumValue.Value);
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -483,29 +499,12 @@ public sealed partial class ThatNumber
 				double subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData(2.0, 0.0, 1.9)]
-			[InlineData(0.0, 0.1, 2.0)]
-			public async Task ForNullableDouble_WhenValueIsOutsideTheRange_ShouldFail(
-				double? subject, double? minimum, double? maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -518,9 +517,26 @@ public sealed partial class ThatNumber
 				double? subject, double? minimum, double? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData(2.0, 0.0, 1.9)]
+			[InlineData(0.0, 0.1, 2.0)]
+			public async Task ForNullableDouble_WhenValueIsOutsideTheRange_ShouldFail(
+				double? subject, double? minimum, double? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -531,29 +547,12 @@ public sealed partial class ThatNumber
 				float subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((float)2.0, (float)0.0, (float)1.9)]
-			[InlineData((float)0.0, (float)0.1, (float)2.0)]
-			public async Task ForNullableFloat_WhenValueIsOutsideTheRange_ShouldFail(
-				float? subject, float? minimum, float? maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -566,11 +565,41 @@ public sealed partial class ThatNumber
 				float? subject, float? minimum, float? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
-			
+
+			[Theory]
+			[InlineData((float)2.0, (float)0.0, (float)1.9)]
+			[InlineData((float)0.0, (float)0.1, (float)2.0)]
+			public async Task ForNullableFloat_WhenValueIsOutsideTheRange_ShouldFail(
+				float? subject, float? minimum, float? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
+			}
+
+			[Fact]
+			public async Task ForNullableInt_WhenMaximumIsSmallerThanMinimum_ShouldThrowArgumentOutOfRangeException()
+			{
+				int? subject = 2;
+
+				async Task Act()
+					=> await That(subject).IsBetween(2).And(1);
+
+				await That(Act).Throws<ArgumentOutOfRangeException>()
+					.WithParamName("maximum").And
+					.WithMessage("The maximum must be greater than or equal to the minimum.").AsPrefix();
+			}
+
 			[Theory]
 			[InlineData(null, 1)]
 			[InlineData(1, null)]
@@ -580,29 +609,12 @@ public sealed partial class ThatNumber
 				int? subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData(2, 0, 1)]
-			[InlineData(0, 1, 2)]
-			public async Task ForNullableInt_WhenValueIsOutsideTheRange_ShouldFail(
-				int? subject, int? minimum, int? maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -615,68 +627,63 @@ public sealed partial class ThatNumber
 				int? subject, int? minimum, int? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableInt_WhenValueIsNull_ShouldFail(
-				int? minimum, int maximum)
+			[Fact]
+			public async Task ForNullableInt_WhenValueIsNull_ShouldFail()
 			{
 				int? subject = null;
+				int minimum = 1;
+				int maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
+					              """);
+			}
+
+			[Theory]
+			[InlineData(2, 0, 1)]
+			[InlineData(0, 1, 2)]
+			public async Task ForNullableInt_WhenValueIsOutsideTheRange_ShouldFail(
+				int? subject, int? minimum, int? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 #if NET8_0_OR_GREATER
 			[Theory]
 			[InlineData(null, 1)]
 			[InlineData(1, null)]
-			public async Task ForNullableInt128_WhenMinimumOrMaximumIsNull_ShouldFail(int? minimumValue, int? maximumValue)
+			public async Task ForNullableInt128_WhenMinimumOrMaximumIsNull_ShouldFail(int? minimumValue,
+				int? maximumValue)
 			{
 				Int128? subject = 2;
 				Int128? minimum = minimumValue;
 				Int128? maximum = maximumValue;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-#endif
-
-#if NET8_0_OR_GREATER
-			[Theory]
-			[InlineData(2, 0, 1)]
-			[InlineData(0, 1, 2)]
-			public async Task ForNullableInt128_WhenValueIsOutsideTheRange_ShouldFail(
-				int? subjectValue, int? minimumValue, int? maximumValue)
-			{
-				Int128? subject = subjectValue;
-				Int128? minimum = minimumValue;
-				Int128? maximum = maximumValue;
-
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -695,9 +702,32 @@ public sealed partial class ThatNumber
 				Int128? maximum = maximumValue;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+#endif
+
+#if NET8_0_OR_GREATER
+			[Theory]
+			[InlineData(2, 0, 1)]
+			[InlineData(0, 1, 2)]
+			public async Task ForNullableInt128_WhenValueIsOutsideTheRange_ShouldFail(
+				int? subjectValue, int? minimumValue, int? maximumValue)
+			{
+				Int128? subject = subjectValue;
+				Int128? minimum = minimumValue;
+				Int128? maximum = maximumValue;
+
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 #endif
 
@@ -710,29 +740,12 @@ public sealed partial class ThatNumber
 				long? subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((long)2, (long)0, (long)1)]
-			[InlineData((long)0, (long)1, (long)2)]
-			public async Task ForNullableLong_WhenValueIsOutsideTheRange_ShouldFail(
-				long? subject, long? minimum, long? maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -745,42 +758,42 @@ public sealed partial class ThatNumber
 				long? subject, long? minimum, long? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableLong_WhenValueIsNull_ShouldFail(
-				long? minimum, long maximum)
+			[Fact]
+			public async Task ForNullableLong_WhenValueIsNull_ShouldFail()
 			{
 				long? subject = null;
+				long minimum = 1;
+				long maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
 					              """);
 			}
 
 			[Theory]
-			[InlineData((sbyte)2, (sbyte)0, (sbyte)1)]
-			[InlineData((sbyte)0, (sbyte)1, (sbyte)2)]
-			public async Task ForNullableSbyte_WhenValueIsOutsideTheRange_ShouldFail(
-				sbyte? subject, sbyte? minimum, sbyte? maximum)
+			[InlineData((long)2, (long)0, (long)1)]
+			[InlineData((long)0, (long)1, (long)2)]
+			public async Task ForNullableLong_WhenValueIsOutsideTheRange_ShouldFail(
+				long? subject, long? minimum, long? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -793,42 +806,42 @@ public sealed partial class ThatNumber
 				sbyte? subject, sbyte? minimum, sbyte? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableSbyte_WhenValueIsNull_ShouldFail(
-				sbyte? minimum, sbyte maximum)
+			[Fact]
+			public async Task ForNullableSbyte_WhenValueIsNull_ShouldFail()
 			{
 				sbyte? subject = null;
+				sbyte minimum = 1;
+				sbyte maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
 					              """);
 			}
 
 			[Theory]
-			[InlineData((short)2, (short)0, (short)1)]
-			[InlineData((short)0, (short)1, (short)2)]
-			public async Task ForNullableShort_WhenValueIsOutsideTheRange_ShouldFail(
-				short? subject, short? minimum, short? maximum)
+			[InlineData((sbyte)2, (sbyte)0, (sbyte)1)]
+			[InlineData((sbyte)0, (sbyte)1, (sbyte)2)]
+			public async Task ForNullableSbyte_WhenValueIsOutsideTheRange_ShouldFail(
+				sbyte? subject, sbyte? minimum, sbyte? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -841,42 +854,42 @@ public sealed partial class ThatNumber
 				short? subject, short? minimum, short? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableShort_WhenValueIsNull_ShouldFail(
-				short? minimum, short maximum)
+			[Fact]
+			public async Task ForNullableShort_WhenValueIsNull_ShouldFail()
 			{
 				short? subject = null;
+				short minimum = 1;
+				short maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
 					              """);
 			}
 
 			[Theory]
-			[InlineData((uint)2, (uint)0, (uint)1)]
-			[InlineData((uint)0, (uint)1, (uint)2)]
-			public async Task ForNullableUint_WhenValueIsOutsideTheRange_ShouldFail(
-				uint? subject, uint? minimum, uint maximum)
+			[InlineData((short)2, (short)0, (short)1)]
+			[InlineData((short)0, (short)1, (short)2)]
+			public async Task ForNullableShort_WhenValueIsOutsideTheRange_ShouldFail(
+				short? subject, short? minimum, short? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -889,42 +902,42 @@ public sealed partial class ThatNumber
 				uint? subject, uint? minimum, uint maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableUint_WhenValueIsNull_ShouldFail(
-				uint? minimum, uint maximum)
+			[Fact]
+			public async Task ForNullableUint_WhenValueIsNull_ShouldFail()
 			{
 				uint? subject = null;
+				uint minimum = 1;
+				uint maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
 					              """);
 			}
 
 			[Theory]
-			[InlineData((ulong)2, (ulong)0, (ulong)1)]
-			[InlineData((ulong)0, (ulong)1, (ulong)2)]
-			public async Task ForNullableUlong_WhenValueIsOutsideTheRange_ShouldFail(
-				ulong? subject, ulong? minimum, ulong? maximum)
+			[InlineData((uint)2, (uint)0, (uint)1)]
+			[InlineData((uint)0, (uint)1, (uint)2)]
+			public async Task ForNullableUint_WhenValueIsOutsideTheRange_ShouldFail(
+				uint? subject, uint? minimum, uint maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -937,42 +950,42 @@ public sealed partial class ThatNumber
 				ulong? subject, ulong? minimum, ulong? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableUlong_WhenValueIsNull_ShouldFail(
-				ulong? minimum, ulong maximum)
+			[Fact]
+			public async Task ForNullableUlong_WhenValueIsNull_ShouldFail()
 			{
 				ulong? subject = null;
+				ulong minimum = 1;
+				ulong maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
 					              """);
 			}
 
 			[Theory]
-			[InlineData((ushort)2, (ushort)0, (ushort)1)]
-			[InlineData((ushort)0, (ushort)1, (ushort)2)]
-			public async Task ForNullableUshort_WhenValueIsOutsideTheRange_ShouldFail(
-				ushort? subject, ushort? minimum, ushort? maximum)
+			[InlineData((ulong)2, (ulong)0, (ulong)1)]
+			[InlineData((ulong)0, (ulong)1, (ulong)2)]
+			public async Task ForNullableUlong_WhenValueIsOutsideTheRange_ShouldFail(
+				ulong? subject, ulong? minimum, ulong? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -985,26 +998,43 @@ public sealed partial class ThatNumber
 				ushort? subject, ushort? minimum, ushort? maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
 			}
 
-			[Theory]
-			[AutoData]
-			public async Task ForNullableUshort_WhenValueIsNull_ShouldFail(
-				ushort? minimum, ushort maximum)
+			[Fact]
+			public async Task ForNullableUshort_WhenValueIsNull_ShouldFail()
 			{
 				ushort? subject = null;
+				ushort minimum = 1;
+				ushort maximum = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was <null>
+					              """);
+			}
+
+			[Theory]
+			[InlineData((ushort)2, (ushort)0, (ushort)1)]
+			[InlineData((ushort)0, (ushort)1, (ushort)2)]
+			public async Task ForNullableUshort_WhenValueIsOutsideTheRange_ShouldFail(
+				ushort? subject, ushort? minimum, ushort? maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
 					              """);
 			}
 
@@ -1017,29 +1047,12 @@ public sealed partial class ThatNumber
 				sbyte subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((sbyte)2, (sbyte)0, (sbyte)1)]
-			[InlineData((sbyte)0, (sbyte)1, (sbyte)2)]
-			public async Task ForSbyte_WhenValueIsOutsideTheRange_ShouldFail(sbyte subject,
-				sbyte? minimum, sbyte maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1052,9 +1065,26 @@ public sealed partial class ThatNumber
 				sbyte? minimum, sbyte maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData((sbyte)2, (sbyte)0, (sbyte)1)]
+			[InlineData((sbyte)0, (sbyte)1, (sbyte)2)]
+			public async Task ForSbyte_WhenValueIsOutsideTheRange_ShouldFail(sbyte subject,
+				sbyte? minimum, sbyte maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -1066,29 +1096,12 @@ public sealed partial class ThatNumber
 				short subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((short)2, (short)0, (short)1)]
-			[InlineData((short)0, (short)1, (short)2)]
-			public async Task ForShort_WhenValueIsOutsideTheRange_ShouldFail(short subject,
-				short? minimum, short maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1101,9 +1114,26 @@ public sealed partial class ThatNumber
 				short? minimum, short maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData((short)2, (short)0, (short)1)]
+			[InlineData((short)0, (short)1, (short)2)]
+			public async Task ForShort_WhenValueIsOutsideTheRange_ShouldFail(short subject,
+				short? minimum, short maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -1115,29 +1145,12 @@ public sealed partial class ThatNumber
 				uint subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((uint)2, (uint)0, (uint)1)]
-			[InlineData((uint)0, (uint)1, (uint)2)]
-			public async Task ForUint_WhenValueIsOutsideTheRange_ShouldFail(uint subject,
-				uint? minimum, uint maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1150,9 +1163,26 @@ public sealed partial class ThatNumber
 				uint? minimum, uint maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData((uint)2, (uint)0, (uint)1)]
+			[InlineData((uint)0, (uint)1, (uint)2)]
+			public async Task ForUint_WhenValueIsOutsideTheRange_ShouldFail(uint subject,
+				uint? minimum, uint maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -1164,29 +1194,12 @@ public sealed partial class ThatNumber
 				ulong subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((ulong)2, (ulong)0, (ulong)1)]
-			[InlineData((ulong)0, (ulong)1, (ulong)2)]
-			public async Task ForUlong_WhenValueIsOutsideTheRange_ShouldFail(ulong subject,
-				ulong? minimum, ulong maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1199,9 +1212,26 @@ public sealed partial class ThatNumber
 				ulong? minimum, ulong maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData((ulong)2, (ulong)0, (ulong)1)]
+			[InlineData((ulong)0, (ulong)1, (ulong)2)]
+			public async Task ForUlong_WhenValueIsOutsideTheRange_ShouldFail(ulong subject,
+				ulong? minimum, ulong maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 
 			[Theory]
@@ -1213,29 +1243,12 @@ public sealed partial class ThatNumber
 				ushort subject = 2;
 
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
-					              but it was {Formatter.Format(subject)}
-					              """);
-			}
-
-			[Theory]
-			[InlineData((ushort)2, (ushort)0, (ushort)1)]
-			[InlineData((ushort)0, (ushort)1, (ushort)2)]
-			public async Task ForUshort_WhenValueIsOutsideTheRange_ShouldFail(ushort subject,
-				ushort? minimum, ushort maximum)
-			{
-				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
-
-				await That(Act).Throws<XunitException>()
-					.WithMessage($"""
-					              Expected that subject
-					              is in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1249,24 +1262,42 @@ public sealed partial class ThatNumber
 				ushort? minimum, ushort maximum)
 			{
 				async Task Act()
-					=> await That(subject).IsInRange(minimum, maximum);
+					=> await That(subject).IsBetween(minimum).And(maximum);
 
 				await That(Act).DoesNotThrow();
+			}
+
+			[Theory]
+			[InlineData((ushort)2, (ushort)0, (ushort)1)]
+			[InlineData((ushort)0, (ushort)1, (ushort)2)]
+			public async Task ForUshort_WhenValueIsOutsideTheRange_ShouldFail(ushort subject,
+				ushort? minimum, ushort maximum)
+			{
+				async Task Act()
+					=> await That(subject).IsBetween(minimum).And(maximum);
+
+				await That(Act).Throws<XunitException>()
+					.WithMessage($"""
+					              Expected that subject
+					              is between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              but it was {Formatter.Format(subject)}
+					              """);
 			}
 		}
 
 		public sealed class NegatedTests
 		{
 			[Theory]
-			[AutoData]
-			public async Task ForInt_WhenMinimumIsNull_ShouldSucceed(
-				int minimum, int maximum)
+			[InlineData(null, 1)]
+			[InlineData(1, null)]
+			public async Task ForInt_WhenMinimumOrMaximumIsNull_ShouldSucceed(
+				int? minimum, int? maximum)
 			{
 				int subject = 2;
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it
-						=> it.IsInRange(minimum, maximum));
+						=> it.IsBetween(minimum).And(maximum));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -1281,12 +1312,12 @@ public sealed partial class ThatNumber
 			{
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it
-						=> it.IsInRange(minimum, maximum));
+						=> it.IsBetween(minimum).And(maximum));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is not in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is not between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1299,13 +1330,14 @@ public sealed partial class ThatNumber
 			{
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it
-						=> it.IsInRange(minimum, maximum));
+						=> it.IsBetween(minimum).And(maximum));
 
 				await That(Act).DoesNotThrow();
 			}
 
 			[Theory]
-			[AutoData]
+			[InlineData(null, 1)]
+			[InlineData(1, null)]
 			public async Task ForNullableInt_WhenMinimumIsNull_ShouldSucceed(
 				int? minimum, int? maximum)
 			{
@@ -1313,7 +1345,7 @@ public sealed partial class ThatNumber
 
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it
-						=> it.IsInRange(minimum, maximum));
+						=> it.IsBetween(minimum).And(maximum));
 
 				await That(Act).DoesNotThrow();
 			}
@@ -1328,12 +1360,12 @@ public sealed partial class ThatNumber
 			{
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it
-						=> it.IsInRange(minimum, maximum));
+						=> it.IsBetween(minimum).And(maximum));
 
 				await That(Act).Throws<XunitException>()
 					.WithMessage($"""
 					              Expected that subject
-					              is not in range between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
+					              is not between {Formatter.Format(minimum)} and {Formatter.Format(maximum)},
 					              but it was {Formatter.Format(subject)}
 					              """);
 			}
@@ -1346,7 +1378,7 @@ public sealed partial class ThatNumber
 			{
 				async Task Act()
 					=> await That(subject).DoesNotComplyWith(it
-						=> it.IsInRange(minimum, maximum));
+						=> it.IsBetween(minimum).And(maximum));
 
 				await That(Act).DoesNotThrow();
 			}

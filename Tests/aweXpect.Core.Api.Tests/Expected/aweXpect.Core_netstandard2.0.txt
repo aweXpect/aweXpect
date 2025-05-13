@@ -933,6 +933,11 @@ namespace aweXpect.Results
         public BetweenResult(System.Func<int, TTarget> callback) { }
         public TTarget And(aweXpect.Core.Times maximum) { }
     }
+    public class BetweenResult<TTarget, TType>
+    {
+        public BetweenResult(System.Func<TType, TTarget> callback) { }
+        public TTarget And(TType maximum) { }
+    }
     public class CollectionOrderResult<TMember, TType, TThat> : aweXpect.Results.AndOrResult<TType, TThat>
     {
         public CollectionOrderResult(aweXpect.Core.ExpectationBuilder expectationBuilder, TThat returnValue, aweXpect.Options.CollectionOrderOptions<TMember> options) { }
