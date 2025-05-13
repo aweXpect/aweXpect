@@ -116,15 +116,19 @@ await Expect.That(Act).ThrowsException().WithRecursiveInnerExceptions(innerExcep
 You can recursively verify additional members of the exception:
 
 ```csharp
-void Act() => throw new MyException("outer", paramName: "paramName", hResult: 12345);
+var exception = new MyException("outer", paramName: "paramName", hResult: 12345);
+void Act() => throw exception;
 
 await Expect.That(Act).ThrowsException().WithParamName("paramName")
   .Because("you can verify the `paramName`");
 await Expect.That(Act).ThrowsException().WithHResult(12345)
   .Because("you can verify the `HResult`");
 await Expect.That(Act).ThrowsException()
-  .Which(e => e.HResult, h => h.IsGreaterThan(12340))
+  .Whose(e => e.HResult, h => h.IsGreaterThan(12340))
   .Because("you can verify arbitrary additional members");
+await Expect.That(Act).ThrowsException()
+  .Which.IsSameAs(exception)
+  .Because("you can access the thrown exception");
 
 ```
 
