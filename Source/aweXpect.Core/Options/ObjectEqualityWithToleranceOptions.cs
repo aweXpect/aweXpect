@@ -8,7 +8,8 @@ namespace aweXpect.Options;
 ///     Checks equality of objects with an optional tolerance.
 /// </summary>
 public class ObjectEqualityWithToleranceOptions<TSubject, TTolerance>(
-	Func<TSubject, TSubject, TTolerance, bool> isWithinTolerance)
+	Func<TSubject, TSubject, TTolerance, bool> isWithinTolerance,
+	Func<TTolerance, string>? toString = null)
 	: ObjectEqualityOptions<TSubject>
 {
 	/// <summary>
@@ -16,13 +17,18 @@ public class ObjectEqualityWithToleranceOptions<TSubject, TTolerance>(
 	/// </summary>
 	public ObjectEqualityOptions<TSubject> Within(TTolerance tolerance)
 	{
-		MatchType = new WithinMatchType(tolerance, isWithinTolerance);
+		MatchType = new WithinMatchType(tolerance, isWithinTolerance, toString ?? ToString);
 		return this;
 	}
 
+	private static string ToString(TTolerance tolerance)
+		=> $" within {Formatter.Format(tolerance)}";
+
 	private sealed class WithinMatchType(
 		TTolerance tolerance,
-		Func<TSubject, TSubject, TTolerance, bool> isWithinTolerance) : IObjectMatchType
+		Func<TSubject, TSubject, TTolerance, bool> isWithinTolerance,
+		Func<TTolerance, string> toString)
+		: IObjectMatchType
 	{
 		#region IEquality Members
 
@@ -48,7 +54,7 @@ public class ObjectEqualityWithToleranceOptions<TSubject, TTolerance>(
 
 		/// <inheritdoc cref="object.ToString()" />
 		public override string ToString()
-			=> $" within {Formatter.Format(tolerance)}";
+			=> toString.Invoke(tolerance);
 
 		#endregion
 	}

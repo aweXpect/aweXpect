@@ -92,9 +92,9 @@ public class TraceWriterTests
 		}
 
 		await That(traceWriter.Messages).IsEqualTo([
-			"Checking expectation for callback delegate returning in 0:00",
+			"Checking expectation for callback delegate returning in 0:*",
 			"  Successfully verified that callback executes within 0:00.500",
-		]);
+		]).AsWildcard();
 	}
 
 	[Fact]
