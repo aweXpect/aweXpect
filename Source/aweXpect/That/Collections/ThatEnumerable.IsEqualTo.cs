@@ -44,9 +44,8 @@ public static partial class ThatEnumerable
 			IEnumerable<double> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double, double> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<double, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<double>, IThat<IEnumerable<double>?>,
 			double, double>(
@@ -71,9 +70,8 @@ public static partial class ThatEnumerable
 			IEnumerable<double?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double?, double> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<double?, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<double?>, IThat<IEnumerable<double?>?>,
 			double?, double>(
@@ -98,9 +96,8 @@ public static partial class ThatEnumerable
 			IEnumerable<decimal> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal, decimal> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<decimal>, IThat<IEnumerable<decimal>?>,
 			decimal, decimal>(
@@ -125,9 +122,8 @@ public static partial class ThatEnumerable
 			IEnumerable<decimal?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal?, decimal> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<decimal?>, IThat<IEnumerable<decimal?>?>,
 			decimal?, decimal>(
@@ -152,9 +148,8 @@ public static partial class ThatEnumerable
 			IEnumerable<float> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float, float> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<float, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<float>, IThat<IEnumerable<float>?>,
 			float, float>(
@@ -179,9 +174,8 @@ public static partial class ThatEnumerable
 			IEnumerable<float?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float?, float> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<float?, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<float?>, IThat<IEnumerable<float?>?>,
 			float?, float>(
@@ -206,9 +200,8 @@ public static partial class ThatEnumerable
 			IEnumerable<DateTime> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" within {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<DateTime>, IThat<IEnumerable<DateTime>?>,
 			DateTime, TimeSpan>(
@@ -233,9 +226,8 @@ public static partial class ThatEnumerable
 			IEnumerable<DateTime?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" within {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<DateTime?>, IThat<IEnumerable<DateTime?>?>,
 			DateTime?, TimeSpan>(
@@ -304,11 +296,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<double>?> source,
 			IEnumerable<double> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double, double> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<double, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<double>, IThat<IEnumerable<double>?>,
 			double, double>(
@@ -331,11 +323,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<double?>?> source,
 			IEnumerable<double?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double?, double> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<double?, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<double?>, IThat<IEnumerable<double?>?>,
 			double?, double>(
@@ -358,11 +350,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<decimal>?> source,
 			IEnumerable<decimal> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal, decimal> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<decimal>, IThat<IEnumerable<decimal>?>,
 			decimal, decimal>(
@@ -385,11 +377,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<decimal?>?> source,
 			IEnumerable<decimal?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal?, decimal> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<decimal?>, IThat<IEnumerable<decimal?>?>,
 			decimal?, decimal>(
@@ -412,11 +404,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<float>?> source,
 			IEnumerable<float> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float, float> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<float, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<float>, IThat<IEnumerable<float>?>,
 			float, float>(
@@ -439,11 +431,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<float?>?> source,
 			IEnumerable<float?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float?, float> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<float?, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<float?>, IThat<IEnumerable<float?>?>,
 			float?, float>(
@@ -466,11 +458,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<DateTime>?> source,
 			IEnumerable<DateTime> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" within {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<DateTime>, IThat<IEnumerable<DateTime>?>,
 			DateTime, TimeSpan>(
@@ -493,11 +485,11 @@ public static partial class ThatEnumerable
 		IsNotEqualTo(
 			this IThat<IEnumerable<DateTime?>?> source,
 			IEnumerable<DateTime?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" within {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IEnumerable<DateTime?>, IThat<IEnumerable<DateTime?>?>,
 			DateTime?, TimeSpan>(

@@ -17,11 +17,11 @@ public class ObjectEqualityWithToleranceOptions<TSubject, TTolerance>(
 	/// </summary>
 	public ObjectEqualityOptions<TSubject> Within(TTolerance tolerance)
 	{
-		MatchType = new WithinMatchType(tolerance, isWithinTolerance, toString ?? ToString);
+		MatchType = new WithinMatchType(tolerance, isWithinTolerance, toString ?? DefaultToleranceFormatter);
 		return this;
 	}
 
-	private static string ToString(TTolerance tolerance)
+	private static string DefaultToleranceFormatter(TTolerance tolerance)
 		=> $" within {Formatter.Format(tolerance)}";
 
 	private sealed class WithinMatchType(

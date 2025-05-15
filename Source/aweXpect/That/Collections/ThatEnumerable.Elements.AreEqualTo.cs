@@ -16,9 +16,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<double> elements, double expected)
 	{
 		IElements<double> iElements = elements;
-		ObjectEqualityWithToleranceOptions<double, double> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<double, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
 		return new ToleranceEqualityResult<IEnumerable<double>, IThat<IEnumerable<double>?>, double, double>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<double>(
@@ -45,9 +44,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<double?> elements, double? expected)
 	{
 		IElements<double?> iElements = elements;
-		ObjectEqualityWithToleranceOptions<double?, double> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<double?, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
 		return new ToleranceEqualityResult<IEnumerable<double?>, IThat<IEnumerable<double?>?>, double?, double>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<double?>(
@@ -74,9 +72,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<float> elements, float expected)
 	{
 		IElements<float> iElements = elements;
-		ObjectEqualityWithToleranceOptions<float, float> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<float, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
 		return new ToleranceEqualityResult<IEnumerable<float>, IThat<IEnumerable<float>?>, float, float>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<float>(
@@ -103,9 +100,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<float?> elements, float? expected)
 	{
 		IElements<float?> iElements = elements;
-		ObjectEqualityWithToleranceOptions<float?, float> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<float?, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
 		return new ToleranceEqualityResult<IEnumerable<float?>, IThat<IEnumerable<float?>?>, float?, float>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<float?>(
@@ -132,9 +128,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<decimal> elements, decimal expected)
 	{
 		IElements<decimal> iElements = elements;
-		ObjectEqualityWithToleranceOptions<decimal, decimal> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
 		return new ToleranceEqualityResult<IEnumerable<decimal>, IThat<IEnumerable<decimal>?>, decimal, decimal>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<decimal>(
@@ -161,9 +156,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<decimal?> elements, decimal? expected)
 	{
 		IElements<decimal?> iElements = elements;
-		ObjectEqualityWithToleranceOptions<decimal?, decimal> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" ± {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
 		return new ToleranceEqualityResult<IEnumerable<decimal?>, IThat<IEnumerable<decimal?>?>, decimal?, decimal>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<decimal?>(
@@ -190,9 +184,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<DateTime> elements, DateTime expected)
 	{
 		IElements<DateTime> iElements = elements;
-		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" within {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
 		return new ToleranceEqualityResult<IEnumerable<DateTime>, IThat<IEnumerable<DateTime>?>, DateTime, TimeSpan>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<DateTime>(
@@ -219,9 +212,8 @@ public static partial class ThatEnumerable
 		AreEqualTo(this Elements<DateTime?> elements, DateTime? expected)
 	{
 		IElements<DateTime?> iElements = elements;
-		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options = new(
-			(a, e, t) => a.IsConsideredEqualTo(e, t),
-			t => $" within {Formatter.Format(t)}");
+		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
 		return new ToleranceEqualityResult<IEnumerable<DateTime?>, IThat<IEnumerable<DateTime?>?>, DateTime?, TimeSpan>(
 			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<DateTime?>(
