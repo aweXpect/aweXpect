@@ -23,7 +23,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0m, 2.0m, 3.0m,] in any order within 0.2,
+						             does not match collection [1.0m, 2.0m, 3.0m,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               2.1,
@@ -57,7 +57,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0m, null, 2.0m, 3.0m,] in order within 0.2,
+						             does not match collection [1.0m, null, 2.0m, 3.0m,] in order ± 0.2,
 						             but it did in [
 						               1.1,
 						               <null>,
@@ -92,7 +92,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0, double.NaN, 2.0, 3.0,] in any order within 0.2,
+						             does not match collection [1.0, double.NaN, 2.0, 3.0,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               NaN,
@@ -113,7 +113,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0, 2.0, 3.0,] in order within 0.2,
+						             does not match collection [1.0, 2.0, 3.0,] in order ± 0.2,
 						             but it did in [
 						               1.1,
 						               2.1,
@@ -147,7 +147,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0, double.NaN, 2.0, 3.0,] in any order within 0.2,
+						             does not match collection [1.0, double.NaN, 2.0, 3.0,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               NaN,
@@ -168,7 +168,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0, null, 2.0, 3.0,] in any order within 0.2,
+						             does not match collection [1.0, null, 2.0, 3.0,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               <null>,
@@ -203,7 +203,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0F, float.NaN, 2.0F, 3.0F,] in any order within 0.2,
+						             does not match collection [1.0F, float.NaN, 2.0F, 3.0F,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               NaN,
@@ -224,7 +224,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0F, 2.0F, 3.0F,] in any order within 0.2,
+						             does not match collection [1.0F, 2.0F, 3.0F,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               2.1,
@@ -258,7 +258,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0F, float.NaN, 2.0F, 3.0F,] in any order within 0.2,
+						             does not match collection [1.0F, float.NaN, 2.0F, 3.0F,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               NaN,
@@ -279,7 +279,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             does not match collection [1.0F, null, 2.0F, 3.0F,] in any order within 0.2,
+						             does not match collection [1.0F, null, 2.0F, 3.0F,] in any order ± 0.2,
 						             but it did in [
 						               1.1,
 						               <null>,

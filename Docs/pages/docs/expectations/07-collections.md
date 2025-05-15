@@ -82,6 +82,16 @@ white-space, or use a custom `IEqualityComparer<string>`:
 await Expect.That(["foo", "FOO", "Foo"]).All().AreEqualTo("foo").IgnoringCase();
 ```
 
+For certain types you can also specify a tolerance:
+
+```csharp
+IEnumerable<double> values = [2.04, 2.02, 2.01];
+
+await Expect.That(values).All().AreEqualTo(2.0).Within(0.1);
+```
+
+This tolerance can be applied to `double`, `float`, `decimal` and `DateTime`.
+
 *Note: The same expectation works also for `IAsyncEnumerable<T>`.*
 
 ## All be unique

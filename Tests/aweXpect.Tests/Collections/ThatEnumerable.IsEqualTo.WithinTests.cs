@@ -34,7 +34,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             matches collection [1.0m, 2.0m, 3.0m,] in any order within 0.2,
+						             matches collection [1.0m, 2.0m, 3.0m,] in any order ± 0.2,
 						             but it
 						               contained item 2.3 at index 1 that was not expected and
 						               lacked 1 of 3 expected items: 2.0
@@ -66,7 +66,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             matches collection [1.0m, null, 2.0m, 3.0m,] in any order within 0.2,
+						             matches collection [1.0m, null, 2.0m, 3.0m,] in any order ± 0.2,
 						             but it
 						               contained item 2.3 at index 2 that was not expected and
 						               lacked 1 of 4 expected items: 2.0
@@ -109,7 +109,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             matches collection [1.0, 2.0, 3.0,] in any order within 0.2,
+						             matches collection [1.0, 2.0, 3.0,] in any order ± 0.2,
 						             but it
 						               contained item 2.3 at index 1 that was not expected and
 						               lacked 1 of 3 expected items: 2.0
@@ -152,7 +152,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             matches collection [1.0, null, 2.0, 3.0,] in any order within 0.2,
+						             matches collection [1.0, null, 2.0, 3.0,] in any order ± 0.2,
 						             but it
 						               contained item 2.3 at index 2 that was not expected and
 						               lacked 1 of 4 expected items: 2.0
@@ -195,7 +195,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             matches collection [1.0F, 2.0F, 3.0F,] in any order within 0.2,
+						             matches collection [1.0F, 2.0F, 3.0F,] in any order ± 0.2,
 						             but it
 						               contained item 2.3 at index 1 that was not expected and
 						               lacked 1 of 3 expected items: 2.0
@@ -238,7 +238,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).Throws<XunitException>()
 						.WithMessage("""
 						             Expected that subject
-						             matches collection [1.0F, null, 2.0F, 3.0F,] in any order within 0.2,
+						             matches collection [1.0F, null, 2.0F, 3.0F,] in any order ± 0.2,
 						             but it
 						               contained item 2.3 at index 2 that was not expected and
 						               lacked 1 of 4 expected items: 2.0

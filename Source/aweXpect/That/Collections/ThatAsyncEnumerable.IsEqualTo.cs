@@ -45,7 +45,8 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<double> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double, double> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<double, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<double>, IThat<IAsyncEnumerable<double>?>,
 			double, double>(
@@ -70,10 +71,11 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<double?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double?, double> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<double?, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<double?>, IThat<IAsyncEnumerable<double?>?>,
-			double?, double>(
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<double?>,
+			IThat<IAsyncEnumerable<double?>?>, double?, double>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<double?, double?>(it, grammars,
 					doNotPopulateThisValue,
@@ -95,9 +97,11 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<decimal> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal, decimal> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal>, IThat<IAsyncEnumerable<decimal>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal>, IThat<IAsyncEnumerable<decimal>?>
+			,
 			decimal, decimal>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<decimal, decimal>(it, grammars,
@@ -113,16 +117,19 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>, IThat<IAsyncEnumerable<decimal?>?>,
+	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>,
+			IThat<IAsyncEnumerable<decimal?>?>,
 			decimal?, decimal>
 		IsEqualTo(
 			this IThat<IAsyncEnumerable<decimal?>?> source,
 			IEnumerable<decimal?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal?, decimal> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>, IThat<IAsyncEnumerable<decimal?>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>,
+			IThat<IAsyncEnumerable<decimal?>?>,
 			decimal?, decimal>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<decimal?, decimal?>(it, grammars,
@@ -145,7 +152,8 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<float> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float, float> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<float, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<float>, IThat<IAsyncEnumerable<float>?>,
 			float, float>(
@@ -170,7 +178,8 @@ public static partial class ThatAsyncEnumerable
 			IEnumerable<float?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float?, float> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<float?, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<float?>, IThat<IAsyncEnumerable<float?>?>,
 			float?, float>(
@@ -188,16 +197,19 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>, IThat<IAsyncEnumerable<DateTime>?>,
+	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>,
+			IThat<IAsyncEnumerable<DateTime>?>,
 			DateTime, TimeSpan>
 		IsEqualTo(
 			this IThat<IAsyncEnumerable<DateTime>?> source,
 			IEnumerable<DateTime> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>, IThat<IAsyncEnumerable<DateTime>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>,
+			IThat<IAsyncEnumerable<DateTime>?>,
 			DateTime, TimeSpan>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<DateTime, DateTime>(it, grammars,
@@ -213,16 +225,19 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection matches the <paramref name="expected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>, IThat<IAsyncEnumerable<DateTime?>?>,
+	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>,
+			IThat<IAsyncEnumerable<DateTime?>?>,
 			DateTime?, TimeSpan>
 		IsEqualTo(
 			this IThat<IAsyncEnumerable<DateTime?>?> source,
 			IEnumerable<DateTime?> expected,
 			[CallerArgumentExpression("expected")] string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>, IThat<IAsyncEnumerable<DateTime?>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>,
+			IThat<IAsyncEnumerable<DateTime?>?>,
 			DateTime?, TimeSpan>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<DateTime?, DateTime?>(it, grammars,
@@ -257,6 +272,7 @@ public static partial class ThatAsyncEnumerable
 			options,
 			matchOptions);
 	}
+
 	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
@@ -264,7 +280,8 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo<TItem>(
 			this IThat<IAsyncEnumerable<TItem>?> source,
 			IEnumerable<TItem> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TItem> options = new();
 		CollectionMatchOptions matchOptions = new();
@@ -288,9 +305,11 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<double>?> source,
 			IEnumerable<double> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double, double> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<double, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<double>, IThat<IAsyncEnumerable<double>?>,
 			double, double>(
@@ -313,11 +332,14 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<double?>?> source,
 			IEnumerable<double?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<double?, double> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<double?, double> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<double?>, IThat<IAsyncEnumerable<double?>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<double?>, IThat<IAsyncEnumerable<double?>?>
+			,
 			double?, double>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<double?, double?>(it, grammars,
@@ -338,11 +360,14 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<decimal>?> source,
 			IEnumerable<decimal> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal, decimal> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal>, IThat<IAsyncEnumerable<decimal>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal>, IThat<IAsyncEnumerable<decimal>?>
+			,
 			decimal, decimal>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<decimal, decimal>(it, grammars,
@@ -358,16 +383,20 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>, IThat<IAsyncEnumerable<decimal?>?>,
+	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>,
+			IThat<IAsyncEnumerable<decimal?>?>,
 			decimal?, decimal>
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<decimal?>?> source,
 			IEnumerable<decimal?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<decimal?, decimal> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>, IThat<IAsyncEnumerable<decimal?>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<decimal?>,
+			IThat<IAsyncEnumerable<decimal?>?>,
 			decimal?, decimal>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<decimal?, decimal?>(it, grammars,
@@ -388,9 +417,11 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<float>?> source,
 			IEnumerable<float> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float, float> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<float, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<float>, IThat<IAsyncEnumerable<float>?>,
 			float, float>(
@@ -413,9 +444,11 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<float?>?> source,
 			IEnumerable<float?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<float?, float> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<float?, float> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
 		CollectionMatchOptions matchOptions = new();
 		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<float?>, IThat<IAsyncEnumerable<float?>?>,
 			float?, float>(
@@ -433,16 +466,20 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>, IThat<IAsyncEnumerable<DateTime>?>,
+	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>,
+			IThat<IAsyncEnumerable<DateTime>?>,
 			DateTime, TimeSpan>
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<DateTime>?> source,
 			IEnumerable<DateTime> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>, IThat<IAsyncEnumerable<DateTime>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime>,
+			IThat<IAsyncEnumerable<DateTime>?>,
 			DateTime, TimeSpan>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<DateTime, DateTime>(it, grammars,
@@ -458,16 +495,20 @@ public static partial class ThatAsyncEnumerable
 	/// <summary>
 	///     Verifies that the collection does not match the <paramref name="unexpected" /> collection.
 	/// </summary>
-	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>, IThat<IAsyncEnumerable<DateTime?>?>,
+	public static ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>,
+			IThat<IAsyncEnumerable<DateTime?>?>,
 			DateTime?, TimeSpan>
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<DateTime?>?> source,
 			IEnumerable<DateTime?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
-		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options = new((a, e, t) => a.IsConsideredEqualTo(e, t));
+		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
+			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
 		CollectionMatchOptions matchOptions = new();
-		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>, IThat<IAsyncEnumerable<DateTime?>?>,
+		return new ObjectCollectionMatchWithToleranceResult<IAsyncEnumerable<DateTime?>,
+			IThat<IAsyncEnumerable<DateTime?>?>,
 			DateTime?, TimeSpan>(
 			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
 				=> new IsEqualToConstraint<DateTime?, DateTime?>(it, grammars,
@@ -487,7 +528,8 @@ public static partial class ThatAsyncEnumerable
 		IsNotEqualTo(
 			this IThat<IAsyncEnumerable<string?>?> source,
 			IEnumerable<string?> unexpected,
-			[CallerArgumentExpression("unexpected")] string doNotPopulateThisValue = "")
+			[CallerArgumentExpression("unexpected")]
+			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
 		CollectionMatchOptions matchOptions = new();

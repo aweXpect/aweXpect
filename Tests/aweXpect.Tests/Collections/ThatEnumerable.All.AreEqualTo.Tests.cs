@@ -9,8 +9,47 @@ public sealed partial class ThatEnumerable
 {
 	public sealed partial class All
 	{
-		public sealed class AreEqualTo
+		public sealed partial class AreEqualTo
 		{
+			public sealed class Tests
+			{
+				[Theory]
+				[InlineData(double.NaN, false)]
+				[InlineData(1.0, true)]
+				public async Task DoubleNaNValues_ShouldBeConsideredEqual(double additionalValue, bool expectFailure)
+				{
+					IEnumerable<double> subject = [double.NaN, double.NaN, additionalValue,];
+
+					async Task Act()
+						=> await That(subject).All().AreEqualTo(double.NaN);
+
+					await That(Act).Throws<XunitException>().OnlyIf(expectFailure)
+						.WithMessage("""
+						             Expected that subject
+						             is equal to NaN for all items,
+						             but only 2 of 3 were
+						             """);
+				}
+
+				[Theory]
+				[InlineData(float.NaN, false)]
+				[InlineData(1.0F, true)]
+				public async Task FloatNaNValues_ShouldBeConsideredEqual(float additionalValue, bool expectFailure)
+				{
+					IEnumerable<float> subject = [float.NaN, float.NaN, additionalValue,];
+
+					async Task Act()
+						=> await That(subject).All().AreEqualTo(float.NaN);
+
+					await That(Act).Throws<XunitException>().OnlyIf(expectFailure)
+						.WithMessage("""
+						             Expected that subject
+						             is equal to NaN for all items,
+						             but only 2 of 3 were
+						             """);
+				}
+			}
+
 			public sealed class ItemTests
 			{
 				[Fact]
