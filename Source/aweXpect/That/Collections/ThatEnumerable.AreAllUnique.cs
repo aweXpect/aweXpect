@@ -22,9 +22,10 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<TItem>?> source)
 	{
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AreAllUniqueConstraint<TItem, TItem>(it, grammars, options)),
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueConstraint<TItem, TItem>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -36,9 +37,10 @@ public static partial class ThatEnumerable
 		this IThat<IEnumerable<string?>?> source)
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AreAllUniqueConstraint<string, string>(it, grammars, options)),
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueConstraint<string, string>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -55,9 +57,12 @@ public static partial class ThatEnumerable
 		string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TMember>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(
+					expectationBuilder,
+					it, grammars,
 					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
@@ -76,9 +81,12 @@ public static partial class ThatEnumerable
 		string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars)
-				=> new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, grammars,
+			expectationBuilder.AddConstraint((it, grammars)
+				=> new AreAllUniqueWithPredicateConstraint<TItem, string, string>(
+					expectationBuilder,
+					it, grammars,
 					memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
@@ -87,6 +95,7 @@ public static partial class ThatEnumerable
 	}
 
 	private sealed class AreAllUniqueConstraint<TItem, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
@@ -123,6 +132,7 @@ public static partial class ThatEnumerable
 			}
 
 			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(materialized);
 			return this;
 		}
 
@@ -146,6 +156,7 @@ public static partial class ThatEnumerable
 	}
 
 	private sealed class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,
@@ -185,6 +196,7 @@ public static partial class ThatEnumerable
 			}
 
 			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(materialized);
 			return this;
 		}
 

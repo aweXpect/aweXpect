@@ -26,6 +26,9 @@ public sealed partial class ThatSignaler
 					             Expected that signaler
 					             has recorded the callback at least twice with x => x > 0 and whose parameters only has unique items,
 					             but it was never recorded
+					             
+					             Collection:
+					             []
 					             """);
 			}
 

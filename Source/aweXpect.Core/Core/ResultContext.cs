@@ -20,8 +20,8 @@ public class ResultContext
 	public ResultContext(string title, string? content, int priority = 0)
 	{
 		Title = title;
-		Priority = priority;
 		_fixedContent = content;
+		Priority = priority;
 	}
 
 	/// <summary>
@@ -32,6 +32,18 @@ public class ResultContext
 	{
 		Title = title;
 		_contentFunc = asyncContent;
+		Priority = priority;
+	}
+
+	/// <summary>
+	///     A result context that is appended to a result error.
+	/// </summary>
+	/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
+	public ResultContext(string title, Func<string?> syncContent, int priority = 0)
+	{
+		Title = title;
+		_contentFunc = _ => Task.FromResult(syncContent());
+		Priority = priority;
 	}
 
 	/// <summary>
