@@ -31,7 +31,6 @@ public static partial class ThatAsyncEnumerable
 		private readonly Func<TItem, bool> _predicate;
 		private readonly EnumerableQuantifier _quantifier;
 		private readonly string _verb;
-		private LimitedCollection<TItem>? _items;
 		private int _matchingCount;
 		private LimitedCollection<TItem>? _matchingItems;
 		private int _notMatchingCount;
@@ -73,7 +72,7 @@ public static partial class ThatAsyncEnumerable
 			_matchingCount = 0;
 			_notMatchingCount = 0;
 			int maxItems = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get() + 1;
-			_items = new LimitedCollection<TItem>(maxItems);
+			LimitedCollection<TItem> items = new(maxItems);
 			_matchingItems = new LimitedCollection<TItem>(maxItems);
 			_notMatchingItems = new LimitedCollection<TItem>(maxItems);
 
@@ -90,14 +89,14 @@ public static partial class ThatAsyncEnumerable
 					_notMatchingItems.Add(item);
 				}
 
-				_items.Add(item);
+				items.Add(item);
 
-				// _items.IsReadOnly is set to true, once the limit is reached.
-				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount) && _items.IsReadOnly)
+				// items.IsReadOnly is set to true, once the limit is reached.
+				if (_quantifier.IsDeterminable(_matchingCount, _notMatchingCount) && items.IsReadOnly)
 				{
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 					AppendContexts(true);
-					_expectationBuilder.AddCollectionContext(_items, true);
+					_expectationBuilder.AddCollectionContext(items, true);
 					return this;
 				}
 			}
@@ -105,14 +104,14 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				Outcome = Outcome.Undecided;
-				_expectationBuilder.AddCollectionContext(_items, true);
+				_expectationBuilder.AddCollectionContext(items, true);
 				return this;
 			}
 
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 			AppendContexts(false);
-			_expectationBuilder.AddCollectionContext(_items, false);
+			_expectationBuilder.AddCollectionContext(items, false);
 			return this;
 		}
 
