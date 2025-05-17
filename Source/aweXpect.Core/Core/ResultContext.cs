@@ -31,6 +31,7 @@ public class ResultContext
 	public ResultContext(string title, Func<CancellationToken, Task<string?>> asyncContent, int priority = 0)
 	{
 		Title = title;
+		Priority = priority;
 		_contentFunc = asyncContent;
 	}
 

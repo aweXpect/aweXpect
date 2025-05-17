@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using aweXpect.Core;
 
 namespace aweXpect;
@@ -36,13 +37,14 @@ internal static class CollectionHelpers
 	internal static string GetItemString(this EnumerableQuantifier quantifier)
 		=> quantifier.IsSingle() ? "item" : "items";
 
-	internal static ExpectationBuilder AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder, IEnumerable<TItem> value, bool isIncomplete)
+	internal static ExpectationBuilder AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder,
+		IEnumerable<TItem> value, bool isIncomplete = false)
 		=> expectationBuilder.UpdateContexts(contexts
 			=> contexts
 				.Add(new ResultContext("Collection",
-					Formatter.Format(value, typeof(TItem).GetFormattingOption())
-						.AppendIsIncomplete(isIncomplete),
-					1)));
+					t => Task.FromResult<string?>(
+						Formatter.Format(value, typeof(TItem).GetFormattingOption()).AppendIsIncomplete(isIncomplete)),
+					-1)));
 
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
 	{
@@ -67,7 +69,7 @@ internal static class CollectionHelpers
 		if (formattedItems.EndsWith($"{Environment.NewLine}]"))
 		{
 			return $"""
-			        {formattedItems[..^(Environment.NewLine.Length  + 1)]},
+			        {formattedItems[..^(Environment.NewLine.Length + 1)]},
 			          (… and maybe others)
 			        ]
 			        """;

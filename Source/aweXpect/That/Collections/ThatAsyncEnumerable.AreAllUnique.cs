@@ -26,9 +26,10 @@ public static partial class ThatAsyncEnumerable
 			this IThat<IAsyncEnumerable<TItem>?> source)
 	{
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AreAllUniqueConstraint<TItem, TItem>(it, grammars, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueConstraint<TItem, TItem>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -40,9 +41,10 @@ public static partial class ThatAsyncEnumerable
 		this IThat<IAsyncEnumerable<string?>?> source)
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AreAllUniqueConstraint<string, string>(it, grammars, options)),
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueConstraint<string, string>(expectationBuilder, it, grammars, options)),
 			source, options
 		);
 	}
@@ -59,9 +61,10 @@ public static partial class ThatAsyncEnumerable
 			string doNotPopulateThisValue = "")
 	{
 		ObjectEqualityOptions<TMember> options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TMember>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(it, grammars, memberAccessor,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueWithPredicateConstraint<TItem, TMember, TMember>(expectationBuilder, it, grammars, memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
@@ -80,9 +83,10 @@ public static partial class ThatAsyncEnumerable
 			string doNotPopulateThisValue = "")
 	{
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = source.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>>(
-			source.Get().ExpectationBuilder.AddConstraint((it, grammars) =>
-				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(it, grammars, memberAccessor,
+			expectationBuilder.AddConstraint((it, grammars) =>
+				new AreAllUniqueWithPredicateConstraint<TItem, string, string>(expectationBuilder, it, grammars, memberAccessor,
 					doNotPopulateThisValue.TrimCommonWhiteSpace(),
 					options)),
 			source, options
@@ -90,6 +94,7 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	private sealed class AreAllUniqueConstraint<TItem, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		IOptionsEquality<TMatch> options)
@@ -112,6 +117,7 @@ public static partial class ThatAsyncEnumerable
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TItem> checkedItems = new();
+			LimitedCollection<TItem> items = new();
 
 			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
@@ -124,9 +130,11 @@ public static partial class ThatAsyncEnumerable
 				}
 
 				checkedItems.Add(item);
+				items.Add(item);
 			}
 
 			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(items);
 			return this;
 		}
 
@@ -150,6 +158,7 @@ public static partial class ThatAsyncEnumerable
 	}
 
 	private sealed class AreAllUniqueWithPredicateConstraint<TItem, TMember, TMatch>(
+		ExpectationBuilder expectationBuilder,
 		string it,
 		ExpectationGrammars grammars,
 		Func<TItem, TMember> memberAccessor,
@@ -174,6 +183,7 @@ public static partial class ThatAsyncEnumerable
 			IAsyncEnumerable<TItem> materialized = context
 				.UseMaterializedAsyncEnumerable<TItem, IAsyncEnumerable<TItem>>(actual);
 			List<TMember> checkedItems = new();
+			LimitedCollection<TItem> items = new();
 
 			IOptionsEquality<TMatch> o = options;
 			await foreach (TItem item in materialized.WithCancellation(cancellationToken))
@@ -187,9 +197,11 @@ public static partial class ThatAsyncEnumerable
 				}
 
 				checkedItems.Add(itemMember);
+				items.Add(item);
 			}
 
 			Outcome = _duplicates.Any() ? Outcome.Failure : Outcome.Success;
+			expectationBuilder.AddCollectionContext(items);
 			return this;
 		}
 
