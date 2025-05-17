@@ -42,8 +42,7 @@ internal static class CollectionHelpers
 		=> expectationBuilder.UpdateContexts(contexts
 			=> contexts
 				.Add(new ResultContext("Collection",
-					t => Task.FromResult<string?>(
-						Formatter.Format(value, typeof(TItem).GetFormattingOption()).AppendIsIncomplete(isIncomplete)),
+					Formatter.Format(value, typeof(TItem).GetFormattingOption()).AppendIsIncomplete(isIncomplete),
 					-1)));
 
 	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
