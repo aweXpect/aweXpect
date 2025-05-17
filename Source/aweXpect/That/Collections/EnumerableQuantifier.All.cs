@@ -39,6 +39,10 @@ public abstract partial class EnumerableQuantifier
 		}
 
 		/// <inheritdoc />
+		public override QuantifierContext GetQuantifierContext()
+			=> QuantifierContext.NotMatchingItems;
+
+		/// <inheritdoc />
 		public override void AppendResult(StringBuilder stringBuilder,
 			ExpectationGrammars grammars,
 			int matchingCount,
@@ -49,7 +53,16 @@ public abstract partial class EnumerableQuantifier
 			verb ??= "were";
 			if (totalCount.HasValue)
 			{
-				stringBuilder.Append("only ").Append(matchingCount).Append(" of ").Append(totalCount.Value).Append(' ')
+				if (matchingCount == 0)
+				{
+					stringBuilder.Append("none");
+				}
+				else
+				{
+					stringBuilder.Append("only ").Append(matchingCount);
+				}
+
+				stringBuilder.Append(" of ").Append(totalCount.Value).Append(' ')
 					.Append(verb);
 			}
 			else

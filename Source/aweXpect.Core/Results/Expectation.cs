@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -227,7 +228,7 @@ public abstract class Expectation
 			sb.AppendLine();
 			sb.AppendLine("but");
 			result.ConstraintResult.AppendResult(sb);
-			foreach (ResultContext context in GetContexts(0, outcomes))
+			foreach (ResultContext context in GetContexts(0, outcomes).OrderByDescending(x => x.Priority))
 			{
 				string? content = await context.GetContent(cancellationToken);
 				if (content is null)

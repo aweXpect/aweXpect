@@ -45,6 +45,10 @@ public abstract partial class EnumerableQuantifier
 		}
 
 		/// <inheritdoc />
+		public override QuantifierContext GetQuantifierContext()
+			=> QuantifierContext.MatchingItems;
+
+		/// <inheritdoc />
 		public override void AppendResult(StringBuilder stringBuilder,
 			ExpectationGrammars grammars,
 			int matchingCount,

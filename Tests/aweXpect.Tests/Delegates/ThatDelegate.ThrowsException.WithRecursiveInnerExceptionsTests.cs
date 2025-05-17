@@ -28,7 +28,16 @@ public sealed partial class ThatDelegate
 					              Expected that action
 					              throws an exception with recursive inner exceptions which at least {minimum} are of type ThatDelegate.CustomException,
 					              but only 1 of 5 were
-					              """);
+					              
+					              Collection:
+					              [
+					                aweXpect.Tests.ThatDelegate+OtherException: WhenAnyInnerExceptionDoesMatch_ShouldSucceed*,
+					                System.AggregateException: *,
+					                aweXpect.Tests.ThatDelegate+OtherException: WhenAnyInnerExceptionDoesMatch_ShouldSucceed*,
+					                aweXpect.Tests.ThatDelegate+OtherException: WhenAnyInnerExceptionDoesMatch_ShouldSucceed*,
+					                aweXpect.Tests.ThatDelegate+CustomException: WhenAnyInnerExceptionDoesMatch_ShouldSucceed*
+					              ]
+					              """).AsWildcard();
 			}
 
 			[Fact]
@@ -77,6 +86,18 @@ public sealed partial class ThatDelegate
 					             Expected that action
 					             throws an exception with recursive inner exceptions which all satisfy _ => false,
 					             but not all did
+					             
+					             Not matching items:
+					             [
+					               aweXpect.Tests.ThatDelegate+CustomException: WhenInnerExceptionDoesNotMatch_ShouldFail,
+					               (… and maybe others)
+					             ]
+					             
+					             Collection:
+					             [
+					               aweXpect.Tests.ThatDelegate+CustomException: WhenInnerExceptionDoesNotMatch_ShouldFail,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 

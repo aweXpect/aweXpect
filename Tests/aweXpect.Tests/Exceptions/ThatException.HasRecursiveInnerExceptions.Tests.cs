@@ -40,7 +40,21 @@ public sealed partial class ThatException
 					             Expected that subject
 					             has recursive inner exceptions which all satisfy e => e.Message != "inner3A",
 					             but not all did
-					             """);
+					             
+					             Not matching items:
+					             [
+					               System.Exception: inner3A,
+					               (… and maybe others)
+					             ]
+					             
+					             Collection:
+					             [
+					               System.Exception: inner1*,
+					               System.AggregateException:*,
+					               System.Exception: inner3A*,
+					               System.Exception: inner3B*
+					             ]
+					             """).AsWildcard();
 			}
 
 			[Fact]
@@ -61,7 +75,21 @@ public sealed partial class ThatException
 					             Expected that subject
 					             has recursive inner exceptions which none satisfy e => e.Message != "inner3A",
 					             but at least one did
-					             """);
+					             
+					             Matching items:
+					             [
+					               System.Exception: inner1*,
+					               (… and maybe others)
+					             ]
+					             
+					             Collection:
+					             [
+					               System.Exception: inner1*,
+					               System.AggregateException:*,
+					               System.Exception: inner3A*,
+					               System.Exception: inner3B*
+					             ]
+					             """).AsWildcard();
 			}
 
 			[Fact]

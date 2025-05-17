@@ -38,5 +38,7 @@ public static class EquivalencyExtensions
 	internal static void AddEquivalencyContext(this ExpectationBuilder expectationBuilder,
 		EquivalencyOptions equivalencyOptions)
 		=> expectationBuilder.UpdateContexts(contexts => contexts.Add(
-			new ResultContext("Equivalency options", _ => Task.FromResult<string?>(equivalencyOptions.ToString()))));
+			new ResultContext("Equivalency options",
+				_ => Task.FromResult<string?>(equivalencyOptions.ToString()),
+				int.MinValue)));
 }

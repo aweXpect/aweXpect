@@ -30,6 +30,9 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to 8 for no items,
 						             but could not verify, because it was already cancelled
+
+						             Collection:
+						             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 						             """);
 				}
 
@@ -58,13 +61,19 @@ public sealed partial class ThatAsyncEnumerable
 						             Expected that subject
 						             is equal to 5 for no items,
 						             but at least one was
+
+						             Matching items:
+						             [5, (… and maybe others)]
+
+						             Collection:
+						             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
 						             """);
 				}
 
 				[Fact]
 				public async Task WhenEnumerableContainsEqualValues_ShouldFail()
 				{
-					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(1);
@@ -73,7 +82,13 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to 1 for no items,
-						             but at least one was
+						             but 4 of 7 were
+
+						             Matching items:
+						             [1, 1, 1, 1]
+
+						             Collection:
+						             [1, 1, 1, 1, 2, 2, 3]
 						             """);
 				}
 
@@ -91,7 +106,7 @@ public sealed partial class ThatAsyncEnumerable
 				[Fact]
 				public async Task WhenEnumerableOnlyContainsDifferentValues_ShouldSucceed()
 				{
-					IAsyncEnumerable<int> subject = ToAsyncEnumerable([1, 1, 1, 1, 2, 2, 3,]);
+					IAsyncEnumerable<int> subject = ToAsyncEnumerable(1, 1, 1, 1, 2, 2, 3);
 
 					async Task Act()
 						=> await That(subject).None().AreEqualTo(42);
@@ -130,7 +145,19 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "bar" ignoring case for no items,
-						             but at least one was
+						             but 1 of 3 were
+
+						             Matching items:
+						             [
+						               "BAR"
+						             ]
+
+						             Collection:
+						             [
+						               "FOO",
+						               "BAR",
+						               "BAZ"
+						             ]
 						             """);
 				}
 
@@ -146,7 +173,19 @@ public sealed partial class ThatAsyncEnumerable
 						.WithMessage("""
 						             Expected that subject
 						             is equal to "bar" for no items,
-						             but at least one was
+						             but 1 of 3 were
+
+						             Matching items:
+						             [
+						               "bar"
+						             ]
+
+						             Collection:
+						             [
+						               "foo",
+						               "bar",
+						               "baz"
+						             ]
 						             """);
 				}
 

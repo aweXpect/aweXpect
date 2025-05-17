@@ -108,21 +108,27 @@ public static partial class ThatEnumerable
 		: ConstraintResult.WithNotNullValue<IEnumerable<TItem>?>,
 			IAsyncContextConstraint<IEnumerable<TItem>?>
 	{
+		private readonly ExpectationBuilder _expectationBuilder;
 		private readonly Func<ExpectationGrammars, string> _expectationText;
 		private readonly Func<TItem, bool> _predicate;
 		private readonly EnumerableQuantifier _quantifier;
 		private readonly string _verb;
 		private int _matchingCount;
+		private LimitedCollection<TItem>? _matchingItems;
 		private int _notMatchingCount;
+		private LimitedCollection<TItem>? _notMatchingItems;
 		private int? _totalCount;
 
-		public CollectionConstraint(string it,
+		public CollectionConstraint(
+			ExpectationBuilder expectationBuilder,
+			string it,
 			ExpectationGrammars grammars,
 			EnumerableQuantifier quantifier,
 			Func<ExpectationGrammars, string> expectationText,
 			Func<TItem, bool> predicate,
 			string verb) : base(it, grammars)
 		{
+			_expectationBuilder = expectationBuilder;
 			_quantifier = quantifier;
 			_expectationText = expectationText;
 			_predicate = predicate;
@@ -145,33 +151,43 @@ public static partial class ThatEnumerable
 			bool cancelEarly = actual is not ICollection<TItem>;
 			_matchingCount = 0;
 			_notMatchingCount = 0;
+			int maxItems = Customize.aweXpect.Formatting().MaximumNumberOfCollectionItems.Get() + 1;
+			_matchingItems = new LimitedCollection<TItem>(maxItems);
+			_notMatchingItems = new LimitedCollection<TItem>(maxItems);
 
 			foreach (TItem item in materialized)
 			{
 				if (_predicate(item))
 				{
 					_matchingCount++;
+					_matchingItems.Add(item);
 				}
 				else
 				{
 					_notMatchingCount++;
+					_notMatchingItems.Add(item);
 				}
 
 				if (cancelEarly && _quantifier.IsDeterminable(_matchingCount, _notMatchingCount))
 				{
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+					AppendContexts(true);
+					AppendCollectionContext(materialized, true);
 					return Task.FromResult<ConstraintResult>(this);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
 					Outcome = Outcome.Undecided;
+					AppendCollectionContext(materialized, true);
 					return Task.FromResult<ConstraintResult>(this);
 				}
 			}
 
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
+			AppendContexts(false);
+			AppendCollectionContext(materialized, false);
 			return Task.FromResult<ConstraintResult>(this);
 		}
 
@@ -218,6 +234,73 @@ public static partial class ThatEnumerable
 		protected override void AppendNegatedResult(StringBuilder stringBuilder, string? indentation = null)
 			=> _quantifier.AppendResult(stringBuilder, Grammars.Negate(), _matchingCount, _notMatchingCount,
 				_totalCount, _verb);
+
+		private void AppendContexts(bool isIncomplete)
+		{
+			EnumerableQuantifier.QuantifierContext quantifierContext = _quantifier.GetQuantifierContext();
+			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.MatchingItems))
+			{
+				_expectationBuilder.UpdateContexts(contexts => contexts
+					.Add(new ResultContext("Matching items",
+						AppendIsIncomplete(
+							Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption()),
+							isIncomplete),
+						int.MaxValue)));
+			}
+
+			if (quantifierContext.HasFlag(EnumerableQuantifier.QuantifierContext.NotMatchingItems))
+			{
+				_expectationBuilder.UpdateContexts(contexts => contexts
+					.Add(new ResultContext("Not matching items",
+						AppendIsIncomplete(
+							Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption()),
+							isIncomplete),
+						int.MaxValue)));
+			}
+		}
+
+		private void AppendCollectionContext(IEnumerable<TItem> value, bool isIncomplete)
+			=> _expectationBuilder.UpdateContexts(contexts
+				=> contexts
+					.Add(new ResultContext("Collection",
+						AppendIsIncomplete(
+							Formatter.Format(value, typeof(TItem).GetFormattingOption()),
+							isIncomplete),
+						1)));
+
+		private static string AppendIsIncomplete(string formattedItems, bool isIncomplete)
+		{
+			if (!isIncomplete || formattedItems.Length < 3)
+			{
+				return formattedItems;
+			}
+
+			if (formattedItems.EndsWith("…]"))
+			{
+				return $"{formattedItems[..^2]}(… and maybe others)]";
+			}
+
+			if (formattedItems.EndsWith("…\r\n]"))
+			{
+				return $"""
+				        {formattedItems[..^4]}(… and maybe others)
+				        ]
+				        """;
+			}
+
+			if (formattedItems.EndsWith("\r\n]"))
+			{
+				return $"""
+				        {formattedItems[..^3]},
+				          (… and maybe others)
+				        ]
+				        """;
+			}
+
+			return $"""
+			        {formattedItems[..^1]}, (… and maybe others)]
+			        """;
+		}
 	}
 
 	private sealed class SyncCollectionCountConstraint<TItem>

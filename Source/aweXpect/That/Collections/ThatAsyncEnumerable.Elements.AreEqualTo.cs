@@ -19,9 +19,11 @@ public static partial class ThatAsyncEnumerable
 		IElements<double> iElements = elements;
 		ObjectEqualityWithToleranceOptions<double, double> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateDouble();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<double>, IThat<IAsyncEnumerable<double>?>, double, double>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<double>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -47,10 +49,12 @@ public static partial class ThatAsyncEnumerable
 		IElements<double?> iElements = elements;
 		ObjectEqualityWithToleranceOptions<double?, double> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDouble();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<double?>, IThat<IAsyncEnumerable<double?>?>, double?,
 			double>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<double?>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -76,9 +80,11 @@ public static partial class ThatAsyncEnumerable
 		IElements<float> iElements = elements;
 		ObjectEqualityWithToleranceOptions<float, float> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateFloat();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<float>, IThat<IAsyncEnumerable<float>?>, float, float>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<float>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -104,9 +110,11 @@ public static partial class ThatAsyncEnumerable
 		IElements<float?> iElements = elements;
 		ObjectEqualityWithToleranceOptions<float?, float> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableFloat();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<float?>, IThat<IAsyncEnumerable<float?>?>, float?, float>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<float?>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -133,10 +141,12 @@ public static partial class ThatAsyncEnumerable
 		IElements<decimal> iElements = elements;
 		ObjectEqualityWithToleranceOptions<decimal, decimal> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateDecimal();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<decimal>, IThat<IAsyncEnumerable<decimal>?>, decimal,
 			decimal>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<decimal>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -163,10 +173,12 @@ public static partial class ThatAsyncEnumerable
 		IElements<decimal?> iElements = elements;
 		ObjectEqualityWithToleranceOptions<decimal?, decimal> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDecimal();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<decimal?>, IThat<IAsyncEnumerable<decimal?>?>, decimal?,
 			decimal>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<decimal?>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -193,10 +205,12 @@ public static partial class ThatAsyncEnumerable
 		IElements<DateTime> iElements = elements;
 		ObjectEqualityWithToleranceOptions<DateTime, TimeSpan> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateDateTime();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<DateTime>, IThat<IAsyncEnumerable<DateTime>?>, DateTime,
 			TimeSpan>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<DateTime>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -223,10 +237,12 @@ public static partial class ThatAsyncEnumerable
 		IElements<DateTime?> iElements = elements;
 		ObjectEqualityWithToleranceOptions<DateTime?, TimeSpan> options =
 			ObjectEqualityWithToleranceOptionsFactory.CreateNullableDateTime();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ToleranceEqualityResult<IAsyncEnumerable<DateTime?>, IThat<IAsyncEnumerable<DateTime?>?>, DateTime?,
 			TimeSpan>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<DateTime?>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -251,9 +267,11 @@ public static partial class ThatAsyncEnumerable
 	{
 		IElements<TItem> iElements = elements;
 		ObjectEqualityOptions<TItem> options = new();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new ObjectEqualityResult<IAsyncEnumerable<TItem>?, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<TItem>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -279,9 +297,11 @@ public static partial class ThatAsyncEnumerable
 	{
 		IElements iElements = elements;
 		StringEqualityOptions options = new();
+		ExpectationBuilder expectationBuilder = iElements.Subject.Get().ExpectationBuilder;
 		return new StringEqualityResult<IAsyncEnumerable<string?>, IThat<IAsyncEnumerable<string?>?>>(
-			iElements.Subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			expectationBuilder.AddConstraint((it, grammars)
 				=> new CollectionConstraint<string?>(
+					expectationBuilder,
 					it, grammars,
 					iElements.Quantifier,
 					g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

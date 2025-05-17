@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -398,7 +399,7 @@ public abstract class ExpectationBuilder
 		failure.AppendResult(sb);
 		if (contexts is not null)
 		{
-			foreach (ResultContext context in contexts)
+			foreach (ResultContext context in contexts.OrderByDescending(x => x.Priority))
 			{
 				string? content = await context.GetContent(cancellationToken);
 				if (content is null)

@@ -19,9 +19,11 @@ public static partial class ThatAsyncEnumerable
 			AreExactly<TType>()
 		{
 			ObjectEqualityOptions<TItem> options = new();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
+						expectationBuilder,
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -46,9 +48,11 @@ public static partial class ThatAsyncEnumerable
 		{
 			type.ThrowIfNull();
 			ObjectEqualityOptions<TItem> options = new();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
 			return new ObjectEqualityResult<IAsyncEnumerable<TItem>, IThat<IAsyncEnumerable<TItem>?>, TItem>(
-				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
+						expectationBuilder,
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

@@ -93,6 +93,18 @@ public sealed partial class ThatDictionary
 					               2,
 					               3
 					             ]
+
+					             Not matching items:
+					             [
+					               <null>,
+					               (… and maybe others)
+					             ]
+
+					             Collection:
+					             [
+					               <null>,
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -109,6 +121,19 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             contains keys [1, 2] whose values are equal to "foo" for all items,
 					             but not all were
+
+					             Not matching items:
+					             [
+					               "bar",
+					               (… and maybe others)
+					             ]
+
+					             Collection:
+					             [
+					               "foo",
+					               "bar",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -125,6 +150,18 @@ public sealed partial class ThatDictionary
 					             Expected that subject
 					             contains keys [2] whose values are equal to "foo" for all items,
 					             but not all were
+
+					             Not matching items:
+					             [
+					               "bar",
+					               (… and maybe others)
+					             ]
+
+					             Collection:
+					             [
+					               "bar",
+					               (… and maybe others)
+					             ]
 					             """);
 			}
 
@@ -157,6 +194,20 @@ public sealed partial class ThatDictionary
 					               1,
 					               2,
 					               3
+					             ]
+					             
+					             Not matching items:
+					             [
+					               "foo",
+					               (… and maybe others)
+					             ]
+					             
+					             Collection:
+					             [
+					               "foo",
+					               <null>,
+					               "baz",
+					               (… and maybe others)
 					             ]
 					             """);
 			}
