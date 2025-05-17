@@ -27,7 +27,13 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage("""
 							             Expected that subject
 							             is equal to 1.0 ± 0.2 for all items,
-							             but not all were
+							             but only 2 of 3 were
+							             
+							             Not matching items:
+							             [1.3]
+							             
+							             Collection:
+							             [1.0, 1.3, 0.9]
 							             """);
 					}
 
@@ -57,7 +63,13 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage("""
 							             Expected that subject
 							             is equal to 1.0 ± 0.2 for all items,
-							             but not all were
+							             but only 2 of 3 were
+							             
+							             Not matching items:
+							             [1.3]
+							             
+							             Collection:
+							             [1.0, 1.3, 0.9]
 							             """);
 					}
 
@@ -87,7 +99,13 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage("""
 							             Expected that subject
 							             is equal to 1.0 ± 0.2 for all items,
-							             but not all were
+							             but only 2 of 3 were
+							             
+							             Not matching items:
+							             [1.3]
+							             
+							             Collection:
+							             [1.0, 1.3, 0.9]
 							             """);
 					}
 
@@ -117,7 +135,13 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage("""
 							             Expected that subject
 							             is equal to 1.0 ± 0.2 for all items,
-							             but not all were
+							             but only 2 of 3 were
+							             
+							             Not matching items:
+							             [1.3]
+							             
+							             Collection:
+							             [1.0, 1.3, 0.9]
 							             """);
 					}
 
@@ -147,7 +171,13 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage("""
 							             Expected that subject
 							             is equal to 1.0 ± 0.2 for all items,
-							             but not all were
+							             but only 2 of 3 were
+							             
+							             Not matching items:
+							             [1.3]
+							             
+							             Collection:
+							             [1.0, 1.3, 0.9]
 							             """);
 					}
 
@@ -177,7 +207,13 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage("""
 							             Expected that subject
 							             is equal to 1.0 ± 0.2 for all items,
-							             but not all were
+							             but only 2 of 3 were
+							             
+							             Not matching items:
+							             [1.3]
+							             
+							             Collection:
+							             [1.0, 1.3, 0.9]
 							             """);
 					}
 
@@ -209,7 +245,19 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage($"""
 							              Expected that subject
 							              is equal to {Formatter.Format(now)} within 1:00 for all items,
-							              but not all were
+							              but only 2 of 3 were
+							              
+							              Not matching items:
+							              [
+							                {Formatter.Format(now.AddMinutes(-2))}
+							              ]
+							              
+							              Collection:
+							              [
+							                {Formatter.Format(now.AddMinutes(1))},
+							                {Formatter.Format(now)},
+							                {Formatter.Format(now.AddMinutes(-2))}
+							              ]
 							              """);
 					}
 
@@ -243,7 +291,21 @@ public sealed partial class ThatAsyncEnumerable
 							.WithMessage($"""
 							              Expected that subject
 							              is equal to {Formatter.Format(now)} within 1:00 for all items,
-							              but not all were
+							              but only 2 of 4 were
+							              
+							              Not matching items:
+							              [
+							                <null>,
+							                {Formatter.Format(now.AddMinutes(-2))}
+							              ]
+							              
+							              Collection:
+							              [
+							                {Formatter.Format(now.AddMinutes(1))},
+							                {Formatter.Format(now)},
+							                <null>,
+							                {Formatter.Format(now.AddMinutes(-2))}
+							              ]
 							              """);
 					}
 

@@ -24,7 +24,15 @@ public sealed partial class ThatAsyncEnumerable
 					=> await That(subject).AtLeast(6).Satisfy(y => y < 6)
 						.WithCancellation(token);
 
-				await That(Act).DoesNotThrow();
+				await That(Act).Throws<InconclusiveException>()
+					.WithMessage("""
+					             Expected that subject
+					             satisfies y => y < 6 for at least 6 items,
+					             but could not verify, because it was already cancelled
+					             
+					             Collection:
+					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
+					             """);
 			}
 
 			[Fact]
@@ -74,6 +82,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for at least 5 items,
 					             but only 4 of 7 were
+					             
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -90,6 +101,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for at least 5 items,
 					             but only 4 of 7 were
+					             
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -125,6 +139,13 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" ignoring case for at least 3 items,
 					             but only 2 of 3 were
+					             
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "bar"
+					             ]
 					             """);
 			}
 
@@ -152,6 +173,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for at least 3 items,
 					             but only 2 of 4 were
+					             
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 

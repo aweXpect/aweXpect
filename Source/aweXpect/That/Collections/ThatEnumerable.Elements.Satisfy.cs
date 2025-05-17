@@ -21,8 +21,11 @@ public static partial class ThatEnumerable
 				string doNotPopulateThisValue = "")
 		{
 			predicate.ThrowIfNull();
-			return new AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<IEnumerable<string?>, IThat<IEnumerable<string?>?>>(
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<string?>(
+						expectationBuilder,
 						it, grammars,
 						_quantifier,
 						g => (g.IsNested(), g.IsNegated()) switch
@@ -50,8 +53,11 @@ public static partial class ThatEnumerable
 				string doNotPopulateThisValue = "")
 		{
 			predicate.ThrowIfNull();
-			return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
+			return new AndOrResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>>(
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
+						expectationBuilder,
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

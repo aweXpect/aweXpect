@@ -16,16 +16,19 @@ public class ResultContext
 	/// <summary>
 	///     A result context that is appended to a result error.
 	/// </summary>
-	public ResultContext(string title, string? content)
+	/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
+	public ResultContext(string title, string? content, int priority = 0)
 	{
 		Title = title;
+		Priority = priority;
 		_fixedContent = content;
 	}
 
 	/// <summary>
 	///     A result context that is appended to a result error.
 	/// </summary>
-	public ResultContext(string title, Func<CancellationToken, Task<string?>> asyncContent)
+	/// <remarks>The optional <paramref name="priority" /> determines the displayed order (higher values are displayed first).</remarks>
+	public ResultContext(string title, Func<CancellationToken, Task<string?>> asyncContent, int priority = 0)
 	{
 		Title = title;
 		_contentFunc = asyncContent;
@@ -35,6 +38,12 @@ public class ResultContext
 	///     The title of the context.
 	/// </summary>
 	public string Title { get; set; }
+
+	/// <summary>
+	///     The priority of the context (determines the displayed order).
+	/// </summary>
+	/// <remarks>The higher values are displayed first.</remarks>
+	public int Priority { get; }
 
 	/// <summary>
 	///     The content of the context.

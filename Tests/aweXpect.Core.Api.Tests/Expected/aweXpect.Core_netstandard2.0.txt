@@ -253,8 +253,9 @@ namespace aweXpect.Core
     }
     public class ResultContext
     {
-        public ResultContext(string title, System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<string?>> asyncContent) { }
-        public ResultContext(string title, string? content) { }
+        public ResultContext(string title, System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<string?>> asyncContent, int priority = 0) { }
+        public ResultContext(string title, string? content, int priority = 0) { }
+        public int Priority { get; }
         public string Title { get; set; }
         public System.Threading.Tasks.Task<string?> GetContent(System.Threading.CancellationToken cancellationToken = default) { }
     }

@@ -29,6 +29,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             satisfies y => y < 0 for no items,
 					             but could not verify, because it was already cancelled
+					             
+					             Collection:
+					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
 			}
 
@@ -57,6 +60,12 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 5 for no items,
 					             but at least one was
+					             
+					             Matching items:
+					             [5, (… and maybe others)]
+					             
+					             Collection:
+					             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
 					             """);
 			}
 
@@ -72,7 +81,13 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 1 for no items,
-					             but at least one was
+					             but 4 of 7 were
+					             
+					             Matching items:
+					             [1, 1, 1, 1]
+					             
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 

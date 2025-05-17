@@ -29,6 +29,9 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item < 0 for no items,
 						             but could not verify, because it was already cancelled
+						             
+						             Collection:
+						             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, (… and maybe others)]
 						             """);
 				}
 
@@ -57,6 +60,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item == 5 for no items,
 						             but at least one did
+						             
+						             Matching items:
+						             [5, (… and maybe others)]
+						             
+						             Collection:
+						             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
 						             """);
 				}
 
@@ -73,6 +82,12 @@ public sealed partial class ThatEnumerable
 						             Expected that subject
 						             satisfies item => item == 1 for no items,
 						             but at least one did
+						             
+						             Matching items:
+						             [1, (… and maybe others)]
+						             
+						             Collection:
+						             [1, 1, 1, 1, 2, 2, 3, (… and maybe others)]
 						             """);
 				}
 

@@ -29,6 +29,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             satisfies y => y < 6 for exactly 6 items,
 					             but could not verify, because it was already cancelled
+					             
+					             Collection:
+					             [0, 1, 2, 3, 4, 5, (… and maybe others)]
 					             """);
 			}
 
@@ -57,6 +60,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 1 for exactly one item,
 					             but at least 2 were
+					             
+					             Collection:
+					             [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, (… and maybe others)]
 					             """);
 			}
 
@@ -84,6 +90,9 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to 2 for exactly 4 items,
 					             but only 2 of 7 were
+					             
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -99,7 +108,10 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to 1 for exactly 3 items,
-					             but at least 4 were
+					             but 4 of 7 were
+					             
+					             Collection:
+					             [1, 1, 1, 1, 2, 2, 3]
 					             """);
 			}
 
@@ -134,7 +146,14 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to "foo" ignoring case for exactly one item,
-					             but at least 2 were
+					             but 2 of 3 were
+					             
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "bar"
+					             ]
 					             """);
 			}
 
@@ -162,6 +181,14 @@ public sealed partial class ThatAsyncEnumerable
 					             Expected that subject
 					             is equal to "foo" for exactly 3 items,
 					             but only 2 of 4 were
+					             
+					             Collection:
+					             [
+					               "foo",
+					               "FOO",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 
@@ -177,7 +204,14 @@ public sealed partial class ThatAsyncEnumerable
 					.WithMessage("""
 					             Expected that subject
 					             is equal to "foo" for exactly one item,
-					             but at least 2 were
+					             but 2 of 3 were
+					             
+					             Collection:
+					             [
+					               "foo",
+					               "foo",
+					               "bar"
+					             ]
 					             """);
 			}
 

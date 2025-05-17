@@ -18,9 +18,11 @@ public static partial class ThatEnumerable
 			Are<TType>()
 		{
 			ObjectEqualityOptions<TItem> options = new();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
+						expectationBuilder,
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),
@@ -45,9 +47,11 @@ public static partial class ThatEnumerable
 		{
 			type.ThrowIfNull();
 			ObjectEqualityOptions<TItem> options = new();
+			ExpectationBuilder expectationBuilder = _subject.Get().ExpectationBuilder;
 			return new ObjectEqualityResult<IEnumerable<TItem>, IThat<IEnumerable<TItem>?>, TItem>(
-				_subject.Get().ExpectationBuilder.AddConstraint((it, grammars)
+				expectationBuilder.AddConstraint((it, grammars)
 					=> new CollectionConstraint<TItem>(
+						expectationBuilder,
 						it, grammars,
 						_quantifier,
 						g => (g.HasAnyFlag(ExpectationGrammars.Nested, ExpectationGrammars.Plural),

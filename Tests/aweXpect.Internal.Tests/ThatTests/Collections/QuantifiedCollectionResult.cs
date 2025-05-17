@@ -3,10 +3,10 @@
 public partial class QuantifiedCollectionResult
 {
 #pragma warning disable CS9113 // Parameter is unread.
-	public class MyClass(int Value);
+	public record MyClass(int Value);
 
-	public class SubClass(int value) : MyClass(value);
+	public record SubClass(int Value) : MyClass(Value);
 
-	public class OtherClass(int Value);
+	public record OtherClass(int Value);
 #pragma warning restore CS9113 // Parameter is unread.
 }
