@@ -97,7 +97,7 @@ public static partial class ThatAsyncEnumerable
 				{
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 					AppendContexts(true);
-					AppendCollectionContext(_items, true);
+					_expectationBuilder.AddCollectionContext(_items, true);
 					return this;
 				}
 			}
@@ -105,14 +105,14 @@ public static partial class ThatAsyncEnumerable
 			if (cancellationToken.IsCancellationRequested)
 			{
 				Outcome = Outcome.Undecided;
-				AppendCollectionContext(_items, true);
+				_expectationBuilder.AddCollectionContext(_items, true);
 				return this;
 			}
 
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 			AppendContexts(false);
-			AppendCollectionContext(_items, false);
+			_expectationBuilder.AddCollectionContext(_items, false);
 			return this;
 		}
 
@@ -186,9 +186,8 @@ public static partial class ThatAsyncEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
-						AppendIsIncomplete(
-							Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption()),
-							isIncomplete),
+						Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption())
+							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
 
@@ -196,54 +195,10 @@ public static partial class ThatAsyncEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
-						AppendIsIncomplete(
-							Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption()),
-							isIncomplete),
+						Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption())
+							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
-		}
-
-		private void AppendCollectionContext(IEnumerable<TItem> value, bool isIncomplete)
-			=> _expectationBuilder.UpdateContexts(contexts
-				=> contexts
-					.Add(new ResultContext("Collection",
-						AppendIsIncomplete(
-							Formatter.Format(value, typeof(TItem).GetFormattingOption()),
-							isIncomplete),
-						1)));
-
-		private static string AppendIsIncomplete(string formattedItems, bool isIncomplete)
-		{
-			if (!isIncomplete || formattedItems.Length < 3)
-			{
-				return formattedItems;
-			}
-
-			if (formattedItems.EndsWith("…]"))
-			{
-				return $"{formattedItems[..^2]}(… and maybe others)]";
-			}
-
-			if (formattedItems.EndsWith("…\r\n]"))
-			{
-				return $"""
-				        {formattedItems[..^4]}(… and maybe others)
-				        ]
-				        """;
-			}
-
-			if (formattedItems.EndsWith("\r\n]"))
-			{
-				return $"""
-				        {formattedItems[..^3]},
-				          (… and maybe others)
-				        ]
-				        """;
-			}
-
-			return $"""
-			        {formattedItems[..^1]}, (… and maybe others)]
-			        """;
 		}
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using aweXpect.Core;
 
 namespace aweXpect;
 
@@ -34,6 +35,48 @@ internal static class CollectionHelpers
 
 	internal static string GetItemString(this EnumerableQuantifier quantifier)
 		=> quantifier.IsSingle() ? "item" : "items";
+
+	internal static ExpectationBuilder AddCollectionContext<TItem>(this ExpectationBuilder expectationBuilder, IEnumerable<TItem> value, bool isIncomplete)
+		=> expectationBuilder.UpdateContexts(contexts
+			=> contexts
+				.Add(new ResultContext("Collection",
+					Formatter.Format(value, typeof(TItem).GetFormattingOption())
+						.AppendIsIncomplete(isIncomplete),
+					1)));
+
+	internal static string AppendIsIncomplete(this string formattedItems, bool isIncomplete)
+	{
+		if (!isIncomplete || formattedItems.Length < 3)
+		{
+			return formattedItems;
+		}
+
+		if (formattedItems.EndsWith("…]"))
+		{
+			return $"{formattedItems[..^2]}(… and maybe others)]";
+		}
+
+		if (formattedItems.EndsWith($"…{Environment.NewLine}]"))
+		{
+			return $"""
+			        {formattedItems[..^(Environment.NewLine.Length + 2)]}(… and maybe others)
+			        ]
+			        """;
+		}
+
+		if (formattedItems.EndsWith($"{Environment.NewLine}]"))
+		{
+			return $"""
+			        {formattedItems[..^(Environment.NewLine.Length  + 1)]},
+			          (… and maybe others)
+			        ]
+			        """;
+		}
+
+		return $"""
+		        {formattedItems[..^1]}, (… and maybe others)]
+		        """;
+	}
 
 	internal static FormattingOptions GetFormattingOption(this Type type)
 	{

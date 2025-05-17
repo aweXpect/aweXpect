@@ -172,14 +172,14 @@ public static partial class ThatEnumerable
 				{
 					Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 					AppendContexts(true);
-					AppendCollectionContext(materialized, true);
+					_expectationBuilder.AddCollectionContext(materialized, true);
 					return Task.FromResult<ConstraintResult>(this);
 				}
 
 				if (cancellationToken.IsCancellationRequested)
 				{
 					Outcome = Outcome.Undecided;
-					AppendCollectionContext(materialized, true);
+					_expectationBuilder.AddCollectionContext(materialized, true);
 					return Task.FromResult<ConstraintResult>(this);
 				}
 			}
@@ -187,7 +187,7 @@ public static partial class ThatEnumerable
 			_totalCount = _matchingCount + _notMatchingCount;
 			Outcome = _quantifier.GetOutcome(_matchingCount, _notMatchingCount, _totalCount);
 			AppendContexts(false);
-			AppendCollectionContext(materialized, false);
+			_expectationBuilder.AddCollectionContext(materialized, false);
 			return Task.FromResult<ConstraintResult>(this);
 		}
 
@@ -242,9 +242,8 @@ public static partial class ThatEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Matching items",
-						AppendIsIncomplete(
-							Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption()),
-							isIncomplete),
+						Formatter.Format(_matchingItems, typeof(TItem).GetFormattingOption())
+							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
 
@@ -252,54 +251,10 @@ public static partial class ThatEnumerable
 			{
 				_expectationBuilder.UpdateContexts(contexts => contexts
 					.Add(new ResultContext("Not matching items",
-						AppendIsIncomplete(
-							Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption()),
-							isIncomplete),
+						Formatter.Format(_notMatchingItems, typeof(TItem).GetFormattingOption())
+							.AppendIsIncomplete(isIncomplete),
 						int.MaxValue)));
 			}
-		}
-
-		private void AppendCollectionContext(IEnumerable<TItem> value, bool isIncomplete)
-			=> _expectationBuilder.UpdateContexts(contexts
-				=> contexts
-					.Add(new ResultContext("Collection",
-						AppendIsIncomplete(
-							Formatter.Format(value, typeof(TItem).GetFormattingOption()),
-							isIncomplete),
-						1)));
-
-		private static string AppendIsIncomplete(string formattedItems, bool isIncomplete)
-		{
-			if (!isIncomplete || formattedItems.Length < 3)
-			{
-				return formattedItems;
-			}
-
-			if (formattedItems.EndsWith("…]"))
-			{
-				return $"{formattedItems[..^2]}(… and maybe others)]";
-			}
-
-			if (formattedItems.EndsWith("…\r\n]"))
-			{
-				return $"""
-				        {formattedItems[..^4]}(… and maybe others)
-				        ]
-				        """;
-			}
-
-			if (formattedItems.EndsWith("\r\n]"))
-			{
-				return $"""
-				        {formattedItems[..^3]},
-				          (… and maybe others)
-				        ]
-				        """;
-			}
-
-			return $"""
-			        {formattedItems[..^1]}, (… and maybe others)]
-			        """;
 		}
 	}
 
