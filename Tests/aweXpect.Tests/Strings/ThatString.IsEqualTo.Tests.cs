@@ -64,14 +64,16 @@ public sealed partial class ThatString
 				// .NET converts uppercase Turkish 'I' to lowercase 'ı'
 				// https://stackoverflow.com/q/78724630
 				using CultureOverride _ = new("tr-TR");
-				bool isEqualInvariant = subject == expected.ToLower(CultureInfo.InvariantCulture);
-				bool isEqualTurkish = subject == expected.ToLower();
+				bool isEqualInvariant = subject.Equals(expected.ToLower(CultureInfo.InvariantCulture),
+					StringComparison.CurrentCulture);
+				bool isEqualTurkish = subject.Equals(expected.ToLower(),
+					StringComparison.CurrentCulture);
+				await That(isEqualInvariant).IsNotEqualTo(isEqualTurkish);
 
 				async Task Action()
 					=> await That(subject).IsEqualTo(expected).IgnoringCase();
 
 				await That(Action).DoesNotThrow();
-				await That(isEqualInvariant).IsNotEqualTo(isEqualTurkish);
 			}
 
 			[Fact]
