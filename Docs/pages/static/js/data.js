@@ -1680,6 +1680,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -1962,7 +1968,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -2248,7 +2255,8 @@ window.BENCHMARK_DATA = {
           185.69063130446844,
           176.56466901302338,
           181.85792638705328,
-          174.10448967493497
+          174.10448967493497,
+          179.0417648792267
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -2443,6 +2451,7 @@ window.BENCHMARK_DATA = {
           536,
           536,
           536,
+          472,
           472,
           472,
           472,
@@ -2833,7 +2842,8 @@ window.BENCHMARK_DATA = {
           247.5450408299764,
           239.77524970127985,
           245.60798845972334,
-          237.7248728956495
+          237.7248728956495,
+          234.8292191369193
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -3026,6 +3036,7 @@ window.BENCHMARK_DATA = {
           688,
           688,
           688,
+          952,
           952,
           952,
           952,
@@ -3418,7 +3429,8 @@ window.BENCHMARK_DATA = {
           937.8384531021118,
           955.4121081488473,
           933.2471395639272,
-          922.1544129689535
+          922.1544129689535,
+          886.9229546326858
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -3644,6 +3656,7 @@ window.BENCHMARK_DATA = {
           2384,
           2384,
           2384,
+          2416,
           2416,
           2416,
           2416,
@@ -4941,6 +4954,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -5146,7 +5165,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -5355,7 +5375,8 @@ window.BENCHMARK_DATA = {
           319019.65481770836,
           289293.5729282924,
           304438.33357747394,
-          294659.1286433293
+          294659.1286433293,
+          286862.0983698918
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -5568,6 +5589,7 @@ window.BENCHMARK_DATA = {
           284932,
           284932,
           284932,
+          284940,
           284940,
           284940
         ],
@@ -5786,7 +5808,8 @@ window.BENCHMARK_DATA = {
           2333895.5747395833,
           2206017.678485577,
           2158297.6032366073,
-          2262207.0260416665
+          2262207.0260416665,
+          2127398.2411458334
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -5902,6 +5925,7 @@ window.BENCHMARK_DATA = {
           3977738,
           3977738,
           3977738,
+          4584416,
           4584416,
           4584416,
           4584416,
@@ -6217,7 +6241,8 @@ window.BENCHMARK_DATA = {
           684365.9799804688,
           640980.4684119591,
           698330.6254557292,
-          672229.68984375
+          672229.68984375,
+          662489.2766601562
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -6373,6 +6398,7 @@ window.BENCHMARK_DATA = {
           866777,
           866777,
           866778,
+          866777,
           866777,
           866777,
           866777,
@@ -8125,6 +8151,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -8407,7 +8439,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -8693,7 +8726,8 @@ window.BENCHMARK_DATA = {
           325.21678336461383,
           339.6146778424581,
           348.59646558761597,
-          339.2717016293452
+          339.2717016293452,
+          316.4105793407985
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -8888,6 +8922,7 @@ window.BENCHMARK_DATA = {
           1200,
           1200,
           1200,
+          944,
           944,
           944,
           944,
@@ -9278,7 +9313,8 @@ window.BENCHMARK_DATA = {
           496.3316465377808,
           455.8286646525065,
           482.9320753642491,
-          483.0849219640096
+          483.0849219640096,
+          472.2208952585856
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -9471,6 +9507,7 @@ window.BENCHMARK_DATA = {
           1744,
           1744,
           1744,
+          2008,
           2008,
           2008,
           2008,
@@ -9863,7 +9900,8 @@ window.BENCHMARK_DATA = {
           17988.768332345146,
           15327.146318562825,
           17783.274465707633,
-          14316.926812744141
+          14316.926812744141,
+          14619.790366617839
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -10089,6 +10127,7 @@ window.BENCHMARK_DATA = {
           27456,
           27456,
           27456,
+          27488,
           27488,
           27488,
           27488,
@@ -11848,6 +11887,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -12130,7 +12175,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -12416,7 +12462,8 @@ window.BENCHMARK_DATA = {
           212.69255474408467,
           217.37395300183977,
           218.01195632494412,
-          217.6935727437337
+          217.6935727437337,
+          217.6671840974263
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -12612,6 +12659,7 @@ window.BENCHMARK_DATA = {
           888,
           888,
           808,
+          784,
           784,
           784,
           784,
@@ -13001,7 +13049,8 @@ window.BENCHMARK_DATA = {
           251.0352339108785,
           238.17091957728067,
           243.0531065940857,
-          239.39023883002145
+          239.39023883002145,
+          236.35795838038126
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -13194,6 +13243,7 @@ window.BENCHMARK_DATA = {
           960,
           960,
           960,
+          1224,
           1224,
           1224,
           1224,
@@ -13586,7 +13636,8 @@ window.BENCHMARK_DATA = {
           1278.3025305611748,
           1258.132548014323,
           1261.0896020616804,
-          1209.3310791015624
+          1209.3310791015624,
+          1203.792130915324
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -13812,6 +13863,7 @@ window.BENCHMARK_DATA = {
           2952,
           2952,
           2952,
+          2992,
           2992,
           2992,
           2992,
@@ -15571,6 +15623,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -15853,7 +15911,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -16139,7 +16198,8 @@ window.BENCHMARK_DATA = {
           339.63557319641114,
           324.88600904600963,
           345.48704694112143,
-          335.54828176498415
+          335.54828176498415,
+          324.6192995707194
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -16429,6 +16489,7 @@ window.BENCHMARK_DATA = {
           1120,
           1120,
           1120,
+          1128,
           1128,
           1128
         ],
@@ -16724,7 +16785,8 @@ window.BENCHMARK_DATA = {
           548.6617100579398,
           459.0914795215313,
           468.7973273595174,
-          457.1514930089315
+          457.1514930089315,
+          466.4843738079071
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -16917,6 +16979,7 @@ window.BENCHMARK_DATA = {
           1904,
           1904,
           1904,
+          2168,
           2168,
           2168,
           2168,
@@ -17309,7 +17372,8 @@ window.BENCHMARK_DATA = {
           1337.9339028767176,
           1303.8324706737812,
           1340.2455825805664,
-          1287.4496795654297
+          1287.4496795654297,
+          1260.198956044515
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -17535,6 +17599,7 @@ window.BENCHMARK_DATA = {
           3064,
           3064,
           3064,
+          3096,
           3096,
           3096,
           3096,
@@ -19294,6 +19359,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -19576,7 +19647,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -19862,7 +19934,8 @@ window.BENCHMARK_DATA = {
           1153.3302586873372,
           1151.8838663736979,
           1182.2483853560227,
-          1080.708688354492
+          1080.708688354492,
+          1125.688649113973
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -20057,6 +20130,7 @@ window.BENCHMARK_DATA = {
           2376,
           2376,
           2376,
+          2008,
           2008,
           2008,
           2008,
@@ -20447,7 +20521,8 @@ window.BENCHMARK_DATA = {
           1334.178370030721,
           1316.5972109476725,
           1316.080820465088,
-          1286.7858207702636
+          1286.7858207702636,
+          1323.911829249064
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -20640,6 +20715,7 @@ window.BENCHMARK_DATA = {
           3888,
           3888,
           3888,
+          4152,
           4152,
           4152,
           4152,
@@ -21032,7 +21108,8 @@ window.BENCHMARK_DATA = {
           2893.5176718575613,
           2883.8154560969424,
           2854.6876068115234,
-          2757.5750406705415
+          2757.5750406705415,
+          2826.4246622721353
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -21258,6 +21335,7 @@ window.BENCHMARK_DATA = {
           4536,
           4536,
           4544,
+          4576,
           4576,
           4576,
           4576,
@@ -23017,6 +23095,12 @@ window.BENCHMARK_DATA = {
         "author": "Valentin Breu\u00DF",
         "date": "Sat May 17 19:26:57 2025 \u002B0200",
         "message": "chore: update aweXpect.Core to v2.10.3 (#609)"
+      },
+      {
+        "sha": "dcb36930075d9d7a5d020f6d78fc55227f5b721c",
+        "author": "Valentin Breu\u00DF",
+        "date": "Sun May 18 03:33:20 2025 \u002B0200",
+        "message": "feat: add debug build to CI pipeline when BuildScope is not \u0022Default\u0022 (#610)"
       }
     ],
     "labels": [
@@ -23299,7 +23383,8 @@ window.BENCHMARK_DATA = {
       "d14f8f5e",
       "3d025a69",
       "c3567d33",
-      "3ecf5746"
+      "3ecf5746",
+      "dcb36930"
     ],
     "datasets": [
       {
@@ -23585,7 +23670,8 @@ window.BENCHMARK_DATA = {
           1289.5509152730306,
           1280.267301940918,
           1294.3653736114502,
-          1252.3567483084541
+          1252.3567483084541,
+          1265.2982704162598
         ],
         "borderColor": "#63A2AC",
         "backgroundColor": "#63A2AC",
@@ -23873,6 +23959,7 @@ window.BENCHMARK_DATA = {
           1976,
           1976,
           1976,
+          2168,
           2168,
           2168,
           2168,
@@ -24170,7 +24257,8 @@ window.BENCHMARK_DATA = {
           153322.8752629207,
           151527.09891764322,
           149367.17076822917,
-          156609.4903971354
+          156609.4903971354,
+          147610.28305288462
         ],
         "borderColor": "#FF671B",
         "backgroundColor": "#FF671B",
@@ -24459,6 +24547,7 @@ window.BENCHMARK_DATA = {
           64323,
           63787,
           63788,
+          63787,
           63787,
           63787,
           63787
@@ -24755,7 +24844,8 @@ window.BENCHMARK_DATA = {
           4642.793583170573,
           4618.420261128744,
           4780.975473844088,
-          4555.141059366862
+          4555.141059366862,
+          4652.13718523298
         ],
         "borderColor": "#1A6029",
         "backgroundColor": "#1A6029",
@@ -24981,6 +25071,7 @@ window.BENCHMARK_DATA = {
           6648,
           6648,
           6712,
+          6744,
           6744,
           6744,
           6744,
