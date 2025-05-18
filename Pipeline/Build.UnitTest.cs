@@ -84,4 +84,47 @@ partial class Build
 				Solution.Tests.aweXpect_Internal_Tests,
 			],
 		};
+
+	Target DebugUnitTests => _ => _
+		.Unlisted()
+		.OnlyWhenDynamic(() => BuildScope != BuildScope.Default)
+		.Executes(() =>
+		{
+			string net48 = "net48";
+			DotNetTest(s => s
+					.SetConfiguration(Configuration.Debug)
+					.SetProcessEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US")
+					.SetResultsDirectory(TestResultsDirectory / Configuration.Debug)
+					.CombineWith(
+						UnitTestProjects(BuildScope),
+						(settings, project) => settings
+							.SetProjectFile(project)
+							.CombineWith(
+								project.GetTargetFrameworks()?.Except([net48,]),
+								(frameworkSettings, framework) => frameworkSettings
+									.SetFramework(framework)
+							)
+					), completeOnFailure: true
+			);
+			
+			string[] testAssemblies = UnitTestProjects(BuildScope)
+				.SelectMany(project =>
+					project.Directory.GlobFiles(
+						$"bin/Debug/net48/*.Tests.dll"))
+				.Select(p => p.ToString())
+				.ToArray();
+
+			Assert.NotEmpty(testAssemblies.ToList());
+
+			Xunit2(s => s
+				.SetFramework("net48")
+				.AddTargetAssemblies(testAssemblies)
+			);
+		});
+	
+	Target UnitTestsWithCoverage => _ => _
+		.DependsOn(CodeCoverage)
+		.DependsOn(UnitTests)
+		.DependsOn(DebugUnitTests);
+
 }

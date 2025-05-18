@@ -26,7 +26,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).DoesNotThrow();
 				}
 
-				[Fact(Skip="TODO Reactivate after next core update")]
+				[Fact]
 				public async Task DoesNotMaterializeEnumerable()
 				{
 					IEnumerable<int> subject = Factory.GetFibonacciNumbers();
@@ -62,7 +62,7 @@ public sealed partial class ThatEnumerable
 					await That(Act).DoesNotThrow();
 				}
 
-				[Fact(Skip="TODO Reactivate after next core update")]
+				[Fact]
 				public async Task WhenItemsDiffer_ShouldFailAndDisplayNotMatchingItems()
 				{
 					int[] subject = Factory.GetFibonacciNumbers(20).ToArray();
