@@ -1,4 +1,6 @@
-﻿namespace aweXpect.Tests;
+﻿using System.Globalization;
+
+namespace aweXpect.Tests;
 
 public sealed partial class ThatString
 {
@@ -53,6 +55,25 @@ public sealed partial class ThatString
 					             Actual:
 					             some text
 					             """);
+			}
+
+			[Theory]
+			[InlineData("i", "I")]
+			public async Task WhenIgnoringCase_UseInvariantCulture(string subject, string expected)
+			{
+				// .NET converts uppercase Turkish 'I' to lowercase 'ı'
+				// https://stackoverflow.com/q/78724630
+				using CultureOverride _ = new("tr-TR");
+				bool isEqualInvariant = subject.Equals(expected.ToLower(CultureInfo.InvariantCulture),
+					StringComparison.CurrentCulture);
+				bool isEqualTurkish = subject.Equals(expected.ToLower(),
+					StringComparison.CurrentCulture);
+				await That(isEqualInvariant).IsNotEqualTo(isEqualTurkish);
+
+				async Task Action()
+					=> await That(subject).IsEqualTo(expected).IgnoringCase();
+
+				await That(Action).DoesNotThrow();
 			}
 
 			[Fact]
