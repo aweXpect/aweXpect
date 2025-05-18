@@ -87,6 +87,7 @@ partial class Build
 
 	Target DebugUnitTests => _ => _
 		.Unlisted()
+		.DependsOn(CodeCoverage)
 		.OnlyWhenDynamic(() => BuildScope != BuildScope.Default)
 		.Executes(() =>
 		{
