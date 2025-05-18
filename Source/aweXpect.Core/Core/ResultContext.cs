@@ -43,7 +43,7 @@ public class ResultContext
 	{
 		Title = title;
 		_contentFunc = _ => Task.FromResult(syncContent());
-		// TODO: re-addPriority = priority;
+		Priority = priority;
 	}
 
 	/// <summary>
