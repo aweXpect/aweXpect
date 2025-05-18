@@ -87,7 +87,7 @@ partial class Build
 
 	Target DebugUnitTests => _ => _
 		.Unlisted()
-		.DependsOn(CodeCoverage)
+		.DependsOn(UnitTests)
 		.OnlyWhenDynamic(() => BuildScope != BuildScope.Default)
 		.Executes(() =>
 		{
@@ -133,7 +133,6 @@ partial class Build
 		});
 	
 	Target UnitTestsWithCoverage => _ => _
-		.DependsOn(CodeCoverage)
 		.DependsOn(UnitTests)
 		.DependsOn(DebugUnitTests);
 
