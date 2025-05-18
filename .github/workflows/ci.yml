@@ -113,6 +113,7 @@ jobs:
                     name: Benchmarks
                     path: |
                         ./Artifacts/*
+                    if-no-files-found: ignore
     
     static-code-analysis:
         name: "Static code analysis"
