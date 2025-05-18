@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Threading;
 
 namespace aweXpect.Tests;
 
@@ -62,26 +61,17 @@ public sealed partial class ThatString
 			[InlineData("i", "I")]
 			public async Task WhenIgnoringCase_UseInvariantCulture(string subject, string expected)
 			{
-				CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
-				try
-				{
-					// .NET converts uppercase Turkish 'I' to lowercase 'ı'
-					// https://stackoverflow.com/q/78724630
-					CultureInfo culture = CultureInfo.GetCultureInfo("tr-TR");
-					Thread.CurrentThread.CurrentCulture = culture;
-					bool isEqualInvariant = subject == expected.ToLower(CultureInfo.InvariantCulture);
-					bool isEqualTurkish = subject == expected.ToLower();
+				// .NET converts uppercase Turkish 'I' to lowercase 'ı'
+				// https://stackoverflow.com/q/78724630
+				using CultureOverride _ = new("tr-TR");
+				bool isEqualInvariant = subject == expected.ToLower(CultureInfo.InvariantCulture);
+				bool isEqualTurkish = subject == expected.ToLower();
 
-					async Task Action()
-						=> await That(subject).IsEqualTo(expected).IgnoringCase();
+				async Task Action()
+					=> await That(subject).IsEqualTo(expected).IgnoringCase();
 
-					await That(Action).DoesNotThrow();
-					await That(isEqualInvariant).IsNotEqualTo(isEqualTurkish);
-				}
-				finally
-				{
-					Thread.CurrentThread.CurrentCulture = originalCulture;
-				}
+				await That(Action).DoesNotThrow();
+				await That(isEqualInvariant).IsNotEqualTo(isEqualTurkish);
 			}
 
 			[Fact]
