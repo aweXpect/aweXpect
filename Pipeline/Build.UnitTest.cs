@@ -112,20 +112,23 @@ partial class Build
 							)
 					), completeOnFailure: true
 			);
-			
-			string[] testAssemblies = UnitTestProjects(BuildScope)
-				.SelectMany(project =>
-					project.Directory.GlobFiles(
-						$"bin/Debug/net48/*.Tests.dll"))
-				.Select(p => p.ToString())
-				.ToArray();
 
-			Assert.NotEmpty(testAssemblies.ToList());
+			if (EnvironmentInfo.IsWin)
+			{
+				string[] testAssemblies = UnitTestProjects(BuildScope)
+					.SelectMany(project =>
+						project.Directory.GlobFiles(
+							$"bin/Debug/net48/*.Tests.dll"))
+					.Select(p => p.ToString())
+					.ToArray();
 
-			Xunit2(s => s
-				.SetFramework("net48")
-				.AddTargetAssemblies(testAssemblies)
-			);
+				Assert.NotEmpty(testAssemblies.ToList());
+
+				Xunit2(s => s
+					.SetFramework("net48")
+					.AddTargetAssemblies(testAssemblies)
+				);
+			}
 		});
 	
 	Target UnitTestsWithCoverage => _ => _
